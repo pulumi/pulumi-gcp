@@ -90,16 +90,48 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.databaseEdition);
     }
 
+    /**
+     * State of delete protection for the database.
+     * When delete protection is enabled, this database cannot be deleted.
+     * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+     * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * 
+     */
     @Import(name="deleteProtectionState")
     private @Nullable Output<String> deleteProtectionState;
 
+    /**
+     * @return State of delete protection for the database.
+     * When delete protection is enabled, this database cannot be deleted.
+     * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+     * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * 
+     */
     public Optional<Output<String>> deleteProtectionState() {
         return Optional.ofNullable(this.deleteProtectionState);
     }
 
+    /**
+     * Deletion behavior for this database.
+     * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+     * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `ABANDON`.
+     * See also `deleteProtection`.
+     * 
+     */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
+    /**
+     * @return Deletion behavior for this database.
+     * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+     * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `ABANDON`.
+     * See also `deleteProtection`.
+     * 
+     */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
     }
@@ -367,20 +399,60 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
             return databaseEdition(Output.of(databaseEdition));
         }
 
+        /**
+         * @param deleteProtectionState State of delete protection for the database.
+         * When delete protection is enabled, this database cannot be deleted.
+         * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+         * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+         * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteProtectionState(@Nullable Output<String> deleteProtectionState) {
             $.deleteProtectionState = deleteProtectionState;
             return this;
         }
 
+        /**
+         * @param deleteProtectionState State of delete protection for the database.
+         * When delete protection is enabled, this database cannot be deleted.
+         * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+         * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+         * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteProtectionState(String deleteProtectionState) {
             return deleteProtectionState(Output.of(deleteProtectionState));
         }
 
+        /**
+         * @param deletionPolicy Deletion behavior for this database.
+         * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+         * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+         * The default value is `ABANDON`.
+         * See also `deleteProtection`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
             $.deletionPolicy = deletionPolicy;
             return this;
         }
 
+        /**
+         * @param deletionPolicy Deletion behavior for this database.
+         * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+         * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+         * The default value is `ABANDON`.
+         * See also `deleteProtection`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
         }

@@ -236,28 +236,16 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}`
-
         * `{{project}}/{{region}}/{{disk}}/{{name}}`
-
         * `{{region}}/{{disk}}/{{name}}`
-
         * `{{disk}}/{{name}}`
 
         When using the `pulumi import` command, RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{project}}/{{region}}/{{disk}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{region}}/{{disk}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{disk}}/{{name}}
         ```
 
@@ -334,28 +322,16 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}`
-
         * `{{project}}/{{region}}/{{disk}}/{{name}}`
-
         * `{{region}}/{{disk}}/{{name}}`
-
         * `{{disk}}/{{name}}`
 
         When using the `pulumi import` command, RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{project}}/{{region}}/{{disk}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{region}}/{{disk}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{disk}}/{{name}}
         ```
 

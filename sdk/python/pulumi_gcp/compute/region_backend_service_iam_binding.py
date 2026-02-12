@@ -330,16 +330,263 @@ class RegionBackendServiceIamBinding(pulumi.CustomResource):
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Compute Engine RegionBackendService. Each of these resources serves a different use case:
+
+        * `compute.RegionBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the regionbackendservice and replaces any existing policy already attached.
+        * `compute.RegionBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regionbackendservice are preserved.
+        * `compute.RegionBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regionbackendservice are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.RegionBackendServiceIamPolicy`: Retrieves the IAM policy for the regionbackendservice
+
+        > **Note:** `compute.RegionBackendServiceIamPolicy` **cannot** be used in conjunction with `compute.RegionBackendServiceIamBinding` and `compute.RegionBackendServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.RegionBackendServiceIamBinding` resources **can be** used in conjunction with `compute.RegionBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## compute.RegionBackendServiceIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.compute.RegionBackendServiceIamPolicy("policy",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.compute.RegionBackendServiceIamPolicy("policy",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## compute.RegionBackendServiceIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.RegionBackendServiceIamBinding("binding",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.RegionBackendServiceIamBinding("binding",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## compute.RegionBackendServiceIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.RegionBackendServiceIamMember("member",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.RegionBackendServiceIamMember("member",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Compute Engine RegionBackendService
+
+        Three different resources help you manage your IAM policy for Compute Engine RegionBackendService. Each of these resources serves a different use case:
+
+        * `compute.RegionBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the regionbackendservice and replaces any existing policy already attached.
+        * `compute.RegionBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regionbackendservice are preserved.
+        * `compute.RegionBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regionbackendservice are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.RegionBackendServiceIamPolicy`: Retrieves the IAM policy for the regionbackendservice
+
+        > **Note:** `compute.RegionBackendServiceIamPolicy` **cannot** be used in conjunction with `compute.RegionBackendServiceIamBinding` and `compute.RegionBackendServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.RegionBackendServiceIamBinding` resources **can be** used in conjunction with `compute.RegionBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## compute.RegionBackendServiceIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.compute.RegionBackendServiceIamPolicy("policy",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.compute.RegionBackendServiceIamPolicy("policy",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## compute.RegionBackendServiceIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.RegionBackendServiceIamBinding("binding",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.RegionBackendServiceIamBinding("binding",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## compute.RegionBackendServiceIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.RegionBackendServiceIamMember("member",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.RegionBackendServiceIamMember("member",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/regions/{{region}}/backendServices/{{name}}
-
         * {{project}}/{{region}}/{{name}}
-
         * {{region}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -347,25 +594,21 @@ class RegionBackendServiceIamBinding(pulumi.CustomResource):
         Compute Engine regionbackendservice IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding editor "projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin user:jane@example.com"
+        $ terraform import google_compute_region_backend_service_iam_member.editor "projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding editor "projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin"
+        $ terraform import google_compute_region_backend_service_iam_binding.editor "projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding editor projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
@@ -403,16 +646,263 @@ class RegionBackendServiceIamBinding(pulumi.CustomResource):
                  args: RegionBackendServiceIamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Compute Engine RegionBackendService. Each of these resources serves a different use case:
+
+        * `compute.RegionBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the regionbackendservice and replaces any existing policy already attached.
+        * `compute.RegionBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regionbackendservice are preserved.
+        * `compute.RegionBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regionbackendservice are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.RegionBackendServiceIamPolicy`: Retrieves the IAM policy for the regionbackendservice
+
+        > **Note:** `compute.RegionBackendServiceIamPolicy` **cannot** be used in conjunction with `compute.RegionBackendServiceIamBinding` and `compute.RegionBackendServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.RegionBackendServiceIamBinding` resources **can be** used in conjunction with `compute.RegionBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## compute.RegionBackendServiceIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.compute.RegionBackendServiceIamPolicy("policy",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.compute.RegionBackendServiceIamPolicy("policy",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## compute.RegionBackendServiceIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.RegionBackendServiceIamBinding("binding",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.RegionBackendServiceIamBinding("binding",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## compute.RegionBackendServiceIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.RegionBackendServiceIamMember("member",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.RegionBackendServiceIamMember("member",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Compute Engine RegionBackendService
+
+        Three different resources help you manage your IAM policy for Compute Engine RegionBackendService. Each of these resources serves a different use case:
+
+        * `compute.RegionBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the regionbackendservice and replaces any existing policy already attached.
+        * `compute.RegionBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regionbackendservice are preserved.
+        * `compute.RegionBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regionbackendservice are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.RegionBackendServiceIamPolicy`: Retrieves the IAM policy for the regionbackendservice
+
+        > **Note:** `compute.RegionBackendServiceIamPolicy` **cannot** be used in conjunction with `compute.RegionBackendServiceIamBinding` and `compute.RegionBackendServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.RegionBackendServiceIamBinding` resources **can be** used in conjunction with `compute.RegionBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## compute.RegionBackendServiceIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.compute.RegionBackendServiceIamPolicy("policy",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.compute.RegionBackendServiceIamPolicy("policy",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## compute.RegionBackendServiceIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.RegionBackendServiceIamBinding("binding",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.RegionBackendServiceIamBinding("binding",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## compute.RegionBackendServiceIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.RegionBackendServiceIamMember("member",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.RegionBackendServiceIamMember("member",
+            project=default["project"],
+            region=default["region"],
+            name=default["name"],
+            role="roles/compute.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/regions/{{region}}/backendServices/{{name}}
-
         * {{project}}/{{region}}/{{name}}
-
         * {{region}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -420,25 +910,21 @@ class RegionBackendServiceIamBinding(pulumi.CustomResource):
         Compute Engine regionbackendservice IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding editor "projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin user:jane@example.com"
+        $ terraform import google_compute_region_backend_service_iam_member.editor "projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding editor "projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin"
+        $ terraform import google_compute_region_backend_service_iam_binding.editor "projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding editor projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.

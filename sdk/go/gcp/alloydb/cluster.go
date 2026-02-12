@@ -12,6 +12,25 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A managed alloydb cluster.
+//
+// To get more information about Cluster, see:
+//
+// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+// * How-to Guides
+//   - [AlloyDB](https://cloud.google.com/alloydb/docs/)
+//
+// > **Note:** Users can promote a secondary cluster to a primary cluster with the help of `clusterType`.
+// To promote, users have to set the `clusterType` property as `PRIMARY` and remove the `secondaryConfig` field from cluster configuration.
+// See Example.
+//
+// Switchover is supported in terraform by refreshing the state of the terraform configurations.
+// The switchover operation still needs to be called outside of terraform.
+// After the switchover operation is completed successfully:
+//  1. Refresh the state of the AlloyDB resources by running `pulumi up -refresh-only --auto-approve` .
+//  2. Manually update the terraform configuration file(s) to match the actual state of the resources by modifying the `clusterType` and `secondaryConfig` fields.
+//  3. Verify the sync of terraform state by running `pulumi preview` and ensure that the infrastructure matches the configuration and no changes are required.
+//
 // ## Example Usage
 //
 // ### Alloydb Cluster Basic
@@ -456,28 +475,16 @@ import (
 // Cluster can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
-//
 // * `{{project}}/{{location}}/{{cluster_id}}`
-//
 // * `{{location}}/{{cluster_id}}`
-//
 // * `{{cluster_id}}`
 //
 // When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:alloydb/cluster:Cluster default {{project}}/{{location}}/{{cluster_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:alloydb/cluster:Cluster default {{location}}/{{cluster_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:alloydb/cluster:Cluster default {{cluster_id}}
 // ```
 type Cluster struct {
@@ -518,10 +525,15 @@ type Cluster struct {
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
 	// Possible values: DEFAULT, FORCE
-	DeletionPolicy     pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
-	DeletionProtection pulumi.BoolPtrOutput   `pulumi:"deletionProtection"`
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	// Whether Terraform will be prevented from destroying the cluster.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the cluster will fail.
+	// When the field is set to false, deleting the cluster is allowed.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// User-settable and human-readable display name for the Cluster.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -674,10 +686,15 @@ type clusterState struct {
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
 	// Possible values: DEFAULT, FORCE
-	DeletionPolicy     *string `pulumi:"deletionPolicy"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// Whether Terraform will be prevented from destroying the cluster.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the cluster will fail.
+	// When the field is set to false, deleting the cluster is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User-settable and human-readable display name for the Cluster.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -790,10 +807,15 @@ type ClusterState struct {
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
 	// Possible values: DEFAULT, FORCE
-	DeletionPolicy     pulumi.StringPtrInput
+	DeletionPolicy pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the cluster.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the cluster will fail.
+	// When the field is set to false, deleting the cluster is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// User-settable and human-readable display name for the Cluster.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -901,8 +923,12 @@ type clusterArgs struct {
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
 	// Possible values: DEFAULT, FORCE
-	DeletionPolicy     *string `pulumi:"deletionPolicy"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// Whether Terraform will be prevented from destroying the cluster.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the cluster will fail.
+	// When the field is set to false, deleting the cluster is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName *string `pulumi:"displayName"`
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -983,7 +1009,11 @@ type ClusterArgs struct {
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
 	// Possible values: DEFAULT, FORCE
-	DeletionPolicy     pulumi.StringPtrInput
+	DeletionPolicy pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the cluster.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the cluster will fail.
+	// When the field is set to false, deleting the cluster is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrInput
@@ -1190,6 +1220,10 @@ func (o ClusterOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Whether Terraform will be prevented from destroying the cluster.
+// When the field is set to true or unset in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the cluster will fail.
+// When the field is set to false, deleting the cluster is allowed.
 func (o ClusterOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -1199,6 +1233,7 @@ func (o ClusterOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o ClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

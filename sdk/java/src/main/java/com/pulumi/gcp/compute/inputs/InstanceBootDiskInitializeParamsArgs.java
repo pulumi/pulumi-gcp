@@ -155,14 +155,14 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     }
 
     /**
-     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
      * 
      */
     @Import(name="resourceManagerTags")
     private @Nullable Output<Map<String,String>> resourceManagerTags;
 
     /**
-     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * @return A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> resourceManagerTags() {
@@ -494,7 +494,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param resourceManagerTags A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+         * @param resourceManagerTags A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
          * 
          * @return builder
          * 
@@ -505,7 +505,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param resourceManagerTags A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+         * @param resourceManagerTags A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag. This value is not returned by the API. In Terraform, this value cannot be updated and changing it will recreate the resource.
          * 
          * @return builder
          * 

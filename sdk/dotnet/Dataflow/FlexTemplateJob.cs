@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataflow
 {
     /// <summary>
+    /// Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
+    /// job on Dataflow, which is an implementation of Apache Beam running on Google
+    /// Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
+    /// and [Dataflow](https://cloud.google.com/dataflow/).
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -132,6 +140,9 @@ namespace Pulumi.Gcp.Dataflow
         [Output("containerSpecGcsPath")]
         public Output<string> ContainerSpecGcsPath { get; private set; } = null!;
 
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
@@ -253,6 +264,11 @@ namespace Pulumi.Gcp.Dataflow
         [Output("serviceAccountEmail")]
         public Output<string> ServiceAccountEmail { get; private set; } = null!;
 
+        /// <summary>
+        /// If set to `True`, terraform will
+        /// treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+        /// and will remove the resource from terraform state and move on.  See above note.
+        /// </summary>
         [Output("skipWaitOnJobTermination")]
         public Output<bool?> SkipWaitOnJobTermination { get; private set; } = null!;
 
@@ -500,6 +516,11 @@ namespace Pulumi.Gcp.Dataflow
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
 
+        /// <summary>
+        /// If set to `True`, terraform will
+        /// treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+        /// and will remove the resource from terraform state and move on.  See above note.
+        /// </summary>
         [Input("skipWaitOnJobTermination")]
         public Input<bool>? SkipWaitOnJobTermination { get; set; }
 
@@ -582,6 +603,10 @@ namespace Pulumi.Gcp.Dataflow
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveLabels
         {
             get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
@@ -732,6 +757,11 @@ namespace Pulumi.Gcp.Dataflow
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
 
+        /// <summary>
+        /// If set to `True`, terraform will
+        /// treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+        /// and will remove the resource from terraform state and move on.  See above note.
+        /// </summary>
         [Input("skipWaitOnJobTermination")]
         public Input<bool>? SkipWaitOnJobTermination { get; set; }
 

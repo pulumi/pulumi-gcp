@@ -116,22 +116,14 @@ namespace Pulumi.Gcp.Eventarc
     /// Trigger can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/triggers/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:eventarc/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:eventarc/trigger:Trigger default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:eventarc/trigger:Trigger default {{location}}/{{name}}
     /// ```
     /// </summary>

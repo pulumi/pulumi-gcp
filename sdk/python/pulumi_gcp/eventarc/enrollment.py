@@ -214,6 +214,7 @@ class _EnrollmentState:
                point to the full resource name of a Pipeline. Format:
                "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
         :param pulumi.Input[_builtins.str] display_name: Resource display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] enrollment_id: The user-provided ID to be assigned to the Enrollment. It should match the
                format `^a-z?$`.
@@ -339,6 +340,9 @@ class _EnrollmentState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -549,22 +553,14 @@ class Enrollment(pulumi.CustomResource):
         Enrollment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/enrollments/{{enrollment_id}}`
-
         * `{{project}}/{{location}}/{{enrollment_id}}`
-
         * `{{location}}/{{enrollment_id}}`
 
         When using the `pulumi import` command, Enrollment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/enrollment:Enrollment default projects/{{project}}/locations/{{location}}/enrollments/{{enrollment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/enrollment:Enrollment default {{project}}/{{location}}/{{enrollment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/enrollment:Enrollment default {{location}}/{{enrollment_id}}
         ```
 
@@ -640,22 +636,14 @@ class Enrollment(pulumi.CustomResource):
         Enrollment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/enrollments/{{enrollment_id}}`
-
         * `{{project}}/{{location}}/{{enrollment_id}}`
-
         * `{{location}}/{{enrollment_id}}`
 
         When using the `pulumi import` command, Enrollment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/enrollment:Enrollment default projects/{{project}}/locations/{{location}}/enrollments/{{enrollment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/enrollment:Enrollment default {{project}}/{{location}}/{{enrollment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/enrollment:Enrollment default {{location}}/{{enrollment_id}}
         ```
 
@@ -764,6 +752,7 @@ class Enrollment(pulumi.CustomResource):
                point to the full resource name of a Pipeline. Format:
                "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
         :param pulumi.Input[_builtins.str] display_name: Resource display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] enrollment_id: The user-provided ID to be assigned to the Enrollment. It should match the
                format `^a-z?$`.
@@ -857,6 +846,9 @@ class Enrollment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

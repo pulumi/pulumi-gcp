@@ -258,6 +258,12 @@ namespace Pulumi.Gcp.Container
         [Output("defaultSnatStatus")]
         public Output<Outputs.ClusterDefaultSnatStatus> DefaultSnatStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from
+        /// destroying the cluster.  Deleting this cluster via `terraform destroy` or
+        /// `pulumi up` will only succeed if this field is `False` in the Terraform
+        /// state.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -994,6 +1000,12 @@ namespace Pulumi.Gcp.Container
         [Input("defaultSnatStatus")]
         public Input<Inputs.ClusterDefaultSnatStatusArgs>? DefaultSnatStatus { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from
+        /// destroying the cluster.  Deleting this cluster via `terraform destroy` or
+        /// `pulumi up` will only succeed if this field is `False` in the Terraform
+        /// state.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -1654,6 +1666,12 @@ namespace Pulumi.Gcp.Container
         [Input("defaultSnatStatus")]
         public Input<Inputs.ClusterDefaultSnatStatusGetArgs>? DefaultSnatStatus { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from
+        /// destroying the cluster.  Deleting this cluster via `terraform destroy` or
+        /// `pulumi up` will only succeed if this field is `False` in the Terraform
+        /// state.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 

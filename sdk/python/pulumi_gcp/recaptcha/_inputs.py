@@ -27,20 +27,15 @@ __all__ = [
     'EnterpriseKeyWebSettingsArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class EnterpriseKeyAndroidSettingsArgsDict(TypedDict):
-        allow_all_package_names: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, it means allowed_package_names will not be enforced.
-        """
-        allowed_package_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
-        """
-elif False:
-    EnterpriseKeyAndroidSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class EnterpriseKeyAndroidSettingsArgsDict(TypedDict):
+    allow_all_package_names: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, it means allowed_package_names will not be enforced.
+    """
+    allowed_package_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
+    """
 
 @pulumi.input_type
 class EnterpriseKeyAndroidSettingsArgs:
@@ -81,18 +76,15 @@ class EnterpriseKeyAndroidSettingsArgs:
         pulumi.set(self, "allowed_package_names", value)
 
 
-if not MYPY:
-    class EnterpriseKeyIosSettingsArgsDict(TypedDict):
-        allow_all_bundle_ids: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, it means allowed_bundle_ids will not be enforced.
-        """
-        allowed_bundle_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
-        """
-elif False:
-    EnterpriseKeyIosSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class EnterpriseKeyIosSettingsArgsDict(TypedDict):
+    allow_all_bundle_ids: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, it means allowed_bundle_ids will not be enforced.
+    """
+    allowed_bundle_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
+    """
 
 @pulumi.input_type
 class EnterpriseKeyIosSettingsArgs:
@@ -133,18 +125,15 @@ class EnterpriseKeyIosSettingsArgs:
         pulumi.set(self, "allowed_bundle_ids", value)
 
 
-if not MYPY:
-    class EnterpriseKeyTestingOptionsArgsDict(TypedDict):
-        testing_challenge: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if UNSOLVABLE_CHALLENGE. Possible values: TESTING_CHALLENGE_UNSPECIFIED, NOCAPTCHA, UNSOLVABLE_CHALLENGE
-        """
-        testing_score: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
-        """
-elif False:
-    EnterpriseKeyTestingOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class EnterpriseKeyTestingOptionsArgsDict(TypedDict):
+    testing_challenge: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if UNSOLVABLE_CHALLENGE. Possible values: TESTING_CHALLENGE_UNSPECIFIED, NOCAPTCHA, UNSOLVABLE_CHALLENGE
+    """
+    testing_score: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
+    """
 
 @pulumi.input_type
 class EnterpriseKeyTestingOptionsArgs:
@@ -185,18 +174,15 @@ class EnterpriseKeyTestingOptionsArgs:
         pulumi.set(self, "testing_score", value)
 
 
-if not MYPY:
-    class EnterpriseKeyWafSettingsArgsDict(TypedDict):
-        waf_feature: pulumi.Input[_builtins.str]
-        """
-        Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
-        """
-        waf_service: pulumi.Input[_builtins.str]
-        """
-        The WAF service that uses this key. Possible values: CA, FASTLY
-        """
-elif False:
-    EnterpriseKeyWafSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class EnterpriseKeyWafSettingsArgsDict(TypedDict):
+    waf_feature: pulumi.Input[_builtins.str]
+    """
+    Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+    """
+    waf_service: pulumi.Input[_builtins.str]
+    """
+    The WAF service that uses this key. Possible values: CA, FASTLY
+    """
 
 @pulumi.input_type
 class EnterpriseKeyWafSettingsArgs:
@@ -235,30 +221,27 @@ class EnterpriseKeyWafSettingsArgs:
         pulumi.set(self, "waf_service", value)
 
 
-if not MYPY:
-    class EnterpriseKeyWebSettingsArgsDict(TypedDict):
-        integration_type: pulumi.Input[_builtins.str]
-        """
-        Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
-        """
-        allow_all_domains: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, it means allowed_domains will not be enforced.
-        """
-        allow_amp_traffic: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
-        """
-        allowed_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
-        """
-        challenge_security_preference: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
-        """
-elif False:
-    EnterpriseKeyWebSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class EnterpriseKeyWebSettingsArgsDict(TypedDict):
+    integration_type: pulumi.Input[_builtins.str]
+    """
+    Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+    """
+    allow_all_domains: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, it means allowed_domains will not be enforced.
+    """
+    allow_amp_traffic: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
+    """
+    allowed_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
+    """
+    challenge_security_preference: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
+    """
 
 @pulumi.input_type
 class EnterpriseKeyWebSettingsArgs:

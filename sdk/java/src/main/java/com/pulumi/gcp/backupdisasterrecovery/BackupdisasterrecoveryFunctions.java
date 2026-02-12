@@ -1165,6 +1165,11 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getDataSourceReferences:getDataSourceReferences", TypeShape.of(GetDataSourceReferencesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1203,6 +1208,11 @@ public final class BackupdisasterrecoveryFunctions {
         return getManagementServer(args, InvokeOptions.Empty);
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1241,6 +1251,11 @@ public final class BackupdisasterrecoveryFunctions {
         return getManagementServerPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1279,6 +1294,11 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", TypeShape.of(GetManagementServerResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1317,6 +1337,11 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", TypeShape.of(GetManagementServerResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>

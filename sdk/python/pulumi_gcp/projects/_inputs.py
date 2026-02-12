@@ -49,32 +49,27 @@ __all__ = [
     'OrganizationPolicyRestorePolicyArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccessApprovalSettingsEnrolledServiceArgsDict(TypedDict):
-        cloud_product: pulumi.Input[_builtins.str]
-        """
-        The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
-        all
-        appengine.googleapis.com
-        bigquery.googleapis.com
-        bigtable.googleapis.com
-        cloudkms.googleapis.com
-        compute.googleapis.com
-        dataflow.googleapis.com
-        iam.googleapis.com
-        pubsub.googleapis.com
-        storage.googleapis.com
-        """
-        enrollment_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The enrollment level of the service.
-        Default value is `BLOCK_ALL`.
-        Possible values are: `BLOCK_ALL`.
-        """
-elif False:
-    AccessApprovalSettingsEnrolledServiceArgsDict: TypeAlias = Mapping[str, Any]
+class AccessApprovalSettingsEnrolledServiceArgsDict(TypedDict):
+    cloud_product: pulumi.Input[_builtins.str]
+    """
+    The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+    all
+    appengine.googleapis.com
+    bigquery.googleapis.com
+    bigtable.googleapis.com
+    cloudkms.googleapis.com
+    compute.googleapis.com
+    dataflow.googleapis.com
+    iam.googleapis.com
+    pubsub.googleapis.com
+    storage.googleapis.com
+    """
+    enrollment_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The enrollment level of the service.
+    Default value is `BLOCK_ALL`.
+    Possible values are: `BLOCK_ALL`.
+    """
 
 @pulumi.input_type
 class AccessApprovalSettingsEnrolledServiceArgs:
@@ -138,30 +133,27 @@ class AccessApprovalSettingsEnrolledServiceArgs:
         pulumi.set(self, "enrollment_level", value)
 
 
-if not MYPY:
-    class ApiKeyRestrictionsArgsDict(TypedDict):
-        android_key_restrictions: NotRequired[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArgsDict']]
-        """
-        The Android apps that are allowed to use the key.
-        """
-        api_targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArgsDict']]]]
-        """
-        A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
-        """
-        browser_key_restrictions: NotRequired[pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArgsDict']]
-        """
-        The HTTP referrers (websites) that are allowed to use the key.
-        """
-        ios_key_restrictions: NotRequired[pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArgsDict']]
-        """
-        The iOS apps that are allowed to use the key.
-        """
-        server_key_restrictions: NotRequired[pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArgsDict']]
-        """
-        The IP addresses of callers that are allowed to use the key.
-        """
-elif False:
-    ApiKeyRestrictionsArgsDict: TypeAlias = Mapping[str, Any]
+class ApiKeyRestrictionsArgsDict(TypedDict):
+    android_key_restrictions: NotRequired[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArgsDict']]
+    """
+    The Android apps that are allowed to use the key.
+    """
+    api_targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArgsDict']]]]
+    """
+    A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
+    """
+    browser_key_restrictions: NotRequired[pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArgsDict']]
+    """
+    The HTTP referrers (websites) that are allowed to use the key.
+    """
+    ios_key_restrictions: NotRequired[pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArgsDict']]
+    """
+    The iOS apps that are allowed to use the key.
+    """
+    server_key_restrictions: NotRequired[pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArgsDict']]
+    """
+    The IP addresses of callers that are allowed to use the key.
+    """
 
 @pulumi.input_type
 class ApiKeyRestrictionsArgs:
@@ -250,14 +242,11 @@ class ApiKeyRestrictionsArgs:
         pulumi.set(self, "server_key_restrictions", value)
 
 
-if not MYPY:
-    class ApiKeyRestrictionsAndroidKeyRestrictionsArgsDict(TypedDict):
-        allowed_applications: pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgsDict']]]
-        """
-        A list of Android applications that are allowed to make API calls with this key.
-        """
-elif False:
-    ApiKeyRestrictionsAndroidKeyRestrictionsArgsDict: TypeAlias = Mapping[str, Any]
+class ApiKeyRestrictionsAndroidKeyRestrictionsArgsDict(TypedDict):
+    allowed_applications: pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgsDict']]]
+    """
+    A list of Android applications that are allowed to make API calls with this key.
+    """
 
 @pulumi.input_type
 class ApiKeyRestrictionsAndroidKeyRestrictionsArgs:
@@ -281,18 +270,15 @@ class ApiKeyRestrictionsAndroidKeyRestrictionsArgs:
         pulumi.set(self, "allowed_applications", value)
 
 
-if not MYPY:
-    class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgsDict(TypedDict):
-        package_name: pulumi.Input[_builtins.str]
-        """
-        The package name of the application.
-        """
-        sha1_fingerprint: pulumi.Input[_builtins.str]
-        """
-        The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
-        """
-elif False:
-    ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgsDict: TypeAlias = Mapping[str, Any]
+class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgsDict(TypedDict):
+    package_name: pulumi.Input[_builtins.str]
+    """
+    The package name of the application.
+    """
+    sha1_fingerprint: pulumi.Input[_builtins.str]
+    """
+    The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
+    """
 
 @pulumi.input_type
 class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs:
@@ -331,18 +317,15 @@ class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs:
         pulumi.set(self, "sha1_fingerprint", value)
 
 
-if not MYPY:
-    class ApiKeyRestrictionsApiTargetArgsDict(TypedDict):
-        service: pulumi.Input[_builtins.str]
-        """
-        The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use `gcloud services list` to get a list of services that are enabled in the project.
-        """
-        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
-        """
-elif False:
-    ApiKeyRestrictionsApiTargetArgsDict: TypeAlias = Mapping[str, Any]
+class ApiKeyRestrictionsApiTargetArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use `gcloud services list` to get a list of services that are enabled in the project.
+    """
+    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
+    """
 
 @pulumi.input_type
 class ApiKeyRestrictionsApiTargetArgs:
@@ -382,14 +365,11 @@ class ApiKeyRestrictionsApiTargetArgs:
         pulumi.set(self, "methods", value)
 
 
-if not MYPY:
-    class ApiKeyRestrictionsBrowserKeyRestrictionsArgsDict(TypedDict):
-        allowed_referrers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
-        """
-elif False:
-    ApiKeyRestrictionsBrowserKeyRestrictionsArgsDict: TypeAlias = Mapping[str, Any]
+class ApiKeyRestrictionsBrowserKeyRestrictionsArgsDict(TypedDict):
+    allowed_referrers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
+    """
 
 @pulumi.input_type
 class ApiKeyRestrictionsBrowserKeyRestrictionsArgs:
@@ -413,14 +393,11 @@ class ApiKeyRestrictionsBrowserKeyRestrictionsArgs:
         pulumi.set(self, "allowed_referrers", value)
 
 
-if not MYPY:
-    class ApiKeyRestrictionsIosKeyRestrictionsArgsDict(TypedDict):
-        allowed_bundle_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of bundle IDs that are allowed when making API calls with this key.
-        """
-elif False:
-    ApiKeyRestrictionsIosKeyRestrictionsArgsDict: TypeAlias = Mapping[str, Any]
+class ApiKeyRestrictionsIosKeyRestrictionsArgsDict(TypedDict):
+    allowed_bundle_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of bundle IDs that are allowed when making API calls with this key.
+    """
 
 @pulumi.input_type
 class ApiKeyRestrictionsIosKeyRestrictionsArgs:
@@ -444,14 +421,11 @@ class ApiKeyRestrictionsIosKeyRestrictionsArgs:
         pulumi.set(self, "allowed_bundle_ids", value)
 
 
-if not MYPY:
-    class ApiKeyRestrictionsServerKeyRestrictionsArgsDict(TypedDict):
-        allowed_ips: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of the caller IP addresses that are allowed to make API calls with this key.
-        """
-elif False:
-    ApiKeyRestrictionsServerKeyRestrictionsArgsDict: TypeAlias = Mapping[str, Any]
+class ApiKeyRestrictionsServerKeyRestrictionsArgsDict(TypedDict):
+    allowed_ips: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of the caller IP addresses that are allowed to make API calls with this key.
+    """
 
 @pulumi.input_type
 class ApiKeyRestrictionsServerKeyRestrictionsArgs:
@@ -475,18 +449,15 @@ class ApiKeyRestrictionsServerKeyRestrictionsArgs:
         pulumi.set(self, "allowed_ips", value)
 
 
-if not MYPY:
-    class IAMAuditConfigAuditLogConfigArgsDict(TypedDict):
-        log_type: pulumi.Input[_builtins.str]
-        """
-        Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        """
-        exempted_members: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
-        """
-elif False:
-    IAMAuditConfigAuditLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class IAMAuditConfigAuditLogConfigArgsDict(TypedDict):
+    log_type: pulumi.Input[_builtins.str]
+    """
+    Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+    """
+    exempted_members: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+    """
 
 @pulumi.input_type
 class IAMAuditConfigAuditLogConfigArgs:
@@ -526,26 +497,23 @@ class IAMAuditConfigAuditLogConfigArgs:
         pulumi.set(self, "exempted_members", value)
 
 
-if not MYPY:
-    class IAMBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+class IAMBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
-elif False:
-    IAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+    > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class IAMBindingConditionArgs:
@@ -608,26 +576,23 @@ class IAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class IAMMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+class IAMMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
-elif False:
-    IAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+    > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class IAMMemberConditionArgs:
@@ -690,14 +655,11 @@ class IAMMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class OrganizationPolicyBooleanPolicyArgsDict(TypedDict):
-        enforced: pulumi.Input[_builtins.bool]
-        """
-        If true, then the Policy is enforced. If false, then any configuration is acceptable.
-        """
-elif False:
-    OrganizationPolicyBooleanPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationPolicyBooleanPolicyArgsDict(TypedDict):
+    enforced: pulumi.Input[_builtins.bool]
+    """
+    If true, then the Policy is enforced. If false, then any configuration is acceptable.
+    """
 
 @pulumi.input_type
 class OrganizationPolicyBooleanPolicyArgs:
@@ -721,29 +683,26 @@ class OrganizationPolicyBooleanPolicyArgs:
         pulumi.set(self, "enforced", value)
 
 
-if not MYPY:
-    class OrganizationPolicyListPolicyArgsDict(TypedDict):
-        allow: NotRequired[pulumi.Input['OrganizationPolicyListPolicyAllowArgsDict']]
-        """
-        or `deny` - (Optional) One or the other must be set.
-        """
-        deny: NotRequired[pulumi.Input['OrganizationPolicyListPolicyDenyArgsDict']]
-        """
-        One or the other must be set.
-        """
-        inherit_from_parent: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, the values from the effective Policy of the parent resource
-        are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+class OrganizationPolicyListPolicyArgsDict(TypedDict):
+    allow: NotRequired[pulumi.Input['OrganizationPolicyListPolicyAllowArgsDict']]
+    """
+    or `deny` - (Optional) One or the other must be set.
+    """
+    deny: NotRequired[pulumi.Input['OrganizationPolicyListPolicyDenyArgsDict']]
+    """
+    One or the other must be set.
+    """
+    inherit_from_parent: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the values from the effective Policy of the parent resource
+    are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 
-        The `allow` or `deny` blocks support:
-        """
-        suggested_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
-        """
-elif False:
-    OrganizationPolicyListPolicyArgsDict: TypeAlias = Mapping[str, Any]
+    The `allow` or `deny` blocks support:
+    """
+    suggested_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+    """
 
 @pulumi.input_type
 class OrganizationPolicyListPolicyArgs:
@@ -822,18 +781,15 @@ class OrganizationPolicyListPolicyArgs:
         pulumi.set(self, "suggested_value", value)
 
 
-if not MYPY:
-    class OrganizationPolicyListPolicyAllowArgsDict(TypedDict):
-        all: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The policy allows or denies all values.
-        """
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The policy can define specific values that are allowed or denied.
-        """
-elif False:
-    OrganizationPolicyListPolicyAllowArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationPolicyListPolicyAllowArgsDict(TypedDict):
+    all: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The policy allows or denies all values.
+    """
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The policy can define specific values that are allowed or denied.
+    """
 
 @pulumi.input_type
 class OrganizationPolicyListPolicyAllowArgs:
@@ -874,18 +830,15 @@ class OrganizationPolicyListPolicyAllowArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class OrganizationPolicyListPolicyDenyArgsDict(TypedDict):
-        all: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The policy allows or denies all values.
-        """
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The policy can define specific values that are allowed or denied.
-        """
-elif False:
-    OrganizationPolicyListPolicyDenyArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationPolicyListPolicyDenyArgsDict(TypedDict):
+    all: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The policy allows or denies all values.
+    """
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The policy can define specific values that are allowed or denied.
+    """
 
 @pulumi.input_type
 class OrganizationPolicyListPolicyDenyArgs:
@@ -926,14 +879,11 @@ class OrganizationPolicyListPolicyDenyArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class OrganizationPolicyRestorePolicyArgsDict(TypedDict):
-        default: pulumi.Input[_builtins.bool]
-        """
-        May only be set to true. If set, then the default Policy is restored.
-        """
-elif False:
-    OrganizationPolicyRestorePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationPolicyRestorePolicyArgsDict(TypedDict):
+    default: pulumi.Input[_builtins.bool]
+    """
+    May only be set to true. If set, then the default Policy is restored.
+    """
 
 @pulumi.input_type
 class OrganizationPolicyRestorePolicyArgs:

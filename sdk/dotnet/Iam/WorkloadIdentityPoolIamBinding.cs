@@ -10,14 +10,408 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam
 {
     /// <summary>
+    /// Three different resources help you manage your IAM policy for Cloud IAM WorkloadIdentityPool. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.iam.WorkloadIdentityPoolIamPolicy`: Authoritative. Sets the IAM policy for the workloadidentitypool and replaces any existing policy already attached.
+    /// * `gcp.iam.WorkloadIdentityPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workloadidentitypool are preserved.
+    /// * `gcp.iam.WorkloadIdentityPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workloadidentitypool are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.iam.WorkloadIdentityPoolIamPolicy`: Retrieves the IAM policy for the workloadidentitypool
+    /// 
+    /// &gt; **Note:** `gcp.iam.WorkloadIdentityPoolIamPolicy` **cannot** be used in conjunction with `gcp.iam.WorkloadIdentityPoolIamBinding` and `gcp.iam.WorkloadIdentityPoolIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.iam.WorkloadIdentityPoolIamBinding` resources **can be** used in conjunction with `gcp.iam.WorkloadIdentityPoolIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// ## gcp.iam.WorkloadIdentityPoolIamPolicy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/iam.workloadIdentityPoolViewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Iam.WorkloadIdentityPoolIamPolicy("policy", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         WorkloadIdentityPoolId = example.WorkloadIdentityPoolId,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/iam.workloadIdentityPoolViewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Iam.WorkloadIdentityPoolIamPolicy("policy", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         WorkloadIdentityPoolId = example.WorkloadIdentityPoolId,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## gcp.iam.WorkloadIdentityPoolIamBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Iam.WorkloadIdentityPoolIamBinding("binding", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         WorkloadIdentityPoolId = example.WorkloadIdentityPoolId,
+    ///         Role = "roles/iam.workloadIdentityPoolViewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Iam.WorkloadIdentityPoolIamBinding("binding", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         WorkloadIdentityPoolId = example.WorkloadIdentityPoolId,
+    ///         Role = "roles/iam.workloadIdentityPoolViewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Iam.Inputs.WorkloadIdentityPoolIamBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## gcp.iam.WorkloadIdentityPoolIamMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Iam.WorkloadIdentityPoolIamMember("member", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         WorkloadIdentityPoolId = example.WorkloadIdentityPoolId,
+    ///         Role = "roles/iam.workloadIdentityPoolViewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Iam.WorkloadIdentityPoolIamMember("member", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         WorkloadIdentityPoolId = example.WorkloadIdentityPoolId,
+    ///         Role = "roles/iam.workloadIdentityPoolViewer",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Iam.Inputs.WorkloadIdentityPoolIamMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## This resource supports User Project Overrides.
+    /// 
+    /// - 
+    /// 
+    /// # IAM policy for Cloud IAM WorkloadIdentityPool
+    /// 
+    /// Three different resources help you manage your IAM policy for Cloud IAM WorkloadIdentityPool. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.iam.WorkloadIdentityPoolIamPolicy`: Authoritative. Sets the IAM policy for the workloadidentitypool and replaces any existing policy already attached.
+    /// * `gcp.iam.WorkloadIdentityPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workloadidentitypool are preserved.
+    /// * `gcp.iam.WorkloadIdentityPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workloadidentitypool are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.iam.WorkloadIdentityPoolIamPolicy`: Retrieves the IAM policy for the workloadidentitypool
+    /// 
+    /// &gt; **Note:** `gcp.iam.WorkloadIdentityPoolIamPolicy` **cannot** be used in conjunction with `gcp.iam.WorkloadIdentityPoolIamBinding` and `gcp.iam.WorkloadIdentityPoolIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.iam.WorkloadIdentityPoolIamBinding` resources **can be** used in conjunction with `gcp.iam.WorkloadIdentityPoolIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// ## gcp.iam.WorkloadIdentityPoolIamPolicy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/iam.workloadIdentityPoolViewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Iam.WorkloadIdentityPoolIamPolicy("policy", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         WorkloadIdentityPoolId = example.WorkloadIdentityPoolId,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/iam.workloadIdentityPoolViewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Iam.WorkloadIdentityPoolIamPolicy("policy", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         WorkloadIdentityPoolId = example.WorkloadIdentityPoolId,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## gcp.iam.WorkloadIdentityPoolIamBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Iam.WorkloadIdentityPoolIamBinding("binding", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         WorkloadIdentityPoolId = example.WorkloadIdentityPoolId,
+    ///         Role = "roles/iam.workloadIdentityPoolViewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Iam.WorkloadIdentityPoolIamBinding("binding", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         WorkloadIdentityPoolId = example.WorkloadIdentityPoolId,
+    ///         Role = "roles/iam.workloadIdentityPoolViewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Iam.Inputs.WorkloadIdentityPoolIamBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## gcp.iam.WorkloadIdentityPoolIamMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Iam.WorkloadIdentityPoolIamMember("member", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         WorkloadIdentityPoolId = example.WorkloadIdentityPoolId,
+    ///         Role = "roles/iam.workloadIdentityPoolViewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Iam.WorkloadIdentityPoolIamMember("member", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         WorkloadIdentityPoolId = example.WorkloadIdentityPoolId,
+    ///         Role = "roles/iam.workloadIdentityPoolViewer",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Iam.Inputs.WorkloadIdentityPoolIamMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
     /// * projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
-    /// 
     /// * {{project}}/{{workload_identity_pool_id}}
-    /// 
     /// * {{workload_identity_pool_id}}
     /// 
     /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -25,25 +419,21 @@ namespace Pulumi.Gcp.Iam
     /// Cloud IAM workloadidentitypool IAM resources can be imported using the resource identifiers, role, and member.
     /// 
     /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer user:jane@example.com"
+    /// $ terraform import google_iam_workload_identity_pool_iam_member.editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer user:jane@example.com"
     /// ```
     /// 
     /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer"
+    /// $ terraform import google_iam_workload_identity_pool_iam_binding.editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer"
     /// ```
     /// 
     /// IAM policy imports use the identifier of the resource in question, e.g.
-    /// 
     /// ```sh
     /// $ pulumi import gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding editor projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
     /// ```
     /// 
-    /// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
+    /// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
     ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding")]

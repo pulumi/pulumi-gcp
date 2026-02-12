@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Compute
     public static class GetBackendBucketIamPolicy
     {
         /// <summary>
+        /// Retrieves the current IAM policy data for backendbucket
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Gcp.Compute
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackendBucketIamPolicyResult>("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", args ?? new GetBackendBucketIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for backendbucket
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Gcp.Compute
             => global::Pulumi.Deployment.Instance.Invoke<GetBackendBucketIamPolicyResult>("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", args ?? new GetBackendBucketIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for backendbucket
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

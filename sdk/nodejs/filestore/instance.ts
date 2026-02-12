@@ -130,22 +130,14 @@ import * as utilities from "../utilities";
  * Instance can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
  * ```
  */

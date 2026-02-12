@@ -2003,22 +2003,14 @@ import javax.annotation.Nullable;
  * Stream can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
- * 
  * * `{{project}}/{{location}}/{{stream_id}}`
- * 
  * * `{{location}}/{{stream_id}}`
  * 
  * When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:datastream/stream:Stream default {{project}}/{{location}}/{{stream_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:datastream/stream:Stream default {{location}}/{{stream_id}}
  * ```
  * 

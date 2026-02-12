@@ -155,6 +155,17 @@ class Config(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages a RuntimeConfig resource in Google Cloud.
+
+        To get more information about RuntimeConfigs, see:
+
+        * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+        * How-to Guides
+            * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         Example creating a RuntimeConfig resource.
@@ -173,16 +184,12 @@ class Config(pulumi.CustomResource):
         Runtime Configs can be imported using the `name` or full config name, e.g.
 
         * `projects/{{project_id}}/configs/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Runtime Configs can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:runtimeconfig/config:Config default projects/{{project_id}}/configs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:runtimeconfig/config:Config default {{name}}
         ```
 
@@ -205,6 +212,17 @@ class Config(pulumi.CustomResource):
                  args: Optional[ConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a RuntimeConfig resource in Google Cloud.
+
+        To get more information about RuntimeConfigs, see:
+
+        * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+        * How-to Guides
+            * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         Example creating a RuntimeConfig resource.
@@ -223,16 +241,12 @@ class Config(pulumi.CustomResource):
         Runtime Configs can be imported using the `name` or full config name, e.g.
 
         * `projects/{{project_id}}/configs/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Runtime Configs can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:runtimeconfig/config:Config default projects/{{project_id}}/configs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:runtimeconfig/config:Config default {{name}}
         ```
 

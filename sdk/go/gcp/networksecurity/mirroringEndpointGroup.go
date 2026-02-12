@@ -129,22 +129,14 @@ import (
 // MirroringEndpointGroup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}`
-//
 // * `{{project}}/{{location}}/{{mirroring_endpoint_group_id}}`
-//
 // * `{{location}}/{{mirroring_endpoint_group_id}}`
 //
 // When using the `pulumi import` command, MirroringEndpointGroup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{project}}/{{location}}/{{mirroring_endpoint_group_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{location}}/{{mirroring_endpoint_group_id}}
 // ```
 type MirroringEndpointGroup struct {

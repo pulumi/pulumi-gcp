@@ -125,28 +125,16 @@ import (
 // BranchRule can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/branchRules/{{branch_rule_id}}`
-//
 // * `{{project}}/{{location}}/{{repository_id}}/{{branch_rule_id}}`
-//
 // * `{{location}}/{{repository_id}}/{{branch_rule_id}}`
-//
 // * `{{branch_rule_id}}`
 //
 // When using the `pulumi import` command, BranchRule can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/branchRules/{{branch_rule_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{project}}/{{location}}/{{repository_id}}/{{branch_rule_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{location}}/{{repository_id}}/{{branch_rule_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{branch_rule_id}}
 // ```
 type BranchRule struct {

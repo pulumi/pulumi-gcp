@@ -2210,8 +2210,14 @@ type AlertPolicyConditionConditionPrometheusQueryLanguage struct {
 	// in the future.
 	// This field is optional. If this field is not empty, then it must be a
 	// valid Prometheus label name.
-	AlertRule               *string `pulumi:"alertRule"`
-	DisableMetricValidation *bool   `pulumi:"disableMetricValidation"`
+	AlertRule *string `pulumi:"alertRule"`
+	// Whether to disable metric existence validation for this condition.
+	// This allows alerting policies to be defined on metrics that do not yet
+	// exist, improving advanced customer workflows such as configuring
+	// alerting policies using Terraform.
+	// Users with the `monitoring.alertPolicyViewer` role are able to see the
+	// name of the non-existent metric in the alerting policy condition.
+	DisableMetricValidation *bool `pulumi:"disableMetricValidation"`
 	// Alerts are considered firing once their PromQL expression evaluated
 	// to be "true" for this long. Alerts whose PromQL expression was not
 	// evaluated to be "true" for long enough are considered pending. The
@@ -2266,8 +2272,14 @@ type AlertPolicyConditionConditionPrometheusQueryLanguageArgs struct {
 	// in the future.
 	// This field is optional. If this field is not empty, then it must be a
 	// valid Prometheus label name.
-	AlertRule               pulumi.StringPtrInput `pulumi:"alertRule"`
-	DisableMetricValidation pulumi.BoolPtrInput   `pulumi:"disableMetricValidation"`
+	AlertRule pulumi.StringPtrInput `pulumi:"alertRule"`
+	// Whether to disable metric existence validation for this condition.
+	// This allows alerting policies to be defined on metrics that do not yet
+	// exist, improving advanced customer workflows such as configuring
+	// alerting policies using Terraform.
+	// Users with the `monitoring.alertPolicyViewer` role are able to see the
+	// name of the non-existent metric in the alerting policy condition.
+	DisableMetricValidation pulumi.BoolPtrInput `pulumi:"disableMetricValidation"`
 	// Alerts are considered firing once their PromQL expression evaluated
 	// to be "true" for this long. Alerts whose PromQL expression was not
 	// evaluated to be "true" for long enough are considered pending. The
@@ -2391,6 +2403,12 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) AlertRule() 
 	return o.ApplyT(func(v AlertPolicyConditionConditionPrometheusQueryLanguage) *string { return v.AlertRule }).(pulumi.StringPtrOutput)
 }
 
+// Whether to disable metric existence validation for this condition.
+// This allows alerting policies to be defined on metrics that do not yet
+// exist, improving advanced customer workflows such as configuring
+// alerting policies using Terraform.
+// Users with the `monitoring.alertPolicyViewer` role are able to see the
+// name of the non-existent metric in the alerting policy condition.
 func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) DisableMetricValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionPrometheusQueryLanguage) *bool { return v.DisableMetricValidation }).(pulumi.BoolPtrOutput)
 }
@@ -2483,6 +2501,12 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) AlertRule
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to disable metric existence validation for this condition.
+// This allows alerting policies to be defined on metrics that do not yet
+// exist, improving advanced customer workflows such as configuring
+// alerting policies using Terraform.
+// Users with the `monitoring.alertPolicyViewer` role are able to see the
+// name of the non-existent metric in the alerting policy condition.
 func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) DisableMetricValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionPrometheusQueryLanguage) *bool {
 		if v == nil {

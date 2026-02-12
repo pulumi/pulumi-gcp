@@ -45,6 +45,8 @@ class RestoreWorkloadArgs:
                Structure is documented below.
         :param pulumi.Input['RestoreWorkloadComputeInstanceTargetEnvironmentArgs'] compute_instance_target_environment: Optional. The destination environment for GCE VM restoration.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+               If false, only the restore record is removed from the state, leaving the resource active.
         :param pulumi.Input['RestoreWorkloadDiskRestorePropertiesArgs'] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
         :param pulumi.Input['RestoreWorkloadDiskTargetEnvironmentArgs'] disk_target_environment: Optional. The destination environment for zonal disk restoration.
@@ -168,6 +170,10 @@ class RestoreWorkloadArgs:
     @_builtins.property
     @pulumi.getter(name="deleteRestoredInstance")
     def delete_restored_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+        If false, only the restore record is removed from the state, leaving the resource active.
+        """
         return pulumi.get(self, "delete_restored_instance")
 
     @delete_restored_instance.setter
@@ -267,6 +273,8 @@ class _RestoreWorkloadState:
         :param pulumi.Input['RestoreWorkloadComputeInstanceTargetEnvironmentArgs'] compute_instance_target_environment: Optional. The destination environment for GCE VM restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_source_id: Required. The ID of the data source.
+        :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+               If false, only the restore record is removed from the state, leaving the resource active.
         :param pulumi.Input['RestoreWorkloadDiskRestorePropertiesArgs'] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
         :param pulumi.Input['RestoreWorkloadDiskTargetEnvironmentArgs'] disk_target_environment: Optional. The destination environment for zonal disk restoration.
@@ -387,6 +395,10 @@ class _RestoreWorkloadState:
     @_builtins.property
     @pulumi.getter(name="deleteRestoredInstance")
     def delete_restored_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+        If false, only the restore record is removed from the state, leaving the resource active.
+        """
         return pulumi.get(self, "delete_restored_instance")
 
     @delete_restored_instance.setter
@@ -505,6 +517,13 @@ class RestoreWorkload(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        An imperative resource that triggers a GCBDR restoration event.
+        Creating this resource will initiate a restore operation from a specified backup.
+        The resource represents the restore operation and its result.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Backup Dr Restore Workload Compute Instance Basic
@@ -696,16 +715,12 @@ class RestoreWorkload(pulumi.CustomResource):
         RestoreWorkload can be imported using any of these accepted formats:
 
         * `/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RestoreWorkload can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
         ```
 
@@ -719,6 +734,8 @@ class RestoreWorkload(pulumi.CustomResource):
         :param pulumi.Input[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']] compute_instance_target_environment: Optional. The destination environment for GCE VM restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_source_id: Required. The ID of the data source.
+        :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+               If false, only the restore record is removed from the state, leaving the resource active.
         :param pulumi.Input[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict']] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
         :param pulumi.Input[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']] disk_target_environment: Optional. The destination environment for zonal disk restoration.
@@ -738,6 +755,13 @@ class RestoreWorkload(pulumi.CustomResource):
                  args: RestoreWorkloadArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An imperative resource that triggers a GCBDR restoration event.
+        Creating this resource will initiate a restore operation from a specified backup.
+        The resource represents the restore operation and its result.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Backup Dr Restore Workload Compute Instance Basic
@@ -929,16 +953,12 @@ class RestoreWorkload(pulumi.CustomResource):
         RestoreWorkload can be imported using any of these accepted formats:
 
         * `/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RestoreWorkload can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
         ```
 
@@ -1040,6 +1060,8 @@ class RestoreWorkload(pulumi.CustomResource):
         :param pulumi.Input[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict']] compute_instance_target_environment: Optional. The destination environment for GCE VM restoration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_source_id: Required. The ID of the data source.
+        :param pulumi.Input[_builtins.bool] delete_restored_instance: Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+               If false, only the restore record is removed from the state, leaving the resource active.
         :param pulumi.Input[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict']] disk_restore_properties: Optional. Disk properties to be overridden during restore.
                Structure is documented below.
         :param pulumi.Input[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict']] disk_target_environment: Optional. The destination environment for zonal disk restoration.
@@ -1127,6 +1149,10 @@ class RestoreWorkload(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deleteRestoredInstance")
     def delete_restored_instance(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+        If false, only the restore record is removed from the state, leaving the resource active.
+        """
         return pulumi.get(self, "delete_restored_instance")
 
     @_builtins.property

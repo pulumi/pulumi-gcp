@@ -422,22 +422,14 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         GeminiGcpEnablementSetting can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}`
-
         * `{{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}`
-
         * `{{location}}/{{gemini_gcp_enablement_setting_id}}`
 
         When using the `pulumi import` command, GeminiGcpEnablementSetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default {{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default {{location}}/{{gemini_gcp_enablement_setting_id}}
         ```
 
@@ -492,22 +484,14 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         GeminiGcpEnablementSetting can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}`
-
         * `{{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}`
-
         * `{{location}}/{{gemini_gcp_enablement_setting_id}}`
 
         When using the `pulumi import` command, GeminiGcpEnablementSetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default {{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default {{location}}/{{gemini_gcp_enablement_setting_id}}
         ```
 

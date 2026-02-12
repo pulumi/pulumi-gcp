@@ -232,22 +232,14 @@ import (
 // InsightsConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}`
-//
 // * `{{project}}/{{location}}/{{insights_config_id}}`
-//
 // * `{{location}}/{{insights_config_id}}`
 //
 // When using the `pulumi import` command, InsightsConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{project}}/{{location}}/{{insights_config_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
 // ```
 type InsightsConfig struct {
@@ -266,7 +258,8 @@ type InsightsConfig struct {
 	// Structure is documented below.
 	ArtifactConfigs InsightsConfigArtifactConfigArrayOutput `pulumi:"artifactConfigs"`
 	// [Output only] Create timestamp
-	CreateTime           pulumi.StringOutput    `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -371,7 +364,8 @@ type insightsConfigState struct {
 	// Structure is documented below.
 	ArtifactConfigs []InsightsConfigArtifactConfig `pulumi:"artifactConfigs"`
 	// [Output only] Create timestamp
-	CreateTime           *string           `pulumi:"createTime"`
+	CreateTime *string `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -433,7 +427,8 @@ type InsightsConfigState struct {
 	// Structure is documented below.
 	ArtifactConfigs InsightsConfigArtifactConfigArrayInput
 	// [Output only] Create timestamp
-	CreateTime           pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -651,6 +646,7 @@ func (o InsightsConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *InsightsConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o InsightsConfigOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InsightsConfig) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

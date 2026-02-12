@@ -697,28 +697,16 @@ class Job(pulumi.CustomResource):
         Job can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/jobs/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default projects/{{project}}/locations/{{region}}/jobs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default {{name}}
         ```
 
@@ -921,28 +909,16 @@ class Job(pulumi.CustomResource):
         Job can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/jobs/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default projects/{{project}}/locations/{{region}}/jobs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default {{name}}
         ```
 

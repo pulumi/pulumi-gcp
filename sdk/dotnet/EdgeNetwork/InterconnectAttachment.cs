@@ -63,34 +63,18 @@ namespace Pulumi.Gcp.EdgeNetwork
     /// InterconnectAttachment can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/interconnectAttachment/{{interconnect_attachment_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{zone}}/{{interconnect_attachment_id}}`
-    /// 
     /// * `{{location}}/{{zone}}/{{interconnect_attachment_id}}`
-    /// 
     /// * `{{location}}/{{interconnect_attachment_id}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default projects/{{project}}/locations/{{location}}/zones/{{zone}}/interconnectAttachment/{{interconnect_attachment_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default {{project}}/{{location}}/{{zone}}/{{interconnect_attachment_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default {{location}}/{{zone}}/{{interconnect_attachment_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default {{location}}/{{interconnect_attachment_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:edgenetwork/interconnectAttachment:InterconnectAttachment default {{name}}
     /// ```
     /// </summary>

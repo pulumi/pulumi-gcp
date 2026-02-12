@@ -1091,28 +1091,16 @@ class VPNTunnel(pulumi.CustomResource):
         VpnTunnel can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, VpnTunnel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
         ```
 
@@ -1307,28 +1295,16 @@ class VPNTunnel(pulumi.CustomResource):
         VpnTunnel can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, VpnTunnel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
         ```
 

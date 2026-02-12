@@ -220,6 +220,7 @@ class _WorkstationState:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: Time when this resource was created.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env: 'Client-specified environment variables passed to the workstation container's entrypoint.'
         :param pulumi.Input[_builtins.str] host: Host to which clients can send HTTPS traffic that will be received by the workstation.
@@ -320,6 +321,9 @@ class _WorkstationState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -520,6 +524,17 @@ class Workstation(pulumi.CustomResource):
                  workstation_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A single instance of a developer workstation with its own persistent storage.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Workstation, see:
+
+        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs.workstations)
+        * How-to Guides
+            * [Workstations](https://cloud.google.com/workstations/docs/)
+
         ## Example Usage
 
         ### Workstation Basic
@@ -579,22 +594,14 @@ class Workstation(pulumi.CustomResource):
         Workstation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}`
-
         * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}`
-
         * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}`
 
         When using the `pulumi import` command, Workstation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:workstations/workstation:Workstation default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workstations/workstation:Workstation default {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workstations/workstation:Workstation default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
         ```
 
@@ -624,6 +631,17 @@ class Workstation(pulumi.CustomResource):
                  args: WorkstationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A single instance of a developer workstation with its own persistent storage.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Workstation, see:
+
+        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs.workstations)
+        * How-to Guides
+            * [Workstations](https://cloud.google.com/workstations/docs/)
+
         ## Example Usage
 
         ### Workstation Basic
@@ -683,22 +701,14 @@ class Workstation(pulumi.CustomResource):
         Workstation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}`
-
         * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}`
-
         * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}`
 
         When using the `pulumi import` command, Workstation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:workstations/workstation:Workstation default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workstations/workstation:Workstation default {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workstations/workstation:Workstation default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
         ```
 
@@ -804,6 +814,7 @@ class Workstation(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: Time when this resource was created.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env: 'Client-specified environment variables passed to the workstation container's entrypoint.'
         :param pulumi.Input[_builtins.str] host: Host to which clients can send HTTPS traffic that will be received by the workstation.
@@ -879,6 +890,9 @@ class Workstation(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

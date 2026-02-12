@@ -1164,22 +1164,14 @@ import javax.annotation.Nullable;
  * Repository can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
- * 
  * * `{{project}}/{{location}}/{{repository_id}}`
- * 
  * * `{{location}}/{{repository_id}}`
  * 
  * When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:artifactregistry/repository:Repository default {{project}}/{{location}}/{{repository_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
  * ```
  * 

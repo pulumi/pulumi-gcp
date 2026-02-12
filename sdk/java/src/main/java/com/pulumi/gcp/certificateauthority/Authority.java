@@ -545,22 +545,14 @@ import javax.annotation.Nullable;
  * CertificateAuthority can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}`
- * 
  * * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}`
- * 
  * * `{{location}}/{{pool}}/{{certificate_authority_id}}`
  * 
  * When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{pool}}/{{certificate_authority_id}}
  * ```
  * 
@@ -631,9 +623,23 @@ public class Authority extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * Whether Terraform will be prevented from destroying the CertificateAuthority.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the CertificateAuthority will fail.
+     * When the field is set to false, deleting the CertificateAuthority is allowed.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the CertificateAuthority.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the CertificateAuthority will fail.
+     * When the field is set to false, deleting the CertificateAuthority is allowed.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }

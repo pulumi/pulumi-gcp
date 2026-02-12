@@ -643,16 +643,12 @@ import javax.annotation.Nullable;
  * Flow can be imported using any of these accepted formats:
  * 
  * * `{{parent}}/flows/{{name}}`
- * 
  * * `{{parent}}/{{name}}`
  * 
  * When using the `pulumi import` command, Flow can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/flows/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/{{name}}
  * ```
  * 

@@ -12,6 +12,13 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
     public sealed class MembershipEndpointGkeClusterArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Self-link of the GCP resource for the GKE cluster.
+        /// For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+        /// It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+        /// this can be `"//container.googleapis.com/${google_container_cluster.my-cluster.id}"` or
+        /// `google_container_cluster.my-cluster.id`.
+        /// </summary>
         [Input("resourceLink", required: true)]
         public Input<string> ResourceLink { get; set; } = null!;
 

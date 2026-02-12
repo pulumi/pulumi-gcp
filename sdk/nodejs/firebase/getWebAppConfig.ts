@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A Google Cloud Firebase web application configuration
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about WebApp, see:
+ *
+ * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/)
+ */
 export function getWebAppConfig(args: GetWebAppConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getWebAppConfig:getWebAppConfig", {
@@ -74,6 +86,18 @@ export interface GetWebAppConfigResult {
     readonly storageBucket: string;
     readonly webAppId: string;
 }
+/**
+ * A Google Cloud Firebase web application configuration
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about WebApp, see:
+ *
+ * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/)
+ */
 export function getWebAppConfigOutput(args: GetWebAppConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebAppConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:firebase/getWebAppConfig:getWebAppConfig", {

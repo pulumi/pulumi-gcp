@@ -86,6 +86,9 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * Controls for advanced machine-related behavior features.
      */
     declare public readonly advancedMachineFeatures: pulumi.Output<outputs.compute.InstanceFromTemplateAdvancedMachineFeatures>;
+    /**
+     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     */
     declare public readonly allowStoppingForUpdate: pulumi.Output<boolean>;
     /**
      * List of disks attached to the instance
@@ -129,6 +132,9 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
      */
     declare public readonly desiredStatus: pulumi.Output<string>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether the instance has virtual displays enabled.
@@ -390,6 +396,9 @@ export interface InstanceFromTemplateState {
      * Controls for advanced machine-related behavior features.
      */
     advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceFromTemplateAdvancedMachineFeatures>;
+    /**
+     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     */
     allowStoppingForUpdate?: pulumi.Input<boolean>;
     /**
      * List of disks attached to the instance
@@ -433,6 +442,9 @@ export interface InstanceFromTemplateState {
      * Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
      */
     desiredStatus?: pulumi.Input<string>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether the instance has virtual displays enabled.
@@ -581,6 +593,9 @@ export interface InstanceFromTemplateArgs {
      * Controls for advanced machine-related behavior features.
      */
     advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceFromTemplateAdvancedMachineFeatures>;
+    /**
+     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     */
     allowStoppingForUpdate?: pulumi.Input<boolean>;
     /**
      * List of disks attached to the instance

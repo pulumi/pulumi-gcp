@@ -993,22 +993,14 @@ class MigrationJob(pulumi.CustomResource):
         MigrationJob can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}`
-
         * `{{project}}/{{location}}/{{migration_job_id}}`
-
         * `{{location}}/{{migration_job_id}}`
 
         When using the `pulumi import` command, MigrationJob can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{project}}/{{location}}/{{migration_job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{location}}/{{migration_job_id}}
         ```
 
@@ -1333,22 +1325,14 @@ class MigrationJob(pulumi.CustomResource):
         MigrationJob can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}`
-
         * `{{project}}/{{location}}/{{migration_job_id}}`
-
         * `{{location}}/{{migration_job_id}}`
 
         When using the `pulumi import` command, MigrationJob can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{project}}/{{location}}/{{migration_job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{location}}/{{migration_job_id}}
         ```
 

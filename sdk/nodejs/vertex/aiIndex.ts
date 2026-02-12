@@ -119,28 +119,16 @@ import * as utilities from "../utilities";
  * Index can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{region}}/indexes/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:vertex/aiIndex:AiIndex default projects/{{project}}/locations/{{region}}/indexes/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:vertex/aiIndex:AiIndex default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:vertex/aiIndex:AiIndex default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:vertex/aiIndex:AiIndex default {{name}}
  * ```
  */

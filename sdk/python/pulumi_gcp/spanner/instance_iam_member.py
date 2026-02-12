@@ -338,29 +338,8 @@ class InstanceIAMMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
-
-        IAM policy imports use the identifier of the Spanner Instances resource . For example:
-
-        * `{{project}}/{{instance}}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = {{project}}/{{instance}}
-
-          to = google_spanner_instance_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember default {{project}}/{{instance}}
-        ```
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -466,29 +445,8 @@ class InstanceIAMMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
-
-        IAM policy imports use the identifier of the Spanner Instances resource . For example:
-
-        * `{{project}}/{{instance}}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = {{project}}/{{instance}}
-
-          to = google_spanner_instance_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember default {{project}}/{{instance}}
-        ```
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param InstanceIAMMemberArgs args: The arguments to use to populate this resource's properties.

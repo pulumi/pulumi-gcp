@@ -776,22 +776,14 @@ class JobTemplate(pulumi.CustomResource):
         JobTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/jobTemplates/{{job_template_id}}`
-
         * `{{project}}/{{location}}/{{job_template_id}}`
-
         * `{{location}}/{{job_template_id}}`
 
         When using the `pulumi import` command, JobTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:transcoder/jobTemplate:JobTemplate default projects/{{project}}/locations/{{location}}/jobTemplates/{{job_template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:transcoder/jobTemplate:JobTemplate default {{project}}/{{location}}/{{job_template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:transcoder/jobTemplate:JobTemplate default {{location}}/{{job_template_id}}
         ```
 
@@ -1316,22 +1308,14 @@ class JobTemplate(pulumi.CustomResource):
         JobTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/jobTemplates/{{job_template_id}}`
-
         * `{{project}}/{{location}}/{{job_template_id}}`
-
         * `{{location}}/{{job_template_id}}`
 
         When using the `pulumi import` command, JobTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:transcoder/jobTemplate:JobTemplate default projects/{{project}}/locations/{{location}}/jobTemplates/{{job_template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:transcoder/jobTemplate:JobTemplate default {{project}}/{{location}}/{{job_template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:transcoder/jobTemplate:JobTemplate default {{location}}/{{job_template_id}}
         ```
 

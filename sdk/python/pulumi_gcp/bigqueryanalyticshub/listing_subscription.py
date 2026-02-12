@@ -519,22 +519,14 @@ class ListingSubscription(pulumi.CustomResource):
         ListingSubscription can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}`
-
         * `{{project}}/{{location}}/{{subscription_id}}`
-
         * `{{location}}/{{subscription_id}}`
 
         When using the `pulumi import` command, ListingSubscription can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default {{project}}/{{location}}/{{subscription_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default {{location}}/{{subscription_id}}
         ```
 
@@ -647,22 +639,14 @@ class ListingSubscription(pulumi.CustomResource):
         ListingSubscription can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}`
-
         * `{{project}}/{{location}}/{{subscription_id}}`
-
         * `{{location}}/{{subscription_id}}`
 
         When using the `pulumi import` command, ListingSubscription can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default {{project}}/{{location}}/{{subscription_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default {{location}}/{{subscription_id}}
         ```
 

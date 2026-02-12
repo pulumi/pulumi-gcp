@@ -75,22 +75,14 @@ import * as utilities from "../utilities";
  * MetricDescriptor can be imported using any of these accepted formats:
  *
  * * `{{project}}/{{name}}`
- *
  * * `{{project}} {{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, MetricDescriptor can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{project}}/{{name}}
- * ```
- *
- * ```sh
- * $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default "{{project}} {{name}}"
- * ```
- *
- * ```sh
+ * $ terraform import google_monitoring_metric_descriptor.default "{{project}} {{name}}"
  * $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
  * ```
  */

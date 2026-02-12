@@ -387,23 +387,18 @@ __all__ = [
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AutoscalingPolicyBasicAlgorithmArgsDict(TypedDict):
-        yarn_config: pulumi.Input['AutoscalingPolicyBasicAlgorithmYarnConfigArgsDict']
-        """
-        YARN autoscaling configuration.
-        Structure is documented below.
-        """
-        cooldown_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Duration between scaling events. A scaling period starts after the
-        update operation from the previous event has completed.
-        Bounds: [2m, 1d]. Default: 2m.
-        """
-elif False:
-    AutoscalingPolicyBasicAlgorithmArgsDict: TypeAlias = Mapping[str, Any]
+class AutoscalingPolicyBasicAlgorithmArgsDict(TypedDict):
+    yarn_config: pulumi.Input['AutoscalingPolicyBasicAlgorithmYarnConfigArgsDict']
+    """
+    YARN autoscaling configuration.
+    Structure is documented below.
+    """
+    cooldown_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Duration between scaling events. A scaling period starts after the
+    update operation from the previous event has completed.
+    Bounds: [2m, 1d]. Default: 2m.
+    """
 
 @pulumi.input_type
 class AutoscalingPolicyBasicAlgorithmArgs:
@@ -449,51 +444,48 @@ class AutoscalingPolicyBasicAlgorithmArgs:
         pulumi.set(self, "cooldown_period", value)
 
 
-if not MYPY:
-    class AutoscalingPolicyBasicAlgorithmYarnConfigArgsDict(TypedDict):
-        graceful_decommission_timeout: pulumi.Input[_builtins.str]
-        """
-        Timeout for YARN graceful decommissioning of Node Managers. Specifies the
-        duration to wait for jobs to complete before forcefully removing workers
-        (and potentially interrupting jobs). Only applicable to downscaling operations.
-        Bounds: [0s, 1d].
-        """
-        scale_down_factor: pulumi.Input[_builtins.float]
-        """
-        Fraction of average pending memory in the last cooldown period for which to
-        remove workers. A scale-down factor of 1 will result in scaling down so that there
-        is no available memory remaining after the update (more aggressive scaling).
-        A scale-down factor of 0 disables removing workers, which can be beneficial for
-        autoscaling a single job.
-        Bounds: [0.0, 1.0].
-        """
-        scale_up_factor: pulumi.Input[_builtins.float]
-        """
-        Fraction of average pending memory in the last cooldown period for which to
-        add workers. A scale-up factor of 1.0 will result in scaling up so that there
-        is no pending memory remaining after the update (more aggressive scaling).
-        A scale-up factor closer to 0 will result in a smaller magnitude of scaling up
-        (less aggressive scaling).
-        Bounds: [0.0, 1.0].
-        """
-        scale_down_min_worker_fraction: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Minimum scale-down threshold as a fraction of total cluster size before scaling occurs.
-        For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must
-        recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0
-        means the autoscaler will scale down on any recommended change.
-        Bounds: [0.0, 1.0]. Default: 0.0.
-        """
-        scale_up_min_worker_fraction: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Minimum scale-up threshold as a fraction of total cluster size before scaling
-        occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler
-        must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of
-        0 means the autoscaler will scale up on any recommended change.
-        Bounds: [0.0, 1.0]. Default: 0.0.
-        """
-elif False:
-    AutoscalingPolicyBasicAlgorithmYarnConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AutoscalingPolicyBasicAlgorithmYarnConfigArgsDict(TypedDict):
+    graceful_decommission_timeout: pulumi.Input[_builtins.str]
+    """
+    Timeout for YARN graceful decommissioning of Node Managers. Specifies the
+    duration to wait for jobs to complete before forcefully removing workers
+    (and potentially interrupting jobs). Only applicable to downscaling operations.
+    Bounds: [0s, 1d].
+    """
+    scale_down_factor: pulumi.Input[_builtins.float]
+    """
+    Fraction of average pending memory in the last cooldown period for which to
+    remove workers. A scale-down factor of 1 will result in scaling down so that there
+    is no available memory remaining after the update (more aggressive scaling).
+    A scale-down factor of 0 disables removing workers, which can be beneficial for
+    autoscaling a single job.
+    Bounds: [0.0, 1.0].
+    """
+    scale_up_factor: pulumi.Input[_builtins.float]
+    """
+    Fraction of average pending memory in the last cooldown period for which to
+    add workers. A scale-up factor of 1.0 will result in scaling up so that there
+    is no pending memory remaining after the update (more aggressive scaling).
+    A scale-up factor closer to 0 will result in a smaller magnitude of scaling up
+    (less aggressive scaling).
+    Bounds: [0.0, 1.0].
+    """
+    scale_down_min_worker_fraction: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Minimum scale-down threshold as a fraction of total cluster size before scaling occurs.
+    For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must
+    recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0
+    means the autoscaler will scale down on any recommended change.
+    Bounds: [0.0, 1.0]. Default: 0.0.
+    """
+    scale_up_min_worker_fraction: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Minimum scale-up threshold as a fraction of total cluster size before scaling
+    occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler
+    must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of
+    0 means the autoscaler will scale up on any recommended change.
+    Bounds: [0.0, 1.0]. Default: 0.0.
+    """
 
 @pulumi.input_type
 class AutoscalingPolicyBasicAlgorithmYarnConfigArgs:
@@ -621,13 +613,10 @@ class AutoscalingPolicyBasicAlgorithmYarnConfigArgs:
         pulumi.set(self, "scale_up_min_worker_fraction", value)
 
 
-if not MYPY:
-    class AutoscalingPolicyIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    AutoscalingPolicyIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class AutoscalingPolicyIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AutoscalingPolicyIamBindingConditionArgs:
@@ -668,13 +657,10 @@ class AutoscalingPolicyIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class AutoscalingPolicyIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    AutoscalingPolicyIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class AutoscalingPolicyIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AutoscalingPolicyIamMemberConditionArgs:
@@ -715,35 +701,32 @@ class AutoscalingPolicyIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class AutoscalingPolicySecondaryWorkerConfigArgsDict(TypedDict):
-        max_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of instances for this group. Note that by default, clusters will not use
-        secondary workers. Required for secondary workers if the minimum secondary instances is set.
-        Bounds: [minInstances, ). Defaults to 0.
-        """
-        min_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Weight for the instance group, which is used to determine the fraction of total workers
-        in the cluster from this instance group. For example, if primary workers have weight 2,
-        and secondary workers have weight 1, the cluster will have approximately 2 primary workers
-        for each secondary worker.
-        The cluster may not reach the specified balance if constrained by min/max bounds or other
-        autoscaling settings. For example, if maxInstances for secondary workers is 0, then only
-        primary workers will be added. The cluster can also be out of balance when created.
-        If weight is not set on any instance group, the cluster will default to equal weight for
-        all groups: the cluster will attempt to maintain an equal number of workers in each group
-        within the configured size bounds for each group. If weight is set for one group only,
-        the cluster will default to zero weight on the unset group. For example if weight is set
-        only on primary workers, the cluster will use primary workers only and no secondary workers.
-        """
-elif False:
-    AutoscalingPolicySecondaryWorkerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AutoscalingPolicySecondaryWorkerConfigArgsDict(TypedDict):
+    max_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of instances for this group. Note that by default, clusters will not use
+    secondary workers. Required for secondary workers if the minimum secondary instances is set.
+    Bounds: [minInstances, ). Defaults to 0.
+    """
+    min_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Weight for the instance group, which is used to determine the fraction of total workers
+    in the cluster from this instance group. For example, if primary workers have weight 2,
+    and secondary workers have weight 1, the cluster will have approximately 2 primary workers
+    for each secondary worker.
+    The cluster may not reach the specified balance if constrained by min/max bounds or other
+    autoscaling settings. For example, if maxInstances for secondary workers is 0, then only
+    primary workers will be added. The cluster can also be out of balance when created.
+    If weight is not set on any instance group, the cluster will default to equal weight for
+    all groups: the cluster will attempt to maintain an equal number of workers in each group
+    within the configured size bounds for each group. If weight is set for one group only,
+    the cluster will default to zero weight on the unset group. For example if weight is set
+    only on primary workers, the cluster will use primary workers only and no secondary workers.
+    """
 
 @pulumi.input_type
 class AutoscalingPolicySecondaryWorkerConfigArgs:
@@ -826,33 +809,30 @@ class AutoscalingPolicySecondaryWorkerConfigArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class AutoscalingPolicyWorkerConfigArgsDict(TypedDict):
-        max_instances: pulumi.Input[_builtins.int]
-        """
-        Maximum number of instances for this group.
-        """
-        min_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Weight for the instance group, which is used to determine the fraction of total workers
-        in the cluster from this instance group. For example, if primary workers have weight 2,
-        and secondary workers have weight 1, the cluster will have approximately 2 primary workers
-        for each secondary worker.
-        The cluster may not reach the specified balance if constrained by min/max bounds or other
-        autoscaling settings. For example, if maxInstances for secondary workers is 0, then only
-        primary workers will be added. The cluster can also be out of balance when created.
-        If weight is not set on any instance group, the cluster will default to equal weight for
-        all groups: the cluster will attempt to maintain an equal number of workers in each group
-        within the configured size bounds for each group. If weight is set for one group only,
-        the cluster will default to zero weight on the unset group. For example if weight is set
-        only on primary workers, the cluster will use primary workers only and no secondary workers.
-        """
-elif False:
-    AutoscalingPolicyWorkerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AutoscalingPolicyWorkerConfigArgsDict(TypedDict):
+    max_instances: pulumi.Input[_builtins.int]
+    """
+    Maximum number of instances for this group.
+    """
+    min_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Weight for the instance group, which is used to determine the fraction of total workers
+    in the cluster from this instance group. For example, if primary workers have weight 2,
+    and secondary workers have weight 1, the cluster will have approximately 2 primary workers
+    for each secondary worker.
+    The cluster may not reach the specified balance if constrained by min/max bounds or other
+    autoscaling settings. For example, if maxInstances for secondary workers is 0, then only
+    primary workers will be added. The cluster can also be out of balance when created.
+    If weight is not set on any instance group, the cluster will default to equal weight for
+    all groups: the cluster will attempt to maintain an equal number of workers in each group
+    within the configured size bounds for each group. If weight is set for one group only,
+    the cluster will default to zero weight on the unset group. For example if weight is set
+    only on primary workers, the cluster will use primary workers only and no secondary workers.
+    """
 
 @pulumi.input_type
 class AutoscalingPolicyWorkerConfigArgs:
@@ -930,20 +910,17 @@ class AutoscalingPolicyWorkerConfigArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class BatchEnvironmentConfigArgsDict(TypedDict):
-        execution_config: NotRequired[pulumi.Input['BatchEnvironmentConfigExecutionConfigArgsDict']]
-        """
-        Execution configuration for a workload.
-        Structure is documented below.
-        """
-        peripherals_config: NotRequired[pulumi.Input['BatchEnvironmentConfigPeripheralsConfigArgsDict']]
-        """
-        Peripherals configuration that workload has access to.
-        Structure is documented below.
-        """
-elif False:
-    BatchEnvironmentConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BatchEnvironmentConfigArgsDict(TypedDict):
+    execution_config: NotRequired[pulumi.Input['BatchEnvironmentConfigExecutionConfigArgsDict']]
+    """
+    Execution configuration for a workload.
+    Structure is documented below.
+    """
+    peripherals_config: NotRequired[pulumi.Input['BatchEnvironmentConfigPeripheralsConfigArgsDict']]
+    """
+    Peripherals configuration that workload has access to.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class BatchEnvironmentConfigArgs:
@@ -988,54 +965,51 @@ class BatchEnvironmentConfigArgs:
         pulumi.set(self, "peripherals_config", value)
 
 
-if not MYPY:
-    class BatchEnvironmentConfigExecutionConfigArgsDict(TypedDict):
-        authentication_config: NotRequired[pulumi.Input['BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict']]
-        """
-        Authentication configuration for a workload is used to set the default identity for the workload execution.
-        Structure is documented below.
-        """
-        kms_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud KMS key to use for encryption.
-        """
-        network_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Tags used for network traffic control.
-        """
-        network_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network configuration for workload execution.
-        """
-        service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service account that used to execute workload.
-        """
-        staging_bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Cloud Storage bucket used to stage workload dependencies, config files, and store
-        workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
-        Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
-        and then create and manage project-level, per-location staging and temporary buckets.
-        This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
-        """
-        subnetwork_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Subnetwork configuration for workload execution.
-        """
-        ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The duration after which the workload will be terminated.
-        When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
-        work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it
-        exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
-        it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
-        Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
-        the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
-        when ttl has been exceeded, whichever occurs first.
-        """
-elif False:
-    BatchEnvironmentConfigExecutionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BatchEnvironmentConfigExecutionConfigArgsDict(TypedDict):
+    authentication_config: NotRequired[pulumi.Input['BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict']]
+    """
+    Authentication configuration for a workload is used to set the default identity for the workload execution.
+    Structure is documented below.
+    """
+    kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud KMS key to use for encryption.
+    """
+    network_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Tags used for network traffic control.
+    """
+    network_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network configuration for workload execution.
+    """
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service account that used to execute workload.
+    """
+    staging_bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Cloud Storage bucket used to stage workload dependencies, config files, and store
+    workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+    Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+    and then create and manage project-level, per-location staging and temporary buckets.
+    This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+    """
+    subnetwork_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Subnetwork configuration for workload execution.
+    """
+    ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The duration after which the workload will be terminated.
+    When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+    work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it
+    exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+    it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+    Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+    the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+    when ttl has been exceeded, whichever occurs first.
+    """
 
 @pulumi.input_type
 class BatchEnvironmentConfigExecutionConfigArgs:
@@ -1196,15 +1170,12 @@ class BatchEnvironmentConfigExecutionConfigArgs:
         pulumi.set(self, "ttl", value)
 
 
-if not MYPY:
-    class BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict(TypedDict):
-        user_workload_authentication_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Authentication type for the user workload running in containers.
-        Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
-        """
-elif False:
-    BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict(TypedDict):
+    user_workload_authentication_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Authentication type for the user workload running in containers.
+    Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+    """
 
 @pulumi.input_type
 class BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs:
@@ -1231,19 +1202,16 @@ class BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs:
         pulumi.set(self, "user_workload_authentication_type", value)
 
 
-if not MYPY:
-    class BatchEnvironmentConfigPeripheralsConfigArgsDict(TypedDict):
-        metastore_service: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource name of an existing Dataproc Metastore service.
-        """
-        spark_history_server_config: NotRequired[pulumi.Input['BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict']]
-        """
-        The Spark History Server configuration for the workload.
-        Structure is documented below.
-        """
-elif False:
-    BatchEnvironmentConfigPeripheralsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BatchEnvironmentConfigPeripheralsConfigArgsDict(TypedDict):
+    metastore_service: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource name of an existing Dataproc Metastore service.
+    """
+    spark_history_server_config: NotRequired[pulumi.Input['BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict']]
+    """
+    The Spark History Server configuration for the workload.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class BatchEnvironmentConfigPeripheralsConfigArgs:
@@ -1286,14 +1254,11 @@ class BatchEnvironmentConfigPeripheralsConfigArgs:
         pulumi.set(self, "spark_history_server_config", value)
 
 
-if not MYPY:
-    class BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict(TypedDict):
-        dataproc_cluster: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-        """
-elif False:
-    BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict(TypedDict):
+    dataproc_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+    """
 
 @pulumi.input_type
 class BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs:
@@ -1318,37 +1283,34 @@ class BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs:
         pulumi.set(self, "dataproc_cluster", value)
 
 
-if not MYPY:
-    class BatchPysparkBatchArgsDict(TypedDict):
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted into the working directory of each executor.
-        Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver. Do not include arguments that can be set as batch
-        properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of files to be placed in the working directory of each executor.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
-        """
-        main_python_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
-        """
-        python_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS file URIs of Python files to pass to the PySpark framework.
-        Supported file types: .py, .egg, and .zip.
-        """
-elif False:
-    BatchPysparkBatchArgsDict: TypeAlias = Mapping[str, Any]
+class BatchPysparkBatchArgsDict(TypedDict):
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted into the working directory of each executor.
+    Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver. Do not include arguments that can be set as batch
+    properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of files to be placed in the working directory of each executor.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+    """
+    main_python_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+    """
+    python_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS file URIs of Python files to pass to the PySpark framework.
+    Supported file types: .py, .egg, and .zip.
+    """
 
 @pulumi.input_type
 class BatchPysparkBatchArgs:
@@ -1459,36 +1421,33 @@ class BatchPysparkBatchArgs:
         pulumi.set(self, "python_file_uris", value)
 
 
-if not MYPY:
-    class BatchRuntimeConfigArgsDict(TypedDict):
-        autotuning_config: NotRequired[pulumi.Input['BatchRuntimeConfigAutotuningConfigArgsDict']]
-        """
-        Optional. Autotuning configuration of the workload.
-        Structure is documented below.
-        """
-        cohort: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
-        """
-        container_image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
-        """
-        effective_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        A mapping of property names to values, which are used to configure workload execution.
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, which are used to configure workload execution.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version of the batch runtime.
-        """
-elif False:
-    BatchRuntimeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BatchRuntimeConfigArgsDict(TypedDict):
+    autotuning_config: NotRequired[pulumi.Input['BatchRuntimeConfigAutotuningConfigArgsDict']]
+    """
+    Optional. Autotuning configuration of the workload.
+    Structure is documented below.
+    """
+    cohort: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+    """
+    container_image: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+    """
+    effective_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    A mapping of property names to values, which are used to configure workload execution.
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, which are used to configure workload execution.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version of the batch runtime.
+    """
 
 @pulumi.input_type
 class BatchRuntimeConfigArgs:
@@ -1597,15 +1556,12 @@ class BatchRuntimeConfigArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class BatchRuntimeConfigAutotuningConfigArgsDict(TypedDict):
-        scenarios: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. Scenarios for which tunings are applied.
-        Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
-        """
-elif False:
-    BatchRuntimeConfigAutotuningConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BatchRuntimeConfigAutotuningConfigArgsDict(TypedDict):
+    scenarios: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Scenarios for which tunings are applied.
+    Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+    """
 
 @pulumi.input_type
 class BatchRuntimeConfigAutotuningConfigArgs:
@@ -1632,37 +1588,34 @@ class BatchRuntimeConfigAutotuningConfigArgs:
         pulumi.set(self, "scenarios", value)
 
 
-if not MYPY:
-    class BatchRuntimeInfoArgsDict(TypedDict):
-        approximate_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['BatchRuntimeInfoApproximateUsageArgsDict']]]]
-        """
-        (Output)
-        Approximate workload resource usage, calculated when the workload completes(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
-        Structure is documented below.
-        """
-        current_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['BatchRuntimeInfoCurrentUsageArgsDict']]]]
-        """
-        (Output)
-        Snapshot of current workload resource usage(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
-        Structure is documented below.
-        """
-        diagnostic_output_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A URI pointing to the location of the diagnostics tarball.
-        """
-        endpoints: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
-        """
-        output_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A URI pointing to the location of the stdout and stderr of the workload.
-        """
-elif False:
-    BatchRuntimeInfoArgsDict: TypeAlias = Mapping[str, Any]
+class BatchRuntimeInfoArgsDict(TypedDict):
+    approximate_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['BatchRuntimeInfoApproximateUsageArgsDict']]]]
+    """
+    (Output)
+    Approximate workload resource usage, calculated when the workload completes(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
+    Structure is documented below.
+    """
+    current_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['BatchRuntimeInfoCurrentUsageArgsDict']]]]
+    """
+    (Output)
+    Snapshot of current workload resource usage(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
+    Structure is documented below.
+    """
+    diagnostic_output_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A URI pointing to the location of the diagnostics tarball.
+    """
+    endpoints: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
+    """
+    output_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A URI pointing to the location of the stdout and stderr of the workload.
+    """
 
 @pulumi.input_type
 class BatchRuntimeInfoArgs:
@@ -1765,30 +1718,27 @@ class BatchRuntimeInfoArgs:
         pulumi.set(self, "output_uri", value)
 
 
-if not MYPY:
-    class BatchRuntimeInfoApproximateUsageArgsDict(TypedDict):
-        accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Accelerator type being used, if any.
-        """
-        milli_accelerator_seconds: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Accelerator usage in (milliAccelerator x seconds)
-        """
-        milli_dcu_seconds: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        DCU (Dataproc Compute Units) usage in (milliDCU x seconds)
-        """
-        shuffle_storage_gb_seconds: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Shuffle storage usage in (GB x seconds)
-        """
-elif False:
-    BatchRuntimeInfoApproximateUsageArgsDict: TypeAlias = Mapping[str, Any]
+class BatchRuntimeInfoApproximateUsageArgsDict(TypedDict):
+    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Accelerator type being used, if any.
+    """
+    milli_accelerator_seconds: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Accelerator usage in (milliAccelerator x seconds)
+    """
+    milli_dcu_seconds: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    DCU (Dataproc Compute Units) usage in (milliDCU x seconds)
+    """
+    shuffle_storage_gb_seconds: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Shuffle storage usage in (GB x seconds)
+    """
 
 @pulumi.input_type
 class BatchRuntimeInfoApproximateUsageArgs:
@@ -1869,45 +1819,42 @@ class BatchRuntimeInfoApproximateUsageArgs:
         pulumi.set(self, "shuffle_storage_gb_seconds", value)
 
 
-if not MYPY:
-    class BatchRuntimeInfoCurrentUsageArgsDict(TypedDict):
-        accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Accelerator type being used, if any.
-        """
-        milli_accelerator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Milli (one-thousandth) accelerator..
-        """
-        milli_dcu: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Milli (one-thousandth) Dataproc Compute Units (DCUs).
-        """
-        milli_dcu_premium: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier.
-        """
-        shuffle_storage_gb: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Shuffle Storage in gigabytes (GB).
-        """
-        shuffle_storage_gb_premium: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Shuffle Storage in gigabytes (GB) charged at premium tier.
-        """
-        snapshot_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The timestamp of the usage snapshot.
-        """
-elif False:
-    BatchRuntimeInfoCurrentUsageArgsDict: TypeAlias = Mapping[str, Any]
+class BatchRuntimeInfoCurrentUsageArgsDict(TypedDict):
+    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Accelerator type being used, if any.
+    """
+    milli_accelerator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Milli (one-thousandth) accelerator..
+    """
+    milli_dcu: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Milli (one-thousandth) Dataproc Compute Units (DCUs).
+    """
+    milli_dcu_premium: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier.
+    """
+    shuffle_storage_gb: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Shuffle Storage in gigabytes (GB).
+    """
+    shuffle_storage_gb_premium: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Shuffle Storage in gigabytes (GB) charged at premium tier.
+    """
+    snapshot_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The timestamp of the usage snapshot.
+    """
 
 @pulumi.input_type
 class BatchRuntimeInfoCurrentUsageArgs:
@@ -2042,37 +1989,34 @@ class BatchRuntimeInfoCurrentUsageArgs:
         pulumi.set(self, "snapshot_time", value)
 
 
-if not MYPY:
-    class BatchSparkBatchArgsDict(TypedDict):
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted into the working directory of each executor.
-        Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver. Do not include arguments that can be set as batch
-        properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of files to be placed in the working directory of each executor.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
-        """
-        main_class: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the driver main class. The jar file that contains the class must be in the
-        classpath or specified in jarFileUris.
-        """
-        main_jar_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the jar file that contains the main class.
-        """
-elif False:
-    BatchSparkBatchArgsDict: TypeAlias = Mapping[str, Any]
+class BatchSparkBatchArgsDict(TypedDict):
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted into the working directory of each executor.
+    Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver. Do not include arguments that can be set as batch
+    properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of files to be placed in the working directory of each executor.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+    """
+    main_class: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the driver main class. The jar file that contains the class must be in the
+    classpath or specified in jarFileUris.
+    """
+    main_jar_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the jar file that contains the main class.
+    """
 
 @pulumi.input_type
 class BatchSparkBatchArgs:
@@ -2183,28 +2127,25 @@ class BatchSparkBatchArgs:
         pulumi.set(self, "main_jar_file_uri", value)
 
 
-if not MYPY:
-    class BatchSparkRBatchArgsDict(TypedDict):
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted into the working directory of each executor.
-        Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver. Do not include arguments that can be set as batch
-        properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of files to be placed in the working directory of each executor.
-        """
-        main_r_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
-        """
-elif False:
-    BatchSparkRBatchArgsDict: TypeAlias = Mapping[str, Any]
+class BatchSparkRBatchArgsDict(TypedDict):
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted into the working directory of each executor.
+    Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver. Do not include arguments that can be set as batch
+    properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of files to be placed in the working directory of each executor.
+    """
+    main_r_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+    """
 
 @pulumi.input_type
 class BatchSparkRBatchArgs:
@@ -2281,22 +2222,19 @@ class BatchSparkRBatchArgs:
         pulumi.set(self, "main_r_file_uri", value)
 
 
-if not MYPY:
-    class BatchSparkSqlBatchArgsDict(TypedDict):
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to be added to the Spark CLASSPATH.
-        """
-        query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the script that contains Spark SQL queries to execute.
-        """
-        query_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
-        """
-elif False:
-    BatchSparkSqlBatchArgsDict: TypeAlias = Mapping[str, Any]
+class BatchSparkSqlBatchArgsDict(TypedDict):
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to be added to the Spark CLASSPATH.
+    """
+    query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the script that contains Spark SQL queries to execute.
+    """
+    query_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+    """
 
 @pulumi.input_type
 class BatchSparkSqlBatchArgs:
@@ -2353,25 +2291,22 @@ class BatchSparkSqlBatchArgs:
         pulumi.set(self, "query_variables", value)
 
 
-if not MYPY:
-    class BatchStateHistoryArgsDict(TypedDict):
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the batch at this point in history. For possible values, see the [API documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
-        """
-        state_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Details about the state at this point in history.
-        """
-        state_start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The time when the batch entered the historical state.
-        """
-elif False:
-    BatchStateHistoryArgsDict: TypeAlias = Mapping[str, Any]
+class BatchStateHistoryArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the batch at this point in history. For possible values, see the [API documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
+    """
+    state_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Details about the state at this point in history.
+    """
+    state_start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The time when the batch entered the historical state.
+    """
 
 @pulumi.input_type
 class BatchStateHistoryArgs:
@@ -2434,111 +2369,108 @@ class BatchStateHistoryArgs:
         pulumi.set(self, "state_start_time", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigArgsDict(TypedDict):
-        autoscaling_config: NotRequired[pulumi.Input['ClusterClusterConfigAutoscalingConfigArgsDict']]
-        """
-        The autoscaling policy config associated with the cluster.
-        Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
-        only be removed by setting `policy_uri = ""`, rather than removing the whole block.
-        Structure defined below.
-        """
-        auxiliary_node_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupArgsDict']]]]
-        """
-        A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
-        Structure defined below.
-        """
-        bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the cloud storage bucket ultimately used to house the staging data
-        for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
-        it will be the auto generated name.
-        """
-        cluster_tier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tier of the cluster.
-        """
-        dataproc_metric_config: NotRequired[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgsDict']]
-        """
-        The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
-        Structure defined below.
-        """
-        encryption_config: NotRequired[pulumi.Input['ClusterClusterConfigEncryptionConfigArgsDict']]
-        """
-        The Customer managed encryption keys settings for the cluster.
-        Structure defined below.
-        """
-        endpoint_config: NotRequired[pulumi.Input['ClusterClusterConfigEndpointConfigArgsDict']]
-        """
-        The config settings for port access on the cluster.
-        Structure defined below.
-        """
-        gce_cluster_config: NotRequired[pulumi.Input['ClusterClusterConfigGceClusterConfigArgsDict']]
-        """
-        Common config settings for resources of Google Compute Engine cluster
-        instances, applicable to all instances in the cluster. Structure defined below.
-        """
-        initialization_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArgsDict']]]]
-        """
-        Commands to execute on each node after config is completed.
-        You can specify multiple versions of these. Structure defined below.
-        """
-        lifecycle_config: NotRequired[pulumi.Input['ClusterClusterConfigLifecycleConfigArgsDict']]
-        """
-        The settings for auto deletion cluster schedule.
-        Structure defined below.
-        """
-        master_config: NotRequired[pulumi.Input['ClusterClusterConfigMasterConfigArgsDict']]
-        """
-        The Google Compute Engine config settings for the master instances
-        in a cluster. Structure defined below.
-        """
-        metastore_config: NotRequired[pulumi.Input['ClusterClusterConfigMetastoreConfigArgsDict']]
-        """
-        The config setting for metastore service with the cluster.
-        Structure defined below.
-        - - -
-        """
-        preemptible_worker_config: NotRequired[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigArgsDict']]
-        """
-        The Google Compute Engine config settings for the additional
-        instances in a cluster. Structure defined below.
-        * **NOTE** : `preemptible_worker_config` is
-        an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
-        such for legacy/compatibility reasons.
-        """
-        security_config: NotRequired[pulumi.Input['ClusterClusterConfigSecurityConfigArgsDict']]
-        """
-        Security related configuration. Structure defined below.
-        """
-        software_config: NotRequired[pulumi.Input['ClusterClusterConfigSoftwareConfigArgsDict']]
-        """
-        The config settings for software inside the cluster.
-        Structure defined below.
-        """
-        staging_bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage staging bucket used to stage files,
-        such as Hadoop jars, between client machines and the cluster.
-        Note: If you don't explicitly specify a `staging_bucket`
-        then GCP will auto create / assign one for you. However, you are not guaranteed
-        an auto generated bucket which is solely dedicated to your cluster; it may be shared
-        with other clusters in the same region/zone also choosing to use the auto generation
-        option.
-        """
-        temp_bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage temp bucket used to store ephemeral cluster
-        and jobs data, such as Spark and MapReduce history files.
-        Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
-        """
-        worker_config: NotRequired[pulumi.Input['ClusterClusterConfigWorkerConfigArgsDict']]
-        """
-        The Google Compute Engine config settings for the worker instances
-        in a cluster. Structure defined below.
-        """
-elif False:
-    ClusterClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigArgsDict(TypedDict):
+    autoscaling_config: NotRequired[pulumi.Input['ClusterClusterConfigAutoscalingConfigArgsDict']]
+    """
+    The autoscaling policy config associated with the cluster.
+    Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
+    only be removed by setting `policy_uri = ""`, rather than removing the whole block.
+    Structure defined below.
+    """
+    auxiliary_node_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupArgsDict']]]]
+    """
+    A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
+    Structure defined below.
+    """
+    bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the cloud storage bucket ultimately used to house the staging data
+    for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+    it will be the auto generated name.
+    """
+    cluster_tier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tier of the cluster.
+    """
+    dataproc_metric_config: NotRequired[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgsDict']]
+    """
+    The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+    Structure defined below.
+    """
+    encryption_config: NotRequired[pulumi.Input['ClusterClusterConfigEncryptionConfigArgsDict']]
+    """
+    The Customer managed encryption keys settings for the cluster.
+    Structure defined below.
+    """
+    endpoint_config: NotRequired[pulumi.Input['ClusterClusterConfigEndpointConfigArgsDict']]
+    """
+    The config settings for port access on the cluster.
+    Structure defined below.
+    """
+    gce_cluster_config: NotRequired[pulumi.Input['ClusterClusterConfigGceClusterConfigArgsDict']]
+    """
+    Common config settings for resources of Google Compute Engine cluster
+    instances, applicable to all instances in the cluster. Structure defined below.
+    """
+    initialization_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArgsDict']]]]
+    """
+    Commands to execute on each node after config is completed.
+    You can specify multiple versions of these. Structure defined below.
+    """
+    lifecycle_config: NotRequired[pulumi.Input['ClusterClusterConfigLifecycleConfigArgsDict']]
+    """
+    The settings for auto deletion cluster schedule.
+    Structure defined below.
+    """
+    master_config: NotRequired[pulumi.Input['ClusterClusterConfigMasterConfigArgsDict']]
+    """
+    The Google Compute Engine config settings for the master instances
+    in a cluster. Structure defined below.
+    """
+    metastore_config: NotRequired[pulumi.Input['ClusterClusterConfigMetastoreConfigArgsDict']]
+    """
+    The config setting for metastore service with the cluster.
+    Structure defined below.
+    - - -
+    """
+    preemptible_worker_config: NotRequired[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigArgsDict']]
+    """
+    The Google Compute Engine config settings for the additional
+    instances in a cluster. Structure defined below.
+    * **NOTE** : `preemptible_worker_config` is
+    an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
+    such for legacy/compatibility reasons.
+    """
+    security_config: NotRequired[pulumi.Input['ClusterClusterConfigSecurityConfigArgsDict']]
+    """
+    Security related configuration. Structure defined below.
+    """
+    software_config: NotRequired[pulumi.Input['ClusterClusterConfigSoftwareConfigArgsDict']]
+    """
+    The config settings for software inside the cluster.
+    Structure defined below.
+    """
+    staging_bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage staging bucket used to stage files,
+    such as Hadoop jars, between client machines and the cluster.
+    Note: If you don't explicitly specify a `staging_bucket`
+    then GCP will auto create / assign one for you. However, you are not guaranteed
+    an auto generated bucket which is solely dedicated to your cluster; it may be shared
+    with other clusters in the same region/zone also choosing to use the auto generation
+    option.
+    """
+    temp_bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage temp bucket used to store ephemeral cluster
+    and jobs data, such as Spark and MapReduce history files.
+    Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
+    """
+    worker_config: NotRequired[pulumi.Input['ClusterClusterConfigWorkerConfigArgsDict']]
+    """
+    The Google Compute Engine config settings for the worker instances
+    in a cluster. Structure defined below.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigArgs:
@@ -2893,22 +2825,19 @@ class ClusterClusterConfigArgs:
         pulumi.set(self, "worker_config", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigAutoscalingConfigArgsDict(TypedDict):
-        policy_uri: pulumi.Input[_builtins.str]
-        """
-        The autoscaling policy used by the cluster.
+class ClusterClusterConfigAutoscalingConfigArgsDict(TypedDict):
+    policy_uri: pulumi.Input[_builtins.str]
+    """
+    The autoscaling policy used by the cluster.
 
-        Only resource names including projectid and location (region) are valid. Examples:
+    Only resource names including projectid and location (region) are valid. Examples:
 
-        `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
-        `projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
-        Note that the policy must be in the same project and Cloud Dataproc region.
+    `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
+    `projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
+    Note that the policy must be in the same project and Cloud Dataproc region.
 
-        - - -
-        """
-elif False:
-    ClusterClusterConfigAutoscalingConfigArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigAutoscalingConfigArgs:
@@ -2948,18 +2877,15 @@ class ClusterClusterConfigAutoscalingConfigArgs:
         pulumi.set(self, "policy_uri", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigAuxiliaryNodeGroupArgsDict(TypedDict):
-        node_groups: pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgsDict']]]
-        """
-        Node group configuration.
-        """
-        node_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
-        """
-elif False:
-    ClusterClusterConfigAuxiliaryNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigAuxiliaryNodeGroupArgsDict(TypedDict):
+    node_groups: pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgsDict']]]
+    """
+    Node group configuration.
+    """
+    node_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigAuxiliaryNodeGroupArgs:
@@ -2999,23 +2925,20 @@ class ClusterClusterConfigAuxiliaryNodeGroupArgs:
         pulumi.set(self, "node_group_id", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgsDict(TypedDict):
-        roles: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Node group roles. 
-        One of `"DRIVER"`.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Node group resource name.
-        """
-        node_group_config: NotRequired[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgsDict']]
-        """
-        The node group instance group configuration.
-        """
-elif False:
-    ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgsDict(TypedDict):
+    roles: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Node group roles. 
+    One of `"DRIVER"`.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Node group resource name.
+    """
+    node_group_config: NotRequired[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgsDict']]
+    """
+    The node group instance group configuration.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs:
@@ -3073,41 +2996,38 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs:
         pulumi.set(self, "node_group_config", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgsDict(TypedDict):
-        accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgsDict']]]]
-        """
-        The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
-        multiple times.
-        """
-        disk_config: NotRequired[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgsDict']]
-        """
-        Disk Config
-        """
-        instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of auxiliary node group instance names which have been assigned to the cluster.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of a Google Compute Engine machine type
-        to create for the node group. If not specified, GCP will default to a predetermined
-        computed value (currently `n1-standard-4`).
-        """
-        min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of a minimum generation of CPU family
-        for the node group. If not specified, GCP will default to a predetermined computed value
-        for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-        for details about which CPU families are available (and defaulted) for each zone.
-        """
-        num_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of master nodes to create.
-        Please set a number greater than 0. Node Group must have at least 1 instance.
-        """
-elif False:
-    ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgsDict(TypedDict):
+    accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgsDict']]]]
+    """
+    The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
+    multiple times.
+    """
+    disk_config: NotRequired[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgsDict']]
+    """
+    Disk Config
+    """
+    instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of auxiliary node group instance names which have been assigned to the cluster.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of a Google Compute Engine machine type
+    to create for the node group. If not specified, GCP will default to a predetermined
+    computed value (currently `n1-standard-4`).
+    """
+    min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of a minimum generation of CPU family
+    for the node group. If not specified, GCP will default to a predetermined computed value
+    for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+    for details about which CPU families are available (and defaulted) for each zone.
+    """
+    num_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of master nodes to create.
+    Please set a number greater than 0. Node Group must have at least 1 instance.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs:
@@ -3226,21 +3146,18 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs:
         pulumi.set(self, "num_instances", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgsDict(TypedDict):
-        accelerator_count: pulumi.Input[_builtins.int]
-        """
-        The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgsDict(TypedDict):
+    accelerator_count: pulumi.Input[_builtins.int]
+    """
+    The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
 
 
-        - - -
-        """
-        accelerator_type: pulumi.Input[_builtins.str]
-        """
-        The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
-        """
-elif False:
-    ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
+    accelerator_type: pulumi.Input[_builtins.str]
+    """
+    The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs:
@@ -3285,32 +3202,29 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorA
         pulumi.set(self, "accelerator_type", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgsDict(TypedDict):
-        boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size of the primary disk attached to each node, specified
-        in GB. The primary disk contains the boot volume and system libraries, and the
-        smallest allowed disk size is 10GB. GCP will default to a predetermined
-        computed value if not set (currently 500GB). Note: If SSDs are not
-        attached, it also contains the HDFS data blocks and Hadoop working directories.
-        """
-        boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The disk type of the primary disk attached to each node.
-        One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-        """
-        local_ssd_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
-        """
-        num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of local SSD disks that will be attached to each master cluster node. 
-        Defaults to 0.
-        """
-elif False:
-    ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgsDict(TypedDict):
+    boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size of the primary disk attached to each node, specified
+    in GB. The primary disk contains the boot volume and system libraries, and the
+    smallest allowed disk size is 10GB. GCP will default to a predetermined
+    computed value if not set (currently 500GB). Note: If SSDs are not
+    attached, it also contains the HDFS data blocks and Hadoop working directories.
+    """
+    boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The disk type of the primary disk attached to each node.
+    One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of local SSD disks that will be attached to each master cluster node. 
+    Defaults to 0.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs:
@@ -3395,14 +3309,11 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigAr
         pulumi.set(self, "num_local_ssds", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigDataprocMetricConfigArgsDict(TypedDict):
-        metrics: pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArgsDict']]]
-        """
-        Metrics sources to enable.
-        """
-elif False:
-    ClusterClusterConfigDataprocMetricConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigDataprocMetricConfigArgsDict(TypedDict):
+    metrics: pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArgsDict']]]
+    """
+    Metrics sources to enable.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigDataprocMetricConfigArgs:
@@ -3426,20 +3337,17 @@ class ClusterClusterConfigDataprocMetricConfigArgs:
         pulumi.set(self, "metrics", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigDataprocMetricConfigMetricArgsDict(TypedDict):
-        metric_source: pulumi.Input[_builtins.str]
-        """
-        A source for the collection of Dataproc OSS metrics (see [available OSS metrics](https://cloud.google.com//dataproc/docs/guides/monitoring#available_oss_metrics)).
-        """
-        metric_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
+class ClusterClusterConfigDataprocMetricConfigMetricArgsDict(TypedDict):
+    metric_source: pulumi.Input[_builtins.str]
+    """
+    A source for the collection of Dataproc OSS metrics (see [available OSS metrics](https://cloud.google.com//dataproc/docs/guides/monitoring#available_oss_metrics)).
+    """
+    metric_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
 
-        - - -
-        """
-elif False:
-    ClusterClusterConfigDataprocMetricConfigMetricArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigDataprocMetricConfigMetricArgs:
@@ -3483,17 +3391,14 @@ class ClusterClusterConfigDataprocMetricConfigMetricArgs:
         pulumi.set(self, "metric_overrides", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigEncryptionConfigArgsDict(TypedDict):
-        kms_key_name: pulumi.Input[_builtins.str]
-        """
-        The Cloud KMS key name to use for PD disk encryption for
-        all instances in the cluster.
+class ClusterClusterConfigEncryptionConfigArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    The Cloud KMS key name to use for PD disk encryption for
+    all instances in the cluster.
 
-        - - -
-        """
-elif False:
-    ClusterClusterConfigEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigEncryptionConfigArgs:
@@ -3523,20 +3428,17 @@ class ClusterClusterConfigEncryptionConfigArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigEndpointConfigArgsDict(TypedDict):
-        enable_http_port_access: pulumi.Input[_builtins.bool]
-        """
-        The flag to enable http access to specific ports
-        on the cluster from external sources (aka Component Gateway). Defaults to false.
-        """
-        http_ports: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The map of port descriptions to URLs. Will only be populated if
-        `enable_http_port_access` is true.
-        """
-elif False:
-    ClusterClusterConfigEndpointConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigEndpointConfigArgsDict(TypedDict):
+    enable_http_port_access: pulumi.Input[_builtins.bool]
+    """
+    The flag to enable http access to specific ports
+    on the cluster from external sources (aka Component Gateway). Defaults to false.
+    """
+    http_ports: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The map of port descriptions to URLs. Will only be populated if
+    `enable_http_port_access` is true.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigEndpointConfigArgs:
@@ -3580,86 +3482,83 @@ class ClusterClusterConfigEndpointConfigArgs:
         pulumi.set(self, "http_ports", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigGceClusterConfigArgsDict(TypedDict):
-        confidential_instance_config: NotRequired[pulumi.Input['ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgsDict']]
-        """
-        Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
-        """
-        internal_ip_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        By default, clusters are not restricted to internal IP addresses,
-        and will have ephemeral external IP addresses assigned to each instance. If set to true, all
-        instances in the cluster will only have internal IP addresses. Note: Private Google Access
-        (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
-        will be launched in.
-        """
-        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map of the Compute Engine metadata entries to add to all instances
-        (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name or self_link of the Google Compute Engine
-        network to the cluster will be part of. Conflicts with `subnetwork`.
-        If neither is specified, this defaults to the "default" network.
-        """
-        node_group_affinity: NotRequired[pulumi.Input['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgsDict']]
-        """
-        Node Group Affinity for sole-tenant clusters.
-        """
-        reservation_affinity: NotRequired[pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArgsDict']]
-        """
-        Reservation Affinity for consuming zonal reservation.
-        """
-        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map of resource manager tags to add to all instances.
-        Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
-        (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
-        """
-        service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service account to be used by the Node VMs.
-        If not specified, the "default" service account is used.
-        """
-        service_account_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of Google API scopes
-        to be made available on all of the node VMs under the `service_account`
-        specified. Both OAuth2 URLs and gcloud
-        short names are supported. To allow full access to all Cloud APIs, use the
-        `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
-        """
-        shielded_instance_config: NotRequired[pulumi.Input['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict']]
-        """
-        Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
+class ClusterClusterConfigGceClusterConfigArgsDict(TypedDict):
+    confidential_instance_config: NotRequired[pulumi.Input['ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgsDict']]
+    """
+    Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+    """
+    internal_ip_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    By default, clusters are not restricted to internal IP addresses,
+    and will have ephemeral external IP addresses assigned to each instance. If set to true, all
+    instances in the cluster will only have internal IP addresses. Note: Private Google Access
+    (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
+    will be launched in.
+    """
+    metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map of the Compute Engine metadata entries to add to all instances
+    (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name or self_link of the Google Compute Engine
+    network to the cluster will be part of. Conflicts with `subnetwork`.
+    If neither is specified, this defaults to the "default" network.
+    """
+    node_group_affinity: NotRequired[pulumi.Input['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgsDict']]
+    """
+    Node Group Affinity for sole-tenant clusters.
+    """
+    reservation_affinity: NotRequired[pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArgsDict']]
+    """
+    Reservation Affinity for consuming zonal reservation.
+    """
+    resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map of resource manager tags to add to all instances.
+    Keys must be in the format `tagKeys/{tag_key_id}` and values in the format `tagValues/{tag_value_id}`
+    (see [Secure tags](https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
+    """
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service account to be used by the Node VMs.
+    If not specified, the "default" service account is used.
+    """
+    service_account_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of Google API scopes
+    to be made available on all of the node VMs under the `service_account`
+    specified. Both OAuth2 URLs and gcloud
+    short names are supported. To allow full access to all Cloud APIs, use the
+    `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+    """
+    shielded_instance_config: NotRequired[pulumi.Input['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict']]
+    """
+    Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
 
-        - - -
-        """
-        subnetwork: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name or self_link of the Google Compute Engine
-        subnetwork the cluster will be part of. Conflicts with `network`.
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of instance tags applied to instances in the cluster.
-        Tags are used to identify valid sources or targets for network firewalls.
-        """
-        zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The GCP zone where your data is stored and used (i.e. where
-        the master and the worker nodes will be created in). If `region` is set to 'global' (default)
-        then `zone` is mandatory, otherwise GCP is able to make use of [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/auto-zone)
-        to determine this automatically for you.
-        Note: This setting additionally determines and restricts
-        which computing resources are available for use with other configs such as
-        `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
-        """
-elif False:
-    ClusterClusterConfigGceClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
+    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name or self_link of the Google Compute Engine
+    subnetwork the cluster will be part of. Conflicts with `network`.
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of instance tags applied to instances in the cluster.
+    Tags are used to identify valid sources or targets for network firewalls.
+    """
+    zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The GCP zone where your data is stored and used (i.e. where
+    the master and the worker nodes will be created in). If `region` is set to 'global' (default)
+    then `zone` is mandatory, otherwise GCP is able to make use of [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/auto-zone)
+    to determine this automatically for you.
+    Note: This setting additionally determines and restricts
+    which computing resources are available for use with other configs such as
+    `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigGceClusterConfigArgs:
@@ -3924,14 +3823,11 @@ class ClusterClusterConfigGceClusterConfigArgs:
         pulumi.set(self, "zone", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgsDict(TypedDict):
-        enable_confidential_compute: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether the instance should have confidential compute enabled.
-        """
-elif False:
-    ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgsDict(TypedDict):
+    enable_confidential_compute: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether the instance should have confidential compute enabled.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs:
@@ -3956,14 +3852,11 @@ class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs:
         pulumi.set(self, "enable_confidential_compute", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgsDict(TypedDict):
-        node_group_uri: pulumi.Input[_builtins.str]
-        """
-        The URI of a sole-tenant node group resource that the cluster will be created on.
-        """
-elif False:
-    ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgsDict(TypedDict):
+    node_group_uri: pulumi.Input[_builtins.str]
+    """
+    The URI of a sole-tenant node group resource that the cluster will be created on.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs:
@@ -3987,22 +3880,19 @@ class ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs:
         pulumi.set(self, "node_group_uri", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigGceClusterConfigReservationAffinityArgsDict(TypedDict):
-        consume_reservation_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Corresponds to the type of reservation consumption.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Corresponds to the label key of reservation resource.
-        """
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Corresponds to the label values of reservation resource.
-        """
-elif False:
-    ClusterClusterConfigGceClusterConfigReservationAffinityArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigGceClusterConfigReservationAffinityArgsDict(TypedDict):
+    consume_reservation_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Corresponds to the type of reservation consumption.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Corresponds to the label key of reservation resource.
+    """
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Corresponds to the label values of reservation resource.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigGceClusterConfigReservationAffinityArgs:
@@ -4059,24 +3949,21 @@ class ClusterClusterConfigGceClusterConfigReservationAffinityArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict(TypedDict):
-        enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether instances have integrity monitoring enabled.
+class ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict(TypedDict):
+    enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether instances have integrity monitoring enabled.
 
-        - - -
-        """
-        enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether instances have Secure Boot enabled.
-        """
-        enable_vtpm: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether instances have the [vTPM](https://cloud.google.com/security/shielded-cloud/shielded-vm#vtpm) enabled.
-        """
-elif False:
-    ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
+    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether instances have Secure Boot enabled.
+    """
+    enable_vtpm: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether instances have the [vTPM](https://cloud.google.com/security/shielded-cloud/shielded-vm#vtpm) enabled.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs:
@@ -4137,23 +4024,20 @@ class ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs:
         pulumi.set(self, "enable_vtpm", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigInitializationActionArgsDict(TypedDict):
-        script: pulumi.Input[_builtins.str]
-        """
-        The script to be executed during initialization of the cluster.
-        The script must be a GCS file with a gs:// prefix.
-        """
-        timeout_sec: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum duration (in seconds) which `script` is
-        allowed to take to execute its action. GCP will default to a predetermined
-        computed value if not set (currently 300).
+class ClusterClusterConfigInitializationActionArgsDict(TypedDict):
+    script: pulumi.Input[_builtins.str]
+    """
+    The script to be executed during initialization of the cluster.
+    The script must be a GCS file with a gs:// prefix.
+    """
+    timeout_sec: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum duration (in seconds) which `script` is
+    allowed to take to execute its action. GCP will default to a predetermined
+    computed value if not set (currently 300).
 
-        - - -
-        """
-elif False:
-    ClusterClusterConfigInitializationActionArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigInitializationActionArgs:
@@ -4203,39 +4087,36 @@ class ClusterClusterConfigInitializationActionArgs:
         pulumi.set(self, "timeout_sec", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigLifecycleConfigArgsDict(TypedDict):
-        auto_delete_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time when cluster will be auto-deleted.
-        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
-        Example: "2014-10-02T15:01:23.045123456Z".
-        """
-        auto_stop_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time when cluster will be auto-stopped.
-        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
-        Example: "2014-10-02T15:01:23.045123456Z".
+class ClusterClusterConfigLifecycleConfigArgsDict(TypedDict):
+    auto_delete_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time when cluster will be auto-deleted.
+    A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+    Example: "2014-10-02T15:01:23.045123456Z".
+    """
+    auto_stop_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time when cluster will be auto-stopped.
+    A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+    Example: "2014-10-02T15:01:23.045123456Z".
 
-        - - -
-        """
-        idle_delete_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The duration to keep the cluster alive while idling
-        (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
-        """
-        idle_start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time when the cluster became idle
-        (most recent job finished) and became eligible for deletion due to idleness.
-        """
-        idle_stop_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The duration to keep the cluster alive while idling
-        (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
-        """
-elif False:
-    ClusterClusterConfigLifecycleConfigArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
+    idle_delete_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The duration to keep the cluster alive while idling
+    (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+    """
+    idle_start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time when the cluster became idle
+    (most recent job finished) and became eligible for deletion due to idleness.
+    """
+    idle_stop_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The duration to keep the cluster alive while idling
+    (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigLifecycleConfigArgs:
@@ -4342,46 +4223,43 @@ class ClusterClusterConfigLifecycleConfigArgs:
         pulumi.set(self, "idle_stop_ttl", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigMasterConfigArgsDict(TypedDict):
-        accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigAcceleratorArgsDict']]]]
-        """
-        The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
-        """
-        disk_config: NotRequired[pulumi.Input['ClusterClusterConfigMasterConfigDiskConfigArgsDict']]
-        """
-        Disk Config
-        """
-        image_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
-        for more information.
-        """
-        instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of master instance names which
-        have been assigned to the cluster.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of a Google Compute Engine machine type
-        to create for the master. If not specified, GCP will default to a predetermined
-        computed value (currently `n1-standard-4`).
-        """
-        min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of a minimum generation of CPU family
-        for the master. If not specified, GCP will default to a predetermined computed value
-        for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-        for details about which CPU families are available (and defaulted) for each zone.
-        """
-        num_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of master nodes to create.
-        If not specified, GCP will default to a predetermined computed value (currently 1).
-        """
-elif False:
-    ClusterClusterConfigMasterConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigMasterConfigArgsDict(TypedDict):
+    accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigAcceleratorArgsDict']]]]
+    """
+    The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+    """
+    disk_config: NotRequired[pulumi.Input['ClusterClusterConfigMasterConfigDiskConfigArgsDict']]
+    """
+    Disk Config
+    """
+    image_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
+    for more information.
+    """
+    instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of master instance names which
+    have been assigned to the cluster.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of a Google Compute Engine machine type
+    to create for the master. If not specified, GCP will default to a predetermined
+    computed value (currently `n1-standard-4`).
+    """
+    min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of a minimum generation of CPU family
+    for the master. If not specified, GCP will default to a predetermined computed value
+    for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+    for details about which CPU families are available (and defaulted) for each zone.
+    """
+    num_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of master nodes to create.
+    If not specified, GCP will default to a predetermined computed value (currently 1).
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigMasterConfigArgs:
@@ -4518,24 +4396,21 @@ class ClusterClusterConfigMasterConfigArgs:
         pulumi.set(self, "num_instances", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigMasterConfigAcceleratorArgsDict(TypedDict):
-        accelerator_count: pulumi.Input[_builtins.int]
-        """
-        The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+class ClusterClusterConfigMasterConfigAcceleratorArgsDict(TypedDict):
+    accelerator_count: pulumi.Input[_builtins.int]
+    """
+    The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
 
-        > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-        zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-        if you are trying to use accelerators in a given zone.
+    > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
+    zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
+    if you are trying to use accelerators in a given zone.
 
-        - - -
-        """
-        accelerator_type: pulumi.Input[_builtins.str]
-        """
-        The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
-        """
-elif False:
-    ClusterClusterConfigMasterConfigAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
+    accelerator_type: pulumi.Input[_builtins.str]
+    """
+    The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigMasterConfigAcceleratorArgs:
@@ -4586,35 +4461,32 @@ class ClusterClusterConfigMasterConfigAcceleratorArgs:
         pulumi.set(self, "accelerator_type", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigMasterConfigDiskConfigArgsDict(TypedDict):
-        boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size of the primary disk attached to each node, specified
-        in GB. The primary disk contains the boot volume and system libraries, and the
-        smallest allowed disk size is 10GB. GCP will default to a predetermined
-        computed value if not set (currently 500GB). Note: If SSDs are not
-        attached, it also contains the HDFS data blocks and Hadoop working directories.
-        """
-        boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The disk type of the primary disk attached to each node.
-        One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-        """
-        local_ssd_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Interface type of local SSDs (default is "scsi").
-        Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile
-        Memory Express). See
-        [local SSD performance](https://cloud.google.com/compute/docs/disks/local-ssd#performance).
-        """
-        num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of local SSD disks that will be
-        attached to each master cluster node. Defaults to 0.
-        """
-elif False:
-    ClusterClusterConfigMasterConfigDiskConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigMasterConfigDiskConfigArgsDict(TypedDict):
+    boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size of the primary disk attached to each node, specified
+    in GB. The primary disk contains the boot volume and system libraries, and the
+    smallest allowed disk size is 10GB. GCP will default to a predetermined
+    computed value if not set (currently 500GB). Note: If SSDs are not
+    attached, it also contains the HDFS data blocks and Hadoop working directories.
+    """
+    boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The disk type of the primary disk attached to each node.
+    One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Interface type of local SSDs (default is "scsi").
+    Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile
+    Memory Express). See
+    [local SSD performance](https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of local SSD disks that will be
+    attached to each master cluster node. Defaults to 0.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigMasterConfigDiskConfigArgs:
@@ -4705,18 +4577,15 @@ class ClusterClusterConfigMasterConfigDiskConfigArgs:
         pulumi.set(self, "num_local_ssds", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigMetastoreConfigArgsDict(TypedDict):
-        dataproc_metastore_service: pulumi.Input[_builtins.str]
-        """
-        Resource name of an existing Dataproc Metastore service.
+class ClusterClusterConfigMetastoreConfigArgsDict(TypedDict):
+    dataproc_metastore_service: pulumi.Input[_builtins.str]
+    """
+    Resource name of an existing Dataproc Metastore service.
 
-        Only resource names including projectid and location (region) are valid. Examples:
+    Only resource names including projectid and location (region) are valid. Examples:
 
-        `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
-        """
-elif False:
-    ClusterClusterConfigMetastoreConfigArgsDict: TypeAlias = Mapping[str, Any]
+    `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigMetastoreConfigArgs:
@@ -4748,36 +4617,33 @@ class ClusterClusterConfigMetastoreConfigArgs:
         pulumi.set(self, "dataproc_metastore_service", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigPreemptibleWorkerConfigArgsDict(TypedDict):
-        disk_config: NotRequired[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgsDict']]
-        """
-        Disk Config
-        """
-        instance_flexibility_policy: NotRequired[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgsDict']]
-        """
-        Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
-        """
-        instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of preemptible instance names which have been assigned
-        to the cluster.
-        """
-        num_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of preemptible nodes to create.
-        Defaults to 0.
-        """
-        preemptibility: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
-        Accepted values are:
-        * PREEMPTIBILITY_UNSPECIFIED
-        * NON_PREEMPTIBLE
-        * PREEMPTIBLE
-        """
-elif False:
-    ClusterClusterConfigPreemptibleWorkerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigPreemptibleWorkerConfigArgsDict(TypedDict):
+    disk_config: NotRequired[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgsDict']]
+    """
+    Disk Config
+    """
+    instance_flexibility_policy: NotRequired[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgsDict']]
+    """
+    Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+    """
+    instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of preemptible instance names which have been assigned
+    to the cluster.
+    """
+    num_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of preemptible nodes to create.
+    Defaults to 0.
+    """
+    preemptibility: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
+    Accepted values are:
+    * PREEMPTIBILITY_UNSPECIFIED
+    * NON_PREEMPTIBLE
+    * PREEMPTIBLE
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigPreemptibleWorkerConfigArgs:
@@ -4878,31 +4744,28 @@ class ClusterClusterConfigPreemptibleWorkerConfigArgs:
         pulumi.set(self, "preemptibility", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgsDict(TypedDict):
-        boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size of the primary disk attached to each preemptible worker node, specified
-        in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-        computed value if not set (currently 500GB). Note: If SSDs are not
-        attached, it also contains the HDFS data blocks and Hadoop working directories.
-        """
-        boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The disk type of the primary disk attached to each preemptible worker node.
-        One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-        """
-        local_ssd_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
-        """
-        num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of local SSD disks that will be
-        attached to each preemptible worker node. Defaults to 0.
-        """
-elif False:
-    ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgsDict(TypedDict):
+    boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size of the primary disk attached to each preemptible worker node, specified
+    in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
+    computed value if not set (currently 500GB). Note: If SSDs are not
+    attached, it also contains the HDFS data blocks and Hadoop working directories.
+    """
+    boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The disk type of the primary disk attached to each preemptible worker node.
+    One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of local SSD disks that will be
+    attached to each preemptible worker node. Defaults to 0.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs:
@@ -4985,22 +4848,19 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs:
         pulumi.set(self, "num_local_ssds", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
-        instance_selection_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict']]]]
-        """
-        List of instance selection options that the group will use when creating new VMs.
-        """
-        instance_selection_results: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict']]]]
-        """
-        A list of instance selection results in the group.
-        """
-        provisioning_model_mix: NotRequired[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict']]
-        """
-        Defines how the Group selects the provisioning model to ensure required reliability.
-        """
-elif False:
-    ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
+    instance_selection_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict']]]]
+    """
+    List of instance selection options that the group will use when creating new VMs.
+    """
+    instance_selection_results: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict']]]]
+    """
+    A list of instance selection results in the group.
+    """
+    provisioning_model_mix: NotRequired[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict']]
+    """
+    Defines how the Group selects the provisioning model to ensure required reliability.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs:
@@ -5057,18 +4917,15 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs:
         pulumi.set(self, "provisioning_model_mix", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict(TypedDict):
-        machine_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Full machine-type names, e.g. `"n1-standard-16"`.
-        """
-        rank: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-        """
-elif False:
-    ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict(TypedDict):
+    machine_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Full machine-type names, e.g. `"n1-standard-16"`.
+    """
+    rank: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs:
@@ -5109,18 +4966,15 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
         pulumi.set(self, "rank", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full machine-type names, e.g. "n1-standard-16".
-        """
-        vm_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of VM provisioned with the machine_type.
-        """
-elif False:
-    ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Full machine-type names, e.g. "n1-standard-16".
+    """
+    vm_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of VM provisioned with the machine_type.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs:
@@ -5161,19 +5015,16 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
         pulumi.set(self, "vm_count", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict(TypedDict):
-        standard_capacity_base: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
-        """
-        standard_capacity_percent_above_base: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
-        - - -
-        """
-elif False:
-    ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict(TypedDict):
+    standard_capacity_base: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standardCapacityBase, then it will start using standardCapacityPercentAboveBase to mix Spot with Standard VMs. eg. If 15 instances are requested and standardCapacityBase is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
+    """
+    standard_capacity_percent_above_base: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+    - - -
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs:
@@ -5216,20 +5067,17 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvis
         pulumi.set(self, "standard_capacity_percent_above_base", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigSecurityConfigArgsDict(TypedDict):
-        identity_config: NotRequired[pulumi.Input['ClusterClusterConfigSecurityConfigIdentityConfigArgsDict']]
-        """
-        Identity Configuration. At least one of `identity_config`
-        or `kerberos_config` is required.
-        """
-        kerberos_config: NotRequired[pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgsDict']]
-        """
-        Kerberos Configuration. At least one of `identity_config`
-        or `kerberos_config` is required.
-        """
-elif False:
-    ClusterClusterConfigSecurityConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigSecurityConfigArgsDict(TypedDict):
+    identity_config: NotRequired[pulumi.Input['ClusterClusterConfigSecurityConfigIdentityConfigArgsDict']]
+    """
+    Identity Configuration. At least one of `identity_config`
+    or `kerberos_config` is required.
+    """
+    kerberos_config: NotRequired[pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgsDict']]
+    """
+    Kerberos Configuration. At least one of `identity_config`
+    or `kerberos_config` is required.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigSecurityConfigArgs:
@@ -5274,17 +5122,14 @@ class ClusterClusterConfigSecurityConfigArgs:
         pulumi.set(self, "kerberos_config", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigSecurityConfigIdentityConfigArgsDict(TypedDict):
-        user_service_account_mapping: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        The end user to service account mappings
-        in a service account based multi-tenant cluster
+class ClusterClusterConfigSecurityConfigIdentityConfigArgsDict(TypedDict):
+    user_service_account_mapping: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    The end user to service account mappings
+    in a service account based multi-tenant cluster
 
-        - - -
-        """
-elif False:
-    ClusterClusterConfigSecurityConfigIdentityConfigArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigSecurityConfigIdentityConfigArgs:
@@ -5314,86 +5159,83 @@ class ClusterClusterConfigSecurityConfigIdentityConfigArgs:
         pulumi.set(self, "user_service_account_mapping", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigSecurityConfigKerberosConfigArgsDict(TypedDict):
-        kms_key_uri: pulumi.Input[_builtins.str]
-        """
-        The URI of the KMS key used to encrypt various sensitive files.
-        """
-        root_principal_password_uri: pulumi.Input[_builtins.str]
-        """
-        The Cloud Storage URI of a KMS encrypted file
-        containing the root principal password.
-        """
-        cross_realm_trust_admin_server: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The admin server (IP or hostname) for the
-        remote trusted realm in a cross realm trust relationship.
-        """
-        cross_realm_trust_kdc: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The KDC (IP or hostname) for the
-        remote trusted realm in a cross realm trust relationship.
-        """
-        cross_realm_trust_realm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The remote realm the Dataproc on-cluster KDC will
-        trust, should the user enable cross realm trust.
-        """
-        cross_realm_trust_shared_password_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of a KMS
-        encrypted file containing the shared password between the on-cluster Kerberos realm
-        and the remote trusted realm, in a cross realm trust relationship.
-        """
-        enable_kerberos: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Flag to indicate whether to Kerberize the cluster.
-        """
-        kdc_db_key_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of a KMS encrypted file containing
-        the master key of the KDC database.
-        """
-        key_password_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of a KMS encrypted file containing
-        the password to the user provided key. For the self-signed certificate, this password
-        is generated by Dataproc.
-        """
-        keystore_password_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of a KMS encrypted file containing
-        the password to the user provided keystore. For the self-signed certificated, the password
-        is generated by Dataproc.
-        """
-        keystore_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of the keystore file used for SSL encryption.
-        If not provided, Dataproc will provide a self-signed certificate.
-        """
-        realm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the on-cluster Kerberos realm. If not specified, the
-        uppercased domain of hostnames will be the realm.
-        """
-        tgt_lifetime_hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The lifetime of the ticket granting ticket, in hours.
-        """
-        truststore_password_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of a KMS encrypted file
-        containing the password to the user provided truststore. For the self-signed
-        certificate, this password is generated by Dataproc.
-        """
-        truststore_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of the truststore file used for
-        SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-        """
-elif False:
-    ClusterClusterConfigSecurityConfigKerberosConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigSecurityConfigKerberosConfigArgsDict(TypedDict):
+    kms_key_uri: pulumi.Input[_builtins.str]
+    """
+    The URI of the KMS key used to encrypt various sensitive files.
+    """
+    root_principal_password_uri: pulumi.Input[_builtins.str]
+    """
+    The Cloud Storage URI of a KMS encrypted file
+    containing the root principal password.
+    """
+    cross_realm_trust_admin_server: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The admin server (IP or hostname) for the
+    remote trusted realm in a cross realm trust relationship.
+    """
+    cross_realm_trust_kdc: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The KDC (IP or hostname) for the
+    remote trusted realm in a cross realm trust relationship.
+    """
+    cross_realm_trust_realm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The remote realm the Dataproc on-cluster KDC will
+    trust, should the user enable cross realm trust.
+    """
+    cross_realm_trust_shared_password_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of a KMS
+    encrypted file containing the shared password between the on-cluster Kerberos realm
+    and the remote trusted realm, in a cross realm trust relationship.
+    """
+    enable_kerberos: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Flag to indicate whether to Kerberize the cluster.
+    """
+    kdc_db_key_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of a KMS encrypted file containing
+    the master key of the KDC database.
+    """
+    key_password_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of a KMS encrypted file containing
+    the password to the user provided key. For the self-signed certificate, this password
+    is generated by Dataproc.
+    """
+    keystore_password_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of a KMS encrypted file containing
+    the password to the user provided keystore. For the self-signed certificated, the password
+    is generated by Dataproc.
+    """
+    keystore_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of the keystore file used for SSL encryption.
+    If not provided, Dataproc will provide a self-signed certificate.
+    """
+    realm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the on-cluster Kerberos realm. If not specified, the
+    uppercased domain of hostnames will be the realm.
+    """
+    tgt_lifetime_hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The lifetime of the ticket granting ticket, in hours.
+    """
+    truststore_password_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of a KMS encrypted file
+    containing the password to the user provided truststore. For the self-signed
+    certificate, this password is generated by Dataproc.
+    """
+    truststore_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of the truststore file used for
+    SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigSecurityConfigKerberosConfigArgs:
@@ -5672,36 +5514,33 @@ class ClusterClusterConfigSecurityConfigKerberosConfigArgs:
         pulumi.set(self, "truststore_uri", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigSoftwareConfigArgsDict(TypedDict):
-        image_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Dataproc image version to use
-        for the cluster - this controls the sets of software versions
-        installed onto the nodes when you create clusters. If not specified, defaults to the
-        latest version. For a list of valid versions see
-        [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-        """
-        optional_components: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
+class ClusterClusterConfigSoftwareConfigArgsDict(TypedDict):
+    image_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Dataproc image version to use
+    for the cluster - this controls the sets of software versions
+    installed onto the nodes when you create clusters. If not specified, defaults to the
+    latest version. For a list of valid versions see
+    [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
+    """
+    optional_components: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
 
-        - - -
-        """
-        override_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A list of override and additional properties (key/value pairs)
-        used to modify various aspects of the common configuration files used when creating
-        a cluster. For a list of valid properties please see
-        [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A list of the properties used to set the daemon config files.
-        This will include any values supplied by the user via `cluster_config.software_config.override_properties`
-        """
-elif False:
-    ClusterClusterConfigSoftwareConfigArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
+    override_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A list of override and additional properties (key/value pairs)
+    used to modify various aspects of the common configuration files used when creating
+    a cluster. For a list of valid properties please see
+    [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A list of the properties used to set the daemon config files.
+    This will include any values supplied by the user via `cluster_config.software_config.override_properties`
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigSoftwareConfigArgs:
@@ -5794,55 +5633,52 @@ class ClusterClusterConfigSoftwareConfigArgs:
         pulumi.set(self, "properties", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigWorkerConfigArgsDict(TypedDict):
-        accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArgsDict']]]]
-        """
-        The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
-        """
-        disk_config: NotRequired[pulumi.Input['ClusterClusterConfigWorkerConfigDiskConfigArgsDict']]
-        """
-        Disk Config
-        """
-        image_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
-        for more information.
-        """
-        instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of worker instance names which have been assigned
-        to the cluster.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of a Google Compute Engine machine type
-        to create for the worker nodes. If not specified, GCP will default to a predetermined
-        computed value (currently `n1-standard-4`).
-        """
-        min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of a minimum generation of CPU family
-        for the master. If not specified, GCP will default to a predetermined computed value
-        for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-        for details about which CPU families are available (and defaulted) for each zone.
-        """
-        min_num_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
-        """
-        num_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of worker nodes to create.
-        If not specified, GCP will default to a predetermined computed value (currently 2).
-        There is currently a beta feature which allows you to run a
-        [Single Node Cluster](https://cloud.google.com/dataproc/docs/concepts/single-node-clusters).
-        In order to take advantage of this you need to set
-        `"dataproc:dataproc.allow.zero.workers" = "true"` in
-        `cluster_config.software_config.properties`
-        """
-elif False:
-    ClusterClusterConfigWorkerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigWorkerConfigArgsDict(TypedDict):
+    accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArgsDict']]]]
+    """
+    The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+    """
+    disk_config: NotRequired[pulumi.Input['ClusterClusterConfigWorkerConfigDiskConfigArgsDict']]
+    """
+    Disk Config
+    """
+    image_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
+    for more information.
+    """
+    instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of worker instance names which have been assigned
+    to the cluster.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of a Google Compute Engine machine type
+    to create for the worker nodes. If not specified, GCP will default to a predetermined
+    computed value (currently `n1-standard-4`).
+    """
+    min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of a minimum generation of CPU family
+    for the master. If not specified, GCP will default to a predetermined computed value
+    for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+    for details about which CPU families are available (and defaulted) for each zone.
+    """
+    min_num_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+    """
+    num_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of worker nodes to create.
+    If not specified, GCP will default to a predetermined computed value (currently 2).
+    There is currently a beta feature which allows you to run a
+    [Single Node Cluster](https://cloud.google.com/dataproc/docs/concepts/single-node-clusters).
+    In order to take advantage of this you need to set
+    `"dataproc:dataproc.allow.zero.workers" = "true"` in
+    `cluster_config.software_config.properties`
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigWorkerConfigArgs:
@@ -6005,24 +5841,21 @@ class ClusterClusterConfigWorkerConfigArgs:
         pulumi.set(self, "num_instances", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigWorkerConfigAcceleratorArgsDict(TypedDict):
-        accelerator_count: pulumi.Input[_builtins.int]
-        """
-        The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+class ClusterClusterConfigWorkerConfigAcceleratorArgsDict(TypedDict):
+    accelerator_count: pulumi.Input[_builtins.int]
+    """
+    The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
 
-        > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-        zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-        if you are trying to use accelerators in a given zone.
+    > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
+    zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
+    if you are trying to use accelerators in a given zone.
 
-        - - -
-        """
-        accelerator_type: pulumi.Input[_builtins.str]
-        """
-        The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
-        """
-elif False:
-    ClusterClusterConfigWorkerConfigAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
+    accelerator_type: pulumi.Input[_builtins.str]
+    """
+    The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigWorkerConfigAcceleratorArgs:
@@ -6073,31 +5906,28 @@ class ClusterClusterConfigWorkerConfigAcceleratorArgs:
         pulumi.set(self, "accelerator_type", value)
 
 
-if not MYPY:
-    class ClusterClusterConfigWorkerConfigDiskConfigArgsDict(TypedDict):
-        boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size of the primary disk attached to each worker node, specified
-        in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
-        computed value if not set (currently 500GB). Note: If SSDs are not
-        attached, it also contains the HDFS data blocks and Hadoop working directories.
-        """
-        boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The disk type of the primary disk attached to each node.
-        One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
-        """
-        local_ssd_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
-        """
-        num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of local SSD disks that will be
-        attached to each worker cluster node. Defaults to 0.
-        """
-elif False:
-    ClusterClusterConfigWorkerConfigDiskConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterClusterConfigWorkerConfigDiskConfigArgsDict(TypedDict):
+    boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size of the primary disk attached to each worker node, specified
+    in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
+    computed value if not set (currently 500GB). Note: If SSDs are not
+    attached, it also contains the HDFS data blocks and Hadoop working directories.
+    """
+    boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The disk type of the primary disk attached to each node.
+    One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of local SSD disks that will be
+    attached to each worker cluster node. Defaults to 0.
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigWorkerConfigDiskConfigArgs:
@@ -6180,13 +6010,10 @@ class ClusterClusterConfigWorkerConfigDiskConfigArgs:
         pulumi.set(self, "num_local_ssds", value)
 
 
-if not MYPY:
-    class ClusterIAMBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ClusterIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterIAMBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ClusterIAMBindingConditionArgs:
@@ -6227,13 +6054,10 @@ class ClusterIAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ClusterIAMMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ClusterIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterIAMMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ClusterIAMMemberConditionArgs:
@@ -6274,31 +6098,28 @@ class ClusterIAMMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ClusterVirtualClusterConfigArgsDict(TypedDict):
-        auxiliary_services_config: NotRequired[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArgsDict']]
-        """
-        Configuration of auxiliary services used by this cluster. 
-        Structure defined below.
-        """
-        kubernetes_cluster_config: NotRequired[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArgsDict']]
-        """
-        The configuration for running the Dataproc cluster on Kubernetes.
-        Structure defined below.
-        - - -
-        """
-        staging_bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage staging bucket used to stage files,
-        such as Hadoop jars, between client machines and the cluster.
-        Note: If you don't explicitly specify a `staging_bucket`
-        then GCP will auto create / assign one for you. However, you are not guaranteed
-        an auto generated bucket which is solely dedicated to your cluster; it may be shared
-        with other clusters in the same region/zone also choosing to use the auto generation
-        option.
-        """
-elif False:
-    ClusterVirtualClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterVirtualClusterConfigArgsDict(TypedDict):
+    auxiliary_services_config: NotRequired[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArgsDict']]
+    """
+    Configuration of auxiliary services used by this cluster. 
+    Structure defined below.
+    """
+    kubernetes_cluster_config: NotRequired[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArgsDict']]
+    """
+    The configuration for running the Dataproc cluster on Kubernetes.
+    Structure defined below.
+    - - -
+    """
+    staging_bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage staging bucket used to stage files,
+    such as Hadoop jars, between client machines and the cluster.
+    Note: If you don't explicitly specify a `staging_bucket`
+    then GCP will auto create / assign one for you. However, you are not guaranteed
+    an auto generated bucket which is solely dedicated to your cluster; it may be shared
+    with other clusters in the same region/zone also choosing to use the auto generation
+    option.
+    """
 
 @pulumi.input_type
 class ClusterVirtualClusterConfigArgs:
@@ -6373,18 +6194,15 @@ class ClusterVirtualClusterConfigArgs:
         pulumi.set(self, "staging_bucket", value)
 
 
-if not MYPY:
-    class ClusterVirtualClusterConfigAuxiliaryServicesConfigArgsDict(TypedDict):
-        metastore_config: NotRequired[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgsDict']]
-        """
-        The Hive Metastore configuration for this workload.
-        """
-        spark_history_server_config: NotRequired[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgsDict']]
-        """
-        The Spark History Server configuration for the workload.
-        """
-elif False:
-    ClusterVirtualClusterConfigAuxiliaryServicesConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterVirtualClusterConfigAuxiliaryServicesConfigArgsDict(TypedDict):
+    metastore_config: NotRequired[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgsDict']]
+    """
+    The Hive Metastore configuration for this workload.
+    """
+    spark_history_server_config: NotRequired[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgsDict']]
+    """
+    The Spark History Server configuration for the workload.
+    """
 
 @pulumi.input_type
 class ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs:
@@ -6425,14 +6243,11 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs:
         pulumi.set(self, "spark_history_server_config", value)
 
 
-if not MYPY:
-    class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgsDict(TypedDict):
-        dataproc_metastore_service: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource name of an existing Dataproc Metastore service.
-        """
-elif False:
-    ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgsDict(TypedDict):
+    dataproc_metastore_service: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource name of an existing Dataproc Metastore service.
+    """
 
 @pulumi.input_type
 class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs:
@@ -6457,15 +6272,12 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs:
         pulumi.set(self, "dataproc_metastore_service", value)
 
 
-if not MYPY:
-    class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgsDict(TypedDict):
-        dataproc_cluster: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-        - - -
-        """
-elif False:
-    ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgsDict(TypedDict):
+    dataproc_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+    - - -
+    """
 
 @pulumi.input_type
 class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs:
@@ -6492,25 +6304,22 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig
         pulumi.set(self, "dataproc_cluster", value)
 
 
-if not MYPY:
-    class ClusterVirtualClusterConfigKubernetesClusterConfigArgsDict(TypedDict):
-        gke_cluster_config: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgsDict']
-        """
-        The configuration for running the Dataproc cluster on GKE.
-        """
-        kubernetes_software_config: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgsDict']
-        """
-        The software configuration for this Dataproc cluster running on Kubernetes.
-        """
-        kubernetes_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A namespace within the Kubernetes cluster to deploy into. 
-        If this namespace does not exist, it is created.
-        If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
-        If not specified, the name of the Dataproc Cluster is used.
-        """
-elif False:
-    ClusterVirtualClusterConfigKubernetesClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterVirtualClusterConfigKubernetesClusterConfigArgsDict(TypedDict):
+    gke_cluster_config: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgsDict']
+    """
+    The configuration for running the Dataproc cluster on GKE.
+    """
+    kubernetes_software_config: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgsDict']
+    """
+    The software configuration for this Dataproc cluster running on Kubernetes.
+    """
+    kubernetes_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A namespace within the Kubernetes cluster to deploy into. 
+    If this namespace does not exist, it is created.
+    If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
+    If not specified, the name of the Dataproc Cluster is used.
+    """
 
 @pulumi.input_type
 class ClusterVirtualClusterConfigKubernetesClusterConfigArgs:
@@ -6571,21 +6380,18 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigArgs:
         pulumi.set(self, "kubernetes_namespace", value)
 
 
-if not MYPY:
-    class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgsDict(TypedDict):
-        gke_cluster_target: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
-        (the GKE cluster can be zonal or regional)
-        """
-        node_pool_targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgsDict']]]]
-        """
-        GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
-        GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
-        Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
-        """
-elif False:
-    ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgsDict(TypedDict):
+    gke_cluster_target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
+    (the GKE cluster can be zonal or regional)
+    """
+    node_pool_targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgsDict']]]]
+    """
+    GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
+    GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
+    Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
+    """
 
 @pulumi.input_type
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs:
@@ -6632,26 +6438,23 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs:
         pulumi.set(self, "node_pool_targets", value)
 
 
-if not MYPY:
-    class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgsDict(TypedDict):
-        node_pool: pulumi.Input[_builtins.str]
-        """
-        The target GKE node pool.
-        """
-        roles: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The roles associated with the GKE node pool. 
-        One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
-        """
-        node_pool_config: NotRequired[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgsDict']]
-        """
-        The configuration for the GKE node pool. 
-        If specified, Dataproc attempts to create a node pool with the specified shape.
-        If one with the same name already exists, it is verified against all specified fields.
-        If a field differs, the virtual cluster creation will fail.
-        """
-elif False:
-    ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgsDict(TypedDict):
+    node_pool: pulumi.Input[_builtins.str]
+    """
+    The target GKE node pool.
+    """
+    roles: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The roles associated with the GKE node pool. 
+    One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+    """
+    node_pool_config: NotRequired[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgsDict']]
+    """
+    The configuration for the GKE node pool. 
+    If specified, Dataproc attempts to create a node pool with the specified shape.
+    If one with the same name already exists, it is verified against all specified fields.
+    If a field differs, the virtual cluster creation will fail.
+    """
 
 @pulumi.input_type
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs:
@@ -6714,25 +6517,22 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
         pulumi.set(self, "node_pool_config", value)
 
 
-if not MYPY:
-    class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgsDict(TypedDict):
-        locations: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The list of Compute Engine zones where node pool nodes associated 
-        with a Dataproc on GKE virtual cluster will be located.
-        - - -
-        """
-        autoscaling: NotRequired[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgsDict']]
-        """
-        The autoscaler configuration for this node pool. 
-        The autoscaler is enabled only when a valid configuration is present.
-        """
-        config: NotRequired[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgsDict']]
-        """
-        The node pool configuration.
-        """
-elif False:
-    ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgsDict(TypedDict):
+    locations: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of Compute Engine zones where node pool nodes associated 
+    with a Dataproc on GKE virtual cluster will be located.
+    - - -
+    """
+    autoscaling: NotRequired[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgsDict']]
+    """
+    The autoscaler configuration for this node pool. 
+    The autoscaler is enabled only when a valid configuration is present.
+    """
+    config: NotRequired[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgsDict']]
+    """
+    The node pool configuration.
+    """
 
 @pulumi.input_type
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs:
@@ -6794,18 +6594,15 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
         pulumi.set(self, "config", value)
 
 
-if not MYPY:
-    class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgsDict(TypedDict):
-        max_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
-        """
-        min_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
-        """
-elif False:
-    ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgsDict(TypedDict):
+    max_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
+    """
+    min_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+    """
 
 @pulumi.input_type
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs:
@@ -6846,35 +6643,32 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
         pulumi.set(self, "min_node_count", value)
 
 
-if not MYPY:
-    class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgsDict(TypedDict):
-        local_ssd_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of local SSD disks to attach to the node, 
-        which is limited by the maximum number of disks allowable per zone.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of a Compute Engine machine type.
-        """
-        min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Minimum CPU platform to be used by this instance. 
-        The instance may be scheduled on the specified or a newer CPU platform.
-        Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
-        """
-        preemptible: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the nodes are created as preemptible VM instances. 
-        Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
-        CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
-        """
-        spot: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
-        """
-elif False:
-    ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgsDict(TypedDict):
+    local_ssd_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of local SSD disks to attach to the node, 
+    which is limited by the maximum number of disks allowable per zone.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of a Compute Engine machine type.
+    """
+    min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Minimum CPU platform to be used by this instance. 
+    The instance may be scheduled on the specified or a newer CPU platform.
+    Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+    """
+    preemptible: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the nodes are created as preemptible VM instances. 
+    Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+    CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+    """
+    spot: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+    """
 
 @pulumi.input_type
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs:
@@ -6973,21 +6767,18 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
         pulumi.set(self, "spot", value)
 
 
-if not MYPY:
-    class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgsDict(TypedDict):
-        component_version: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        The components that should be installed in this Dataproc cluster. The key must be a string from the   
-        KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
-        * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The properties to set on daemon config files. Property keys are specified in prefix:property format, 
-        for example spark:spark.kubernetes.container.image.
-        """
-elif False:
-    ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgsDict(TypedDict):
+    component_version: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    The components that should be installed in this Dataproc cluster. The key must be a string from the   
+    KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+    * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+    for example spark:spark.kubernetes.container.image.
+    """
 
 @pulumi.input_type
 class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs:
@@ -7033,18 +6824,15 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
         pulumi.set(self, "properties", value)
 
 
-if not MYPY:
-    class GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict(TypedDict):
-        default_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
-        """
-        default_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default Dataproc version to use for applications submitted to this application environment
-        """
-elif False:
-    GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict(TypedDict):
+    default_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
+    """
+    default_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default Dataproc version to use for applications submitted to this application environment
+    """
 
 @pulumi.input_type
 class GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs:
@@ -7085,14 +6873,11 @@ class GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs:
         pulumi.set(self, "default_version", value)
 
 
-if not MYPY:
-    class GdcServiceInstanceGdceClusterArgsDict(TypedDict):
-        gdce_cluster: pulumi.Input[_builtins.str]
-        """
-        Gdce cluster resource id.
-        """
-elif False:
-    GdcServiceInstanceGdceClusterArgsDict: TypeAlias = Mapping[str, Any]
+class GdcServiceInstanceGdceClusterArgsDict(TypedDict):
+    gdce_cluster: pulumi.Input[_builtins.str]
+    """
+    Gdce cluster resource id.
+    """
 
 @pulumi.input_type
 class GdcServiceInstanceGdceClusterArgs:
@@ -7116,11 +6901,8 @@ class GdcServiceInstanceGdceClusterArgs:
         pulumi.set(self, "gdce_cluster", value)
 
 
-if not MYPY:
-    class GdcServiceInstanceSparkServiceInstanceConfigArgsDict(TypedDict):
-        pass
-elif False:
-    GdcServiceInstanceSparkServiceInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GdcServiceInstanceSparkServiceInstanceConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class GdcServiceInstanceSparkServiceInstanceConfigArgs:
@@ -7128,34 +6910,31 @@ class GdcServiceInstanceSparkServiceInstanceConfigArgs:
         pass
 
 
-if not MYPY:
-    class GdcSparkApplicationPysparkApplicationConfigArgsDict(TypedDict):
-        main_python_file_uri: pulumi.Input[_builtins.str]
-        """
-        The HCFS URI of the main Python file to use as the driver. Must be a .py file.
-        """
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
-        """
-        python_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-        """
-elif False:
-    GdcSparkApplicationPysparkApplicationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GdcSparkApplicationPysparkApplicationConfigArgsDict(TypedDict):
+    main_python_file_uri: pulumi.Input[_builtins.str]
+    """
+    The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+    """
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+    """
+    python_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+    """
 
 @pulumi.input_type
 class GdcSparkApplicationPysparkApplicationConfigArgs:
@@ -7259,34 +7038,31 @@ class GdcSparkApplicationPysparkApplicationConfigArgs:
         pulumi.set(self, "python_file_uris", value)
 
 
-if not MYPY:
-    class GdcSparkApplicationSparkApplicationConfigArgsDict(TypedDict):
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: `.jar`, `.tar`, `.tar.gz`, `.tgz`, and `.zip`.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver. Do not include arguments that can be set as application properties, such as `--conf`, since a collision can occur that causes an incorrect application submission.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of files to be placed in the working directory of each executor.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
-        """
-        main_class: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
-        """
-        main_jar_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the jar file that contains the main class.
-        """
-elif False:
-    GdcSparkApplicationSparkApplicationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GdcSparkApplicationSparkApplicationConfigArgsDict(TypedDict):
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: `.jar`, `.tar`, `.tar.gz`, `.tgz`, and `.zip`.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver. Do not include arguments that can be set as application properties, such as `--conf`, since a collision can occur that causes an incorrect application submission.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of files to be placed in the working directory of each executor.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+    """
+    main_class: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
+    """
+    main_jar_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the jar file that contains the main class.
+    """
 
 @pulumi.input_type
 class GdcSparkApplicationSparkApplicationConfigArgs:
@@ -7391,26 +7167,23 @@ class GdcSparkApplicationSparkApplicationConfigArgs:
         pulumi.set(self, "main_jar_file_uri", value)
 
 
-if not MYPY:
-    class GdcSparkApplicationSparkRApplicationConfigArgsDict(TypedDict):
-        main_r_file_uri: pulumi.Input[_builtins.str]
-        """
-        The HCFS URI of the main R file to use as the driver. Must be a .R file.
-        """
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
-        """
-elif False:
-    GdcSparkApplicationSparkRApplicationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GdcSparkApplicationSparkRApplicationConfigArgsDict(TypedDict):
+    main_r_file_uri: pulumi.Input[_builtins.str]
+    """
+    The HCFS URI of the main R file to use as the driver. Must be a .R file.
+    """
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+    """
 
 @pulumi.input_type
 class GdcSparkApplicationSparkRApplicationConfigArgs:
@@ -7482,27 +7255,24 @@ class GdcSparkApplicationSparkRApplicationConfigArgs:
         pulumi.set(self, "file_uris", value)
 
 
-if not MYPY:
-    class GdcSparkApplicationSparkSqlApplicationConfigArgsDict(TypedDict):
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to be added to the Spark CLASSPATH.
-        """
-        query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the script that contains SQL queries.
-        """
-        query_list: NotRequired[pulumi.Input['GdcSparkApplicationSparkSqlApplicationConfigQueryListArgsDict']]
-        """
-        Represents a list of queries.
-        Structure is documented below.
-        """
-        script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-        """
-elif False:
-    GdcSparkApplicationSparkSqlApplicationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GdcSparkApplicationSparkSqlApplicationConfigArgsDict(TypedDict):
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to be added to the Spark CLASSPATH.
+    """
+    query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the script that contains SQL queries.
+    """
+    query_list: NotRequired[pulumi.Input['GdcSparkApplicationSparkSqlApplicationConfigQueryListArgsDict']]
+    """
+    Represents a list of queries.
+    Structure is documented below.
+    """
+    script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+    """
 
 @pulumi.input_type
 class GdcSparkApplicationSparkSqlApplicationConfigArgs:
@@ -7577,14 +7347,11 @@ class GdcSparkApplicationSparkSqlApplicationConfigArgs:
         pulumi.set(self, "script_variables", value)
 
 
-if not MYPY:
-    class GdcSparkApplicationSparkSqlApplicationConfigQueryListArgsDict(TypedDict):
-        queries: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The queries to run.
-        """
-elif False:
-    GdcSparkApplicationSparkSqlApplicationConfigQueryListArgsDict: TypeAlias = Mapping[str, Any]
+class GdcSparkApplicationSparkSqlApplicationConfigQueryListArgsDict(TypedDict):
+    queries: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The queries to run.
+    """
 
 @pulumi.input_type
 class GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs:
@@ -7608,44 +7375,41 @@ class GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs:
         pulumi.set(self, "queries", value)
 
 
-if not MYPY:
-    class JobHadoopConfigArgsDict(TypedDict):
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
-        """
-        logging_config: NotRequired[pulumi.Input['JobHadoopConfigLoggingConfigArgsDict']]
-        """
-        The runtime logging config of the job
-        """
-        main_class: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
-        """
-        main_jar_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..
+class JobHadoopConfigArgsDict(TypedDict):
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+    """
+    logging_config: NotRequired[pulumi.Input['JobHadoopConfigLoggingConfigArgsDict']]
+    """
+    The runtime logging config of the job
+    """
+    main_class: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+    """
+    main_jar_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..
 
-        * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-elif False:
-    JobHadoopConfigArgsDict: TypeAlias = Mapping[str, Any]
+    * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
 
 @pulumi.input_type
 class JobHadoopConfigArgs:
@@ -7786,14 +7550,11 @@ class JobHadoopConfigArgs:
         pulumi.set(self, "properties", value)
 
 
-if not MYPY:
-    class JobHadoopConfigLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
-        """
-elif False:
-    JobHadoopConfigLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class JobHadoopConfigLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+    """
 
 @pulumi.input_type
 class JobHadoopConfigLoggingConfigArgs:
@@ -7817,36 +7578,33 @@ class JobHadoopConfigLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class JobHiveConfigArgsDict(TypedDict):
-        continue_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/hive/conf/hive-site.xml`, and classes in user code..
-        """
-        query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HCFS URI of file containing Hive script to execute as the job.
-        Conflicts with `query_list`
-        """
-        query_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of Hive queries or statements to execute as part of the job.
-        Conflicts with `query_file_uri`
-        """
-        script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
-        """
-elif False:
-    JobHiveConfigArgsDict: TypeAlias = Mapping[str, Any]
+class JobHiveConfigArgsDict(TypedDict):
+    continue_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/hive/conf/hive-site.xml`, and classes in user code..
+    """
+    query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HCFS URI of file containing Hive script to execute as the job.
+    Conflicts with `query_list`
+    """
+    query_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of Hive queries or statements to execute as part of the job.
+    Conflicts with `query_file_uri`
+    """
+    script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
+    """
 
 @pulumi.input_type
 class JobHiveConfigArgs:
@@ -7955,13 +7713,10 @@ class JobHiveConfigArgs:
         pulumi.set(self, "script_variables", value)
 
 
-if not MYPY:
-    class JobIAMBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    JobIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class JobIAMBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class JobIAMBindingConditionArgs:
@@ -8002,13 +7757,10 @@ class JobIAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class JobIAMMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    JobIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class JobIAMMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class JobIAMMemberConditionArgs:
@@ -8049,42 +7801,39 @@ class JobIAMMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class JobPigConfigArgsDict(TypedDict):
-        continue_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+class JobPigConfigArgsDict(TypedDict):
+    continue_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
 
-        * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-        logging_config: NotRequired[pulumi.Input['JobPigConfigLoggingConfigArgsDict']]
-        """
-        The runtime logging config of the job
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
-        """
-        query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HCFS URI of file containing Hive script to execute as the job.
-        Conflicts with `query_list`
-        """
-        query_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of Hive queries or statements to execute as part of the job.
-        Conflicts with `query_file_uri`
-        """
-        script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping of query variable names to values (equivalent to the Pig command: `name=[value]`).
-        """
-elif False:
-    JobPigConfigArgsDict: TypeAlias = Mapping[str, Any]
+    * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
+    logging_config: NotRequired[pulumi.Input['JobPigConfigLoggingConfigArgsDict']]
+    """
+    The runtime logging config of the job
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
+    """
+    query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HCFS URI of file containing Hive script to execute as the job.
+    Conflicts with `query_list`
+    """
+    query_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of Hive queries or statements to execute as part of the job.
+    Conflicts with `query_file_uri`
+    """
+    script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping of query variable names to values (equivalent to the Pig command: `name=[value]`).
+    """
 
 @pulumi.input_type
 class JobPigConfigArgs:
@@ -8213,14 +7962,11 @@ class JobPigConfigArgs:
         pulumi.set(self, "script_variables", value)
 
 
-if not MYPY:
-    class JobPigConfigLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
-        """
-elif False:
-    JobPigConfigLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class JobPigConfigLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+    """
 
 @pulumi.input_type
 class JobPigConfigLoggingConfigArgs:
@@ -8244,18 +7990,15 @@ class JobPigConfigLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class JobPlacementArgsDict(TypedDict):
-        cluster_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cluster where the job will be submitted
-        """
-        cluster_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted
-        """
-elif False:
-    JobPlacementArgsDict: TypeAlias = Mapping[str, Any]
+class JobPlacementArgsDict(TypedDict):
+    cluster_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cluster where the job will be submitted
+    """
+    cluster_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted
+    """
 
 @pulumi.input_type
 class JobPlacementArgs:
@@ -8295,42 +8038,39 @@ class JobPlacementArgs:
         pulumi.set(self, "cluster_uuid", value)
 
 
-if not MYPY:
-    class JobPrestoConfigArgsDict(TypedDict):
-        client_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Presto client tags to attach to this query.
-        """
-        continue_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
-        """
-        logging_config: NotRequired[pulumi.Input['JobPrestoConfigLoggingConfigArgsDict']]
-        """
-        The runtime logging config of the job
-        """
-        output_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The format in which query output will be displayed. See the Presto documentation for supported output formats.
+class JobPrestoConfigArgsDict(TypedDict):
+    client_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Presto client tags to attach to this query.
+    """
+    continue_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+    """
+    logging_config: NotRequired[pulumi.Input['JobPrestoConfigLoggingConfigArgsDict']]
+    """
+    The runtime logging config of the job
+    """
+    output_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The format in which query output will be displayed. See the Presto documentation for supported output formats.
 
-        * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
-        """
-        query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the script that contains SQL queries.
-        Conflicts with `query_list`
-        """
-        query_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of SQL queries or statements to execute as part of the job.
-        Conflicts with `query_file_uri`
-        """
-elif False:
-    JobPrestoConfigArgsDict: TypeAlias = Mapping[str, Any]
+    * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+    """
+    query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the script that contains SQL queries.
+    Conflicts with `query_list`
+    """
+    query_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of SQL queries or statements to execute as part of the job.
+    Conflicts with `query_file_uri`
+    """
 
 @pulumi.input_type
 class JobPrestoConfigArgs:
@@ -8459,14 +8199,11 @@ class JobPrestoConfigArgs:
         pulumi.set(self, "query_lists", value)
 
 
-if not MYPY:
-    class JobPrestoConfigLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
-        """
-elif False:
-    JobPrestoConfigLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class JobPrestoConfigLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+    """
 
 @pulumi.input_type
 class JobPrestoConfigLoggingConfigArgs:
@@ -8490,44 +8227,41 @@ class JobPrestoConfigLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class JobPysparkConfigArgsDict(TypedDict):
-        main_python_file_uri: pulumi.Input[_builtins.str]
-        """
-        The HCFS URI of the main Python file to use as the driver. Must be a .py file.
-        """
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
-        """
-        logging_config: NotRequired[pulumi.Input['JobPysparkConfigLoggingConfigArgsDict']]
-        """
-        The runtime logging config of the job
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
+class JobPysparkConfigArgsDict(TypedDict):
+    main_python_file_uri: pulumi.Input[_builtins.str]
+    """
+    The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+    """
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+    """
+    logging_config: NotRequired[pulumi.Input['JobPysparkConfigLoggingConfigArgsDict']]
+    """
+    The runtime logging config of the job
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
 
-        * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-        python_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-        """
-elif False:
-    JobPysparkConfigArgsDict: TypeAlias = Mapping[str, Any]
+    * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
+    python_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+    """
 
 @pulumi.input_type
 class JobPysparkConfigArgs:
@@ -8667,14 +8401,11 @@ class JobPysparkConfigArgs:
         pulumi.set(self, "python_file_uris", value)
 
 
-if not MYPY:
-    class JobPysparkConfigLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
-        """
-elif False:
-    JobPysparkConfigLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class JobPysparkConfigLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+    """
 
 @pulumi.input_type
 class JobPysparkConfigLoggingConfigArgs:
@@ -8698,14 +8429,11 @@ class JobPysparkConfigLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class JobReferenceArgsDict(TypedDict):
-        job_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a means to perform retries without creating duplicate jobs
-        """
-elif False:
-    JobReferenceArgsDict: TypeAlias = Mapping[str, Any]
+class JobReferenceArgsDict(TypedDict):
+    job_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a means to perform retries without creating duplicate jobs
+    """
 
 @pulumi.input_type
 class JobReferenceArgs:
@@ -8730,18 +8458,15 @@ class JobReferenceArgs:
         pulumi.set(self, "job_id", value)
 
 
-if not MYPY:
-    class JobSchedulingArgsDict(TypedDict):
-        max_failures_per_hour: pulumi.Input[_builtins.int]
-        """
-        Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-        """
-        max_failures_total: pulumi.Input[_builtins.int]
-        """
-        Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-        """
-elif False:
-    JobSchedulingArgsDict: TypeAlias = Mapping[str, Any]
+class JobSchedulingArgsDict(TypedDict):
+    max_failures_per_hour: pulumi.Input[_builtins.int]
+    """
+    Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+    """
+    max_failures_total: pulumi.Input[_builtins.int]
+    """
+    Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+    """
 
 @pulumi.input_type
 class JobSchedulingArgs:
@@ -8780,46 +8505,43 @@ class JobSchedulingArgs:
         pulumi.set(self, "max_failures_total", value)
 
 
-if not MYPY:
-    class JobSparkConfigArgsDict(TypedDict):
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
-        """
-        logging_config: NotRequired[pulumi.Input['JobSparkConfigLoggingConfigArgsDict']]
-        """
-        The runtime logging config of the job
-        """
-        main_class: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The class containing the main method of the driver. Must be in a
-        provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
-        """
-        main_jar_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of jar file containing
-        the driver jar. Conflicts with `main_class`
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
+class JobSparkConfigArgsDict(TypedDict):
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+    """
+    logging_config: NotRequired[pulumi.Input['JobSparkConfigLoggingConfigArgsDict']]
+    """
+    The runtime logging config of the job
+    """
+    main_class: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The class containing the main method of the driver. Must be in a
+    provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
+    """
+    main_jar_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of jar file containing
+    the driver jar. Conflicts with `main_class`
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
 
-        * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-elif False:
-    JobSparkConfigArgsDict: TypeAlias = Mapping[str, Any]
+    * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
 
 @pulumi.input_type
 class JobSparkConfigArgs:
@@ -8964,14 +8686,11 @@ class JobSparkConfigArgs:
         pulumi.set(self, "properties", value)
 
 
-if not MYPY:
-    class JobSparkConfigLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
-        """
-elif False:
-    JobSparkConfigLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class JobSparkConfigLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+    """
 
 @pulumi.input_type
 class JobSparkConfigLoggingConfigArgs:
@@ -8995,38 +8714,35 @@ class JobSparkConfigLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class JobSparksqlConfigArgsDict(TypedDict):
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to be added to the Spark CLASSPATH.
+class JobSparksqlConfigArgsDict(TypedDict):
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to be added to the Spark CLASSPATH.
 
-        * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-        logging_config: NotRequired[pulumi.Input['JobSparksqlConfigLoggingConfigArgsDict']]
-        """
-        The runtime logging config of the job
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
-        """
-        query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the script that contains SQL queries.
-        Conflicts with `query_list`
-        """
-        query_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of SQL queries or statements to execute as part of the job.
-        Conflicts with `query_file_uri`
-        """
-        script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
-        """
-elif False:
-    JobSparksqlConfigArgsDict: TypeAlias = Mapping[str, Any]
+    * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
+    logging_config: NotRequired[pulumi.Input['JobSparksqlConfigLoggingConfigArgsDict']]
+    """
+    The runtime logging config of the job
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+    """
+    query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the script that contains SQL queries.
+    Conflicts with `query_list`
+    """
+    query_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of SQL queries or statements to execute as part of the job.
+    Conflicts with `query_file_uri`
+    """
+    script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+    """
 
 @pulumi.input_type
 class JobSparksqlConfigArgs:
@@ -9139,14 +8855,11 @@ class JobSparksqlConfigArgs:
         pulumi.set(self, "script_variables", value)
 
 
-if not MYPY:
-    class JobSparksqlConfigLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
-        """
-elif False:
-    JobSparksqlConfigLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class JobSparksqlConfigLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+    """
 
 @pulumi.input_type
 class JobSparksqlConfigLoggingConfigArgs:
@@ -9170,26 +8883,23 @@ class JobSparksqlConfigLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class JobStatusArgsDict(TypedDict):
-        details: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional job state details, such as an error description if the state is ERROR.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A state message specifying the overall job state.
-        """
-        state_start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time when this state was entered.
-        """
-        substate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional state information, which includes status reported by the agent.
-        """
-elif False:
-    JobStatusArgsDict: TypeAlias = Mapping[str, Any]
+class JobStatusArgsDict(TypedDict):
+    details: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional job state details, such as an error description if the state is ERROR.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A state message specifying the overall job state.
+    """
+    state_start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time when this state was entered.
+    """
+    substate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional state information, which includes status reported by the agent.
+    """
 
 @pulumi.input_type
 class JobStatusArgs:
@@ -9262,13 +8972,10 @@ class JobStatusArgs:
         pulumi.set(self, "substate", value)
 
 
-if not MYPY:
-    class MetastoreDatabaseIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    MetastoreDatabaseIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreDatabaseIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class MetastoreDatabaseIamBindingConditionArgs:
@@ -9309,13 +9016,10 @@ class MetastoreDatabaseIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class MetastoreDatabaseIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    MetastoreDatabaseIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreDatabaseIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class MetastoreDatabaseIamMemberConditionArgs:
@@ -9356,23 +9060,20 @@ class MetastoreDatabaseIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class MetastoreFederationBackendMetastoreArgsDict(TypedDict):
-        metastore_type: pulumi.Input[_builtins.str]
-        """
-        The type of the backend metastore.
-        Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
-        """
-        rank: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-elif False:
-    MetastoreFederationBackendMetastoreArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreFederationBackendMetastoreArgsDict(TypedDict):
+    metastore_type: pulumi.Input[_builtins.str]
+    """
+    The type of the backend metastore.
+    Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
+    """
+    rank: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
 
 @pulumi.input_type
 class MetastoreFederationBackendMetastoreArgs:
@@ -9428,13 +9129,10 @@ class MetastoreFederationBackendMetastoreArgs:
         pulumi.set(self, "rank", value)
 
 
-if not MYPY:
-    class MetastoreFederationIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    MetastoreFederationIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreFederationIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class MetastoreFederationIamBindingConditionArgs:
@@ -9475,13 +9173,10 @@ class MetastoreFederationIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class MetastoreFederationIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    MetastoreFederationIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreFederationIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class MetastoreFederationIamMemberConditionArgs:
@@ -9522,15 +9217,12 @@ class MetastoreFederationIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class MetastoreServiceEncryptionConfigArgsDict(TypedDict):
-        kms_key: pulumi.Input[_builtins.str]
-        """
-        The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
-        Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
-        """
-elif False:
-    MetastoreServiceEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceEncryptionConfigArgsDict(TypedDict):
+    kms_key: pulumi.Input[_builtins.str]
+    """
+    The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+    Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+    """
 
 @pulumi.input_type
 class MetastoreServiceEncryptionConfigArgs:
@@ -9556,39 +9248,36 @@ class MetastoreServiceEncryptionConfigArgs:
         pulumi.set(self, "kms_key", value)
 
 
-if not MYPY:
-    class MetastoreServiceHiveMetastoreConfigArgsDict(TypedDict):
-        version: pulumi.Input[_builtins.str]
-        """
-        The Hive metastore schema version.
-        """
-        auxiliary_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgsDict']]]]
-        """
-        A mapping of Hive metastore version to the auxiliary version configuration.
-        When specified, a secondary Hive metastore service is created along with the primary service.
-        All auxiliary versions must be less than the service's primary version.
-        The key is the auxiliary service name and it must match the regular expression a-z?.
-        This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
-        Structure is documented below.
-        """
-        config_overrides: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-        The mappings override system defaults (some keys cannot be overridden)
-        """
-        endpoint_protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
-        Default value is `THRIFT`.
-        Possible values are: `THRIFT`, `GRPC`.
-        """
-        kerberos_config: NotRequired[pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArgsDict']]
-        """
-        Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
-        Structure is documented below.
-        """
-elif False:
-    MetastoreServiceHiveMetastoreConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceHiveMetastoreConfigArgsDict(TypedDict):
+    version: pulumi.Input[_builtins.str]
+    """
+    The Hive metastore schema version.
+    """
+    auxiliary_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgsDict']]]]
+    """
+    A mapping of Hive metastore version to the auxiliary version configuration.
+    When specified, a secondary Hive metastore service is created along with the primary service.
+    All auxiliary versions must be less than the service's primary version.
+    The key is the auxiliary service name and it must match the regular expression a-z?.
+    This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+    Structure is documented below.
+    """
+    config_overrides: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+    The mappings override system defaults (some keys cannot be overridden)
+    """
+    endpoint_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+    Default value is `THRIFT`.
+    Possible values are: `THRIFT`, `GRPC`.
+    """
+    kerberos_config: NotRequired[pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArgsDict']]
+    """
+    Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class MetastoreServiceHiveMetastoreConfigArgs:
@@ -9694,23 +9383,20 @@ class MetastoreServiceHiveMetastoreConfigArgs:
         pulumi.set(self, "kerberos_config", value)
 
 
-if not MYPY:
-    class MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        version: pulumi.Input[_builtins.str]
-        """
-        The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
-        """
-        config_overrides: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
-        If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
-        """
-elif False:
-    MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    version: pulumi.Input[_builtins.str]
+    """
+    The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+    """
+    config_overrides: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+    If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+    """
 
 @pulumi.input_type
 class MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs:
@@ -9767,23 +9453,20 @@ class MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs:
         pulumi.set(self, "config_overrides", value)
 
 
-if not MYPY:
-    class MetastoreServiceHiveMetastoreConfigKerberosConfigArgsDict(TypedDict):
-        keytab: pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgsDict']
-        """
-        A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
-        Structure is documented below.
-        """
-        krb5_config_gcs_uri: pulumi.Input[_builtins.str]
-        """
-        A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
-        """
-        principal: pulumi.Input[_builtins.str]
-        """
-        A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
-        """
-elif False:
-    MetastoreServiceHiveMetastoreConfigKerberosConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceHiveMetastoreConfigKerberosConfigArgsDict(TypedDict):
+    keytab: pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgsDict']
+    """
+    A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+    Structure is documented below.
+    """
+    krb5_config_gcs_uri: pulumi.Input[_builtins.str]
+    """
+    A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+    """
+    principal: pulumi.Input[_builtins.str]
+    """
+    A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+    """
 
 @pulumi.input_type
 class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs:
@@ -9839,15 +9522,12 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs:
         pulumi.set(self, "principal", value)
 
 
-if not MYPY:
-    class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgsDict(TypedDict):
-        cloud_secret: pulumi.Input[_builtins.str]
-        """
-        The relative resource name of a Secret Manager secret version, in the following form:
-        "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
-        """
-elif False:
-    MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgsDict(TypedDict):
+    cloud_secret: pulumi.Input[_builtins.str]
+    """
+    The relative resource name of a Secret Manager secret version, in the following form:
+    "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+    """
 
 @pulumi.input_type
 class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs:
@@ -9873,13 +9553,10 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs:
         pulumi.set(self, "cloud_secret", value)
 
 
-if not MYPY:
-    class MetastoreServiceIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    MetastoreServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class MetastoreServiceIamBindingConditionArgs:
@@ -9920,13 +9597,10 @@ class MetastoreServiceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class MetastoreServiceIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    MetastoreServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class MetastoreServiceIamMemberConditionArgs:
@@ -9967,19 +9641,16 @@ class MetastoreServiceIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class MetastoreServiceMaintenanceWindowArgsDict(TypedDict):
-        day_of_week: pulumi.Input[_builtins.str]
-        """
-        The day of week, when the window starts.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        hour_of_day: pulumi.Input[_builtins.int]
-        """
-        The hour of day (0-23) when the window starts.
-        """
-elif False:
-    MetastoreServiceMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceMaintenanceWindowArgsDict(TypedDict):
+    day_of_week: pulumi.Input[_builtins.str]
+    """
+    The day of week, when the window starts.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    hour_of_day: pulumi.Input[_builtins.int]
+    """
+    The hour of day (0-23) when the window starts.
+    """
 
 @pulumi.input_type
 class MetastoreServiceMaintenanceWindowArgs:
@@ -10020,15 +9691,12 @@ class MetastoreServiceMaintenanceWindowArgs:
         pulumi.set(self, "hour_of_day", value)
 
 
-if not MYPY:
-    class MetastoreServiceMetadataIntegrationArgsDict(TypedDict):
-        data_catalog_config: pulumi.Input['MetastoreServiceMetadataIntegrationDataCatalogConfigArgsDict']
-        """
-        The integration config for the Data Catalog service.
-        Structure is documented below.
-        """
-elif False:
-    MetastoreServiceMetadataIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceMetadataIntegrationArgsDict(TypedDict):
+    data_catalog_config: pulumi.Input['MetastoreServiceMetadataIntegrationDataCatalogConfigArgsDict']
+    """
+    The integration config for the Data Catalog service.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class MetastoreServiceMetadataIntegrationArgs:
@@ -10054,14 +9722,11 @@ class MetastoreServiceMetadataIntegrationArgs:
         pulumi.set(self, "data_catalog_config", value)
 
 
-if not MYPY:
-    class MetastoreServiceMetadataIntegrationDataCatalogConfigArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
-        """
-elif False:
-    MetastoreServiceMetadataIntegrationDataCatalogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceMetadataIntegrationDataCatalogConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+    """
 
 @pulumi.input_type
 class MetastoreServiceMetadataIntegrationDataCatalogConfigArgs:
@@ -10085,20 +9750,17 @@ class MetastoreServiceMetadataIntegrationDataCatalogConfigArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class MetastoreServiceNetworkConfigArgsDict(TypedDict):
-        consumers: pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArgsDict']]]
-        """
-        The consumer-side network configuration for the Dataproc Metastore instance.
-        Structure is documented below.
-        """
-        custom_routes_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Optional, Beta)
-        Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
-        """
-elif False:
-    MetastoreServiceNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceNetworkConfigArgsDict(TypedDict):
+    consumers: pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArgsDict']]]
+    """
+    The consumer-side network configuration for the Dataproc Metastore instance.
+    Structure is documented below.
+    """
+    custom_routes_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Optional, Beta)
+    Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+    """
 
 @pulumi.input_type
 class MetastoreServiceNetworkConfigArgs:
@@ -10142,22 +9804,19 @@ class MetastoreServiceNetworkConfigArgs:
         pulumi.set(self, "custom_routes_enabled", value)
 
 
-if not MYPY:
-    class MetastoreServiceNetworkConfigConsumerArgsDict(TypedDict):
-        subnetwork: pulumi.Input[_builtins.str]
-        """
-        The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
-        It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
-        There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
-        `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
-        """
-        endpoint_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The URI of the endpoint used to access the metastore service.
-        """
-elif False:
-    MetastoreServiceNetworkConfigConsumerArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceNetworkConfigConsumerArgsDict(TypedDict):
+    subnetwork: pulumi.Input[_builtins.str]
+    """
+    The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+    It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+    There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+    `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+    """
+    endpoint_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The URI of the endpoint used to access the metastore service.
+    """
 
 @pulumi.input_type
 class MetastoreServiceNetworkConfigConsumerArgs:
@@ -10205,24 +9864,21 @@ class MetastoreServiceNetworkConfigConsumerArgs:
         pulumi.set(self, "endpoint_uri", value)
 
 
-if not MYPY:
-    class MetastoreServiceScalingConfigArgsDict(TypedDict):
-        autoscaling_config: NotRequired[pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigArgsDict']]
-        """
-        Represents the autoscaling configuration of a metastore service.
-        Structure is documented below.
-        """
-        instance_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Metastore instance sizes.
-        Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
-        """
-        scaling_factor: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
-        """
-elif False:
-    MetastoreServiceScalingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceScalingConfigArgsDict(TypedDict):
+    autoscaling_config: NotRequired[pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigArgsDict']]
+    """
+    Represents the autoscaling configuration of a metastore service.
+    Structure is documented below.
+    """
+    instance_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Metastore instance sizes.
+    Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
+    """
+    scaling_factor: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+    """
 
 @pulumi.input_type
 class MetastoreServiceScalingConfigArgs:
@@ -10283,24 +9939,21 @@ class MetastoreServiceScalingConfigArgs:
         pulumi.set(self, "scaling_factor", value)
 
 
-if not MYPY:
-    class MetastoreServiceScalingConfigAutoscalingConfigArgsDict(TypedDict):
-        autoscaling_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether autoscaling is enabled. The default value is false.
-        """
-        autoscaling_factor: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        Output only. The scaling factor of a service with autoscaling enabled.
-        """
-        limit_config: NotRequired[pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgsDict']]
-        """
-        Represents the limit configuration of a metastore service.
-        Structure is documented below.
-        """
-elif False:
-    MetastoreServiceScalingConfigAutoscalingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceScalingConfigAutoscalingConfigArgsDict(TypedDict):
+    autoscaling_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether autoscaling is enabled. The default value is false.
+    """
+    autoscaling_factor: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    Output only. The scaling factor of a service with autoscaling enabled.
+    """
+    limit_config: NotRequired[pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgsDict']]
+    """
+    Represents the limit configuration of a metastore service.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class MetastoreServiceScalingConfigAutoscalingConfigArgs:
@@ -10361,18 +10014,15 @@ class MetastoreServiceScalingConfigAutoscalingConfigArgs:
         pulumi.set(self, "limit_config", value)
 
 
-if not MYPY:
-    class MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgsDict(TypedDict):
-        max_scaling_factor: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The maximum scaling factor that the service will autoscale to. The default value is 6.0.
-        """
-        min_scaling_factor: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The minimum scaling factor that the service will autoscale to. The default value is 0.1.
-        """
-elif False:
-    MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgsDict(TypedDict):
+    max_scaling_factor: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+    """
+    min_scaling_factor: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+    """
 
 @pulumi.input_type
 class MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs:
@@ -10413,26 +10063,23 @@ class MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs:
         pulumi.set(self, "min_scaling_factor", value)
 
 
-if not MYPY:
-    class MetastoreServiceScheduledBackupArgsDict(TypedDict):
-        backup_location: pulumi.Input[_builtins.str]
-        """
-        A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
-        """
-        cron_schedule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether the scheduled backup is enabled. The default value is false.
-        """
-        time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
-        """
-elif False:
-    MetastoreServiceScheduledBackupArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceScheduledBackupArgsDict(TypedDict):
+    backup_location: pulumi.Input[_builtins.str]
+    """
+    A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+    """
+    cron_schedule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether the scheduled backup is enabled. The default value is false.
+    """
+    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+    """
 
 @pulumi.input_type
 class MetastoreServiceScheduledBackupArgs:
@@ -10504,16 +10151,13 @@ class MetastoreServiceScheduledBackupArgs:
         pulumi.set(self, "time_zone", value)
 
 
-if not MYPY:
-    class MetastoreServiceTelemetryConfigArgsDict(TypedDict):
-        log_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The output format of the Dataproc Metastore service's logs.
-        Default value is `JSON`.
-        Possible values are: `LEGACY`, `JSON`.
-        """
-elif False:
-    MetastoreServiceTelemetryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreServiceTelemetryConfigArgsDict(TypedDict):
+    log_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The output format of the Dataproc Metastore service's logs.
+    Default value is `JSON`.
+    Possible values are: `LEGACY`, `JSON`.
+    """
 
 @pulumi.input_type
 class MetastoreServiceTelemetryConfigArgs:
@@ -10542,13 +10186,10 @@ class MetastoreServiceTelemetryConfigArgs:
         pulumi.set(self, "log_format", value)
 
 
-if not MYPY:
-    class MetastoreTableIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    MetastoreTableIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreTableIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class MetastoreTableIamBindingConditionArgs:
@@ -10589,13 +10230,10 @@ class MetastoreTableIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class MetastoreTableIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    MetastoreTableIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class MetastoreTableIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class MetastoreTableIamMemberConditionArgs:
@@ -10636,20 +10274,17 @@ class MetastoreTableIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class SessionTemplateEnvironmentConfigArgsDict(TypedDict):
-        execution_config: NotRequired[pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigArgsDict']]
-        """
-        Execution configuration for a workload.
-        Structure is documented below.
-        """
-        peripherals_config: NotRequired[pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigArgsDict']]
-        """
-        Peripherals configuration that workload has access to.
-        Structure is documented below.
-        """
-elif False:
-    SessionTemplateEnvironmentConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SessionTemplateEnvironmentConfigArgsDict(TypedDict):
+    execution_config: NotRequired[pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigArgsDict']]
+    """
+    Execution configuration for a workload.
+    Structure is documented below.
+    """
+    peripherals_config: NotRequired[pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigArgsDict']]
+    """
+    Peripherals configuration that workload has access to.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SessionTemplateEnvironmentConfigArgs:
@@ -10694,58 +10329,55 @@ class SessionTemplateEnvironmentConfigArgs:
         pulumi.set(self, "peripherals_config", value)
 
 
-if not MYPY:
-    class SessionTemplateEnvironmentConfigExecutionConfigArgsDict(TypedDict):
-        authentication_config: NotRequired[pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict']]
-        """
-        Authentication configuration for a workload is used to set the default identity for the workload execution.
-        Structure is documented below.
-        """
-        idle_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The duration to keep the session alive while it's idling.
-        Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
-        Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
-        are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
-        been exceeded, whichever occurs first.
-        """
-        kms_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud KMS key to use for encryption.
-        """
-        network_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Tags used for network traffic control.
-        """
-        service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service account that used to execute workload.
-        """
-        staging_bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Cloud Storage bucket used to stage workload dependencies, config files, and store
-        workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
-        Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
-        and then create and manage project-level, per-location staging and temporary buckets.
-        This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
-        """
-        subnetwork_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Subnetwork configuration for workload execution.
-        """
-        ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The duration after which the workload will be terminated.
-        When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
-        work to finish. If ttl is not specified for a session workload, the workload will be allowed to run until it
-        exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
-        it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
-        Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
-        the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
-        when ttl has been exceeded, whichever occurs first.
-        """
-elif False:
-    SessionTemplateEnvironmentConfigExecutionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SessionTemplateEnvironmentConfigExecutionConfigArgsDict(TypedDict):
+    authentication_config: NotRequired[pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict']]
+    """
+    Authentication configuration for a workload is used to set the default identity for the workload execution.
+    Structure is documented below.
+    """
+    idle_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The duration to keep the session alive while it's idling.
+    Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+    Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+    are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+    been exceeded, whichever occurs first.
+    """
+    kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud KMS key to use for encryption.
+    """
+    network_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Tags used for network traffic control.
+    """
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service account that used to execute workload.
+    """
+    staging_bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Cloud Storage bucket used to stage workload dependencies, config files, and store
+    workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+    Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+    and then create and manage project-level, per-location staging and temporary buckets.
+    This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+    """
+    subnetwork_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Subnetwork configuration for workload execution.
+    """
+    ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The duration after which the workload will be terminated.
+    When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+    work to finish. If ttl is not specified for a session workload, the workload will be allowed to run until it
+    exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+    it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+    Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+    the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+    when ttl has been exceeded, whichever occurs first.
+    """
 
 @pulumi.input_type
 class SessionTemplateEnvironmentConfigExecutionConfigArgs:
@@ -10914,15 +10546,12 @@ class SessionTemplateEnvironmentConfigExecutionConfigArgs:
         pulumi.set(self, "ttl", value)
 
 
-if not MYPY:
-    class SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict(TypedDict):
-        user_workload_authentication_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Authentication type for the user workload running in containers.
-        Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
-        """
-elif False:
-    SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict(TypedDict):
+    user_workload_authentication_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Authentication type for the user workload running in containers.
+    Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+    """
 
 @pulumi.input_type
 class SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs:
@@ -10949,19 +10578,16 @@ class SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs:
         pulumi.set(self, "user_workload_authentication_type", value)
 
 
-if not MYPY:
-    class SessionTemplateEnvironmentConfigPeripheralsConfigArgsDict(TypedDict):
-        metastore_service: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource name of an existing Dataproc Metastore service.
-        """
-        spark_history_server_config: NotRequired[pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict']]
-        """
-        The Spark History Server configuration for the workload.
-        Structure is documented below.
-        """
-elif False:
-    SessionTemplateEnvironmentConfigPeripheralsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SessionTemplateEnvironmentConfigPeripheralsConfigArgsDict(TypedDict):
+    metastore_service: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource name of an existing Dataproc Metastore service.
+    """
+    spark_history_server_config: NotRequired[pulumi.Input['SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict']]
+    """
+    The Spark History Server configuration for the workload.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SessionTemplateEnvironmentConfigPeripheralsConfigArgs:
@@ -11004,14 +10630,11 @@ class SessionTemplateEnvironmentConfigPeripheralsConfigArgs:
         pulumi.set(self, "spark_history_server_config", value)
 
 
-if not MYPY:
-    class SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict(TypedDict):
-        dataproc_cluster: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-        """
-elif False:
-    SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict(TypedDict):
+    dataproc_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+    """
 
 @pulumi.input_type
 class SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs:
@@ -11036,19 +10659,16 @@ class SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigA
         pulumi.set(self, "dataproc_cluster", value)
 
 
-if not MYPY:
-    class SessionTemplateJupyterSessionArgsDict(TypedDict):
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Display name, shown in the Jupyter kernelspec card.
-        """
-        kernel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kernel to be used with Jupyter interactive session.
-        Possible values are: `PYTHON`, `SCALA`.
-        """
-elif False:
-    SessionTemplateJupyterSessionArgsDict: TypeAlias = Mapping[str, Any]
+class SessionTemplateJupyterSessionArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Display name, shown in the Jupyter kernelspec card.
+    """
+    kernel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kernel to be used with Jupyter interactive session.
+    Possible values are: `PYTHON`, `SCALA`.
+    """
 
 @pulumi.input_type
 class SessionTemplateJupyterSessionArgs:
@@ -11091,27 +10711,24 @@ class SessionTemplateJupyterSessionArgs:
         pulumi.set(self, "kernel", value)
 
 
-if not MYPY:
-    class SessionTemplateRuntimeConfigArgsDict(TypedDict):
-        container_image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
-        """
-        effective_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        A mapping of property names to values, which are used to configure workload execution.
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, which are used to configure workload execution.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version of the session runtime.
-        """
-elif False:
-    SessionTemplateRuntimeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SessionTemplateRuntimeConfigArgsDict(TypedDict):
+    container_image: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+    """
+    effective_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    A mapping of property names to values, which are used to configure workload execution.
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, which are used to configure workload execution.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version of the session runtime.
+    """
 
 @pulumi.input_type
 class SessionTemplateRuntimeConfigArgs:
@@ -11186,11 +10803,8 @@ class SessionTemplateRuntimeConfigArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class SessionTemplateSparkConnectSessionArgsDict(TypedDict):
-        pass
-elif False:
-    SessionTemplateSparkConnectSessionArgsDict: TypeAlias = Mapping[str, Any]
+class SessionTemplateSparkConnectSessionArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class SessionTemplateSparkConnectSessionArgs:
@@ -11198,14 +10812,11 @@ class SessionTemplateSparkConnectSessionArgs:
         pass
 
 
-if not MYPY:
-    class WorkflowTemplateEncryptionConfigArgsDict(TypedDict):
-        kms_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The Cloud KMS key name to use for encryption.
-        """
-elif False:
-    WorkflowTemplateEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateEncryptionConfigArgsDict(TypedDict):
+    kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The Cloud KMS key name to use for encryption.
+    """
 
 @pulumi.input_type
 class WorkflowTemplateEncryptionConfigArgs:
@@ -11230,58 +10841,55 @@ class WorkflowTemplateEncryptionConfigArgs:
         pulumi.set(self, "kms_key", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobArgsDict(TypedDict):
-        step_id: pulumi.Input[_builtins.str]
-        """
-        Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-        """
-        hadoop_job: NotRequired[pulumi.Input['WorkflowTemplateJobHadoopJobArgsDict']]
-        """
-        Job is a Hadoop job.
-        """
-        hive_job: NotRequired[pulumi.Input['WorkflowTemplateJobHiveJobArgsDict']]
-        """
-        Job is a Hive job.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
-        """
-        pig_job: NotRequired[pulumi.Input['WorkflowTemplateJobPigJobArgsDict']]
-        """
-        Job is a Pig job.
-        """
-        prerequisite_step_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
-        """
-        presto_job: NotRequired[pulumi.Input['WorkflowTemplateJobPrestoJobArgsDict']]
-        """
-        Job is a Presto job.
-        """
-        pyspark_job: NotRequired[pulumi.Input['WorkflowTemplateJobPysparkJobArgsDict']]
-        """
-        Job is a PySpark job.
-        """
-        scheduling: NotRequired[pulumi.Input['WorkflowTemplateJobSchedulingArgsDict']]
-        """
-        Job scheduling configuration.
-        """
-        spark_job: NotRequired[pulumi.Input['WorkflowTemplateJobSparkJobArgsDict']]
-        """
-        Job is a Spark job.
-        """
-        spark_r_job: NotRequired[pulumi.Input['WorkflowTemplateJobSparkRJobArgsDict']]
-        """
-        Job is a SparkR job.
-        """
-        spark_sql_job: NotRequired[pulumi.Input['WorkflowTemplateJobSparkSqlJobArgsDict']]
-        """
-        Job is a SparkSql job.
-        """
-elif False:
-    WorkflowTemplateJobArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobArgsDict(TypedDict):
+    step_id: pulumi.Input[_builtins.str]
+    """
+    Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+    """
+    hadoop_job: NotRequired[pulumi.Input['WorkflowTemplateJobHadoopJobArgsDict']]
+    """
+    Job is a Hadoop job.
+    """
+    hive_job: NotRequired[pulumi.Input['WorkflowTemplateJobHiveJobArgsDict']]
+    """
+    Job is a Hive job.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+    """
+    pig_job: NotRequired[pulumi.Input['WorkflowTemplateJobPigJobArgsDict']]
+    """
+    Job is a Pig job.
+    """
+    prerequisite_step_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+    """
+    presto_job: NotRequired[pulumi.Input['WorkflowTemplateJobPrestoJobArgsDict']]
+    """
+    Job is a Presto job.
+    """
+    pyspark_job: NotRequired[pulumi.Input['WorkflowTemplateJobPysparkJobArgsDict']]
+    """
+    Job is a PySpark job.
+    """
+    scheduling: NotRequired[pulumi.Input['WorkflowTemplateJobSchedulingArgsDict']]
+    """
+    Job scheduling configuration.
+    """
+    spark_job: NotRequired[pulumi.Input['WorkflowTemplateJobSparkJobArgsDict']]
+    """
+    Job is a Spark job.
+    """
+    spark_r_job: NotRequired[pulumi.Input['WorkflowTemplateJobSparkRJobArgsDict']]
+    """
+    Job is a SparkR job.
+    """
+    spark_sql_job: NotRequired[pulumi.Input['WorkflowTemplateJobSparkSqlJobArgsDict']]
+    """
+    Job is a SparkSql job.
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobArgs:
@@ -11481,42 +11089,39 @@ class WorkflowTemplateJobArgs:
         pulumi.set(self, "spark_sql_job", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobHadoopJobArgsDict(TypedDict):
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
-        """
-        logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobHadoopJobLoggingConfigArgsDict']]
-        """
-        The runtime log config for job execution.
-        """
-        main_class: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
-        """
-        main_jar_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
-        """
-elif False:
-    WorkflowTemplateJobHadoopJobArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobHadoopJobArgsDict(TypedDict):
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
+    """
+    logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobHadoopJobLoggingConfigArgsDict']]
+    """
+    The runtime log config for job execution.
+    """
+    main_class: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+    """
+    main_jar_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobHadoopJobArgs:
@@ -11653,14 +11258,11 @@ class WorkflowTemplateJobHadoopJobArgs:
         pulumi.set(self, "properties", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobHadoopJobLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-elif False:
-    WorkflowTemplateJobHadoopJobLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobHadoopJobLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobHadoopJobLoggingConfigArgs:
@@ -11685,34 +11287,31 @@ class WorkflowTemplateJobHadoopJobLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobHiveJobArgsDict(TypedDict):
-        continue_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
-        """
-        query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the script that contains Hive queries.
-        """
-        query_list: NotRequired[pulumi.Input['WorkflowTemplateJobHiveJobQueryListArgsDict']]
-        """
-        A list of queries.
-        """
-        script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
-        """
-elif False:
-    WorkflowTemplateJobHiveJobArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobHiveJobArgsDict(TypedDict):
+    continue_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+    """
+    query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the script that contains Hive queries.
+    """
+    query_list: NotRequired[pulumi.Input['WorkflowTemplateJobHiveJobQueryListArgsDict']]
+    """
+    A list of queries.
+    """
+    script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobHiveJobArgs:
@@ -11817,14 +11416,11 @@ class WorkflowTemplateJobHiveJobArgs:
         pulumi.set(self, "script_variables", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobHiveJobQueryListArgsDict(TypedDict):
-        queries: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-        """
-elif False:
-    WorkflowTemplateJobHiveJobQueryListArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobHiveJobQueryListArgsDict(TypedDict):
+    queries: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobHiveJobQueryListArgs:
@@ -11848,38 +11444,35 @@ class WorkflowTemplateJobHiveJobQueryListArgs:
         pulumi.set(self, "queries", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobPigJobArgsDict(TypedDict):
-        continue_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
-        """
-        logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobPigJobLoggingConfigArgsDict']]
-        """
-        The runtime log config for job execution.
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
-        """
-        query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the script that contains the Pig queries.
-        """
-        query_list: NotRequired[pulumi.Input['WorkflowTemplateJobPigJobQueryListArgsDict']]
-        """
-        A list of queries.
-        """
-        script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping of query variable names to values (equivalent to the Pig command: `name=`).
-        """
-elif False:
-    WorkflowTemplateJobPigJobArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobPigJobArgsDict(TypedDict):
+    continue_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+    """
+    logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobPigJobLoggingConfigArgsDict']]
+    """
+    The runtime log config for job execution.
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+    """
+    query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the script that contains the Pig queries.
+    """
+    query_list: NotRequired[pulumi.Input['WorkflowTemplateJobPigJobQueryListArgsDict']]
+    """
+    A list of queries.
+    """
+    script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping of query variable names to values (equivalent to the Pig command: `name=`).
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobPigJobArgs:
@@ -12000,14 +11593,11 @@ class WorkflowTemplateJobPigJobArgs:
         pulumi.set(self, "script_variables", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobPigJobLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-elif False:
-    WorkflowTemplateJobPigJobLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobPigJobLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobPigJobLoggingConfigArgs:
@@ -12032,14 +11622,11 @@ class WorkflowTemplateJobPigJobLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobPigJobQueryListArgsDict(TypedDict):
-        queries: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-        """
-elif False:
-    WorkflowTemplateJobPigJobQueryListArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobPigJobQueryListArgsDict(TypedDict):
+    queries: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobPigJobQueryListArgs:
@@ -12063,38 +11650,35 @@ class WorkflowTemplateJobPigJobQueryListArgs:
         pulumi.set(self, "queries", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobPrestoJobArgsDict(TypedDict):
-        client_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Presto client tags to attach to this query
-        """
-        continue_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
-        """
-        logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobPrestoJobLoggingConfigArgsDict']]
-        """
-        The runtime log config for job execution.
-        """
-        output_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The format in which query output will be displayed. See the Presto documentation for supported output formats
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
-        """
-        query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the script that contains SQL queries.
-        """
-        query_list: NotRequired[pulumi.Input['WorkflowTemplateJobPrestoJobQueryListArgsDict']]
-        """
-        A list of queries.
-        """
-elif False:
-    WorkflowTemplateJobPrestoJobArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobPrestoJobArgsDict(TypedDict):
+    client_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Presto client tags to attach to this query
+    """
+    continue_on_failure: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+    """
+    logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobPrestoJobLoggingConfigArgsDict']]
+    """
+    The runtime log config for job execution.
+    """
+    output_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The format in which query output will be displayed. See the Presto documentation for supported output formats
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+    """
+    query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the script that contains SQL queries.
+    """
+    query_list: NotRequired[pulumi.Input['WorkflowTemplateJobPrestoJobQueryListArgsDict']]
+    """
+    A list of queries.
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobPrestoJobArgs:
@@ -12215,14 +11799,11 @@ class WorkflowTemplateJobPrestoJobArgs:
         pulumi.set(self, "query_list", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobPrestoJobLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-elif False:
-    WorkflowTemplateJobPrestoJobLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobPrestoJobLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobPrestoJobLoggingConfigArgs:
@@ -12247,14 +11828,11 @@ class WorkflowTemplateJobPrestoJobLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobPrestoJobQueryListArgsDict(TypedDict):
-        queries: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-        """
-elif False:
-    WorkflowTemplateJobPrestoJobQueryListArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobPrestoJobQueryListArgsDict(TypedDict):
+    queries: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobPrestoJobQueryListArgs:
@@ -12278,42 +11856,39 @@ class WorkflowTemplateJobPrestoJobQueryListArgs:
         pulumi.set(self, "queries", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobPysparkJobArgsDict(TypedDict):
-        main_python_file_uri: pulumi.Input[_builtins.str]
-        """
-        Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
-        """
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
-        """
-        logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobPysparkJobLoggingConfigArgsDict']]
-        """
-        The runtime log config for job execution.
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
-        """
-        python_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-        """
-elif False:
-    WorkflowTemplateJobPysparkJobArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobPysparkJobArgsDict(TypedDict):
+    main_python_file_uri: pulumi.Input[_builtins.str]
+    """
+    Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+    """
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+    """
+    logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobPysparkJobLoggingConfigArgsDict']]
+    """
+    The runtime log config for job execution.
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+    """
+    python_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobPysparkJobArgs:
@@ -12449,14 +12024,11 @@ class WorkflowTemplateJobPysparkJobArgs:
         pulumi.set(self, "python_file_uris", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobPysparkJobLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-elif False:
-    WorkflowTemplateJobPysparkJobLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobPysparkJobLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobPysparkJobLoggingConfigArgs:
@@ -12481,18 +12053,15 @@ class WorkflowTemplateJobPysparkJobLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobSchedulingArgsDict(TypedDict):
-        max_failures_per_hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
-        """
-        max_failures_total: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
-        """
-elif False:
-    WorkflowTemplateJobSchedulingArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobSchedulingArgsDict(TypedDict):
+    max_failures_per_hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
+    """
+    max_failures_total: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobSchedulingArgs:
@@ -12533,42 +12102,39 @@ class WorkflowTemplateJobSchedulingArgs:
         pulumi.set(self, "max_failures_total", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobSparkJobArgsDict(TypedDict):
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
-        """
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
-        """
-        logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobSparkJobLoggingConfigArgsDict']]
-        """
-        The runtime log config for job execution.
-        """
-        main_class: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
-        """
-        main_jar_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the jar file that contains the main class.
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
-        """
-elif False:
-    WorkflowTemplateJobSparkJobArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobSparkJobArgsDict(TypedDict):
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+    """
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+    """
+    logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobSparkJobLoggingConfigArgsDict']]
+    """
+    The runtime log config for job execution.
+    """
+    main_class: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+    """
+    main_jar_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the jar file that contains the main class.
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobSparkJobArgs:
@@ -12705,14 +12271,11 @@ class WorkflowTemplateJobSparkJobArgs:
         pulumi.set(self, "properties", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobSparkJobLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-elif False:
-    WorkflowTemplateJobSparkJobLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobSparkJobLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobSparkJobLoggingConfigArgs:
@@ -12737,34 +12300,31 @@ class WorkflowTemplateJobSparkJobLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobSparkRJobArgsDict(TypedDict):
-        main_r_file_uri: pulumi.Input[_builtins.str]
-        """
-        Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
-        """
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
-        """
-        logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobSparkRJobLoggingConfigArgsDict']]
-        """
-        The runtime log config for job execution.
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
-        """
-elif False:
-    WorkflowTemplateJobSparkRJobArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobSparkRJobArgsDict(TypedDict):
+    main_r_file_uri: pulumi.Input[_builtins.str]
+    """
+    Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+    """
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+    """
+    logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobSparkRJobLoggingConfigArgsDict']]
+    """
+    The runtime log config for job execution.
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobSparkRJobArgs:
@@ -12868,14 +12428,11 @@ class WorkflowTemplateJobSparkRJobArgs:
         pulumi.set(self, "properties", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobSparkRJobLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-elif False:
-    WorkflowTemplateJobSparkRJobLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobSparkRJobLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobSparkRJobLoggingConfigArgs:
@@ -12900,34 +12457,31 @@ class WorkflowTemplateJobSparkRJobLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobSparkSqlJobArgsDict(TypedDict):
-        jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        HCFS URIs of jar files to be added to the Spark CLASSPATH.
-        """
-        logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobSparkSqlJobLoggingConfigArgsDict']]
-        """
-        The runtime log config for job execution.
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
-        """
-        query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HCFS URI of the script that contains SQL queries.
-        """
-        query_list: NotRequired[pulumi.Input['WorkflowTemplateJobSparkSqlJobQueryListArgsDict']]
-        """
-        A list of queries.
-        """
-        script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-        """
-elif False:
-    WorkflowTemplateJobSparkSqlJobArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobSparkSqlJobArgsDict(TypedDict):
+    jar_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    HCFS URIs of jar files to be added to the Spark CLASSPATH.
+    """
+    logging_config: NotRequired[pulumi.Input['WorkflowTemplateJobSparkSqlJobLoggingConfigArgsDict']]
+    """
+    The runtime log config for job execution.
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+    """
+    query_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HCFS URI of the script that contains SQL queries.
+    """
+    query_list: NotRequired[pulumi.Input['WorkflowTemplateJobSparkSqlJobQueryListArgsDict']]
+    """
+    A list of queries.
+    """
+    script_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobSparkSqlJobArgs:
@@ -13032,14 +12586,11 @@ class WorkflowTemplateJobSparkSqlJobArgs:
         pulumi.set(self, "script_variables", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobSparkSqlJobLoggingConfigArgsDict(TypedDict):
-        driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-        """
-elif False:
-    WorkflowTemplateJobSparkSqlJobLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobSparkSqlJobLoggingConfigArgsDict(TypedDict):
+    driver_log_levels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobSparkSqlJobLoggingConfigArgs:
@@ -13064,14 +12615,11 @@ class WorkflowTemplateJobSparkSqlJobLoggingConfigArgs:
         pulumi.set(self, "driver_log_levels", value)
 
 
-if not MYPY:
-    class WorkflowTemplateJobSparkSqlJobQueryListArgsDict(TypedDict):
-        queries: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
-        """
-elif False:
-    WorkflowTemplateJobSparkSqlJobQueryListArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateJobSparkSqlJobQueryListArgsDict(TypedDict):
+    queries: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": } }
+    """
 
 @pulumi.input_type
 class WorkflowTemplateJobSparkSqlJobQueryListArgs:
@@ -13095,26 +12643,23 @@ class WorkflowTemplateJobSparkSqlJobQueryListArgs:
         pulumi.set(self, "queries", value)
 
 
-if not MYPY:
-    class WorkflowTemplateParameterArgsDict(TypedDict):
-        fields: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths. A field path is similar in syntax to a .sparkJob.args
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Brief description of the parameter. Must not exceed 1024 characters.
-        """
-        validation: NotRequired[pulumi.Input['WorkflowTemplateParameterValidationArgsDict']]
-        """
-        Validation rules to be applied to this parameter's value.
-        """
-elif False:
-    WorkflowTemplateParameterArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateParameterArgsDict(TypedDict):
+    fields: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths. A field path is similar in syntax to a .sparkJob.args
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Brief description of the parameter. Must not exceed 1024 characters.
+    """
+    validation: NotRequired[pulumi.Input['WorkflowTemplateParameterValidationArgsDict']]
+    """
+    Validation rules to be applied to this parameter's value.
+    """
 
 @pulumi.input_type
 class WorkflowTemplateParameterArgs:
@@ -13185,18 +12730,15 @@ class WorkflowTemplateParameterArgs:
         pulumi.set(self, "validation", value)
 
 
-if not MYPY:
-    class WorkflowTemplateParameterValidationArgsDict(TypedDict):
-        regex: NotRequired[pulumi.Input['WorkflowTemplateParameterValidationRegexArgsDict']]
-        """
-        Validation based on regular expressions.
-        """
-        values: NotRequired[pulumi.Input['WorkflowTemplateParameterValidationValuesArgsDict']]
-        """
-        Validation based on a list of allowed values.
-        """
-elif False:
-    WorkflowTemplateParameterValidationArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateParameterValidationArgsDict(TypedDict):
+    regex: NotRequired[pulumi.Input['WorkflowTemplateParameterValidationRegexArgsDict']]
+    """
+    Validation based on regular expressions.
+    """
+    values: NotRequired[pulumi.Input['WorkflowTemplateParameterValidationValuesArgsDict']]
+    """
+    Validation based on a list of allowed values.
+    """
 
 @pulumi.input_type
 class WorkflowTemplateParameterValidationArgs:
@@ -13237,14 +12779,11 @@ class WorkflowTemplateParameterValidationArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class WorkflowTemplateParameterValidationRegexArgsDict(TypedDict):
-        regexes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
-        """
-elif False:
-    WorkflowTemplateParameterValidationRegexArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateParameterValidationRegexArgsDict(TypedDict):
+    regexes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+    """
 
 @pulumi.input_type
 class WorkflowTemplateParameterValidationRegexArgs:
@@ -13268,14 +12807,11 @@ class WorkflowTemplateParameterValidationRegexArgs:
         pulumi.set(self, "regexes", value)
 
 
-if not MYPY:
-    class WorkflowTemplateParameterValidationValuesArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. List of allowed values for the parameter.
-        """
-elif False:
-    WorkflowTemplateParameterValidationValuesArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplateParameterValidationValuesArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. List of allowed values for the parameter.
+    """
 
 @pulumi.input_type
 class WorkflowTemplateParameterValidationValuesArgs:
@@ -13299,18 +12835,15 @@ class WorkflowTemplateParameterValidationValuesArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementArgsDict(TypedDict):
-        cluster_selector: NotRequired[pulumi.Input['WorkflowTemplatePlacementClusterSelectorArgsDict']]
-        """
-        A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
-        """
-        managed_cluster: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterArgsDict']]
-        """
-        A cluster that is managed by the workflow.
-        """
-elif False:
-    WorkflowTemplatePlacementArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementArgsDict(TypedDict):
+    cluster_selector: NotRequired[pulumi.Input['WorkflowTemplatePlacementClusterSelectorArgsDict']]
+    """
+    A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+    """
+    managed_cluster: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterArgsDict']]
+    """
+    A cluster that is managed by the workflow.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementArgs:
@@ -13351,18 +12884,15 @@ class WorkflowTemplatePlacementArgs:
         pulumi.set(self, "managed_cluster", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementClusterSelectorArgsDict(TypedDict):
-        cluster_labels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        Required. The cluster labels. Cluster must have all labels to match.
-        """
-        zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
-        """
-elif False:
-    WorkflowTemplatePlacementClusterSelectorArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementClusterSelectorArgsDict(TypedDict):
+    cluster_labels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    Required. The cluster labels. Cluster must have all labels to match.
+    """
+    zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementClusterSelectorArgs:
@@ -13402,22 +12932,19 @@ class WorkflowTemplatePlacementClusterSelectorArgs:
         pulumi.set(self, "zone", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterArgsDict(TypedDict):
-        cluster_name: pulumi.Input[_builtins.str]
-        """
-        Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
-        """
-        config: pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArgsDict']
-        """
-        Required. The cluster configuration.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterArgsDict(TypedDict):
+    cluster_name: pulumi.Input[_builtins.str]
+    """
+    Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+    """
+    config: pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArgsDict']
+    """
+    Required. The cluster configuration.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterArgs:
@@ -13472,72 +12999,69 @@ class WorkflowTemplatePlacementManagedClusterArgs:
         pulumi.set(self, "labels", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigArgsDict(TypedDict):
-        autoscaling_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgsDict']]
-        """
-        Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
-        """
-        encryption_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgsDict']]
-        """
-        Encryption settings for the cluster.
-        """
-        endpoint_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgsDict']]
-        """
-        Port/endpoint configuration for this cluster
-        """
-        gce_cluster_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgsDict']]
-        """
-        The shared Compute Engine config settings for all instances in a cluster.
-        """
-        gke_cluster_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgsDict']]
-        """
-        The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
-        """
-        initialization_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgsDict']]]]
-        """
-        Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
-        """
-        lifecycle_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgsDict']]
-        """
-        Lifecycle setting for the cluster.
-        """
-        master_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgsDict']]
-        """
-        The Compute Engine config settings for additional worker instances in a cluster.
-        """
-        metastore_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgsDict']]
-        """
-        Metastore configuration.
-        """
-        secondary_worker_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgsDict']]
-        """
-        The Compute Engine config settings for additional worker instances in a cluster.
-        """
-        security_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgsDict']]
-        """
-        Security settings for the cluster.
-        """
-        software_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgsDict']]
-        """
-        The config settings for software inside the cluster.
-        """
-        staging_bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
-        """
-        temp_bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
-        """
-        worker_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgsDict']]
-        """
-        The Compute Engine config settings for additional worker instances in a cluster.
+class WorkflowTemplatePlacementManagedClusterConfigArgsDict(TypedDict):
+    autoscaling_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgsDict']]
+    """
+    Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+    """
+    encryption_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgsDict']]
+    """
+    Encryption settings for the cluster.
+    """
+    endpoint_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgsDict']]
+    """
+    Port/endpoint configuration for this cluster
+    """
+    gce_cluster_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgsDict']]
+    """
+    The shared Compute Engine config settings for all instances in a cluster.
+    """
+    gke_cluster_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgsDict']]
+    """
+    The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
+    """
+    initialization_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgsDict']]]]
+    """
+    Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
+    """
+    lifecycle_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgsDict']]
+    """
+    Lifecycle setting for the cluster.
+    """
+    master_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgsDict']]
+    """
+    The Compute Engine config settings for additional worker instances in a cluster.
+    """
+    metastore_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgsDict']]
+    """
+    Metastore configuration.
+    """
+    secondary_worker_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgsDict']]
+    """
+    The Compute Engine config settings for additional worker instances in a cluster.
+    """
+    security_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgsDict']]
+    """
+    Security settings for the cluster.
+    """
+    software_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgsDict']]
+    """
+    The config settings for software inside the cluster.
+    """
+    staging_bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+    """
+    temp_bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+    """
+    worker_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgsDict']]
+    """
+    The Compute Engine config settings for additional worker instances in a cluster.
 
-        - - -
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+    - - -
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigArgs:
@@ -13790,14 +13314,11 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
         pulumi.set(self, "worker_config", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgsDict(TypedDict):
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgsDict(TypedDict):
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs:
@@ -13822,14 +13343,11 @@ class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs:
         pulumi.set(self, "policy", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgsDict(TypedDict):
-        gce_pd_kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgsDict(TypedDict):
+    gce_pd_kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs:
@@ -13854,18 +13372,15 @@ class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs:
         pulumi.set(self, "gce_pd_kms_key_name", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgsDict(TypedDict):
-        enable_http_port_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
-        """
-        http_ports: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgsDict(TypedDict):
+    enable_http_port_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+    """
+    http_ports: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs:
@@ -13906,58 +13421,55 @@ class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs:
         pulumi.set(self, "http_ports", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgsDict(TypedDict):
-        internal_ip_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
-        """
-        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
-        """
-        node_group_affinity: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgsDict']]
-        """
-        Node Group Affinity for sole-tenant clusters.
-        """
-        private_ipv6_google_access: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
-        """
-        reservation_affinity: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgsDict']]
-        """
-        Reservation Affinity for consuming Zonal reservation.
-        """
-        service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
-        """
-        service_account_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
-        """
-        shielded_instance_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict']]
-        """
-        Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
-        """
-        subnetwork: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
-        """
-        zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgsDict(TypedDict):
+    internal_ip_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+    """
+    metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
+    """
+    node_group_affinity: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgsDict']]
+    """
+    Node Group Affinity for sole-tenant clusters.
+    """
+    private_ipv6_google_access: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
+    """
+    reservation_affinity: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgsDict']]
+    """
+    Reservation Affinity for consuming Zonal reservation.
+    """
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+    """
+    service_account_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+    """
+    shielded_instance_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict']]
+    """
+    Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+    """
+    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+    """
+    zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
@@ -14158,14 +13670,11 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
         pulumi.set(self, "zone", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgsDict(TypedDict):
-        node_group: pulumi.Input[_builtins.str]
-        """
-        Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgsDict(TypedDict):
+    node_group: pulumi.Input[_builtins.str]
+    """
+    Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs:
@@ -14189,22 +13698,19 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffi
         pulumi.set(self, "node_group", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgsDict(TypedDict):
-        consume_reservation_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Corresponds to the label key of reservation resource.
-        """
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Corresponds to the label values of reservation resource.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgsDict(TypedDict):
+    consume_reservation_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Corresponds to the label key of reservation resource.
+    """
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Corresponds to the label values of reservation resource.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs:
@@ -14261,22 +13767,19 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAf
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict(TypedDict):
-        enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
-        """
-        enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
-        """
-        enable_vtpm: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict(TypedDict):
+    enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+    """
+    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+    """
+    enable_vtpm: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs:
@@ -14333,14 +13836,11 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
         pulumi.set(self, "enable_vtpm", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgsDict(TypedDict):
-        namespaced_gke_deployment_target: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgsDict']]
-        """
-        A target for the deployment.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgsDict(TypedDict):
+    namespaced_gke_deployment_target: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgsDict']]
+    """
+    A target for the deployment.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs:
@@ -14365,18 +13865,15 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs:
         pulumi.set(self, "namespaced_gke_deployment_target", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgsDict(TypedDict):
-        cluster_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A namespace within the GKE cluster to deploy into.
-        """
-        target_gke_cluster: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgsDict(TypedDict):
+    cluster_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A namespace within the GKE cluster to deploy into.
+    """
+    target_gke_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs:
@@ -14417,18 +13914,15 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGke
         pulumi.set(self, "target_gke_cluster", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgsDict(TypedDict):
-        executable_file: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Cloud Storage URI of executable file.
-        """
-        execution_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Amount of time executable has to complete. Default is 10 minutes (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgsDict(TypedDict):
+    executable_file: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Cloud Storage URI of executable file.
+    """
+    execution_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Amount of time executable has to complete. Default is 10 minutes (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs:
@@ -14469,26 +13963,23 @@ class WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs:
         pulumi.set(self, "execution_timeout", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgsDict(TypedDict):
-        auto_delete_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time when cluster will be auto-deleted (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        """
-        auto_delete_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        """
-        idle_delete_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json).
-        """
-        idle_start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgsDict(TypedDict):
+    auto_delete_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time when cluster will be auto-deleted (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+    """
+    auto_delete_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+    """
+    idle_delete_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json).
+    """
+    idle_start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs:
@@ -14561,50 +14052,47 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs:
         pulumi.set(self, "idle_start_time", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgsDict(TypedDict):
-        accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgsDict']]]]
-        """
-        The Compute Engine accelerator configuration for these instances.
-        """
-        disk_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgsDict']]
-        """
-        Disk option config settings.
-        """
-        image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-        """
-        instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
-        """
-        is_preemptible: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Output only. Specifies that this instance group contains preemptible instances.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        """
-        managed_group_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgsDict']]]]
-        """
-        Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        """
-        min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-        """
-        num_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of VM instances in the instance group. For master instance groups, must be set to 1.
-        """
-        preemptibility: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgsDict(TypedDict):
+    accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgsDict']]]]
+    """
+    The Compute Engine accelerator configuration for these instances.
+    """
+    disk_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgsDict']]
+    """
+    Disk option config settings.
+    """
+    image: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+    """
+    instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+    """
+    is_preemptible: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Output only. Specifies that this instance group contains preemptible instances.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+    """
+    managed_group_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgsDict']]]]
+    """
+    Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+    """
+    min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+    """
+    num_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of VM instances in the instance group. For master instance groups, must be set to 1.
+    """
+    preemptibility: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs:
@@ -14773,18 +14261,15 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs:
         pulumi.set(self, "preemptibility", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgsDict(TypedDict):
-        accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of the accelerator cards of this type exposed to this instance.
-        """
-        accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgsDict(TypedDict):
+    accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of the accelerator cards of this type exposed to this instance.
+    """
+    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs:
@@ -14825,22 +14310,19 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs:
         pulumi.set(self, "accelerator_type", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgsDict(TypedDict):
-        boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size in GB of the boot disk (default is 500GB).
-        """
-        boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-        """
-        num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgsDict(TypedDict):
+    boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size in GB of the boot disk (default is 500GB).
+    """
+    boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs:
@@ -14897,18 +14379,15 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs:
         pulumi.set(self, "num_local_ssds", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgsDict(TypedDict):
-        instance_group_manager_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output only. The name of the Instance Group Manager for this group.
-        """
-        instance_template_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output only. The name of the Instance Template used for the Managed Instance Group.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgsDict(TypedDict):
+    instance_group_manager_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output only. The name of the Instance Group Manager for this group.
+    """
+    instance_template_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output only. The name of the Instance Template used for the Managed Instance Group.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs:
@@ -14949,14 +14428,11 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfi
         pulumi.set(self, "instance_template_name", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgsDict(TypedDict):
-        dataproc_metastore_service: pulumi.Input[_builtins.str]
-        """
-        Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgsDict(TypedDict):
+    dataproc_metastore_service: pulumi.Input[_builtins.str]
+    """
+    Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs:
@@ -14980,50 +14456,47 @@ class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs:
         pulumi.set(self, "dataproc_metastore_service", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgsDict(TypedDict):
-        accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgsDict']]]]
-        """
-        Optional. The Compute Engine accelerator configuration for these instances.
-        """
-        disk_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgsDict']]
-        """
-        Optional. Disk option config settings.
-        """
-        image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-        """
-        instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
-        """
-        is_preemptible: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Output only. Specifies that this instance group contains preemptible instances.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        """
-        managed_group_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgsDict']]]]
-        """
-        Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        """
-        min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-        """
-        num_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
-        """
-        preemptibility: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgsDict(TypedDict):
+    accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgsDict']]]]
+    """
+    Optional. The Compute Engine accelerator configuration for these instances.
+    """
+    disk_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgsDict']]
+    """
+    Optional. Disk option config settings.
+    """
+    image: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+    """
+    instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+    """
+    is_preemptible: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Output only. Specifies that this instance group contains preemptible instances.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+    """
+    managed_group_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgsDict']]]]
+    """
+    Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+    """
+    min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+    """
+    num_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+    """
+    preemptibility: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
@@ -15192,18 +14665,15 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
         pulumi.set(self, "preemptibility", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgsDict(TypedDict):
-        accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of the accelerator cards of this type exposed to this instance.
-        """
-        accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgsDict(TypedDict):
+    accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of the accelerator cards of this type exposed to this instance.
+    """
+    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs:
@@ -15244,22 +14714,19 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelera
         pulumi.set(self, "accelerator_type", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgsDict(TypedDict):
-        boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size in GB of the boot disk (default is 500GB).
-        """
-        boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-        """
-        num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgsDict(TypedDict):
+    boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size in GB of the boot disk (default is 500GB).
+    """
+    boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs:
@@ -15316,18 +14783,15 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
         pulumi.set(self, "num_local_ssds", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgsDict(TypedDict):
-        instance_group_manager_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output only. The name of the Instance Group Manager for this group.
-        """
-        instance_template_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output only. The name of the Instance Template used for the Managed Instance Group.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgsDict(TypedDict):
+    instance_group_manager_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output only. The name of the Instance Group Manager for this group.
+    """
+    instance_template_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output only. The name of the Instance Template used for the Managed Instance Group.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs:
@@ -15368,14 +14832,11 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedG
         pulumi.set(self, "instance_template_name", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgsDict(TypedDict):
-        kerberos_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgsDict']]
-        """
-        Kerberos related configuration.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgsDict(TypedDict):
+    kerberos_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgsDict']]
+    """
+    Kerberos related configuration.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs:
@@ -15400,70 +14861,67 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs:
         pulumi.set(self, "kerberos_config", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgsDict(TypedDict):
-        cross_realm_trust_admin_server: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
-        """
-        cross_realm_trust_kdc: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
-        """
-        cross_realm_trust_realm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
-        """
-        cross_realm_trust_shared_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
-        """
-        enable_kerberos: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
-        """
-        kdc_db_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
-        """
-        key_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
-        """
-        keystore: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-        """
-        keystore_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
-        """
-        kms_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The uri of the KMS key used to encrypt various sensitive files.
-        """
-        realm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
-        """
-        root_principal_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of a KMS encrypted file containing the root principal password.
-        """
-        tgt_lifetime_hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
-        """
-        truststore: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-        """
-        truststore_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgsDict(TypedDict):
+    cross_realm_trust_admin_server: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+    """
+    cross_realm_trust_kdc: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+    """
+    cross_realm_trust_realm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+    """
+    cross_realm_trust_shared_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+    """
+    enable_kerberos: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+    """
+    kdc_db_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+    """
+    key_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+    """
+    keystore: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+    """
+    keystore_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+    """
+    kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The uri of the KMS key used to encrypt various sensitive files.
+    """
+    realm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+    """
+    root_principal_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+    """
+    tgt_lifetime_hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+    """
+    truststore: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+    """
+    truststore_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs:
@@ -15712,37 +15170,34 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigA
         pulumi.set(self, "truststore_password", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgsDict(TypedDict):
-        image_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
-        """
-        optional_components: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of components to activate on the cluster.
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The properties to set on daemon config files.
+class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgsDict(TypedDict):
+    image_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+    """
+    optional_components: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of components to activate on the cluster.
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The properties to set on daemon config files.
 
-        Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings:
+    Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings:
 
-        * capacity-scheduler: `capacity-scheduler.xml`
-        * core: `core-site.xml`
-        * distcp: `distcp-default.xml`
-        * hdfs: `hdfs-site.xml`
-        * hive: `hive-site.xml`
-        * mapred: `mapred-site.xml`
-        * pig: `pig.properties`
-        * spark: `spark-defaults.conf`
-        * yarn: `yarn-site.xml`
+    * capacity-scheduler: `capacity-scheduler.xml`
+    * core: `core-site.xml`
+    * distcp: `distcp-default.xml`
+    * hdfs: `hdfs-site.xml`
+    * hive: `hive-site.xml`
+    * mapred: `mapred-site.xml`
+    * pig: `pig.properties`
+    * spark: `spark-defaults.conf`
+    * yarn: `yarn-site.xml`
 
 
-        For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgsDict: TypeAlias = Mapping[str, Any]
+    For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs:
@@ -15829,50 +15284,47 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs:
         pulumi.set(self, "properties", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgsDict(TypedDict):
-        accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgsDict']]]]
-        """
-        Optional. The Compute Engine accelerator configuration for these instances.
-        """
-        disk_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgsDict']]
-        """
-        Optional. Disk option config settings.
-        """
-        image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-        """
-        instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
-        """
-        is_preemptible: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Output only. Specifies that this instance group contains preemptible instances.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        """
-        managed_group_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgsDict']]]]
-        """
-        Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        """
-        min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-        """
-        num_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
-        """
-        preemptibility: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgsDict(TypedDict):
+    accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgsDict']]]]
+    """
+    Optional. The Compute Engine accelerator configuration for these instances.
+    """
+    disk_config: NotRequired[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgsDict']]
+    """
+    Optional. Disk option config settings.
+    """
+    image: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+    """
+    instance_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+    """
+    is_preemptible: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Output only. Specifies that this instance group contains preemptible instances.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+    """
+    managed_group_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgsDict']]]]
+    """
+    Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+    """
+    min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+    """
+    num_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+    """
+    preemptibility: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
@@ -16041,18 +15493,15 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
         pulumi.set(self, "preemptibility", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgsDict(TypedDict):
-        accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of the accelerator cards of this type exposed to this instance.
-        """
-        accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgsDict(TypedDict):
+    accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of the accelerator cards of this type exposed to this instance.
+    """
+    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs:
@@ -16093,22 +15542,19 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs:
         pulumi.set(self, "accelerator_type", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgsDict(TypedDict):
-        boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size in GB of the boot disk (default is 500GB).
-        """
-        boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-        """
-        num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgsDict(TypedDict):
+    boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size in GB of the boot disk (default is 500GB).
+    """
+    boot_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs:
@@ -16165,18 +15611,15 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs:
         pulumi.set(self, "num_local_ssds", value)
 
 
-if not MYPY:
-    class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgsDict(TypedDict):
-        instance_group_manager_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output only. The name of the Instance Group Manager for this group.
-        """
-        instance_template_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output only. The name of the Instance Template used for the Managed Instance Group.
-        """
-elif False:
-    WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgsDict(TypedDict):
+    instance_group_manager_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output only. The name of the Instance Group Manager for this group.
+    """
+    instance_template_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output only. The name of the Instance Template used for the Managed Instance Group.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs:

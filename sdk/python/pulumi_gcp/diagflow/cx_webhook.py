@@ -673,16 +673,12 @@ class CxWebhook(pulumi.CustomResource):
         Webhook can be imported using any of these accepted formats:
 
         * `{{parent}}/webhooks/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, Webhook can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxWebhook:CxWebhook default {{parent}}/webhooks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxWebhook:CxWebhook default {{parent}}/{{name}}
         ```
 
@@ -997,16 +993,12 @@ class CxWebhook(pulumi.CustomResource):
         Webhook can be imported using any of these accepted formats:
 
         * `{{parent}}/webhooks/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, Webhook can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxWebhook:CxWebhook default {{parent}}/webhooks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxWebhook:CxWebhook default {{parent}}/{{name}}
         ```
 

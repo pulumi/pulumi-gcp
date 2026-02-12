@@ -35,9 +35,17 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         return this.configBundle;
     }
 
+    /**
+     * (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+     * 
+     */
     @Import(name="detectMd5hash")
     private @Nullable Output<String> detectMd5hash;
 
+    /**
+     * @return (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+     * 
+     */
     public Optional<Output<String>> detectMd5hash() {
         return Optional.ofNullable(this.detectMd5hash);
     }
@@ -124,11 +132,23 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
             return configBundle(Output.of(configBundle));
         }
 
+        /**
+         * @param detectMd5hash (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+         * 
+         * @return builder
+         * 
+         */
         public Builder detectMd5hash(@Nullable Output<String> detectMd5hash) {
             $.detectMd5hash = detectMd5hash;
             return this;
         }
 
+        /**
+         * @param detectMd5hash (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+         * 
+         * @return builder
+         * 
+         */
         public Builder detectMd5hash(String detectMd5hash) {
             return detectMd5hash(Output.of(detectMd5hash));
         }

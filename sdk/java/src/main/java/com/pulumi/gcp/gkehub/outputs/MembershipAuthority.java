@@ -10,9 +10,19 @@ import java.util.Objects;
 
 @CustomType
 public final class MembershipAuthority {
+    /**
+     * @return A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+     * with length &lt;2000 characters. For example: `https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster`. If the cluster is provisioned with Terraform, this is `&#34;https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}&#34;`.
+     * 
+     */
     private String issuer;
 
     private MembershipAuthority() {}
+    /**
+     * @return A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+     * with length &lt;2000 characters. For example: `https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster`. If the cluster is provisioned with Terraform, this is `&#34;https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}&#34;`.
+     * 
+     */
     public String issuer() {
         return this.issuer;
     }

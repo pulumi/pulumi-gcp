@@ -19,9 +19,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceState Empty = new InstanceState();
 
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either num_nodes, processingUnits or autoscalingConfig must be
+     * present in terraform except when instanceType = FREE_INSTANCE.
+     * When autoscaling is enabled, numNodes and processingUnits are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="autoscalingConfig")
     private @Nullable Output<InstanceAutoscalingConfigArgs> autoscalingConfig;
 
+    /**
+     * @return The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either num_nodes, processingUnits or autoscalingConfig must be
+     * present in terraform except when instanceType = FREE_INSTANCE.
+     * When autoscaling is enabled, numNodes and processingUnits are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<InstanceAutoscalingConfigArgs>> autoscalingConfig() {
         return Optional.ofNullable(this.autoscalingConfig);
     }
@@ -203,16 +223,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
+     * autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     * 
+     */
     @Import(name="numNodes")
     private @Nullable Output<Integer> numNodes;
 
+    /**
+     * @return The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
+     * autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     * 
+     */
     public Optional<Output<Integer>> numNodes() {
         return Optional.ofNullable(this.numNodes);
     }
 
+    /**
+     * The number of processing units allocated to this instance. Exactly one of either num_nodes,
+     * processingUnits or autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     * 
+     */
     @Import(name="processingUnits")
     private @Nullable Output<Integer> processingUnits;
 
+    /**
+     * @return The number of processing units allocated to this instance. Exactly one of either num_nodes,
+     * processingUnits or autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     * 
+     */
     public Optional<Output<Integer>> processingUnits() {
         return Optional.ofNullable(this.processingUnits);
     }
@@ -304,11 +344,35 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             $ = new InstanceState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoscalingConfig The autoscaling configuration. Autoscaling is enabled if this field is set.
+         * Exactly one of either num_nodes, processingUnits or autoscalingConfig must be
+         * present in terraform except when instanceType = FREE_INSTANCE.
+         * When autoscaling is enabled, numNodes and processingUnits are treated as,
+         * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+         * the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscalingConfig(@Nullable Output<InstanceAutoscalingConfigArgs> autoscalingConfig) {
             $.autoscalingConfig = autoscalingConfig;
             return this;
         }
 
+        /**
+         * @param autoscalingConfig The autoscaling configuration. Autoscaling is enabled if this field is set.
+         * Exactly one of either num_nodes, processingUnits or autoscalingConfig must be
+         * present in terraform except when instanceType = FREE_INSTANCE.
+         * When autoscaling is enabled, numNodes and processingUnits are treated as,
+         * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+         * the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscalingConfig(InstanceAutoscalingConfigArgs autoscalingConfig) {
             return autoscalingConfig(Output.of(autoscalingConfig));
         }
@@ -544,20 +608,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param numNodes The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
+         * autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numNodes(@Nullable Output<Integer> numNodes) {
             $.numNodes = numNodes;
             return this;
         }
 
+        /**
+         * @param numNodes The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
+         * autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numNodes(Integer numNodes) {
             return numNodes(Output.of(numNodes));
         }
 
+        /**
+         * @param processingUnits The number of processing units allocated to this instance. Exactly one of either num_nodes,
+         * processingUnits or autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+         * 
+         * @return builder
+         * 
+         */
         public Builder processingUnits(@Nullable Output<Integer> processingUnits) {
             $.processingUnits = processingUnits;
             return this;
         }
 
+        /**
+         * @param processingUnits The number of processing units allocated to this instance. Exactly one of either num_nodes,
+         * processingUnits or autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+         * 
+         * @return builder
+         * 
+         */
         public Builder processingUnits(Integer processingUnits) {
             return processingUnits(Output.of(processingUnits));
         }

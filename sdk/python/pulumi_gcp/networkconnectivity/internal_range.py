@@ -816,22 +816,14 @@ class InternalRange(pulumi.CustomResource):
         InternalRange can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/internalRanges/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InternalRange can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default projects/{{project}}/locations/global/internalRanges/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{name}}
         ```
 
@@ -1040,22 +1032,14 @@ class InternalRange(pulumi.CustomResource):
         InternalRange can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/internalRanges/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InternalRange can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default projects/{{project}}/locations/global/internalRanges/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{name}}
         ```
 

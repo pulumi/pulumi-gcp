@@ -65,28 +65,16 @@ namespace Pulumi.Gcp.Spanner
     /// Database can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
-    /// 
     /// * `instances/{{instance}}/databases/{{name}}`
-    /// 
     /// * `{{project}}/{{instance}}/{{name}}`
-    /// 
     /// * `{{instance}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:spanner/database:Database default instances/{{instance}}/databases/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
     /// ```
     /// </summary>
@@ -101,6 +89,16 @@ namespace Pulumi.Gcp.Spanner
         [Output("databaseDialect")]
         public Output<string> DatabaseDialect { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional list of DDL statements to run inside the database. Statements can create
+        /// tables, indexes, etc.
+        /// During creation these statements execute atomically with the creation of the database
+        /// and if there is an error in any statement, the database is not created.
+        /// Terraform does not perform drift detection on this field and assumes that the values
+        /// recorded in state are accurate. Limited updates to this field are supported, and
+        /// newly appended DDL statements can be executed in an update. However, modifications
+        /// to prior statements will create a plan that marks the resource for recreation.
+        /// </summary>
         [Output("ddls")]
         public Output<ImmutableArray<string>> Ddls { get; private set; } = null!;
 
@@ -118,6 +116,15 @@ namespace Pulumi.Gcp.Spanner
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether drop protection is enabled for this database. Defaults to false.
+        /// Drop protection is different from
+        /// the "DeletionProtection" attribute in the following ways:
+        /// (1) "DeletionProtection" only protects the database from deletions in Terraform.
+        /// whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+        /// (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+        /// "DeletionProtection" attribute does not provide protection against the deletion of the parent instance.
+        /// </summary>
         [Output("enableDropProtection")]
         public Output<bool?> EnableDropProtection { get; private set; } = null!;
 
@@ -220,6 +227,17 @@ namespace Pulumi.Gcp.Spanner
 
         [Input("ddls")]
         private InputList<string>? _ddls;
+
+        /// <summary>
+        /// An optional list of DDL statements to run inside the database. Statements can create
+        /// tables, indexes, etc.
+        /// During creation these statements execute atomically with the creation of the database
+        /// and if there is an error in any statement, the database is not created.
+        /// Terraform does not perform drift detection on this field and assumes that the values
+        /// recorded in state are accurate. Limited updates to this field are supported, and
+        /// newly appended DDL statements can be executed in an update. However, modifications
+        /// to prior statements will create a plan that marks the resource for recreation.
+        /// </summary>
         public InputList<string> Ddls
         {
             get => _ddls ?? (_ddls = new InputList<string>());
@@ -240,6 +258,15 @@ namespace Pulumi.Gcp.Spanner
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
+        /// <summary>
+        /// Whether drop protection is enabled for this database. Defaults to false.
+        /// Drop protection is different from
+        /// the "DeletionProtection" attribute in the following ways:
+        /// (1) "DeletionProtection" only protects the database from deletions in Terraform.
+        /// whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+        /// (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+        /// "DeletionProtection" attribute does not provide protection against the deletion of the parent instance.
+        /// </summary>
         [Input("enableDropProtection")]
         public Input<bool>? EnableDropProtection { get; set; }
 
@@ -298,6 +325,17 @@ namespace Pulumi.Gcp.Spanner
 
         [Input("ddls")]
         private InputList<string>? _ddls;
+
+        /// <summary>
+        /// An optional list of DDL statements to run inside the database. Statements can create
+        /// tables, indexes, etc.
+        /// During creation these statements execute atomically with the creation of the database
+        /// and if there is an error in any statement, the database is not created.
+        /// Terraform does not perform drift detection on this field and assumes that the values
+        /// recorded in state are accurate. Limited updates to this field are supported, and
+        /// newly appended DDL statements can be executed in an update. However, modifications
+        /// to prior statements will create a plan that marks the resource for recreation.
+        /// </summary>
         public InputList<string> Ddls
         {
             get => _ddls ?? (_ddls = new InputList<string>());
@@ -318,6 +356,15 @@ namespace Pulumi.Gcp.Spanner
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
+        /// <summary>
+        /// Whether drop protection is enabled for this database. Defaults to false.
+        /// Drop protection is different from
+        /// the "DeletionProtection" attribute in the following ways:
+        /// (1) "DeletionProtection" only protects the database from deletions in Terraform.
+        /// whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+        /// (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+        /// "DeletionProtection" attribute does not provide protection against the deletion of the parent instance.
+        /// </summary>
         [Input("enableDropProtection")]
         public Input<bool>? EnableDropProtection { get; set; }
 

@@ -22,8 +22,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //

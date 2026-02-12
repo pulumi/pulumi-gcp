@@ -7,6 +7,19 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** This resource is deprecated at the API level and will be removed in a future version of Terraform.
+ *
+ * Represents a machine learning solution.
+ *
+ * A model can have multiple versions, each of which is a deployed, trained model
+ * ready to receive prediction requests. The model itself is just a container.
+ *
+ * To get more information about Model, see:
+ *
+ * * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+ *
  * ## Example Usage
  *
  * ### Ml Model Basic
@@ -44,22 +57,14 @@ import * as utilities from "../utilities";
  * Model can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/models/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Model can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
  * ```
  */

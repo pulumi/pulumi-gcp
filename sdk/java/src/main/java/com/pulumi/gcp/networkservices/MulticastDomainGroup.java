@@ -103,22 +103,14 @@ import javax.annotation.Nullable;
  * MulticastDomainGroup can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/multicastDomainGroups/{{multicast_domain_group_id}}`
- * 
  * * `{{project}}/{{location}}/{{multicast_domain_group_id}}`
- * 
  * * `{{location}}/{{multicast_domain_group_id}}`
  * 
  * When using the `pulumi import` command, MulticastDomainGroup can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default projects/{{project}}/locations/{{location}}/multicastDomainGroups/{{multicast_domain_group_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default {{project}}/{{location}}/{{multicast_domain_group_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default {{location}}/{{multicast_domain_group_id}}
  * ```
  * 

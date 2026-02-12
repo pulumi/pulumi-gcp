@@ -204,7 +204,6 @@ namespace Pulumi.Gcp.AccessContextManager
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
     /// * accessPolicies/{{name}}
-    /// 
     /// * {{name}}
     /// 
     /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -212,25 +211,21 @@ namespace Pulumi.Gcp.AccessContextManager
     /// Access Context Manager (VPC Service Controls) accesspolicy IAM resources can be imported using the resource identifiers, role, and member.
     /// 
     /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import gcp:accesscontextmanager/accessPolicyIamPolicy:AccessPolicyIamPolicy editor "accessPolicies/{{access_policy}} roles/accesscontextmanager.policyAdmin user:jane@example.com"
+    /// $ terraform import google_access_context_manager_access_policy_iam_member.editor "accessPolicies/{{access_policy}} roles/accesscontextmanager.policyAdmin user:jane@example.com"
     /// ```
     /// 
     /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import gcp:accesscontextmanager/accessPolicyIamPolicy:AccessPolicyIamPolicy editor "accessPolicies/{{access_policy}} roles/accesscontextmanager.policyAdmin"
+    /// $ terraform import google_access_context_manager_access_policy_iam_binding.editor "accessPolicies/{{access_policy}} roles/accesscontextmanager.policyAdmin"
     /// ```
     /// 
     /// IAM policy imports use the identifier of the resource in question, e.g.
-    /// 
     /// ```sh
     /// $ pulumi import gcp:accesscontextmanager/accessPolicyIamPolicy:AccessPolicyIamPolicy editor accessPolicies/{{access_policy}}
     /// ```
     /// 
-    /// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
+    /// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
     ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:accesscontextmanager/accessPolicyIamPolicy:AccessPolicyIamPolicy")]

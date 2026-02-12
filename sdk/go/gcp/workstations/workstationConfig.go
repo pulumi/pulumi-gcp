@@ -12,6 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A set of configuration options describing how a workstation will be run. Workstation configurations are intended to be shared across multiple workstations.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about WorkstationConfig, see:
+//
+// * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs/create)
+// * How-to Guides
+//   - [Workstations](https://cloud.google.com/workstations/docs/)
+//
 // ## Example Usage
 //
 // ### Workstation Config Basic
@@ -758,22 +769,14 @@ import (
 // WorkstationConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}`
-//
 // * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}`
-//
 // * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}`
 //
 // When using the `pulumi import` command, WorkstationConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
 // ```
 type WorkstationConfig struct {
@@ -799,7 +802,8 @@ type WorkstationConfig struct {
 	// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
 	DisableTcpConnections pulumi.BoolPtrOutput `pulumi:"disableTcpConnections"`
 	// Human-readable name for this resource.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -923,7 +927,8 @@ type workstationConfigState struct {
 	// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
 	DisableTcpConnections *bool `pulumi:"disableTcpConnections"`
 	// Human-readable name for this resource.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -1004,7 +1009,8 @@ type WorkstationConfigState struct {
 	// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
 	DisableTcpConnections pulumi.BoolPtrInput
 	// Human-readable name for this resource.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -1323,6 +1329,7 @@ func (o WorkstationConfigOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o WorkstationConfigOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

@@ -7,6 +7,18 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Manages user created connections for Memorystore instance
+ *
+ * To get more information about InstanceDesiredUserCreatedEndpoints, see:
+ *
+ * * [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest/v1/projects.locations.instances)
+ *
+ * > **Note:** Please ensure your connections meet the requirements outlined at
+ * https://cloud.google.com/memorystore/docs/valkey/about-multiple-vpc-networking#application_connection_requirements.
+ * If you remove a connections item from the resource, the corresponding forwarding rule will no longer be functioning.
+ * If the corresponding forwarding rule is represented in your terraform configuration it is recommended to delete that
+ * `gcp.compute.ForwardingRule` resource at the same time.
+ *
  * ## Example Usage
  *
  * ### Memorystore Instance Desired User Created Endpoints
@@ -267,28 +279,16 @@ import * as utilities from "../utilities";
  * InstanceDesiredUserCreatedEndpoints can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, InstanceDesiredUserCreatedEndpoints can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default projects/{{project}}/locations/{{region}}/instances/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{name}}
  * ```
  */

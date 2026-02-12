@@ -902,6 +902,7 @@ class GetCertificatesCertificateResult(dict):
                  scope: _builtins.str):
         """
         :param _builtins.str description: A human-readable description of the resource.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param Mapping[str, _builtins.str] labels: Set of label tags associated with the Certificate resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -954,6 +955,9 @@ class GetCertificatesCertificateResult(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property

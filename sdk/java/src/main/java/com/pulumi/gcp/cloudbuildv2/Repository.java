@@ -234,22 +234,14 @@ import javax.annotation.Nullable;
  * Repository can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{parent_connection}}/{{name}}`
- * 
  * * `{{location}}/{{parent_connection}}/{{name}}`
  * 
  * When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:cloudbuildv2/repository:Repository default projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:cloudbuildv2/repository:Repository default {{project}}/{{location}}/{{parent_connection}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:cloudbuildv2/repository:Repository default {{location}}/{{parent_connection}}/{{name}}
  * ```
  * 
@@ -288,9 +280,17 @@ public class Repository extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

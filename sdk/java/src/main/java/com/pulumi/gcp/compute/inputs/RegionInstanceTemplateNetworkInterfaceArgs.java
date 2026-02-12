@@ -20,9 +20,27 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
 
     public static final RegionInstanceTemplateNetworkInterfaceArgs Empty = new RegionInstanceTemplateNetworkInterfaceArgs();
 
+    /**
+     * Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet (this means that ssh provisioners will
+     * not work unless you are running Terraform can send traffic to the instance&#39;s
+     * network (e.g. via tunnel or because it is running on another cloud instance
+     * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+     * 
+     */
     @Import(name="accessConfigs")
     private @Nullable Output<List<RegionInstanceTemplateNetworkInterfaceAccessConfigArgs>> accessConfigs;
 
+    /**
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet (this means that ssh provisioners will
+     * not work unless you are running Terraform can send traffic to the instance&#39;s
+     * network (e.g. via tunnel or because it is running on another cloud instance
+     * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+     * 
+     */
     public Optional<Output<List<RegionInstanceTemplateNetworkInterfaceAccessConfigArgs>>> accessConfigs() {
         return Optional.ofNullable(this.accessConfigs);
     }
@@ -126,14 +144,16 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
     }
 
     /**
-     * The name of the network_interface.
+     * The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the network_interface.
+     * @return The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -295,15 +315,48 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
             $ = new RegionInstanceTemplateNetworkInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessConfigs Access configurations, i.e. IPs via which this
+         * instance can be accessed via the Internet. Omit to ensure that the instance
+         * is not accessible from the Internet (this means that ssh provisioners will
+         * not work unless you are running Terraform can send traffic to the instance&#39;s
+         * network (e.g. via tunnel or because it is running on another cloud instance
+         * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConfigs(@Nullable Output<List<RegionInstanceTemplateNetworkInterfaceAccessConfigArgs>> accessConfigs) {
             $.accessConfigs = accessConfigs;
             return this;
         }
 
+        /**
+         * @param accessConfigs Access configurations, i.e. IPs via which this
+         * instance can be accessed via the Internet. Omit to ensure that the instance
+         * is not accessible from the Internet (this means that ssh provisioners will
+         * not work unless you are running Terraform can send traffic to the instance&#39;s
+         * network (e.g. via tunnel or because it is running on another cloud instance
+         * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConfigs(List<RegionInstanceTemplateNetworkInterfaceAccessConfigArgs> accessConfigs) {
             return accessConfigs(Output.of(accessConfigs));
         }
 
+        /**
+         * @param accessConfigs Access configurations, i.e. IPs via which this
+         * instance can be accessed via the Internet. Omit to ensure that the instance
+         * is not accessible from the Internet (this means that ssh provisioners will
+         * not work unless you are running Terraform can send traffic to the instance&#39;s
+         * network (e.g. via tunnel or because it is running on another cloud instance
+         * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConfigs(RegionInstanceTemplateNetworkInterfaceAccessConfigArgs... accessConfigs) {
             return accessConfigs(List.of(accessConfigs));
         }
@@ -467,7 +520,8 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the network_interface.
+         * @param name The name of the instance template. If you leave
+         * this blank, Terraform will auto-generate a unique name.
          * 
          * @return builder
          * 
@@ -478,7 +532,8 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the network_interface.
+         * @param name The name of the instance template. If you leave
+         * this blank, Terraform will auto-generate a unique name.
          * 
          * @return builder
          * 

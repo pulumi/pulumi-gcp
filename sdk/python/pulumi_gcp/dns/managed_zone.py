@@ -941,22 +941,14 @@ class ManagedZone(pulumi.CustomResource):
         ManagedZone can be imported using any of these accepted formats:
 
         * `projects/{{project}}/managedZones/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dns/managedZone:ManagedZone default projects/{{project}}/managedZones/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dns/managedZone:ManagedZone default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dns/managedZone:ManagedZone default {{name}}
         ```
 
@@ -1266,22 +1258,14 @@ class ManagedZone(pulumi.CustomResource):
         ManagedZone can be imported using any of these accepted formats:
 
         * `projects/{{project}}/managedZones/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dns/managedZone:ManagedZone default projects/{{project}}/managedZones/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dns/managedZone:ManagedZone default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dns/managedZone:ManagedZone default {{name}}
         ```
 

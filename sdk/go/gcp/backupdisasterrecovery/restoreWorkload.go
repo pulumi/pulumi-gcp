@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An imperative resource that triggers a GCBDR restoration event.
+// Creating this resource will initiate a restore operation from a specified backup.
+// The resource represents the restore operation and its result.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
 // ## Example Usage
 //
 // ### Backup Dr Restore Workload Compute Instance Basic
@@ -288,16 +295,12 @@ import (
 // RestoreWorkload can be imported using any of these accepted formats:
 //
 // * `/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, RestoreWorkload can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
 // ```
 type RestoreWorkload struct {
@@ -316,7 +319,9 @@ type RestoreWorkload struct {
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput `pulumi:"computeInstanceTargetEnvironment"`
 	// Required. The ID of the data source.
-	DataSourceId           pulumi.StringOutput  `pulumi:"dataSourceId"`
+	DataSourceId pulumi.StringOutput `pulumi:"dataSourceId"`
+	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+	// If false, only the restore record is removed from the state, leaving the resource active.
 	DeleteRestoredInstance pulumi.BoolPtrOutput `pulumi:"deleteRestoredInstance"`
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
@@ -395,8 +400,10 @@ type restoreWorkloadState struct {
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment *RestoreWorkloadComputeInstanceTargetEnvironment `pulumi:"computeInstanceTargetEnvironment"`
 	// Required. The ID of the data source.
-	DataSourceId           *string `pulumi:"dataSourceId"`
-	DeleteRestoredInstance *bool   `pulumi:"deleteRestoredInstance"`
+	DataSourceId *string `pulumi:"dataSourceId"`
+	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+	// If false, only the restore record is removed from the state, leaving the resource active.
+	DeleteRestoredInstance *bool `pulumi:"deleteRestoredInstance"`
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties *RestoreWorkloadDiskRestoreProperties `pulumi:"diskRestoreProperties"`
@@ -433,7 +440,9 @@ type RestoreWorkloadState struct {
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment RestoreWorkloadComputeInstanceTargetEnvironmentPtrInput
 	// Required. The ID of the data source.
-	DataSourceId           pulumi.StringPtrInput
+	DataSourceId pulumi.StringPtrInput
+	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+	// If false, only the restore record is removed from the state, leaving the resource active.
 	DeleteRestoredInstance pulumi.BoolPtrInput
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
@@ -475,8 +484,10 @@ type restoreWorkloadArgs struct {
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment *RestoreWorkloadComputeInstanceTargetEnvironment `pulumi:"computeInstanceTargetEnvironment"`
 	// Required. The ID of the data source.
-	DataSourceId           string `pulumi:"dataSourceId"`
-	DeleteRestoredInstance *bool  `pulumi:"deleteRestoredInstance"`
+	DataSourceId string `pulumi:"dataSourceId"`
+	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+	// If false, only the restore record is removed from the state, leaving the resource active.
+	DeleteRestoredInstance *bool `pulumi:"deleteRestoredInstance"`
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties *RestoreWorkloadDiskRestoreProperties `pulumi:"diskRestoreProperties"`
@@ -511,7 +522,9 @@ type RestoreWorkloadArgs struct {
 	// Structure is documented below.
 	ComputeInstanceTargetEnvironment RestoreWorkloadComputeInstanceTargetEnvironmentPtrInput
 	// Required. The ID of the data source.
-	DataSourceId           pulumi.StringInput
+	DataSourceId pulumi.StringInput
+	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+	// If false, only the restore record is removed from the state, leaving the resource active.
 	DeleteRestoredInstance pulumi.BoolPtrInput
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
@@ -655,6 +668,8 @@ func (o RestoreWorkloadOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestoreWorkload) pulumi.StringOutput { return v.DataSourceId }).(pulumi.StringOutput)
 }
 
+// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+// If false, only the restore record is removed from the state, leaving the resource active.
 func (o RestoreWorkloadOutput) DeleteRestoredInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkload) pulumi.BoolPtrOutput { return v.DeleteRestoredInstance }).(pulumi.BoolPtrOutput)
 }

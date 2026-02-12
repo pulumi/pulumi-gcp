@@ -55,22 +55,14 @@ import * as utilities from "../utilities";
  * VolumeQuotaRule can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}`
- *
  * * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
- *
  * * `{{location}}/{{volume_name}}/{{name}}`
  *
  * When using the `pulumi import` command, VolumeQuotaRule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{project}}/{{location}}/{{volume_name}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{location}}/{{volume_name}}/{{name}}
  * ```
  */

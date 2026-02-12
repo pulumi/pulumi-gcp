@@ -92,7 +92,17 @@ def get_apple_app_config(app_id: Optional[_builtins.str] = None,
                          project: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppleAppConfigResult:
     """
-    Use this data source to access information about an existing resource.
+    A Google Cloud Firebase Apple application configuration
+
+    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
+    To get more information about iosApp, see:
+
+    * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps)
+    * How-to Guides
+        * [Official Documentation](https://firebase.google.com/)
+
 
     :param _builtins.str app_id: The id of the Firebase iOS App.
            
@@ -116,7 +126,17 @@ def get_apple_app_config_output(app_id: Optional[pulumi.Input[_builtins.str]] = 
                                 project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppleAppConfigResult]:
     """
-    Use this data source to access information about an existing resource.
+    A Google Cloud Firebase Apple application configuration
+
+    > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
+    To get more information about iosApp, see:
+
+    * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps)
+    * How-to Guides
+        * [Official Documentation](https://firebase.google.com/)
+
 
     :param _builtins.str app_id: The id of the Firebase iOS App.
            

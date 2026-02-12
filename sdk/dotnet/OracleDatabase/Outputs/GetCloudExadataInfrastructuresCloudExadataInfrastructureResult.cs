@@ -24,11 +24,17 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// The date and time that the Exadata Infrastructure was created.
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+        /// </summary>
         public readonly bool DeletionProtection;
         /// <summary>
         /// User friendly name for this resource.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// Entitlement ID of the private offer against which this infrastructure

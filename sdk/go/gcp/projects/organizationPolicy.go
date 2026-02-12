@@ -156,22 +156,14 @@ import (
 // Project organization policies can be imported using any of the follow formats:
 //
 // * `projects/{{project_id}}:constraints/{{constraint}}`
-//
 // * `{{project_id}}:constraints/{{constraint}}`
-//
 // * `{{project_id}}:{{constraint}}`
 //
 // When using the `pulumi import` command, project organization policies can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default projects/{{project_id}}:constraints/{{constraint}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default {{project_id}}:constraints/{{constraint}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default {{project_id}}:{{constraint}}
 // ```
 type OrganizationPolicy struct {

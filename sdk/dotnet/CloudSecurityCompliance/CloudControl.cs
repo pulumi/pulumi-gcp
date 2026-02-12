@@ -249,16 +249,12 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     /// CloudControl can be imported using any of these accepted formats:
     /// 
     /// * `organizations/{{organization}}/locations/{{location}}/cloudControls/{{cloud_control_id}}`
-    /// 
     /// * `{{organization}}/{{location}}/{{cloud_control_id}}`
     /// 
     /// When using the `pulumi import` command, CloudControl can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default organizations/{{organization}}/locations/{{location}}/cloudControls/{{cloud_control_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:cloudsecuritycompliance/cloudControl:CloudControl default {{organization}}/{{location}}/{{cloud_control_id}}
     /// ```
     /// </summary>

@@ -121,22 +121,14 @@ namespace Pulumi.Gcp.MigrationCenter
     /// PreferenceSet can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{preference_set_id}}`
-    /// 
     /// * `{{location}}/{{preference_set_id}}`
     /// 
     /// When using the `pulumi import` command, PreferenceSet can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default {{project}}/{{location}}/{{preference_set_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default {{location}}/{{preference_set_id}}
     /// ```
     /// </summary>

@@ -147,33 +147,28 @@ __all__ = [
     'UptimeCheckConfigTcpCheckPingConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AlertPolicyAlertStrategyArgsDict(TypedDict):
-        auto_close: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If an alert policy that was active has no data for this long, any open incidents will close.
-        """
-        notification_channel_strategies: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgsDict']]]]
-        """
-        Control over how the notification channels in `notification_channels`
-        are notified when this alert fires, on a per-channel basis.
-        Structure is documented below.
-        """
-        notification_prompts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Control when notifications will be sent out.
-        Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
-        """
-        notification_rate_limit: NotRequired[pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgsDict']]
-        """
-        Required for alert policies with a LogMatch condition.
-        This limit is not implemented for alert policies that are not log-based.
-        Structure is documented below.
-        """
-elif False:
-    AlertPolicyAlertStrategyArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyAlertStrategyArgsDict(TypedDict):
+    auto_close: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If an alert policy that was active has no data for this long, any open incidents will close.
+    """
+    notification_channel_strategies: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgsDict']]]]
+    """
+    Control over how the notification channels in `notification_channels`
+    are notified when this alert fires, on a per-channel basis.
+    Structure is documented below.
+    """
+    notification_prompts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Control when notifications will be sent out.
+    Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+    """
+    notification_rate_limit: NotRequired[pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgsDict']]
+    """
+    Required for alert policies with a LogMatch condition.
+    This limit is not implemented for alert policies that are not log-based.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AlertPolicyAlertStrategyArgs:
@@ -256,21 +251,18 @@ class AlertPolicyAlertStrategyArgs:
         pulumi.set(self, "notification_rate_limit", value)
 
 
-if not MYPY:
-    class AlertPolicyAlertStrategyNotificationChannelStrategyArgsDict(TypedDict):
-        notification_channel_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The notification channels that these settings apply to. Each of these
-        correspond to the name field in one of the NotificationChannel objects
-        referenced in the notification_channels field of this AlertPolicy. The format is
-        `projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]`
-        """
-        renotify_interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The frequency at which to send reminder notifications for open incidents.
-        """
-elif False:
-    AlertPolicyAlertStrategyNotificationChannelStrategyArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyAlertStrategyNotificationChannelStrategyArgsDict(TypedDict):
+    notification_channel_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The notification channels that these settings apply to. Each of these
+    correspond to the name field in one of the NotificationChannel objects
+    referenced in the notification_channels field of this AlertPolicy. The format is
+    `projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]`
+    """
+    renotify_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The frequency at which to send reminder notifications for open incidents.
+    """
 
 @pulumi.input_type
 class AlertPolicyAlertStrategyNotificationChannelStrategyArgs:
@@ -317,15 +309,12 @@ class AlertPolicyAlertStrategyNotificationChannelStrategyArgs:
         pulumi.set(self, "renotify_interval", value)
 
 
-if not MYPY:
-    class AlertPolicyAlertStrategyNotificationRateLimitArgsDict(TypedDict):
-        period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Not more than one notification per period.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
-        """
-elif False:
-    AlertPolicyAlertStrategyNotificationRateLimitArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyAlertStrategyNotificationRateLimitArgsDict(TypedDict):
+    period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Not more than one notification per period.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
+    """
 
 @pulumi.input_type
 class AlertPolicyAlertStrategyNotificationRateLimitArgs:
@@ -352,66 +341,63 @@ class AlertPolicyAlertStrategyNotificationRateLimitArgs:
         pulumi.set(self, "period", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionArgsDict(TypedDict):
-        display_name: pulumi.Input[_builtins.str]
-        """
-        A short name or phrase used to identify the
-        condition in dashboards, notifications, and
-        incidents. To avoid confusion, don't use the same
-        display name for multiple conditions in the same
-        policy.
-        """
-        condition_absent: NotRequired[pulumi.Input['AlertPolicyConditionConditionAbsentArgsDict']]
-        """
-        A condition that checks that a time series
-        continues to receive new data points.
-        Structure is documented below.
-        """
-        condition_matched_log: NotRequired[pulumi.Input['AlertPolicyConditionConditionMatchedLogArgsDict']]
-        """
-        A condition that checks for log messages matching given constraints.
-        If set, no other conditions can be present.
-        Structure is documented below.
-        """
-        condition_monitoring_query_language: NotRequired[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgsDict']]
-        """
-        A Monitoring Query Language query that outputs a boolean stream
-        Structure is documented below.
-        """
-        condition_prometheus_query_language: NotRequired[pulumi.Input['AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict']]
-        """
-        A condition type that allows alert policies to be defined using
-        Prometheus Query Language (PromQL).
-        The PrometheusQueryLanguageCondition message contains information
-        from a Prometheus alerting rule and its associated rule group.
-        Structure is documented below.
-        """
-        condition_sql: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlArgsDict']]
-        """
-        A condition that allows alerting policies to be defined using GoogleSQL.
-        SQL conditions examine a sliding window of logs using GoogleSQL.
-        Alert policies with SQL conditions may incur additional billing.
-        Structure is documented below.
-        """
-        condition_threshold: NotRequired[pulumi.Input['AlertPolicyConditionConditionThresholdArgsDict']]
-        """
-        A condition that compares a time series against a
-        threshold.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique resource name for this condition.
-        Its syntax is:
-        projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
-        [CONDITION_ID] is assigned by Stackdriver Monitoring when
-        the condition is created as part of a new or updated alerting
-        policy.
-        """
-elif False:
-    AlertPolicyConditionArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionArgsDict(TypedDict):
+    display_name: pulumi.Input[_builtins.str]
+    """
+    A short name or phrase used to identify the
+    condition in dashboards, notifications, and
+    incidents. To avoid confusion, don't use the same
+    display name for multiple conditions in the same
+    policy.
+    """
+    condition_absent: NotRequired[pulumi.Input['AlertPolicyConditionConditionAbsentArgsDict']]
+    """
+    A condition that checks that a time series
+    continues to receive new data points.
+    Structure is documented below.
+    """
+    condition_matched_log: NotRequired[pulumi.Input['AlertPolicyConditionConditionMatchedLogArgsDict']]
+    """
+    A condition that checks for log messages matching given constraints.
+    If set, no other conditions can be present.
+    Structure is documented below.
+    """
+    condition_monitoring_query_language: NotRequired[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgsDict']]
+    """
+    A Monitoring Query Language query that outputs a boolean stream
+    Structure is documented below.
+    """
+    condition_prometheus_query_language: NotRequired[pulumi.Input['AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict']]
+    """
+    A condition type that allows alert policies to be defined using
+    Prometheus Query Language (PromQL).
+    The PrometheusQueryLanguageCondition message contains information
+    from a Prometheus alerting rule and its associated rule group.
+    Structure is documented below.
+    """
+    condition_sql: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlArgsDict']]
+    """
+    A condition that allows alerting policies to be defined using GoogleSQL.
+    SQL conditions examine a sliding window of logs using GoogleSQL.
+    Alert policies with SQL conditions may incur additional billing.
+    Structure is documented below.
+    """
+    condition_threshold: NotRequired[pulumi.Input['AlertPolicyConditionConditionThresholdArgsDict']]
+    """
+    A condition that compares a time series against a
+    threshold.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique resource name for this condition.
+    Its syntax is:
+    projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+    [CONDITION_ID] is assigned by Stackdriver Monitoring when
+    the condition is created as part of a new or updated alerting
+    policy.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionArgs:
@@ -595,56 +581,53 @@ class AlertPolicyConditionArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionAbsentArgsDict(TypedDict):
-        duration: pulumi.Input[_builtins.str]
-        """
-        The amount of time that a time series must
-        fail to report new data to be considered
-        failing. Currently, only values that are a
-        multiple of a minute--e.g. 60s, 120s, or 300s
-        --are supported.
-        """
-        aggregations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgsDict']]]]
-        """
-        Specifies the alignment of data points in
-        individual time series as well as how to
-        combine the retrieved time series together
-        (such as when aggregating multiple streams
-        on each resource to a single stream for each
-        resource or when aggregating streams across
-        all members of a group of resources).
-        Multiple aggregations are applied in the
-        order specified.
-        Structure is documented below.
-        """
-        filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter that identifies which time series
-        should be compared with the threshold.The
-        filter is similar to the one that is
-        specified in the
-        MetricService.ListTimeSeries request (that
-        call is useful to verify the time series
-        that will be retrieved / processed) and must
-        specify the metric type and optionally may
-        contain restrictions on resource type,
-        resource labels, and metric labels. This
-        field may not exceed 2048 Unicode characters
-        in length.
-        """
-        trigger: NotRequired[pulumi.Input['AlertPolicyConditionConditionAbsentTriggerArgsDict']]
-        """
-        The number/percent of time series for which
-        the comparison must hold in order for the
-        condition to trigger. If unspecified, then
-        the condition will trigger if the comparison
-        is true for any of the time series that have
-        been identified by filter and aggregations.
-        Structure is documented below.
-        """
-elif False:
-    AlertPolicyConditionConditionAbsentArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionAbsentArgsDict(TypedDict):
+    duration: pulumi.Input[_builtins.str]
+    """
+    The amount of time that a time series must
+    fail to report new data to be considered
+    failing. Currently, only values that are a
+    multiple of a minute--e.g. 60s, 120s, or 300s
+    --are supported.
+    """
+    aggregations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgsDict']]]]
+    """
+    Specifies the alignment of data points in
+    individual time series as well as how to
+    combine the retrieved time series together
+    (such as when aggregating multiple streams
+    on each resource to a single stream for each
+    resource or when aggregating streams across
+    all members of a group of resources).
+    Multiple aggregations are applied in the
+    order specified.
+    Structure is documented below.
+    """
+    filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter that identifies which time series
+    should be compared with the threshold.The
+    filter is similar to the one that is
+    specified in the
+    MetricService.ListTimeSeries request (that
+    call is useful to verify the time series
+    that will be retrieved / processed) and must
+    specify the metric type and optionally may
+    contain restrictions on resource type,
+    resource labels, and metric labels. This
+    field may not exceed 2048 Unicode characters
+    in length.
+    """
+    trigger: NotRequired[pulumi.Input['AlertPolicyConditionConditionAbsentTriggerArgsDict']]
+    """
+    The number/percent of time series for which
+    the comparison must hold in order for the
+    condition to trigger. If unspecified, then
+    the condition will trigger if the comparison
+    is true for any of the time series that have
+    been identified by filter and aggregations.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionAbsentArgs:
@@ -776,97 +759,94 @@ class AlertPolicyConditionConditionAbsentArgs:
         pulumi.set(self, "trigger", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionAbsentAggregationArgsDict(TypedDict):
-        alignment_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The alignment period for per-time
-        series alignment. If present,
-        alignmentPeriod must be at least
-        60 seconds. After per-time series
-        alignment, each time series will
-        contain data points only on the
-        period boundaries. If
-        perSeriesAligner is not specified
-        or equals ALIGN_NONE, then this
-        field is ignored. If
-        perSeriesAligner is specified and
-        does not equal ALIGN_NONE, then
-        this field must be defined;
-        otherwise an error is returned.
-        """
-        cross_series_reducer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The approach to be used to combine
-        time series. Not all reducer
-        functions may be applied to all
-        time series, depending on the
-        metric type and the value type of
-        the original time series.
-        Reduction may change the metric
-        type of value type of the time
-        series.Time series data must be
-        aligned in order to perform cross-
-        time series reduction. If
-        crossSeriesReducer is specified,
-        then perSeriesAligner must be
-        specified and not equal ALIGN_NONE
-        and alignmentPeriod must be
-        specified; otherwise, an error is
-        returned.
-        Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
-        """
-        group_by_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of fields to preserve when
-        crossSeriesReducer is specified.
-        The groupByFields determine how
-        the time series are partitioned
-        into subsets prior to applying the
-        aggregation function. Each subset
-        contains time series that have the
-        same value for each of the
-        grouping fields. Each individual
-        time series is a member of exactly
-        one subset. The crossSeriesReducer
-        is applied to each subset of time
-        series. It is not possible to
-        reduce across different resource
-        types, so this field implicitly
-        contains resource.type. Fields not
-        specified in groupByFields are
-        aggregated away. If groupByFields
-        is not specified and all the time
-        series have the same resource
-        type, then the time series are
-        aggregated into a single output
-        time series. If crossSeriesReducer
-        is not defined, this field is
-        ignored.
-        """
-        per_series_aligner: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The approach to be used to align
-        individual time series. Not all
-        alignment functions may be applied
-        to all time series, depending on
-        the metric type and value type of
-        the original time series.
-        Alignment may change the metric
-        type or the value type of the time
-        series.Time series data must be
-        aligned in order to perform cross-
-        time series reduction. If
-        crossSeriesReducer is specified,
-        then perSeriesAligner must be
-        specified and not equal ALIGN_NONE
-        and alignmentPeriod must be
-        specified; otherwise, an error is
-        returned.
-        Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
-        """
-elif False:
-    AlertPolicyConditionConditionAbsentAggregationArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionAbsentAggregationArgsDict(TypedDict):
+    alignment_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The alignment period for per-time
+    series alignment. If present,
+    alignmentPeriod must be at least
+    60 seconds. After per-time series
+    alignment, each time series will
+    contain data points only on the
+    period boundaries. If
+    perSeriesAligner is not specified
+    or equals ALIGN_NONE, then this
+    field is ignored. If
+    perSeriesAligner is specified and
+    does not equal ALIGN_NONE, then
+    this field must be defined;
+    otherwise an error is returned.
+    """
+    cross_series_reducer: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The approach to be used to combine
+    time series. Not all reducer
+    functions may be applied to all
+    time series, depending on the
+    metric type and the value type of
+    the original time series.
+    Reduction may change the metric
+    type of value type of the time
+    series.Time series data must be
+    aligned in order to perform cross-
+    time series reduction. If
+    crossSeriesReducer is specified,
+    then perSeriesAligner must be
+    specified and not equal ALIGN_NONE
+    and alignmentPeriod must be
+    specified; otherwise, an error is
+    returned.
+    Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
+    """
+    group_by_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of fields to preserve when
+    crossSeriesReducer is specified.
+    The groupByFields determine how
+    the time series are partitioned
+    into subsets prior to applying the
+    aggregation function. Each subset
+    contains time series that have the
+    same value for each of the
+    grouping fields. Each individual
+    time series is a member of exactly
+    one subset. The crossSeriesReducer
+    is applied to each subset of time
+    series. It is not possible to
+    reduce across different resource
+    types, so this field implicitly
+    contains resource.type. Fields not
+    specified in groupByFields are
+    aggregated away. If groupByFields
+    is not specified and all the time
+    series have the same resource
+    type, then the time series are
+    aggregated into a single output
+    time series. If crossSeriesReducer
+    is not defined, this field is
+    ignored.
+    """
+    per_series_aligner: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The approach to be used to align
+    individual time series. Not all
+    alignment functions may be applied
+    to all time series, depending on
+    the metric type and value type of
+    the original time series.
+    Alignment may change the metric
+    type or the value type of the time
+    series.Time series data must be
+    aligned in order to perform cross-
+    time series reduction. If
+    crossSeriesReducer is specified,
+    then perSeriesAligner must be
+    specified and not equal ALIGN_NONE
+    and alignmentPeriod must be
+    specified; otherwise, an error is
+    returned.
+    Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionAbsentAggregationArgs:
@@ -1081,22 +1061,19 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
         pulumi.set(self, "per_series_aligner", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionAbsentTriggerArgsDict(TypedDict):
-        count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The absolute number of time series
-        that must fail the predicate for the
-        condition to be triggered.
-        """
-        percent: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The percentage of time series that
-        must fail the predicate for the
-        condition to be triggered.
-        """
-elif False:
-    AlertPolicyConditionConditionAbsentTriggerArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionAbsentTriggerArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The absolute number of time series
+    that must fail the predicate for the
+    condition to be triggered.
+    """
+    percent: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The percentage of time series that
+    must fail the predicate for the
+    condition to be triggered.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionAbsentTriggerArgs:
@@ -1145,24 +1122,21 @@ class AlertPolicyConditionConditionAbsentTriggerArgs:
         pulumi.set(self, "percent", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionMatchedLogArgsDict(TypedDict):
-        filter: pulumi.Input[_builtins.str]
-        """
-        A logs-based filter.
-        """
-        label_extractors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map from a label key to an extractor expression, which is used to
-        extract the value for this label key. Each entry in this map is
-        a specification for how data should be extracted from log entries that
-        match filter. Each combination of extracted values is treated as
-        a separate rule for the purposes of triggering notifications.
-        Label keys and corresponding values can be used in notifications
-        generated by this condition.
-        """
-elif False:
-    AlertPolicyConditionConditionMatchedLogArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionMatchedLogArgsDict(TypedDict):
+    filter: pulumi.Input[_builtins.str]
+    """
+    A logs-based filter.
+    """
+    label_extractors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map from a label key to an extractor expression, which is used to
+    extract the value for this label key. Each entry in this map is
+    a specification for how data should be extracted from log entries that
+    match filter. Each combination of extracted values is treated as
+    a separate rule for the purposes of triggering notifications.
+    Label keys and corresponding values can be used in notifications
+    generated by this condition.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionMatchedLogArgs:
@@ -1214,51 +1188,48 @@ class AlertPolicyConditionConditionMatchedLogArgs:
         pulumi.set(self, "label_extractors", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionMonitoringQueryLanguageArgsDict(TypedDict):
-        duration: pulumi.Input[_builtins.str]
-        """
-        The amount of time that a time series must
-        violate the threshold to be considered
-        failing. Currently, only values that are a
-        multiple of a minute--e.g., 0, 60, 120, or
-        300 seconds--are supported. If an invalid
-        value is given, an error will be returned.
-        When choosing a duration, it is useful to
-        keep in mind the frequency of the underlying
-        time series data (which may also be affected
-        by any alignments specified in the
-        aggregations field); a good duration is long
-        enough so that a single outlier does not
-        generate spurious alerts, but short enough
-        that unhealthy states are detected and
-        alerted on quickly.
-        """
-        query: pulumi.Input[_builtins.str]
-        """
-        Monitoring Query Language query that outputs a boolean stream.
-        """
-        evaluation_missing_data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A condition control that determines how
-        metric-threshold conditions are evaluated when
-        data stops arriving.
-        Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
-        """
-        trigger: NotRequired[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgsDict']]
-        """
-        The number/percent of time series for which
-        the comparison must hold in order for the
-        condition to trigger. If unspecified, then
-        the condition will trigger if the comparison
-        is true for any of the time series that have
-        been identified by filter and aggregations,
-        or by the ratio, if denominator_filter and
-        denominator_aggregations are specified.
-        Structure is documented below.
-        """
-elif False:
-    AlertPolicyConditionConditionMonitoringQueryLanguageArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionMonitoringQueryLanguageArgsDict(TypedDict):
+    duration: pulumi.Input[_builtins.str]
+    """
+    The amount of time that a time series must
+    violate the threshold to be considered
+    failing. Currently, only values that are a
+    multiple of a minute--e.g., 0, 60, 120, or
+    300 seconds--are supported. If an invalid
+    value is given, an error will be returned.
+    When choosing a duration, it is useful to
+    keep in mind the frequency of the underlying
+    time series data (which may also be affected
+    by any alignments specified in the
+    aggregations field); a good duration is long
+    enough so that a single outlier does not
+    generate spurious alerts, but short enough
+    that unhealthy states are detected and
+    alerted on quickly.
+    """
+    query: pulumi.Input[_builtins.str]
+    """
+    Monitoring Query Language query that outputs a boolean stream.
+    """
+    evaluation_missing_data: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A condition control that determines how
+    metric-threshold conditions are evaluated when
+    data stops arriving.
+    Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
+    """
+    trigger: NotRequired[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgsDict']]
+    """
+    The number/percent of time series for which
+    the comparison must hold in order for the
+    condition to trigger. If unspecified, then
+    the condition will trigger if the comparison
+    is true for any of the time series that have
+    been identified by filter and aggregations,
+    or by the ratio, if denominator_filter and
+    denominator_aggregations are specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionMonitoringQueryLanguageArgs:
@@ -1379,22 +1350,19 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageArgs:
         pulumi.set(self, "trigger", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgsDict(TypedDict):
-        count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The absolute number of time series
-        that must fail the predicate for the
-        condition to be triggered.
-        """
-        percent: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The percentage of time series that
-        must fail the predicate for the
-        condition to be triggered.
-        """
-elif False:
-    AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The absolute number of time series
+    that must fail the predicate for the
+    condition to be triggered.
+    """
+    percent: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The percentage of time series that
+    must fail the predicate for the
+    condition to be triggered.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs:
@@ -1443,64 +1411,69 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs:
         pulumi.set(self, "percent", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict(TypedDict):
-        query: pulumi.Input[_builtins.str]
-        """
-        The PromQL expression to evaluate. Every evaluation cycle this
-        expression is evaluated at the current time, and all resultant time
-        series become pending/firing alerts. This field must not be empty.
-        """
-        alert_rule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The alerting rule name of this alert in the corresponding Prometheus
-        configuration file.
-        Some external tools may require this field to be populated correctly
-        in order to refer to the original Prometheus configuration file.
-        The rule group name and the alert name are necessary to update the
-        relevant AlertPolicies in case the definition of the rule group changes
-        in the future.
-        This field is optional. If this field is not empty, then it must be a
-        valid Prometheus label name.
-        """
-        disable_metric_validation: NotRequired[pulumi.Input[_builtins.bool]]
-        duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Alerts are considered firing once their PromQL expression evaluated
-        to be "true" for this long. Alerts whose PromQL expression was not
-        evaluated to be "true" for long enough are considered pending. The
-        default value is zero. Must be zero or positive.
-        """
-        evaluation_interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How often this rule should be evaluated. Must be a positive multiple
-        of 30 seconds or missing. The default value is 30 seconds. If this
-        PrometheusQueryLanguageCondition was generated from a Prometheus
-        alerting rule, then this value should be taken from the enclosing
-        rule group.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Labels to add to or overwrite in the PromQL query result. Label names
-        must be valid.
-        Label values can be templatized by using variables. The only available
-        variable names are the names of the labels in the PromQL result,
-        although label names beginning with \\_\\_ (two "\\_") are reserved for
-        internal use. "labels" may be empty. This field is intended to be used
-        for organizing and identifying the AlertPolicy.
-        """
-        rule_group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The rule group name of this alert in the corresponding Prometheus
-        configuration file.
-        Some external tools may require this field to be populated correctly
-        in order to refer to the original Prometheus configuration file.
-        The rule group name and the alert name are necessary to update the
-        relevant AlertPolicies in case the definition of the rule group changes
-        in the future. This field is optional.
-        """
-elif False:
-    AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict(TypedDict):
+    query: pulumi.Input[_builtins.str]
+    """
+    The PromQL expression to evaluate. Every evaluation cycle this
+    expression is evaluated at the current time, and all resultant time
+    series become pending/firing alerts. This field must not be empty.
+    """
+    alert_rule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The alerting rule name of this alert in the corresponding Prometheus
+    configuration file.
+    Some external tools may require this field to be populated correctly
+    in order to refer to the original Prometheus configuration file.
+    The rule group name and the alert name are necessary to update the
+    relevant AlertPolicies in case the definition of the rule group changes
+    in the future.
+    This field is optional. If this field is not empty, then it must be a
+    valid Prometheus label name.
+    """
+    disable_metric_validation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to disable metric existence validation for this condition.
+    This allows alerting policies to be defined on metrics that do not yet
+    exist, improving advanced customer workflows such as configuring
+    alerting policies using Terraform.
+    Users with the `monitoring.alertPolicyViewer` role are able to see the
+    name of the non-existent metric in the alerting policy condition.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Alerts are considered firing once their PromQL expression evaluated
+    to be "true" for this long. Alerts whose PromQL expression was not
+    evaluated to be "true" for long enough are considered pending. The
+    default value is zero. Must be zero or positive.
+    """
+    evaluation_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How often this rule should be evaluated. Must be a positive multiple
+    of 30 seconds or missing. The default value is 30 seconds. If this
+    PrometheusQueryLanguageCondition was generated from a Prometheus
+    alerting rule, then this value should be taken from the enclosing
+    rule group.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Labels to add to or overwrite in the PromQL query result. Label names
+    must be valid.
+    Label values can be templatized by using variables. The only available
+    variable names are the names of the labels in the PromQL result,
+    although label names beginning with \\_\\_ (two "\\_") are reserved for
+    internal use. "labels" may be empty. This field is intended to be used
+    for organizing and identifying the AlertPolicy.
+    """
+    rule_group: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The rule group name of this alert in the corresponding Prometheus
+    configuration file.
+    Some external tools may require this field to be populated correctly
+    in order to refer to the original Prometheus configuration file.
+    The rule group name and the alert name are necessary to update the
+    relevant AlertPolicies in case the definition of the rule group changes
+    in the future. This field is optional.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
@@ -1525,6 +1498,12 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
                in the future.
                This field is optional. If this field is not empty, then it must be a
                valid Prometheus label name.
+        :param pulumi.Input[_builtins.bool] disable_metric_validation: Whether to disable metric existence validation for this condition.
+               This allows alerting policies to be defined on metrics that do not yet
+               exist, improving advanced customer workflows such as configuring
+               alerting policies using Terraform.
+               Users with the `monitoring.alertPolicyViewer` role are able to see the
+               name of the non-existent metric in the alerting policy condition.
         :param pulumi.Input[_builtins.str] duration: Alerts are considered firing once their PromQL expression evaluated
                to be "true" for this long. Alerts whose PromQL expression was not
                evaluated to be "true" for long enough are considered pending. The
@@ -1600,6 +1579,14 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
     @_builtins.property
     @pulumi.getter(name="disableMetricValidation")
     def disable_metric_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to disable metric existence validation for this condition.
+        This allows alerting policies to be defined on metrics that do not yet
+        exist, improving advanced customer workflows such as configuring
+        alerting policies using Terraform.
+        Users with the `monitoring.alertPolicyViewer` role are able to see the
+        name of the non-existent metric in the alerting policy condition.
+        """
         return pulumi.get(self, "disable_metric_validation")
 
     @disable_metric_validation.setter
@@ -1674,43 +1661,40 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
         pulumi.set(self, "rule_group", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionSqlArgsDict(TypedDict):
-        query: pulumi.Input[_builtins.str]
-        """
-        The Log Analytics SQL query to run, as a string.  The query must
-        conform to the required shape. Specifically, the query must not try to
-        filter the input by time.  A filter will automatically be applied
-        to filter the input so that the query receives all rows received
-        since the last time the query was run.
-        """
-        boolean_test: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgsDict']]
-        """
-        A test that uses an alerting result in a boolean column produced by the SQL query.
-        Structure is documented below.
-        """
-        daily: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlDailyArgsDict']]
-        """
-        Used to schedule the query to run every so many days.
-        Structure is documented below.
-        """
-        hourly: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlHourlyArgsDict']]
-        """
-        Used to schedule the query to run every so many hours.
-        Structure is documented below.
-        """
-        minutes: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlMinutesArgsDict']]
-        """
-        Used to schedule the query to run every so many minutes.
-        Structure is documented below.
-        """
-        row_count_test: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgsDict']]
-        """
-        A test that checks if the number of rows in the result set violates some threshold.
-        Structure is documented below.
-        """
-elif False:
-    AlertPolicyConditionConditionSqlArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionSqlArgsDict(TypedDict):
+    query: pulumi.Input[_builtins.str]
+    """
+    The Log Analytics SQL query to run, as a string.  The query must
+    conform to the required shape. Specifically, the query must not try to
+    filter the input by time.  A filter will automatically be applied
+    to filter the input so that the query receives all rows received
+    since the last time the query was run.
+    """
+    boolean_test: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgsDict']]
+    """
+    A test that uses an alerting result in a boolean column produced by the SQL query.
+    Structure is documented below.
+    """
+    daily: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlDailyArgsDict']]
+    """
+    Used to schedule the query to run every so many days.
+    Structure is documented below.
+    """
+    hourly: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlHourlyArgsDict']]
+    """
+    Used to schedule the query to run every so many hours.
+    Structure is documented below.
+    """
+    minutes: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlMinutesArgsDict']]
+    """
+    Used to schedule the query to run every so many minutes.
+    Structure is documented below.
+    """
+    row_count_test: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgsDict']]
+    """
+    A test that checks if the number of rows in the result set violates some threshold.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionSqlArgs:
@@ -1832,15 +1816,12 @@ class AlertPolicyConditionConditionSqlArgs:
         pulumi.set(self, "row_count_test", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionSqlBooleanTestArgsDict(TypedDict):
-        column: pulumi.Input[_builtins.str]
-        """
-        The name of the column containing the boolean value. If the value in a row is
-        NULL, that row is ignored.
-        """
-elif False:
-    AlertPolicyConditionConditionSqlBooleanTestArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionSqlBooleanTestArgsDict(TypedDict):
+    column: pulumi.Input[_builtins.str]
+    """
+    The name of the column containing the boolean value. If the value in a row is
+    NULL, that row is ignored.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionSqlBooleanTestArgs:
@@ -1866,22 +1847,19 @@ class AlertPolicyConditionConditionSqlBooleanTestArgs:
         pulumi.set(self, "column", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionSqlDailyArgsDict(TypedDict):
-        periodicity: pulumi.Input[_builtins.int]
-        """
-        The number of days between runs. Must be greater than or equal
-        to 1 day and less than or equal to 30 days.
-        """
-        execution_time: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict']]
-        """
-        The time of day (in UTC) at which the query should run. If left
-        unspecified, the server picks an arbitrary time of day and runs
-        the query at the same time each day.
-        Structure is documented below.
-        """
-elif False:
-    AlertPolicyConditionConditionSqlDailyArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionSqlDailyArgsDict(TypedDict):
+    periodicity: pulumi.Input[_builtins.int]
+    """
+    The number of days between runs. Must be greater than or equal
+    to 1 day and less than or equal to 30 days.
+    """
+    execution_time: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict']]
+    """
+    The time of day (in UTC) at which the query should run. If left
+    unspecified, the server picks an arbitrary time of day and runs
+    the query at the same time each day.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionSqlDailyArgs:
@@ -1929,33 +1907,30 @@ class AlertPolicyConditionConditionSqlDailyArgs:
         pulumi.set(self, "execution_time", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of a day in 24 hour format. Must be greater than or equal
-        to 0 and typically must be less than or equal to 23. An API may
-        choose to allow the value "24:00:00" for scenarios like business
-        closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of an hour. Must be greater than or equal to 0 and
-        less than or equal to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds, in nanoseconds. Must be greater than or
-        equal to 0 and less than or equal to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of a minute. Must be greater than or equal to 0 and
-        typically must be less than or equal to 59. An API may allow the
-        value 60 if it allows leap-seconds.
-        """
-elif False:
-    AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of a day in 24 hour format. Must be greater than or equal
+    to 0 and typically must be less than or equal to 23. An API may
+    choose to allow the value "24:00:00" for scenarios like business
+    closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of an hour. Must be greater than or equal to 0 and
+    less than or equal to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds, in nanoseconds. Must be greater than or
+    equal to 0 and less than or equal to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of a minute. Must be greater than or equal to 0 and
+    typically must be less than or equal to 59. An API may allow the
+    value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionSqlDailyExecutionTimeArgs:
@@ -2042,21 +2017,18 @@ class AlertPolicyConditionConditionSqlDailyExecutionTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionSqlHourlyArgsDict(TypedDict):
-        periodicity: pulumi.Input[_builtins.int]
-        """
-        Number of hours between runs. The interval must be greater than or
-        equal to 1 hour and less than or equal to 48 hours.
-        """
-        minute_offset: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of minutes after the hour (in UTC) to run the query.
-        Must be greater than or equal to 0 minutes and less than or equal to
-        59 minutes.  If left unspecified, then an arbitrary offset is used.
-        """
-elif False:
-    AlertPolicyConditionConditionSqlHourlyArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionSqlHourlyArgsDict(TypedDict):
+    periodicity: pulumi.Input[_builtins.int]
+    """
+    Number of hours between runs. The interval must be greater than or
+    equal to 1 hour and less than or equal to 48 hours.
+    """
+    minute_offset: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of minutes after the hour (in UTC) to run the query.
+    Must be greater than or equal to 0 minutes and less than or equal to
+    59 minutes.  If left unspecified, then an arbitrary offset is used.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionSqlHourlyArgs:
@@ -2102,15 +2074,12 @@ class AlertPolicyConditionConditionSqlHourlyArgs:
         pulumi.set(self, "minute_offset", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionSqlMinutesArgsDict(TypedDict):
-        periodicity: pulumi.Input[_builtins.int]
-        """
-        Number of minutes between runs. The interval must be greater than or
-        equal to 5 minutes and less than or equal to 1440 minutes.
-        """
-elif False:
-    AlertPolicyConditionConditionSqlMinutesArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionSqlMinutesArgsDict(TypedDict):
+    periodicity: pulumi.Input[_builtins.int]
+    """
+    Number of minutes between runs. The interval must be greater than or
+    equal to 5 minutes and less than or equal to 1440 minutes.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionSqlMinutesArgs:
@@ -2136,26 +2105,23 @@ class AlertPolicyConditionConditionSqlMinutesArgs:
         pulumi.set(self, "periodicity", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionSqlRowCountTestArgsDict(TypedDict):
-        comparison: pulumi.Input[_builtins.str]
-        """
-        The comparison to apply between the time
-        series (indicated by filter and aggregation)
-        and the threshold (indicated by
-        threshold_value). The comparison is applied
-        on each time series, with the time series on
-        the left-hand side and the threshold on the
-        right-hand side. Only COMPARISON_LT and
-        COMPARISON_GT are supported currently.
-        Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
-        """
-        threshold: pulumi.Input[_builtins.int]
-        """
-        The value against which to compare the row count.
-        """
-elif False:
-    AlertPolicyConditionConditionSqlRowCountTestArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionSqlRowCountTestArgsDict(TypedDict):
+    comparison: pulumi.Input[_builtins.str]
+    """
+    The comparison to apply between the time
+    series (indicated by filter and aggregation)
+    and the threshold (indicated by
+    threshold_value). The comparison is applied
+    on each time series, with the time series on
+    the left-hand side and the threshold on the
+    right-hand side. Only COMPARISON_LT and
+    COMPARISON_GT are supported currently.
+    Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
+    """
+    threshold: pulumi.Input[_builtins.int]
+    """
+    The value against which to compare the row count.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionSqlRowCountTestArgs:
@@ -2210,144 +2176,141 @@ class AlertPolicyConditionConditionSqlRowCountTestArgs:
         pulumi.set(self, "threshold", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionThresholdArgsDict(TypedDict):
-        comparison: pulumi.Input[_builtins.str]
-        """
-        The comparison to apply between the time
-        series (indicated by filter and aggregation)
-        and the threshold (indicated by
-        threshold_value). The comparison is applied
-        on each time series, with the time series on
-        the left-hand side and the threshold on the
-        right-hand side. Only COMPARISON_LT and
-        COMPARISON_GT are supported currently.
-        Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
-        """
-        duration: pulumi.Input[_builtins.str]
-        """
-        The amount of time that a time series must
-        violate the threshold to be considered
-        failing. Currently, only values that are a
-        multiple of a minute--e.g., 0, 60, 120, or
-        300 seconds--are supported. If an invalid
-        value is given, an error will be returned.
-        When choosing a duration, it is useful to
-        keep in mind the frequency of the underlying
-        time series data (which may also be affected
-        by any alignments specified in the
-        aggregations field); a good duration is long
-        enough so that a single outlier does not
-        generate spurious alerts, but short enough
-        that unhealthy states are detected and
-        alerted on quickly.
-        """
-        aggregations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgsDict']]]]
-        """
-        Specifies the alignment of data points in
-        individual time series as well as how to
-        combine the retrieved time series together
-        (such as when aggregating multiple streams
-        on each resource to a single stream for each
-        resource or when aggregating streams across
-        all members of a group of resources).
-        Multiple aggregations are applied in the
-        order specified.This field is similar to the
-        one in the MetricService.ListTimeSeries
-        request. It is advisable to use the
-        ListTimeSeries method when debugging this
-        field.
-        Structure is documented below.
-        """
-        denominator_aggregations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgsDict']]]]
-        """
-        Specifies the alignment of data points in
-        individual time series selected by
-        denominatorFilter as well as how to combine
-        the retrieved time series together (such as
-        when aggregating multiple streams on each
-        resource to a single stream for each
-        resource or when aggregating streams across
-        all members of a group of resources).When
-        computing ratios, the aggregations and
-        denominator_aggregations fields must use the
-        same alignment period and produce time
-        series that have the same periodicity and
-        labels.This field is similar to the one in
-        the MetricService.ListTimeSeries request. It
-        is advisable to use the ListTimeSeries
-        method when debugging this field.
-        Structure is documented below.
-        """
-        denominator_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter that identifies a time series that
-        should be used as the denominator of a ratio
-        that will be compared with the threshold. If
-        a denominator_filter is specified, the time
-        series specified by the filter field will be
-        used as the numerator.The filter is similar
-        to the one that is specified in the
-        MetricService.ListTimeSeries request (that
-        call is useful to verify the time series
-        that will be retrieved / processed) and must
-        specify the metric type and optionally may
-        contain restrictions on resource type,
-        resource labels, and metric labels. This
-        field may not exceed 2048 Unicode characters
-        in length.
-        """
-        evaluation_missing_data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A condition control that determines how
-        metric-threshold conditions are evaluated when
-        data stops arriving.
-        Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
-        """
-        filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter that identifies which time series
-        should be compared with the threshold.The
-        filter is similar to the one that is
-        specified in the
-        MetricService.ListTimeSeries request (that
-        call is useful to verify the time series
-        that will be retrieved / processed) and must
-        specify the metric type and optionally may
-        contain restrictions on resource type,
-        resource labels, and metric labels. This
-        field may not exceed 2048 Unicode characters
-        in length.
-        """
-        forecast_options: NotRequired[pulumi.Input['AlertPolicyConditionConditionThresholdForecastOptionsArgsDict']]
-        """
-        When this field is present, the `MetricThreshold`
-        condition forecasts whether the time series is
-        predicted to violate the threshold within the
-        `forecastHorizon`. When this field is not set, the
-        `MetricThreshold` tests the current value of the
-        timeseries against the threshold.
-        Structure is documented below.
-        """
-        threshold_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A value against which to compare the time
-        series.
-        """
-        trigger: NotRequired[pulumi.Input['AlertPolicyConditionConditionThresholdTriggerArgsDict']]
-        """
-        The number/percent of time series for which
-        the comparison must hold in order for the
-        condition to trigger. If unspecified, then
-        the condition will trigger if the comparison
-        is true for any of the time series that have
-        been identified by filter and aggregations,
-        or by the ratio, if denominator_filter and
-        denominator_aggregations are specified.
-        Structure is documented below.
-        """
-elif False:
-    AlertPolicyConditionConditionThresholdArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionThresholdArgsDict(TypedDict):
+    comparison: pulumi.Input[_builtins.str]
+    """
+    The comparison to apply between the time
+    series (indicated by filter and aggregation)
+    and the threshold (indicated by
+    threshold_value). The comparison is applied
+    on each time series, with the time series on
+    the left-hand side and the threshold on the
+    right-hand side. Only COMPARISON_LT and
+    COMPARISON_GT are supported currently.
+    Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
+    """
+    duration: pulumi.Input[_builtins.str]
+    """
+    The amount of time that a time series must
+    violate the threshold to be considered
+    failing. Currently, only values that are a
+    multiple of a minute--e.g., 0, 60, 120, or
+    300 seconds--are supported. If an invalid
+    value is given, an error will be returned.
+    When choosing a duration, it is useful to
+    keep in mind the frequency of the underlying
+    time series data (which may also be affected
+    by any alignments specified in the
+    aggregations field); a good duration is long
+    enough so that a single outlier does not
+    generate spurious alerts, but short enough
+    that unhealthy states are detected and
+    alerted on quickly.
+    """
+    aggregations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgsDict']]]]
+    """
+    Specifies the alignment of data points in
+    individual time series as well as how to
+    combine the retrieved time series together
+    (such as when aggregating multiple streams
+    on each resource to a single stream for each
+    resource or when aggregating streams across
+    all members of a group of resources).
+    Multiple aggregations are applied in the
+    order specified.This field is similar to the
+    one in the MetricService.ListTimeSeries
+    request. It is advisable to use the
+    ListTimeSeries method when debugging this
+    field.
+    Structure is documented below.
+    """
+    denominator_aggregations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgsDict']]]]
+    """
+    Specifies the alignment of data points in
+    individual time series selected by
+    denominatorFilter as well as how to combine
+    the retrieved time series together (such as
+    when aggregating multiple streams on each
+    resource to a single stream for each
+    resource or when aggregating streams across
+    all members of a group of resources).When
+    computing ratios, the aggregations and
+    denominator_aggregations fields must use the
+    same alignment period and produce time
+    series that have the same periodicity and
+    labels.This field is similar to the one in
+    the MetricService.ListTimeSeries request. It
+    is advisable to use the ListTimeSeries
+    method when debugging this field.
+    Structure is documented below.
+    """
+    denominator_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter that identifies a time series that
+    should be used as the denominator of a ratio
+    that will be compared with the threshold. If
+    a denominator_filter is specified, the time
+    series specified by the filter field will be
+    used as the numerator.The filter is similar
+    to the one that is specified in the
+    MetricService.ListTimeSeries request (that
+    call is useful to verify the time series
+    that will be retrieved / processed) and must
+    specify the metric type and optionally may
+    contain restrictions on resource type,
+    resource labels, and metric labels. This
+    field may not exceed 2048 Unicode characters
+    in length.
+    """
+    evaluation_missing_data: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A condition control that determines how
+    metric-threshold conditions are evaluated when
+    data stops arriving.
+    Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
+    """
+    filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter that identifies which time series
+    should be compared with the threshold.The
+    filter is similar to the one that is
+    specified in the
+    MetricService.ListTimeSeries request (that
+    call is useful to verify the time series
+    that will be retrieved / processed) and must
+    specify the metric type and optionally may
+    contain restrictions on resource type,
+    resource labels, and metric labels. This
+    field may not exceed 2048 Unicode characters
+    in length.
+    """
+    forecast_options: NotRequired[pulumi.Input['AlertPolicyConditionConditionThresholdForecastOptionsArgsDict']]
+    """
+    When this field is present, the `MetricThreshold`
+    condition forecasts whether the time series is
+    predicted to violate the threshold within the
+    `forecastHorizon`. When this field is not set, the
+    `MetricThreshold` tests the current value of the
+    timeseries against the threshold.
+    Structure is documented below.
+    """
+    threshold_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A value against which to compare the time
+    series.
+    """
+    trigger: NotRequired[pulumi.Input['AlertPolicyConditionConditionThresholdTriggerArgsDict']]
+    """
+    The number/percent of time series for which
+    the comparison must hold in order for the
+    condition to trigger. If unspecified, then
+    the condition will trigger if the comparison
+    is true for any of the time series that have
+    been identified by filter and aggregations,
+    or by the ratio, if denominator_filter and
+    denominator_aggregations are specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionThresholdArgs:
@@ -2702,97 +2665,94 @@ class AlertPolicyConditionConditionThresholdArgs:
         pulumi.set(self, "trigger", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionThresholdAggregationArgsDict(TypedDict):
-        alignment_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The alignment period for per-time
-        series alignment. If present,
-        alignmentPeriod must be at least
-        60 seconds. After per-time series
-        alignment, each time series will
-        contain data points only on the
-        period boundaries. If
-        perSeriesAligner is not specified
-        or equals ALIGN_NONE, then this
-        field is ignored. If
-        perSeriesAligner is specified and
-        does not equal ALIGN_NONE, then
-        this field must be defined;
-        otherwise an error is returned.
-        """
-        cross_series_reducer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The approach to be used to combine
-        time series. Not all reducer
-        functions may be applied to all
-        time series, depending on the
-        metric type and the value type of
-        the original time series.
-        Reduction may change the metric
-        type of value type of the time
-        series.Time series data must be
-        aligned in order to perform cross-
-        time series reduction. If
-        crossSeriesReducer is specified,
-        then perSeriesAligner must be
-        specified and not equal ALIGN_NONE
-        and alignmentPeriod must be
-        specified; otherwise, an error is
-        returned.
-        Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
-        """
-        group_by_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of fields to preserve when
-        crossSeriesReducer is specified.
-        The groupByFields determine how
-        the time series are partitioned
-        into subsets prior to applying the
-        aggregation function. Each subset
-        contains time series that have the
-        same value for each of the
-        grouping fields. Each individual
-        time series is a member of exactly
-        one subset. The crossSeriesReducer
-        is applied to each subset of time
-        series. It is not possible to
-        reduce across different resource
-        types, so this field implicitly
-        contains resource.type. Fields not
-        specified in groupByFields are
-        aggregated away. If groupByFields
-        is not specified and all the time
-        series have the same resource
-        type, then the time series are
-        aggregated into a single output
-        time series. If crossSeriesReducer
-        is not defined, this field is
-        ignored.
-        """
-        per_series_aligner: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The approach to be used to align
-        individual time series. Not all
-        alignment functions may be applied
-        to all time series, depending on
-        the metric type and value type of
-        the original time series.
-        Alignment may change the metric
-        type or the value type of the time
-        series.Time series data must be
-        aligned in order to perform cross-
-        time series reduction. If
-        crossSeriesReducer is specified,
-        then perSeriesAligner must be
-        specified and not equal ALIGN_NONE
-        and alignmentPeriod must be
-        specified; otherwise, an error is
-        returned.
-        Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
-        """
-elif False:
-    AlertPolicyConditionConditionThresholdAggregationArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionThresholdAggregationArgsDict(TypedDict):
+    alignment_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The alignment period for per-time
+    series alignment. If present,
+    alignmentPeriod must be at least
+    60 seconds. After per-time series
+    alignment, each time series will
+    contain data points only on the
+    period boundaries. If
+    perSeriesAligner is not specified
+    or equals ALIGN_NONE, then this
+    field is ignored. If
+    perSeriesAligner is specified and
+    does not equal ALIGN_NONE, then
+    this field must be defined;
+    otherwise an error is returned.
+    """
+    cross_series_reducer: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The approach to be used to combine
+    time series. Not all reducer
+    functions may be applied to all
+    time series, depending on the
+    metric type and the value type of
+    the original time series.
+    Reduction may change the metric
+    type of value type of the time
+    series.Time series data must be
+    aligned in order to perform cross-
+    time series reduction. If
+    crossSeriesReducer is specified,
+    then perSeriesAligner must be
+    specified and not equal ALIGN_NONE
+    and alignmentPeriod must be
+    specified; otherwise, an error is
+    returned.
+    Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
+    """
+    group_by_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of fields to preserve when
+    crossSeriesReducer is specified.
+    The groupByFields determine how
+    the time series are partitioned
+    into subsets prior to applying the
+    aggregation function. Each subset
+    contains time series that have the
+    same value for each of the
+    grouping fields. Each individual
+    time series is a member of exactly
+    one subset. The crossSeriesReducer
+    is applied to each subset of time
+    series. It is not possible to
+    reduce across different resource
+    types, so this field implicitly
+    contains resource.type. Fields not
+    specified in groupByFields are
+    aggregated away. If groupByFields
+    is not specified and all the time
+    series have the same resource
+    type, then the time series are
+    aggregated into a single output
+    time series. If crossSeriesReducer
+    is not defined, this field is
+    ignored.
+    """
+    per_series_aligner: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The approach to be used to align
+    individual time series. Not all
+    alignment functions may be applied
+    to all time series, depending on
+    the metric type and value type of
+    the original time series.
+    Alignment may change the metric
+    type or the value type of the time
+    series.Time series data must be
+    aligned in order to perform cross-
+    time series reduction. If
+    crossSeriesReducer is specified,
+    then perSeriesAligner must be
+    specified and not equal ALIGN_NONE
+    and alignmentPeriod must be
+    specified; otherwise, an error is
+    returned.
+    Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionThresholdAggregationArgs:
@@ -3007,97 +2967,94 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
         pulumi.set(self, "per_series_aligner", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionThresholdDenominatorAggregationArgsDict(TypedDict):
-        alignment_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The alignment period for per-time
-        series alignment. If present,
-        alignmentPeriod must be at least
-        60 seconds. After per-time series
-        alignment, each time series will
-        contain data points only on the
-        period boundaries. If
-        perSeriesAligner is not specified
-        or equals ALIGN_NONE, then this
-        field is ignored. If
-        perSeriesAligner is specified and
-        does not equal ALIGN_NONE, then
-        this field must be defined;
-        otherwise an error is returned.
-        """
-        cross_series_reducer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The approach to be used to combine
-        time series. Not all reducer
-        functions may be applied to all
-        time series, depending on the
-        metric type and the value type of
-        the original time series.
-        Reduction may change the metric
-        type of value type of the time
-        series.Time series data must be
-        aligned in order to perform cross-
-        time series reduction. If
-        crossSeriesReducer is specified,
-        then perSeriesAligner must be
-        specified and not equal ALIGN_NONE
-        and alignmentPeriod must be
-        specified; otherwise, an error is
-        returned.
-        Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
-        """
-        group_by_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of fields to preserve when
-        crossSeriesReducer is specified.
-        The groupByFields determine how
-        the time series are partitioned
-        into subsets prior to applying the
-        aggregation function. Each subset
-        contains time series that have the
-        same value for each of the
-        grouping fields. Each individual
-        time series is a member of exactly
-        one subset. The crossSeriesReducer
-        is applied to each subset of time
-        series. It is not possible to
-        reduce across different resource
-        types, so this field implicitly
-        contains resource.type. Fields not
-        specified in groupByFields are
-        aggregated away. If groupByFields
-        is not specified and all the time
-        series have the same resource
-        type, then the time series are
-        aggregated into a single output
-        time series. If crossSeriesReducer
-        is not defined, this field is
-        ignored.
-        """
-        per_series_aligner: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The approach to be used to align
-        individual time series. Not all
-        alignment functions may be applied
-        to all time series, depending on
-        the metric type and value type of
-        the original time series.
-        Alignment may change the metric
-        type or the value type of the time
-        series.Time series data must be
-        aligned in order to perform cross-
-        time series reduction. If
-        crossSeriesReducer is specified,
-        then perSeriesAligner must be
-        specified and not equal ALIGN_NONE
-        and alignmentPeriod must be
-        specified; otherwise, an error is
-        returned.
-        Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
-        """
-elif False:
-    AlertPolicyConditionConditionThresholdDenominatorAggregationArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionThresholdDenominatorAggregationArgsDict(TypedDict):
+    alignment_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The alignment period for per-time
+    series alignment. If present,
+    alignmentPeriod must be at least
+    60 seconds. After per-time series
+    alignment, each time series will
+    contain data points only on the
+    period boundaries. If
+    perSeriesAligner is not specified
+    or equals ALIGN_NONE, then this
+    field is ignored. If
+    perSeriesAligner is specified and
+    does not equal ALIGN_NONE, then
+    this field must be defined;
+    otherwise an error is returned.
+    """
+    cross_series_reducer: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The approach to be used to combine
+    time series. Not all reducer
+    functions may be applied to all
+    time series, depending on the
+    metric type and the value type of
+    the original time series.
+    Reduction may change the metric
+    type of value type of the time
+    series.Time series data must be
+    aligned in order to perform cross-
+    time series reduction. If
+    crossSeriesReducer is specified,
+    then perSeriesAligner must be
+    specified and not equal ALIGN_NONE
+    and alignmentPeriod must be
+    specified; otherwise, an error is
+    returned.
+    Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
+    """
+    group_by_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of fields to preserve when
+    crossSeriesReducer is specified.
+    The groupByFields determine how
+    the time series are partitioned
+    into subsets prior to applying the
+    aggregation function. Each subset
+    contains time series that have the
+    same value for each of the
+    grouping fields. Each individual
+    time series is a member of exactly
+    one subset. The crossSeriesReducer
+    is applied to each subset of time
+    series. It is not possible to
+    reduce across different resource
+    types, so this field implicitly
+    contains resource.type. Fields not
+    specified in groupByFields are
+    aggregated away. If groupByFields
+    is not specified and all the time
+    series have the same resource
+    type, then the time series are
+    aggregated into a single output
+    time series. If crossSeriesReducer
+    is not defined, this field is
+    ignored.
+    """
+    per_series_aligner: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The approach to be used to align
+    individual time series. Not all
+    alignment functions may be applied
+    to all time series, depending on
+    the metric type and value type of
+    the original time series.
+    Alignment may change the metric
+    type or the value type of the time
+    series.Time series data must be
+    aligned in order to perform cross-
+    time series reduction. If
+    crossSeriesReducer is specified,
+    then perSeriesAligner must be
+    specified and not equal ALIGN_NONE
+    and alignmentPeriod must be
+    specified; otherwise, an error is
+    returned.
+    Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
@@ -3312,19 +3269,16 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
         pulumi.set(self, "per_series_aligner", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionThresholdForecastOptionsArgsDict(TypedDict):
-        forecast_horizon: pulumi.Input[_builtins.str]
-        """
-        The length of time into the future to forecast
-        whether a timeseries will violate the threshold.
-        If the predicted value is found to violate the
-        threshold, and the violation is observed in all
-        forecasts made for the Configured `duration`,
-        then the timeseries is considered to be failing.
-        """
-elif False:
-    AlertPolicyConditionConditionThresholdForecastOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionThresholdForecastOptionsArgsDict(TypedDict):
+    forecast_horizon: pulumi.Input[_builtins.str]
+    """
+    The length of time into the future to forecast
+    whether a timeseries will violate the threshold.
+    If the predicted value is found to violate the
+    threshold, and the violation is observed in all
+    forecasts made for the Configured `duration`,
+    then the timeseries is considered to be failing.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionThresholdForecastOptionsArgs:
@@ -3358,22 +3312,19 @@ class AlertPolicyConditionConditionThresholdForecastOptionsArgs:
         pulumi.set(self, "forecast_horizon", value)
 
 
-if not MYPY:
-    class AlertPolicyConditionConditionThresholdTriggerArgsDict(TypedDict):
-        count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The absolute number of time series
-        that must fail the predicate for the
-        condition to be triggered.
-        """
-        percent: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The percentage of time series that
-        must fail the predicate for the
-        condition to be triggered.
-        """
-elif False:
-    AlertPolicyConditionConditionThresholdTriggerArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyConditionConditionThresholdTriggerArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The absolute number of time series
+    that must fail the predicate for the
+    condition to be triggered.
+    """
+    percent: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The percentage of time series that
+    must fail the predicate for the
+    condition to be triggered.
+    """
 
 @pulumi.input_type
 class AlertPolicyConditionConditionThresholdTriggerArgs:
@@ -3422,20 +3373,17 @@ class AlertPolicyConditionConditionThresholdTriggerArgs:
         pulumi.set(self, "percent", value)
 
 
-if not MYPY:
-    class AlertPolicyCreationRecordArgsDict(TypedDict):
-        mutate_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        When the change occurred.
-        """
-        mutated_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The email address of the user making the change.
-        """
-elif False:
-    AlertPolicyCreationRecordArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyCreationRecordArgsDict(TypedDict):
+    mutate_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    When the change occurred.
+    """
+    mutated_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The email address of the user making the change.
+    """
 
 @pulumi.input_type
 class AlertPolicyCreationRecordArgs:
@@ -3480,34 +3428,31 @@ class AlertPolicyCreationRecordArgs:
         pulumi.set(self, "mutated_by", value)
 
 
-if not MYPY:
-    class AlertPolicyDocumentationArgsDict(TypedDict):
-        content: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The text of the documentation, interpreted according to mimeType.
-        The content may not exceed 8,192 Unicode characters and may not
-        exceed more than 10,240 bytes when encoded in UTF-8 format,
-        whichever is smaller.
-        """
-        links: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgsDict']]]]
-        """
-        Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
-        Structure is documented below.
-        """
-        mime_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The format of the content field. Presently, only the value
-        "text/markdown" is supported.
-        """
-        subject: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The subject line of the notification. The subject line may not
-        exceed 10,240 bytes. In notifications generated by this policy the contents
-        of the subject line after variable expansion will be truncated to 255 bytes
-        or shorter at the latest UTF-8 character boundary.
-        """
-elif False:
-    AlertPolicyDocumentationArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyDocumentationArgsDict(TypedDict):
+    content: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The text of the documentation, interpreted according to mimeType.
+    The content may not exceed 8,192 Unicode characters and may not
+    exceed more than 10,240 bytes when encoded in UTF-8 format,
+    whichever is smaller.
+    """
+    links: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgsDict']]]]
+    """
+    Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+    Structure is documented below.
+    """
+    mime_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The format of the content field. Presently, only the value
+    "text/markdown" is supported.
+    """
+    subject: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The subject line of the notification. The subject line may not
+    exceed 10,240 bytes. In notifications generated by this policy the contents
+    of the subject line after variable expansion will be truncated to 255 bytes
+    or shorter at the latest UTF-8 character boundary.
+    """
 
 @pulumi.input_type
 class AlertPolicyDocumentationArgs:
@@ -3596,18 +3541,15 @@ class AlertPolicyDocumentationArgs:
         pulumi.set(self, "subject", value)
 
 
-if not MYPY:
-    class AlertPolicyDocumentationLinkArgsDict(TypedDict):
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
-        """
-elif False:
-    AlertPolicyDocumentationLinkArgsDict: TypeAlias = Mapping[str, Any]
+class AlertPolicyDocumentationLinkArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
+    """
 
 @pulumi.input_type
 class AlertPolicyDocumentationLinkArgs:
@@ -3648,16 +3590,13 @@ class AlertPolicyDocumentationLinkArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class CustomServiceTelemetryArgsDict(TypedDict):
-        resource_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full name of the resource that defines this service.
-        Formatted as described in
-        https://cloud.google.com/apis/design/resource_names.
-        """
-elif False:
-    CustomServiceTelemetryArgsDict: TypeAlias = Mapping[str, Any]
+class CustomServiceTelemetryArgsDict(TypedDict):
+    resource_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full name of the resource that defines this service.
+    Formatted as described in
+    https://cloud.google.com/apis/design/resource_names.
+    """
 
 @pulumi.input_type
 class CustomServiceTelemetryArgs:
@@ -3686,20 +3625,17 @@ class CustomServiceTelemetryArgs:
         pulumi.set(self, "resource_name", value)
 
 
-if not MYPY:
-    class GenericServiceBasicServiceArgsDict(TypedDict):
-        service_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Labels that specify the resource that emits the monitoring data
-        which is used for SLO reporting of this `Service`.
-        """
-        service_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of service that this basic service defines, e.g.
-        APP_ENGINE service type
-        """
-elif False:
-    GenericServiceBasicServiceArgsDict: TypeAlias = Mapping[str, Any]
+class GenericServiceBasicServiceArgsDict(TypedDict):
+    service_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Labels that specify the resource that emits the monitoring data
+    which is used for SLO reporting of this `Service`.
+    """
+    service_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of service that this basic service defines, e.g.
+    APP_ENGINE service type
+    """
 
 @pulumi.input_type
 class GenericServiceBasicServiceArgs:
@@ -3744,16 +3680,13 @@ class GenericServiceBasicServiceArgs:
         pulumi.set(self, "service_type", value)
 
 
-if not MYPY:
-    class GenericServiceTelemetryArgsDict(TypedDict):
-        resource_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full name of the resource that defines this service.
-        Formatted as described in
-        https://cloud.google.com/apis/design/resource_names.
-        """
-elif False:
-    GenericServiceTelemetryArgsDict: TypeAlias = Mapping[str, Any]
+class GenericServiceTelemetryArgsDict(TypedDict):
+    resource_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full name of the resource that defines this service.
+    Formatted as described in
+    https://cloud.google.com/apis/design/resource_names.
+    """
 
 @pulumi.input_type
 class GenericServiceTelemetryArgs:
@@ -3782,24 +3715,21 @@ class GenericServiceTelemetryArgs:
         pulumi.set(self, "resource_name", value)
 
 
-if not MYPY:
-    class MetricDescriptorLabelArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The key for this label. The key must not exceed 100 characters. The first character of the key must be an upper- or lower-case letter, the remaining characters must be letters, digits or underscores, and the key must match the regular expression [a-zA-Z][a-zA-Z0-9_]*
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A human-readable description for the label.
-        """
-        value_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of data that can be assigned to the label.
-        Default value is `STRING`.
-        Possible values are: `STRING`, `BOOL`, `INT64`.
-        """
-elif False:
-    MetricDescriptorLabelArgsDict: TypeAlias = Mapping[str, Any]
+class MetricDescriptorLabelArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key for this label. The key must not exceed 100 characters. The first character of the key must be an upper- or lower-case letter, the remaining characters must be letters, digits or underscores, and the key must match the regular expression [a-zA-Z][a-zA-Z0-9_]*
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A human-readable description for the label.
+    """
+    value_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of data that can be assigned to the label.
+    Default value is `STRING`.
+    Possible values are: `STRING`, `BOOL`, `INT64`.
+    """
 
 @pulumi.input_type
 class MetricDescriptorLabelArgs:
@@ -3859,18 +3789,15 @@ class MetricDescriptorLabelArgs:
         pulumi.set(self, "value_type", value)
 
 
-if not MYPY:
-    class MetricDescriptorMetadataArgsDict(TypedDict):
-        ingest_delay: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
-        """
-        sample_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
-        """
-elif False:
-    MetricDescriptorMetadataArgsDict: TypeAlias = Mapping[str, Any]
+class MetricDescriptorMetadataArgsDict(TypedDict):
+    ingest_delay: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
+    """
+    sample_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
+    """
 
 @pulumi.input_type
 class MetricDescriptorMetadataArgs:
@@ -3911,25 +3838,22 @@ class MetricDescriptorMetadataArgs:
         pulumi.set(self, "sample_period", value)
 
 
-if not MYPY:
-    class NotificationChannelSensitiveLabelsArgsDict(TypedDict):
-        auth_token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An authorization token for a notification channel. Channel types that support this field include: slack
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An password for a notification channel. Channel types that support this field include: webhook_basicauth
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        service_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An servicekey token for a notification channel. Channel types that support this field include: pagerduty
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    NotificationChannelSensitiveLabelsArgsDict: TypeAlias = Mapping[str, Any]
+class NotificationChannelSensitiveLabelsArgsDict(TypedDict):
+    auth_token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An authorization token for a notification channel. Channel types that support this field include: slack
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An password for a notification channel. Channel types that support this field include: webhook_basicauth
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    service_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class NotificationChannelSensitiveLabelsArgs:
@@ -3992,47 +3916,44 @@ class NotificationChannelSensitiveLabelsArgs:
         pulumi.set(self, "service_key", value)
 
 
-if not MYPY:
-    class SloBasicSliArgsDict(TypedDict):
-        availability: NotRequired[pulumi.Input['SloBasicSliAvailabilityArgsDict']]
-        """
-        Availability based SLI, dervied from count of requests made to this service that return successfully.
-        Structure is documented below.
-        """
-        latency: NotRequired[pulumi.Input['SloBasicSliLatencyArgsDict']]
-        """
-        Parameters for a latency threshold SLI.
-        Structure is documented below.
-        """
-        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An optional set of locations to which this SLI is relevant.
-        Telemetry from other locations will not be used to calculate
-        performance for this SLI. If omitted, this SLI applies to all
-        locations in which the Service has activity. For service types
-        that don't support breaking down by location, setting this
-        field will result in an error.
-        """
-        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An optional set of RPCs to which this SLI is relevant.
-        Telemetry from other methods will not be used to calculate
-        performance for this SLI. If omitted, this SLI applies to all
-        the Service's methods. For service types that don't support
-        breaking down by method, setting this field will result in an
-        error.
-        """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of API versions to which this SLI is relevant.
-        Telemetry from other API versions will not be used to
-        calculate performance for this SLI. If omitted,
-        this SLI applies to all API versions. For service types
-        that don't support breaking down by version, setting this
-        field will result in an error.
-        """
-elif False:
-    SloBasicSliArgsDict: TypeAlias = Mapping[str, Any]
+class SloBasicSliArgsDict(TypedDict):
+    availability: NotRequired[pulumi.Input['SloBasicSliAvailabilityArgsDict']]
+    """
+    Availability based SLI, dervied from count of requests made to this service that return successfully.
+    Structure is documented below.
+    """
+    latency: NotRequired[pulumi.Input['SloBasicSliLatencyArgsDict']]
+    """
+    Parameters for a latency threshold SLI.
+    Structure is documented below.
+    """
+    locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An optional set of locations to which this SLI is relevant.
+    Telemetry from other locations will not be used to calculate
+    performance for this SLI. If omitted, this SLI applies to all
+    locations in which the Service has activity. For service types
+    that don't support breaking down by location, setting this
+    field will result in an error.
+    """
+    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An optional set of RPCs to which this SLI is relevant.
+    Telemetry from other methods will not be used to calculate
+    performance for this SLI. If omitted, this SLI applies to all
+    the Service's methods. For service types that don't support
+    breaking down by method, setting this field will result in an
+    error.
+    """
+    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of API versions to which this SLI is relevant.
+    Telemetry from other API versions will not be used to
+    calculate performance for this SLI. If omitted,
+    this SLI applies to all API versions. For service types
+    that don't support breaking down by version, setting this
+    field will result in an error.
+    """
 
 @pulumi.input_type
 class SloBasicSliArgs:
@@ -4155,14 +4076,11 @@ class SloBasicSliArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class SloBasicSliAvailabilityArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
-        """
-elif False:
-    SloBasicSliAvailabilityArgsDict: TypeAlias = Mapping[str, Any]
+class SloBasicSliAvailabilityArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+    """
 
 @pulumi.input_type
 class SloBasicSliAvailabilityArgs:
@@ -4187,16 +4105,13 @@ class SloBasicSliAvailabilityArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class SloBasicSliLatencyArgsDict(TypedDict):
-        threshold: pulumi.Input[_builtins.str]
-        """
-        A duration string, e.g. 10s.
-        Good service is defined to be the count of requests made to
-        this service that return in no more than threshold.
-        """
-elif False:
-    SloBasicSliLatencyArgsDict: TypeAlias = Mapping[str, Any]
+class SloBasicSliLatencyArgsDict(TypedDict):
+    threshold: pulumi.Input[_builtins.str]
+    """
+    A duration string, e.g. 10s.
+    Good service is defined to be the count of requests made to
+    this service that return in no more than threshold.
+    """
 
 @pulumi.input_type
 class SloBasicSliLatencyArgs:
@@ -4224,30 +4139,27 @@ class SloBasicSliLatencyArgs:
         pulumi.set(self, "threshold", value)
 
 
-if not MYPY:
-    class SloRequestBasedSliArgsDict(TypedDict):
-        distribution_cut: NotRequired[pulumi.Input['SloRequestBasedSliDistributionCutArgsDict']]
-        """
-        Used when good_service is defined by a count of values aggregated in a
-        Distribution that fall into a good range. The total_service is the
-        total count of all values aggregated in the Distribution.
-        Defines a distribution TimeSeries filter and thresholds used for
-        measuring good service and total service.
-        Exactly one of `distribution_cut` or `good_total_ratio` can be set.
-        Structure is documented below.
-        """
-        good_total_ratio: NotRequired[pulumi.Input['SloRequestBasedSliGoodTotalRatioArgsDict']]
-        """
-        A means to compute a ratio of `good_service` to `total_service`.
-        Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
-        Must specify exactly two of good, bad, and total service filters.
-        The relationship good_service + bad_service = total_service
-        will be assumed.
-        Exactly one of `distribution_cut` or `good_total_ratio` can be set.
-        Structure is documented below.
-        """
-elif False:
-    SloRequestBasedSliArgsDict: TypeAlias = Mapping[str, Any]
+class SloRequestBasedSliArgsDict(TypedDict):
+    distribution_cut: NotRequired[pulumi.Input['SloRequestBasedSliDistributionCutArgsDict']]
+    """
+    Used when good_service is defined by a count of values aggregated in a
+    Distribution that fall into a good range. The total_service is the
+    total count of all values aggregated in the Distribution.
+    Defines a distribution TimeSeries filter and thresholds used for
+    measuring good service and total service.
+    Exactly one of `distribution_cut` or `good_total_ratio` can be set.
+    Structure is documented below.
+    """
+    good_total_ratio: NotRequired[pulumi.Input['SloRequestBasedSliGoodTotalRatioArgsDict']]
+    """
+    A means to compute a ratio of `good_service` to `total_service`.
+    Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+    Must specify exactly two of good, bad, and total service filters.
+    The relationship good_service + bad_service = total_service
+    will be assumed.
+    Exactly one of `distribution_cut` or `good_total_ratio` can be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SloRequestBasedSliArgs:
@@ -4312,26 +4224,23 @@ class SloRequestBasedSliArgs:
         pulumi.set(self, "good_total_ratio", value)
 
 
-if not MYPY:
-    class SloRequestBasedSliDistributionCutArgsDict(TypedDict):
-        distribution_filter: pulumi.Input[_builtins.str]
-        """
-        A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        aggregating values to quantify the good service provided.
-        Must have ValueType = DISTRIBUTION and
-        MetricKind = DELTA or MetricKind = CUMULATIVE.
-        """
-        range: pulumi.Input['SloRequestBasedSliDistributionCutRangeArgsDict']
-        """
-        Range of numerical values. The computed good_service
-        will be the count of values x in the Distribution such
-        that range.min <= x <= range.max. inclusive of min and
-        max. Open ranges can be defined by setting
-        just one of min or max.
-        Structure is documented below.
-        """
-elif False:
-    SloRequestBasedSliDistributionCutArgsDict: TypeAlias = Mapping[str, Any]
+class SloRequestBasedSliDistributionCutArgsDict(TypedDict):
+    distribution_filter: pulumi.Input[_builtins.str]
+    """
+    A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+    aggregating values to quantify the good service provided.
+    Must have ValueType = DISTRIBUTION and
+    MetricKind = DELTA or MetricKind = CUMULATIVE.
+    """
+    range: pulumi.Input['SloRequestBasedSliDistributionCutRangeArgsDict']
+    """
+    Range of numerical values. The computed good_service
+    will be the count of values x in the Distribution such
+    that range.min <= x <= range.max. inclusive of min and
+    max. Open ranges can be defined by setting
+    just one of min or max.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SloRequestBasedSliDistributionCutArgs:
@@ -4386,22 +4295,19 @@ class SloRequestBasedSliDistributionCutArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class SloRequestBasedSliDistributionCutRangeArgsDict(TypedDict):
-        max: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        max value for the range (inclusive). If not given,
-        will be set to "infinity", defining an open range
-        ">= range.min"
-        """
-        min: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Min value for the range (inclusive). If not given,
-        will be set to "-infinity", defining an open range
-        "< range.max"
-        """
-elif False:
-    SloRequestBasedSliDistributionCutRangeArgsDict: TypeAlias = Mapping[str, Any]
+class SloRequestBasedSliDistributionCutRangeArgsDict(TypedDict):
+    max: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    max value for the range (inclusive). If not given,
+    will be set to "infinity", defining an open range
+    ">= range.min"
+    """
+    min: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Min value for the range (inclusive). If not given,
+    will be set to "-infinity", defining an open range
+    "< range.max"
+    """
 
 @pulumi.input_type
 class SloRequestBasedSliDistributionCutRangeArgs:
@@ -4450,39 +4356,36 @@ class SloRequestBasedSliDistributionCutRangeArgs:
         pulumi.set(self, "min", value)
 
 
-if not MYPY:
-    class SloRequestBasedSliGoodTotalRatioArgsDict(TypedDict):
-        bad_service_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        quantifying bad service provided, either demanded service that
-        was not provided or demanded service that was of inadequate
-        quality. Exactly two of
-        good, bad, or total service filter must be defined (where
-        good + bad = total is assumed)
-        Must have ValueType = DOUBLE or ValueType = INT64 and
-        must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-        """
-        good_service_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        quantifying good service provided. Exactly two of
-        good, bad, or total service filter must be defined (where
-        good + bad = total is assumed)
-        Must have ValueType = DOUBLE or ValueType = INT64 and
-        must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-        """
-        total_service_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        quantifying total demanded service. Exactly two of
-        good, bad, or total service filter must be defined (where
-        good + bad = total is assumed)
-        Must have ValueType = DOUBLE or ValueType = INT64 and
-        must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-        """
-elif False:
-    SloRequestBasedSliGoodTotalRatioArgsDict: TypeAlias = Mapping[str, Any]
+class SloRequestBasedSliGoodTotalRatioArgsDict(TypedDict):
+    bad_service_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+    quantifying bad service provided, either demanded service that
+    was not provided or demanded service that was of inadequate
+    quality. Exactly two of
+    good, bad, or total service filter must be defined (where
+    good + bad = total is assumed)
+    Must have ValueType = DOUBLE or ValueType = INT64 and
+    must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+    """
+    good_service_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+    quantifying good service provided. Exactly two of
+    good, bad, or total service filter must be defined (where
+    good + bad = total is assumed)
+    Must have ValueType = DOUBLE or ValueType = INT64 and
+    must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+    """
+    total_service_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+    quantifying total demanded service. Exactly two of
+    good, bad, or total service filter must be defined (where
+    good + bad = total is assumed)
+    Must have ValueType = DOUBLE or ValueType = INT64 and
+    must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+    """
 
 @pulumi.input_type
 class SloRequestBasedSliGoodTotalRatioArgs:
@@ -4573,54 +4476,51 @@ class SloRequestBasedSliGoodTotalRatioArgs:
         pulumi.set(self, "total_service_filter", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliArgsDict(TypedDict):
-        good_bad_metric_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        with ValueType = BOOL. The window is good if any true values
-        appear in the window. One of `good_bad_metric_filter`,
-        `good_total_ratio_threshold`, `metric_mean_in_range`,
-        `metric_sum_in_range` must be set for `windows_based_sli`.
-        """
-        good_total_ratio_threshold: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdArgsDict']]
-        """
-        Criterion that describes a window as good if its performance is
-        high enough. One of `good_bad_metric_filter`,
-        `good_total_ratio_threshold`, `metric_mean_in_range`,
-        `metric_sum_in_range` must be set for `windows_based_sli`.
-        Structure is documented below.
-        """
-        metric_mean_in_range: NotRequired[pulumi.Input['SloWindowsBasedSliMetricMeanInRangeArgsDict']]
-        """
-        Criterion that describes a window as good if the metric's value
-        is in a good range, *averaged* across returned streams.
-        One of `good_bad_metric_filter`,
-        `good_total_ratio_threshold`, `metric_mean_in_range`,
-        `metric_sum_in_range` must be set for `windows_based_sli`.
-        Average value X of `time_series` should satisfy
-        `range.min <= X <= range.max` for a good window.
-        Structure is documented below.
-        """
-        metric_sum_in_range: NotRequired[pulumi.Input['SloWindowsBasedSliMetricSumInRangeArgsDict']]
-        """
-        Criterion that describes a window as good if the metric's value
-        is in a good range, *summed* across returned streams.
-        Summed value `X` of `time_series` should satisfy
-        `range.min <= X <= range.max` for a good window.
-        One of `good_bad_metric_filter`,
-        `good_total_ratio_threshold`, `metric_mean_in_range`,
-        `metric_sum_in_range` must be set for `windows_based_sli`.
-        Structure is documented below.
-        """
-        window_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Duration over which window quality is evaluated, given as a
-        duration string "{X}s" representing X seconds. Must be an
-        integer fraction of a day and at least 60s.
-        """
-elif False:
-    SloWindowsBasedSliArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliArgsDict(TypedDict):
+    good_bad_metric_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+    with ValueType = BOOL. The window is good if any true values
+    appear in the window. One of `good_bad_metric_filter`,
+    `good_total_ratio_threshold`, `metric_mean_in_range`,
+    `metric_sum_in_range` must be set for `windows_based_sli`.
+    """
+    good_total_ratio_threshold: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdArgsDict']]
+    """
+    Criterion that describes a window as good if its performance is
+    high enough. One of `good_bad_metric_filter`,
+    `good_total_ratio_threshold`, `metric_mean_in_range`,
+    `metric_sum_in_range` must be set for `windows_based_sli`.
+    Structure is documented below.
+    """
+    metric_mean_in_range: NotRequired[pulumi.Input['SloWindowsBasedSliMetricMeanInRangeArgsDict']]
+    """
+    Criterion that describes a window as good if the metric's value
+    is in a good range, *averaged* across returned streams.
+    One of `good_bad_metric_filter`,
+    `good_total_ratio_threshold`, `metric_mean_in_range`,
+    `metric_sum_in_range` must be set for `windows_based_sli`.
+    Average value X of `time_series` should satisfy
+    `range.min <= X <= range.max` for a good window.
+    Structure is documented below.
+    """
+    metric_sum_in_range: NotRequired[pulumi.Input['SloWindowsBasedSliMetricSumInRangeArgsDict']]
+    """
+    Criterion that describes a window as good if the metric's value
+    is in a good range, *summed* across returned streams.
+    Summed value `X` of `time_series` should satisfy
+    `range.min <= X <= range.max` for a good window.
+    One of `good_bad_metric_filter`,
+    `good_total_ratio_threshold`, `metric_mean_in_range`,
+    `metric_sum_in_range` must be set for `windows_based_sli`.
+    Structure is documented below.
+    """
+    window_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Duration over which window quality is evaluated, given as a
+    duration string "{X}s" representing X seconds. Must be an
+    integer fraction of a day and at least 60s.
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliArgs:
@@ -4757,25 +4657,22 @@ class SloWindowsBasedSliArgs:
         pulumi.set(self, "window_period", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliGoodTotalRatioThresholdArgsDict(TypedDict):
-        basic_sli_performance: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgsDict']]
-        """
-        Basic SLI to evaluate to judge window quality.
-        Structure is documented below.
-        """
-        performance: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgsDict']]
-        """
-        Request-based SLI to evaluate to judge window quality.
-        Structure is documented below.
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        If window performance >= threshold, the window is counted
-        as good.
-        """
-elif False:
-    SloWindowsBasedSliGoodTotalRatioThresholdArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliGoodTotalRatioThresholdArgsDict(TypedDict):
+    basic_sli_performance: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgsDict']]
+    """
+    Basic SLI to evaluate to judge window quality.
+    Structure is documented below.
+    """
+    performance: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgsDict']]
+    """
+    Request-based SLI to evaluate to judge window quality.
+    Structure is documented below.
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    If window performance >= threshold, the window is counted
+    as good.
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdArgs:
@@ -4838,47 +4735,44 @@ class SloWindowsBasedSliGoodTotalRatioThresholdArgs:
         pulumi.set(self, "threshold", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgsDict(TypedDict):
-        availability: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgsDict']]
-        """
-        Availability based SLI, dervied from count of requests made to this service that return successfully.
-        Structure is documented below.
-        """
-        latency: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgsDict']]
-        """
-        Parameters for a latency threshold SLI.
-        Structure is documented below.
-        """
-        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An optional set of locations to which this SLI is relevant.
-        Telemetry from other locations will not be used to calculate
-        performance for this SLI. If omitted, this SLI applies to all
-        locations in which the Service has activity. For service types
-        that don't support breaking down by location, setting this
-        field will result in an error.
-        """
-        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An optional set of RPCs to which this SLI is relevant.
-        Telemetry from other methods will not be used to calculate
-        performance for this SLI. If omitted, this SLI applies to all
-        the Service's methods. For service types that don't support
-        breaking down by method, setting this field will result in an
-        error.
-        """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of API versions to which this SLI is relevant.
-        Telemetry from other API versions will not be used to
-        calculate performance for this SLI. If omitted,
-        this SLI applies to all API versions. For service types
-        that don't support breaking down by version, setting this
-        field will result in an error.
-        """
-elif False:
-    SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgsDict(TypedDict):
+    availability: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgsDict']]
+    """
+    Availability based SLI, dervied from count of requests made to this service that return successfully.
+    Structure is documented below.
+    """
+    latency: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgsDict']]
+    """
+    Parameters for a latency threshold SLI.
+    Structure is documented below.
+    """
+    locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An optional set of locations to which this SLI is relevant.
+    Telemetry from other locations will not be used to calculate
+    performance for this SLI. If omitted, this SLI applies to all
+    locations in which the Service has activity. For service types
+    that don't support breaking down by location, setting this
+    field will result in an error.
+    """
+    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An optional set of RPCs to which this SLI is relevant.
+    Telemetry from other methods will not be used to calculate
+    performance for this SLI. If omitted, this SLI applies to all
+    the Service's methods. For service types that don't support
+    breaking down by method, setting this field will result in an
+    error.
+    """
+    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of API versions to which this SLI is relevant.
+    Telemetry from other API versions will not be used to
+    calculate performance for this SLI. If omitted,
+    this SLI applies to all API versions. For service types
+    that don't support breaking down by version, setting this
+    field will result in an error.
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
@@ -5001,14 +4895,11 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
-        """
-elif False:
-    SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs:
@@ -5033,16 +4924,13 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityAr
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgsDict(TypedDict):
-        threshold: pulumi.Input[_builtins.str]
-        """
-        A duration string, e.g. 10s.
-        Good service is defined to be the count of requests made to
-        this service that return in no more than threshold.
-        """
-elif False:
-    SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgsDict(TypedDict):
+    threshold: pulumi.Input[_builtins.str]
+    """
+    A duration string, e.g. 10s.
+    Good service is defined to be the count of requests made to
+    this service that return in no more than threshold.
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs:
@@ -5070,28 +4958,25 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs:
         pulumi.set(self, "threshold", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgsDict(TypedDict):
-        distribution_cut: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgsDict']]
-        """
-        Used when good_service is defined by a count of values aggregated in a
-        Distribution that fall into a good range. The total_service is the
-        total count of all values aggregated in the Distribution.
-        Defines a distribution TimeSeries filter and thresholds used for
-        measuring good service and total service.
-        Structure is documented below.
-        """
-        good_total_ratio: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgsDict']]
-        """
-        A means to compute a ratio of `good_service` to `total_service`.
-        Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
-        Must specify exactly two of good, bad, and total service filters.
-        The relationship good_service + bad_service = total_service
-        will be assumed.
-        Structure is documented below.
-        """
-elif False:
-    SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgsDict(TypedDict):
+    distribution_cut: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgsDict']]
+    """
+    Used when good_service is defined by a count of values aggregated in a
+    Distribution that fall into a good range. The total_service is the
+    total count of all values aggregated in the Distribution.
+    Defines a distribution TimeSeries filter and thresholds used for
+    measuring good service and total service.
+    Structure is documented below.
+    """
+    good_total_ratio: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgsDict']]
+    """
+    A means to compute a ratio of `good_service` to `total_service`.
+    Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+    Must specify exactly two of good, bad, and total service filters.
+    The relationship good_service + bad_service = total_service
+    will be assumed.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs:
@@ -5152,26 +5037,23 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs:
         pulumi.set(self, "good_total_ratio", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgsDict(TypedDict):
-        distribution_filter: pulumi.Input[_builtins.str]
-        """
-        A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        aggregating values to quantify the good service provided.
-        Must have ValueType = DISTRIBUTION and
-        MetricKind = DELTA or MetricKind = CUMULATIVE.
-        """
-        range: pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgsDict']
-        """
-        Range of numerical values. The computed good_service
-        will be the count of values x in the Distribution such
-        that range.min <= x <= range.max. inclusive of min and
-        max. Open ranges can be defined by setting
-        just one of min or max.
-        Structure is documented below.
-        """
-elif False:
-    SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgsDict(TypedDict):
+    distribution_filter: pulumi.Input[_builtins.str]
+    """
+    A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+    aggregating values to quantify the good service provided.
+    Must have ValueType = DISTRIBUTION and
+    MetricKind = DELTA or MetricKind = CUMULATIVE.
+    """
+    range: pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgsDict']
+    """
+    Range of numerical values. The computed good_service
+    will be the count of values x in the Distribution such
+    that range.min <= x <= range.max. inclusive of min and
+    max. Open ranges can be defined by setting
+    just one of min or max.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs:
@@ -5226,22 +5108,19 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgsDict(TypedDict):
-        max: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        max value for the range (inclusive). If not given,
-        will be set to "infinity", defining an open range
-        ">= range.min"
-        """
-        min: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Min value for the range (inclusive). If not given,
-        will be set to "-infinity", defining an open range
-        "< range.max"
-        """
-elif False:
-    SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgsDict(TypedDict):
+    max: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    max value for the range (inclusive). If not given,
+    will be set to "infinity", defining an open range
+    ">= range.min"
+    """
+    min: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Min value for the range (inclusive). If not given,
+    will be set to "-infinity", defining an open range
+    "< range.max"
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs:
@@ -5290,39 +5169,36 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeAr
         pulumi.set(self, "min", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgsDict(TypedDict):
-        bad_service_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        quantifying bad service provided, either demanded service that
-        was not provided or demanded service that was of inadequate
-        quality. Exactly two of
-        good, bad, or total service filter must be defined (where
-        good + bad = total is assumed)
-        Must have ValueType = DOUBLE or ValueType = INT64 and
-        must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-        """
-        good_service_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        quantifying good service provided. Exactly two of
-        good, bad, or total service filter must be defined (where
-        good + bad = total is assumed)
-        Must have ValueType = DOUBLE or ValueType = INT64 and
-        must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-        """
-        total_service_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        quantifying total demanded service. Exactly two of
-        good, bad, or total service filter must be defined (where
-        good + bad = total is assumed)
-        Must have ValueType = DOUBLE or ValueType = INT64 and
-        must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-        """
-elif False:
-    SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgsDict(TypedDict):
+    bad_service_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+    quantifying bad service provided, either demanded service that
+    was not provided or demanded service that was of inadequate
+    quality. Exactly two of
+    good, bad, or total service filter must be defined (where
+    good + bad = total is assumed)
+    Must have ValueType = DOUBLE or ValueType = INT64 and
+    must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+    """
+    good_service_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+    quantifying good service provided. Exactly two of
+    good, bad, or total service filter must be defined (where
+    good + bad = total is assumed)
+    Must have ValueType = DOUBLE or ValueType = INT64 and
+    must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+    """
+    total_service_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+    quantifying total demanded service. Exactly two of
+    good, bad, or total service filter must be defined (where
+    good + bad = total is assumed)
+    Must have ValueType = DOUBLE or ValueType = INT64 and
+    must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs:
@@ -5413,30 +5289,27 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs:
         pulumi.set(self, "total_service_filter", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliMetricMeanInRangeArgsDict(TypedDict):
-        range: pulumi.Input['SloWindowsBasedSliMetricMeanInRangeRangeArgsDict']
-        """
-        Range of numerical values. The computed good_service
-        will be the count of values x in the Distribution such
-        that range.min <= x <= range.max. inclusive of min and
-        max. Open ranges can be defined by setting
-        just one of min or max. Mean value `X` of `time_series`
-        values should satisfy `range.min <= X <= range.max` for a
-        good service.
-        Structure is documented below.
-        """
-        time_series: pulumi.Input[_builtins.str]
-        """
-        A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        specifying the TimeSeries to use for evaluating window
-        The provided TimeSeries must have ValueType = INT64 or
-        ValueType = DOUBLE and MetricKind = GAUGE. Mean value `X`
-        should satisfy `range.min <= X <= range.max`
-        under good service.
-        """
-elif False:
-    SloWindowsBasedSliMetricMeanInRangeArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliMetricMeanInRangeArgsDict(TypedDict):
+    range: pulumi.Input['SloWindowsBasedSliMetricMeanInRangeRangeArgsDict']
+    """
+    Range of numerical values. The computed good_service
+    will be the count of values x in the Distribution such
+    that range.min <= x <= range.max. inclusive of min and
+    max. Open ranges can be defined by setting
+    just one of min or max. Mean value `X` of `time_series`
+    values should satisfy `range.min <= X <= range.max` for a
+    good service.
+    Structure is documented below.
+    """
+    time_series: pulumi.Input[_builtins.str]
+    """
+    A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+    specifying the TimeSeries to use for evaluating window
+    The provided TimeSeries must have ValueType = INT64 or
+    ValueType = DOUBLE and MetricKind = GAUGE. Mean value `X`
+    should satisfy `range.min <= X <= range.max`
+    under good service.
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliMetricMeanInRangeArgs:
@@ -5499,22 +5372,19 @@ class SloWindowsBasedSliMetricMeanInRangeArgs:
         pulumi.set(self, "time_series", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliMetricMeanInRangeRangeArgsDict(TypedDict):
-        max: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        max value for the range (inclusive). If not given,
-        will be set to "infinity", defining an open range
-        ">= range.min"
-        """
-        min: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Min value for the range (inclusive). If not given,
-        will be set to "-infinity", defining an open range
-        "< range.max"
-        """
-elif False:
-    SloWindowsBasedSliMetricMeanInRangeRangeArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliMetricMeanInRangeRangeArgsDict(TypedDict):
+    max: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    max value for the range (inclusive). If not given,
+    will be set to "infinity", defining an open range
+    ">= range.min"
+    """
+    min: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Min value for the range (inclusive). If not given,
+    will be set to "-infinity", defining an open range
+    "< range.max"
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
@@ -5563,30 +5433,27 @@ class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
         pulumi.set(self, "min", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliMetricSumInRangeArgsDict(TypedDict):
-        range: pulumi.Input['SloWindowsBasedSliMetricSumInRangeRangeArgsDict']
-        """
-        Range of numerical values. The computed good_service
-        will be the count of values x in the Distribution such
-        that range.min <= x <= range.max. inclusive of min and
-        max. Open ranges can be defined by setting
-        just one of min or max. Summed value `X` should satisfy
-        `range.min <= X <= range.max` for a good window.
-        Structure is documented below.
-        """
-        time_series: pulumi.Input[_builtins.str]
-        """
-        A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        specifying the TimeSeries to use for evaluating window
-        quality. The provided TimeSeries must have
-        ValueType = INT64 or ValueType = DOUBLE and
-        MetricKind = GAUGE.
-        Summed value `X` should satisfy
-        `range.min <= X <= range.max` for a good window.
-        """
-elif False:
-    SloWindowsBasedSliMetricSumInRangeArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliMetricSumInRangeArgsDict(TypedDict):
+    range: pulumi.Input['SloWindowsBasedSliMetricSumInRangeRangeArgsDict']
+    """
+    Range of numerical values. The computed good_service
+    will be the count of values x in the Distribution such
+    that range.min <= x <= range.max. inclusive of min and
+    max. Open ranges can be defined by setting
+    just one of min or max. Summed value `X` should satisfy
+    `range.min <= X <= range.max` for a good window.
+    Structure is documented below.
+    """
+    time_series: pulumi.Input[_builtins.str]
+    """
+    A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+    specifying the TimeSeries to use for evaluating window
+    quality. The provided TimeSeries must have
+    ValueType = INT64 or ValueType = DOUBLE and
+    MetricKind = GAUGE.
+    Summed value `X` should satisfy
+    `range.min <= X <= range.max` for a good window.
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliMetricSumInRangeArgs:
@@ -5649,22 +5516,19 @@ class SloWindowsBasedSliMetricSumInRangeArgs:
         pulumi.set(self, "time_series", value)
 
 
-if not MYPY:
-    class SloWindowsBasedSliMetricSumInRangeRangeArgsDict(TypedDict):
-        max: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        max value for the range (inclusive). If not given,
-        will be set to "infinity", defining an open range
-        ">= range.min"
-        """
-        min: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Min value for the range (inclusive). If not given,
-        will be set to "-infinity", defining an open range
-        "< range.max"
-        """
-elif False:
-    SloWindowsBasedSliMetricSumInRangeRangeArgsDict: TypeAlias = Mapping[str, Any]
+class SloWindowsBasedSliMetricSumInRangeRangeArgsDict(TypedDict):
+    max: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    max value for the range (inclusive). If not given,
+    will be set to "infinity", defining an open range
+    ">= range.min"
+    """
+    min: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Min value for the range (inclusive). If not given,
+    will be set to "-infinity", defining an open range
+    "< range.max"
+    """
 
 @pulumi.input_type
 class SloWindowsBasedSliMetricSumInRangeRangeArgs:
@@ -5713,25 +5577,22 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
         pulumi.set(self, "min", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigContentMatcherArgsDict(TypedDict):
-        content: pulumi.Input[_builtins.str]
-        """
-        String or regex content to match (max 1024 bytes)
-        """
-        json_path_matcher: NotRequired[pulumi.Input['UptimeCheckConfigContentMatcherJsonPathMatcherArgsDict']]
-        """
-        Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
-        Structure is documented below.
-        """
-        matcher: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
-        Default value is `CONTAINS_STRING`.
-        Possible values are: `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, `NOT_MATCHES_JSON_PATH`.
-        """
-elif False:
-    UptimeCheckConfigContentMatcherArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeCheckConfigContentMatcherArgsDict(TypedDict):
+    content: pulumi.Input[_builtins.str]
+    """
+    String or regex content to match (max 1024 bytes)
+    """
+    json_path_matcher: NotRequired[pulumi.Input['UptimeCheckConfigContentMatcherJsonPathMatcherArgsDict']]
+    """
+    Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+    Structure is documented below.
+    """
+    matcher: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+    Default value is `CONTAINS_STRING`.
+    Possible values are: `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, `NOT_MATCHES_JSON_PATH`.
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigContentMatcherArgs:
@@ -5793,20 +5654,17 @@ class UptimeCheckConfigContentMatcherArgs:
         pulumi.set(self, "matcher", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigContentMatcherJsonPathMatcherArgsDict(TypedDict):
-        json_path: pulumi.Input[_builtins.str]
-        """
-        JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
-        """
-        json_matcher: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Options to perform JSONPath content matching.
-        Default value is `EXACT_MATCH`.
-        Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
-        """
-elif False:
-    UptimeCheckConfigContentMatcherJsonPathMatcherArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeCheckConfigContentMatcherJsonPathMatcherArgsDict(TypedDict):
+    json_path: pulumi.Input[_builtins.str]
+    """
+    JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
+    """
+    json_matcher: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Options to perform JSONPath content matching.
+    Default value is `EXACT_MATCH`.
+    Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigContentMatcherJsonPathMatcherArgs:
@@ -5850,73 +5708,70 @@ class UptimeCheckConfigContentMatcherJsonPathMatcherArgs:
         pulumi.set(self, "json_matcher", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigHttpCheckArgsDict(TypedDict):
-        accepted_response_status_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgsDict']]]]
-        """
-        If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
-        Structure is documented below.
-        """
-        auth_info: NotRequired[pulumi.Input['UptimeCheckConfigHttpCheckAuthInfoArgsDict']]
-        """
-        The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
-        Structure is documented below.
-        """
-        body: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
-        """
-        content_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The content type to use for the check.
-        Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
-        """
-        custom_content_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type` is `URL_ENCODED` and `custom_content_type` is set. 2. `content_type` is `USER_PROVIDED` and `custom_content_type` is not set.
-        """
-        headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
-        """
-        mask_headers: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `mask_headers` is set to `true` then the headers will be obscured with `******`.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
-        """
-        ping_config: NotRequired[pulumi.Input['UptimeCheckConfigHttpCheckPingConfigArgsDict']]
-        """
-        Contains information needed to add pings to an HTTP check.
-        Structure is documented below.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to the page to run the check against. Will be combined with `host` (specified within the `monitored_resource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
-        """
-        request_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `request_method` defaults to `GET`.
-        Default value is `GET`.
-        Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
-        """
-        service_agent_authentication: NotRequired[pulumi.Input['UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgsDict']]
-        """
-        The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
-        Structure is documented below.
-        """
-        use_ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, use HTTPS instead of HTTP to run the check.
-        """
-        validate_ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`, setting `validate_ssl` to `true` has no effect.
-        """
-elif False:
-    UptimeCheckConfigHttpCheckArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeCheckConfigHttpCheckArgsDict(TypedDict):
+    accepted_response_status_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgsDict']]]]
+    """
+    If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+    Structure is documented below.
+    """
+    auth_info: NotRequired[pulumi.Input['UptimeCheckConfigHttpCheckAuthInfoArgsDict']]
+    """
+    The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
+    Structure is documented below.
+    """
+    body: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
+    """
+    content_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The content type to use for the check.
+    Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
+    """
+    custom_content_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type` is `URL_ENCODED` and `custom_content_type` is set. 2. `content_type` is `USER_PROVIDED` and `custom_content_type` is not set.
+    """
+    headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
+    """
+    mask_headers: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `mask_headers` is set to `true` then the headers will be obscured with `******`.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
+    """
+    ping_config: NotRequired[pulumi.Input['UptimeCheckConfigHttpCheckPingConfigArgsDict']]
+    """
+    Contains information needed to add pings to an HTTP check.
+    Structure is documented below.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to the page to run the check against. Will be combined with `host` (specified within the `monitored_resource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+    """
+    request_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `request_method` defaults to `GET`.
+    Default value is `GET`.
+    Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
+    """
+    service_agent_authentication: NotRequired[pulumi.Input['UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgsDict']]
+    """
+    The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
+    Structure is documented below.
+    """
+    use_ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, use HTTPS instead of HTTP to run the check.
+    """
+    validate_ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`, setting `validate_ssl` to `true` has no effect.
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigHttpCheckArgs:
@@ -6163,19 +6018,16 @@ class UptimeCheckConfigHttpCheckArgs:
         pulumi.set(self, "validate_ssl", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgsDict(TypedDict):
-        status_class: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A class of status codes to accept.
-        Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
-        """
-        status_value: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        A status code to accept.
-        """
-elif False:
-    UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgsDict(TypedDict):
+    status_class: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A class of status codes to accept.
+    Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
+    """
+    status_value: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    A status code to accept.
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs:
@@ -6218,27 +6070,24 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs:
         pulumi.set(self, "status_value", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigHttpCheckAuthInfoArgsDict(TypedDict):
-        username: pulumi.Input[_builtins.str]
-        """
-        The username to authenticate.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate.
-        """
-        password_wo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password to authenticate.
-        """
-        password_wo_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password write-only version.
-        """
-elif False:
-    UptimeCheckConfigHttpCheckAuthInfoArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeCheckConfigHttpCheckAuthInfoArgsDict(TypedDict):
+    username: pulumi.Input[_builtins.str]
+    """
+    The username to authenticate.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate.
+    """
+    password_wo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    The password to authenticate.
+    """
+    password_wo_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password write-only version.
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigHttpCheckAuthInfoArgs:
@@ -6312,14 +6161,11 @@ class UptimeCheckConfigHttpCheckAuthInfoArgs:
         pulumi.set(self, "password_wo_version", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigHttpCheckPingConfigArgsDict(TypedDict):
-        pings_count: pulumi.Input[_builtins.int]
-        """
-        Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
-        """
-elif False:
-    UptimeCheckConfigHttpCheckPingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeCheckConfigHttpCheckPingConfigArgsDict(TypedDict):
+    pings_count: pulumi.Input[_builtins.int]
+    """
+    Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigHttpCheckPingConfigArgs:
@@ -6343,15 +6189,12 @@ class UptimeCheckConfigHttpCheckPingConfigArgs:
         pulumi.set(self, "pings_count", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of authentication to use.
-        Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
-        """
-elif False:
-    UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of authentication to use.
+    Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs:
@@ -6378,18 +6221,15 @@ class UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigMonitoredResourceArgsDict(TypedDict):
-        labels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `project_id`, `instance_id`, and `zone`.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gce_instance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
-        """
-elif False:
-    UptimeCheckConfigMonitoredResourceArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeCheckConfigMonitoredResourceArgsDict(TypedDict):
+    labels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `project_id`, `instance_id`, and `zone`.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gce_instance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigMonitoredResourceArgs:
@@ -6428,19 +6268,16 @@ class UptimeCheckConfigMonitoredResourceArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigResourceGroupArgsDict(TypedDict):
-        group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The group of resources being monitored. Should be the `name` of a group
-        """
-        resource_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource type of the group members.
-        Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
-        """
-elif False:
-    UptimeCheckConfigResourceGroupArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeCheckConfigResourceGroupArgsDict(TypedDict):
+    group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The group of resources being monitored. Should be the `name` of a group
+    """
+    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource type of the group members.
+    Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigResourceGroupArgs:
@@ -6483,18 +6320,15 @@ class UptimeCheckConfigResourceGroupArgs:
         pulumi.set(self, "resource_type", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigSyntheticMonitorArgsDict(TypedDict):
-        cloud_function_v2: pulumi.Input['UptimeCheckConfigSyntheticMonitorCloudFunctionV2ArgsDict']
-        """
-        Target a Synthetic Monitor GCFv2 Instance
-        Structure is documented below.
+class UptimeCheckConfigSyntheticMonitorArgsDict(TypedDict):
+    cloud_function_v2: pulumi.Input['UptimeCheckConfigSyntheticMonitorCloudFunctionV2ArgsDict']
+    """
+    Target a Synthetic Monitor GCFv2 Instance
+    Structure is documented below.
 
 
-        <a name="nested_synthetic_monitor_cloud_function_v2"></a>The `cloud_function_v2` block supports:
-        """
-elif False:
-    UptimeCheckConfigSyntheticMonitorArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_synthetic_monitor_cloud_function_v2"></a>The `cloud_function_v2` block supports:
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigSyntheticMonitorArgs:
@@ -6526,14 +6360,11 @@ class UptimeCheckConfigSyntheticMonitorArgs:
         pulumi.set(self, "cloud_function_v2", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigSyntheticMonitorCloudFunctionV2ArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
-        """
-elif False:
-    UptimeCheckConfigSyntheticMonitorCloudFunctionV2ArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeCheckConfigSyntheticMonitorCloudFunctionV2ArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args:
@@ -6557,19 +6388,16 @@ class UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigTcpCheckArgsDict(TypedDict):
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to the page to run the check against. Will be combined with host (specified within the `monitored_resource`) to construct the full URL.
-        """
-        ping_config: NotRequired[pulumi.Input['UptimeCheckConfigTcpCheckPingConfigArgsDict']]
-        """
-        Contains information needed to add pings to a TCP check.
-        Structure is documented below.
-        """
-elif False:
-    UptimeCheckConfigTcpCheckArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeCheckConfigTcpCheckArgsDict(TypedDict):
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to the page to run the check against. Will be combined with host (specified within the `monitored_resource`) to construct the full URL.
+    """
+    ping_config: NotRequired[pulumi.Input['UptimeCheckConfigTcpCheckPingConfigArgsDict']]
+    """
+    Contains information needed to add pings to a TCP check.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigTcpCheckArgs:
@@ -6611,14 +6439,11 @@ class UptimeCheckConfigTcpCheckArgs:
         pulumi.set(self, "ping_config", value)
 
 
-if not MYPY:
-    class UptimeCheckConfigTcpCheckPingConfigArgsDict(TypedDict):
-        pings_count: pulumi.Input[_builtins.int]
-        """
-        Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
-        """
-elif False:
-    UptimeCheckConfigTcpCheckPingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeCheckConfigTcpCheckPingConfigArgsDict(TypedDict):
+    pings_count: pulumi.Input[_builtins.int]
+    """
+    Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+    """
 
 @pulumi.input_type
 class UptimeCheckConfigTcpCheckPingConfigArgs:

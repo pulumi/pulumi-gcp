@@ -57,16 +57,12 @@ import * as utilities from "../utilities";
  * Generator can be imported using any of these accepted formats:
  *
  * * `{{parent}}/generators/{{name}}`
- *
  * * `{{parent}}/{{name}}`
  *
  * When using the `pulumi import` command, Generator can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:diagflow/cxGenerator:CxGenerator default {{parent}}/generators/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:diagflow/cxGenerator:CxGenerator default {{parent}}/{{name}}
  * ```
  */

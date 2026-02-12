@@ -98,28 +98,29 @@ namespace Pulumi.Gcp.Spanner
     /// Instance can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/instances/{{name}}`
-    /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:spanner/instance:Instance default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:spanner/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The autoscaling configuration. Autoscaling is enabled if this field is set.
+        /// Exactly one of either num_nodes, ProcessingUnits or AutoscalingConfig must be
+        /// present in terraform except when InstanceType = FREE_INSTANCE.
+        /// When autoscaling is enabled, NumNodes and ProcessingUnits are treated as,
+        /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+        /// the instance.
+        /// Structure is documented below.
+        /// </summary>
         [Output("autoscalingConfig")]
         public Output<Outputs.InstanceAutoscalingConfig?> AutoscalingConfig { get; private set; } = null!;
 
@@ -198,9 +199,17 @@ namespace Pulumi.Gcp.Spanner
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The number of nodes allocated to this instance. Exactly one of either num_nodes, ProcessingUnits or
+        /// AutoscalingConfig must be present in terraform except when InstanceType = FREE_INSTANCE.
+        /// </summary>
         [Output("numNodes")]
         public Output<int> NumNodes { get; private set; } = null!;
 
+        /// <summary>
+        /// The number of processing units allocated to this instance. Exactly one of either num_nodes,
+        /// ProcessingUnits or AutoscalingConfig must be present in terraform except when InstanceType = FREE_INSTANCE.
+        /// </summary>
         [Output("processingUnits")]
         public Output<int> ProcessingUnits { get; private set; } = null!;
 
@@ -275,6 +284,15 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The autoscaling configuration. Autoscaling is enabled if this field is set.
+        /// Exactly one of either num_nodes, ProcessingUnits or AutoscalingConfig must be
+        /// present in terraform except when InstanceType = FREE_INSTANCE.
+        /// When autoscaling is enabled, NumNodes and ProcessingUnits are treated as,
+        /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+        /// the instance.
+        /// Structure is documented below.
+        /// </summary>
         [Input("autoscalingConfig")]
         public Input<Inputs.InstanceAutoscalingConfigArgs>? AutoscalingConfig { get; set; }
 
@@ -353,9 +371,17 @@ namespace Pulumi.Gcp.Spanner
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The number of nodes allocated to this instance. Exactly one of either num_nodes, ProcessingUnits or
+        /// AutoscalingConfig must be present in terraform except when InstanceType = FREE_INSTANCE.
+        /// </summary>
         [Input("numNodes")]
         public Input<int>? NumNodes { get; set; }
 
+        /// <summary>
+        /// The number of processing units allocated to this instance. Exactly one of either num_nodes,
+        /// ProcessingUnits or AutoscalingConfig must be present in terraform except when InstanceType = FREE_INSTANCE.
+        /// </summary>
         [Input("processingUnits")]
         public Input<int>? ProcessingUnits { get; set; }
 
@@ -374,6 +400,15 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The autoscaling configuration. Autoscaling is enabled if this field is set.
+        /// Exactly one of either num_nodes, ProcessingUnits or AutoscalingConfig must be
+        /// present in terraform except when InstanceType = FREE_INSTANCE.
+        /// When autoscaling is enabled, NumNodes and ProcessingUnits are treated as,
+        /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+        /// the instance.
+        /// Structure is documented below.
+        /// </summary>
         [Input("autoscalingConfig")]
         public Input<Inputs.InstanceAutoscalingConfigGetArgs>? AutoscalingConfig { get; set; }
 
@@ -468,9 +503,17 @@ namespace Pulumi.Gcp.Spanner
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The number of nodes allocated to this instance. Exactly one of either num_nodes, ProcessingUnits or
+        /// AutoscalingConfig must be present in terraform except when InstanceType = FREE_INSTANCE.
+        /// </summary>
         [Input("numNodes")]
         public Input<int>? NumNodes { get; set; }
 
+        /// <summary>
+        /// The number of processing units allocated to this instance. Exactly one of either num_nodes,
+        /// ProcessingUnits or AutoscalingConfig must be present in terraform except when InstanceType = FREE_INSTANCE.
+        /// </summary>
         [Input("processingUnits")]
         public Input<int>? ProcessingUnits { get; set; }
 

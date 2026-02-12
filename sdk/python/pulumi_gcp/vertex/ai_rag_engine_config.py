@@ -179,22 +179,14 @@ class AiRagEngineConfig(pulumi.CustomResource):
         RagEngineConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/ragEngineConfig`
-
         * `{{project}}/{{region}}`
-
         * `{{region}}`
 
         When using the `pulumi import` command, RagEngineConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default projects/{{project}}/locations/{{region}}/ragEngineConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default {{project}}/{{region}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default {{region}}
         ```
 
@@ -228,22 +220,14 @@ class AiRagEngineConfig(pulumi.CustomResource):
         RagEngineConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/ragEngineConfig`
-
         * `{{project}}/{{region}}`
-
         * `{{region}}`
 
         When using the `pulumi import` command, RagEngineConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default projects/{{project}}/locations/{{region}}/ragEngineConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default {{project}}/{{region}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default {{region}}
         ```
 

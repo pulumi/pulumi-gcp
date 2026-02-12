@@ -432,6 +432,15 @@ class ServiceLbPolicies(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about ServiceLbPolicies, see:
+
+        * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
+
         ## Example Usage
 
         ### Network Services Service Lb Policies Basic
@@ -508,22 +517,14 @@ class ServiceLbPolicies(pulumi.CustomResource):
         ServiceLbPolicies can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, ServiceLbPolicies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{location}}/{{name}}
         ```
 
@@ -553,6 +554,15 @@ class ServiceLbPolicies(pulumi.CustomResource):
                  args: ServiceLbPoliciesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about ServiceLbPolicies, see:
+
+        * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
+
         ## Example Usage
 
         ### Network Services Service Lb Policies Basic
@@ -629,22 +639,14 @@ class ServiceLbPolicies(pulumi.CustomResource):
         ServiceLbPolicies can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, ServiceLbPolicies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default projects/{{project}}/locations/{{location}}/serviceLbPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{location}}/{{name}}
         ```
 

@@ -107,8 +107,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -341,8 +339,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -605,22 +601,14 @@ import (
 // Job can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudrunv2/job:Job default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudrunv2/job:Job default {{location}}/{{name}}
 // ```
 type Job struct {
@@ -650,8 +638,15 @@ type Job struct {
 	// Email address of the authenticated creator.
 	Creator pulumi.StringOutput `pulumi:"creator"`
 	// The deletion time.
-	DeleteTime           pulumi.StringOutput    `pulumi:"deleteTime"`
-	DeletionProtection   pulumi.BoolPtrOutput   `pulumi:"deletionProtection"`
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the job. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the job,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the job will fail.
+	// When the field is set to false, deleting the job is allowed.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -782,8 +777,15 @@ type jobState struct {
 	// Email address of the authenticated creator.
 	Creator *string `pulumi:"creator"`
 	// The deletion time.
-	DeleteTime           *string           `pulumi:"deleteTime"`
-	DeletionProtection   *bool             `pulumi:"deletionProtection"`
+	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the job. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the job,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the job will fail.
+	// When the field is set to false, deleting the job is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -874,8 +876,15 @@ type JobState struct {
 	// Email address of the authenticated creator.
 	Creator pulumi.StringPtrInput
 	// The deletion time.
-	DeleteTime           pulumi.StringPtrInput
-	DeletionProtection   pulumi.BoolPtrInput
+	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the job. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the job,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the job will fail.
+	// When the field is set to false, deleting the job is allowed.
+	DeletionProtection pulumi.BoolPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -959,8 +968,14 @@ type jobArgs struct {
 	// Arbitrary identifier for the API client.
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
-	ClientVersion      *string `pulumi:"clientVersion"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	ClientVersion *string `pulumi:"clientVersion"`
+	// Whether Terraform will be prevented from destroying the job. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the job,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the job will fail.
+	// When the field is set to false, deleting the job is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
 	// environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -1008,7 +1023,13 @@ type JobArgs struct {
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
-	ClientVersion      pulumi.StringPtrInput
+	ClientVersion pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the job. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the job,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the job will fail.
+	// When the field is set to false, deleting the job is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
 	// environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -1178,10 +1199,17 @@ func (o JobOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the job. Defaults to true.
+// When a`terraform destroy` or `pulumi up` would delete the job,
+// the command will fail if this field is not set to false in Terraform state.
+// When the field is set to true or unset in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the job will fail.
+// When the field is set to false, deleting the job is allowed.
 func (o JobOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o JobOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

@@ -2112,7 +2112,8 @@ func (o GetCertificateMapGclbTargetIpConfigArrayOutput) Index(i pulumi.IntInput)
 
 type GetCertificatesCertificate struct {
 	// A human-readable description of the resource.
-	Description     string            `pulumi:"description"`
+	Description string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the Certificate resource.
 	//
@@ -2166,7 +2167,8 @@ type GetCertificatesCertificateInput interface {
 
 type GetCertificatesCertificateArgs struct {
 	// A human-readable description of the resource.
-	Description     pulumi.StringInput    `pulumi:"description"`
+	Description pulumi.StringInput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the Certificate resource.
 	//
@@ -2263,6 +2265,7 @@ func (o GetCertificatesCertificateOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetCertificatesCertificateOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCertificatesCertificate) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

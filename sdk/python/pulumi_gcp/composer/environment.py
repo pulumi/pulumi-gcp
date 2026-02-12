@@ -142,6 +142,7 @@ class _EnvironmentState:
         """
         Input properties used for looking up and filtering Environment resources.
         :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
                
                				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -184,6 +185,9 @@ class _EnvironmentState:
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
@@ -280,29 +284,564 @@ class Environment(pulumi.CustomResource):
                  storage_config: Optional[pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None,
                  __props__=None):
         """
-        ## Import
+        An environment for running orchestration tasks.
 
-        Environment can be imported using any of these accepted formats:
+        Environments run Apache Airflow software on Google infrastructure.
 
-        * `projects/{{project}}/locations/{{region}}/environments/{{name}}`
+        To get more information about Environments, see:
 
-        * `{{project}}/{{region}}/{{name}}`
+        * [Cloud Composer documentation](https://cloud.google.com/composer/docs)
+        * [Cloud Composer API documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments)
+        * How-to Guides (Cloud Composer 2)
+          * [Creating environments](https://cloud.google.com/composer/docs/composer-2/create-environments)
+          * [Scaling environments](https://cloud.google.com/composer/docs/composer-2/scale-environments)
+          * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/composer-2/configure-shared-vpc)
+        * How-to Guides (Cloud Composer 3)
+          * [Creating environments](https://cloud.google.com/composer/docs/composer-3/create-environments)
+          * [Scaling environments](https://cloud.google.com/composer/docs/composer-3/scale-environments)
+          * [Change environment networking type (Private or Public IP)](https://cloud.google.com/composer/docs/composer-3/change-networking-type)
+          * [Connect an environment to a VPC network](https://cloud.google.com/composer/docs/composer-3/connect-vpc-network)
+        * [Apache Airflow Documentation](http://airflow.apache.org/)
 
-        * `{{name}}`
+        > **Note**
+          Cloud Composer 1 is in the post-maintenance mode. Google does
+          not release any further updates to Cloud Composer 1, including new versions
+          of Airflow, bugfixes, and security updates. We recommend using
+          Cloud Composer 2 or Cloud Composer 3 instead.
 
-        When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
+        We **STRONGLY** recommend you read the [GCP
+        guides](https://cloud.google.com/composer/docs/how-to) as the Environment resource requires a long
+        deployment process and involves several layers of GCP infrastructure, including a Kubernetes Engine
+        cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Pulumi
+        will not be able to find or manage many of these underlying resources automatically. In particular:
+        * Creating or updating an environment resource can take up to one hour. In addition, GCP may only
+          detect some errors in the configuration when they are used (e.g., ~40-50 minutes into the creation
+          process), and is prone to limited error reporting. If you encounter confusing or uninformative
+          errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
+          against the provider.
+        * **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer's use of Cloud
+          Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
+        * Please review the [known
+          issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
+          problems.***
 
-        ```sh
-        $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
+        ## Example Usage
+
+        ### Basic Usage (Cloud Composer 3)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.composer.Environment("test",
+            name="example-composer-env",
+            region="us-central1",
+            config={
+                "software_config": {
+                    "image_version": "composer-3-airflow-2",
+                },
+            })
         ```
 
-        ```sh
-        $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
+        ### Basic Usage (Cloud Composer 2)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.composer.Environment("test",
+            name="example-composer-env",
+            region="us-central1",
+            config={
+                "software_config": {
+                    "image_version": "composer-2-airflow-2",
+                },
+            })
         ```
 
-        ```sh
-        $ pulumi import gcp:composer/environment:Environment default {{name}}
+        ### Basic Usage (Cloud Composer 1)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.composer.Environment("test",
+            name="example-composer-env",
+            region="us-central1",
+            config={
+                "software_config": {
+                    "image_version": "composer-1-airflow-2",
+                },
+            })
         ```
+
+        ### With GKE and Compute Resource Dependencies
+
+        > **Note**
+          To use custom service accounts, you must give at least the
+          `role/composer.worker` role to the service account of the Cloud Composer
+          environment. For more information, see the
+          [Access Control](https://cloud.google.com/composer/docs/how-to/access-control)
+          page in the Cloud Composer documentation.
+          You might need to assign additional roles depending on specific workflows
+          that the Airflow DAGs will be running.
+
+        ### GKE and Compute Resource Dependencies (Cloud Composer 3)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_account = gcp.serviceaccount.Account("test",
+            account_id="composer-env-account",
+            display_name="Test Service Account for Composer Environment")
+        test = gcp.composer.Environment("test",
+            name="example-composer-env-tf-c3",
+            region="us-central1",
+            config={
+                "software_config": {
+                    "image_version": "composer-3-airflow-2",
+                },
+                "workloads_config": {
+                    "scheduler": {
+                        "cpu": 0.5,
+                        "memory_gb": 2,
+                        "storage_gb": 1,
+                        "count": 1,
+                    },
+                    "triggerer": {
+                        "cpu": 0.5,
+                        "memory_gb": 1,
+                        "count": 1,
+                    },
+                    "dag_processor": {
+                        "cpu": 1,
+                        "memory_gb": 2,
+                        "storage_gb": 1,
+                        "count": 1,
+                    },
+                    "web_server": {
+                        "cpu": 0.5,
+                        "memory_gb": 2,
+                        "storage_gb": 1,
+                    },
+                    "worker": {
+                        "cpu": 0.5,
+                        "memory_gb": 2,
+                        "storage_gb": 1,
+                        "min_count": 1,
+                        "max_count": 3,
+                    },
+                },
+                "environment_size": "ENVIRONMENT_SIZE_SMALL",
+                "node_config": {
+                    "service_account": test_account.name,
+                },
+            })
+        composer_worker = gcp.projects.IAMMember("composer-worker",
+            project="your-project-id",
+            role="roles/composer.worker",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+
+        ### GKE and Compute Resource Dependencies (Cloud Composer 2)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_network = gcp.compute.Network("test",
+            name="composer-test-network3",
+            auto_create_subnetworks=False)
+        test_subnetwork = gcp.compute.Subnetwork("test",
+            name="composer-test-subnetwork",
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=test_network.id)
+        test_account = gcp.serviceaccount.Account("test",
+            account_id="composer-env-account",
+            display_name="Test Service Account for Composer Environment")
+        test = gcp.composer.Environment("test",
+            name="example-composer-env-tf-c2",
+            region="us-central1",
+            config={
+                "software_config": {
+                    "image_version": "composer-2-airflow-2",
+                },
+                "workloads_config": {
+                    "scheduler": {
+                        "cpu": 0.5,
+                        "memory_gb": 1.875,
+                        "storage_gb": 1,
+                        "count": 1,
+                    },
+                    "web_server": {
+                        "cpu": 0.5,
+                        "memory_gb": 1.875,
+                        "storage_gb": 1,
+                    },
+                    "worker": {
+                        "cpu": 0.5,
+                        "memory_gb": 1.875,
+                        "storage_gb": 1,
+                        "min_count": 1,
+                        "max_count": 3,
+                    },
+                },
+                "environment_size": "ENVIRONMENT_SIZE_SMALL",
+                "node_config": {
+                    "network": test_network.id,
+                    "subnetwork": test_subnetwork.id,
+                    "service_account": test_account.name,
+                },
+            })
+        composer_worker = gcp.projects.IAMMember("composer-worker",
+            project="your-project-id",
+            role="roles/composer.worker",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+
+        ### GKE and Compute Resource Dependencies (Cloud Composer 1)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_network = gcp.compute.Network("test",
+            name="composer-test-network",
+            auto_create_subnetworks=False)
+        test_subnetwork = gcp.compute.Subnetwork("test",
+            name="composer-test-subnetwork",
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=test_network.id)
+        test_account = gcp.serviceaccount.Account("test",
+            account_id="composer-env-account",
+            display_name="Test Service Account for Composer Environment")
+        test = gcp.composer.Environment("test",
+            name="example-composer-env",
+            region="us-central1",
+            config={
+                "software_config": {
+                    "image_version": "composer-1-airflow-2",
+                },
+                "node_count": 4,
+                "node_config": {
+                    "zone": "us-central1-a",
+                    "machine_type": "n1-standard-1",
+                    "network": test_network.id,
+                    "subnetwork": test_subnetwork.id,
+                    "service_account": test_account.name,
+                },
+                "database_config": {
+                    "machine_type": "db-n1-standard-2",
+                },
+                "web_server_config": {
+                    "machine_type": "composer-n1-webserver-2",
+                },
+            })
+        composer_worker = gcp.projects.IAMMember("composer-worker",
+            role="roles/composer.worker",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+
+        ### Cloud Composer 3 networking configuration
+
+        In Cloud Composer 3, networking configuration is simplified compared to
+        previous versions. You don't need to specify network ranges, and can attach
+        custom VPC networks to your environment.
+
+        > **Note**
+          It's not possible to detach a VPC network using Terraform. Instead, you can
+          attach a different VPC network in its place, or detach the network using
+          other tools like Google Cloud CLI.
+
+        Use Private IP networking:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.composer.Environment("example",
+            name="example-environment",
+            region="us-central1",
+            config={
+                "enable_private_environment": True,
+            })
+        ```
+
+        Attach a custom VPC network (Cloud Composer creates a new network attachment):
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.composer.Environment("example",
+            name="example-environment",
+            region="us-central1",
+            config={
+                "node_config": {
+                    "network": "projects/example-project/global/networks/example-network",
+                    "subnetwork": "projects/example-project/regions/us-central1/subnetworks/example-subnetwork",
+                },
+            })
+        ```
+
+        Attach a custom VPC network (use existing network attachment):
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.composer.Environment("example",
+            name="example-environment",
+            region="us-central1",
+            config={
+                "node_config": {
+                    "composer_network_attachment": projects / example_project / regions / us_central1 / network_attachments / example_network_attachment,
+                },
+            })
+        ```
+
+        If you specify an existing network attachment that you also manage in Terraform, then Terraform will revert changes
+        to the attachment done by Cloud Composer when you apply configuration changes. As a result, the environment will no
+        longer use the attachment. To address this problem, make sure that Terraform ignores changes to the
+        `producer_accept_lists` parameter of the attachment, as follows:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.NetworkAttachment("example")
+        example_environment = gcp.composer.Environment("example",
+            name="example-environment",
+            region="us-central1",
+            config={
+                "node_config": {
+                    "composer_network_attachment": example.id,
+                },
+            })
+        ```
+
+        ## Argument Reference - Cloud Composer 1
+
+        The following arguments are supported:
+
+        * `name` -
+        (Required)
+        Name of the environment
+
+        * `config` -
+        (Optional)
+        Configuration parameters for this environment  Structure is documented below.
+
+        * `labels` -
+        (Optional)
+        User-defined labels for this environment. The labels map can contain
+        no more than 64 entries. Entries of the labels map are UTF8 strings
+        that comply with the following restrictions:
+        Label keys must be between 1 and 63 characters long and must conform
+        to the following regular expression: `a-z?`.
+        Label values must be between 0 and 63 characters long and must
+        conform to the regular expression `(a-z?)?`.
+        No more than 64 labels can be associated with a given environment.
+        Both keys and values must be <= 128 bytes in size.
+          
+          **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
+
+        * `terraform_labels` -
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+
+        * `effective_labels` -
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+
+        * `region` -
+        (Optional)
+        The location or Compute Engine region for the environment.
+
+        * `project` -
+        (Optional) The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+
+        <a name="nested_config_c1"></a>The `config` block supports:
+
+        * `node_count` -
+        (Optional, Cloud Composer 1 only)
+        The number of nodes in the Kubernetes Engine cluster of the environment.
+
+        * `node_config` -
+        (Optional)
+        The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
+
+        * `software_config` -
+        (Optional)
+        The configuration settings for software inside the environment.  Structure is documented below.
+
+        * `private_environment_config` -
+        (Optional)
+        The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
+
+        * `web_server_network_access_control` -
+        The network-level access control policy for the Airflow web server.
+        If unspecified, no network-level access restrictions are applied.
+
+        * `database_config` -
+        (Optional, Cloud Composer 1 only)
+        The configuration settings for Cloud SQL instance used internally
+        by Apache Airflow software.
+
+        * `web_server_config` -
+        (Optional, Cloud Composer 1 only)
+        The configuration settings for the Airflow web server App Engine instance.
+
+        * `encryption_config` -
+        (Optional)
+        The encryption options for the Cloud Composer environment and its
+        dependencies.
+
+        * `maintenance_window` -
+        (Optional, Beta)
+        The configuration settings for Cloud Composer maintenance windows.
+
+        * `master_authorized_networks_config` -
+        (Optional)
+        Configuration options for the master authorized networks feature. Enabled
+        master authorized networks will disallow all external traffic to access
+        Kubernetes master through HTTPS except traffic from the given CIDR blocks,
+        Google Compute Engine Public IPs and Google Prod IPs. Structure is
+        documented below.
+
+        <a name="nested_node_config_c1"></a>The `node_config` block supports:
+
+        * `zone` -
+        (Optional, Cloud Composer 1 only)
+        The Compute Engine zone in which to deploy the VMs running the
+        Apache Airflow software, specified as the zone name or
+        relative resource name (e.g. "projects/{project}/zones/{zone}"). Must
+        belong to the enclosing environment's project and region.
+
+        * `machine_type` -
+        (Optional, Cloud Composer 1 only)
+        The Compute Engine machine type used for cluster instances,
+        specified as a name or relative resource name. For example:
+        "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong
+        to the enclosing environment's project and region/zone.
+
+        * `network` -
+        (Optional)
+        The Compute Engine network to be used for machine
+        communications, specified as a self-link, relative resource name
+        (for example "projects/{project}/global/networks/{network}"), by name.
+          
+          The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's
+        project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+
+        * `subnetwork` -
+        (Optional)
+        The Compute Engine subnetwork to be used for machine
+        communications, specified as a self-link, relative resource name (for example,
+        "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
+        network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+
+        * `disk_size_gb` -
+        (Optional, Cloud Composer 1 only)
+        The disk size in GB used for node VMs. Minimum size is 20GB.
+        If unspecified, defaults to 100GB. Cannot be updated.
+
+        * `oauth_scopes` -
+        (Optional, Cloud Composer 1 only)
+        The set of Google API scopes to be made available on all node
+        VMs. Cannot be updated. If empty, defaults to
+        `["https://www.googleapis.com/auth/cloud-platform"]`.
+
+        * `service_account` -
+        (Optional)
+        The Google Cloud Platform Service Account to be used by the
+        node VMs. If a service account is not specified, the "default"
+        Compute Engine service account is used. Cannot be updated. If given,
+        note that the service account must have `roles/composer.worker`
+        for any GCP resources created under the Cloud Composer Environment.
+
+        * `tags` -
+        (Optional)
+        The list of instance tags applied to all node VMs. Tags are
+        used to identify valid sources or targets for network
+        firewalls. Each tag within the list must comply with RFC1035.
+        Cannot be updated.
+
+        * `ip_allocation_policy` -
+        (Optional)
+        Configuration for controlling how IPs are allocated in the GKE cluster.
+        Structure is documented below.
+        Cannot be updated.
+
+        * `max_pods_per_node` -
+        (Optional, Beta,
+        Cloud Composer 1 only)
+        The maximum pods per node in the GKE cluster allocated during environment
+        creation. Lowering this value reduces IP address consumption by the Cloud
+        Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
+        The range of possible values is 8-110, and the default is 32.
+        Cannot be updated.
+
+        * `enable_ip_masq_agent` -
+        (Optional)
+        Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
+        nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
+        all destination addresses, except between pods traffic.
+        See the [documentation](https://cloud.google.com/composer/docs/enable-ip-masquerade-agent).
+
+        <a name="nested_software_config_c1"></a>The `software_config` block supports:
+
+        * `airflow_config_overrides` -
+        (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
+        separated by a hyphen, for example "core-dags_are_paused_at_creation".
+          
+          Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]").
+        The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain
+        characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can
+        contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration
+        property values are [blacklisted](https://cloud.google.com/composer/docs/concepts/airflow-configurations#airflow_configuration_blacklists),
+        and cannot be overridden.
+
+        * `pypi_packages` -
+        (Optional)
+        Custom Python Package Index (PyPI) packages to be installed
+        in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
+        version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without
+        pinning it to a version specifier, use the empty string as the value.
+
+        * `env_variables` -
+        (Optional)
+        Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
+        Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
+        They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
+        `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
+          AIRFLOW_HOME
+          C_FORCE_ROOT
+          CONTAINER_NAME
+          DAGS_FOLDER
+          GCP_PROJECT
+          GCS_BUCKET
+          GKE_CLUSTER_NAME
+          SQL_DATABASE
+          SQL_INSTANCE
+          SQL_PASSWORD
+          SQL_PROJECT
+          SQL_REGION
+          SQL_USER
+
+          AIRFLOW_HOME
+          C_FORCE_ROOT
+          CONTAINER_NAME
+          DAGS_FOLDER
+          GCP_PROJECT
+          GCS_BUCKET
+          GKE_CLUSTER_NAME
+          SQL_DATABASE
+          SQL_INSTANCE
+          SQL_PASSWORD
+          SQL_PROJECT
+          SQL_REGION
+          SQL_USER
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -323,29 +862,564 @@ class Environment(pulumi.CustomResource):
                  args: Optional[EnvironmentArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
+        An environment for running orchestration tasks.
 
-        Environment can be imported using any of these accepted formats:
+        Environments run Apache Airflow software on Google infrastructure.
 
-        * `projects/{{project}}/locations/{{region}}/environments/{{name}}`
+        To get more information about Environments, see:
 
-        * `{{project}}/{{region}}/{{name}}`
+        * [Cloud Composer documentation](https://cloud.google.com/composer/docs)
+        * [Cloud Composer API documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments)
+        * How-to Guides (Cloud Composer 2)
+          * [Creating environments](https://cloud.google.com/composer/docs/composer-2/create-environments)
+          * [Scaling environments](https://cloud.google.com/composer/docs/composer-2/scale-environments)
+          * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/composer-2/configure-shared-vpc)
+        * How-to Guides (Cloud Composer 3)
+          * [Creating environments](https://cloud.google.com/composer/docs/composer-3/create-environments)
+          * [Scaling environments](https://cloud.google.com/composer/docs/composer-3/scale-environments)
+          * [Change environment networking type (Private or Public IP)](https://cloud.google.com/composer/docs/composer-3/change-networking-type)
+          * [Connect an environment to a VPC network](https://cloud.google.com/composer/docs/composer-3/connect-vpc-network)
+        * [Apache Airflow Documentation](http://airflow.apache.org/)
 
-        * `{{name}}`
+        > **Note**
+          Cloud Composer 1 is in the post-maintenance mode. Google does
+          not release any further updates to Cloud Composer 1, including new versions
+          of Airflow, bugfixes, and security updates. We recommend using
+          Cloud Composer 2 or Cloud Composer 3 instead.
 
-        When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
+        We **STRONGLY** recommend you read the [GCP
+        guides](https://cloud.google.com/composer/docs/how-to) as the Environment resource requires a long
+        deployment process and involves several layers of GCP infrastructure, including a Kubernetes Engine
+        cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Pulumi
+        will not be able to find or manage many of these underlying resources automatically. In particular:
+        * Creating or updating an environment resource can take up to one hour. In addition, GCP may only
+          detect some errors in the configuration when they are used (e.g., ~40-50 minutes into the creation
+          process), and is prone to limited error reporting. If you encounter confusing or uninformative
+          errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
+          against the provider.
+        * **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer's use of Cloud
+          Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
+        * Please review the [known
+          issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
+          problems.***
 
-        ```sh
-        $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
+        ## Example Usage
+
+        ### Basic Usage (Cloud Composer 3)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.composer.Environment("test",
+            name="example-composer-env",
+            region="us-central1",
+            config={
+                "software_config": {
+                    "image_version": "composer-3-airflow-2",
+                },
+            })
         ```
 
-        ```sh
-        $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
+        ### Basic Usage (Cloud Composer 2)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.composer.Environment("test",
+            name="example-composer-env",
+            region="us-central1",
+            config={
+                "software_config": {
+                    "image_version": "composer-2-airflow-2",
+                },
+            })
         ```
 
-        ```sh
-        $ pulumi import gcp:composer/environment:Environment default {{name}}
+        ### Basic Usage (Cloud Composer 1)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.composer.Environment("test",
+            name="example-composer-env",
+            region="us-central1",
+            config={
+                "software_config": {
+                    "image_version": "composer-1-airflow-2",
+                },
+            })
         ```
+
+        ### With GKE and Compute Resource Dependencies
+
+        > **Note**
+          To use custom service accounts, you must give at least the
+          `role/composer.worker` role to the service account of the Cloud Composer
+          environment. For more information, see the
+          [Access Control](https://cloud.google.com/composer/docs/how-to/access-control)
+          page in the Cloud Composer documentation.
+          You might need to assign additional roles depending on specific workflows
+          that the Airflow DAGs will be running.
+
+        ### GKE and Compute Resource Dependencies (Cloud Composer 3)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_account = gcp.serviceaccount.Account("test",
+            account_id="composer-env-account",
+            display_name="Test Service Account for Composer Environment")
+        test = gcp.composer.Environment("test",
+            name="example-composer-env-tf-c3",
+            region="us-central1",
+            config={
+                "software_config": {
+                    "image_version": "composer-3-airflow-2",
+                },
+                "workloads_config": {
+                    "scheduler": {
+                        "cpu": 0.5,
+                        "memory_gb": 2,
+                        "storage_gb": 1,
+                        "count": 1,
+                    },
+                    "triggerer": {
+                        "cpu": 0.5,
+                        "memory_gb": 1,
+                        "count": 1,
+                    },
+                    "dag_processor": {
+                        "cpu": 1,
+                        "memory_gb": 2,
+                        "storage_gb": 1,
+                        "count": 1,
+                    },
+                    "web_server": {
+                        "cpu": 0.5,
+                        "memory_gb": 2,
+                        "storage_gb": 1,
+                    },
+                    "worker": {
+                        "cpu": 0.5,
+                        "memory_gb": 2,
+                        "storage_gb": 1,
+                        "min_count": 1,
+                        "max_count": 3,
+                    },
+                },
+                "environment_size": "ENVIRONMENT_SIZE_SMALL",
+                "node_config": {
+                    "service_account": test_account.name,
+                },
+            })
+        composer_worker = gcp.projects.IAMMember("composer-worker",
+            project="your-project-id",
+            role="roles/composer.worker",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+
+        ### GKE and Compute Resource Dependencies (Cloud Composer 2)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_network = gcp.compute.Network("test",
+            name="composer-test-network3",
+            auto_create_subnetworks=False)
+        test_subnetwork = gcp.compute.Subnetwork("test",
+            name="composer-test-subnetwork",
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=test_network.id)
+        test_account = gcp.serviceaccount.Account("test",
+            account_id="composer-env-account",
+            display_name="Test Service Account for Composer Environment")
+        test = gcp.composer.Environment("test",
+            name="example-composer-env-tf-c2",
+            region="us-central1",
+            config={
+                "software_config": {
+                    "image_version": "composer-2-airflow-2",
+                },
+                "workloads_config": {
+                    "scheduler": {
+                        "cpu": 0.5,
+                        "memory_gb": 1.875,
+                        "storage_gb": 1,
+                        "count": 1,
+                    },
+                    "web_server": {
+                        "cpu": 0.5,
+                        "memory_gb": 1.875,
+                        "storage_gb": 1,
+                    },
+                    "worker": {
+                        "cpu": 0.5,
+                        "memory_gb": 1.875,
+                        "storage_gb": 1,
+                        "min_count": 1,
+                        "max_count": 3,
+                    },
+                },
+                "environment_size": "ENVIRONMENT_SIZE_SMALL",
+                "node_config": {
+                    "network": test_network.id,
+                    "subnetwork": test_subnetwork.id,
+                    "service_account": test_account.name,
+                },
+            })
+        composer_worker = gcp.projects.IAMMember("composer-worker",
+            project="your-project-id",
+            role="roles/composer.worker",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+
+        ### GKE and Compute Resource Dependencies (Cloud Composer 1)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_network = gcp.compute.Network("test",
+            name="composer-test-network",
+            auto_create_subnetworks=False)
+        test_subnetwork = gcp.compute.Subnetwork("test",
+            name="composer-test-subnetwork",
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=test_network.id)
+        test_account = gcp.serviceaccount.Account("test",
+            account_id="composer-env-account",
+            display_name="Test Service Account for Composer Environment")
+        test = gcp.composer.Environment("test",
+            name="example-composer-env",
+            region="us-central1",
+            config={
+                "software_config": {
+                    "image_version": "composer-1-airflow-2",
+                },
+                "node_count": 4,
+                "node_config": {
+                    "zone": "us-central1-a",
+                    "machine_type": "n1-standard-1",
+                    "network": test_network.id,
+                    "subnetwork": test_subnetwork.id,
+                    "service_account": test_account.name,
+                },
+                "database_config": {
+                    "machine_type": "db-n1-standard-2",
+                },
+                "web_server_config": {
+                    "machine_type": "composer-n1-webserver-2",
+                },
+            })
+        composer_worker = gcp.projects.IAMMember("composer-worker",
+            role="roles/composer.worker",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+
+        ### Cloud Composer 3 networking configuration
+
+        In Cloud Composer 3, networking configuration is simplified compared to
+        previous versions. You don't need to specify network ranges, and can attach
+        custom VPC networks to your environment.
+
+        > **Note**
+          It's not possible to detach a VPC network using Terraform. Instead, you can
+          attach a different VPC network in its place, or detach the network using
+          other tools like Google Cloud CLI.
+
+        Use Private IP networking:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.composer.Environment("example",
+            name="example-environment",
+            region="us-central1",
+            config={
+                "enable_private_environment": True,
+            })
+        ```
+
+        Attach a custom VPC network (Cloud Composer creates a new network attachment):
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.composer.Environment("example",
+            name="example-environment",
+            region="us-central1",
+            config={
+                "node_config": {
+                    "network": "projects/example-project/global/networks/example-network",
+                    "subnetwork": "projects/example-project/regions/us-central1/subnetworks/example-subnetwork",
+                },
+            })
+        ```
+
+        Attach a custom VPC network (use existing network attachment):
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.composer.Environment("example",
+            name="example-environment",
+            region="us-central1",
+            config={
+                "node_config": {
+                    "composer_network_attachment": projects / example_project / regions / us_central1 / network_attachments / example_network_attachment,
+                },
+            })
+        ```
+
+        If you specify an existing network attachment that you also manage in Terraform, then Terraform will revert changes
+        to the attachment done by Cloud Composer when you apply configuration changes. As a result, the environment will no
+        longer use the attachment. To address this problem, make sure that Terraform ignores changes to the
+        `producer_accept_lists` parameter of the attachment, as follows:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.NetworkAttachment("example")
+        example_environment = gcp.composer.Environment("example",
+            name="example-environment",
+            region="us-central1",
+            config={
+                "node_config": {
+                    "composer_network_attachment": example.id,
+                },
+            })
+        ```
+
+        ## Argument Reference - Cloud Composer 1
+
+        The following arguments are supported:
+
+        * `name` -
+        (Required)
+        Name of the environment
+
+        * `config` -
+        (Optional)
+        Configuration parameters for this environment  Structure is documented below.
+
+        * `labels` -
+        (Optional)
+        User-defined labels for this environment. The labels map can contain
+        no more than 64 entries. Entries of the labels map are UTF8 strings
+        that comply with the following restrictions:
+        Label keys must be between 1 and 63 characters long and must conform
+        to the following regular expression: `a-z?`.
+        Label values must be between 0 and 63 characters long and must
+        conform to the regular expression `(a-z?)?`.
+        No more than 64 labels can be associated with a given environment.
+        Both keys and values must be <= 128 bytes in size.
+          
+          **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
+
+        * `terraform_labels` -
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+
+        * `effective_labels` -
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+
+        * `region` -
+        (Optional)
+        The location or Compute Engine region for the environment.
+
+        * `project` -
+        (Optional) The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+
+        <a name="nested_config_c1"></a>The `config` block supports:
+
+        * `node_count` -
+        (Optional, Cloud Composer 1 only)
+        The number of nodes in the Kubernetes Engine cluster of the environment.
+
+        * `node_config` -
+        (Optional)
+        The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
+
+        * `software_config` -
+        (Optional)
+        The configuration settings for software inside the environment.  Structure is documented below.
+
+        * `private_environment_config` -
+        (Optional)
+        The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
+
+        * `web_server_network_access_control` -
+        The network-level access control policy for the Airflow web server.
+        If unspecified, no network-level access restrictions are applied.
+
+        * `database_config` -
+        (Optional, Cloud Composer 1 only)
+        The configuration settings for Cloud SQL instance used internally
+        by Apache Airflow software.
+
+        * `web_server_config` -
+        (Optional, Cloud Composer 1 only)
+        The configuration settings for the Airflow web server App Engine instance.
+
+        * `encryption_config` -
+        (Optional)
+        The encryption options for the Cloud Composer environment and its
+        dependencies.
+
+        * `maintenance_window` -
+        (Optional, Beta)
+        The configuration settings for Cloud Composer maintenance windows.
+
+        * `master_authorized_networks_config` -
+        (Optional)
+        Configuration options for the master authorized networks feature. Enabled
+        master authorized networks will disallow all external traffic to access
+        Kubernetes master through HTTPS except traffic from the given CIDR blocks,
+        Google Compute Engine Public IPs and Google Prod IPs. Structure is
+        documented below.
+
+        <a name="nested_node_config_c1"></a>The `node_config` block supports:
+
+        * `zone` -
+        (Optional, Cloud Composer 1 only)
+        The Compute Engine zone in which to deploy the VMs running the
+        Apache Airflow software, specified as the zone name or
+        relative resource name (e.g. "projects/{project}/zones/{zone}"). Must
+        belong to the enclosing environment's project and region.
+
+        * `machine_type` -
+        (Optional, Cloud Composer 1 only)
+        The Compute Engine machine type used for cluster instances,
+        specified as a name or relative resource name. For example:
+        "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong
+        to the enclosing environment's project and region/zone.
+
+        * `network` -
+        (Optional)
+        The Compute Engine network to be used for machine
+        communications, specified as a self-link, relative resource name
+        (for example "projects/{project}/global/networks/{network}"), by name.
+          
+          The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's
+        project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+
+        * `subnetwork` -
+        (Optional)
+        The Compute Engine subnetwork to be used for machine
+        communications, specified as a self-link, relative resource name (for example,
+        "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
+        network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+
+        * `disk_size_gb` -
+        (Optional, Cloud Composer 1 only)
+        The disk size in GB used for node VMs. Minimum size is 20GB.
+        If unspecified, defaults to 100GB. Cannot be updated.
+
+        * `oauth_scopes` -
+        (Optional, Cloud Composer 1 only)
+        The set of Google API scopes to be made available on all node
+        VMs. Cannot be updated. If empty, defaults to
+        `["https://www.googleapis.com/auth/cloud-platform"]`.
+
+        * `service_account` -
+        (Optional)
+        The Google Cloud Platform Service Account to be used by the
+        node VMs. If a service account is not specified, the "default"
+        Compute Engine service account is used. Cannot be updated. If given,
+        note that the service account must have `roles/composer.worker`
+        for any GCP resources created under the Cloud Composer Environment.
+
+        * `tags` -
+        (Optional)
+        The list of instance tags applied to all node VMs. Tags are
+        used to identify valid sources or targets for network
+        firewalls. Each tag within the list must comply with RFC1035.
+        Cannot be updated.
+
+        * `ip_allocation_policy` -
+        (Optional)
+        Configuration for controlling how IPs are allocated in the GKE cluster.
+        Structure is documented below.
+        Cannot be updated.
+
+        * `max_pods_per_node` -
+        (Optional, Beta,
+        Cloud Composer 1 only)
+        The maximum pods per node in the GKE cluster allocated during environment
+        creation. Lowering this value reduces IP address consumption by the Cloud
+        Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
+        The range of possible values is 8-110, and the default is 32.
+        Cannot be updated.
+
+        * `enable_ip_masq_agent` -
+        (Optional)
+        Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
+        nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
+        all destination addresses, except between pods traffic.
+        See the [documentation](https://cloud.google.com/composer/docs/enable-ip-masquerade-agent).
+
+        <a name="nested_software_config_c1"></a>The `software_config` block supports:
+
+        * `airflow_config_overrides` -
+        (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
+        separated by a hyphen, for example "core-dags_are_paused_at_creation".
+          
+          Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]").
+        The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain
+        characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can
+        contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration
+        property values are [blacklisted](https://cloud.google.com/composer/docs/concepts/airflow-configurations#airflow_configuration_blacklists),
+        and cannot be overridden.
+
+        * `pypi_packages` -
+        (Optional)
+        Custom Python Package Index (PyPI) packages to be installed
+        in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
+        version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without
+        pinning it to a version specifier, use the empty string as the value.
+
+        * `env_variables` -
+        (Optional)
+        Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
+        Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
+        They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
+        `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
+          AIRFLOW_HOME
+          C_FORCE_ROOT
+          CONTAINER_NAME
+          DAGS_FOLDER
+          GCP_PROJECT
+          GCS_BUCKET
+          GKE_CLUSTER_NAME
+          SQL_DATABASE
+          SQL_INSTANCE
+          SQL_PASSWORD
+          SQL_PROJECT
+          SQL_REGION
+          SQL_USER
+
+          AIRFLOW_HOME
+          C_FORCE_ROOT
+          CONTAINER_NAME
+          DAGS_FOLDER
+          GCP_PROJECT
+          GCS_BUCKET
+          GKE_CLUSTER_NAME
+          SQL_DATABASE
+          SQL_INSTANCE
+          SQL_PASSWORD
+          SQL_PROJECT
+          SQL_REGION
+          SQL_USER
 
         :param str resource_name: The name of the resource.
         :param EnvironmentArgs args: The arguments to use to populate this resource's properties.
@@ -413,6 +1487,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']] config: Configuration parameters for this environment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
                
                				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -448,6 +1523,9 @@ class Environment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property

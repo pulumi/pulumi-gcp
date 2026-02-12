@@ -56,9 +56,23 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.disableDependentServices);
     }
 
+    /**
+     * If `true`, disable the service when the
+     * Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+     * the Terraform resource is destroyed. It should generally only
+     * be `true` in configurations that manage the `gcp.organizations.Project` resource itself.
+     * 
+     */
     @Import(name="disableOnDestroy")
     private @Nullable Output<Boolean> disableOnDestroy;
 
+    /**
+     * @return If `true`, disable the service when the
+     * Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+     * the Terraform resource is destroyed. It should generally only
+     * be `true` in configurations that manage the `gcp.organizations.Project` resource itself.
+     * 
+     */
     public Optional<Output<Boolean>> disableOnDestroy() {
         return Optional.ofNullable(this.disableOnDestroy);
     }
@@ -175,11 +189,29 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
             return disableDependentServices(Output.of(disableDependentServices));
         }
 
+        /**
+         * @param disableOnDestroy If `true`, disable the service when the
+         * Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+         * the Terraform resource is destroyed. It should generally only
+         * be `true` in configurations that manage the `gcp.organizations.Project` resource itself.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableOnDestroy(@Nullable Output<Boolean> disableOnDestroy) {
             $.disableOnDestroy = disableOnDestroy;
             return this;
         }
 
+        /**
+         * @param disableOnDestroy If `true`, disable the service when the
+         * Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+         * the Terraform resource is destroyed. It should generally only
+         * be `true` in configurations that manage the `gcp.organizations.Project` resource itself.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableOnDestroy(Boolean disableOnDestroy) {
             return disableOnDestroy(Output.of(disableOnDestroy));
         }

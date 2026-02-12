@@ -33,28 +33,16 @@ import javax.annotation.Nullable;
  * AuthzPolicy can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/authzPolicies/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, AuthzPolicy can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default projects/{{project}}/locations/{{location}}/authzPolicies/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{name}}
  * ```
  * 

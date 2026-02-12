@@ -12,31 +12,181 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
+//
+// * `healthcare.FhirStoreIamPolicy`: Authoritative. Sets the IAM policy for the FHIR store and replaces any existing policy already attached.
+// * `healthcare.FhirStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the FHIR store are preserved.
+// * `healthcare.FhirStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the FHIR store are preserved.
+//
+// > **Note:** `healthcare.FhirStoreIamPolicy` **cannot** be used in conjunction with `healthcare.FhirStoreIamBinding` and `healthcare.FhirStoreIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## healthcare.FhirStoreIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewFhirStoreIamPolicy(ctx, "fhir_store", &healthcare.FhirStoreIamPolicyArgs{
+//				FhirStoreId: pulumi.String("your-fhir-store-id"),
+//				PolicyData:  pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## healthcare.FhirStoreIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := healthcare.NewFhirStoreIamBinding(ctx, "fhir_store", &healthcare.FhirStoreIamBindingArgs{
+//				FhirStoreId: pulumi.String("your-fhir-store-id"),
+//				Role:        pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## healthcare.FhirStoreIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := healthcare.NewFhirStoreIamMember(ctx, "fhir_store", &healthcare.FhirStoreIamMemberArgs{
+//				FhirStoreId: pulumi.String("your-fhir-store-id"),
+//				Role:        pulumi.String("roles/editor"),
+//				Member:      pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## healthcare.FhirStoreIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := healthcare.NewFhirStoreIamBinding(ctx, "fhir_store", &healthcare.FhirStoreIamBindingArgs{
+//				FhirStoreId: pulumi.String("your-fhir-store-id"),
+//				Role:        pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## healthcare.FhirStoreIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := healthcare.NewFhirStoreIamMember(ctx, "fhir_store", &healthcare.FhirStoreIamMemberArgs{
+//				FhirStoreId: pulumi.String("your-fhir-store-id"),
+//				Role:        pulumi.String("roles/editor"),
+//				Member:      pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// ### Importing IAM policies
+// > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
-// IAM policy imports use the identifier of the Healthcare FHIR store resource. For example:
-//
-// * `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"`
-//
-// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-//
-// tf
-//
-// import {
-//
-//	id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
-//
-//	to = google_healthcare_fhir_store_iam_policy.default
-//
-// }
-//
-// The `pulumi import` command can also be used:
-//
-// ```sh
-// $ pulumi import gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding default {{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}
-// ```
+//	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type FhirStoreIamBinding struct {
 	pulumi.CustomResourceState
 

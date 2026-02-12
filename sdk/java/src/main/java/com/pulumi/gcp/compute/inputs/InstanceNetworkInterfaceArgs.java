@@ -21,14 +21,24 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
     public static final InstanceNetworkInterfaceArgs Empty = new InstanceNetworkInterfaceArgs();
 
     /**
-     * Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+     * Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet. If omitted, ssh provisioners will not
+     * work unless Terraform can send traffic to the instance&#39;s network (e.g. via
+     * tunnel or because it is running on another cloud instance on that network).
+     * This block can be specified once per `networkInterface`. Structure documented below.
      * 
      */
     @Import(name="accessConfigs")
     private @Nullable Output<List<InstanceNetworkInterfaceAccessConfigArgs>> accessConfigs;
 
     /**
-     * @return Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet. If omitted, ssh provisioners will not
+     * work unless Terraform can send traffic to the instance&#39;s network (e.g. via
+     * tunnel or because it is running on another cloud instance on that network).
+     * This block can be specified once per `networkInterface`. Structure documented below.
      * 
      */
     public Optional<Output<List<InstanceNetworkInterfaceAccessConfigArgs>>> accessConfigs() {
@@ -368,7 +378,12 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param accessConfigs Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+         * @param accessConfigs Access configurations, i.e. IPs via which this
+         * instance can be accessed via the Internet. Omit to ensure that the instance
+         * is not accessible from the Internet. If omitted, ssh provisioners will not
+         * work unless Terraform can send traffic to the instance&#39;s network (e.g. via
+         * tunnel or because it is running on another cloud instance on that network).
+         * This block can be specified once per `networkInterface`. Structure documented below.
          * 
          * @return builder
          * 
@@ -379,7 +394,12 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param accessConfigs Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+         * @param accessConfigs Access configurations, i.e. IPs via which this
+         * instance can be accessed via the Internet. Omit to ensure that the instance
+         * is not accessible from the Internet. If omitted, ssh provisioners will not
+         * work unless Terraform can send traffic to the instance&#39;s network (e.g. via
+         * tunnel or because it is running on another cloud instance on that network).
+         * This block can be specified once per `networkInterface`. Structure documented below.
          * 
          * @return builder
          * 
@@ -389,7 +409,12 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param accessConfigs Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+         * @param accessConfigs Access configurations, i.e. IPs via which this
+         * instance can be accessed via the Internet. Omit to ensure that the instance
+         * is not accessible from the Internet. If omitted, ssh provisioners will not
+         * work unless Terraform can send traffic to the instance&#39;s network (e.g. via
+         * tunnel or because it is running on another cloud instance on that network).
+         * This block can be specified once per `networkInterface`. Structure documented below.
          * 
          * @return builder
          * 

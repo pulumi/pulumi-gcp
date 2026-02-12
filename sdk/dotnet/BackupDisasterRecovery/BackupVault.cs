@@ -101,22 +101,14 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// BackupVault can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{backup_vault_id}}`
-    /// 
     /// * `{{location}}/{{backup_vault_id}}`
     /// 
     /// When using the `pulumi import` command, BackupVault can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{project}}/{{location}}/{{backup_vault_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{location}}/{{backup_vault_id}}
     /// ```
     /// </summary>
@@ -189,6 +181,9 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -582,6 +577,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());

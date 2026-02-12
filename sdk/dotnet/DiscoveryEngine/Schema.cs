@@ -61,22 +61,14 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// Schema can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}/schemas/{{schema_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{data_store_id}}/{{schema_id}}`
-    /// 
     /// * `{{location}}/{{data_store_id}}/{{schema_id}}`
     /// 
     /// When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:discoveryengine/schema:Schema default projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}/schemas/{{schema_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:discoveryengine/schema:Schema default {{project}}/{{location}}/{{data_store_id}}/{{schema_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:discoveryengine/schema:Schema default {{location}}/{{data_store_id}}/{{schema_id}}
     /// ```
     /// </summary>

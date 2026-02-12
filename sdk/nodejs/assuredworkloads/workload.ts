@@ -125,18 +125,13 @@ import * as utilities from "../utilities";
  * ## Import
  *
  * Workload can be imported using any of these accepted formats:
- *
  * * `organizations/{{organization}}/locations/{{location}}/workloads/{{name}}`
- *
  * * `{{organization}}/{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, Workload can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:assuredworkloads/workload:Workload default organizations/{{organization}}/locations/{{location}}/workloads/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:assuredworkloads/workload:Workload default {{organization}}/{{location}}/{{name}}
  * ```
  */

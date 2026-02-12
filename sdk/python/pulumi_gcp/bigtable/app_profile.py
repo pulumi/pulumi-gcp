@@ -583,22 +583,14 @@ class AppProfile(pulumi.CustomResource):
         AppProfile can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}`
-
         * `{{project}}/{{instance}}/{{app_profile_id}}`
-
         * `{{instance}}/{{app_profile_id}}`
 
         When using the `pulumi import` command, AppProfile can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigtable/appProfile:AppProfile default projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/appProfile:AppProfile default {{project}}/{{instance}}/{{app_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
         ```
 
@@ -768,22 +760,14 @@ class AppProfile(pulumi.CustomResource):
         AppProfile can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}`
-
         * `{{project}}/{{instance}}/{{app_profile_id}}`
-
         * `{{instance}}/{{app_profile_id}}`
 
         When using the `pulumi import` command, AppProfile can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigtable/appProfile:AppProfile default projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/appProfile:AppProfile default {{project}}/{{instance}}/{{app_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
         ```
 

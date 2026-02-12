@@ -343,22 +343,14 @@ class InterconnectGroup(pulumi.CustomResource):
         InterconnectGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/interconnectGroups/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InterconnectGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default projects/{{project}}/global/interconnectGroups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default {{name}}
         ```
 
@@ -418,22 +410,14 @@ class InterconnectGroup(pulumi.CustomResource):
         InterconnectGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/interconnectGroups/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InterconnectGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default projects/{{project}}/global/interconnectGroups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default {{name}}
         ```
 

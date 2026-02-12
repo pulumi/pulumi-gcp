@@ -106,6 +106,10 @@ def get_ai_featurestore_iam_policy(featurestore: Optional[_builtins.str] = None,
                                    region: Optional[_builtins.str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiFeaturestoreIamPolicyResult:
     """
+    Retrieves the current IAM policy data for featurestore
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python
@@ -144,6 +148,10 @@ def get_ai_featurestore_iam_policy_output(featurestore: Optional[pulumi.Input[_b
                                           region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiFeaturestoreIamPolicyResult]:
     """
+    Retrieves the current IAM policy data for featurestore
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python

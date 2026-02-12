@@ -4,6 +4,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A Google Cloud Firebase web application instance
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ */
 export function getWebApp(args: GetWebAppArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getWebApp:getWebApp", {
@@ -54,6 +60,12 @@ export interface GetWebAppResult {
     readonly name: string;
     readonly project?: string;
 }
+/**
+ * A Google Cloud Firebase web application instance
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ */
 export function getWebAppOutput(args: GetWebAppOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:firebase/getWebApp:getWebApp", {

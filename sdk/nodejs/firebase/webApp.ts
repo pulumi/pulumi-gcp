@@ -5,6 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A Google Cloud Firebase web application instance
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about WebApp, see:
+ *
+ * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/)
+ *
  * ## Example Usage
  *
  * ### Firebase Web App Basic
@@ -84,34 +95,18 @@ import * as utilities from "../utilities";
  * WebApp can be imported using any of these accepted formats:
  *
  * * `{{project}} projects/{{project}}/webApps/{{app_id}}`
- *
  * * `projects/{{project}}/webApps/{{app_id}}`
- *
  * * `{{project}}/{{project}}/{{app_id}}`
- *
  * * `webApps/{{app_id}}`
- *
  * * `{{app_id}}`
  *
  * When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
  *
  * ```sh
- * $ pulumi import gcp:firebase/webApp:WebApp default "{{project}} projects/{{project}}/webApps/{{app_id}}"
- * ```
- *
- * ```sh
+ * $ terraform import google_firebase_web_app.default "{{project}} projects/{{project}}/webApps/{{app_id}}"
  * $ pulumi import gcp:firebase/webApp:WebApp default projects/{{project}}/webApps/{{app_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{project}}/{{app_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/webApp:WebApp default webApps/{{app_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/webApp:WebApp default {{app_id}}
  * ```
  */
@@ -158,6 +153,11 @@ export class WebApp extends pulumi.CustomResource {
      * The URLs where the `WebApp` is hosted.
      */
     declare public /*out*/ readonly appUrls: pulumi.Output<string[]>;
+    /**
+     * Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+     * rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+     * serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+     */
     declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The user-assigned display name of the App.
@@ -231,6 +231,11 @@ export interface WebAppState {
      * The URLs where the `WebApp` is hosted.
      */
     appUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+     * rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+     * serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the App.
@@ -258,6 +263,11 @@ export interface WebAppArgs {
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
     apiKeyId?: pulumi.Input<string>;
+    /**
+     * Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+     * rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+     * serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the App.

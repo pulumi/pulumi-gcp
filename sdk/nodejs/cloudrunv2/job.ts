@@ -369,22 +369,14 @@ import * as utilities from "../utilities";
  * Job can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:cloudrunv2/job:Job default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:cloudrunv2/job:Job default {{location}}/{{name}}
  * ```
  */
@@ -457,7 +449,18 @@ export class Job extends pulumi.CustomResource {
      * The deletion time.
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the job. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the job,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the job will fail.
+     * When the field is set to false, deleting the job is allowed.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -700,7 +703,18 @@ export interface JobState {
      * The deletion time.
      */
     deleteTime?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the job. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the job,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the job will fail.
+     * When the field is set to false, deleting the job is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -834,6 +848,14 @@ export interface JobArgs {
      * Arbitrary version identifier for the API client.
      */
     clientVersion?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the job. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the job,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the job will fail.
+     * When the field is set to false, deleting the job is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,

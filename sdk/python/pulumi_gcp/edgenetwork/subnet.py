@@ -557,34 +557,18 @@ class Subnet(pulumi.CustomResource):
         Subnet can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
-
         * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
-
         * `{{location}}/{{zone}}/{{subnet_id}}`
-
         * `{{location}}/{{subnet_id}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{project}}/{{location}}/{{zone}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{zone}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
         ```
 
@@ -676,34 +660,18 @@ class Subnet(pulumi.CustomResource):
         Subnet can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
-
         * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
-
         * `{{location}}/{{zone}}/{{subnet_id}}`
-
         * `{{location}}/{{subnet_id}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{project}}/{{location}}/{{zone}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{zone}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
         ```
 

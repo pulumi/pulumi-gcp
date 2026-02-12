@@ -5,6 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A `Site` represents a Firebase Hosting site.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about Site, see:
+ *
+ * * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/docs/hosting)
+ *
  * ## Example Usage
  *
  * ### Firebasehosting Site Basic
@@ -51,28 +62,16 @@ import * as utilities from "../utilities";
  * Site can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/sites/{{site_id}}`
- *
  * * `{{project}}/{{site_id}}`
- *
  * * `sites/{{site_id}}`
- *
  * * `{{site_id}}`
  *
  * When using the `pulumi import` command, Site can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/hostingSite:HostingSite default projects/{{project}}/sites/{{site_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/hostingSite:HostingSite default {{project}}/{{site_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/hostingSite:HostingSite default sites/{{site_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/hostingSite:HostingSite default {{site_id}}
  * ```
  */

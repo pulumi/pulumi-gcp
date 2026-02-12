@@ -471,22 +471,14 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
         InterceptDeploymentGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/interceptDeploymentGroups/{{intercept_deployment_group_id}}`
-
         * `{{project}}/{{location}}/{{intercept_deployment_group_id}}`
-
         * `{{location}}/{{intercept_deployment_group_id}}`
 
         When using the `pulumi import` command, InterceptDeploymentGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default projects/{{project}}/locations/{{location}}/interceptDeploymentGroups/{{intercept_deployment_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default {{project}}/{{location}}/{{intercept_deployment_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default {{location}}/{{intercept_deployment_group_id}}
         ```
 
@@ -543,22 +535,14 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
         InterceptDeploymentGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/interceptDeploymentGroups/{{intercept_deployment_group_id}}`
-
         * `{{project}}/{{location}}/{{intercept_deployment_group_id}}`
-
         * `{{location}}/{{intercept_deployment_group_id}}`
 
         When using the `pulumi import` command, InterceptDeploymentGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default projects/{{project}}/locations/{{location}}/interceptDeploymentGroups/{{intercept_deployment_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default {{project}}/{{location}}/{{intercept_deployment_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default {{location}}/{{intercept_deployment_group_id}}
         ```
 

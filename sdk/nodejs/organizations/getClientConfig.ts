@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Use this data source to access the configuration of the Google Cloud provider.
+ *
+ * > **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+ * Please take appropriate measures to protect your remote state.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -50,6 +55,11 @@ export interface GetClientConfigResult {
     readonly zone: string;
 }
 /**
+ * Use this data source to access the configuration of the Google Cloud provider.
+ *
+ * > **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+ * Please take appropriate measures to protect your remote state.
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -521,22 +521,14 @@ class TargetHttpProxy(pulumi.CustomResource):
         TargetHttpProxy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/targetHttpProxies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, TargetHttpProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default projects/{{project}}/global/targetHttpProxies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{name}}
         ```
 
@@ -717,22 +709,14 @@ class TargetHttpProxy(pulumi.CustomResource):
         TargetHttpProxy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/targetHttpProxies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, TargetHttpProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default projects/{{project}}/global/targetHttpProxies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{name}}
         ```
 

@@ -373,6 +373,7 @@ class _BackupVaultState:
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the instance was created.
         :param pulumi.Input[_builtins.bool] deletable: Output only. Set to true when there are no backups nested under this resource.
         :param pulumi.Input[_builtins.str] description: Optional. The description of the BackupVault instance (2048 characters or less).
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] effective_time: Optional. Time after which the BackupVault resource is locked.
         :param pulumi.Input['BackupVaultEncryptionConfigArgs'] encryption_config: Encryption configuration for the backup vault.
@@ -604,6 +605,9 @@ class _BackupVaultState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -939,22 +943,14 @@ class BackupVault(pulumi.CustomResource):
         BackupVault can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}`
-
         * `{{project}}/{{location}}/{{backup_vault_id}}`
-
         * `{{location}}/{{backup_vault_id}}`
 
         When using the `pulumi import` command, BackupVault can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{project}}/{{location}}/{{backup_vault_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{location}}/{{backup_vault_id}}
         ```
 
@@ -1070,22 +1066,14 @@ class BackupVault(pulumi.CustomResource):
         BackupVault can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}`
-
         * `{{project}}/{{location}}/{{backup_vault_id}}`
-
         * `{{location}}/{{backup_vault_id}}`
 
         When using the `pulumi import` command, BackupVault can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{project}}/{{location}}/{{backup_vault_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{location}}/{{backup_vault_id}}
         ```
 
@@ -1228,6 +1216,7 @@ class BackupVault(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the instance was created.
         :param pulumi.Input[_builtins.bool] deletable: Output only. Set to true when there are no backups nested under this resource.
         :param pulumi.Input[_builtins.str] description: Optional. The description of the BackupVault instance (2048 characters or less).
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] effective_time: Optional. Time after which the BackupVault resource is locked.
         :param pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the backup vault.
@@ -1392,6 +1381,9 @@ class BackupVault(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

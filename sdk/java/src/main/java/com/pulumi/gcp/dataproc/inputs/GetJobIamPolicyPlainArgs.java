@@ -30,16 +30,36 @@ public final class GetJobIamPolicyPlainArgs extends com.pulumi.resources.InvokeA
         return this.jobId;
     }
 
+    /**
+     * The project in which the job belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     @Import(name="project")
     private @Nullable String project;
 
+    /**
+     * @return The project in which the job belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The region in which the job belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return The region in which the job belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -81,11 +101,25 @@ public final class GetJobIamPolicyPlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param project The project in which the job belongs. If it
+         * is not provided, Terraform will use the provider default.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param region The region in which the job belongs. If it
+         * is not provided, Terraform will use the provider default.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;

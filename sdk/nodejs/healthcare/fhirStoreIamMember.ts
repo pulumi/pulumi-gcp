@@ -7,31 +7,93 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
+ *
+ * * `gcp.healthcare.FhirStoreIamPolicy`: Authoritative. Sets the IAM policy for the FHIR store and replaces any existing policy already attached.
+ * * `gcp.healthcare.FhirStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the FHIR store are preserved.
+ * * `gcp.healthcare.FhirStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the FHIR store are preserved.
+ *
+ * > **Note:** `gcp.healthcare.FhirStoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.FhirStoreIamBinding` and `gcp.healthcare.FhirStoreIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## gcp.healthcare.FhirStoreIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const fhirStore = new gcp.healthcare.FhirStoreIamPolicy("fhir_store", {
+ *     fhirStoreId: "your-fhir-store-id",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## gcp.healthcare.FhirStoreIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const fhirStore = new gcp.healthcare.FhirStoreIamBinding("fhir_store", {
+ *     fhirStoreId: "your-fhir-store-id",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## gcp.healthcare.FhirStoreIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const fhirStore = new gcp.healthcare.FhirStoreIamMember("fhir_store", {
+ *     fhirStoreId: "your-fhir-store-id",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * ## gcp.healthcare.FhirStoreIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const fhirStore = new gcp.healthcare.FhirStoreIamBinding("fhir_store", {
+ *     fhirStoreId: "your-fhir-store-id",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## gcp.healthcare.FhirStoreIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const fhirStore = new gcp.healthcare.FhirStoreIamMember("fhir_store", {
+ *     fhirStoreId: "your-fhir-store-id",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
- * ### Importing IAM policies
- *
- * IAM policy imports use the identifier of the Healthcare FHIR store resource. For example:
- *
- * * `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"`
- *
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- *
- * tf
- *
- * import {
- *
- *   id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
- *
- *   to = google_healthcare_fhir_store_iam_policy.default
- *
- * }
- *
- * The `pulumi import` command can also be used:
- *
- * ```sh
- * $ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember default {{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}
- * ```
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class FhirStoreIamMember extends pulumi.CustomResource {
     /**

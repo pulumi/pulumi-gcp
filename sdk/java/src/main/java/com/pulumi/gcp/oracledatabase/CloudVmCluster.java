@@ -272,22 +272,14 @@ import javax.annotation.Nullable;
  * CloudVmCluster can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/cloudVmClusters/{{cloud_vm_cluster_id}}`
- * 
  * * `{{project}}/{{location}}/{{cloud_vm_cluster_id}}`
- * 
  * * `{{location}}/{{cloud_vm_cluster_id}}`
  * 
  * When using the `pulumi import` command, CloudVmCluster can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default projects/{{project}}/locations/{{location}}/cloudVmClusters/{{cloud_vm_cluster_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{project}}/{{location}}/{{cloud_vm_cluster_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{location}}/{{cloud_vm_cluster_id}}
  * ```
  * 
@@ -374,9 +366,17 @@ public class CloudVmCluster extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }

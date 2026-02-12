@@ -359,28 +359,16 @@ class Database(pulumi.CustomResource):
         Database can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
-
         * `instances/{{instance}}/databases/{{name}}`
-
         * `{{project}}/{{instance}}/{{name}}`
-
         * `{{instance}}/{{name}}`
 
         When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/database:Database default instances/{{instance}}/databases/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/database:Database default {{project}}/{{instance}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
         ```
 
@@ -464,28 +452,16 @@ class Database(pulumi.CustomResource):
         Database can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
-
         * `instances/{{instance}}/databases/{{name}}`
-
         * `{{project}}/{{instance}}/{{name}}`
-
         * `{{instance}}/{{name}}`
 
         When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/database:Database default instances/{{instance}}/databases/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/database:Database default {{project}}/{{instance}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
         ```
 

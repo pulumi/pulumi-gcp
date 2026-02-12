@@ -62,22 +62,14 @@ import * as utilities from "../utilities";
  * OdbNetwork can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/odbNetworks/{{odb_network_id}}`
- *
  * * `{{project}}/{{location}}/{{odb_network_id}}`
- *
  * * `{{location}}/{{odb_network_id}}`
  *
  * When using the `pulumi import` command, OdbNetwork can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:oracledatabase/odbNetwork:OdbNetwork default projects/{{project}}/locations/{{location}}/odbNetworks/{{odb_network_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/odbNetwork:OdbNetwork default {{project}}/{{location}}/{{odb_network_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/odbNetwork:OdbNetwork default {{location}}/{{odb_network_id}}
  * ```
  */
@@ -113,6 +105,9 @@ export class OdbNetwork extends pulumi.CustomResource {
      * The date and time that the OdbNetwork was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -241,6 +236,9 @@ export interface OdbNetworkState {
      * The date and time that the OdbNetwork was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -308,6 +306,9 @@ export interface OdbNetworkState {
  * The set of arguments for constructing a OdbNetwork resource.
  */
 export interface OdbNetworkArgs {
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The GCP Oracle zone where OdbNetwork is hosted.

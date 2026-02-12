@@ -281,22 +281,14 @@ import * as utilities from "../utilities";
  * WorkloadIdentityPoolProvider can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
- *
  * * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
- *
  * * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
  *
  * When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
  * ```
  */

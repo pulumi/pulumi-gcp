@@ -138,9 +138,17 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.domainConfig);
     }
 
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Import(name="effectiveAnnotations")
     private @Nullable Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Optional<Output<Map<String,String>>> effectiveAnnotations() {
         return Optional.ofNullable(this.effectiveAnnotations);
     }
@@ -576,11 +584,23 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
             return domainConfig(Output.of(domainConfig));
         }
 
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
             $.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
 
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
             return effectiveAnnotations(Output.of(effectiveAnnotations));
         }

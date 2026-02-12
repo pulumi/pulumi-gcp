@@ -69,39 +69,34 @@ __all__ = [
     'PluginInstanceAuthConfigUserPasswordConfigPasswordArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ApiHubInstanceConfigArgsDict(TypedDict):
-        cmek_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The Customer Managed Encryption Key (CMEK) used for data encryption.
-        The CMEK name should follow the format of
-        `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`,
-        where the location must match the instance location.
-        If the CMEK is not provided, a GMEK will be created for the instance.
-        """
-        disable_search: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. If true, the search will be disabled for the instance. The default value
-        is false.
-        """
-        encryption_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Encryption type for the region. If the encryption type is CMEK, the
-        cmek_key_name must be provided. If no encryption type is provided,
-        GMEK will be used.
-        Possible values:
-        ENCRYPTION_TYPE_UNSPECIFIED
-        GMEK
-        CMEK
-        """
-        vertex_location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The name of the Vertex AI location where the data store is stored.
-        """
-elif False:
-    ApiHubInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ApiHubInstanceConfigArgsDict(TypedDict):
+    cmek_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The Customer Managed Encryption Key (CMEK) used for data encryption.
+    The CMEK name should follow the format of
+    `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`,
+    where the location must match the instance location.
+    If the CMEK is not provided, a GMEK will be created for the instance.
+    """
+    disable_search: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. If true, the search will be disabled for the instance. The default value
+    is false.
+    """
+    encryption_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Encryption type for the region. If the encryption type is CMEK, the
+    cmek_key_name must be provided. If no encryption type is provided,
+    GMEK will be used.
+    Possible values:
+    ENCRYPTION_TYPE_UNSPECIFIED
+    GMEK
+    CMEK
+    """
+    vertex_location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The name of the Vertex AI location where the data store is stored.
+    """
 
 @pulumi.input_type
 class ApiHubInstanceConfigArgs:
@@ -196,16 +191,13 @@ class ApiHubInstanceConfigArgs:
         pulumi.set(self, "vertex_location", value)
 
 
-if not MYPY:
-    class CurationEndpointArgsDict(TypedDict):
-        application_integration_endpoint_details: pulumi.Input['CurationEndpointApplicationIntegrationEndpointDetailsArgsDict']
-        """
-        The details of the Application Integration endpoint to be triggered for
-        curation.
-        Structure is documented below.
-        """
-elif False:
-    CurationEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class CurationEndpointArgsDict(TypedDict):
+    application_integration_endpoint_details: pulumi.Input['CurationEndpointApplicationIntegrationEndpointDetailsArgsDict']
+    """
+    The details of the Application Integration endpoint to be triggered for
+    curation.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CurationEndpointArgs:
@@ -233,23 +225,20 @@ class CurationEndpointArgs:
         pulumi.set(self, "application_integration_endpoint_details", value)
 
 
-if not MYPY:
-    class CurationEndpointApplicationIntegrationEndpointDetailsArgsDict(TypedDict):
-        trigger_id: pulumi.Input[_builtins.str]
-        """
-        The API trigger ID of the Application Integration workflow.
-        """
-        uri: pulumi.Input[_builtins.str]
-        """
-        The endpoint URI should be a valid REST URI for triggering an Application
-        Integration.
-        Format:
-        `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
-        or
-        `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
-        """
-elif False:
-    CurationEndpointApplicationIntegrationEndpointDetailsArgsDict: TypeAlias = Mapping[str, Any]
+class CurationEndpointApplicationIntegrationEndpointDetailsArgsDict(TypedDict):
+    trigger_id: pulumi.Input[_builtins.str]
+    """
+    The API trigger ID of the Application Integration workflow.
+    """
+    uri: pulumi.Input[_builtins.str]
+    """
+    The endpoint URI should be a valid REST URI for triggering an Application
+    Integration.
+    Format:
+    `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
+    or
+    `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
+    """
 
 @pulumi.input_type
 class CurationEndpointApplicationIntegrationEndpointDetailsArgs:
@@ -298,24 +287,21 @@ class CurationEndpointApplicationIntegrationEndpointDetailsArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class CurationPluginInstanceActionArgsDict(TypedDict):
-        action_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The action ID that is using the curation.
-        This should map to one of the action IDs specified
-        in action configs in the plugin.
-        """
-        plugin_instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Plugin instance that is using the curation.
-        Format is
-        `projects/{project}/locations/{locati on}/plugins/{plugin}/instances/{instance}`
-        """
-elif False:
-    CurationPluginInstanceActionArgsDict: TypeAlias = Mapping[str, Any]
+class CurationPluginInstanceActionArgsDict(TypedDict):
+    action_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The action ID that is using the curation.
+    This should map to one of the action IDs specified
+    in action configs in the plugin.
+    """
+    plugin_instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Plugin instance that is using the curation.
+    Format is
+    `projects/{project}/locations/{locati on}/plugins/{plugin}/instances/{instance}`
+    """
 
 @pulumi.input_type
 class CurationPluginInstanceActionArgs:
@@ -368,31 +354,28 @@ class CurationPluginInstanceActionArgs:
         pulumi.set(self, "plugin_instance", value)
 
 
-if not MYPY:
-    class PluginActionsConfigArgsDict(TypedDict):
-        description: pulumi.Input[_builtins.str]
-        """
-        The description of the operation performed by the action.
-        """
-        display_name: pulumi.Input[_builtins.str]
-        """
-        The display name of the action.
-        """
-        id: pulumi.Input[_builtins.str]
-        """
-        The id of the action.
-        """
-        trigger_mode: pulumi.Input[_builtins.str]
-        """
-        The trigger mode supported by the action.
-        Possible values:
-        TRIGGER_MODE_UNSPECIFIED
-        API_HUB_ON_DEMAND_TRIGGER
-        API_HUB_SCHEDULE_TRIGGER
-        NON_API_HUB_MANAGED
-        """
-elif False:
-    PluginActionsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PluginActionsConfigArgsDict(TypedDict):
+    description: pulumi.Input[_builtins.str]
+    """
+    The description of the operation performed by the action.
+    """
+    display_name: pulumi.Input[_builtins.str]
+    """
+    The display name of the action.
+    """
+    id: pulumi.Input[_builtins.str]
+    """
+    The id of the action.
+    """
+    trigger_mode: pulumi.Input[_builtins.str]
+    """
+    The trigger mode supported by the action.
+    Possible values:
+    TRIGGER_MODE_UNSPECIFIED
+    API_HUB_ON_DEMAND_TRIGGER
+    API_HUB_SCHEDULE_TRIGGER
+    NON_API_HUB_MANAGED
+    """
 
 @pulumi.input_type
 class PluginActionsConfigArgs:
@@ -471,21 +454,18 @@ class PluginActionsConfigArgs:
         pulumi.set(self, "trigger_mode", value)
 
 
-if not MYPY:
-    class PluginConfigTemplateArgsDict(TypedDict):
-        additional_config_templates: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgsDict']]]]
-        """
-        The list of additional configuration variables for the plugin's
-        configuration.
-        Structure is documented below.
-        """
-        auth_config_template: NotRequired[pulumi.Input['PluginConfigTemplateAuthConfigTemplateArgsDict']]
-        """
-        AuthConfigTemplate represents the authentication template for a plugin.
-        Structure is documented below.
-        """
-elif False:
-    PluginConfigTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class PluginConfigTemplateArgsDict(TypedDict):
+    additional_config_templates: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgsDict']]]]
+    """
+    The list of additional configuration variables for the plugin's
+    configuration.
+    Structure is documented below.
+    """
+    auth_config_template: NotRequired[pulumi.Input['PluginConfigTemplateAuthConfigTemplateArgsDict']]
+    """
+    AuthConfigTemplate represents the authentication template for a plugin.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PluginConfigTemplateArgs:
@@ -532,52 +512,49 @@ class PluginConfigTemplateArgs:
         pulumi.set(self, "auth_config_template", value)
 
 
-if not MYPY:
-    class PluginConfigTemplateAdditionalConfigTemplateArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        ID of the config variable. Must be unique within the configuration.
-        """
-        value_type: pulumi.Input[_builtins.str]
-        """
-        Type of the parameter: string, int, bool etc.
-        Possible values:
-        VALUE_TYPE_UNSPECIFIED
-        STRING
-        INT
-        BOOL
-        SECRET
-        ENUM
-        MULTI_SELECT
-        MULTI_STRING
-        MULTI_INT
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description.
-        """
-        enum_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgsDict']]]]
-        """
-        Enum options. To be populated if `ValueType` is `ENUM`.
-        Structure is documented below.
-        """
-        multi_select_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgsDict']]]]
-        """
-        Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
-        Structure is documented below.
-        """
-        required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Flag represents that this `ConfigVariable` must be provided for a
-        PluginInstance.
-        """
-        validation_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Regular expression in RE2 syntax used for validating the `value` of a
-        `ConfigVariable`.
-        """
-elif False:
-    PluginConfigTemplateAdditionalConfigTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class PluginConfigTemplateAdditionalConfigTemplateArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    ID of the config variable. Must be unique within the configuration.
+    """
+    value_type: pulumi.Input[_builtins.str]
+    """
+    Type of the parameter: string, int, bool etc.
+    Possible values:
+    VALUE_TYPE_UNSPECIFIED
+    STRING
+    INT
+    BOOL
+    SECRET
+    ENUM
+    MULTI_SELECT
+    MULTI_STRING
+    MULTI_INT
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description.
+    """
+    enum_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgsDict']]]]
+    """
+    Enum options. To be populated if `ValueType` is `ENUM`.
+    Structure is documented below.
+    """
+    multi_select_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgsDict']]]]
+    """
+    Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
+    Structure is documented below.
+    """
+    required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Flag represents that this `ConfigVariable` must be provided for a
+    PluginInstance.
+    """
+    validation_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Regular expression in RE2 syntax used for validating the `value` of a
+    `ConfigVariable`.
+    """
 
 @pulumi.input_type
 class PluginConfigTemplateAdditionalConfigTemplateArgs:
@@ -724,22 +701,19 @@ class PluginConfigTemplateAdditionalConfigTemplateArgs:
         pulumi.set(self, "validation_regex", value)
 
 
-if not MYPY:
-    class PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgsDict(TypedDict):
-        display_name: pulumi.Input[_builtins.str]
-        """
-        Display name of the option.
-        """
-        id: pulumi.Input[_builtins.str]
-        """
-        Id of the option.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the option.
-        """
-elif False:
-    PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgsDict: TypeAlias = Mapping[str, Any]
+class PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgsDict(TypedDict):
+    display_name: pulumi.Input[_builtins.str]
+    """
+    Display name of the option.
+    """
+    id: pulumi.Input[_builtins.str]
+    """
+    Id of the option.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the option.
+    """
 
 @pulumi.input_type
 class PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs:
@@ -794,22 +768,19 @@ class PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgsDict(TypedDict):
-        display_name: pulumi.Input[_builtins.str]
-        """
-        Display name of the option.
-        """
-        id: pulumi.Input[_builtins.str]
-        """
-        Id of the option.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the option.
-        """
-elif False:
-    PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgsDict: TypeAlias = Mapping[str, Any]
+class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgsDict(TypedDict):
+    display_name: pulumi.Input[_builtins.str]
+    """
+    Display name of the option.
+    """
+    id: pulumi.Input[_builtins.str]
+    """
+    Id of the option.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the option.
+    """
 
 @pulumi.input_type
 class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs:
@@ -864,19 +835,16 @@ class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class PluginConfigTemplateAuthConfigTemplateArgsDict(TypedDict):
-        supported_auth_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The list of authentication types supported by the plugin.
-        """
-        service_account: NotRequired[pulumi.Input['PluginConfigTemplateAuthConfigTemplateServiceAccountArgsDict']]
-        """
-        Config for Google service account authentication.
-        Structure is documented below.
-        """
-elif False:
-    PluginConfigTemplateAuthConfigTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class PluginConfigTemplateAuthConfigTemplateArgsDict(TypedDict):
+    supported_auth_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of authentication types supported by the plugin.
+    """
+    service_account: NotRequired[pulumi.Input['PluginConfigTemplateAuthConfigTemplateServiceAccountArgsDict']]
+    """
+    Config for Google service account authentication.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PluginConfigTemplateAuthConfigTemplateArgs:
@@ -918,16 +886,13 @@ class PluginConfigTemplateAuthConfigTemplateArgs:
         pulumi.set(self, "service_account", value)
 
 
-if not MYPY:
-    class PluginConfigTemplateAuthConfigTemplateServiceAccountArgsDict(TypedDict):
-        service_account: pulumi.Input[_builtins.str]
-        """
-        The service account to be used for authenticating request.
-        The `iam.serviceAccounts.getAccessToken` permission should be granted on
-        this service account to the impersonator service account.
-        """
-elif False:
-    PluginConfigTemplateAuthConfigTemplateServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+class PluginConfigTemplateAuthConfigTemplateServiceAccountArgsDict(TypedDict):
+    service_account: pulumi.Input[_builtins.str]
+    """
+    The service account to be used for authenticating request.
+    The `iam.serviceAccounts.getAccessToken` permission should be granted on
+    this service account to the impersonator service account.
+    """
 
 @pulumi.input_type
 class PluginConfigTemplateAuthConfigTemplateServiceAccountArgs:
@@ -955,14 +920,11 @@ class PluginConfigTemplateAuthConfigTemplateServiceAccountArgs:
         pulumi.set(self, "service_account", value)
 
 
-if not MYPY:
-    class PluginDocumentationArgsDict(TypedDict):
-        external_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The uri of the externally hosted documentation.
-        """
-elif False:
-    PluginDocumentationArgsDict: TypeAlias = Mapping[str, Any]
+class PluginDocumentationArgsDict(TypedDict):
+    external_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The uri of the externally hosted documentation.
+    """
 
 @pulumi.input_type
 class PluginDocumentationArgs:
@@ -987,16 +949,13 @@ class PluginDocumentationArgs:
         pulumi.set(self, "external_uri", value)
 
 
-if not MYPY:
-    class PluginHostingServiceArgsDict(TypedDict):
-        service_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URI of the service implemented by the plugin developer, used to
-        invoke the plugin's functionality. This information is only required for
-        user defined plugins.
-        """
-elif False:
-    PluginHostingServiceArgsDict: TypeAlias = Mapping[str, Any]
+class PluginHostingServiceArgsDict(TypedDict):
+    service_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URI of the service implemented by the plugin developer, used to
+    invoke the plugin's functionality. This information is only required for
+    user defined plugins.
+    """
 
 @pulumi.input_type
 class PluginHostingServiceArgs:
@@ -1025,51 +984,48 @@ class PluginHostingServiceArgs:
         pulumi.set(self, "service_uri", value)
 
 
-if not MYPY:
-    class PluginInstanceActionArgsDict(TypedDict):
-        action_id: pulumi.Input[_builtins.str]
-        """
-        This should map to one of the action id specified
-        in actions_config in the plugin.
-        """
-        curation_config: NotRequired[pulumi.Input['PluginInstanceActionCurationConfigArgsDict']]
-        """
-        The curation information for this plugin instance.
-        Structure is documented below.
-        """
-        hub_instance_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionArgsDict']]]]
-        """
-        (Output)
-        The execution status for the plugin instance.
-        Structure is documented below.
-        """
-        schedule_cron_expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The schedule for this plugin instance action. This can only be set if the
-        plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
-        """
-        schedule_time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time zone for the schedule cron expression. If not provided, UTC will
-        be used.
+class PluginInstanceActionArgsDict(TypedDict):
+    action_id: pulumi.Input[_builtins.str]
+    """
+    This should map to one of the action id specified
+    in actions_config in the plugin.
+    """
+    curation_config: NotRequired[pulumi.Input['PluginInstanceActionCurationConfigArgsDict']]
+    """
+    The curation information for this plugin instance.
+    Structure is documented below.
+    """
+    hub_instance_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionArgsDict']]]]
+    """
+    (Output)
+    The execution status for the plugin instance.
+    Structure is documented below.
+    """
+    schedule_cron_expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The schedule for this plugin instance action. This can only be set if the
+    plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
+    """
+    schedule_time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time zone for the schedule cron expression. If not provided, UTC will
+    be used.
 
 
-        <a name="nested_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The current state of the plugin action in the plugin instance.
-        Possible values:
-        STATE_UNSPECIFIED
-        ENABLED
-        DISABLED
-        ENABLING
-        DISABLING
-        ERROR
-        """
-elif False:
-    PluginInstanceActionArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The current state of the plugin action in the plugin instance.
+    Possible values:
+    STATE_UNSPECIFIED
+    ENABLED
+    DISABLED
+    ENABLING
+    DISABLING
+    ERROR
+    """
 
 @pulumi.input_type
 class PluginInstanceActionArgs:
@@ -1207,22 +1163,19 @@ class PluginInstanceActionArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class PluginInstanceActionCurationConfigArgsDict(TypedDict):
-        curation_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Possible values:
-        CURATION_TYPE_UNSPECIFIED
-        DEFAULT_CURATION_FOR_API_METADATA
-        CUSTOM_CURATION_FOR_API_METADATA
-        """
-        custom_curation: NotRequired[pulumi.Input['PluginInstanceActionCurationConfigCustomCurationArgsDict']]
-        """
-        Custom curation information for this plugin instance.
-        Structure is documented below.
-        """
-elif False:
-    PluginInstanceActionCurationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PluginInstanceActionCurationConfigArgsDict(TypedDict):
+    curation_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Possible values:
+    CURATION_TYPE_UNSPECIFIED
+    DEFAULT_CURATION_FOR_API_METADATA
+    CUSTOM_CURATION_FOR_API_METADATA
+    """
+    custom_curation: NotRequired[pulumi.Input['PluginInstanceActionCurationConfigCustomCurationArgsDict']]
+    """
+    Custom curation information for this plugin instance.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PluginInstanceActionCurationConfigArgs:
@@ -1271,16 +1224,13 @@ class PluginInstanceActionCurationConfigArgs:
         pulumi.set(self, "custom_curation", value)
 
 
-if not MYPY:
-    class PluginInstanceActionCurationConfigCustomCurationArgsDict(TypedDict):
-        curation: pulumi.Input[_builtins.str]
-        """
-        The unique name of the curation resource. This will be the name of the
-        curation resource in the format:
-        `projects/{project}/locations/{location}/curations/{curation}`
-        """
-elif False:
-    PluginInstanceActionCurationConfigCustomCurationArgsDict: TypeAlias = Mapping[str, Any]
+class PluginInstanceActionCurationConfigCustomCurationArgsDict(TypedDict):
+    curation: pulumi.Input[_builtins.str]
+    """
+    The unique name of the curation resource. This will be the name of the
+    curation resource in the format:
+    `projects/{project}/locations/{location}/curations/{curation}`
+    """
 
 @pulumi.input_type
 class PluginInstanceActionCurationConfigCustomCurationArgs:
@@ -1308,22 +1258,19 @@ class PluginInstanceActionCurationConfigCustomCurationArgs:
         pulumi.set(self, "curation", value)
 
 
-if not MYPY:
-    class PluginInstanceActionHubInstanceActionArgsDict(TypedDict):
-        current_execution_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The current state of the execution.
-        Possible values:
-        CURRENT_EXECUTION_STATE_UNSPECIFIED
-        RUNNING
-        NOT_RUNNING
-        """
-        last_executions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionLastExecutionArgsDict']]]]
-        """
-        The result of the last execution of the plugin instance.
-        """
-elif False:
-    PluginInstanceActionHubInstanceActionArgsDict: TypeAlias = Mapping[str, Any]
+class PluginInstanceActionHubInstanceActionArgsDict(TypedDict):
+    current_execution_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The current state of the execution.
+    Possible values:
+    CURRENT_EXECUTION_STATE_UNSPECIFIED
+    RUNNING
+    NOT_RUNNING
+    """
+    last_executions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionLastExecutionArgsDict']]]]
+    """
+    The result of the last execution of the plugin instance.
+    """
 
 @pulumi.input_type
 class PluginInstanceActionHubInstanceActionArgs:
@@ -1372,32 +1319,29 @@ class PluginInstanceActionHubInstanceActionArgs:
         pulumi.set(self, "last_executions", value)
 
 
-if not MYPY:
-    class PluginInstanceActionHubInstanceActionLastExecutionArgsDict(TypedDict):
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The last execution end time of the plugin instance.
-        """
-        error_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Error message describing the failure, if any, during Create, Delete or
-        ApplyConfig operation corresponding to the plugin instance.This field will
-        only be populated if the plugin instance is in the ERROR or FAILED state.
-        """
-        result: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The result of the last execution of the plugin instance.
-        Possible values:
-        RESULT_UNSPECIFIED
-        SUCCEEDED
-        FAILED
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The last execution start time of the plugin instance.
-        """
-elif False:
-    PluginInstanceActionHubInstanceActionLastExecutionArgsDict: TypeAlias = Mapping[str, Any]
+class PluginInstanceActionHubInstanceActionLastExecutionArgsDict(TypedDict):
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The last execution end time of the plugin instance.
+    """
+    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Error message describing the failure, if any, during Create, Delete or
+    ApplyConfig operation corresponding to the plugin instance.This field will
+    only be populated if the plugin instance is in the ERROR or FAILED state.
+    """
+    result: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The result of the last execution of the plugin instance.
+    Possible values:
+    RESULT_UNSPECIFIED
+    SUCCEEDED
+    FAILED
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The last execution start time of the plugin instance.
+    """
 
 @pulumi.input_type
 class PluginInstanceActionHubInstanceActionLastExecutionArgs:
@@ -1482,41 +1426,38 @@ class PluginInstanceActionHubInstanceActionLastExecutionArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class PluginInstanceAuthConfigArgsDict(TypedDict):
-        auth_type: pulumi.Input[_builtins.str]
-        """
-        Possible values:
-        AUTH_TYPE_UNSPECIFIED
-        NO_AUTH
-        GOOGLE_SERVICE_ACCOUNT
-        USER_PASSWORD
-        API_KEY
-        OAUTH2_CLIENT_CREDENTIALS
-        """
-        api_key_config: NotRequired[pulumi.Input['PluginInstanceAuthConfigApiKeyConfigArgsDict']]
-        """
-        Config for authentication with API key.
-        Structure is documented below.
-        """
-        google_service_account_config: NotRequired[pulumi.Input['PluginInstanceAuthConfigGoogleServiceAccountConfigArgsDict']]
-        """
-        Config for Google service account authentication.
-        Structure is documented below.
-        """
-        oauth2_client_credentials_config: NotRequired[pulumi.Input['PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgsDict']]
-        """
-        Parameters to support Oauth 2.0 client credentials grant authentication.
-        See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
-        Structure is documented below.
-        """
-        user_password_config: NotRequired[pulumi.Input['PluginInstanceAuthConfigUserPasswordConfigArgsDict']]
-        """
-        Parameters to support Username and Password Authentication.
-        Structure is documented below.
-        """
-elif False:
-    PluginInstanceAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PluginInstanceAuthConfigArgsDict(TypedDict):
+    auth_type: pulumi.Input[_builtins.str]
+    """
+    Possible values:
+    AUTH_TYPE_UNSPECIFIED
+    NO_AUTH
+    GOOGLE_SERVICE_ACCOUNT
+    USER_PASSWORD
+    API_KEY
+    OAUTH2_CLIENT_CREDENTIALS
+    """
+    api_key_config: NotRequired[pulumi.Input['PluginInstanceAuthConfigApiKeyConfigArgsDict']]
+    """
+    Config for authentication with API key.
+    Structure is documented below.
+    """
+    google_service_account_config: NotRequired[pulumi.Input['PluginInstanceAuthConfigGoogleServiceAccountConfigArgsDict']]
+    """
+    Config for Google service account authentication.
+    Structure is documented below.
+    """
+    oauth2_client_credentials_config: NotRequired[pulumi.Input['PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgsDict']]
+    """
+    Parameters to support Oauth 2.0 client credentials grant authentication.
+    See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
+    Structure is documented below.
+    """
+    user_password_config: NotRequired[pulumi.Input['PluginInstanceAuthConfigUserPasswordConfigArgsDict']]
+    """
+    Parameters to support Username and Password Authentication.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PluginInstanceAuthConfigArgs:
@@ -1626,33 +1567,30 @@ class PluginInstanceAuthConfigArgs:
         pulumi.set(self, "user_password_config", value)
 
 
-if not MYPY:
-    class PluginInstanceAuthConfigApiKeyConfigArgsDict(TypedDict):
-        api_key: pulumi.Input['PluginInstanceAuthConfigApiKeyConfigApiKeyArgsDict']
-        """
-        Secret provides a reference to entries in Secret Manager.
-        Structure is documented below.
-        """
-        http_element_location: pulumi.Input[_builtins.str]
-        """
-        The location of the API key.
-        The default value is QUERY.
-        Possible values:
-        HTTP_ELEMENT_LOCATION_UNSPECIFIED
-        QUERY
-        HEADER
-        PATH
-        BODY
-        COOKIE
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The parameter name of the API key.
-        E.g. If the API request is "https://example.com/act?api_key=",
-        "api_key" would be the parameter name.
-        """
-elif False:
-    PluginInstanceAuthConfigApiKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PluginInstanceAuthConfigApiKeyConfigArgsDict(TypedDict):
+    api_key: pulumi.Input['PluginInstanceAuthConfigApiKeyConfigApiKeyArgsDict']
+    """
+    Secret provides a reference to entries in Secret Manager.
+    Structure is documented below.
+    """
+    http_element_location: pulumi.Input[_builtins.str]
+    """
+    The location of the API key.
+    The default value is QUERY.
+    Possible values:
+    HTTP_ELEMENT_LOCATION_UNSPECIFIED
+    QUERY
+    HEADER
+    PATH
+    BODY
+    COOKIE
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The parameter name of the API key.
+    E.g. If the API request is "https://example.com/act?api_key=",
+    "api_key" would be the parameter name.
+    """
 
 @pulumi.input_type
 class PluginInstanceAuthConfigApiKeyConfigArgs:
@@ -1728,17 +1666,14 @@ class PluginInstanceAuthConfigApiKeyConfigArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PluginInstanceAuthConfigApiKeyConfigApiKeyArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The resource name of the secret version in the format,
-        format as: `projects/*/secrets/*/versions/*`.
+class PluginInstanceAuthConfigApiKeyConfigApiKeyArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The resource name of the secret version in the format,
+    format as: `projects/*/secrets/*/versions/*`.
 
-        <a name="nested_auth_config_oauth2_client_credentials_config"></a>The `oauth2_client_credentials_config` block supports:
-        """
-elif False:
-    PluginInstanceAuthConfigApiKeyConfigApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_auth_config_oauth2_client_credentials_config"></a>The `oauth2_client_credentials_config` block supports:
+    """
 
 @pulumi.input_type
 class PluginInstanceAuthConfigApiKeyConfigApiKeyArgs:
@@ -1768,16 +1703,13 @@ class PluginInstanceAuthConfigApiKeyConfigApiKeyArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class PluginInstanceAuthConfigGoogleServiceAccountConfigArgsDict(TypedDict):
-        service_account: pulumi.Input[_builtins.str]
-        """
-        The service account to be used for authenticating request.
-        The `iam.serviceAccounts.getAccessToken` permission should be granted on
-        this service account to the impersonator service account.
-        """
-elif False:
-    PluginInstanceAuthConfigGoogleServiceAccountConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PluginInstanceAuthConfigGoogleServiceAccountConfigArgsDict(TypedDict):
+    service_account: pulumi.Input[_builtins.str]
+    """
+    The service account to be used for authenticating request.
+    The `iam.serviceAccounts.getAccessToken` permission should be granted on
+    this service account to the impersonator service account.
+    """
 
 @pulumi.input_type
 class PluginInstanceAuthConfigGoogleServiceAccountConfigArgs:
@@ -1805,18 +1737,15 @@ class PluginInstanceAuthConfigGoogleServiceAccountConfigArgs:
         pulumi.set(self, "service_account", value)
 
 
-if not MYPY:
-    class PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgsDict(TypedDict):
-        client_id: pulumi.Input[_builtins.str]
-        """
-        The client identifier.
-        """
-        client_secret: pulumi.Input['PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgsDict']
-        """
-        Secret provides a reference to entries in Secret Manager.
-        """
-elif False:
-    PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The client identifier.
+    """
+    client_secret: pulumi.Input['PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgsDict']
+    """
+    Secret provides a reference to entries in Secret Manager.
+    """
 
 @pulumi.input_type
 class PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs:
@@ -1855,15 +1784,12 @@ class PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs:
         pulumi.set(self, "client_secret", value)
 
 
-if not MYPY:
-    class PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The resource name of the secret version in the format,
-        format as: `projects/*/secrets/*/versions/*`.
-        """
-elif False:
-    PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgsDict: TypeAlias = Mapping[str, Any]
+class PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The resource name of the secret version in the format,
+    format as: `projects/*/secrets/*/versions/*`.
+    """
 
 @pulumi.input_type
 class PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs:
@@ -1889,19 +1815,16 @@ class PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecretArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class PluginInstanceAuthConfigUserPasswordConfigArgsDict(TypedDict):
-        password: pulumi.Input['PluginInstanceAuthConfigUserPasswordConfigPasswordArgsDict']
-        """
-        Secret provides a reference to entries in Secret Manager.
-        Structure is documented below.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        Username.
-        """
-elif False:
-    PluginInstanceAuthConfigUserPasswordConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PluginInstanceAuthConfigUserPasswordConfigArgsDict(TypedDict):
+    password: pulumi.Input['PluginInstanceAuthConfigUserPasswordConfigPasswordArgsDict']
+    """
+    Secret provides a reference to entries in Secret Manager.
+    Structure is documented below.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Username.
+    """
 
 @pulumi.input_type
 class PluginInstanceAuthConfigUserPasswordConfigArgs:
@@ -1942,15 +1865,12 @@ class PluginInstanceAuthConfigUserPasswordConfigArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class PluginInstanceAuthConfigUserPasswordConfigPasswordArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The resource name of the secret version in the format,
-        format as: `projects/*/secrets/*/versions/*`.
-        """
-elif False:
-    PluginInstanceAuthConfigUserPasswordConfigPasswordArgsDict: TypeAlias = Mapping[str, Any]
+class PluginInstanceAuthConfigUserPasswordConfigPasswordArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The resource name of the secret version in the format,
+    format as: `projects/*/secrets/*/versions/*`.
+    """
 
 @pulumi.input_type
 class PluginInstanceAuthConfigUserPasswordConfigPasswordArgs:

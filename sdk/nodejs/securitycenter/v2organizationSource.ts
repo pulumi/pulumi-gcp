@@ -36,16 +36,12 @@ import * as utilities from "../utilities";
  * OrganizationSource can be imported using any of these accepted formats:
  *
  * * `organizations/{{organization}}/sources/{{name}}`
- *
  * * `{{organization}}/{{name}}`
  *
  * When using the `pulumi import` command, OrganizationSource can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:securitycenter/v2OrganizationSource:V2OrganizationSource default organizations/{{organization}}/sources/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:securitycenter/v2OrganizationSource:V2OrganizationSource default {{organization}}/{{name}}
  * ```
  */

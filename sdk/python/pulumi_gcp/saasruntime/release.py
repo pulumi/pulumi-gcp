@@ -42,6 +42,12 @@ class ReleaseArgs:
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['ReleaseBlueprintArgs'] blueprint: Blueprints are OCI Images that contain all of the artifacts needed to
+               provision a unit. Metadata such as, type of the engine used to actuate the
+               blueprint (e.g. terraform, helm etc) and version will come from the image
+               manifest. If the hostname is omitted, it will be assumed to be the regional
+               path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseInputVariableDefaultArgs']]] input_variable_defaults: Mapping of input variables to default values. Maximum 100
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
@@ -126,6 +132,14 @@ class ReleaseArgs:
     @_builtins.property
     @pulumi.getter
     def blueprint(self) -> Optional[pulumi.Input['ReleaseBlueprintArgs']]:
+        """
+        Blueprints are OCI Images that contain all of the artifacts needed to
+        provision a unit. Metadata such as, type of the engine used to actuate the
+        blueprint (e.g. terraform, helm etc) and version will come from the image
+        manifest. If the hostname is omitted, it will be assumed to be the regional
+        path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+        Structure is documented below.
+        """
         return pulumi.get(self, "blueprint")
 
     @blueprint.setter
@@ -217,7 +231,14 @@ class _ReleaseState:
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['ReleaseBlueprintArgs'] blueprint: Blueprints are OCI Images that contain all of the artifacts needed to
+               provision a unit. Metadata such as, type of the engine used to actuate the
+               blueprint (e.g. terraform, helm etc) and version will come from the image
+               manifest. If the hostname is omitted, it will be assumed to be the regional
+               path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: An opaque value that uniquely identifies a version or
                generation of a resource. It can be used to confirm that the client
@@ -315,6 +336,14 @@ class _ReleaseState:
     @_builtins.property
     @pulumi.getter
     def blueprint(self) -> Optional[pulumi.Input['ReleaseBlueprintArgs']]:
+        """
+        Blueprints are OCI Images that contain all of the artifacts needed to
+        provision a unit. Metadata such as, type of the engine used to actuate the
+        blueprint (e.g. terraform, helm etc) and version will come from the image
+        manifest. If the hostname is omitted, it will be assumed to be the regional
+        path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+        Structure is documented below.
+        """
         return pulumi.get(self, "blueprint")
 
     @blueprint.setter
@@ -336,6 +365,9 @@ class _ReleaseState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -562,6 +594,11 @@ class Release(pulumi.CustomResource):
                  unit_kind: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A version to be propagated and deployed to Units. It points to a specific version of a Blueprint that can be applied to Units, for example, via a Rollout.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Saas Runtime Release Basic
@@ -606,22 +643,14 @@ class Release(pulumi.CustomResource):
         Release can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/releases/{{release_id}}`
-
         * `{{project}}/{{location}}/{{release_id}}`
-
         * `{{location}}/{{release_id}}`
 
         When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:saasruntime/release:Release default projects/{{project}}/locations/{{location}}/releases/{{release_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/release:Release default {{project}}/{{location}}/{{release_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/release:Release default {{location}}/{{release_id}}
         ```
 
@@ -633,6 +662,12 @@ class Release(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict']] blueprint: Blueprints are OCI Images that contain all of the artifacts needed to
+               provision a unit. Metadata such as, type of the engine used to actuate the
+               blueprint (e.g. terraform, helm etc) and version will come from the image
+               manifest. If the hostname is omitted, it will be assumed to be the regional
+               path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ReleaseInputVariableDefaultArgs', 'ReleaseInputVariableDefaultArgsDict']]]] input_variable_defaults: Mapping of input variables to default values. Maximum 100
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
@@ -655,6 +690,11 @@ class Release(pulumi.CustomResource):
                  args: ReleaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A version to be propagated and deployed to Units. It points to a specific version of a Blueprint that can be applied to Units, for example, via a Rollout.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Saas Runtime Release Basic
@@ -699,22 +739,14 @@ class Release(pulumi.CustomResource):
         Release can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/releases/{{release_id}}`
-
         * `{{project}}/{{location}}/{{release_id}}`
-
         * `{{location}}/{{release_id}}`
 
         When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:saasruntime/release:Release default projects/{{project}}/locations/{{location}}/releases/{{release_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/release:Release default {{project}}/{{location}}/{{release_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/release:Release default {{location}}/{{release_id}}
         ```
 
@@ -820,7 +852,14 @@ class Release(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Union['ReleaseBlueprintArgs', 'ReleaseBlueprintArgsDict']] blueprint: Blueprints are OCI Images that contain all of the artifacts needed to
+               provision a unit. Metadata such as, type of the engine used to actuate the
+               blueprint (e.g. terraform, helm etc) and version will come from the image
+               manifest. If the hostname is omitted, it will be assumed to be the regional
+               path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: An opaque value that uniquely identifies a version or
                generation of a resource. It can be used to confirm that the client
@@ -900,6 +939,14 @@ class Release(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def blueprint(self) -> pulumi.Output[Optional['outputs.ReleaseBlueprint']]:
+        """
+        Blueprints are OCI Images that contain all of the artifacts needed to
+        provision a unit. Metadata such as, type of the engine used to actuate the
+        blueprint (e.g. terraform, helm etc) and version will come from the image
+        manifest. If the hostname is omitted, it will be assumed to be the regional
+        path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+        Structure is documented below.
+        """
         return pulumi.get(self, "blueprint")
 
     @_builtins.property
@@ -913,6 +960,9 @@ class Release(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

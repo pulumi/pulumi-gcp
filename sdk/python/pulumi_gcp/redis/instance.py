@@ -63,6 +63,12 @@ class InstanceArgs:
                Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[_builtins.str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance.
+               When a`terraform destroy` or `pulumi up` would delete the instance,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the instance will fail.
+               When the field is set to false, deleting the instance is allowed.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -250,6 +256,14 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the instance.
+        When a`terraform destroy` or `pulumi up` would delete the instance,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the instance will fail.
+        When the field is set to false, deleting the instance is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -563,6 +577,12 @@ class _InstanceState:
                and can change after a failover event.
         :param pulumi.Input[_builtins.str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance.
+               When a`terraform destroy` or `pulumi up` would delete the instance,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the instance will fail.
+               When the field is set to false, deleting the instance is allowed.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] effective_reserved_ip_range: The CIDR range of internal addresses that are reserved for this
@@ -835,6 +855,14 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the instance.
+        When a`terraform destroy` or `pulumi up` would delete the instance,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the instance will fail.
+        When the field is set to false, deleting the instance is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -1462,28 +1490,16 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:redis/instance:Instance default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:redis/instance:Instance default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:redis/instance:Instance default {{name}}
         ```
 
@@ -1504,6 +1520,12 @@ class Instance(pulumi.CustomResource):
                Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[_builtins.str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance.
+               When a`terraform destroy` or `pulumi up` would delete the instance,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the instance will fail.
+               When the field is set to false, deleting the instance is allowed.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1755,28 +1777,16 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:redis/instance:Instance default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:redis/instance:Instance default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:redis/instance:Instance default {{name}}
         ```
 
@@ -1948,6 +1958,12 @@ class Instance(pulumi.CustomResource):
                and can change after a failover event.
         :param pulumi.Input[_builtins.str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the instance.
+               When a`terraform destroy` or `pulumi up` would delete the instance,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the instance will fail.
+               When the field is set to false, deleting the instance is allowed.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] effective_reserved_ip_range: The CIDR range of internal addresses that are reserved for this
@@ -2155,6 +2171,14 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the instance.
+        When a`terraform destroy` or `pulumi up` would delete the instance,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the instance will fail.
+        When the field is set to false, deleting the instance is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property

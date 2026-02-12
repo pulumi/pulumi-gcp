@@ -364,22 +364,14 @@ import (
 // Service can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/applications/{{application_id}}/services/{{service_id}}`
-//
 // * `{{project}}/{{location}}/{{application_id}}/{{service_id}}`
-//
 // * `{{location}}/{{application_id}}/{{service_id}}`
 //
 // When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apphub/service:Service default projects/{{project}}/locations/{{location}}/applications/{{application_id}}/services/{{service_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apphub/service:Service default {{project}}/{{location}}/{{application_id}}/{{service_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apphub/service:Service default {{location}}/{{application_id}}/{{service_id}}
 // ```
 type Service struct {

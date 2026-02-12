@@ -11,6 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ReleaseBlueprint {
+    /**
+     * @return (Output)
+     * Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
+     * 
+     */
     private @Nullable String engine;
     /**
      * @return URI to a blueprint used by the Unit (required unless unitKind or release is
@@ -26,6 +31,11 @@ public final class ReleaseBlueprint {
     private @Nullable String version;
 
     private ReleaseBlueprint() {}
+    /**
+     * @return (Output)
+     * Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
+     * 
+     */
     public Optional<String> engine() {
         return Optional.ofNullable(this.engine);
     }

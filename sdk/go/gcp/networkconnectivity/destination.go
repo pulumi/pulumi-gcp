@@ -74,22 +74,14 @@ import (
 // Destination can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{multicloud_data_transfer_config}}/destinations/{{name}}`
-//
 // * `{{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}`
-//
 // * `{{location}}/{{multicloud_data_transfer_config}}/{{name}}`
 //
 // When using the `pulumi import` command, Destination can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkconnectivity/destination:Destination default projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{multicloud_data_transfer_config}}/destinations/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/destination:Destination default {{project}}/{{location}}/{{multicloud_data_transfer_config}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkconnectivity/destination:Destination default {{location}}/{{multicloud_data_transfer_config}}/{{name}}
 // ```
 type Destination struct {

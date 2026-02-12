@@ -85,22 +85,14 @@ import * as utilities from "../utilities";
  * ProjectCustomModule can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/securityHealthAnalyticsSettings/customModules/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, ProjectCustomModule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default projects/{{project}}/securityHealthAnalyticsSettings/customModules/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default {{name}}
  * ```
  */

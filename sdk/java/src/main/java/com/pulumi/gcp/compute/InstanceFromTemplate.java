@@ -118,9 +118,17 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
     public Output<InstanceFromTemplateAdvancedMachineFeatures> advancedMachineFeatures() {
         return this.advancedMachineFeatures;
     }
+    /**
+     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     * 
+     */
     @Export(name="allowStoppingForUpdate", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowStoppingForUpdate;
 
+    /**
+     * @return If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     * 
+     */
     public Output<Boolean> allowStoppingForUpdate() {
         return this.allowStoppingForUpdate;
     }
@@ -268,9 +276,17 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
     public Output<String> desiredStatus() {
         return this.desiredStatus;
     }
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }

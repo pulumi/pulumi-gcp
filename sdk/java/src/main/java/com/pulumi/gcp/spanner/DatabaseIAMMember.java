@@ -436,29 +436,13 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies
+ * &gt; **Custom Roles:** If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
- * IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+ * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
- * * `{{project}}/{{instance}}/{{database}}`
- * 
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- * 
- * tf
- * 
- * import {
- * 
- *   id = {{project}}/{{instance}}/{{database}}
- * 
- *   to = google_spanner_database_iam_policy.default
- * 
- * }
- * 
- * The `pulumi import` command can also be used:
- * 
- * ```sh
- * $ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember default {{project}}/{{instance}}/{{database}}
- * ```
+ * * {{project}}/{{instance}}/{{database}}
+ * * {{instance}}/{{database}} (project is taken from provider project)
  * 
  */
 @ResourceType(type="gcp:spanner/databaseIAMMember:DatabaseIAMMember")

@@ -65,27 +65,22 @@ __all__ = [
     'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class NotebookExecutionCustomEnvironmentSpecArgsDict(TypedDict):
-        machine_spec: NotRequired[pulumi.Input['NotebookExecutionCustomEnvironmentSpecMachineSpecArgsDict']]
-        """
-        'The machine configuration of the runtime.'
-        Structure is documented below.
-        """
-        network_spec: NotRequired[pulumi.Input['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgsDict']]
-        """
-        The network configuration for the runtime.
-        Structure is documented below.
-        """
-        persistent_disk_spec: NotRequired[pulumi.Input['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgsDict']]
-        """
-        The configuration for the data disk of the runtime.
-        Structure is documented below.
-        """
-elif False:
-    NotebookExecutionCustomEnvironmentSpecArgsDict: TypeAlias = Mapping[str, Any]
+class NotebookExecutionCustomEnvironmentSpecArgsDict(TypedDict):
+    machine_spec: NotRequired[pulumi.Input['NotebookExecutionCustomEnvironmentSpecMachineSpecArgsDict']]
+    """
+    'The machine configuration of the runtime.'
+    Structure is documented below.
+    """
+    network_spec: NotRequired[pulumi.Input['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgsDict']]
+    """
+    The network configuration for the runtime.
+    Structure is documented below.
+    """
+    persistent_disk_spec: NotRequired[pulumi.Input['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgsDict']]
+    """
+    The configuration for the data disk of the runtime.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class NotebookExecutionCustomEnvironmentSpecArgs:
@@ -148,22 +143,19 @@ class NotebookExecutionCustomEnvironmentSpecArgs:
         pulumi.set(self, "persistent_disk_spec", value)
 
 
-if not MYPY:
-    class NotebookExecutionCustomEnvironmentSpecMachineSpecArgsDict(TypedDict):
-        accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of accelerators used by the runtime.
-        """
-        accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Compute Engine machine type selected for the runtime.
-        """
-elif False:
-    NotebookExecutionCustomEnvironmentSpecMachineSpecArgsDict: TypeAlias = Mapping[str, Any]
+class NotebookExecutionCustomEnvironmentSpecMachineSpecArgsDict(TypedDict):
+    accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of accelerators used by the runtime.
+    """
+    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Compute Engine machine type selected for the runtime.
+    """
 
 @pulumi.input_type
 class NotebookExecutionCustomEnvironmentSpecMachineSpecArgs:
@@ -220,22 +212,19 @@ class NotebookExecutionCustomEnvironmentSpecMachineSpecArgs:
         pulumi.set(self, "machine_type", value)
 
 
-if not MYPY:
-    class NotebookExecutionCustomEnvironmentSpecNetworkSpecArgsDict(TypedDict):
-        enable_internet_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable public internet access for the runtime.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the VPC that this runtime is in.
-        """
-        subnetwork: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the subnetwork that this runtime is in.
-        """
-elif False:
-    NotebookExecutionCustomEnvironmentSpecNetworkSpecArgsDict: TypeAlias = Mapping[str, Any]
+class NotebookExecutionCustomEnvironmentSpecNetworkSpecArgsDict(TypedDict):
+    enable_internet_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable public internet access for the runtime.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the VPC that this runtime is in.
+    """
+    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the subnetwork that this runtime is in.
+    """
 
 @pulumi.input_type
 class NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs:
@@ -292,18 +281,15 @@ class NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs:
         pulumi.set(self, "subnetwork", value)
 
 
-if not MYPY:
-    class NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgsDict(TypedDict):
-        disk_size_gb: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
-        """
-        disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the persistent disk.
-        """
-elif False:
-    NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgsDict: TypeAlias = Mapping[str, Any]
+class NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgsDict(TypedDict):
+    disk_size_gb: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
+    """
+    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the persistent disk.
+    """
 
 @pulumi.input_type
 class NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs:
@@ -344,18 +330,15 @@ class NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs:
         pulumi.set(self, "disk_type", value)
 
 
-if not MYPY:
-    class NotebookExecutionDataformRepositorySourceArgsDict(TypedDict):
-        dataform_repository_resource_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the Dataform Repository.
-        """
-        commit_sha: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The commit SHA to read repository with. If unset, the file will be read at HEAD.
-        """
-elif False:
-    NotebookExecutionDataformRepositorySourceArgsDict: TypeAlias = Mapping[str, Any]
+class NotebookExecutionDataformRepositorySourceArgsDict(TypedDict):
+    dataform_repository_resource_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the Dataform Repository.
+    """
+    commit_sha: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The commit SHA to read repository with. If unset, the file will be read at HEAD.
+    """
 
 @pulumi.input_type
 class NotebookExecutionDataformRepositorySourceArgs:
@@ -395,14 +378,11 @@ class NotebookExecutionDataformRepositorySourceArgs:
         pulumi.set(self, "commit_sha", value)
 
 
-if not MYPY:
-    class NotebookExecutionDirectNotebookSourceArgsDict(TypedDict):
-        content: pulumi.Input[_builtins.str]
-        """
-        The base64-encoded contents of the input notebook file.
-        """
-elif False:
-    NotebookExecutionDirectNotebookSourceArgsDict: TypeAlias = Mapping[str, Any]
+class NotebookExecutionDirectNotebookSourceArgsDict(TypedDict):
+    content: pulumi.Input[_builtins.str]
+    """
+    The base64-encoded contents of the input notebook file.
+    """
 
 @pulumi.input_type
 class NotebookExecutionDirectNotebookSourceArgs:
@@ -426,18 +406,15 @@ class NotebookExecutionDirectNotebookSourceArgs:
         pulumi.set(self, "content", value)
 
 
-if not MYPY:
-    class NotebookExecutionGcsNotebookSourceArgsDict(TypedDict):
-        uri: pulumi.Input[_builtins.str]
-        """
-        The Cloud Storage uri pointing to the ipynb file.
-        """
-        generation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-        """
-elif False:
-    NotebookExecutionGcsNotebookSourceArgsDict: TypeAlias = Mapping[str, Any]
+class NotebookExecutionGcsNotebookSourceArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    The Cloud Storage uri pointing to the ipynb file.
+    """
+    generation: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+    """
 
 @pulumi.input_type
 class NotebookExecutionGcsNotebookSourceArgs:
@@ -477,14 +454,11 @@ class NotebookExecutionGcsNotebookSourceArgs:
         pulumi.set(self, "generation", value)
 
 
-if not MYPY:
-    class RuntimeNotebookRuntimeTemplateRefArgsDict(TypedDict):
-        notebook_runtime_template: pulumi.Input[_builtins.str]
-        """
-        The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
-        """
-elif False:
-    RuntimeNotebookRuntimeTemplateRefArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeNotebookRuntimeTemplateRefArgsDict(TypedDict):
+    notebook_runtime_template: pulumi.Input[_builtins.str]
+    """
+    The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
+    """
 
 @pulumi.input_type
 class RuntimeNotebookRuntimeTemplateRefArgs:
@@ -508,18 +482,15 @@ class RuntimeNotebookRuntimeTemplateRefArgs:
         pulumi.set(self, "notebook_runtime_template", value)
 
 
-if not MYPY:
-    class RuntimeTemplateDataPersistentDiskSpecArgsDict(TypedDict):
-        disk_size_gb: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
-        """
-        disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the persistent disk.
-        """
-elif False:
-    RuntimeTemplateDataPersistentDiskSpecArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeTemplateDataPersistentDiskSpecArgsDict(TypedDict):
+    disk_size_gb: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
+    """
+    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the persistent disk.
+    """
 
 @pulumi.input_type
 class RuntimeTemplateDataPersistentDiskSpecArgs:
@@ -560,14 +531,11 @@ class RuntimeTemplateDataPersistentDiskSpecArgs:
         pulumi.set(self, "disk_type", value)
 
 
-if not MYPY:
-    class RuntimeTemplateEncryptionSpecArgsDict(TypedDict):
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud KMS encryption key (customer-managed encryption key) used to protect the runtime.
-        """
-elif False:
-    RuntimeTemplateEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeTemplateEncryptionSpecArgsDict(TypedDict):
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud KMS encryption key (customer-managed encryption key) used to protect the runtime.
+    """
 
 @pulumi.input_type
 class RuntimeTemplateEncryptionSpecArgs:
@@ -592,14 +560,11 @@ class RuntimeTemplateEncryptionSpecArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class RuntimeTemplateEucConfigArgsDict(TypedDict):
-        euc_disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Disable end user credential access for the runtime.
-        """
-elif False:
-    RuntimeTemplateEucConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeTemplateEucConfigArgsDict(TypedDict):
+    euc_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disable end user credential access for the runtime.
+    """
 
 @pulumi.input_type
 class RuntimeTemplateEucConfigArgs:
@@ -624,13 +589,10 @@ class RuntimeTemplateEucConfigArgs:
         pulumi.set(self, "euc_disabled", value)
 
 
-if not MYPY:
-    class RuntimeTemplateIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RuntimeTemplateIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeTemplateIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RuntimeTemplateIamBindingConditionArgs:
@@ -671,13 +633,10 @@ class RuntimeTemplateIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RuntimeTemplateIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RuntimeTemplateIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeTemplateIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RuntimeTemplateIamMemberConditionArgs:
@@ -718,14 +677,11 @@ class RuntimeTemplateIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RuntimeTemplateIdleShutdownConfigArgsDict(TypedDict):
-        idle_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The duration after which the runtime is automatically shut down. An input of 0s disables the idle shutdown feature, and a valid range is [10m, 24h].
-        """
-elif False:
-    RuntimeTemplateIdleShutdownConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeTemplateIdleShutdownConfigArgsDict(TypedDict):
+    idle_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The duration after which the runtime is automatically shut down. An input of 0s disables the idle shutdown feature, and a valid range is [10m, 24h].
+    """
 
 @pulumi.input_type
 class RuntimeTemplateIdleShutdownConfigArgs:
@@ -750,22 +706,19 @@ class RuntimeTemplateIdleShutdownConfigArgs:
         pulumi.set(self, "idle_timeout", value)
 
 
-if not MYPY:
-    class RuntimeTemplateMachineSpecArgsDict(TypedDict):
-        accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of accelerators used by the runtime.
-        """
-        accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Compute Engine machine type selected for the runtime.
-        """
-elif False:
-    RuntimeTemplateMachineSpecArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeTemplateMachineSpecArgsDict(TypedDict):
+    accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of accelerators used by the runtime.
+    """
+    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Compute Engine machine type selected for the runtime.
+    """
 
 @pulumi.input_type
 class RuntimeTemplateMachineSpecArgs:
@@ -822,22 +775,19 @@ class RuntimeTemplateMachineSpecArgs:
         pulumi.set(self, "machine_type", value)
 
 
-if not MYPY:
-    class RuntimeTemplateNetworkSpecArgsDict(TypedDict):
-        enable_internet_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable public internet access for the runtime.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the VPC that this runtime is in.
-        """
-        subnetwork: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the subnetwork that this runtime is in.
-        """
-elif False:
-    RuntimeTemplateNetworkSpecArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeTemplateNetworkSpecArgsDict(TypedDict):
+    enable_internet_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable public internet access for the runtime.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the VPC that this runtime is in.
+    """
+    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the subnetwork that this runtime is in.
+    """
 
 @pulumi.input_type
 class RuntimeTemplateNetworkSpecArgs:
@@ -894,14 +844,11 @@ class RuntimeTemplateNetworkSpecArgs:
         pulumi.set(self, "subnetwork", value)
 
 
-if not MYPY:
-    class RuntimeTemplateShieldedVmConfigArgsDict(TypedDict):
-        enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables secure boot for the runtime.
-        """
-elif False:
-    RuntimeTemplateShieldedVmConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeTemplateShieldedVmConfigArgsDict(TypedDict):
+    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables secure boot for the runtime.
+    """
 
 @pulumi.input_type
 class RuntimeTemplateShieldedVmConfigArgs:
@@ -926,20 +873,17 @@ class RuntimeTemplateShieldedVmConfigArgs:
         pulumi.set(self, "enable_secure_boot", value)
 
 
-if not MYPY:
-    class RuntimeTemplateSoftwareConfigArgsDict(TypedDict):
-        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgsDict']]]]
-        """
-        Environment variables to be passed to the container.
-        Structure is documented below.
-        """
-        post_startup_script_config: NotRequired[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict']]
-        """
-        Post startup script config.
-        Structure is documented below.
-        """
-elif False:
-    RuntimeTemplateSoftwareConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeTemplateSoftwareConfigArgsDict(TypedDict):
+    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgsDict']]]]
+    """
+    Environment variables to be passed to the container.
+    Structure is documented below.
+    """
+    post_startup_script_config: NotRequired[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict']]
+    """
+    Post startup script config.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RuntimeTemplateSoftwareConfigArgs:
@@ -984,18 +928,15 @@ class RuntimeTemplateSoftwareConfigArgs:
         pulumi.set(self, "post_startup_script_config", value)
 
 
-if not MYPY:
-    class RuntimeTemplateSoftwareConfigEnvArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the environment variable. Must be a valid C identifier.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
-        """
-elif False:
-    RuntimeTemplateSoftwareConfigEnvArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeTemplateSoftwareConfigEnvArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the environment variable. Must be a valid C identifier.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+    """
 
 @pulumi.input_type
 class RuntimeTemplateSoftwareConfigEnvArgs:
@@ -1036,23 +977,20 @@ class RuntimeTemplateSoftwareConfigEnvArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict(TypedDict):
-        post_startup_script: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Post startup script to run after runtime is started.
-        """
-        post_startup_script_behavior: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Post startup script behavior that defines download and execution behavior.
-        Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-        """
-        post_startup_script_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Post startup script url to download. Example: https://bucket/script.sh.
-        """
-elif False:
-    RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict(TypedDict):
+    post_startup_script: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Post startup script to run after runtime is started.
+    """
+    post_startup_script_behavior: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Post startup script behavior that defines download and execution behavior.
+    Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+    """
+    post_startup_script_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Post startup script url to download. Example: https://bucket/script.sh.
+    """
 
 @pulumi.input_type
 class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs:
@@ -1111,15 +1049,12 @@ class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs:
         pulumi.set(self, "post_startup_script_url", value)
 
 
-if not MYPY:
-    class ScheduleCreateNotebookExecutionJobRequestArgsDict(TypedDict):
-        notebook_execution_job: pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict']
-        """
-        The NotebookExecutionJob to create.
-        Structure is documented below.
-        """
-elif False:
-    ScheduleCreateNotebookExecutionJobRequestArgsDict: TypeAlias = Mapping[str, Any]
+class ScheduleCreateNotebookExecutionJobRequestArgsDict(TypedDict):
+    notebook_execution_job: pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict']
+    """
+    The NotebookExecutionJob to create.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ScheduleCreateNotebookExecutionJobRequestArgs:
@@ -1145,44 +1080,41 @@ class ScheduleCreateNotebookExecutionJobRequestArgs:
         pulumi.set(self, "notebook_execution_job", value)
 
 
-if not MYPY:
-    class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict(TypedDict):
-        display_name: pulumi.Input[_builtins.str]
-        """
-        Required. The display name of the Notebook Execution.
-        """
-        gcs_output_uri: pulumi.Input[_builtins.str]
-        """
-        The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
-        """
-        notebook_runtime_template_resource_name: pulumi.Input[_builtins.str]
-        """
-        The NotebookRuntimeTemplate to source compute configuration from.
-        """
-        dataform_repository_source: NotRequired[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict']]
-        """
-        The Dataform Repository containing the input notebook.
-        Structure is documented below.
-        """
-        execution_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
-        """
-        execution_user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user email to run the execution as.
-        """
-        gcs_notebook_source: NotRequired[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict']]
-        """
-        The Cloud Storage uri for the input notebook.
-        Structure is documented below.
-        """
-        service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service account to run the execution as.
-        """
-elif False:
-    ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict: TypeAlias = Mapping[str, Any]
+class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict(TypedDict):
+    display_name: pulumi.Input[_builtins.str]
+    """
+    Required. The display name of the Notebook Execution.
+    """
+    gcs_output_uri: pulumi.Input[_builtins.str]
+    """
+    The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
+    """
+    notebook_runtime_template_resource_name: pulumi.Input[_builtins.str]
+    """
+    The NotebookRuntimeTemplate to source compute configuration from.
+    """
+    dataform_repository_source: NotRequired[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict']]
+    """
+    The Dataform Repository containing the input notebook.
+    Structure is documented below.
+    """
+    execution_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
+    """
+    execution_user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The user email to run the execution as.
+    """
+    gcs_notebook_source: NotRequired[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict']]
+    """
+    The Cloud Storage uri for the input notebook.
+    Structure is documented below.
+    """
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service account to run the execution as.
+    """
 
 @pulumi.input_type
 class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs:
@@ -1320,18 +1252,15 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs:
         pulumi.set(self, "service_account", value)
 
 
-if not MYPY:
-    class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict(TypedDict):
-        dataform_repository_resource_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the Dataform Repository.
-        """
-        commit_sha: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The commit SHA to read repository with. If unset, the file will be read at HEAD.
-        """
-elif False:
-    ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict: TypeAlias = Mapping[str, Any]
+class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict(TypedDict):
+    dataform_repository_resource_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the Dataform Repository.
+    """
+    commit_sha: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The commit SHA to read repository with. If unset, the file will be read at HEAD.
+    """
 
 @pulumi.input_type
 class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs:
@@ -1371,18 +1300,15 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepos
         pulumi.set(self, "commit_sha", value)
 
 
-if not MYPY:
-    class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict(TypedDict):
-        uri: pulumi.Input[_builtins.str]
-        """
-        The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
-        """
-        generation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-        """
-elif False:
-    ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict: TypeAlias = Mapping[str, Any]
+class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
+    """
+    generation: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
+    """
 
 @pulumi.input_type
 class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs:

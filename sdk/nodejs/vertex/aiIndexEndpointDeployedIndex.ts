@@ -172,28 +172,16 @@ import * as utilities from "../utilities";
  * IndexEndpointDeployedIndex can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{index_endpoint}}/deployedIndex/{{deployed_index_id}}`
- *
  * * `{{project}}/{{region}}/{{index_endpoint}}/{{deployed_index_id}}`
- *
  * * `{{region}}/{{index_endpoint}}/{{deployed_index_id}}`
- *
  * * `{{index_endpoint}}/{{deployed_index_id}}`
  *
  * When using the `pulumi import` command, IndexEndpointDeployedIndex can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default projects/{{project}}/locations/{{region}}/indexEndpoints/{{index_endpoint}}/deployedIndex/{{deployed_index_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default {{project}}/{{region}}/{{index_endpoint}}/{{deployed_index_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default {{region}}/{{index_endpoint}}/{{deployed_index_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default {{index_endpoint}}/{{deployed_index_id}}
  * ```
  */

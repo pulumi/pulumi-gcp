@@ -33,8 +33,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
@@ -95,8 +93,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
@@ -224,22 +220,14 @@ import (
 // Config can be imported using any of these accepted formats:
 //
 // * `{{project}}/{{name}}`
-//
 // * `{{project}} {{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{project}}/{{name}}
-// ```
-//
-// ```sh
-// $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default "{{project}} {{name}}"
-// ```
-//
-// ```sh
+// $ terraform import google_bigquery_data_transfer_config.default "{{project}} {{name}}"
 // $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}
 // ```
 type DataTransferConfig struct {

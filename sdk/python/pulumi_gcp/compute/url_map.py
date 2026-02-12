@@ -1786,22 +1786,14 @@ class URLMap(pulumi.CustomResource):
         UrlMap can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/urlMaps/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, UrlMap can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/uRLMap:URLMap default projects/{{project}}/global/urlMaps/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/uRLMap:URLMap default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/uRLMap:URLMap default {{name}}
         ```
 
@@ -3048,22 +3040,14 @@ class URLMap(pulumi.CustomResource):
         UrlMap can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/urlMaps/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, UrlMap can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/uRLMap:URLMap default projects/{{project}}/global/urlMaps/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/uRLMap:URLMap default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/uRLMap:URLMap default {{name}}
         ```
 

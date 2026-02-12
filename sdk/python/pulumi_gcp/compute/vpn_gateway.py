@@ -343,28 +343,16 @@ class VPNGateway(pulumi.CustomResource):
         VpnGateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, VpnGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{name}}
         ```
 
@@ -453,28 +441,16 @@ class VPNGateway(pulumi.CustomResource):
         VpnGateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, VpnGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{name}}
         ```
 

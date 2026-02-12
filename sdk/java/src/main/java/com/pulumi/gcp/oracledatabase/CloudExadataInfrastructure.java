@@ -141,22 +141,14 @@ import javax.annotation.Nullable;
  * CloudExadataInfrastructure can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}`
- * 
  * * `{{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}`
- * 
  * * `{{location}}/{{cloud_exadata_infrastructure_id}}`
  * 
  * When using the `pulumi import` command, CloudExadataInfrastructure can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{location}}/{{cloud_exadata_infrastructure_id}}
  * ```
  * 
@@ -197,9 +189,17 @@ public class CloudExadataInfrastructure extends com.pulumi.resources.CustomResou
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }

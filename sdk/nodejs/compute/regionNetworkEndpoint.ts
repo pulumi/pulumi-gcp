@@ -121,28 +121,16 @@ import * as utilities from "../utilities";
  * RegionNetworkEndpoint can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
- *
  * * `{{project}}/{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
- *
  * * `{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
- *
  * * `{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
  *
  * When using the `pulumi import` command, RegionNetworkEndpoint can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default {{project}}/{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default {{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default {{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
  * ```
  */

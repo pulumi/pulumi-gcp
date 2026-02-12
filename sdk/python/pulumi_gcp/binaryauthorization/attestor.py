@@ -275,22 +275,14 @@ class Attestor(pulumi.CustomResource):
         Attestor can be imported using any of these accepted formats:
 
         * `projects/{{project}}/attestors/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Attestor can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:binaryauthorization/attestor:Attestor default projects/{{project}}/attestors/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:binaryauthorization/attestor:Attestor default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:binaryauthorization/attestor:Attestor default {{name}}
         ```
 
@@ -401,22 +393,14 @@ class Attestor(pulumi.CustomResource):
         Attestor can be imported using any of these accepted formats:
 
         * `projects/{{project}}/attestors/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Attestor can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:binaryauthorization/attestor:Attestor default projects/{{project}}/attestors/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:binaryauthorization/attestor:Attestor default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:binaryauthorization/attestor:Attestor default {{name}}
         ```
 

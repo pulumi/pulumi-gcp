@@ -10891,6 +10891,7 @@ class ClusterNodePool(dict):
         :param 'ClusterNodePoolPlacementPolicyArgs' placement_policy: Specifies the node placement policy
         :param 'ClusterNodePoolQueuedProvisioningArgs' queued_provisioning: Specifies the configuration of queued provisioning
         :param 'ClusterNodePoolUpgradeSettingsArgs' upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+        :param _builtins.str version: The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the container_get_engine_versions data source's version_prefix field to approximate fuzzy versions in a Terraform-compatible way.
         """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
@@ -11081,6 +11082,9 @@ class ClusterNodePool(dict):
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[_builtins.str]:
+        """
+        The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the container_get_engine_versions data source's version_prefix field to approximate fuzzy versions in a Terraform-compatible way.
+        """
         return pulumi.get(self, "version")
 
 
@@ -25379,6 +25383,7 @@ class GetClusterNodePoolResult(dict):
         :param Sequence['GetClusterNodePoolPlacementPolicyArgs'] placement_policies: Specifies the node placement policy
         :param Sequence['GetClusterNodePoolQueuedProvisioningArgs'] queued_provisionings: Specifies the configuration of queued provisioning
         :param Sequence['GetClusterNodePoolUpgradeSettingArgs'] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+        :param _builtins.str version: The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the container_get_engine_versions data source's version_prefix field to approximate fuzzy versions in a Terraform-compatible way.
         """
         pulumi.set(__self__, "autoscalings", autoscalings)
         pulumi.set(__self__, "initial_node_count", initial_node_count)
@@ -25529,6 +25534,9 @@ class GetClusterNodePoolResult(dict):
     @_builtins.property
     @pulumi.getter
     def version(self) -> _builtins.str:
+        """
+        The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the container_get_engine_versions data source's version_prefix field to approximate fuzzy versions in a Terraform-compatible way.
+        """
         return pulumi.get(self, "version")
 
 

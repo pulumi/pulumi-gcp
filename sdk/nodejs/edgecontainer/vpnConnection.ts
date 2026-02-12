@@ -68,22 +68,14 @@ import * as utilities from "../utilities";
  * VpnConnection can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, VpnConnection can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{location}}/{{name}}
  * ```
  */

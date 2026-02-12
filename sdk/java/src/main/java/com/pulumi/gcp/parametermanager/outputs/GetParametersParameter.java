@@ -18,6 +18,10 @@ public final class GetParametersParameter {
      * 
      */
     private String createTime;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     private Map<String,String> effectiveLabels;
     /**
      * @return The format type of the parameter.
@@ -74,6 +78,10 @@ public final class GetParametersParameter {
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
     }

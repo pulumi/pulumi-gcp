@@ -461,6 +461,17 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
                  spoke: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A gateway advertised route is a route that a gateway spoke advertises somewhere.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about GatewayAdvertisedRoute, see:
+
+        * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes.gatewayAdvertisedRoutes)
+        * How-to Guides
+            * [QUICKSTART_TITLE](https://docs.cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ncc-gateway-overview)
+
         ## Example Usage
 
         ### Network Connectivity Gateway Advertised Route Basic
@@ -517,22 +528,14 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
         GatewayAdvertisedRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}`
-
         * `{{project}}/{{location}}/{{spoke}}/{{name}}`
-
         * `{{location}}/{{spoke}}/{{name}}`
 
         When using the `pulumi import` command, GatewayAdvertisedRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{project}}/{{location}}/{{spoke}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{location}}/{{spoke}}/{{name}}
         ```
 
@@ -561,6 +564,17 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
                  args: GatewayAdvertisedRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A gateway advertised route is a route that a gateway spoke advertises somewhere.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about GatewayAdvertisedRoute, see:
+
+        * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes.gatewayAdvertisedRoutes)
+        * How-to Guides
+            * [QUICKSTART_TITLE](https://docs.cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ncc-gateway-overview)
+
         ## Example Usage
 
         ### Network Connectivity Gateway Advertised Route Basic
@@ -617,22 +631,14 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
         GatewayAdvertisedRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}`
-
         * `{{project}}/{{location}}/{{spoke}}/{{name}}`
-
         * `{{location}}/{{spoke}}/{{name}}`
 
         When using the `pulumi import` command, GatewayAdvertisedRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{project}}/{{location}}/{{spoke}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{location}}/{{spoke}}/{{name}}
         ```
 

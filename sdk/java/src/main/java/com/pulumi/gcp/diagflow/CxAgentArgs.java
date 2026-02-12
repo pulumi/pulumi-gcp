@@ -111,9 +111,43 @@ public final class CxAgentArgs extends com.pulumi.resources.ResourceArgs {
         return this.defaultLanguageCode;
     }
 
+    /**
+     * If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+     * Otherwise, the chat engine will persist.
+     * 
+     * This virtual field addresses a critical dependency chain: `agent` &gt; `engine` &gt; `data store`. The chat engine is automatically
+     * provisioned when a data store is linked to the agent, meaning Terraform doesn&#39;t have direct control over its lifecycle as a managed
+     * resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+     * deleteChatEngineOnDestroy set to true, the data store&#39;s deletion would fail because the unmanaged chat engine would still be
+     * using it. This setting ensures that the entire dependency chain can be properly torn down.
+     * See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+     * 
+     * Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+     * or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+     * or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+     * The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
+     * 
+     */
     @Import(name="deleteChatEngineOnDestroy")
     private @Nullable Output<Boolean> deleteChatEngineOnDestroy;
 
+    /**
+     * @return If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+     * Otherwise, the chat engine will persist.
+     * 
+     * This virtual field addresses a critical dependency chain: `agent` &gt; `engine` &gt; `data store`. The chat engine is automatically
+     * provisioned when a data store is linked to the agent, meaning Terraform doesn&#39;t have direct control over its lifecycle as a managed
+     * resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+     * deleteChatEngineOnDestroy set to true, the data store&#39;s deletion would fail because the unmanaged chat engine would still be
+     * using it. This setting ensures that the entire dependency chain can be properly torn down.
+     * See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+     * 
+     * Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+     * or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+     * or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+     * The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
+     * 
+     */
     public Optional<Output<Boolean>> deleteChatEngineOnDestroy() {
         return Optional.ofNullable(this.deleteChatEngineOnDestroy);
     }
@@ -568,11 +602,49 @@ public final class CxAgentArgs extends com.pulumi.resources.ResourceArgs {
             return defaultLanguageCode(Output.of(defaultLanguageCode));
         }
 
+        /**
+         * @param deleteChatEngineOnDestroy If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+         * Otherwise, the chat engine will persist.
+         * 
+         * This virtual field addresses a critical dependency chain: `agent` &gt; `engine` &gt; `data store`. The chat engine is automatically
+         * provisioned when a data store is linked to the agent, meaning Terraform doesn&#39;t have direct control over its lifecycle as a managed
+         * resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+         * deleteChatEngineOnDestroy set to true, the data store&#39;s deletion would fail because the unmanaged chat engine would still be
+         * using it. This setting ensures that the entire dependency chain can be properly torn down.
+         * See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+         * 
+         * Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+         * or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+         * or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+         * The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteChatEngineOnDestroy(@Nullable Output<Boolean> deleteChatEngineOnDestroy) {
             $.deleteChatEngineOnDestroy = deleteChatEngineOnDestroy;
             return this;
         }
 
+        /**
+         * @param deleteChatEngineOnDestroy If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+         * Otherwise, the chat engine will persist.
+         * 
+         * This virtual field addresses a critical dependency chain: `agent` &gt; `engine` &gt; `data store`. The chat engine is automatically
+         * provisioned when a data store is linked to the agent, meaning Terraform doesn&#39;t have direct control over its lifecycle as a managed
+         * resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+         * deleteChatEngineOnDestroy set to true, the data store&#39;s deletion would fail because the unmanaged chat engine would still be
+         * using it. This setting ensures that the entire dependency chain can be properly torn down.
+         * See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+         * 
+         * Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+         * or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+         * or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+         * The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteChatEngineOnDestroy(Boolean deleteChatEngineOnDestroy) {
             return deleteChatEngineOnDestroy(Output.of(deleteChatEngineOnDestroy));
         }

@@ -106,6 +106,10 @@ def get_gateway_iam_policy(gateway: Optional[_builtins.str] = None,
                            region: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGatewayIamPolicyResult:
     """
+    Retrieves the current IAM policy data for gateway
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python
@@ -145,6 +149,10 @@ def get_gateway_iam_policy_output(gateway: Optional[pulumi.Input[_builtins.str]]
                                   region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayIamPolicyResult]:
     """
+    Retrieves the current IAM policy data for gateway
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python

@@ -10,6 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigTable
 {
     /// <summary>
+    /// Creates a Google Cloud Bigtable authorized view inside a table. For more information see
+    /// [the official documentation](https://cloud.google.com/bigtable/) and
+    /// [API](https://cloud.google.com/bigtable/docs/go/reference).
+    /// 
+    /// &gt; **Note:** It is strongly recommended to set `lifecycle { PreventDestroy = true }`
+    /// on authorized views in order to prevent accidental data loss. See
+    /// Terraform docs
+    /// for more information on lifecycle parameters.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -111,28 +120,24 @@ namespace Pulumi.Gcp.BigTable
     /// Bigtable Authorized Views can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/instances/{{instance_name}}/tables/{{table_name}}/authorizedViews/{{name}}`
-    /// 
     /// * `{{project}}/{{instance_name}}/{{table_name}}/{{name}}`
-    /// 
     /// * `{{instance_name}}/{{table_name}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Bigtable Authorized Views can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default projects/{{project}}/instances/{{instance_name}}/tables/{{table_name}}/authorizedViews/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{project}}/{{instance_name}}/{{table_name}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{instance_name}}/{{table_name}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:bigtable/authorizedView:AuthorizedView")]
     public partial class AuthorizedView : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+        /// If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<string> DeletionProtection { get; private set; } = null!;
 
@@ -215,6 +220,10 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class AuthorizedViewArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+        /// If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<string>? DeletionProtection { get; set; }
 
@@ -259,6 +268,10 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class AuthorizedViewState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+        /// If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<string>? DeletionProtection { get; set; }
 

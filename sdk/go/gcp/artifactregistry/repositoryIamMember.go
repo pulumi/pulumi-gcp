@@ -261,11 +261,8 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms:
 //
 // * projects/{{project}}/locations/{{location}}/repositories/{{repository}}
-//
 // * {{project}}/{{location}}/{{repository}}
-//
 // * {{location}}/{{repository}}
-//
 // * {{repository}}
 //
 // Any variables not passed in the import command will be taken from the provider configuration.
@@ -273,24 +270,21 @@ import (
 // Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member.
 //
 // IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-//
 // ```sh
-// $ pulumi import gcp:artifactregistry/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader user:jane@example.com"
+// $ terraform import google_artifact_registry_repository_iam_member.editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader user:jane@example.com"
 // ```
 //
 // IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-//
 // ```sh
-// $ pulumi import gcp:artifactregistry/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader"
+// $ terraform import google_artifact_registry_repository_iam_binding.editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader"
 // ```
 //
 // IAM policy imports use the identifier of the resource in question, e.g.
-//
 // ```sh
 // $ pulumi import gcp:artifactregistry/repositoryIamMember:RepositoryIamMember editor projects/{{project}}/locations/{{location}}/repositories/{{repository}}
 // ```
 //
-// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+// > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
 //	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type RepositoryIamMember struct {

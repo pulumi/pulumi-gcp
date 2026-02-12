@@ -73,16 +73,12 @@ import (
 // ManagedFolder can be imported using any of these accepted formats:
 //
 // * `{{bucket}}/managedFolders/{{name}}`
-//
 // * `{{bucket}}/{{name}}`
 //
 // When using the `pulumi import` command, ManagedFolder can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:storage/managedFolder:ManagedFolder default {{bucket}}/managedFolders/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:storage/managedFolder:ManagedFolder default {{bucket}}/{{name}}
 // ```
 type ManagedFolder struct {

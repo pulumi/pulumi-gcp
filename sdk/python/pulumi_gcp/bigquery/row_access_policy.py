@@ -424,22 +424,14 @@ class RowAccessPolicy(pulumi.CustomResource):
         RowAccessPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}/rowAccessPolicies/{{policy_id}}`
-
         * `{{project}}/{{dataset_id}}/{{table_id}}/{{policy_id}}`
-
         * `{{dataset_id}}/{{table_id}}/{{policy_id}}`
 
         When using the `pulumi import` command, RowAccessPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}/rowAccessPolicies/{{policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default {{project}}/{{dataset_id}}/{{table_id}}/{{policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default {{dataset_id}}/{{table_id}}/{{policy_id}}
         ```
 
@@ -520,22 +512,14 @@ class RowAccessPolicy(pulumi.CustomResource):
         RowAccessPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}/rowAccessPolicies/{{policy_id}}`
-
         * `{{project}}/{{dataset_id}}/{{table_id}}/{{policy_id}}`
-
         * `{{dataset_id}}/{{table_id}}/{{policy_id}}`
 
         When using the `pulumi import` command, RowAccessPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}/rowAccessPolicies/{{policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default {{project}}/{{dataset_id}}/{{table_id}}/{{policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default {{dataset_id}}/{{table_id}}/{{policy_id}}
         ```
 

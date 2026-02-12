@@ -164,22 +164,14 @@ import (
 // StandardAppVersion can be imported using any of these accepted formats:
 //
 // * `apps/{{project}}/services/{{service}}/versions/{{version_id}}`
-//
 // * `{{project}}/{{service}}/{{version_id}}`
-//
 // * `{{service}}/{{version_id}}`
 //
 // When using the `pulumi import` command, StandardAppVersion can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{project}}/{{service}}/{{version_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{service}}/{{version_id}}
 // ```
 type StandardAppVersion struct {

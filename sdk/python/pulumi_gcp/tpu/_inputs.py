@@ -43,17 +43,12 @@ __all__ = [
     'V2VmSymptomArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class V2QueuedResourceTpuArgsDict(TypedDict):
-        node_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgsDict']]]]
-        """
-        The TPU node(s) being requested.
-        Structure is documented below.
-        """
-elif False:
-    V2QueuedResourceTpuArgsDict: TypeAlias = Mapping[str, Any]
+class V2QueuedResourceTpuArgsDict(TypedDict):
+    node_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgsDict']]]]
+    """
+    The TPU node(s) being requested.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class V2QueuedResourceTpuArgs:
@@ -80,23 +75,20 @@ class V2QueuedResourceTpuArgs:
         pulumi.set(self, "node_specs", value)
 
 
-if not MYPY:
-    class V2QueuedResourceTpuNodeSpecArgsDict(TypedDict):
-        node: pulumi.Input['V2QueuedResourceTpuNodeSpecNodeArgsDict']
-        """
-        The node.
-        Structure is documented below.
-        """
-        parent: pulumi.Input[_builtins.str]
-        """
-        The parent resource name.
-        """
-        node_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unqualified node identifier used to identify the node in the project once provisioned.
-        """
-elif False:
-    V2QueuedResourceTpuNodeSpecArgsDict: TypeAlias = Mapping[str, Any]
+class V2QueuedResourceTpuNodeSpecArgsDict(TypedDict):
+    node: pulumi.Input['V2QueuedResourceTpuNodeSpecNodeArgsDict']
+    """
+    The node.
+    Structure is documented below.
+    """
+    parent: pulumi.Input[_builtins.str]
+    """
+    The parent resource name.
+    """
+    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unqualified node identifier used to identify the node in the project once provisioned.
+    """
 
 @pulumi.input_type
 class V2QueuedResourceTpuNodeSpecArgs:
@@ -153,27 +145,24 @@ class V2QueuedResourceTpuNodeSpecArgs:
         pulumi.set(self, "node_id", value)
 
 
-if not MYPY:
-    class V2QueuedResourceTpuNodeSpecNodeArgsDict(TypedDict):
-        runtime_version: pulumi.Input[_builtins.str]
-        """
-        Runtime version for the TPU.
-        """
-        accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Text description of the TPU.
-        """
-        network_config: NotRequired[pulumi.Input['V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgsDict']]
-        """
-        Network configurations for the TPU node.
-        Structure is documented below.
-        """
-elif False:
-    V2QueuedResourceTpuNodeSpecNodeArgsDict: TypeAlias = Mapping[str, Any]
+class V2QueuedResourceTpuNodeSpecNodeArgsDict(TypedDict):
+    runtime_version: pulumi.Input[_builtins.str]
+    """
+    Runtime version for the TPU.
+    """
+    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Text description of the TPU.
+    """
+    network_config: NotRequired[pulumi.Input['V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgsDict']]
+    """
+    Network configurations for the TPU node.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class V2QueuedResourceTpuNodeSpecNodeArgs:
@@ -247,34 +236,31 @@ class V2QueuedResourceTpuNodeSpecNodeArgs:
         pulumi.set(self, "network_config", value)
 
 
-if not MYPY:
-    class V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgsDict(TypedDict):
-        can_ip_forward: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allows the TPU node to send and receive packets with non-matching destination or source
-        IPs. This is required if you plan to use the TPU workers to forward routes.
-        """
-        enable_external_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates that external IP addresses would be associated with the TPU workers. If set to
-        false, the specified subnetwork or network should have Private Google Access enabled.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-        network. If none is provided, "default" will be used.
-        """
-        queue_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies networking queue count for TPU VM instance's network interface.
-        """
-        subnetwork: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-        Engine subnetwork. If none is provided, "default" will be used.
-        """
-elif False:
-    V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgsDict(TypedDict):
+    can_ip_forward: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allows the TPU node to send and receive packets with non-matching destination or source
+    IPs. This is required if you plan to use the TPU workers to forward routes.
+    """
+    enable_external_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates that external IP addresses would be associated with the TPU workers. If set to
+    false, the specified subnetwork or network should have Private Google Access enabled.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+    network. If none is provided, "default" will be used.
+    """
+    queue_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies networking queue count for TPU VM instance's network interface.
+    """
+    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+    Engine subnetwork. If none is provided, "default" will be used.
+    """
 
 @pulumi.input_type
 class V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs:
@@ -371,18 +357,15 @@ class V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs:
         pulumi.set(self, "subnetwork", value)
 
 
-if not MYPY:
-    class V2VmAcceleratorConfigArgsDict(TypedDict):
-        topology: pulumi.Input[_builtins.str]
-        """
-        Topology of TPU in chips.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
-        """
-elif False:
-    V2VmAcceleratorConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V2VmAcceleratorConfigArgsDict(TypedDict):
+    topology: pulumi.Input[_builtins.str]
+    """
+    Topology of TPU in chips.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
+    """
 
 @pulumi.input_type
 class V2VmAcceleratorConfigArgs:
@@ -421,22 +404,19 @@ class V2VmAcceleratorConfigArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class V2VmDataDiskArgsDict(TypedDict):
-        source_disk: pulumi.Input[_builtins.str]
-        """
-        Specifies the full path to an existing disk. For example:
-        "projects/my-project/zones/us-central1-c/disks/my-disk".
-        """
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mode in which to attach this disk. If not specified, the default is READ_WRITE
-        mode. Only applicable to dataDisks.
-        Default value is `READ_WRITE`.
-        Possible values are: `READ_WRITE`, `READ_ONLY`.
-        """
-elif False:
-    V2VmDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class V2VmDataDiskArgsDict(TypedDict):
+    source_disk: pulumi.Input[_builtins.str]
+    """
+    Specifies the full path to an existing disk. For example:
+    "projects/my-project/zones/us-central1-c/disks/my-disk".
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mode in which to attach this disk. If not specified, the default is READ_WRITE
+    mode. Only applicable to dataDisks.
+    Default value is `READ_WRITE`.
+    Possible values are: `READ_WRITE`, `READ_ONLY`.
+    """
 
 @pulumi.input_type
 class V2VmDataDiskArgs:
@@ -484,34 +464,31 @@ class V2VmDataDiskArgs:
         pulumi.set(self, "mode", value)
 
 
-if not MYPY:
-    class V2VmNetworkConfigArgsDict(TypedDict):
-        can_ip_forward: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allows the TPU node to send and receive packets with non-matching destination or source
-        IPs. This is required if you plan to use the TPU workers to forward routes.
-        """
-        enable_external_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates that external IP addresses would be associated with the TPU workers. If set to
-        false, the specified subnetwork or network should have Private Google Access enabled.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-        network. If none is provided, "default" will be used.
-        """
-        queue_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies networking queue count for TPU VM instance's network interface.
-        """
-        subnetwork: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-        Engine subnetwork. If none is provided, "default" will be used.
-        """
-elif False:
-    V2VmNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V2VmNetworkConfigArgsDict(TypedDict):
+    can_ip_forward: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allows the TPU node to send and receive packets with non-matching destination or source
+    IPs. This is required if you plan to use the TPU workers to forward routes.
+    """
+    enable_external_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates that external IP addresses would be associated with the TPU workers. If set to
+    false, the specified subnetwork or network should have Private Google Access enabled.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+    network. If none is provided, "default" will be used.
+    """
+    queue_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies networking queue count for TPU VM instance's network interface.
+    """
+    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+    Engine subnetwork. If none is provided, "default" will be used.
+    """
 
 @pulumi.input_type
 class V2VmNetworkConfigArgs:
@@ -608,26 +585,23 @@ class V2VmNetworkConfigArgs:
         pulumi.set(self, "subnetwork", value)
 
 
-if not MYPY:
-    class V2VmNetworkEndpointArgsDict(TypedDict):
-        access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgsDict']]]]
-        """
-        (Output)
-        The access config for the TPU worker.
-        Structure is documented below.
-        """
-        ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The internal IP address of this network endpoint.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The port of this network endpoint.
-        """
-elif False:
-    V2VmNetworkEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class V2VmNetworkEndpointArgsDict(TypedDict):
+    access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgsDict']]]]
+    """
+    (Output)
+    The access config for the TPU worker.
+    Structure is documented below.
+    """
+    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The internal IP address of this network endpoint.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The port of this network endpoint.
+    """
 
 @pulumi.input_type
 class V2VmNetworkEndpointArgs:
@@ -692,15 +666,12 @@ class V2VmNetworkEndpointArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class V2VmNetworkEndpointAccessConfigArgsDict(TypedDict):
-        external_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        An external IP address associated with the TPU worker.
-        """
-elif False:
-    V2VmNetworkEndpointAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V2VmNetworkEndpointAccessConfigArgsDict(TypedDict):
+    external_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    An external IP address associated with the TPU worker.
+    """
 
 @pulumi.input_type
 class V2VmNetworkEndpointAccessConfigArgs:
@@ -727,22 +698,19 @@ class V2VmNetworkEndpointAccessConfigArgs:
         pulumi.set(self, "external_ip", value)
 
 
-if not MYPY:
-    class V2VmSchedulingConfigArgsDict(TypedDict):
-        preemptible: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether the node is preemptible.
-        """
-        reserved: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the node is created under a reservation.
-        """
-        spot: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Defines whether the node is Spot VM.
-        """
-elif False:
-    V2VmSchedulingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V2VmSchedulingConfigArgsDict(TypedDict):
+    preemptible: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether the node is preemptible.
+    """
+    reserved: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the node is created under a reservation.
+    """
+    spot: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Defines whether the node is Spot VM.
+    """
 
 @pulumi.input_type
 class V2VmSchedulingConfigArgs:
@@ -799,19 +767,16 @@ class V2VmSchedulingConfigArgs:
         pulumi.set(self, "spot", value)
 
 
-if not MYPY:
-    class V2VmServiceAccountArgsDict(TypedDict):
-        email: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Email address of the service account. If empty, default Compute service account will be used.
-        """
-        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of scopes to be made available for this service account. If empty, access to all
-        Cloud APIs will be allowed.
-        """
-elif False:
-    V2VmServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+class V2VmServiceAccountArgsDict(TypedDict):
+    email: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Email address of the service account. If empty, default Compute service account will be used.
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of scopes to be made available for this service account. If empty, access to all
+    Cloud APIs will be allowed.
+    """
 
 @pulumi.input_type
 class V2VmServiceAccountArgs:
@@ -854,14 +819,11 @@ class V2VmServiceAccountArgs:
         pulumi.set(self, "scopes", value)
 
 
-if not MYPY:
-    class V2VmShieldedInstanceConfigArgsDict(TypedDict):
-        enable_secure_boot: pulumi.Input[_builtins.bool]
-        """
-        Defines whether the instance has Secure Boot enabled.
-        """
-elif False:
-    V2VmShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V2VmShieldedInstanceConfigArgsDict(TypedDict):
+    enable_secure_boot: pulumi.Input[_builtins.bool]
+    """
+    Defines whether the instance has Secure Boot enabled.
+    """
 
 @pulumi.input_type
 class V2VmShieldedInstanceConfigArgs:
@@ -885,30 +847,27 @@ class V2VmShieldedInstanceConfigArgs:
         pulumi.set(self, "enable_secure_boot", value)
 
 
-if not MYPY:
-    class V2VmSymptomArgsDict(TypedDict):
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Timestamp when the Symptom is created.
-        """
-        details: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Detailed information of the current Symptom.
-        """
-        symptom_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Type of the Symptom.
-        """
-        worker_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A string used to uniquely distinguish a worker within a TPU node.
-        """
-elif False:
-    V2VmSymptomArgsDict: TypeAlias = Mapping[str, Any]
+class V2VmSymptomArgsDict(TypedDict):
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Timestamp when the Symptom is created.
+    """
+    details: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Detailed information of the current Symptom.
+    """
+    symptom_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Type of the Symptom.
+    """
+    worker_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A string used to uniquely distinguish a worker within a TPU node.
+    """
 
 @pulumi.input_type
 class V2VmSymptomArgs:

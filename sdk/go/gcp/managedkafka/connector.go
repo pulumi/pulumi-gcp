@@ -154,22 +154,14 @@ import (
 // Connector can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster}}/connectors/{{connector_id}}`
-//
 // * `{{project}}/{{location}}/{{connect_cluster}}/{{connector_id}}`
-//
 // * `{{location}}/{{connect_cluster}}/{{connector_id}}`
 //
 // When using the `pulumi import` command, Connector can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:managedkafka/connector:Connector default projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster}}/connectors/{{connector_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:managedkafka/connector:Connector default {{project}}/{{location}}/{{connect_cluster}}/{{connector_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:managedkafka/connector:Connector default {{location}}/{{connect_cluster}}/{{connector_id}}
 // ```
 type Connector struct {

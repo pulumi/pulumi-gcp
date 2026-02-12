@@ -161,22 +161,14 @@ import * as utilities from "../utilities";
  * InsightsConfig can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}`
- *
  * * `{{project}}/{{location}}/{{insights_config_id}}`
- *
  * * `{{location}}/{{insights_config_id}}`
  *
  * When using the `pulumi import` command, InsightsConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{project}}/{{location}}/{{insights_config_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
  * ```
  */
@@ -230,6 +222,9 @@ export class InsightsConfig extends pulumi.CustomResource {
      * [Output only] Create timestamp
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -392,6 +387,9 @@ export interface InsightsConfigState {
      * [Output only] Create timestamp
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

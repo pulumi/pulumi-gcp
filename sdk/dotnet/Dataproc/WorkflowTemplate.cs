@@ -106,22 +106,14 @@ namespace Pulumi.Gcp.Dataproc
     /// WorkflowTemplate can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, WorkflowTemplate can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
     /// ```
     /// </summary>
@@ -140,6 +132,9 @@ namespace Pulumi.Gcp.Dataproc
         [Output("dagTimeout")]
         public Output<string?> DagTimeout { get; private set; } = null!;
 
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
@@ -366,6 +361,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveLabels
         {
             get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());

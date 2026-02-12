@@ -232,22 +232,14 @@ import (
 // Automation can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}`
-//
 // * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}`
-//
 // * `{{location}}/{{delivery_pipeline}}/{{name}}`
 //
 // When using the `pulumi import` command, Automation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:clouddeploy/automation:Automation default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:clouddeploy/automation:Automation default {{project}}/{{location}}/{{delivery_pipeline}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:clouddeploy/automation:Automation default {{location}}/{{delivery_pipeline}}/{{name}}
 // ```
 type Automation struct {
@@ -262,7 +254,8 @@ type Automation struct {
 	// The deliveryPipeline for the resource
 	DeliveryPipeline pulumi.StringOutput `pulumi:"deliveryPipeline"`
 	// Optional. Description of the `Automation`. Max length is 255 characters.
-	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -357,7 +350,8 @@ type automationState struct {
 	// The deliveryPipeline for the resource
 	DeliveryPipeline *string `pulumi:"deliveryPipeline"`
 	// Optional. Description of the `Automation`. Max length is 255 characters.
-	Description          *string           `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -403,7 +397,8 @@ type AutomationState struct {
 	// The deliveryPipeline for the resource
 	DeliveryPipeline pulumi.StringPtrInput
 	// Optional. Description of the `Automation`. Max length is 255 characters.
-	Description          pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -617,6 +612,7 @@ func (o AutomationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o AutomationOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

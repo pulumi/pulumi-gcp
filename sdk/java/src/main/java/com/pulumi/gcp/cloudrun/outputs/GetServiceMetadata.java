@@ -12,8 +12,46 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceMetadata {
+    /**
+     * @return Annotations is a key value map stored with a resource that
+     * may be set by external tools to store and retrieve arbitrary metadata.
+     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+     * 
+     * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+     * If terraform plan shows a diff where a server-side annotation is added, you can add it to your config
+     * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+     * 
+     * Annotations with &#39;run.googleapis.com/&#39; and &#39;autoscaling.knative.dev&#39; are restricted. Use the following annotation
+     * keys to configure features on a Service:
+     * 
+     * - &#39;run.googleapis.com/binary-authorization-breakglass&#39; sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
+     * - &#39;run.googleapis.com/binary-authorization&#39; sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
+     * - &#39;run.googleapis.com/client-name&#39; sets the client name calling the Cloud Run API.
+     * - &#39;run.googleapis.com/custom-audiences&#39; sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
+     *   that can be used in the audience field of ID token for authenticated requests.
+     * - &#39;run.googleapis.com/description&#39; sets a user defined description for the Service.
+     * - &#39;run.googleapis.com/ingress&#39; sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+     *   for the Service. For example, &#39;&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;&#39;.
+     * - &#39;run.googleapis.com/launch-stage&#39; sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
+     *   when a preview feature is used. For example, &#39;&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;&#39;
+     * - &#39;run.googleapis.com/minScale&#39; sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
+     * - &#39;run.googleapis.com/scalingMode&#39; sets the type of scaling mode for the service. The supported values for scaling mode are &#34;manual&#34; and &#34;automatic&#34;. If not provided, it defaults to &#34;automatic&#34;.
+     * - &#39;run.googleapis.com/manualInstanceCount&#39; sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field &#39;effective_annotations&#39; for all of the annotations present on the resource.
+     * 
+     */
     private Map<String,String> annotations;
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     private Map<String,String> effectiveAnnotations;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     private Map<String,String> effectiveLabels;
     /**
      * @return A sequence number representing a specific generation of the desired state.
@@ -64,12 +102,50 @@ public final class GetServiceMetadata {
     private String uid;
 
     private GetServiceMetadata() {}
+    /**
+     * @return Annotations is a key value map stored with a resource that
+     * may be set by external tools to store and retrieve arbitrary metadata.
+     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+     * 
+     * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+     * If terraform plan shows a diff where a server-side annotation is added, you can add it to your config
+     * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+     * 
+     * Annotations with &#39;run.googleapis.com/&#39; and &#39;autoscaling.knative.dev&#39; are restricted. Use the following annotation
+     * keys to configure features on a Service:
+     * 
+     * - &#39;run.googleapis.com/binary-authorization-breakglass&#39; sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
+     * - &#39;run.googleapis.com/binary-authorization&#39; sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
+     * - &#39;run.googleapis.com/client-name&#39; sets the client name calling the Cloud Run API.
+     * - &#39;run.googleapis.com/custom-audiences&#39; sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
+     *   that can be used in the audience field of ID token for authenticated requests.
+     * - &#39;run.googleapis.com/description&#39; sets a user defined description for the Service.
+     * - &#39;run.googleapis.com/ingress&#39; sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+     *   for the Service. For example, &#39;&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;&#39;.
+     * - &#39;run.googleapis.com/launch-stage&#39; sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
+     *   when a preview feature is used. For example, &#39;&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;&#39;
+     * - &#39;run.googleapis.com/minScale&#39; sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
+     * - &#39;run.googleapis.com/scalingMode&#39; sets the type of scaling mode for the service. The supported values for scaling mode are &#34;manual&#34; and &#34;automatic&#34;. If not provided, it defaults to &#34;automatic&#34;.
+     * - &#39;run.googleapis.com/manualInstanceCount&#39; sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field &#39;effective_annotations&#39; for all of the annotations present on the resource.
+     * 
+     */
     public Map<String,String> annotations() {
         return this.annotations;
     }
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
     }

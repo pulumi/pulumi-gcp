@@ -18,6 +18,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A policy binding to a folder. This is a Terraform resource, and maps to a policy binding resource in GCP.
+ * 
+ * To get more information about FoldersPolicyBinding, see:
+ * 
+ * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/folders.locations.policyBindings)
+ * * How-to Guides
+ *     * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+ * 
  * ## Example Usage
  * 
  * ### Iam Folders Policy Binding
@@ -95,16 +103,12 @@ import javax.annotation.Nullable;
  * FoldersPolicyBinding can be imported using any of these accepted formats:
  * 
  * * `folders/{{folder}}/locations/{{location}}/policyBindings/{{policy_binding_id}}`
- * 
  * * `{{folder}}/{{location}}/{{policy_binding_id}}`
  * 
  * When using the `pulumi import` command, FoldersPolicyBinding can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:iam/foldersPolicyBinding:FoldersPolicyBinding default folders/{{folder}}/locations/{{location}}/policyBindings/{{policy_binding_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:iam/foldersPolicyBinding:FoldersPolicyBinding default {{folder}}/{{location}}/{{policy_binding_id}}
  * ```
  * 
@@ -219,9 +223,17 @@ public class FoldersPolicyBinding extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

@@ -476,22 +476,14 @@ class AppHostingTraffic(pulumi.CustomResource):
         Traffic can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/traffic`
-
         * `{{project}}/{{location}}/{{backend}}`
-
         * `{{location}}/{{backend}}`
 
         When using the `pulumi import` command, Traffic can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default projects/{{project}}/locations/{{location}}/backends/{{backend}}/traffic
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default {{project}}/{{location}}/{{backend}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default {{location}}/{{backend}}
         ```
 
@@ -644,22 +636,14 @@ class AppHostingTraffic(pulumi.CustomResource):
         Traffic can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/traffic`
-
         * `{{project}}/{{location}}/{{backend}}`
-
         * `{{location}}/{{backend}}`
 
         When using the `pulumi import` command, Traffic can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default projects/{{project}}/locations/{{location}}/backends/{{backend}}/traffic
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default {{project}}/{{location}}/{{backend}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default {{location}}/{{backend}}
         ```
 

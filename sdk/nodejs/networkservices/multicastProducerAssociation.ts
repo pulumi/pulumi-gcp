@@ -57,22 +57,14 @@ import * as utilities from "../utilities";
  * MulticastProducerAssociation can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/multicastProducerAssociations/{{multicast_producer_association_id}}`
- *
  * * `{{project}}/{{location}}/{{multicast_producer_association_id}}`
- *
  * * `{{location}}/{{multicast_producer_association_id}}`
  *
  * When using the `pulumi import` command, MulticastProducerAssociation can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default projects/{{project}}/locations/{{location}}/multicastProducerAssociations/{{multicast_producer_association_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default {{project}}/{{location}}/{{multicast_producer_association_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default {{location}}/{{multicast_producer_association_id}}
  * ```
  */

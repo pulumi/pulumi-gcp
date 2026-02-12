@@ -1175,28 +1175,16 @@ namespace Pulumi.Gcp.Compute
     /// ForwardingRule can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{name}}`
-    /// 
     /// * `{{region}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/forwardingRule:ForwardingRule default projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{project}}/{{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{name}}
     /// ```
     /// </summary>
@@ -1519,6 +1507,9 @@ namespace Pulumi.Gcp.Compute
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
+        /// <summary>
+        /// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+        /// </summary>
         [Output("recreateClosedPsc")]
         public Output<bool?> RecreateClosedPsc { get; private set; } = null!;
 
@@ -1923,6 +1914,9 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+        /// </summary>
         [Input("recreateClosedPsc")]
         public Input<bool>? RecreateClosedPsc { get; set; }
 
@@ -2347,6 +2341,9 @@ namespace Pulumi.Gcp.Compute
             }
         }
 
+        /// <summary>
+        /// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+        /// </summary>
         [Input("recreateClosedPsc")]
         public Input<bool>? RecreateClosedPsc { get; set; }
 

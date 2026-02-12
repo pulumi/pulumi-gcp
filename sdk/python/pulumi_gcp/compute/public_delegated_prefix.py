@@ -584,28 +584,16 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         PublicDelegatedPrefix can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, PublicDelegatedPrefix can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{name}}
         ```
 
@@ -755,28 +743,16 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         PublicDelegatedPrefix can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, PublicDelegatedPrefix can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{name}}
         ```
 

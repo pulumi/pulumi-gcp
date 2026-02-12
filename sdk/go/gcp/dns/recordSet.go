@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/docs/records/) and
+// [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
+//
+// > **Note:** The provider treats this resource as an authoritative record set. This means existing records (including the default records) for the given type will be overwritten when you create this resource in Terraform. In addition, the Google Cloud DNS API requires NS and SOA records to be present at all times, so Terraform will not actually remove NS or SOA records on the root of the zone during destroy but will report that it did.
+//
 // ## Example Usage
 //
 // ### Binding a DNS name to the ephemeral IP of a new instance:
@@ -265,8 +270,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -485,22 +488,14 @@ import (
 // DNS record sets can be imported using either of these accepted formats:
 //
 // * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
-//
 // * `{{project}}/{{zone}}/{{name}}/{{type}}`
-//
 // * `{{zone}}/{{name}}/{{type}}`
 //
 // When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{zone}}/{{name}}/{{type}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dns/recordSet:RecordSet default {{zone}}/{{name}}/{{type}}
 // ```
 //
@@ -520,7 +515,9 @@ type RecordSet struct {
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
 	// Structure is documented below.
 	RoutingPolicy RecordSetRoutingPolicyPtrOutput `pulumi:"routingPolicy"`
-	Rrdatas       pulumi.StringArrayOutput        `pulumi:"rrdatas"`
+	// The string data for the records in this record set
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
+	Rrdatas pulumi.StringArrayOutput `pulumi:"rrdatas"`
 	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
 	// The DNS record set type.
@@ -580,7 +577,9 @@ type recordSetState struct {
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
 	// Structure is documented below.
 	RoutingPolicy *RecordSetRoutingPolicy `pulumi:"routingPolicy"`
-	Rrdatas       []string                `pulumi:"rrdatas"`
+	// The string data for the records in this record set
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
+	Rrdatas []string `pulumi:"rrdatas"`
 	// The time-to-live of this record set (seconds).
 	Ttl *int `pulumi:"ttl"`
 	// The DNS record set type.
@@ -602,7 +601,9 @@ type RecordSetState struct {
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
 	// Structure is documented below.
 	RoutingPolicy RecordSetRoutingPolicyPtrInput
-	Rrdatas       pulumi.StringArrayInput
+	// The string data for the records in this record set
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
+	Rrdatas pulumi.StringArrayInput
 	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrInput
 	// The DNS record set type.
@@ -628,7 +629,9 @@ type recordSetArgs struct {
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
 	// Structure is documented below.
 	RoutingPolicy *RecordSetRoutingPolicy `pulumi:"routingPolicy"`
-	Rrdatas       []string                `pulumi:"rrdatas"`
+	// The string data for the records in this record set
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
+	Rrdatas []string `pulumi:"rrdatas"`
 	// The time-to-live of this record set (seconds).
 	Ttl *int `pulumi:"ttl"`
 	// The DNS record set type.
@@ -651,7 +654,9 @@ type RecordSetArgs struct {
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
 	// Structure is documented below.
 	RoutingPolicy RecordSetRoutingPolicyPtrInput
-	Rrdatas       pulumi.StringArrayInput
+	// The string data for the records in this record set
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
+	Rrdatas pulumi.StringArrayInput
 	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrInput
 	// The DNS record set type.
@@ -771,6 +776,8 @@ func (o RecordSetOutput) RoutingPolicy() RecordSetRoutingPolicyPtrOutput {
 	return o.ApplyT(func(v *RecordSet) RecordSetRoutingPolicyPtrOutput { return v.RoutingPolicy }).(RecordSetRoutingPolicyPtrOutput)
 }
 
+// The string data for the records in this record set
+// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
 func (o RecordSetOutput) Rrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringArrayOutput { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }

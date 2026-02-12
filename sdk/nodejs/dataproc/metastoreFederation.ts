@@ -78,22 +78,14 @@ import * as utilities from "../utilities";
  * Federation can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}`
- *
  * * `{{project}}/{{location}}/{{federation_id}}`
- *
  * * `{{location}}/{{federation_id}}`
  *
  * When using the `pulumi import` command, Federation can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{project}}/{{location}}/{{federation_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{location}}/{{federation_id}}
  * ```
  */
@@ -134,6 +126,11 @@ export class MetastoreFederation extends pulumi.CustomResource {
      * Output only. The time when the metastore federation was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the federation. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the federation will fail.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -279,6 +276,11 @@ export interface MetastoreFederationState {
      * Output only. The time when the metastore federation was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the federation. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the federation will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -355,6 +357,11 @@ export interface MetastoreFederationArgs {
      * Structure is documented below.
      */
     backendMetastores: pulumi.Input<pulumi.Input<inputs.dataproc.MetastoreFederationBackendMetastore>[]>;
+    /**
+     * Whether Terraform will be prevented from destroying the federation. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the federation will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),

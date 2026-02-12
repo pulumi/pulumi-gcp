@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns
 {
     /// <summary>
+    /// Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/docs/records/) and
+    /// [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
+    /// 
+    /// &gt; **Note:** The provider treats this resource as an authoritative record set. This means existing records (including the default records) for the given type will be overwritten when you create this resource in Terraform. In addition, the Google Cloud DNS API requires NS and SOA records to be present at all times, so Terraform will not actually remove NS or SOA records on the root of the zone during destroy but will report that it did.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Binding a DNS name to the ephemeral IP of a new instance:
@@ -411,22 +416,14 @@ namespace Pulumi.Gcp.Dns
     /// DNS record sets can be imported using either of these accepted formats:
     /// 
     /// * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
-    /// 
     /// * `{{project}}/{{zone}}/{{name}}/{{type}}`
-    /// 
     /// * `{{zone}}/{{name}}/{{type}}`
     /// 
     /// When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{zone}}/{{name}}/{{type}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dns/recordSet:RecordSet default {{zone}}/{{name}}/{{type}}
     /// ```
     /// 
@@ -463,6 +460,10 @@ namespace Pulumi.Gcp.Dns
         [Output("routingPolicy")]
         public Output<Outputs.RecordSetRoutingPolicy?> RoutingPolicy { get; private set; } = null!;
 
+        /// <summary>
+        /// The string data for the records in this record set
+        /// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
+        /// </summary>
         [Output("rrdatas")]
         public Output<ImmutableArray<string>> Rrdatas { get; private set; } = null!;
 
@@ -556,6 +557,11 @@ namespace Pulumi.Gcp.Dns
 
         [Input("rrdatas")]
         private InputList<string>? _rrdatas;
+
+        /// <summary>
+        /// The string data for the records in this record set
+        /// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
+        /// </summary>
         public InputList<string> Rrdatas
         {
             get => _rrdatas ?? (_rrdatas = new InputList<string>());
@@ -614,6 +620,11 @@ namespace Pulumi.Gcp.Dns
 
         [Input("rrdatas")]
         private InputList<string>? _rrdatas;
+
+        /// <summary>
+        /// The string data for the records in this record set
+        /// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
+        /// </summary>
         public InputList<string> Rrdatas
         {
             get => _rrdatas ?? (_rrdatas = new InputList<string>());

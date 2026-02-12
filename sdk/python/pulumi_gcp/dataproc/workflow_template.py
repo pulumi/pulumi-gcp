@@ -214,6 +214,7 @@ class _WorkflowTemplateState:
         Input properties used for looking up and filtering WorkflowTemplate resources.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time template was created.
         :param pulumi.Input[_builtins.str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input['WorkflowTemplateEncryptionConfigArgs'] encryption_config: Optional. The encryption configuration for the workflow template.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
@@ -288,6 +289,9 @@ class _WorkflowTemplateState:
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
@@ -518,22 +522,14 @@ class WorkflowTemplate(pulumi.CustomResource):
         WorkflowTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, WorkflowTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
         ```
 
@@ -629,22 +625,14 @@ class WorkflowTemplate(pulumi.CustomResource):
         WorkflowTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, WorkflowTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
         ```
 
@@ -737,6 +725,7 @@ class WorkflowTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time template was created.
         :param pulumi.Input[_builtins.str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']] encryption_config: Optional. The encryption configuration for the workflow template.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
@@ -791,6 +780,9 @@ class WorkflowTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property

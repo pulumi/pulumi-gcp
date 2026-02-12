@@ -146,16 +146,12 @@ import javax.annotation.Nullable;
  * OrganizationCustomModule can be imported using any of these accepted formats:
  * 
  * * `organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}`
- * 
  * * `{{organization}}/{{name}}`
  * 
  * When using the `pulumi import` command, OrganizationCustomModule can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:securitycenter/organizationCustomModule:OrganizationCustomModule default organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:securitycenter/organizationCustomModule:OrganizationCustomModule default {{organization}}/{{name}}
  * ```
  * 

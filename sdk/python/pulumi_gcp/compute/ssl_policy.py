@@ -459,22 +459,14 @@ class SSLPolicy(pulumi.CustomResource):
         SslPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/sslPolicies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, SslPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{name}}
         ```
 
@@ -562,22 +554,14 @@ class SSLPolicy(pulumi.CustomResource):
         SslPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/sslPolicies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, SslPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{name}}
         ```
 

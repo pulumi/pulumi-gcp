@@ -200,22 +200,14 @@ import * as utilities from "../utilities";
  * Database can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/databases/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firestore/database:Database default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firestore/database:Database default {{name}}
  * ```
  */
@@ -273,7 +265,21 @@ export class Database extends pulumi.CustomResource {
      * Possible values are: `STANDARD`, `ENTERPRISE`.
      */
     declare public readonly databaseEdition: pulumi.Output<string>;
+    /**
+     * State of delete protection for the database.
+     * When delete protection is enabled, this database cannot be deleted.
+     * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+     * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     */
     declare public readonly deleteProtectionState: pulumi.Output<string>;
+    /**
+     * Deletion behavior for this database.
+     * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+     * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `ABANDON`.
+     * See also `deleteProtection`.
+     */
     declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
@@ -450,7 +456,21 @@ export interface DatabaseState {
      * Possible values are: `STANDARD`, `ENTERPRISE`.
      */
     databaseEdition?: pulumi.Input<string>;
+    /**
+     * State of delete protection for the database.
+     * When delete protection is enabled, this database cannot be deleted.
+     * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+     * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     */
     deleteProtectionState?: pulumi.Input<string>;
+    /**
+     * Deletion behavior for this database.
+     * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+     * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `ABANDON`.
+     * See also `deleteProtection`.
+     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
@@ -559,7 +579,21 @@ export interface DatabaseArgs {
      * Possible values are: `STANDARD`, `ENTERPRISE`.
      */
     databaseEdition?: pulumi.Input<string>;
+    /**
+     * State of delete protection for the database.
+     * When delete protection is enabled, this database cannot be deleted.
+     * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+     * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     */
     deleteProtectionState?: pulumi.Input<string>;
+    /**
+     * Deletion behavior for this database.
+     * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+     * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `ABANDON`.
+     * See also `deleteProtection`.
+     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The location of the database. Available locations are listed at

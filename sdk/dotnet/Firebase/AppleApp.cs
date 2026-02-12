@@ -10,6 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
+    /// A Google Cloud Firebase Apple application instance
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about AppleApp, see:
+    /// 
+    /// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://firebase.google.com/docs/ios/setup)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Firebase Apple App Basic
@@ -76,34 +87,18 @@ namespace Pulumi.Gcp.Firebase
     /// AppleApp can be imported using any of these accepted formats:
     /// 
     /// * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
-    /// 
     /// * `projects/{{project}}/iosApps/{{app_id}}`
-    /// 
     /// * `{{project}}/{{project}}/{{app_id}}`
-    /// 
     /// * `iosApps/{{app_id}}`
-    /// 
     /// * `{{app_id}}`
     /// 
     /// When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    /// $ pulumi import gcp:firebase/appleApp:AppleApp default "{{project}} projects/{{project}}/iosApps/{{app_id}}"
-    /// ```
-    /// 
-    /// ```sh
+    /// $ terraform import google_firebase_apple_app.default "{{project}} projects/{{project}}/iosApps/{{app_id}}"
     /// $ pulumi import gcp:firebase/appleApp:AppleApp default projects/{{project}}/iosApps/{{app_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}}/{{project}}/{{app_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/appleApp:AppleApp default iosApps/{{app_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/appleApp:AppleApp default {{app_id}}
     /// ```
     /// </summary>
@@ -137,6 +132,11 @@ namespace Pulumi.Gcp.Firebase
         [Output("bundleId")]
         public Output<string> BundleId { get; private set; } = null!;
 
+        /// <summary>
+        /// (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
+        /// rather than deleted upon `terraform destroy`. This is useful because the Apple may be
+        /// serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
@@ -232,6 +232,11 @@ namespace Pulumi.Gcp.Firebase
         [Input("bundleId", required: true)]
         public Input<string> BundleId { get; set; } = null!;
 
+        /// <summary>
+        /// (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
+        /// rather than deleted upon `terraform destroy`. This is useful because the Apple may be
+        /// serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
@@ -289,6 +294,11 @@ namespace Pulumi.Gcp.Firebase
         [Input("bundleId")]
         public Input<string>? BundleId { get; set; }
 
+        /// <summary>
+        /// (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
+        /// rather than deleted upon `terraform destroy`. This is useful because the Apple may be
+        /// serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 

@@ -113,28 +113,16 @@ import (
 // AppConnector can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/appConnectors/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, AppConnector can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:beyondcorp/appConnector:AppConnector default projects/{{project}}/locations/{{region}}/appConnectors/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:beyondcorp/appConnector:AppConnector default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:beyondcorp/appConnector:AppConnector default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:beyondcorp/appConnector:AppConnector default {{name}}
 // ```
 type AppConnector struct {

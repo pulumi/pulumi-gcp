@@ -7,31 +7,93 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * Three different resources help you manage your IAM policy for Healthcare HL7v2 store. Each of these resources serves a different use case:
+ *
+ * * `gcp.healthcare.Hl7StoreIamPolicy`: Authoritative. Sets the IAM policy for the HL7v2 store and replaces any existing policy already attached.
+ * * `gcp.healthcare.Hl7StoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the HL7v2 store are preserved.
+ * * `gcp.healthcare.Hl7StoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the HL7v2 store are preserved.
+ *
+ * > **Note:** `gcp.healthcare.Hl7StoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.Hl7StoreIamBinding` and `gcp.healthcare.Hl7StoreIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## gcp.healthcare.Hl7StoreIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamPolicy("hl7_v2_store", {
+ *     hl7V2StoreId: "your-hl7-v2-store-id",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## gcp.healthcare.Hl7StoreIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamBinding("hl7_v2_store", {
+ *     hl7V2StoreId: "your-hl7-v2-store-id",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## gcp.healthcare.Hl7StoreIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamMember("hl7_v2_store", {
+ *     hl7V2StoreId: "your-hl7-v2-store-id",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * ## gcp.healthcare.Hl7StoreIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamBinding("hl7_v2_store", {
+ *     hl7V2StoreId: "your-hl7-v2-store-id",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## gcp.healthcare.Hl7StoreIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamMember("hl7_v2_store", {
+ *     hl7V2StoreId: "your-hl7-v2-store-id",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
- * ### Importing IAM policies
- *
- * IAM policy imports use the identifier of the Google Cloud Healthcare HL7v2 store resource. For example:
- *
- * * `"{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"`
- *
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- *
- * tf
- *
- * import {
- *
- *   id = "{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"
- *
- *   to = google_healthcare_hl7_v2_store_iam_policy.default
- *
- * }
- *
- * The `pulumi import` command can also be used:
- *
- * ```sh
- * $ pulumi import gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember default {{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}
- * ```
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class Hl7StoreIamMember extends pulumi.CustomResource {
     /**

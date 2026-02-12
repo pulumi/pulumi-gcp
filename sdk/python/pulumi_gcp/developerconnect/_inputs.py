@@ -75,30 +75,25 @@ __all__ = [
     'InsightsConfigRuntimeConfigGkeWorkloadArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccountConnectorProviderOauthConfigArgsDict(TypedDict):
-        scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. User selected scopes to apply to the Oauth config
-        In the event of changing scopes, user records under AccountConnector will
-        be deleted and users will re-auth again.
-        """
-        system_provider_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        List of providers that are owned by Developer Connect.
-        Possible values:
-        GITHUB
-        GITLAB
-        GOOGLE
-        SENTRY
-        ROVO
-        NEW_RELIC
-        DATASTAX
-        """
-elif False:
-    AccountConnectorProviderOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AccountConnectorProviderOauthConfigArgsDict(TypedDict):
+    scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. User selected scopes to apply to the Oauth config
+    In the event of changing scopes, user records under AccountConnector will
+    be deleted and users will re-auth again.
+    """
+    system_provider_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    List of providers that are owned by Developer Connect.
+    Possible values:
+    GITHUB
+    GITLAB
+    GOOGLE
+    SENTRY
+    ROVO
+    NEW_RELIC
+    DATASTAX
+    """
 
 @pulumi.input_type
 class AccountConnectorProviderOauthConfigArgs:
@@ -158,32 +153,29 @@ class AccountConnectorProviderOauthConfigArgs:
         pulumi.set(self, "system_provider_id", value)
 
 
-if not MYPY:
-    class ConnectionBitbucketCloudConfigArgsDict(TypedDict):
-        authorizer_credential: pulumi.Input['ConnectionBitbucketCloudConfigAuthorizerCredentialArgsDict']
-        """
-        Represents a personal access token that authorized the Connection,
-        and associated metadata.
-        Structure is documented below.
-        """
-        read_authorizer_credential: pulumi.Input['ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgsDict']
-        """
-        Represents a personal access token that authorized the Connection,
-        and associated metadata.
-        Structure is documented below.
-        """
-        webhook_secret_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook
-        events, formatted as `projects/*/secrets/*/versions/*`. This is used to
-        validate and create webhooks.
-        """
-        workspace: pulumi.Input[_builtins.str]
-        """
-        Required. The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
-        """
-elif False:
-    ConnectionBitbucketCloudConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionBitbucketCloudConfigArgsDict(TypedDict):
+    authorizer_credential: pulumi.Input['ConnectionBitbucketCloudConfigAuthorizerCredentialArgsDict']
+    """
+    Represents a personal access token that authorized the Connection,
+    and associated metadata.
+    Structure is documented below.
+    """
+    read_authorizer_credential: pulumi.Input['ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgsDict']
+    """
+    Represents a personal access token that authorized the Connection,
+    and associated metadata.
+    Structure is documented below.
+    """
+    webhook_secret_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook
+    events, formatted as `projects/*/secrets/*/versions/*`. This is used to
+    validate and create webhooks.
+    """
+    workspace: pulumi.Input[_builtins.str]
+    """
+    Required. The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+    """
 
 @pulumi.input_type
 class ConnectionBitbucketCloudConfigArgs:
@@ -264,21 +256,18 @@ class ConnectionBitbucketCloudConfigArgs:
         pulumi.set(self, "workspace", value)
 
 
-if not MYPY:
-    class ConnectionBitbucketCloudConfigAuthorizerCredentialArgsDict(TypedDict):
-        user_token_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. A SecretManager resource containing the user token that authorizes
-        the Developer Connect connection. Format:
-        `projects/*/secrets/*/versions/*`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The username associated with this token.
-        """
-elif False:
-    ConnectionBitbucketCloudConfigAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionBitbucketCloudConfigAuthorizerCredentialArgsDict(TypedDict):
+    user_token_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. A SecretManager resource containing the user token that authorizes
+    the Developer Connect connection. Format:
+    `projects/*/secrets/*/versions/*`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The username associated with this token.
+    """
 
 @pulumi.input_type
 class ConnectionBitbucketCloudConfigAuthorizerCredentialArgs:
@@ -324,21 +313,18 @@ class ConnectionBitbucketCloudConfigAuthorizerCredentialArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgsDict(TypedDict):
-        user_token_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. A SecretManager resource containing the user token that authorizes
-        the Developer Connect connection. Format:
-        `projects/*/secrets/*/versions/*`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The username associated with this token.
-        """
-elif False:
-    ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgsDict(TypedDict):
+    user_token_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. A SecretManager resource containing the user token that authorizes
+    the Developer Connect connection. Format:
+    `projects/*/secrets/*/versions/*`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The username associated with this token.
+    """
 
 @pulumi.input_type
 class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs:
@@ -384,48 +370,45 @@ class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionBitbucketDataCenterConfigArgsDict(TypedDict):
-        authorizer_credential: pulumi.Input['ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgsDict']
-        """
-        Represents a personal access token that authorized the Connection,
-        and associated metadata.
-        Structure is documented below.
-        """
-        host_uri: pulumi.Input[_builtins.str]
-        """
-        Required. The URI of the Bitbucket Data Center host this connection is for.
-        """
-        read_authorizer_credential: pulumi.Input['ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgsDict']
-        """
-        Represents a personal access token that authorized the Connection,
-        and associated metadata.
-        Structure is documented below.
-        """
-        webhook_secret_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook
-        events, formatted as `projects/*/secrets/*/versions/*`. This is used to
-        validate webhooks.
-        """
-        server_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Version of the Bitbucket Data Center server running on the `host_uri`.
-        """
-        service_directory_config: NotRequired[pulumi.Input['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgsDict']]
-        """
-        ServiceDirectoryConfig represents Service Directory configuration for a
-        connection.
-        Structure is documented below.
-        """
-        ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. SSL certificate authority to trust when making requests to Bitbucket Data
-        Center.
-        """
-elif False:
-    ConnectionBitbucketDataCenterConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionBitbucketDataCenterConfigArgsDict(TypedDict):
+    authorizer_credential: pulumi.Input['ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgsDict']
+    """
+    Represents a personal access token that authorized the Connection,
+    and associated metadata.
+    Structure is documented below.
+    """
+    host_uri: pulumi.Input[_builtins.str]
+    """
+    Required. The URI of the Bitbucket Data Center host this connection is for.
+    """
+    read_authorizer_credential: pulumi.Input['ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgsDict']
+    """
+    Represents a personal access token that authorized the Connection,
+    and associated metadata.
+    Structure is documented below.
+    """
+    webhook_secret_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook
+    events, formatted as `projects/*/secrets/*/versions/*`. This is used to
+    validate webhooks.
+    """
+    server_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Version of the Bitbucket Data Center server running on the `host_uri`.
+    """
+    service_directory_config: NotRequired[pulumi.Input['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgsDict']]
+    """
+    ServiceDirectoryConfig represents Service Directory configuration for a
+    connection.
+    Structure is documented below.
+    """
+    ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. SSL certificate authority to trust when making requests to Bitbucket Data
+    Center.
+    """
 
 @pulumi.input_type
 class ConnectionBitbucketDataCenterConfigArgs:
@@ -562,21 +545,18 @@ class ConnectionBitbucketDataCenterConfigArgs:
         pulumi.set(self, "ssl_ca_certificate", value)
 
 
-if not MYPY:
-    class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgsDict(TypedDict):
-        user_token_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. A SecretManager resource containing the user token that authorizes
-        the Developer Connect connection. Format:
-        `projects/*/secrets/*/versions/*`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The username associated with this token.
-        """
-elif False:
-    ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgsDict(TypedDict):
+    user_token_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. A SecretManager resource containing the user token that authorizes
+    the Developer Connect connection. Format:
+    `projects/*/secrets/*/versions/*`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The username associated with this token.
+    """
 
 @pulumi.input_type
 class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs:
@@ -622,21 +602,18 @@ class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgsDict(TypedDict):
-        user_token_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. A SecretManager resource containing the user token that authorizes
-        the Developer Connect connection. Format:
-        `projects/*/secrets/*/versions/*`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The username associated with this token.
-        """
-elif False:
-    ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgsDict(TypedDict):
+    user_token_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. A SecretManager resource containing the user token that authorizes
+    the Developer Connect connection. Format:
+    `projects/*/secrets/*/versions/*`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The username associated with this token.
+    """
 
 @pulumi.input_type
 class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs:
@@ -682,16 +659,13 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgsDict(TypedDict):
-        service: pulumi.Input[_builtins.str]
-        """
-        Required. The Service Directory service name.
-        Format:
-        projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-        """
-elif False:
-    ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    Required. The Service Directory service name.
+    Format:
+    projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+    """
 
 @pulumi.input_type
 class ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs:
@@ -719,16 +693,13 @@ class ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs:
         pulumi.set(self, "service", value)
 
 
-if not MYPY:
-    class ConnectionCryptoKeyConfigArgsDict(TypedDict):
-        key_reference: pulumi.Input[_builtins.str]
-        """
-        Required. The name of the key which is used to encrypt/decrypt customer data. For key
-        in Cloud KMS, the key should be in the format of
-        `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-        """
-elif False:
-    ConnectionCryptoKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionCryptoKeyConfigArgsDict(TypedDict):
+    key_reference: pulumi.Input[_builtins.str]
+    """
+    Required. The name of the key which is used to encrypt/decrypt customer data. For key
+    in Cloud KMS, the key should be in the format of
+    `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+    """
 
 @pulumi.input_type
 class ConnectionCryptoKeyConfigArgs:
@@ -756,35 +727,32 @@ class ConnectionCryptoKeyConfigArgs:
         pulumi.set(self, "key_reference", value)
 
 
-if not MYPY:
-    class ConnectionGithubConfigArgsDict(TypedDict):
-        github_app: pulumi.Input[_builtins.str]
-        """
-        Required. Immutable. The GitHub Application that was installed to the GitHub user or
-        organization.
-        Possible values:
-        GIT_HUB_APP_UNSPECIFIED
-        DEVELOPER_CONNECT
-        FIREBASE
-        """
-        app_installation_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. GitHub App installation id.
-        """
-        authorizer_credential: NotRequired[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgsDict']]
-        """
-        Represents an OAuth token of the account that authorized the Connection,
-        and associated metadata.
-        Structure is documented below.
-        """
-        installation_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The URI to navigate to in order to manage the installation associated
-        with this GitHubConfig.
-        """
-elif False:
-    ConnectionGithubConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionGithubConfigArgsDict(TypedDict):
+    github_app: pulumi.Input[_builtins.str]
+    """
+    Required. Immutable. The GitHub Application that was installed to the GitHub user or
+    organization.
+    Possible values:
+    GIT_HUB_APP_UNSPECIFIED
+    DEVELOPER_CONNECT
+    FIREBASE
+    """
+    app_installation_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. GitHub App installation id.
+    """
+    authorizer_credential: NotRequired[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgsDict']]
+    """
+    Represents an OAuth token of the account that authorized the Connection,
+    and associated metadata.
+    Structure is documented below.
+    """
+    installation_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The URI to navigate to in order to manage the installation associated
+    with this GitHubConfig.
+    """
 
 @pulumi.input_type
 class ConnectionGithubConfigArgs:
@@ -874,20 +842,17 @@ class ConnectionGithubConfigArgs:
         pulumi.set(self, "installation_uri", value)
 
 
-if not MYPY:
-    class ConnectionGithubConfigAuthorizerCredentialArgsDict(TypedDict):
-        oauth_token_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. A SecretManager resource containing the OAuth token that authorizes
-        the connection. Format: `projects/*/secrets/*/versions/*`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The username associated with this token.
-        """
-elif False:
-    ConnectionGithubConfigAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionGithubConfigAuthorizerCredentialArgsDict(TypedDict):
+    oauth_token_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. A SecretManager resource containing the OAuth token that authorizes
+    the connection. Format: `projects/*/secrets/*/versions/*`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The username associated with this token.
+    """
 
 @pulumi.input_type
 class ConnectionGithubConfigAuthorizerCredentialArgs:
@@ -931,58 +896,55 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionGithubEnterpriseConfigArgsDict(TypedDict):
-        host_uri: pulumi.Input[_builtins.str]
-        """
-        Required. The URI of the GitHub Enterprise host this connection is for.
-        """
-        app_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. ID of the GitHub App created from the manifest.
-        """
-        app_installation_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. ID of the installation of the GitHub App.
-        """
-        app_slug: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The URL-friendly name of the GitHub App.
-        """
-        installation_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The URI to navigate to in order to manage the installation associated
-        with this GitHubEnterpriseConfig.
-        """
-        private_key_secret_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. SecretManager resource containing the private key of the GitHub App,
-        formatted as `projects/*/secrets/*/versions/*`.
-        """
-        server_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. GitHub Enterprise version installed at the host_uri.
-        """
-        service_directory_config: NotRequired[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict']]
-        """
-        ServiceDirectoryConfig represents Service Directory configuration for a
-        connection.
-        Structure is documented below.
-        """
-        ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. SSL certificate to use for requests to GitHub Enterprise.
-        """
-        webhook_secret_secret_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. SecretManager resource containing the webhook secret of the GitHub App,
-        formatted as `projects/*/secrets/*/versions/*`.
-        """
-elif False:
-    ConnectionGithubEnterpriseConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionGithubEnterpriseConfigArgsDict(TypedDict):
+    host_uri: pulumi.Input[_builtins.str]
+    """
+    Required. The URI of the GitHub Enterprise host this connection is for.
+    """
+    app_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. ID of the GitHub App created from the manifest.
+    """
+    app_installation_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. ID of the installation of the GitHub App.
+    """
+    app_slug: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The URL-friendly name of the GitHub App.
+    """
+    installation_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The URI to navigate to in order to manage the installation associated
+    with this GitHubEnterpriseConfig.
+    """
+    private_key_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. SecretManager resource containing the private key of the GitHub App,
+    formatted as `projects/*/secrets/*/versions/*`.
+    """
+    server_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. GitHub Enterprise version installed at the host_uri.
+    """
+    service_directory_config: NotRequired[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict']]
+    """
+    ServiceDirectoryConfig represents Service Directory configuration for a
+    connection.
+    Structure is documented below.
+    """
+    ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. SSL certificate to use for requests to GitHub Enterprise.
+    """
+    webhook_secret_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. SecretManager resource containing the webhook secret of the GitHub App,
+    formatted as `projects/*/secrets/*/versions/*`.
+    """
 
 @pulumi.input_type
 class ConnectionGithubEnterpriseConfigArgs:
@@ -1166,16 +1128,13 @@ class ConnectionGithubEnterpriseConfigArgs:
         pulumi.set(self, "webhook_secret_secret_version", value)
 
 
-if not MYPY:
-    class ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict(TypedDict):
-        service: pulumi.Input[_builtins.str]
-        """
-        Required. The Service Directory service name.
-        Format:
-        projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-        """
-elif False:
-    ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    Required. The Service Directory service name.
+    Format:
+    projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+    """
 
 @pulumi.input_type
 class ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs:
@@ -1203,28 +1162,25 @@ class ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs:
         pulumi.set(self, "service", value)
 
 
-if not MYPY:
-    class ConnectionGitlabConfigArgsDict(TypedDict):
-        authorizer_credential: pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgsDict']
-        """
-        Represents a personal access token that authorized the Connection,
-        and associated metadata.
-        Structure is documented below.
-        """
-        read_authorizer_credential: pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgsDict']
-        """
-        Represents a personal access token that authorized the Connection,
-        and associated metadata.
-        Structure is documented below.
-        """
-        webhook_secret_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
-        formatted as `projects/*/secrets/*/versions/*`. This is used to validate
-        webhooks.
-        """
-elif False:
-    ConnectionGitlabConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionGitlabConfigArgsDict(TypedDict):
+    authorizer_credential: pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgsDict']
+    """
+    Represents a personal access token that authorized the Connection,
+    and associated metadata.
+    Structure is documented below.
+    """
+    read_authorizer_credential: pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgsDict']
+    """
+    Represents a personal access token that authorized the Connection,
+    and associated metadata.
+    Structure is documented below.
+    """
+    webhook_secret_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+    formatted as `projects/*/secrets/*/versions/*`. This is used to validate
+    webhooks.
+    """
 
 @pulumi.input_type
 class ConnectionGitlabConfigArgs:
@@ -1290,21 +1246,18 @@ class ConnectionGitlabConfigArgs:
         pulumi.set(self, "webhook_secret_secret_version", value)
 
 
-if not MYPY:
-    class ConnectionGitlabConfigAuthorizerCredentialArgsDict(TypedDict):
-        user_token_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. A SecretManager resource containing the user token that authorizes
-        the Developer Connect connection. Format:
-        `projects/*/secrets/*/versions/*`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The username associated with this token.
-        """
-elif False:
-    ConnectionGitlabConfigAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionGitlabConfigAuthorizerCredentialArgsDict(TypedDict):
+    user_token_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. A SecretManager resource containing the user token that authorizes
+    the Developer Connect connection. Format:
+    `projects/*/secrets/*/versions/*`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The username associated with this token.
+    """
 
 @pulumi.input_type
 class ConnectionGitlabConfigAuthorizerCredentialArgs:
@@ -1350,21 +1303,18 @@ class ConnectionGitlabConfigAuthorizerCredentialArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionGitlabConfigReadAuthorizerCredentialArgsDict(TypedDict):
-        user_token_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. A SecretManager resource containing the user token that authorizes
-        the Developer Connect connection. Format:
-        `projects/*/secrets/*/versions/*`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The username associated with this token.
-        """
-elif False:
-    ConnectionGitlabConfigReadAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionGitlabConfigReadAuthorizerCredentialArgsDict(TypedDict):
+    user_token_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. A SecretManager resource containing the user token that authorizes
+    the Developer Connect connection. Format:
+    `projects/*/secrets/*/versions/*`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The username associated with this token.
+    """
 
 @pulumi.input_type
 class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
@@ -1410,48 +1360,45 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionGitlabEnterpriseConfigArgsDict(TypedDict):
-        authorizer_credential: pulumi.Input['ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgsDict']
-        """
-        Represents a personal access token that authorized the Connection,
-        and associated metadata.
-        Structure is documented below.
-        """
-        host_uri: pulumi.Input[_builtins.str]
-        """
-        Required. The URI of the GitLab Enterprise host this connection is for.
-        """
-        read_authorizer_credential: pulumi.Input['ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgsDict']
-        """
-        Represents a personal access token that authorized the Connection,
-        and associated metadata.
-        Structure is documented below.
-        """
-        webhook_secret_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
-        formatted as `projects/*/secrets/*/versions/*`. This is used to validate
-        webhooks.
-        """
-        server_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Version of the GitLab Enterprise server running on the `host_uri`.
-        """
-        service_directory_config: NotRequired[pulumi.Input['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict']]
-        """
-        ServiceDirectoryConfig represents Service Directory configuration for a
-        connection.
-        Structure is documented below.
-        """
-        ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. SSL Certificate Authority certificate to use for requests to GitLab
-        Enterprise instance.
-        """
-elif False:
-    ConnectionGitlabEnterpriseConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionGitlabEnterpriseConfigArgsDict(TypedDict):
+    authorizer_credential: pulumi.Input['ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgsDict']
+    """
+    Represents a personal access token that authorized the Connection,
+    and associated metadata.
+    Structure is documented below.
+    """
+    host_uri: pulumi.Input[_builtins.str]
+    """
+    Required. The URI of the GitLab Enterprise host this connection is for.
+    """
+    read_authorizer_credential: pulumi.Input['ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgsDict']
+    """
+    Represents a personal access token that authorized the Connection,
+    and associated metadata.
+    Structure is documented below.
+    """
+    webhook_secret_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+    formatted as `projects/*/secrets/*/versions/*`. This is used to validate
+    webhooks.
+    """
+    server_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+    """
+    service_directory_config: NotRequired[pulumi.Input['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict']]
+    """
+    ServiceDirectoryConfig represents Service Directory configuration for a
+    connection.
+    Structure is documented below.
+    """
+    ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. SSL Certificate Authority certificate to use for requests to GitLab
+    Enterprise instance.
+    """
 
 @pulumi.input_type
 class ConnectionGitlabEnterpriseConfigArgs:
@@ -1588,21 +1535,18 @@ class ConnectionGitlabEnterpriseConfigArgs:
         pulumi.set(self, "ssl_ca_certificate", value)
 
 
-if not MYPY:
-    class ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgsDict(TypedDict):
-        user_token_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. A SecretManager resource containing the user token that authorizes
-        the Developer Connect connection. Format:
-        `projects/*/secrets/*/versions/*`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The username associated with this token.
-        """
-elif False:
-    ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgsDict(TypedDict):
+    user_token_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. A SecretManager resource containing the user token that authorizes
+    the Developer Connect connection. Format:
+    `projects/*/secrets/*/versions/*`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The username associated with this token.
+    """
 
 @pulumi.input_type
 class ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs:
@@ -1648,21 +1592,18 @@ class ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgsDict(TypedDict):
-        user_token_secret_version: pulumi.Input[_builtins.str]
-        """
-        Required. A SecretManager resource containing the user token that authorizes
-        the Developer Connect connection. Format:
-        `projects/*/secrets/*/versions/*`.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The username associated with this token.
-        """
-elif False:
-    ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgsDict(TypedDict):
+    user_token_secret_version: pulumi.Input[_builtins.str]
+    """
+    Required. A SecretManager resource containing the user token that authorizes
+    the Developer Connect connection. Format:
+    `projects/*/secrets/*/versions/*`.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The username associated with this token.
+    """
 
 @pulumi.input_type
 class ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs:
@@ -1708,16 +1649,13 @@ class ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict(TypedDict):
-        service: pulumi.Input[_builtins.str]
-        """
-        Required. The Service Directory service name.
-        Format:
-        projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-        """
-elif False:
-    ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    Required. The Service Directory service name.
+    Format:
+    projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+    """
 
 @pulumi.input_type
 class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs:
@@ -1745,31 +1683,28 @@ class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs:
         pulumi.set(self, "service", value)
 
 
-if not MYPY:
-    class ConnectionInstallationStateArgsDict(TypedDict):
-        action_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output only. Link to follow for next action. Empty string if the installation is already
-        complete.
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output only. Message of what the user should do next to continue the installation.
-        Empty string if the installation is already complete.
-        """
-        stage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Current step of the installation process.
-        Possible values:
-        STAGE_UNSPECIFIED
-        PENDING_CREATE_APP
-        PENDING_USER_OAUTH
-        PENDING_INSTALL_APP
-        COMPLETE
-        """
-elif False:
-    ConnectionInstallationStateArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionInstallationStateArgsDict(TypedDict):
+    action_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output only. Link to follow for next action. Empty string if the installation is already
+    complete.
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output only. Message of what the user should do next to continue the installation.
+    Empty string if the installation is already complete.
+    """
+    stage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Current step of the installation process.
+    Possible values:
+    STAGE_UNSPECIFIED
+    PENDING_CREATE_APP
+    PENDING_USER_OAUTH
+    PENDING_INSTALL_APP
+    COMPLETE
+    """
 
 @pulumi.input_type
 class ConnectionInstallationStateArgs:
@@ -1844,27 +1779,24 @@ class ConnectionInstallationStateArgs:
         pulumi.set(self, "stage", value)
 
 
-if not MYPY:
-    class InsightsConfigArtifactConfigArgsDict(TypedDict):
-        google_artifact_analysis: NotRequired[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgsDict']]
-        """
-        Google Artifact Analysis configurations.
-        Structure is documented below.
-        """
-        google_artifact_registry: NotRequired[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactRegistryArgsDict']]
-        """
-        Google Artifact Registry configurations.
-        Structure is documented below.
-        """
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URI of the artifact that is deployed.
-        e.g. `us-docker.pkg.dev/my-project/my-repo/image`.
-        The URI does not include the tag / digest because it captures a lineage of
-        artifacts.
-        """
-elif False:
-    InsightsConfigArtifactConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InsightsConfigArtifactConfigArgsDict(TypedDict):
+    google_artifact_analysis: NotRequired[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgsDict']]
+    """
+    Google Artifact Analysis configurations.
+    Structure is documented below.
+    """
+    google_artifact_registry: NotRequired[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactRegistryArgsDict']]
+    """
+    Google Artifact Registry configurations.
+    Structure is documented below.
+    """
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URI of the artifact that is deployed.
+    e.g. `us-docker.pkg.dev/my-project/my-repo/image`.
+    The URI does not include the tag / digest because it captures a lineage of
+    artifacts.
+    """
 
 @pulumi.input_type
 class InsightsConfigArtifactConfigArgs:
@@ -1931,14 +1863,11 @@ class InsightsConfigArtifactConfigArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class InsightsConfigArtifactConfigGoogleArtifactAnalysisArgsDict(TypedDict):
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The project id of the project where the provenance is stored.
-        """
-elif False:
-    InsightsConfigArtifactConfigGoogleArtifactAnalysisArgsDict: TypeAlias = Mapping[str, Any]
+class InsightsConfigArtifactConfigGoogleArtifactAnalysisArgsDict(TypedDict):
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The project id of the project where the provenance is stored.
+    """
 
 @pulumi.input_type
 class InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs:
@@ -1962,18 +1891,15 @@ class InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class InsightsConfigArtifactConfigGoogleArtifactRegistryArgsDict(TypedDict):
-        artifact_registry_package: pulumi.Input[_builtins.str]
-        """
-        The name of the artifact registry package.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The host project of Artifact Registry.
-        """
-elif False:
-    InsightsConfigArtifactConfigGoogleArtifactRegistryArgsDict: TypeAlias = Mapping[str, Any]
+class InsightsConfigArtifactConfigGoogleArtifactRegistryArgsDict(TypedDict):
+    artifact_registry_package: pulumi.Input[_builtins.str]
+    """
+    The name of the artifact registry package.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The host project of Artifact Registry.
+    """
 
 @pulumi.input_type
 class InsightsConfigArtifactConfigGoogleArtifactRegistryArgs:
@@ -2012,29 +1938,26 @@ class InsightsConfigArtifactConfigGoogleArtifactRegistryArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class InsightsConfigErrorArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        details: NotRequired[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorDetailArgsDict']]]]
-        """
-        (Output)
-        A list of messages that carry the error details.  There is a common set of
-        message types for APIs to use.
-        Structure is documented below.
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A developer-facing error message, which should be in English. Any
-        user-facing error message should be localized and sent in the
-        google.rpc.Status.details field, or localized by the client.
-        """
-elif False:
-    InsightsConfigErrorArgsDict: TypeAlias = Mapping[str, Any]
+class InsightsConfigErrorArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The status code, which should be an enum value of google.rpc.Code.
+    """
+    details: NotRequired[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorDetailArgsDict']]]]
+    """
+    (Output)
+    A list of messages that carry the error details.  There is a common set of
+    message types for APIs to use.
+    Structure is documented below.
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A developer-facing error message, which should be in English. Any
+    user-facing error message should be localized and sent in the
+    google.rpc.Status.details field, or localized by the client.
+    """
 
 @pulumi.input_type
 class InsightsConfigErrorArgs:
@@ -2105,15 +2028,12 @@ class InsightsConfigErrorArgs:
         pulumi.set(self, "message", value)
 
 
-if not MYPY:
-    class InsightsConfigErrorDetailArgsDict(TypedDict):
-        detail_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A message with details about the error.
-        """
-elif False:
-    InsightsConfigErrorDetailArgsDict: TypeAlias = Mapping[str, Any]
+class InsightsConfigErrorDetailArgsDict(TypedDict):
+    detail_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A message with details about the error.
+    """
 
 @pulumi.input_type
 class InsightsConfigErrorDetailArgs:
@@ -2140,35 +2060,32 @@ class InsightsConfigErrorDetailArgs:
         pulumi.set(self, "detail_message", value)
 
 
-if not MYPY:
-    class InsightsConfigRuntimeConfigArgsDict(TypedDict):
-        uri: pulumi.Input[_builtins.str]
-        """
-        The URI of the runtime configuration.
-        For GKE, this is the cluster name.
-        For Cloud Run, this is the service name.
-        """
-        app_hub_workload: NotRequired[pulumi.Input['InsightsConfigRuntimeConfigAppHubWorkloadArgsDict']]
-        """
-        AppHubWorkload represents the App Hub Workload.
-        Structure is documented below.
-        """
-        gke_workload: NotRequired[pulumi.Input['InsightsConfigRuntimeConfigGkeWorkloadArgsDict']]
-        """
-        GKEWorkload represents the Google Kubernetes Engine runtime.
-        Structure is documented below.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the Runtime.
-        Possible values:
-        STATE_UNSPECIFIED
-        LINKED
-        UNLINKED
-        """
-elif False:
-    InsightsConfigRuntimeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InsightsConfigRuntimeConfigArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    The URI of the runtime configuration.
+    For GKE, this is the cluster name.
+    For Cloud Run, this is the service name.
+    """
+    app_hub_workload: NotRequired[pulumi.Input['InsightsConfigRuntimeConfigAppHubWorkloadArgsDict']]
+    """
+    AppHubWorkload represents the App Hub Workload.
+    Structure is documented below.
+    """
+    gke_workload: NotRequired[pulumi.Input['InsightsConfigRuntimeConfigGkeWorkloadArgsDict']]
+    """
+    GKEWorkload represents the Google Kubernetes Engine runtime.
+    Structure is documented below.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the Runtime.
+    Possible values:
+    STATE_UNSPECIFIED
+    LINKED
+    UNLINKED
+    """
 
 @pulumi.input_type
 class InsightsConfigRuntimeConfigArgs:
@@ -2258,27 +2175,24 @@ class InsightsConfigRuntimeConfigArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class InsightsConfigRuntimeConfigAppHubWorkloadArgsDict(TypedDict):
-        criticality: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The criticality of the App Hub Workload.
-        """
-        environment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The environment of the App Hub Workload.
-        """
-        workload: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The name of the App Hub Workload.
-        Format:
-        `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
-        """
-elif False:
-    InsightsConfigRuntimeConfigAppHubWorkloadArgsDict: TypeAlias = Mapping[str, Any]
+class InsightsConfigRuntimeConfigAppHubWorkloadArgsDict(TypedDict):
+    criticality: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The criticality of the App Hub Workload.
+    """
+    environment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The environment of the App Hub Workload.
+    """
+    workload: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The name of the App Hub Workload.
+    Format:
+    `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+    """
 
 @pulumi.input_type
 class InsightsConfigRuntimeConfigAppHubWorkloadArgs:
@@ -2345,23 +2259,20 @@ class InsightsConfigRuntimeConfigAppHubWorkloadArgs:
         pulumi.set(self, "workload", value)
 
 
-if not MYPY:
-    class InsightsConfigRuntimeConfigGkeWorkloadArgsDict(TypedDict):
-        cluster: pulumi.Input[_builtins.str]
-        """
-        The name of the GKE cluster.
-        Format:
-        `projects/{project}/locations/{location}/clusters/{cluster}`.
-        """
-        deployment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the GKE deployment.
-        Format:
-        `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.
-        """
-elif False:
-    InsightsConfigRuntimeConfigGkeWorkloadArgsDict: TypeAlias = Mapping[str, Any]
+class InsightsConfigRuntimeConfigGkeWorkloadArgsDict(TypedDict):
+    cluster: pulumi.Input[_builtins.str]
+    """
+    The name of the GKE cluster.
+    Format:
+    `projects/{project}/locations/{location}/clusters/{cluster}`.
+    """
+    deployment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the GKE deployment.
+    Format:
+    `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.
+    """
 
 @pulumi.input_type
 class InsightsConfigRuntimeConfigGkeWorkloadArgs:

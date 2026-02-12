@@ -231,6 +231,7 @@ class _ConnectionState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Server assigned timestamp for when the connection was created.
         :param pulumi.Input[_builtins.bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
                Structure is documented below.
@@ -347,6 +348,9 @@ class _ConnectionState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -610,28 +614,16 @@ class Connection(pulumi.CustomResource):
         Connection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudbuildv2/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuildv2/connection:Connection default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuildv2/connection:Connection default {{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuildv2/connection:Connection default {{name}}
         ```
 
@@ -776,28 +768,16 @@ class Connection(pulumi.CustomResource):
         Connection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudbuildv2/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuildv2/connection:Connection default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuildv2/connection:Connection default {{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuildv2/connection:Connection default {{name}}
         ```
 
@@ -895,6 +875,7 @@ class Connection(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Server assigned timestamp for when the connection was created.
         :param pulumi.Input[_builtins.bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']] github_config: Configuration for connections to github.com.
                Structure is documented below.
@@ -980,6 +961,9 @@ class Connection(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

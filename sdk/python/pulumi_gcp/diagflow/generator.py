@@ -373,22 +373,14 @@ class Generator(pulumi.CustomResource):
         Generator can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/generators/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Generator can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/generator:Generator default projects/{{project}}/locations/{{location}}/generators/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/generator:Generator default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/generator:Generator default {{location}}/{{name}}
         ```
 
@@ -451,22 +443,14 @@ class Generator(pulumi.CustomResource):
         Generator can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/generators/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Generator can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/generator:Generator default projects/{{project}}/locations/{{location}}/generators/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/generator:Generator default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/generator:Generator default {{location}}/{{name}}
         ```
 

@@ -263,22 +263,14 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
         RecaptchaV3Config can be imported using any of these accepted formats:
 
         * `projects/{{project}}/apps/{{app_id}}/recaptchaV3Config`
-
         * `{{project}}/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, RecaptchaV3Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default projects/{{project}}/apps/{{app_id}}/recaptchaV3Config
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default {{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default {{app_id}}
         ```
 
@@ -339,22 +331,14 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
         RecaptchaV3Config can be imported using any of these accepted formats:
 
         * `projects/{{project}}/apps/{{app_id}}/recaptchaV3Config`
-
         * `{{project}}/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, RecaptchaV3Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default projects/{{project}}/apps/{{app_id}}/recaptchaV3Config
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default {{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default {{app_id}}
         ```
 

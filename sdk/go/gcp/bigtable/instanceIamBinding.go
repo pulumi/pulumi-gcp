@@ -224,29 +224,9 @@ import (
 //
 // ## Import
 //
-// ### Importing IAM policies
+// > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
-// IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
-//
-// * `"projects/{project}/instances/{instance}"`
-//
-// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-//
-// tf
-//
-// import {
-//
-//	id = "projects/{project}/instances/{instance}"
-//
-//	to = google_bigtable_instance_iam_policy.default
-//
-// }
-//
-// The `pulumi import` command can also be used:
-//
-// ```sh
-// $ pulumi import gcp:bigtable/instanceIamBinding:InstanceIamBinding default projects/{project}/instances/{instance}
-// ```
+//	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type InstanceIamBinding struct {
 	pulumi.CustomResourceState
 
@@ -267,7 +247,9 @@ type InstanceIamBinding struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	Project pulumi.StringOutput      `pulumi:"project"`
+	// The project in which the instance belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -330,7 +312,9 @@ type instanceIamBindingState struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
-	Project *string  `pulumi:"project"`
+	// The project in which the instance belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -355,6 +339,8 @@ type InstanceIamBindingState struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
+	// The project in which the instance belongs. If it
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -382,7 +368,9 @@ type instanceIamBindingArgs struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
-	Project *string  `pulumi:"project"`
+	// The project in which the instance belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -406,6 +394,8 @@ type InstanceIamBindingArgs struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
+	// The project in which the instance belongs. If it
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -529,6 +519,8 @@ func (o InstanceIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
+// The project in which the instance belongs. If it
+// is not provided, Terraform will use the provider default.
 func (o InstanceIamBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

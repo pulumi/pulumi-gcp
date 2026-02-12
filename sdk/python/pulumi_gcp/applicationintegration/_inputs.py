@@ -49,25 +49,20 @@ __all__ = [
     'ClientCloudKmsConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AuthConfigClientCertificateArgsDict(TypedDict):
-        encrypted_private_key: pulumi.Input[_builtins.str]
-        """
-        The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
-        """
-        ssl_certificate: pulumi.Input[_builtins.str]
-        """
-        The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
-        """
-        passphrase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        'passphrase' should be left unset if private key is not encrypted.
-        Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
-        """
-elif False:
-    AuthConfigClientCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigClientCertificateArgsDict(TypedDict):
+    encrypted_private_key: pulumi.Input[_builtins.str]
+    """
+    The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+    """
+    ssl_certificate: pulumi.Input[_builtins.str]
+    """
+    The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+    """
+    passphrase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    'passphrase' should be left unset if private key is not encrypted.
+    Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
+    """
 
 @pulumi.input_type
 class AuthConfigClientCertificateArgs:
@@ -124,49 +119,46 @@ class AuthConfigClientCertificateArgs:
         pulumi.set(self, "passphrase", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialArgsDict(TypedDict):
-        credential_type: pulumi.Input[_builtins.str]
-        """
-        Credential type associated with auth configs.
-        """
-        auth_token: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialAuthTokenArgsDict']]
-        """
-        Auth token credential.
-        Structure is documented below.
-        """
-        jwt: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialJwtArgsDict']]
-        """
-        JWT credential.
-        Structure is documented below.
-        """
-        oauth2_authorization_code: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgsDict']]
-        """
-        OAuth2 authorization code credential.
-        Structure is documented below.
-        """
-        oauth2_client_credentials: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsArgsDict']]
-        """
-        OAuth2 client credentials.
-        Structure is documented below.
-        """
-        oidc_token: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOidcTokenArgsDict']]
-        """
-        Google OIDC ID Token.
-        Structure is documented below.
-        """
-        service_account_credentials: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialServiceAccountCredentialsArgsDict']]
-        """
-        Service account credential.
-        Structure is documented below.
-        """
-        username_and_password: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialUsernameAndPasswordArgsDict']]
-        """
-        Username and password credential.
-        Structure is documented below.
-        """
-elif False:
-    AuthConfigDecryptedCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialArgsDict(TypedDict):
+    credential_type: pulumi.Input[_builtins.str]
+    """
+    Credential type associated with auth configs.
+    """
+    auth_token: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialAuthTokenArgsDict']]
+    """
+    Auth token credential.
+    Structure is documented below.
+    """
+    jwt: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialJwtArgsDict']]
+    """
+    JWT credential.
+    Structure is documented below.
+    """
+    oauth2_authorization_code: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgsDict']]
+    """
+    OAuth2 authorization code credential.
+    Structure is documented below.
+    """
+    oauth2_client_credentials: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsArgsDict']]
+    """
+    OAuth2 client credentials.
+    Structure is documented below.
+    """
+    oidc_token: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOidcTokenArgsDict']]
+    """
+    Google OIDC ID Token.
+    Structure is documented below.
+    """
+    service_account_credentials: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialServiceAccountCredentialsArgsDict']]
+    """
+    Service account credential.
+    Structure is documented below.
+    """
+    username_and_password: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialUsernameAndPasswordArgsDict']]
+    """
+    Username and password credential.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialArgs:
@@ -316,18 +308,15 @@ class AuthConfigDecryptedCredentialArgs:
         pulumi.set(self, "username_and_password", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialAuthTokenArgsDict(TypedDict):
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The token for the auth type.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Authentication type, e.g. "Basic", "Bearer", etc.
-        """
-elif False:
-    AuthConfigDecryptedCredentialAuthTokenArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialAuthTokenArgsDict(TypedDict):
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The token for the auth type.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Authentication type, e.g. "Basic", "Bearer", etc.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialAuthTokenArgs:
@@ -368,27 +357,24 @@ class AuthConfigDecryptedCredentialAuthTokenArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialJwtArgsDict(TypedDict):
-        jwt: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The token calculated by the header, payload and signature.
-        """
-        jwt_header: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifies which algorithm is used to generate the signature.
-        """
-        jwt_payload: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
-        """
-        secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User's pre-shared secret to sign the token.
-        """
-elif False:
-    AuthConfigDecryptedCredentialJwtArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialJwtArgsDict(TypedDict):
+    jwt: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The token calculated by the header, payload and signature.
+    """
+    jwt_header: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identifies which algorithm is used to generate the signature.
+    """
+    jwt_payload: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
+    """
+    secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User's pre-shared secret to sign the token.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialJwtArgs:
@@ -463,30 +449,27 @@ class AuthConfigDecryptedCredentialJwtArgs:
         pulumi.set(self, "secret", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgsDict(TypedDict):
-        auth_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The auth url endpoint to send the auth code request to.
-        """
-        client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The client's id.
-        """
-        client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The client's secret.
-        """
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A space-delimited list of requested scope permissions.
-        """
-        token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The token url endpoint to send the token request to.
-        """
-elif False:
-    AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgsDict(TypedDict):
+    auth_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The auth url endpoint to send the auth code request to.
+    """
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The client's id.
+    """
+    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The client's secret.
+    """
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A space-delimited list of requested scope permissions.
+    """
+    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The token url endpoint to send the token request to.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs:
@@ -575,34 +558,31 @@ class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs:
         pulumi.set(self, "token_endpoint", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialOauth2ClientCredentialsArgsDict(TypedDict):
-        client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The client's ID.
-        """
-        client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The client's secret.
-        """
-        request_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represent how to pass parameters to fetch access token Possible values: ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
-        """
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A space-delimited list of requested scope permissions.
-        """
-        token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
-        """
-        token_params: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgsDict']]
-        """
-        Token parameters for the auth request.
-        """
-elif False:
-    AuthConfigDecryptedCredentialOauth2ClientCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialOauth2ClientCredentialsArgsDict(TypedDict):
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The client's ID.
+    """
+    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The client's secret.
+    """
+    request_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represent how to pass parameters to fetch access token Possible values: ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
+    """
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A space-delimited list of requested scope permissions.
+    """
+    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
+    """
+    token_params: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgsDict']]
+    """
+    Token parameters for the auth request.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs:
@@ -707,15 +687,12 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs:
         pulumi.set(self, "token_params", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgsDict(TypedDict):
-        entries: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgsDict']]]]
-        """
-        A list of parameter map entries.
-        Structure is documented below.
-        """
-elif False:
-    AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgsDict(TypedDict):
+    entries: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgsDict']]]]
+    """
+    A list of parameter map entries.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs:
@@ -742,20 +719,17 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs:
         pulumi.set(self, "entries", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgsDict']]
-        """
-        Key of the map entry.
-        Structure is documented below.
-        """
-        value: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgsDict']]
-        """
-        Value of the map entry.
-        Structure is documented below.
-        """
-elif False:
-    AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgsDict']]
+    """
+    Key of the map entry.
+    Structure is documented below.
+    """
+    value: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgsDict']]
+    """
+    Value of the map entry.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs:
@@ -800,15 +774,12 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgsDict(TypedDict):
-        literal_value: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgsDict']]
-        """
-        Passing a literal value
-        Structure is documented below.
-        """
-elif False:
-    AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgsDict(TypedDict):
+    literal_value: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgsDict']]
+    """
+    Passing a literal value
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs:
@@ -835,14 +806,11 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArg
         pulumi.set(self, "literal_value", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgsDict(TypedDict):
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String.
-        """
-elif False:
-    AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgsDict(TypedDict):
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs:
@@ -867,15 +835,12 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLit
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgsDict(TypedDict):
-        literal_value: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgsDict']]
-        """
-        Passing a literal value
-        Structure is documented below.
-        """
-elif False:
-    AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgsDict(TypedDict):
+    literal_value: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgsDict']]
+    """
+    Passing a literal value
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs:
@@ -902,14 +867,11 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueA
         pulumi.set(self, "literal_value", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgsDict(TypedDict):
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String.
-        """
-elif False:
-    AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgsDict(TypedDict):
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs:
@@ -934,29 +896,26 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueL
         pulumi.set(self, "string_value", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialOidcTokenArgsDict(TypedDict):
-        audience: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
-        """
-        service_account_email: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service account email to be used as the identity for the token.
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        ID token obtained for the service account.
-        """
-        token_expire_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The approximate time until the token retrieved is valid.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    AuthConfigDecryptedCredentialOidcTokenArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialOidcTokenArgsDict(TypedDict):
+    audience: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
+    """
+    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service account email to be used as the identity for the token.
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    ID token obtained for the service account.
+    """
+    token_expire_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The approximate time until the token retrieved is valid.
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOidcTokenArgs:
@@ -1035,18 +994,15 @@ class AuthConfigDecryptedCredentialOidcTokenArgs:
         pulumi.set(self, "token_expire_time", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialServiceAccountCredentialsArgsDict(TypedDict):
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A space-delimited list of requested scope permissions.
-        """
-        service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the service account that has the permission to make the request.
-        """
-elif False:
-    AuthConfigDecryptedCredentialServiceAccountCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+class AuthConfigDecryptedCredentialServiceAccountCredentialsArgsDict(TypedDict):
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A space-delimited list of requested scope permissions.
+    """
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the service account that has the permission to make the request.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialServiceAccountCredentialsArgs:
@@ -1087,20 +1043,17 @@ class AuthConfigDecryptedCredentialServiceAccountCredentialsArgs:
         pulumi.set(self, "service_account", value)
 
 
-if not MYPY:
-    class AuthConfigDecryptedCredentialUsernameAndPasswordArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password to be used.
+class AuthConfigDecryptedCredentialUsernameAndPasswordArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password to be used.
 
-        <a name="nested_decrypted_credential_oauth2_authorization_code"></a>The `oauth2_authorization_code` block supports:
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Username to be used.
-        """
-elif False:
-    AuthConfigDecryptedCredentialUsernameAndPasswordArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_decrypted_credential_oauth2_authorization_code"></a>The `oauth2_authorization_code` block supports:
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Username to be used.
+    """
 
 @pulumi.input_type
 class AuthConfigDecryptedCredentialUsernameAndPasswordArgs:
@@ -1145,40 +1098,37 @@ class AuthConfigDecryptedCredentialUsernameAndPasswordArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ClientCloudKmsConfigArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A Cloud KMS key is a named object containing one or more key versions, along
-        with metadata for the key. A key exists on exactly one key ring tied to a
-        specific location.
-        """
-        kms_location: pulumi.Input[_builtins.str]
-        """
-        Location name of the key ring, e.g. "us-west1".
-        """
-        kms_ring: pulumi.Input[_builtins.str]
-        """
-        A key ring organizes keys in a specific Google Cloud location and allows you to
-        manage access control on groups of keys. A key ring's name does not need to be
-        unique across a Google Cloud project, but must be unique within a given location.
-        """
-        key_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Each version of a key contains key material used for encryption or signing.
-        A key's version is represented by an integer, starting at 1. To decrypt data
-        or verify a signature, you must use the same key version that was used to
-        encrypt or sign the data.
-        """
-        kms_project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Google Cloud project id of the project where the kms key stored. If empty,
-        the kms key is stored at the same project as customer's project and ecrypted
-        with CMEK, otherwise, the kms key is stored in the tenant project and
-        encrypted with GMEK.
-        """
-elif False:
-    ClientCloudKmsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClientCloudKmsConfigArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A Cloud KMS key is a named object containing one or more key versions, along
+    with metadata for the key. A key exists on exactly one key ring tied to a
+    specific location.
+    """
+    kms_location: pulumi.Input[_builtins.str]
+    """
+    Location name of the key ring, e.g. "us-west1".
+    """
+    kms_ring: pulumi.Input[_builtins.str]
+    """
+    A key ring organizes keys in a specific Google Cloud location and allows you to
+    manage access control on groups of keys. A key ring's name does not need to be
+    unique across a Google Cloud project, but must be unique within a given location.
+    """
+    key_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Each version of a key contains key material used for encryption or signing.
+    A key's version is represented by an integer, starting at 1. To decrypt data
+    or verify a signature, you must use the same key version that was used to
+    encrypt or sign the data.
+    """
+    kms_project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Google Cloud project id of the project where the kms key stored. If empty,
+    the kms key is stored at the same project as customer's project and ecrypted
+    with CMEK, otherwise, the kms key is stored in the tenant project and
+    encrypted with GMEK.
+    """
 
 @pulumi.input_type
 class ClientCloudKmsConfigArgs:

@@ -18,6 +18,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A data asset resource that can be packaged and shared via a data product.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about DataAsset, see:
+ * 
+ * * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts.dataAssets)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/dataplex/docs)
+ * 
  * ## Example Usage
  * 
  * ### Dataplex Data Asset Basic
@@ -185,22 +196,14 @@ import javax.annotation.Nullable;
  * DataAsset can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}/dataAssets/{{data_asset_id}}`
- * 
  * * `{{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}`
- * 
  * * `{{location}}/{{data_product_id}}/{{data_asset_id}}`
  * 
  * When using the `pulumi import` command, DataAsset can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataplex/dataAsset:DataAsset default projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}/dataAssets/{{data_asset_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{location}}/{{data_product_id}}/{{data_asset_id}}
  * ```
  * 

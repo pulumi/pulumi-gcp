@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
+//
+// Read more about sensitive data in state. Passwords will not be retrieved when running
+// "terraform import".
+//
 // ## Example Usage
 //
 // Example creating a SQL User.
@@ -20,8 +25,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
@@ -68,8 +71,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
@@ -137,8 +138,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"

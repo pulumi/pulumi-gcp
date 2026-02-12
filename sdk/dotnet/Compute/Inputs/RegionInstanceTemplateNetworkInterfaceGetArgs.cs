@@ -14,6 +14,15 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         [Input("accessConfigs")]
         private InputList<Inputs.RegionInstanceTemplateNetworkInterfaceAccessConfigGetArgs>? _accessConfigs;
+
+        /// <summary>
+        /// Access configurations, i.e. IPs via which this
+        /// instance can be accessed via the Internet. Omit to ensure that the instance
+        /// is not accessible from the Internet (this means that ssh provisioners will
+        /// not work unless you are running Terraform can send traffic to the instance's
+        /// network (e.g. via tunnel or because it is running on another cloud instance
+        /// on that network). This block can be specified once per `NetworkInterface`. Structure documented below.
+        /// </summary>
         public InputList<Inputs.RegionInstanceTemplateNetworkInterfaceAccessConfigGetArgs> AccessConfigs
         {
             get => _accessConfigs ?? (_accessConfigs = new InputList<Inputs.RegionInstanceTemplateNetworkInterfaceAccessConfigGetArgs>());
@@ -73,7 +82,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Ipv6Address { get; set; }
 
         /// <summary>
-        /// The name of the network_interface.
+        /// The name of the instance template. If you leave
+        /// this blank, Terraform will auto-generate a unique name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

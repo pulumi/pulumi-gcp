@@ -7,6 +7,19 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A Bigquery Analytics Hub Data Exchange subscription
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about DataExchangeSubscription, see:
+ *
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.subscriptions)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+ *
+ * > **Note:** When importing the resource with `pulumi import`, provide the destination/subscriber's project and location
+ * in the format projects/{{subscriber_project}}/locations/{{subscriber_location}}/subscriptions/{{subscription_id}}
  * ## Example Usage
  *
  * ### Bigquery Analyticshub Dataexchange Subscription Basic
@@ -99,22 +112,14 @@ import * as utilities from "../utilities";
  * DataExchangeSubscription can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}`
- *
  * * `{{project}}/{{location}}/{{subscription_id}}`
- *
  * * `{{location}}/{{subscription_id}}`
  *
  * When using the `pulumi import` command, DataExchangeSubscription can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{project}}/{{location}}/{{subscription_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{location}}/{{subscription_id}}
  * ```
  */
@@ -214,6 +219,12 @@ export class DataExchangeSubscription extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * Controls when the subscription is automatically refreshed by the provider.
+     * * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+     * * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+     * * `NEVER`: The provider will not automatically refresh the subscription.
+     */
     declare public readonly refreshPolicy: pulumi.Output<string | undefined>;
     /**
      * Listing shared asset type.
@@ -380,6 +391,12 @@ export interface DataExchangeSubscriptionState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Controls when the subscription is automatically refreshed by the provider.
+     * * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+     * * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+     * * `NEVER`: The provider will not automatically refresh the subscription.
+     */
     refreshPolicy?: pulumi.Input<string>;
     /**
      * Listing shared asset type.
@@ -431,6 +448,12 @@ export interface DataExchangeSubscriptionArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Controls when the subscription is automatically refreshed by the provider.
+     * * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+     * * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+     * * `NEVER`: The provider will not automatically refresh the subscription.
+     */
     refreshPolicy?: pulumi.Input<string>;
     /**
      * Email of the subscriber.

@@ -503,22 +503,14 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         ScopeRBACRoleBinding can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}`
-
         * `{{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}`
-
         * `{{scope_id}}/{{scope_rbac_role_binding_id}}`
 
         When using the `pulumi import` command, ScopeRBACRoleBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{scope_id}}/{{scope_rbac_role_binding_id}}
         ```
 
@@ -610,22 +602,14 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         ScopeRBACRoleBinding can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}`
-
         * `{{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}`
-
         * `{{scope_id}}/{{scope_rbac_role_binding_id}}`
 
         When using the `pulumi import` command, ScopeRBACRoleBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{scope_id}}/{{scope_rbac_role_binding_id}}
         ```
 

@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * An endpoint is a managed mirroring collector that provides enhanced packet
+ * enrichment capabilities and support for multiple replica destinations.
+ * Endpoints are always part of a global endpoint group which represents a
+ * global "mirroring broker" service.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
  * ## Example Usage
  *
  * ### Network Security Mirroring Endpoint Basic
@@ -44,22 +52,14 @@ import * as utilities from "../utilities";
  * MirroringEndpoint can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/mirroringEndpoints/{{mirroring_endpoint_id}}`
- *
  * * `{{project}}/{{location}}/{{mirroring_endpoint_id}}`
- *
  * * `{{location}}/{{mirroring_endpoint_id}}`
  *
  * When using the `pulumi import` command, MirroringEndpoint can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default projects/{{project}}/locations/{{location}}/mirroringEndpoints/{{mirroring_endpoint_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{project}}/{{location}}/{{mirroring_endpoint_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/mirroringEndpoint:MirroringEndpoint default {{location}}/{{mirroring_endpoint_id}}
  * ```
  */

@@ -34,6 +34,10 @@ import java.util.concurrent.CompletableFuture;
 
 public final class VertexFunctions {
     /**
+     * Retrieves the current IAM policy data for endpoint
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -74,6 +78,10 @@ public final class VertexFunctions {
         return getAiEndpointIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for endpoint
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -114,6 +122,10 @@ public final class VertexFunctions {
         return getAiEndpointIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for endpoint
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -154,6 +166,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invoke("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", TypeShape.of(GetAiEndpointIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for endpoint
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -194,6 +210,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invoke("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", TypeShape.of(GetAiEndpointIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for endpoint
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -234,6 +254,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invokeAsync("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", TypeShape.of(GetAiEndpointIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featuregroup
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -273,6 +297,10 @@ public final class VertexFunctions {
         return getAiFeatureGroupIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for featuregroup
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -312,6 +340,10 @@ public final class VertexFunctions {
         return getAiFeatureGroupIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for featuregroup
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -351,6 +383,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invoke("gcp:vertex/getAiFeatureGroupIamPolicy:getAiFeatureGroupIamPolicy", TypeShape.of(GetAiFeatureGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featuregroup
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -390,6 +426,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invoke("gcp:vertex/getAiFeatureGroupIamPolicy:getAiFeatureGroupIamPolicy", TypeShape.of(GetAiFeatureGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featuregroup
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -429,6 +469,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invokeAsync("gcp:vertex/getAiFeatureGroupIamPolicy:getAiFeatureGroupIamPolicy", TypeShape.of(GetAiFeatureGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featureonlinestorefeatureview
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -469,6 +513,10 @@ public final class VertexFunctions {
         return getAiFeatureOnlineStoreFeatureviewIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for featureonlinestorefeatureview
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -509,6 +557,10 @@ public final class VertexFunctions {
         return getAiFeatureOnlineStoreFeatureviewIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for featureonlinestorefeatureview
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -549,6 +601,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invoke("gcp:vertex/getAiFeatureOnlineStoreFeatureviewIamPolicy:getAiFeatureOnlineStoreFeatureviewIamPolicy", TypeShape.of(GetAiFeatureOnlineStoreFeatureviewIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featureonlinestorefeatureview
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -589,6 +645,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invoke("gcp:vertex/getAiFeatureOnlineStoreFeatureviewIamPolicy:getAiFeatureOnlineStoreFeatureviewIamPolicy", TypeShape.of(GetAiFeatureOnlineStoreFeatureviewIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featureonlinestorefeatureview
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -629,6 +689,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invokeAsync("gcp:vertex/getAiFeatureOnlineStoreFeatureviewIamPolicy:getAiFeatureOnlineStoreFeatureviewIamPolicy", TypeShape.of(GetAiFeatureOnlineStoreFeatureviewIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featureonlinestore
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -668,6 +732,10 @@ public final class VertexFunctions {
         return getAiFeatureOnlineStoreIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for featureonlinestore
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -707,6 +775,10 @@ public final class VertexFunctions {
         return getAiFeatureOnlineStoreIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for featureonlinestore
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -746,6 +818,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invoke("gcp:vertex/getAiFeatureOnlineStoreIamPolicy:getAiFeatureOnlineStoreIamPolicy", TypeShape.of(GetAiFeatureOnlineStoreIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featureonlinestore
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -785,6 +861,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invoke("gcp:vertex/getAiFeatureOnlineStoreIamPolicy:getAiFeatureOnlineStoreIamPolicy", TypeShape.of(GetAiFeatureOnlineStoreIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featureonlinestore
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -824,6 +904,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invokeAsync("gcp:vertex/getAiFeatureOnlineStoreIamPolicy:getAiFeatureOnlineStoreIamPolicy", TypeShape.of(GetAiFeatureOnlineStoreIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featurestoreentitytype
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -863,6 +947,10 @@ public final class VertexFunctions {
         return getAiFeaturestoreEntitytypeIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for featurestoreentitytype
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -902,6 +990,10 @@ public final class VertexFunctions {
         return getAiFeaturestoreEntitytypeIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for featurestoreentitytype
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -941,6 +1033,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invoke("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", TypeShape.of(GetAiFeaturestoreEntitytypeIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featurestoreentitytype
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -980,6 +1076,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invoke("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", TypeShape.of(GetAiFeaturestoreEntitytypeIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featurestoreentitytype
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1019,6 +1119,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invokeAsync("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", TypeShape.of(GetAiFeaturestoreEntitytypeIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featurestore
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1059,6 +1163,10 @@ public final class VertexFunctions {
         return getAiFeaturestoreIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for featurestore
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1099,6 +1207,10 @@ public final class VertexFunctions {
         return getAiFeaturestoreIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for featurestore
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1139,6 +1251,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invoke("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", TypeShape.of(GetAiFeaturestoreIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featurestore
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1179,6 +1295,10 @@ public final class VertexFunctions {
         return Deployment.getInstance().invoke("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", TypeShape.of(GetAiFeaturestoreIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for featurestore
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>

@@ -171,22 +171,14 @@ import * as utilities from "../utilities";
  * CloudVmCluster can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/cloudVmClusters/{{cloud_vm_cluster_id}}`
- *
  * * `{{project}}/{{location}}/{{cloud_vm_cluster_id}}`
- *
  * * `{{location}}/{{cloud_vm_cluster_id}}`
  *
  * When using the `pulumi import` command, CloudVmCluster can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default projects/{{project}}/locations/{{location}}/cloudVmClusters/{{cloud_vm_cluster_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{project}}/{{location}}/{{cloud_vm_cluster_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{location}}/{{cloud_vm_cluster_id}}
  * ```
  */
@@ -243,6 +235,9 @@ export class CloudVmCluster extends pulumi.CustomResource {
      * The date and time that the VM cluster was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * User friendly name for this resource.
@@ -412,6 +407,9 @@ export interface CloudVmClusterState {
      * The date and time that the VM cluster was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * User friendly name for this resource.
@@ -508,6 +506,9 @@ export interface CloudVmClusterArgs {
      * a letter or a number.
      */
     cloudVmClusterId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * User friendly name for this resource.

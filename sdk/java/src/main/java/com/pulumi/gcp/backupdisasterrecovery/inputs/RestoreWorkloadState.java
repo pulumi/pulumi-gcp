@@ -117,9 +117,19 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.dataSourceId);
     }
 
+    /**
+     * Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     * 
+     */
     @Import(name="deleteRestoredInstance")
     private @Nullable Output<Boolean> deleteRestoredInstance;
 
+    /**
+     * @return Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     * 
+     */
     public Optional<Output<Boolean>> deleteRestoredInstance() {
         return Optional.ofNullable(this.deleteRestoredInstance);
     }
@@ -408,11 +418,25 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
             return dataSourceId(Output.of(dataSourceId));
         }
 
+        /**
+         * @param deleteRestoredInstance Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+         * If false, only the restore record is removed from the state, leaving the resource active.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteRestoredInstance(@Nullable Output<Boolean> deleteRestoredInstance) {
             $.deleteRestoredInstance = deleteRestoredInstance;
             return this;
         }
 
+        /**
+         * @param deleteRestoredInstance Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+         * If false, only the restore record is removed from the state, leaving the resource active.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteRestoredInstance(Boolean deleteRestoredInstance) {
             return deleteRestoredInstance(Output.of(deleteRestoredInstance));
         }

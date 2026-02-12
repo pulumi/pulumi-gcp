@@ -343,22 +343,14 @@ class OauthClientCredential(pulumi.CustomResource):
         OauthClientCredential can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/oauthClients/{{oauthclient}}/credentials/{{oauth_client_credential_id}}`
-
         * `{{project}}/{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}`
-
         * `{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}`
 
         When using the `pulumi import` command, OauthClientCredential can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default projects/{{project}}/locations/{{location}}/oauthClients/{{oauthclient}}/credentials/{{oauth_client_credential_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default {{project}}/{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default {{location}}/{{oauthclient}}/{{oauth_client_credential_id}}
         ```
 
@@ -422,22 +414,14 @@ class OauthClientCredential(pulumi.CustomResource):
         OauthClientCredential can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/oauthClients/{{oauthclient}}/credentials/{{oauth_client_credential_id}}`
-
         * `{{project}}/{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}`
-
         * `{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}`
 
         When using the `pulumi import` command, OauthClientCredential can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default projects/{{project}}/locations/{{location}}/oauthClients/{{oauthclient}}/credentials/{{oauth_client_credential_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default {{project}}/{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default {{location}}/{{oauthclient}}/{{oauth_client_credential_id}}
         ```
 

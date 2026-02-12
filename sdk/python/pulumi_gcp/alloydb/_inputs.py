@@ -101,16 +101,11 @@ __all__ = [
     'InstanceReadPoolConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class BackupEncryptionConfigArgsDict(TypedDict):
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
-        """
-elif False:
-    BackupEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BackupEncryptionConfigArgsDict(TypedDict):
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+    """
 
 @pulumi.input_type
 class BackupEncryptionConfigArgs:
@@ -135,20 +130,17 @@ class BackupEncryptionConfigArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class BackupEncryptionInfoArgsDict(TypedDict):
-        encryption_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Type of encryption.
-        """
-        kms_key_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Output only. Cloud KMS key versions that are being used to protect the database or the backup.
-        """
-elif False:
-    BackupEncryptionInfoArgsDict: TypeAlias = Mapping[str, Any]
+class BackupEncryptionInfoArgsDict(TypedDict):
+    encryption_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Type of encryption.
+    """
+    kms_key_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+    """
 
 @pulumi.input_type
 class BackupEncryptionInfoArgs:
@@ -193,20 +185,17 @@ class BackupEncryptionInfoArgs:
         pulumi.set(self, "kms_key_versions", value)
 
 
-if not MYPY:
-    class BackupExpiryQuantityArgsDict(TypedDict):
-        retention_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. The backup's position among its backups with the same source cluster and type, by descending chronological order create time (i.e. newest first).
-        """
-        total_retention_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. The length of the quantity-based queue, specified by the backup's retention policy.
-        """
-elif False:
-    BackupExpiryQuantityArgsDict: TypeAlias = Mapping[str, Any]
+class BackupExpiryQuantityArgsDict(TypedDict):
+    retention_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. The backup's position among its backups with the same source cluster and type, by descending chronological order create time (i.e. newest first).
+    """
+    total_retention_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. The length of the quantity-based queue, specified by the backup's retention policy.
+    """
 
 @pulumi.input_type
 class BackupExpiryQuantityArgs:
@@ -251,48 +240,45 @@ class BackupExpiryQuantityArgs:
         pulumi.set(self, "total_retention_count", value)
 
 
-if not MYPY:
-    class ClusterAutomatedBackupPolicyArgsDict(TypedDict):
-        backup_window: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
-        The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether automated backups are enabled.
-        """
-        encryption_config: NotRequired[pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArgsDict']]
-        """
-        EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
-        Structure is documented below.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Labels to apply to backups created using this configuration.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
-        """
-        quantity_based_retention: NotRequired[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgsDict']]
-        """
-        Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
-        Structure is documented below.
-        """
-        time_based_retention: NotRequired[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgsDict']]
-        """
-        Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
-        Structure is documented below.
-        """
-        weekly_schedule: NotRequired[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgsDict']]
-        """
-        Weekly schedule for the Backup.
-        Structure is documented below.
-        """
-elif False:
-    ClusterAutomatedBackupPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAutomatedBackupPolicyArgsDict(TypedDict):
+    backup_window: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
+    The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether automated backups are enabled.
+    """
+    encryption_config: NotRequired[pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArgsDict']]
+    """
+    EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+    Structure is documented below.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Labels to apply to backups created using this configuration.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+    """
+    quantity_based_retention: NotRequired[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgsDict']]
+    """
+    Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
+    Structure is documented below.
+    """
+    time_based_retention: NotRequired[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgsDict']]
+    """
+    Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
+    Structure is documented below.
+    """
+    weekly_schedule: NotRequired[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgsDict']]
+    """
+    Weekly schedule for the Backup.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ClusterAutomatedBackupPolicyArgs:
@@ -441,14 +427,11 @@ class ClusterAutomatedBackupPolicyArgs:
         pulumi.set(self, "weekly_schedule", value)
 
 
-if not MYPY:
-    class ClusterAutomatedBackupPolicyEncryptionConfigArgsDict(TypedDict):
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
-        """
-elif False:
-    ClusterAutomatedBackupPolicyEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAutomatedBackupPolicyEncryptionConfigArgsDict(TypedDict):
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+    """
 
 @pulumi.input_type
 class ClusterAutomatedBackupPolicyEncryptionConfigArgs:
@@ -473,14 +456,11 @@ class ClusterAutomatedBackupPolicyEncryptionConfigArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class ClusterAutomatedBackupPolicyQuantityBasedRetentionArgsDict(TypedDict):
-        count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of backups to retain.
-        """
-elif False:
-    ClusterAutomatedBackupPolicyQuantityBasedRetentionArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAutomatedBackupPolicyQuantityBasedRetentionArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of backups to retain.
+    """
 
 @pulumi.input_type
 class ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs:
@@ -505,15 +485,12 @@ class ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs:
         pulumi.set(self, "count", value)
 
 
-if not MYPY:
-    class ClusterAutomatedBackupPolicyTimeBasedRetentionArgsDict(TypedDict):
-        retention_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The retention period.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        """
-elif False:
-    ClusterAutomatedBackupPolicyTimeBasedRetentionArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAutomatedBackupPolicyTimeBasedRetentionArgsDict(TypedDict):
+    retention_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The retention period.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+    """
 
 @pulumi.input_type
 class ClusterAutomatedBackupPolicyTimeBasedRetentionArgs:
@@ -540,20 +517,17 @@ class ClusterAutomatedBackupPolicyTimeBasedRetentionArgs:
         pulumi.set(self, "retention_period", value)
 
 
-if not MYPY:
-    class ClusterAutomatedBackupPolicyWeeklyScheduleArgsDict(TypedDict):
-        start_times: pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgsDict']]]
-        """
-        The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
-        Structure is documented below.
-        """
-        days_of_weeks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The days of the week to perform a backup. At least one day of the week must be provided.
-        Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-elif False:
-    ClusterAutomatedBackupPolicyWeeklyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAutomatedBackupPolicyWeeklyScheduleArgsDict(TypedDict):
+    start_times: pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgsDict']]]
+    """
+    The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
+    Structure is documented below.
+    """
+    days_of_weeks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The days of the week to perform a backup. At least one day of the week must be provided.
+    Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
 
 @pulumi.input_type
 class ClusterAutomatedBackupPolicyWeeklyScheduleArgs:
@@ -597,26 +571,23 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleArgs:
         pulumi.set(self, "days_of_weeks", value)
 
 
-if not MYPY:
-    class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Currently, only the value 0 is supported.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Currently, only the value 0 is supported.
-        """
-elif False:
-    ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Currently, only the value 0 is supported.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Currently, only the value 0 is supported.
+    """
 
 @pulumi.input_type
 class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs:
@@ -689,14 +660,11 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class ClusterBackupSourceArgsDict(TypedDict):
-        backup_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the backup resource.
-        """
-elif False:
-    ClusterBackupSourceArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterBackupSourceArgsDict(TypedDict):
+    backup_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the backup resource.
+    """
 
 @pulumi.input_type
 class ClusterBackupSourceArgs:
@@ -721,14 +689,11 @@ class ClusterBackupSourceArgs:
         pulumi.set(self, "backup_name", value)
 
 
-if not MYPY:
-    class ClusterBackupdrBackupSourceArgsDict(TypedDict):
-        backup: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the BackupDR backup resource.
-        """
-elif False:
-    ClusterBackupdrBackupSourceArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterBackupdrBackupSourceArgsDict(TypedDict):
+    backup: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the BackupDR backup resource.
+    """
 
 @pulumi.input_type
 class ClusterBackupdrBackupSourceArgs:
@@ -753,24 +718,21 @@ class ClusterBackupdrBackupSourceArgs:
         pulumi.set(self, "backup", value)
 
 
-if not MYPY:
-    class ClusterContinuousBackupConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether continuous backup recovery is enabled. If not set, defaults to true.
-        """
-        encryption_config: NotRequired[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArgsDict']]
-        """
-        EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
-        Structure is documented below.
-        """
-        recovery_window_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
-        If not set, defaults to 14 days.
-        """
-elif False:
-    ClusterContinuousBackupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterContinuousBackupConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether continuous backup recovery is enabled. If not set, defaults to true.
+    """
+    encryption_config: NotRequired[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArgsDict']]
+    """
+    EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+    Structure is documented below.
+    """
+    recovery_window_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+    If not set, defaults to 14 days.
+    """
 
 @pulumi.input_type
 class ClusterContinuousBackupConfigArgs:
@@ -831,14 +793,11 @@ class ClusterContinuousBackupConfigArgs:
         pulumi.set(self, "recovery_window_days", value)
 
 
-if not MYPY:
-    class ClusterContinuousBackupConfigEncryptionConfigArgsDict(TypedDict):
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
-        """
-elif False:
-    ClusterContinuousBackupConfigEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterContinuousBackupConfigEncryptionConfigArgsDict(TypedDict):
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+    """
 
 @pulumi.input_type
 class ClusterContinuousBackupConfigEncryptionConfigArgs:
@@ -863,31 +822,28 @@ class ClusterContinuousBackupConfigEncryptionConfigArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class ClusterContinuousBackupInfoArgsDict(TypedDict):
-        earliest_restorable_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The earliest restorable time that can be restored to. Output only field.
-        """
-        enabled_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
-        """
-        encryption_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgsDict']]]]
-        """
-        (Output)
-        Output only. The encryption information for the WALs and backups required for ContinuousBackup.
-        Structure is documented below.
-        """
-        schedules: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
-        """
-elif False:
-    ClusterContinuousBackupInfoArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterContinuousBackupInfoArgsDict(TypedDict):
+    earliest_restorable_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The earliest restorable time that can be restored to. Output only field.
+    """
+    enabled_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+    """
+    encryption_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgsDict']]]]
+    """
+    (Output)
+    Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+    Structure is documented below.
+    """
+    schedules: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+    """
 
 @pulumi.input_type
 class ClusterContinuousBackupInfoArgs:
@@ -970,20 +926,17 @@ class ClusterContinuousBackupInfoArgs:
         pulumi.set(self, "schedules", value)
 
 
-if not MYPY:
-    class ClusterContinuousBackupInfoEncryptionInfoArgsDict(TypedDict):
-        encryption_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Type of encryption.
-        """
-        kms_key_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Output only. Cloud KMS key versions that are being used to protect the database or the backup.
-        """
-elif False:
-    ClusterContinuousBackupInfoEncryptionInfoArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterContinuousBackupInfoEncryptionInfoArgsDict(TypedDict):
+    encryption_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Type of encryption.
+    """
+    kms_key_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+    """
 
 @pulumi.input_type
 class ClusterContinuousBackupInfoEncryptionInfoArgs:
@@ -1028,14 +981,11 @@ class ClusterContinuousBackupInfoEncryptionInfoArgs:
         pulumi.set(self, "kms_key_versions", value)
 
 
-if not MYPY:
-    class ClusterEncryptionConfigArgsDict(TypedDict):
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
-        """
-elif False:
-    ClusterEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterEncryptionConfigArgsDict(TypedDict):
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+    """
 
 @pulumi.input_type
 class ClusterEncryptionConfigArgs:
@@ -1060,20 +1010,17 @@ class ClusterEncryptionConfigArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class ClusterEncryptionInfoArgsDict(TypedDict):
-        encryption_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Type of encryption.
-        """
-        kms_key_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Output only. Cloud KMS key versions that are being used to protect the database or the backup.
-        """
-elif False:
-    ClusterEncryptionInfoArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterEncryptionInfoArgsDict(TypedDict):
+    encryption_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Type of encryption.
+    """
+    kms_key_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+    """
 
 @pulumi.input_type
 class ClusterEncryptionInfoArgs:
@@ -1118,19 +1065,16 @@ class ClusterEncryptionInfoArgs:
         pulumi.set(self, "kms_key_versions", value)
 
 
-if not MYPY:
-    class ClusterInitialUserArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial password for the user.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The database username.
-        """
-elif False:
-    ClusterInitialUserArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterInitialUserArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial password for the user.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The database username.
+    """
 
 @pulumi.input_type
 class ClusterInitialUserArgs:
@@ -1173,15 +1117,12 @@ class ClusterInitialUserArgs:
         pulumi.set(self, "user", value)
 
 
-if not MYPY:
-    class ClusterMaintenanceUpdatePolicyArgsDict(TypedDict):
-        maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowArgsDict']]]]
-        """
-        Preferred windows to perform maintenance. Currently limited to 1.
-        Structure is documented below.
-        """
-elif False:
-    ClusterMaintenanceUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterMaintenanceUpdatePolicyArgsDict(TypedDict):
+    maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowArgsDict']]]]
+    """
+    Preferred windows to perform maintenance. Currently limited to 1.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ClusterMaintenanceUpdatePolicyArgs:
@@ -1208,20 +1149,17 @@ class ClusterMaintenanceUpdatePolicyArgs:
         pulumi.set(self, "maintenance_windows", value)
 
 
-if not MYPY:
-    class ClusterMaintenanceUpdatePolicyMaintenanceWindowArgsDict(TypedDict):
-        day: pulumi.Input[_builtins.str]
-        """
-        Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        start_time: pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgsDict']
-        """
-        Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
-        Structure is documented below.
-        """
-elif False:
-    ClusterMaintenanceUpdatePolicyMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterMaintenanceUpdatePolicyMaintenanceWindowArgsDict(TypedDict):
+    day: pulumi.Input[_builtins.str]
+    """
+    Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    start_time: pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgsDict']
+    """
+    Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ClusterMaintenanceUpdatePolicyMaintenanceWindowArgs:
@@ -1264,26 +1202,23 @@ class ClusterMaintenanceUpdatePolicyMaintenanceWindowArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgsDict(TypedDict):
-        hours: pulumi.Input[_builtins.int]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Currently, only the value 0 is supported.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Currently, only the value 0 is supported.
-        """
-elif False:
-    ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgsDict(TypedDict):
+    hours: pulumi.Input[_builtins.int]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Currently, only the value 0 is supported.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Currently, only the value 0 is supported.
+    """
 
 @pulumi.input_type
 class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs:
@@ -1355,22 +1290,19 @@ class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class ClusterMigrationSourceArgsDict(TypedDict):
-        host_port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The host and port of the on-premises instance in host:port format
-        """
-        reference_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Place holder for the external source identifier(e.g DMS job name) that created the cluster.
-        """
-        source_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of migration source.
-        """
-elif False:
-    ClusterMigrationSourceArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterMigrationSourceArgsDict(TypedDict):
+    host_port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The host and port of the on-premises instance in host:port format
+    """
+    reference_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+    """
+    source_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of migration source.
+    """
 
 @pulumi.input_type
 class ClusterMigrationSourceArgs:
@@ -1427,20 +1359,17 @@ class ClusterMigrationSourceArgs:
         pulumi.set(self, "source_type", value)
 
 
-if not MYPY:
-    class ClusterNetworkConfigArgsDict(TypedDict):
-        allocated_ip_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
-        If set, the instance IPs for this cluster will be created in the allocated range.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
-        It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
-        """
-elif False:
-    ClusterNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworkConfigArgsDict(TypedDict):
+    allocated_ip_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+    If set, the instance IPs for this cluster will be created in the allocated range.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+    It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+    """
 
 @pulumi.input_type
 class ClusterNetworkConfigArgs:
@@ -1485,20 +1414,17 @@ class ClusterNetworkConfigArgs:
         pulumi.set(self, "network", value)
 
 
-if not MYPY:
-    class ClusterPscConfigArgsDict(TypedDict):
-        psc_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Create an instance that allows connections from Private Service Connect endpoints to the instance.
-        """
-        service_owned_project_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
-        In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
-        """
-elif False:
-    ClusterPscConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterPscConfigArgsDict(TypedDict):
+    psc_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Create an instance that allows connections from Private Service Connect endpoints to the instance.
+    """
+    service_owned_project_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
+    In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
+    """
 
 @pulumi.input_type
 class ClusterPscConfigArgs:
@@ -1543,14 +1469,11 @@ class ClusterPscConfigArgs:
         pulumi.set(self, "service_owned_project_number", value)
 
 
-if not MYPY:
-    class ClusterRestoreBackupSourceArgsDict(TypedDict):
-        backup_name: pulumi.Input[_builtins.str]
-        """
-        The name of the backup that this cluster is restored from.
-        """
-elif False:
-    ClusterRestoreBackupSourceArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterRestoreBackupSourceArgsDict(TypedDict):
+    backup_name: pulumi.Input[_builtins.str]
+    """
+    The name of the backup that this cluster is restored from.
+    """
 
 @pulumi.input_type
 class ClusterRestoreBackupSourceArgs:
@@ -1574,14 +1497,11 @@ class ClusterRestoreBackupSourceArgs:
         pulumi.set(self, "backup_name", value)
 
 
-if not MYPY:
-    class ClusterRestoreBackupdrBackupSourceArgsDict(TypedDict):
-        backup: pulumi.Input[_builtins.str]
-        """
-        The name of the BackupDR backup that this cluster is restored from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]/backups/[BACKUP_ID]"
-        """
-elif False:
-    ClusterRestoreBackupdrBackupSourceArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterRestoreBackupdrBackupSourceArgsDict(TypedDict):
+    backup: pulumi.Input[_builtins.str]
+    """
+    The name of the BackupDR backup that this cluster is restored from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]/backups/[BACKUP_ID]"
+    """
 
 @pulumi.input_type
 class ClusterRestoreBackupdrBackupSourceArgs:
@@ -1605,18 +1525,15 @@ class ClusterRestoreBackupdrBackupSourceArgs:
         pulumi.set(self, "backup", value)
 
 
-if not MYPY:
-    class ClusterRestoreBackupdrPitrSourceArgsDict(TypedDict):
-        data_source: pulumi.Input[_builtins.str]
-        """
-        The name of the BackupDR data source that this cluster is restore from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]"
-        """
-        point_in_time: pulumi.Input[_builtins.str]
-        """
-        The point in time that this cluster is restored to, in RFC 3339 format.
-        """
-elif False:
-    ClusterRestoreBackupdrPitrSourceArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterRestoreBackupdrPitrSourceArgsDict(TypedDict):
+    data_source: pulumi.Input[_builtins.str]
+    """
+    The name of the BackupDR data source that this cluster is restore from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]"
+    """
+    point_in_time: pulumi.Input[_builtins.str]
+    """
+    The point in time that this cluster is restored to, in RFC 3339 format.
+    """
 
 @pulumi.input_type
 class ClusterRestoreBackupdrPitrSourceArgs:
@@ -1655,18 +1572,15 @@ class ClusterRestoreBackupdrPitrSourceArgs:
         pulumi.set(self, "point_in_time", value)
 
 
-if not MYPY:
-    class ClusterRestoreContinuousBackupSourceArgsDict(TypedDict):
-        cluster: pulumi.Input[_builtins.str]
-        """
-        The name of the source cluster that this cluster is restored from.
-        """
-        point_in_time: pulumi.Input[_builtins.str]
-        """
-        The point in time that this cluster is restored to, in RFC 3339 format.
-        """
-elif False:
-    ClusterRestoreContinuousBackupSourceArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterRestoreContinuousBackupSourceArgsDict(TypedDict):
+    cluster: pulumi.Input[_builtins.str]
+    """
+    The name of the source cluster that this cluster is restored from.
+    """
+    point_in_time: pulumi.Input[_builtins.str]
+    """
+    The point in time that this cluster is restored to, in RFC 3339 format.
+    """
 
 @pulumi.input_type
 class ClusterRestoreContinuousBackupSourceArgs:
@@ -1705,15 +1619,12 @@ class ClusterRestoreContinuousBackupSourceArgs:
         pulumi.set(self, "point_in_time", value)
 
 
-if not MYPY:
-    class ClusterSecondaryConfigArgsDict(TypedDict):
-        primary_cluster_name: pulumi.Input[_builtins.str]
-        """
-        Name of the primary cluster must be in the format
-        'projects/{project}/locations/{location}/clusters/{cluster_id}'
-        """
-elif False:
-    ClusterSecondaryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterSecondaryConfigArgsDict(TypedDict):
+    primary_cluster_name: pulumi.Input[_builtins.str]
+    """
+    Name of the primary cluster must be in the format
+    'projects/{project}/locations/{location}/clusters/{cluster_id}'
+    """
 
 @pulumi.input_type
 class ClusterSecondaryConfigArgs:
@@ -1739,26 +1650,23 @@ class ClusterSecondaryConfigArgs:
         pulumi.set(self, "primary_cluster_name", value)
 
 
-if not MYPY:
-    class ClusterTrialMetadataArgsDict(TypedDict):
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        End time of the trial cluster.
-        """
-        grace_end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Grace end time of the trial cluster.
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Start time of the trial cluster.
-        """
-        upgrade_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Upgrade time of the trial cluster to standard cluster.
-        """
-elif False:
-    ClusterTrialMetadataArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterTrialMetadataArgsDict(TypedDict):
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    End time of the trial cluster.
+    """
+    grace_end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Grace end time of the trial cluster.
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Start time of the trial cluster.
+    """
+    upgrade_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Upgrade time of the trial cluster to standard cluster.
+    """
 
 @pulumi.input_type
 class ClusterTrialMetadataArgs:
@@ -1831,19 +1739,16 @@ class ClusterTrialMetadataArgs:
         pulumi.set(self, "upgrade_time", value)
 
 
-if not MYPY:
-    class InstanceClientConnectionConfigArgsDict(TypedDict):
-        require_connectors: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
-        """
-        ssl_config: NotRequired[pulumi.Input['InstanceClientConnectionConfigSslConfigArgsDict']]
-        """
-        SSL config option for this instance.
-        Structure is documented below.
-        """
-elif False:
-    InstanceClientConnectionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceClientConnectionConfigArgsDict(TypedDict):
+    require_connectors: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
+    """
+    ssl_config: NotRequired[pulumi.Input['InstanceClientConnectionConfigSslConfigArgsDict']]
+    """
+    SSL config option for this instance.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceClientConnectionConfigArgs:
@@ -1886,15 +1791,12 @@ class InstanceClientConnectionConfigArgs:
         pulumi.set(self, "ssl_config", value)
 
 
-if not MYPY:
-    class InstanceClientConnectionConfigSslConfigArgsDict(TypedDict):
-        ssl_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SSL mode. Specifies client-server SSL/TLS connection behavior.
-        Possible values are: `ENCRYPTED_ONLY`, `ALLOW_UNENCRYPTED_AND_ENCRYPTED`.
-        """
-elif False:
-    InstanceClientConnectionConfigSslConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceClientConnectionConfigSslConfigArgsDict(TypedDict):
+    ssl_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SSL mode. Specifies client-server SSL/TLS connection behavior.
+    Possible values are: `ENCRYPTED_ONLY`, `ALLOW_UNENCRYPTED_AND_ENCRYPTED`.
+    """
 
 @pulumi.input_type
 class InstanceClientConnectionConfigSslConfigArgs:
@@ -1921,20 +1823,28 @@ class InstanceClientConnectionConfigSslConfigArgs:
         pulumi.set(self, "ssl_mode", value)
 
 
-if not MYPY:
-    class InstanceConnectionPoolConfigArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Whether to enabled Managed Connection Pool.
-        """
-        flags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        pooler_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The number of running poolers per instance.
-        """
-elif False:
-    InstanceConnectionPoolConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConnectionPoolConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether to enabled Managed Connection Pool.
+    """
+    flags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Flags for configuring managed connection pooling when it is enabled.
+    These flags will only be set if `connection_pool_config.enabled` is
+    true.
+    Please see
+    https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+    for a comprehensive list of flags that can be set. To specify the flags
+    in Terraform, please remove the "connection-pooling-" prefix and use
+    underscores instead of dashes in the name. For example,
+    "connection-pooling-pool-mode" would be "pool_mode".
+    """
+    pooler_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The number of running poolers per instance.
+    """
 
 @pulumi.input_type
 class InstanceConnectionPoolConfigArgs:
@@ -1944,6 +1854,15 @@ class InstanceConnectionPoolConfigArgs:
                  pooler_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether to enabled Managed Connection Pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] flags: Flags for configuring managed connection pooling when it is enabled.
+               These flags will only be set if `connection_pool_config.enabled` is
+               true.
+               Please see
+               https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+               for a comprehensive list of flags that can be set. To specify the flags
+               in Terraform, please remove the "connection-pooling-" prefix and use
+               underscores instead of dashes in the name. For example,
+               "connection-pooling-pool-mode" would be "pool_mode".
         :param pulumi.Input[_builtins.int] pooler_count: (Output)
                The number of running poolers per instance.
         """
@@ -1968,6 +1887,17 @@ class InstanceConnectionPoolConfigArgs:
     @_builtins.property
     @pulumi.getter
     def flags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Flags for configuring managed connection pooling when it is enabled.
+        These flags will only be set if `connection_pool_config.enabled` is
+        true.
+        Please see
+        https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+        for a comprehensive list of flags that can be set. To specify the flags
+        in Terraform, please remove the "connection-pooling-" prefix and use
+        underscores instead of dashes in the name. For example,
+        "connection-pooling-pool-mode" would be "pool_mode".
+        """
         return pulumi.get(self, "flags")
 
     @flags.setter
@@ -1988,20 +1918,17 @@ class InstanceConnectionPoolConfigArgs:
         pulumi.set(self, "pooler_count", value)
 
 
-if not MYPY:
-    class InstanceMachineConfigArgsDict(TypedDict):
-        cpu_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of CPU's in the VM instance.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Machine type of the VM instance.
-        E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
-        `cpu_count` must match the number of vCPUs in the machine type.
-        """
-elif False:
-    InstanceMachineConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceMachineConfigArgsDict(TypedDict):
+    cpu_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of CPU's in the VM instance.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Machine type of the VM instance.
+    E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+    `cpu_count` must match the number of vCPUs in the machine type.
+    """
 
 @pulumi.input_type
 class InstanceMachineConfigArgs:
@@ -2046,33 +1973,30 @@ class InstanceMachineConfigArgs:
         pulumi.set(self, "machine_type", value)
 
 
-if not MYPY:
-    class InstanceNetworkConfigArgsDict(TypedDict):
-        allocated_ip_range_override: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
-        If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
-        The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
-        """
-        authorized_external_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkConfigAuthorizedExternalNetworkArgsDict']]]]
-        """
-        A list of external networks authorized to access this instance. This
-        field is only allowed to be set when `enable_public_ip` is set to
-        true.
-        Structure is documented below.
-        """
-        enable_outbound_public_ip: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enabling outbound public ip for the instance.
-        """
-        enable_public_ip: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enabling public ip for the instance. If a user wishes to disable this,
-        please also clear the list of the authorized external networks set on
-        the same instance.
-        """
-elif False:
-    InstanceNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceNetworkConfigArgsDict(TypedDict):
+    allocated_ip_range_override: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the allocated IP range for the private IP AlloyDB instance, for example: "google-managed-services-default".
+    If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
+    The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+    """
+    authorized_external_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkConfigAuthorizedExternalNetworkArgsDict']]]]
+    """
+    A list of external networks authorized to access this instance. This
+    field is only allowed to be set when `enable_public_ip` is set to
+    true.
+    Structure is documented below.
+    """
+    enable_outbound_public_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enabling outbound public ip for the instance.
+    """
+    enable_public_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enabling public ip for the instance. If a user wishes to disable this,
+    please also clear the list of the authorized external networks set on
+    the same instance.
+    """
 
 @pulumi.input_type
 class InstanceNetworkConfigArgs:
@@ -2159,14 +2083,11 @@ class InstanceNetworkConfigArgs:
         pulumi.set(self, "enable_public_ip", value)
 
 
-if not MYPY:
-    class InstanceNetworkConfigAuthorizedExternalNetworkArgsDict(TypedDict):
-        cidr_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        CIDR range for one authorized network of the instance.
-        """
-elif False:
-    InstanceNetworkConfigAuthorizedExternalNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceNetworkConfigAuthorizedExternalNetworkArgsDict(TypedDict):
+    cidr_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CIDR range for one authorized network of the instance.
+    """
 
 @pulumi.input_type
 class InstanceNetworkConfigAuthorizedExternalNetworkArgs:
@@ -2191,46 +2112,43 @@ class InstanceNetworkConfigAuthorizedExternalNetworkArgs:
         pulumi.set(self, "cidr_range", value)
 
 
-if not MYPY:
-    class InstanceObservabilityConfigArgsDict(TypedDict):
-        assistive_experiences_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether assistive experiences are enabled for this AlloyDB instance.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Observability feature status for an instance.
-        """
-        max_query_string_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
-        """
-        preserve_comments: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Preserve comments in the query string.
-        """
-        query_plans_per_minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
-        """
-        record_application_tags: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Record application tags for an instance. This flag is turned "on" by default.
-        """
-        track_active_queries: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Track actively running queries. If not set, default value is "off".
-        """
-        track_wait_event_types: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Record wait event types during query execution for an instance.
-        """
-        track_wait_events: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Record wait events during query execution for an instance.
-        """
-elif False:
-    InstanceObservabilityConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceObservabilityConfigArgsDict(TypedDict):
+    assistive_experiences_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether assistive experiences are enabled for this AlloyDB instance.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Observability feature status for an instance.
+    """
+    max_query_string_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
+    """
+    preserve_comments: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Preserve comments in the query string.
+    """
+    query_plans_per_minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
+    """
+    record_application_tags: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Record application tags for an instance. This flag is turned "on" by default.
+    """
+    track_active_queries: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Track actively running queries. If not set, default value is "off".
+    """
+    track_wait_event_types: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Record wait event types during query execution for an instance.
+    """
+    track_wait_events: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Record wait events during query execution for an instance.
+    """
 
 @pulumi.input_type
 class InstanceObservabilityConfigArgs:
@@ -2383,39 +2301,36 @@ class InstanceObservabilityConfigArgs:
         pulumi.set(self, "track_wait_events", value)
 
 
-if not MYPY:
-    class InstancePscInstanceConfigArgsDict(TypedDict):
-        allowed_consumer_projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
-        These should be specified as project numbers only.
-        """
-        psc_auto_connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscAutoConnectionArgsDict']]]]
-        """
-        Configurations for setting up PSC service automation.
-        Structure is documented below.
-        """
-        psc_dns_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The DNS name of the instance for PSC connectivity.
-        Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
-        """
-        psc_interface_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscInterfaceConfigArgsDict']]]]
-        """
-        Configurations for setting up PSC interfaces attached to the instance
-        which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
-        Structure is documented below.
-        """
-        service_attachment_link: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The service attachment created when Private Service Connect (PSC) is enabled for the instance.
-        The name of the resource will be in the format of
-        `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
-        """
-elif False:
-    InstancePscInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePscInstanceConfigArgsDict(TypedDict):
+    allowed_consumer_projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+    These should be specified as project numbers only.
+    """
+    psc_auto_connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscAutoConnectionArgsDict']]]]
+    """
+    Configurations for setting up PSC service automation.
+    Structure is documented below.
+    """
+    psc_dns_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The DNS name of the instance for PSC connectivity.
+    Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
+    """
+    psc_interface_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscInterfaceConfigArgsDict']]]]
+    """
+    Configurations for setting up PSC interfaces attached to the instance
+    which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
+    Structure is documented below.
+    """
+    service_attachment_link: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+    The name of the resource will be in the format of
+    `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
+    """
 
 @pulumi.input_type
 class InstancePscInstanceConfigArgs:
@@ -2522,39 +2437,36 @@ class InstancePscInstanceConfigArgs:
         pulumi.set(self, "service_attachment_link", value)
 
 
-if not MYPY:
-    class InstancePscInstanceConfigPscAutoConnectionArgsDict(TypedDict):
-        consumer_network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The consumer network for the PSC service automation, example:
-        "projects/vpc-host-project/global/networks/default".
-        The consumer network might be hosted a different project than the
-        consumer project. The API expects the consumer project specified to be
-        the project ID (and not the project number)
-        """
-        consumer_network_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The status of the service connection policy.
-        """
-        consumer_project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The consumer project to which the PSC service automation endpoint will
-        be created. The API expects the consumer project to be the project ID(
-        and not the project number).
-        """
-        ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The IP address of the PSC service automation endpoint.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The status of the PSC service automation connection.
-        """
-elif False:
-    InstancePscInstanceConfigPscAutoConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePscInstanceConfigPscAutoConnectionArgsDict(TypedDict):
+    consumer_network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The consumer network for the PSC service automation, example:
+    "projects/vpc-host-project/global/networks/default".
+    The consumer network might be hosted a different project than the
+    consumer project. The API expects the consumer project specified to be
+    the project ID (and not the project number)
+    """
+    consumer_network_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The status of the service connection policy.
+    """
+    consumer_project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The consumer project to which the PSC service automation endpoint will
+    be created. The API expects the consumer project to be the project ID(
+    and not the project number).
+    """
+    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The IP address of the PSC service automation endpoint.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The status of the PSC service automation connection.
+    """
 
 @pulumi.input_type
 class InstancePscInstanceConfigPscAutoConnectionArgs:
@@ -2661,16 +2573,13 @@ class InstancePscInstanceConfigPscAutoConnectionArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class InstancePscInstanceConfigPscInterfaceConfigArgsDict(TypedDict):
-        network_attachment_resource: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The network attachment resource created in the consumer project to which the PSC interface will be linked.
-        This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
-        The network attachment must be in the same region as the instance.
-        """
-elif False:
-    InstancePscInstanceConfigPscInterfaceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePscInstanceConfigPscInterfaceConfigArgsDict(TypedDict):
+    network_attachment_resource: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The network attachment resource created in the consumer project to which the PSC interface will be linked.
+    This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+    The network attachment must be in the same region as the instance.
+    """
 
 @pulumi.input_type
 class InstancePscInstanceConfigPscInterfaceConfigArgs:
@@ -2699,26 +2608,23 @@ class InstancePscInstanceConfigPscInterfaceConfigArgs:
         pulumi.set(self, "network_attachment_resource", value)
 
 
-if not MYPY:
-    class InstanceQueryInsightsConfigArgsDict(TypedDict):
-        query_plans_per_minute: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
-        """
-        query_string_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
-        """
-        record_application_tags: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Record application tags for an instance. This flag is turned "on" by default.
-        """
-        record_client_address: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
-        """
-elif False:
-    InstanceQueryInsightsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceQueryInsightsConfigArgsDict(TypedDict):
+    query_plans_per_minute: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+    """
+    query_string_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+    """
+    record_application_tags: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Record application tags for an instance. This flag is turned "on" by default.
+    """
+    record_client_address: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+    """
 
 @pulumi.input_type
 class InstanceQueryInsightsConfigArgs:
@@ -2791,14 +2697,11 @@ class InstanceQueryInsightsConfigArgs:
         pulumi.set(self, "record_client_address", value)
 
 
-if not MYPY:
-    class InstanceReadPoolConfigArgsDict(TypedDict):
-        node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Read capacity, i.e. number of nodes in a read pool instance.
-        """
-elif False:
-    InstanceReadPoolConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceReadPoolConfigArgsDict(TypedDict):
+    node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Read capacity, i.e. number of nodes in a read pool instance.
+    """
 
 @pulumi.input_type
 class InstanceReadPoolConfigArgs:

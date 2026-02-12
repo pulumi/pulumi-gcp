@@ -37,15 +37,10 @@ __all__ = [
     'BudgetThresholdRuleArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccountIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    AccountIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class AccountIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AccountIamBindingConditionArgs:
@@ -86,13 +81,10 @@ class AccountIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class AccountIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    AccountIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class AccountIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AccountIamMemberConditionArgs:
@@ -133,44 +125,41 @@ class AccountIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class BudgetAllUpdatesRuleArgsDict(TypedDict):
-        disable_default_iam_recipients: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean. When set to true, disables default notifications sent
-        when a threshold is exceeded. Default recipients are
-        those with Billing Account Administrators and Billing
-        Account Users IAM roles for the target account.
-        """
-        enable_project_level_recipients: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set to true, and when the budget has a single project configured,
-        notifications will be sent to project level recipients of that project.
-        This field will be ignored if the budget has multiple or no project configured.
-        Currently, project level recipients are the users with Owner role on a cloud project.
-        """
-        monitoring_notification_channels: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The full resource name of a monitoring notification
-        channel in the form
-        projects/{project_id}/notificationChannels/{channel_id}.
-        A maximum of 5 channels are allowed.
-        """
-        pubsub_topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Cloud Pub/Sub topic where budget related
-        messages will be published, in the form
-        projects/{project_id}/topics/{topic_id}. Updates are sent
-        at regular intervals to the topic.
-        """
-        schema_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The schema version of the notification. Only "1.0" is
-        accepted. It represents the JSON schema as defined in
-        https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
-        """
-elif False:
-    BudgetAllUpdatesRuleArgsDict: TypeAlias = Mapping[str, Any]
+class BudgetAllUpdatesRuleArgsDict(TypedDict):
+    disable_default_iam_recipients: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean. When set to true, disables default notifications sent
+    when a threshold is exceeded. Default recipients are
+    those with Billing Account Administrators and Billing
+    Account Users IAM roles for the target account.
+    """
+    enable_project_level_recipients: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set to true, and when the budget has a single project configured,
+    notifications will be sent to project level recipients of that project.
+    This field will be ignored if the budget has multiple or no project configured.
+    Currently, project level recipients are the users with Owner role on a cloud project.
+    """
+    monitoring_notification_channels: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The full resource name of a monitoring notification
+    channel in the form
+    projects/{project_id}/notificationChannels/{channel_id}.
+    A maximum of 5 channels are allowed.
+    """
+    pubsub_topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Cloud Pub/Sub topic where budget related
+    messages will be published, in the form
+    projects/{project_id}/topics/{topic_id}. Updates are sent
+    at regular intervals to the topic.
+    """
+    schema_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The schema version of the notification. Only "1.0" is
+    accepted. It represents the JSON schema as defined in
+    https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+    """
 
 @pulumi.input_type
 class BudgetAllUpdatesRuleArgs:
@@ -287,24 +276,21 @@ class BudgetAllUpdatesRuleArgs:
         pulumi.set(self, "schema_version", value)
 
 
-if not MYPY:
-    class BudgetAmountArgsDict(TypedDict):
-        last_period_amount: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Configures a budget amount that is automatically set to 100% of
-        last period's spend.
-        Boolean. Set value to true to use. Do not set to false, instead
-        use the `specified_amount` block.
-        """
-        specified_amount: NotRequired[pulumi.Input['BudgetAmountSpecifiedAmountArgsDict']]
-        """
-        A specified amount to use as the budget. currencyCode is
-        optional. If specified, it must match the currency of the
-        billing account. The currencyCode is provided on output.
-        Structure is documented below.
-        """
-elif False:
-    BudgetAmountArgsDict: TypeAlias = Mapping[str, Any]
+class BudgetAmountArgsDict(TypedDict):
+    last_period_amount: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Configures a budget amount that is automatically set to 100% of
+    last period's spend.
+    Boolean. Set value to true to use. Do not set to false, instead
+    use the `specified_amount` block.
+    """
+    specified_amount: NotRequired[pulumi.Input['BudgetAmountSpecifiedAmountArgsDict']]
+    """
+    A specified amount to use as the budget. currencyCode is
+    optional. If specified, it must match the currency of the
+    billing account. The currencyCode is provided on output.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class BudgetAmountArgs:
@@ -357,29 +343,26 @@ class BudgetAmountArgs:
         pulumi.set(self, "specified_amount", value)
 
 
-if not MYPY:
-    class BudgetAmountSpecifiedAmountArgsDict(TypedDict):
-        currency_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The 3-letter currency code defined in ISO 4217.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of nano (10^-9) units of the amount.
-        The value must be between -999,999,999 and +999,999,999
-        inclusive. If units is positive, nanos must be positive or
-        zero. If units is zero, nanos can be positive, zero, or
-        negative. If units is negative, nanos must be negative or
-        zero. For example $-1.75 is represented as units=-1 and
-        nanos=-750,000,000.
-        """
-        units: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The whole units of the amount. For example if currencyCode
-        is "USD", then 1 unit is one US dollar.
-        """
-elif False:
-    BudgetAmountSpecifiedAmountArgsDict: TypeAlias = Mapping[str, Any]
+class BudgetAmountSpecifiedAmountArgsDict(TypedDict):
+    currency_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The 3-letter currency code defined in ISO 4217.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of nano (10^-9) units of the amount.
+    The value must be between -999,999,999 and +999,999,999
+    inclusive. If units is positive, nanos must be positive or
+    zero. If units is zero, nanos can be positive, zero, or
+    negative. If units is negative, nanos must be negative or
+    zero. For example $-1.75 is represented as units=-1 and
+    nanos=-750,000,000.
+    """
+    units: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The whole units of the amount. For example if currencyCode
+    is "USD", then 1 unit is one US dollar.
+    """
 
 @pulumi.input_type
 class BudgetAmountSpecifiedAmountArgs:
@@ -450,76 +433,73 @@ class BudgetAmountSpecifiedAmountArgs:
         pulumi.set(self, "units", value)
 
 
-if not MYPY:
-    class BudgetBudgetFilterArgsDict(TypedDict):
-        calendar_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A CalendarPeriod represents the abstract concept of a recurring time period that has a
-        canonical start. Grammatically, "the start of the current CalendarPeriod".
-        All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
-        Exactly one of `calendar_period`, `custom_period` must be provided.
-        Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
-        """
-        credit_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
-        this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
-        If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-        """
-        credit_types_treatment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies how credits should be treated when determining spend
-        for threshold calculations.
-        Default value is `INCLUDE_ALL_CREDITS`.
-        Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
-        """
-        custom_period: NotRequired[pulumi.Input['BudgetBudgetFilterCustomPeriodArgsDict']]
-        """
-        Specifies to track usage from any start date (required) to any end date (optional).
-        This time period is static, it does not recur.
-        Exactly one of `calendar_period`, `custom_period` must be provided.
-        Structure is documented below.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A single label and value pair specifying that usage from only
-        this set of labeled resources should be included in the budget.
-        """
-        projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of projects of the form projects/{project_number},
-        specifying that usage from only this set of projects should be
-        included in the budget. If omitted, the report will include
-        all usage for the billing account, regardless of which project
-        the usage occurred on.
-        """
-        resource_ancestors: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
-        specifying that usage from only this set of folders and organizations should be included in the budget.
-        If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
-        contains projects that are paid for by a different Cloud Billing account, the budget doesn't apply to those projects.
-        """
-        services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of services of the form services/{service_id},
-        specifying that usage from only this set of services should be
-        included in the budget. If omitted, the report will include
-        usage for all the services. The service names are available
-        through the Catalog API:
-        https://cloud.google.com/billing/v1/how-tos/catalog-api.
-        """
-        subaccounts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of subaccounts of the form billingAccounts/{account_id},
-        specifying that usage from only this set of subaccounts should
-        be included in the budget. If a subaccount is set to the name of
-        the parent account, usage from the parent account will be included.
-        If the field is omitted, the report will include usage from the parent
-        account and all subaccounts, if they exist.
-        """
-elif False:
-    BudgetBudgetFilterArgsDict: TypeAlias = Mapping[str, Any]
+class BudgetBudgetFilterArgsDict(TypedDict):
+    calendar_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A CalendarPeriod represents the abstract concept of a recurring time period that has a
+    canonical start. Grammatically, "the start of the current CalendarPeriod".
+    All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+    Exactly one of `calendar_period`, `custom_period` must be provided.
+    Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
+    """
+    credit_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+    this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+    If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
+    """
+    credit_types_treatment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies how credits should be treated when determining spend
+    for threshold calculations.
+    Default value is `INCLUDE_ALL_CREDITS`.
+    Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
+    """
+    custom_period: NotRequired[pulumi.Input['BudgetBudgetFilterCustomPeriodArgsDict']]
+    """
+    Specifies to track usage from any start date (required) to any end date (optional).
+    This time period is static, it does not recur.
+    Exactly one of `calendar_period`, `custom_period` must be provided.
+    Structure is documented below.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A single label and value pair specifying that usage from only
+    this set of labeled resources should be included in the budget.
+    """
+    projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of projects of the form projects/{project_number},
+    specifying that usage from only this set of projects should be
+    included in the budget. If omitted, the report will include
+    all usage for the billing account, regardless of which project
+    the usage occurred on.
+    """
+    resource_ancestors: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+    specifying that usage from only this set of folders and organizations should be included in the budget.
+    If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+    contains projects that are paid for by a different Cloud Billing account, the budget doesn't apply to those projects.
+    """
+    services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of services of the form services/{service_id},
+    specifying that usage from only this set of services should be
+    included in the budget. If omitted, the report will include
+    usage for all the services. The service names are available
+    through the Catalog API:
+    https://cloud.google.com/billing/v1/how-tos/catalog-api.
+    """
+    subaccounts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of subaccounts of the form billingAccounts/{account_id},
+    specifying that usage from only this set of subaccounts should
+    be included in the budget. If a subaccount is set to the name of
+    the parent account, usage from the parent account will be included.
+    If the field is omitted, the report will include usage from the parent
+    account and all subaccounts, if they exist.
+    """
 
 @pulumi.input_type
 class BudgetBudgetFilterArgs:
@@ -732,21 +712,18 @@ class BudgetBudgetFilterArgs:
         pulumi.set(self, "subaccounts", value)
 
 
-if not MYPY:
-    class BudgetBudgetFilterCustomPeriodArgsDict(TypedDict):
-        start_date: pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgsDict']
-        """
-        A start date is required. The start date must be after January 1, 2017.
-        Structure is documented below.
-        """
-        end_date: NotRequired[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgsDict']]
-        """
-        Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
-        If unset, specifies to track all usage incurred since the startDate.
-        Structure is documented below.
-        """
-elif False:
-    BudgetBudgetFilterCustomPeriodArgsDict: TypeAlias = Mapping[str, Any]
+class BudgetBudgetFilterCustomPeriodArgsDict(TypedDict):
+    start_date: pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgsDict']
+    """
+    A start date is required. The start date must be after January 1, 2017.
+    Structure is documented below.
+    """
+    end_date: NotRequired[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgsDict']]
+    """
+    Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
+    If unset, specifies to track all usage incurred since the startDate.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class BudgetBudgetFilterCustomPeriodArgs:
@@ -792,22 +769,19 @@ class BudgetBudgetFilterCustomPeriodArgs:
         pulumi.set(self, "end_date", value)
 
 
-if not MYPY:
-    class BudgetBudgetFilterCustomPeriodEndDateArgsDict(TypedDict):
-        day: pulumi.Input[_builtins.int]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month.
-        """
-        month: pulumi.Input[_builtins.int]
-        """
-        Month of a year. Must be from 1 to 12.
-        """
-        year: pulumi.Input[_builtins.int]
-        """
-        Year of the date. Must be from 1 to 9999.
-        """
-elif False:
-    BudgetBudgetFilterCustomPeriodEndDateArgsDict: TypeAlias = Mapping[str, Any]
+class BudgetBudgetFilterCustomPeriodEndDateArgsDict(TypedDict):
+    day: pulumi.Input[_builtins.int]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month.
+    """
+    month: pulumi.Input[_builtins.int]
+    """
+    Month of a year. Must be from 1 to 12.
+    """
+    year: pulumi.Input[_builtins.int]
+    """
+    Year of the date. Must be from 1 to 9999.
+    """
 
 @pulumi.input_type
 class BudgetBudgetFilterCustomPeriodEndDateArgs:
@@ -861,22 +835,19 @@ class BudgetBudgetFilterCustomPeriodEndDateArgs:
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class BudgetBudgetFilterCustomPeriodStartDateArgsDict(TypedDict):
-        day: pulumi.Input[_builtins.int]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month.
-        """
-        month: pulumi.Input[_builtins.int]
-        """
-        Month of a year. Must be from 1 to 12.
-        """
-        year: pulumi.Input[_builtins.int]
-        """
-        Year of the date. Must be from 1 to 9999.
-        """
-elif False:
-    BudgetBudgetFilterCustomPeriodStartDateArgsDict: TypeAlias = Mapping[str, Any]
+class BudgetBudgetFilterCustomPeriodStartDateArgsDict(TypedDict):
+    day: pulumi.Input[_builtins.int]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month.
+    """
+    month: pulumi.Input[_builtins.int]
+    """
+    Month of a year. Must be from 1 to 12.
+    """
+    year: pulumi.Input[_builtins.int]
+    """
+    Year of the date. Must be from 1 to 9999.
+    """
 
 @pulumi.input_type
 class BudgetBudgetFilterCustomPeriodStartDateArgs:
@@ -930,22 +901,19 @@ class BudgetBudgetFilterCustomPeriodStartDateArgs:
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class BudgetThresholdRuleArgsDict(TypedDict):
-        threshold_percent: pulumi.Input[_builtins.float]
-        """
-        Send an alert when this threshold is exceeded. This is a
-        1.0-based percentage, so 0.5 = 50%. Must be >= 0.
-        """
-        spend_basis: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of basis used to determine if spend has passed
-        the threshold.
-        Default value is `CURRENT_SPEND`.
-        Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
-        """
-elif False:
-    BudgetThresholdRuleArgsDict: TypeAlias = Mapping[str, Any]
+class BudgetThresholdRuleArgsDict(TypedDict):
+    threshold_percent: pulumi.Input[_builtins.float]
+    """
+    Send an alert when this threshold is exceeded. This is a
+    1.0-based percentage, so 0.5 = 50%. Must be >= 0.
+    """
+    spend_basis: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of basis used to determine if spend has passed
+    the threshold.
+    Default value is `CURRENT_SPEND`.
+    Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
+    """
 
 @pulumi.input_type
 class BudgetThresholdRuleArgs:

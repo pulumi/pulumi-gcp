@@ -38,22 +38,14 @@ namespace Pulumi.Gcp.Compute
     /// NetworkFirewallPolicy can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/global/firewallPolicies/{{name}}`
-    /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, NetworkFirewallPolicy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy default projects/{{project}}/global/firewallPolicies/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy default {{name}}
     /// ```
     /// </summary>

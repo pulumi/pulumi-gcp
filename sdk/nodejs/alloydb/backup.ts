@@ -112,22 +112,14 @@ import * as utilities from "../utilities";
  * Backup can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
- *
  * * `{{project}}/{{location}}/{{backup_id}}`
- *
  * * `{{location}}/{{backup_id}}`
  *
  * When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:alloydb/backup:Backup default {{project}}/{{location}}/{{backup_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:alloydb/backup:Backup default {{location}}/{{backup_id}}
  * ```
  */
@@ -197,6 +189,9 @@ export class Backup extends pulumi.CustomResource {
      * User-settable and human-readable display name for the Backup.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -406,6 +401,9 @@ export interface BackupState {
      * User-settable and human-readable display name for the Backup.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

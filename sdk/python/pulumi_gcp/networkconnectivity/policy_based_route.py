@@ -600,22 +600,14 @@ class PolicyBasedRoute(pulumi.CustomResource):
         PolicyBasedRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/policyBasedRoutes/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, PolicyBasedRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default projects/{{project}}/locations/global/policyBasedRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{name}}
         ```
 
@@ -713,22 +705,14 @@ class PolicyBasedRoute(pulumi.CustomResource):
         PolicyBasedRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/policyBasedRoutes/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, PolicyBasedRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default projects/{{project}}/locations/global/policyBasedRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{name}}
         ```
 

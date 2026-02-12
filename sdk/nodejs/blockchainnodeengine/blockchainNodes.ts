@@ -84,22 +84,14 @@ import * as utilities from "../utilities";
  * BlockchainNodes can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}`
- *
  * * `{{project}}/{{location}}/{{blockchain_node_id}}`
- *
  * * `{{location}}/{{blockchain_node_id}}`
  *
  * When using the `pulumi import` command, BlockchainNodes can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default {{project}}/{{location}}/{{blockchain_node_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default {{location}}/{{blockchain_node_id}}
  * ```
  */

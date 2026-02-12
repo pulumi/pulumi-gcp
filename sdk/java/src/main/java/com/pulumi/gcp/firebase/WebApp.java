@@ -16,6 +16,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Google Cloud Firebase web application instance
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about WebApp, see:
+ * 
+ * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/)
+ * 
  * ## Example Usage
  * 
  * ### Firebase Web App Basic
@@ -165,34 +176,18 @@ import javax.annotation.Nullable;
  * WebApp can be imported using any of these accepted formats:
  * 
  * * `{{project}} projects/{{project}}/webApps/{{app_id}}`
- * 
  * * `projects/{{project}}/webApps/{{app_id}}`
- * 
  * * `{{project}}/{{project}}/{{app_id}}`
- * 
  * * `webApps/{{app_id}}`
- * 
  * * `{{app_id}}`
  * 
  * When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
  * 
  * ```sh
- * $ pulumi import gcp:firebase/webApp:WebApp default &#34;{{project}} projects/{{project}}/webApps/{{app_id}}&#34;
- * ```
- * 
- * ```sh
+ * $ terraform import google_firebase_web_app.default &#34;{{project}} projects/{{project}}/webApps/{{app_id}}&#34;
  * $ pulumi import gcp:firebase/webApp:WebApp default projects/{{project}}/webApps/{{app_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{project}}/{{app_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/webApp:WebApp default webApps/{{app_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/webApp:WebApp default {{app_id}}
  * ```
  * 
@@ -247,9 +242,21 @@ public class WebApp extends com.pulumi.resources.CustomResource {
     public Output<List<String>> appUrls() {
         return this.appUrls;
     }
+    /**
+     * Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+     * rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+     * serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+     * 
+     */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 
+    /**
+     * @return Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+     * rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+     * serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+     * 
+     */
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
     }

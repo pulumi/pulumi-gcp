@@ -225,24 +225,15 @@ import * as utilities from "../utilities";
  * ## Import
  *
  * DeliveryPipeline can be imported using any of these accepted formats:
- *
  * * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, DeliveryPipeline can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{location}}/{{name}}
  * ```
  */
@@ -293,6 +284,9 @@ export class DeliveryPipeline extends pulumi.CustomResource {
      * Description of the `DeliveryPipeline`. Max length is 255 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -427,6 +421,9 @@ export interface DeliveryPipelineState {
      * Description of the `DeliveryPipeline`. Max length is 255 characters.
      */
     description?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

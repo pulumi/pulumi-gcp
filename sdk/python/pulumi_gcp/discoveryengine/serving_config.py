@@ -406,22 +406,14 @@ class ServingConfig(pulumi.CustomResource):
         ServingConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/servingConfigs/{{serving_config_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}`
 
         When using the `pulumi import` command, ServingConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/servingConfigs/{{serving_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default {{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}
         ```
 
@@ -459,22 +451,14 @@ class ServingConfig(pulumi.CustomResource):
         ServingConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/servingConfigs/{{serving_config_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}`
 
         When using the `pulumi import` command, ServingConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/servingConfigs/{{serving_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default {{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}
         ```
 

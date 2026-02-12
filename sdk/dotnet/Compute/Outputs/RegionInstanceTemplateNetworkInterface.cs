@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class RegionInstanceTemplateNetworkInterface
     {
+        /// <summary>
+        /// Access configurations, i.e. IPs via which this
+        /// instance can be accessed via the Internet. Omit to ensure that the instance
+        /// is not accessible from the Internet (this means that ssh provisioners will
+        /// not work unless you are running Terraform can send traffic to the instance's
+        /// network (e.g. via tunnel or because it is running on another cloud instance
+        /// on that network). This block can be specified once per `NetworkInterface`. Structure documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RegionInstanceTemplateNetworkInterfaceAccessConfig> AccessConfigs;
         /// <summary>
         /// An
@@ -43,7 +51,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Ipv6Address;
         /// <summary>
-        /// The name of the network_interface.
+        /// The name of the instance template. If you leave
+        /// this blank, Terraform will auto-generate a unique name.
         /// </summary>
         public readonly string? Name;
         /// <summary>

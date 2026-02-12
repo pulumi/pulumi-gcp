@@ -147,28 +147,16 @@ import * as utilities from "../utilities";
  * RegionNetworkFirewallPolicyRule can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}`
- *
  * * `{{project}}/{{region}}/{{firewall_policy}}/{{priority}}`
- *
  * * `{{region}}/{{firewall_policy}}/{{priority}}`
- *
  * * `{{firewall_policy}}/{{priority}}`
  *
  * When using the `pulumi import` command, RegionNetworkFirewallPolicyRule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default {{project}}/{{region}}/{{firewall_policy}}/{{priority}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default {{region}}/{{firewall_policy}}/{{priority}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default {{firewall_policy}}/{{priority}}
  * ```
  */

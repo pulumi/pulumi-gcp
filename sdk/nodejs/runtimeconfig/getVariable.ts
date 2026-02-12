@@ -5,6 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * To get more information about RuntimeConfigs, see:
+ *
+ * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+ * * How-to Guides
+ *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+ *
+ * > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta datasources.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -63,6 +72,15 @@ export interface GetVariableResult {
     readonly value: string;
 }
 /**
+ * To get more information about RuntimeConfigs, see:
+ *
+ * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+ * * How-to Guides
+ *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+ *
+ * > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta datasources.
+ *
  * ## Example Usage
  *
  * ```typescript

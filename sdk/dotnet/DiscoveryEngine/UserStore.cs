@@ -72,22 +72,14 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// UserStore can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/userStores/{{user_store_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{user_store_id}}`
-    /// 
     /// * `{{location}}/{{user_store_id}}`
     /// 
     /// When using the `pulumi import` command, UserStore can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:discoveryengine/userStore:UserStore default projects/{{project}}/locations/{{location}}/userStores/{{user_store_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:discoveryengine/userStore:UserStore default {{project}}/{{location}}/{{user_store_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:discoveryengine/userStore:UserStore default {{location}}/{{user_store_id}}
     /// ```
     /// </summary>

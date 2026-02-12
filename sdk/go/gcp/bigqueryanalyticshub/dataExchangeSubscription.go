@@ -12,6 +12,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Bigquery Analytics Hub Data Exchange subscription
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about DataExchangeSubscription, see:
+//
+// * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.subscriptions)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+//
+// > **Note:** When importing the resource with `pulumi import`, provide the destination/subscriber's project and location
+// in the format projects/{{subscriber_project}}/locations/{{subscriber_location}}/subscriptions/{{subscription_id}}
 // ## Example Usage
 //
 // ### Bigquery Analyticshub Dataexchange Subscription Basic
@@ -136,22 +149,14 @@ import (
 // DataExchangeSubscription can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}`
-//
 // * `{{project}}/{{location}}/{{subscription_id}}`
-//
 // * `{{location}}/{{subscription_id}}`
 //
 // When using the `pulumi import` command, DataExchangeSubscription can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{project}}/{{location}}/{{subscription_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{location}}/{{subscription_id}}
 // ```
 type DataExchangeSubscription struct {
@@ -194,7 +199,11 @@ type DataExchangeSubscription struct {
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	Project       pulumi.StringOutput    `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Controls when the subscription is automatically refreshed by the provider.
+	// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+	// * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+	// * `NEVER`: The provider will not automatically refresh the subscription.
 	RefreshPolicy pulumi.StringPtrOutput `pulumi:"refreshPolicy"`
 	// Listing shared asset type.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
@@ -288,7 +297,11 @@ type dataExchangeSubscriptionState struct {
 	OrganizationId *string `pulumi:"organizationId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	Project       *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// Controls when the subscription is automatically refreshed by the provider.
+	// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+	// * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+	// * `NEVER`: The provider will not automatically refresh the subscription.
 	RefreshPolicy *string `pulumi:"refreshPolicy"`
 	// Listing shared asset type.
 	ResourceType *string `pulumi:"resourceType"`
@@ -338,7 +351,11 @@ type DataExchangeSubscriptionState struct {
 	OrganizationId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	Project       pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Controls when the subscription is automatically refreshed by the provider.
+	// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+	// * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+	// * `NEVER`: The provider will not automatically refresh the subscription.
 	RefreshPolicy pulumi.StringPtrInput
 	// Listing shared asset type.
 	ResourceType pulumi.StringPtrInput
@@ -370,7 +387,11 @@ type dataExchangeSubscriptionArgs struct {
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	Project       *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// Controls when the subscription is automatically refreshed by the provider.
+	// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+	// * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+	// * `NEVER`: The provider will not automatically refresh the subscription.
 	RefreshPolicy *string `pulumi:"refreshPolicy"`
 	// Email of the subscriber.
 	SubscriberContact *string `pulumi:"subscriberContact"`
@@ -395,7 +416,11 @@ type DataExchangeSubscriptionArgs struct {
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	Project       pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Controls when the subscription is automatically refreshed by the provider.
+	// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+	// * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+	// * `NEVER`: The provider will not automatically refresh the subscription.
 	RefreshPolicy pulumi.StringPtrInput
 	// Email of the subscriber.
 	SubscriberContact pulumi.StringPtrInput
@@ -579,6 +604,10 @@ func (o DataExchangeSubscriptionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchangeSubscription) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Controls when the subscription is automatically refreshed by the provider.
+// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+// * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+// * `NEVER`: The provider will not automatically refresh the subscription.
 func (o DataExchangeSubscriptionOutput) RefreshPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataExchangeSubscription) pulumi.StringPtrOutput { return v.RefreshPolicy }).(pulumi.StringPtrOutput)
 }

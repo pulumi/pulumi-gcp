@@ -36,22 +36,14 @@ import * as utilities from "../utilities";
  * EnvironmentApiRevisionDeployment can be imported using any of these accepted formats:
  *
  * * `organizations/{{org_id}}/environments/{{environment}}/apis/{{api}}/revisions/{{revision}}`
- *
  * * `{{org_id}}/{{environment}}/{{api}}/{{revision}}`
- *
  * * `{{id}}`
  *
  * When using the `pulumi import` command, EnvironmentApiRevisionDeployment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment default organizations/{{org_id}}/environments/{{environment}}/apis/{{api}}/revisions/{{revision}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment default {{org_id}}/{{environment}}/{{api}}/{{revision}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment default {{id}}
  * ```
  */

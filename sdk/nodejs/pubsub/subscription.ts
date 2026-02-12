@@ -435,22 +435,14 @@ import * as utilities from "../utilities";
  * Subscription can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/subscriptions/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:pubsub/subscription:Subscription default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
  * ```
  */

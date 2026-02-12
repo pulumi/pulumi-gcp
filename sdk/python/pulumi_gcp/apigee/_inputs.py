@@ -133,37 +133,32 @@ __all__ = [
     'TargetServerSSlInfoCommonNameArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AddonsConfigAddonsConfigArgsDict(TypedDict):
-        advanced_api_ops_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgsDict']]
-        """
-        Configuration for the Advanced API Ops add-on.
-        Structure is documented below.
-        """
-        api_security_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgsDict']]
-        """
-        Configuration for the API Security add-on.
-        Structure is documented below.
-        """
-        connectors_platform_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict']]
-        """
-        Configuration for the Monetization add-on.
-        Structure is documented below.
-        """
-        integration_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgsDict']]
-        """
-        Configuration for the Integration add-on.
-        Structure is documented below.
-        """
-        monetization_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgsDict']]
-        """
-        Configuration for the Monetization add-on.
-        Structure is documented below.
-        """
-elif False:
-    AddonsConfigAddonsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AddonsConfigAddonsConfigArgsDict(TypedDict):
+    advanced_api_ops_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgsDict']]
+    """
+    Configuration for the Advanced API Ops add-on.
+    Structure is documented below.
+    """
+    api_security_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgsDict']]
+    """
+    Configuration for the API Security add-on.
+    Structure is documented below.
+    """
+    connectors_platform_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict']]
+    """
+    Configuration for the Monetization add-on.
+    Structure is documented below.
+    """
+    integration_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgsDict']]
+    """
+    Configuration for the Integration add-on.
+    Structure is documented below.
+    """
+    monetization_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgsDict']]
+    """
+    Configuration for the Monetization add-on.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AddonsConfigAddonsConfigArgs:
@@ -262,14 +257,11 @@ class AddonsConfigAddonsConfigArgs:
         pulumi.set(self, "monetization_config", value)
 
 
-if not MYPY:
-    class AddonsConfigAddonsConfigAdvancedApiOpsConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Flag that specifies whether the Advanced API Ops add-on is enabled.
-        """
-elif False:
-    AddonsConfigAddonsConfigAdvancedApiOpsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AddonsConfigAddonsConfigAdvancedApiOpsConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Flag that specifies whether the Advanced API Ops add-on is enabled.
+    """
 
 @pulumi.input_type
 class AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs:
@@ -294,19 +286,16 @@ class AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class AddonsConfigAddonsConfigApiSecurityConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Flag that specifies whether the API security add-on is enabled.
-        """
-        expires_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
-        """
-elif False:
-    AddonsConfigAddonsConfigApiSecurityConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AddonsConfigAddonsConfigApiSecurityConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Flag that specifies whether the API security add-on is enabled.
+    """
+    expires_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
+    """
 
 @pulumi.input_type
 class AddonsConfigAddonsConfigApiSecurityConfigArgs:
@@ -349,19 +338,16 @@ class AddonsConfigAddonsConfigApiSecurityConfigArgs:
         pulumi.set(self, "expires_at", value)
 
 
-if not MYPY:
-    class AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Flag that specifies whether the Connectors Platform add-on is enabled.
-        """
-        expires_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
-        """
-elif False:
-    AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Flag that specifies whether the Connectors Platform add-on is enabled.
+    """
+    expires_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
+    """
 
 @pulumi.input_type
 class AddonsConfigAddonsConfigConnectorsPlatformConfigArgs:
@@ -404,14 +390,11 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfigArgs:
         pulumi.set(self, "expires_at", value)
 
 
-if not MYPY:
-    class AddonsConfigAddonsConfigIntegrationConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Flag that specifies whether the Integration add-on is enabled.
-        """
-elif False:
-    AddonsConfigAddonsConfigIntegrationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AddonsConfigAddonsConfigIntegrationConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Flag that specifies whether the Integration add-on is enabled.
+    """
 
 @pulumi.input_type
 class AddonsConfigAddonsConfigIntegrationConfigArgs:
@@ -436,14 +419,11 @@ class AddonsConfigAddonsConfigIntegrationConfigArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class AddonsConfigAddonsConfigMonetizationConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Flag that specifies whether the Monetization add-on is enabled.
-        """
-elif False:
-    AddonsConfigAddonsConfigMonetizationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AddonsConfigAddonsConfigMonetizationConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Flag that specifies whether the Monetization add-on is enabled.
+    """
 
 @pulumi.input_type
 class AddonsConfigAddonsConfigMonetizationConfigArgs:
@@ -468,22 +448,19 @@ class AddonsConfigAddonsConfigMonetizationConfigArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class ApiMetaDataArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time at which the API proxy was created, in milliseconds since epoch.
-        """
-        last_modified_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time at which the API proxy was most recently modified, in milliseconds since epoch.
-        """
-        sub_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of entity described
-        """
-elif False:
-    ApiMetaDataArgsDict: TypeAlias = Mapping[str, Any]
+class ApiMetaDataArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time at which the API proxy was created, in milliseconds since epoch.
+    """
+    last_modified_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time at which the API proxy was most recently modified, in milliseconds since epoch.
+    """
+    sub_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of entity described
+    """
 
 @pulumi.input_type
 class ApiMetaDataArgs:
@@ -540,18 +517,15 @@ class ApiMetaDataArgs:
         pulumi.set(self, "sub_type", value)
 
 
-if not MYPY:
-    class ApiProductAttributeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key of the attribute.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value of the attribute.
-        """
-elif False:
-    ApiProductAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductAttributeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key of the attribute.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value of the attribute.
+    """
 
 @pulumi.input_type
 class ApiProductAttributeArgs:
@@ -592,20 +566,17 @@ class ApiProductAttributeArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ApiProductGraphqlOperationGroupArgsDict(TypedDict):
-        operation_config_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
-        Possible values are: `proxy`, `remoteservice`.
-        """
-        operation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigArgsDict']]]]
-        """
-        List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
-        Structure is documented below.
-        """
-elif False:
-    ApiProductGraphqlOperationGroupArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductGraphqlOperationGroupArgsDict(TypedDict):
+    operation_config_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+    Possible values are: `proxy`, `remoteservice`.
+    """
+    operation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigArgsDict']]]]
+    """
+    List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ApiProductGraphqlOperationGroupArgs:
@@ -650,30 +621,27 @@ class ApiProductGraphqlOperationGroupArgs:
         pulumi.set(self, "operation_configs", value)
 
 
-if not MYPY:
-    class ApiProductGraphqlOperationGroupOperationConfigArgsDict(TypedDict):
-        api_source: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Name of the API proxy with which the gRPC operation and quota are associated.
-        """
-        attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigAttributeArgsDict']]]]
-        """
-        Custom attributes associated with the operation.
-        Structure is documented below.
-        """
-        operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigOperationArgsDict']]]]
-        """
-        Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
-        Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
-        Structure is documented below.
-        """
-        quota: NotRequired[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigQuotaArgsDict']]
-        """
-        Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
-        Structure is documented below.
-        """
-elif False:
-    ApiProductGraphqlOperationGroupOperationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductGraphqlOperationGroupOperationConfigArgsDict(TypedDict):
+    api_source: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Name of the API proxy with which the gRPC operation and quota are associated.
+    """
+    attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigAttributeArgsDict']]]]
+    """
+    Custom attributes associated with the operation.
+    Structure is documented below.
+    """
+    operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigOperationArgsDict']]]]
+    """
+    Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+    Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+    Structure is documented below.
+    """
+    quota: NotRequired[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigQuotaArgsDict']]
+    """
+    Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ApiProductGraphqlOperationGroupOperationConfigArgs:
@@ -754,18 +722,15 @@ class ApiProductGraphqlOperationGroupOperationConfigArgs:
         pulumi.set(self, "quota", value)
 
 
-if not MYPY:
-    class ApiProductGraphqlOperationGroupOperationConfigAttributeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key of the attribute.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value of the attribute.
-        """
-elif False:
-    ApiProductGraphqlOperationGroupOperationConfigAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductGraphqlOperationGroupOperationConfigAttributeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key of the attribute.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value of the attribute.
+    """
 
 @pulumi.input_type
 class ApiProductGraphqlOperationGroupOperationConfigAttributeArgs:
@@ -806,19 +771,16 @@ class ApiProductGraphqlOperationGroupOperationConfigAttributeArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ApiProductGraphqlOperationGroupOperationConfigOperationArgsDict(TypedDict):
-        operation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
-        """
-        operation_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Required. GraphQL operation types. Valid values include query or mutation.
-        Note: Apigee does not currently support subscription types.
-        """
-elif False:
-    ApiProductGraphqlOperationGroupOperationConfigOperationArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductGraphqlOperationGroupOperationConfigOperationArgsDict(TypedDict):
+    operation: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
+    """
+    operation_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Required. GraphQL operation types. Valid values include query or mutation.
+    Note: Apigee does not currently support subscription types.
+    """
 
 @pulumi.input_type
 class ApiProductGraphqlOperationGroupOperationConfigOperationArgs:
@@ -861,22 +823,19 @@ class ApiProductGraphqlOperationGroupOperationConfigOperationArgs:
         pulumi.set(self, "operation_types", value)
 
 
-if not MYPY:
-    class ApiProductGraphqlOperationGroupOperationConfigQuotaArgsDict(TypedDict):
-        interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Time interval over which the number of request messages is calculated.
-        """
-        limit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
-        """
-        time_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
-        """
-elif False:
-    ApiProductGraphqlOperationGroupOperationConfigQuotaArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductGraphqlOperationGroupOperationConfigQuotaArgsDict(TypedDict):
+    interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Time interval over which the number of request messages is calculated.
+    """
+    limit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+    """
+    time_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+    """
 
 @pulumi.input_type
 class ApiProductGraphqlOperationGroupOperationConfigQuotaArgs:
@@ -933,15 +892,12 @@ class ApiProductGraphqlOperationGroupOperationConfigQuotaArgs:
         pulumi.set(self, "time_unit", value)
 
 
-if not MYPY:
-    class ApiProductGrpcOperationGroupArgsDict(TypedDict):
-        operation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigArgsDict']]]]
-        """
-        Required. List of operation configurations for either Apigee API proxies that are associated with this API product.
-        Structure is documented below.
-        """
-elif False:
-    ApiProductGrpcOperationGroupArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductGrpcOperationGroupArgsDict(TypedDict):
+    operation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigArgsDict']]]]
+    """
+    Required. List of operation configurations for either Apigee API proxies that are associated with this API product.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ApiProductGrpcOperationGroupArgs:
@@ -968,34 +924,31 @@ class ApiProductGrpcOperationGroupArgs:
         pulumi.set(self, "operation_configs", value)
 
 
-if not MYPY:
-    class ApiProductGrpcOperationGroupOperationConfigArgsDict(TypedDict):
-        api_source: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Name of the API proxy with which the gRPC operation and quota are associated.
-        """
-        attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigAttributeArgsDict']]]]
-        """
-        Custom attributes associated with the operation.
-        Structure is documented below.
-        """
-        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy.
-        Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
-        Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
-        """
-        quota: NotRequired[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigQuotaArgsDict']]
-        """
-        Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
-        Structure is documented below.
-        """
-        service: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
-        """
-elif False:
-    ApiProductGrpcOperationGroupOperationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductGrpcOperationGroupOperationConfigArgsDict(TypedDict):
+    api_source: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Name of the API proxy with which the gRPC operation and quota are associated.
+    """
+    attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigAttributeArgsDict']]]]
+    """
+    Custom attributes associated with the operation.
+    Structure is documented below.
+    """
+    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy.
+    Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
+    Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+    """
+    quota: NotRequired[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigQuotaArgsDict']]
+    """
+    Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+    Structure is documented below.
+    """
+    service: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
+    """
 
 @pulumi.input_type
 class ApiProductGrpcOperationGroupOperationConfigArgs:
@@ -1092,18 +1045,15 @@ class ApiProductGrpcOperationGroupOperationConfigArgs:
         pulumi.set(self, "service", value)
 
 
-if not MYPY:
-    class ApiProductGrpcOperationGroupOperationConfigAttributeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key of the attribute.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value of the attribute.
-        """
-elif False:
-    ApiProductGrpcOperationGroupOperationConfigAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductGrpcOperationGroupOperationConfigAttributeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key of the attribute.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value of the attribute.
+    """
 
 @pulumi.input_type
 class ApiProductGrpcOperationGroupOperationConfigAttributeArgs:
@@ -1144,22 +1094,19 @@ class ApiProductGrpcOperationGroupOperationConfigAttributeArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ApiProductGrpcOperationGroupOperationConfigQuotaArgsDict(TypedDict):
-        interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Time interval over which the number of request messages is calculated.
-        """
-        limit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
-        """
-        time_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
-        """
-elif False:
-    ApiProductGrpcOperationGroupOperationConfigQuotaArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductGrpcOperationGroupOperationConfigQuotaArgsDict(TypedDict):
+    interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Time interval over which the number of request messages is calculated.
+    """
+    limit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+    """
+    time_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+    """
 
 @pulumi.input_type
 class ApiProductGrpcOperationGroupOperationConfigQuotaArgs:
@@ -1216,20 +1163,17 @@ class ApiProductGrpcOperationGroupOperationConfigQuotaArgs:
         pulumi.set(self, "time_unit", value)
 
 
-if not MYPY:
-    class ApiProductOperationGroupArgsDict(TypedDict):
-        operation_config_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
-        Possible values are: `proxy`, `remoteservice`.
-        """
-        operation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigArgsDict']]]]
-        """
-        Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
-        Structure is documented below.
-        """
-elif False:
-    ApiProductOperationGroupArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductOperationGroupArgsDict(TypedDict):
+    operation_config_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+    Possible values are: `proxy`, `remoteservice`.
+    """
+    operation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigArgsDict']]]]
+    """
+    Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ApiProductOperationGroupArgs:
@@ -1274,30 +1218,27 @@ class ApiProductOperationGroupArgs:
         pulumi.set(self, "operation_configs", value)
 
 
-if not MYPY:
-    class ApiProductOperationGroupOperationConfigArgsDict(TypedDict):
-        api_source: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Name of the API proxy with which the gRPC operation and quota are associated.
-        """
-        attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigAttributeArgsDict']]]]
-        """
-        Custom attributes associated with the operation.
-        Structure is documented below.
-        """
-        operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigOperationArgsDict']]]]
-        """
-        Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
-        Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
-        Structure is documented below.
-        """
-        quota: NotRequired[pulumi.Input['ApiProductOperationGroupOperationConfigQuotaArgsDict']]
-        """
-        Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
-        Structure is documented below.
-        """
-elif False:
-    ApiProductOperationGroupOperationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductOperationGroupOperationConfigArgsDict(TypedDict):
+    api_source: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Name of the API proxy with which the gRPC operation and quota are associated.
+    """
+    attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigAttributeArgsDict']]]]
+    """
+    Custom attributes associated with the operation.
+    Structure is documented below.
+    """
+    operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigOperationArgsDict']]]]
+    """
+    Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+    Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+    Structure is documented below.
+    """
+    quota: NotRequired[pulumi.Input['ApiProductOperationGroupOperationConfigQuotaArgsDict']]
+    """
+    Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ApiProductOperationGroupOperationConfigArgs:
@@ -1378,18 +1319,15 @@ class ApiProductOperationGroupOperationConfigArgs:
         pulumi.set(self, "quota", value)
 
 
-if not MYPY:
-    class ApiProductOperationGroupOperationConfigAttributeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key of the attribute.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value of the attribute.
-        """
-elif False:
-    ApiProductOperationGroupOperationConfigAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductOperationGroupOperationConfigAttributeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key of the attribute.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value of the attribute.
+    """
 
 @pulumi.input_type
 class ApiProductOperationGroupOperationConfigAttributeArgs:
@@ -1430,18 +1368,15 @@ class ApiProductOperationGroupOperationConfigAttributeArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ApiProductOperationGroupOperationConfigOperationArgsDict(TypedDict):
-        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Methods refers to the REST verbs, when none specified, all verb types are allowed.
-        """
-        resource: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. REST resource path associated with the API proxy or remote service.
-        """
-elif False:
-    ApiProductOperationGroupOperationConfigOperationArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductOperationGroupOperationConfigOperationArgsDict(TypedDict):
+    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Methods refers to the REST verbs, when none specified, all verb types are allowed.
+    """
+    resource: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. REST resource path associated with the API proxy or remote service.
+    """
 
 @pulumi.input_type
 class ApiProductOperationGroupOperationConfigOperationArgs:
@@ -1482,22 +1417,19 @@ class ApiProductOperationGroupOperationConfigOperationArgs:
         pulumi.set(self, "resource", value)
 
 
-if not MYPY:
-    class ApiProductOperationGroupOperationConfigQuotaArgsDict(TypedDict):
-        interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Time interval over which the number of request messages is calculated.
-        """
-        limit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
-        """
-        time_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
-        """
-elif False:
-    ApiProductOperationGroupOperationConfigQuotaArgsDict: TypeAlias = Mapping[str, Any]
+class ApiProductOperationGroupOperationConfigQuotaArgsDict(TypedDict):
+    interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Time interval over which the number of request messages is calculated.
+    """
+    limit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+    """
+    time_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+    """
 
 @pulumi.input_type
 class ApiProductOperationGroupOperationConfigQuotaArgs:
@@ -1554,18 +1486,15 @@ class ApiProductOperationGroupOperationConfigQuotaArgs:
         pulumi.set(self, "time_unit", value)
 
 
-if not MYPY:
-    class AppGroupAttributeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key of the attribute
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value of the attribute
-        """
-elif False:
-    AppGroupAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class AppGroupAttributeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key of the attribute
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value of the attribute
+    """
 
 @pulumi.input_type
 class AppGroupAttributeArgs:
@@ -1606,18 +1535,15 @@ class AppGroupAttributeArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DeveloperAppAttributeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key of the attribute
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value of the attribute
-        """
-elif False:
-    DeveloperAppAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class DeveloperAppAttributeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key of the attribute
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value of the attribute
+    """
 
 @pulumi.input_type
 class DeveloperAppAttributeArgs:
@@ -1658,50 +1584,47 @@ class DeveloperAppAttributeArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DeveloperAppCredentialArgsDict(TypedDict):
-        api_products: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialApiProductArgsDict']]]]
-        """
-        List of API products associated with the developer app.
-        """
-        attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialAttributeArgsDict']]]]
-        """
-        Developer attributes (name/value pairs). The custom attribute limit is 18.
-        Structure is documented below.
-        """
-        consumer_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Consumer key.
-        """
-        consumer_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Secret key.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        expires_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Time the credential will expire in milliseconds since epoch.
-        """
-        issued_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Time the credential was issued in milliseconds since epoch.
-        """
-        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Scopes to apply to the developer app.
-        The specified scopes must already exist for the API product that
-        you associate with the developer app.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Status of the credential. Valid values include approved or revoked.
-        """
-elif False:
-    DeveloperAppCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class DeveloperAppCredentialArgsDict(TypedDict):
+    api_products: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialApiProductArgsDict']]]]
+    """
+    List of API products associated with the developer app.
+    """
+    attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeveloperAppCredentialAttributeArgsDict']]]]
+    """
+    Developer attributes (name/value pairs). The custom attribute limit is 18.
+    Structure is documented below.
+    """
+    consumer_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Consumer key.
+    """
+    consumer_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Secret key.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    expires_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Time the credential will expire in milliseconds since epoch.
+    """
+    issued_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Time the credential was issued in milliseconds since epoch.
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Scopes to apply to the developer app.
+    The specified scopes must already exist for the API product that
+    you associate with the developer app.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Status of the credential. Valid values include approved or revoked.
+    """
 
 @pulumi.input_type
 class DeveloperAppCredentialArgs:
@@ -1854,19 +1777,16 @@ class DeveloperAppCredentialArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class DeveloperAppCredentialApiProductArgsDict(TypedDict):
-        apiproduct: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Name of the API product.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Status of the credential. Valid values include approved or revoked.
-        """
-elif False:
-    DeveloperAppCredentialApiProductArgsDict: TypeAlias = Mapping[str, Any]
+class DeveloperAppCredentialApiProductArgsDict(TypedDict):
+    apiproduct: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Name of the API product.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Status of the credential. Valid values include approved or revoked.
+    """
 
 @pulumi.input_type
 class DeveloperAppCredentialApiProductArgs:
@@ -1909,18 +1829,15 @@ class DeveloperAppCredentialApiProductArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class DeveloperAppCredentialAttributeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key of the attribute
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value of the attribute
-        """
-elif False:
-    DeveloperAppCredentialAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class DeveloperAppCredentialAttributeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key of the attribute
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value of the attribute
+    """
 
 @pulumi.input_type
 class DeveloperAppCredentialAttributeArgs:
@@ -1961,18 +1878,15 @@ class DeveloperAppCredentialAttributeArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DeveloperAttributeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key of the attribute
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value of the attribute
-        """
-elif False:
-    DeveloperAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class DeveloperAttributeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key of the attribute
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value of the attribute
+    """
 
 @pulumi.input_type
 class DeveloperAttributeArgs:
@@ -2013,18 +1927,15 @@ class DeveloperAttributeArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DnsZonePeeringConfigArgsDict(TypedDict):
-        target_network_id: pulumi.Input[_builtins.str]
-        """
-        The name of the producer VPC network.
-        """
-        target_project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the project that contains the producer VPC network.
-        """
-elif False:
-    DnsZonePeeringConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DnsZonePeeringConfigArgsDict(TypedDict):
+    target_network_id: pulumi.Input[_builtins.str]
+    """
+    The name of the producer VPC network.
+    """
+    target_project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the project that contains the producer VPC network.
+    """
 
 @pulumi.input_type
 class DnsZonePeeringConfigArgs:
@@ -2063,15 +1974,12 @@ class DnsZonePeeringConfigArgs:
         pulumi.set(self, "target_project_id", value)
 
 
-if not MYPY:
-    class EnvironmentClientIpResolutionConfigArgsDict(TypedDict):
-        header_index_algorithm: NotRequired[pulumi.Input['EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgsDict']]
-        """
-        Resolves the client ip based on a custom header.
-        Structure is documented below.
-        """
-elif False:
-    EnvironmentClientIpResolutionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentClientIpResolutionConfigArgsDict(TypedDict):
+    header_index_algorithm: NotRequired[pulumi.Input['EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgsDict']]
+    """
+    Resolves the client ip based on a custom header.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EnvironmentClientIpResolutionConfigArgs:
@@ -2098,18 +2006,15 @@ class EnvironmentClientIpResolutionConfigArgs:
         pulumi.set(self, "header_index_algorithm", value)
 
 
-if not MYPY:
-    class EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgsDict(TypedDict):
-        ip_header_index: pulumi.Input[_builtins.int]
-        """
-        The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
-        """
-        ip_header_name: pulumi.Input[_builtins.str]
-        """
-        The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
-        """
-elif False:
-    EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgsDict(TypedDict):
+    ip_header_index: pulumi.Input[_builtins.int]
+    """
+    The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
+    """
+    ip_header_name: pulumi.Input[_builtins.str]
+    """
+    The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
+    """
 
 @pulumi.input_type
 class EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs:
@@ -2148,13 +2053,10 @@ class EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs:
         pulumi.set(self, "ip_header_name", value)
 
 
-if not MYPY:
-    class EnvironmentIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    EnvironmentIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class EnvironmentIamBindingConditionArgs:
@@ -2195,13 +2097,10 @@ class EnvironmentIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class EnvironmentIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    EnvironmentIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class EnvironmentIamMemberConditionArgs:
@@ -2242,28 +2141,25 @@ class EnvironmentIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class EnvironmentNodeConfigArgsDict(TypedDict):
-        current_aggregate_node_count: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The current total number of gateway nodes that each environment currently has across
-        all instances.
-        """
-        max_node_count: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum total number of gateway nodes that the is reserved for all instances that
-        has the specified environment. If not specified, the default is determined by the
-        recommended maximum number of nodes for that gateway.
-        """
-        min_node_count: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum total number of gateway nodes that the is reserved for all instances that
-        has the specified environment. If not specified, the default is determined by the
-        recommended minimum number of nodes for that gateway.
-        """
-elif False:
-    EnvironmentNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentNodeConfigArgsDict(TypedDict):
+    current_aggregate_node_count: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The current total number of gateway nodes that each environment currently has across
+    all instances.
+    """
+    max_node_count: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum total number of gateway nodes that the is reserved for all instances that
+    has the specified environment. If not specified, the default is determined by the
+    recommended maximum number of nodes for that gateway.
+    """
+    min_node_count: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum total number of gateway nodes that the is reserved for all instances that
+    has the specified environment. If not specified, the default is determined by the
+    recommended minimum number of nodes for that gateway.
+    """
 
 @pulumi.input_type
 class EnvironmentNodeConfigArgs:
@@ -2332,15 +2228,12 @@ class EnvironmentNodeConfigArgs:
         pulumi.set(self, "min_node_count", value)
 
 
-if not MYPY:
-    class EnvironmentPropertiesArgsDict(TypedDict):
-        properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentPropertiesPropertyArgsDict']]]]
-        """
-        List of all properties in the object.
-        Structure is documented below.
-        """
-elif False:
-    EnvironmentPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentPropertiesArgsDict(TypedDict):
+    properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentPropertiesPropertyArgsDict']]]]
+    """
+    List of all properties in the object.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EnvironmentPropertiesArgs:
@@ -2367,18 +2260,15 @@ class EnvironmentPropertiesArgs:
         pulumi.set(self, "properties", value)
 
 
-if not MYPY:
-    class EnvironmentPropertiesPropertyArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The property key.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The property value.
-        """
-elif False:
-    EnvironmentPropertiesPropertyArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentPropertiesPropertyArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The property key.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The property value.
+    """
 
 @pulumi.input_type
 class EnvironmentPropertiesPropertyArgs:
@@ -2419,21 +2309,18 @@ class EnvironmentPropertiesPropertyArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class InstanceAccessLoggingConfigArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Boolean flag that specifies whether the customer access log feature is enabled.
-        """
-        filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Ship the access log entries that match the statusCode defined in the filter.
-        The statusCode is the only expected/supported filter field. (Ex: statusCode)
-        The filter will parse it to the Common Expression Language semantics for expression
-        evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
-        """
-elif False:
-    InstanceAccessLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAccessLoggingConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Boolean flag that specifies whether the customer access log feature is enabled.
+    """
+    filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Ship the access log entries that match the statusCode defined in the filter.
+    The statusCode is the only expected/supported filter field. (Ex: statusCode)
+    The filter will parse it to the Common Expression Language semantics for expression
+    evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+    """
 
 @pulumi.input_type
 class InstanceAccessLoggingConfigArgs:
@@ -2479,66 +2366,63 @@ class InstanceAccessLoggingConfigArgs:
         pulumi.set(self, "filter", value)
 
 
-if not MYPY:
-    class KeystoresAliasesKeyCertFileCertsInfoArgsDict(TypedDict):
-        basic_constraints: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        X.509 basic constraints extension.
-        """
-        expiry_date: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        X.509 notAfter validity period in milliseconds since epoch.
-        """
-        is_valid: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        Flag that specifies whether the certificate is valid.
-        Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
-        """
-        issuer: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        X.509 issuer.
-        """
-        public_key: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        Public key component of the X.509 subject public key info.
-        """
-        serial_number: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        X.509 serial number.
-        """
-        sig_alg_name: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        X.509 signatureAlgorithm.
-        """
-        subject: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        X.509 subject.
-        """
-        subject_alternative_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        (Output)
-        X.509 subject alternative names (SANs) extension.
-        """
-        valid_from: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        X.509 notBefore validity period in milliseconds since epoch.
-        """
-        version: pulumi.Input[_builtins.int]
-        """
-        (Output)
-        X.509 version.
-        """
-elif False:
-    KeystoresAliasesKeyCertFileCertsInfoArgsDict: TypeAlias = Mapping[str, Any]
+class KeystoresAliasesKeyCertFileCertsInfoArgsDict(TypedDict):
+    basic_constraints: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    X.509 basic constraints extension.
+    """
+    expiry_date: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    X.509 notAfter validity period in milliseconds since epoch.
+    """
+    is_valid: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    Flag that specifies whether the certificate is valid.
+    Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+    """
+    issuer: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    X.509 issuer.
+    """
+    public_key: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    Public key component of the X.509 subject public key info.
+    """
+    serial_number: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    X.509 serial number.
+    """
+    sig_alg_name: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    X.509 signatureAlgorithm.
+    """
+    subject: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    X.509 subject.
+    """
+    subject_alternative_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    (Output)
+    X.509 subject alternative names (SANs) extension.
+    """
+    valid_from: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    X.509 notBefore validity period in milliseconds since epoch.
+    """
+    version: pulumi.Input[_builtins.int]
+    """
+    (Output)
+    X.509 version.
+    """
 
 @pulumi.input_type
 class KeystoresAliasesKeyCertFileCertsInfoArgs:
@@ -2736,26 +2620,23 @@ class KeystoresAliasesKeyCertFileCertsInfoArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class KeystoresAliasesKeyCertFileTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        read: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    KeystoresAliasesKeyCertFileTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class KeystoresAliasesKeyCertFileTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class KeystoresAliasesKeyCertFileTimeoutsArgs:
@@ -2828,16 +2709,13 @@ class KeystoresAliasesKeyCertFileTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class KeystoresAliasesPkcs12CertsInfoArgsDict(TypedDict):
-        cert_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgsDict']]]]
-        """
-        (Output)
-        List of all properties in the object.
-        Structure is documented below.
-        """
-elif False:
-    KeystoresAliasesPkcs12CertsInfoArgsDict: TypeAlias = Mapping[str, Any]
+class KeystoresAliasesPkcs12CertsInfoArgsDict(TypedDict):
+    cert_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgsDict']]]]
+    """
+    (Output)
+    List of all properties in the object.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class KeystoresAliasesPkcs12CertsInfoArgs:
@@ -2866,66 +2744,63 @@ class KeystoresAliasesPkcs12CertsInfoArgs:
         pulumi.set(self, "cert_infos", value)
 
 
-if not MYPY:
-    class KeystoresAliasesPkcs12CertsInfoCertInfoArgsDict(TypedDict):
-        basic_constraints: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 basic constraints extension.
-        """
-        expiry_date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 notAfter validity period in milliseconds since epoch.
-        """
-        is_valid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Flag that specifies whether the certificate is valid.
-        Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
-        """
-        issuer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 issuer.
-        """
-        public_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Public key component of the X.509 subject public key info.
-        """
-        serial_number: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 serial number.
-        """
-        sig_alg_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 signatureAlgorithm.
-        """
-        subject: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 subject.
-        """
-        subject_alternative_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        X.509 subject alternative names (SANs) extension.
-        """
-        valid_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 notBefore validity period in milliseconds since epoch.
-        """
-        version: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        X.509 version.
-        """
-elif False:
-    KeystoresAliasesPkcs12CertsInfoCertInfoArgsDict: TypeAlias = Mapping[str, Any]
+class KeystoresAliasesPkcs12CertsInfoCertInfoArgsDict(TypedDict):
+    basic_constraints: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 basic constraints extension.
+    """
+    expiry_date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 notAfter validity period in milliseconds since epoch.
+    """
+    is_valid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Flag that specifies whether the certificate is valid.
+    Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+    """
+    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 issuer.
+    """
+    public_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Public key component of the X.509 subject public key info.
+    """
+    serial_number: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 serial number.
+    """
+    sig_alg_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 signatureAlgorithm.
+    """
+    subject: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 subject.
+    """
+    subject_alternative_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    X.509 subject alternative names (SANs) extension.
+    """
+    valid_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 notBefore validity period in milliseconds since epoch.
+    """
+    version: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    X.509 version.
+    """
 
 @pulumi.input_type
 class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
@@ -3134,16 +3009,13 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class KeystoresAliasesSelfSignedCertCertsInfoArgsDict(TypedDict):
-        cert_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgsDict']]]]
-        """
-        (Output)
-        List of all properties in the object.
-        Structure is documented below.
-        """
-elif False:
-    KeystoresAliasesSelfSignedCertCertsInfoArgsDict: TypeAlias = Mapping[str, Any]
+class KeystoresAliasesSelfSignedCertCertsInfoArgsDict(TypedDict):
+    cert_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgsDict']]]]
+    """
+    (Output)
+    List of all properties in the object.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class KeystoresAliasesSelfSignedCertCertsInfoArgs:
@@ -3172,66 +3044,63 @@ class KeystoresAliasesSelfSignedCertCertsInfoArgs:
         pulumi.set(self, "cert_infos", value)
 
 
-if not MYPY:
-    class KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgsDict(TypedDict):
-        basic_constraints: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 basic constraints extension.
-        """
-        expiry_date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 notAfter validity period in milliseconds since epoch.
-        """
-        is_valid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Flag that specifies whether the certificate is valid.
-        Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
-        """
-        issuer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 issuer.
-        """
-        public_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Public key component of the X.509 subject public key info.
-        """
-        serial_number: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 serial number.
-        """
-        sig_alg_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 signatureAlgorithm.
-        """
-        subject: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Subject details.
-        Structure is documented below.
-        """
-        subject_alternative_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        X.509 subject alternative names (SANs) extension.
-        """
-        valid_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 notBefore validity period in milliseconds since epoch.
-        """
-        version: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        X.509 version.
-        """
-elif False:
-    KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgsDict: TypeAlias = Mapping[str, Any]
+class KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgsDict(TypedDict):
+    basic_constraints: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 basic constraints extension.
+    """
+    expiry_date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 notAfter validity period in milliseconds since epoch.
+    """
+    is_valid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Flag that specifies whether the certificate is valid.
+    Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+    """
+    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 issuer.
+    """
+    public_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Public key component of the X.509 subject public key info.
+    """
+    serial_number: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 serial number.
+    """
+    sig_alg_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 signatureAlgorithm.
+    """
+    subject: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Subject details.
+    Structure is documented below.
+    """
+    subject_alternative_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    X.509 subject alternative names (SANs) extension.
+    """
+    valid_from: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    X.509 notBefore validity period in milliseconds since epoch.
+    """
+    version: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    X.509 version.
+    """
 
 @pulumi.input_type
 class KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs:
@@ -3440,38 +3309,35 @@ class KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class KeystoresAliasesSelfSignedCertSubjectArgsDict(TypedDict):
-        common_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Common name of the organization. Maximum length is 64 characters.
-        """
-        country_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Two-letter country code. Example, IN for India, US for United States of America.
-        """
-        email: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Email address. Max 255 characters.
-        """
-        locality: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        City or town name. Maximum length is 128 characters.
-        """
-        org: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Organization name. Maximum length is 64 characters.
-        """
-        org_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Organization team name. Maximum length is 64 characters.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        State or district name. Maximum length is 128 characters.
-        """
-elif False:
-    KeystoresAliasesSelfSignedCertSubjectArgsDict: TypeAlias = Mapping[str, Any]
+class KeystoresAliasesSelfSignedCertSubjectArgsDict(TypedDict):
+    common_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Common name of the organization. Maximum length is 64 characters.
+    """
+    country_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Two-letter country code. Example, IN for India, US for United States of America.
+    """
+    email: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Email address. Max 255 characters.
+    """
+    locality: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    City or town name. Maximum length is 128 characters.
+    """
+    org: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Organization name. Maximum length is 64 characters.
+    """
+    org_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Organization team name. Maximum length is 64 characters.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    State or district name. Maximum length is 128 characters.
+    """
 
 @pulumi.input_type
 class KeystoresAliasesSelfSignedCertSubjectArgs:
@@ -3592,14 +3458,11 @@ class KeystoresAliasesSelfSignedCertSubjectArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict(TypedDict):
-        subject_alternative_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Subject Alternative Name
-        """
-elif False:
-    KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict: TypeAlias = Mapping[str, Any]
+class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict(TypedDict):
+    subject_alternative_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Subject Alternative Name
+    """
 
 @pulumi.input_type
 class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs:
@@ -3624,15 +3487,12 @@ class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs:
         pulumi.set(self, "subject_alternative_name", value)
 
 
-if not MYPY:
-    class OrganizationPropertiesArgsDict(TypedDict):
-        properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgsDict']]]]
-        """
-        List of all properties in the object.
-        Structure is documented below.
-        """
-elif False:
-    OrganizationPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationPropertiesArgsDict(TypedDict):
+    properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgsDict']]]]
+    """
+    List of all properties in the object.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class OrganizationPropertiesArgs:
@@ -3659,18 +3519,15 @@ class OrganizationPropertiesArgs:
         pulumi.set(self, "properties", value)
 
 
-if not MYPY:
-    class OrganizationPropertiesPropertyArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the property.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value of the property.
-        """
-elif False:
-    OrganizationPropertiesPropertyArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationPropertiesPropertyArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the property.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value of the property.
+    """
 
 @pulumi.input_type
 class OrganizationPropertiesPropertyArgs:
@@ -3711,11 +3568,8 @@ class OrganizationPropertiesPropertyArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class SecurityActionAllowArgsDict(TypedDict):
-        pass
-elif False:
-    SecurityActionAllowArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityActionAllowArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class SecurityActionAllowArgs:
@@ -3723,58 +3577,55 @@ class SecurityActionAllowArgs:
         pass
 
 
-if not MYPY:
-    class SecurityActionConditionConfigArgsDict(TypedDict):
-        access_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of accessTokens. Limit 1000 per action.
-        """
-        api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of API keys. Limit 1000 per action.
-        """
-        api_products: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of API Products. Limit 1000 per action.
-        """
-        asns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of ASN numbers to act on, e.g. 23. https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
-        This uses int64 instead of uint32 because of https://linter.aip.dev/141/forbidden-types.
-        """
-        bot_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper,
-        OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper,
-        Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
-        """
-        developer_apps: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of developer apps. Limit 1000 per action.
-        """
-        developers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of developers. Limit 1000 per action.
-        """
-        http_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Act only on particular HTTP methods. E.g. A read-only API can block POST/PUT/DELETE methods.
-        Accepted values are: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH.
-        """
-        ip_address_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
-        """
-        region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of countries/region codes to act on, e.g. US. This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
-        """
-        user_agents: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of user agents to deny. We look for exact matches. Limit 50 per action.
-        """
-elif False:
-    SecurityActionConditionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityActionConditionConfigArgsDict(TypedDict):
+    access_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of accessTokens. Limit 1000 per action.
+    """
+    api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of API keys. Limit 1000 per action.
+    """
+    api_products: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of API Products. Limit 1000 per action.
+    """
+    asns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of ASN numbers to act on, e.g. 23. https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
+    This uses int64 instead of uint32 because of https://linter.aip.dev/141/forbidden-types.
+    """
+    bot_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper,
+    OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper,
+    Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
+    """
+    developer_apps: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of developer apps. Limit 1000 per action.
+    """
+    developers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of developers. Limit 1000 per action.
+    """
+    http_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Act only on particular HTTP methods. E.g. A read-only API can block POST/PUT/DELETE methods.
+    Accepted values are: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH.
+    """
+    ip_address_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
+    """
+    region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of countries/region codes to act on, e.g. US. This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
+    """
+    user_agents: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of user agents to deny. We look for exact matches. Limit 50 per action.
+    """
 
 @pulumi.input_type
 class SecurityActionConditionConfigArgs:
@@ -3967,14 +3818,11 @@ class SecurityActionConditionConfigArgs:
         pulumi.set(self, "user_agents", value)
 
 
-if not MYPY:
-    class SecurityActionDenyArgsDict(TypedDict):
-        response_code: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The HTTP response code if the Action = DENY.
-        """
-elif False:
-    SecurityActionDenyArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityActionDenyArgsDict(TypedDict):
+    response_code: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The HTTP response code if the Action = DENY.
+    """
 
 @pulumi.input_type
 class SecurityActionDenyArgs:
@@ -3999,17 +3847,14 @@ class SecurityActionDenyArgs:
         pulumi.set(self, "response_code", value)
 
 
-if not MYPY:
-    class SecurityActionFlagArgsDict(TypedDict):
-        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityActionFlagHeaderArgsDict']]]]
-        """
-        A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.
-        Limit 5 headers per SecurityAction.
-        At least one is mandatory.
-        Structure is documented below.
-        """
-elif False:
-    SecurityActionFlagArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityActionFlagArgsDict(TypedDict):
+    headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityActionFlagHeaderArgsDict']]]]
+    """
+    A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.
+    Limit 5 headers per SecurityAction.
+    At least one is mandatory.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecurityActionFlagArgs:
@@ -4040,18 +3885,15 @@ class SecurityActionFlagArgs:
         pulumi.set(self, "headers", value)
 
 
-if not MYPY:
-    class SecurityActionFlagHeaderArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The header name to be sent to the target.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The header value to be sent to the target.
-        """
-elif False:
-    SecurityActionFlagHeaderArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityActionFlagHeaderArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The header name to be sent to the target.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The header value to be sent to the target.
+    """
 
 @pulumi.input_type
 class SecurityActionFlagHeaderArgs:
@@ -4092,19 +3934,16 @@ class SecurityActionFlagHeaderArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class SecurityFeedbackFeedbackContextArgsDict(TypedDict):
-        attribute: pulumi.Input[_builtins.str]
-        """
-        The attribute the user is providing feedback about.
-        Possible values are: `ATTRIBUTE_ENVIRONMENTS`, `ATTRIBUTE_IP_ADDRESS_RANGES`.
-        """
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The values of the attribute the user is providing feedback about, separated by commas.
-        """
-elif False:
-    SecurityFeedbackFeedbackContextArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityFeedbackFeedbackContextArgsDict(TypedDict):
+    attribute: pulumi.Input[_builtins.str]
+    """
+    The attribute the user is providing feedback about.
+    Possible values are: `ATTRIBUTE_ENVIRONMENTS`, `ATTRIBUTE_IP_ADDRESS_RANGES`.
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The values of the attribute the user is providing feedback about, separated by commas.
+    """
 
 @pulumi.input_type
 class SecurityFeedbackFeedbackContextArgs:
@@ -4145,11 +3984,8 @@ class SecurityFeedbackFeedbackContextArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class SecurityMonitoringConditionIncludeAllResourcesArgsDict(TypedDict):
-        pass
-elif False:
-    SecurityMonitoringConditionIncludeAllResourcesArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityMonitoringConditionIncludeAllResourcesArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class SecurityMonitoringConditionIncludeAllResourcesArgs:
@@ -4157,19 +3993,16 @@ class SecurityMonitoringConditionIncludeAllResourcesArgs:
         pass
 
 
-if not MYPY:
-    class SecurityProfileV2ProfileAssessmentConfigArgsDict(TypedDict):
-        assessment: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        weight: pulumi.Input[_builtins.str]
-        """
-        The weight of the assessment.
-        Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-        """
-elif False:
-    SecurityProfileV2ProfileAssessmentConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityProfileV2ProfileAssessmentConfigArgsDict(TypedDict):
+    assessment: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    weight: pulumi.Input[_builtins.str]
+    """
+    The weight of the assessment.
+    Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
+    """
 
 @pulumi.input_type
 class SecurityProfileV2ProfileAssessmentConfigArgs:
@@ -4210,22 +4043,19 @@ class SecurityProfileV2ProfileAssessmentConfigArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class SharedflowMetaDataArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time at which the API proxy was created, in milliseconds since epoch.
-        """
-        last_modified_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time at which the API proxy was most recently modified, in milliseconds since epoch.
-        """
-        sub_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of entity described
-        """
-elif False:
-    SharedflowMetaDataArgsDict: TypeAlias = Mapping[str, Any]
+class SharedflowMetaDataArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time at which the API proxy was created, in milliseconds since epoch.
+    """
+    last_modified_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time at which the API proxy was most recently modified, in milliseconds since epoch.
+    """
+    sub_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of entity described
+    """
 
 @pulumi.input_type
 class SharedflowMetaDataArgs:
@@ -4282,51 +4112,48 @@ class SharedflowMetaDataArgs:
         pulumi.set(self, "sub_type", value)
 
 
-if not MYPY:
-    class TargetServerSSlInfoArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
-        """
-        ciphers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
-        """
-        client_auth_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables two-way TLS.
-        """
-        common_name: NotRequired[pulumi.Input['TargetServerSSlInfoCommonNameArgsDict']]
-        """
-        The TLS Common Name of the certificate.
-        Structure is documented below.
-        """
-        enforce: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, TLS is strictly enforced.
-        """
-        ignore_validation_errors: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
-        """
-        key_alias: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
-        """
-        key_store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required if clientAuthEnabled is true. The resource ID of the keystore.
-        """
-        protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The TLS versioins to be used.
-        """
-        trust_store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource ID of the truststore.
-        """
-elif False:
-    TargetServerSSlInfoArgsDict: TypeAlias = Mapping[str, Any]
+class TargetServerSSlInfoArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+    """
+    ciphers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+    """
+    client_auth_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables two-way TLS.
+    """
+    common_name: NotRequired[pulumi.Input['TargetServerSSlInfoCommonNameArgsDict']]
+    """
+    The TLS Common Name of the certificate.
+    Structure is documented below.
+    """
+    enforce: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, TLS is strictly enforced.
+    """
+    ignore_validation_errors: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+    """
+    key_alias: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
+    """
+    key_store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required if clientAuthEnabled is true. The resource ID of the keystore.
+    """
+    protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The TLS versioins to be used.
+    """
+    trust_store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource ID of the truststore.
+    """
 
 @pulumi.input_type
 class TargetServerSSlInfoArgs:
@@ -4496,18 +4323,15 @@ class TargetServerSSlInfoArgs:
         pulumi.set(self, "trust_store", value)
 
 
-if not MYPY:
-    class TargetServerSSlInfoCommonNameArgsDict(TypedDict):
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The TLS Common Name string of the certificate.
-        """
-        wildcard_match: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the cert should be matched against as a wildcard cert.
-        """
-elif False:
-    TargetServerSSlInfoCommonNameArgsDict: TypeAlias = Mapping[str, Any]
+class TargetServerSSlInfoCommonNameArgsDict(TypedDict):
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The TLS Common Name string of the certificate.
+    """
+    wildcard_match: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the cert should be matched against as a wildcard cert.
+    """
 
 @pulumi.input_type
 class TargetServerSSlInfoCommonNameArgs:

@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataPlex
 {
     /// <summary>
+    /// A data product is a curated collection of data assets, packaged to address
+    /// specific use cases.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about DataProduct, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts)
+    /// * How-to Guides
+    ///     * [Introduction to Data Products](https://cloud.google.com/dataplex/docs/data-products-overview)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Dataplex Data Product Basic
@@ -108,22 +120,14 @@ namespace Pulumi.Gcp.DataPlex
     /// DataProduct can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{data_product_id}}`
-    /// 
     /// * `{{location}}/{{data_product_id}}`
     /// 
     /// When using the `pulumi import` command, DataProduct can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataplex/dataProduct:DataProduct default projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{project}}/{{location}}/{{data_product_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{location}}/{{data_product_id}}
     /// ```
     /// </summary>

@@ -267,22 +267,14 @@ class LogicalView(pulumi.CustomResource):
         LogicalView can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/logicalViews/{{logical_view_id}}`
-
         * `{{project}}/{{instance}}/{{logical_view_id}}`
-
         * `{{instance}}/{{logical_view_id}}`
 
         When using the `pulumi import` command, LogicalView can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigtable/logicalView:LogicalView default projects/{{project}}/instances/{{instance}}/logicalViews/{{logical_view_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/logicalView:LogicalView default {{project}}/{{instance}}/{{logical_view_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/logicalView:LogicalView default {{instance}}/{{logical_view_id}}
         ```
 
@@ -346,22 +338,14 @@ class LogicalView(pulumi.CustomResource):
         LogicalView can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/logicalViews/{{logical_view_id}}`
-
         * `{{project}}/{{instance}}/{{logical_view_id}}`
-
         * `{{instance}}/{{logical_view_id}}`
 
         When using the `pulumi import` command, LogicalView can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigtable/logicalView:LogicalView default projects/{{project}}/instances/{{instance}}/logicalViews/{{logical_view_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/logicalView:LogicalView default {{project}}/{{instance}}/{{logical_view_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/logicalView:LogicalView default {{instance}}/{{logical_view_id}}
         ```
 

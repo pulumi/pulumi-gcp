@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A policy binding to a project. This is a Terraform resource, and maps to a policy binding resource in GCP.
+//
+// To get more information about ProjectsPolicyBinding, see:
+//
+// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/projects.locations.policyBindings)
+// * How-to Guides
+//   - [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+//
 // ## Example Usage
 //
 // ### Iam Projects Policy Binding
@@ -82,22 +90,14 @@ import (
 // ProjectsPolicyBinding can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/policyBindings/{{policy_binding_id}}`
-//
 // * `{{project}}/{{location}}/{{policy_binding_id}}`
-//
 // * `{{location}}/{{policy_binding_id}}`
 //
 // When using the `pulumi import` command, ProjectsPolicyBinding can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default projects/{{project}}/locations/{{location}}/policyBindings/{{policy_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{project}}/{{location}}/{{policy_binding_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{location}}/{{policy_binding_id}}
 // ```
 type ProjectsPolicyBinding struct {
@@ -136,7 +136,8 @@ type ProjectsPolicyBinding struct {
 	// Output only. The time when the policy binding was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -241,7 +242,8 @@ type projectsPolicyBindingState struct {
 	// Output only. The time when the policy binding was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
 	Etag *string `pulumi:"etag"`
@@ -305,7 +307,8 @@ type ProjectsPolicyBindingState struct {
 	// Output only. The time when the policy binding was created.
 	CreateTime pulumi.StringPtrInput
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
 	Etag pulumi.StringPtrInput
@@ -575,6 +578,7 @@ func (o ProjectsPolicyBindingOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectsPolicyBinding) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o ProjectsPolicyBindingOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ProjectsPolicyBinding) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

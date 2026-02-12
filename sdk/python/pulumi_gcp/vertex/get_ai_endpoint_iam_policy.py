@@ -106,6 +106,10 @@ def get_ai_endpoint_iam_policy(endpoint: Optional[_builtins.str] = None,
                                project: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiEndpointIamPolicyResult:
     """
+    Retrieves the current IAM policy data for endpoint
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python
@@ -144,6 +148,10 @@ def get_ai_endpoint_iam_policy_output(endpoint: Optional[pulumi.Input[_builtins.
                                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiEndpointIamPolicyResult]:
     """
+    Retrieves the current IAM policy data for endpoint
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python

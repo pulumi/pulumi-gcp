@@ -106,28 +106,16 @@ namespace Pulumi.Gcp.Memcache
     /// Instance can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{name}}`
-    /// 
     /// * `{{region}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:memcache/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:memcache/instance:Instance default {{project}}/{{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:memcache/instance:Instance default {{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:memcache/instance:Instance default {{name}}
     /// ```
     /// </summary>
@@ -147,6 +135,14 @@ namespace Pulumi.Gcp.Memcache
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance.
+        /// When a `terraform destroy` or `pulumi up` would delete the instance,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the instance will fail.
+        /// When the field is set to false, deleting the instance is allowed.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -333,6 +329,14 @@ namespace Pulumi.Gcp.Memcache
         [Input("authorizedNetwork")]
         public Input<string>? AuthorizedNetwork { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance.
+        /// When a `terraform destroy` or `pulumi up` would delete the instance,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the instance will fail.
+        /// When the field is set to false, deleting the instance is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -461,6 +465,14 @@ namespace Pulumi.Gcp.Memcache
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance.
+        /// When a `terraform destroy` or `pulumi up` would delete the instance,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the instance will fail.
+        /// When the field is set to false, deleting the instance is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 

@@ -185,6 +185,7 @@ class _InsightsConfigState:
         :param pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]] artifact_configs: The artifact configurations of the artifacts that are deployed.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: [Output only] Create timestamp
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorArgs']]] errors: Any errors that occurred while setting up the InsightsConfig.
                Each error will be in the format: `field_name: error_message`, e.g.
@@ -310,6 +311,9 @@ class _InsightsConfigState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -622,22 +626,14 @@ class InsightsConfig(pulumi.CustomResource):
         InsightsConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}`
-
         * `{{project}}/{{location}}/{{insights_config_id}}`
-
         * `{{location}}/{{insights_config_id}}`
 
         When using the `pulumi import` command, InsightsConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{project}}/{{location}}/{{insights_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
         ```
 
@@ -793,22 +789,14 @@ class InsightsConfig(pulumi.CustomResource):
         InsightsConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}`
-
         * `{{project}}/{{location}}/{{insights_config_id}}`
-
         * `{{location}}/{{insights_config_id}}`
 
         When using the `pulumi import` command, InsightsConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{project}}/{{location}}/{{insights_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
         ```
 
@@ -912,6 +900,7 @@ class InsightsConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]] artifact_configs: The artifact configurations of the artifacts that are deployed.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: [Output only] Create timestamp
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigErrorArgs', 'InsightsConfigErrorArgsDict']]]] errors: Any errors that occurred while setting up the InsightsConfig.
                Each error will be in the format: `field_name: error_message`, e.g.
@@ -1009,6 +998,9 @@ class InsightsConfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

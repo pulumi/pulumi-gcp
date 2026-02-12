@@ -348,16 +348,12 @@ class AccessApprovalSettings(pulumi.CustomResource):
         FolderSettings can be imported using any of these accepted formats:
 
         * `folders/{{folder_id}}/accessApprovalSettings`
-
         * `{{folder_id}}`
 
         When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default folders/{{folder_id}}/accessApprovalSettings
-        ```
-
-        ```sh
         $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default {{folder_id}}
         ```
 
@@ -457,16 +453,12 @@ class AccessApprovalSettings(pulumi.CustomResource):
         FolderSettings can be imported using any of these accepted formats:
 
         * `folders/{{folder_id}}/accessApprovalSettings`
-
         * `{{folder_id}}`
 
         When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default folders/{{folder_id}}/accessApprovalSettings
-        ```
-
-        ```sh
         $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default {{folder_id}}
         ```
 

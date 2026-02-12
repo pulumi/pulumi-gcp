@@ -436,22 +436,14 @@ import (
 // Batch can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/batches/{{batch_id}}`
-//
 // * `{{project}}/{{location}}/{{batch_id}}`
-//
 // * `{{location}}/{{batch_id}}`
 //
 // When using the `pulumi import` command, Batch can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataproc/batch:Batch default projects/{{project}}/locations/{{location}}/batches/{{batch_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataproc/batch:Batch default {{project}}/{{location}}/{{batch_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataproc/batch:Batch default {{location}}/{{batch_id}}
 // ```
 type Batch struct {

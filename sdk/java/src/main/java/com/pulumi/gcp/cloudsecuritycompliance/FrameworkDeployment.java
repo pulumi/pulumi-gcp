@@ -33,16 +33,12 @@ import javax.annotation.Nullable;
  * FrameworkDeployment can be imported using any of these accepted formats:
  * 
  * * `organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
- * 
  * * `{{organization}}/{{location}}/{{framework_deployment_id}}`
  * 
  * When using the `pulumi import` command, FrameworkDeployment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{organization}}/{{location}}/{{framework_deployment_id}}
  * ```
  * 

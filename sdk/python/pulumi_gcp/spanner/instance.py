@@ -43,6 +43,13 @@ class InstanceArgs:
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         :param pulumi.Input[_builtins.str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
+        :param pulumi.Input['InstanceAutoscalingConfigArgs'] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+               Exactly one of either num_nodes, processing_units or autoscaling_config must be
+               present in terraform except when instance_type = FREE_INSTANCE.
+               When autoscaling is enabled, num_nodes and processing_units are treated as,
+               OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+               the instance.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] default_backup_schedule_type: Controls the default backup behavior for new databases within the instance.
                Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
                if unset or NONE, no default backup schedule will be created for new databases within the instance.
@@ -64,6 +71,10 @@ class InstanceArgs:
                the instance is created. The name must be between 6 and 30 characters
                in length.
                If not provided, a random string starting with `tf-` will be selected.
+        :param pulumi.Input[_builtins.int] num_nodes: The number of nodes allocated to this instance. Exactly one of either num_nodes, processing_units or
+               autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
+        :param pulumi.Input[_builtins.int] processing_units: The number of processing units allocated to this instance. Exactly one of either num_nodes,
+               processing_units or autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -123,6 +134,15 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="autoscalingConfig")
     def autoscaling_config(self) -> Optional[pulumi.Input['InstanceAutoscalingConfigArgs']]:
+        """
+        The autoscaling configuration. Autoscaling is enabled if this field is set.
+        Exactly one of either num_nodes, processing_units or autoscaling_config must be
+        present in terraform except when instance_type = FREE_INSTANCE.
+        When autoscaling is enabled, num_nodes and processing_units are treated as,
+        OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+        the instance.
+        Structure is documented below.
+        """
         return pulumi.get(self, "autoscaling_config")
 
     @autoscaling_config.setter
@@ -219,6 +239,10 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="numNodes")
     def num_nodes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of nodes allocated to this instance. Exactly one of either num_nodes, processing_units or
+        autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
+        """
         return pulumi.get(self, "num_nodes")
 
     @num_nodes.setter
@@ -228,6 +252,10 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="processingUnits")
     def processing_units(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of processing units allocated to this instance. Exactly one of either num_nodes,
+        processing_units or autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
+        """
         return pulumi.get(self, "processing_units")
 
     @processing_units.setter
@@ -268,6 +296,13 @@ class _InstanceState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input['InstanceAutoscalingConfigArgs'] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+               Exactly one of either num_nodes, processing_units or autoscaling_config must be
+               present in terraform except when instance_type = FREE_INSTANCE.
+               When autoscaling is enabled, num_nodes and processing_units are treated as,
+               OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+               the instance.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] config: The name of the instance's configuration (similar but not
                quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
@@ -298,6 +333,10 @@ class _InstanceState:
                the instance is created. The name must be between 6 and 30 characters
                in length.
                If not provided, a random string starting with `tf-` will be selected.
+        :param pulumi.Input[_builtins.int] num_nodes: The number of nodes allocated to this instance. Exactly one of either num_nodes, processing_units or
+               autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
+        :param pulumi.Input[_builtins.int] processing_units: The number of processing units allocated to this instance. Exactly one of either num_nodes,
+               processing_units or autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -338,6 +377,15 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="autoscalingConfig")
     def autoscaling_config(self) -> Optional[pulumi.Input['InstanceAutoscalingConfigArgs']]:
+        """
+        The autoscaling configuration. Autoscaling is enabled if this field is set.
+        Exactly one of either num_nodes, processing_units or autoscaling_config must be
+        present in terraform except when instance_type = FREE_INSTANCE.
+        When autoscaling is enabled, num_nodes and processing_units are treated as,
+        OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+        the instance.
+        Structure is documented below.
+        """
         return pulumi.get(self, "autoscaling_config")
 
     @autoscaling_config.setter
@@ -476,6 +524,10 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="numNodes")
     def num_nodes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of nodes allocated to this instance. Exactly one of either num_nodes, processing_units or
+        autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
+        """
         return pulumi.get(self, "num_nodes")
 
     @num_nodes.setter
@@ -485,6 +537,10 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="processingUnits")
     def processing_units(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of processing units allocated to this instance. Exactly one of either num_nodes,
+        processing_units or autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
+        """
         return pulumi.get(self, "processing_units")
 
     @processing_units.setter
@@ -611,27 +667,26 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/instance:Instance default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+               Exactly one of either num_nodes, processing_units or autoscaling_config must be
+               present in terraform except when instance_type = FREE_INSTANCE.
+               When autoscaling is enabled, num_nodes and processing_units are treated as,
+               OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+               the instance.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] config: The name of the instance's configuration (similar but not
                quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
@@ -661,6 +716,10 @@ class Instance(pulumi.CustomResource):
                the instance is created. The name must be between 6 and 30 characters
                in length.
                If not provided, a random string starting with `tf-` will be selected.
+        :param pulumi.Input[_builtins.int] num_nodes: The number of nodes allocated to this instance. Exactly one of either num_nodes, processing_units or
+               autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
+        :param pulumi.Input[_builtins.int] processing_units: The number of processing units allocated to this instance. Exactly one of either num_nodes,
+               processing_units or autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -732,22 +791,14 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/instance:Instance default {{name}}
         ```
 
@@ -840,6 +891,13 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+               Exactly one of either num_nodes, processing_units or autoscaling_config must be
+               present in terraform except when instance_type = FREE_INSTANCE.
+               When autoscaling is enabled, num_nodes and processing_units are treated as,
+               OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+               the instance.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] config: The name of the instance's configuration (similar but not
                quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
@@ -870,6 +928,10 @@ class Instance(pulumi.CustomResource):
                the instance is created. The name must be between 6 and 30 characters
                in length.
                If not provided, a random string starting with `tf-` will be selected.
+        :param pulumi.Input[_builtins.int] num_nodes: The number of nodes allocated to this instance. Exactly one of either num_nodes, processing_units or
+               autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
+        :param pulumi.Input[_builtins.int] processing_units: The number of processing units allocated to this instance. Exactly one of either num_nodes,
+               processing_units or autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -900,6 +962,15 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoscalingConfig")
     def autoscaling_config(self) -> pulumi.Output[Optional['outputs.InstanceAutoscalingConfig']]:
+        """
+        The autoscaling configuration. Autoscaling is enabled if this field is set.
+        Exactly one of either num_nodes, processing_units or autoscaling_config must be
+        present in terraform except when instance_type = FREE_INSTANCE.
+        When autoscaling is enabled, num_nodes and processing_units are treated as,
+        OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+        the instance.
+        Structure is documented below.
+        """
         return pulumi.get(self, "autoscaling_config")
 
     @_builtins.property
@@ -998,11 +1069,19 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="numNodes")
     def num_nodes(self) -> pulumi.Output[_builtins.int]:
+        """
+        The number of nodes allocated to this instance. Exactly one of either num_nodes, processing_units or
+        autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
+        """
         return pulumi.get(self, "num_nodes")
 
     @_builtins.property
     @pulumi.getter(name="processingUnits")
     def processing_units(self) -> pulumi.Output[_builtins.int]:
+        """
+        The number of processing units allocated to this instance. Exactly one of either num_nodes,
+        processing_units or autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.
+        """
         return pulumi.get(self, "processing_units")
 
     @_builtins.property

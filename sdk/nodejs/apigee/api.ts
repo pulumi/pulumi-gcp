@@ -18,16 +18,12 @@ import * as utilities from "../utilities";
  * An API proxy can be imported using any of these accepted formats:
  *
  * * `{{org_id}}/apis/{{name}}`
- *
  * * `{{org_id}}/{{name}}`
  *
  * When using the `pulumi import` command, API proxy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigee/api:Api default {{org_id}}/apis/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apigee/api:Api default {{org_id}}/{{name}}
  * ```
  */
@@ -65,6 +61,9 @@ export class Api extends pulumi.CustomResource {
      * - - -
      */
     declare public readonly configBundle: pulumi.Output<string>;
+    /**
+     * (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+     */
     declare public readonly detectMd5hash: pulumi.Output<string | undefined>;
     /**
      * The id of the most recently created revision for this API proxy.
@@ -145,6 +144,9 @@ export interface ApiState {
      * - - -
      */
     configBundle?: pulumi.Input<string>;
+    /**
+     * (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+     */
     detectMd5hash?: pulumi.Input<string>;
     /**
      * The id of the most recently created revision for this API proxy.
@@ -183,6 +185,9 @@ export interface ApiArgs {
      * - - -
      */
     configBundle: pulumi.Input<string>;
+    /**
+     * (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+     */
     detectMd5hash?: pulumi.Input<string>;
     /**
      * The ID of the API proxy.

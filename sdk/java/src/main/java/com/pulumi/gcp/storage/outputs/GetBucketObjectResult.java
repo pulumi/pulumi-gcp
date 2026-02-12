@@ -55,6 +55,10 @@ public final class GetBucketObjectResult {
     private String crc32c;
     private List<GetBucketObjectCustomerEncryption> customerEncryptions;
     private String deletionPolicy;
+    /**
+     * @return (Computed) Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+     * 
+     */
     private String detectMd5hash;
     /**
      * @return (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -167,6 +171,10 @@ public final class GetBucketObjectResult {
     public String deletionPolicy() {
         return this.deletionPolicy;
     }
+    /**
+     * @return (Computed) Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+     * 
+     */
     public String detectMd5hash() {
         return this.detectMd5hash;
     }

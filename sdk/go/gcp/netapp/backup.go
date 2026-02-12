@@ -110,22 +110,14 @@ import (
 // Backup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}`
-//
 // * `{{project}}/{{location}}/{{vault_name}}/{{name}}`
-//
 // * `{{location}}/{{vault_name}}/{{name}}`
 //
 // When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:netapp/backup:Backup default projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/backup:Backup default {{project}}/{{location}}/{{vault_name}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:netapp/backup:Backup default {{location}}/{{vault_name}}/{{name}}
 // ```
 type Backup struct {

@@ -66,16 +66,12 @@ import (
 // SSHPublicKey can be imported using any of these accepted formats:
 //
 // * `users/{{user}}/sshPublicKeys/{{fingerprint}}`
-//
 // * `{{user}}/{{fingerprint}}`
 //
 // When using the `pulumi import` command, SSHPublicKey can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default users/{{user}}/sshPublicKeys/{{fingerprint}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default {{user}}/{{fingerprint}}
 // ```
 type SshPublicKey struct {

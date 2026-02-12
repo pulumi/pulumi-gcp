@@ -91,16 +91,12 @@ import javax.annotation.Nullable;
  * FolderNotificationConfig can be imported using any of these accepted formats:
  * 
  * * `folders/{{folder}}/notificationConfigs/{{config_id}}`
- * 
  * * `{{folder}}/{{config_id}}`
  * 
  * When using the `pulumi import` command, FolderNotificationConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig default folders/{{folder}}/notificationConfigs/{{config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig default {{folder}}/{{config_id}}
  * ```
  * 

@@ -291,6 +291,17 @@ class DatabaseInstance(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A Firebase Realtime Database instance.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/rest/database/database-management/rest)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/products/realtime-database)
+
         ## Example Usage
 
         ### Firebase Database Instance Basic
@@ -355,28 +366,16 @@ class DatabaseInstance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{instance_id}}`
-
         * `{{project}}/{{region}}/{{instance_id}}`
-
         * `{{region}}/{{instance_id}}`
-
         * `{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default projects/{{project}}/locations/{{region}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{project}}/{{region}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{region}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{instance_id}}
         ```
 
@@ -403,6 +402,17 @@ class DatabaseInstance(pulumi.CustomResource):
                  args: DatabaseInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Firebase Realtime Database instance.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/rest/database/database-management/rest)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/products/realtime-database)
+
         ## Example Usage
 
         ### Firebase Database Instance Basic
@@ -467,28 +477,16 @@ class DatabaseInstance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{instance_id}}`
-
         * `{{project}}/{{region}}/{{instance_id}}`
-
         * `{{region}}/{{instance_id}}`
-
         * `{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default projects/{{project}}/locations/{{region}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{project}}/{{region}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{region}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{instance_id}}
         ```
 

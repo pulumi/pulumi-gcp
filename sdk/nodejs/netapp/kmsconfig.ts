@@ -36,22 +36,14 @@ import * as utilities from "../utilities";
  * kmsconfig can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, kmsconfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default {{location}}/{{name}}
  * ```
  */

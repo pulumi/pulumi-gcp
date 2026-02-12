@@ -52,9 +52,17 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.dagTimeout);
     }
 
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     @Import(name="effectiveLabels")
     private @Nullable Output<Map<String,String>> effectiveLabels;
 
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
     }
@@ -317,11 +325,23 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
             return dagTimeout(Output.of(dagTimeout));
         }
 
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
             $.effectiveLabels = effectiveLabels;
             return this;
         }
 
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
         }

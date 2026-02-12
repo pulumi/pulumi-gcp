@@ -159,16 +159,12 @@ import * as utilities from "../utilities";
  * DeidentifyTemplate can be imported using any of these accepted formats:
  *
  * * `{{parent}}/deidentifyTemplates/{{name}}`
- *
  * * `{{parent}}/{{name}}`
  *
  * When using the `pulumi import` command, DeidentifyTemplate can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/deidentifyTemplates/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/{{name}}
  * ```
  */

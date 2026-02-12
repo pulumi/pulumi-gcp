@@ -587,6 +587,11 @@ public final class OrganizationsFunctions {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getBillingAccount:getBillingAccount", TypeShape.of(GetBillingAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to access the configuration of the Google Cloud provider.
+     * 
+     * &gt; **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+     * Please take appropriate measures to protect your remote state.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -625,6 +630,11 @@ public final class OrganizationsFunctions {
         return getClientConfig(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to access the configuration of the Google Cloud provider.
+     * 
+     * &gt; **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+     * Please take appropriate measures to protect your remote state.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -663,6 +673,11 @@ public final class OrganizationsFunctions {
         return getClientConfigPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to access the configuration of the Google Cloud provider.
+     * 
+     * &gt; **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+     * Please take appropriate measures to protect your remote state.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -701,6 +716,11 @@ public final class OrganizationsFunctions {
         return getClientConfig(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to access the configuration of the Google Cloud provider.
+     * 
+     * &gt; **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+     * Please take appropriate measures to protect your remote state.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -739,6 +759,11 @@ public final class OrganizationsFunctions {
         return getClientConfigPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to access the configuration of the Google Cloud provider.
+     * 
+     * &gt; **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+     * Please take appropriate measures to protect your remote state.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -777,6 +802,11 @@ public final class OrganizationsFunctions {
         return Deployment.getInstance().invoke("gcp:organizations/getClientConfig:getClientConfig", TypeShape.of(GetClientConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to access the configuration of the Google Cloud provider.
+     * 
+     * &gt; **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+     * Please take appropriate measures to protect your remote state.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -815,6 +845,11 @@ public final class OrganizationsFunctions {
         return Deployment.getInstance().invoke("gcp:organizations/getClientConfig:getClientConfig", TypeShape.of(GetClientConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to access the configuration of the Google Cloud provider.
+     * 
+     * &gt; **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
+     * Please take appropriate measures to protect your remote state.
+     * 
      * ## Example Usage
      * 
      * <pre>

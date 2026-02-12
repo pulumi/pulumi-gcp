@@ -116,22 +116,14 @@ import (
 // BackupVault can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}`
-//
 // * `{{project}}/{{location}}/{{backup_vault_id}}`
-//
 // * `{{location}}/{{backup_vault_id}}`
 //
 // When using the `pulumi import` command, BackupVault can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{project}}/{{location}}/{{backup_vault_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{location}}/{{backup_vault_id}}
 // ```
 type BackupVault struct {
@@ -162,7 +154,8 @@ type BackupVault struct {
 	// Output only. Set to true when there are no backups nested under this resource.
 	Deletable pulumi.BoolOutput `pulumi:"deletable"`
 	// Optional. The description of the BackupVault instance (2048 characters or less).
-	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -294,7 +287,8 @@ type backupVaultState struct {
 	// Output only. Set to true when there are no backups nested under this resource.
 	Deletable *bool `pulumi:"deletable"`
 	// Optional. The description of the BackupVault instance (2048 characters or less).
-	Description          *string           `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -383,7 +377,8 @@ type BackupVaultState struct {
 	// Output only. Set to true when there are no backups nested under this resource.
 	Deletable pulumi.BoolPtrInput
 	// Optional. The description of the BackupVault instance (2048 characters or less).
-	Description          pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -708,6 +703,7 @@ func (o BackupVaultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o BackupVaultOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

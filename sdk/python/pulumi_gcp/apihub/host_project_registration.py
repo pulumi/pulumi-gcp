@@ -269,22 +269,14 @@ class HostProjectRegistration(pulumi.CustomResource):
         HostProjectRegistration can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/hostProjectRegistrations/{{host_project_registration_id}}`
-
         * `{{project}}/{{location}}/{{host_project_registration_id}}`
-
         * `{{location}}/{{host_project_registration_id}}`
 
         When using the `pulumi import` command, HostProjectRegistration can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default projects/{{project}}/locations/{{location}}/hostProjectRegistrations/{{host_project_registration_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default {{project}}/{{location}}/{{host_project_registration_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default {{location}}/{{host_project_registration_id}}
         ```
 
@@ -348,22 +340,14 @@ class HostProjectRegistration(pulumi.CustomResource):
         HostProjectRegistration can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/hostProjectRegistrations/{{host_project_registration_id}}`
-
         * `{{project}}/{{location}}/{{host_project_registration_id}}`
-
         * `{{location}}/{{host_project_registration_id}}`
 
         When using the `pulumi import` command, HostProjectRegistration can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default projects/{{project}}/locations/{{location}}/hostProjectRegistrations/{{host_project_registration_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default {{project}}/{{location}}/{{host_project_registration_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default {{location}}/{{host_project_registration_id}}
         ```
 

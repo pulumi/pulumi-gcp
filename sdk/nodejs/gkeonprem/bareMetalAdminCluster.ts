@@ -236,22 +236,14 @@ import * as utilities from "../utilities";
  * BareMetalAdminCluster can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, BareMetalAdminCluster can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default {{location}}/{{name}}
  * ```
  */
@@ -323,6 +315,9 @@ export class BareMetalAdminCluster extends pulumi.CustomResource {
      * A human readable description of this Bare Metal Admin Cluster.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The IP address name of Bare Metal Admin Cluster's API server.
@@ -567,6 +562,9 @@ export interface BareMetalAdminClusterState {
      * A human readable description of this Bare Metal Admin Cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The IP address name of Bare Metal Admin Cluster's API server.

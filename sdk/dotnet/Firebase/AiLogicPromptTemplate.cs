@@ -10,6 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
+    /// The PromptTemplate resource for Firebase AI Logic.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about PromptTemplate, see:
+    /// 
+    /// * [API documentation](https://firebase.google.com/docs/reference/ai-logic/rest/v1beta/projects.locations.templates)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://firebase.google.com/docs/ai-logic)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Firebaseailogic Prompt Template Basic
@@ -41,22 +52,14 @@ namespace Pulumi.Gcp.Firebase
     /// PromptTemplate can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{template_id}}`
-    /// 
     /// * `{{location}}/{{template_id}}`
     /// 
     /// When using the `pulumi import` command, PromptTemplate can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{project}}/{{location}}/{{template_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{location}}/{{template_id}}
     /// ```
     /// </summary>

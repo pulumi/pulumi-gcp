@@ -328,22 +328,14 @@ import (
 // VmwareCluster can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{location}}/{{name}}
 // ```
 type VMwareCluster struct {
@@ -389,8 +381,9 @@ type VMwareCluster struct {
 	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disable bundled ingress.
-	DisableBundledIngress pulumi.BoolPtrOutput   `pulumi:"disableBundledIngress"`
-	EffectiveAnnotations  pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
+	DisableBundledIngress pulumi.BoolPtrOutput `pulumi:"disableBundledIngress"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// Enable advanced cluster. Default to false.
 	EnableAdvancedCluster pulumi.BoolPtrOutput `pulumi:"enableAdvancedCluster"`
 	// Enable control plane V2. Default to false.
@@ -547,8 +540,9 @@ type vmwareClusterState struct {
 	// A human readable description of this VMware User Cluster.
 	Description *string `pulumi:"description"`
 	// Disable bundled ingress.
-	DisableBundledIngress *bool             `pulumi:"disableBundledIngress"`
-	EffectiveAnnotations  map[string]string `pulumi:"effectiveAnnotations"`
+	DisableBundledIngress *bool `pulumi:"disableBundledIngress"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// Enable advanced cluster. Default to false.
 	EnableAdvancedCluster *bool `pulumi:"enableAdvancedCluster"`
 	// Enable control plane V2. Default to false.
@@ -665,7 +659,8 @@ type VMwareClusterState struct {
 	Description pulumi.StringPtrInput
 	// Disable bundled ingress.
 	DisableBundledIngress pulumi.BoolPtrInput
-	EffectiveAnnotations  pulumi.StringMapInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
 	// Enable advanced cluster. Default to false.
 	EnableAdvancedCluster pulumi.BoolPtrInput
 	// Enable control plane V2. Default to false.
@@ -1054,6 +1049,7 @@ func (o VMwareClusterOutput) DisableBundledIngress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.BoolPtrOutput { return v.DisableBundledIngress }).(pulumi.BoolPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o VMwareClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

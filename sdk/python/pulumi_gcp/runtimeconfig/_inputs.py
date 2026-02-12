@@ -21,15 +21,10 @@ __all__ = [
     'ConfigIamMemberConditionArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ConfigIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ConfigIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ConfigIamBindingConditionArgs:
@@ -70,13 +65,10 @@ class ConfigIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ConfigIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ConfigIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ConfigIamMemberConditionArgs:

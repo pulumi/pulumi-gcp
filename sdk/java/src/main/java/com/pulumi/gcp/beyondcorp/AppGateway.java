@@ -111,28 +111,16 @@ import javax.annotation.Nullable;
  * AppGateway can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{region}}/appGateways/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, AppGateway can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:beyondcorp/appGateway:AppGateway default projects/{{project}}/locations/{{region}}/appGateways/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:beyondcorp/appGateway:AppGateway default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:beyondcorp/appGateway:AppGateway default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:beyondcorp/appGateway:AppGateway default {{name}}
  * ```
  * 

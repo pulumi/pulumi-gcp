@@ -49,24 +49,40 @@ __all__ = [
     'InstanceUserMetadataArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceAdminSettingsArgsDict(TypedDict):
-        allowed_email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-elif False:
-    InstanceAdminSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAdminSettingsArgsDict(TypedDict):
+    allowed_email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Email domain allowlist for the instance.
+    Define the email domains to which your users can deliver Looker (Google Cloud core) content.
+    Updating this list will restart the instance. Updating the allowed email domains from terraform
+    means the value provided will be considered as the entire list and not an amendment to the
+    existing list of allowed email domains.
+    """
 
 @pulumi.input_type
 class InstanceAdminSettingsArgs:
     def __init__(__self__, *,
                  allowed_email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains: Email domain allowlist for the instance.
+               Define the email domains to which your users can deliver Looker (Google Cloud core) content.
+               Updating this list will restart the instance. Updating the allowed email domains from terraform
+               means the value provided will be considered as the entire list and not an amendment to the
+               existing list of allowed email domains.
+        """
         if allowed_email_domains is not None:
             pulumi.set(__self__, "allowed_email_domains", allowed_email_domains)
 
     @_builtins.property
     @pulumi.getter(name="allowedEmailDomains")
     def allowed_email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Email domain allowlist for the instance.
+        Define the email domains to which your users can deliver Looker (Google Cloud core) content.
+        Updating this list will restart the instance. Updating the allowed email domains from terraform
+        means the value provided will be considered as the entire list and not an amendment to the
+        existing list of allowed email domains.
+        """
         return pulumi.get(self, "allowed_email_domains")
 
     @allowed_email_domains.setter
@@ -74,19 +90,16 @@ class InstanceAdminSettingsArgs:
         pulumi.set(self, "allowed_email_domains", value)
 
 
-if not MYPY:
-    class InstanceControlledEgressConfigArgsDict(TypedDict):
-        egress_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of fully qualified domain names to be added to the allowlist for
-        outbound traffic.
-        """
-        marketplace_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the Looker Marketplace is enabled.
-        """
-elif False:
-    InstanceControlledEgressConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceControlledEgressConfigArgsDict(TypedDict):
+    egress_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of fully qualified domain names to be added to the allowlist for
+    outbound traffic.
+    """
+    marketplace_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the Looker Marketplace is enabled.
+    """
 
 @pulumi.input_type
 class InstanceControlledEgressConfigArgs:
@@ -129,19 +142,16 @@ class InstanceControlledEgressConfigArgs:
         pulumi.set(self, "marketplace_enabled", value)
 
 
-if not MYPY:
-    class InstanceCustomDomainArgsDict(TypedDict):
-        domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Domain name
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Status of the custom domain.
-        """
-elif False:
-    InstanceCustomDomainArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceCustomDomainArgsDict(TypedDict):
+    domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Domain name
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Status of the custom domain.
+    """
 
 @pulumi.input_type
 class InstanceCustomDomainArgs:
@@ -184,25 +194,22 @@ class InstanceCustomDomainArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class InstanceDenyMaintenancePeriodArgsDict(TypedDict):
-        end_date: pulumi.Input['InstanceDenyMaintenancePeriodEndDateArgsDict']
-        """
-        Required. Start date of the deny maintenance period
-        Structure is documented below.
-        """
-        start_date: pulumi.Input['InstanceDenyMaintenancePeriodStartDateArgsDict']
-        """
-        Required. Start date of the deny maintenance period
-        Structure is documented below.
-        """
-        time: pulumi.Input['InstanceDenyMaintenancePeriodTimeArgsDict']
-        """
-        Required. Start time of the window in UTC time.
-        Structure is documented below.
-        """
-elif False:
-    InstanceDenyMaintenancePeriodArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDenyMaintenancePeriodArgsDict(TypedDict):
+    end_date: pulumi.Input['InstanceDenyMaintenancePeriodEndDateArgsDict']
+    """
+    Required. Start date of the deny maintenance period
+    Structure is documented below.
+    """
+    start_date: pulumi.Input['InstanceDenyMaintenancePeriodStartDateArgsDict']
+    """
+    Required. Start date of the deny maintenance period
+    Structure is documented below.
+    """
+    time: pulumi.Input['InstanceDenyMaintenancePeriodTimeArgsDict']
+    """
+    Required. Start time of the window in UTC time.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceDenyMaintenancePeriodArgs:
@@ -262,25 +269,22 @@ class InstanceDenyMaintenancePeriodArgs:
         pulumi.set(self, "time", value)
 
 
-if not MYPY:
-    class InstanceDenyMaintenancePeriodEndDateArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
-        to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a
-        month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without
-        a year.
-        """
-elif False:
-    InstanceDenyMaintenancePeriodEndDateArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDenyMaintenancePeriodEndDateArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+    to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+    month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+    a year.
+    """
 
 @pulumi.input_type
 class InstanceDenyMaintenancePeriodEndDateArgs:
@@ -343,25 +347,22 @@ class InstanceDenyMaintenancePeriodEndDateArgs:
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class InstanceDenyMaintenancePeriodStartDateArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
-        to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a
-        month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without
-        a year.
-        """
-elif False:
-    InstanceDenyMaintenancePeriodStartDateArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDenyMaintenancePeriodStartDateArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+    to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+    month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+    a year.
+    """
 
 @pulumi.input_type
 class InstanceDenyMaintenancePeriodStartDateArgs:
@@ -424,26 +425,23 @@ class InstanceDenyMaintenancePeriodStartDateArgs:
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class InstanceDenyMaintenancePeriodTimeArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59.
-        """
-elif False:
-    InstanceDenyMaintenancePeriodTimeArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDenyMaintenancePeriodTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59.
+    """
 
 @pulumi.input_type
 class InstanceDenyMaintenancePeriodTimeArgs:
@@ -516,24 +514,21 @@ class InstanceDenyMaintenancePeriodTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class InstanceEncryptionConfigArgsDict(TypedDict):
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the customer managed encryption key (CMEK) in KMS.
-        """
-        kms_key_name_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Full name and version of the CMEK key currently in use to encrypt Looker data.
-        """
-        kms_key_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Status of the customer managed encryption key (CMEK) in KMS.
-        """
-elif False:
-    InstanceEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceEncryptionConfigArgsDict(TypedDict):
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the customer managed encryption key (CMEK) in KMS.
+    """
+    kms_key_name_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Full name and version of the CMEK key currently in use to encrypt Looker data.
+    """
+    kms_key_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Status of the customer managed encryption key (CMEK) in KMS.
+    """
 
 @pulumi.input_type
 class InstanceEncryptionConfigArgs:
@@ -594,27 +589,24 @@ class InstanceEncryptionConfigArgs:
         pulumi.set(self, "kms_key_state", value)
 
 
-if not MYPY:
-    class InstanceMaintenanceWindowArgsDict(TypedDict):
-        day_of_week: pulumi.Input[_builtins.str]
-        """
-        Required. Day of the week for this MaintenanceWindow (in UTC).
-        - MONDAY: Monday
-        - TUESDAY: Tuesday
-        - WEDNESDAY: Wednesday
-        - THURSDAY: Thursday
-        - FRIDAY: Friday
-        - SATURDAY: Saturday
-        - SUNDAY: Sunday
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        start_time: pulumi.Input['InstanceMaintenanceWindowStartTimeArgsDict']
-        """
-        Required. Start time of the window in UTC time.
-        Structure is documented below.
-        """
-elif False:
-    InstanceMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceMaintenanceWindowArgsDict(TypedDict):
+    day_of_week: pulumi.Input[_builtins.str]
+    """
+    Required. Day of the week for this MaintenanceWindow (in UTC).
+    - MONDAY: Monday
+    - TUESDAY: Tuesday
+    - WEDNESDAY: Wednesday
+    - THURSDAY: Thursday
+    - FRIDAY: Friday
+    - SATURDAY: Saturday
+    - SUNDAY: Sunday
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    start_time: pulumi.Input['InstanceMaintenanceWindowStartTimeArgsDict']
+    """
+    Required. Start time of the window in UTC time.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceMaintenanceWindowArgs:
@@ -671,26 +663,23 @@ class InstanceMaintenanceWindowArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class InstanceMaintenanceWindowStartTimeArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59.
-        """
-elif False:
-    InstanceMaintenanceWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceMaintenanceWindowStartTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59.
+    """
 
 @pulumi.input_type
 class InstanceMaintenanceWindowStartTimeArgs:
@@ -763,18 +752,15 @@ class InstanceMaintenanceWindowStartTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class InstanceOauthConfigArgsDict(TypedDict):
-        client_id: pulumi.Input[_builtins.str]
-        """
-        The client ID for the Oauth config.
-        """
-        client_secret: pulumi.Input[_builtins.str]
-        """
-        The client secret for the Oauth config.
-        """
-elif False:
-    InstanceOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceOauthConfigArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The client ID for the Oauth config.
+    """
+    client_secret: pulumi.Input[_builtins.str]
+    """
+    The client secret for the Oauth config.
+    """
 
 @pulumi.input_type
 class InstanceOauthConfigArgs:
@@ -813,26 +799,23 @@ class InstanceOauthConfigArgs:
         pulumi.set(self, "client_secret", value)
 
 
-if not MYPY:
-    class InstancePeriodicExportConfigArgsDict(TypedDict):
-        gcs_uri: pulumi.Input[_builtins.str]
-        """
-        Cloud Storage bucket URI for periodic export.
-        Format: gs://{bucket_name}
-        """
-        kms_key: pulumi.Input[_builtins.str]
-        """
-        Name of the CMEK key in KMS.
-        Format:
-        projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
-        """
-        start_time: pulumi.Input['InstancePeriodicExportConfigStartTimeArgsDict']
-        """
-        Time in UTC to start the periodic export job.
-        Structure is documented below.
-        """
-elif False:
-    InstancePeriodicExportConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePeriodicExportConfigArgsDict(TypedDict):
+    gcs_uri: pulumi.Input[_builtins.str]
+    """
+    Cloud Storage bucket URI for periodic export.
+    Format: gs://{bucket_name}
+    """
+    kms_key: pulumi.Input[_builtins.str]
+    """
+    Name of the CMEK key in KMS.
+    Format:
+    projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
+    """
+    start_time: pulumi.Input['InstancePeriodicExportConfigStartTimeArgsDict']
+    """
+    Time in UTC to start the periodic export job.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstancePeriodicExportConfigArgs:
@@ -894,26 +877,23 @@ class InstancePeriodicExportConfigArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class InstancePeriodicExportConfigStartTimeArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59.
-        """
-elif False:
-    InstancePeriodicExportConfigStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePeriodicExportConfigStartTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59.
+    """
 
 @pulumi.input_type
 class InstancePeriodicExportConfigStartTimeArgs:
@@ -986,24 +966,21 @@ class InstancePeriodicExportConfigStartTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class InstancePscConfigArgsDict(TypedDict):
-        allowed_vpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of VPCs that are allowed ingress into the Looker instance.
-        """
-        looker_service_attachment_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        URI of the Looker service attachment.
-        """
-        service_attachments: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgsDict']]]]
-        """
-        List of egress service attachment configurations.
-        Structure is documented below.
-        """
-elif False:
-    InstancePscConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePscConfigArgsDict(TypedDict):
+    allowed_vpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of VPCs that are allowed ingress into the Looker instance.
+    """
+    looker_service_attachment_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    URI of the Looker service attachment.
+    """
+    service_attachments: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgsDict']]]]
+    """
+    List of egress service attachment configurations.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstancePscConfigArgs:
@@ -1064,23 +1041,20 @@ class InstancePscConfigArgs:
         pulumi.set(self, "service_attachments", value)
 
 
-if not MYPY:
-    class InstancePscConfigServiceAttachmentArgsDict(TypedDict):
-        connection_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Status of the service attachment connection.
-        """
-        local_fqdn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified domain name that will be used in the private DNS record created for the service attachment.
-        """
-        target_service_attachment_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URI of the service attachment to connect to.
-        """
-elif False:
-    InstancePscConfigServiceAttachmentArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePscConfigServiceAttachmentArgsDict(TypedDict):
+    connection_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Status of the service attachment connection.
+    """
+    local_fqdn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified domain name that will be used in the private DNS record created for the service attachment.
+    """
+    target_service_attachment_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URI of the service attachment to connect to.
+    """
 
 @pulumi.input_type
 class InstancePscConfigServiceAttachmentArgs:
@@ -1139,22 +1113,19 @@ class InstancePscConfigServiceAttachmentArgs:
         pulumi.set(self, "target_service_attachment_uri", value)
 
 
-if not MYPY:
-    class InstanceUserMetadataArgsDict(TypedDict):
-        additional_developer_user_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of additional Developer Users to allocate to the Looker Instance.
-        """
-        additional_standard_user_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of additional Standard Users to allocate to the Looker Instance.
-        """
-        additional_viewer_user_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of additional Viewer Users to allocate to the Looker Instance.
-        """
-elif False:
-    InstanceUserMetadataArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceUserMetadataArgsDict(TypedDict):
+    additional_developer_user_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of additional Developer Users to allocate to the Looker Instance.
+    """
+    additional_standard_user_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of additional Standard Users to allocate to the Looker Instance.
+    """
+    additional_viewer_user_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of additional Viewer Users to allocate to the Looker Instance.
+    """
 
 @pulumi.input_type
 class InstanceUserMetadataArgs:

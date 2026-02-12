@@ -1092,22 +1092,14 @@ class Listing(pulumi.CustomResource):
         Listing can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}`
-
         * `{{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}`
-
         * `{{location}}/{{data_exchange_id}}/{{listing_id}}`
 
         When using the `pulumi import` command, Listing can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default {{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default {{location}}/{{data_exchange_id}}/{{listing_id}}
         ```
 
@@ -1464,22 +1456,14 @@ class Listing(pulumi.CustomResource):
         Listing can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}`
-
         * `{{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}`
-
         * `{{location}}/{{data_exchange_id}}/{{listing_id}}`
 
         When using the `pulumi import` command, Listing can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default {{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default {{location}}/{{data_exchange_id}}/{{listing_id}}
         ```
 

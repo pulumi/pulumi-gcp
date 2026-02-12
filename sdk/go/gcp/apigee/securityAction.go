@@ -138,16 +138,12 @@ import (
 // SecurityAction can be imported using any of these accepted formats:
 //
 // * `organizations/{{org_id}}/environments/{{env_id}}/securityActions/{{security_action_id}}`
-//
 // * `{{org_id}}/{{env_id}}/{{security_action_id}}`
 //
 // When using the `pulumi import` command, SecurityAction can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apigee/securityAction:SecurityAction default organizations/{{org_id}}/environments/{{env_id}}/securityActions/{{security_action_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apigee/securityAction:SecurityAction default {{org_id}}/{{env_id}}/{{security_action_id}}
 // ```
 type SecurityAction struct {

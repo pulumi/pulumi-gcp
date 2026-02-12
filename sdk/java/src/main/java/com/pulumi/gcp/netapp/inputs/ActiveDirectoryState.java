@@ -302,9 +302,19 @@ public final class ActiveDirectoryState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.organizationalUnit);
     }
 
+    /**
+     * Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
@@ -881,11 +891,25 @@ public final class ActiveDirectoryState extends com.pulumi.resources.ResourceArg
             return organizationalUnit(Output.of(organizationalUnit));
         }
 
+        /**
+         * @param password Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }

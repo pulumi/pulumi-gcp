@@ -27,6 +27,15 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * 
      */
     private @Nullable String alertRule;
+    /**
+     * @return Whether to disable metric existence validation for this condition.
+     * This allows alerting policies to be defined on metrics that do not yet
+     * exist, improving advanced customer workflows such as configuring
+     * alerting policies using Terraform.
+     * Users with the `monitoring.alertPolicyViewer` role are able to see the
+     * name of the non-existent metric in the alerting policy condition.
+     * 
+     */
     private @Nullable Boolean disableMetricValidation;
     /**
      * @return Alerts are considered firing once their PromQL expression evaluated
@@ -91,6 +100,15 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
     public Optional<String> alertRule() {
         return Optional.ofNullable(this.alertRule);
     }
+    /**
+     * @return Whether to disable metric existence validation for this condition.
+     * This allows alerting policies to be defined on metrics that do not yet
+     * exist, improving advanced customer workflows such as configuring
+     * alerting policies using Terraform.
+     * Users with the `monitoring.alertPolicyViewer` role are able to see the
+     * name of the non-existent metric in the alerting policy condition.
+     * 
+     */
     public Optional<Boolean> disableMetricValidation() {
         return Optional.ofNullable(this.disableMetricValidation);
     }

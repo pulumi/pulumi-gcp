@@ -40,6 +40,11 @@ public final class ServiceMetadata {
      * 
      */
     private @Nullable Map<String,String> annotations;
+    /**
+     * @return (Output)
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     private @Nullable Map<String,String> effectiveAnnotations;
     /**
      * @return (Output)
@@ -129,6 +134,11 @@ public final class ServiceMetadata {
     public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
+    /**
+     * @return (Output)
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveAnnotations() {
         return this.effectiveAnnotations == null ? Map.of() : this.effectiveAnnotations;
     }

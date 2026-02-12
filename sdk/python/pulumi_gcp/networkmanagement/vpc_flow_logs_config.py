@@ -823,22 +823,14 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         VpcFlowLogsConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}`
-
         * `{{project}}/{{location}}/{{vpc_flow_logs_config_id}}`
-
         * `{{location}}/{{vpc_flow_logs_config_id}}`
 
         When using the `pulumi import` command, VpcFlowLogsConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default projects/{{project}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default {{project}}/{{location}}/{{vpc_flow_logs_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default {{location}}/{{vpc_flow_logs_config_id}}
         ```
 
@@ -1001,22 +993,14 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         VpcFlowLogsConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}`
-
         * `{{project}}/{{location}}/{{vpc_flow_logs_config_id}}`
-
         * `{{location}}/{{vpc_flow_logs_config_id}}`
 
         When using the `pulumi import` command, VpcFlowLogsConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default projects/{{project}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default {{project}}/{{location}}/{{vpc_flow_logs_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default {{location}}/{{vpc_flow_logs_config_id}}
         ```
 

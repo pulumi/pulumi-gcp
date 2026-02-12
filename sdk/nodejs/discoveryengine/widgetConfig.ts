@@ -63,22 +63,14 @@ import * as utilities from "../utilities";
  * WidgetConfig can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/widgetConfigs/{{widget_config_id}}`
- *
  * * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{widget_config_id}}`
- *
  * * `{{location}}/{{collection_id}}/{{engine_id}}/{{widget_config_id}}`
  *
  * When using the `pulumi import` command, WidgetConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:discoveryengine/widgetConfig:WidgetConfig default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/widgetConfigs/{{widget_config_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:discoveryengine/widgetConfig:WidgetConfig default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{widget_config_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:discoveryengine/widgetConfig:WidgetConfig default {{location}}/{{collection_id}}/{{engine_id}}/{{widget_config_id}}
  * ```
  */

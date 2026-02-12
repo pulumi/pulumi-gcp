@@ -124,16 +124,12 @@ namespace Pulumi.Gcp.SecurityCenter
     /// OrganizationSecurityHealthAnalyticsCustomModule can be imported using any of these accepted formats:
     /// 
     /// * `organizations/{{organization}}/locations/{{location}}/securityHealthAnalyticsCustomModules/{{name}}`
-    /// 
     /// * `{{organization}}/{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, OrganizationSecurityHealthAnalyticsCustomModule can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule default organizations/{{organization}}/locations/{{location}}/securityHealthAnalyticsCustomModules/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule default {{organization}}/{{location}}/{{name}}
     /// ```
     /// </summary>

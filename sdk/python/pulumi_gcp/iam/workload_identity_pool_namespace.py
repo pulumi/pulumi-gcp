@@ -313,6 +313,19 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
                  workload_identity_pool_namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Represents a namespace for a workload identity pool. Namespaces are used to segment identities
+        within the pool.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about WorkloadIdentityPoolNamespace, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.namespaces)
+        * How-to Guides
+            * [Configure managed workload identity authentication for Compute Engine](https://cloud.google.com/iam/docs/create-managed-workload-identities)
+            * [Configure managed workload identity authentication for GKE](https://cloud.google.com/iam/docs/create-managed-workload-identities-gke)
+
         ## Example Usage
 
         ### Iam Workload Identity Pool Namespace Basic
@@ -349,22 +362,14 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
         WorkloadIdentityPoolNamespace can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/namespaces/{{workload_identity_pool_namespace_id}}`
-
         * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}`
-
         * `{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}`
 
         When using the `pulumi import` command, WorkloadIdentityPoolNamespace can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/namespaces/{{workload_identity_pool_namespace_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default {{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}
         ```
 
@@ -394,6 +399,19 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
                  args: WorkloadIdentityPoolNamespaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Represents a namespace for a workload identity pool. Namespaces are used to segment identities
+        within the pool.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about WorkloadIdentityPoolNamespace, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.namespaces)
+        * How-to Guides
+            * [Configure managed workload identity authentication for Compute Engine](https://cloud.google.com/iam/docs/create-managed-workload-identities)
+            * [Configure managed workload identity authentication for GKE](https://cloud.google.com/iam/docs/create-managed-workload-identities-gke)
+
         ## Example Usage
 
         ### Iam Workload Identity Pool Namespace Basic
@@ -430,22 +448,14 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
         WorkloadIdentityPoolNamespace can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/namespaces/{{workload_identity_pool_namespace_id}}`
-
         * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}`
-
         * `{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}`
 
         When using the `pulumi import` command, WorkloadIdentityPoolNamespace can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/namespaces/{{workload_identity_pool_namespace_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default {{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}
         ```
 

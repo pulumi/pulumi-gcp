@@ -315,24 +315,15 @@ import (
 // ## Import
 //
 // DeliveryPipeline can be imported using any of these accepted formats:
-//
 // * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, DeliveryPipeline can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{location}}/{{name}}
 // ```
 type DeliveryPipeline struct {
@@ -348,7 +339,8 @@ type DeliveryPipeline struct {
 	// Output only. Time at which the pipeline was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
-	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -427,7 +419,8 @@ type deliveryPipelineState struct {
 	// Output only. Time at which the pipeline was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
-	Description          *string           `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -469,7 +462,8 @@ type DeliveryPipelineState struct {
 	// Output only. Time at which the pipeline was created.
 	CreateTime pulumi.StringPtrInput
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
-	Description          pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -669,6 +663,7 @@ func (o DeliveryPipelineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o DeliveryPipelineOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

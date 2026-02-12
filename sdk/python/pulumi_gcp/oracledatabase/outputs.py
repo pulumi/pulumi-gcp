@@ -6674,9 +6674,11 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         :param _builtins.str database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param _builtins.bool deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
         :param Sequence[_builtins.str] disaster_recovery_supported_locations: List of supported GCP region to clone the Autonomous Database for disaster recovery.
         :param _builtins.str display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str entitlement_id: The ID of the subscription entitlement associated with the Autonomous
                Database.
         :param Mapping[str, _builtins.str] labels: The labels or tags associated with the Autonomous Database. 
@@ -6776,6 +6778,9 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -6798,6 +6803,9 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
@@ -9079,7 +9087,9 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
                characters in length. The value must start with a letter and end with
                a letter or a number.
         :param _builtins.str create_time: The date and time that the Exadata Infrastructure was created.
+        :param _builtins.bool deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
         :param _builtins.str display_name: User friendly name for this resource.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str entitlement_id: Entitlement ID of the private offer against which this infrastructure
                resource is provisioned.
         :param _builtins.str gcp_oracle_zone: GCP location where Oracle Exadata is hosted.
@@ -9134,6 +9144,9 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -9147,6 +9160,9 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
@@ -10244,7 +10260,9 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
                characters in length. The value must start with a letter and end with
                a letter or a number.
         :param _builtins.str create_time: The date and time that the VM cluster was created.
+        :param _builtins.bool deletion_protection: Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
         :param _builtins.str display_name: User friendly name for this resource.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str exadata_infrastructure: The name of the Exadata Infrastructure resource on which VM cluster
                resource is created, in the following format:
                projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
@@ -10343,6 +10361,9 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
+        """
+        Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -10356,6 +10377,9 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property

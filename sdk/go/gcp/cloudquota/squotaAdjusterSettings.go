@@ -12,6 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// QuotaAdjusterSettings resource represents your quota adjuster settings for a particular project. When enabled, the quota adjuster monitors your usage for the specified resources and issues quota adjustment requests when resource usage approaches its quota value.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about QuotaAdjusterSettings, see:
+//
+// * [API documentation](https://cloud.google.com/docs/quotas/reference/rest/v1beta/projects.locations.quotaAdjusterSettings)
+// * How-to Guides
+//   - [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
+//
 // ## Example Usage
 //
 // ### Cloudquotas Quota Adjuster Settings Basic

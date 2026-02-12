@@ -68,22 +68,14 @@ import javax.annotation.Nullable;
  * CodeRepositoryIndex can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index_id}}`
- * 
  * * `{{project}}/{{location}}/{{code_repository_index_id}}`
- * 
  * * `{{location}}/{{code_repository_index_id}}`
  * 
  * When using the `pulumi import` command, CodeRepositoryIndex can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default {{project}}/{{location}}/{{code_repository_index_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default {{location}}/{{code_repository_index_id}}
  * ```
  * 

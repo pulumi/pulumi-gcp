@@ -399,22 +399,14 @@ class LbRouteExtension(pulumi.CustomResource):
         LbRouteExtension can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/lbRouteExtensions/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, LbRouteExtension can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/lbRouteExtension:LbRouteExtension default projects/{{project}}/locations/{{location}}/lbRouteExtensions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/lbRouteExtension:LbRouteExtension default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/lbRouteExtension:LbRouteExtension default {{location}}/{{name}}
         ```
 
@@ -463,22 +455,14 @@ class LbRouteExtension(pulumi.CustomResource):
         LbRouteExtension can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/lbRouteExtensions/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, LbRouteExtension can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/lbRouteExtension:LbRouteExtension default projects/{{project}}/locations/{{location}}/lbRouteExtensions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/lbRouteExtension:LbRouteExtension default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/lbRouteExtension:LbRouteExtension default {{location}}/{{name}}
         ```
 

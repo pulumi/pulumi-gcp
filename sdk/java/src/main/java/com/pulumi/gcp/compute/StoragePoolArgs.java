@@ -35,9 +35,23 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.capacityProvisioningType);
     }
 
+    /**
+     * Whether Terraform will be prevented from destroying the StoragePool.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the StoragePool will fail.
+     * When the field is set to false, deleting the StoragePool is allowed.
+     * 
+     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the StoragePool.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the StoragePool will fail.
+     * When the field is set to false, deleting the StoragePool is allowed.
+     * 
+     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -284,11 +298,29 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
             return capacityProvisioningType(Output.of(capacityProvisioningType));
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the StoragePool.
+         * When the field is set to true or unset in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the StoragePool will fail.
+         * When the field is set to false, deleting the StoragePool is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the StoragePool.
+         * When the field is set to true or unset in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the StoragePool will fail.
+         * When the field is set to false, deleting the StoragePool is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }

@@ -34,6 +34,9 @@ class AppleAppArgs:
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[_builtins.str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
+               rather than deleted upon `terraform destroy`. This is useful because the Apple may be
+               serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] team_id: The Apple Developer Team ID associated with the App in the App Store.
@@ -104,6 +107,11 @@ class AppleAppArgs:
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
+        rather than deleted upon `terraform destroy`. This is useful because the Apple may be
+        serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -157,6 +165,9 @@ class _AppleAppState:
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[_builtins.str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[_builtins.str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
+               rather than deleted upon `terraform destroy`. This is useful because the Apple may be
+               serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] name: The fully qualified resource name of the App, for example:
                projects/projectId/iosApps/appId
@@ -237,6 +248,11 @@ class _AppleAppState:
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
+        rather than deleted upon `terraform destroy`. This is useful because the Apple may be
+        serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -309,6 +325,17 @@ class AppleApp(pulumi.CustomResource):
                  team_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A Google Cloud Firebase Apple application instance
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about AppleApp, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/ios/setup)
+
         ## Example Usage
 
         ### Firebase Apple App Basic
@@ -351,34 +378,18 @@ class AppleApp(pulumi.CustomResource):
         AppleApp can be imported using any of these accepted formats:
 
         * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
-
         * `projects/{{project}}/iosApps/{{app_id}}`
-
         * `{{project}}/{{project}}/{{app_id}}`
-
         * `iosApps/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:firebase/appleApp:AppleApp default "{{project}} projects/{{project}}/iosApps/{{app_id}}"
-        ```
-
-        ```sh
+        $ terraform import google_firebase_apple_app.default "{{project}} projects/{{project}}/iosApps/{{app_id}}"
         $ pulumi import gcp:firebase/appleApp:AppleApp default projects/{{project}}/iosApps/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}}/{{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appleApp:AppleApp default iosApps/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appleApp:AppleApp default {{app_id}}
         ```
 
@@ -389,6 +400,9 @@ class AppleApp(pulumi.CustomResource):
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[_builtins.str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[_builtins.str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
+               rather than deleted upon `terraform destroy`. This is useful because the Apple may be
+               serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -401,6 +415,17 @@ class AppleApp(pulumi.CustomResource):
                  args: AppleAppArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Google Cloud Firebase Apple application instance
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about AppleApp, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/ios/setup)
+
         ## Example Usage
 
         ### Firebase Apple App Basic
@@ -443,34 +468,18 @@ class AppleApp(pulumi.CustomResource):
         AppleApp can be imported using any of these accepted formats:
 
         * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
-
         * `projects/{{project}}/iosApps/{{app_id}}`
-
         * `{{project}}/{{project}}/{{app_id}}`
-
         * `iosApps/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:firebase/appleApp:AppleApp default "{{project}} projects/{{project}}/iosApps/{{app_id}}"
-        ```
-
-        ```sh
+        $ terraform import google_firebase_apple_app.default "{{project}} projects/{{project}}/iosApps/{{app_id}}"
         $ pulumi import gcp:firebase/appleApp:AppleApp default projects/{{project}}/iosApps/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}}/{{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appleApp:AppleApp default iosApps/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appleApp:AppleApp default {{app_id}}
         ```
 
@@ -551,6 +560,9 @@ class AppleApp(pulumi.CustomResource):
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[_builtins.str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[_builtins.str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
+               rather than deleted upon `terraform destroy`. This is useful because the Apple may be
+               serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] name: The fully qualified resource name of the App, for example:
                projects/projectId/iosApps/appId
@@ -611,6 +623,11 @@ class AppleApp(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
+        rather than deleted upon `terraform destroy`. This is useful because the Apple may be
+        serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @_builtins.property

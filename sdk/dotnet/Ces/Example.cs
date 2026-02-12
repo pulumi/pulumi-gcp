@@ -272,22 +272,14 @@ namespace Pulumi.Gcp.Ces
     /// Example can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{app}}/{{name}}`
-    /// 
     /// * `{{location}}/{{app}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Example can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:ces/example:Example default projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:ces/example:Example default {{project}}/{{location}}/{{app}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:ces/example:Example default {{location}}/{{app}}/{{name}}
     /// ```
     /// </summary>
@@ -334,6 +326,10 @@ namespace Pulumi.Gcp.Ces
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID to use for the example, which will become the final component of
+        /// the example's resource name. In Terraform, this field is required.
+        /// </summary>
         [Output("exampleId")]
         public Output<string> ExampleId { get; private set; } = null!;
 
@@ -450,6 +446,10 @@ namespace Pulumi.Gcp.Ces
         [Input("entryAgent")]
         public Input<string>? EntryAgent { get; set; }
 
+        /// <summary>
+        /// The ID to use for the example, which will become the final component of
+        /// the example's resource name. In Terraform, this field is required.
+        /// </summary>
         [Input("exampleId", required: true)]
         public Input<string> ExampleId { get; set; } = null!;
 
@@ -527,6 +527,10 @@ namespace Pulumi.Gcp.Ces
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// The ID to use for the example, which will become the final component of
+        /// the example's resource name. In Terraform, this field is required.
+        /// </summary>
         [Input("exampleId")]
         public Input<string>? ExampleId { get; set; }
 

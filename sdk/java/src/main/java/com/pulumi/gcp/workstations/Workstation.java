@@ -17,6 +17,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A single instance of a developer workstation with its own persistent storage.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about Workstation, see:
+ * 
+ * * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs.workstations)
+ * * How-to Guides
+ *     * [Workstations](https://cloud.google.com/workstations/docs/)
+ * 
  * ## Example Usage
  * 
  * ### Workstation Basic
@@ -107,22 +118,14 @@ import javax.annotation.Nullable;
  * Workstation can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}`
- * 
  * * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}`
- * 
  * * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}`
  * 
  * When using the `pulumi import` command, Workstation can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:workstations/workstation:Workstation default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:workstations/workstation:Workstation default {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:workstations/workstation:Workstation default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
  * ```
  * 
@@ -175,9 +178,17 @@ public class Workstation extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

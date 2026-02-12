@@ -32,22 +32,14 @@ import * as utilities from "../utilities";
  * Boundary can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/boundary`
- *
  * * `{{project}}/{{location}}`
- *
  * * `{{location}}`
  *
  * When using the `pulumi import` command, Boundary can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apphub/boundary:Boundary default projects/{{project}}/locations/{{location}}/boundary
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apphub/boundary:Boundary default {{project}}/{{location}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apphub/boundary:Boundary default {{location}}
  * ```
  */

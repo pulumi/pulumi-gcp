@@ -53,22 +53,14 @@ namespace Pulumi.Gcp.GkeBackup
     /// BackupChannel can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/backupChannels/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, BackupChannel can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gkebackup/backupChannel:BackupChannel default projects/{{project}}/locations/{{location}}/backupChannels/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkebackup/backupChannel:BackupChannel default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkebackup/backupChannel:BackupChannel default {{location}}/{{name}}
     /// ```
     /// </summary>

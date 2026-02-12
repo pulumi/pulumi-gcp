@@ -53,11 +53,8 @@ import (
 // Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, where:
 //
 // - `service` is the service connection, defaults to `servicenetworking.googleapis.com`.
-//
 // - `project` is the producer project name.
-//
 // - `network` is the consumer network name.
-//
 // - `name` is the name of your peered DNS domain.
 //
 // * `services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}`

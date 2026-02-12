@@ -925,16 +925,12 @@ class PreventionJobTrigger(pulumi.CustomResource):
         JobTrigger can be imported using any of these accepted formats:
 
         * `{{parent}}/jobTriggers/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, JobTrigger can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/jobTriggers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/{{name}}
         ```
 
@@ -1524,16 +1520,12 @@ class PreventionJobTrigger(pulumi.CustomResource):
         JobTrigger can be imported using any of these accepted formats:
 
         * `{{parent}}/jobTriggers/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, JobTrigger can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/jobTriggers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/{{name}}
         ```
 

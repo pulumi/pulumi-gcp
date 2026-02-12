@@ -176,16 +176,36 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.customerEncryption);
     }
 
+    /**
+     * When set to ABANDON, the object won&#39;t be deleted from storage bucket. Instead, it will only be removed from terraform&#39;s state file.
+     * 
+     */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
+    /**
+     * @return When set to ABANDON, the object won&#39;t be deleted from storage bucket. Instead, it will only be removed from terraform&#39;s state file.
+     * 
+     */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
     }
 
+    /**
+     * Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+     * 
+     * &gt; **Warning:** For dynamically populated files or objects, `detectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `sourceMd5hash` instead.
+     * 
+     */
     @Import(name="detectMd5hash")
     private @Nullable Output<String> detectMd5hash;
 
+    /**
+     * @return Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+     * 
+     * &gt; **Warning:** For dynamically populated files or objects, `detectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `sourceMd5hash` instead.
+     * 
+     */
     public Optional<Output<String>> detectMd5hash() {
         return Optional.ofNullable(this.detectMd5hash);
     }
@@ -711,20 +731,48 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
             return customerEncryption(Output.of(customerEncryption));
         }
 
+        /**
+         * @param deletionPolicy When set to ABANDON, the object won&#39;t be deleted from storage bucket. Instead, it will only be removed from terraform&#39;s state file.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
             $.deletionPolicy = deletionPolicy;
             return this;
         }
 
+        /**
+         * @param deletionPolicy When set to ABANDON, the object won&#39;t be deleted from storage bucket. Instead, it will only be removed from terraform&#39;s state file.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
         }
 
+        /**
+         * @param detectMd5hash Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+         * 
+         * &gt; **Warning:** For dynamically populated files or objects, `detectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `sourceMd5hash` instead.
+         * 
+         * @return builder
+         * 
+         */
         public Builder detectMd5hash(@Nullable Output<String> detectMd5hash) {
             $.detectMd5hash = detectMd5hash;
             return this;
         }
 
+        /**
+         * @param detectMd5hash Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+         * 
+         * &gt; **Warning:** For dynamically populated files or objects, `detectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `sourceMd5hash` instead.
+         * 
+         * @return builder
+         * 
+         */
         public Builder detectMd5hash(String detectMd5hash) {
             return detectMd5hash(Output.of(detectMd5hash));
         }

@@ -7,6 +7,13 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * An imperative resource that triggers a GCBDR restoration event.
+ * Creating this resource will initiate a restore operation from a specified backup.
+ * The resource represents the restore operation and its result.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
  * ## Example Usage
  *
  * ### Backup Dr Restore Workload Compute Instance Basic
@@ -203,16 +210,12 @@ import * as utilities from "../utilities";
  * RestoreWorkload can be imported using any of these accepted formats:
  *
  * * `/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, RestoreWorkload can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
  * ```
  */
@@ -270,6 +273,10 @@ export class RestoreWorkload extends pulumi.CustomResource {
      * Required. The ID of the data source.
      */
     declare public readonly dataSourceId: pulumi.Output<string>;
+    /**
+     * Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     */
     declare public readonly deleteRestoredInstance: pulumi.Output<boolean | undefined>;
     /**
      * Optional. Disk properties to be overridden during restore.
@@ -397,6 +404,10 @@ export interface RestoreWorkloadState {
      * Required. The ID of the data source.
      */
     dataSourceId?: pulumi.Input<string>;
+    /**
+     * Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     */
     deleteRestoredInstance?: pulumi.Input<boolean>;
     /**
      * Optional. Disk properties to be overridden during restore.
@@ -464,6 +475,10 @@ export interface RestoreWorkloadArgs {
      * Required. The ID of the data source.
      */
     dataSourceId: pulumi.Input<string>;
+    /**
+     * Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     */
     deleteRestoredInstance?: pulumi.Input<boolean>;
     /**
      * Optional. Disk properties to be overridden during restore.

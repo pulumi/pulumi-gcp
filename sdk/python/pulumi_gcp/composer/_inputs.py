@@ -69,97 +69,92 @@ __all__ = [
     'EnvironmentStorageConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class EnvironmentConfigArgsDict(TypedDict):
-        airflow_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URI of the Apache Airflow Web UI hosted within this
-        environment.
-        """
-        dag_gcs_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage prefix of the DAGs for this environment.
-        Although Cloud Storage objects reside in a flat namespace, a
-        hierarchical file tree can be simulated using '/'-delimited
-        object name prefixes. DAG objects for this environment
-        reside in a simulated directory with this prefix.
-        """
-        data_retention_config: NotRequired[pulumi.Input['EnvironmentConfigDataRetentionConfigArgsDict']]
-        """
-        The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
-        """
-        database_config: NotRequired[pulumi.Input['EnvironmentConfigDatabaseConfigArgsDict']]
-        """
-        The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
-        enable_private_builds_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
-        """
-        enable_private_environment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. If true, a private Composer environment will be created.
-        """
-        encryption_config: NotRequired[pulumi.Input['EnvironmentConfigEncryptionConfigArgsDict']]
-        """
-        The encryption options for the Composer environment and its dependencies.
-        """
-        environment_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-        """
-        gke_cluster: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Kubernetes Engine cluster used to run this environment.
-        """
-        maintenance_window: NotRequired[pulumi.Input['EnvironmentConfigMaintenanceWindowArgsDict']]
-        """
-        The configuration for Cloud Composer maintenance window.
-        """
-        master_authorized_networks_config: NotRequired[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigArgsDict']]
-        """
-        Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
-        """
-        node_config: NotRequired[pulumi.Input['EnvironmentConfigNodeConfigArgsDict']]
-        """
-        The configuration used for the Kubernetes Engine cluster.
-        """
-        node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
-        private_environment_config: NotRequired[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgsDict']]
-        """
-        The configuration used for the Private IP Cloud Composer environment.
-        """
-        recovery_config: NotRequired[pulumi.Input['EnvironmentConfigRecoveryConfigArgsDict']]
-        """
-        The recovery configuration settings for the Cloud Composer environment
-        """
-        resilience_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
-        """
-        software_config: NotRequired[pulumi.Input['EnvironmentConfigSoftwareConfigArgsDict']]
-        """
-        The configuration settings for software inside the environment.
-        """
-        web_server_config: NotRequired[pulumi.Input['EnvironmentConfigWebServerConfigArgsDict']]
-        """
-        The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
-        web_server_network_access_control: NotRequired[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArgsDict']]
-        """
-        Network-level access control policy for the Airflow web server.
-        """
-        workloads_config: NotRequired[pulumi.Input['EnvironmentConfigWorkloadsConfigArgsDict']]
-        """
-        The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-        """
-elif False:
-    EnvironmentConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigArgsDict(TypedDict):
+    airflow_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URI of the Apache Airflow Web UI hosted within this
+    environment.
+    """
+    dag_gcs_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage prefix of the DAGs for this environment.
+    Although Cloud Storage objects reside in a flat namespace, a
+    hierarchical file tree can be simulated using '/'-delimited
+    object name prefixes. DAG objects for this environment
+    reside in a simulated directory with this prefix.
+    """
+    data_retention_config: NotRequired[pulumi.Input['EnvironmentConfigDataRetentionConfigArgsDict']]
+    """
+    The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+    """
+    database_config: NotRequired[pulumi.Input['EnvironmentConfigDatabaseConfigArgsDict']]
+    """
+    The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    """
+    enable_private_builds_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+    """
+    enable_private_environment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. If true, a private Composer environment will be created.
+    """
+    encryption_config: NotRequired[pulumi.Input['EnvironmentConfigEncryptionConfigArgsDict']]
+    """
+    The encryption options for the Composer environment and its dependencies.
+    """
+    environment_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+    """
+    gke_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Kubernetes Engine cluster used to run this environment.
+    """
+    maintenance_window: NotRequired[pulumi.Input['EnvironmentConfigMaintenanceWindowArgsDict']]
+    """
+    The configuration for Cloud Composer maintenance window.
+    """
+    master_authorized_networks_config: NotRequired[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigArgsDict']]
+    """
+    Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+    """
+    node_config: NotRequired[pulumi.Input['EnvironmentConfigNodeConfigArgsDict']]
+    """
+    The configuration used for the Kubernetes Engine cluster.
+    """
+    node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    """
+    private_environment_config: NotRequired[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgsDict']]
+    """
+    The configuration used for the Private IP Cloud Composer environment.
+    """
+    recovery_config: NotRequired[pulumi.Input['EnvironmentConfigRecoveryConfigArgsDict']]
+    """
+    The recovery configuration settings for the Cloud Composer environment
+    """
+    resilience_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+    """
+    software_config: NotRequired[pulumi.Input['EnvironmentConfigSoftwareConfigArgsDict']]
+    """
+    The configuration settings for software inside the environment.
+    """
+    web_server_config: NotRequired[pulumi.Input['EnvironmentConfigWebServerConfigArgsDict']]
+    """
+    The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    """
+    web_server_network_access_control: NotRequired[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArgsDict']]
+    """
+    Network-level access control policy for the Airflow web server.
+    """
+    workloads_config: NotRequired[pulumi.Input['EnvironmentConfigWorkloadsConfigArgsDict']]
+    """
+    The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigArgs:
@@ -498,18 +493,15 @@ class EnvironmentConfigArgs:
         pulumi.set(self, "workloads_config", value)
 
 
-if not MYPY:
-    class EnvironmentConfigDataRetentionConfigArgsDict(TypedDict):
-        airflow_metadata_retention_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgsDict']]]]
-        """
-        Optional. The policy for airflow metadata database retention.
-        """
-        task_logs_retention_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgsDict']]]]
-        """
-        Optional. The configuration setting for Task Logs.
-        """
-elif False:
-    EnvironmentConfigDataRetentionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigDataRetentionConfigArgsDict(TypedDict):
+    airflow_metadata_retention_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgsDict']]]]
+    """
+    Optional. The policy for airflow metadata database retention.
+    """
+    task_logs_retention_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgsDict']]]]
+    """
+    Optional. The configuration setting for Task Logs.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigDataRetentionConfigArgs:
@@ -550,18 +542,15 @@ class EnvironmentConfigDataRetentionConfigArgs:
         pulumi.set(self, "task_logs_retention_configs", value)
 
 
-if not MYPY:
-    class EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgsDict(TypedDict):
-        retention_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        How many days data should be retained for. This field is supported for Cloud Composer environments in composer 3 and newer.
-        """
-        retention_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether database retention is enabled or not. This field is supported for Cloud Composer environments in composer 3 and newer.
-        """
-elif False:
-    EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgsDict(TypedDict):
+    retention_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    How many days data should be retained for. This field is supported for Cloud Composer environments in composer 3 and newer.
+    """
+    retention_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether database retention is enabled or not. This field is supported for Cloud Composer environments in composer 3 and newer.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs:
@@ -602,14 +591,11 @@ class EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs:
         pulumi.set(self, "retention_mode", value)
 
 
-if not MYPY:
-    class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgsDict(TypedDict):
-        storage_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
-        """
-elif False:
-    EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgsDict(TypedDict):
+    storage_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*
+    """
 
 @pulumi.input_type
 class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs:
@@ -634,18 +620,15 @@ class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs:
         pulumi.set(self, "storage_mode", value)
 
 
-if not MYPY:
-    class EnvironmentConfigDatabaseConfigArgsDict(TypedDict):
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
-        """
-        zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Cloud SQL database preferred zone.
-        """
-elif False:
-    EnvironmentConfigDatabaseConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigDatabaseConfigArgsDict(TypedDict):
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+    """
+    zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Cloud SQL database preferred zone.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigDatabaseConfigArgs:
@@ -686,14 +669,11 @@ class EnvironmentConfigDatabaseConfigArgs:
         pulumi.set(self, "zone", value)
 
 
-if not MYPY:
-    class EnvironmentConfigEncryptionConfigArgsDict(TypedDict):
-        kms_key_name: pulumi.Input[_builtins.str]
-        """
-        Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
-        """
-elif False:
-    EnvironmentConfigEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigEncryptionConfigArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigEncryptionConfigArgs:
@@ -717,22 +697,19 @@ class EnvironmentConfigEncryptionConfigArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class EnvironmentConfigMaintenanceWindowArgsDict(TypedDict):
-        end_time: pulumi.Input[_builtins.str]
-        """
-        Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
-        """
-        recurrence: pulumi.Input[_builtins.str]
-        """
-        Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
-        """
-        start_time: pulumi.Input[_builtins.str]
-        """
-        Start time of the first recurrence of the maintenance window.
-        """
-elif False:
-    EnvironmentConfigMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigMaintenanceWindowArgsDict(TypedDict):
+    end_time: pulumi.Input[_builtins.str]
+    """
+    Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
+    """
+    recurrence: pulumi.Input[_builtins.str]
+    """
+    Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+    """
+    start_time: pulumi.Input[_builtins.str]
+    """
+    Start time of the first recurrence of the maintenance window.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigMaintenanceWindowArgs:
@@ -786,18 +763,15 @@ class EnvironmentConfigMaintenanceWindowArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class EnvironmentConfigMasterAuthorizedNetworksConfigArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Whether or not master authorized networks is enabled.
-        """
-        cidr_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgsDict']]]]
-        """
-        cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
-        """
-elif False:
-    EnvironmentConfigMasterAuthorizedNetworksConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigMasterAuthorizedNetworksConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether or not master authorized networks is enabled.
+    """
+    cidr_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgsDict']]]]
+    """
+    cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigMasterAuthorizedNetworksConfigArgs:
@@ -837,18 +811,15 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigArgs:
         pulumi.set(self, "cidr_blocks", value)
 
 
-if not MYPY:
-    class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgsDict(TypedDict):
-        cidr_block: pulumi.Input[_builtins.str]
-        """
-        cidr_block must be specified in CIDR notation.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        display_name is a field for users to identify CIDR blocks.
-        """
-elif False:
-    EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgsDict(TypedDict):
+    cidr_block: pulumi.Input[_builtins.str]
+    """
+    cidr_block must be specified in CIDR notation.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    display_name is a field for users to identify CIDR blocks.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs:
@@ -888,62 +859,59 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class EnvironmentConfigNodeConfigArgsDict(TypedDict):
-        composer_internal_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IPv4 cidr range that will be used by Composer internal components.
-        """
-        composer_network_attachment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
-        """
-        disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
-        enable_ip_masq_agent: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
-        """
-        ip_allocation_policy: NotRequired[pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArgsDict']]
-        """
-        Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
-        max_pods_per_node: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
-        """
-        oauth_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
-        service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
-        """
-        subnetwork: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
-        """
-        zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
-elif False:
-    EnvironmentConfigNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigNodeConfigArgsDict(TypedDict):
+    composer_internal_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IPv4 cidr range that will be used by Composer internal components.
+    """
+    composer_network_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.
+    """
+    disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    """
+    enable_ip_masq_agent: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+    """
+    ip_allocation_policy: NotRequired[pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArgsDict']]
+    """
+    Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    """
+    max_pods_per_node: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+    """
+    oauth_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    """
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
+    """
+    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+    """
+    zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigNodeConfigArgs:
@@ -1160,30 +1128,27 @@ class EnvironmentConfigNodeConfigArgs:
         pulumi.set(self, "zone", value)
 
 
-if not MYPY:
-    class EnvironmentConfigNodeConfigIpAllocationPolicyArgsDict(TypedDict):
-        cluster_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both.
-        """
-        cluster_secondary_range_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.
-        """
-        services_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both.
-        """
-        services_secondary_range_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.
-        """
-        use_ip_aliases: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ip_allocation_policy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
-        """
-elif False:
-    EnvironmentConfigNodeConfigIpAllocationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigNodeConfigIpAllocationPolicyArgsDict(TypedDict):
+    cluster_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both.
+    """
+    cluster_secondary_range_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.
+    """
+    services_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both.
+    """
+    services_secondary_range_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.
+    """
+    use_ip_aliases: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ip_allocation_policy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigNodeConfigIpAllocationPolicyArgs:
@@ -1272,42 +1237,39 @@ class EnvironmentConfigNodeConfigIpAllocationPolicyArgs:
         pulumi.set(self, "use_ip_aliases", value)
 
 
-if not MYPY:
-    class EnvironmentConfigPrivateEnvironmentConfigArgsDict(TypedDict):
-        cloud_composer_connection_subnetwork: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-        """
-        cloud_composer_network_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-        """
-        cloud_sql_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
-        """
-        connection_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
-        """
-        enable_private_endpoint: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
-        enable_privately_used_public_ips: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
-        """
-        master_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
-        """
-        web_server_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        """
-elif False:
-    EnvironmentConfigPrivateEnvironmentConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigPrivateEnvironmentConfigArgsDict(TypedDict):
+    cloud_composer_connection_subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+    """
+    cloud_composer_network_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+    """
+    cloud_sql_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
+    """
+    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
+    """
+    enable_private_endpoint: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    """
+    enable_privately_used_public_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
+    """
+    master_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
+    """
+    web_server_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigPrivateEnvironmentConfigArgs:
@@ -1444,14 +1406,11 @@ class EnvironmentConfigPrivateEnvironmentConfigArgs:
         pulumi.set(self, "web_server_ipv4_cidr_block", value)
 
 
-if not MYPY:
-    class EnvironmentConfigRecoveryConfigArgsDict(TypedDict):
-        scheduled_snapshots_config: NotRequired[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgsDict']]
-        """
-        The configuration settings for scheduled snapshots.
-        """
-elif False:
-    EnvironmentConfigRecoveryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigRecoveryConfigArgsDict(TypedDict):
+    scheduled_snapshots_config: NotRequired[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgsDict']]
+    """
+    The configuration settings for scheduled snapshots.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigRecoveryConfigArgs:
@@ -1476,26 +1435,23 @@ class EnvironmentConfigRecoveryConfigArgs:
         pulumi.set(self, "scheduled_snapshots_config", value)
 
 
-if not MYPY:
-    class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
-        """
-        snapshot_creation_schedule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Snapshot schedule, in the unix-cron format.
-        """
-        snapshot_location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        the URI of a bucket folder where to save the snapshot.
-        """
-        time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
-        """
-elif False:
-    EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+    """
+    snapshot_creation_schedule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Snapshot schedule, in the unix-cron format.
+    """
+    snapshot_location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    the URI of a bucket folder where to save the snapshot.
+    """
+    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs:
@@ -1567,42 +1523,39 @@ class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs:
         pulumi.set(self, "time_zone", value)
 
 
-if not MYPY:
-    class EnvironmentConfigSoftwareConfigArgsDict(TypedDict):
-        airflow_config_overrides: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
-        """
-        cloud_data_lineage_integration: NotRequired[pulumi.Input['EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgsDict']]
-        """
-        The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
-        """
-        env_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
-        """
-        image_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-([0-9]+(\\.[0-9]+\\.[0-9]+(-preview\\.[0-9]+)?)?|latest)-airflow-([0-9]+(\\.[0-9]+(\\.[0-9]+)?)?). The Cloud Composer portion of the image version is a full semantic version, or an alias in the form of major version number or 'latest'. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. See documentation for more details and version list.
-        """
-        pypi_packages: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without pinning it to a version specifier, use the empty string as the value.
-        """
-        python_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
-        """
-        scheduler_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
-        """
-        web_server_plugins_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.
-        """
-elif False:
-    EnvironmentConfigSoftwareConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigSoftwareConfigArgsDict(TypedDict):
+    airflow_config_overrides: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
+    """
+    cloud_data_lineage_integration: NotRequired[pulumi.Input['EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgsDict']]
+    """
+    The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
+    """
+    env_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
+    """
+    image_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-([0-9]+(\\.[0-9]+\\.[0-9]+(-preview\\.[0-9]+)?)?|latest)-airflow-([0-9]+(\\.[0-9]+(\\.[0-9]+)?)?). The Cloud Composer portion of the image version is a full semantic version, or an alias in the form of major version number or 'latest'. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. See documentation for more details and version list.
+    """
+    pypi_packages: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without pinning it to a version specifier, use the empty string as the value.
+    """
+    python_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
+    """
+    scheduler_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+    """
+    web_server_plugins_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigSoftwareConfigArgs:
@@ -1739,14 +1692,11 @@ class EnvironmentConfigSoftwareConfigArgs:
         pulumi.set(self, "web_server_plugins_mode", value)
 
 
-if not MYPY:
-    class EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Whether or not Cloud Data Lineage integration is enabled.
-        """
-elif False:
-    EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether or not Cloud Data Lineage integration is enabled.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs:
@@ -1770,14 +1720,11 @@ class EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class EnvironmentConfigWebServerConfigArgsDict(TypedDict):
-        machine_type: pulumi.Input[_builtins.str]
-        """
-        Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
-        """
-elif False:
-    EnvironmentConfigWebServerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigWebServerConfigArgsDict(TypedDict):
+    machine_type: pulumi.Input[_builtins.str]
+    """
+    Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigWebServerConfigArgs:
@@ -1801,14 +1748,11 @@ class EnvironmentConfigWebServerConfigArgs:
         pulumi.set(self, "machine_type", value)
 
 
-if not MYPY:
-    class EnvironmentConfigWebServerNetworkAccessControlArgsDict(TypedDict):
-        allowed_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgsDict']]]]
-        """
-        A collection of allowed IP ranges with descriptions.
-        """
-elif False:
-    EnvironmentConfigWebServerNetworkAccessControlArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigWebServerNetworkAccessControlArgsDict(TypedDict):
+    allowed_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgsDict']]]]
+    """
+    A collection of allowed IP ranges with descriptions.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigWebServerNetworkAccessControlArgs:
@@ -1833,18 +1777,15 @@ class EnvironmentConfigWebServerNetworkAccessControlArgs:
         pulumi.set(self, "allowed_ip_ranges", value)
 
 
-if not MYPY:
-    class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgsDict(TypedDict):
-        value: pulumi.Input[_builtins.str]
-        """
-        IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. IP range prefixes should be properly truncated. For example, 1.2.3.4/24 should be truncated to 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 should be truncated to 2001:db8::/32.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A description of this ip range.
-        """
-elif False:
-    EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgsDict(TypedDict):
+    value: pulumi.Input[_builtins.str]
+    """
+    IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. IP range prefixes should be properly truncated. For example, 1.2.3.4/24 should be truncated to 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 should be truncated to 2001:db8::/32.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A description of this ip range.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs:
@@ -1884,30 +1825,27 @@ class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class EnvironmentConfigWorkloadsConfigArgsDict(TypedDict):
-        dag_processor: NotRequired[pulumi.Input['EnvironmentConfigWorkloadsConfigDagProcessorArgsDict']]
-        """
-        Configuration for resources used by DAG processor.
-        """
-        scheduler: NotRequired[pulumi.Input['EnvironmentConfigWorkloadsConfigSchedulerArgsDict']]
-        """
-        Configuration for resources used by Airflow schedulers.
-        """
-        triggerer: NotRequired[pulumi.Input['EnvironmentConfigWorkloadsConfigTriggererArgsDict']]
-        """
-        Configuration for resources used by Airflow triggerers.
-        """
-        web_server: NotRequired[pulumi.Input['EnvironmentConfigWorkloadsConfigWebServerArgsDict']]
-        """
-        Configuration for resources used by Airflow web server.
-        """
-        worker: NotRequired[pulumi.Input['EnvironmentConfigWorkloadsConfigWorkerArgsDict']]
-        """
-        Configuration for resources used by Airflow workers.
-        """
-elif False:
-    EnvironmentConfigWorkloadsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigWorkloadsConfigArgsDict(TypedDict):
+    dag_processor: NotRequired[pulumi.Input['EnvironmentConfigWorkloadsConfigDagProcessorArgsDict']]
+    """
+    Configuration for resources used by DAG processor.
+    """
+    scheduler: NotRequired[pulumi.Input['EnvironmentConfigWorkloadsConfigSchedulerArgsDict']]
+    """
+    Configuration for resources used by Airflow schedulers.
+    """
+    triggerer: NotRequired[pulumi.Input['EnvironmentConfigWorkloadsConfigTriggererArgsDict']]
+    """
+    Configuration for resources used by Airflow triggerers.
+    """
+    web_server: NotRequired[pulumi.Input['EnvironmentConfigWorkloadsConfigWebServerArgsDict']]
+    """
+    Configuration for resources used by Airflow web server.
+    """
+    worker: NotRequired[pulumi.Input['EnvironmentConfigWorkloadsConfigWorkerArgsDict']]
+    """
+    Configuration for resources used by Airflow workers.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigWorkloadsConfigArgs:
@@ -1996,26 +1934,23 @@ class EnvironmentConfigWorkloadsConfigArgs:
         pulumi.set(self, "worker", value)
 
 
-if not MYPY:
-    class EnvironmentConfigWorkloadsConfigDagProcessorArgsDict(TypedDict):
-        count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of DAG processors.
-        """
-        cpu: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        CPU request and limit for DAG processor.
-        """
-        memory_gb: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Memory (GB) request and limit for DAG processor.
-        """
-        storage_gb: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Storage (GB) request and limit for DAG processor.
-        """
-elif False:
-    EnvironmentConfigWorkloadsConfigDagProcessorArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigWorkloadsConfigDagProcessorArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of DAG processors.
+    """
+    cpu: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    CPU request and limit for DAG processor.
+    """
+    memory_gb: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Memory (GB) request and limit for DAG processor.
+    """
+    storage_gb: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Storage (GB) request and limit for DAG processor.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigWorkloadsConfigDagProcessorArgs:
@@ -2088,26 +2023,23 @@ class EnvironmentConfigWorkloadsConfigDagProcessorArgs:
         pulumi.set(self, "storage_gb", value)
 
 
-if not MYPY:
-    class EnvironmentConfigWorkloadsConfigSchedulerArgsDict(TypedDict):
-        count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of schedulers.
-        """
-        cpu: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        CPU request and limit for a single Airflow scheduler replica
-        """
-        memory_gb: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Memory (GB) request and limit for a single Airflow scheduler replica.
-        """
-        storage_gb: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Storage (GB) request and limit for a single Airflow scheduler replica.
-        """
-elif False:
-    EnvironmentConfigWorkloadsConfigSchedulerArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigWorkloadsConfigSchedulerArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of schedulers.
+    """
+    cpu: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    CPU request and limit for a single Airflow scheduler replica
+    """
+    memory_gb: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Memory (GB) request and limit for a single Airflow scheduler replica.
+    """
+    storage_gb: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Storage (GB) request and limit for a single Airflow scheduler replica.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigWorkloadsConfigSchedulerArgs:
@@ -2180,22 +2112,19 @@ class EnvironmentConfigWorkloadsConfigSchedulerArgs:
         pulumi.set(self, "storage_gb", value)
 
 
-if not MYPY:
-    class EnvironmentConfigWorkloadsConfigTriggererArgsDict(TypedDict):
-        count: pulumi.Input[_builtins.int]
-        """
-        The number of triggerers.
-        """
-        cpu: pulumi.Input[_builtins.float]
-        """
-        CPU request and limit for a single Airflow triggerer replica.
-        """
-        memory_gb: pulumi.Input[_builtins.float]
-        """
-        Memory (GB) request and limit for a single Airflow triggerer replica.
-        """
-elif False:
-    EnvironmentConfigWorkloadsConfigTriggererArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigWorkloadsConfigTriggererArgsDict(TypedDict):
+    count: pulumi.Input[_builtins.int]
+    """
+    The number of triggerers.
+    """
+    cpu: pulumi.Input[_builtins.float]
+    """
+    CPU request and limit for a single Airflow triggerer replica.
+    """
+    memory_gb: pulumi.Input[_builtins.float]
+    """
+    Memory (GB) request and limit for a single Airflow triggerer replica.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigWorkloadsConfigTriggererArgs:
@@ -2249,22 +2178,19 @@ class EnvironmentConfigWorkloadsConfigTriggererArgs:
         pulumi.set(self, "memory_gb", value)
 
 
-if not MYPY:
-    class EnvironmentConfigWorkloadsConfigWebServerArgsDict(TypedDict):
-        cpu: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        CPU request and limit for Airflow web server.
-        """
-        memory_gb: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Memory (GB) request and limit for Airflow web server.
-        """
-        storage_gb: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Storage (GB) request and limit for Airflow web server.
-        """
-elif False:
-    EnvironmentConfigWorkloadsConfigWebServerArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigWorkloadsConfigWebServerArgsDict(TypedDict):
+    cpu: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    CPU request and limit for Airflow web server.
+    """
+    memory_gb: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Memory (GB) request and limit for Airflow web server.
+    """
+    storage_gb: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Storage (GB) request and limit for Airflow web server.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigWorkloadsConfigWebServerArgs:
@@ -2321,30 +2247,27 @@ class EnvironmentConfigWorkloadsConfigWebServerArgs:
         pulumi.set(self, "storage_gb", value)
 
 
-if not MYPY:
-    class EnvironmentConfigWorkloadsConfigWorkerArgsDict(TypedDict):
-        cpu: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        CPU request and limit for a single Airflow worker replica.
-        """
-        max_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of workers for autoscaling.
-        """
-        memory_gb: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Memory (GB) request and limit for a single Airflow worker replica.
-        """
-        min_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of workers for autoscaling.
-        """
-        storage_gb: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Storage (GB) request and limit for a single Airflow worker replica.
-        """
-elif False:
-    EnvironmentConfigWorkloadsConfigWorkerArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentConfigWorkloadsConfigWorkerArgsDict(TypedDict):
+    cpu: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    CPU request and limit for a single Airflow worker replica.
+    """
+    max_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of workers for autoscaling.
+    """
+    memory_gb: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Memory (GB) request and limit for a single Airflow worker replica.
+    """
+    min_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of workers for autoscaling.
+    """
+    storage_gb: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Storage (GB) request and limit for a single Airflow worker replica.
+    """
 
 @pulumi.input_type
 class EnvironmentConfigWorkloadsConfigWorkerArgs:
@@ -2433,14 +2356,11 @@ class EnvironmentConfigWorkloadsConfigWorkerArgs:
         pulumi.set(self, "storage_gb", value)
 
 
-if not MYPY:
-    class EnvironmentStorageConfigArgsDict(TypedDict):
-        bucket: pulumi.Input[_builtins.str]
-        """
-        Optional. Name of an existing Cloud Storage bucket to be used by the environment.
-        """
-elif False:
-    EnvironmentStorageConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentStorageConfigArgsDict(TypedDict):
+    bucket: pulumi.Input[_builtins.str]
+    """
+    Optional. Name of an existing Cloud Storage bucket to be used by the environment.
+    """
 
 @pulumi.input_type
 class EnvironmentStorageConfigArgs:

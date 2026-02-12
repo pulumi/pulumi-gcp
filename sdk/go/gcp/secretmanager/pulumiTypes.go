@@ -151,6 +151,11 @@ func (o RegionalSecretCustomerManagedEncryptionPtrOutput) KmsKeyName() pulumi.St
 }
 
 type RegionalSecretIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -170,6 +175,11 @@ type RegionalSecretIamBindingConditionInput interface {
 }
 
 type RegionalSecretIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -254,6 +264,11 @@ func (o RegionalSecretIamBindingConditionOutput) ToRegionalSecretIamBindingCondi
 	}).(RegionalSecretIamBindingConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o RegionalSecretIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionalSecretIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -292,6 +307,11 @@ func (o RegionalSecretIamBindingConditionPtrOutput) Elem() RegionalSecretIamBind
 	}).(RegionalSecretIamBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o RegionalSecretIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionalSecretIamBindingCondition) *string {
 		if v == nil {
@@ -322,6 +342,11 @@ func (o RegionalSecretIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutp
 }
 
 type RegionalSecretIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -341,6 +366,11 @@ type RegionalSecretIamMemberConditionInput interface {
 }
 
 type RegionalSecretIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -425,6 +455,11 @@ func (o RegionalSecretIamMemberConditionOutput) ToRegionalSecretIamMemberConditi
 	}).(RegionalSecretIamMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o RegionalSecretIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionalSecretIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -463,6 +498,11 @@ func (o RegionalSecretIamMemberConditionPtrOutput) Elem() RegionalSecretIamMembe
 	}).(RegionalSecretIamMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o RegionalSecretIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionalSecretIamMemberCondition) *string {
 		if v == nil {
@@ -872,6 +912,11 @@ func (o RegionalSecretVersionCustomerManagedEncryptionArrayOutput) Index(i pulum
 }
 
 type SecretIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -891,6 +936,11 @@ type SecretIamBindingConditionInput interface {
 }
 
 type SecretIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -975,6 +1025,11 @@ func (o SecretIamBindingConditionOutput) ToSecretIamBindingConditionPtrOutputWit
 	}).(SecretIamBindingConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o SecretIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1013,6 +1068,11 @@ func (o SecretIamBindingConditionPtrOutput) Elem() SecretIamBindingConditionOutp
 	}).(SecretIamBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o SecretIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretIamBindingCondition) *string {
 		if v == nil {
@@ -1043,6 +1103,11 @@ func (o SecretIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type SecretIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -1062,6 +1127,11 @@ type SecretIamMemberConditionInput interface {
 }
 
 type SecretIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -1146,6 +1216,11 @@ func (o SecretIamMemberConditionOutput) ToSecretIamMemberConditionPtrOutputWithC
 	}).(SecretIamMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o SecretIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1184,6 +1259,11 @@ func (o SecretIamMemberConditionPtrOutput) Elem() SecretIamMemberConditionOutput
 	}).(SecretIamMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o SecretIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretIamMemberCondition) *string {
 		if v == nil {
@@ -2744,9 +2824,14 @@ type GetRegionalSecretsSecret struct {
 	// Customer Managed Encryption for the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryptions []GetRegionalSecretsSecretCustomerManagedEncryption `pulumi:"customerManagedEncryptions"`
-	DeletionProtection         bool                                                `pulumi:"deletionProtection"`
-	EffectiveAnnotations       map[string]string                                   `pulumi:"effectiveAnnotations"`
-	EffectiveLabels            map[string]string                                   `pulumi:"effectiveLabels"`
+	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+	// When the field is set to true in Terraform state, a 'terraform apply'
+	// or 'terraform destroy' that would delete the federation will fail.
+	DeletionProtection bool `pulumi:"deletionProtection"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Timestamp in UTC when the regional secret is scheduled to expire.
 	ExpireTime string `pulumi:"expireTime"`
 	// The labels assigned to this regional secret.
@@ -2800,9 +2885,14 @@ type GetRegionalSecretsSecretArgs struct {
 	// Customer Managed Encryption for the regional secret.
 	// Structure is documented below.
 	CustomerManagedEncryptions GetRegionalSecretsSecretCustomerManagedEncryptionArrayInput `pulumi:"customerManagedEncryptions"`
-	DeletionProtection         pulumi.BoolInput                                            `pulumi:"deletionProtection"`
-	EffectiveAnnotations       pulumi.StringMapInput                                       `pulumi:"effectiveAnnotations"`
-	EffectiveLabels            pulumi.StringMapInput                                       `pulumi:"effectiveLabels"`
+	// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+	// When the field is set to true in Terraform state, a 'terraform apply'
+	// or 'terraform destroy' that would delete the federation will fail.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// Timestamp in UTC when the regional secret is scheduled to expire.
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// The labels assigned to this regional secret.
@@ -2906,14 +2996,19 @@ func (o GetRegionalSecretsSecretOutput) CustomerManagedEncryptions() GetRegional
 	}).(GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput)
 }
 
+// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+// When the field is set to true in Terraform state, a 'terraform apply'
+// or 'terraform destroy' that would delete the federation will fail.
 func (o GetRegionalSecretsSecretOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegionalSecretsSecret) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o GetRegionalSecretsSecretOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetRegionalSecretsSecret) map[string]string { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetRegionalSecretsSecretOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetRegionalSecretsSecret) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -4136,10 +4231,15 @@ type GetSecretsSecret struct {
 	// Custom metadata about the secret.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The time at which the Secret was created.
-	CreateTime           string            `pulumi:"createTime"`
-	DeletionProtection   bool              `pulumi:"deletionProtection"`
+	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+	// When the field is set to true in Terraform state, a 'terraform apply'
+	// or 'terraform destroy' that would delete the secret will fail.
+	DeletionProtection bool `pulumi:"deletionProtection"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
-	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Timestamp in UTC when the Secret is scheduled to expire.
 	ExpireTime string `pulumi:"expireTime"`
 	// The labels assigned to this Secret.
@@ -4191,10 +4291,15 @@ type GetSecretsSecretArgs struct {
 	// Custom metadata about the secret.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// The time at which the Secret was created.
-	CreateTime           pulumi.StringInput    `pulumi:"createTime"`
-	DeletionProtection   pulumi.BoolInput      `pulumi:"deletionProtection"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+	// When the field is set to true in Terraform state, a 'terraform apply'
+	// or 'terraform destroy' that would delete the secret will fail.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput `pulumi:"effectiveAnnotations"`
-	EffectiveLabels      pulumi.StringMapInput `pulumi:"effectiveLabels"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// Timestamp in UTC when the Secret is scheduled to expire.
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// The labels assigned to this Secret.
@@ -4292,14 +4397,19 @@ func (o GetSecretsSecretOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+// When the field is set to true in Terraform state, a 'terraform apply'
+// or 'terraform destroy' that would delete the secret will fail.
 func (o GetSecretsSecretOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSecretsSecret) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o GetSecretsSecretOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecretsSecret) map[string]string { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetSecretsSecretOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecretsSecret) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

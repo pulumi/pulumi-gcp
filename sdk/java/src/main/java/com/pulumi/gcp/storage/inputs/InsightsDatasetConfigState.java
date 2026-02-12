@@ -201,9 +201,25 @@ public final class InsightsDatasetConfigState extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.includeNewlyCreatedBuckets);
     }
 
+    /**
+     * A boolean terraform only flag to link/unlink dataset.
+     * 
+     * Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+     * &gt; **Note** A dataset config resource can only be destroyed once it is unlinked,
+     * so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+     * 
+     */
     @Import(name="linkDataset")
     private @Nullable Output<Boolean> linkDataset;
 
+    /**
+     * @return A boolean terraform only flag to link/unlink dataset.
+     * 
+     * Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+     * &gt; **Note** A dataset config resource can only be destroyed once it is unlinked,
+     * so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+     * 
+     */
     public Optional<Output<Boolean>> linkDataset() {
         return Optional.ofNullable(this.linkDataset);
     }
@@ -670,11 +686,31 @@ public final class InsightsDatasetConfigState extends com.pulumi.resources.Resou
             return includeNewlyCreatedBuckets(Output.of(includeNewlyCreatedBuckets));
         }
 
+        /**
+         * @param linkDataset A boolean terraform only flag to link/unlink dataset.
+         * 
+         * Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+         * &gt; **Note** A dataset config resource can only be destroyed once it is unlinked,
+         * so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder linkDataset(@Nullable Output<Boolean> linkDataset) {
             $.linkDataset = linkDataset;
             return this;
         }
 
+        /**
+         * @param linkDataset A boolean terraform only flag to link/unlink dataset.
+         * 
+         * Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+         * &gt; **Note** A dataset config resource can only be destroyed once it is unlinked,
+         * so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder linkDataset(Boolean linkDataset) {
             return linkDataset(Output.of(linkDataset));
         }

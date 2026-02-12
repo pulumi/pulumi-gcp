@@ -38,6 +38,9 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// contain a maximum of 30 alphanumeric characters.
         /// </summary>
         public readonly string Database;
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+        /// </summary>
         public readonly bool DeletionProtection;
         /// <summary>
         /// List of supported GCP region to clone the Autonomous Database for disaster recovery.
@@ -48,6 +51,9 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// be unique within your project.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The ID of the subscription entitlement associated with the Autonomous

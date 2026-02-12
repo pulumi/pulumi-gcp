@@ -277,6 +277,7 @@ class _ProjectsPolicyBindingState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the policy binding was created.
         :param pulumi.Input[_builtins.str] display_name: Optional. The description of the policy binding. Must be less than or equal to 63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[_builtins.str] location: The location of the Policy Binding
         :param pulumi.Input[_builtins.str] name: The name of the policy binding in the format `{binding_parent/locations/{location}/policyBindings/{policy_binding_id}`
@@ -403,6 +404,9 @@ class _ProjectsPolicyBindingState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -563,6 +567,14 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
                  target: Optional[pulumi.Input[Union['ProjectsPolicyBindingTargetArgs', 'ProjectsPolicyBindingTargetArgsDict']]] = None,
                  __props__=None):
         """
+        A policy binding to a project. This is a Terraform resource, and maps to a policy binding resource in GCP.
+
+        To get more information about ProjectsPolicyBinding, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/projects.locations.policyBindings)
+        * How-to Guides
+            * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+
         ## Example Usage
 
         ### Iam Projects Policy Binding
@@ -598,22 +610,14 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         ProjectsPolicyBinding can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/policyBindings/{{policy_binding_id}}`
-
         * `{{project}}/{{location}}/{{policy_binding_id}}`
-
         * `{{location}}/{{policy_binding_id}}`
 
         When using the `pulumi import` command, ProjectsPolicyBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default projects/{{project}}/locations/{{location}}/policyBindings/{{policy_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{project}}/{{location}}/{{policy_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{location}}/{{policy_binding_id}}
         ```
 
@@ -666,6 +670,14 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
                  args: ProjectsPolicyBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A policy binding to a project. This is a Terraform resource, and maps to a policy binding resource in GCP.
+
+        To get more information about ProjectsPolicyBinding, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/projects.locations.policyBindings)
+        * How-to Guides
+            * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+
         ## Example Usage
 
         ### Iam Projects Policy Binding
@@ -701,22 +713,14 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         ProjectsPolicyBinding can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/policyBindings/{{policy_binding_id}}`
-
         * `{{project}}/{{location}}/{{policy_binding_id}}`
-
         * `{{location}}/{{policy_binding_id}}`
 
         When using the `pulumi import` command, ProjectsPolicyBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default projects/{{project}}/locations/{{location}}/policyBindings/{{policy_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{project}}/{{location}}/{{policy_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{location}}/{{policy_binding_id}}
         ```
 
@@ -840,6 +844,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the policy binding was created.
         :param pulumi.Input[_builtins.str] display_name: Optional. The description of the policy binding. Must be less than or equal to 63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[_builtins.str] location: The location of the Policy Binding
         :param pulumi.Input[_builtins.str] name: The name of the policy binding in the format `{binding_parent/locations/{location}/policyBindings/{policy_binding_id}`
@@ -939,6 +944,9 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

@@ -145,29 +145,8 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// ## Import
     /// 
-    /// ### Importing IAM policies
-    /// 
-    /// IAM policy imports use the identifier of the Spanner Instances resource . For example:
-    /// 
-    /// * `{{project}}/{{instance}}`
-    /// 
-    /// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-    /// 
-    /// tf
-    /// 
-    /// import {
-    /// 
-    ///   id = {{project}}/{{instance}}
-    /// 
-    ///   to = google_spanner_instance_iam_policy.default
-    /// 
-    /// }
-    /// 
-    /// The `pulumi import` command can also be used:
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:spanner/instanceIAMBinding:InstanceIAMBinding default {{project}}/{{instance}}
-    /// ```
+    /// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:spanner/instanceIAMBinding:InstanceIAMBinding")]
     public partial class InstanceIAMBinding : global::Pulumi.CustomResource

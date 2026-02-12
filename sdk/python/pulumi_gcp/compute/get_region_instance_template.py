@@ -305,6 +305,10 @@ class GetRegionInstanceTemplateResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the instance template. If you leave
+        this blank, Terraform will auto-generate a unique name.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property

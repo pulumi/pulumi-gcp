@@ -665,28 +665,16 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// Instance can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{instance_id}}`
-    /// 
     /// * `{{location}}/{{instance_id}}`
-    /// 
     /// * `{{instance_id}}`
     /// 
     /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:securesourcemanager/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:securesourcemanager/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:securesourcemanager/instance:Instance default {{location}}/{{instance_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:securesourcemanager/instance:Instance default {{instance_id}}
     /// ```
     /// </summary>

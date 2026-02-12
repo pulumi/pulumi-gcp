@@ -98,22 +98,14 @@ import * as utilities from "../utilities";
  * DefaultDomain can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/domains/{{domain_id}}`
- *
  * * `{{project}}/{{location}}/{{backend}}/{{domain_id}}`
- *
  * * `{{location}}/{{backend}}/{{domain_id}}`
  *
  * When using the `pulumi import` command, DefaultDomain can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default projects/{{project}}/locations/{{location}}/backends/{{backend}}/domains/{{domain_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default {{project}}/{{location}}/{{backend}}/{{domain_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default {{location}}/{{backend}}/{{domain_id}}
  * ```
  */

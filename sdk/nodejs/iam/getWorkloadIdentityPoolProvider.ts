@@ -7,6 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Get a IAM workload identity provider from Google Cloud by its id.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -75,6 +80,11 @@ export interface GetWorkloadIdentityPoolProviderResult {
     readonly x509s: outputs.iam.GetWorkloadIdentityPoolProviderX509[];
 }
 /**
+ * Get a IAM workload identity provider from Google Cloud by its id.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
  * ## Example Usage
  *
  * ```typescript

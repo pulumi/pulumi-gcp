@@ -76,22 +76,14 @@ import (
 // MulticastDomainActivation can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/multicastDomainActivations/{{multicast_domain_activation_id}}`
-//
 // * `{{project}}/{{location}}/{{multicast_domain_activation_id}}`
-//
 // * `{{location}}/{{multicast_domain_activation_id}}`
 //
 // When using the `pulumi import` command, MulticastDomainActivation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/multicastDomainActivation:MulticastDomainActivation default projects/{{project}}/locations/{{location}}/multicastDomainActivations/{{multicast_domain_activation_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastDomainActivation:MulticastDomainActivation default {{project}}/{{location}}/{{multicast_domain_activation_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastDomainActivation:MulticastDomainActivation default {{location}}/{{multicast_domain_activation_id}}
 // ```
 type MulticastDomainActivation struct {

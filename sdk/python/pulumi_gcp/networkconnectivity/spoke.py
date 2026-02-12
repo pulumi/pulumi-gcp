@@ -1071,22 +1071,14 @@ class Spoke(pulumi.CustomResource):
         Spoke can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/spokes/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Spoke can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default projects/{{project}}/locations/{{location}}/spokes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{location}}/{{name}}
         ```
 
@@ -1569,22 +1561,14 @@ class Spoke(pulumi.CustomResource):
         Spoke can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/spokes/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Spoke can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default projects/{{project}}/locations/{{location}}/spokes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{location}}/{{name}}
         ```
 

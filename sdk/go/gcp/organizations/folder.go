@@ -33,16 +33,12 @@ import (
 // Folders can be imported using the folder's id, e.g.
 //
 // * `folders/{{folder_id}}`
-//
 // * `{{folder_id}}`
 //
 // When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
 // ```
 type Folder struct {
@@ -52,7 +48,8 @@ type Folder struct {
 	ConfiguredCapabilities pulumi.StringArrayOutput `pulumi:"configuredCapabilities"`
 	// Timestamp when the Folder was created. Assigned by the server.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The folder’s display name.
 	// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
@@ -112,8 +109,9 @@ type folderState struct {
 	ConfiguredCapabilities []string `pulumi:"configuredCapabilities"`
 	// Timestamp when the Folder was created. Assigned by the server.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime         *string `pulumi:"createTime"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The folder’s display name.
 	// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -137,7 +135,8 @@ type FolderState struct {
 	ConfiguredCapabilities pulumi.StringArrayInput
 	// Timestamp when the Folder was created. Assigned by the server.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime         pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
 	DeletionProtection pulumi.BoolPtrInput
 	// The folder’s display name.
 	// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
@@ -162,6 +161,7 @@ func (FolderState) ElementType() reflect.Type {
 }
 
 type folderArgs struct {
+	// Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The folder’s display name.
 	// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
@@ -175,6 +175,7 @@ type folderArgs struct {
 
 // The set of arguments for constructing a Folder resource.
 type FolderArgs struct {
+	// Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
 	DeletionProtection pulumi.BoolPtrInput
 	// The folder’s display name.
 	// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
@@ -284,6 +285,7 @@ func (o FolderOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
 func (o FolderOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Folder) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

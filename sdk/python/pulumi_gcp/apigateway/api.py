@@ -290,6 +290,17 @@ class Api(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A consumable API that can be used by multiple Gateways.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Api, see:
+
+        * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+
         ## Example Usage
 
         ### Apigateway Api Basic
@@ -306,22 +317,14 @@ class Api(pulumi.CustomResource):
         Api can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/apis/{{api_id}}`
-
         * `{{project}}/{{api_id}}`
-
         * `{{api_id}}`
 
         When using the `pulumi import` command, Api can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/api:Api default {{api_id}}
         ```
 
@@ -345,6 +348,17 @@ class Api(pulumi.CustomResource):
                  args: ApiArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A consumable API that can be used by multiple Gateways.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Api, see:
+
+        * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+
         ## Example Usage
 
         ### Apigateway Api Basic
@@ -361,22 +375,14 @@ class Api(pulumi.CustomResource):
         Api can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/apis/{{api_id}}`
-
         * `{{project}}/{{api_id}}`
-
         * `{{api_id}}`
 
         When using the `pulumi import` command, Api can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/api:Api default {{api_id}}
         ```
 

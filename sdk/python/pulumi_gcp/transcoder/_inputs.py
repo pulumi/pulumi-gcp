@@ -137,62 +137,57 @@ __all__ = [
     'JobTemplateConfigPubsubDestinationArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class JobConfigArgsDict(TypedDict):
-        ad_breaks: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigAdBreakArgsDict']]]]
-        """
-        Ad break.
-        Structure is documented below.
-        """
-        edit_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigEditListArgsDict']]]]
-        """
-        List of input assets stored in Cloud Storage.
-        Structure is documented below.
-        """
-        elementary_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigElementaryStreamArgsDict']]]]
-        """
-        List of input assets stored in Cloud Storage.
-        Structure is documented below.
-        """
-        encryptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigEncryptionArgsDict']]]]
-        """
-        List of encryption configurations for the content.
-        Structure is documented below.
-        """
-        inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigInputArgsDict']]]]
-        """
-        List of input assets stored in Cloud Storage.
-        Structure is documented below.
-        """
-        manifests: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigManifestArgsDict']]]]
-        """
-        Manifest configuration.
-        Structure is documented below.
-        """
-        mux_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigMuxStreamArgsDict']]]]
-        """
-        Multiplexing settings for output stream.
-        Structure is documented below.
-        """
-        output: NotRequired[pulumi.Input['JobConfigOutputArgsDict']]
-        """
-        Location of output file(s) in a Cloud Storage bucket.
-        Structure is documented below.
-        """
-        overlays: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayArgsDict']]]]
-        """
-        List of overlays on the output video, in descending Z-order.
-        Structure is documented below.
-        """
-        pubsub_destination: NotRequired[pulumi.Input['JobConfigPubsubDestinationArgsDict']]
-        """
-        Pub/Sub destination.
-        Structure is documented below.
-        """
-elif False:
-    JobConfigArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigArgsDict(TypedDict):
+    ad_breaks: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigAdBreakArgsDict']]]]
+    """
+    Ad break.
+    Structure is documented below.
+    """
+    edit_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigEditListArgsDict']]]]
+    """
+    List of input assets stored in Cloud Storage.
+    Structure is documented below.
+    """
+    elementary_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigElementaryStreamArgsDict']]]]
+    """
+    List of input assets stored in Cloud Storage.
+    Structure is documented below.
+    """
+    encryptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigEncryptionArgsDict']]]]
+    """
+    List of encryption configurations for the content.
+    Structure is documented below.
+    """
+    inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigInputArgsDict']]]]
+    """
+    List of input assets stored in Cloud Storage.
+    Structure is documented below.
+    """
+    manifests: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigManifestArgsDict']]]]
+    """
+    Manifest configuration.
+    Structure is documented below.
+    """
+    mux_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigMuxStreamArgsDict']]]]
+    """
+    Multiplexing settings for output stream.
+    Structure is documented below.
+    """
+    output: NotRequired[pulumi.Input['JobConfigOutputArgsDict']]
+    """
+    Location of output file(s) in a Cloud Storage bucket.
+    Structure is documented below.
+    """
+    overlays: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayArgsDict']]]]
+    """
+    List of overlays on the output video, in descending Z-order.
+    Structure is documented below.
+    """
+    pubsub_destination: NotRequired[pulumi.Input['JobConfigPubsubDestinationArgsDict']]
+    """
+    Pub/Sub destination.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobConfigArgs:
@@ -381,14 +376,11 @@ class JobConfigArgs:
         pulumi.set(self, "pubsub_destination", value)
 
 
-if not MYPY:
-    class JobConfigAdBreakArgsDict(TypedDict):
-        start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Start time in seconds for the ad break, relative to the output file timeline
-        """
-elif False:
-    JobConfigAdBreakArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigAdBreakArgsDict(TypedDict):
+    start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Start time in seconds for the ad break, relative to the output file timeline
+    """
 
 @pulumi.input_type
 class JobConfigAdBreakArgs:
@@ -413,22 +405,19 @@ class JobConfigAdBreakArgs:
         pulumi.set(self, "start_time_offset", value)
 
 
-if not MYPY:
-    class JobConfigEditListArgsDict(TypedDict):
-        inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of values identifying files that should be used in this atom.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique key for this atom.
-        """
-        start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
-        """
-elif False:
-    JobConfigEditListArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigEditListArgsDict(TypedDict):
+    inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of values identifying files that should be used in this atom.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique key for this atom.
+    """
+    start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
+    """
 
 @pulumi.input_type
 class JobConfigEditListArgs:
@@ -485,24 +474,21 @@ class JobConfigEditListArgs:
         pulumi.set(self, "start_time_offset", value)
 
 
-if not MYPY:
-    class JobConfigElementaryStreamArgsDict(TypedDict):
-        audio_stream: NotRequired[pulumi.Input['JobConfigElementaryStreamAudioStreamArgsDict']]
-        """
-        Encoding of an audio stream.
-        Structure is documented below.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique key for this atom.
-        """
-        video_stream: NotRequired[pulumi.Input['JobConfigElementaryStreamVideoStreamArgsDict']]
-        """
-        Encoding of a video stream.
-        Structure is documented below.
-        """
-elif False:
-    JobConfigElementaryStreamArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigElementaryStreamArgsDict(TypedDict):
+    audio_stream: NotRequired[pulumi.Input['JobConfigElementaryStreamAudioStreamArgsDict']]
+    """
+    Encoding of an audio stream.
+    Structure is documented below.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique key for this atom.
+    """
+    video_stream: NotRequired[pulumi.Input['JobConfigElementaryStreamVideoStreamArgsDict']]
+    """
+    Encoding of a video stream.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobConfigElementaryStreamArgs:
@@ -563,30 +549,27 @@ class JobConfigElementaryStreamArgs:
         pulumi.set(self, "video_stream", value)
 
 
-if not MYPY:
-    class JobConfigElementaryStreamAudioStreamArgsDict(TypedDict):
-        bitrate_bps: pulumi.Input[_builtins.int]
-        """
-        Audio bitrate in bits per second.
-        """
-        channel_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of audio channels. The default is `2`.
-        """
-        channel_layouts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of channel names specifying layout of the audio channels. The default is ["fl", "fr"].
-        """
-        codec: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The codec for this audio stream. The default is `aac`.
-        """
-        sample_rate_hertz: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The audio sample rate in Hertz. The default is `48000`.
-        """
-elif False:
-    JobConfigElementaryStreamAudioStreamArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigElementaryStreamAudioStreamArgsDict(TypedDict):
+    bitrate_bps: pulumi.Input[_builtins.int]
+    """
+    Audio bitrate in bits per second.
+    """
+    channel_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of audio channels. The default is `2`.
+    """
+    channel_layouts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of channel names specifying layout of the audio channels. The default is ["fl", "fr"].
+    """
+    codec: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The codec for this audio stream. The default is `aac`.
+    """
+    sample_rate_hertz: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The audio sample rate in Hertz. The default is `48000`.
+    """
 
 @pulumi.input_type
 class JobConfigElementaryStreamAudioStreamArgs:
@@ -674,18 +657,15 @@ class JobConfigElementaryStreamAudioStreamArgs:
         pulumi.set(self, "sample_rate_hertz", value)
 
 
-if not MYPY:
-    class JobConfigElementaryStreamVideoStreamArgsDict(TypedDict):
-        h264: NotRequired[pulumi.Input['JobConfigElementaryStreamVideoStreamH264ArgsDict']]
-        """
-        H264 codec settings
-        Structure is documented below.
+class JobConfigElementaryStreamVideoStreamArgsDict(TypedDict):
+    h264: NotRequired[pulumi.Input['JobConfigElementaryStreamVideoStreamH264ArgsDict']]
+    """
+    H264 codec settings
+    Structure is documented below.
 
 
-        <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
-        """
-elif False:
-    JobConfigElementaryStreamVideoStreamArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+    """
 
 @pulumi.input_type
 class JobConfigElementaryStreamVideoStreamArgs:
@@ -718,70 +698,67 @@ class JobConfigElementaryStreamVideoStreamArgs:
         pulumi.set(self, "h264", value)
 
 
-if not MYPY:
-    class JobConfigElementaryStreamVideoStreamH264ArgsDict(TypedDict):
-        bitrate_bps: pulumi.Input[_builtins.int]
-        """
-        The video bitrate in bits per second.
-        """
-        frame_rate: pulumi.Input[_builtins.int]
-        """
-        The target video frame rate in frames per second (FPS).
-        """
-        crf_level: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Target CRF level. The default is '21'.
-        """
-        entropy_coder: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The entropy coder to use. The default is 'cabac'.
-        """
-        gop_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Select the GOP size based on the specified duration. The default is '3s'.
-        """
-        height_pixels: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The height of the video in pixels.
-        """
-        hlg: NotRequired[pulumi.Input['JobConfigElementaryStreamVideoStreamH264HlgArgsDict']]
-        """
-        HLG color format setting for H264.
-        """
-        pixel_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Pixel format to use. The default is 'yuv420p'.
-        """
-        preset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enforces the specified codec preset. The default is 'veryfast'.
-        """
-        profile: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enforces the specified codec profile.
-        """
-        rate_control_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specify the mode. The default is 'vbr'.
-        """
-        sdr: NotRequired[pulumi.Input['JobConfigElementaryStreamVideoStreamH264SdrArgsDict']]
-        """
-        SDR color format setting for H264.
-        """
-        vbv_fullness_bits: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
-        """
-        vbv_size_bits: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size of the Video Buffering Verifier (VBV) buffer in bits.
-        """
-        width_pixels: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The width of the video in pixels.
-        """
-elif False:
-    JobConfigElementaryStreamVideoStreamH264ArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigElementaryStreamVideoStreamH264ArgsDict(TypedDict):
+    bitrate_bps: pulumi.Input[_builtins.int]
+    """
+    The video bitrate in bits per second.
+    """
+    frame_rate: pulumi.Input[_builtins.int]
+    """
+    The target video frame rate in frames per second (FPS).
+    """
+    crf_level: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Target CRF level. The default is '21'.
+    """
+    entropy_coder: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The entropy coder to use. The default is 'cabac'.
+    """
+    gop_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Select the GOP size based on the specified duration. The default is '3s'.
+    """
+    height_pixels: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The height of the video in pixels.
+    """
+    hlg: NotRequired[pulumi.Input['JobConfigElementaryStreamVideoStreamH264HlgArgsDict']]
+    """
+    HLG color format setting for H264.
+    """
+    pixel_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Pixel format to use. The default is 'yuv420p'.
+    """
+    preset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enforces the specified codec preset. The default is 'veryfast'.
+    """
+    profile: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enforces the specified codec profile.
+    """
+    rate_control_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specify the mode. The default is 'vbr'.
+    """
+    sdr: NotRequired[pulumi.Input['JobConfigElementaryStreamVideoStreamH264SdrArgsDict']]
+    """
+    SDR color format setting for H264.
+    """
+    vbv_fullness_bits: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
+    """
+    vbv_size_bits: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size of the Video Buffering Verifier (VBV) buffer in bits.
+    """
+    width_pixels: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The width of the video in pixels.
+    """
 
 @pulumi.input_type
 class JobConfigElementaryStreamVideoStreamH264Args:
@@ -1028,11 +1005,8 @@ class JobConfigElementaryStreamVideoStreamH264Args:
         pulumi.set(self, "width_pixels", value)
 
 
-if not MYPY:
-    class JobConfigElementaryStreamVideoStreamH264HlgArgsDict(TypedDict):
-        pass
-elif False:
-    JobConfigElementaryStreamVideoStreamH264HlgArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigElementaryStreamVideoStreamH264HlgArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobConfigElementaryStreamVideoStreamH264HlgArgs:
@@ -1040,11 +1014,8 @@ class JobConfigElementaryStreamVideoStreamH264HlgArgs:
         pass
 
 
-if not MYPY:
-    class JobConfigElementaryStreamVideoStreamH264SdrArgsDict(TypedDict):
-        pass
-elif False:
-    JobConfigElementaryStreamVideoStreamH264SdrArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigElementaryStreamVideoStreamH264SdrArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobConfigElementaryStreamVideoStreamH264SdrArgs:
@@ -1052,37 +1023,34 @@ class JobConfigElementaryStreamVideoStreamH264SdrArgs:
         pass
 
 
-if not MYPY:
-    class JobConfigEncryptionArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        Identifier for this set of encryption options.
-        """
-        aes128: NotRequired[pulumi.Input['JobConfigEncryptionAes128ArgsDict']]
-        """
-        Configuration for AES-128 encryption.
-        """
-        drm_systems: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsArgsDict']]
-        """
-        DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
-        Structure is documented below.
-        """
-        mpeg_cenc: NotRequired[pulumi.Input['JobConfigEncryptionMpegCencArgsDict']]
-        """
-        Configuration for MPEG Common Encryption (MPEG-CENC).
-        Structure is documented below.
-        """
-        sample_aes: NotRequired[pulumi.Input['JobConfigEncryptionSampleAesArgsDict']]
-        """
-        Configuration for SAMPLE-AES encryption.
-        """
-        secret_manager_key_source: NotRequired[pulumi.Input['JobConfigEncryptionSecretManagerKeySourceArgsDict']]
-        """
-        Configuration for secrets stored in Google Secret Manager.
-        Structure is documented below.
-        """
-elif False:
-    JobConfigEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigEncryptionArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    Identifier for this set of encryption options.
+    """
+    aes128: NotRequired[pulumi.Input['JobConfigEncryptionAes128ArgsDict']]
+    """
+    Configuration for AES-128 encryption.
+    """
+    drm_systems: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsArgsDict']]
+    """
+    DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
+    Structure is documented below.
+    """
+    mpeg_cenc: NotRequired[pulumi.Input['JobConfigEncryptionMpegCencArgsDict']]
+    """
+    Configuration for MPEG Common Encryption (MPEG-CENC).
+    Structure is documented below.
+    """
+    sample_aes: NotRequired[pulumi.Input['JobConfigEncryptionSampleAesArgsDict']]
+    """
+    Configuration for SAMPLE-AES encryption.
+    """
+    secret_manager_key_source: NotRequired[pulumi.Input['JobConfigEncryptionSecretManagerKeySourceArgsDict']]
+    """
+    Configuration for secrets stored in Google Secret Manager.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobConfigEncryptionArgs:
@@ -1192,11 +1160,8 @@ class JobConfigEncryptionArgs:
         pulumi.set(self, "secret_manager_key_source", value)
 
 
-if not MYPY:
-    class JobConfigEncryptionAes128ArgsDict(TypedDict):
-        pass
-elif False:
-    JobConfigEncryptionAes128ArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigEncryptionAes128ArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobConfigEncryptionAes128Args:
@@ -1204,26 +1169,23 @@ class JobConfigEncryptionAes128Args:
         pass
 
 
-if not MYPY:
-    class JobConfigEncryptionDrmSystemsArgsDict(TypedDict):
-        clearkey: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsClearkeyArgsDict']]
-        """
-        Clearkey configuration.
-        """
-        fairplay: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsFairplayArgsDict']]
-        """
-        Fairplay configuration.
-        """
-        playready: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsPlayreadyArgsDict']]
-        """
-        Playready configuration.
-        """
-        widevine: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsWidevineArgsDict']]
-        """
-        Widevine configuration.
-        """
-elif False:
-    JobConfigEncryptionDrmSystemsArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigEncryptionDrmSystemsArgsDict(TypedDict):
+    clearkey: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsClearkeyArgsDict']]
+    """
+    Clearkey configuration.
+    """
+    fairplay: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsFairplayArgsDict']]
+    """
+    Fairplay configuration.
+    """
+    playready: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsPlayreadyArgsDict']]
+    """
+    Playready configuration.
+    """
+    widevine: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsWidevineArgsDict']]
+    """
+    Widevine configuration.
+    """
 
 @pulumi.input_type
 class JobConfigEncryptionDrmSystemsArgs:
@@ -1296,11 +1258,8 @@ class JobConfigEncryptionDrmSystemsArgs:
         pulumi.set(self, "widevine", value)
 
 
-if not MYPY:
-    class JobConfigEncryptionDrmSystemsClearkeyArgsDict(TypedDict):
-        pass
-elif False:
-    JobConfigEncryptionDrmSystemsClearkeyArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigEncryptionDrmSystemsClearkeyArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobConfigEncryptionDrmSystemsClearkeyArgs:
@@ -1308,11 +1267,8 @@ class JobConfigEncryptionDrmSystemsClearkeyArgs:
         pass
 
 
-if not MYPY:
-    class JobConfigEncryptionDrmSystemsFairplayArgsDict(TypedDict):
-        pass
-elif False:
-    JobConfigEncryptionDrmSystemsFairplayArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigEncryptionDrmSystemsFairplayArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobConfigEncryptionDrmSystemsFairplayArgs:
@@ -1320,11 +1276,8 @@ class JobConfigEncryptionDrmSystemsFairplayArgs:
         pass
 
 
-if not MYPY:
-    class JobConfigEncryptionDrmSystemsPlayreadyArgsDict(TypedDict):
-        pass
-elif False:
-    JobConfigEncryptionDrmSystemsPlayreadyArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigEncryptionDrmSystemsPlayreadyArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobConfigEncryptionDrmSystemsPlayreadyArgs:
@@ -1332,11 +1285,8 @@ class JobConfigEncryptionDrmSystemsPlayreadyArgs:
         pass
 
 
-if not MYPY:
-    class JobConfigEncryptionDrmSystemsWidevineArgsDict(TypedDict):
-        pass
-elif False:
-    JobConfigEncryptionDrmSystemsWidevineArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigEncryptionDrmSystemsWidevineArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobConfigEncryptionDrmSystemsWidevineArgs:
@@ -1344,14 +1294,11 @@ class JobConfigEncryptionDrmSystemsWidevineArgs:
         pass
 
 
-if not MYPY:
-    class JobConfigEncryptionMpegCencArgsDict(TypedDict):
-        scheme: pulumi.Input[_builtins.str]
-        """
-        Specify the encryption scheme.
-        """
-elif False:
-    JobConfigEncryptionMpegCencArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigEncryptionMpegCencArgsDict(TypedDict):
+    scheme: pulumi.Input[_builtins.str]
+    """
+    Specify the encryption scheme.
+    """
 
 @pulumi.input_type
 class JobConfigEncryptionMpegCencArgs:
@@ -1375,11 +1322,8 @@ class JobConfigEncryptionMpegCencArgs:
         pulumi.set(self, "scheme", value)
 
 
-if not MYPY:
-    class JobConfigEncryptionSampleAesArgsDict(TypedDict):
-        pass
-elif False:
-    JobConfigEncryptionSampleAesArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigEncryptionSampleAesArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobConfigEncryptionSampleAesArgs:
@@ -1387,14 +1331,11 @@ class JobConfigEncryptionSampleAesArgs:
         pass
 
 
-if not MYPY:
-    class JobConfigEncryptionSecretManagerKeySourceArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The name of the Secret Version containing the encryption key in the following format: projects/{project}/secrets/{secret_id}/versions/{version_number}.
-        """
-elif False:
-    JobConfigEncryptionSecretManagerKeySourceArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigEncryptionSecretManagerKeySourceArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The name of the Secret Version containing the encryption key in the following format: projects/{project}/secrets/{secret_id}/versions/{version_number}.
+    """
 
 @pulumi.input_type
 class JobConfigEncryptionSecretManagerKeySourceArgs:
@@ -1418,19 +1359,16 @@ class JobConfigEncryptionSecretManagerKeySourceArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class JobConfigInputArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique key for this input. Must be specified when using advanced mapping and edit lists.
-        """
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
-        If empty, the value is populated from Job.input_uri.
-        """
-elif False:
-    JobConfigInputArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigInputArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique key for this input. Must be specified when using advanced mapping and edit lists.
+    """
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
+    If empty, the value is populated from Job.input_uri.
+    """
 
 @pulumi.input_type
 class JobConfigInputArgs:
@@ -1473,23 +1411,20 @@ class JobConfigInputArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class JobConfigManifestArgsDict(TypedDict):
-        file_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the generated file. The default is `manifest`.
-        """
-        mux_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of user supplied MuxStream.key values that should appear in this manifest.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of the manifest.
-        Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
-        """
-elif False:
-    JobConfigManifestArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigManifestArgsDict(TypedDict):
+    file_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the generated file. The default is `manifest`.
+    """
+    mux_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of user supplied MuxStream.key values that should appear in this manifest.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of the manifest.
+    Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
+    """
 
 @pulumi.input_type
 class JobConfigManifestArgs:
@@ -1548,35 +1483,32 @@ class JobConfigManifestArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class JobConfigMuxStreamArgsDict(TypedDict):
-        container: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The container format. The default is `mp4`.
-        """
-        elementary_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of ElementaryStream.key values multiplexed in this stream.
-        """
-        encryption_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier of the encryption configuration to use.
-        """
-        file_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the generated file.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique key for this multiplexed stream.
-        """
-        segment_settings: NotRequired[pulumi.Input['JobConfigMuxStreamSegmentSettingsArgsDict']]
-        """
-        Segment settings for ts, fmp4 and vtt.
-        Structure is documented below.
-        """
-elif False:
-    JobConfigMuxStreamArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigMuxStreamArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The container format. The default is `mp4`.
+    """
+    elementary_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of ElementaryStream.key values multiplexed in this stream.
+    """
+    encryption_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identifier of the encryption configuration to use.
+    """
+    file_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the generated file.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique key for this multiplexed stream.
+    """
+    segment_settings: NotRequired[pulumi.Input['JobConfigMuxStreamSegmentSettingsArgsDict']]
+    """
+    Segment settings for ts, fmp4 and vtt.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobConfigMuxStreamArgs:
@@ -1683,14 +1615,11 @@ class JobConfigMuxStreamArgs:
         pulumi.set(self, "segment_settings", value)
 
 
-if not MYPY:
-    class JobConfigMuxStreamSegmentSettingsArgsDict(TypedDict):
-        segment_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Duration of the segments in seconds. The default is `6.0s`.
-        """
-elif False:
-    JobConfigMuxStreamSegmentSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigMuxStreamSegmentSettingsArgsDict(TypedDict):
+    segment_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Duration of the segments in seconds. The default is `6.0s`.
+    """
 
 @pulumi.input_type
 class JobConfigMuxStreamSegmentSettingsArgs:
@@ -1715,14 +1644,11 @@ class JobConfigMuxStreamSegmentSettingsArgs:
         pulumi.set(self, "segment_duration", value)
 
 
-if not MYPY:
-    class JobConfigOutputArgsDict(TypedDict):
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URI for the output file(s). For example, gs://my-bucket/outputs/.
-        """
-elif False:
-    JobConfigOutputArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigOutputArgsDict(TypedDict):
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URI for the output file(s). For example, gs://my-bucket/outputs/.
+    """
 
 @pulumi.input_type
 class JobConfigOutputArgs:
@@ -1747,20 +1673,17 @@ class JobConfigOutputArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class JobConfigOverlayArgsDict(TypedDict):
-        animations: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayAnimationArgsDict']]]]
-        """
-        List of animations. The list should be chronological, without any time overlap.
-        Structure is documented below.
-        """
-        image: NotRequired[pulumi.Input['JobConfigOverlayImageArgsDict']]
-        """
-        Image overlay.
-        Structure is documented below.
-        """
-elif False:
-    JobConfigOverlayArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigOverlayArgsDict(TypedDict):
+    animations: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayAnimationArgsDict']]]]
+    """
+    List of animations. The list should be chronological, without any time overlap.
+    Structure is documented below.
+    """
+    image: NotRequired[pulumi.Input['JobConfigOverlayImageArgsDict']]
+    """
+    Image overlay.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobConfigOverlayArgs:
@@ -1805,15 +1728,12 @@ class JobConfigOverlayArgs:
         pulumi.set(self, "image", value)
 
 
-if not MYPY:
-    class JobConfigOverlayAnimationArgsDict(TypedDict):
-        animation_fade: NotRequired[pulumi.Input['JobConfigOverlayAnimationAnimationFadeArgsDict']]
-        """
-        Display overlay object with fade animation.
-        Structure is documented below.
-        """
-elif False:
-    JobConfigOverlayAnimationArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigOverlayAnimationArgsDict(TypedDict):
+    animation_fade: NotRequired[pulumi.Input['JobConfigOverlayAnimationAnimationFadeArgsDict']]
+    """
+    Display overlay object with fade animation.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobConfigOverlayAnimationArgs:
@@ -1840,32 +1760,29 @@ class JobConfigOverlayAnimationArgs:
         pulumi.set(self, "animation_fade", value)
 
 
-if not MYPY:
-    class JobConfigOverlayAnimationAnimationFadeArgsDict(TypedDict):
-        fade_type: pulumi.Input[_builtins.str]
-        """
-        Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
-        The possible values are:
-        * `FADE_TYPE_UNSPECIFIED`: The fade type is not specified.
-        * `FADE_IN`: Fade the overlay object into view.
-        * `FADE_OUT`: Fade the overlay object out of view.
-        Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
-        """
-        end_time_offset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time to end the fade animation, in seconds.
-        """
-        start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time to start the fade animation, in seconds.
-        """
-        xy: NotRequired[pulumi.Input['JobConfigOverlayAnimationAnimationFadeXyArgsDict']]
-        """
-        Normalized coordinates based on output video resolution.
-        Structure is documented below.
-        """
-elif False:
-    JobConfigOverlayAnimationAnimationFadeArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigOverlayAnimationAnimationFadeArgsDict(TypedDict):
+    fade_type: pulumi.Input[_builtins.str]
+    """
+    Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+    The possible values are:
+    * `FADE_TYPE_UNSPECIFIED`: The fade type is not specified.
+    * `FADE_IN`: Fade the overlay object into view.
+    * `FADE_OUT`: Fade the overlay object out of view.
+    Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
+    """
+    end_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time to end the fade animation, in seconds.
+    """
+    start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time to start the fade animation, in seconds.
+    """
+    xy: NotRequired[pulumi.Input['JobConfigOverlayAnimationAnimationFadeXyArgsDict']]
+    """
+    Normalized coordinates based on output video resolution.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobConfigOverlayAnimationAnimationFadeArgs:
@@ -1949,18 +1866,15 @@ class JobConfigOverlayAnimationAnimationFadeArgs:
         pulumi.set(self, "xy", value)
 
 
-if not MYPY:
-    class JobConfigOverlayAnimationAnimationFadeXyArgsDict(TypedDict):
-        x: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Normalized x coordinate.
-        """
-        y: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Normalized y coordinate.
-        """
-elif False:
-    JobConfigOverlayAnimationAnimationFadeXyArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigOverlayAnimationAnimationFadeXyArgsDict(TypedDict):
+    x: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Normalized x coordinate.
+    """
+    y: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Normalized y coordinate.
+    """
 
 @pulumi.input_type
 class JobConfigOverlayAnimationAnimationFadeXyArgs:
@@ -2001,14 +1915,11 @@ class JobConfigOverlayAnimationAnimationFadeXyArgs:
         pulumi.set(self, "y", value)
 
 
-if not MYPY:
-    class JobConfigOverlayImageArgsDict(TypedDict):
-        uri: pulumi.Input[_builtins.str]
-        """
-        URI of the image in Cloud Storage. For example, gs://bucket/inputs/image.png.
-        """
-elif False:
-    JobConfigOverlayImageArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigOverlayImageArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    URI of the image in Cloud Storage. For example, gs://bucket/inputs/image.png.
+    """
 
 @pulumi.input_type
 class JobConfigOverlayImageArgs:
@@ -2032,14 +1943,11 @@ class JobConfigOverlayImageArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class JobConfigPubsubDestinationArgsDict(TypedDict):
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
-        """
-elif False:
-    JobConfigPubsubDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class JobConfigPubsubDestinationArgsDict(TypedDict):
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
+    """
 
 @pulumi.input_type
 class JobConfigPubsubDestinationArgs:
@@ -2064,60 +1972,57 @@ class JobConfigPubsubDestinationArgs:
         pulumi.set(self, "topic", value)
 
 
-if not MYPY:
-    class JobTemplateConfigArgsDict(TypedDict):
-        ad_breaks: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgsDict']]]]
-        """
-        Ad break.
-        Structure is documented below.
-        """
-        edit_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigEditListArgsDict']]]]
-        """
-        List of input assets stored in Cloud Storage.
-        Structure is documented below.
-        """
-        elementary_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigElementaryStreamArgsDict']]]]
-        """
-        List of input assets stored in Cloud Storage.
-        Structure is documented below.
-        """
-        encryptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigEncryptionArgsDict']]]]
-        """
-        List of encryption configurations for the content.
-        Structure is documented below.
-        """
-        inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigInputArgsDict']]]]
-        """
-        List of input assets stored in Cloud Storage.
-        Structure is documented below.
-        """
-        manifests: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigManifestArgsDict']]]]
-        """
-        Manifest configuration.
-        Structure is documented below.
-        """
-        mux_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigMuxStreamArgsDict']]]]
-        """
-        Multiplexing settings for output stream.
-        Structure is documented below.
-        """
-        output: NotRequired[pulumi.Input['JobTemplateConfigOutputArgsDict']]
-        """
-        Location of output file(s) in a Cloud Storage bucket.
-        Structure is documented below.
-        """
-        overlays: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayArgsDict']]]]
-        """
-        List of overlays on the output video, in descending Z-order.
-        Structure is documented below.
-        """
-        pubsub_destination: NotRequired[pulumi.Input['JobTemplateConfigPubsubDestinationArgsDict']]
-        """
-        Pub/Sub destination.
-        Structure is documented below.
-        """
-elif False:
-    JobTemplateConfigArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigArgsDict(TypedDict):
+    ad_breaks: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgsDict']]]]
+    """
+    Ad break.
+    Structure is documented below.
+    """
+    edit_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigEditListArgsDict']]]]
+    """
+    List of input assets stored in Cloud Storage.
+    Structure is documented below.
+    """
+    elementary_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigElementaryStreamArgsDict']]]]
+    """
+    List of input assets stored in Cloud Storage.
+    Structure is documented below.
+    """
+    encryptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigEncryptionArgsDict']]]]
+    """
+    List of encryption configurations for the content.
+    Structure is documented below.
+    """
+    inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigInputArgsDict']]]]
+    """
+    List of input assets stored in Cloud Storage.
+    Structure is documented below.
+    """
+    manifests: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigManifestArgsDict']]]]
+    """
+    Manifest configuration.
+    Structure is documented below.
+    """
+    mux_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigMuxStreamArgsDict']]]]
+    """
+    Multiplexing settings for output stream.
+    Structure is documented below.
+    """
+    output: NotRequired[pulumi.Input['JobTemplateConfigOutputArgsDict']]
+    """
+    Location of output file(s) in a Cloud Storage bucket.
+    Structure is documented below.
+    """
+    overlays: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayArgsDict']]]]
+    """
+    List of overlays on the output video, in descending Z-order.
+    Structure is documented below.
+    """
+    pubsub_destination: NotRequired[pulumi.Input['JobTemplateConfigPubsubDestinationArgsDict']]
+    """
+    Pub/Sub destination.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigArgs:
@@ -2306,14 +2211,11 @@ class JobTemplateConfigArgs:
         pulumi.set(self, "pubsub_destination", value)
 
 
-if not MYPY:
-    class JobTemplateConfigAdBreakArgsDict(TypedDict):
-        start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Start time in seconds for the ad break, relative to the output file timeline
-        """
-elif False:
-    JobTemplateConfigAdBreakArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigAdBreakArgsDict(TypedDict):
+    start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Start time in seconds for the ad break, relative to the output file timeline
+    """
 
 @pulumi.input_type
 class JobTemplateConfigAdBreakArgs:
@@ -2338,22 +2240,19 @@ class JobTemplateConfigAdBreakArgs:
         pulumi.set(self, "start_time_offset", value)
 
 
-if not MYPY:
-    class JobTemplateConfigEditListArgsDict(TypedDict):
-        inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of values identifying files that should be used in this atom.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique key for this atom.
-        """
-        start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Start time in seconds for the atom, relative to the input file timeline.  The default is `0s`.
-        """
-elif False:
-    JobTemplateConfigEditListArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigEditListArgsDict(TypedDict):
+    inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of values identifying files that should be used in this atom.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique key for this atom.
+    """
+    start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Start time in seconds for the atom, relative to the input file timeline.  The default is `0s`.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigEditListArgs:
@@ -2410,24 +2309,21 @@ class JobTemplateConfigEditListArgs:
         pulumi.set(self, "start_time_offset", value)
 
 
-if not MYPY:
-    class JobTemplateConfigElementaryStreamArgsDict(TypedDict):
-        audio_stream: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamAudioStreamArgsDict']]
-        """
-        Encoding of an audio stream.
-        Structure is documented below.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique key for this atom.
-        """
-        video_stream: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamArgsDict']]
-        """
-        Encoding of a video stream.
-        Structure is documented below.
-        """
-elif False:
-    JobTemplateConfigElementaryStreamArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigElementaryStreamArgsDict(TypedDict):
+    audio_stream: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamAudioStreamArgsDict']]
+    """
+    Encoding of an audio stream.
+    Structure is documented below.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique key for this atom.
+    """
+    video_stream: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamArgsDict']]
+    """
+    Encoding of a video stream.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigElementaryStreamArgs:
@@ -2488,30 +2384,27 @@ class JobTemplateConfigElementaryStreamArgs:
         pulumi.set(self, "video_stream", value)
 
 
-if not MYPY:
-    class JobTemplateConfigElementaryStreamAudioStreamArgsDict(TypedDict):
-        bitrate_bps: pulumi.Input[_builtins.int]
-        """
-        Audio bitrate in bits per second.
-        """
-        channel_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of audio channels. The default is `2`.
-        """
-        channel_layouts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of channel names specifying layout of the audio channels.  The default is ["fl", "fr"].
-        """
-        codec: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The codec for this audio stream. The default is `aac`.
-        """
-        sample_rate_hertz: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The audio sample rate in Hertz. The default is `48000`.
-        """
-elif False:
-    JobTemplateConfigElementaryStreamAudioStreamArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigElementaryStreamAudioStreamArgsDict(TypedDict):
+    bitrate_bps: pulumi.Input[_builtins.int]
+    """
+    Audio bitrate in bits per second.
+    """
+    channel_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of audio channels. The default is `2`.
+    """
+    channel_layouts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of channel names specifying layout of the audio channels.  The default is ["fl", "fr"].
+    """
+    codec: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The codec for this audio stream. The default is `aac`.
+    """
+    sample_rate_hertz: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The audio sample rate in Hertz. The default is `48000`.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigElementaryStreamAudioStreamArgs:
@@ -2599,18 +2492,15 @@ class JobTemplateConfigElementaryStreamAudioStreamArgs:
         pulumi.set(self, "sample_rate_hertz", value)
 
 
-if not MYPY:
-    class JobTemplateConfigElementaryStreamVideoStreamArgsDict(TypedDict):
-        h264: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264ArgsDict']]
-        """
-        H264 codec settings
-        Structure is documented below.
+class JobTemplateConfigElementaryStreamVideoStreamArgsDict(TypedDict):
+    h264: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264ArgsDict']]
+    """
+    H264 codec settings
+    Structure is documented below.
 
 
-        <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
-        """
-elif False:
-    JobTemplateConfigElementaryStreamVideoStreamArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+    """
 
 @pulumi.input_type
 class JobTemplateConfigElementaryStreamVideoStreamArgs:
@@ -2643,70 +2533,67 @@ class JobTemplateConfigElementaryStreamVideoStreamArgs:
         pulumi.set(self, "h264", value)
 
 
-if not MYPY:
-    class JobTemplateConfigElementaryStreamVideoStreamH264ArgsDict(TypedDict):
-        bitrate_bps: pulumi.Input[_builtins.int]
-        """
-        The video bitrate in bits per second.
-        """
-        frame_rate: pulumi.Input[_builtins.int]
-        """
-        The target video frame rate in frames per second (FPS).
-        """
-        crf_level: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Target CRF level. The default is '21'.
-        """
-        entropy_coder: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The entropy coder to use. The default is 'cabac'.
-        """
-        gop_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Select the GOP size based on the specified duration. The default is '3s'.
-        """
-        height_pixels: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The height of the video in pixels.
-        """
-        hlg: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264HlgArgsDict']]
-        """
-        HLG color format setting for H264.
-        """
-        pixel_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Pixel format to use. The default is 'yuv420p'.
-        """
-        preset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enforces the specified codec preset. The default is 'veryfast'.
-        """
-        profile: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Enforces the specified codec profile.
-        """
-        rate_control_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specify the mode. The default is 'vbr'.
-        """
-        sdr: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264SdrArgsDict']]
-        """
-        SDR color format setting for H264.
-        """
-        vbv_fullness_bits: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
-        """
-        vbv_size_bits: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size of the Video Buffering Verifier (VBV) buffer in bits.
-        """
-        width_pixels: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The width of the video in pixels.
-        """
-elif False:
-    JobTemplateConfigElementaryStreamVideoStreamH264ArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigElementaryStreamVideoStreamH264ArgsDict(TypedDict):
+    bitrate_bps: pulumi.Input[_builtins.int]
+    """
+    The video bitrate in bits per second.
+    """
+    frame_rate: pulumi.Input[_builtins.int]
+    """
+    The target video frame rate in frames per second (FPS).
+    """
+    crf_level: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Target CRF level. The default is '21'.
+    """
+    entropy_coder: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The entropy coder to use. The default is 'cabac'.
+    """
+    gop_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Select the GOP size based on the specified duration. The default is '3s'.
+    """
+    height_pixels: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The height of the video in pixels.
+    """
+    hlg: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264HlgArgsDict']]
+    """
+    HLG color format setting for H264.
+    """
+    pixel_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Pixel format to use. The default is 'yuv420p'.
+    """
+    preset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enforces the specified codec preset. The default is 'veryfast'.
+    """
+    profile: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enforces the specified codec profile.
+    """
+    rate_control_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specify the mode. The default is 'vbr'.
+    """
+    sdr: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264SdrArgsDict']]
+    """
+    SDR color format setting for H264.
+    """
+    vbv_fullness_bits: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
+    """
+    vbv_size_bits: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size of the Video Buffering Verifier (VBV) buffer in bits.
+    """
+    width_pixels: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The width of the video in pixels.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigElementaryStreamVideoStreamH264Args:
@@ -2953,11 +2840,8 @@ class JobTemplateConfigElementaryStreamVideoStreamH264Args:
         pulumi.set(self, "width_pixels", value)
 
 
-if not MYPY:
-    class JobTemplateConfigElementaryStreamVideoStreamH264HlgArgsDict(TypedDict):
-        pass
-elif False:
-    JobTemplateConfigElementaryStreamVideoStreamH264HlgArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigElementaryStreamVideoStreamH264HlgArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobTemplateConfigElementaryStreamVideoStreamH264HlgArgs:
@@ -2965,11 +2849,8 @@ class JobTemplateConfigElementaryStreamVideoStreamH264HlgArgs:
         pass
 
 
-if not MYPY:
-    class JobTemplateConfigElementaryStreamVideoStreamH264SdrArgsDict(TypedDict):
-        pass
-elif False:
-    JobTemplateConfigElementaryStreamVideoStreamH264SdrArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigElementaryStreamVideoStreamH264SdrArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobTemplateConfigElementaryStreamVideoStreamH264SdrArgs:
@@ -2977,37 +2858,34 @@ class JobTemplateConfigElementaryStreamVideoStreamH264SdrArgs:
         pass
 
 
-if not MYPY:
-    class JobTemplateConfigEncryptionArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        Identifier for this set of encryption options.
-        """
-        aes128: NotRequired[pulumi.Input['JobTemplateConfigEncryptionAes128ArgsDict']]
-        """
-        Configuration for AES-128 encryption.
-        """
-        drm_systems: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsArgsDict']]
-        """
-        DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
-        Structure is documented below.
-        """
-        mpeg_cenc: NotRequired[pulumi.Input['JobTemplateConfigEncryptionMpegCencArgsDict']]
-        """
-        Configuration for MPEG Common Encryption (MPEG-CENC).
-        Structure is documented below.
-        """
-        sample_aes: NotRequired[pulumi.Input['JobTemplateConfigEncryptionSampleAesArgsDict']]
-        """
-        Configuration for SAMPLE-AES encryption.
-        """
-        secret_manager_key_source: NotRequired[pulumi.Input['JobTemplateConfigEncryptionSecretManagerKeySourceArgsDict']]
-        """
-        Configuration for secrets stored in Google Secret Manager.
-        Structure is documented below.
-        """
-elif False:
-    JobTemplateConfigEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigEncryptionArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    Identifier for this set of encryption options.
+    """
+    aes128: NotRequired[pulumi.Input['JobTemplateConfigEncryptionAes128ArgsDict']]
+    """
+    Configuration for AES-128 encryption.
+    """
+    drm_systems: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsArgsDict']]
+    """
+    DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
+    Structure is documented below.
+    """
+    mpeg_cenc: NotRequired[pulumi.Input['JobTemplateConfigEncryptionMpegCencArgsDict']]
+    """
+    Configuration for MPEG Common Encryption (MPEG-CENC).
+    Structure is documented below.
+    """
+    sample_aes: NotRequired[pulumi.Input['JobTemplateConfigEncryptionSampleAesArgsDict']]
+    """
+    Configuration for SAMPLE-AES encryption.
+    """
+    secret_manager_key_source: NotRequired[pulumi.Input['JobTemplateConfigEncryptionSecretManagerKeySourceArgsDict']]
+    """
+    Configuration for secrets stored in Google Secret Manager.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigEncryptionArgs:
@@ -3117,11 +2995,8 @@ class JobTemplateConfigEncryptionArgs:
         pulumi.set(self, "secret_manager_key_source", value)
 
 
-if not MYPY:
-    class JobTemplateConfigEncryptionAes128ArgsDict(TypedDict):
-        pass
-elif False:
-    JobTemplateConfigEncryptionAes128ArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigEncryptionAes128ArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobTemplateConfigEncryptionAes128Args:
@@ -3129,26 +3004,23 @@ class JobTemplateConfigEncryptionAes128Args:
         pass
 
 
-if not MYPY:
-    class JobTemplateConfigEncryptionDrmSystemsArgsDict(TypedDict):
-        clearkey: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsClearkeyArgsDict']]
-        """
-        Clearkey configuration.
-        """
-        fairplay: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsFairplayArgsDict']]
-        """
-        Fairplay configuration.
-        """
-        playready: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsPlayreadyArgsDict']]
-        """
-        Playready configuration.
-        """
-        widevine: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsWidevineArgsDict']]
-        """
-        Widevine configuration.
-        """
-elif False:
-    JobTemplateConfigEncryptionDrmSystemsArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigEncryptionDrmSystemsArgsDict(TypedDict):
+    clearkey: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsClearkeyArgsDict']]
+    """
+    Clearkey configuration.
+    """
+    fairplay: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsFairplayArgsDict']]
+    """
+    Fairplay configuration.
+    """
+    playready: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsPlayreadyArgsDict']]
+    """
+    Playready configuration.
+    """
+    widevine: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsWidevineArgsDict']]
+    """
+    Widevine configuration.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigEncryptionDrmSystemsArgs:
@@ -3221,11 +3093,8 @@ class JobTemplateConfigEncryptionDrmSystemsArgs:
         pulumi.set(self, "widevine", value)
 
 
-if not MYPY:
-    class JobTemplateConfigEncryptionDrmSystemsClearkeyArgsDict(TypedDict):
-        pass
-elif False:
-    JobTemplateConfigEncryptionDrmSystemsClearkeyArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigEncryptionDrmSystemsClearkeyArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobTemplateConfigEncryptionDrmSystemsClearkeyArgs:
@@ -3233,11 +3102,8 @@ class JobTemplateConfigEncryptionDrmSystemsClearkeyArgs:
         pass
 
 
-if not MYPY:
-    class JobTemplateConfigEncryptionDrmSystemsFairplayArgsDict(TypedDict):
-        pass
-elif False:
-    JobTemplateConfigEncryptionDrmSystemsFairplayArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigEncryptionDrmSystemsFairplayArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobTemplateConfigEncryptionDrmSystemsFairplayArgs:
@@ -3245,11 +3111,8 @@ class JobTemplateConfigEncryptionDrmSystemsFairplayArgs:
         pass
 
 
-if not MYPY:
-    class JobTemplateConfigEncryptionDrmSystemsPlayreadyArgsDict(TypedDict):
-        pass
-elif False:
-    JobTemplateConfigEncryptionDrmSystemsPlayreadyArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigEncryptionDrmSystemsPlayreadyArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobTemplateConfigEncryptionDrmSystemsPlayreadyArgs:
@@ -3257,11 +3120,8 @@ class JobTemplateConfigEncryptionDrmSystemsPlayreadyArgs:
         pass
 
 
-if not MYPY:
-    class JobTemplateConfigEncryptionDrmSystemsWidevineArgsDict(TypedDict):
-        pass
-elif False:
-    JobTemplateConfigEncryptionDrmSystemsWidevineArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigEncryptionDrmSystemsWidevineArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobTemplateConfigEncryptionDrmSystemsWidevineArgs:
@@ -3269,14 +3129,11 @@ class JobTemplateConfigEncryptionDrmSystemsWidevineArgs:
         pass
 
 
-if not MYPY:
-    class JobTemplateConfigEncryptionMpegCencArgsDict(TypedDict):
-        scheme: pulumi.Input[_builtins.str]
-        """
-        Specify the encryption scheme.
-        """
-elif False:
-    JobTemplateConfigEncryptionMpegCencArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigEncryptionMpegCencArgsDict(TypedDict):
+    scheme: pulumi.Input[_builtins.str]
+    """
+    Specify the encryption scheme.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigEncryptionMpegCencArgs:
@@ -3300,11 +3157,8 @@ class JobTemplateConfigEncryptionMpegCencArgs:
         pulumi.set(self, "scheme", value)
 
 
-if not MYPY:
-    class JobTemplateConfigEncryptionSampleAesArgsDict(TypedDict):
-        pass
-elif False:
-    JobTemplateConfigEncryptionSampleAesArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigEncryptionSampleAesArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class JobTemplateConfigEncryptionSampleAesArgs:
@@ -3312,14 +3166,11 @@ class JobTemplateConfigEncryptionSampleAesArgs:
         pass
 
 
-if not MYPY:
-    class JobTemplateConfigEncryptionSecretManagerKeySourceArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The name of the Secret Version containing the encryption key in the following format: projects/{project}/secrets/{secret_id}/versions/{version_number}.
-        """
-elif False:
-    JobTemplateConfigEncryptionSecretManagerKeySourceArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigEncryptionSecretManagerKeySourceArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The name of the Secret Version containing the encryption key in the following format: projects/{project}/secrets/{secret_id}/versions/{version_number}.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigEncryptionSecretManagerKeySourceArgs:
@@ -3343,19 +3194,16 @@ class JobTemplateConfigEncryptionSecretManagerKeySourceArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class JobTemplateConfigInputArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique key for this input. Must be specified when using advanced mapping and edit lists.
-        """
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
-        If empty, the value is populated from Job.input_uri.
-        """
-elif False:
-    JobTemplateConfigInputArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigInputArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique key for this input. Must be specified when using advanced mapping and edit lists.
+    """
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
+    If empty, the value is populated from Job.input_uri.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigInputArgs:
@@ -3398,23 +3246,20 @@ class JobTemplateConfigInputArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class JobTemplateConfigManifestArgsDict(TypedDict):
-        file_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the generated file. The default is `manifest`.
-        """
-        mux_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of user supplied MuxStream.key values that should appear in this manifest.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of the manifest.
-        Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
-        """
-elif False:
-    JobTemplateConfigManifestArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigManifestArgsDict(TypedDict):
+    file_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the generated file. The default is `manifest`.
+    """
+    mux_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of user supplied MuxStream.key values that should appear in this manifest.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of the manifest.
+    Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigManifestArgs:
@@ -3473,35 +3318,32 @@ class JobTemplateConfigManifestArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class JobTemplateConfigMuxStreamArgsDict(TypedDict):
-        container: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The container format. The default is `mp4`.
-        """
-        elementary_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of ElementaryStream.key values multiplexed in this stream.
-        """
-        encryption_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier of the encryption configuration to use.
-        """
-        file_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the generated file.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique key for this multiplexed stream.
-        """
-        segment_settings: NotRequired[pulumi.Input['JobTemplateConfigMuxStreamSegmentSettingsArgsDict']]
-        """
-        Segment settings for ts, fmp4 and vtt.
-        Structure is documented below.
-        """
-elif False:
-    JobTemplateConfigMuxStreamArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigMuxStreamArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The container format. The default is `mp4`.
+    """
+    elementary_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of ElementaryStream.key values multiplexed in this stream.
+    """
+    encryption_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identifier of the encryption configuration to use.
+    """
+    file_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the generated file.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique key for this multiplexed stream.
+    """
+    segment_settings: NotRequired[pulumi.Input['JobTemplateConfigMuxStreamSegmentSettingsArgsDict']]
+    """
+    Segment settings for ts, fmp4 and vtt.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigMuxStreamArgs:
@@ -3608,14 +3450,11 @@ class JobTemplateConfigMuxStreamArgs:
         pulumi.set(self, "segment_settings", value)
 
 
-if not MYPY:
-    class JobTemplateConfigMuxStreamSegmentSettingsArgsDict(TypedDict):
-        segment_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Duration of the segments in seconds. The default is `6.0s`.
-        """
-elif False:
-    JobTemplateConfigMuxStreamSegmentSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigMuxStreamSegmentSettingsArgsDict(TypedDict):
+    segment_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Duration of the segments in seconds. The default is `6.0s`.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigMuxStreamSegmentSettingsArgs:
@@ -3640,14 +3479,11 @@ class JobTemplateConfigMuxStreamSegmentSettingsArgs:
         pulumi.set(self, "segment_duration", value)
 
 
-if not MYPY:
-    class JobTemplateConfigOutputArgsDict(TypedDict):
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URI for the output file(s). For example, gs://my-bucket/outputs/.
-        """
-elif False:
-    JobTemplateConfigOutputArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigOutputArgsDict(TypedDict):
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URI for the output file(s). For example, gs://my-bucket/outputs/.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigOutputArgs:
@@ -3672,20 +3508,17 @@ class JobTemplateConfigOutputArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class JobTemplateConfigOverlayArgsDict(TypedDict):
-        animations: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgsDict']]]]
-        """
-        List of animations. The list should be chronological, without any time overlap.
-        Structure is documented below.
-        """
-        image: NotRequired[pulumi.Input['JobTemplateConfigOverlayImageArgsDict']]
-        """
-        Image overlay.
-        Structure is documented below.
-        """
-elif False:
-    JobTemplateConfigOverlayArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigOverlayArgsDict(TypedDict):
+    animations: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgsDict']]]]
+    """
+    List of animations. The list should be chronological, without any time overlap.
+    Structure is documented below.
+    """
+    image: NotRequired[pulumi.Input['JobTemplateConfigOverlayImageArgsDict']]
+    """
+    Image overlay.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigOverlayArgs:
@@ -3730,15 +3563,12 @@ class JobTemplateConfigOverlayArgs:
         pulumi.set(self, "image", value)
 
 
-if not MYPY:
-    class JobTemplateConfigOverlayAnimationArgsDict(TypedDict):
-        animation_fade: NotRequired[pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeArgsDict']]
-        """
-        Display overlay object with fade animation.
-        Structure is documented below.
-        """
-elif False:
-    JobTemplateConfigOverlayAnimationArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigOverlayAnimationArgsDict(TypedDict):
+    animation_fade: NotRequired[pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeArgsDict']]
+    """
+    Display overlay object with fade animation.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigOverlayAnimationArgs:
@@ -3765,32 +3595,29 @@ class JobTemplateConfigOverlayAnimationArgs:
         pulumi.set(self, "animation_fade", value)
 
 
-if not MYPY:
-    class JobTemplateConfigOverlayAnimationAnimationFadeArgsDict(TypedDict):
-        fade_type: pulumi.Input[_builtins.str]
-        """
-        Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
-        The possible values are:
-        * `FADE_TYPE_UNSPECIFIED`: The fade type is not specified.
-        * `FADE_IN`: Fade the overlay object into view.
-        * `FADE_OUT`: Fade the overlay object out of view.
-        Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
-        """
-        end_time_offset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time to end the fade animation, in seconds.
-        """
-        start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time to start the fade animation, in seconds.
-        """
-        xy: NotRequired[pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeXyArgsDict']]
-        """
-        Normalized coordinates based on output video resolution.
-        Structure is documented below.
-        """
-elif False:
-    JobTemplateConfigOverlayAnimationAnimationFadeArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigOverlayAnimationAnimationFadeArgsDict(TypedDict):
+    fade_type: pulumi.Input[_builtins.str]
+    """
+    Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+    The possible values are:
+    * `FADE_TYPE_UNSPECIFIED`: The fade type is not specified.
+    * `FADE_IN`: Fade the overlay object into view.
+    * `FADE_OUT`: Fade the overlay object out of view.
+    Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
+    """
+    end_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time to end the fade animation, in seconds.
+    """
+    start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time to start the fade animation, in seconds.
+    """
+    xy: NotRequired[pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeXyArgsDict']]
+    """
+    Normalized coordinates based on output video resolution.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigOverlayAnimationAnimationFadeArgs:
@@ -3874,18 +3701,15 @@ class JobTemplateConfigOverlayAnimationAnimationFadeArgs:
         pulumi.set(self, "xy", value)
 
 
-if not MYPY:
-    class JobTemplateConfigOverlayAnimationAnimationFadeXyArgsDict(TypedDict):
-        x: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Normalized x coordinate.
-        """
-        y: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Normalized y coordinate.
-        """
-elif False:
-    JobTemplateConfigOverlayAnimationAnimationFadeXyArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigOverlayAnimationAnimationFadeXyArgsDict(TypedDict):
+    x: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Normalized x coordinate.
+    """
+    y: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Normalized y coordinate.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigOverlayAnimationAnimationFadeXyArgs:
@@ -3926,14 +3750,11 @@ class JobTemplateConfigOverlayAnimationAnimationFadeXyArgs:
         pulumi.set(self, "y", value)
 
 
-if not MYPY:
-    class JobTemplateConfigOverlayImageArgsDict(TypedDict):
-        uri: pulumi.Input[_builtins.str]
-        """
-        URI of the image in Cloud Storage. For example, gs://bucket/inputs/image.png.
-        """
-elif False:
-    JobTemplateConfigOverlayImageArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigOverlayImageArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    URI of the image in Cloud Storage. For example, gs://bucket/inputs/image.png.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigOverlayImageArgs:
@@ -3957,14 +3778,11 @@ class JobTemplateConfigOverlayImageArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class JobTemplateConfigPubsubDestinationArgsDict(TypedDict):
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
-        """
-elif False:
-    JobTemplateConfigPubsubDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class JobTemplateConfigPubsubDestinationArgsDict(TypedDict):
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
+    """
 
 @pulumi.input_type
 class JobTemplateConfigPubsubDestinationArgs:

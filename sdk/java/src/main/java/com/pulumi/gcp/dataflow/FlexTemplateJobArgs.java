@@ -346,9 +346,21 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.serviceAccountEmail);
     }
 
+    /**
+     * If set to `true`, terraform will
+     * treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+     * and will remove the resource from terraform state and move on.  See above note.
+     * 
+     */
     @Import(name="skipWaitOnJobTermination")
     private @Nullable Output<Boolean> skipWaitOnJobTermination;
 
+    /**
+     * @return If set to `true`, terraform will
+     * treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+     * and will remove the resource from terraform state and move on.  See above note.
+     * 
+     */
     public Optional<Output<Boolean>> skipWaitOnJobTermination() {
         return Optional.ofNullable(this.skipWaitOnJobTermination);
     }
@@ -927,11 +939,27 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
             return serviceAccountEmail(Output.of(serviceAccountEmail));
         }
 
+        /**
+         * @param skipWaitOnJobTermination If set to `true`, terraform will
+         * treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+         * and will remove the resource from terraform state and move on.  See above note.
+         * 
+         * @return builder
+         * 
+         */
         public Builder skipWaitOnJobTermination(@Nullable Output<Boolean> skipWaitOnJobTermination) {
             $.skipWaitOnJobTermination = skipWaitOnJobTermination;
             return this;
         }
 
+        /**
+         * @param skipWaitOnJobTermination If set to `true`, terraform will
+         * treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+         * and will remove the resource from terraform state and move on.  See above note.
+         * 
+         * @return builder
+         * 
+         */
         public Builder skipWaitOnJobTermination(Boolean skipWaitOnJobTermination) {
             return skipWaitOnJobTermination(Output.of(skipWaitOnJobTermination));
         }

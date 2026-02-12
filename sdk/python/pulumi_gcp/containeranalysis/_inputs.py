@@ -31,24 +31,19 @@ __all__ = [
     'OccurenceAttestationSignatureArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class NoteAttestationAuthorityArgsDict(TypedDict):
-        hint: pulumi.Input['NoteAttestationAuthorityHintArgsDict']
-        """
-        This submessage provides human-readable hints about the purpose of
-        the AttestationAuthority. Because the name of a Note acts as its
-        resource reference, it is important to disambiguate the canonical
-        name of the Note (which might be a UUID for security purposes)
-        from "readable" names more suitable for debug output. Note that
-        these hints should NOT be used to look up AttestationAuthorities
-        in security sensitive contexts, such as when looking up
-        Attestations to verify.
-        Structure is documented below.
-        """
-elif False:
-    NoteAttestationAuthorityArgsDict: TypeAlias = Mapping[str, Any]
+class NoteAttestationAuthorityArgsDict(TypedDict):
+    hint: pulumi.Input['NoteAttestationAuthorityHintArgsDict']
+    """
+    This submessage provides human-readable hints about the purpose of
+    the AttestationAuthority. Because the name of a Note acts as its
+    resource reference, it is important to disambiguate the canonical
+    name of the Note (which might be a UUID for security purposes)
+    from "readable" names more suitable for debug output. Note that
+    these hints should NOT be used to look up AttestationAuthorities
+    in security sensitive contexts, such as when looking up
+    Attestations to verify.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class NoteAttestationAuthorityArgs:
@@ -88,15 +83,12 @@ class NoteAttestationAuthorityArgs:
         pulumi.set(self, "hint", value)
 
 
-if not MYPY:
-    class NoteAttestationAuthorityHintArgsDict(TypedDict):
-        human_readable_name: pulumi.Input[_builtins.str]
-        """
-        The human readable name of this Attestation Authority, for
-        example "qa".
-        """
-elif False:
-    NoteAttestationAuthorityHintArgsDict: TypeAlias = Mapping[str, Any]
+class NoteAttestationAuthorityHintArgsDict(TypedDict):
+    human_readable_name: pulumi.Input[_builtins.str]
+    """
+    The human readable name of this Attestation Authority, for
+    example "qa".
+    """
 
 @pulumi.input_type
 class NoteAttestationAuthorityHintArgs:
@@ -122,13 +114,10 @@ class NoteAttestationAuthorityHintArgs:
         pulumi.set(self, "human_readable_name", value)
 
 
-if not MYPY:
-    class NoteIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    NoteIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class NoteIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class NoteIamBindingConditionArgs:
@@ -169,13 +158,10 @@ class NoteIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class NoteIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    NoteIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class NoteIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class NoteIamMemberConditionArgs:
@@ -216,18 +202,15 @@ class NoteIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class NoteRelatedUrlArgsDict(TypedDict):
-        url: pulumi.Input[_builtins.str]
-        """
-        Specific URL associated with the resource.
-        """
-        label: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Label to describe usage of the URL
-        """
-elif False:
-    NoteRelatedUrlArgsDict: TypeAlias = Mapping[str, Any]
+class NoteRelatedUrlArgsDict(TypedDict):
+    url: pulumi.Input[_builtins.str]
+    """
+    Specific URL associated with the resource.
+    """
+    label: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Label to describe usage of the URL
+    """
 
 @pulumi.input_type
 class NoteRelatedUrlArgs:
@@ -267,24 +250,21 @@ class NoteRelatedUrlArgs:
         pulumi.set(self, "label", value)
 
 
-if not MYPY:
-    class OccurenceAttestationArgsDict(TypedDict):
-        serialized_payload: pulumi.Input[_builtins.str]
-        """
-        The serialized payload that is verified by one or
-        more signatures. A base64-encoded string.
-        """
-        signatures: pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArgsDict']]]
-        """
-        One or more signatures over serializedPayload.
-        Verifier implementations should consider this attestation
-        message verified if at least one signature verifies
-        serializedPayload. See Signature in common.proto for more
-        details on signature structure and verification.
-        Structure is documented below.
-        """
-elif False:
-    OccurenceAttestationArgsDict: TypeAlias = Mapping[str, Any]
+class OccurenceAttestationArgsDict(TypedDict):
+    serialized_payload: pulumi.Input[_builtins.str]
+    """
+    The serialized payload that is verified by one or
+    more signatures. A base64-encoded string.
+    """
+    signatures: pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArgsDict']]]
+    """
+    One or more signatures over serializedPayload.
+    Verifier implementations should consider this attestation
+    message verified if at least one signature verifies
+    serializedPayload. See Signature in common.proto for more
+    details on signature structure and verification.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class OccurenceAttestationArgs:
@@ -335,33 +315,30 @@ class OccurenceAttestationArgs:
         pulumi.set(self, "signatures", value)
 
 
-if not MYPY:
-    class OccurenceAttestationSignatureArgsDict(TypedDict):
-        public_key_id: pulumi.Input[_builtins.str]
-        """
-        The identifier for the public key that verifies this
-        signature. MUST be an RFC3986 conformant
-        URI. * When possible, the key id should be an
-        immutable reference, such as a cryptographic digest.
-        Examples of valid values:
-        * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
-        for more details on this scheme.
-        * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
-        * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
-        * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-        """
-        signature: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The content of the signature, an opaque bytestring.
-        The payload that this signature verifies MUST be
-        unambiguously provided with the Signature during
-        verification. A wrapper message might provide the
-        payload explicitly. Alternatively, a message might
-        have a canonical serialization that can always be
-        unambiguously computed to derive the payload.
-        """
-elif False:
-    OccurenceAttestationSignatureArgsDict: TypeAlias = Mapping[str, Any]
+class OccurenceAttestationSignatureArgsDict(TypedDict):
+    public_key_id: pulumi.Input[_builtins.str]
+    """
+    The identifier for the public key that verifies this
+    signature. MUST be an RFC3986 conformant
+    URI. * When possible, the key id should be an
+    immutable reference, such as a cryptographic digest.
+    Examples of valid values:
+    * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
+    for more details on this scheme.
+    * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
+    * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
+    * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
+    """
+    signature: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The content of the signature, an opaque bytestring.
+    The payload that this signature verifies MUST be
+    unambiguously provided with the Signature during
+    verification. A wrapper message might provide the
+    payload explicitly. Alternatively, a message might
+    have a canonical serialization that can always be
+    unambiguously computed to derive the payload.
+    """
 
 @pulumi.input_type
 class OccurenceAttestationSignatureArgs:

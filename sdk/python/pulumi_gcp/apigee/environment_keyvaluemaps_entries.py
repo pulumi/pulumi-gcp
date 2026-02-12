@@ -213,16 +213,12 @@ class EnvironmentKeyvaluemapsEntries(pulumi.CustomResource):
         EnvironmentKeyvaluemapsEntries can be imported using any of these accepted formats:
 
         * `{{env_keyvaluemap_id}}/entries/{{name}}`
-
         * `{{env_keyvaluemap_id}}/{{name}}`
 
         When using the `pulumi import` command, EnvironmentKeyvaluemapsEntries can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries default {{env_keyvaluemap_id}}/entries/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries default {{env_keyvaluemap_id}}/{{name}}
         ```
 
@@ -312,16 +308,12 @@ class EnvironmentKeyvaluemapsEntries(pulumi.CustomResource):
         EnvironmentKeyvaluemapsEntries can be imported using any of these accepted formats:
 
         * `{{env_keyvaluemap_id}}/entries/{{name}}`
-
         * `{{env_keyvaluemap_id}}/{{name}}`
 
         When using the `pulumi import` command, EnvironmentKeyvaluemapsEntries can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries default {{env_keyvaluemap_id}}/entries/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries default {{env_keyvaluemap_id}}/{{name}}
         ```
 

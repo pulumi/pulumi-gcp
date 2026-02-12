@@ -62,22 +62,14 @@ namespace Pulumi.Gcp.BigLake
     /// IcebergCatalog can be imported using any of these accepted formats:
     /// 
     /// * `iceberg/v1/restcatalog/extensions/projects/{{project}}/catalogs/{{name}}`
-    /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, IcebergCatalog can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default iceberg/v1/restcatalog/extensions/projects/{{project}}/catalogs/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{name}}
     /// ```
     /// </summary>

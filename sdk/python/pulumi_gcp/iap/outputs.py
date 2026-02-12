@@ -1079,6 +1079,11 @@ class TunnelDestGroupIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1104,6 +1109,13 @@ class TunnelDestGroupIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -1116,6 +1128,11 @@ class TunnelDestGroupIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1141,6 +1158,13 @@ class TunnelDestGroupIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -1431,6 +1455,11 @@ class WebCloudRunServiceIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1456,6 +1485,13 @@ class WebCloudRunServiceIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -1468,6 +1504,11 @@ class WebCloudRunServiceIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1493,6 +1534,13 @@ class WebCloudRunServiceIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -1505,6 +1553,11 @@ class WebForwardingRuleServiceIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1530,6 +1583,13 @@ class WebForwardingRuleServiceIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -1542,6 +1602,11 @@ class WebForwardingRuleServiceIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1567,6 +1632,13 @@ class WebForwardingRuleServiceIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -1677,6 +1749,11 @@ class WebRegionBackendServiceIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1702,6 +1779,13 @@ class WebRegionBackendServiceIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -1714,6 +1798,11 @@ class WebRegionBackendServiceIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1739,6 +1828,13 @@ class WebRegionBackendServiceIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -1751,6 +1847,11 @@ class WebRegionForwardingRuleServiceIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1776,6 +1877,13 @@ class WebRegionForwardingRuleServiceIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -1788,6 +1896,11 @@ class WebRegionForwardingRuleServiceIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1813,6 +1926,13 @@ class WebRegionForwardingRuleServiceIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 

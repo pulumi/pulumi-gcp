@@ -38,9 +38,31 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.databaseDialect);
     }
 
+    /**
+     * An optional list of DDL statements to run inside the database. Statements can create
+     * tables, indexes, etc.
+     * During creation these statements execute atomically with the creation of the database
+     * and if there is an error in any statement, the database is not created.
+     * Terraform does not perform drift detection on this field and assumes that the values
+     * recorded in state are accurate. Limited updates to this field are supported, and
+     * newly appended DDL statements can be executed in an update. However, modifications
+     * to prior statements will create a plan that marks the resource for recreation.
+     * 
+     */
     @Import(name="ddls")
     private @Nullable Output<List<String>> ddls;
 
+    /**
+     * @return An optional list of DDL statements to run inside the database. Statements can create
+     * tables, indexes, etc.
+     * During creation these statements execute atomically with the creation of the database
+     * and if there is an error in any statement, the database is not created.
+     * Terraform does not perform drift detection on this field and assumes that the values
+     * recorded in state are accurate. Limited updates to this field are supported, and
+     * newly appended DDL statements can be executed in an update. However, modifications
+     * to prior statements will create a plan that marks the resource for recreation.
+     * 
+     */
     public Optional<Output<List<String>>> ddls() {
         return Optional.ofNullable(this.ddls);
     }
@@ -79,9 +101,29 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deletionProtection);
     }
 
+    /**
+     * Whether drop protection is enabled for this database. Defaults to false.
+     * Drop protection is different from
+     * the &#34;deletionProtection&#34; attribute in the following ways:
+     * (1) &#34;deletionProtection&#34; only protects the database from deletions in Terraform.
+     * whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+     * (2) Setting &#34;enableDropProtection&#34; to true also prevents the deletion of the parent instance containing the database.
+     * &#34;deletionProtection&#34; attribute does not provide protection against the deletion of the parent instance.
+     * 
+     */
     @Import(name="enableDropProtection")
     private @Nullable Output<Boolean> enableDropProtection;
 
+    /**
+     * @return Whether drop protection is enabled for this database. Defaults to false.
+     * Drop protection is different from
+     * the &#34;deletionProtection&#34; attribute in the following ways:
+     * (1) &#34;deletionProtection&#34; only protects the database from deletions in Terraform.
+     * whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+     * (2) Setting &#34;enableDropProtection&#34; to true also prevents the deletion of the parent instance containing the database.
+     * &#34;deletionProtection&#34; attribute does not provide protection against the deletion of the parent instance.
+     * 
+     */
     public Optional<Output<Boolean>> enableDropProtection() {
         return Optional.ofNullable(this.enableDropProtection);
     }
@@ -233,15 +275,54 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
             return databaseDialect(Output.of(databaseDialect));
         }
 
+        /**
+         * @param ddls An optional list of DDL statements to run inside the database. Statements can create
+         * tables, indexes, etc.
+         * During creation these statements execute atomically with the creation of the database
+         * and if there is an error in any statement, the database is not created.
+         * Terraform does not perform drift detection on this field and assumes that the values
+         * recorded in state are accurate. Limited updates to this field are supported, and
+         * newly appended DDL statements can be executed in an update. However, modifications
+         * to prior statements will create a plan that marks the resource for recreation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ddls(@Nullable Output<List<String>> ddls) {
             $.ddls = ddls;
             return this;
         }
 
+        /**
+         * @param ddls An optional list of DDL statements to run inside the database. Statements can create
+         * tables, indexes, etc.
+         * During creation these statements execute atomically with the creation of the database
+         * and if there is an error in any statement, the database is not created.
+         * Terraform does not perform drift detection on this field and assumes that the values
+         * recorded in state are accurate. Limited updates to this field are supported, and
+         * newly appended DDL statements can be executed in an update. However, modifications
+         * to prior statements will create a plan that marks the resource for recreation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ddls(List<String> ddls) {
             return ddls(Output.of(ddls));
         }
 
+        /**
+         * @param ddls An optional list of DDL statements to run inside the database. Statements can create
+         * tables, indexes, etc.
+         * During creation these statements execute atomically with the creation of the database
+         * and if there is an error in any statement, the database is not created.
+         * Terraform does not perform drift detection on this field and assumes that the values
+         * recorded in state are accurate. Limited updates to this field are supported, and
+         * newly appended DDL statements can be executed in an update. However, modifications
+         * to prior statements will create a plan that marks the resource for recreation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ddls(String... ddls) {
             return ddls(List.of(ddls));
         }
@@ -292,11 +373,35 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
             return deletionProtection(Output.of(deletionProtection));
         }
 
+        /**
+         * @param enableDropProtection Whether drop protection is enabled for this database. Defaults to false.
+         * Drop protection is different from
+         * the &#34;deletionProtection&#34; attribute in the following ways:
+         * (1) &#34;deletionProtection&#34; only protects the database from deletions in Terraform.
+         * whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+         * (2) Setting &#34;enableDropProtection&#34; to true also prevents the deletion of the parent instance containing the database.
+         * &#34;deletionProtection&#34; attribute does not provide protection against the deletion of the parent instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDropProtection(@Nullable Output<Boolean> enableDropProtection) {
             $.enableDropProtection = enableDropProtection;
             return this;
         }
 
+        /**
+         * @param enableDropProtection Whether drop protection is enabled for this database. Defaults to false.
+         * Drop protection is different from
+         * the &#34;deletionProtection&#34; attribute in the following ways:
+         * (1) &#34;deletionProtection&#34; only protects the database from deletions in Terraform.
+         * whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+         * (2) Setting &#34;enableDropProtection&#34; to true also prevents the deletion of the parent instance containing the database.
+         * &#34;deletionProtection&#34; attribute does not provide protection against the deletion of the parent instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDropProtection(Boolean enableDropProtection) {
             return enableDropProtection(Output.of(enableDropProtection));
         }

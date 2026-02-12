@@ -270,22 +270,14 @@ namespace Pulumi.Gcp.DataPlex
     /// Task can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{lake}}/{{task_id}}`
-    /// 
     /// * `{{location}}/{{lake}}/{{task_id}}`
     /// 
     /// When using the `pulumi import` command, Task can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataplex/task:Task default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/task:Task default {{project}}/{{location}}/{{lake}}/{{task_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/task:Task default {{location}}/{{lake}}/{{task_id}}
     /// ```
     /// </summary>

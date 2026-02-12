@@ -14,6 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type InstanceAdminSettings struct {
+	// Email domain allowlist for the instance.
+	// Define the email domains to which your users can deliver Looker (Google Cloud core) content.
+	// Updating this list will restart the instance. Updating the allowed email domains from terraform
+	// means the value provided will be considered as the entire list and not an amendment to the
+	// existing list of allowed email domains.
 	AllowedEmailDomains []string `pulumi:"allowedEmailDomains"`
 }
 
@@ -29,6 +34,11 @@ type InstanceAdminSettingsInput interface {
 }
 
 type InstanceAdminSettingsArgs struct {
+	// Email domain allowlist for the instance.
+	// Define the email domains to which your users can deliver Looker (Google Cloud core) content.
+	// Updating this list will restart the instance. Updating the allowed email domains from terraform
+	// means the value provided will be considered as the entire list and not an amendment to the
+	// existing list of allowed email domains.
 	AllowedEmailDomains pulumi.StringArrayInput `pulumi:"allowedEmailDomains"`
 }
 
@@ -109,6 +119,11 @@ func (o InstanceAdminSettingsOutput) ToInstanceAdminSettingsPtrOutputWithContext
 	}).(InstanceAdminSettingsPtrOutput)
 }
 
+// Email domain allowlist for the instance.
+// Define the email domains to which your users can deliver Looker (Google Cloud core) content.
+// Updating this list will restart the instance. Updating the allowed email domains from terraform
+// means the value provided will be considered as the entire list and not an amendment to the
+// existing list of allowed email domains.
 func (o InstanceAdminSettingsOutput) AllowedEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceAdminSettings) []string { return v.AllowedEmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -137,6 +152,11 @@ func (o InstanceAdminSettingsPtrOutput) Elem() InstanceAdminSettingsOutput {
 	}).(InstanceAdminSettingsOutput)
 }
 
+// Email domain allowlist for the instance.
+// Define the email domains to which your users can deliver Looker (Google Cloud core) content.
+// Updating this list will restart the instance. Updating the allowed email domains from terraform
+// means the value provided will be considered as the entire list and not an amendment to the
+// existing list of allowed email domains.
 func (o InstanceAdminSettingsPtrOutput) AllowedEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceAdminSettings) []string {
 		if v == nil {

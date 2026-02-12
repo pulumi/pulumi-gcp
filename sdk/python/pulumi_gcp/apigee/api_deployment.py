@@ -183,28 +183,16 @@ class ApiDeployment(pulumi.CustomResource):
         ApiDeployment can be imported using any of these accepted formats:
 
         * `organizations/{{org_id}}/environments/{{environment}}/apis/{{proxy_id}}/revisions/{{revision}}/deployments`
-
         * `organizations/{{org_id}}/environments/{{environment}}/apis/{{proxy_id}}/revisions/{{revision}}`
-
         * `{{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}/deployments`
-
         * `{{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}`
 
         When using the `pulumi import` command, ApiDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default organizations/{{org_id}}/environments/{{environment}}/apis/{{proxy_id}}/revisions/{{revision}}/deployments
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default organizations/{{org_id}}/environments/{{environment}}/apis/{{proxy_id}}/revisions/{{revision}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default {{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}/deployments
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default {{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}
         ```
 
@@ -237,28 +225,16 @@ class ApiDeployment(pulumi.CustomResource):
         ApiDeployment can be imported using any of these accepted formats:
 
         * `organizations/{{org_id}}/environments/{{environment}}/apis/{{proxy_id}}/revisions/{{revision}}/deployments`
-
         * `organizations/{{org_id}}/environments/{{environment}}/apis/{{proxy_id}}/revisions/{{revision}}`
-
         * `{{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}/deployments`
-
         * `{{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}`
 
         When using the `pulumi import` command, ApiDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default organizations/{{org_id}}/environments/{{environment}}/apis/{{proxy_id}}/revisions/{{revision}}/deployments
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default organizations/{{org_id}}/environments/{{environment}}/apis/{{proxy_id}}/revisions/{{revision}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default {{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}/deployments
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default {{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}
         ```
 

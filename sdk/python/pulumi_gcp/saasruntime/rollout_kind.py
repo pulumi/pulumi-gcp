@@ -262,6 +262,7 @@ class _RolloutKindState:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['RolloutKindErrorBudgetArgs'] error_budget: The configuration for error budget. If the number of failed units exceeds
                max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
@@ -373,6 +374,9 @@ class _RolloutKindState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -595,6 +599,11 @@ class RolloutKind(pulumi.CustomResource):
                  update_unit_kind_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A RolloutKind is a reusable configuration resource that defines the policies, strategies, and targeting for Rollout operations. It acts as a template for repeatable Rollouts, providing guardrails and ensuring that updates are executed in a consistent manner across a fleet of Units.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Saas Runtime Rollout Kind Basic
@@ -629,22 +638,14 @@ class RolloutKind(pulumi.CustomResource):
         RolloutKind can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/rolloutKinds/{{rollout_kind_id}}`
-
         * `{{project}}/{{location}}/{{rollout_kind_id}}`
-
         * `{{location}}/{{rollout_kind_id}}`
 
         When using the `pulumi import` command, RolloutKind can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default projects/{{project}}/locations/{{location}}/rolloutKinds/{{rollout_kind_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{project}}/{{location}}/{{rollout_kind_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{location}}/{{rollout_kind_id}}
         ```
 
@@ -693,6 +694,11 @@ class RolloutKind(pulumi.CustomResource):
                  args: RolloutKindArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A RolloutKind is a reusable configuration resource that defines the policies, strategies, and targeting for Rollout operations. It acts as a template for repeatable Rollouts, providing guardrails and ensuring that updates are executed in a consistent manner across a fleet of Units.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Saas Runtime Rollout Kind Basic
@@ -727,22 +733,14 @@ class RolloutKind(pulumi.CustomResource):
         RolloutKind can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/rolloutKinds/{{rollout_kind_id}}`
-
         * `{{project}}/{{location}}/{{rollout_kind_id}}`
-
         * `{{location}}/{{rollout_kind_id}}`
 
         When using the `pulumi import` command, RolloutKind can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default projects/{{project}}/locations/{{location}}/rolloutKinds/{{rollout_kind_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{project}}/{{location}}/{{rollout_kind_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/rolloutKind:RolloutKind default {{location}}/{{rollout_kind_id}}
         ```
 
@@ -846,6 +844,7 @@ class RolloutKind(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict']] error_budget: The configuration for error budget. If the number of failed units exceeds
                max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
@@ -937,6 +936,9 @@ class RolloutKind(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

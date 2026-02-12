@@ -93,6 +93,10 @@ namespace Pulumi.Gcp.BigTable
         [Input("instance", required: true)]
         public string Instance { get; set; } = null!;
 
+        /// <summary>
+        /// The project in which the instance belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
@@ -110,6 +114,10 @@ namespace Pulumi.Gcp.BigTable
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
 
+        /// <summary>
+        /// The project in which the instance belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

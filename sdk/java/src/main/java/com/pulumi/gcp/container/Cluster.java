@@ -495,9 +495,23 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<ClusterDefaultSnatStatus> defaultSnatStatus() {
         return this.defaultSnatStatus;
     }
+    /**
+     * Whether Terraform will be prevented from
+     * destroying the cluster.  Deleting this cluster via `terraform destroy` or
+     * `pulumi up` will only succeed if this field is `false` in the Terraform
+     * state.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from
+     * destroying the cluster.  Deleting this cluster via `terraform destroy` or
+     * `pulumi up` will only succeed if this field is `false` in the Terraform
+     * state.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }

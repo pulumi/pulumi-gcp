@@ -18,6 +18,10 @@ public final class GetCertificatesCertificate {
      * 
      */
     private String description;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     private Map<String,String> effectiveLabels;
     /**
      * @return Set of label tags associated with the Certificate resource.
@@ -89,6 +93,10 @@ public final class GetCertificatesCertificate {
     public String description() {
         return this.description;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
     }

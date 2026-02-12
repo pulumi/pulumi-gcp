@@ -1070,6 +1070,12 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
                in the future.
                This field is optional. If this field is not empty, then it must be a
                valid Prometheus label name.
+        :param _builtins.bool disable_metric_validation: Whether to disable metric existence validation for this condition.
+               This allows alerting policies to be defined on metrics that do not yet
+               exist, improving advanced customer workflows such as configuring
+               alerting policies using Terraform.
+               Users with the `monitoring.alertPolicyViewer` role are able to see the
+               name of the non-existent metric in the alerting policy condition.
         :param _builtins.str duration: Alerts are considered firing once their PromQL expression evaluated
                to be "true" for this long. Alerts whose PromQL expression was not
                evaluated to be "true" for long enough are considered pending. The
@@ -1137,6 +1143,14 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
     @_builtins.property
     @pulumi.getter(name="disableMetricValidation")
     def disable_metric_validation(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable metric existence validation for this condition.
+        This allows alerting policies to be defined on metrics that do not yet
+        exist, improving advanced customer workflows such as configuring
+        alerting policies using Terraform.
+        Users with the `monitoring.alertPolicyViewer` role are able to see the
+        name of the non-existent metric in the alerting policy condition.
+        """
         return pulumi.get(self, "disable_metric_validation")
 
     @_builtins.property

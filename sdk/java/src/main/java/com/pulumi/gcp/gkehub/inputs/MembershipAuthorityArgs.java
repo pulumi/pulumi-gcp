@@ -14,9 +14,19 @@ public final class MembershipAuthorityArgs extends com.pulumi.resources.Resource
 
     public static final MembershipAuthorityArgs Empty = new MembershipAuthorityArgs();
 
+    /**
+     * A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+     * with length &lt;2000 characters. For example: `https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster`. If the cluster is provisioned with Terraform, this is `&#34;https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}&#34;`.
+     * 
+     */
     @Import(name="issuer", required=true)
     private Output<String> issuer;
 
+    /**
+     * @return A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+     * with length &lt;2000 characters. For example: `https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster`. If the cluster is provisioned with Terraform, this is `&#34;https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}&#34;`.
+     * 
+     */
     public Output<String> issuer() {
         return this.issuer;
     }
@@ -45,11 +55,25 @@ public final class MembershipAuthorityArgs extends com.pulumi.resources.Resource
             $ = new MembershipAuthorityArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param issuer A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+         * with length &lt;2000 characters. For example: `https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster`. If the cluster is provisioned with Terraform, this is `&#34;https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuer(Output<String> issuer) {
             $.issuer = issuer;
             return this;
         }
 
+        /**
+         * @param issuer A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+         * with length &lt;2000 characters. For example: `https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster`. If the cluster is provisioned with Terraform, this is `&#34;https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuer(String issuer) {
             return issuer(Output.of(issuer));
         }

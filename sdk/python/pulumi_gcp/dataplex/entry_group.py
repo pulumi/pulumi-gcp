@@ -407,22 +407,14 @@ class EntryGroup(pulumi.CustomResource):
         EntryGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}`
-
         * `{{project}}/{{location}}/{{entry_group_id}}`
-
         * `{{location}}/{{entry_group_id}}`
 
         When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{project}}/{{location}}/{{entry_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{location}}/{{entry_group_id}}
         ```
 
@@ -483,22 +475,14 @@ class EntryGroup(pulumi.CustomResource):
         EntryGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}`
-
         * `{{project}}/{{location}}/{{entry_group_id}}`
-
         * `{{location}}/{{entry_group_id}}`
 
         When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{project}}/{{location}}/{{entry_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{location}}/{{entry_group_id}}
         ```
 

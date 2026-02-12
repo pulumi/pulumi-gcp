@@ -136,22 +136,14 @@ import (
 // RecommendationEngine can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/collections/default_collection/engines/{{engine_id}}`
-//
 // * `{{project}}/{{location}}/{{engine_id}}`
-//
 // * `{{location}}/{{engine_id}}`
 //
 // When using the `pulumi import` command, RecommendationEngine can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:discoveryengine/recommendationEngine:RecommendationEngine default projects/{{project}}/locations/{{location}}/collections/default_collection/engines/{{engine_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:discoveryengine/recommendationEngine:RecommendationEngine default {{project}}/{{location}}/{{engine_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:discoveryengine/recommendationEngine:RecommendationEngine default {{location}}/{{engine_id}}
 // ```
 type RecommendationEngine struct {

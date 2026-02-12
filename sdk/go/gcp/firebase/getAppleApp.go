@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Google Cloud Firebase Apple application instance
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
 func LookupAppleApp(ctx *pulumi.Context, args *LookupAppleAppArgs, opts ...pulumi.InvokeOption) (*LookupAppleAppResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppleAppResult

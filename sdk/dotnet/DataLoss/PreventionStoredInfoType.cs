@@ -160,16 +160,12 @@ namespace Pulumi.Gcp.DataLoss
     /// StoredInfoType can be imported using any of these accepted formats:
     /// 
     /// * `{{parent}}/storedInfoTypes/{{name}}`
-    /// 
     /// * `{{parent}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, StoredInfoType can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/{{name}}
     /// ```
     /// </summary>

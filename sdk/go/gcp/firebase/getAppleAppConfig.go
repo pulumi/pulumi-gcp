@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Google Cloud Firebase Apple application configuration
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about iosApp, see:
+//
+// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps)
+// * How-to Guides
+//   - [Official Documentation](https://firebase.google.com/)
 func GetAppleAppConfig(ctx *pulumi.Context, args *GetAppleAppConfigArgs, opts ...pulumi.InvokeOption) (*GetAppleAppConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAppleAppConfigResult

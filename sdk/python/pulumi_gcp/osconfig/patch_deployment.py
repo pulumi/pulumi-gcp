@@ -698,22 +698,14 @@ class PatchDeployment(pulumi.CustomResource):
         PatchDeployment can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_os_config_patch_deployment.default "{{project}} {{name}}"
         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{name}}
         ```
 
@@ -989,22 +981,14 @@ class PatchDeployment(pulumi.CustomResource):
         PatchDeployment can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_os_config_patch_deployment.default "{{project}} {{name}}"
         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{name}}
         ```
 

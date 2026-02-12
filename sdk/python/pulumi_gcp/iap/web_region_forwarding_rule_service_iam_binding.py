@@ -570,11 +570,8 @@ class WebRegionForwardingRuleServiceIamBinding(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/iap_web/forwarding_rule-{{region}}/services/{{name}}
-
         * {{project}}/{{region}}/{{name}}
-
         * {{region}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -582,25 +579,21 @@ class WebRegionForwardingRuleServiceIamBinding(pulumi.CustomResource):
         Identity-Aware Proxy webregionforwardingruleservice IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:iap/webRegionForwardingRuleServiceIamBinding:WebRegionForwardingRuleServiceIamBinding editor "projects/{{project}}/iap_web/forwarding_rule-{{region}}/services/{{web_region_forwarding_rule_service}} roles/iap.httpsResourceAccessor user:jane@example.com"
+        $ terraform import google_iap_web_region_forwarding_rule_service_iam_member.editor "projects/{{project}}/iap_web/forwarding_rule-{{region}}/services/{{web_region_forwarding_rule_service}} roles/iap.httpsResourceAccessor user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:iap/webRegionForwardingRuleServiceIamBinding:WebRegionForwardingRuleServiceIamBinding editor "projects/{{project}}/iap_web/forwarding_rule-{{region}}/services/{{web_region_forwarding_rule_service}} roles/iap.httpsResourceAccessor"
+        $ terraform import google_iap_web_region_forwarding_rule_service_iam_binding.editor "projects/{{project}}/iap_web/forwarding_rule-{{region}}/services/{{web_region_forwarding_rule_service}} roles/iap.httpsResourceAccessor"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:iap/webRegionForwardingRuleServiceIamBinding:WebRegionForwardingRuleServiceIamBinding editor projects/{{project}}/iap_web/forwarding_rule-{{region}}/services/{{web_region_forwarding_rule_service}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
@@ -885,11 +878,8 @@ class WebRegionForwardingRuleServiceIamBinding(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/iap_web/forwarding_rule-{{region}}/services/{{name}}
-
         * {{project}}/{{region}}/{{name}}
-
         * {{region}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -897,25 +887,21 @@ class WebRegionForwardingRuleServiceIamBinding(pulumi.CustomResource):
         Identity-Aware Proxy webregionforwardingruleservice IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:iap/webRegionForwardingRuleServiceIamBinding:WebRegionForwardingRuleServiceIamBinding editor "projects/{{project}}/iap_web/forwarding_rule-{{region}}/services/{{web_region_forwarding_rule_service}} roles/iap.httpsResourceAccessor user:jane@example.com"
+        $ terraform import google_iap_web_region_forwarding_rule_service_iam_member.editor "projects/{{project}}/iap_web/forwarding_rule-{{region}}/services/{{web_region_forwarding_rule_service}} roles/iap.httpsResourceAccessor user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:iap/webRegionForwardingRuleServiceIamBinding:WebRegionForwardingRuleServiceIamBinding editor "projects/{{project}}/iap_web/forwarding_rule-{{region}}/services/{{web_region_forwarding_rule_service}} roles/iap.httpsResourceAccessor"
+        $ terraform import google_iap_web_region_forwarding_rule_service_iam_binding.editor "projects/{{project}}/iap_web/forwarding_rule-{{region}}/services/{{web_region_forwarding_rule_service}} roles/iap.httpsResourceAccessor"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:iap/webRegionForwardingRuleServiceIamBinding:WebRegionForwardingRuleServiceIamBinding editor projects/{{project}}/iap_web/forwarding_rule-{{region}}/services/{{web_region_forwarding_rule_service}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.

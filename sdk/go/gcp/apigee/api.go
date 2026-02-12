@@ -23,16 +23,12 @@ import (
 // An API proxy can be imported using any of these accepted formats:
 //
 // * `{{org_id}}/apis/{{name}}`
-//
 // * `{{org_id}}/{{name}}`
 //
 // When using the `pulumi import` command, API proxy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apigee/api:Api default {{org_id}}/apis/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apigee/api:Api default {{org_id}}/{{name}}
 // ```
 type Api struct {
@@ -41,7 +37,8 @@ type Api struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle  pulumi.StringOutput    `pulumi:"configBundle"`
+	ConfigBundle pulumi.StringOutput `pulumi:"configBundle"`
+	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this API proxy.
 	LatestRevisionId pulumi.StringOutput `pulumi:"latestRevisionId"`
@@ -97,7 +94,8 @@ type apiState struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle  *string `pulumi:"configBundle"`
+	ConfigBundle *string `pulumi:"configBundle"`
+	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this API proxy.
 	LatestRevisionId *string `pulumi:"latestRevisionId"`
@@ -118,7 +116,8 @@ type ApiState struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle  pulumi.StringPtrInput
+	ConfigBundle pulumi.StringPtrInput
+	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrInput
 	// The id of the most recently created revision for this API proxy.
 	LatestRevisionId pulumi.StringPtrInput
@@ -143,7 +142,8 @@ type apiArgs struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle  string  `pulumi:"configBundle"`
+	ConfigBundle string `pulumi:"configBundle"`
+	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The ID of the API proxy.
 	Name *string `pulumi:"name"`
@@ -156,7 +156,8 @@ type ApiArgs struct {
 	// Path to the config zip bundle.
 	//
 	// ***
-	ConfigBundle  pulumi.StringInput
+	ConfigBundle pulumi.StringInput
+	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrInput
 	// The ID of the API proxy.
 	Name pulumi.StringPtrInput
@@ -258,6 +259,7 @@ func (o ApiOutput) ConfigBundle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ConfigBundle }).(pulumi.StringOutput)
 }
 
+// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 func (o ApiOutput) DetectMd5hash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringPtrOutput { return v.DetectMd5hash }).(pulumi.StringPtrOutput)
 }

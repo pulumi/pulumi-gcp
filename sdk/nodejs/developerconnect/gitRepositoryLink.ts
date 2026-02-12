@@ -68,22 +68,14 @@ import * as utilities from "../utilities";
  * GitRepositoryLink can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/gitRepositoryLinks/{{git_repository_link_id}}`
- *
  * * `{{project}}/{{location}}/{{parent_connection}}/{{git_repository_link_id}}`
- *
  * * `{{location}}/{{parent_connection}}/{{git_repository_link_id}}`
  *
  * When using the `pulumi import` command, GitRepositoryLink can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:developerconnect/gitRepositoryLink:GitRepositoryLink default projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/gitRepositoryLinks/{{git_repository_link_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:developerconnect/gitRepositoryLink:GitRepositoryLink default {{project}}/{{location}}/{{parent_connection}}/{{git_repository_link_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:developerconnect/gitRepositoryLink:GitRepositoryLink default {{location}}/{{parent_connection}}/{{git_repository_link_id}}
  * ```
  */
@@ -133,6 +125,9 @@ export class GitRepositoryLink extends pulumi.CustomResource {
      * Output only. [Output only] Delete timestamp
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -284,6 +279,9 @@ export interface GitRepositoryLinkState {
      * Output only. [Output only] Delete timestamp
      */
     deleteTime?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

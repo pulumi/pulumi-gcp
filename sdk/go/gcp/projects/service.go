@@ -12,6 +12,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Allows management of a single API service for a Google Cloud project.
+//
+// For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+// or run `gcloud services list --available`.
+//
+// This resource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+// to use.
+//
+// To get more information about `projects.Service`, see:
+//
+// * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+// * How-to Guides
+//   - [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+//
+// * Terraform guidance
+//   - [User Guide - projects.Service](https://www.terraform.io/docs/providers/google/guides/google_project_service.html)
+//
 // ## Example Usage
 //
 // ```go
@@ -41,7 +58,7 @@ import (
 //
 // ## Import
 //
-// Project services can be imported using the `project_id` and `service`, e.g.
+// Project services can be imported using the `projectId` and `service`, e.g.
 //
 // * `{{project_id}}/{{service}}`
 //
@@ -52,13 +69,9 @@ import (
 // ```
 //
 // Note that unlike other resources that fail if they already exist,
-//
 // `pulumi up` can be successfully used to verify already enabled services.
-//
-// # This means that when importing existing resources into Terraform, you can either
-//
-// import the `google_project_service` resources or treat them as new
-//
+// This means that when importing existing resources into Terraform, you can either
+// import the `projects.Service` resources or treat them as new
 // infrastructure and run `pulumi up` to add them to state.
 type Service struct {
 	pulumi.CustomResourceState
@@ -72,7 +85,11 @@ type Service struct {
 	// destroyed. If `false` or unset, an error will be generated if any enabled
 	// services depend on this service when destroying it.
 	DisableDependentServices pulumi.BoolPtrOutput `pulumi:"disableDependentServices"`
-	DisableOnDestroy         pulumi.BoolPtrOutput `pulumi:"disableOnDestroy"`
+	// If `true`, disable the service when the
+	// Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+	// the Terraform resource is destroyed. It should generally only
+	// be `true` in configurations that manage the `organizations.Project` resource itself.
+	DisableOnDestroy pulumi.BoolPtrOutput `pulumi:"disableOnDestroy"`
 	// The project ID. If not provided, the provider project
 	// is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -122,7 +139,11 @@ type serviceState struct {
 	// destroyed. If `false` or unset, an error will be generated if any enabled
 	// services depend on this service when destroying it.
 	DisableDependentServices *bool `pulumi:"disableDependentServices"`
-	DisableOnDestroy         *bool `pulumi:"disableOnDestroy"`
+	// If `true`, disable the service when the
+	// Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+	// the Terraform resource is destroyed. It should generally only
+	// be `true` in configurations that manage the `organizations.Project` resource itself.
+	DisableOnDestroy *bool `pulumi:"disableOnDestroy"`
 	// The project ID. If not provided, the provider project
 	// is used.
 	Project *string `pulumi:"project"`
@@ -140,7 +161,11 @@ type ServiceState struct {
 	// destroyed. If `false` or unset, an error will be generated if any enabled
 	// services depend on this service when destroying it.
 	DisableDependentServices pulumi.BoolPtrInput
-	DisableOnDestroy         pulumi.BoolPtrInput
+	// If `true`, disable the service when the
+	// Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+	// the Terraform resource is destroyed. It should generally only
+	// be `true` in configurations that manage the `organizations.Project` resource itself.
+	DisableOnDestroy pulumi.BoolPtrInput
 	// The project ID. If not provided, the provider project
 	// is used.
 	Project pulumi.StringPtrInput
@@ -162,7 +187,11 @@ type serviceArgs struct {
 	// destroyed. If `false` or unset, an error will be generated if any enabled
 	// services depend on this service when destroying it.
 	DisableDependentServices *bool `pulumi:"disableDependentServices"`
-	DisableOnDestroy         *bool `pulumi:"disableOnDestroy"`
+	// If `true`, disable the service when the
+	// Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+	// the Terraform resource is destroyed. It should generally only
+	// be `true` in configurations that manage the `organizations.Project` resource itself.
+	DisableOnDestroy *bool `pulumi:"disableOnDestroy"`
 	// The project ID. If not provided, the provider project
 	// is used.
 	Project *string `pulumi:"project"`
@@ -181,7 +210,11 @@ type ServiceArgs struct {
 	// destroyed. If `false` or unset, an error will be generated if any enabled
 	// services depend on this service when destroying it.
 	DisableDependentServices pulumi.BoolPtrInput
-	DisableOnDestroy         pulumi.BoolPtrInput
+	// If `true`, disable the service when the
+	// Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+	// the Terraform resource is destroyed. It should generally only
+	// be `true` in configurations that manage the `organizations.Project` resource itself.
+	DisableOnDestroy pulumi.BoolPtrInput
 	// The project ID. If not provided, the provider project
 	// is used.
 	Project pulumi.StringPtrInput
@@ -291,6 +324,10 @@ func (o ServiceOutput) DisableDependentServices() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.DisableDependentServices }).(pulumi.BoolPtrOutput)
 }
 
+// If `true`, disable the service when the
+// Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+// the Terraform resource is destroyed. It should generally only
+// be `true` in configurations that manage the `organizations.Project` resource itself.
 func (o ServiceOutput) DisableOnDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.DisableOnDestroy }).(pulumi.BoolPtrOutput)
 }

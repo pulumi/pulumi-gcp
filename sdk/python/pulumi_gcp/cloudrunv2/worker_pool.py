@@ -56,6 +56,12 @@ class WorkerPoolArgs:
                For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
                
                > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the service,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the WorkerPool will fail.
+               When the field is set to false, deleting the WorkerPool is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the WorkerPool. This field currently has a 512-character limit.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]] instance_splits: Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
                Structure is documented below.
@@ -206,6 +212,14 @@ class WorkerPoolArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the service. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the service,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the WorkerPool will fail.
+        When the field is set to false, deleting the WorkerPool is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -367,7 +381,14 @@ class _WorkerPoolState:
                
                > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
         :param pulumi.Input[_builtins.str] delete_time: The deletion time.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the service,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the WorkerPool will fail.
+               When the field is set to false, deleting the WorkerPool is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the WorkerPool. This field currently has a 512-character limit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
@@ -604,6 +625,14 @@ class _WorkerPoolState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the service. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the service,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the WorkerPool will fail.
+        When the field is set to false, deleting the WorkerPool is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -625,6 +654,9 @@ class _WorkerPoolState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1369,22 +1401,14 @@ class WorkerPool(pulumi.CustomResource):
         WorkerPool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{location}}/{{name}}
         ```
 
@@ -1405,6 +1429,12 @@ class WorkerPool(pulumi.CustomResource):
                For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
                
                > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the service,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the WorkerPool will fail.
+               When the field is set to false, deleting the WorkerPool is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the WorkerPool. This field currently has a 512-character limit.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]] instance_splits: Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
                Structure is documented below.
@@ -1866,22 +1896,14 @@ class WorkerPool(pulumi.CustomResource):
         WorkerPool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrunv2/workerPool:WorkerPool default {{location}}/{{name}}
         ```
 
@@ -2035,7 +2057,14 @@ class WorkerPool(pulumi.CustomResource):
                
                > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
         :param pulumi.Input[_builtins.str] delete_time: The deletion time.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the service,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the WorkerPool will fail.
+               When the field is set to false, deleting the WorkerPool is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the WorkerPool. This field currently has a 512-character limit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
@@ -2204,6 +2233,14 @@ class WorkerPool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the service. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the service,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the WorkerPool will fail.
+        When the field is set to false, deleting the WorkerPool is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -2217,6 +2254,9 @@ class WorkerPool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

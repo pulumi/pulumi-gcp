@@ -264,9 +264,7 @@ import * as utilities from "../utilities";
  * For all import syntaxes, the "resource in question" can take any of the following forms:
  *
  * * projects/{{project}}/global/instanceTemplates/{{name}}
- *
  * * {{project}}/{{name}}
- *
  * * {{name}}
  *
  * Any variables not passed in the import command will be taken from the provider configuration.
@@ -274,25 +272,21 @@ import * as utilities from "../utilities";
  * Compute Engine instancetemplate IAM resources can be imported using the resource identifiers, role, and member.
  *
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
- *
  * ```sh
- * $ pulumi import gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember editor "projects/{{project}}/global/instanceTemplates/{{instance_template}} roles/compute.instanceAdmin user:jane@example.com"
+ * $ terraform import google_compute_instance_template_iam_member.editor "projects/{{project}}/global/instanceTemplates/{{instance_template}} roles/compute.instanceAdmin user:jane@example.com"
  * ```
  *
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
- *
  * ```sh
- * $ pulumi import gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember editor "projects/{{project}}/global/instanceTemplates/{{instance_template}} roles/compute.instanceAdmin"
+ * $ terraform import google_compute_instance_template_iam_binding.editor "projects/{{project}}/global/instanceTemplates/{{instance_template}} roles/compute.instanceAdmin"
  * ```
  *
  * IAM policy imports use the identifier of the resource in question, e.g.
- *
  * ```sh
  * $ pulumi import gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember editor projects/{{project}}/global/instanceTemplates/{{instance_template}}
  * ```
  *
- * -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
- *
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class InstanceTemplateIamMember extends pulumi.CustomResource {

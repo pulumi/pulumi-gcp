@@ -17,7 +17,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceNetworkInterface {
     /**
-     * @return Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet. If omitted, ssh provisioners will not
+     * work unless Terraform can send traffic to the instance&#39;s network (e.g. via
+     * tunnel or because it is running on another cloud instance on that network).
+     * This block can be specified once per `networkInterface`. Structure documented below.
      * 
      */
     private @Nullable List<InstanceNetworkInterfaceAccessConfig> accessConfigs;
@@ -127,7 +132,12 @@ public final class InstanceNetworkInterface {
 
     private InstanceNetworkInterface() {}
     /**
-     * @return Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet. If omitted, ssh provisioners will not
+     * work unless Terraform can send traffic to the instance&#39;s network (e.g. via
+     * tunnel or because it is running on another cloud instance on that network).
+     * This block can be specified once per `networkInterface`. Structure documented below.
      * 
      */
     public List<InstanceNetworkInterfaceAccessConfig> accessConfigs() {

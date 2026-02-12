@@ -12,6 +12,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An IAM Principal Access Boundary Policy resource. This resource has no effect on accesses until is bound to a target through policy bindings.
+// You can see further documentation on policy bindings in:
+//   - [Organizations](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_organizations_policy_binding)
+//   - [Folders](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_folders_policy_binding)
+//   - [Projects](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_projects_policy_binding)
+//
+// To get more information about PrincipalAccessBoundaryPolicy, see:
+//
+// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
+// * How-to Guides
+//   - [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
+//
 // ## Example Usage
 //
 // ### Iam Principal Access Boundary Policy
@@ -105,16 +117,12 @@ import (
 // PrincipalAccessBoundaryPolicy can be imported using any of these accepted formats:
 //
 // * `organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}`
-//
 // * `{{organization}}/{{location}}/{{principal_access_boundary_policy_id}}`
 //
 // When using the `pulumi import` command, PrincipalAccessBoundaryPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default {{organization}}/{{location}}/{{principal_access_boundary_policy_id}}
 // ```
 type PrincipalAccessBoundaryPolicy struct {
@@ -132,7 +140,8 @@ type PrincipalAccessBoundaryPolicy struct {
 	// Structure is documented below.
 	Details PrincipalAccessBoundaryPolicyDetailsOutput `pulumi:"details"`
 	// The description of the principal access boundary policy. Must be less than or equal to 63 characters.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// The etag for the principal access boundary. If this is provided on update, it must match the server's etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -203,7 +212,8 @@ type principalAccessBoundaryPolicyState struct {
 	// Structure is documented below.
 	Details *PrincipalAccessBoundaryPolicyDetails `pulumi:"details"`
 	// The description of the principal access boundary policy. Must be less than or equal to 63 characters.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// The etag for the principal access boundary. If this is provided on update, it must match the server's etag.
 	Etag *string `pulumi:"etag"`
@@ -236,7 +246,8 @@ type PrincipalAccessBoundaryPolicyState struct {
 	// Structure is documented below.
 	Details PrincipalAccessBoundaryPolicyDetailsPtrInput
 	// The description of the principal access boundary policy. Must be less than or equal to 63 characters.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// The etag for the principal access boundary. If this is provided on update, it must match the server's etag.
 	Etag pulumi.StringPtrInput
@@ -415,6 +426,7 @@ func (o PrincipalAccessBoundaryPolicyOutput) DisplayName() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *PrincipalAccessBoundaryPolicy) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o PrincipalAccessBoundaryPolicyOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PrincipalAccessBoundaryPolicy) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

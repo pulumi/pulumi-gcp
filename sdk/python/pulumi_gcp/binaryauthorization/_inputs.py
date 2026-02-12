@@ -33,46 +33,41 @@ __all__ = [
     'PolicyDefaultAdmissionRuleArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AttestorAttestationAuthorityNoteArgsDict(TypedDict):
-        note_reference: pulumi.Input[_builtins.str]
-        """
-        The resource name of a ATTESTATION_AUTHORITY Note, created by the
-        user. If the Note is in a different project from the Attestor, it
-        should be specified in the format `projects/*/notes/*` (or the legacy
-        `providers/*/notes/*`). This field may not be updated.
-        An attestation by this attestor is stored as a Container Analysis
-        ATTESTATION_AUTHORITY Occurrence that names a container image
-        and that links to this Note.
-        """
-        delegation_service_account_email: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        This field will contain the service account email address that
-        this Attestor will use as the principal when querying Container
-        Analysis. Attestor administrators must grant this service account
-        the IAM role needed to read attestations from the noteReference in
-        Container Analysis (containeranalysis.notes.occurrences.viewer).
-        This email address is fixed for the lifetime of the Attestor, but
-        callers should not make any other assumptions about the service
-        account email; future versions may use an email based on a
-        different naming pattern.
-        """
-        public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgsDict']]]]
-        """
-        Public keys that verify attestations signed by this attestor. This
-        field may be updated.
-        If this field is non-empty, one of the specified public keys must
-        verify that an attestation was signed by this attestor for the
-        image specified in the admission request.
-        If this field is empty, this attestor always returns that no valid
-        attestations exist.
-        Structure is documented below.
-        """
-elif False:
-    AttestorAttestationAuthorityNoteArgsDict: TypeAlias = Mapping[str, Any]
+class AttestorAttestationAuthorityNoteArgsDict(TypedDict):
+    note_reference: pulumi.Input[_builtins.str]
+    """
+    The resource name of a ATTESTATION_AUTHORITY Note, created by the
+    user. If the Note is in a different project from the Attestor, it
+    should be specified in the format `projects/*/notes/*` (or the legacy
+    `providers/*/notes/*`). This field may not be updated.
+    An attestation by this attestor is stored as a Container Analysis
+    ATTESTATION_AUTHORITY Occurrence that names a container image
+    and that links to this Note.
+    """
+    delegation_service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    This field will contain the service account email address that
+    this Attestor will use as the principal when querying Container
+    Analysis. Attestor administrators must grant this service account
+    the IAM role needed to read attestations from the noteReference in
+    Container Analysis (containeranalysis.notes.occurrences.viewer).
+    This email address is fixed for the lifetime of the Attestor, but
+    callers should not make any other assumptions about the service
+    account email; future versions may use an email based on a
+    different naming pattern.
+    """
+    public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgsDict']]]]
+    """
+    Public keys that verify attestations signed by this attestor. This
+    field may be updated.
+    If this field is non-empty, one of the specified public keys must
+    verify that an attestation was signed by this attestor for the
+    image specified in the admission request.
+    If this field is empty, this attestor always returns that no valid
+    attestations exist.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AttestorAttestationAuthorityNoteArgs:
@@ -172,44 +167,41 @@ class AttestorAttestationAuthorityNoteArgs:
         pulumi.set(self, "public_keys", value)
 
 
-if not MYPY:
-    class AttestorAttestationAuthorityNotePublicKeyArgsDict(TypedDict):
-        ascii_armored_pgp_public_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ASCII-armored representation of a PGP public key, as the
-        entire output by the command
-        `gpg --export --armor foo@example.com` (either LF or CRLF
-        line endings). When using this field, id should be left
-        blank. The BinAuthz API handlers will calculate the ID
-        and fill it in automatically. BinAuthz computes this ID
-        as the OpenPGP RFC4880 V4 fingerprint, represented as
-        upper-case hex. If id is provided by the caller, it will
-        be overwritten by the API-calculated ID.
-        """
-        comment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A descriptive comment. This field may be updated.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of this public key. Signatures verified by BinAuthz
-        must include the ID of the public key that can be used to
-        verify them, and that ID must match the contents of this
-        field exactly. Additional restrictions on this field can
-        be imposed based on which public key type is encapsulated.
-        See the documentation on publicKey cases below for details.
-        """
-        pkix_public_key: NotRequired[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgsDict']]
-        """
-        A raw PKIX SubjectPublicKeyInfo format public key.
-        NOTE: id may be explicitly provided by the caller when using this
-        type of public key, but it MUST be a valid RFC3986 URI. If id is left
-        blank, a default one will be computed based on the digest of the DER
-        encoding of the public key.
-        Structure is documented below.
-        """
-elif False:
-    AttestorAttestationAuthorityNotePublicKeyArgsDict: TypeAlias = Mapping[str, Any]
+class AttestorAttestationAuthorityNotePublicKeyArgsDict(TypedDict):
+    ascii_armored_pgp_public_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ASCII-armored representation of a PGP public key, as the
+    entire output by the command
+    `gpg --export --armor foo@example.com` (either LF or CRLF
+    line endings). When using this field, id should be left
+    blank. The BinAuthz API handlers will calculate the ID
+    and fill it in automatically. BinAuthz computes this ID
+    as the OpenPGP RFC4880 V4 fingerprint, represented as
+    upper-case hex. If id is provided by the caller, it will
+    be overwritten by the API-calculated ID.
+    """
+    comment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A descriptive comment. This field may be updated.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of this public key. Signatures verified by BinAuthz
+    must include the ID of the public key that can be used to
+    verify them, and that ID must match the contents of this
+    field exactly. Additional restrictions on this field can
+    be imposed based on which public key type is encapsulated.
+    See the documentation on publicKey cases below for details.
+    """
+    pkix_public_key: NotRequired[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgsDict']]
+    """
+    A raw PKIX SubjectPublicKeyInfo format public key.
+    NOTE: id may be explicitly provided by the caller when using this
+    type of public key, but it MUST be a valid RFC3986 URI. If id is left
+    blank, a default one will be computed based on the digest of the DER
+    encoding of the public key.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AttestorAttestationAuthorityNotePublicKeyArgs:
@@ -318,23 +310,20 @@ class AttestorAttestationAuthorityNotePublicKeyArgs:
         pulumi.set(self, "pkix_public_key", value)
 
 
-if not MYPY:
-    class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgsDict(TypedDict):
-        public_key_pem: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A PEM-encoded public key, as described in
-        `https://tools.ietf.org/html/rfc7468#section-13`
-        """
-        signature_algorithm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The signature algorithm used to verify a message against
-        a signature using this key. These signature algorithm must
-        match the structure and any object identifiers encoded in
-        publicKeyPem (i.e. this algorithm must match that of the
-        public key).
-        """
-elif False:
-    AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgsDict: TypeAlias = Mapping[str, Any]
+class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgsDict(TypedDict):
+    public_key_pem: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A PEM-encoded public key, as described in
+    `https://tools.ietf.org/html/rfc7468#section-13`
+    """
+    signature_algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The signature algorithm used to verify a message against
+    a signature using this key. These signature algorithm must
+    match the structure and any object identifiers encoded in
+    publicKeyPem (i.e. this algorithm must match that of the
+    public key).
+    """
 
 @pulumi.input_type
 class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs:
@@ -385,13 +374,10 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs:
         pulumi.set(self, "signature_algorithm", value)
 
 
-if not MYPY:
-    class AttestorIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    AttestorIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class AttestorIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AttestorIamBindingConditionArgs:
@@ -432,13 +418,10 @@ class AttestorIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class AttestorIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    AttestorIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class AttestorIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AttestorIamMemberConditionArgs:
@@ -479,17 +462,14 @@ class AttestorIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class PolicyAdmissionWhitelistPatternArgsDict(TypedDict):
-        name_pattern: pulumi.Input[_builtins.str]
-        """
-        An image name pattern to whitelist, in the form
-        `registry/path/to/image`. This supports a trailing * as a
-        wildcard, but this is allowed only in text after the registry/
-        part.
-        """
-elif False:
-    PolicyAdmissionWhitelistPatternArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyAdmissionWhitelistPatternArgsDict(TypedDict):
+    name_pattern: pulumi.Input[_builtins.str]
+    """
+    An image name pattern to whitelist, in the form
+    `registry/path/to/image`. This supports a trailing * as a
+    wildcard, but this is allowed only in text after the registry/
+    part.
+    """
 
 @pulumi.input_type
 class PolicyAdmissionWhitelistPatternArgs:
@@ -519,35 +499,32 @@ class PolicyAdmissionWhitelistPatternArgs:
         pulumi.set(self, "name_pattern", value)
 
 
-if not MYPY:
-    class PolicyClusterAdmissionRuleArgsDict(TypedDict):
-        cluster: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        enforcement_mode: pulumi.Input[_builtins.str]
-        """
-        The action when a pod creation is denied by the admission rule.
-        Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
-        """
-        evaluation_mode: pulumi.Input[_builtins.str]
-        """
-        How this admission rule will be evaluated.
-        Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
-        """
-        require_attestations_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The resource names of the attestors that must attest to a
-        container image. If the attestor is in a different project from the
-        policy, it should be specified in the format `projects/*/attestors/*`.
-        Each attestor must exist before a policy can reference it. To add an
-        attestor to a policy the principal issuing the policy change
-        request must be able to read the attestor resource.
-        Note: this field must be non-empty when the evaluation_mode field
-        specifies REQUIRE_ATTESTATION, otherwise it must be empty.
-        """
-elif False:
-    PolicyClusterAdmissionRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyClusterAdmissionRuleArgsDict(TypedDict):
+    cluster: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    enforcement_mode: pulumi.Input[_builtins.str]
+    """
+    The action when a pod creation is denied by the admission rule.
+    Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
+    """
+    evaluation_mode: pulumi.Input[_builtins.str]
+    """
+    How this admission rule will be evaluated.
+    Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
+    """
+    require_attestations_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The resource names of the attestors that must attest to a
+    container image. If the attestor is in a different project from the
+    policy, it should be specified in the format `projects/*/attestors/*`.
+    Each attestor must exist before a policy can reference it. To add an
+    attestor to a policy the principal issuing the policy change
+    request must be able to read the attestor resource.
+    Note: this field must be non-empty when the evaluation_mode field
+    specifies REQUIRE_ATTESTATION, otherwise it must be empty.
+    """
 
 @pulumi.input_type
 class PolicyClusterAdmissionRuleArgs:
@@ -635,31 +612,28 @@ class PolicyClusterAdmissionRuleArgs:
         pulumi.set(self, "require_attestations_bies", value)
 
 
-if not MYPY:
-    class PolicyDefaultAdmissionRuleArgsDict(TypedDict):
-        enforcement_mode: pulumi.Input[_builtins.str]
-        """
-        The action when a pod creation is denied by the admission rule.
-        Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
-        """
-        evaluation_mode: pulumi.Input[_builtins.str]
-        """
-        How this admission rule will be evaluated.
-        Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
-        """
-        require_attestations_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The resource names of the attestors that must attest to a
-        container image. If the attestor is in a different project from the
-        policy, it should be specified in the format `projects/*/attestors/*`.
-        Each attestor must exist before a policy can reference it. To add an
-        attestor to a policy the principal issuing the policy change
-        request must be able to read the attestor resource.
-        Note: this field must be non-empty when the evaluation_mode field
-        specifies REQUIRE_ATTESTATION, otherwise it must be empty.
-        """
-elif False:
-    PolicyDefaultAdmissionRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyDefaultAdmissionRuleArgsDict(TypedDict):
+    enforcement_mode: pulumi.Input[_builtins.str]
+    """
+    The action when a pod creation is denied by the admission rule.
+    Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
+    """
+    evaluation_mode: pulumi.Input[_builtins.str]
+    """
+    How this admission rule will be evaluated.
+    Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
+    """
+    require_attestations_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The resource names of the attestors that must attest to a
+    container image. If the attestor is in a different project from the
+    policy, it should be specified in the format `projects/*/attestors/*`.
+    Each attestor must exist before a policy can reference it. To add an
+    attestor to a policy the principal issuing the policy change
+    request must be able to read the attestor resource.
+    Note: this field must be non-empty when the evaluation_mode field
+    specifies REQUIRE_ATTESTATION, otherwise it must be empty.
+    """
 
 @pulumi.input_type
 class PolicyDefaultAdmissionRuleArgs:

@@ -222,8 +222,12 @@ type Cluster struct {
 	// for more information.
 	DefaultMaxPodsPerNode pulumi.IntOutput `pulumi:"defaultMaxPodsPerNode"`
 	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
-	DefaultSnatStatus  ClusterDefaultSnatStatusOutput `pulumi:"defaultSnatStatus"`
-	DeletionProtection pulumi.BoolPtrOutput           `pulumi:"deletionProtection"`
+	DefaultSnatStatus ClusterDefaultSnatStatusOutput `pulumi:"defaultSnatStatus"`
+	// Whether Terraform will be prevented from
+	// destroying the cluster.  Deleting this cluster via `terraform destroy` or
+	// `pulumi up` will only succeed if this field is `false` in the Terraform
+	// state.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Description of the cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disable L4 load balancer VPC firewalls to enable firewall policies.
@@ -586,8 +590,12 @@ type clusterState struct {
 	// for more information.
 	DefaultMaxPodsPerNode *int `pulumi:"defaultMaxPodsPerNode"`
 	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
-	DefaultSnatStatus  *ClusterDefaultSnatStatus `pulumi:"defaultSnatStatus"`
-	DeletionProtection *bool                     `pulumi:"deletionProtection"`
+	DefaultSnatStatus *ClusterDefaultSnatStatus `pulumi:"defaultSnatStatus"`
+	// Whether Terraform will be prevented from
+	// destroying the cluster.  Deleting this cluster via `terraform destroy` or
+	// `pulumi up` will only succeed if this field is `false` in the Terraform
+	// state.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
 	// Disable L4 load balancer VPC firewalls to enable firewall policies.
@@ -916,7 +924,11 @@ type ClusterState struct {
 	// for more information.
 	DefaultMaxPodsPerNode pulumi.IntPtrInput
 	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
-	DefaultSnatStatus  ClusterDefaultSnatStatusPtrInput
+	DefaultSnatStatus ClusterDefaultSnatStatusPtrInput
+	// Whether Terraform will be prevented from
+	// destroying the cluster.  Deleting this cluster via `terraform destroy` or
+	// `pulumi up` will only succeed if this field is `false` in the Terraform
+	// state.
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
@@ -1250,8 +1262,12 @@ type clusterArgs struct {
 	// for more information.
 	DefaultMaxPodsPerNode *int `pulumi:"defaultMaxPodsPerNode"`
 	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
-	DefaultSnatStatus  *ClusterDefaultSnatStatus `pulumi:"defaultSnatStatus"`
-	DeletionProtection *bool                     `pulumi:"deletionProtection"`
+	DefaultSnatStatus *ClusterDefaultSnatStatus `pulumi:"defaultSnatStatus"`
+	// Whether Terraform will be prevented from
+	// destroying the cluster.  Deleting this cluster via `terraform destroy` or
+	// `pulumi up` will only succeed if this field is `false` in the Terraform
+	// state.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
 	// Disable L4 load balancer VPC firewalls to enable firewall policies.
@@ -1564,7 +1580,11 @@ type ClusterArgs struct {
 	// for more information.
 	DefaultMaxPodsPerNode pulumi.IntPtrInput
 	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
-	DefaultSnatStatus  ClusterDefaultSnatStatusPtrInput
+	DefaultSnatStatus ClusterDefaultSnatStatusPtrInput
+	// Whether Terraform will be prevented from
+	// destroying the cluster.  Deleting this cluster via `terraform destroy` or
+	// `pulumi up` will only succeed if this field is `false` in the Terraform
+	// state.
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
@@ -2009,6 +2029,10 @@ func (o ClusterOutput) DefaultSnatStatus() ClusterDefaultSnatStatusOutput {
 	return o.ApplyT(func(v *Cluster) ClusterDefaultSnatStatusOutput { return v.DefaultSnatStatus }).(ClusterDefaultSnatStatusOutput)
 }
 
+// Whether Terraform will be prevented from
+// destroying the cluster.  Deleting this cluster via `terraform destroy` or
+// `pulumi up` will only succeed if this field is `false` in the Terraform
+// state.
 func (o ClusterOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

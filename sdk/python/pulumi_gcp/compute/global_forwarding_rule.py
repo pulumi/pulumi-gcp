@@ -1731,22 +1731,14 @@ class GlobalForwardingRule(pulumi.CustomResource):
         GlobalForwardingRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/forwardingRules/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, GlobalForwardingRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default projects/{{project}}/global/forwardingRules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default {{name}}
         ```
 
@@ -2270,22 +2262,14 @@ class GlobalForwardingRule(pulumi.CustomResource):
         GlobalForwardingRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/forwardingRules/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, GlobalForwardingRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default projects/{{project}}/global/forwardingRules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default {{name}}
         ```
 

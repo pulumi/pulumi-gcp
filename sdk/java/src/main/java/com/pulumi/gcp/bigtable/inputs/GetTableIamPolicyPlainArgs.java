@@ -22,9 +22,19 @@ public final class GetTableIamPolicyPlainArgs extends com.pulumi.resources.Invok
         return this.instanceName;
     }
 
+    /**
+     * The project in which the table belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     @Import(name="project")
     private @Nullable String project;
 
+    /**
+     * @return The project in which the table belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -75,6 +85,13 @@ public final class GetTableIamPolicyPlainArgs extends com.pulumi.resources.Invok
             return this;
         }
 
+        /**
+         * @param project The project in which the table belongs. If it
+         * is not provided, Terraform will use the provider default.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;

@@ -28,8 +28,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -72,22 +70,14 @@ import (
 // CmekConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/cmekConfigs/{{cmek_config_id}}`
-//
 // * `{{project}}/{{location}}/{{cmek_config_id}}`
-//
 // * `{{location}}/{{cmek_config_id}}`
 //
 // When using the `pulumi import` command, CmekConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:discoveryengine/cmekConfig:CmekConfig default projects/{{project}}/locations/{{location}}/cmekConfigs/{{cmek_config_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:discoveryengine/cmekConfig:CmekConfig default {{project}}/{{location}}/{{cmek_config_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:discoveryengine/cmekConfig:CmekConfig default {{location}}/{{cmek_config_id}}
 // ```
 type CmekConfig struct {

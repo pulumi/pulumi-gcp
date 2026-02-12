@@ -332,22 +332,14 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         TenantInboundSamlConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/tenants/{{tenant}}/inboundSamlConfigs/{{name}}`
-
         * `{{project}}/{{tenant}}/{{name}}`
-
         * `{{tenant}}/{{name}}`
 
         When using the `pulumi import` command, TenantInboundSamlConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default projects/{{project}}/tenants/{{tenant}}/inboundSamlConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{project}}/{{tenant}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{tenant}}/{{name}}
         ```
 
@@ -413,22 +405,14 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         TenantInboundSamlConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/tenants/{{tenant}}/inboundSamlConfigs/{{name}}`
-
         * `{{project}}/{{tenant}}/{{name}}`
-
         * `{{tenant}}/{{name}}`
 
         When using the `pulumi import` command, TenantInboundSamlConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default projects/{{project}}/tenants/{{tenant}}/inboundSamlConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{project}}/{{tenant}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{tenant}}/{{name}}
         ```
 

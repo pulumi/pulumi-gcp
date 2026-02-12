@@ -6208,6 +6208,12 @@ func (o GetRegionInstanceTemplateGuestAcceleratorArrayOutput) Index(i pulumi.Int
 }
 
 type GetRegionInstanceTemplateNetworkInterface struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Omit to ensure that the instance
+	// is not accessible from the Internet (this means that ssh provisioners will
+	// not work unless you are running Terraform can send traffic to the instance's
+	// network (e.g. via tunnel or because it is running on another cloud instance
+	// on that network). This block can be repeated multiple times. Structure documented below.
 	AccessConfigs []GetRegionInstanceTemplateNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
@@ -6259,6 +6265,12 @@ type GetRegionInstanceTemplateNetworkInterfaceInput interface {
 }
 
 type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Omit to ensure that the instance
+	// is not accessible from the Internet (this means that ssh provisioners will
+	// not work unless you are running Terraform can send traffic to the instance's
+	// network (e.g. via tunnel or because it is running on another cloud instance
+	// on that network). This block can be repeated multiple times. Structure documented below.
 	AccessConfigs GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
@@ -6349,6 +6361,12 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) ToGetRegionInstanceTemp
 	return o
 }
 
+// Access configurations, i.e. IPs via which this
+// instance can be accessed via the Internet. Omit to ensure that the instance
+// is not accessible from the Internet (this means that ssh provisioners will
+// not work unless you are running Terraform can send traffic to the instance's
+// network (e.g. via tunnel or because it is running on another cloud instance
+// on that network). This block can be repeated multiple times. Structure documented below.
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) AccessConfigs() GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) []GetRegionInstanceTemplateNetworkInterfaceAccessConfig {
 		return v.AccessConfigs

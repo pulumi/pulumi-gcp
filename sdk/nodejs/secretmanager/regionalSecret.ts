@@ -152,22 +152,14 @@ import * as utilities from "../utilities";
  * RegionalSecret can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}`
- *
  * * `{{project}}/{{location}}/{{secret_id}}`
- *
  * * `{{location}}/{{secret_id}}`
  *
  * When using the `pulumi import` command, RegionalSecret can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{project}}/{{location}}/{{secret_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{location}}/{{secret_id}}
  * ```
  */
@@ -224,7 +216,15 @@ export class RegionalSecret extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly customerManagedEncryption: pulumi.Output<outputs.secretmanager.RegionalSecretCustomerManagedEncryption | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the federation will fail.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -413,7 +413,15 @@ export interface RegionalSecretState {
      * Structure is documented below.
      */
     customerManagedEncryption?: pulumi.Input<inputs.secretmanager.RegionalSecretCustomerManagedEncryption>;
+    /**
+     * Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the federation will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -532,6 +540,11 @@ export interface RegionalSecretArgs {
      * Structure is documented below.
      */
     customerManagedEncryption?: pulumi.Input<inputs.secretmanager.RegionalSecretCustomerManagedEncryption>;
+    /**
+     * Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the federation will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on

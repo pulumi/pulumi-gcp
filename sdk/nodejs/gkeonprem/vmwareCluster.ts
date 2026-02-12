@@ -248,22 +248,14 @@ import * as utilities from "../utilities";
  * VmwareCluster can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{location}}/{{name}}
  * ```
  */
@@ -358,6 +350,9 @@ export class VMwareCluster extends pulumi.CustomResource {
      * Disable bundled ingress.
      */
     declare public readonly disableBundledIngress: pulumi.Output<boolean | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Enable advanced cluster. Default to false.
@@ -648,6 +643,9 @@ export interface VMwareClusterState {
      * Disable bundled ingress.
      */
     disableBundledIngress?: pulumi.Input<boolean>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Enable advanced cluster. Default to false.

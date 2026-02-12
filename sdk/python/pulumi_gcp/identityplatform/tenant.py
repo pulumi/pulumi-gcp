@@ -298,22 +298,14 @@ class Tenant(pulumi.CustomResource):
         Tenant can be imported using any of these accepted formats:
 
         * `projects/{{project}}/tenants/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
         ```
 
@@ -364,22 +356,14 @@ class Tenant(pulumi.CustomResource):
         Tenant can be imported using any of these accepted formats:
 
         * `projects/{{project}}/tenants/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
         ```
 

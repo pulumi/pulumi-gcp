@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Observability
 {
     /// <summary>
+    /// A trace scope is a collection of resources whose traces are queried together
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Observability Trace Scope Basic
@@ -58,22 +63,14 @@ namespace Pulumi.Gcp.Observability
     /// TraceScope can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/traceScopes/{{trace_scope_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{trace_scope_id}}`
-    /// 
     /// * `{{location}}/{{trace_scope_id}}`
     /// 
     /// When using the `pulumi import` command, TraceScope can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:observability/traceScope:TraceScope default projects/{{project}}/locations/{{location}}/traceScopes/{{trace_scope_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:observability/traceScope:TraceScope default {{project}}/{{location}}/{{trace_scope_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:observability/traceScope:TraceScope default {{location}}/{{trace_scope_id}}
     /// ```
     /// </summary>

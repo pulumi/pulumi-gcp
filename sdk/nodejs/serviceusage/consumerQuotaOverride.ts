@@ -5,6 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A consumer override is applied to the consumer on its own authority to limit its own quota usage.
+ * Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides,
+ * producer overrides, or the default limit of the service.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about ConsumerQuotaOverride, see:
+ * * How-to Guides
+ *     * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
+ *     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
+ *
  * ## Example Usage
  *
  * ### Consumer Quota Override
@@ -97,22 +109,14 @@ import * as utilities from "../utilities";
  * ConsumerQuotaOverride can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
- *
  * * `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
- *
  * * `{{service}}/{{metric}}/{{limit}}/{{name}}`
  *
  * When using the `pulumi import` command, ConsumerQuotaOverride can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
  * ```
  */

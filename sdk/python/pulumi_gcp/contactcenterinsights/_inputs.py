@@ -25,75 +25,70 @@ __all__ = [
     'AnalysisRuleAnnotatorSelectorSummarizationConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AnalysisRuleAnnotatorSelectorArgsDict(TypedDict):
-        issue_models: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The issue model to run. If not provided, the most recently deployed topic
-        model will be used. The provided issue model will only be used for
-        inference if the issue model is deployed and if run_issue_model_annotator
-        is set to true. If more than one issue model is provided, only the first
-        provided issue model will be used for inference.
-        """
-        phrase_matchers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of phrase matchers to run. If not provided, all active phrase
-        matchers will be used. If inactive phrase matchers are provided, they will
-        not be used. Phrase matchers will be run only if
-        run_phrase_matcher_annotator is set to true. Format:
-        projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
-        """
-        qa_config: NotRequired[pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigArgsDict']]
-        """
-        Configuration for the QA feature.
-        Structure is documented below.
-        """
-        run_entity_annotator: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to run the entity annotator.
-        """
-        run_intent_annotator: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to run the intent annotator.
-        """
-        run_interruption_annotator: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to run the interruption annotator.
-        """
-        run_issue_model_annotator: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to run the issue model annotator. A model should have already been
-        deployed for this to take effect.
-        """
-        run_phrase_matcher_annotator: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to run the active phrase matcher annotator(s).
-        """
-        run_qa_annotator: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to run the QA annotator.
-        """
-        run_sentiment_annotator: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to run the sentiment annotator.
-        """
-        run_silence_annotator: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to run the silence annotator.
-        """
-        run_summarization_annotator: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to run the summarization annotator.
-        """
-        summarization_config: NotRequired[pulumi.Input['AnalysisRuleAnnotatorSelectorSummarizationConfigArgsDict']]
-        """
-        Configuration for summarization.
-        Structure is documented below.
-        """
-elif False:
-    AnalysisRuleAnnotatorSelectorArgsDict: TypeAlias = Mapping[str, Any]
+class AnalysisRuleAnnotatorSelectorArgsDict(TypedDict):
+    issue_models: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The issue model to run. If not provided, the most recently deployed topic
+    model will be used. The provided issue model will only be used for
+    inference if the issue model is deployed and if run_issue_model_annotator
+    is set to true. If more than one issue model is provided, only the first
+    provided issue model will be used for inference.
+    """
+    phrase_matchers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of phrase matchers to run. If not provided, all active phrase
+    matchers will be used. If inactive phrase matchers are provided, they will
+    not be used. Phrase matchers will be run only if
+    run_phrase_matcher_annotator is set to true. Format:
+    projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+    """
+    qa_config: NotRequired[pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigArgsDict']]
+    """
+    Configuration for the QA feature.
+    Structure is documented below.
+    """
+    run_entity_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to run the entity annotator.
+    """
+    run_intent_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to run the intent annotator.
+    """
+    run_interruption_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to run the interruption annotator.
+    """
+    run_issue_model_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to run the issue model annotator. A model should have already been
+    deployed for this to take effect.
+    """
+    run_phrase_matcher_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to run the active phrase matcher annotator(s).
+    """
+    run_qa_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to run the QA annotator.
+    """
+    run_sentiment_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to run the sentiment annotator.
+    """
+    run_silence_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to run the silence annotator.
+    """
+    run_summarization_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to run the summarization annotator.
+    """
+    summarization_config: NotRequired[pulumi.Input['AnalysisRuleAnnotatorSelectorSummarizationConfigArgsDict']]
+    """
+    Configuration for summarization.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AnalysisRuleAnnotatorSelectorArgs:
@@ -332,15 +327,12 @@ class AnalysisRuleAnnotatorSelectorArgs:
         pulumi.set(self, "summarization_config", value)
 
 
-if not MYPY:
-    class AnalysisRuleAnnotatorSelectorQaConfigArgsDict(TypedDict):
-        scorecard_list: NotRequired[pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgsDict']]
-        """
-        Container for a list of scorecards.
-        Structure is documented below.
-        """
-elif False:
-    AnalysisRuleAnnotatorSelectorQaConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AnalysisRuleAnnotatorSelectorQaConfigArgsDict(TypedDict):
+    scorecard_list: NotRequired[pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgsDict']]
+    """
+    Container for a list of scorecards.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AnalysisRuleAnnotatorSelectorQaConfigArgs:
@@ -367,14 +359,11 @@ class AnalysisRuleAnnotatorSelectorQaConfigArgs:
         pulumi.set(self, "scorecard_list", value)
 
 
-if not MYPY:
-    class AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgsDict(TypedDict):
-        qa_scorecard_revisions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of QaScorecardRevisions.
-        """
-elif False:
-    AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgsDict: TypeAlias = Mapping[str, Any]
+class AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgsDict(TypedDict):
+    qa_scorecard_revisions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of QaScorecardRevisions.
+    """
 
 @pulumi.input_type
 class AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs:
@@ -399,25 +388,22 @@ class AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs:
         pulumi.set(self, "qa_scorecard_revisions", value)
 
 
-if not MYPY:
-    class AnalysisRuleAnnotatorSelectorSummarizationConfigArgsDict(TypedDict):
-        conversation_profile: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource name of the Dialogflow conversation profile.
-        Format:
-        projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
-        """
-        summarization_model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default summarization model to be used.
-        Possible values:
-        SUMMARIZATION_MODEL_UNSPECIFIED
-        BASELINE_MODEL
-        BASELINE_MODEL_V2_0
-        Possible values are: `BASELINE_MODEL`, `BASELINE_MODEL_V2_0`.
-        """
-elif False:
-    AnalysisRuleAnnotatorSelectorSummarizationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AnalysisRuleAnnotatorSelectorSummarizationConfigArgsDict(TypedDict):
+    conversation_profile: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource name of the Dialogflow conversation profile.
+    Format:
+    projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+    """
+    summarization_model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default summarization model to be used.
+    Possible values:
+    SUMMARIZATION_MODEL_UNSPECIFIED
+    BASELINE_MODEL
+    BASELINE_MODEL_V2_0
+    Possible values are: `BASELINE_MODEL`, `BASELINE_MODEL_V2_0`.
+    """
 
 @pulumi.input_type
 class AnalysisRuleAnnotatorSelectorSummarizationConfigArgs:

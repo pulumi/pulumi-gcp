@@ -119,6 +119,10 @@ def get_cluster_iam_policy(cluster: Optional[_builtins.str] = None,
 
 
     :param _builtins.str cluster: The name or relative resource id of the cluster to manage IAM policies for.
+    :param _builtins.str project: The project in which the cluster belongs. If it
+           is not provided, Terraform will use the provider default.
+    :param _builtins.str region: The region in which the cluster belongs. If it
+           is not provided, Terraform will use the provider default.
     """
     __args__ = dict()
     __args__['cluster'] = cluster
@@ -153,6 +157,10 @@ def get_cluster_iam_policy_output(cluster: Optional[pulumi.Input[_builtins.str]]
 
 
     :param _builtins.str cluster: The name or relative resource id of the cluster to manage IAM policies for.
+    :param _builtins.str project: The project in which the cluster belongs. If it
+           is not provided, Terraform will use the provider default.
+    :param _builtins.str region: The region in which the cluster belongs. If it
+           is not provided, Terraform will use the provider default.
     """
     __args__ = dict()
     __args__['cluster'] = cluster

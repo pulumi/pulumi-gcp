@@ -36,6 +36,25 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A managed alloydb cluster.
+ * 
+ * To get more information about Cluster, see:
+ * 
+ * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+ * * How-to Guides
+ *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+ * 
+ * &gt; **Note:** Users can promote a secondary cluster to a primary cluster with the help of `clusterType`.
+ * To promote, users have to set the `clusterType` property as `PRIMARY` and remove the `secondaryConfig` field from cluster configuration.
+ * See Example.
+ * 
+ * Switchover is supported in terraform by refreshing the state of the terraform configurations.
+ * The switchover operation still needs to be called outside of terraform.
+ * After the switchover operation is completed successfully:
+ *   1. Refresh the state of the AlloyDB resources by running `pulumi up -refresh-only --auto-approve` .
+ *   2. Manually update the terraform configuration file(s) to match the actual state of the resources by modifying the `clusterType` and `secondaryConfig` fields.
+ *   3. Verify the sync of terraform state by running `pulumi preview` and ensure that the infrastructure matches the configuration and no changes are required.
+ * 
  * ## Example Usage
  * 
  * ### Alloydb Cluster Basic
@@ -520,28 +539,16 @@ import javax.annotation.Nullable;
  * Cluster can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
- * 
  * * `{{project}}/{{location}}/{{cluster_id}}`
- * 
  * * `{{location}}/{{cluster_id}}`
- * 
  * * `{{cluster_id}}`
  * 
  * When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:alloydb/cluster:Cluster default {{project}}/{{location}}/{{cluster_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:alloydb/cluster:Cluster default {{location}}/{{cluster_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:alloydb/cluster:Cluster default {{cluster_id}}
  * ```
  * 
@@ -720,9 +727,23 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
     }
+    /**
+     * Whether Terraform will be prevented from destroying the cluster.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the cluster will fail.
+     * When the field is set to false, deleting the cluster is allowed.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the cluster.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the cluster will fail.
+     * When the field is set to false, deleting the cluster is allowed.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
@@ -740,9 +761,17 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

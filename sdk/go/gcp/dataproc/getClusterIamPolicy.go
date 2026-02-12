@@ -52,9 +52,13 @@ func GetClusterIamPolicy(ctx *pulumi.Context, args *GetClusterIamPolicyArgs, opt
 // A collection of arguments for invoking getClusterIamPolicy.
 type GetClusterIamPolicyArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
-	Cluster string  `pulumi:"cluster"`
+	Cluster string `pulumi:"cluster"`
+	// The project in which the cluster belongs. If it
+	// is not provided, Terraform will use the provider default.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// The region in which the cluster belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getClusterIamPolicy.
@@ -82,9 +86,13 @@ func GetClusterIamPolicyOutput(ctx *pulumi.Context, args GetClusterIamPolicyOutp
 // A collection of arguments for invoking getClusterIamPolicy.
 type GetClusterIamPolicyOutputArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
-	Cluster pulumi.StringInput    `pulumi:"cluster"`
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// The project in which the cluster belongs. If it
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	Region  pulumi.StringPtrInput `pulumi:"region"`
+	// The region in which the cluster belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetClusterIamPolicyOutputArgs) ElementType() reflect.Type {

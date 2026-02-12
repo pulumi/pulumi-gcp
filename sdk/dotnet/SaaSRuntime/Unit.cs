@@ -60,22 +60,14 @@ namespace Pulumi.Gcp.SaaSRuntime
     /// Unit can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/units/{{unit_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{unit_id}}`
-    /// 
     /// * `{{location}}/{{unit_id}}`
     /// 
     /// When using the `pulumi import` command, Unit can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:saasruntime/unit:Unit default projects/{{project}}/locations/{{location}}/units/{{unit_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:saasruntime/unit:Unit default {{project}}/{{location}}/{{unit_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:saasruntime/unit:Unit default {{location}}/{{unit_id}}
     /// ```
     /// </summary>
@@ -122,6 +114,9 @@ namespace Pulumi.Gcp.SaaSRuntime
         [Output("dependents")]
         public Output<ImmutableArray<Outputs.UnitDependent>> Dependents { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -188,6 +183,13 @@ namespace Pulumi.Gcp.SaaSRuntime
         [Output("ongoingOperations")]
         public Output<ImmutableArray<string>> OngoingOperations { get; private set; } = null!;
 
+        /// <summary>
+        /// Set of key/value pairs corresponding to output variables from execution of
+        /// actuation templates. The variables are declared in actuation configs (e.g
+        /// in helm chart or terraform) and the values are fetched and returned by the
+        /// actuation engine upon completion of execution.
+        /// Structure is documented below.
+        /// </summary>
         [Output("outputVariables")]
         public Output<ImmutableArray<Outputs.UnitOutputVariable>> OutputVariables { get; private set; } = null!;
 
@@ -502,6 +504,10 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
@@ -601,6 +607,14 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         [Input("outputVariables")]
         private InputList<Inputs.UnitOutputVariableGetArgs>? _outputVariables;
+
+        /// <summary>
+        /// Set of key/value pairs corresponding to output variables from execution of
+        /// actuation templates. The variables are declared in actuation configs (e.g
+        /// in helm chart or terraform) and the values are fetched and returned by the
+        /// actuation engine upon completion of execution.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.UnitOutputVariableGetArgs> OutputVariables
         {
             get => _outputVariables ?? (_outputVariables = new InputList<Inputs.UnitOutputVariableGetArgs>());

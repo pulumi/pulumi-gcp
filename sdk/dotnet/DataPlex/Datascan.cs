@@ -814,28 +814,16 @@ namespace Pulumi.Gcp.DataPlex
     /// Datascan can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{data_scan_id}}`
-    /// 
     /// * `{{location}}/{{data_scan_id}}`
-    /// 
     /// * `{{data_scan_id}}`
     /// 
     /// When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataplex/datascan:Datascan default projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/datascan:Datascan default {{project}}/{{location}}/{{data_scan_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/datascan:Datascan default {{location}}/{{data_scan_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/datascan:Datascan default {{data_scan_id}}
     /// ```
     /// </summary>

@@ -223,22 +223,14 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         NetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
-
         * `{{project}}/{{firewall_policy}}/{{name}}`
-
         * `{{firewall_policy}}/{{name}}`
 
         When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
         ```
 
@@ -290,22 +282,14 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         NetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
-
         * `{{project}}/{{firewall_policy}}/{{name}}`
-
         * `{{firewall_policy}}/{{name}}`
 
         When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
         ```
 

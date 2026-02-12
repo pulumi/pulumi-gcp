@@ -1348,28 +1348,16 @@ class RegionDisk(pulumi.CustomResource):
         RegionDisk can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/disks/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionDisk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default projects/{{project}}/regions/{{region}}/disks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{name}}
         ```
 
@@ -1596,28 +1584,16 @@ class RegionDisk(pulumi.CustomResource):
         RegionDisk can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/disks/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionDisk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default projects/{{project}}/regions/{{region}}/disks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{name}}
         ```
 

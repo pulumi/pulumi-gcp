@@ -10,6 +10,26 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Netapp
 {
     /// <summary>
+    /// Volume replication creates an asynchronous mirror of a volume in a different location. This capability
+    /// lets you use the replicated volume for critical application activity in case of a location-wide outage
+    /// or disaster.
+    /// 
+    /// A new destination volume is created as part of the replication resource. It's content is updated on a
+    /// schedule with content of the source volume. It can be used as a read-only copy while the mirror is
+    /// enabled, or as an independent read-write volume while the mirror is stopped. A destination volume will
+    /// also contain the snapshots of the source volume. Resuming a mirror will overwrite all changes on the
+    /// destination volume with the content of the source volume. While is mirror is enabled, all configuration
+    /// changes done to source or destination volumes are automatically done to both. Please note that the
+    /// destination volume is not a resource managed by Terraform.
+    /// 
+    /// Reversing the replication direction is not supported through the provider.
+    /// 
+    /// To get more information about VolumeReplication, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes.replications)
+    /// * How-to Guides
+    ///     * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-replication)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Netapp Volume Replication Create
@@ -97,22 +117,14 @@ namespace Pulumi.Gcp.Netapp
     /// VolumeReplication can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/replications/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
-    /// 
     /// * `{{location}}/{{volume_name}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, VolumeReplication can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/replications/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default {{project}}/{{location}}/{{volume_name}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default {{location}}/{{volume_name}}/{{name}}
     /// ```
     /// </summary>
@@ -125,6 +137,15 @@ namespace Pulumi.Gcp.Netapp
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// A destination volume is created as part of replication creation. The destination volume will not became
+        /// under Terraform management unless you import it manually. If you delete the replication, this volume
+        /// will remain.
+        /// Setting this parameter to true will delete the *current* destination volume when destroying the
+        /// replication. If you reversed the replication direction, this will be your former source volume!
+        /// For production use, it is recommended to keep this parameter false to avoid accidental volume
+        /// deletion. Handle with care. Default is false.
+        /// </summary>
         [Output("deleteDestinationVolume")]
         public Output<bool?> DeleteDestinationVolume { get; private set; } = null!;
 
@@ -289,6 +310,11 @@ namespace Pulumi.Gcp.Netapp
         [Output("volumeName")]
         public Output<string> VolumeName { get; private set; } = null!;
 
+        /// <summary>
+        /// Replication resource state is independent of mirror_state. With enough data, it can take many hours
+        /// for MirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+        /// create/stop/resume operations, set this parameter to true. Default is false.
+        /// </summary>
         [Output("waitForMirror")]
         public Output<bool?> WaitForMirror { get; private set; } = null!;
 
@@ -343,6 +369,15 @@ namespace Pulumi.Gcp.Netapp
 
     public sealed class VolumeReplicationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A destination volume is created as part of replication creation. The destination volume will not became
+        /// under Terraform management unless you import it manually. If you delete the replication, this volume
+        /// will remain.
+        /// Setting this parameter to true will delete the *current* destination volume when destroying the
+        /// replication. If you reversed the replication direction, this will be your former source volume!
+        /// For production use, it is recommended to keep this parameter false to avoid accidental volume
+        /// deletion. Handle with care. Default is false.
+        /// </summary>
         [Input("deleteDestinationVolume")]
         public Input<bool>? DeleteDestinationVolume { get; set; }
 
@@ -424,6 +459,11 @@ namespace Pulumi.Gcp.Netapp
         [Input("volumeName", required: true)]
         public Input<string> VolumeName { get; set; } = null!;
 
+        /// <summary>
+        /// Replication resource state is independent of mirror_state. With enough data, it can take many hours
+        /// for MirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+        /// create/stop/resume operations, set this parameter to true. Default is false.
+        /// </summary>
         [Input("waitForMirror")]
         public Input<bool>? WaitForMirror { get; set; }
 
@@ -441,6 +481,15 @@ namespace Pulumi.Gcp.Netapp
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// A destination volume is created as part of replication creation. The destination volume will not became
+        /// under Terraform management unless you import it manually. If you delete the replication, this volume
+        /// will remain.
+        /// Setting this parameter to true will delete the *current* destination volume when destroying the
+        /// replication. If you reversed the replication direction, this will be your former source volume!
+        /// For production use, it is recommended to keep this parameter false to avoid accidental volume
+        /// deletion. Handle with care. Default is false.
+        /// </summary>
         [Input("deleteDestinationVolume")]
         public Input<bool>? DeleteDestinationVolume { get; set; }
 
@@ -649,6 +698,11 @@ namespace Pulumi.Gcp.Netapp
         [Input("volumeName")]
         public Input<string>? VolumeName { get; set; }
 
+        /// <summary>
+        /// Replication resource state is independent of mirror_state. With enough data, it can take many hours
+        /// for MirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+        /// create/stop/resume operations, set this parameter to true. Default is false.
+        /// </summary>
         [Input("waitForMirror")]
         public Input<bool>? WaitForMirror { get; set; }
 

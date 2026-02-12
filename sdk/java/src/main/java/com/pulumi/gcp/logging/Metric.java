@@ -265,16 +265,12 @@ import javax.annotation.Nullable;
  * Metric can be imported using any of these accepted formats:
  * 
  * * `{{project}} {{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, Metric can be imported using one of the formats above. For example:
  * 
  * ```sh
- * $ pulumi import gcp:logging/metric:Metric default &#34;{{project}} {{name}}&#34;
- * ```
- * 
- * ```sh
+ * $ terraform import google_logging_metric.default &#34;{{project}} {{name}}&#34;
  * $ pulumi import gcp:logging/metric:Metric default {{name}}
  * ```
  * 

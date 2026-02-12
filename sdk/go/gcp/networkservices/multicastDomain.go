@@ -74,22 +74,14 @@ import (
 // MulticastDomain can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}`
-//
 // * `{{project}}/{{location}}/{{multicast_domain_id}}`
-//
 // * `{{location}}/{{multicast_domain_id}}`
 //
 // When using the `pulumi import` command, MulticastDomain can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{project}}/{{location}}/{{multicast_domain_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{location}}/{{multicast_domain_id}}
 // ```
 type MulticastDomain struct {

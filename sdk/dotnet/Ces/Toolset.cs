@@ -418,22 +418,14 @@ namespace Pulumi.Gcp.Ces
     /// Toolset can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{app}}/{{toolset_id}}`
-    /// 
     /// * `{{location}}/{{app}}/{{toolset_id}}`
     /// 
     /// When using the `pulumi import` command, Toolset can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:ces/toolset:Toolset default projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:ces/toolset:Toolset default {{project}}/{{location}}/{{app}}/{{toolset_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:ces/toolset:Toolset default {{location}}/{{app}}/{{toolset_id}}
     /// ```
     /// </summary>

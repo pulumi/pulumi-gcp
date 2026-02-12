@@ -164,6 +164,7 @@ class _AccountConnectorState:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp when the userConnection was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels as key value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -251,6 +252,9 @@ class _AccountConnectorState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -494,22 +498,14 @@ class AccountConnector(pulumi.CustomResource):
         AccountConnector can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/accountConnectors/{{account_connector_id}}`
-
         * `{{project}}/{{location}}/{{account_connector_id}}`
-
         * `{{location}}/{{account_connector_id}}`
 
         When using the `pulumi import` command, AccountConnector can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default projects/{{project}}/locations/{{location}}/accountConnectors/{{account_connector_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{project}}/{{location}}/{{account_connector_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{location}}/{{account_connector_id}}
         ```
 
@@ -646,22 +642,14 @@ class AccountConnector(pulumi.CustomResource):
         AccountConnector can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/accountConnectors/{{account_connector_id}}`
-
         * `{{project}}/{{location}}/{{account_connector_id}}`
-
         * `{{location}}/{{account_connector_id}}`
 
         When using the `pulumi import` command, AccountConnector can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default projects/{{project}}/locations/{{location}}/accountConnectors/{{account_connector_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{project}}/{{location}}/{{account_connector_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{location}}/{{account_connector_id}}
         ```
 
@@ -752,6 +740,7 @@ class AccountConnector(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp when the userConnection was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels as key value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -819,6 +808,9 @@ class AccountConnector(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

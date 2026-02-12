@@ -618,22 +618,14 @@ class Control(pulumi.CustomResource):
         Control can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/controls/{{control_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}`
 
         When using the `pulumi import` command, Control can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/control:Control default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/controls/{{control_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/control:Control default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/control:Control default {{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}
         ```
 
@@ -725,22 +717,14 @@ class Control(pulumi.CustomResource):
         Control can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/controls/{{control_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}`
 
         When using the `pulumi import` command, Control can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/control:Control default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/controls/{{control_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/control:Control default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/control:Control default {{location}}/{{collection_id}}/{{engine_id}}/{{control_id}}
         ```
 

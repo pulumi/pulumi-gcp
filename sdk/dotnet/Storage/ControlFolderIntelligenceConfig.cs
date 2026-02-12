@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage
 {
     /// <summary>
+    /// The Folder Storage Intelligence resource represents GCS Storage Intelligence operating on individual GCP Folder. Storage Intelligence is a singleton resource and individual instance exists on each GCP Folder.
+    /// 
+    /// Storage Intelligence is for Storage Admins to manage GCP storage assets at scale for performance, cost, security &amp; compliance.
+    /// 
+    /// &gt; **Warning:** Storage Intelligence Config is a singleton resource which cannot be created or deleted. A single instance of Storage Intelligence Config exist for each GCP Folder. Terraform does not create or destroy this resource.
+    /// Terraform resource creation for this resource is simply an update operation on existing resource with specified properties, absense of any optional field in the create operation will result in clearance of that field. Terraform deletion won't have any effect on this resource rather it will only remove it from the state file.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Storage Control Folder Intelligence Config Basic
@@ -55,16 +62,12 @@ namespace Pulumi.Gcp.Storage
     /// FolderIntelligenceConfig can be imported using any of these accepted formats:
     /// 
     /// * `folders/{{name}}/locations/global/intelligenceConfig`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, FolderIntelligenceConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig default folders/{{name}}/locations/global/intelligenceConfig
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig default {{name}}
     /// ```
     /// </summary>

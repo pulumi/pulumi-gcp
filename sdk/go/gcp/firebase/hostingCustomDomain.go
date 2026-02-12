@@ -12,6 +12,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages Custom Domains for Firebase Hosting. Custom Domains link your
+// domain names with Firebase Hosting sites, allowing Hosting to serve content
+// on those domain names.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about CustomDomain, see:
+//
+// * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites.customDomains)
+// * How-to Guides
+//   - [Official Documentation](https://firebase.google.com/docs/hosting)
+//
 // ## Example Usage
 //
 // ### Firebasehosting Customdomain Basic
@@ -162,28 +175,16 @@ import (
 // CustomDomain can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}`
-//
 // * `sites/{{site_id}}/customDomains/{{custom_domain}}`
-//
 // * `{{project}}/{{site_id}}/{{custom_domain}}`
-//
 // * `{{site_id}}/{{custom_domain}}`
 //
 // When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default sites/{{site_id}}/customDomains/{{custom_domain}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{project}}/{{site_id}}/{{custom_domain}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
 // ```
 type HostingCustomDomain struct {
@@ -295,7 +296,10 @@ type HostingCustomDomain struct {
 	// The ID of the site in which to create this custom domain association.
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The last time the `CustomDomain` was updated.
-	UpdateTime          pulumi.StringOutput  `pulumi:"updateTime"`
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+	// If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+	// the `CustomDomain` will be returned and stored in the Terraform state.
 	WaitDnsVerification pulumi.BoolPtrOutput `pulumi:"waitDnsVerification"`
 }
 
@@ -441,8 +445,11 @@ type hostingCustomDomainState struct {
 	// The ID of the site in which to create this custom domain association.
 	SiteId *string `pulumi:"siteId"`
 	// The last time the `CustomDomain` was updated.
-	UpdateTime          *string `pulumi:"updateTime"`
-	WaitDnsVerification *bool   `pulumi:"waitDnsVerification"`
+	UpdateTime *string `pulumi:"updateTime"`
+	// If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+	// If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+	// the `CustomDomain` will be returned and stored in the Terraform state.
+	WaitDnsVerification *bool `pulumi:"waitDnsVerification"`
 }
 
 type HostingCustomDomainState struct {
@@ -552,7 +559,10 @@ type HostingCustomDomainState struct {
 	// The ID of the site in which to create this custom domain association.
 	SiteId pulumi.StringPtrInput
 	// The last time the `CustomDomain` was updated.
-	UpdateTime          pulumi.StringPtrInput
+	UpdateTime pulumi.StringPtrInput
+	// If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+	// If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+	// the `CustomDomain` will be returned and stored in the Terraform state.
 	WaitDnsVerification pulumi.BoolPtrInput
 }
 
@@ -577,8 +587,11 @@ type hostingCustomDomainArgs struct {
 	// instead.
 	RedirectTarget *string `pulumi:"redirectTarget"`
 	// The ID of the site in which to create this custom domain association.
-	SiteId              string `pulumi:"siteId"`
-	WaitDnsVerification *bool  `pulumi:"waitDnsVerification"`
+	SiteId string `pulumi:"siteId"`
+	// If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+	// If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+	// the `CustomDomain` will be returned and stored in the Terraform state.
+	WaitDnsVerification *bool `pulumi:"waitDnsVerification"`
 }
 
 // The set of arguments for constructing a HostingCustomDomain resource.
@@ -599,7 +612,10 @@ type HostingCustomDomainArgs struct {
 	// instead.
 	RedirectTarget pulumi.StringPtrInput
 	// The ID of the site in which to create this custom domain association.
-	SiteId              pulumi.StringInput
+	SiteId pulumi.StringInput
+	// If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+	// If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+	// the `CustomDomain` will be returned and stored in the Terraform state.
 	WaitDnsVerification pulumi.BoolPtrInput
 }
 
@@ -850,6 +866,9 @@ func (o HostingCustomDomainOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingCustomDomain) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+// If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+// the `CustomDomain` will be returned and stored in the Terraform state.
 func (o HostingCustomDomainOutput) WaitDnsVerification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostingCustomDomain) pulumi.BoolPtrOutput { return v.WaitDnsVerification }).(pulumi.BoolPtrOutput)
 }

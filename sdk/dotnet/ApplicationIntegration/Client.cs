@@ -99,22 +99,14 @@ namespace Pulumi.Gcp.ApplicationIntegration
     /// Client can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/clients`
-    /// 
     /// * `{{project}}/{{location}}`
-    /// 
     /// * `{{location}}`
     /// 
     /// When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:applicationintegration/client:Client default projects/{{project}}/locations/{{location}}/clients
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:applicationintegration/client:Client default {{project}}/{{location}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:applicationintegration/client:Client default {{location}}
     /// ```
     /// </summary>

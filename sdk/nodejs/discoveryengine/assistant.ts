@@ -67,22 +67,14 @@ import * as utilities from "../utilities";
  * Assistant can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/assistants/{{assistant_id}}`
- *
  * * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}`
- *
  * * `{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}`
  *
  * When using the `pulumi import` command, Assistant can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:discoveryengine/assistant:Assistant default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/assistants/{{assistant_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:discoveryengine/assistant:Assistant default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:discoveryengine/assistant:Assistant default {{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}
  * ```
  */

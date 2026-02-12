@@ -146,11 +146,8 @@ import * as utilities from "../utilities";
  * For all import syntaxes, the "resource in question" can take any of the following forms:
  *
  * * projects/{{project}}/locations/{{location}}/backupPlans/{{name}}
- *
  * * {{project}}/{{location}}/{{name}}
- *
  * * {{location}}/{{name}}
- *
  * * {{name}}
  *
  * Any variables not passed in the import command will be taken from the provider configuration.
@@ -158,25 +155,21 @@ import * as utilities from "../utilities";
  * Backup for GKE backupplan IAM resources can be imported using the resource identifiers, role, and member.
  *
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
- *
  * ```sh
- * $ pulumi import gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember editor "projects/{{project}}/locations/{{location}}/backupPlans/{{backup_plan}} roles/viewer user:jane@example.com"
+ * $ terraform import google_gke_backup_backup_plan_iam_member.editor "projects/{{project}}/locations/{{location}}/backupPlans/{{backup_plan}} roles/viewer user:jane@example.com"
  * ```
  *
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
- *
  * ```sh
- * $ pulumi import gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember editor "projects/{{project}}/locations/{{location}}/backupPlans/{{backup_plan}} roles/viewer"
+ * $ terraform import google_gke_backup_backup_plan_iam_binding.editor "projects/{{project}}/locations/{{location}}/backupPlans/{{backup_plan}} roles/viewer"
  * ```
  *
  * IAM policy imports use the identifier of the resource in question, e.g.
- *
  * ```sh
  * $ pulumi import gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember editor projects/{{project}}/locations/{{location}}/backupPlans/{{backup_plan}}
  * ```
  *
- * -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
- *
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class BackupPlanIamMember extends pulumi.CustomResource {

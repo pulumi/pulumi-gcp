@@ -33,20 +33,15 @@ __all__ = [
     'WorkloadWorkloadOptionsArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class WorkloadComplianceStatusArgsDict(TypedDict):
-        acknowledged_violation_counts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        Number of current orgPolicy violations which are acknowledged.
-        """
-        active_violation_counts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        Number of current orgPolicy violations which are not acknowledged.
-        """
-elif False:
-    WorkloadComplianceStatusArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadComplianceStatusArgsDict(TypedDict):
+    acknowledged_violation_counts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    Number of current orgPolicy violations which are acknowledged.
+    """
+    active_violation_counts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    Number of current orgPolicy violations which are not acknowledged.
+    """
 
 @pulumi.input_type
 class WorkloadComplianceStatusArgs:
@@ -87,22 +82,19 @@ class WorkloadComplianceStatusArgs:
         pulumi.set(self, "active_violation_counts", value)
 
 
-if not MYPY:
-    class WorkloadEkmProvisioningResponseArgsDict(TypedDict):
-        ekm_provisioning_error_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
-        """
-        ekm_provisioning_error_mapping: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
-        """
-        ekm_provisioning_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
-        """
-elif False:
-    WorkloadEkmProvisioningResponseArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadEkmProvisioningResponseArgsDict(TypedDict):
+    ekm_provisioning_error_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
+    """
+    ekm_provisioning_error_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
+    """
+    ekm_provisioning_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
+    """
 
 @pulumi.input_type
 class WorkloadEkmProvisioningResponseArgs:
@@ -159,18 +151,15 @@ class WorkloadEkmProvisioningResponseArgs:
         pulumi.set(self, "ekm_provisioning_state", value)
 
 
-if not MYPY:
-    class WorkloadKmsSettingsArgsDict(TypedDict):
-        next_rotation_time: pulumi.Input[_builtins.str]
-        """
-        Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
-        """
-        rotation_period: pulumi.Input[_builtins.str]
-        """
-        Required. Input only. Immutable. will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
-        """
-elif False:
-    WorkloadKmsSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadKmsSettingsArgsDict(TypedDict):
+    next_rotation_time: pulumi.Input[_builtins.str]
+    """
+    Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+    """
+    rotation_period: pulumi.Input[_builtins.str]
+    """
+    Required. Input only. Immutable. will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+    """
 
 @pulumi.input_type
 class WorkloadKmsSettingsArgs:
@@ -209,22 +198,19 @@ class WorkloadKmsSettingsArgs:
         pulumi.set(self, "rotation_period", value)
 
 
-if not MYPY:
-    class WorkloadPartnerPermissionsArgsDict(TypedDict):
-        assured_workloads_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Allow partner to view violation alerts.
-        """
-        data_logs_viewer: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow the partner to view inspectability logs and monitoring violations.
-        """
-        service_access_approver: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Allow partner to view access approval logs.
-        """
-elif False:
-    WorkloadPartnerPermissionsArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadPartnerPermissionsArgsDict(TypedDict):
+    assured_workloads_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Allow partner to view violation alerts.
+    """
+    data_logs_viewer: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow the partner to view inspectability logs and monitoring violations.
+    """
+    service_access_approver: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Allow partner to view access approval logs.
+    """
 
 @pulumi.input_type
 class WorkloadPartnerPermissionsArgs:
@@ -281,18 +267,15 @@ class WorkloadPartnerPermissionsArgs:
         pulumi.set(self, "service_access_approver", value)
 
 
-if not MYPY:
-    class WorkloadResourceArgsDict(TypedDict):
-        resource_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Resource identifier. For a project this represents project_number.
-        """
-        resource_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
-        """
-elif False:
-    WorkloadResourceArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadResourceArgsDict(TypedDict):
+    resource_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Resource identifier. For a project this represents project_number.
+    """
+    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
+    """
 
 @pulumi.input_type
 class WorkloadResourceArgs:
@@ -333,22 +316,19 @@ class WorkloadResourceArgs:
         pulumi.set(self, "resource_type", value)
 
 
-if not MYPY:
-    class WorkloadResourceSettingArgsDict(TypedDict):
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
-        """
-        resource_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
-        """
-        resource_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
-        """
-elif False:
-    WorkloadResourceSettingArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadResourceSettingArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+    """
+    resource_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
+    """
+    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
+    """
 
 @pulumi.input_type
 class WorkloadResourceSettingArgs:
@@ -405,18 +385,15 @@ class WorkloadResourceSettingArgs:
         pulumi.set(self, "resource_type", value)
 
 
-if not MYPY:
-    class WorkloadSaaEnrollmentResponseArgsDict(TypedDict):
-        setup_errors: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Indicates SAA enrollment setup error if any.
-        """
-        setup_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
-        """
-elif False:
-    WorkloadSaaEnrollmentResponseArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadSaaEnrollmentResponseArgsDict(TypedDict):
+    setup_errors: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Indicates SAA enrollment setup error if any.
+    """
+    setup_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+    """
 
 @pulumi.input_type
 class WorkloadSaaEnrollmentResponseArgs:
@@ -457,14 +434,11 @@ class WorkloadSaaEnrollmentResponseArgs:
         pulumi.set(self, "setup_status", value)
 
 
-if not MYPY:
-    class WorkloadWorkloadOptionsArgsDict(TypedDict):
-        kaj_enrollment_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
-        """
-elif False:
-    WorkloadWorkloadOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadWorkloadOptionsArgsDict(TypedDict):
+    kaj_enrollment_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
+    """
 
 @pulumi.input_type
 class WorkloadWorkloadOptionsArgs:

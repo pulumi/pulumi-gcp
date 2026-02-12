@@ -78,22 +78,14 @@ import (
 // ProjectSccBigQueryExport can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/bigQueryExports/{{big_query_export_id}}`
-//
 // * `{{project}}/{{big_query_export_id}}`
-//
 // * `{{big_query_export_id}}`
 //
 // When using the `pulumi import` command, ProjectSccBigQueryExport can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:securitycenter/projectSccBigQueryExport:ProjectSccBigQueryExport default projects/{{project}}/bigQueryExports/{{big_query_export_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:securitycenter/projectSccBigQueryExport:ProjectSccBigQueryExport default {{project}}/{{big_query_export_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:securitycenter/projectSccBigQueryExport:ProjectSccBigQueryExport default {{big_query_export_id}}
 // ```
 type ProjectSccBigQueryExport struct {

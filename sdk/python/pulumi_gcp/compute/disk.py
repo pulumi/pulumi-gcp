@@ -1810,28 +1810,16 @@ class Disk(pulumi.CustomResource):
         Disk can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{name}}
         ```
 
@@ -2069,28 +2057,16 @@ class Disk(pulumi.CustomResource):
         Disk can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{name}}
         ```
 

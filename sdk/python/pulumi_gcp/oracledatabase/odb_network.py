@@ -35,6 +35,7 @@ class OdbNetworkArgs:
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: The GCP Oracle zone where OdbNetwork is hosted.
                Example: us-east4-b-r2.
                If not specified, the system will pick a zone based on availability.
@@ -99,6 +100,9 @@ class OdbNetworkArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -166,6 +170,7 @@ class _OdbNetworkState:
         """
         Input properties used for looking up and filtering OdbNetwork resources.
         :param pulumi.Input[_builtins.str] create_time: The date and time that the OdbNetwork was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] entitlement_id: The ID of the subscription entitlement associated with the OdbNetwork.
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: The GCP Oracle zone where OdbNetwork is hosted.
@@ -236,6 +241,9 @@ class _OdbNetworkState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -457,27 +465,20 @@ class OdbNetwork(pulumi.CustomResource):
         OdbNetwork can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/odbNetworks/{{odb_network_id}}`
-
         * `{{project}}/{{location}}/{{odb_network_id}}`
-
         * `{{location}}/{{odb_network_id}}`
 
         When using the `pulumi import` command, OdbNetwork can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oracledatabase/odbNetwork:OdbNetwork default projects/{{project}}/locations/{{location}}/odbNetworks/{{odb_network_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/odbNetwork:OdbNetwork default {{project}}/{{location}}/{{odb_network_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/odbNetwork:OdbNetwork default {{location}}/{{odb_network_id}}
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: The GCP Oracle zone where OdbNetwork is hosted.
                Example: us-east4-b-r2.
                If not specified, the system will pick a zone based on availability.
@@ -552,22 +553,14 @@ class OdbNetwork(pulumi.CustomResource):
         OdbNetwork can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/odbNetworks/{{odb_network_id}}`
-
         * `{{project}}/{{location}}/{{odb_network_id}}`
-
         * `{{location}}/{{odb_network_id}}`
 
         When using the `pulumi import` command, OdbNetwork can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oracledatabase/odbNetwork:OdbNetwork default projects/{{project}}/locations/{{location}}/odbNetworks/{{odb_network_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/odbNetwork:OdbNetwork default {{project}}/{{location}}/{{odb_network_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/odbNetwork:OdbNetwork default {{location}}/{{odb_network_id}}
         ```
 
@@ -654,6 +647,7 @@ class OdbNetwork(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The date and time that the OdbNetwork was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] entitlement_id: The ID of the subscription entitlement associated with the OdbNetwork.
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: The GCP Oracle zone where OdbNetwork is hosted.
@@ -712,6 +706,9 @@ class OdbNetwork(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property

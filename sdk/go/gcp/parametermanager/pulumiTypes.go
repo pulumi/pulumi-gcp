@@ -396,7 +396,8 @@ func (o GetParameterPolicyMemberArrayOutput) Index(i pulumi.IntInput) GetParamet
 
 type GetParametersParameter struct {
 	// The time at which the parameter was created.
-	CreateTime      string            `pulumi:"createTime"`
+	CreateTime string `pulumi:"createTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The format type of the parameter.
 	Format string `pulumi:"format"`
@@ -432,7 +433,8 @@ type GetParametersParameterInput interface {
 
 type GetParametersParameterArgs struct {
 	// The time at which the parameter was created.
-	CreateTime      pulumi.StringInput    `pulumi:"createTime"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// The format type of the parameter.
 	Format pulumi.StringInput `pulumi:"format"`
@@ -511,6 +513,7 @@ func (o GetParametersParameterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetParametersParameter) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetParametersParameterOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetParametersParameter) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -826,7 +829,8 @@ func (o GetRegionalParameterPolicyMemberArrayOutput) Index(i pulumi.IntInput) Ge
 
 type GetRegionalParametersParameter struct {
 	// The time at which the regional parameter was created.
-	CreateTime      string            `pulumi:"createTime"`
+	CreateTime string `pulumi:"createTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The format type of the regional parameter.
 	Format string `pulumi:"format"`
@@ -864,7 +868,8 @@ type GetRegionalParametersParameterInput interface {
 
 type GetRegionalParametersParameterArgs struct {
 	// The time at which the regional parameter was created.
-	CreateTime      pulumi.StringInput    `pulumi:"createTime"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// The format type of the regional parameter.
 	Format pulumi.StringInput `pulumi:"format"`
@@ -945,6 +950,7 @@ func (o GetRegionalParametersParameterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionalParametersParameter) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetRegionalParametersParameterOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetRegionalParametersParameter) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

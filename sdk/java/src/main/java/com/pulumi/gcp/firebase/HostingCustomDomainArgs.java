@@ -106,9 +106,21 @@ public final class HostingCustomDomainArgs extends com.pulumi.resources.Resource
         return this.siteId;
     }
 
+    /**
+     * If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+     * If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+     * the `CustomDomain` will be returned and stored in the Terraform state.
+     * 
+     */
     @Import(name="waitDnsVerification")
     private @Nullable Output<Boolean> waitDnsVerification;
 
+    /**
+     * @return If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+     * If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+     * the `CustomDomain` will be returned and stored in the Terraform state.
+     * 
+     */
     public Optional<Output<Boolean>> waitDnsVerification() {
         return Optional.ofNullable(this.waitDnsVerification);
     }
@@ -261,11 +273,27 @@ public final class HostingCustomDomainArgs extends com.pulumi.resources.Resource
             return siteId(Output.of(siteId));
         }
 
+        /**
+         * @param waitDnsVerification If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+         * If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+         * the `CustomDomain` will be returned and stored in the Terraform state.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitDnsVerification(@Nullable Output<Boolean> waitDnsVerification) {
             $.waitDnsVerification = waitDnsVerification;
             return this;
         }
 
+        /**
+         * @param waitDnsVerification If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+         * If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+         * the `CustomDomain` will be returned and stored in the Terraform state.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitDnsVerification(Boolean waitDnsVerification) {
             return waitDnsVerification(Output.of(waitDnsVerification));
         }

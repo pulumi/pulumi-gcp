@@ -22,22 +22,14 @@ import * as utilities from "../utilities";
  * SslCertificate can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/global/sslCertificates/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, SslCertificate can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default projects/{{project}}/global/sslCertificates/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{name}}
  * ```
  */

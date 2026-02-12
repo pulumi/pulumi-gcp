@@ -75,16 +75,12 @@ namespace Pulumi.Gcp.Iam
     /// WorkforcePoolProviderKey can be imported using any of these accepted formats:
     /// 
     /// * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/keys/{{key_id}}`
-    /// 
     /// * `{{location}}/{{workforce_pool_id}}/{{provider_id}}/{{key_id}}`
     /// 
     /// When using the `pulumi import` command, WorkforcePoolProviderKey can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/keys/{{key_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{key_id}}
     /// ```
     /// </summary>

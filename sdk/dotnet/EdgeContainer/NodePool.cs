@@ -91,22 +91,14 @@ namespace Pulumi.Gcp.EdgeContainer
     /// NodePool can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{cluster}}/{{name}}`
-    /// 
     /// * `{{location}}/{{cluster}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:edgecontainer/nodePool:NodePool default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:edgecontainer/nodePool:NodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:edgecontainer/nodePool:NodePool default {{location}}/{{cluster}}/{{name}}
     /// ```
     /// </summary>

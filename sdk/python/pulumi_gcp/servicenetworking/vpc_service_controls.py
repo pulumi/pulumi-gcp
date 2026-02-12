@@ -254,22 +254,14 @@ class VpcServiceControls(pulumi.CustomResource):
         VPCServiceControls can be imported using any of these accepted formats:
 
         * `services/{{service}}/projects/{{project}}/networks/{{network}}`
-
         * `{{service}}/{{project}}/{{network}}`
-
         * `{{service}}/{{network}}`
 
         When using the `pulumi import` command, VPCServiceControls can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default services/{{service}}/projects/{{project}}/networks/{{network}}
-        ```
-
-        ```sh
         $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default {{service}}/{{project}}/{{network}}
-        ```
-
-        ```sh
         $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default {{service}}/{{network}}
         ```
 
@@ -363,22 +355,14 @@ class VpcServiceControls(pulumi.CustomResource):
         VPCServiceControls can be imported using any of these accepted formats:
 
         * `services/{{service}}/projects/{{project}}/networks/{{network}}`
-
         * `{{service}}/{{project}}/{{network}}`
-
         * `{{service}}/{{network}}`
 
         When using the `pulumi import` command, VPCServiceControls can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default services/{{service}}/projects/{{project}}/networks/{{network}}
-        ```
-
-        ```sh
         $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default {{service}}/{{project}}/{{network}}
-        ```
-
-        ```sh
         $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default {{service}}/{{network}}
         ```
 

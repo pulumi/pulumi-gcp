@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A version to be propagated and deployed to Units. It points to a specific version of a Blueprint that can be applied to Units, for example, via a Rollout.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
 // ## Example Usage
 //
 // ### Saas Runtime Release Basic
@@ -88,22 +93,14 @@ import (
 // Release can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/releases/{{release_id}}`
-//
 // * `{{project}}/{{location}}/{{release_id}}`
-//
 // * `{{location}}/{{release_id}}`
 //
 // When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:saasruntime/release:Release default projects/{{project}}/locations/{{location}}/releases/{{release_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:saasruntime/release:Release default {{project}}/{{location}}/{{release_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:saasruntime/release:Release default {{location}}/{{release_id}}
 // ```
 type Release struct {
@@ -115,10 +112,17 @@ type Release struct {
 	// More info: https://kubernetes.io/docs/user-guide/annotations
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-	Annotations pulumi.StringMapOutput    `pulumi:"annotations"`
-	Blueprint   ReleaseBlueprintPtrOutput `pulumi:"blueprint"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Blueprints are OCI Images that contain all of the artifacts needed to
+	// provision a unit. Metadata such as, type of the engine used to actuate the
+	// blueprint (e.g. terraform, helm etc) and version will come from the image
+	// manifest. If the hostname is omitted, it will be assumed to be the regional
+	// path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+	// Structure is documented below.
+	Blueprint ReleaseBlueprintPtrOutput `pulumi:"blueprint"`
 	// The timestamp when the resource was created.
-	CreateTime           pulumi.StringOutput    `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -225,9 +229,16 @@ type releaseState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	Blueprint   *ReleaseBlueprint `pulumi:"blueprint"`
+	// Blueprints are OCI Images that contain all of the artifacts needed to
+	// provision a unit. Metadata such as, type of the engine used to actuate the
+	// blueprint (e.g. terraform, helm etc) and version will come from the image
+	// manifest. If the hostname is omitted, it will be assumed to be the regional
+	// path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+	// Structure is documented below.
+	Blueprint *ReleaseBlueprint `pulumi:"blueprint"`
 	// The timestamp when the resource was created.
-	CreateTime           *string           `pulumi:"createTime"`
+	CreateTime *string `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -291,9 +302,16 @@ type ReleaseState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	Blueprint   ReleaseBlueprintPtrInput
+	// Blueprints are OCI Images that contain all of the artifacts needed to
+	// provision a unit. Metadata such as, type of the engine used to actuate the
+	// blueprint (e.g. terraform, helm etc) and version will come from the image
+	// manifest. If the hostname is omitted, it will be assumed to be the regional
+	// path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+	// Structure is documented below.
+	Blueprint ReleaseBlueprintPtrInput
 	// The timestamp when the resource was created.
-	CreateTime           pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -361,7 +379,13 @@ type releaseArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	Blueprint   *ReleaseBlueprint `pulumi:"blueprint"`
+	// Blueprints are OCI Images that contain all of the artifacts needed to
+	// provision a unit. Metadata such as, type of the engine used to actuate the
+	// blueprint (e.g. terraform, helm etc) and version will come from the image
+	// manifest. If the hostname is omitted, it will be assumed to be the regional
+	// path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+	// Structure is documented below.
+	Blueprint *ReleaseBlueprint `pulumi:"blueprint"`
 	// Mapping of input variables to default values. Maximum 100
 	// Structure is documented below.
 	InputVariableDefaults []ReleaseInputVariableDefault `pulumi:"inputVariableDefaults"`
@@ -394,7 +418,13 @@ type ReleaseArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	Blueprint   ReleaseBlueprintPtrInput
+	// Blueprints are OCI Images that contain all of the artifacts needed to
+	// provision a unit. Metadata such as, type of the engine used to actuate the
+	// blueprint (e.g. terraform, helm etc) and version will come from the image
+	// manifest. If the hostname is omitted, it will be assumed to be the regional
+	// path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+	// Structure is documented below.
+	Blueprint ReleaseBlueprintPtrInput
 	// Mapping of input variables to default values. Maximum 100
 	// Structure is documented below.
 	InputVariableDefaults ReleaseInputVariableDefaultArrayInput
@@ -515,6 +545,12 @@ func (o ReleaseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Blueprints are OCI Images that contain all of the artifacts needed to
+// provision a unit. Metadata such as, type of the engine used to actuate the
+// blueprint (e.g. terraform, helm etc) and version will come from the image
+// manifest. If the hostname is omitted, it will be assumed to be the regional
+// path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+// Structure is documented below.
 func (o ReleaseOutput) Blueprint() ReleaseBlueprintPtrOutput {
 	return o.ApplyT(func(v *Release) ReleaseBlueprintPtrOutput { return v.Blueprint }).(ReleaseBlueprintPtrOutput)
 }
@@ -524,6 +560,7 @@ func (o ReleaseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o ReleaseOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

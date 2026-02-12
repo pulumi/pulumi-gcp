@@ -1058,22 +1058,14 @@ class Certificate(pulumi.CustomResource):
         Certificate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}`
-
         * `{{project}}/{{location}}/{{pool}}/{{name}}`
-
         * `{{location}}/{{pool}}/{{name}}`
 
         When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{pool}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
         ```
 
@@ -1584,22 +1576,14 @@ class Certificate(pulumi.CustomResource):
         Certificate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}`
-
         * `{{project}}/{{location}}/{{pool}}/{{name}}`
-
         * `{{location}}/{{pool}}/{{name}}`
 
         When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{pool}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
         ```
 

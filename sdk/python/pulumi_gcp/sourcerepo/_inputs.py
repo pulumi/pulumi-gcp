@@ -23,15 +23,10 @@ __all__ = [
     'RepositoryPubsubConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class RepositoryIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RepositoryIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RepositoryIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RepositoryIamBindingConditionArgs:
@@ -72,13 +67,10 @@ class RepositoryIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RepositoryIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RepositoryIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RepositoryIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RepositoryIamMemberConditionArgs:
@@ -119,28 +111,25 @@ class RepositoryIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RepositoryPubsubConfigArgsDict(TypedDict):
-        message_format: pulumi.Input[_builtins.str]
-        """
-        The format of the Cloud Pub/Sub messages.
-        - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
-        - JSON: The message payload is a JSON string of SourceRepoEvent.
-        Possible values are: `PROTOBUF`, `JSON`.
-        """
-        topic: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        service_account_email: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Email address of the service account used for publishing Cloud Pub/Sub messages.
-        This service account needs to be in the same project as the PubsubConfig. When added,
-        the caller needs to have iam.serviceAccounts.actAs permission on this service account.
-        If unspecified, it defaults to the compute engine default service account.
-        """
-elif False:
-    RepositoryPubsubConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RepositoryPubsubConfigArgsDict(TypedDict):
+    message_format: pulumi.Input[_builtins.str]
+    """
+    The format of the Cloud Pub/Sub messages.
+    - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
+    - JSON: The message payload is a JSON string of SourceRepoEvent.
+    Possible values are: `PROTOBUF`, `JSON`.
+    """
+    topic: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Email address of the service account used for publishing Cloud Pub/Sub messages.
+    This service account needs to be in the same project as the PubsubConfig. When added,
+    the caller needs to have iam.serviceAccounts.actAs permission on this service account.
+    If unspecified, it defaults to the compute engine default service account.
+    """
 
 @pulumi.input_type
 class RepositoryPubsubConfigArgs:

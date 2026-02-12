@@ -133,7 +133,6 @@ import * as utilities from "../utilities";
  * For all import syntaxes, the "resource in question" can take any of the following forms:
  *
  * * tagValues/{{name}}
- *
  * * {{name}}
  *
  * Any variables not passed in the import command will be taken from the provider configuration.
@@ -141,25 +140,21 @@ import * as utilities from "../utilities";
  * Tags tagvalue IAM resources can be imported using the resource identifiers, role, and member.
  *
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
- *
  * ```sh
- * $ pulumi import gcp:tags/tagValueIamPolicy:TagValueIamPolicy editor "tagValues/{{tag_value}} roles/viewer user:jane@example.com"
+ * $ terraform import google_tags_tag_value_iam_member.editor "tagValues/{{tag_value}} roles/viewer user:jane@example.com"
  * ```
  *
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
- *
  * ```sh
- * $ pulumi import gcp:tags/tagValueIamPolicy:TagValueIamPolicy editor "tagValues/{{tag_value}} roles/viewer"
+ * $ terraform import google_tags_tag_value_iam_binding.editor "tagValues/{{tag_value}} roles/viewer"
  * ```
  *
  * IAM policy imports use the identifier of the resource in question, e.g.
- *
  * ```sh
  * $ pulumi import gcp:tags/tagValueIamPolicy:TagValueIamPolicy editor tagValues/{{tag_value}}
  * ```
  *
- * -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
- *
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class TagValueIamPolicy extends pulumi.CustomResource {

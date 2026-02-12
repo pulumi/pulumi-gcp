@@ -481,22 +481,14 @@ class PrivateConnection(pulumi.CustomResource):
         PrivateConnection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
-
         * `{{project}}/{{location}}/{{private_connection_id}}`
-
         * `{{location}}/{{private_connection_id}}`
 
         When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datastream/privateConnection:PrivateConnection default projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datastream/privateConnection:PrivateConnection default {{project}}/{{location}}/{{private_connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datastream/privateConnection:PrivateConnection default {{location}}/{{private_connection_id}}
         ```
 
@@ -591,22 +583,14 @@ class PrivateConnection(pulumi.CustomResource):
         PrivateConnection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
-
         * `{{project}}/{{location}}/{{private_connection_id}}`
-
         * `{{location}}/{{private_connection_id}}`
 
         When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datastream/privateConnection:PrivateConnection default projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datastream/privateConnection:PrivateConnection default {{project}}/{{location}}/{{private_connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datastream/privateConnection:PrivateConnection default {{location}}/{{private_connection_id}}
         ```
 

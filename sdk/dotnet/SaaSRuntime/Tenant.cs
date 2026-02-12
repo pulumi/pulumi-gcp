@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SaaSRuntime
 {
     /// <summary>
+    /// The Tenant resource represents the service producer's view of a service instance created for a consumer. It enables the association between the service producer's managed resources and the end consumer.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Saas Runtime Tenant Basic
@@ -51,22 +56,14 @@ namespace Pulumi.Gcp.SaaSRuntime
     /// Tenant can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{tenant_id}}`
-    /// 
     /// * `{{location}}/{{tenant_id}}`
     /// 
     /// When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:saasruntime/tenant:Tenant default projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:saasruntime/tenant:Tenant default {{project}}/{{location}}/{{tenant_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:saasruntime/tenant:Tenant default {{location}}/{{tenant_id}}
     /// ```
     /// </summary>
@@ -99,6 +96,9 @@ namespace Pulumi.Gcp.SaaSRuntime
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -338,6 +338,10 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());

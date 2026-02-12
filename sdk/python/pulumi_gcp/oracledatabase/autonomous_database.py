@@ -47,6 +47,7 @@ class AutonomousDatabaseArgs:
         :param pulumi.Input[_builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels or tags associated with the Autonomous Database.
@@ -164,6 +165,9 @@ class AutonomousDatabaseArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -316,6 +320,7 @@ class _AutonomousDatabaseState:
         :param pulumi.Input[_builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disaster_recovery_supported_locations: List of supported GCP region to clone the Autonomous Database for disaster recovery.
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
@@ -459,6 +464,9 @@ class _AutonomousDatabaseState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -812,22 +820,14 @@ class AutonomousDatabase(pulumi.CustomResource):
         AutonomousDatabase can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}`
-
         * `{{project}}/{{location}}/{{autonomous_database_id}}`
-
         * `{{location}}/{{autonomous_database_id}}`
 
         When using the `pulumi import` command, AutonomousDatabase can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{project}}/{{location}}/{{autonomous_database_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{location}}/{{autonomous_database_id}}
         ```
 
@@ -842,6 +842,7 @@ class AutonomousDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels or tags associated with the Autonomous Database.
@@ -1000,22 +1001,14 @@ class AutonomousDatabase(pulumi.CustomResource):
         AutonomousDatabase can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}`
-
         * `{{project}}/{{location}}/{{autonomous_database_id}}`
-
         * `{{location}}/{{autonomous_database_id}}`
 
         When using the `pulumi import` command, AutonomousDatabase can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{project}}/{{location}}/{{autonomous_database_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{location}}/{{autonomous_database_id}}
         ```
 
@@ -1132,6 +1125,7 @@ class AutonomousDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disaster_recovery_supported_locations: List of supported GCP region to clone the Autonomous Database for disaster recovery.
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
@@ -1239,6 +1233,9 @@ class AutonomousDatabase(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property

@@ -227,22 +227,14 @@ import javax.annotation.Nullable;
  * Secret can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/secrets/{{secret_id}}`
- * 
  * * `{{project}}/{{secret_id}}`
- * 
  * * `{{secret_id}}`
  * 
  * When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
  * ```
  * 
@@ -301,15 +293,35 @@ public class Secret extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * Whether Terraform will be prevented from destroying the secret. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the secret will fail.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the secret. Defaults to false.
+     * When the field is set to true in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the secret will fail.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

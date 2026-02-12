@@ -595,29 +595,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies
- * 
- * IAM policy imports use the identifier of the BigQuery Dataset resource. For example:
- * 
- * * `projects/{{project_id}}/datasets/{{dataset_id}}`
- * 
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- * 
- * tf
- * 
- * import {
- * 
- *   id = projects/{{project_id}}/datasets/{{dataset_id}}
- * 
- *   to = google_bigquery_dataset_iam_policy.default
- * 
- * }
- * 
- * The `pulumi import` command can also be used:
- * 
- * ```sh
- * $ pulumi import gcp:bigquery/datasetIamBinding:DatasetIamBinding default projects/{{project_id}}/datasets/{{dataset_id}}
- * ```
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:bigquery/datasetIamBinding:DatasetIamBinding")

@@ -125,22 +125,14 @@ import (
 // WireGroup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/global/crossSiteNetworks/{{cross_site_network}}/wireGroups/{{name}}`
-//
 // * `{{project}}/{{cross_site_network}}/{{name}}`
-//
 // * `{{cross_site_network}}/{{name}}`
 //
 // When using the `pulumi import` command, WireGroup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/wireGroup:WireGroup default projects/{{project}}/global/crossSiteNetworks/{{cross_site_network}}/wireGroups/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/wireGroup:WireGroup default {{project}}/{{cross_site_network}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/wireGroup:WireGroup default {{cross_site_network}}/{{name}}
 // ```
 type WireGroup struct {

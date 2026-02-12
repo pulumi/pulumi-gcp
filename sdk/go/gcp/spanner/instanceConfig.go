@@ -28,22 +28,14 @@ import (
 // InstanceConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/instanceConfigs/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, InstanceConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:spanner/instanceConfig:InstanceConfig default projects/{{project}}/instanceConfigs/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:spanner/instanceConfig:InstanceConfig default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:spanner/instanceConfig:InstanceConfig default {{name}}
 // ```
 type InstanceConfig struct {

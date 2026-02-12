@@ -29,7 +29,9 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public Input<Inputs.FeatureMembershipConfigmanagementHierarchyControllerGetArgs>? HierarchyController { get; set; }
 
         /// <summary>
-        /// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        /// Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+        /// and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        /// This field was introduced in Terraform version 5.41.0.
         /// </summary>
         [Input("management")]
         public Input<string>? Management { get; set; }

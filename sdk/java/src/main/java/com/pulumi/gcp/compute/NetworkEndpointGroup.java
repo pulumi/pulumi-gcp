@@ -147,28 +147,16 @@ import javax.annotation.Nullable;
  * NetworkEndpointGroup can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}`
- * 
  * * `{{project}}/{{zone}}/{{name}}`
- * 
  * * `{{zone}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, NetworkEndpointGroup can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{project}}/{{zone}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{zone}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{name}}
  * ```
  * 

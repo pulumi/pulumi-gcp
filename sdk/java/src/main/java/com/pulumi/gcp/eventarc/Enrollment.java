@@ -94,22 +94,14 @@ import javax.annotation.Nullable;
  * Enrollment can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/enrollments/{{enrollment_id}}`
- * 
  * * `{{project}}/{{location}}/{{enrollment_id}}`
- * 
  * * `{{location}}/{{enrollment_id}}`
  * 
  * When using the `pulumi import` command, Enrollment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:eventarc/enrollment:Enrollment default projects/{{project}}/locations/{{location}}/enrollments/{{enrollment_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:eventarc/enrollment:Enrollment default {{project}}/{{location}}/{{enrollment_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:eventarc/enrollment:Enrollment default {{location}}/{{enrollment_id}}
  * ```
  * 
@@ -194,9 +186,17 @@ public class Enrollment extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

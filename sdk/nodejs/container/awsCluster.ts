@@ -250,24 +250,15 @@ import * as utilities from "../utilities";
  * ## Import
  *
  * Cluster can be imported using any of these accepted formats:
- *
  * * `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:container/awsCluster:AwsCluster default projects/{{project}}/locations/{{location}}/awsClusters/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:container/awsCluster:AwsCluster default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:container/awsCluster:AwsCluster default {{location}}/{{name}}
  * ```
  */
@@ -330,6 +321,9 @@ export class AwsCluster extends pulumi.CustomResource {
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The endpoint of the cluster's API server.
@@ -500,6 +494,9 @@ export interface AwsClusterState {
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
     description?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Output only. The endpoint of the cluster's API server.

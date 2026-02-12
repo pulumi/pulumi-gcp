@@ -204,6 +204,7 @@ class _MessageBusState:
                It must match the pattern
                `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[_builtins.str] display_name: Optional. Resource display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Output only. This checksum is computed by the server based on the value of other
                fields, and might be sent only on update and delete requests to ensure that
@@ -316,6 +317,9 @@ class _MessageBusState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -519,22 +523,14 @@ class MessageBus(pulumi.CustomResource):
         MessageBus can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/messageBuses/{{message_bus_id}}`
-
         * `{{project}}/{{location}}/{{message_bus_id}}`
-
         * `{{location}}/{{message_bus_id}}`
 
         When using the `pulumi import` command, MessageBus can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/messageBus:MessageBus default projects/{{project}}/locations/{{location}}/messageBuses/{{message_bus_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/messageBus:MessageBus default {{project}}/{{location}}/{{message_bus_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/messageBus:MessageBus default {{location}}/{{message_bus_id}}
         ```
 
@@ -604,22 +600,14 @@ class MessageBus(pulumi.CustomResource):
         MessageBus can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/messageBuses/{{message_bus_id}}`
-
         * `{{project}}/{{location}}/{{message_bus_id}}`
-
         * `{{location}}/{{message_bus_id}}`
 
         When using the `pulumi import` command, MessageBus can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/messageBus:MessageBus default projects/{{project}}/locations/{{location}}/messageBuses/{{message_bus_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/messageBus:MessageBus default {{project}}/{{location}}/{{message_bus_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/messageBus:MessageBus default {{location}}/{{message_bus_id}}
         ```
 
@@ -719,6 +707,7 @@ class MessageBus(pulumi.CustomResource):
                It must match the pattern
                `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[_builtins.str] display_name: Optional. Resource display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Output only. This checksum is computed by the server based on the value of other
                fields, and might be sent only on update and delete requests to ensure that
@@ -804,6 +793,9 @@ class MessageBus(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

@@ -7,6 +7,19 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Manages Custom Domains for Firebase Hosting. Custom Domains link your
+ * domain names with Firebase Hosting sites, allowing Hosting to serve content
+ * on those domain names.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about CustomDomain, see:
+ *
+ * * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites.customDomains)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/docs/hosting)
+ *
  * ## Example Usage
  *
  * ### Firebasehosting Customdomain Basic
@@ -92,28 +105,16 @@ import * as utilities from "../utilities";
  * CustomDomain can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}`
- *
  * * `sites/{{site_id}}/customDomains/{{custom_domain}}`
- *
  * * `{{project}}/{{site_id}}/{{custom_domain}}`
- *
  * * `{{site_id}}/{{custom_domain}}`
  *
  * When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default sites/{{site_id}}/customDomains/{{custom_domain}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{project}}/{{site_id}}/{{custom_domain}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
  * ```
  */
@@ -286,6 +287,11 @@ export class HostingCustomDomain extends pulumi.CustomResource {
      * The last time the `CustomDomain` was updated.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
+     * If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+     * If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+     * the `CustomDomain` will be returned and stored in the Terraform state.
+     */
     declare public readonly waitDnsVerification: pulumi.Output<boolean | undefined>;
 
     /**
@@ -496,6 +502,11 @@ export interface HostingCustomDomainState {
      * The last time the `CustomDomain` was updated.
      */
     updateTime?: pulumi.Input<string>;
+    /**
+     * If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+     * If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+     * the `CustomDomain` will be returned and stored in the Terraform state.
+     */
     waitDnsVerification?: pulumi.Input<boolean>;
 }
 
@@ -530,5 +541,10 @@ export interface HostingCustomDomainArgs {
      * The ID of the site in which to create this custom domain association.
      */
     siteId: pulumi.Input<string>;
+    /**
+     * If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+     * If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+     * the `CustomDomain` will be returned and stored in the Terraform state.
+     */
     waitDnsVerification?: pulumi.Input<boolean>;
 }

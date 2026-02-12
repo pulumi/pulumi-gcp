@@ -477,22 +477,14 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
         MirroringDeploymentGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/mirroringDeploymentGroups/{{mirroring_deployment_group_id}}`
-
         * `{{project}}/{{location}}/{{mirroring_deployment_group_id}}`
-
         * `{{location}}/{{mirroring_deployment_group_id}}`
 
         When using the `pulumi import` command, MirroringDeploymentGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default projects/{{project}}/locations/{{location}}/mirroringDeploymentGroups/{{mirroring_deployment_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default {{project}}/{{location}}/{{mirroring_deployment_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default {{location}}/{{mirroring_deployment_group_id}}
         ```
 
@@ -555,22 +547,14 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
         MirroringDeploymentGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/mirroringDeploymentGroups/{{mirroring_deployment_group_id}}`
-
         * `{{project}}/{{location}}/{{mirroring_deployment_group_id}}`
-
         * `{{location}}/{{mirroring_deployment_group_id}}`
 
         When using the `pulumi import` command, MirroringDeploymentGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default projects/{{project}}/locations/{{location}}/mirroringDeploymentGroups/{{mirroring_deployment_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default {{project}}/{{location}}/{{mirroring_deployment_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup default {{location}}/{{mirroring_deployment_group_id}}
         ```
 

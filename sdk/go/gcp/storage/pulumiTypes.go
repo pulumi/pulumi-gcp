@@ -3067,10 +3067,9 @@ type BucketLifecycleRuleCondition struct {
 	CreatedBefore *string `pulumi:"createdBefore"`
 	// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
 	CustomTimeBefore *string `pulumi:"customTimeBefore"`
-	// Number of days elapsed since the user-specified timestamp set on an object.
+	// Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceCustomTime` condition.
 	DaysSinceCustomTime *int `pulumi:"daysSinceCustomTime"`
-	// Number of days elapsed since the noncurrent timestamp of an object. This
-	// 										condition is relevant only for versioned objects.
+	// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceNoncurrentTime` condition.
 	DaysSinceNoncurrentTime *int `pulumi:"daysSinceNoncurrentTime"`
 	// One or more matching name prefixes to satisfy this condition.
 	MatchesPrefixes []string `pulumi:"matchesPrefixes"`
@@ -3078,9 +3077,9 @@ type BucketLifecycleRuleCondition struct {
 	MatchesStorageClasses []string `pulumi:"matchesStorageClasses"`
 	// One or more matching name suffixes to satisfy this condition.
 	MatchesSuffixes []string `pulumi:"matchesSuffixes"`
-	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+	// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrentTimeBefore` condition.
 	NoncurrentTimeBefore *string `pulumi:"noncurrentTimeBefore"`
-	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `numNewerVersions` condition.
 	NumNewerVersions *int `pulumi:"numNewerVersions"`
 	// While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
 	SendAgeIfZero *bool `pulumi:"sendAgeIfZero"`
@@ -3112,10 +3111,9 @@ type BucketLifecycleRuleConditionArgs struct {
 	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
 	// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
 	CustomTimeBefore pulumi.StringPtrInput `pulumi:"customTimeBefore"`
-	// Number of days elapsed since the user-specified timestamp set on an object.
+	// Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceCustomTime` condition.
 	DaysSinceCustomTime pulumi.IntPtrInput `pulumi:"daysSinceCustomTime"`
-	// Number of days elapsed since the noncurrent timestamp of an object. This
-	// 										condition is relevant only for versioned objects.
+	// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceNoncurrentTime` condition.
 	DaysSinceNoncurrentTime pulumi.IntPtrInput `pulumi:"daysSinceNoncurrentTime"`
 	// One or more matching name prefixes to satisfy this condition.
 	MatchesPrefixes pulumi.StringArrayInput `pulumi:"matchesPrefixes"`
@@ -3123,9 +3121,9 @@ type BucketLifecycleRuleConditionArgs struct {
 	MatchesStorageClasses pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
 	// One or more matching name suffixes to satisfy this condition.
 	MatchesSuffixes pulumi.StringArrayInput `pulumi:"matchesSuffixes"`
-	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+	// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrentTimeBefore` condition.
 	NoncurrentTimeBefore pulumi.StringPtrInput `pulumi:"noncurrentTimeBefore"`
-	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `numNewerVersions` condition.
 	NumNewerVersions pulumi.IntPtrInput `pulumi:"numNewerVersions"`
 	// While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `sendAgeIfZero` field is having `false` value.
 	SendAgeIfZero pulumi.BoolPtrInput `pulumi:"sendAgeIfZero"`
@@ -3180,14 +3178,12 @@ func (o BucketLifecycleRuleConditionOutput) CustomTimeBefore() pulumi.StringPtrO
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.CustomTimeBefore }).(pulumi.StringPtrOutput)
 }
 
-// Number of days elapsed since the user-specified timestamp set on an object.
+// Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceCustomTime` condition.
 func (o BucketLifecycleRuleConditionOutput) DaysSinceCustomTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.DaysSinceCustomTime }).(pulumi.IntPtrOutput)
 }
 
-// Number of days elapsed since the noncurrent timestamp of an object. This
-//
-//	condition is relevant only for versioned objects.
+// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceNoncurrentTime` condition.
 func (o BucketLifecycleRuleConditionOutput) DaysSinceNoncurrentTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.DaysSinceNoncurrentTime }).(pulumi.IntPtrOutput)
 }
@@ -3207,12 +3203,12 @@ func (o BucketLifecycleRuleConditionOutput) MatchesSuffixes() pulumi.StringArray
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) []string { return v.MatchesSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrentTimeBefore` condition.
 func (o BucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.NoncurrentTimeBefore }).(pulumi.StringPtrOutput)
 }
 
-// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `numNewerVersions` condition.
 func (o BucketLifecycleRuleConditionOutput) NumNewerVersions() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.NumNewerVersions }).(pulumi.IntPtrOutput)
 }
@@ -10340,6 +10336,11 @@ func (o InsightsReportConfigParquetOptionsPtrOutput) Elem() InsightsReportConfig
 }
 
 type ManagedFolderIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -10359,6 +10360,11 @@ type ManagedFolderIamBindingConditionInput interface {
 }
 
 type ManagedFolderIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -10443,6 +10449,11 @@ func (o ManagedFolderIamBindingConditionOutput) ToManagedFolderIamBindingConditi
 	}).(ManagedFolderIamBindingConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o ManagedFolderIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedFolderIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -10481,6 +10492,11 @@ func (o ManagedFolderIamBindingConditionPtrOutput) Elem() ManagedFolderIamBindin
 	}).(ManagedFolderIamBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o ManagedFolderIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedFolderIamBindingCondition) *string {
 		if v == nil {
@@ -10511,6 +10527,11 @@ func (o ManagedFolderIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutpu
 }
 
 type ManagedFolderIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -10530,6 +10551,11 @@ type ManagedFolderIamMemberConditionInput interface {
 }
 
 type ManagedFolderIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -10614,6 +10640,11 @@ func (o ManagedFolderIamMemberConditionOutput) ToManagedFolderIamMemberCondition
 	}).(ManagedFolderIamMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o ManagedFolderIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedFolderIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -10652,6 +10683,11 @@ func (o ManagedFolderIamMemberConditionPtrOutput) Elem() ManagedFolderIamMemberC
 	}).(ManagedFolderIamMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o ManagedFolderIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedFolderIamMemberCondition) *string {
 		if v == nil {

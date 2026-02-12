@@ -39,16 +39,12 @@ import javax.annotation.Nullable;
  * Folders can be imported using the folder&#39;s id, e.g.
  * 
  * * `folders/{{folder_id}}`
- * 
  * * `{{folder_id}}`
  * 
  * When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
  * ```
  * 
@@ -85,9 +81,17 @@ public class Folder extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }

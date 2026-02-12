@@ -258,29 +258,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies
- * 
- * IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example:
- * 
- * * `projects/{project}/regions/{region}/jobs/{job_id}`
- * 
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- * 
- * tf
- * 
- * import {
- * 
- *   id = &#34;projects/{project}/regions/{region}/jobs/{job_id}&#34;
- * 
- *   to = google_dataproc_job_iam_policy.default
- * 
- * }
- * 
- * The `pulumi import` command can also be used:
- * 
- * ```sh
- * $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember default &#34;projects/{project}/regions/{region}/jobs/{job_id}&#34;
- * ```
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:dataproc/jobIAMMember:JobIAMMember")

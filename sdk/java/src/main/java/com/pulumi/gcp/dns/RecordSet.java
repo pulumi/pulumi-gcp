@@ -18,6 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/docs/records/) and
+ * [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
+ * 
+ * &gt; **Note:** The provider treats this resource as an authoritative record set. This means existing records (including the default records) for the given type will be overwritten when you create this resource in Terraform. In addition, the Google Cloud DNS API requires NS and SOA records to be present at all times, so Terraform will not actually remove NS or SOA records on the root of the zone during destroy but will report that it did.
+ * 
  * ## Example Usage
  * 
  * ### Binding a DNS name to the ephemeral IP of a new instance:
@@ -497,22 +502,14 @@ import javax.annotation.Nullable;
  * DNS record sets can be imported using either of these accepted formats:
  * 
  * * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
- * 
  * * `{{project}}/{{zone}}/{{name}}/{{type}}`
- * 
  * * `{{zone}}/{{name}}/{{type}}`
  * 
  * When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{zone}}/{{name}}/{{type}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dns/recordSet:RecordSet default {{zone}}/{{name}}/{{type}}
  * ```
  * 
@@ -585,9 +582,19 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
     public Output<Optional<RecordSetRoutingPolicy>> routingPolicy() {
         return Codegen.optional(this.routingPolicy);
     }
+    /**
+     * The string data for the records in this record set
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+     * 
+     */
     @Export(name="rrdatas", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> rrdatas;
 
+    /**
+     * @return The string data for the records in this record set
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\&#34;` if you don&#39;t want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\&#34; \&#34;` inside the Terraform configuration string (e.g. `&#34;first255characters\&#34; \&#34;morecharacters&#34;`).
+     * 
+     */
     public Output<Optional<List<String>>> rrdatas() {
         return Codegen.optional(this.rrdatas);
     }

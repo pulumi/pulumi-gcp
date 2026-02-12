@@ -77,20 +77,15 @@ __all__ = [
     'SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AppConnectionApplicationEndpointArgsDict(TypedDict):
-        host: pulumi.Input[_builtins.str]
-        """
-        Hostname or IP address of the remote application endpoint.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port of the remote application endpoint.
-        """
-elif False:
-    AppConnectionApplicationEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class AppConnectionApplicationEndpointArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Hostname or IP address of the remote application endpoint.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port of the remote application endpoint.
+    """
 
 @pulumi.input_type
 class AppConnectionApplicationEndpointArgs:
@@ -129,30 +124,27 @@ class AppConnectionApplicationEndpointArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class AppConnectionGatewayArgsDict(TypedDict):
-        app_gateway: pulumi.Input[_builtins.str]
-        """
-        AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
-        """
-        ingress_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of hosting used by the gateway. Refer to
-        https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
-        for a list of possible values.
-        """
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Server-defined URI for this resource.
-        """
-elif False:
-    AppConnectionGatewayArgsDict: TypeAlias = Mapping[str, Any]
+class AppConnectionGatewayArgsDict(TypedDict):
+    app_gateway: pulumi.Input[_builtins.str]
+    """
+    AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+    """
+    ingress_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of hosting used by the gateway. Refer to
+    https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+    for a list of possible values.
+    """
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Server-defined URI for this resource.
+    """
 
 @pulumi.input_type
 class AppConnectionGatewayArgs:
@@ -232,15 +224,12 @@ class AppConnectionGatewayArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class AppConnectorPrincipalInfoArgsDict(TypedDict):
-        service_account: pulumi.Input['AppConnectorPrincipalInfoServiceAccountArgsDict']
-        """
-        ServiceAccount represents a GCP service account.
-        Structure is documented below.
-        """
-elif False:
-    AppConnectorPrincipalInfoArgsDict: TypeAlias = Mapping[str, Any]
+class AppConnectorPrincipalInfoArgsDict(TypedDict):
+    service_account: pulumi.Input['AppConnectorPrincipalInfoServiceAccountArgsDict']
+    """
+    ServiceAccount represents a GCP service account.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppConnectorPrincipalInfoArgs:
@@ -266,14 +255,11 @@ class AppConnectorPrincipalInfoArgs:
         pulumi.set(self, "service_account", value)
 
 
-if not MYPY:
-    class AppConnectorPrincipalInfoServiceAccountArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Email address of the service account.
-        """
-elif False:
-    AppConnectorPrincipalInfoServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+class AppConnectorPrincipalInfoServiceAccountArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Email address of the service account.
+    """
 
 @pulumi.input_type
 class AppConnectorPrincipalInfoServiceAccountArgs:
@@ -297,18 +283,15 @@ class AppConnectorPrincipalInfoServiceAccountArgs:
         pulumi.set(self, "email", value)
 
 
-if not MYPY:
-    class AppGatewayAllocatedConnectionArgsDict(TypedDict):
-        ingress_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ingress port of an allocated connection.
-        """
-        psc_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The PSC uri of an allocated connection.
-        """
-elif False:
-    AppGatewayAllocatedConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class AppGatewayAllocatedConnectionArgsDict(TypedDict):
+    ingress_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ingress port of an allocated connection.
+    """
+    psc_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The PSC uri of an allocated connection.
+    """
 
 @pulumi.input_type
 class AppGatewayAllocatedConnectionArgs:
@@ -349,18 +332,15 @@ class AppGatewayAllocatedConnectionArgs:
         pulumi.set(self, "psc_uri", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationEndpointMatcherArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        Required. Hostname of the application.
-        """
-        ports: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        Optional. Ports of the application.
-        """
-elif False:
-    SecurityGatewayApplicationEndpointMatcherArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationEndpointMatcherArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    Required. Hostname of the application.
+    """
+    ports: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    Optional. Ports of the application.
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationEndpointMatcherArgs:
@@ -399,19 +379,23 @@ class SecurityGatewayApplicationEndpointMatcherArgs:
         pulumi.set(self, "ports", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SecurityGatewayApplicationIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationIamBindingConditionArgs:
@@ -422,6 +406,11 @@ class SecurityGatewayApplicationIamBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -455,6 +444,13 @@ class SecurityGatewayApplicationIamBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -462,19 +458,23 @@ class SecurityGatewayApplicationIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SecurityGatewayApplicationIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationIamMemberConditionArgs:
@@ -485,6 +485,11 @@ class SecurityGatewayApplicationIamMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -518,6 +523,13 @@ class SecurityGatewayApplicationIamMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -525,30 +537,27 @@ class SecurityGatewayApplicationIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationUpstreamArgsDict(TypedDict):
-        egress_policy: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamEgressPolicyArgsDict']]
-        """
-        Optional. Routing policy information.
-        Structure is documented below.
-        """
-        external: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamExternalArgsDict']]
-        """
-        List of the external endpoints to forward traffic to.
-        Structure is documented below.
-        """
-        network: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamNetworkArgsDict']]
-        """
-        Network to forward traffic to.
-        Structure is documented below.
-        """
-        proxy_protocol: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamProxyProtocolArgsDict']]
-        """
-        Shared proxy configuration for all apps.
-        Structure is documented below.
-        """
-elif False:
-    SecurityGatewayApplicationUpstreamArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationUpstreamArgsDict(TypedDict):
+    egress_policy: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamEgressPolicyArgsDict']]
+    """
+    Optional. Routing policy information.
+    Structure is documented below.
+    """
+    external: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamExternalArgsDict']]
+    """
+    List of the external endpoints to forward traffic to.
+    Structure is documented below.
+    """
+    network: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamNetworkArgsDict']]
+    """
+    Network to forward traffic to.
+    Structure is documented below.
+    """
+    proxy_protocol: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamProxyProtocolArgsDict']]
+    """
+    Shared proxy configuration for all apps.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationUpstreamArgs:
@@ -629,14 +638,11 @@ class SecurityGatewayApplicationUpstreamArgs:
         pulumi.set(self, "proxy_protocol", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationUpstreamEgressPolicyArgsDict(TypedDict):
-        regions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. List of regions where the application sends traffic to.
-        """
-elif False:
-    SecurityGatewayApplicationUpstreamEgressPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationUpstreamEgressPolicyArgsDict(TypedDict):
+    regions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. List of regions where the application sends traffic to.
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationUpstreamEgressPolicyArgs:
@@ -660,15 +666,12 @@ class SecurityGatewayApplicationUpstreamEgressPolicyArgs:
         pulumi.set(self, "regions", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationUpstreamExternalArgsDict(TypedDict):
-        endpoints: pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamExternalEndpointArgsDict']]]
-        """
-        List of the endpoints to forward traffic to.
-        Structure is documented below.
-        """
-elif False:
-    SecurityGatewayApplicationUpstreamExternalArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationUpstreamExternalArgsDict(TypedDict):
+    endpoints: pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamExternalEndpointArgsDict']]]
+    """
+    List of the endpoints to forward traffic to.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationUpstreamExternalArgs:
@@ -694,18 +697,15 @@ class SecurityGatewayApplicationUpstreamExternalArgs:
         pulumi.set(self, "endpoints", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationUpstreamExternalEndpointArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        Hostname of the endpoint.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port of the endpoint.
-        """
-elif False:
-    SecurityGatewayApplicationUpstreamExternalEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationUpstreamExternalEndpointArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    Hostname of the endpoint.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port of the endpoint.
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationUpstreamExternalEndpointArgs:
@@ -744,15 +744,12 @@ class SecurityGatewayApplicationUpstreamExternalEndpointArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationUpstreamNetworkArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Required. Network name is of the format:
-        `projects/{project}/global/networks/{network}`
-        """
-elif False:
-    SecurityGatewayApplicationUpstreamNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationUpstreamNetworkArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Required. Network name is of the format:
+    `projects/{project}/global/networks/{network}`
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationUpstreamNetworkArgs:
@@ -778,36 +775,33 @@ class SecurityGatewayApplicationUpstreamNetworkArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationUpstreamProxyProtocolArgsDict(TypedDict):
-        allowed_client_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The configuration for the proxy.
-        """
-        client_ip: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Client IP configuration. The client IP address is included if true.
-        """
-        contextual_headers: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgsDict']]
-        """
-        Configuration for the contextual headers.
-        Structure is documented below.
-        """
-        gateway_identity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Gateway identity configuration.
-        Possible values are: `RESOURCE_NAME`.
-        """
-        metadata_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Custom resource specific headers along with the values.
-        The names should conform to RFC 9110:
-        > Field names SHOULD constrain themselves to alphanumeric characters, "-",
-        and ".", and SHOULD begin with a letter.
-        > Field values SHOULD contain only ASCII printable characters and tab.
-        """
-elif False:
-    SecurityGatewayApplicationUpstreamProxyProtocolArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationUpstreamProxyProtocolArgsDict(TypedDict):
+    allowed_client_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The configuration for the proxy.
+    """
+    client_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Client IP configuration. The client IP address is included if true.
+    """
+    contextual_headers: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgsDict']]
+    """
+    Configuration for the contextual headers.
+    Structure is documented below.
+    """
+    gateway_identity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Gateway identity configuration.
+    Possible values are: `RESOURCE_NAME`.
+    """
+    metadata_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Custom resource specific headers along with the values.
+    The names should conform to RFC 9110:
+    > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+    and ".", and SHOULD begin with a letter.
+    > Field values SHOULD contain only ASCII printable characters and tab.
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationUpstreamProxyProtocolArgs:
@@ -908,30 +902,27 @@ class SecurityGatewayApplicationUpstreamProxyProtocolArgs:
         pulumi.set(self, "metadata_headers", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgsDict(TypedDict):
-        device_info: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgsDict']]
-        """
-        Device info configuration.
-        Structure is documented below.
-        """
-        group_info: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgsDict']]
-        """
-        Group info configuration.
-        Structure is documented below.
-        """
-        output_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default output type for all enabled headers.
-        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
-        """
-        user_info: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgsDict']]
-        """
-        User info configuration.
-        Structure is documented below.
-        """
-elif False:
-    SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgsDict(TypedDict):
+    device_info: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgsDict']]
+    """
+    Device info configuration.
+    Structure is documented below.
+    """
+    group_info: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgsDict']]
+    """
+    Group info configuration.
+    Structure is documented below.
+    """
+    output_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default output type for all enabled headers.
+    Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+    """
+    user_info: NotRequired[pulumi.Input['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgsDict']]
+    """
+    User info configuration.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs:
@@ -1012,15 +1003,12 @@ class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs:
         pulumi.set(self, "user_info", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgsDict(TypedDict):
-        output_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The output type of the delegated device info.
-        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
-        """
-elif False:
-    SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgsDict(TypedDict):
+    output_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The output type of the delegated device info.
+    Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs:
@@ -1047,15 +1035,12 @@ class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo
         pulumi.set(self, "output_type", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgsDict(TypedDict):
-        output_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The output type of the delegated group info.
-        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
-        """
-elif False:
-    SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgsDict(TypedDict):
+    output_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The output type of the delegated group info.
+    Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs:
@@ -1082,15 +1067,12 @@ class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoA
         pulumi.set(self, "output_type", value)
 
 
-if not MYPY:
-    class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgsDict(TypedDict):
-        output_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The output type of the delegated user info.
-        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
-        """
-elif False:
-    SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgsDict(TypedDict):
+    output_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The output type of the delegated user info.
+    Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+    """
 
 @pulumi.input_type
 class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs:
@@ -1117,19 +1099,16 @@ class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoAr
         pulumi.set(self, "output_type", value)
 
 
-if not MYPY:
-    class SecurityGatewayHubArgsDict(TypedDict):
-        region: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        internet_gateway: NotRequired[pulumi.Input['SecurityGatewayHubInternetGatewayArgsDict']]
-        """
-        Internet Gateway configuration.
-        Structure is documented below.
-        """
-elif False:
-    SecurityGatewayHubArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayHubArgsDict(TypedDict):
+    region: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    internet_gateway: NotRequired[pulumi.Input['SecurityGatewayHubInternetGatewayArgsDict']]
+    """
+    Internet Gateway configuration.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecurityGatewayHubArgs:
@@ -1171,15 +1150,12 @@ class SecurityGatewayHubArgs:
         pulumi.set(self, "internet_gateway", value)
 
 
-if not MYPY:
-    class SecurityGatewayHubInternetGatewayArgsDict(TypedDict):
-        assigned_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Output only. List of IP addresses assigned to the Cloud NAT.
-        """
-elif False:
-    SecurityGatewayHubInternetGatewayArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayHubInternetGatewayArgsDict(TypedDict):
+    assigned_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Output only. List of IP addresses assigned to the Cloud NAT.
+    """
 
 @pulumi.input_type
 class SecurityGatewayHubInternetGatewayArgs:
@@ -1206,19 +1182,23 @@ class SecurityGatewayHubInternetGatewayArgs:
         pulumi.set(self, "assigned_ips", value)
 
 
-if not MYPY:
-    class SecurityGatewayIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SecurityGatewayIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class SecurityGatewayIamBindingConditionArgs:
@@ -1229,6 +1209,11 @@ class SecurityGatewayIamBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1262,6 +1247,13 @@ class SecurityGatewayIamBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1269,19 +1261,23 @@ class SecurityGatewayIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class SecurityGatewayIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SecurityGatewayIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class SecurityGatewayIamMemberConditionArgs:
@@ -1292,6 +1288,11 @@ class SecurityGatewayIamMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1325,6 +1326,13 @@ class SecurityGatewayIamMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1332,36 +1340,33 @@ class SecurityGatewayIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class SecurityGatewayProxyProtocolConfigArgsDict(TypedDict):
-        allowed_client_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The configuration for the proxy.
-        """
-        client_ip: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Client IP configuration. The client IP address is included if true.
-        """
-        contextual_headers: NotRequired[pulumi.Input['SecurityGatewayProxyProtocolConfigContextualHeadersArgsDict']]
-        """
-        Configuration for the contextual headers.
-        Structure is documented below.
-        """
-        gateway_identity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Gateway identity configuration.
-        Possible values are: `RESOURCE_NAME`.
-        """
-        metadata_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Custom resource specific headers along with the values.
-        The names should conform to RFC 9110:
-        > Field names SHOULD constrain themselves to alphanumeric characters, "-",
-        and ".", and SHOULD begin with a letter.
-        > Field values SHOULD contain only ASCII printable characters and tab.
-        """
-elif False:
-    SecurityGatewayProxyProtocolConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayProxyProtocolConfigArgsDict(TypedDict):
+    allowed_client_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The configuration for the proxy.
+    """
+    client_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Client IP configuration. The client IP address is included if true.
+    """
+    contextual_headers: NotRequired[pulumi.Input['SecurityGatewayProxyProtocolConfigContextualHeadersArgsDict']]
+    """
+    Configuration for the contextual headers.
+    Structure is documented below.
+    """
+    gateway_identity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Gateway identity configuration.
+    Possible values are: `RESOURCE_NAME`.
+    """
+    metadata_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Custom resource specific headers along with the values.
+    The names should conform to RFC 9110:
+    > Field names SHOULD constrain themselves to alphanumeric characters, "-",
+    and ".", and SHOULD begin with a letter.
+    > Field values SHOULD contain only ASCII printable characters and tab.
+    """
 
 @pulumi.input_type
 class SecurityGatewayProxyProtocolConfigArgs:
@@ -1462,30 +1467,27 @@ class SecurityGatewayProxyProtocolConfigArgs:
         pulumi.set(self, "metadata_headers", value)
 
 
-if not MYPY:
-    class SecurityGatewayProxyProtocolConfigContextualHeadersArgsDict(TypedDict):
-        device_info: NotRequired[pulumi.Input['SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgsDict']]
-        """
-        Device info configuration.
-        Structure is documented below.
-        """
-        group_info: NotRequired[pulumi.Input['SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgsDict']]
-        """
-        Group info configuration.
-        Structure is documented below.
-        """
-        output_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default output type for all enabled headers.
-        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
-        """
-        user_info: NotRequired[pulumi.Input['SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgsDict']]
-        """
-        User info configuration.
-        Structure is documented below.
-        """
-elif False:
-    SecurityGatewayProxyProtocolConfigContextualHeadersArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayProxyProtocolConfigContextualHeadersArgsDict(TypedDict):
+    device_info: NotRequired[pulumi.Input['SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgsDict']]
+    """
+    Device info configuration.
+    Structure is documented below.
+    """
+    group_info: NotRequired[pulumi.Input['SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgsDict']]
+    """
+    Group info configuration.
+    Structure is documented below.
+    """
+    output_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default output type for all enabled headers.
+    Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+    """
+    user_info: NotRequired[pulumi.Input['SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgsDict']]
+    """
+    User info configuration.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecurityGatewayProxyProtocolConfigContextualHeadersArgs:
@@ -1566,15 +1568,12 @@ class SecurityGatewayProxyProtocolConfigContextualHeadersArgs:
         pulumi.set(self, "user_info", value)
 
 
-if not MYPY:
-    class SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgsDict(TypedDict):
-        output_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The output type of the delegated device info.
-        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
-        """
-elif False:
-    SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgsDict(TypedDict):
+    output_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The output type of the delegated device info.
+    Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+    """
 
 @pulumi.input_type
 class SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs:
@@ -1601,15 +1600,12 @@ class SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs:
         pulumi.set(self, "output_type", value)
 
 
-if not MYPY:
-    class SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgsDict(TypedDict):
-        output_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The output type of the delegated group info.
-        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
-        """
-elif False:
-    SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgsDict(TypedDict):
+    output_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The output type of the delegated group info.
+    Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+    """
 
 @pulumi.input_type
 class SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs:
@@ -1636,15 +1632,12 @@ class SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs:
         pulumi.set(self, "output_type", value)
 
 
-if not MYPY:
-    class SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgsDict(TypedDict):
-        output_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The output type of the delegated user info.
-        Possible values are: `PROTOBUF`, `JSON`, `NONE`.
-        """
-elif False:
-    SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgsDict(TypedDict):
+    output_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The output type of the delegated user info.
+    Possible values are: `PROTOBUF`, `JSON`, `NONE`.
+    """
 
 @pulumi.input_type
 class SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs:
@@ -1671,15 +1664,12 @@ class SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs:
         pulumi.set(self, "output_type", value)
 
 
-if not MYPY:
-    class SecurityGatewayServiceDiscoveryArgsDict(TypedDict):
-        api_gateway: NotRequired[pulumi.Input['SecurityGatewayServiceDiscoveryApiGatewayArgsDict']]
-        """
-        External API configuration.
-        Structure is documented below.
-        """
-elif False:
-    SecurityGatewayServiceDiscoveryArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayServiceDiscoveryArgsDict(TypedDict):
+    api_gateway: NotRequired[pulumi.Input['SecurityGatewayServiceDiscoveryApiGatewayArgsDict']]
+    """
+    External API configuration.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecurityGatewayServiceDiscoveryArgs:
@@ -1706,15 +1696,12 @@ class SecurityGatewayServiceDiscoveryArgs:
         pulumi.set(self, "api_gateway", value)
 
 
-if not MYPY:
-    class SecurityGatewayServiceDiscoveryApiGatewayArgsDict(TypedDict):
-        resource_override: NotRequired[pulumi.Input['SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgsDict']]
-        """
-        Enables fetching resource model updates to alter service behavior per Chrome profile.
-        Structure is documented below.
-        """
-elif False:
-    SecurityGatewayServiceDiscoveryApiGatewayArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayServiceDiscoveryApiGatewayArgsDict(TypedDict):
+    resource_override: NotRequired[pulumi.Input['SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgsDict']]
+    """
+    Enables fetching resource model updates to alter service behavior per Chrome profile.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SecurityGatewayServiceDiscoveryApiGatewayArgs:
@@ -1741,14 +1728,11 @@ class SecurityGatewayServiceDiscoveryApiGatewayArgs:
         pulumi.set(self, "resource_override", value)
 
 
-if not MYPY:
-    class SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgsDict(TypedDict):
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Contains uri path fragment where HTTP request is sent.
-        """
-elif False:
-    SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgsDict(TypedDict):
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Contains uri path fragment where HTTP request is sent.
+    """
 
 @pulumi.input_type
 class SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs:

@@ -261,9 +261,23 @@ public final class DataExchangeSubscriptionState extends com.pulumi.resources.Re
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Controls when the subscription is automatically refreshed by the provider.
+     * * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+     * * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+     * * `NEVER`: The provider will not automatically refresh the subscription.
+     * 
+     */
     @Import(name="refreshPolicy")
     private @Nullable Output<String> refreshPolicy;
 
+    /**
+     * @return Controls when the subscription is automatically refreshed by the provider.
+     * * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+     * * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+     * * `NEVER`: The provider will not automatically refresh the subscription.
+     * 
+     */
     public Optional<Output<String>> refreshPolicy() {
         return Optional.ofNullable(this.refreshPolicy);
     }
@@ -726,11 +740,29 @@ public final class DataExchangeSubscriptionState extends com.pulumi.resources.Re
             return project(Output.of(project));
         }
 
+        /**
+         * @param refreshPolicy Controls when the subscription is automatically refreshed by the provider.
+         * * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+         * * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+         * * `NEVER`: The provider will not automatically refresh the subscription.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshPolicy(@Nullable Output<String> refreshPolicy) {
             $.refreshPolicy = refreshPolicy;
             return this;
         }
 
+        /**
+         * @param refreshPolicy Controls when the subscription is automatically refreshed by the provider.
+         * * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+         * * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+         * * `NEVER`: The provider will not automatically refresh the subscription.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshPolicy(String refreshPolicy) {
             return refreshPolicy(Output.of(refreshPolicy));
         }

@@ -505,22 +505,14 @@ class HttpsHealthCheck(pulumi.CustomResource):
         HttpsHealthCheck can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/httpsHealthChecks/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, HttpsHealthCheck can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default projects/{{project}}/global/httpsHealthChecks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{name}}
         ```
 
@@ -596,22 +588,14 @@ class HttpsHealthCheck(pulumi.CustomResource):
         HttpsHealthCheck can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/httpsHealthChecks/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, HttpsHealthCheck can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default projects/{{project}}/global/httpsHealthChecks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{name}}
         ```
 

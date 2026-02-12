@@ -157,6 +157,7 @@ class _PrincipalAccessBoundaryPolicyState:
         :param pulumi.Input['PrincipalAccessBoundaryPolicyDetailsArgs'] details: Principal access boundary policy details
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The description of the principal access boundary policy. Must be less than or equal to 63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: The etag for the principal access boundary. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[_builtins.str] location: The location the principal access boundary policy is in.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the principal access boundary policy.  The following format is supported:
@@ -248,6 +249,9 @@ class _PrincipalAccessBoundaryPolicyState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -355,6 +359,18 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                  principal_access_boundary_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        An IAM Principal Access Boundary Policy resource. This resource has no effect on accesses until is bound to a target through policy bindings.
+        You can see further documentation on policy bindings in:
+          - [Organizations](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_organizations_policy_binding)
+          - [Folders](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_folders_policy_binding)
+          - [Projects](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_projects_policy_binding)
+
+        To get more information about PrincipalAccessBoundaryPolicy, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
+        * How-to Guides
+            * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
+
         ## Example Usage
 
         ### Iam Principal Access Boundary Policy
@@ -401,16 +417,12 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         PrincipalAccessBoundaryPolicy can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}`
-
         * `{{organization}}/{{location}}/{{principal_access_boundary_policy_id}}`
 
         When using the `pulumi import` command, PrincipalAccessBoundaryPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default {{organization}}/{{location}}/{{principal_access_boundary_policy_id}}
         ```
 
@@ -436,6 +448,18 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                  args: PrincipalAccessBoundaryPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An IAM Principal Access Boundary Policy resource. This resource has no effect on accesses until is bound to a target through policy bindings.
+        You can see further documentation on policy bindings in:
+          - [Organizations](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_organizations_policy_binding)
+          - [Folders](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_folders_policy_binding)
+          - [Projects](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_projects_policy_binding)
+
+        To get more information about PrincipalAccessBoundaryPolicy, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
+        * How-to Guides
+            * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
+
         ## Example Usage
 
         ### Iam Principal Access Boundary Policy
@@ -482,16 +506,12 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         PrincipalAccessBoundaryPolicy can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}`
-
         * `{{organization}}/{{location}}/{{principal_access_boundary_policy_id}}`
 
         When using the `pulumi import` command, PrincipalAccessBoundaryPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default {{organization}}/{{location}}/{{principal_access_boundary_policy_id}}
         ```
 
@@ -581,6 +601,7 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict']] details: Principal access boundary policy details
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The description of the principal access boundary policy. Must be less than or equal to 63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: The etag for the principal access boundary. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[_builtins.str] location: The location the principal access boundary policy is in.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the principal access boundary policy.  The following format is supported:
@@ -649,6 +670,9 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

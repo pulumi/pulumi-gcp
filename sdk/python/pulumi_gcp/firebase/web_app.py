@@ -29,6 +29,9 @@ class WebAppArgs:
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        :param pulumi.Input[_builtins.str] deletion_policy: Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+               rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+               serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -69,6 +72,11 @@ class WebAppArgs:
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+        rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+        serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -107,6 +115,9 @@ class _WebAppState:
         :param pulumi.Input[_builtins.str] app_id: The globally unique, Firebase-assigned identifier of the App.
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_urls: The URLs where the `WebApp` is hosted.
+        :param pulumi.Input[_builtins.str] deletion_policy: Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+               rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+               serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] name: The fully qualified resource name of the App, for example:
                projects/projectId/webApps/appId
@@ -170,6 +181,11 @@ class _WebAppState:
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+        rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+        serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -227,6 +243,17 @@ class WebApp(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A Google Cloud Firebase web application instance
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about WebApp, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/)
+
         ## Example Usage
 
         ### Firebase Web App Basic
@@ -292,34 +319,18 @@ class WebApp(pulumi.CustomResource):
         WebApp can be imported using any of these accepted formats:
 
         * `{{project}} projects/{{project}}/webApps/{{app_id}}`
-
         * `projects/{{project}}/webApps/{{app_id}}`
-
         * `{{project}}/{{project}}/{{app_id}}`
-
         * `webApps/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:firebase/webApp:WebApp default "{{project}} projects/{{project}}/webApps/{{app_id}}"
-        ```
-
-        ```sh
+        $ terraform import google_firebase_web_app.default "{{project}} projects/{{project}}/webApps/{{app_id}}"
         $ pulumi import gcp:firebase/webApp:WebApp default projects/{{project}}/webApps/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/webApp:WebApp default webApps/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/webApp:WebApp default {{app_id}}
         ```
 
@@ -328,6 +339,9 @@ class WebApp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        :param pulumi.Input[_builtins.str] deletion_policy: Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+               rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+               serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -339,6 +353,17 @@ class WebApp(pulumi.CustomResource):
                  args: WebAppArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Google Cloud Firebase web application instance
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about WebApp, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/)
+
         ## Example Usage
 
         ### Firebase Web App Basic
@@ -404,34 +429,18 @@ class WebApp(pulumi.CustomResource):
         WebApp can be imported using any of these accepted formats:
 
         * `{{project}} projects/{{project}}/webApps/{{app_id}}`
-
         * `projects/{{project}}/webApps/{{app_id}}`
-
         * `{{project}}/{{project}}/{{app_id}}`
-
         * `webApps/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:firebase/webApp:WebApp default "{{project}} projects/{{project}}/webApps/{{app_id}}"
-        ```
-
-        ```sh
+        $ terraform import google_firebase_web_app.default "{{project}} projects/{{project}}/webApps/{{app_id}}"
         $ pulumi import gcp:firebase/webApp:WebApp default projects/{{project}}/webApps/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/webApp:WebApp default webApps/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/webApp:WebApp default {{app_id}}
         ```
 
@@ -502,6 +511,9 @@ class WebApp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_id: The globally unique, Firebase-assigned identifier of the App.
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_urls: The URLs where the `WebApp` is hosted.
+        :param pulumi.Input[_builtins.str] deletion_policy: Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+               rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+               serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[_builtins.str] name: The fully qualified resource name of the App, for example:
                projects/projectId/webApps/appId
@@ -551,6 +563,11 @@ class WebApp(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Set to `ABANDON` to allow the WebApp to be untracked from terraform state
+        rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
+        serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
+        """
         return pulumi.get(self, "deletion_policy")
 
     @_builtins.property

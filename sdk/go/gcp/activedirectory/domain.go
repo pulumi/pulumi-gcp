@@ -58,22 +58,14 @@ import (
 // Domain can be imported using any of these accepted formats:
 //
 // * `{{project}}/{{name}}`
-//
 // * `{{project}} {{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:activedirectory/domain:Domain default {{project}}/{{name}}
-// ```
-//
-// ```sh
-// $ pulumi import gcp:activedirectory/domain:Domain default "{{project}} {{name}}"
-// ```
-//
-// ```sh
+// $ terraform import google_active_directory_domain.default "{{project}} {{name}}"
 // $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
 // ```
 type Domain struct {
@@ -85,7 +77,13 @@ type Domain struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayOutput `pulumi:"authorizedNetworks"`
-	DeletionProtection pulumi.BoolPtrOutput     `pulumi:"deletionProtection"`
+	// Whether Terraform will be prevented from destroying the domain. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the domain,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the domain will fail.
+	// When the field is set to false, deleting the domain is allowed.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
@@ -164,7 +162,13 @@ type domainState struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
-	DeletionProtection *bool    `pulumi:"deletionProtection"`
+	// Whether Terraform will be prevented from destroying the domain. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the domain,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the domain will fail.
+	// When the field is set to false, deleting the domain is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	DomainName *string `pulumi:"domainName"`
@@ -200,6 +204,12 @@ type DomainState struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the domain. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the domain,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the domain will fail.
+	// When the field is set to false, deleting the domain is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
@@ -240,7 +250,13 @@ type domainArgs struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
-	DeletionProtection *bool    `pulumi:"deletionProtection"`
+	// Whether Terraform will be prevented from destroying the domain. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the domain,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the domain will fail.
+	// When the field is set to false, deleting the domain is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	DomainName string `pulumi:"domainName"`
@@ -267,6 +283,12 @@ type DomainArgs struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the domain. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the domain,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the domain will fail.
+	// When the field is set to false, deleting the domain is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
 	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
@@ -385,6 +407,12 @@ func (o DomainOutput) AuthorizedNetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.AuthorizedNetworks }).(pulumi.StringArrayOutput)
 }
 
+// Whether Terraform will be prevented from destroying the domain. Defaults to true.
+// When a`terraform destroy` or `pulumi up` would delete the domain,
+// the command will fail if this field is not set to false in Terraform state.
+// When the field is set to true or unset in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the domain will fail.
+// When the field is set to false, deleting the domain is allowed.
 func (o DomainOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

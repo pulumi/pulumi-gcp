@@ -10,6 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
+    /// A Google Cloud Firebase Android application instance
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about AndroidApp, see:
+    /// 
+    /// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://firebase.google.com/docs/android/setup)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Firebase Android App Basic
@@ -94,34 +105,18 @@ namespace Pulumi.Gcp.Firebase
     /// AndroidApp can be imported using any of these accepted formats:
     /// 
     /// * `{{project}} projects/{{project}}/androidApps/{{app_id}}`
-    /// 
     /// * `projects/{{project}}/androidApps/{{app_id}}`
-    /// 
     /// * `{{project}}/{{project}}/{{app_id}}`
-    /// 
     /// * `androidApps/{{app_id}}`
-    /// 
     /// * `{{app_id}}`
     /// 
     /// When using the `pulumi import` command, AndroidApp can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    /// $ pulumi import gcp:firebase/androidApp:AndroidApp default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
-    /// ```
-    /// 
-    /// ```sh
+    /// $ terraform import google_firebase_android_app.default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
     /// $ pulumi import gcp:firebase/androidApp:AndroidApp default projects/{{project}}/androidApps/{{app_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}}/{{project}}/{{app_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/androidApp:AndroidApp default androidApps/{{app_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firebase/androidApp:AndroidApp default {{app_id}}
     /// ```
     /// </summary>
@@ -143,6 +138,11 @@ namespace Pulumi.Gcp.Firebase
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
 
+        /// <summary>
+        /// (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+        /// rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+        /// serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
@@ -246,6 +246,11 @@ namespace Pulumi.Gcp.Firebase
         [Input("apiKeyId")]
         public Input<string>? ApiKeyId { get; set; }
 
+        /// <summary>
+        /// (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+        /// rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+        /// serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
@@ -316,6 +321,11 @@ namespace Pulumi.Gcp.Firebase
         [Input("appId")]
         public Input<string>? AppId { get; set; }
 
+        /// <summary>
+        /// (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+        /// rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+        /// serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 

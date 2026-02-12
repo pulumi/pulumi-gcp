@@ -278,6 +278,7 @@ class _AppHostingBackendState:
         :param pulumi.Input[_builtins.str] create_time: Time at which the backend was created.
         :param pulumi.Input[_builtins.str] delete_time: Time at which the backend was deleted.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name. 63 character limit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] environment: The environment name of the backend, used to load environment variables
                from environment specific configuration.
@@ -449,6 +450,9 @@ class _AppHostingBackendState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -791,22 +795,14 @@ class AppHostingBackend(pulumi.CustomResource):
         Backend can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backends/{{backend_id}}`
-
         * `{{project}}/{{location}}/{{backend_id}}`
-
         * `{{location}}/{{backend_id}}`
 
         When using the `pulumi import` command, Backend can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default projects/{{project}}/locations/{{location}}/backends/{{backend_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{project}}/{{location}}/{{backend_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{location}}/{{backend_id}}
         ```
 
@@ -983,22 +979,14 @@ class AppHostingBackend(pulumi.CustomResource):
         Backend can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backends/{{backend_id}}`
-
         * `{{project}}/{{location}}/{{backend_id}}`
-
         * `{{location}}/{{backend_id}}`
 
         When using the `pulumi import` command, Backend can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default projects/{{project}}/locations/{{location}}/backends/{{backend_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{project}}/{{location}}/{{backend_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{location}}/{{backend_id}}
         ```
 
@@ -1126,6 +1114,7 @@ class AppHostingBackend(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Time at which the backend was created.
         :param pulumi.Input[_builtins.str] delete_time: Time at which the backend was deleted.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name. 63 character limit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] environment: The environment name of the backend, used to load environment variables
                from environment specific configuration.
@@ -1252,6 +1241,9 @@ class AppHostingBackend(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

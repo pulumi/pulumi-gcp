@@ -96,9 +96,17 @@ namespace Pulumi.Gcp.Dataproc
         [Input("cluster", required: true)]
         public string Cluster { get; set; } = null!;
 
+        /// <summary>
+        /// The project in which the cluster belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// The region in which the cluster belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
@@ -116,9 +124,17 @@ namespace Pulumi.Gcp.Dataproc
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
 
+        /// <summary>
+        /// The project in which the cluster belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The region in which the cluster belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

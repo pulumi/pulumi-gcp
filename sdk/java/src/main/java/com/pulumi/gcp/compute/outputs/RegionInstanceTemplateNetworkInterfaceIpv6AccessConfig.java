@@ -23,7 +23,8 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
      */
     private @Nullable String externalIpv6PrefixLength;
     /**
-     * @return The name of this access configuration.
+     * @return The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     private @Nullable String name;
@@ -54,7 +55,8 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
         return Optional.ofNullable(this.externalIpv6PrefixLength);
     }
     /**
-     * @return The name of this access configuration.
+     * @return The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     public Optional<String> name() {

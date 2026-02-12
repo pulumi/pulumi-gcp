@@ -205,24 +205,19 @@ __all__ = [
     'CertificateTemplatePredefinedValuesPolicyIdArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AuthorityAccessUrlArgsDict(TypedDict):
-        ca_certificate_access_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The URL where this CertificateAuthority's CA certificate is published. This will only be
-        set for CAs that have been activated.
-        """
-        crl_access_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        The URL where this CertificateAuthority's CRLs are published. This will only be set for
-        CAs that have been activated.
-        """
-elif False:
-    AuthorityAccessUrlArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityAccessUrlArgsDict(TypedDict):
+    ca_certificate_access_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The URL where this CertificateAuthority's CA certificate is published. This will only be
+    set for CAs that have been activated.
+    """
+    crl_access_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    The URL where this CertificateAuthority's CRLs are published. This will only be set for
+    CAs that have been activated.
+    """
 
 @pulumi.input_type
 class AuthorityAccessUrlArgs:
@@ -271,25 +266,22 @@ class AuthorityAccessUrlArgs:
         pulumi.set(self, "crl_access_urls", value)
 
 
-if not MYPY:
-    class AuthorityConfigArgsDict(TypedDict):
-        subject_config: pulumi.Input['AuthorityConfigSubjectConfigArgsDict']
-        """
-        Specifies some of the values in a certificate that are related to the subject.
-        Structure is documented below.
-        """
-        x509_config: pulumi.Input['AuthorityConfigX509ConfigArgsDict']
-        """
-        Describes how some of the technical X.509 fields in a certificate should be populated.
-        Structure is documented below.
-        """
-        subject_key_id: NotRequired[pulumi.Input['AuthorityConfigSubjectKeyIdArgsDict']]
-        """
-        When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
-        Structure is documented below.
-        """
-elif False:
-    AuthorityConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigArgsDict(TypedDict):
+    subject_config: pulumi.Input['AuthorityConfigSubjectConfigArgsDict']
+    """
+    Specifies some of the values in a certificate that are related to the subject.
+    Structure is documented below.
+    """
+    x509_config: pulumi.Input['AuthorityConfigX509ConfigArgsDict']
+    """
+    Describes how some of the technical X.509 fields in a certificate should be populated.
+    Structure is documented below.
+    """
+    subject_key_id: NotRequired[pulumi.Input['AuthorityConfigSubjectKeyIdArgsDict']]
+    """
+    When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthorityConfigArgs:
@@ -350,20 +342,17 @@ class AuthorityConfigArgs:
         pulumi.set(self, "subject_key_id", value)
 
 
-if not MYPY:
-    class AuthorityConfigSubjectConfigArgsDict(TypedDict):
-        subject: pulumi.Input['AuthorityConfigSubjectConfigSubjectArgsDict']
-        """
-        Contains distinguished name fields such as the location and organization.
-        Structure is documented below.
-        """
-        subject_alt_name: NotRequired[pulumi.Input['AuthorityConfigSubjectConfigSubjectAltNameArgsDict']]
-        """
-        The subject alternative name fields.
-        Structure is documented below.
-        """
-elif False:
-    AuthorityConfigSubjectConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigSubjectConfigArgsDict(TypedDict):
+    subject: pulumi.Input['AuthorityConfigSubjectConfigSubjectArgsDict']
+    """
+    Contains distinguished name fields such as the location and organization.
+    Structure is documented below.
+    """
+    subject_alt_name: NotRequired[pulumi.Input['AuthorityConfigSubjectConfigSubjectAltNameArgsDict']]
+    """
+    The subject alternative name fields.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthorityConfigSubjectConfigArgs:
@@ -407,42 +396,39 @@ class AuthorityConfigSubjectConfigArgs:
         pulumi.set(self, "subject_alt_name", value)
 
 
-if not MYPY:
-    class AuthorityConfigSubjectConfigSubjectArgsDict(TypedDict):
-        common_name: pulumi.Input[_builtins.str]
-        """
-        The common name of the distinguished name.
-        """
-        country_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The country code of the subject.
-        """
-        locality: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The locality or city of the subject.
-        """
-        organization: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The organization of the subject.
-        """
-        organizational_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The organizational unit of the subject.
-        """
-        postal_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The postal code of the subject.
-        """
-        province: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The province, territory, or regional state of the subject.
-        """
-        street_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The street address of the subject.
-        """
-elif False:
-    AuthorityConfigSubjectConfigSubjectArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigSubjectConfigSubjectArgsDict(TypedDict):
+    common_name: pulumi.Input[_builtins.str]
+    """
+    The common name of the distinguished name.
+    """
+    country_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The country code of the subject.
+    """
+    locality: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The locality or city of the subject.
+    """
+    organization: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The organization of the subject.
+    """
+    organizational_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The organizational unit of the subject.
+    """
+    postal_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The postal code of the subject.
+    """
+    province: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The province, territory, or regional state of the subject.
+    """
+    street_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The street address of the subject.
+    """
 
 @pulumi.input_type
 class AuthorityConfigSubjectConfigSubjectArgs:
@@ -578,26 +564,23 @@ class AuthorityConfigSubjectConfigSubjectArgs:
         pulumi.set(self, "street_address", value)
 
 
-if not MYPY:
-    class AuthorityConfigSubjectConfigSubjectAltNameArgsDict(TypedDict):
-        dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains only valid, fully-qualified host names.
-        """
-        email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains only valid RFC 2822 E-mail addresses.
-        """
-        ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains only valid RFC 3986 URIs.
-        """
-elif False:
-    AuthorityConfigSubjectConfigSubjectAltNameArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigSubjectConfigSubjectAltNameArgsDict(TypedDict):
+    dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains only valid, fully-qualified host names.
+    """
+    email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains only valid RFC 2822 E-mail addresses.
+    """
+    ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains only valid RFC 3986 URIs.
+    """
 
 @pulumi.input_type
 class AuthorityConfigSubjectConfigSubjectAltNameArgs:
@@ -670,16 +653,13 @@ class AuthorityConfigSubjectConfigSubjectAltNameArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class AuthorityConfigSubjectKeyIdArgsDict(TypedDict):
-        key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the KeyId in lowercase hexadecimal.
+class AuthorityConfigSubjectKeyIdArgsDict(TypedDict):
+    key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the KeyId in lowercase hexadecimal.
 
-        <a name="nested_config_x509_config"></a>The `x509_config` block supports:
-        """
-elif False:
-    AuthorityConfigSubjectKeyIdArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_config_x509_config"></a>The `x509_config` block supports:
+    """
 
 @pulumi.input_type
 class AuthorityConfigSubjectKeyIdArgs:
@@ -708,35 +688,32 @@ class AuthorityConfigSubjectKeyIdArgs:
         pulumi.set(self, "key_id", value)
 
 
-if not MYPY:
-    class AuthorityConfigX509ConfigArgsDict(TypedDict):
-        ca_options: pulumi.Input['AuthorityConfigX509ConfigCaOptionsArgsDict']
-        """
-        Describes values that are relevant in a CA certificate.
-        """
-        key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageArgsDict']
-        """
-        Indicates the intended use for keys that correspond to a certificate.
-        """
-        additional_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArgsDict']]]]
-        """
-        Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-        """
-        aia_ocsp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
-        "Authority Information Access" extension in the certificate.
-        """
-        name_constraints: NotRequired[pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArgsDict']]
-        """
-        Describes the X.509 name constraints extension.
-        """
-        policy_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgsDict']]]]
-        """
-        Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-        """
-elif False:
-    AuthorityConfigX509ConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigX509ConfigArgsDict(TypedDict):
+    ca_options: pulumi.Input['AuthorityConfigX509ConfigCaOptionsArgsDict']
+    """
+    Describes values that are relevant in a CA certificate.
+    """
+    key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageArgsDict']
+    """
+    Indicates the intended use for keys that correspond to a certificate.
+    """
+    additional_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArgsDict']]]]
+    """
+    Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+    """
+    aia_ocsp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+    "Authority Information Access" extension in the certificate.
+    """
+    name_constraints: NotRequired[pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArgsDict']]
+    """
+    Describes the X.509 name constraints extension.
+    """
+    policy_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgsDict']]]]
+    """
+    Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+    """
 
 @pulumi.input_type
 class AuthorityConfigX509ConfigArgs:
@@ -841,24 +818,21 @@ class AuthorityConfigX509ConfigArgs:
         pulumi.set(self, "policy_ids", value)
 
 
-if not MYPY:
-    class AuthorityConfigX509ConfigAdditionalExtensionArgsDict(TypedDict):
-        critical: pulumi.Input[_builtins.bool]
-        """
-        Indicates whether or not this extension is critical (i.e., if the client does not know how to
-        handle this extension, the client should consider this to be an error).
-        """
-        object_id: pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgsDict']
-        """
-        Describes values that are relevant in a CA certificate.
-        Structure is documented below.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The value of this X.509 extension. A base64-encoded string.
-        """
-elif False:
-    AuthorityConfigX509ConfigAdditionalExtensionArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigX509ConfigAdditionalExtensionArgsDict(TypedDict):
+    critical: pulumi.Input[_builtins.bool]
+    """
+    Indicates whether or not this extension is critical (i.e., if the client does not know how to
+    handle this extension, the client should consider this to be an error).
+    """
+    object_id: pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgsDict']
+    """
+    Describes values that are relevant in a CA certificate.
+    Structure is documented below.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of this X.509 extension. A base64-encoded string.
+    """
 
 @pulumi.input_type
 class AuthorityConfigX509ConfigAdditionalExtensionArgs:
@@ -916,14 +890,11 @@ class AuthorityConfigX509ConfigAdditionalExtensionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs:
@@ -947,31 +918,28 @@ class AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class AuthorityConfigX509ConfigCaOptionsArgsDict(TypedDict):
-        is_ca: pulumi.Input[_builtins.bool]
-        """
-        When true, the "CA" in Basic Constraints extension will be set to true.
-        """
-        max_issuer_path_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
-        requires setting `zero_max_issuer_path_length = true`.
-        """
-        non_ca: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, the "CA" in Basic Constraints extension will be set to false.
-        If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
-        """
-        zero_max_issuer_path_length: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-        If both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
-        the max path length will be omitted from the CA certificate.
-        """
-elif False:
-    AuthorityConfigX509ConfigCaOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigX509ConfigCaOptionsArgsDict(TypedDict):
+    is_ca: pulumi.Input[_builtins.bool]
+    """
+    When true, the "CA" in Basic Constraints extension will be set to true.
+    """
+    max_issuer_path_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+    subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+    requires setting `zero_max_issuer_path_length = true`.
+    """
+    non_ca: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, the "CA" in Basic Constraints extension will be set to false.
+    If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+    """
+    zero_max_issuer_path_length: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+    If both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+    the max path length will be omitted from the CA certificate.
+    """
 
 @pulumi.input_type
 class AuthorityConfigX509ConfigCaOptionsArgs:
@@ -1053,25 +1021,22 @@ class AuthorityConfigX509ConfigCaOptionsArgs:
         pulumi.set(self, "zero_max_issuer_path_length", value)
 
 
-if not MYPY:
-    class AuthorityConfigX509ConfigKeyUsageArgsDict(TypedDict):
-        base_key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgsDict']
-        """
-        Describes high-level ways in which a key may be used.
-        Structure is documented below.
-        """
-        extended_key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgsDict']
-        """
-        Describes high-level ways in which a key may be used.
-        Structure is documented below.
-        """
-        unknown_extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgsDict']]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        Structure is documented below.
-        """
-elif False:
-    AuthorityConfigX509ConfigKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigX509ConfigKeyUsageArgsDict(TypedDict):
+    base_key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgsDict']
+    """
+    Describes high-level ways in which a key may be used.
+    Structure is documented below.
+    """
+    extended_key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgsDict']
+    """
+    Describes high-level ways in which a key may be used.
+    Structure is documented below.
+    """
+    unknown_extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgsDict']]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthorityConfigX509ConfigKeyUsageArgs:
@@ -1132,46 +1097,43 @@ class AuthorityConfigX509ConfigKeyUsageArgs:
         pulumi.set(self, "unknown_extended_key_usages", value)
 
 
-if not MYPY:
-    class AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgsDict(TypedDict):
-        cert_sign: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to sign certificates.
-        """
-        content_commitment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
-        """
-        crl_sign: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used sign certificate revocation lists.
-        """
-        data_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher data.
-        """
-        decipher_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to decipher only.
-        """
-        digital_signature: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used for digital signatures.
-        """
-        encipher_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher only.
-        """
-        key_agreement: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used in a key agreement protocol.
-        """
-        key_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher other keys.
-        """
-elif False:
-    AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgsDict(TypedDict):
+    cert_sign: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to sign certificates.
+    """
+    content_commitment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+    """
+    crl_sign: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used sign certificate revocation lists.
+    """
+    data_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher data.
+    """
+    decipher_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to decipher only.
+    """
+    digital_signature: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used for digital signatures.
+    """
+    encipher_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher only.
+    """
+    key_agreement: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used in a key agreement protocol.
+    """
+    key_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher other keys.
+    """
 
 @pulumi.input_type
 class AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs:
@@ -1324,34 +1286,31 @@ class AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs:
         pulumi.set(self, "key_encipherment", value)
 
 
-if not MYPY:
-    class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgsDict(TypedDict):
-        client_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
-        """
-        code_signing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
-        """
-        email_protection: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
-        """
-        ocsp_signing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
-        """
-        server_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
-        """
-        time_stamping: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
-        """
-elif False:
-    AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgsDict(TypedDict):
+    client_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+    """
+    code_signing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+    """
+    email_protection: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+    """
+    ocsp_signing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+    """
+    server_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+    """
+    time_stamping: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+    """
 
 @pulumi.input_type
 class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs:
@@ -1456,14 +1415,11 @@ class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs:
         pulumi.set(self, "time_stamping", value)
 
 
-if not MYPY:
-    class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs:
@@ -1487,70 +1443,67 @@ class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class AuthorityConfigX509ConfigNameConstraintsArgsDict(TypedDict):
-        critical: pulumi.Input[_builtins.bool]
-        """
-        Indicates whether or not the name constraints are marked critical.
-        """
-        excluded_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains excluded DNS names. Any DNS name that can be
-        constructed by simply adding zero or more labels to
-        the left-hand side of the name satisfies the name constraint.
-        For example, `example.com`, `www.example.com`, `www.sub.example.com`
-        would satisfy `example.com` while `example1.com` does not.
-        """
-        excluded_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded email addresses. The value can be a particular
-        email address, a hostname to indicate all email addresses on that host or
-        a domain with a leading period (e.g. `.example.com`) to indicate
-        all email addresses in that domain.
-        """
-        excluded_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded IP ranges. For IPv4 addresses, the ranges
-        are expressed using CIDR notation as specified in RFC 4632.
-        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
-        addresses.
-        """
-        excluded_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded URIs that apply to the host part of the name.
-        The value can be a hostname or a domain with a
-        leading period (like `.example.com`)
-        """
-        permitted_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains permitted DNS names. Any DNS name that can be
-        constructed by simply adding zero or more labels to
-        the left-hand side of the name satisfies the name constraint.
-        For example, `example.com`, `www.example.com`, `www.sub.example.com`
-        would satisfy `example.com` while `example1.com` does not.
-        """
-        permitted_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted email addresses. The value can be a particular
-        email address, a hostname to indicate all email addresses on that host or
-        a domain with a leading period (e.g. `.example.com`) to indicate
-        all email addresses in that domain.
-        """
-        permitted_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted IP ranges. For IPv4 addresses, the ranges
-        are expressed using CIDR notation as specified in RFC 4632.
-        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
-        addresses.
-        """
-        permitted_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted URIs that apply to the host part of the name.
-        The value can be a hostname or a domain with a
-        leading period (like `.example.com`)
-        """
-elif False:
-    AuthorityConfigX509ConfigNameConstraintsArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigX509ConfigNameConstraintsArgsDict(TypedDict):
+    critical: pulumi.Input[_builtins.bool]
+    """
+    Indicates whether or not the name constraints are marked critical.
+    """
+    excluded_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains excluded DNS names. Any DNS name that can be
+    constructed by simply adding zero or more labels to
+    the left-hand side of the name satisfies the name constraint.
+    For example, `example.com`, `www.example.com`, `www.sub.example.com`
+    would satisfy `example.com` while `example1.com` does not.
+    """
+    excluded_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded email addresses. The value can be a particular
+    email address, a hostname to indicate all email addresses on that host or
+    a domain with a leading period (e.g. `.example.com`) to indicate
+    all email addresses in that domain.
+    """
+    excluded_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded IP ranges. For IPv4 addresses, the ranges
+    are expressed using CIDR notation as specified in RFC 4632.
+    For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+    addresses.
+    """
+    excluded_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded URIs that apply to the host part of the name.
+    The value can be a hostname or a domain with a
+    leading period (like `.example.com`)
+    """
+    permitted_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains permitted DNS names. Any DNS name that can be
+    constructed by simply adding zero or more labels to
+    the left-hand side of the name satisfies the name constraint.
+    For example, `example.com`, `www.example.com`, `www.sub.example.com`
+    would satisfy `example.com` while `example1.com` does not.
+    """
+    permitted_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted email addresses. The value can be a particular
+    email address, a hostname to indicate all email addresses on that host or
+    a domain with a leading period (e.g. `.example.com`) to indicate
+    all email addresses in that domain.
+    """
+    permitted_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted IP ranges. For IPv4 addresses, the ranges
+    are expressed using CIDR notation as specified in RFC 4632.
+    For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+    addresses.
+    """
+    permitted_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted URIs that apply to the host part of the name.
+    The value can be a hostname or a domain with a
+    leading period (like `.example.com`)
+    """
 
 @pulumi.input_type
 class AuthorityConfigX509ConfigNameConstraintsArgs:
@@ -1750,14 +1703,11 @@ class AuthorityConfigX509ConfigNameConstraintsArgs:
         pulumi.set(self, "permitted_uris", value)
 
 
-if not MYPY:
-    class AuthorityConfigX509ConfigPolicyIdArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    AuthorityConfigX509ConfigPolicyIdArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityConfigX509ConfigPolicyIdArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class AuthorityConfigX509ConfigPolicyIdArgs:
@@ -1781,21 +1731,18 @@ class AuthorityConfigX509ConfigPolicyIdArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class AuthorityKeySpecArgsDict(TypedDict):
-        algorithm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The algorithm to use for creating a managed Cloud KMS key for a for a simplified
-        experience. All managed keys will be have their ProtectionLevel as HSM.
-        Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-        """
-        cloud_kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource name for an existing Cloud KMS CryptoKeyVersion in the format
-        `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-        """
-elif False:
-    AuthorityKeySpecArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityKeySpecArgsDict(TypedDict):
+    algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The algorithm to use for creating a managed Cloud KMS key for a for a simplified
+    experience. All managed keys will be have their ProtectionLevel as HSM.
+    Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
+    """
+    cloud_kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource name for an existing Cloud KMS CryptoKeyVersion in the format
+    `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
+    """
 
 @pulumi.input_type
 class AuthorityKeySpecArgs:
@@ -1842,23 +1789,20 @@ class AuthorityKeySpecArgs:
         pulumi.set(self, "cloud_kms_key_version", value)
 
 
-if not MYPY:
-    class AuthoritySubordinateConfigArgsDict(TypedDict):
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This can refer to a CertificateAuthority that was used to create a
-        subordinate CertificateAuthority. This field is used for information
-        and usability purposes only. The resource name is in the format
-        `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
-        """
-        pem_issuer_chain: NotRequired[pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArgsDict']]
-        """
-        Contains the PEM certificate chain for the issuers of this CertificateAuthority,
-        but not pem certificate for this CA itself.
-        Structure is documented below.
-        """
-elif False:
-    AuthoritySubordinateConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AuthoritySubordinateConfigArgsDict(TypedDict):
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This can refer to a CertificateAuthority that was used to create a
+    subordinate CertificateAuthority. This field is used for information
+    and usability purposes only. The resource name is in the format
+    `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+    """
+    pem_issuer_chain: NotRequired[pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArgsDict']]
+    """
+    Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+    but not pem certificate for this CA itself.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AuthoritySubordinateConfigArgs:
@@ -1909,14 +1853,11 @@ class AuthoritySubordinateConfigArgs:
         pulumi.set(self, "pem_issuer_chain", value)
 
 
-if not MYPY:
-    class AuthoritySubordinateConfigPemIssuerChainArgsDict(TypedDict):
-        pem_certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Expected to be in leaf-to-root order according to RFC 5246.
-        """
-elif False:
-    AuthoritySubordinateConfigPemIssuerChainArgsDict: TypeAlias = Mapping[str, Any]
+class AuthoritySubordinateConfigPemIssuerChainArgsDict(TypedDict):
+    pem_certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Expected to be in leaf-to-root order according to RFC 5246.
+    """
 
 @pulumi.input_type
 class AuthoritySubordinateConfigPemIssuerChainArgs:
@@ -1941,18 +1882,15 @@ class AuthoritySubordinateConfigPemIssuerChainArgs:
         pulumi.set(self, "pem_certificates", value)
 
 
-if not MYPY:
-    class AuthorityUserDefinedAccessUrlsArgsDict(TypedDict):
-        aia_issuing_certificate_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
-        """
-        crl_access_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
-        """
-elif False:
-    AuthorityUserDefinedAccessUrlsArgsDict: TypeAlias = Mapping[str, Any]
+class AuthorityUserDefinedAccessUrlsArgsDict(TypedDict):
+    aia_issuing_certificate_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
+    """
+    crl_access_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
+    """
 
 @pulumi.input_type
 class AuthorityUserDefinedAccessUrlsArgs:
@@ -1993,15 +1931,12 @@ class AuthorityUserDefinedAccessUrlsArgs:
         pulumi.set(self, "crl_access_urls", value)
 
 
-if not MYPY:
-    class CaPoolEncryptionSpecArgsDict(TypedDict):
-        cloud_kms_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource name for an existing Cloud KMS key in the format
-        `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-        """
-elif False:
-    CaPoolEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolEncryptionSpecArgsDict(TypedDict):
+    cloud_kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource name for an existing Cloud KMS key in the format
+    `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+    """
 
 @pulumi.input_type
 class CaPoolEncryptionSpecArgs:
@@ -2028,19 +1963,23 @@ class CaPoolEncryptionSpecArgs:
         pulumi.set(self, "cloud_kms_key", value)
 
 
-if not MYPY:
-    class CaPoolIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    CaPoolIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class CaPoolIamBindingConditionArgs:
@@ -2051,6 +1990,11 @@ class CaPoolIamBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -2084,6 +2028,13 @@ class CaPoolIamBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2091,19 +2042,23 @@ class CaPoolIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class CaPoolIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    CaPoolIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class CaPoolIamMemberConditionArgs:
@@ -2114,6 +2069,11 @@ class CaPoolIamMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -2147,6 +2107,13 @@ class CaPoolIamMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2154,48 +2121,45 @@ class CaPoolIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyArgsDict(TypedDict):
-        allowed_issuance_modes: NotRequired[pulumi.Input['CaPoolIssuancePolicyAllowedIssuanceModesArgsDict']]
-        """
-        IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
-        Structure is documented below.
-        """
-        allowed_key_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgsDict']]]]
-        """
-        If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
-        Otherwise, any key may be used. You can specify only one key type of those listed here.
-        Structure is documented below.
-        """
-        backdate_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The duration to backdate all certificates issued from this CaPool. If not set, the
-        certificates will be issued with a not_before_time of the issuance time (i.e. the current
-        time). If set, the certificates will be issued with a not_before_time of the issuance
-        time minus the backdate_duration. The not_after_time will be adjusted to preserve the
-        requested lifetime. The backdate_duration must be less than or equal to 48 hours.
-        """
-        baseline_values: NotRequired[pulumi.Input['CaPoolIssuancePolicyBaselineValuesArgsDict']]
-        """
-        A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
-        includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
-        request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
-        issuance request will fail.
-        Structure is documented below.
-        """
-        identity_constraints: NotRequired[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsArgsDict']]
-        """
-        Describes constraints on identities that may appear in Certificates issued through this CaPool.
-        If this is omitted, then this CaPool will not add restrictions on a certificate's identity.
-        Structure is documented below.
-        """
-        maximum_lifetime: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
-        expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
-        """
-elif False:
-    CaPoolIssuancePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyArgsDict(TypedDict):
+    allowed_issuance_modes: NotRequired[pulumi.Input['CaPoolIssuancePolicyAllowedIssuanceModesArgsDict']]
+    """
+    IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
+    Structure is documented below.
+    """
+    allowed_key_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgsDict']]]]
+    """
+    If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
+    Otherwise, any key may be used. You can specify only one key type of those listed here.
+    Structure is documented below.
+    """
+    backdate_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The duration to backdate all certificates issued from this CaPool. If not set, the
+    certificates will be issued with a not_before_time of the issuance time (i.e. the current
+    time). If set, the certificates will be issued with a not_before_time of the issuance
+    time minus the backdate_duration. The not_after_time will be adjusted to preserve the
+    requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+    """
+    baseline_values: NotRequired[pulumi.Input['CaPoolIssuancePolicyBaselineValuesArgsDict']]
+    """
+    A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
+    includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
+    request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
+    issuance request will fail.
+    Structure is documented below.
+    """
+    identity_constraints: NotRequired[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsArgsDict']]
+    """
+    Describes constraints on identities that may appear in Certificates issued through this CaPool.
+    If this is omitted, then this CaPool will not add restrictions on a certificate's identity.
+    Structure is documented below.
+    """
+    maximum_lifetime: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
+    expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyArgs:
@@ -2328,18 +2292,15 @@ class CaPoolIssuancePolicyArgs:
         pulumi.set(self, "maximum_lifetime", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyAllowedIssuanceModesArgsDict(TypedDict):
-        allow_config_based_issuance: pulumi.Input[_builtins.bool]
-        """
-        When true, allows callers to create Certificates by specifying a CertificateConfig.
-        """
-        allow_csr_based_issuance: pulumi.Input[_builtins.bool]
-        """
-        When true, allows callers to create Certificates by specifying a CSR.
-        """
-elif False:
-    CaPoolIssuancePolicyAllowedIssuanceModesArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyAllowedIssuanceModesArgsDict(TypedDict):
+    allow_config_based_issuance: pulumi.Input[_builtins.bool]
+    """
+    When true, allows callers to create Certificates by specifying a CertificateConfig.
+    """
+    allow_csr_based_issuance: pulumi.Input[_builtins.bool]
+    """
+    When true, allows callers to create Certificates by specifying a CSR.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyAllowedIssuanceModesArgs:
@@ -2378,20 +2339,17 @@ class CaPoolIssuancePolicyAllowedIssuanceModesArgs:
         pulumi.set(self, "allow_csr_based_issuance", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyAllowedKeyTypeArgsDict(TypedDict):
-        elliptic_curve: NotRequired[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgsDict']]
-        """
-        Represents an allowed Elliptic Curve key type.
-        Structure is documented below.
-        """
-        rsa: NotRequired[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeRsaArgsDict']]
-        """
-        Describes an RSA key that may be used in a Certificate issued from a CaPool.
-        Structure is documented below.
-        """
-elif False:
-    CaPoolIssuancePolicyAllowedKeyTypeArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyAllowedKeyTypeArgsDict(TypedDict):
+    elliptic_curve: NotRequired[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgsDict']]
+    """
+    Represents an allowed Elliptic Curve key type.
+    Structure is documented below.
+    """
+    rsa: NotRequired[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeRsaArgsDict']]
+    """
+    Describes an RSA key that may be used in a Certificate issued from a CaPool.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyAllowedKeyTypeArgs:
@@ -2436,15 +2394,12 @@ class CaPoolIssuancePolicyAllowedKeyTypeArgs:
         pulumi.set(self, "rsa", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgsDict(TypedDict):
-        signature_algorithm: pulumi.Input[_builtins.str]
-        """
-        The algorithm used.
-        Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
-        """
-elif False:
-    CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgsDict(TypedDict):
+    signature_algorithm: pulumi.Input[_builtins.str]
+    """
+    The algorithm used.
+    Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs:
@@ -2470,20 +2425,17 @@ class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs:
         pulumi.set(self, "signature_algorithm", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyAllowedKeyTypeRsaArgsDict(TypedDict):
-        max_modulus_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
-        service will not enforce an explicit upper bound on RSA modulus sizes.
-        """
-        min_modulus_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
-        service-level min RSA modulus size will continue to apply.
-        """
-elif False:
-    CaPoolIssuancePolicyAllowedKeyTypeRsaArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyAllowedKeyTypeRsaArgsDict(TypedDict):
+    max_modulus_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
+    service will not enforce an explicit upper bound on RSA modulus sizes.
+    """
+    min_modulus_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
+    service-level min RSA modulus size will continue to apply.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyAllowedKeyTypeRsaArgs:
@@ -2528,40 +2480,37 @@ class CaPoolIssuancePolicyAllowedKeyTypeRsaArgs:
         pulumi.set(self, "min_modulus_size", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyBaselineValuesArgsDict(TypedDict):
-        ca_options: pulumi.Input['CaPoolIssuancePolicyBaselineValuesCaOptionsArgsDict']
-        """
-        Describes values that are relevant in a CA certificate.
-        Structure is documented below.
-        """
-        key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageArgsDict']
-        """
-        Indicates the intended use for keys that correspond to a certificate.
-        Structure is documented below.
-        """
-        additional_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgsDict']]]]
-        """
-        Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-        Structure is documented below.
-        """
-        aia_ocsp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
-        "Authority Information Access" extension in the certificate.
-        """
-        name_constraints: NotRequired[pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArgsDict']]
-        """
-        Describes the X.509 name constraints extension.
-        Structure is documented below.
-        """
-        policy_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArgsDict']]]]
-        """
-        Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-        Structure is documented below.
-        """
-elif False:
-    CaPoolIssuancePolicyBaselineValuesArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyBaselineValuesArgsDict(TypedDict):
+    ca_options: pulumi.Input['CaPoolIssuancePolicyBaselineValuesCaOptionsArgsDict']
+    """
+    Describes values that are relevant in a CA certificate.
+    Structure is documented below.
+    """
+    key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageArgsDict']
+    """
+    Indicates the intended use for keys that correspond to a certificate.
+    Structure is documented below.
+    """
+    additional_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgsDict']]]]
+    """
+    Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+    Structure is documented below.
+    """
+    aia_ocsp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+    "Authority Information Access" extension in the certificate.
+    """
+    name_constraints: NotRequired[pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArgsDict']]
+    """
+    Describes the X.509 name constraints extension.
+    Structure is documented below.
+    """
+    policy_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArgsDict']]]]
+    """
+    Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyBaselineValuesArgs:
@@ -2676,24 +2625,21 @@ class CaPoolIssuancePolicyBaselineValuesArgs:
         pulumi.set(self, "policy_ids", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgsDict(TypedDict):
-        critical: pulumi.Input[_builtins.bool]
-        """
-        Indicates whether or not this extension is critical (i.e., if the client does not know how to
-        handle this extension, the client should consider this to be an error).
-        """
-        object_id: pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgsDict']
-        """
-        Describes values that are relevant in a CA certificate.
-        Structure is documented below.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The value of this X.509 extension. A base64-encoded string.
-        """
-elif False:
-    CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgsDict(TypedDict):
+    critical: pulumi.Input[_builtins.bool]
+    """
+    Indicates whether or not this extension is critical (i.e., if the client does not know how to
+    handle this extension, the client should consider this to be an error).
+    """
+    object_id: pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgsDict']
+    """
+    Describes values that are relevant in a CA certificate.
+    Structure is documented below.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of this X.509 extension. A base64-encoded string.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs:
@@ -2751,14 +2697,11 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs:
@@ -2782,30 +2725,27 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyBaselineValuesCaOptionsArgsDict(TypedDict):
-        is_ca: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, the "CA" in Basic Constraints extension will be set to true.
-        """
-        max_issuer_path_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
-        """
-        non_ca: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, the "CA" in Basic Constraints extension will be set to false.
-        If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
-        """
-        zero_max_issuer_path_length: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-        if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
-        the max path length will be omitted from the CA certificate.
-        """
-elif False:
-    CaPoolIssuancePolicyBaselineValuesCaOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyBaselineValuesCaOptionsArgsDict(TypedDict):
+    is_ca: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, the "CA" in Basic Constraints extension will be set to true.
+    """
+    max_issuer_path_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+    subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+    """
+    non_ca: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, the "CA" in Basic Constraints extension will be set to false.
+    If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+    """
+    zero_max_issuer_path_length: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+    if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+    the max path length will be omitted from the CA certificate.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyBaselineValuesCaOptionsArgs:
@@ -2886,25 +2826,22 @@ class CaPoolIssuancePolicyBaselineValuesCaOptionsArgs:
         pulumi.set(self, "zero_max_issuer_path_length", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyBaselineValuesKeyUsageArgsDict(TypedDict):
-        base_key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgsDict']
-        """
-        Describes high-level ways in which a key may be used.
-        Structure is documented below.
-        """
-        extended_key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgsDict']
-        """
-        Describes high-level ways in which a key may be used.
-        Structure is documented below.
-        """
-        unknown_extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgsDict']]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        Structure is documented below.
-        """
-elif False:
-    CaPoolIssuancePolicyBaselineValuesKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyBaselineValuesKeyUsageArgsDict(TypedDict):
+    base_key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgsDict']
+    """
+    Describes high-level ways in which a key may be used.
+    Structure is documented below.
+    """
+    extended_key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgsDict']
+    """
+    Describes high-level ways in which a key may be used.
+    Structure is documented below.
+    """
+    unknown_extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgsDict']]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyBaselineValuesKeyUsageArgs:
@@ -2965,46 +2902,43 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageArgs:
         pulumi.set(self, "unknown_extended_key_usages", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgsDict(TypedDict):
-        cert_sign: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to sign certificates.
-        """
-        content_commitment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
-        """
-        crl_sign: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used sign certificate revocation lists.
-        """
-        data_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher data.
-        """
-        decipher_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to decipher only.
-        """
-        digital_signature: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used for digital signatures.
-        """
-        encipher_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher only.
-        """
-        key_agreement: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used in a key agreement protocol.
-        """
-        key_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher other keys.
-        """
-elif False:
-    CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgsDict(TypedDict):
+    cert_sign: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to sign certificates.
+    """
+    content_commitment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+    """
+    crl_sign: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used sign certificate revocation lists.
+    """
+    data_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher data.
+    """
+    decipher_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to decipher only.
+    """
+    digital_signature: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used for digital signatures.
+    """
+    encipher_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher only.
+    """
+    key_agreement: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used in a key agreement protocol.
+    """
+    key_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher other keys.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs:
@@ -3157,34 +3091,31 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs:
         pulumi.set(self, "key_encipherment", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgsDict(TypedDict):
-        client_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
-        """
-        code_signing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
-        """
-        email_protection: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
-        """
-        ocsp_signing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
-        """
-        server_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
-        """
-        time_stamping: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
-        """
-elif False:
-    CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgsDict(TypedDict):
+    client_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+    """
+    code_signing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+    """
+    email_protection: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+    """
+    ocsp_signing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+    """
+    server_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+    """
+    time_stamping: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs:
@@ -3289,14 +3220,11 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs:
         pulumi.set(self, "time_stamping", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs:
@@ -3320,70 +3248,67 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyBaselineValuesNameConstraintsArgsDict(TypedDict):
-        critical: pulumi.Input[_builtins.bool]
-        """
-        Indicates whether or not the name constraints are marked critical.
-        """
-        excluded_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains excluded DNS names. Any DNS name that can be
-        constructed by simply adding zero or more labels to
-        the left-hand side of the name satisfies the name constraint.
-        For example, `example.com`, `www.example.com`, `www.sub.example.com`
-        would satisfy `example.com` while `example1.com` does not.
-        """
-        excluded_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded email addresses. The value can be a particular
-        email address, a hostname to indicate all email addresses on that host or
-        a domain with a leading period (e.g. `.example.com`) to indicate
-        all email addresses in that domain.
-        """
-        excluded_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded IP ranges. For IPv4 addresses, the ranges
-        are expressed using CIDR notation as specified in RFC 4632.
-        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
-        addresses.
-        """
-        excluded_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded URIs that apply to the host part of the name.
-        The value can be a hostname or a domain with a
-        leading period (like `.example.com`)
-        """
-        permitted_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains permitted DNS names. Any DNS name that can be
-        constructed by simply adding zero or more labels to
-        the left-hand side of the name satisfies the name constraint.
-        For example, `example.com`, `www.example.com`, `www.sub.example.com`
-        would satisfy `example.com` while `example1.com` does not.
-        """
-        permitted_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted email addresses. The value can be a particular
-        email address, a hostname to indicate all email addresses on that host or
-        a domain with a leading period (e.g. `.example.com`) to indicate
-        all email addresses in that domain.
-        """
-        permitted_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted IP ranges. For IPv4 addresses, the ranges
-        are expressed using CIDR notation as specified in RFC 4632.
-        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
-        addresses.
-        """
-        permitted_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted URIs that apply to the host part of the name.
-        The value can be a hostname or a domain with a
-        leading period (like `.example.com`)
-        """
-elif False:
-    CaPoolIssuancePolicyBaselineValuesNameConstraintsArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyBaselineValuesNameConstraintsArgsDict(TypedDict):
+    critical: pulumi.Input[_builtins.bool]
+    """
+    Indicates whether or not the name constraints are marked critical.
+    """
+    excluded_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains excluded DNS names. Any DNS name that can be
+    constructed by simply adding zero or more labels to
+    the left-hand side of the name satisfies the name constraint.
+    For example, `example.com`, `www.example.com`, `www.sub.example.com`
+    would satisfy `example.com` while `example1.com` does not.
+    """
+    excluded_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded email addresses. The value can be a particular
+    email address, a hostname to indicate all email addresses on that host or
+    a domain with a leading period (e.g. `.example.com`) to indicate
+    all email addresses in that domain.
+    """
+    excluded_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded IP ranges. For IPv4 addresses, the ranges
+    are expressed using CIDR notation as specified in RFC 4632.
+    For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+    addresses.
+    """
+    excluded_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded URIs that apply to the host part of the name.
+    The value can be a hostname or a domain with a
+    leading period (like `.example.com`)
+    """
+    permitted_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains permitted DNS names. Any DNS name that can be
+    constructed by simply adding zero or more labels to
+    the left-hand side of the name satisfies the name constraint.
+    For example, `example.com`, `www.example.com`, `www.sub.example.com`
+    would satisfy `example.com` while `example1.com` does not.
+    """
+    permitted_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted email addresses. The value can be a particular
+    email address, a hostname to indicate all email addresses on that host or
+    a domain with a leading period (e.g. `.example.com`) to indicate
+    all email addresses in that domain.
+    """
+    permitted_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted IP ranges. For IPv4 addresses, the ranges
+    are expressed using CIDR notation as specified in RFC 4632.
+    For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+    addresses.
+    """
+    permitted_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted URIs that apply to the host part of the name.
+    The value can be a hostname or a domain with a
+    leading period (like `.example.com`)
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs:
@@ -3583,14 +3508,11 @@ class CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs:
         pulumi.set(self, "permitted_uris", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyBaselineValuesPolicyIdArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    CaPoolIssuancePolicyBaselineValuesPolicyIdArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyBaselineValuesPolicyIdArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyBaselineValuesPolicyIdArgs:
@@ -3614,27 +3536,24 @@ class CaPoolIssuancePolicyBaselineValuesPolicyIdArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyIdentityConstraintsArgsDict(TypedDict):
-        allow_subject_alt_names_passthrough: pulumi.Input[_builtins.bool]
-        """
-        If this is set, the SubjectAltNames extension may be copied from a certificate request into the signed certificate.
-        Otherwise, the requested SubjectAltNames will be discarded.
-        """
-        allow_subject_passthrough: pulumi.Input[_builtins.bool]
-        """
-        If this is set, the Subject field may be copied from a certificate request into the signed certificate.
-        Otherwise, the requested Subject will be discarded.
-        """
-        cel_expression: NotRequired[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgsDict']]
-        """
-        A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
-        certificate is signed. To see the full allowed syntax and some examples,
-        see https://cloud.google.com/certificate-authority-service/docs/cel-guide
-        Structure is documented below.
-        """
-elif False:
-    CaPoolIssuancePolicyIdentityConstraintsArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyIdentityConstraintsArgsDict(TypedDict):
+    allow_subject_alt_names_passthrough: pulumi.Input[_builtins.bool]
+    """
+    If this is set, the SubjectAltNames extension may be copied from a certificate request into the signed certificate.
+    Otherwise, the requested SubjectAltNames will be discarded.
+    """
+    allow_subject_passthrough: pulumi.Input[_builtins.bool]
+    """
+    If this is set, the Subject field may be copied from a certificate request into the signed certificate.
+    Otherwise, the requested Subject will be discarded.
+    """
+    cel_expression: NotRequired[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgsDict']]
+    """
+    A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
+    certificate is signed. To see the full allowed syntax and some examples,
+    see https://cloud.google.com/certificate-authority-service/docs/cel-guide
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyIdentityConstraintsArgs:
@@ -3699,26 +3618,23 @@ class CaPoolIssuancePolicyIdentityConstraintsArgs:
         pulumi.set(self, "cel_expression", value)
 
 
-if not MYPY:
-    class CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-        """
-elif False:
-    CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+    """
 
 @pulumi.input_type
 class CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs:
@@ -3790,30 +3706,27 @@ class CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs:
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class CaPoolPublishingOptionsArgsDict(TypedDict):
-        publish_ca_cert: pulumi.Input[_builtins.bool]
-        """
-        When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
-        X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
-        X.509 extension will not be written in issued certificates.
-        """
-        publish_crl: pulumi.Input[_builtins.bool]
-        """
-        When true, publishes each CertificateAuthority's CRL and includes its URL in the "CRL Distribution Points" X.509 extension
-        in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not
-        be written in issued certificates. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are
-        also rebuilt shortly after a certificate is revoked.
-        """
-        encoding_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the encoding format of each CertificateAuthority's CA
-        certificate and CRLs. If this is omitted, CA certificates and CRLs
-        will be published in PEM.
-        Possible values are: `PEM`, `DER`.
-        """
-elif False:
-    CaPoolPublishingOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class CaPoolPublishingOptionsArgsDict(TypedDict):
+    publish_ca_cert: pulumi.Input[_builtins.bool]
+    """
+    When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
+    X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
+    X.509 extension will not be written in issued certificates.
+    """
+    publish_crl: pulumi.Input[_builtins.bool]
+    """
+    When true, publishes each CertificateAuthority's CRL and includes its URL in the "CRL Distribution Points" X.509 extension
+    in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not
+    be written in issued certificates. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are
+    also rebuilt shortly after a certificate is revoked.
+    """
+    encoding_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the encoding format of each CertificateAuthority's CA
+    certificate and CRLs. If this is omitted, CA certificates and CRLs
+    will be published in PEM.
+    Possible values are: `PEM`, `DER`.
+    """
 
 @pulumi.input_type
 class CaPoolPublishingOptionsArgs:
@@ -3884,56 +3797,53 @@ class CaPoolPublishingOptionsArgs:
         pulumi.set(self, "encoding_format", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionArgsDict(TypedDict):
-        aia_issuing_certificate_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
-        """
-        authority_key_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgsDict']]]]
-        """
-        (Output)
-        Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
-        Structure is documented below.
-        """
-        cert_fingerprints: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgsDict']]]]
-        """
-        (Output)
-        The hash of the x.509 certificate.
-        Structure is documented below.
-        """
-        crl_distribution_points: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
-        """
-        public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgsDict']]]]
-        """
-        (Output)
-        A PublicKey describes a public key.
-        Structure is documented below.
-        """
-        subject_descriptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgsDict']]]]
-        """
-        (Output)
-        Describes some of the values in a certificate that are related to the subject and lifetime.
-        Structure is documented below.
-        """
-        subject_key_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgsDict']]]]
-        """
-        (Output)
-        Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
-        Structure is documented below.
-        """
-        x509_descriptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgsDict']]]]
-        """
-        (Output)
-        A structured description of the issued X.509 certificate.
-        Structure is documented below.
-        """
-elif False:
-    CertificateCertificateDescriptionArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionArgsDict(TypedDict):
+    aia_issuing_certificate_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
+    """
+    authority_key_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgsDict']]]]
+    """
+    (Output)
+    Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+    Structure is documented below.
+    """
+    cert_fingerprints: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgsDict']]]]
+    """
+    (Output)
+    The hash of the x.509 certificate.
+    Structure is documented below.
+    """
+    crl_distribution_points: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+    """
+    public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgsDict']]]]
+    """
+    (Output)
+    A PublicKey describes a public key.
+    Structure is documented below.
+    """
+    subject_descriptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgsDict']]]]
+    """
+    (Output)
+    Describes some of the values in a certificate that are related to the subject and lifetime.
+    Structure is documented below.
+    """
+    subject_key_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgsDict']]]]
+    """
+    (Output)
+    Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+    Structure is documented below.
+    """
+    x509_descriptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgsDict']]]]
+    """
+    (Output)
+    A structured description of the issued X.509 certificate.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionArgs:
@@ -4098,15 +4008,12 @@ class CertificateCertificateDescriptionArgs:
         pulumi.set(self, "x509_descriptions", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionAuthorityKeyIdArgsDict(TypedDict):
-        key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
-        """
-elif False:
-    CertificateCertificateDescriptionAuthorityKeyIdArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionAuthorityKeyIdArgsDict(TypedDict):
+    key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionAuthorityKeyIdArgs:
@@ -4133,15 +4040,12 @@ class CertificateCertificateDescriptionAuthorityKeyIdArgs:
         pulumi.set(self, "key_id", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionCertFingerprintArgsDict(TypedDict):
-        sha256_hash: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
-        """
-elif False:
-    CertificateCertificateDescriptionCertFingerprintArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionCertFingerprintArgsDict(TypedDict):
+    sha256_hash: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionCertFingerprintArgs:
@@ -4168,19 +4072,16 @@ class CertificateCertificateDescriptionCertFingerprintArgs:
         pulumi.set(self, "sha256_hash", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionPublicKeyArgsDict(TypedDict):
-        format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The format of the public key. Currently, only PEM format is supported.
-        Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
-        """
-elif False:
-    CertificateCertificateDescriptionPublicKeyArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionPublicKeyArgsDict(TypedDict):
+    format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The format of the public key. Currently, only PEM format is supported.
+    Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionPublicKeyArgs:
@@ -4223,43 +4124,40 @@ class CertificateCertificateDescriptionPublicKeyArgs:
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionSubjectDescriptionArgsDict(TypedDict):
-        hex_serial_number: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The serial number encoded in lowercase hexadecimal.
-        """
-        lifetime: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
-        "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
-        fractional digits, terminated by 's'. Example: "3.5s".
-        """
-        not_after_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The time at which the certificate expires.
-        """
-        not_before_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The time at which the certificate becomes valid.
-        """
-        subject_alt_names: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgsDict']]]]
-        """
-        (Output)
-        The subject alternative name fields.
-        Structure is documented below.
-        """
-        subjects: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgsDict']]]]
-        """
-        (Output)
-        Contains distinguished name fields such as the location and organization.
-        Structure is documented below.
-        """
-elif False:
-    CertificateCertificateDescriptionSubjectDescriptionArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionSubjectDescriptionArgsDict(TypedDict):
+    hex_serial_number: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The serial number encoded in lowercase hexadecimal.
+    """
+    lifetime: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+    "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+    fractional digits, terminated by 's'. Example: "3.5s".
+    """
+    not_after_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The time at which the certificate expires.
+    """
+    not_before_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The time at which the certificate becomes valid.
+    """
+    subject_alt_names: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgsDict']]]]
+    """
+    (Output)
+    The subject alternative name fields.
+    Structure is documented below.
+    """
+    subjects: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgsDict']]]]
+    """
+    (Output)
+    Contains distinguished name fields such as the location and organization.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionSubjectDescriptionArgs:
@@ -4382,42 +4280,39 @@ class CertificateCertificateDescriptionSubjectDescriptionArgs:
         pulumi.set(self, "subjects", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionSubjectDescriptionSubjectArgsDict(TypedDict):
-        common_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The common name of the distinguished name.
-        """
-        country_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The country code of the subject.
-        """
-        locality: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The locality or city of the subject.
-        """
-        organization: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The organization of the subject.
-        """
-        organizational_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The organizational unit of the subject.
-        """
-        postal_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The postal code of the subject.
-        """
-        province: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The province, territory, or regional state of the subject.
-        """
-        street_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The street address of the subject.
-        """
-elif False:
-    CertificateCertificateDescriptionSubjectDescriptionSubjectArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionSubjectDescriptionSubjectArgsDict(TypedDict):
+    common_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The common name of the distinguished name.
+    """
+    country_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The country code of the subject.
+    """
+    locality: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The locality or city of the subject.
+    """
+    organization: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The organization of the subject.
+    """
+    organizational_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The organizational unit of the subject.
+    """
+    postal_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The postal code of the subject.
+    """
+    province: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The province, territory, or regional state of the subject.
+    """
+    street_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The street address of the subject.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionSubjectDescriptionSubjectArgs:
@@ -4554,32 +4449,29 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectArgs:
         pulumi.set(self, "street_address", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgsDict(TypedDict):
-        custom_sans: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgsDict']]]]
-        """
-        (Output)
-        Contains additional subject alternative name values.
-        Structure is documented below.
-        """
-        dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains only valid, fully-qualified host names.
-        """
-        email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains only valid RFC 2822 E-mail addresses.
-        """
-        ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains only valid RFC 3986 URIs.
-        """
-elif False:
-    CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgsDict(TypedDict):
+    custom_sans: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgsDict']]]]
+    """
+    (Output)
+    Contains additional subject alternative name values.
+    Structure is documented below.
+    """
+    dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains only valid, fully-qualified host names.
+    """
+    email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains only valid RFC 2822 E-mail addresses.
+    """
+    ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains only valid RFC 3986 URIs.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs:
@@ -4672,25 +4564,22 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgsDict(TypedDict):
-        critical: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Indicates whether or not the name constraints are marked critical.
-        """
-        obect_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgsDict']]]]
-        """
-        (Output)
-        Describes how some of the technical fields in a certificate should be populated.
-        Structure is documented below.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of this X.509 extension. A base64-encoded string.
-        """
-elif False:
-    CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgsDict(TypedDict):
+    critical: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Indicates whether or not the name constraints are marked critical.
+    """
+    obect_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgsDict']]]]
+    """
+    (Output)
+    Describes how some of the technical fields in a certificate should be populated.
+    Structure is documented below.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of this X.509 extension. A base64-encoded string.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs:
@@ -4753,15 +4642,12 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgsDict(TypedDict):
-        object_id_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        (Output)
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgsDict(TypedDict):
+    object_id_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    (Output)
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs:
@@ -4788,14 +4674,11 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionSubjectKeyIdArgsDict(TypedDict):
-        key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the KeyId in lowercase hexadecimal.
-        """
-elif False:
-    CertificateCertificateDescriptionSubjectKeyIdArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionSubjectKeyIdArgsDict(TypedDict):
+    key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the KeyId in lowercase hexadecimal.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionSubjectKeyIdArgs:
@@ -4820,46 +4703,43 @@ class CertificateCertificateDescriptionSubjectKeyIdArgs:
         pulumi.set(self, "key_id", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionX509DescriptionArgsDict(TypedDict):
-        additional_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgsDict']]]]
-        """
-        (Output)
-        Describes custom X.509 extensions.
-        Structure is documented below.
-        """
-        aia_ocsp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
-        "Authority Information Access" extension in the certificate.
-        """
-        ca_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgsDict']]]]
-        """
-        (Output)
-        Describes values that are relevant in a CA certificate.
-        Structure is documented below.
-        """
-        key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgsDict']]]]
-        """
-        (Output)
-        Indicates the intended use for keys that correspond to a certificate.
-        Structure is documented below.
-        """
-        name_constraints: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgsDict']]]]
-        """
-        (Output)
-        Describes the X.509 name constraints extension.
-        Structure is documented below.
-        """
-        policy_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgsDict']]]]
-        """
-        (Output)
-        Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-        Structure is documented below.
-        """
-elif False:
-    CertificateCertificateDescriptionX509DescriptionArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionX509DescriptionArgsDict(TypedDict):
+    additional_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgsDict']]]]
+    """
+    (Output)
+    Describes custom X.509 extensions.
+    Structure is documented below.
+    """
+    aia_ocsp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+    "Authority Information Access" extension in the certificate.
+    """
+    ca_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgsDict']]]]
+    """
+    (Output)
+    Describes values that are relevant in a CA certificate.
+    Structure is documented below.
+    """
+    key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgsDict']]]]
+    """
+    (Output)
+    Indicates the intended use for keys that correspond to a certificate.
+    Structure is documented below.
+    """
+    name_constraints: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgsDict']]]]
+    """
+    (Output)
+    Describes the X.509 name constraints extension.
+    Structure is documented below.
+    """
+    policy_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgsDict']]]]
+    """
+    (Output)
+    Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionX509DescriptionArgs:
@@ -4988,24 +4868,21 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
         pulumi.set(self, "policy_ids", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgsDict(TypedDict):
-        critical: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether or not this extension is critical (i.e., if the client does not know how to
-        handle this extension, the client should consider this to be an error).
-        """
-        object_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgsDict']]]]
-        """
-        Describes values that are relevant in a CA certificate.
-        Structure is documented below.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of this X.509 extension. A base64-encoded string.
-        """
-elif False:
-    CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgsDict(TypedDict):
+    critical: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether or not this extension is critical (i.e., if the client does not know how to
+    handle this extension, the client should consider this to be an error).
+    """
+    object_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgsDict']]]]
+    """
+    Describes values that are relevant in a CA certificate.
+    Structure is documented below.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of this X.509 extension. A base64-encoded string.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs:
@@ -5066,14 +4943,11 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgsDict(TypedDict):
-        object_id_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgsDict(TypedDict):
+    object_id_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs:
@@ -5098,19 +4972,16 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectI
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionX509DescriptionCaOptionArgsDict(TypedDict):
-        is_ca: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, the "CA" in Basic Constraints extension will be set to true.
-        """
-        max_issuer_path_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
-        """
-elif False:
-    CertificateCertificateDescriptionX509DescriptionCaOptionArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionX509DescriptionCaOptionArgsDict(TypedDict):
+    is_ca: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, the "CA" in Basic Constraints extension will be set to true.
+    """
+    max_issuer_path_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+    subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionX509DescriptionCaOptionArgs:
@@ -5153,25 +5024,22 @@ class CertificateCertificateDescriptionX509DescriptionCaOptionArgs:
         pulumi.set(self, "max_issuer_path_length", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionX509DescriptionKeyUsageArgsDict(TypedDict):
-        base_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgsDict']]]]
-        """
-        Describes high-level ways in which a key may be used.
-        Structure is documented below.
-        """
-        extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgsDict']]]]
-        """
-        Describes high-level ways in which a key may be used.
-        Structure is documented below.
-        """
-        unknown_extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgsDict']]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        Structure is documented below.
-        """
-elif False:
-    CertificateCertificateDescriptionX509DescriptionKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionX509DescriptionKeyUsageArgsDict(TypedDict):
+    base_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgsDict']]]]
+    """
+    Describes high-level ways in which a key may be used.
+    Structure is documented below.
+    """
+    extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgsDict']]]]
+    """
+    Describes high-level ways in which a key may be used.
+    Structure is documented below.
+    """
+    unknown_extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgsDict']]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionX509DescriptionKeyUsageArgs:
@@ -5234,46 +5102,43 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageArgs:
         pulumi.set(self, "unknown_extended_key_usages", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgsDict(TypedDict):
-        cert_sign: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to sign certificates.
-        """
-        content_commitment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
-        """
-        crl_sign: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used sign certificate revocation lists.
-        """
-        data_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher data.
-        """
-        decipher_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to decipher only.
-        """
-        digital_signature: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used for digital signatures.
-        """
-        encipher_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher only.
-        """
-        key_agreement: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used in a key agreement protocol.
-        """
-        key_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher other keys.
-        """
-elif False:
-    CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgsDict(TypedDict):
+    cert_sign: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to sign certificates.
+    """
+    content_commitment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+    """
+    crl_sign: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used sign certificate revocation lists.
+    """
+    data_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher data.
+    """
+    decipher_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to decipher only.
+    """
+    digital_signature: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used for digital signatures.
+    """
+    encipher_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher only.
+    """
+    key_agreement: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used in a key agreement protocol.
+    """
+    key_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher other keys.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs:
@@ -5426,34 +5291,31 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs:
         pulumi.set(self, "key_encipherment", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgsDict(TypedDict):
-        client_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
-        """
-        code_signing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
-        """
-        email_protection: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
-        """
-        ocsp_signing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
-        """
-        server_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
-        """
-        time_stamping: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
-        """
-elif False:
-    CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgsDict(TypedDict):
+    client_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+    """
+    code_signing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+    """
+    email_protection: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+    """
+    ocsp_signing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+    """
+    server_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+    """
+    time_stamping: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs:
@@ -5558,14 +5420,11 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageAr
         pulumi.set(self, "time_stamping", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgsDict(TypedDict):
-        object_id_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgsDict(TypedDict):
+    object_id_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs:
@@ -5590,70 +5449,67 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKey
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionX509DescriptionNameConstraintArgsDict(TypedDict):
-        critical: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether or not the name constraints are marked critical.
-        """
-        excluded_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains excluded DNS names. Any DNS name that can be
-        constructed by simply adding zero or more labels to
-        the left-hand side of the name satisfies the name constraint.
-        For example, `example.com`, `www.example.com`, `www.sub.example.com`
-        would satisfy `example.com` while `example1.com` does not.
-        """
-        excluded_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded email addresses. The value can be a particular
-        email address, a hostname to indicate all email addresses on that host or
-        a domain with a leading period (e.g. `.example.com`) to indicate
-        all email addresses in that domain.
-        """
-        excluded_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded IP ranges. For IPv4 addresses, the ranges
-        are expressed using CIDR notation as specified in RFC 4632.
-        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
-        addresses.
-        """
-        excluded_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded URIs that apply to the host part of the name.
-        The value can be a hostname or a domain with a
-        leading period (like `.example.com`)
-        """
-        permitted_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains permitted DNS names. Any DNS name that can be
-        constructed by simply adding zero or more labels to
-        the left-hand side of the name satisfies the name constraint.
-        For example, `example.com`, `www.example.com`, `www.sub.example.com`
-        would satisfy `example.com` while `example1.com` does not.
-        """
-        permitted_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted email addresses. The value can be a particular
-        email address, a hostname to indicate all email addresses on that host or
-        a domain with a leading period (e.g. `.example.com`) to indicate
-        all email addresses in that domain.
-        """
-        permitted_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted IP ranges. For IPv4 addresses, the ranges
-        are expressed using CIDR notation as specified in RFC 4632.
-        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
-        addresses.
-        """
-        permitted_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted URIs that apply to the host part of the name.
-        The value can be a hostname or a domain with a
-        leading period (like `.example.com`)
-        """
-elif False:
-    CertificateCertificateDescriptionX509DescriptionNameConstraintArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionX509DescriptionNameConstraintArgsDict(TypedDict):
+    critical: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether or not the name constraints are marked critical.
+    """
+    excluded_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains excluded DNS names. Any DNS name that can be
+    constructed by simply adding zero or more labels to
+    the left-hand side of the name satisfies the name constraint.
+    For example, `example.com`, `www.example.com`, `www.sub.example.com`
+    would satisfy `example.com` while `example1.com` does not.
+    """
+    excluded_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded email addresses. The value can be a particular
+    email address, a hostname to indicate all email addresses on that host or
+    a domain with a leading period (e.g. `.example.com`) to indicate
+    all email addresses in that domain.
+    """
+    excluded_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded IP ranges. For IPv4 addresses, the ranges
+    are expressed using CIDR notation as specified in RFC 4632.
+    For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+    addresses.
+    """
+    excluded_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded URIs that apply to the host part of the name.
+    The value can be a hostname or a domain with a
+    leading period (like `.example.com`)
+    """
+    permitted_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains permitted DNS names. Any DNS name that can be
+    constructed by simply adding zero or more labels to
+    the left-hand side of the name satisfies the name constraint.
+    For example, `example.com`, `www.example.com`, `www.sub.example.com`
+    would satisfy `example.com` while `example1.com` does not.
+    """
+    permitted_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted email addresses. The value can be a particular
+    email address, a hostname to indicate all email addresses on that host or
+    a domain with a leading period (e.g. `.example.com`) to indicate
+    all email addresses in that domain.
+    """
+    permitted_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted IP ranges. For IPv4 addresses, the ranges
+    are expressed using CIDR notation as specified in RFC 4632.
+    For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+    addresses.
+    """
+    permitted_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted URIs that apply to the host part of the name.
+    The value can be a hostname or a domain with a
+    leading period (like `.example.com`)
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionX509DescriptionNameConstraintArgs:
@@ -5854,14 +5710,11 @@ class CertificateCertificateDescriptionX509DescriptionNameConstraintArgs:
         pulumi.set(self, "permitted_uris", value)
 
 
-if not MYPY:
-    class CertificateCertificateDescriptionX509DescriptionPolicyIdArgsDict(TypedDict):
-        object_id_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    CertificateCertificateDescriptionX509DescriptionPolicyIdArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateCertificateDescriptionX509DescriptionPolicyIdArgsDict(TypedDict):
+    object_id_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class CertificateCertificateDescriptionX509DescriptionPolicyIdArgs:
@@ -5886,33 +5739,30 @@ class CertificateCertificateDescriptionX509DescriptionPolicyIdArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CertificateConfigArgsDict(TypedDict):
-        public_key: pulumi.Input['CertificateConfigPublicKeyArgsDict']
-        """
-        A PublicKey describes a public key.
-        Structure is documented below.
+class CertificateConfigArgsDict(TypedDict):
+    public_key: pulumi.Input['CertificateConfigPublicKeyArgsDict']
+    """
+    A PublicKey describes a public key.
+    Structure is documented below.
 
 
-        <a name="nested_config_x509_config"></a>The `x509_config` block supports:
-        """
-        subject_config: pulumi.Input['CertificateConfigSubjectConfigArgsDict']
-        """
-        Specifies some of the values in a certificate that are related to the subject.
-        Structure is documented below.
-        """
-        x509_config: pulumi.Input['CertificateConfigX509ConfigArgsDict']
-        """
-        Describes how some of the technical X.509 fields in a certificate should be populated.
-        Structure is documented below.
-        """
-        subject_key_id: NotRequired[pulumi.Input['CertificateConfigSubjectKeyIdArgsDict']]
-        """
-        When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
-        Structure is documented below.
-        """
-elif False:
-    CertificateConfigArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_config_x509_config"></a>The `x509_config` block supports:
+    """
+    subject_config: pulumi.Input['CertificateConfigSubjectConfigArgsDict']
+    """
+    Specifies some of the values in a certificate that are related to the subject.
+    Structure is documented below.
+    """
+    x509_config: pulumi.Input['CertificateConfigX509ConfigArgsDict']
+    """
+    Describes how some of the technical X.509 fields in a certificate should be populated.
+    Structure is documented below.
+    """
+    subject_key_id: NotRequired[pulumi.Input['CertificateConfigSubjectKeyIdArgsDict']]
+    """
+    When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CertificateConfigArgs:
@@ -5996,19 +5846,16 @@ class CertificateConfigArgs:
         pulumi.set(self, "subject_key_id", value)
 
 
-if not MYPY:
-    class CertificateConfigPublicKeyArgsDict(TypedDict):
-        format: pulumi.Input[_builtins.str]
-        """
-        The format of the public key. Currently, only PEM format is supported.
-        Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
-        """
-elif False:
-    CertificateConfigPublicKeyArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigPublicKeyArgsDict(TypedDict):
+    format: pulumi.Input[_builtins.str]
+    """
+    The format of the public key. Currently, only PEM format is supported.
+    Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+    """
 
 @pulumi.input_type
 class CertificateConfigPublicKeyArgs:
@@ -6050,20 +5897,17 @@ class CertificateConfigPublicKeyArgs:
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class CertificateConfigSubjectConfigArgsDict(TypedDict):
-        subject: pulumi.Input['CertificateConfigSubjectConfigSubjectArgsDict']
-        """
-        Contains distinguished name fields such as the location and organization.
-        Structure is documented below.
-        """
-        subject_alt_name: NotRequired[pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArgsDict']]
-        """
-        The subject alternative name fields.
-        Structure is documented below.
-        """
-elif False:
-    CertificateConfigSubjectConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigSubjectConfigArgsDict(TypedDict):
+    subject: pulumi.Input['CertificateConfigSubjectConfigSubjectArgsDict']
+    """
+    Contains distinguished name fields such as the location and organization.
+    Structure is documented below.
+    """
+    subject_alt_name: NotRequired[pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArgsDict']]
+    """
+    The subject alternative name fields.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CertificateConfigSubjectConfigArgs:
@@ -6107,42 +5951,39 @@ class CertificateConfigSubjectConfigArgs:
         pulumi.set(self, "subject_alt_name", value)
 
 
-if not MYPY:
-    class CertificateConfigSubjectConfigSubjectArgsDict(TypedDict):
-        common_name: pulumi.Input[_builtins.str]
-        """
-        The common name of the distinguished name.
-        """
-        organization: pulumi.Input[_builtins.str]
-        """
-        The organization of the subject.
-        """
-        country_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The country code of the subject.
-        """
-        locality: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The locality or city of the subject.
-        """
-        organizational_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The organizational unit of the subject.
-        """
-        postal_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The postal code of the subject.
-        """
-        province: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The province, territory, or regional state of the subject.
-        """
-        street_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The street address of the subject.
-        """
-elif False:
-    CertificateConfigSubjectConfigSubjectArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigSubjectConfigSubjectArgsDict(TypedDict):
+    common_name: pulumi.Input[_builtins.str]
+    """
+    The common name of the distinguished name.
+    """
+    organization: pulumi.Input[_builtins.str]
+    """
+    The organization of the subject.
+    """
+    country_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The country code of the subject.
+    """
+    locality: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The locality or city of the subject.
+    """
+    organizational_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The organizational unit of the subject.
+    """
+    postal_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The postal code of the subject.
+    """
+    province: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The province, territory, or regional state of the subject.
+    """
+    street_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The street address of the subject.
+    """
 
 @pulumi.input_type
 class CertificateConfigSubjectConfigSubjectArgs:
@@ -6277,26 +6118,23 @@ class CertificateConfigSubjectConfigSubjectArgs:
         pulumi.set(self, "street_address", value)
 
 
-if not MYPY:
-    class CertificateConfigSubjectConfigSubjectAltNameArgsDict(TypedDict):
-        dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains only valid, fully-qualified host names.
-        """
-        email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains only valid RFC 2822 E-mail addresses.
-        """
-        ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
-        """
-        uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains only valid RFC 3986 URIs.
-        """
-elif False:
-    CertificateConfigSubjectConfigSubjectAltNameArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigSubjectConfigSubjectAltNameArgsDict(TypedDict):
+    dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains only valid, fully-qualified host names.
+    """
+    email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains only valid RFC 2822 E-mail addresses.
+    """
+    ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+    """
+    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains only valid RFC 3986 URIs.
+    """
 
 @pulumi.input_type
 class CertificateConfigSubjectConfigSubjectAltNameArgs:
@@ -6369,14 +6207,11 @@ class CertificateConfigSubjectConfigSubjectAltNameArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class CertificateConfigSubjectKeyIdArgsDict(TypedDict):
-        key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the KeyId in lowercase hexadecimal.
-        """
-elif False:
-    CertificateConfigSubjectKeyIdArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigSubjectKeyIdArgsDict(TypedDict):
+    key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the KeyId in lowercase hexadecimal.
+    """
 
 @pulumi.input_type
 class CertificateConfigSubjectKeyIdArgs:
@@ -6401,46 +6236,43 @@ class CertificateConfigSubjectKeyIdArgs:
         pulumi.set(self, "key_id", value)
 
 
-if not MYPY:
-    class CertificateConfigX509ConfigArgsDict(TypedDict):
-        key_usage: pulumi.Input['CertificateConfigX509ConfigKeyUsageArgsDict']
-        """
-        (Output)
-        Indicates the intended use for keys that correspond to a certificate.
-        Structure is documented below.
-        """
-        additional_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArgsDict']]]]
-        """
-        (Output)
-        Describes custom X.509 extensions.
-        Structure is documented below.
-        """
-        aia_ocsp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
-        "Authority Information Access" extension in the certificate.
-        """
-        ca_options: NotRequired[pulumi.Input['CertificateConfigX509ConfigCaOptionsArgsDict']]
-        """
-        (Output)
-        Describes values that are relevant in a CA certificate.
-        Structure is documented below.
-        """
-        name_constraints: NotRequired[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgsDict']]
-        """
-        (Output)
-        Describes the X.509 name constraints extension.
-        Structure is documented below.
-        """
-        policy_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgsDict']]]]
-        """
-        (Output)
-        Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-        Structure is documented below.
-        """
-elif False:
-    CertificateConfigX509ConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigX509ConfigArgsDict(TypedDict):
+    key_usage: pulumi.Input['CertificateConfigX509ConfigKeyUsageArgsDict']
+    """
+    (Output)
+    Indicates the intended use for keys that correspond to a certificate.
+    Structure is documented below.
+    """
+    additional_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArgsDict']]]]
+    """
+    (Output)
+    Describes custom X.509 extensions.
+    Structure is documented below.
+    """
+    aia_ocsp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+    "Authority Information Access" extension in the certificate.
+    """
+    ca_options: NotRequired[pulumi.Input['CertificateConfigX509ConfigCaOptionsArgsDict']]
+    """
+    (Output)
+    Describes values that are relevant in a CA certificate.
+    Structure is documented below.
+    """
+    name_constraints: NotRequired[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgsDict']]
+    """
+    (Output)
+    Describes the X.509 name constraints extension.
+    Structure is documented below.
+    """
+    policy_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgsDict']]]]
+    """
+    (Output)
+    Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CertificateConfigX509ConfigArgs:
@@ -6568,24 +6400,21 @@ class CertificateConfigX509ConfigArgs:
         pulumi.set(self, "policy_ids", value)
 
 
-if not MYPY:
-    class CertificateConfigX509ConfigAdditionalExtensionArgsDict(TypedDict):
-        critical: pulumi.Input[_builtins.bool]
-        """
-        Indicates whether or not this extension is critical (i.e., if the client does not know how to
-        handle this extension, the client should consider this to be an error).
-        """
-        object_id: pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionObjectIdArgsDict']
-        """
-        Describes values that are relevant in a CA certificate.
-        Structure is documented below.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The value of this X.509 extension. A base64-encoded string.
-        """
-elif False:
-    CertificateConfigX509ConfigAdditionalExtensionArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigX509ConfigAdditionalExtensionArgsDict(TypedDict):
+    critical: pulumi.Input[_builtins.bool]
+    """
+    Indicates whether or not this extension is critical (i.e., if the client does not know how to
+    handle this extension, the client should consider this to be an error).
+    """
+    object_id: pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionObjectIdArgsDict']
+    """
+    Describes values that are relevant in a CA certificate.
+    Structure is documented below.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of this X.509 extension. A base64-encoded string.
+    """
 
 @pulumi.input_type
 class CertificateConfigX509ConfigAdditionalExtensionArgs:
@@ -6643,14 +6472,11 @@ class CertificateConfigX509ConfigAdditionalExtensionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CertificateConfigX509ConfigAdditionalExtensionObjectIdArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    CertificateConfigX509ConfigAdditionalExtensionObjectIdArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigX509ConfigAdditionalExtensionObjectIdArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs:
@@ -6674,30 +6500,27 @@ class CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CertificateConfigX509ConfigCaOptionsArgsDict(TypedDict):
-        is_ca: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, the "CA" in Basic Constraints extension will be set to true.
-        """
-        max_issuer_path_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
-        """
-        non_ca: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, the "CA" in Basic Constraints extension will be set to false.
-        If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
-        """
-        zero_max_issuer_path_length: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-        if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
-        the max path length will be omitted from the CA certificate.
-        """
-elif False:
-    CertificateConfigX509ConfigCaOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigX509ConfigCaOptionsArgsDict(TypedDict):
+    is_ca: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, the "CA" in Basic Constraints extension will be set to true.
+    """
+    max_issuer_path_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+    subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+    """
+    non_ca: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, the "CA" in Basic Constraints extension will be set to false.
+    If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
+    """
+    zero_max_issuer_path_length: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+    if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+    the max path length will be omitted from the CA certificate.
+    """
 
 @pulumi.input_type
 class CertificateConfigX509ConfigCaOptionsArgs:
@@ -6778,25 +6601,22 @@ class CertificateConfigX509ConfigCaOptionsArgs:
         pulumi.set(self, "zero_max_issuer_path_length", value)
 
 
-if not MYPY:
-    class CertificateConfigX509ConfigKeyUsageArgsDict(TypedDict):
-        base_key_usage: pulumi.Input['CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgsDict']
-        """
-        Describes high-level ways in which a key may be used.
-        Structure is documented below.
-        """
-        extended_key_usage: pulumi.Input['CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgsDict']
-        """
-        Describes high-level ways in which a key may be used.
-        Structure is documented below.
-        """
-        unknown_extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgsDict']]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        Structure is documented below.
-        """
-elif False:
-    CertificateConfigX509ConfigKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigX509ConfigKeyUsageArgsDict(TypedDict):
+    base_key_usage: pulumi.Input['CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgsDict']
+    """
+    Describes high-level ways in which a key may be used.
+    Structure is documented below.
+    """
+    extended_key_usage: pulumi.Input['CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgsDict']
+    """
+    Describes high-level ways in which a key may be used.
+    Structure is documented below.
+    """
+    unknown_extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgsDict']]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CertificateConfigX509ConfigKeyUsageArgs:
@@ -6857,46 +6677,43 @@ class CertificateConfigX509ConfigKeyUsageArgs:
         pulumi.set(self, "unknown_extended_key_usages", value)
 
 
-if not MYPY:
-    class CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgsDict(TypedDict):
-        cert_sign: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to sign certificates.
-        """
-        content_commitment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
-        """
-        crl_sign: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used sign certificate revocation lists.
-        """
-        data_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher data.
-        """
-        decipher_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to decipher only.
-        """
-        digital_signature: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used for digital signatures.
-        """
-        encipher_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher only.
-        """
-        key_agreement: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used in a key agreement protocol.
-        """
-        key_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher other keys.
-        """
-elif False:
-    CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgsDict(TypedDict):
+    cert_sign: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to sign certificates.
+    """
+    content_commitment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+    """
+    crl_sign: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used sign certificate revocation lists.
+    """
+    data_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher data.
+    """
+    decipher_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to decipher only.
+    """
+    digital_signature: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used for digital signatures.
+    """
+    encipher_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher only.
+    """
+    key_agreement: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used in a key agreement protocol.
+    """
+    key_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher other keys.
+    """
 
 @pulumi.input_type
 class CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs:
@@ -7049,34 +6866,31 @@ class CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs:
         pulumi.set(self, "key_encipherment", value)
 
 
-if not MYPY:
-    class CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgsDict(TypedDict):
-        client_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
-        """
-        code_signing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
-        """
-        email_protection: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
-        """
-        ocsp_signing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
-        """
-        server_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
-        """
-        time_stamping: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
-        """
-elif False:
-    CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgsDict(TypedDict):
+    client_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+    """
+    code_signing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+    """
+    email_protection: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+    """
+    ocsp_signing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+    """
+    server_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+    """
+    time_stamping: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+    """
 
 @pulumi.input_type
 class CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs:
@@ -7181,14 +6995,11 @@ class CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs:
         pulumi.set(self, "time_stamping", value)
 
 
-if not MYPY:
-    class CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs:
@@ -7212,70 +7023,67 @@ class CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CertificateConfigX509ConfigNameConstraintsArgsDict(TypedDict):
-        critical: pulumi.Input[_builtins.bool]
-        """
-        Indicates whether or not the name constraints are marked critical.
-        """
-        excluded_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains excluded DNS names. Any DNS name that can be
-        constructed by simply adding zero or more labels to
-        the left-hand side of the name satisfies the name constraint.
-        For example, `example.com`, `www.example.com`, `www.sub.example.com`
-        would satisfy `example.com` while `example1.com` does not.
-        """
-        excluded_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded email addresses. The value can be a particular
-        email address, a hostname to indicate all email addresses on that host or
-        a domain with a leading period (e.g. `.example.com`) to indicate
-        all email addresses in that domain.
-        """
-        excluded_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded IP ranges. For IPv4 addresses, the ranges
-        are expressed using CIDR notation as specified in RFC 4632.
-        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
-        addresses.
-        """
-        excluded_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded URIs that apply to the host part of the name.
-        The value can be a hostname or a domain with a
-        leading period (like `.example.com`)
-        """
-        permitted_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains permitted DNS names. Any DNS name that can be
-        constructed by simply adding zero or more labels to
-        the left-hand side of the name satisfies the name constraint.
-        For example, `example.com`, `www.example.com`, `www.sub.example.com`
-        would satisfy `example.com` while `example1.com` does not.
-        """
-        permitted_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted email addresses. The value can be a particular
-        email address, a hostname to indicate all email addresses on that host or
-        a domain with a leading period (e.g. `.example.com`) to indicate
-        all email addresses in that domain.
-        """
-        permitted_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted IP ranges. For IPv4 addresses, the ranges
-        are expressed using CIDR notation as specified in RFC 4632.
-        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
-        addresses.
-        """
-        permitted_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted URIs that apply to the host part of the name.
-        The value can be a hostname or a domain with a
-        leading period (like `.example.com`)
-        """
-elif False:
-    CertificateConfigX509ConfigNameConstraintsArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigX509ConfigNameConstraintsArgsDict(TypedDict):
+    critical: pulumi.Input[_builtins.bool]
+    """
+    Indicates whether or not the name constraints are marked critical.
+    """
+    excluded_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains excluded DNS names. Any DNS name that can be
+    constructed by simply adding zero or more labels to
+    the left-hand side of the name satisfies the name constraint.
+    For example, `example.com`, `www.example.com`, `www.sub.example.com`
+    would satisfy `example.com` while `example1.com` does not.
+    """
+    excluded_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded email addresses. The value can be a particular
+    email address, a hostname to indicate all email addresses on that host or
+    a domain with a leading period (e.g. `.example.com`) to indicate
+    all email addresses in that domain.
+    """
+    excluded_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded IP ranges. For IPv4 addresses, the ranges
+    are expressed using CIDR notation as specified in RFC 4632.
+    For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+    addresses.
+    """
+    excluded_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded URIs that apply to the host part of the name.
+    The value can be a hostname or a domain with a
+    leading period (like `.example.com`)
+    """
+    permitted_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains permitted DNS names. Any DNS name that can be
+    constructed by simply adding zero or more labels to
+    the left-hand side of the name satisfies the name constraint.
+    For example, `example.com`, `www.example.com`, `www.sub.example.com`
+    would satisfy `example.com` while `example1.com` does not.
+    """
+    permitted_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted email addresses. The value can be a particular
+    email address, a hostname to indicate all email addresses on that host or
+    a domain with a leading period (e.g. `.example.com`) to indicate
+    all email addresses in that domain.
+    """
+    permitted_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted IP ranges. For IPv4 addresses, the ranges
+    are expressed using CIDR notation as specified in RFC 4632.
+    For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+    addresses.
+    """
+    permitted_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted URIs that apply to the host part of the name.
+    The value can be a hostname or a domain with a
+    leading period (like `.example.com`)
+    """
 
 @pulumi.input_type
 class CertificateConfigX509ConfigNameConstraintsArgs:
@@ -7475,14 +7283,11 @@ class CertificateConfigX509ConfigNameConstraintsArgs:
         pulumi.set(self, "permitted_uris", value)
 
 
-if not MYPY:
-    class CertificateConfigX509ConfigPolicyIdArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        """
-elif False:
-    CertificateConfigX509ConfigPolicyIdArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateConfigX509ConfigPolicyIdArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+    """
 
 @pulumi.input_type
 class CertificateConfigX509ConfigPolicyIdArgs:
@@ -7506,20 +7311,17 @@ class CertificateConfigX509ConfigPolicyIdArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CertificateRevocationDetailArgsDict(TypedDict):
-        revocation_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Indicates why a Certificate was revoked.
-        """
-        revocation_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The time at which this Certificate was revoked.
-        """
-elif False:
-    CertificateRevocationDetailArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateRevocationDetailArgsDict(TypedDict):
+    revocation_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Indicates why a Certificate was revoked.
+    """
+    revocation_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The time at which this Certificate was revoked.
+    """
 
 @pulumi.input_type
 class CertificateRevocationDetailArgs:
@@ -7564,19 +7366,23 @@ class CertificateRevocationDetailArgs:
         pulumi.set(self, "revocation_time", value)
 
 
-if not MYPY:
-    class CertificateTemplateIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    CertificateTemplateIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplateIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class CertificateTemplateIamBindingConditionArgs:
@@ -7587,6 +7393,11 @@ class CertificateTemplateIamBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -7620,6 +7431,13 @@ class CertificateTemplateIamBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -7627,19 +7445,23 @@ class CertificateTemplateIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class CertificateTemplateIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    CertificateTemplateIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplateIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class CertificateTemplateIamMemberConditionArgs:
@@ -7650,6 +7472,11 @@ class CertificateTemplateIamMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -7683,6 +7510,13 @@ class CertificateTemplateIamMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -7690,23 +7524,20 @@ class CertificateTemplateIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class CertificateTemplateIdentityConstraintsArgsDict(TypedDict):
-        allow_subject_alt_names_passthrough: pulumi.Input[_builtins.bool]
-        """
-        Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
-        """
-        allow_subject_passthrough: pulumi.Input[_builtins.bool]
-        """
-        Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
-        """
-        cel_expression: NotRequired[pulumi.Input['CertificateTemplateIdentityConstraintsCelExpressionArgsDict']]
-        """
-        Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
-        Structure is documented below.
-        """
-elif False:
-    CertificateTemplateIdentityConstraintsArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplateIdentityConstraintsArgsDict(TypedDict):
+    allow_subject_alt_names_passthrough: pulumi.Input[_builtins.bool]
+    """
+    Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
+    """
+    allow_subject_passthrough: pulumi.Input[_builtins.bool]
+    """
+    Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
+    """
+    cel_expression: NotRequired[pulumi.Input['CertificateTemplateIdentityConstraintsCelExpressionArgsDict']]
+    """
+    Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CertificateTemplateIdentityConstraintsArgs:
@@ -7763,26 +7594,23 @@ class CertificateTemplateIdentityConstraintsArgs:
         pulumi.set(self, "cel_expression", value)
 
 
-if not MYPY:
-    class CertificateTemplateIdentityConstraintsCelExpressionArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
-        expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-        """
-elif False:
-    CertificateTemplateIdentityConstraintsCelExpressionArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplateIdentityConstraintsCelExpressionArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+    """
+    expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+    """
 
 @pulumi.input_type
 class CertificateTemplateIdentityConstraintsCelExpressionArgs:
@@ -7855,19 +7683,16 @@ class CertificateTemplateIdentityConstraintsCelExpressionArgs:
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class CertificateTemplatePassthroughExtensionsArgsDict(TypedDict):
-        additional_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgsDict']]]]
-        """
-        Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
-        Structure is documented below.
-        """
-        known_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
-        """
-elif False:
-    CertificateTemplatePassthroughExtensionsArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplatePassthroughExtensionsArgsDict(TypedDict):
+    additional_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgsDict']]]]
+    """
+    Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+    Structure is documented below.
+    """
+    known_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+    """
 
 @pulumi.input_type
 class CertificateTemplatePassthroughExtensionsArgs:
@@ -7910,14 +7735,11 @@ class CertificateTemplatePassthroughExtensionsArgs:
         pulumi.set(self, "known_extensions", value)
 
 
-if not MYPY:
-    class CertificateTemplatePassthroughExtensionsAdditionalExtensionArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        Required. The parts of an OID path. The most significant parts of the path come first.
-        """
-elif False:
-    CertificateTemplatePassthroughExtensionsAdditionalExtensionArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplatePassthroughExtensionsAdditionalExtensionArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    Required. The parts of an OID path. The most significant parts of the path come first.
+    """
 
 @pulumi.input_type
 class CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs:
@@ -7941,39 +7763,36 @@ class CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CertificateTemplatePredefinedValuesArgsDict(TypedDict):
-        additional_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArgsDict']]]]
-        """
-        Optional. Describes custom X.509 extensions.
-        Structure is documented below.
-        """
-        aia_ocsp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
-        """
-        ca_options: NotRequired[pulumi.Input['CertificateTemplatePredefinedValuesCaOptionsArgsDict']]
-        """
-        Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
-        Structure is documented below.
-        """
-        key_usage: NotRequired[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageArgsDict']]
-        """
-        Optional. Indicates the intended use for keys that correspond to a certificate.
-        Structure is documented below.
-        """
-        name_constraints: NotRequired[pulumi.Input['CertificateTemplatePredefinedValuesNameConstraintsArgsDict']]
-        """
-        Describes the X.509 name constraints extension.
-        Structure is documented below.
-        """
-        policy_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArgsDict']]]]
-        """
-        Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-        Structure is documented below.
-        """
-elif False:
-    CertificateTemplatePredefinedValuesArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplatePredefinedValuesArgsDict(TypedDict):
+    additional_extensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArgsDict']]]]
+    """
+    Optional. Describes custom X.509 extensions.
+    Structure is documented below.
+    """
+    aia_ocsp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
+    """
+    ca_options: NotRequired[pulumi.Input['CertificateTemplatePredefinedValuesCaOptionsArgsDict']]
+    """
+    Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+    Structure is documented below.
+    """
+    key_usage: NotRequired[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageArgsDict']]
+    """
+    Optional. Indicates the intended use for keys that correspond to a certificate.
+    Structure is documented below.
+    """
+    name_constraints: NotRequired[pulumi.Input['CertificateTemplatePredefinedValuesNameConstraintsArgsDict']]
+    """
+    Describes the X.509 name constraints extension.
+    Structure is documented below.
+    """
+    policy_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArgsDict']]]]
+    """
+    Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CertificateTemplatePredefinedValuesArgs:
@@ -8088,23 +7907,20 @@ class CertificateTemplatePredefinedValuesArgs:
         pulumi.set(self, "policy_ids", value)
 
 
-if not MYPY:
-    class CertificateTemplatePredefinedValuesAdditionalExtensionArgsDict(TypedDict):
-        object_id: pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgsDict']
-        """
-        Required. The OID for this X.509 extension.
-        Structure is documented below.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Required. The value of this X.509 extension.
-        """
-        critical: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
-        """
-elif False:
-    CertificateTemplatePredefinedValuesAdditionalExtensionArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplatePredefinedValuesAdditionalExtensionArgsDict(TypedDict):
+    object_id: pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgsDict']
+    """
+    Required. The OID for this X.509 extension.
+    Structure is documented below.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Required. The value of this X.509 extension.
+    """
+    critical: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+    """
 
 @pulumi.input_type
 class CertificateTemplatePredefinedValuesAdditionalExtensionArgs:
@@ -8161,14 +7977,11 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionArgs:
         pulumi.set(self, "critical", value)
 
 
-if not MYPY:
-    class CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        Required. The parts of an OID path. The most significant parts of the path come first.
-        """
-elif False:
-    CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    Required. The parts of an OID path. The most significant parts of the path come first.
+    """
 
 @pulumi.input_type
 class CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs:
@@ -8192,31 +8005,28 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CertificateTemplatePredefinedValuesCaOptionsArgsDict(TypedDict):
-        is_ca: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is true, the "CA" in Basic Constraints extension will be set to true.
-        """
-        max_issuer_path_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional. Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
-        """
-        null_ca: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. When true, the "CA" in Basic Constraints extension will be set to null and omitted from the CA certificate.
-        If both `is_ca` and `null_ca` are unset, the "CA" in Basic Constraints extension will be set to false.
-        Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
-        """
-        zero_max_issuer_path_length: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-        if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
-        the max path length will be omitted from the CA certificate.
-        """
-elif False:
-    CertificateTemplatePredefinedValuesCaOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplatePredefinedValuesCaOptionsArgsDict(TypedDict):
+    is_ca: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is true, the "CA" in Basic Constraints extension will be set to true.
+    """
+    max_issuer_path_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optional. Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+    subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+    """
+    null_ca: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. When true, the "CA" in Basic Constraints extension will be set to null and omitted from the CA certificate.
+    If both `is_ca` and `null_ca` are unset, the "CA" in Basic Constraints extension will be set to false.
+    Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+    """
+    zero_max_issuer_path_length: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+    if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+    the max path length will be omitted from the CA certificate.
+    """
 
 @pulumi.input_type
 class CertificateTemplatePredefinedValuesCaOptionsArgs:
@@ -8299,25 +8109,22 @@ class CertificateTemplatePredefinedValuesCaOptionsArgs:
         pulumi.set(self, "zero_max_issuer_path_length", value)
 
 
-if not MYPY:
-    class CertificateTemplatePredefinedValuesKeyUsageArgsDict(TypedDict):
-        base_key_usage: NotRequired[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgsDict']]
-        """
-        Describes high-level ways in which a key may be used.
-        Structure is documented below.
-        """
-        extended_key_usage: NotRequired[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgsDict']]
-        """
-        Detailed scenarios in which a key may be used.
-        Structure is documented below.
-        """
-        unknown_extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgsDict']]]]
-        """
-        Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
-        Structure is documented below.
-        """
-elif False:
-    CertificateTemplatePredefinedValuesKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplatePredefinedValuesKeyUsageArgsDict(TypedDict):
+    base_key_usage: NotRequired[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgsDict']]
+    """
+    Describes high-level ways in which a key may be used.
+    Structure is documented below.
+    """
+    extended_key_usage: NotRequired[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgsDict']]
+    """
+    Detailed scenarios in which a key may be used.
+    Structure is documented below.
+    """
+    unknown_extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgsDict']]]]
+    """
+    Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CertificateTemplatePredefinedValuesKeyUsageArgs:
@@ -8380,46 +8187,43 @@ class CertificateTemplatePredefinedValuesKeyUsageArgs:
         pulumi.set(self, "unknown_extended_key_usages", value)
 
 
-if not MYPY:
-    class CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgsDict(TypedDict):
-        cert_sign: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to sign certificates.
-        """
-        content_commitment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
-        """
-        crl_sign: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used sign certificate revocation lists.
-        """
-        data_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher data.
-        """
-        decipher_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to decipher only.
-        """
-        digital_signature: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used for digital signatures.
-        """
-        encipher_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher only.
-        """
-        key_agreement: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used in a key agreement protocol.
-        """
-        key_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The key may be used to encipher other keys.
-        """
-elif False:
-    CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgsDict(TypedDict):
+    cert_sign: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to sign certificates.
+    """
+    content_commitment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+    """
+    crl_sign: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used sign certificate revocation lists.
+    """
+    data_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher data.
+    """
+    decipher_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to decipher only.
+    """
+    digital_signature: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used for digital signatures.
+    """
+    encipher_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher only.
+    """
+    key_agreement: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used in a key agreement protocol.
+    """
+    key_encipherment: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The key may be used to encipher other keys.
+    """
 
 @pulumi.input_type
 class CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs:
@@ -8572,34 +8376,31 @@ class CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs:
         pulumi.set(self, "key_encipherment", value)
 
 
-if not MYPY:
-    class CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgsDict(TypedDict):
-        client_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
-        """
-        code_signing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
-        """
-        email_protection: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
-        """
-        ocsp_signing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
-        """
-        server_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
-        """
-        time_stamping: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
-        """
-elif False:
-    CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgsDict(TypedDict):
+    client_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+    """
+    code_signing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+    """
+    email_protection: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+    """
+    ocsp_signing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+    """
+    server_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+    """
+    time_stamping: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+    """
 
 @pulumi.input_type
 class CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs:
@@ -8704,14 +8505,11 @@ class CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs:
         pulumi.set(self, "time_stamping", value)
 
 
-if not MYPY:
-    class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        Required. The parts of an OID path. The most significant parts of the path come first.
-        """
-elif False:
-    CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    Required. The parts of an OID path. The most significant parts of the path come first.
+    """
 
 @pulumi.input_type
 class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs:
@@ -8735,70 +8533,67 @@ class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs:
         pulumi.set(self, "object_id_paths", value)
 
 
-if not MYPY:
-    class CertificateTemplatePredefinedValuesNameConstraintsArgsDict(TypedDict):
-        critical: pulumi.Input[_builtins.bool]
-        """
-        Indicates whether or not the name constraints are marked critical.
-        """
-        excluded_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains excluded DNS names. Any DNS name that can be
-        constructed by simply adding zero or more labels to
-        the left-hand side of the name satisfies the name constraint.
-        For example, `example.com`, `www.example.com`, `www.sub.example.com`
-        would satisfy `example.com` while `example1.com` does not.
-        """
-        excluded_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded email addresses. The value can be a particular
-        email address, a hostname to indicate all email addresses on that host or
-        a domain with a leading period (e.g. `.example.com`) to indicate
-        all email addresses in that domain.
-        """
-        excluded_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded IP ranges. For IPv4 addresses, the ranges
-        are expressed using CIDR notation as specified in RFC 4632.
-        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
-        addresses.
-        """
-        excluded_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the excluded URIs that apply to the host part of the name.
-        The value can be a hostname or a domain with a
-        leading period (like `.example.com`)
-        """
-        permitted_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains permitted DNS names. Any DNS name that can be
-        constructed by simply adding zero or more labels to
-        the left-hand side of the name satisfies the name constraint.
-        For example, `example.com`, `www.example.com`, `www.sub.example.com`
-        would satisfy `example.com` while `example1.com` does not.
-        """
-        permitted_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted email addresses. The value can be a particular
-        email address, a hostname to indicate all email addresses on that host or
-        a domain with a leading period (e.g. `.example.com`) to indicate
-        all email addresses in that domain.
-        """
-        permitted_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted IP ranges. For IPv4 addresses, the ranges
-        are expressed using CIDR notation as specified in RFC 4632.
-        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
-        addresses.
-        """
-        permitted_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the permitted URIs that apply to the host part of the name.
-        The value can be a hostname or a domain with a
-        leading period (like `.example.com`)
-        """
-elif False:
-    CertificateTemplatePredefinedValuesNameConstraintsArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplatePredefinedValuesNameConstraintsArgsDict(TypedDict):
+    critical: pulumi.Input[_builtins.bool]
+    """
+    Indicates whether or not the name constraints are marked critical.
+    """
+    excluded_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains excluded DNS names. Any DNS name that can be
+    constructed by simply adding zero or more labels to
+    the left-hand side of the name satisfies the name constraint.
+    For example, `example.com`, `www.example.com`, `www.sub.example.com`
+    would satisfy `example.com` while `example1.com` does not.
+    """
+    excluded_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded email addresses. The value can be a particular
+    email address, a hostname to indicate all email addresses on that host or
+    a domain with a leading period (e.g. `.example.com`) to indicate
+    all email addresses in that domain.
+    """
+    excluded_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded IP ranges. For IPv4 addresses, the ranges
+    are expressed using CIDR notation as specified in RFC 4632.
+    For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+    addresses.
+    """
+    excluded_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the excluded URIs that apply to the host part of the name.
+    The value can be a hostname or a domain with a
+    leading period (like `.example.com`)
+    """
+    permitted_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains permitted DNS names. Any DNS name that can be
+    constructed by simply adding zero or more labels to
+    the left-hand side of the name satisfies the name constraint.
+    For example, `example.com`, `www.example.com`, `www.sub.example.com`
+    would satisfy `example.com` while `example1.com` does not.
+    """
+    permitted_email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted email addresses. The value can be a particular
+    email address, a hostname to indicate all email addresses on that host or
+    a domain with a leading period (e.g. `.example.com`) to indicate
+    all email addresses in that domain.
+    """
+    permitted_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted IP ranges. For IPv4 addresses, the ranges
+    are expressed using CIDR notation as specified in RFC 4632.
+    For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+    addresses.
+    """
+    permitted_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the permitted URIs that apply to the host part of the name.
+    The value can be a hostname or a domain with a
+    leading period (like `.example.com`)
+    """
 
 @pulumi.input_type
 class CertificateTemplatePredefinedValuesNameConstraintsArgs:
@@ -8998,14 +8793,11 @@ class CertificateTemplatePredefinedValuesNameConstraintsArgs:
         pulumi.set(self, "permitted_uris", value)
 
 
-if not MYPY:
-    class CertificateTemplatePredefinedValuesPolicyIdArgsDict(TypedDict):
-        object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        Required. The parts of an OID path. The most significant parts of the path come first.
-        """
-elif False:
-    CertificateTemplatePredefinedValuesPolicyIdArgsDict: TypeAlias = Mapping[str, Any]
+class CertificateTemplatePredefinedValuesPolicyIdArgsDict(TypedDict):
+    object_id_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    Required. The parts of an OID path. The most significant parts of the path come first.
+    """
 
 @pulumi.input_type
 class CertificateTemplatePredefinedValuesPolicyIdArgs:

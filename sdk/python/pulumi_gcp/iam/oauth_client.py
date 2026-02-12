@@ -556,22 +556,14 @@ class OauthClient(pulumi.CustomResource):
         OauthClient can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/oauthClients/{{oauth_client_id}}`
-
         * `{{project}}/{{location}}/{{oauth_client_id}}`
-
         * `{{location}}/{{oauth_client_id}}`
 
         When using the `pulumi import` command, OauthClient can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/oauthClient:OauthClient default projects/{{project}}/locations/{{location}}/oauthClients/{{oauth_client_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/oauthClient:OauthClient default {{project}}/{{location}}/{{oauth_client_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/oauthClient:OauthClient default {{location}}/{{oauth_client_id}}
         ```
 
@@ -650,22 +642,14 @@ class OauthClient(pulumi.CustomResource):
         OauthClient can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/oauthClients/{{oauth_client_id}}`
-
         * `{{project}}/{{location}}/{{oauth_client_id}}`
-
         * `{{location}}/{{oauth_client_id}}`
 
         When using the `pulumi import` command, OauthClient can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/oauthClient:OauthClient default projects/{{project}}/locations/{{location}}/oauthClients/{{oauth_client_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/oauthClient:OauthClient default {{project}}/{{location}}/{{oauth_client_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/oauthClient:OauthClient default {{location}}/{{oauth_client_id}}
         ```
 

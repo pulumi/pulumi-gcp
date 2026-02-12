@@ -523,16 +523,12 @@ class Environment(pulumi.CustomResource):
         Environment can be imported using any of these accepted formats:
 
         * `{{org_id}}/environments/{{name}}`
-
         * `{{org_id}}/{{name}}`
 
         When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/environments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/{{name}}
         ```
 
@@ -625,16 +621,12 @@ class Environment(pulumi.CustomResource):
         Environment can be imported using any of these accepted formats:
 
         * `{{org_id}}/environments/{{name}}`
-
         * `{{org_id}}/{{name}}`
 
         When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/environments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/{{name}}
         ```
 

@@ -116,24 +116,15 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * Asset can be imported using any of these accepted formats:
- * 
  * * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
- * 
  * * `{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
  * 
  * When using the `pulumi import` command, Asset can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataplex/asset:Asset default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/asset:Asset default {{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/asset:Asset default {{location}}/{{lake}}/{{dataplex_zone}}/{{name}}
  * ```
  * 

@@ -87,22 +87,14 @@ import javax.annotation.Nullable;
  * AuthConfig can be imported using any of these accepted formats:
  * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{project}} {{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, AuthConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:applicationintegration/authConfig:AuthConfig default {{project}}/{{name}}
- * ```
- * 
- * ```sh
- * $ pulumi import gcp:applicationintegration/authConfig:AuthConfig default &#34;{{project}} {{name}}&#34;
- * ```
- * 
- * ```sh
+ * $ terraform import google_integrations_auth_config.default &#34;{{project}} {{name}}&#34;
  * $ pulumi import gcp:applicationintegration/authConfig:AuthConfig default {{name}}
  * ```
  * 

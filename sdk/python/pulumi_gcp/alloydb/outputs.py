@@ -1697,6 +1697,15 @@ class InstanceConnectionPoolConfig(dict):
                  pooler_count: Optional[_builtins.int] = None):
         """
         :param _builtins.bool enabled: Whether to enabled Managed Connection Pool.
+        :param Mapping[str, _builtins.str] flags: Flags for configuring managed connection pooling when it is enabled.
+               These flags will only be set if `connection_pool_config.enabled` is
+               true.
+               Please see
+               https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+               for a comprehensive list of flags that can be set. To specify the flags
+               in Terraform, please remove the "connection-pooling-" prefix and use
+               underscores instead of dashes in the name. For example,
+               "connection-pooling-pool-mode" would be "pool_mode".
         :param _builtins.int pooler_count: (Output)
                The number of running poolers per instance.
         """
@@ -1717,6 +1726,17 @@ class InstanceConnectionPoolConfig(dict):
     @_builtins.property
     @pulumi.getter
     def flags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Flags for configuring managed connection pooling when it is enabled.
+        These flags will only be set if `connection_pool_config.enabled` is
+        true.
+        Please see
+        https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+        for a comprehensive list of flags that can be set. To specify the flags
+        in Terraform, please remove the "connection-pooling-" prefix and use
+        underscores instead of dashes in the name. For example,
+        "connection-pooling-pool-mode" would be "pool_mode".
+        """
         return pulumi.get(self, "flags")
 
     @_builtins.property
@@ -3346,6 +3366,15 @@ class GetInstanceConnectionPoolConfigResult(dict):
                  pooler_count: _builtins.int):
         """
         :param _builtins.bool enabled: Whether to enabled Managed Connection Pool.
+        :param Mapping[str, _builtins.str] flags: Flags for configuring managed connection pooling when it is enabled.
+               These flags will only be set if 'connection_pool_config.enabled' is
+               true.
+               Please see
+               https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+               for a comprehensive list of flags that can be set. To specify the flags
+               in Terraform, please remove the "connection-pooling-" prefix and use
+               underscores instead of dashes in the name. For example,
+               "connection-pooling-pool-mode" would be "pool_mode".
         :param _builtins.int pooler_count: The number of running poolers per instance.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -3363,6 +3392,17 @@ class GetInstanceConnectionPoolConfigResult(dict):
     @_builtins.property
     @pulumi.getter
     def flags(self) -> Mapping[str, _builtins.str]:
+        """
+        Flags for configuring managed connection pooling when it is enabled.
+        These flags will only be set if 'connection_pool_config.enabled' is
+        true.
+        Please see
+        https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+        for a comprehensive list of flags that can be set. To specify the flags
+        in Terraform, please remove the "connection-pooling-" prefix and use
+        underscores instead of dashes in the name. For example,
+        "connection-pooling-pool-mode" would be "pool_mode".
+        """
         return pulumi.get(self, "flags")
 
     @_builtins.property

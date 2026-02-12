@@ -18,6 +18,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Represents a Secure Access Connect (SAC) attachment resource
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about SacAttachment, see:
+ * 
+ * * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacAttachments)
+ * * How-to Guides
+ *     * [QUICKSTART_TITLE](https://cloud.google.com/secure-access-connect/docs/overview)
+ * 
  * ## Example Usage
  * 
  * ### Sac Attachment Prisma Access
@@ -62,22 +73,14 @@ import javax.annotation.Nullable;
  * SacAttachment can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/sacAttachments/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, SacAttachment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default projects/{{project}}/locations/{{location}}/sacAttachments/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{location}}/{{name}}
  * ```
  * 

@@ -285,22 +285,14 @@ import javax.annotation.Nullable;
  * SecurityGatewayApplication can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/global/securityGateways/{{security_gateway_id}}/applications/{{application_id}}`
- * 
  * * `{{project}}/{{security_gateway_id}}/{{application_id}}`
- * 
  * * `{{security_gateway_id}}/{{application_id}}`
  * 
  * When using the `pulumi import` command, SecurityGatewayApplication can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default projects/{{project}}/locations/global/securityGateways/{{security_gateway_id}}/applications/{{application_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default {{project}}/{{security_gateway_id}}/{{application_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default {{security_gateway_id}}/{{application_id}}
  * ```
  * 

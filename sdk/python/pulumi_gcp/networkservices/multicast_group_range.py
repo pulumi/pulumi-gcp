@@ -713,22 +713,14 @@ class MulticastGroupRange(pulumi.CustomResource):
         MulticastGroupRange can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicastGroupRanges/{{multicast_group_range_id}}`
-
         * `{{project}}/{{location}}/{{multicast_group_range_id}}`
-
         * `{{location}}/{{multicast_group_range_id}}`
 
         When using the `pulumi import` command, MulticastGroupRange can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default projects/{{project}}/locations/{{location}}/multicastGroupRanges/{{multicast_group_range_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{project}}/{{location}}/{{multicast_group_range_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{location}}/{{multicast_group_range_id}}
         ```
 
@@ -825,22 +817,14 @@ class MulticastGroupRange(pulumi.CustomResource):
         MulticastGroupRange can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicastGroupRanges/{{multicast_group_range_id}}`
-
         * `{{project}}/{{location}}/{{multicast_group_range_id}}`
-
         * `{{location}}/{{multicast_group_range_id}}`
 
         When using the `pulumi import` command, MulticastGroupRange can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default projects/{{project}}/locations/{{location}}/multicastGroupRanges/{{multicast_group_range_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{project}}/{{location}}/{{multicast_group_range_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{location}}/{{multicast_group_range_id}}
         ```
 

@@ -85,6 +85,9 @@ namespace Pulumi.Gcp.Compute
         [Output("advancedMachineFeatures")]
         public Output<Outputs.InstanceFromTemplateAdvancedMachineFeatures> AdvancedMachineFeatures { get; private set; } = null!;
 
+        /// <summary>
+        /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        /// </summary>
         [Output("allowStoppingForUpdate")]
         public Output<bool> AllowStoppingForUpdate { get; private set; } = null!;
 
@@ -150,6 +153,9 @@ namespace Pulumi.Gcp.Compute
         [Output("desiredStatus")]
         public Output<string> DesiredStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
@@ -409,6 +415,9 @@ namespace Pulumi.Gcp.Compute
         [Input("advancedMachineFeatures")]
         public Input<Inputs.InstanceFromTemplateAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
 
+        /// <summary>
+        /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        /// </summary>
         [Input("allowStoppingForUpdate")]
         public Input<bool>? AllowStoppingForUpdate { get; set; }
 
@@ -679,6 +688,9 @@ namespace Pulumi.Gcp.Compute
         [Input("advancedMachineFeatures")]
         public Input<Inputs.InstanceFromTemplateAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
 
+        /// <summary>
+        /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        /// </summary>
         [Input("allowStoppingForUpdate")]
         public Input<bool>? AllowStoppingForUpdate { get; set; }
 
@@ -752,6 +764,10 @@ namespace Pulumi.Gcp.Compute
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveLabels
         {
             get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());

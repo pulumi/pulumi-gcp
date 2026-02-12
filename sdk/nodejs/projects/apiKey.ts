@@ -132,24 +132,15 @@ import * as utilities from "../utilities";
  * ## Import
  *
  * Key can be imported using any of these accepted formats:
- *
  * * `projects/{{project}}/locations/global/keys/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:projects/apiKey:ApiKey default projects/{{project}}/locations/global/keys/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:projects/apiKey:ApiKey default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:projects/apiKey:ApiKey default {{name}}
  * ```
  */

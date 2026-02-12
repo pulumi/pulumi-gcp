@@ -228,22 +228,14 @@ import javax.annotation.Nullable;
  * InsightsConfig can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}`
- * 
  * * `{{project}}/{{location}}/{{insights_config_id}}`
- * 
  * * `{{location}}/{{insights_config_id}}`
  * 
  * When using the `pulumi import` command, InsightsConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{project}}/{{location}}/{{insights_config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
  * ```
  * 
@@ -318,9 +310,17 @@ public class InsightsConfig extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

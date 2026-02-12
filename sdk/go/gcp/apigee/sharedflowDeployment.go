@@ -25,16 +25,12 @@ import (
 // SharedflowDeployment can be imported using any of these accepted formats:
 //
 // * `organizations/{{org_id}}/environments/{{environment}}/sharedflows/{{sharedflow_id}}/revisions/{{revision}}/deployments/{{name}}`
-//
 // * `{{org_id}}/{{environment}}/{{sharedflow_id}}/{{revision}}/{{name}}`
 //
 // When using the `pulumi import` command, SharedflowDeployment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apigee/sharedflowDeployment:SharedflowDeployment default organizations/{{org_id}}/environments/{{environment}}/sharedflows/{{sharedflow_id}}/revisions/{{revision}}/deployments/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apigee/sharedflowDeployment:SharedflowDeployment default {{org_id}}/{{environment}}/{{sharedflow_id}}/{{revision}}/{{name}}
 // ```
 type SharedflowDeployment struct {

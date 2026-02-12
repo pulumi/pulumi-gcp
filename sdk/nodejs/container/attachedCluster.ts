@@ -142,22 +142,14 @@ import * as utilities from "../utilities";
  * Cluster can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:container/attachedCluster:AttachedCluster default projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{location}}/{{name}}
  * ```
  */
@@ -236,6 +228,9 @@ export class AttachedCluster extends pulumi.CustomResource {
      * or migrate any CNCF conformant cluster.
      */
     declare public readonly distribution: pulumi.Output<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * A set of errors found in the cluster.
@@ -469,6 +464,9 @@ export interface AttachedClusterState {
      * or migrate any CNCF conformant cluster.
      */
     distribution?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A set of errors found in the cluster.

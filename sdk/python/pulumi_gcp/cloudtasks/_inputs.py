@@ -45,32 +45,27 @@ __all__ = [
     'QueueStackdriverLoggingConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class QueueAppEngineRoutingOverrideArgsDict(TypedDict):
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The host that the task is sent to.
-        """
-        instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        App instance.
-        By default, the task is sent to an instance which is available when the task is attempted.
-        """
-        service: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        App service.
-        By default, the task is sent to the service which is the default service when the task is attempted.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        App version.
-        By default, the task is sent to the version which is the default version when the task is attempted.
-        """
-elif False:
-    QueueAppEngineRoutingOverrideArgsDict: TypeAlias = Mapping[str, Any]
+class QueueAppEngineRoutingOverrideArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The host that the task is sent to.
+    """
+    instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    App instance.
+    By default, the task is sent to an instance which is available when the task is attempted.
+    """
+    service: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    App service.
+    By default, the task is sent to the service which is the default service when the task is attempted.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    App version.
+    By default, the task is sent to the version which is the default version when the task is attempted.
+    """
 
 @pulumi.input_type
 class QueueAppEngineRoutingOverrideArgs:
@@ -151,48 +146,45 @@ class QueueAppEngineRoutingOverrideArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class QueueHttpTargetArgsDict(TypedDict):
-        header_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgsDict']]]]
-        """
-        HTTP target headers.
-        This map contains the header field names and values.
-        Headers will be set when running the CreateTask and/or BufferTask.
-        These headers represent a subset of the headers that will be configured for the task's HTTP request.
-        Some HTTP request headers will be ignored or replaced.
-        Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
-        The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
-        Structure is documented below.
-        """
-        http_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP method to use for the request.
-        When specified, it overrides HttpRequest for the task.
-        Note that if the value is set to GET the body of the task will be ignored at execution time.
-        Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
-        """
-        oauth_token: NotRequired[pulumi.Input['QueueHttpTargetOauthTokenArgsDict']]
-        """
-        If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
-        This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
-        Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
-        Structure is documented below.
-        """
-        oidc_token: NotRequired[pulumi.Input['QueueHttpTargetOidcTokenArgsDict']]
-        """
-        If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
-        This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
-        Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
-        Structure is documented below.
-        """
-        uri_override: NotRequired[pulumi.Input['QueueHttpTargetUriOverrideArgsDict']]
-        """
-        URI override.
-        When specified, overrides the execution URI for all the tasks in the queue.
-        Structure is documented below.
-        """
-elif False:
-    QueueHttpTargetArgsDict: TypeAlias = Mapping[str, Any]
+class QueueHttpTargetArgsDict(TypedDict):
+    header_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgsDict']]]]
+    """
+    HTTP target headers.
+    This map contains the header field names and values.
+    Headers will be set when running the CreateTask and/or BufferTask.
+    These headers represent a subset of the headers that will be configured for the task's HTTP request.
+    Some HTTP request headers will be ignored or replaced.
+    Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
+    The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+    Structure is documented below.
+    """
+    http_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP method to use for the request.
+    When specified, it overrides HttpRequest for the task.
+    Note that if the value is set to GET the body of the task will be ignored at execution time.
+    Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+    """
+    oauth_token: NotRequired[pulumi.Input['QueueHttpTargetOauthTokenArgsDict']]
+    """
+    If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
+    This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
+    Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
+    Structure is documented below.
+    """
+    oidc_token: NotRequired[pulumi.Input['QueueHttpTargetOidcTokenArgsDict']]
+    """
+    If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
+    This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+    Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
+    Structure is documented below.
+    """
+    uri_override: NotRequired[pulumi.Input['QueueHttpTargetUriOverrideArgsDict']]
+    """
+    URI override.
+    When specified, overrides the execution URI for all the tasks in the queue.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class QueueHttpTargetArgs:
@@ -317,15 +309,12 @@ class QueueHttpTargetArgs:
         pulumi.set(self, "uri_override", value)
 
 
-if not MYPY:
-    class QueueHttpTargetHeaderOverrideArgsDict(TypedDict):
-        header: pulumi.Input['QueueHttpTargetHeaderOverrideHeaderArgsDict']
-        """
-        Header embodying a key and a value.
-        Structure is documented below.
-        """
-elif False:
-    QueueHttpTargetHeaderOverrideArgsDict: TypeAlias = Mapping[str, Any]
+class QueueHttpTargetHeaderOverrideArgsDict(TypedDict):
+    header: pulumi.Input['QueueHttpTargetHeaderOverrideHeaderArgsDict']
+    """
+    Header embodying a key and a value.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class QueueHttpTargetHeaderOverrideArgs:
@@ -351,18 +340,15 @@ class QueueHttpTargetHeaderOverrideArgs:
         pulumi.set(self, "header", value)
 
 
-if not MYPY:
-    class QueueHttpTargetHeaderOverrideHeaderArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The Key of the header.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The Value of the header.
-        """
-elif False:
-    QueueHttpTargetHeaderOverrideHeaderArgsDict: TypeAlias = Mapping[str, Any]
+class QueueHttpTargetHeaderOverrideHeaderArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The Key of the header.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The Value of the header.
+    """
 
 @pulumi.input_type
 class QueueHttpTargetHeaderOverrideHeaderArgs:
@@ -401,21 +387,18 @@ class QueueHttpTargetHeaderOverrideHeaderArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class QueueHttpTargetOauthTokenArgsDict(TypedDict):
-        service_account_email: pulumi.Input[_builtins.str]
-        """
-        Service account email to be used for generating OAuth token.
-        The service account must be within the same project as the queue.
-        The caller must have iam.serviceAccounts.actAs permission for the service account.
-        """
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OAuth scope to be used for generating OAuth access token.
-        If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
-        """
-elif False:
-    QueueHttpTargetOauthTokenArgsDict: TypeAlias = Mapping[str, Any]
+class QueueHttpTargetOauthTokenArgsDict(TypedDict):
+    service_account_email: pulumi.Input[_builtins.str]
+    """
+    Service account email to be used for generating OAuth token.
+    The service account must be within the same project as the queue.
+    The caller must have iam.serviceAccounts.actAs permission for the service account.
+    """
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OAuth scope to be used for generating OAuth access token.
+    If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+    """
 
 @pulumi.input_type
 class QueueHttpTargetOauthTokenArgs:
@@ -461,20 +444,17 @@ class QueueHttpTargetOauthTokenArgs:
         pulumi.set(self, "scope", value)
 
 
-if not MYPY:
-    class QueueHttpTargetOidcTokenArgsDict(TypedDict):
-        service_account_email: pulumi.Input[_builtins.str]
-        """
-        Service account email to be used for generating OIDC token.
-        The service account must be within the same project as the queue.
-        The caller must have iam.serviceAccounts.actAs permission for the service account.
-        """
-        audience: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
-        """
-elif False:
-    QueueHttpTargetOidcTokenArgsDict: TypeAlias = Mapping[str, Any]
+class QueueHttpTargetOidcTokenArgsDict(TypedDict):
+    service_account_email: pulumi.Input[_builtins.str]
+    """
+    Service account email to be used for generating OIDC token.
+    The service account must be within the same project as the queue.
+    The caller must have iam.serviceAccounts.actAs permission for the service account.
+    """
+    audience: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+    """
 
 @pulumi.input_type
 class QueueHttpTargetOidcTokenArgs:
@@ -518,51 +498,48 @@ class QueueHttpTargetOidcTokenArgs:
         pulumi.set(self, "audience", value)
 
 
-if not MYPY:
-    class QueueHttpTargetUriOverrideArgsDict(TypedDict):
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host override.
-        When specified, replaces the host part of the task URL.
-        For example, if the task URL is "https://www.google.com", and host value
-        is set to "example.net", the overridden URI will be changed to "https://example.net".
-        Host value cannot be an empty string (INVALID_ARGUMENT).
-        """
-        path_override: NotRequired[pulumi.Input['QueueHttpTargetUriOverridePathOverrideArgsDict']]
-        """
-        URI path.
-        When specified, replaces the existing path of the task URL.
-        Setting the path value to an empty string clears the URI path segment.
-        Structure is documented below.
-        """
-        port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Port override.
-        When specified, replaces the port part of the task URI.
-        For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
-        Note that the port value must be a positive integer.
-        Setting the port to 0 (Zero) clears the URI port.
-        """
-        query_override: NotRequired[pulumi.Input['QueueHttpTargetUriOverrideQueryOverrideArgsDict']]
-        """
-        URI query.
-        When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
-        Structure is documented below.
-        """
-        scheme: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Scheme override.
-        When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
-        Possible values are: `HTTP`, `HTTPS`.
-        """
-        uri_override_enforce_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URI Override Enforce Mode
-        When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
-        Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
-        """
-elif False:
-    QueueHttpTargetUriOverrideArgsDict: TypeAlias = Mapping[str, Any]
+class QueueHttpTargetUriOverrideArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host override.
+    When specified, replaces the host part of the task URL.
+    For example, if the task URL is "https://www.google.com", and host value
+    is set to "example.net", the overridden URI will be changed to "https://example.net".
+    Host value cannot be an empty string (INVALID_ARGUMENT).
+    """
+    path_override: NotRequired[pulumi.Input['QueueHttpTargetUriOverridePathOverrideArgsDict']]
+    """
+    URI path.
+    When specified, replaces the existing path of the task URL.
+    Setting the path value to an empty string clears the URI path segment.
+    Structure is documented below.
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Port override.
+    When specified, replaces the port part of the task URI.
+    For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
+    Note that the port value must be a positive integer.
+    Setting the port to 0 (Zero) clears the URI port.
+    """
+    query_override: NotRequired[pulumi.Input['QueueHttpTargetUriOverrideQueryOverrideArgsDict']]
+    """
+    URI query.
+    When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+    Structure is documented below.
+    """
+    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Scheme override.
+    When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+    Possible values are: `HTTP`, `HTTPS`.
+    """
+    uri_override_enforce_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URI Override Enforce Mode
+    When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+    Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
+    """
 
 @pulumi.input_type
 class QueueHttpTargetUriOverrideArgs:
@@ -701,14 +678,11 @@ class QueueHttpTargetUriOverrideArgs:
         pulumi.set(self, "uri_override_enforce_mode", value)
 
 
-if not MYPY:
-    class QueueHttpTargetUriOverridePathOverrideArgsDict(TypedDict):
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URI path (e.g., /users/1234). Default is an empty string.
-        """
-elif False:
-    QueueHttpTargetUriOverridePathOverrideArgsDict: TypeAlias = Mapping[str, Any]
+class QueueHttpTargetUriOverridePathOverrideArgsDict(TypedDict):
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URI path (e.g., /users/1234). Default is an empty string.
+    """
 
 @pulumi.input_type
 class QueueHttpTargetUriOverridePathOverrideArgs:
@@ -733,14 +707,11 @@ class QueueHttpTargetUriOverridePathOverrideArgs:
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class QueueHttpTargetUriOverrideQueryOverrideArgsDict(TypedDict):
-        query_params: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
-        """
-elif False:
-    QueueHttpTargetUriOverrideQueryOverrideArgsDict: TypeAlias = Mapping[str, Any]
+class QueueHttpTargetUriOverrideQueryOverrideArgsDict(TypedDict):
+    query_params: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+    """
 
 @pulumi.input_type
 class QueueHttpTargetUriOverrideQueryOverrideArgs:
@@ -765,13 +736,10 @@ class QueueHttpTargetUriOverrideQueryOverrideArgs:
         pulumi.set(self, "query_params", value)
 
 
-if not MYPY:
-    class QueueIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    QueueIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class QueueIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class QueueIamBindingConditionArgs:
@@ -812,13 +780,10 @@ class QueueIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class QueueIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    QueueIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class QueueIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class QueueIamMemberConditionArgs:
@@ -859,31 +824,28 @@ class QueueIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class QueueRateLimitsArgsDict(TypedDict):
-        max_burst_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The max burst size.
-        Max burst size limits how fast tasks in queue are processed when many tasks are
-        in the queue and the rate is high. This field allows the queue to have a high
-        rate so processing starts shortly after a task is enqueued, but still limits
-        resource usage when many tasks are enqueued in a short period of time.
-        """
-        max_concurrent_dispatches: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of concurrent tasks that Cloud Tasks allows to
-        be dispatched for this queue. After this threshold has been
-        reached, Cloud Tasks stops dispatching tasks until the number of
-        concurrent requests decreases.
-        """
-        max_dispatches_per_second: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The maximum rate at which tasks are dispatched from this queue.
-        If unspecified when the queue is created, Cloud Tasks will pick the default.
-        """
-elif False:
-    QueueRateLimitsArgsDict: TypeAlias = Mapping[str, Any]
+class QueueRateLimitsArgsDict(TypedDict):
+    max_burst_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The max burst size.
+    Max burst size limits how fast tasks in queue are processed when many tasks are
+    in the queue and the rate is high. This field allows the queue to have a high
+    rate so processing starts shortly after a task is enqueued, but still limits
+    resource usage when many tasks are enqueued in a short period of time.
+    """
+    max_concurrent_dispatches: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of concurrent tasks that Cloud Tasks allows to
+    be dispatched for this queue. After this threshold has been
+    reached, Cloud Tasks stops dispatching tasks until the number of
+    concurrent requests decreases.
+    """
+    max_dispatches_per_second: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The maximum rate at which tasks are dispatched from this queue.
+    If unspecified when the queue is created, Cloud Tasks will pick the default.
+    """
 
 @pulumi.input_type
 class QueueRateLimitsArgs:
@@ -958,48 +920,45 @@ class QueueRateLimitsArgs:
         pulumi.set(self, "max_dispatches_per_second", value)
 
 
-if not MYPY:
-    class QueueRetryConfigArgsDict(TypedDict):
-        max_attempts: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of attempts per task.
-        Cloud Tasks will attempt the task maxAttempts times (that is, if
-        the first attempt fails, then there will be maxAttempts - 1
-        retries). Must be >= -1.
-        If unspecified when the queue is created, Cloud Tasks will pick
-        the default.
-        -1 indicates unlimited attempts.
-        """
-        max_backoff: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A task will be scheduled for retry between minBackoff and
-        maxBackoff duration after it fails, if the queue's RetryConfig
-        specifies that the task should be retried.
-        """
-        max_doublings: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time between retries will double maxDoublings times.
-        A task's retry interval starts at minBackoff, then doubles maxDoublings times,
-        then increases linearly, and finally retries retries at intervals of maxBackoff
-        up to maxAttempts times.
-        """
-        max_retry_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If positive, maxRetryDuration specifies the time limit for
-        retrying a failed task, measured from when the task was first
-        attempted. Once maxRetryDuration time has passed and the task has
-        been attempted maxAttempts times, no further attempts will be
-        made and the task will be deleted.
-        If zero, then the task age is unlimited.
-        """
-        min_backoff: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A task will be scheduled for retry between minBackoff and
-        maxBackoff duration after it fails, if the queue's RetryConfig
-        specifies that the task should be retried.
-        """
-elif False:
-    QueueRetryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class QueueRetryConfigArgsDict(TypedDict):
+    max_attempts: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of attempts per task.
+    Cloud Tasks will attempt the task maxAttempts times (that is, if
+    the first attempt fails, then there will be maxAttempts - 1
+    retries). Must be >= -1.
+    If unspecified when the queue is created, Cloud Tasks will pick
+    the default.
+    -1 indicates unlimited attempts.
+    """
+    max_backoff: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A task will be scheduled for retry between minBackoff and
+    maxBackoff duration after it fails, if the queue's RetryConfig
+    specifies that the task should be retried.
+    """
+    max_doublings: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time between retries will double maxDoublings times.
+    A task's retry interval starts at minBackoff, then doubles maxDoublings times,
+    then increases linearly, and finally retries retries at intervals of maxBackoff
+    up to maxAttempts times.
+    """
+    max_retry_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If positive, maxRetryDuration specifies the time limit for
+    retrying a failed task, measured from when the task was first
+    attempted. Once maxRetryDuration time has passed and the task has
+    been attempted maxAttempts times, no further attempts will be
+    made and the task will be deleted.
+    If zero, then the task age is unlimited.
+    """
+    min_backoff: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A task will be scheduled for retry between minBackoff and
+    maxBackoff duration after it fails, if the queue's RetryConfig
+    specifies that the task should be retried.
+    """
 
 @pulumi.input_type
 class QueueRetryConfigArgs:
@@ -1124,16 +1083,13 @@ class QueueRetryConfigArgs:
         pulumi.set(self, "min_backoff", value)
 
 
-if not MYPY:
-    class QueueStackdriverLoggingConfigArgsDict(TypedDict):
-        sampling_ratio: pulumi.Input[_builtins.float]
-        """
-        Specifies the fraction of operations to write to Stackdriver Logging.
-        This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
-        default and means that no operations are logged.
-        """
-elif False:
-    QueueStackdriverLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class QueueStackdriverLoggingConfigArgsDict(TypedDict):
+    sampling_ratio: pulumi.Input[_builtins.float]
+    """
+    Specifies the fraction of operations to write to Stackdriver Logging.
+    This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
+    default and means that no operations are logged.
+    """
 
 @pulumi.input_type
 class QueueStackdriverLoggingConfigArgs:

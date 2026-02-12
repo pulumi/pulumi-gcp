@@ -40,22 +40,14 @@ import * as utilities from "../utilities";
  * Service can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}`
- *
  * * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}`
- *
  * * `{{location}}/{{namespace_id}}/{{service_id}}`
  *
  * When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:servicedirectory/service:Service default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:servicedirectory/service:Service default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:servicedirectory/service:Service default {{location}}/{{namespace_id}}/{{service_id}}
  * ```
  */

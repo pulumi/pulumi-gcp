@@ -10,6 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Tpu
 {
     /// <summary>
+    /// A Cloud TPU VM instance.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about Vm, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.nodes)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/tpu/docs/)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Tpu V2 Vm Basic
@@ -162,28 +173,16 @@ namespace Pulumi.Gcp.Tpu
     /// Vm can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
-    /// 
     /// * `{{project}}/{{zone}}/{{name}}`
-    /// 
     /// * `{{zone}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:tpu/v2Vm:V2Vm default {{project}}/{{zone}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:tpu/v2Vm:V2Vm default {{zone}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:tpu/v2Vm:V2Vm default {{name}}
     /// ```
     /// </summary>

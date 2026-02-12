@@ -593,22 +593,14 @@ import (
 // BackupPlan can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/backupPlans/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, BackupPlan can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default projects/{{project}}/locations/{{location}}/backupPlans/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default {{location}}/{{name}}
 // ```
 type BackupPlan struct {

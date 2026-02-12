@@ -122,22 +122,14 @@ import javax.annotation.Nullable;
  * GlossaryCategory can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/categories/{{category_id}}`
- * 
  * * `{{project}}/{{location}}/{{glossary_id}}/{{category_id}}`
- * 
  * * `{{location}}/{{glossary_id}}/{{category_id}}`
  * 
  * When using the `pulumi import` command, GlossaryCategory can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/categories/{{category_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{project}}/{{location}}/{{glossary_id}}/{{category_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{location}}/{{glossary_id}}/{{category_id}}
  * ```
  * 

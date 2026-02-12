@@ -19,6 +19,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
+ * job on Dataflow, which is an implementation of Apache Beam running on Google
+ * Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
+ * and [Dataflow](https://cloud.google.com/dataflow/).
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -199,9 +207,17 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     public Output<String> containerSpecGcsPath() {
         return this.containerSpecGcsPath;
     }
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
@@ -477,9 +493,21 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     public Output<String> serviceAccountEmail() {
         return this.serviceAccountEmail;
     }
+    /**
+     * If set to `true`, terraform will
+     * treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+     * and will remove the resource from terraform state and move on.  See above note.
+     * 
+     */
     @Export(name="skipWaitOnJobTermination", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipWaitOnJobTermination;
 
+    /**
+     * @return If set to `true`, terraform will
+     * treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+     * and will remove the resource from terraform state and move on.  See above note.
+     * 
+     */
     public Output<Optional<Boolean>> skipWaitOnJobTermination() {
         return Codegen.optional(this.skipWaitOnJobTermination);
     }

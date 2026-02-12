@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// A human-readable description of the resource.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// Set of label tags associated with the Certificate resource.

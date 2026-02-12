@@ -207,6 +207,7 @@ class _GdcApplicationEnvironmentState:
         :param pulumi.Input[_builtins.str] application_environment_id: The id of the application environment
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] display_name: User-provided human-readable name to be used in user interfaces.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -310,6 +311,9 @@ class _GdcApplicationEnvironmentState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -526,22 +530,14 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
         ApplicationEnvironment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/applicationEnvironments/{{application_environment_id}}`
-
         * `{{project}}/{{location}}/{{serviceinstance}}/{{application_environment_id}}`
-
         * `{{location}}/{{serviceinstance}}/{{application_environment_id}}`
 
         When using the `pulumi import` command, ApplicationEnvironment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/applicationEnvironments/{{application_environment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default {{project}}/{{location}}/{{serviceinstance}}/{{application_environment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default {{location}}/{{serviceinstance}}/{{application_environment_id}}
         ```
 
@@ -625,22 +621,14 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
         ApplicationEnvironment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/applicationEnvironments/{{application_environment_id}}`
-
         * `{{project}}/{{location}}/{{serviceinstance}}/{{application_environment_id}}`
-
         * `{{location}}/{{serviceinstance}}/{{application_environment_id}}`
 
         When using the `pulumi import` command, ApplicationEnvironment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/applicationEnvironments/{{application_environment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default {{project}}/{{location}}/{{serviceinstance}}/{{application_environment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default {{location}}/{{serviceinstance}}/{{application_environment_id}}
         ```
 
@@ -738,6 +726,7 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] application_environment_id: The id of the application environment
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] display_name: User-provided human-readable name to be used in user interfaces.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -814,6 +803,9 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

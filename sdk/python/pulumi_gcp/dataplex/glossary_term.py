@@ -469,22 +469,14 @@ class GlossaryTerm(pulumi.CustomResource):
         GlossaryTerm can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}`
-
         * `{{project}}/{{location}}/{{glossary_id}}/{{term_id}}`
-
         * `{{location}}/{{glossary_id}}/{{term_id}}`
 
         When using the `pulumi import` command, GlossaryTerm can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{project}}/{{location}}/{{glossary_id}}/{{term_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{location}}/{{glossary_id}}/{{term_id}}
         ```
 
@@ -563,22 +555,14 @@ class GlossaryTerm(pulumi.CustomResource):
         GlossaryTerm can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}`
-
         * `{{project}}/{{location}}/{{glossary_id}}/{{term_id}}`
-
         * `{{location}}/{{glossary_id}}/{{term_id}}`
 
         When using the `pulumi import` command, GlossaryTerm can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{project}}/{{location}}/{{glossary_id}}/{{term_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{location}}/{{glossary_id}}/{{term_id}}
         ```
 

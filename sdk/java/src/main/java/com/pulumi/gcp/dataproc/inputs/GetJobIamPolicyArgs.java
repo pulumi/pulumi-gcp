@@ -31,16 +31,36 @@ public final class GetJobIamPolicyArgs extends com.pulumi.resources.InvokeArgs {
         return this.jobId;
     }
 
+    /**
+     * The project in which the job belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The project in which the job belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The region in which the job belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return The region in which the job belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -92,20 +112,48 @@ public final class GetJobIamPolicyArgs extends com.pulumi.resources.InvokeArgs {
             return jobId(Output.of(jobId));
         }
 
+        /**
+         * @param project The project in which the job belongs. If it
+         * is not provided, Terraform will use the provider default.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The project in which the job belongs. If it
+         * is not provided, Terraform will use the provider default.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param region The region in which the job belongs. If it
+         * is not provided, Terraform will use the provider default.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region The region in which the job belongs. If it
+         * is not provided, Terraform will use the provider default.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

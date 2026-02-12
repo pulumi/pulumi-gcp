@@ -77,22 +77,14 @@ namespace Pulumi.Gcp.Filestore
     /// Backup can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/backups/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:filestore/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:filestore/backup:Backup default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:filestore/backup:Backup default {{location}}/{{name}}
     /// ```
     /// </summary>

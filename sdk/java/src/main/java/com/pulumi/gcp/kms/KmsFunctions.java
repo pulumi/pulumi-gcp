@@ -2721,6 +2721,20 @@ public final class KmsFunctions {
         return Deployment.getInstance().invokeAsync("gcp:kms/getKMSSecret:getKMSSecret", TypeShape.of(GetKMSSecretResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source allows you to use data encrypted with a Google Cloud KMS asymmetric key
+     * within your resource definitions.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa).
+     * 
+     * &gt; **NOTE:** Using this data provider will allow you to conceal secret data within your
+     * resource definitions, but it does not take care of protecting that data in the
+     * logging output, plan output, or state output.  Please take care to secure your secret
+     * data outside of resource definitions.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
@@ -2859,6 +2873,20 @@ public final class KmsFunctions {
         return getKMSSecretAsymmetric(args, InvokeOptions.Empty);
     }
     /**
+     * This data source allows you to use data encrypted with a Google Cloud KMS asymmetric key
+     * within your resource definitions.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa).
+     * 
+     * &gt; **NOTE:** Using this data provider will allow you to conceal secret data within your
+     * resource definitions, but it does not take care of protecting that data in the
+     * logging output, plan output, or state output.  Please take care to secure your secret
+     * data outside of resource definitions.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
@@ -2997,6 +3025,20 @@ public final class KmsFunctions {
         return getKMSSecretAsymmetricPlain(args, InvokeOptions.Empty);
     }
     /**
+     * This data source allows you to use data encrypted with a Google Cloud KMS asymmetric key
+     * within your resource definitions.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa).
+     * 
+     * &gt; **NOTE:** Using this data provider will allow you to conceal secret data within your
+     * resource definitions, but it does not take care of protecting that data in the
+     * logging output, plan output, or state output.  Please take care to secure your secret
+     * data outside of resource definitions.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
@@ -3135,6 +3177,20 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", TypeShape.of(GetKMSSecretAsymmetricResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source allows you to use data encrypted with a Google Cloud KMS asymmetric key
+     * within your resource definitions.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa).
+     * 
+     * &gt; **NOTE:** Using this data provider will allow you to conceal secret data within your
+     * resource definitions, but it does not take care of protecting that data in the
+     * logging output, plan output, or state output.  Please take care to secure your secret
+     * data outside of resource definitions.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:
@@ -3273,6 +3329,20 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", TypeShape.of(GetKMSSecretAsymmetricResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source allows you to use data encrypted with a Google Cloud KMS asymmetric key
+     * within your resource definitions.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa).
+     * 
+     * &gt; **NOTE:** Using this data provider will allow you to conceal secret data within your
+     * resource definitions, but it does not take care of protecting that data in the
+     * logging output, plan output, or state output.  Please take care to secure your secret
+     * data outside of resource definitions.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * First, create a KMS KeyRing and CryptoKey using the resource definitions:

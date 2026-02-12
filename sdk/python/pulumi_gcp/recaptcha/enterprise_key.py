@@ -532,24 +532,15 @@ class EnterpriseKey(pulumi.CustomResource):
         ## Import
 
         Key can be imported using any of these accepted formats:
-
         * `projects/{{project}}/keys/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{name}}
         ```
 
@@ -713,24 +704,15 @@ class EnterpriseKey(pulumi.CustomResource):
         ## Import
 
         Key can be imported using any of these accepted formats:
-
         * `projects/{{project}}/keys/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{name}}
         ```
 

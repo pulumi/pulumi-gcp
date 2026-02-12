@@ -330,6 +330,17 @@ class SacRealm(pulumi.CustomResource):
                  symantec_options: Optional[pulumi.Input[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']]] = None,
                  __props__=None):
         """
+        Secure Access Connect Realm resource
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about SacRealm, see:
+
+        * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacRealms)
+        * How-to Guides
+            * [QUICKSTART_TITLE](https://cloud.google.com/secure-access-connect/docs/overview)
+
         ## Example Usage
 
         ### Sac Realm Prisma Access
@@ -367,22 +378,14 @@ class SacRealm(pulumi.CustomResource):
         SacRealm can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/sacRealms/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, SacRealm can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/sacRealm:SacRealm default projects/{{project}}/locations/global/sacRealms/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/sacRealm:SacRealm default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/sacRealm:SacRealm default {{name}}
         ```
 
@@ -407,6 +410,17 @@ class SacRealm(pulumi.CustomResource):
                  args: SacRealmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Secure Access Connect Realm resource
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about SacRealm, see:
+
+        * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacRealms)
+        * How-to Guides
+            * [QUICKSTART_TITLE](https://cloud.google.com/secure-access-connect/docs/overview)
+
         ## Example Usage
 
         ### Sac Realm Prisma Access
@@ -444,22 +458,14 @@ class SacRealm(pulumi.CustomResource):
         SacRealm can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/sacRealms/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, SacRealm can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/sacRealm:SacRealm default projects/{{project}}/locations/global/sacRealms/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/sacRealm:SacRealm default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/sacRealm:SacRealm default {{name}}
         ```
 

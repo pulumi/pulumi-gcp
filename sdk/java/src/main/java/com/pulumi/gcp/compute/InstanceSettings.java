@@ -68,22 +68,14 @@ import javax.annotation.Nullable;
  * InstanceSettings can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/zones/{{zone}}/instanceSettings`
- * 
  * * `{{project}}/{{zone}}`
- * 
  * * `{{zone}}`
  * 
  * When using the `pulumi import` command, InstanceSettings can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/instanceSettings:InstanceSettings default projects/{{project}}/zones/{{zone}}/instanceSettings
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/instanceSettings:InstanceSettings default {{project}}/{{zone}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/instanceSettings:InstanceSettings default {{zone}}
  * ```
  * 

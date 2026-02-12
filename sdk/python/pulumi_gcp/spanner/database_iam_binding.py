@@ -472,29 +472,13 @@ class DatabaseIAMBinding(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+        For all import syntaxes, the "resource in question" can take any of the following forms:
 
-        * `{{project}}/{{instance}}/{{database}}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = {{project}}/{{instance}}/{{database}}
-
-          to = google_spanner_database_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:spanner/databaseIAMBinding:DatabaseIAMBinding default {{project}}/{{instance}}/{{database}}
-        ```
+        * {{project}}/{{instance}}/{{database}}
+        * {{instance}}/{{database}} (project is taken from provider project)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -699,29 +683,13 @@ class DatabaseIAMBinding(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+        For all import syntaxes, the "resource in question" can take any of the following forms:
 
-        * `{{project}}/{{instance}}/{{database}}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = {{project}}/{{instance}}/{{database}}
-
-          to = google_spanner_database_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:spanner/databaseIAMBinding:DatabaseIAMBinding default {{project}}/{{instance}}/{{database}}
-        ```
+        * {{project}}/{{instance}}/{{database}}
+        * {{instance}}/{{database}} (project is taken from provider project)
 
         :param str resource_name: The name of the resource.
         :param DatabaseIAMBindingArgs args: The arguments to use to populate this resource's properties.

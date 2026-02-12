@@ -22,6 +22,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A version to be propagated and deployed to Units. It points to a specific version of a Blueprint that can be applied to Units, for example, via a Rollout.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
  * ## Example Usage
  * 
  * ### Saas Runtime Release Basic
@@ -102,22 +107,14 @@ import javax.annotation.Nullable;
  * Release can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/releases/{{release_id}}`
- * 
  * * `{{project}}/{{location}}/{{release_id}}`
- * 
  * * `{{location}}/{{release_id}}`
  * 
  * When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:saasruntime/release:Release default projects/{{project}}/locations/{{location}}/releases/{{release_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:saasruntime/release:Release default {{project}}/{{location}}/{{release_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:saasruntime/release:Release default {{location}}/{{release_id}}
  * ```
  * 
@@ -148,9 +145,27 @@ public class Release extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> annotations() {
         return Codegen.optional(this.annotations);
     }
+    /**
+     * Blueprints are OCI Images that contain all of the artifacts needed to
+     * provision a unit. Metadata such as, type of the engine used to actuate the
+     * blueprint (e.g. terraform, helm etc) and version will come from the image
+     * manifest. If the hostname is omitted, it will be assumed to be the regional
+     * path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+     * Structure is documented below.
+     * 
+     */
     @Export(name="blueprint", refs={ReleaseBlueprint.class}, tree="[0]")
     private Output</* @Nullable */ ReleaseBlueprint> blueprint;
 
+    /**
+     * @return Blueprints are OCI Images that contain all of the artifacts needed to
+     * provision a unit. Metadata such as, type of the engine used to actuate the
+     * blueprint (e.g. terraform, helm etc) and version will come from the image
+     * manifest. If the hostname is omitted, it will be assumed to be the regional
+     * path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+     * Structure is documented below.
+     * 
+     */
     public Output<Optional<ReleaseBlueprint>> blueprint() {
         return Codegen.optional(this.blueprint);
     }
@@ -168,9 +183,17 @@ public class Release extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

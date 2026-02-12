@@ -99,22 +99,14 @@ import (
 // ApplicationEnvironment can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/applicationEnvironments/{{application_environment_id}}`
-//
 // * `{{project}}/{{location}}/{{serviceinstance}}/{{application_environment_id}}`
-//
 // * `{{location}}/{{serviceinstance}}/{{application_environment_id}}`
 //
 // When using the `pulumi import` command, ApplicationEnvironment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/applicationEnvironments/{{application_environment_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default {{project}}/{{location}}/{{serviceinstance}}/{{application_environment_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default {{location}}/{{serviceinstance}}/{{application_environment_id}}
 // ```
 type GdcApplicationEnvironment struct {
@@ -129,7 +121,8 @@ type GdcApplicationEnvironment struct {
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// User-provided human-readable name to be used in user interfaces.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -210,7 +203,8 @@ type gdcApplicationEnvironmentState struct {
 	// The timestamp when the resource was created.
 	CreateTime *string `pulumi:"createTime"`
 	// User-provided human-readable name to be used in user interfaces.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -251,7 +245,8 @@ type GdcApplicationEnvironmentState struct {
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringPtrInput
 	// User-provided human-readable name to be used in user interfaces.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -450,6 +445,7 @@ func (o GdcApplicationEnvironmentOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GdcApplicationEnvironment) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o GdcApplicationEnvironmentOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GdcApplicationEnvironment) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

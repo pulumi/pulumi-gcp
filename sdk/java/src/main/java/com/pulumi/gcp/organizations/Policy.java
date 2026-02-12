@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Organization Policies can be imported using the `org_id` and the `constraint`, e.g.
+ * Organization Policies can be imported using the `orgId` and the `constraint`, e.g.
  * 
  * * `{{org_id}}/constraints/{{constraint}}`
  * 

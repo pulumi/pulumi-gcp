@@ -70,22 +70,14 @@ import (
 // Unit can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/units/{{unit_id}}`
-//
 // * `{{project}}/{{location}}/{{unit_id}}`
-//
 // * `{{location}}/{{unit_id}}`
 //
 // When using the `pulumi import` command, Unit can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:saasruntime/unit:Unit default projects/{{project}}/locations/{{location}}/units/{{unit_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:saasruntime/unit:Unit default {{project}}/{{location}}/{{unit_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:saasruntime/unit:Unit default {{location}}/{{unit_id}}
 // ```
 type Unit struct {
@@ -110,8 +102,9 @@ type Unit struct {
 	// List of Units that depend on this unit. Unit can only be deprovisioned if
 	// this list is empty. Maximum 1000.
 	// Structure is documented below.
-	Dependents           UnitDependentArrayOutput `pulumi:"dependents"`
-	EffectiveAnnotations pulumi.StringMapOutput   `pulumi:"effectiveAnnotations"`
+	Dependents UnitDependentArrayOutput `pulumi:"dependents"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Indicates the current input variables deployed by the unit
@@ -142,8 +135,13 @@ type Unit struct {
 	// "projects/{project}/locations/{location}/units/{unit}"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of concurrent UnitOperations that are operating on this Unit.
-	OngoingOperations pulumi.StringArrayOutput      `pulumi:"ongoingOperations"`
-	OutputVariables   UnitOutputVariableArrayOutput `pulumi:"outputVariables"`
+	OngoingOperations pulumi.StringArrayOutput `pulumi:"ongoingOperations"`
+	// Set of key/value pairs corresponding to output variables from execution of
+	// actuation templates. The variables are declared in actuation configs (e.g
+	// in helm chart or terraform) and the values are fetched and returned by the
+	// actuation engine upon completion of execution.
+	// Structure is documented below.
+	OutputVariables UnitOutputVariableArrayOutput `pulumi:"outputVariables"`
 	// List of pending (wait to be executed) UnitOperations for this unit.
 	PendingOperations pulumi.StringArrayOutput `pulumi:"pendingOperations"`
 	// The ID of the project in which the resource belongs.
@@ -254,7 +252,8 @@ type unitState struct {
 	// List of Units that depend on this unit. Unit can only be deprovisioned if
 	// this list is empty. Maximum 1000.
 	// Structure is documented below.
-	Dependents           []UnitDependent   `pulumi:"dependents"`
+	Dependents []UnitDependent `pulumi:"dependents"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -286,8 +285,13 @@ type unitState struct {
 	// "projects/{project}/locations/{location}/units/{unit}"
 	Name *string `pulumi:"name"`
 	// List of concurrent UnitOperations that are operating on this Unit.
-	OngoingOperations []string             `pulumi:"ongoingOperations"`
-	OutputVariables   []UnitOutputVariable `pulumi:"outputVariables"`
+	OngoingOperations []string `pulumi:"ongoingOperations"`
+	// Set of key/value pairs corresponding to output variables from execution of
+	// actuation templates. The variables are declared in actuation configs (e.g
+	// in helm chart or terraform) and the values are fetched and returned by the
+	// actuation engine upon completion of execution.
+	// Structure is documented below.
+	OutputVariables []UnitOutputVariable `pulumi:"outputVariables"`
 	// List of pending (wait to be executed) UnitOperations for this unit.
 	PendingOperations []string `pulumi:"pendingOperations"`
 	// The ID of the project in which the resource belongs.
@@ -358,7 +362,8 @@ type UnitState struct {
 	// List of Units that depend on this unit. Unit can only be deprovisioned if
 	// this list is empty. Maximum 1000.
 	// Structure is documented below.
-	Dependents           UnitDependentArrayInput
+	Dependents UnitDependentArrayInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -391,7 +396,12 @@ type UnitState struct {
 	Name pulumi.StringPtrInput
 	// List of concurrent UnitOperations that are operating on this Unit.
 	OngoingOperations pulumi.StringArrayInput
-	OutputVariables   UnitOutputVariableArrayInput
+	// Set of key/value pairs corresponding to output variables from execution of
+	// actuation templates. The variables are declared in actuation configs (e.g
+	// in helm chart or terraform) and the values are fetched and returned by the
+	// actuation engine upon completion of execution.
+	// Structure is documented below.
+	OutputVariables UnitOutputVariableArrayInput
 	// List of pending (wait to be executed) UnitOperations for this unit.
 	PendingOperations pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
@@ -651,6 +661,7 @@ func (o UnitOutput) Dependents() UnitDependentArrayOutput {
 	return o.ApplyT(func(v *Unit) UnitDependentArrayOutput { return v.Dependents }).(UnitDependentArrayOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o UnitOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Unit) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
@@ -710,6 +721,11 @@ func (o UnitOutput) OngoingOperations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Unit) pulumi.StringArrayOutput { return v.OngoingOperations }).(pulumi.StringArrayOutput)
 }
 
+// Set of key/value pairs corresponding to output variables from execution of
+// actuation templates. The variables are declared in actuation configs (e.g
+// in helm chart or terraform) and the values are fetched and returned by the
+// actuation engine upon completion of execution.
+// Structure is documented below.
 func (o UnitOutput) OutputVariables() UnitOutputVariableArrayOutput {
 	return o.ApplyT(func(v *Unit) UnitOutputVariableArrayOutput { return v.OutputVariables }).(UnitOutputVariableArrayOutput)
 }

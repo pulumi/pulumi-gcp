@@ -75,16 +75,12 @@ import (
 // FolderNotificationConfig can be imported using any of these accepted formats:
 //
 // * `folders/{{folder}}/locations/{{location}}/notificationConfigs/{{config_id}}`
-//
 // * `{{folder}}/{{location}}/{{config_id}}`
 //
 // When using the `pulumi import` command, FolderNotificationConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig default folders/{{folder}}/locations/{{location}}/notificationConfigs/{{config_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig default {{folder}}/{{location}}/{{config_id}}
 // ```
 type V2FolderNotificationConfig struct {

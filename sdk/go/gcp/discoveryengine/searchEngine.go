@@ -122,22 +122,14 @@ import (
 // SearchEngine can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
-//
 // * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
-//
 // * `{{location}}/{{collection_id}}/{{engine_id}}`
 //
 // When using the `pulumi import` command, SearchEngine can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{location}}/{{collection_id}}/{{engine_id}}
 // ```
 type SearchEngine struct {

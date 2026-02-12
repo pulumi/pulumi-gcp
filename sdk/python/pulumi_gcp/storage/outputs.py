@@ -1227,14 +1227,13 @@ class BucketLifecycleRuleCondition(dict):
         :param _builtins.int age: Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
         :param _builtins.str created_before: A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
         :param _builtins.str custom_time_before: A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
-        :param _builtins.int days_since_custom_time: Number of days elapsed since the user-specified timestamp set on an object.
-        :param _builtins.int days_since_noncurrent_time: Number of days elapsed since the noncurrent timestamp of an object. This
-               										condition is relevant only for versioned objects.
+        :param _builtins.int days_since_custom_time: Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `days_since_custom_time` condition.
+        :param _builtins.int days_since_noncurrent_time: Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `days_since_noncurrent_time` condition.
         :param Sequence[_builtins.str] matches_prefixes: One or more matching name prefixes to satisfy this condition.
         :param Sequence[_builtins.str] matches_storage_classes: [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
         :param Sequence[_builtins.str] matches_suffixes: One or more matching name suffixes to satisfy this condition.
-        :param _builtins.str noncurrent_time_before: Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
-        :param _builtins.int num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        :param _builtins.str noncurrent_time_before: Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrent_time_before` condition.
+        :param _builtins.int num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `num_newer_versions` condition.
         :param _builtins.bool send_age_if_zero: While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
         :param _builtins.bool send_days_since_custom_time_if_zero: While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
         :param _builtins.bool send_days_since_noncurrent_time_if_zero: While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
@@ -1300,7 +1299,7 @@ class BucketLifecycleRuleCondition(dict):
     @pulumi.getter(name="daysSinceCustomTime")
     def days_since_custom_time(self) -> Optional[_builtins.int]:
         """
-        Number of days elapsed since the user-specified timestamp set on an object.
+        Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `days_since_custom_time` condition.
         """
         return pulumi.get(self, "days_since_custom_time")
 
@@ -1308,8 +1307,7 @@ class BucketLifecycleRuleCondition(dict):
     @pulumi.getter(name="daysSinceNoncurrentTime")
     def days_since_noncurrent_time(self) -> Optional[_builtins.int]:
         """
-        Number of days elapsed since the noncurrent timestamp of an object. This
-        										condition is relevant only for versioned objects.
+        Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `days_since_noncurrent_time` condition.
         """
         return pulumi.get(self, "days_since_noncurrent_time")
 
@@ -1341,7 +1339,7 @@ class BucketLifecycleRuleCondition(dict):
     @pulumi.getter(name="noncurrentTimeBefore")
     def noncurrent_time_before(self) -> Optional[_builtins.str]:
         """
-        Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+        Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrent_time_before` condition.
         """
         return pulumi.get(self, "noncurrent_time_before")
 
@@ -1349,7 +1347,7 @@ class BucketLifecycleRuleCondition(dict):
     @pulumi.getter(name="numNewerVersions")
     def num_newer_versions(self) -> Optional[_builtins.int]:
         """
-        Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `num_newer_versions` condition.
         """
         return pulumi.get(self, "num_newer_versions")
 
@@ -3428,6 +3426,11 @@ class ManagedFolderIamBindingCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -3453,6 +3456,13 @@ class ManagedFolderIamBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -3465,6 +3475,11 @@ class ManagedFolderIamMemberCondition(dict):
         """
         :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
         :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -3490,6 +3505,13 @@ class ManagedFolderIamMemberCondition(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 

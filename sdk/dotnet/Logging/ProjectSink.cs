@@ -10,6 +10,200 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging
 {
     /// <summary>
+    /// Manages a project-level logging sink. For more information see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks)
+    /// * How-to Guides
+    ///     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
+    /// 
+    /// &gt; You can specify exclusions for log sinks created by terraform by using the exclusions field of `gcp.logging.FolderSink`
+    /// 
+    /// &gt; **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.
+    /// 
+    /// &gt; **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
+    /// 
+    /// &gt; **Note:** The `_Default` and `_Required` logging sinks are automatically created for a given project and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These sinks cannot be removed so deleting this resource will remove the sink config from your terraform state but will leave the logging sink unchanged. The sinks that are currently automatically created are "_Default" and "_Required".
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Sink
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_sink = new Gcp.Logging.ProjectSink("my-sink", new()
+    ///     {
+    ///         Name = "my-pubsub-instance-sink",
+    ///         Destination = "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
+    ///         Filter = "resource.type = gce_instance AND severity &gt;= WARNING",
+    ///         UniqueWriterIdentity = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Cloud Storage Bucket Destination
+    /// 
+    /// A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
+    /// cloud storage bucket. Because we are using `UniqueWriterIdentity`, we must grant it access to the bucket.
+    /// 
+    /// Note that this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the
+    /// credentials used with Terraform.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Our logged compute instance
+    ///     var my_logged_instance = new Gcp.Compute.Instance("my-logged-instance", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Name = "my-instance",
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-a",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "debian-cloud/debian-11",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // A gcs bucket to store logs in
+    ///     var gcs_bucket = new Gcp.Storage.Bucket("gcs-bucket", new()
+    ///     {
+    ///         Name = "my-unique-logging-bucket",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     // Our sink; this logs all activity related to our "my-logged-instance" instance
+    ///     var instance_sink = new Gcp.Logging.ProjectSink("instance-sink", new()
+    ///     {
+    ///         Name = "my-instance-sink",
+    ///         Description = "some explanation on what this is",
+    ///         Destination = gcs_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
+    ///         Filter = my_logged_instance.InstanceId.Apply(instanceId =&gt; $"resource.type = gce_instance AND resource.labels.instance_id = \"{instanceId}\""),
+    ///         UniqueWriterIdentity = true,
+    ///     });
+    /// 
+    ///     // Because our sink uses a unique_writer, we must grant that writer access to the bucket.
+    ///     var gcs_bucket_writer = new Gcp.Projects.IAMBinding("gcs-bucket-writer", new()
+    ///     {
+    ///         Project = "your-project-id",
+    ///         Role = "roles/storage.objectCreator",
+    ///         Members = new[]
+    ///         {
+    ///             instance_sink.WriterIdentity,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### User-Managed Service Account
+    /// 
+    /// The following example creates a sink that are configured with user-managed service accounts, by specifying
+    /// the `CustomWriterIdentity` field.
+    /// 
+    /// Note that you can only create a sink that uses a user-managed service account when the sink destination
+    /// is a log bucket.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var custom_sa = new Gcp.ServiceAccount.Account("custom-sa", new()
+    ///     {
+    ///         Project = "other-project-id",
+    ///         AccountId = "gce-log-bucket-sink",
+    ///         DisplayName = "gce-log-bucket-sink",
+    ///     });
+    /// 
+    ///     // Create a sink that uses user-managed service account
+    ///     var my_sink = new Gcp.Logging.ProjectSink("my-sink", new()
+    ///     {
+    ///         Name = "other-project-log-bucket-sink",
+    ///         Destination = "logging.googleapis.com/projects/other-project-id/locations/global/buckets/gce-logs",
+    ///         Filter = "resource.type = gce_instance AND severity &gt;= WARNING",
+    ///         UniqueWriterIdentity = true,
+    ///         CustomWriterIdentity = custom_sa.Email,
+    ///     });
+    /// 
+    ///     // grant writer access to the user-managed service account
+    ///     var custom_sa_logbucket_binding = new Gcp.Projects.IAMMember("custom-sa-logbucket-binding", new()
+    ///     {
+    ///         Project = "destination-project-id",
+    ///         Role = "roles/logging.bucketWriter",
+    ///         Member = custom_sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The above example will create a log sink that route logs to destination GCP project using
+    /// an user-managed service account.
+    /// 
+    /// ### Sink Exclusions
+    /// 
+    /// The following example uses `Exclusions` to filter logs that will not be exported. In this example logs are exported to a [log bucket](https://cloud.google.com/logging/docs/buckets) and there are 2 exclusions configured
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var log_bucket = new Gcp.Logging.ProjectSink("log-bucket", new()
+    ///     {
+    ///         Name = "my-logging-sink",
+    ///         Destination = "logging.googleapis.com/projects/my-project/locations/global/buckets/_Default",
+    ///         Exclusions = new[]
+    ///         {
+    ///             new Gcp.Logging.Inputs.ProjectSinkExclusionArgs
+    ///             {
+    ///                 Name = "nsexcllusion1",
+    ///                 Description = "Exclude logs from namespace-1 in k8s",
+    ///                 Filter = "resource.type = k8s_container resource.labels.namespace_name=\"namespace-1\" ",
+    ///             },
+    ///             new Gcp.Logging.Inputs.ProjectSinkExclusionArgs
+    ///             {
+    ///                 Name = "nsexcllusion2",
+    ///                 Description = "Exclude logs from namespace-2 in k8s",
+    ///                 Filter = "resource.type = k8s_container resource.labels.namespace_name=\"namespace-2\" ",
+    ///             },
+    ///         },
+    ///         UniqueWriterIdentity = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Project-level logging sinks can be imported using their URI, e.g.

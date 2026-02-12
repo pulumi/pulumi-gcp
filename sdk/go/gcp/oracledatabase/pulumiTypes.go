@@ -12227,13 +12227,15 @@ type GetAutonomousDatabasesAutonomousDatabase struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database           string `pulumi:"database"`
-	DeletionProtection bool   `pulumi:"deletionProtection"`
+	Database string `pulumi:"database"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
 	DisasterRecoverySupportedLocations []string `pulumi:"disasterRecoverySupportedLocations"`
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
-	DisplayName     string            `pulumi:"displayName"`
+	DisplayName string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The ID of the subscription entitlement associated with the Autonomous
 	// Database.
@@ -12303,13 +12305,15 @@ type GetAutonomousDatabasesAutonomousDatabaseArgs struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database           pulumi.StringInput `pulumi:"database"`
-	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
+	Database pulumi.StringInput `pulumi:"database"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
 	DisasterRecoverySupportedLocations pulumi.StringArrayInput `pulumi:"disasterRecoverySupportedLocations"`
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
-	DisplayName     pulumi.StringInput    `pulumi:"displayName"`
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// The ID of the subscription entitlement associated with the Autonomous
 	// Database.
@@ -12434,6 +12438,7 @@ func (o GetAutonomousDatabasesAutonomousDatabaseOutput) Database() pulumi.String
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) string { return v.Database }).(pulumi.StringOutput)
 }
 
+// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
 func (o GetAutonomousDatabasesAutonomousDatabaseOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
@@ -12449,6 +12454,7 @@ func (o GetAutonomousDatabasesAutonomousDatabaseOutput) DisplayName() pulumi.Str
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetAutonomousDatabasesAutonomousDatabaseOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -16021,10 +16027,12 @@ type GetCloudExadataInfrastructuresCloudExadataInfrastructure struct {
 	// a letter or a number.
 	CloudExadataInfrastructureId string `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
-	CreateTime         string `pulumi:"createTime"`
-	DeletionProtection bool   `pulumi:"deletionProtection"`
+	CreateTime string `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
-	DisplayName     string            `pulumi:"displayName"`
+	DisplayName string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Entitlement ID of the private offer against which this infrastructure
 	// resource is provisioned.
@@ -16071,10 +16079,12 @@ type GetCloudExadataInfrastructuresCloudExadataInfrastructureArgs struct {
 	// a letter or a number.
 	CloudExadataInfrastructureId pulumi.StringInput `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
-	CreateTime         pulumi.StringInput `pulumi:"createTime"`
-	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
-	DisplayName     pulumi.StringInput    `pulumi:"displayName"`
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// Entitlement ID of the private offer against which this infrastructure
 	// resource is provisioned.
@@ -16169,6 +16179,7 @@ func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) CreateTi
 	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructure) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
 func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructure) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
@@ -16178,6 +16189,7 @@ func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) DisplayN
 	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructure) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructure) map[string]string {
 		return v.EffectiveLabels
@@ -17738,10 +17750,12 @@ type GetCloudVmClustersCloudVmCluster struct {
 	// a letter or a number.
 	CloudVmClusterId string `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
-	CreateTime         string `pulumi:"createTime"`
-	DeletionProtection bool   `pulumi:"deletionProtection"`
+	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
-	DisplayName     string            `pulumi:"displayName"`
+	DisplayName string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The name of the Exadata Infrastructure resource on which VM cluster
 	// resource is created, in the following format:
@@ -17811,10 +17825,12 @@ type GetCloudVmClustersCloudVmClusterArgs struct {
 	// a letter or a number.
 	CloudVmClusterId pulumi.StringInput `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
-	CreateTime         pulumi.StringInput `pulumi:"createTime"`
-	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
-	DisplayName     pulumi.StringInput    `pulumi:"displayName"`
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// The name of the Exadata Infrastructure resource on which VM cluster
 	// resource is created, in the following format:
@@ -17939,6 +17955,7 @@ func (o GetCloudVmClustersCloudVmClusterOutput) CreateTime() pulumi.StringOutput
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
 func (o GetCloudVmClustersCloudVmClusterOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
@@ -17948,6 +17965,7 @@ func (o GetCloudVmClustersCloudVmClusterOutput) DisplayName() pulumi.StringOutpu
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetCloudVmClustersCloudVmClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

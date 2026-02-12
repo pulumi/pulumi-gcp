@@ -405,9 +405,7 @@ namespace Pulumi.Gcp.Compute
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
     /// * projects/{{project}}/global/images/{{name}}
-    /// 
     /// * {{project}}/{{name}}
-    /// 
     /// * {{name}}
     /// 
     /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -415,25 +413,21 @@ namespace Pulumi.Gcp.Compute
     /// Compute Engine image IAM resources can be imported using the resource identifiers, role, and member.
     /// 
     /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import gcp:compute/imageIamMember:ImageIamMember editor "projects/{{project}}/global/images/{{image}} roles/compute.imageUser user:jane@example.com"
+    /// $ terraform import google_compute_image_iam_member.editor "projects/{{project}}/global/images/{{image}} roles/compute.imageUser user:jane@example.com"
     /// ```
     /// 
     /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import gcp:compute/imageIamMember:ImageIamMember editor "projects/{{project}}/global/images/{{image}} roles/compute.imageUser"
+    /// $ terraform import google_compute_image_iam_binding.editor "projects/{{project}}/global/images/{{image}} roles/compute.imageUser"
     /// ```
     /// 
     /// IAM policy imports use the identifier of the resource in question, e.g.
-    /// 
     /// ```sh
     /// $ pulumi import gcp:compute/imageIamMember:ImageIamMember editor projects/{{project}}/global/images/{{image}}
     /// ```
     /// 
-    /// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
+    /// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
     ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:compute/imageIamMember:ImageIamMember")]

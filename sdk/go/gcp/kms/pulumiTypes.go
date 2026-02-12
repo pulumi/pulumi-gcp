@@ -1443,6 +1443,11 @@ func (o CryptoKeyVersionTemplatePtrOutput) ProtectionLevel() pulumi.StringPtrOut
 }
 
 type EkmConnectionIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -1462,6 +1467,11 @@ type EkmConnectionIamBindingConditionInput interface {
 }
 
 type EkmConnectionIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -1546,6 +1556,11 @@ func (o EkmConnectionIamBindingConditionOutput) ToEkmConnectionIamBindingConditi
 	}).(EkmConnectionIamBindingConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o EkmConnectionIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EkmConnectionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1584,6 +1599,11 @@ func (o EkmConnectionIamBindingConditionPtrOutput) Elem() EkmConnectionIamBindin
 	}).(EkmConnectionIamBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o EkmConnectionIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EkmConnectionIamBindingCondition) *string {
 		if v == nil {
@@ -1614,6 +1634,11 @@ func (o EkmConnectionIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutpu
 }
 
 type EkmConnectionIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -1633,6 +1658,11 @@ type EkmConnectionIamMemberConditionInput interface {
 }
 
 type EkmConnectionIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -1717,6 +1747,11 @@ func (o EkmConnectionIamMemberConditionOutput) ToEkmConnectionIamMemberCondition
 	}).(EkmConnectionIamMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o EkmConnectionIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EkmConnectionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1755,6 +1790,11 @@ func (o EkmConnectionIamMemberConditionPtrOutput) Elem() EkmConnectionIamMemberC
 	}).(EkmConnectionIamMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o EkmConnectionIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EkmConnectionIamMemberCondition) *string {
 		if v == nil {
@@ -3634,9 +3674,10 @@ type GetCryptoKeysKey struct {
 	CryptoKeyBackend string `pulumi:"cryptoKeyBackend"`
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 30 days.
-	DestroyScheduledDuration string            `pulumi:"destroyScheduledDuration"`
-	EffectiveLabels          map[string]string `pulumi:"effectiveLabels"`
-	Id                       string            `pulumi:"id"`
+	DestroyScheduledDuration string `pulumi:"destroyScheduledDuration"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	Id              string            `pulumi:"id"`
 	// Whether this key may contain imported versions only.
 	ImportOnly bool `pulumi:"importOnly"`
 	// The policy used for Key Access Justifications Policy Enforcement. If this
@@ -3699,9 +3740,10 @@ type GetCryptoKeysKeyArgs struct {
 	CryptoKeyBackend pulumi.StringInput `pulumi:"cryptoKeyBackend"`
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 30 days.
-	DestroyScheduledDuration pulumi.StringInput    `pulumi:"destroyScheduledDuration"`
-	EffectiveLabels          pulumi.StringMapInput `pulumi:"effectiveLabels"`
-	Id                       pulumi.StringInput    `pulumi:"id"`
+	DestroyScheduledDuration pulumi.StringInput `pulumi:"destroyScheduledDuration"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
+	Id              pulumi.StringInput    `pulumi:"id"`
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolInput `pulumi:"importOnly"`
 	// The policy used for Key Access Justifications Policy Enforcement. If this
@@ -3810,6 +3852,7 @@ func (o GetCryptoKeysKeyOutput) DestroyScheduledDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCryptoKeysKey) string { return v.DestroyScheduledDuration }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetCryptoKeysKeyOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCryptoKeysKey) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

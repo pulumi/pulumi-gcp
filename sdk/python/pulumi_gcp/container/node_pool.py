@@ -906,20 +906,16 @@ class NodePool(pulumi.CustomResource):
         ## Import
 
         Node pools can be imported using the `project`, `location`, `cluster` and `name`. If
-
         the project is omitted, the project value in the provider configuration will be used. Examples:
 
         * `{{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}`
-
         * `{{location}}/{{cluster_id}}/{{pool_id}}`
 
         When using the `pulumi import` command, node pools can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/nodePool:NodePool default {{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}
-        ```
 
-        ```sh
         $ pulumi import gcp:container/nodePool:NodePool default {{location}}/{{cluster_id}}/{{pool_id}}
         ```
 
@@ -1058,20 +1054,16 @@ class NodePool(pulumi.CustomResource):
         ## Import
 
         Node pools can be imported using the `project`, `location`, `cluster` and `name`. If
-
         the project is omitted, the project value in the provider configuration will be used. Examples:
 
         * `{{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}`
-
         * `{{location}}/{{cluster_id}}/{{pool_id}}`
 
         When using the `pulumi import` command, node pools can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/nodePool:NodePool default {{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}
-        ```
 
-        ```sh
         $ pulumi import gcp:container/nodePool:NodePool default {{location}}/{{cluster_id}}/{{pool_id}}
         ```
 

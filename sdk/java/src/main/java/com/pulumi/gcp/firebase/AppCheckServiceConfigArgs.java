@@ -16,9 +16,67 @@ public final class AppCheckServiceConfigArgs extends com.pulumi.resources.Resour
 
     public static final AppCheckServiceConfigArgs Empty = new AppCheckServiceConfigArgs();
 
+    /**
+     * The App Check enforcement mode for a service supported by App Check. Valid values are
+     * (Unset)
+     * Firebase App Check is not enforced for the service, nor are App Check metrics collected.
+     * Though the service is not protected by App Check in this mode, other applicable protections,
+     * such as user authorization, are still enforced. An unconfigured service is in this mode by default.
+     * This is equivalent to OFF in the REST API. Deleting the Terraform resource will also switch the
+     * enforcement to OFF for this service.
+     * UNENFORCED
+     * Firebase App Check is not enforced for the service. App Check metrics are collected to help you
+     * decide when to turn on enforcement for the service. Though the service is not protected by App Check
+     * in this mode, other applicable protections, such as user authorization, are still enforced.
+     * ENFORCED
+     * Firebase App Check is enforced for the service. The service will reject any request that attempts to
+     * access your project&#39;s resources if it does not have valid App Check token attached, with some exceptions
+     * depending on the service; for example, some services will still allow requests bearing the developer&#39;s
+     * privileged service account credentials without an App Check token. App Check metrics continue to be
+     * collected to help you detect issues with your App Check integration and monitor the composition of your
+     * callers. While the service is protected by App Check, other applicable protections, such as user
+     * authorization, continue to be enforced at the same time.
+     * Use caution when choosing to enforce App Check on a Firebase service. If your users have not updated
+     * to an App Check capable version of your app, their apps will no longer be able to use your Firebase
+     * services that are enforcing App Check. App Check metrics can help you decide whether to enforce App
+     * Check on your Firebase services.
+     * If your app has not launched yet, you should enable enforcement immediately, since there are no outdated
+     * clients in use.
+     * Possible values are: `UNENFORCED`, `ENFORCED`.
+     * 
+     */
     @Import(name="enforcementMode")
     private @Nullable Output<String> enforcementMode;
 
+    /**
+     * @return The App Check enforcement mode for a service supported by App Check. Valid values are
+     * (Unset)
+     * Firebase App Check is not enforced for the service, nor are App Check metrics collected.
+     * Though the service is not protected by App Check in this mode, other applicable protections,
+     * such as user authorization, are still enforced. An unconfigured service is in this mode by default.
+     * This is equivalent to OFF in the REST API. Deleting the Terraform resource will also switch the
+     * enforcement to OFF for this service.
+     * UNENFORCED
+     * Firebase App Check is not enforced for the service. App Check metrics are collected to help you
+     * decide when to turn on enforcement for the service. Though the service is not protected by App Check
+     * in this mode, other applicable protections, such as user authorization, are still enforced.
+     * ENFORCED
+     * Firebase App Check is enforced for the service. The service will reject any request that attempts to
+     * access your project&#39;s resources if it does not have valid App Check token attached, with some exceptions
+     * depending on the service; for example, some services will still allow requests bearing the developer&#39;s
+     * privileged service account credentials without an App Check token. App Check metrics continue to be
+     * collected to help you detect issues with your App Check integration and monitor the composition of your
+     * callers. While the service is protected by App Check, other applicable protections, such as user
+     * authorization, continue to be enforced at the same time.
+     * Use caution when choosing to enforce App Check on a Firebase service. If your users have not updated
+     * to an App Check capable version of your app, their apps will no longer be able to use your Firebase
+     * services that are enforcing App Check. App Check metrics can help you decide whether to enforce App
+     * Check on your Firebase services.
+     * If your app has not launched yet, you should enable enforcement immediately, since there are no outdated
+     * clients in use.
+     * Possible values are: `UNENFORCED`, `ENFORCED`.
+     * 
+     */
     public Optional<Output<String>> enforcementMode() {
         return Optional.ofNullable(this.enforcementMode);
     }
@@ -89,11 +147,73 @@ public final class AppCheckServiceConfigArgs extends com.pulumi.resources.Resour
             $ = new AppCheckServiceConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enforcementMode The App Check enforcement mode for a service supported by App Check. Valid values are
+         * (Unset)
+         * Firebase App Check is not enforced for the service, nor are App Check metrics collected.
+         * Though the service is not protected by App Check in this mode, other applicable protections,
+         * such as user authorization, are still enforced. An unconfigured service is in this mode by default.
+         * This is equivalent to OFF in the REST API. Deleting the Terraform resource will also switch the
+         * enforcement to OFF for this service.
+         * UNENFORCED
+         * Firebase App Check is not enforced for the service. App Check metrics are collected to help you
+         * decide when to turn on enforcement for the service. Though the service is not protected by App Check
+         * in this mode, other applicable protections, such as user authorization, are still enforced.
+         * ENFORCED
+         * Firebase App Check is enforced for the service. The service will reject any request that attempts to
+         * access your project&#39;s resources if it does not have valid App Check token attached, with some exceptions
+         * depending on the service; for example, some services will still allow requests bearing the developer&#39;s
+         * privileged service account credentials without an App Check token. App Check metrics continue to be
+         * collected to help you detect issues with your App Check integration and monitor the composition of your
+         * callers. While the service is protected by App Check, other applicable protections, such as user
+         * authorization, continue to be enforced at the same time.
+         * Use caution when choosing to enforce App Check on a Firebase service. If your users have not updated
+         * to an App Check capable version of your app, their apps will no longer be able to use your Firebase
+         * services that are enforcing App Check. App Check metrics can help you decide whether to enforce App
+         * Check on your Firebase services.
+         * If your app has not launched yet, you should enable enforcement immediately, since there are no outdated
+         * clients in use.
+         * Possible values are: `UNENFORCED`, `ENFORCED`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enforcementMode(@Nullable Output<String> enforcementMode) {
             $.enforcementMode = enforcementMode;
             return this;
         }
 
+        /**
+         * @param enforcementMode The App Check enforcement mode for a service supported by App Check. Valid values are
+         * (Unset)
+         * Firebase App Check is not enforced for the service, nor are App Check metrics collected.
+         * Though the service is not protected by App Check in this mode, other applicable protections,
+         * such as user authorization, are still enforced. An unconfigured service is in this mode by default.
+         * This is equivalent to OFF in the REST API. Deleting the Terraform resource will also switch the
+         * enforcement to OFF for this service.
+         * UNENFORCED
+         * Firebase App Check is not enforced for the service. App Check metrics are collected to help you
+         * decide when to turn on enforcement for the service. Though the service is not protected by App Check
+         * in this mode, other applicable protections, such as user authorization, are still enforced.
+         * ENFORCED
+         * Firebase App Check is enforced for the service. The service will reject any request that attempts to
+         * access your project&#39;s resources if it does not have valid App Check token attached, with some exceptions
+         * depending on the service; for example, some services will still allow requests bearing the developer&#39;s
+         * privileged service account credentials without an App Check token. App Check metrics continue to be
+         * collected to help you detect issues with your App Check integration and monitor the composition of your
+         * callers. While the service is protected by App Check, other applicable protections, such as user
+         * authorization, continue to be enforced at the same time.
+         * Use caution when choosing to enforce App Check on a Firebase service. If your users have not updated
+         * to an App Check capable version of your app, their apps will no longer be able to use your Firebase
+         * services that are enforcing App Check. App Check metrics can help you decide whether to enforce App
+         * Check on your Firebase services.
+         * If your app has not launched yet, you should enable enforcement immediately, since there are no outdated
+         * clients in use.
+         * Possible values are: `UNENFORCED`, `ENFORCED`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enforcementMode(String enforcementMode) {
             return enforcementMode(Output.of(enforcementMode));
         }

@@ -276,16 +276,12 @@ class Settings(pulumi.CustomResource):
         Settings can be imported using any of these accepted formats:
 
         * `{{name}}/iapSettings`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Settings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iap/settings:Settings default {{name}}/iapSettings
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/settings:Settings default {{name}}
         ```
 
@@ -398,16 +394,12 @@ class Settings(pulumi.CustomResource):
         Settings can be imported using any of these accepted formats:
 
         * `{{name}}/iapSettings`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Settings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iap/settings:Settings default {{name}}/iapSettings
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/settings:Settings default {{name}}
         ```
 

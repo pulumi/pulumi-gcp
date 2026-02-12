@@ -16,6 +16,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RegionInstanceTemplateNetworkInterface {
+    /**
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet (this means that ssh provisioners will
+     * not work unless you are running Terraform can send traffic to the instance&#39;s
+     * network (e.g. via tunnel or because it is running on another cloud instance
+     * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+     * 
+     */
     private @Nullable List<RegionInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
     /**
      * @return An
@@ -52,7 +61,8 @@ public final class RegionInstanceTemplateNetworkInterface {
      */
     private @Nullable String ipv6Address;
     /**
-     * @return The name of the network_interface.
+     * @return The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     private @Nullable String name;
@@ -99,6 +109,15 @@ public final class RegionInstanceTemplateNetworkInterface {
     private @Nullable String subnetworkProject;
 
     private RegionInstanceTemplateNetworkInterface() {}
+    /**
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet (this means that ssh provisioners will
+     * not work unless you are running Terraform can send traffic to the instance&#39;s
+     * network (e.g. via tunnel or because it is running on another cloud instance
+     * on that network). This block can be specified once per `networkInterface`. Structure documented below.
+     * 
+     */
     public List<RegionInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs() {
         return this.accessConfigs == null ? List.of() : this.accessConfigs;
     }
@@ -149,7 +168,8 @@ public final class RegionInstanceTemplateNetworkInterface {
         return Optional.ofNullable(this.ipv6Address);
     }
     /**
-     * @return The name of the network_interface.
+     * @return The name of the instance template. If you leave
+     * this blank, Terraform will auto-generate a unique name.
      * 
      */
     public Optional<String> name() {

@@ -250,28 +250,16 @@ import (
 // TargetInstance can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
-//
 // * `{{project}}/{{zone}}/{{name}}`
-//
 // * `{{zone}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/targetInstance:TargetInstance default {{project}}/{{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/targetInstance:TargetInstance default {{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
 // ```
 type TargetInstance struct {

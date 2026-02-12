@@ -12,6 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Represents a packet mirroring rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (mirror or do_not_mirror).
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about NetworkFirewallPolicyPacketMirroringRule, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkFirewallPolicies/addPacketMirroringRule)
+//
 // ## Example Usage
 //
 // ### Compute Network Firewall Policy Packet Mirroring Rule
@@ -154,22 +163,14 @@ import (
 // NetworkFirewallPolicyPacketMirroringRule can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/packetMirroringRules/{{priority}}`
-//
 // * `{{project}}/{{firewall_policy}}/{{priority}}`
-//
 // * `{{firewall_policy}}/{{priority}}`
 //
 // When using the `pulumi import` command, NetworkFirewallPolicyPacketMirroringRule can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/packetMirroringRules/{{priority}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default {{project}}/{{firewall_policy}}/{{priority}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default {{firewall_policy}}/{{priority}}
 // ```
 type NetworkFirewallPolicyPacketMirroringRule struct {

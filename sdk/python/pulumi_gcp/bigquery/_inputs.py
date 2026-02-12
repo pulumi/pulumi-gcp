@@ -207,17 +207,12 @@ __all__ = [
     'TableViewArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AppProfileDataBoostIsolationReadOnlyArgsDict(TypedDict):
-        compute_billing_owner: pulumi.Input[_builtins.str]
-        """
-        The Compute Billing Owner for this Data Boost App Profile.
-        Possible values are: `HOST_PAYS`.
-        """
-elif False:
-    AppProfileDataBoostIsolationReadOnlyArgsDict: TypeAlias = Mapping[str, Any]
+class AppProfileDataBoostIsolationReadOnlyArgsDict(TypedDict):
+    compute_billing_owner: pulumi.Input[_builtins.str]
+    """
+    The Compute Billing Owner for this Data Boost App Profile.
+    Possible values are: `HOST_PAYS`.
+    """
 
 @pulumi.input_type
 class AppProfileDataBoostIsolationReadOnlyArgs:
@@ -243,19 +238,16 @@ class AppProfileDataBoostIsolationReadOnlyArgs:
         pulumi.set(self, "compute_billing_owner", value)
 
 
-if not MYPY:
-    class AppProfileSingleClusterRoutingArgsDict(TypedDict):
-        cluster_id: pulumi.Input[_builtins.str]
-        """
-        The cluster to which read/write requests should be routed.
-        """
-        allow_transactional_writes: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
-        It is unsafe to send these requests to the same table/row/column in multiple clusters.
-        """
-elif False:
-    AppProfileSingleClusterRoutingArgsDict: TypeAlias = Mapping[str, Any]
+class AppProfileSingleClusterRoutingArgsDict(TypedDict):
+    cluster_id: pulumi.Input[_builtins.str]
+    """
+    The cluster to which read/write requests should be routed.
+    """
+    allow_transactional_writes: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
+    It is unsafe to send these requests to the same table/row/column in multiple clusters.
+    """
 
 @pulumi.input_type
 class AppProfileSingleClusterRoutingArgs:
@@ -297,15 +289,12 @@ class AppProfileSingleClusterRoutingArgs:
         pulumi.set(self, "allow_transactional_writes", value)
 
 
-if not MYPY:
-    class AppProfileStandardIsolationArgsDict(TypedDict):
-        priority: pulumi.Input[_builtins.str]
-        """
-        The priority of requests sent using this app profile.
-        Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
-        """
-elif False:
-    AppProfileStandardIsolationArgsDict: TypeAlias = Mapping[str, Any]
+class AppProfileStandardIsolationArgsDict(TypedDict):
+    priority: pulumi.Input[_builtins.str]
+    """
+    The priority of requests sent using this app profile.
+    Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+    """
 
 @pulumi.input_type
 class AppProfileStandardIsolationArgs:
@@ -331,22 +320,19 @@ class AppProfileStandardIsolationArgs:
         pulumi.set(self, "priority", value)
 
 
-if not MYPY:
-    class BiReservationPreferredTableArgsDict(TypedDict):
-        dataset_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the dataset in the above project.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The assigned project ID of the project.
-        """
-        table_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the table in the above dataset.
-        """
-elif False:
-    BiReservationPreferredTableArgsDict: TypeAlias = Mapping[str, Any]
+class BiReservationPreferredTableArgsDict(TypedDict):
+    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the dataset in the above project.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The assigned project ID of the project.
+    """
+    table_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the table in the above dataset.
+    """
 
 @pulumi.input_type
 class BiReservationPreferredTableArgs:
@@ -403,15 +389,12 @@ class BiReservationPreferredTableArgs:
         pulumi.set(self, "table_id", value)
 
 
-if not MYPY:
-    class ConnectionAwsArgsDict(TypedDict):
-        access_role: pulumi.Input['ConnectionAwsAccessRoleArgsDict']
-        """
-        Authentication using Google owned service account to assume into customer's AWS IAM Role.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionAwsArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAwsArgsDict(TypedDict):
+    access_role: pulumi.Input['ConnectionAwsAccessRoleArgsDict']
+    """
+    Authentication using Google owned service account to assume into customer's AWS IAM Role.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionAwsArgs:
@@ -437,19 +420,16 @@ class ConnectionAwsArgs:
         pulumi.set(self, "access_role", value)
 
 
-if not MYPY:
-    class ConnectionAwsAccessRoleArgsDict(TypedDict):
-        iam_role_id: pulumi.Input[_builtins.str]
-        """
-        The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
-        """
-        identity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
-        """
-elif False:
-    ConnectionAwsAccessRoleArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAwsAccessRoleArgsDict(TypedDict):
+    iam_role_id: pulumi.Input[_builtins.str]
+    """
+    The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
+    """
+    identity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+    """
 
 @pulumi.input_type
 class ConnectionAwsAccessRoleArgs:
@@ -491,43 +471,40 @@ class ConnectionAwsAccessRoleArgs:
         pulumi.set(self, "identity", value)
 
 
-if not MYPY:
-    class ConnectionAzureArgsDict(TypedDict):
-        customer_tenant_id: pulumi.Input[_builtins.str]
-        """
-        The id of customer's directory that host the data.
-        """
-        application: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The name of the Azure Active Directory Application.
-        """
-        client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The client id of the Azure Active Directory Application.
-        """
-        federated_application_client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Azure Application (client) ID where the federated credentials will be hosted.
-        """
-        identity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
-        """
-        object_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The object id of the Azure Active Directory Application.
-        """
-        redirect_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The URL user will be redirected to after granting consent during connection setup.
-        """
-elif False:
-    ConnectionAzureArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAzureArgsDict(TypedDict):
+    customer_tenant_id: pulumi.Input[_builtins.str]
+    """
+    The id of customer's directory that host the data.
+    """
+    application: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The name of the Azure Active Directory Application.
+    """
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The client id of the Azure Active Directory Application.
+    """
+    federated_application_client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Azure Application (client) ID where the federated credentials will be hosted.
+    """
+    identity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
+    """
+    object_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The object id of the Azure Active Directory Application.
+    """
+    redirect_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The URL user will be redirected to after granting consent during connection setup.
+    """
 
 @pulumi.input_type
 class ConnectionAzureArgs:
@@ -657,15 +634,12 @@ class ConnectionAzureArgs:
         pulumi.set(self, "redirect_uri", value)
 
 
-if not MYPY:
-    class ConnectionCloudResourceArgsDict(TypedDict):
-        service_account_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The account ID of the service created for the purpose of this connection.
-        """
-elif False:
-    ConnectionCloudResourceArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionCloudResourceArgsDict(TypedDict):
+    service_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The account ID of the service created for the purpose of this connection.
+    """
 
 @pulumi.input_type
 class ConnectionCloudResourceArgs:
@@ -692,37 +666,34 @@ class ConnectionCloudResourceArgs:
         pulumi.set(self, "service_account_id", value)
 
 
-if not MYPY:
-    class ConnectionCloudSpannerArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        Cloud Spanner database in the form `project/instance/database'.
-        """
-        database_role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
-        """
-        max_parallelism: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
-        """
-        use_data_boost: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
-        """
-        use_parallelism: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If parallelism should be used when reading from Cloud Spanner.
-        """
-        use_serverless_analytics: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Optional, Deprecated)
-        If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+class ConnectionCloudSpannerArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    Cloud Spanner database in the form `project/instance/database'.
+    """
+    database_role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+    """
+    max_parallelism: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
+    """
+    use_data_boost: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+    """
+    use_parallelism: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If parallelism should be used when reading from Cloud Spanner.
+    """
+    use_serverless_analytics: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Optional, Deprecated)
+    If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
 
-        > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
-        """
-elif False:
-    ConnectionCloudSpannerArgsDict: TypeAlias = Mapping[str, Any]
+    > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
+    """
 
 @pulumi.input_type
 class ConnectionCloudSpannerArgs:
@@ -836,33 +807,30 @@ class ConnectionCloudSpannerArgs:
         pulumi.set(self, "use_serverless_analytics", value)
 
 
-if not MYPY:
-    class ConnectionCloudSqlArgsDict(TypedDict):
-        credential: pulumi.Input['ConnectionCloudSqlCredentialArgsDict']
-        """
-        Cloud SQL properties.
-        Structure is documented below.
-        """
-        database: pulumi.Input[_builtins.str]
-        """
-        Database name.
-        """
-        instance_id: pulumi.Input[_builtins.str]
-        """
-        Cloud SQL instance ID in the form project:location:instance.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of the Cloud SQL database.
-        Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
-        """
-        service_account_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
-        """
-elif False:
-    ConnectionCloudSqlArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionCloudSqlArgsDict(TypedDict):
+    credential: pulumi.Input['ConnectionCloudSqlCredentialArgsDict']
+    """
+    Cloud SQL properties.
+    Structure is documented below.
+    """
+    database: pulumi.Input[_builtins.str]
+    """
+    Database name.
+    """
+    instance_id: pulumi.Input[_builtins.str]
+    """
+    Cloud SQL instance ID in the form project:location:instance.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the Cloud SQL database.
+    Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
+    """
+    service_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+    """
 
 @pulumi.input_type
 class ConnectionCloudSqlArgs:
@@ -953,19 +921,16 @@ class ConnectionCloudSqlArgs:
         pulumi.set(self, "service_account_id", value)
 
 
-if not MYPY:
-    class ConnectionCloudSqlCredentialArgsDict(TypedDict):
-        password: pulumi.Input[_builtins.str]
-        """
-        Password for database.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        Username for database.
-        """
-elif False:
-    ConnectionCloudSqlCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionCloudSqlCredentialArgsDict(TypedDict):
+    password: pulumi.Input[_builtins.str]
+    """
+    Password for database.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Username for database.
+    """
 
 @pulumi.input_type
 class ConnectionCloudSqlCredentialArgs:
@@ -1006,13 +971,10 @@ class ConnectionCloudSqlCredentialArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ConnectionIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ConnectionIamBindingConditionArgs:
@@ -1053,13 +1015,10 @@ class ConnectionIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ConnectionIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ConnectionIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ConnectionIamMemberConditionArgs:
@@ -1100,25 +1059,22 @@ class ConnectionIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ConnectionSparkArgsDict(TypedDict):
-        metastore_service_config: NotRequired[pulumi.Input['ConnectionSparkMetastoreServiceConfigArgsDict']]
-        """
-        Dataproc Metastore Service configuration for the connection.
-        Structure is documented below.
-        """
-        service_account_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The account ID of the service created for the purpose of this connection.
-        """
-        spark_history_server_config: NotRequired[pulumi.Input['ConnectionSparkSparkHistoryServerConfigArgsDict']]
-        """
-        Spark History Server configuration for the connection.
-        Structure is documented below.
-        """
-elif False:
-    ConnectionSparkArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionSparkArgsDict(TypedDict):
+    metastore_service_config: NotRequired[pulumi.Input['ConnectionSparkMetastoreServiceConfigArgsDict']]
+    """
+    Dataproc Metastore Service configuration for the connection.
+    Structure is documented below.
+    """
+    service_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The account ID of the service created for the purpose of this connection.
+    """
+    spark_history_server_config: NotRequired[pulumi.Input['ConnectionSparkSparkHistoryServerConfigArgsDict']]
+    """
+    Spark History Server configuration for the connection.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectionSparkArgs:
@@ -1181,14 +1137,11 @@ class ConnectionSparkArgs:
         pulumi.set(self, "spark_history_server_config", value)
 
 
-if not MYPY:
-    class ConnectionSparkMetastoreServiceConfigArgsDict(TypedDict):
-        metastore_service: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
-        """
-elif False:
-    ConnectionSparkMetastoreServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionSparkMetastoreServiceConfigArgsDict(TypedDict):
+    metastore_service: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
+    """
 
 @pulumi.input_type
 class ConnectionSparkMetastoreServiceConfigArgs:
@@ -1213,14 +1166,11 @@ class ConnectionSparkMetastoreServiceConfigArgs:
         pulumi.set(self, "metastore_service", value)
 
 
-if not MYPY:
-    class ConnectionSparkSparkHistoryServerConfigArgsDict(TypedDict):
-        dataproc_cluster: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
-        """
-elif False:
-    ConnectionSparkSparkHistoryServerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionSparkSparkHistoryServerConfigArgsDict(TypedDict):
+    dataproc_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
+    """
 
 @pulumi.input_type
 class ConnectionSparkSparkHistoryServerConfigArgs:
@@ -1245,14 +1195,11 @@ class ConnectionSparkSparkHistoryServerConfigArgs:
         pulumi.set(self, "dataproc_cluster", value)
 
 
-if not MYPY:
-    class DataTransferConfigEmailPreferencesArgsDict(TypedDict):
-        enable_failure_email: pulumi.Input[_builtins.bool]
-        """
-        If true, email notifications will be sent on transfer run failures.
-        """
-elif False:
-    DataTransferConfigEmailPreferencesArgsDict: TypeAlias = Mapping[str, Any]
+class DataTransferConfigEmailPreferencesArgsDict(TypedDict):
+    enable_failure_email: pulumi.Input[_builtins.bool]
+    """
+    If true, email notifications will be sent on transfer run failures.
+    """
 
 @pulumi.input_type
 class DataTransferConfigEmailPreferencesArgs:
@@ -1276,14 +1223,11 @@ class DataTransferConfigEmailPreferencesArgs:
         pulumi.set(self, "enable_failure_email", value)
 
 
-if not MYPY:
-    class DataTransferConfigEncryptionConfigurationArgsDict(TypedDict):
-        kms_key_name: pulumi.Input[_builtins.str]
-        """
-        The name of the KMS key used for encrypting BigQuery data.
-        """
-elif False:
-    DataTransferConfigEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class DataTransferConfigEncryptionConfigurationArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    The name of the KMS key used for encrypting BigQuery data.
+    """
 
 @pulumi.input_type
 class DataTransferConfigEncryptionConfigurationArgs:
@@ -1307,33 +1251,30 @@ class DataTransferConfigEncryptionConfigurationArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class DataTransferConfigScheduleOptionsArgsDict(TypedDict):
-        disable_auto_scheduling: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, automatic scheduling of data transfer runs for this
-        configuration will be disabled. The runs can be started on ad-hoc
-        basis using transferConfigs.startManualRuns API. When automatic
-        scheduling is disabled, the TransferConfig.schedule field will
-        be ignored.
-        """
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines time to stop scheduling transfer runs. A transfer run cannot be
-        scheduled at or after the end time. The end time can be changed at any
-        moment. The time when a data transfer can be triggered manually is not
-        limited by this option.
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies time to start scheduling transfer runs. The first run will be
-        scheduled at or after the start time according to a recurrence pattern
-        defined in the schedule string. The start time can be changed at any
-        moment. The time when a data transfer can be triggered manually is not
-        limited by this option.
-        """
-elif False:
-    DataTransferConfigScheduleOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class DataTransferConfigScheduleOptionsArgsDict(TypedDict):
+    disable_auto_scheduling: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, automatic scheduling of data transfer runs for this
+    configuration will be disabled. The runs can be started on ad-hoc
+    basis using transferConfigs.startManualRuns API. When automatic
+    scheduling is disabled, the TransferConfig.schedule field will
+    be ignored.
+    """
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines time to stop scheduling transfer runs. A transfer run cannot be
+    scheduled at or after the end time. The end time can be changed at any
+    moment. The time when a data transfer can be triggered manually is not
+    limited by this option.
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies time to start scheduling transfer runs. The first run will be
+    scheduled at or after the start time according to a recurrence pattern
+    defined in the schedule string. The start time can be changed at any
+    moment. The time when a data transfer can be triggered manually is not
+    limited by this option.
+    """
 
 @pulumi.input_type
 class DataTransferConfigScheduleOptionsArgs:
@@ -1412,23 +1353,20 @@ class DataTransferConfigScheduleOptionsArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class DataTransferConfigSensitiveParamsArgsDict(TypedDict):
-        secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Secret Access Key of the AWS account transferring data from.
-        """
-        secret_access_key_wo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The Secret Access Key of the AWS account transferring data from.
-        """
-        secret_access_key_wo_version: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-        """
-elif False:
-    DataTransferConfigSensitiveParamsArgsDict: TypeAlias = Mapping[str, Any]
+class DataTransferConfigSensitiveParamsArgsDict(TypedDict):
+    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Secret Access Key of the AWS account transferring data from.
+    """
+    secret_access_key_wo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    The Secret Access Key of the AWS account transferring data from.
+    """
+    secret_access_key_wo_version: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+    """
 
 @pulumi.input_type
 class DataTransferConfigSensitiveParamsArgs:
@@ -1487,29 +1425,26 @@ class DataTransferConfigSensitiveParamsArgs:
         pulumi.set(self, "secret_access_key_wo_version", value)
 
 
-if not MYPY:
-    class Datapolicyv2DataPolicyDataMaskingPolicyArgsDict(TypedDict):
-        predefined_expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A predefined masking expression.
-        Possible values:
-        SHA256
-        ALWAYS_NULL
-        DEFAULT_MASKING_VALUE
-        LAST_FOUR_CHARACTERS
-        FIRST_FOUR_CHARACTERS
-        EMAIL_MASK
-        DATE_YEAR_MASK
-        RANDOM_HASH
-        """
-        routine: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the BigQuery routine that contains the custom masking
-        routine, in the format of
-        `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
-        """
-elif False:
-    Datapolicyv2DataPolicyDataMaskingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class Datapolicyv2DataPolicyDataMaskingPolicyArgsDict(TypedDict):
+    predefined_expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A predefined masking expression.
+    Possible values:
+    SHA256
+    ALWAYS_NULL
+    DEFAULT_MASKING_VALUE
+    LAST_FOUR_CHARACTERS
+    FIRST_FOUR_CHARACTERS
+    EMAIL_MASK
+    DATE_YEAR_MASK
+    RANDOM_HASH
+    """
+    routine: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the BigQuery routine that contains the custom masking
+    routine, in the format of
+    `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
+    """
 
 @pulumi.input_type
 class Datapolicyv2DataPolicyDataMaskingPolicyArgs:
@@ -1572,13 +1507,10 @@ class Datapolicyv2DataPolicyDataMaskingPolicyArgs:
         pulumi.set(self, "routine", value)
 
 
-if not MYPY:
-    class Datapolicyv2DataPolicyIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    Datapolicyv2DataPolicyIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class Datapolicyv2DataPolicyIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class Datapolicyv2DataPolicyIamBindingConditionArgs:
@@ -1619,13 +1551,10 @@ class Datapolicyv2DataPolicyIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class Datapolicyv2DataPolicyIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    Datapolicyv2DataPolicyIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class Datapolicyv2DataPolicyIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class Datapolicyv2DataPolicyIamMemberConditionArgs:
@@ -1666,74 +1595,71 @@ class Datapolicyv2DataPolicyIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class DatasetAccessArgsDict(TypedDict):
-        condition: NotRequired[pulumi.Input['DatasetAccessConditionArgsDict']]
-        """
-        Condition for the binding. If CEL expression in this field is true, this
-        access binding will be considered.
-        Structure is documented below.
-        """
-        dataset: NotRequired[pulumi.Input['DatasetAccessDatasetArgsDict']]
-        """
-        Grants all resources of particular types in a particular dataset read access to the current dataset.
-        Structure is documented below.
-        """
-        domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A domain to grant access to. Any users signed in with the
-        domain specified will be granted the specified access
-        """
-        group_by_email: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An email address of a Google Group to grant access to.
-        """
-        iam_member: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Some other type of member that appears in the IAM Policy but isn't a user,
-        group, domain, or special group. For example: `allUsers`
-        """
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Describes the rights granted to the user specified by the other
-        member of the access object. Basic, predefined, and custom roles
-        are supported. Predefined roles that have equivalent basic roles
-        are swapped by the API to their basic counterparts. See
-        [official docs](https://cloud.google.com/bigquery/docs/access-control).
-        """
-        routine: NotRequired[pulumi.Input['DatasetAccessRoutineArgsDict']]
-        """
-        A routine from a different dataset to grant access to. Queries
-        executed against that routine will have read access to tables in
-        this dataset. The role field is not required when this field is
-        set. If that routine is updated by any user, access to the routine
-        needs to be granted again via an update operation.
-        Structure is documented below.
-        """
-        special_group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A special group to grant access to. Possible values include:
-        * `projectOwners`: Owners of the enclosing project.
-        * `projectReaders`: Readers of the enclosing project.
-        * `projectWriters`: Writers of the enclosing project.
-        * `allAuthenticatedUsers`: All authenticated BigQuery users.
-        """
-        user_by_email: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An email address of a user to grant access to. For example:
-        fred@example.com
-        """
-        view: NotRequired[pulumi.Input['DatasetAccessViewArgsDict']]
-        """
-        A view from a different dataset to grant access to. Queries
-        executed against that view will have read access to tables in
-        this dataset. The role field is not required when this field is
-        set. If that view is updated by any user, access to the view
-        needs to be granted again via an update operation.
-        Structure is documented below.
-        """
-elif False:
-    DatasetAccessArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetAccessArgsDict(TypedDict):
+    condition: NotRequired[pulumi.Input['DatasetAccessConditionArgsDict']]
+    """
+    Condition for the binding. If CEL expression in this field is true, this
+    access binding will be considered.
+    Structure is documented below.
+    """
+    dataset: NotRequired[pulumi.Input['DatasetAccessDatasetArgsDict']]
+    """
+    Grants all resources of particular types in a particular dataset read access to the current dataset.
+    Structure is documented below.
+    """
+    domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A domain to grant access to. Any users signed in with the
+    domain specified will be granted the specified access
+    """
+    group_by_email: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An email address of a Google Group to grant access to.
+    """
+    iam_member: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Some other type of member that appears in the IAM Policy but isn't a user,
+    group, domain, or special group. For example: `allUsers`
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Describes the rights granted to the user specified by the other
+    member of the access object. Basic, predefined, and custom roles
+    are supported. Predefined roles that have equivalent basic roles
+    are swapped by the API to their basic counterparts. See
+    [official docs](https://cloud.google.com/bigquery/docs/access-control).
+    """
+    routine: NotRequired[pulumi.Input['DatasetAccessRoutineArgsDict']]
+    """
+    A routine from a different dataset to grant access to. Queries
+    executed against that routine will have read access to tables in
+    this dataset. The role field is not required when this field is
+    set. If that routine is updated by any user, access to the routine
+    needs to be granted again via an update operation.
+    Structure is documented below.
+    """
+    special_group: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A special group to grant access to. Possible values include:
+    * `projectOwners`: Owners of the enclosing project.
+    * `projectReaders`: Readers of the enclosing project.
+    * `projectWriters`: Writers of the enclosing project.
+    * `allAuthenticatedUsers`: All authenticated BigQuery users.
+    """
+    user_by_email: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An email address of a user to grant access to. For example:
+    fred@example.com
+    """
+    view: NotRequired[pulumi.Input['DatasetAccessViewArgsDict']]
+    """
+    A view from a different dataset to grant access to. Queries
+    executed against that view will have read access to tables in
+    this dataset. The role field is not required when this field is
+    set. If that view is updated by any user, access to the view
+    needs to be granted again via an update operation.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DatasetAccessArgs:
@@ -1950,20 +1876,17 @@ class DatasetAccessArgs:
         pulumi.set(self, "view", value)
 
 
-if not MYPY:
-    class DatasetAccessAuthorizedDatasetArgsDict(TypedDict):
-        dataset: pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArgsDict']
-        """
-        The dataset this entry applies to
-        Structure is documented below.
-        """
-        target_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Which resources in the dataset this entry applies to. Currently, only views are supported,
-        but additional target types may be added in the future. Possible values: VIEWS
-        """
-elif False:
-    DatasetAccessAuthorizedDatasetArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetAccessAuthorizedDatasetArgsDict(TypedDict):
+    dataset: pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArgsDict']
+    """
+    The dataset this entry applies to
+    Structure is documented below.
+    """
+    target_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Which resources in the dataset this entry applies to. Currently, only views are supported,
+    but additional target types may be added in the future. Possible values: VIEWS
+    """
 
 @pulumi.input_type
 class DatasetAccessAuthorizedDatasetArgs:
@@ -2006,18 +1929,15 @@ class DatasetAccessAuthorizedDatasetArgs:
         pulumi.set(self, "target_types", value)
 
 
-if not MYPY:
-    class DatasetAccessAuthorizedDatasetDatasetArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the dataset containing this table.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the project containing this table.
-        """
-elif False:
-    DatasetAccessAuthorizedDatasetDatasetArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetAccessAuthorizedDatasetDatasetArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the dataset containing this table.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the project containing this table.
+    """
 
 @pulumi.input_type
 class DatasetAccessAuthorizedDatasetDatasetArgs:
@@ -2056,29 +1976,26 @@ class DatasetAccessAuthorizedDatasetDatasetArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class DatasetAccessConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the expression. This is a longer text which describes the expression,
-        e.g. when hovered over it in a UI.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String indicating the location of the expression for error reporting, e.g. a file
-        name and a position in the file.
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Title for the expression, i.e. a short string describing its purpose.
-        This can be used e.g. in UIs which allow to enter the expression.
-        """
-elif False:
-    DatasetAccessConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetAccessConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the expression. This is a longer text which describes the expression,
+    e.g. when hovered over it in a UI.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String indicating the location of the expression for error reporting, e.g. a file
+    name and a position in the file.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Title for the expression, i.e. a short string describing its purpose.
+    This can be used e.g. in UIs which allow to enter the expression.
+    """
 
 @pulumi.input_type
 class DatasetAccessConditionArgs:
@@ -2156,20 +2073,17 @@ class DatasetAccessConditionArgs:
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class DatasetAccessDatasetArgsDict(TypedDict):
-        dataset: pulumi.Input['DatasetAccessDatasetDatasetArgsDict']
-        """
-        The dataset this entry applies to
-        Structure is documented below.
-        """
-        target_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Which resources in the dataset this entry applies to. Currently, only views are supported,
-        but additional target types may be added in the future. Possible values: VIEWS
-        """
-elif False:
-    DatasetAccessDatasetArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetAccessDatasetArgsDict(TypedDict):
+    dataset: pulumi.Input['DatasetAccessDatasetDatasetArgsDict']
+    """
+    The dataset this entry applies to
+    Structure is documented below.
+    """
+    target_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Which resources in the dataset this entry applies to. Currently, only views are supported,
+    but additional target types may be added in the future. Possible values: VIEWS
+    """
 
 @pulumi.input_type
 class DatasetAccessDatasetArgs:
@@ -2212,18 +2126,15 @@ class DatasetAccessDatasetArgs:
         pulumi.set(self, "target_types", value)
 
 
-if not MYPY:
-    class DatasetAccessDatasetDatasetArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the dataset containing this table.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the project containing this table.
-        """
-elif False:
-    DatasetAccessDatasetDatasetArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetAccessDatasetDatasetArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the dataset containing this table.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the project containing this table.
+    """
 
 @pulumi.input_type
 class DatasetAccessDatasetDatasetArgs:
@@ -2262,24 +2173,21 @@ class DatasetAccessDatasetDatasetArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class DatasetAccessRoutineArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the dataset containing this table.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the project containing this table.
-        """
-        routine_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the routine. The ID must contain only letters (a-z,
-        A-Z), numbers (0-9), or underscores (_). The maximum length
-        is 256 characters.
-        """
-elif False:
-    DatasetAccessRoutineArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetAccessRoutineArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the dataset containing this table.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the project containing this table.
+    """
+    routine_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the routine. The ID must contain only letters (a-z,
+    A-Z), numbers (0-9), or underscores (_). The maximum length
+    is 256 characters.
+    """
 
 @pulumi.input_type
 class DatasetAccessRoutineArgs:
@@ -2337,24 +2245,21 @@ class DatasetAccessRoutineArgs:
         pulumi.set(self, "routine_id", value)
 
 
-if not MYPY:
-    class DatasetAccessViewArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the dataset containing this table.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the project containing this table.
-        """
-        table_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the table. The ID must contain only letters (a-z,
-        A-Z), numbers (0-9), or underscores (_). The maximum length
-        is 1,024 characters.
-        """
-elif False:
-    DatasetAccessViewArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetAccessViewArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the dataset containing this table.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the project containing this table.
+    """
+    table_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the table. The ID must contain only letters (a-z,
+    A-Z), numbers (0-9), or underscores (_). The maximum length
+    is 1,024 characters.
+    """
 
 @pulumi.input_type
 class DatasetAccessViewArgs:
@@ -2412,16 +2317,13 @@ class DatasetAccessViewArgs:
         pulumi.set(self, "table_id", value)
 
 
-if not MYPY:
-    class DatasetDefaultEncryptionConfigurationArgsDict(TypedDict):
-        kms_key_name: pulumi.Input[_builtins.str]
-        """
-        Describes the Cloud KMS encryption key that will be used to protect destination
-        BigQuery table. The BigQuery Service Account associated with your project requires
-        access to this encryption key.
-        """
-elif False:
-    DatasetDefaultEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetDefaultEncryptionConfigurationArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    Describes the Cloud KMS encryption key that will be used to protect destination
+    BigQuery table. The BigQuery Service Account associated with your project requires
+    access to this encryption key.
+    """
 
 @pulumi.input_type
 class DatasetDefaultEncryptionConfigurationArgs:
@@ -2449,20 +2351,17 @@ class DatasetDefaultEncryptionConfigurationArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
-if not MYPY:
-    class DatasetExternalCatalogDatasetOptionsArgsDict(TypedDict):
-        default_storage_location_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The storage location URI for all tables in the dataset. Equivalent to hive metastore's
-        database locationUri. Maximum length of 1024 characters.
-        """
-        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map of key value pairs defining the parameters and properties of the open source schema.
-        Maximum size of 2Mib.
-        """
-elif False:
-    DatasetExternalCatalogDatasetOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetExternalCatalogDatasetOptionsArgsDict(TypedDict):
+    default_storage_location_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+    database locationUri. Maximum length of 1024 characters.
+    """
+    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map of key value pairs defining the parameters and properties of the open source schema.
+    Maximum size of 2Mib.
+    """
 
 @pulumi.input_type
 class DatasetExternalCatalogDatasetOptionsArgs:
@@ -2507,19 +2406,16 @@ class DatasetExternalCatalogDatasetOptionsArgs:
         pulumi.set(self, "parameters", value)
 
 
-if not MYPY:
-    class DatasetExternalDatasetReferenceArgsDict(TypedDict):
-        connection: pulumi.Input[_builtins.str]
-        """
-        The connection id that is used to access the externalSource.
-        Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
-        """
-        external_source: pulumi.Input[_builtins.str]
-        """
-        External source that backs this dataset.
-        """
-elif False:
-    DatasetExternalDatasetReferenceArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetExternalDatasetReferenceArgsDict(TypedDict):
+    connection: pulumi.Input[_builtins.str]
+    """
+    The connection id that is used to access the externalSource.
+    Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+    """
+    external_source: pulumi.Input[_builtins.str]
+    """
+    External source that backs this dataset.
+    """
 
 @pulumi.input_type
 class DatasetExternalDatasetReferenceArgs:
@@ -2560,19 +2456,23 @@ class DatasetExternalDatasetReferenceArgs:
         pulumi.set(self, "external_source", value)
 
 
-if not MYPY:
-    class DatasetIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DatasetIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class DatasetIamBindingConditionArgs:
@@ -2583,6 +2483,11 @@ class DatasetIamBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -2616,6 +2521,13 @@ class DatasetIamBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2623,19 +2535,23 @@ class DatasetIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class DatasetIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DatasetIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DatasetIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class DatasetIamMemberConditionArgs:
@@ -2646,6 +2562,11 @@ class DatasetIamMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -2679,6 +2600,13 @@ class DatasetIamMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2686,13 +2614,10 @@ class DatasetIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class IamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    IamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class IamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class IamBindingConditionArgs:
@@ -2733,13 +2658,10 @@ class IamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class IamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    IamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class IamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class IamMemberConditionArgs:
@@ -2780,45 +2702,42 @@ class IamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class JobCopyArgsDict(TypedDict):
-        source_tables: pulumi.Input[Sequence[pulumi.Input['JobCopySourceTableArgsDict']]]
-        """
-        Source tables to copy.
-        Structure is documented below.
-        """
-        create_disposition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether the job is allowed to create new tables. The following values are supported:
-        CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
-        CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-        Creation, truncation and append actions occur as one atomic update upon job completion
-        Default value is `CREATE_IF_NEEDED`.
-        Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
-        """
-        destination_encryption_configuration: NotRequired[pulumi.Input['JobCopyDestinationEncryptionConfigurationArgsDict']]
-        """
-        Custom encryption configuration (e.g., Cloud KMS keys)
-        Structure is documented below.
-        """
-        destination_table: NotRequired[pulumi.Input['JobCopyDestinationTableArgsDict']]
-        """
-        The destination table.
-        Structure is documented below.
-        """
-        write_disposition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the action that occurs if the destination table already exists. The following values are supported:
-        WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
-        WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
-        WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-        Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
-        Creation, truncation and append actions occur as one atomic update upon job completion.
-        Default value is `WRITE_EMPTY`.
-        Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
-        """
-elif False:
-    JobCopyArgsDict: TypeAlias = Mapping[str, Any]
+class JobCopyArgsDict(TypedDict):
+    source_tables: pulumi.Input[Sequence[pulumi.Input['JobCopySourceTableArgsDict']]]
+    """
+    Source tables to copy.
+    Structure is documented below.
+    """
+    create_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether the job is allowed to create new tables. The following values are supported:
+    CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+    CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+    Creation, truncation and append actions occur as one atomic update upon job completion
+    Default value is `CREATE_IF_NEEDED`.
+    Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
+    """
+    destination_encryption_configuration: NotRequired[pulumi.Input['JobCopyDestinationEncryptionConfigurationArgsDict']]
+    """
+    Custom encryption configuration (e.g., Cloud KMS keys)
+    Structure is documented below.
+    """
+    destination_table: NotRequired[pulumi.Input['JobCopyDestinationTableArgsDict']]
+    """
+    The destination table.
+    Structure is documented below.
+    """
+    write_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the action that occurs if the destination table already exists. The following values are supported:
+    WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+    WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+    WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+    Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+    Creation, truncation and append actions occur as one atomic update upon job completion.
+    Default value is `WRITE_EMPTY`.
+    Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
+    """
 
 @pulumi.input_type
 class JobCopyArgs:
@@ -2936,20 +2855,17 @@ class JobCopyArgs:
         pulumi.set(self, "write_disposition", value)
 
 
-if not MYPY:
-    class JobCopyDestinationEncryptionConfigurationArgsDict(TypedDict):
-        kms_key_name: pulumi.Input[_builtins.str]
-        """
-        Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
-        The BigQuery Service Account associated with your project requires access to this encryption key.
-        """
-        kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
-        """
-elif False:
-    JobCopyDestinationEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class JobCopyDestinationEncryptionConfigurationArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+    The BigQuery Service Account associated with your project requires access to this encryption key.
+    """
+    kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+    """
 
 @pulumi.input_type
 class JobCopyDestinationEncryptionConfigurationArgs:
@@ -2993,23 +2909,20 @@ class JobCopyDestinationEncryptionConfigurationArgs:
         pulumi.set(self, "kms_key_version", value)
 
 
-if not MYPY:
-    class JobCopyDestinationTableArgsDict(TypedDict):
-        table_id: pulumi.Input[_builtins.str]
-        """
-        The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
-        or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
-        """
-        dataset_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the dataset containing this table.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the project containing this table.
-        """
-elif False:
-    JobCopyDestinationTableArgsDict: TypeAlias = Mapping[str, Any]
+class JobCopyDestinationTableArgsDict(TypedDict):
+    table_id: pulumi.Input[_builtins.str]
+    """
+    The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+    or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
+    """
+    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the dataset containing this table.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the project containing this table.
+    """
 
 @pulumi.input_type
 class JobCopyDestinationTableArgs:
@@ -3067,23 +2980,20 @@ class JobCopyDestinationTableArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class JobCopySourceTableArgsDict(TypedDict):
-        table_id: pulumi.Input[_builtins.str]
-        """
-        The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
-        or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
-        """
-        dataset_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the dataset containing this table.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the project containing this table.
-        """
-elif False:
-    JobCopySourceTableArgsDict: TypeAlias = Mapping[str, Any]
+class JobCopySourceTableArgsDict(TypedDict):
+    table_id: pulumi.Input[_builtins.str]
+    """
+    The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+    or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
+    """
+    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the dataset containing this table.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the project containing this table.
+    """
 
 @pulumi.input_type
 class JobCopySourceTableArgs:
@@ -3141,48 +3051,45 @@ class JobCopySourceTableArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class JobExtractArgsDict(TypedDict):
-        destination_uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
-        """
-        compression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
-        The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
-        """
-        destination_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON and AVRO for tables and SAVED_MODEL for models.
-        The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV.
-        The default value for models is SAVED_MODEL.
-        """
-        field_delimiter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-        Default is ','
-        """
-        print_header: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to print out a header row in the results. Default is true.
-        """
-        source_model: NotRequired[pulumi.Input['JobExtractSourceModelArgsDict']]
-        """
-        A reference to the model being exported.
-        Structure is documented below.
-        """
-        source_table: NotRequired[pulumi.Input['JobExtractSourceTableArgsDict']]
-        """
-        A reference to the table being exported.
-        Structure is documented below.
-        """
-        use_avro_logical_types: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to use logical types when extracting to AVRO format.
-        """
-elif False:
-    JobExtractArgsDict: TypeAlias = Mapping[str, Any]
+class JobExtractArgsDict(TypedDict):
+    destination_uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
+    """
+    compression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
+    The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
+    """
+    destination_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON and AVRO for tables and SAVED_MODEL for models.
+    The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV.
+    The default value for models is SAVED_MODEL.
+    """
+    field_delimiter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
+    Default is ','
+    """
+    print_header: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to print out a header row in the results. Default is true.
+    """
+    source_model: NotRequired[pulumi.Input['JobExtractSourceModelArgsDict']]
+    """
+    A reference to the model being exported.
+    Structure is documented below.
+    """
+    source_table: NotRequired[pulumi.Input['JobExtractSourceTableArgsDict']]
+    """
+    A reference to the table being exported.
+    Structure is documented below.
+    """
+    use_avro_logical_types: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to use logical types when extracting to AVRO format.
+    """
 
 @pulumi.input_type
 class JobExtractArgs:
@@ -3330,22 +3237,19 @@ class JobExtractArgs:
         pulumi.set(self, "use_avro_logical_types", value)
 
 
-if not MYPY:
-    class JobExtractSourceModelArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the dataset containing this model.
-        """
-        model_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the model.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the project containing this model.
-        """
-elif False:
-    JobExtractSourceModelArgsDict: TypeAlias = Mapping[str, Any]
+class JobExtractSourceModelArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the dataset containing this model.
+    """
+    model_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the model.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the project containing this model.
+    """
 
 @pulumi.input_type
 class JobExtractSourceModelArgs:
@@ -3399,23 +3303,20 @@ class JobExtractSourceModelArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class JobExtractSourceTableArgsDict(TypedDict):
-        table_id: pulumi.Input[_builtins.str]
-        """
-        The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
-        or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
-        """
-        dataset_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the dataset containing this table.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the project containing this table.
-        """
-elif False:
-    JobExtractSourceTableArgsDict: TypeAlias = Mapping[str, Any]
+class JobExtractSourceTableArgsDict(TypedDict):
+    table_id: pulumi.Input[_builtins.str]
+    """
+    The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+    or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
+    """
+    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the dataset containing this table.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the project containing this table.
+    """
 
 @pulumi.input_type
 class JobExtractSourceTableArgs:
@@ -3473,155 +3374,152 @@ class JobExtractSourceTableArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class JobLoadArgsDict(TypedDict):
-        destination_table: pulumi.Input['JobLoadDestinationTableArgsDict']
-        """
-        The destination table to load the data into.
-        Structure is documented below.
-        """
-        source_uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The fully-qualified URIs that point to your data in Google Cloud.
-        For Google Cloud Storage URIs: Each URI can contain one '\\*' wildcard character
-        and it must come after the 'bucket' name. Size limits related to load jobs apply
-        to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
-        specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-        For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\\*' wildcard character is not allowed.
-        """
-        allow_jagged_rows: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
-        If false, records with missing trailing columns are treated as bad records, and if there are too many bad records,
-        an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
-        """
-        allow_quoted_newlines: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file.
-        The default value is false.
-        """
-        autodetect: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if we should automatically infer the options and schema for CSV and JSON sources.
-        """
-        create_disposition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether the job is allowed to create new tables. The following values are supported:
-        CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
-        CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-        Creation, truncation and append actions occur as one atomic update upon job completion
-        Default value is `CREATE_IF_NEEDED`.
-        Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
-        """
-        destination_encryption_configuration: NotRequired[pulumi.Input['JobLoadDestinationEncryptionConfigurationArgsDict']]
-        """
-        Custom encryption configuration (e.g., Cloud KMS keys)
-        Structure is documented below.
-        """
-        encoding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
-        The default value is UTF-8. BigQuery decodes the data after the raw, binary data
-        has been split using the values of the quote and fieldDelimiter properties.
-        """
-        field_delimiter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
-        To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
-        the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
-        data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator.
-        The default value is a comma (',').
-        """
-        ignore_unknown_values: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if BigQuery should allow extra values that are not represented in the table schema.
-        If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
-        and if there are too many bad records, an invalid error is returned in the job result.
-        The default value is false. The sourceFormat property determines what BigQuery treats as an extra value:
-        CSV: Trailing columns
-        JSON: Named values that don't match any column names
-        """
-        json_extension: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
-        For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
-        GeoJSON: set to GEOJSON.
-        """
-        max_bad_records: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
-        an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
-        """
-        null_marker: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-        property to a custom value, BigQuery throws an error if an
-        empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
-        an empty value.
-        """
-        parquet_options: NotRequired[pulumi.Input['JobLoadParquetOptionsArgsDict']]
-        """
-        Parquet Options for load and make external tables.
-        Structure is documented below.
-        """
-        projection_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
-        Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
-        If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
-        """
-        quote: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
-        and then uses the first byte of the encoded string to split the data in its raw, binary state.
-        The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string.
-        If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
-        """
-        schema_update_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-        supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-        when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-        For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
-        ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
-        ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-        """
-        skip_leading_rows: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
-        The default value is 0. This property is useful if you have header rows in the file that should be skipped.
-        When autodetect is on, the behavior is the following:
-        skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected,
-        the row is read as data. Otherwise data is read starting from the second row.
-        skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row.
-        skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected,
-        row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
-        """
-        source_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
-        For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
-        For orc, specify "ORC". [Beta] For Bigtable, specify "BIGTABLE".
-        The default value is CSV.
-        """
-        time_partitioning: NotRequired[pulumi.Input['JobLoadTimePartitioningArgsDict']]
-        """
-        Time-based partitioning specification for the destination table.
-        Structure is documented below.
-        """
-        write_disposition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the action that occurs if the destination table already exists. The following values are supported:
-        WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
-        WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
-        WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-        Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
-        Creation, truncation and append actions occur as one atomic update upon job completion.
-        Default value is `WRITE_EMPTY`.
-        Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
-        """
-elif False:
-    JobLoadArgsDict: TypeAlias = Mapping[str, Any]
+class JobLoadArgsDict(TypedDict):
+    destination_table: pulumi.Input['JobLoadDestinationTableArgsDict']
+    """
+    The destination table to load the data into.
+    Structure is documented below.
+    """
+    source_uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The fully-qualified URIs that point to your data in Google Cloud.
+    For Google Cloud Storage URIs: Each URI can contain one '\\*' wildcard character
+    and it must come after the 'bucket' name. Size limits related to load jobs apply
+    to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
+    specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
+    For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\\*' wildcard character is not allowed.
+    """
+    allow_jagged_rows: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
+    If false, records with missing trailing columns are treated as bad records, and if there are too many bad records,
+    an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
+    """
+    allow_quoted_newlines: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file.
+    The default value is false.
+    """
+    autodetect: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if we should automatically infer the options and schema for CSV and JSON sources.
+    """
+    create_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether the job is allowed to create new tables. The following values are supported:
+    CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+    CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+    Creation, truncation and append actions occur as one atomic update upon job completion
+    Default value is `CREATE_IF_NEEDED`.
+    Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
+    """
+    destination_encryption_configuration: NotRequired[pulumi.Input['JobLoadDestinationEncryptionConfigurationArgsDict']]
+    """
+    Custom encryption configuration (e.g., Cloud KMS keys)
+    Structure is documented below.
+    """
+    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
+    The default value is UTF-8. BigQuery decodes the data after the raw, binary data
+    has been split using the values of the quote and fieldDelimiter properties.
+    """
+    field_delimiter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+    To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+    the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+    data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator.
+    The default value is a comma (',').
+    """
+    ignore_unknown_values: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if BigQuery should allow extra values that are not represented in the table schema.
+    If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
+    and if there are too many bad records, an invalid error is returned in the job result.
+    The default value is false. The sourceFormat property determines what BigQuery treats as an extra value:
+    CSV: Trailing columns
+    JSON: Named values that don't match any column names
+    """
+    json_extension: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+    For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+    GeoJSON: set to GEOJSON.
+    """
+    max_bad_records: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
+    an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
+    """
+    null_marker: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
+    property to a custom value, BigQuery throws an error if an
+    empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
+    an empty value.
+    """
+    parquet_options: NotRequired[pulumi.Input['JobLoadParquetOptionsArgsDict']]
+    """
+    Parquet Options for load and make external tables.
+    Structure is documented below.
+    """
+    projection_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
+    Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
+    If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
+    """
+    quote: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
+    and then uses the first byte of the encoded string to split the data in its raw, binary state.
+    The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string.
+    If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
+    """
+    schema_update_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+    supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+    when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
+    For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+    ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+    ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+    """
+    skip_leading_rows: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
+    The default value is 0. This property is useful if you have header rows in the file that should be skipped.
+    When autodetect is on, the behavior is the following:
+    skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected,
+    the row is read as data. Otherwise data is read starting from the second row.
+    skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row.
+    skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected,
+    row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
+    """
+    source_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
+    For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
+    For orc, specify "ORC". [Beta] For Bigtable, specify "BIGTABLE".
+    The default value is CSV.
+    """
+    time_partitioning: NotRequired[pulumi.Input['JobLoadTimePartitioningArgsDict']]
+    """
+    Time-based partitioning specification for the destination table.
+    Structure is documented below.
+    """
+    write_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the action that occurs if the destination table already exists. The following values are supported:
+    WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+    WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+    WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+    Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+    Creation, truncation and append actions occur as one atomic update upon job completion.
+    Default value is `WRITE_EMPTY`.
+    Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
+    """
 
 @pulumi.input_type
 class JobLoadArgs:
@@ -4086,20 +3984,17 @@ class JobLoadArgs:
         pulumi.set(self, "write_disposition", value)
 
 
-if not MYPY:
-    class JobLoadDestinationEncryptionConfigurationArgsDict(TypedDict):
-        kms_key_name: pulumi.Input[_builtins.str]
-        """
-        Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
-        The BigQuery Service Account associated with your project requires access to this encryption key.
-        """
-        kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
-        """
-elif False:
-    JobLoadDestinationEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class JobLoadDestinationEncryptionConfigurationArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+    The BigQuery Service Account associated with your project requires access to this encryption key.
+    """
+    kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+    """
 
 @pulumi.input_type
 class JobLoadDestinationEncryptionConfigurationArgs:
@@ -4143,23 +4038,20 @@ class JobLoadDestinationEncryptionConfigurationArgs:
         pulumi.set(self, "kms_key_version", value)
 
 
-if not MYPY:
-    class JobLoadDestinationTableArgsDict(TypedDict):
-        table_id: pulumi.Input[_builtins.str]
-        """
-        The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
-        or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
-        """
-        dataset_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the dataset containing this table.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the project containing this table.
-        """
-elif False:
-    JobLoadDestinationTableArgsDict: TypeAlias = Mapping[str, Any]
+class JobLoadDestinationTableArgsDict(TypedDict):
+    table_id: pulumi.Input[_builtins.str]
+    """
+    The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+    or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
+    """
+    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the dataset containing this table.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the project containing this table.
+    """
 
 @pulumi.input_type
 class JobLoadDestinationTableArgs:
@@ -4217,18 +4109,15 @@ class JobLoadDestinationTableArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class JobLoadParquetOptionsArgsDict(TypedDict):
-        enable_list_inference: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
-        """
-        enum_as_string: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
-        """
-elif False:
-    JobLoadParquetOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class JobLoadParquetOptionsArgsDict(TypedDict):
+    enable_list_inference: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
+    """
+    enum_as_string: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+    """
 
 @pulumi.input_type
 class JobLoadParquetOptionsArgs:
@@ -4269,25 +4158,22 @@ class JobLoadParquetOptionsArgs:
         pulumi.set(self, "enum_as_string", value)
 
 
-if not MYPY:
-    class JobLoadTimePartitioningArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        The only type supported is DAY, which will generate one partition per day. Providing an empty string used to cause an error,
-        but in OnePlatform the field will be treated as unset.
-        """
-        expiration_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
-        """
-        field: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field.
-        The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
-        A wrapper is used here because an empty string is an invalid value.
-        """
-elif False:
-    JobLoadTimePartitioningArgsDict: TypeAlias = Mapping[str, Any]
+class JobLoadTimePartitioningArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The only type supported is DAY, which will generate one partition per day. Providing an empty string used to cause an error,
+    but in OnePlatform the field will be treated as unset.
+    """
+    expiration_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
+    """
+    field: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field.
+    The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
+    A wrapper is used here because an empty string is an invalid value.
+    """
 
 @pulumi.input_type
 class JobLoadTimePartitioningArgs:
@@ -4349,127 +4235,124 @@ class JobLoadTimePartitioningArgs:
         pulumi.set(self, "field", value)
 
 
-if not MYPY:
-    class JobQueryArgsDict(TypedDict):
-        query: pulumi.Input[_builtins.str]
-        """
-        SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-        *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-        (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
-        """
-        allow_large_results: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
-        Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
-        However, you must still set destinationTable when result size exceeds the allowed maximum response size.
-        """
-        connection_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobQueryConnectionPropertyArgsDict']]]]
-        """
-        Connection properties to customize query behavior. Under JDBC, these correspond
-        directly to connection properties passed to the DriverManager. Under ODBC, these
-        correspond to properties in the connection string.
-        Structure is documented below.
-        """
-        continuous: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Optional, Beta)
-        Whether to run the query as continuous or a regular query.
-        """
-        create_disposition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether the job is allowed to create new tables. The following values are supported:
-        CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
-        CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-        Creation, truncation and append actions occur as one atomic update upon job completion
-        Default value is `CREATE_IF_NEEDED`.
-        Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
-        """
-        default_dataset: NotRequired[pulumi.Input['JobQueryDefaultDatasetArgsDict']]
-        """
-        Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
-        Structure is documented below.
-        """
-        destination_encryption_configuration: NotRequired[pulumi.Input['JobQueryDestinationEncryptionConfigurationArgsDict']]
-        """
-        Custom encryption configuration (e.g., Cloud KMS keys)
-        Structure is documented below.
-        """
-        destination_table: NotRequired[pulumi.Input['JobQueryDestinationTableArgsDict']]
-        """
-        Describes the table where the query results should be stored.
-        This property must be set for large results that exceed the maximum response size.
-        For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
-        Structure is documented below.
-        """
-        flatten_results: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
-        allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
-        """
-        maximum_billing_tier: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
-        If unspecified, this will be set to your project default.
-        """
-        maximum_bytes_billed: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
-        If unspecified, this will be set to your project default.
-        """
-        parameter_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
-        """
-        priority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a priority for the query.
-        Default value is `INTERACTIVE`.
-        Possible values are: `INTERACTIVE`, `BATCH`.
-        """
-        schema_update_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allows the schema of the destination table to be updated as a side effect of the query job.
-        Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-        when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
-        specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
-        One or more of the following values are specified:
-        ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
-        ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-        """
-        script_options: NotRequired[pulumi.Input['JobQueryScriptOptionsArgsDict']]
-        """
-        Options controlling the execution of scripts.
-        Structure is documented below.
-        """
-        use_legacy_sql: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
-        If set to false, the query will use BigQuery's standard SQL.
-        """
-        use_query_cache: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
-        tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
-        The default value is true.
-        """
-        user_defined_function_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgsDict']]]]
-        """
-        Describes user-defined function resources used in the query.
-        Structure is documented below.
-        """
-        write_disposition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the action that occurs if the destination table already exists. The following values are supported:
-        WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
-        WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
-        WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-        Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
-        Creation, truncation and append actions occur as one atomic update upon job completion.
-        Default value is `WRITE_EMPTY`.
-        Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
-        """
-elif False:
-    JobQueryArgsDict: TypeAlias = Mapping[str, Any]
+class JobQueryArgsDict(TypedDict):
+    query: pulumi.Input[_builtins.str]
+    """
+    SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+    *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+    (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+    """
+    allow_large_results: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
+    Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
+    However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+    """
+    connection_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobQueryConnectionPropertyArgsDict']]]]
+    """
+    Connection properties to customize query behavior. Under JDBC, these correspond
+    directly to connection properties passed to the DriverManager. Under ODBC, these
+    correspond to properties in the connection string.
+    Structure is documented below.
+    """
+    continuous: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Optional, Beta)
+    Whether to run the query as continuous or a regular query.
+    """
+    create_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether the job is allowed to create new tables. The following values are supported:
+    CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+    CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+    Creation, truncation and append actions occur as one atomic update upon job completion
+    Default value is `CREATE_IF_NEEDED`.
+    Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
+    """
+    default_dataset: NotRequired[pulumi.Input['JobQueryDefaultDatasetArgsDict']]
+    """
+    Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
+    Structure is documented below.
+    """
+    destination_encryption_configuration: NotRequired[pulumi.Input['JobQueryDestinationEncryptionConfigurationArgsDict']]
+    """
+    Custom encryption configuration (e.g., Cloud KMS keys)
+    Structure is documented below.
+    """
+    destination_table: NotRequired[pulumi.Input['JobQueryDestinationTableArgsDict']]
+    """
+    Describes the table where the query results should be stored.
+    This property must be set for large results that exceed the maximum response size.
+    For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
+    Structure is documented below.
+    """
+    flatten_results: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
+    allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
+    """
+    maximum_billing_tier: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
+    If unspecified, this will be set to your project default.
+    """
+    maximum_bytes_billed: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
+    If unspecified, this will be set to your project default.
+    """
+    parameter_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+    """
+    priority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies a priority for the query.
+    Default value is `INTERACTIVE`.
+    Possible values are: `INTERACTIVE`, `BATCH`.
+    """
+    schema_update_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allows the schema of the destination table to be updated as a side effect of the query job.
+    Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+    when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+    specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+    One or more of the following values are specified:
+    ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+    ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+    """
+    script_options: NotRequired[pulumi.Input['JobQueryScriptOptionsArgsDict']]
+    """
+    Options controlling the execution of scripts.
+    Structure is documented below.
+    """
+    use_legacy_sql: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
+    If set to false, the query will use BigQuery's standard SQL.
+    """
+    use_query_cache: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
+    tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
+    The default value is true.
+    """
+    user_defined_function_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgsDict']]]]
+    """
+    Describes user-defined function resources used in the query.
+    Structure is documented below.
+    """
+    write_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the action that occurs if the destination table already exists. The following values are supported:
+    WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+    WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+    WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+    Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+    Creation, truncation and append actions occur as one atomic update upon job completion.
+    Default value is `WRITE_EMPTY`.
+    Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
+    """
 
 @pulumi.input_type
 class JobQueryArgs:
@@ -4863,18 +4746,15 @@ class JobQueryArgs:
         pulumi.set(self, "write_disposition", value)
 
 
-if not MYPY:
-    class JobQueryConnectionPropertyArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The key of the property to set. Currently supported connection properties:
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The value of the property to set.
-        """
-elif False:
-    JobQueryConnectionPropertyArgsDict: TypeAlias = Mapping[str, Any]
+class JobQueryConnectionPropertyArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key of the property to set. Currently supported connection properties:
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the property to set.
+    """
 
 @pulumi.input_type
 class JobQueryConnectionPropertyArgs:
@@ -4913,19 +4793,16 @@ class JobQueryConnectionPropertyArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class JobQueryDefaultDatasetArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
-        or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the project containing this table.
-        """
-elif False:
-    JobQueryDefaultDatasetArgsDict: TypeAlias = Mapping[str, Any]
+class JobQueryDefaultDatasetArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+    or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the project containing this table.
+    """
 
 @pulumi.input_type
 class JobQueryDefaultDatasetArgs:
@@ -4967,20 +4844,17 @@ class JobQueryDefaultDatasetArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class JobQueryDestinationEncryptionConfigurationArgsDict(TypedDict):
-        kms_key_name: pulumi.Input[_builtins.str]
-        """
-        Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
-        The BigQuery Service Account associated with your project requires access to this encryption key.
-        """
-        kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
-        """
-elif False:
-    JobQueryDestinationEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class JobQueryDestinationEncryptionConfigurationArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+    The BigQuery Service Account associated with your project requires access to this encryption key.
+    """
+    kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+    """
 
 @pulumi.input_type
 class JobQueryDestinationEncryptionConfigurationArgs:
@@ -5024,23 +4898,20 @@ class JobQueryDestinationEncryptionConfigurationArgs:
         pulumi.set(self, "kms_key_version", value)
 
 
-if not MYPY:
-    class JobQueryDestinationTableArgsDict(TypedDict):
-        table_id: pulumi.Input[_builtins.str]
-        """
-        The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
-        or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
-        """
-        dataset_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the dataset containing this table.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the project containing this table.
-        """
-elif False:
-    JobQueryDestinationTableArgsDict: TypeAlias = Mapping[str, Any]
+class JobQueryDestinationTableArgsDict(TypedDict):
+    table_id: pulumi.Input[_builtins.str]
+    """
+    The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+    or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
+    """
+    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the dataset containing this table.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the project containing this table.
+    """
 
 @pulumi.input_type
 class JobQueryDestinationTableArgs:
@@ -5098,24 +4969,21 @@ class JobQueryDestinationTableArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class JobQueryScriptOptionsArgsDict(TypedDict):
-        key_result_statement: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Determines which statement in the script represents the "key result",
-        used to populate the schema and query results of the script job.
-        Possible values are: `LAST`, `FIRST_SELECT`.
-        """
-        statement_byte_budget: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
-        """
-        statement_timeout_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timeout period for each statement in a script.
-        """
-elif False:
-    JobQueryScriptOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class JobQueryScriptOptionsArgsDict(TypedDict):
+    key_result_statement: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Determines which statement in the script represents the "key result",
+    used to populate the schema and query results of the script job.
+    Possible values are: `LAST`, `FIRST_SELECT`.
+    """
+    statement_byte_budget: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
+    """
+    statement_timeout_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout period for each statement in a script.
+    """
 
 @pulumi.input_type
 class JobQueryScriptOptionsArgs:
@@ -5176,19 +5044,16 @@ class JobQueryScriptOptionsArgs:
         pulumi.set(self, "statement_timeout_ms", value)
 
 
-if not MYPY:
-    class JobQueryUserDefinedFunctionResourceArgsDict(TypedDict):
-        inline_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An inline resource that contains code for a user-defined function (UDF).
-        Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
-        """
-        resource_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
-        """
-elif False:
-    JobQueryUserDefinedFunctionResourceArgsDict: TypeAlias = Mapping[str, Any]
+class JobQueryUserDefinedFunctionResourceArgsDict(TypedDict):
+    inline_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An inline resource that contains code for a user-defined function (UDF).
+    Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
+    """
+    resource_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
+    """
 
 @pulumi.input_type
 class JobQueryUserDefinedFunctionResourceArgs:
@@ -5231,29 +5096,26 @@ class JobQueryUserDefinedFunctionResourceArgs:
         pulumi.set(self, "resource_uri", value)
 
 
-if not MYPY:
-    class JobStatusArgsDict(TypedDict):
-        error_results: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgsDict']]]]
-        """
-        (Output)
-        Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
-        Structure is documented below.
-        """
-        errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgsDict']]]]
-        """
-        (Output)
-        The first errors encountered during the running of the job. The final message
-        includes the number of errors that caused the process to stop. Errors here do
-        not necessarily mean that the job has not completed or was unsuccessful.
-        Structure is documented below.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
-        """
-elif False:
-    JobStatusArgsDict: TypeAlias = Mapping[str, Any]
+class JobStatusArgsDict(TypedDict):
+    error_results: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgsDict']]]]
+    """
+    (Output)
+    Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+    Structure is documented below.
+    """
+    errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgsDict']]]]
+    """
+    (Output)
+    The first errors encountered during the running of the job. The final message
+    includes the number of errors that caused the process to stop. Errors here do
+    not necessarily mean that the job has not completed or was unsuccessful.
+    Structure is documented below.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
+    """
 
 @pulumi.input_type
 class JobStatusArgs:
@@ -5324,22 +5186,19 @@ class JobStatusArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class JobStatusErrorArgsDict(TypedDict):
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The geographic location of the job. The default value is US.
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A human-readable description of the error.
-        """
-        reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A short error code that summarizes the error.
-        """
-elif False:
-    JobStatusErrorArgsDict: TypeAlias = Mapping[str, Any]
+class JobStatusErrorArgsDict(TypedDict):
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The geographic location of the job. The default value is US.
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A human-readable description of the error.
+    """
+    reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A short error code that summarizes the error.
+    """
 
 @pulumi.input_type
 class JobStatusErrorArgs:
@@ -5396,22 +5255,19 @@ class JobStatusErrorArgs:
         pulumi.set(self, "reason", value)
 
 
-if not MYPY:
-    class JobStatusErrorResultArgsDict(TypedDict):
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The geographic location of the job. The default value is US.
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A human-readable description of the error.
-        """
-        reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A short error code that summarizes the error.
-        """
-elif False:
-    JobStatusErrorResultArgsDict: TypeAlias = Mapping[str, Any]
+class JobStatusErrorResultArgsDict(TypedDict):
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The geographic location of the job. The default value is US.
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A human-readable description of the error.
+    """
+    reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A short error code that summarizes the error.
+    """
 
 @pulumi.input_type
 class JobStatusErrorResultArgs:
@@ -5468,19 +5324,16 @@ class JobStatusErrorResultArgs:
         pulumi.set(self, "reason", value)
 
 
-if not MYPY:
-    class ReservationAutoscaleArgsDict(TypedDict):
-        current_slots: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
-        """
-        max_slots: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of slots to be scaled when needed.
-        """
-elif False:
-    ReservationAutoscaleArgsDict: TypeAlias = Mapping[str, Any]
+class ReservationAutoscaleArgsDict(TypedDict):
+    current_slots: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
+    """
+    max_slots: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of slots to be scaled when needed.
+    """
 
 @pulumi.input_type
 class ReservationAutoscaleArgs:
@@ -5523,30 +5376,27 @@ class ReservationAutoscaleArgs:
         pulumi.set(self, "max_slots", value)
 
 
-if not MYPY:
-    class ReservationReplicationStatusArgsDict(TypedDict):
-        errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgsDict']]]]
-        """
-        (Output)
-        The last error encountered while trying to replicate changes from the primary to the
-        secondary. This field is only available if the replication has not succeeded since.
-        Structure is documented below.
-        """
-        last_error_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The time at which the last error was encountered while trying to replicate changes from
-        the primary to the secondary. This field is only available if the replication has not
-        succeeded since.
-        """
-        last_replication_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A timestamp corresponding to the last change on the primary that was successfully
-        replicated to the secondary.
-        """
-elif False:
-    ReservationReplicationStatusArgsDict: TypeAlias = Mapping[str, Any]
+class ReservationReplicationStatusArgsDict(TypedDict):
+    errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgsDict']]]]
+    """
+    (Output)
+    The last error encountered while trying to replicate changes from the primary to the
+    secondary. This field is only available if the replication has not succeeded since.
+    Structure is documented below.
+    """
+    last_error_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The time at which the last error was encountered while trying to replicate changes from
+    the primary to the secondary. This field is only available if the replication has not
+    succeeded since.
+    """
+    last_replication_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A timestamp corresponding to the last change on the primary that was successfully
+    replicated to the secondary.
+    """
 
 @pulumi.input_type
 class ReservationReplicationStatusArgs:
@@ -5619,20 +5469,17 @@ class ReservationReplicationStatusArgs:
         pulumi.set(self, "last_replication_time", value)
 
 
-if not MYPY:
-    class ReservationReplicationStatusErrorArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The status code, which should be an enum value of [google.rpc.Code](https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.rpc#google.rpc.Code).
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A developer-facing error message, which should be in English.
-        """
-elif False:
-    ReservationReplicationStatusErrorArgsDict: TypeAlias = Mapping[str, Any]
+class ReservationReplicationStatusErrorArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The status code, which should be an enum value of [google.rpc.Code](https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.rpc#google.rpc.Code).
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A developer-facing error message, which should be in English.
+    """
 
 @pulumi.input_type
 class ReservationReplicationStatusErrorArgs:
@@ -5677,35 +5524,32 @@ class ReservationReplicationStatusErrorArgs:
         pulumi.set(self, "message", value)
 
 
-if not MYPY:
-    class RoutineArgumentArgsDict(TypedDict):
-        argument_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defaults to FIXED_TYPE.
-        Default value is `FIXED_TYPE`.
-        Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
-        """
-        data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
-        ~>**NOTE**: Because this field expects a JSON string, any changes to the string
-        will create a diff, even if the JSON itself hasn't changed. If the API returns
-        a different value for the same schema, e.g. it switched the order of values
-        or replaced STRUCT field type with RECORD field type, we currently cannot
-        suppress the recurring diff this causes. As a workaround, we recommend using
-        the schema as returned by the API.
-        """
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether the argument is input or output. Can be set for procedures only.
-        Possible values are: `IN`, `OUT`, `INOUT`.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of this argument. Can be absent for function return argument.
-        """
-elif False:
-    RoutineArgumentArgsDict: TypeAlias = Mapping[str, Any]
+class RoutineArgumentArgsDict(TypedDict):
+    argument_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defaults to FIXED_TYPE.
+    Default value is `FIXED_TYPE`.
+    Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+    """
+    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+    ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+    will create a diff, even if the JSON itself hasn't changed. If the API returns
+    a different value for the same schema, e.g. it switched the order of values
+    or replaced STRUCT field type with RECORD field type, we currently cannot
+    suppress the recurring diff this causes. As a workaround, we recommend using
+    the schema as returned by the API.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether the argument is input or output. Can be set for procedures only.
+    Possible values are: `IN`, `OUT`, `INOUT`.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of this argument. Can be absent for function return argument.
+    """
 
 @pulumi.input_type
 class RoutineArgumentArgs:
@@ -5796,39 +5640,36 @@ class RoutineArgumentArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class RoutineExternalRuntimeOptionsArgsDict(TypedDict):
-        container_cpu: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Amount of CPU provisioned for a Python UDF container instance. For more
-        information, see [Configure container limits for Python
-        UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
-        """
-        container_memory: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Amount of memory provisioned for a Python UDF container instance. Format:
-        {number}{unit} where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G,
-        512Mi). If not specified, the default value is 512Mi. For more information,
-        see [Configure container limits for Python
-        UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
-        """
-        max_batching_rows: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Maximum number of rows in each batch sent to the external runtime. If
-        absent or if 0, BigQuery dynamically decides the number of rows in a batch.
-        """
-        runtime_connection: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified name of the connection whose service account will be used
-        to execute the code in the container. Format:
-        `"projects/{project_id}/locations/{location_id}/connections/{connection_id}"`
-        """
-        runtime_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Language runtime version. Example: `python-3.11`.
-        """
-elif False:
-    RoutineExternalRuntimeOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class RoutineExternalRuntimeOptionsArgsDict(TypedDict):
+    container_cpu: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Amount of CPU provisioned for a Python UDF container instance. For more
+    information, see [Configure container limits for Python
+    UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+    """
+    container_memory: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Amount of memory provisioned for a Python UDF container instance. Format:
+    {number}{unit} where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G,
+    512Mi). If not specified, the default value is 512Mi. For more information,
+    see [Configure container limits for Python
+    UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+    """
+    max_batching_rows: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Maximum number of rows in each batch sent to the external runtime. If
+    absent or if 0, BigQuery dynamically decides the number of rows in a batch.
+    """
+    runtime_connection: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified name of the connection whose service account will be used
+    to execute the code in the container. Format:
+    `"projects/{project_id}/locations/{location_id}/connections/{connection_id}"`
+    """
+    runtime_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Language runtime version. Example: `python-3.11`.
+    """
 
 @pulumi.input_type
 class RoutineExternalRuntimeOptionsArgs:
@@ -5935,22 +5776,19 @@ class RoutineExternalRuntimeOptionsArgs:
         pulumi.set(self, "runtime_version", value)
 
 
-if not MYPY:
-    class RoutinePythonOptionsArgsDict(TypedDict):
-        entry_point: pulumi.Input[_builtins.str]
-        """
-        The name of the function defined in Python code as the entry point when the
-        Python UDF is invoked.
-        """
-        packages: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of Python package names along with versions to be installed.
-        Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more
-        information, see [Use third-party
-        packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages).
-        """
-elif False:
-    RoutinePythonOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class RoutinePythonOptionsArgsDict(TypedDict):
+    entry_point: pulumi.Input[_builtins.str]
+    """
+    The name of the function defined in Python code as the entry point when the
+    Python UDF is invoked.
+    """
+    packages: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of Python package names along with versions to be installed.
+    Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more
+    information, see [Use third-party
+    packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages).
+    """
 
 @pulumi.input_type
 class RoutinePythonOptionsArgs:
@@ -5998,34 +5836,31 @@ class RoutinePythonOptionsArgs:
         pulumi.set(self, "packages", value)
 
 
-if not MYPY:
-    class RoutineRemoteFunctionOptionsArgsDict(TypedDict):
-        connection: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified name of the user-provided connection object which holds
-        the authentication information to send requests to the remote service.
-        Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Endpoint of the user-provided remote service, e.g.
-        `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
-        """
-        max_batching_rows: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Max number of rows in each batch sent to the remote service. If absent or if 0,
-        BigQuery dynamically decides the number of rows in a batch.
-        """
-        user_defined_context: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        User-defined context as a set of key/value pairs, which will be sent as function
-        invocation context together with batched arguments in the requests to the remote
-        service. The total number of bytes of keys and values must be less than 8KB.
-        An object containing a list of "key": value pairs. Example:
-        `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-        """
-elif False:
-    RoutineRemoteFunctionOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class RoutineRemoteFunctionOptionsArgsDict(TypedDict):
+    connection: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified name of the user-provided connection object which holds
+    the authentication information to send requests to the remote service.
+    Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Endpoint of the user-provided remote service, e.g.
+    `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
+    """
+    max_batching_rows: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Max number of rows in each batch sent to the remote service. If absent or if 0,
+    BigQuery dynamically decides the number of rows in a batch.
+    """
+    user_defined_context: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    User-defined context as a set of key/value pairs, which will be sent as function
+    invocation context together with batched arguments in the requests to the remote
+    service. The total number of bytes of keys and values must be less than 8KB.
+    An object containing a list of "key": value pairs. Example:
+    `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+    """
 
 @pulumi.input_type
 class RoutineRemoteFunctionOptionsArgs:
@@ -6114,56 +5949,53 @@ class RoutineRemoteFunctionOptionsArgs:
         pulumi.set(self, "user_defined_context", value)
 
 
-if not MYPY:
-    class RoutineSparkOptionsArgsDict(TypedDict):
-        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
-        """
-        connection: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified name of the user-provided Spark connection object.
-        Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
-        """
-        container_image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom container image for the runtime environment.
-        """
-        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Files to be placed in the working directory of each executor. For more information about Apache Spark, see Apache Spark.
-        """
-        jar_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see Apache Spark.
-        """
-        main_class: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The fully qualified name of a class in jarUris, for example, com.example.wordcount.
-        Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
-        """
-        main_file_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The main file/jar URI of the Spark application.
-        Exactly one of the definitionBody field and the mainFileUri field must be set for Python.
-        Exactly one of mainClass and mainFileUri field should be set for Java/Scala language type.
-        """
-        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Configuration properties as a set of key/value pairs, which will be passed on to the Spark application.
-        For more information, see Apache Spark and the procedure option list.
-        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        """
-        py_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: .py, .egg, and .zip. For more information about Apache Spark, see Apache Spark.
-        """
-        runtime_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Runtime version. If not specified, the default runtime version is used.
-        """
-elif False:
-    RoutineSparkOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class RoutineSparkOptionsArgsDict(TypedDict):
+    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+    """
+    connection: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified name of the user-provided Spark connection object.
+    Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+    """
+    container_image: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom container image for the runtime environment.
+    """
+    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Files to be placed in the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+    """
+    jar_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see Apache Spark.
+    """
+    main_class: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The fully qualified name of a class in jarUris, for example, com.example.wordcount.
+    Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
+    """
+    main_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The main file/jar URI of the Spark application.
+    Exactly one of the definitionBody field and the mainFileUri field must be set for Python.
+    Exactly one of mainClass and mainFileUri field should be set for Java/Scala language type.
+    """
+    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Configuration properties as a set of key/value pairs, which will be passed on to the Spark application.
+    For more information, see Apache Spark and the procedure option list.
+    An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+    """
+    py_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: .py, .egg, and .zip. For more information about Apache Spark, see Apache Spark.
+    """
+    runtime_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Runtime version. If not specified, the default runtime version is used.
+    """
 
 @pulumi.input_type
 class RoutineSparkOptionsArgs:
@@ -6344,30 +6176,27 @@ class RoutineSparkOptionsArgs:
         pulumi.set(self, "runtime_version", value)
 
 
-if not MYPY:
-    class TableBiglakeConfigurationArgsDict(TypedDict):
-        connection_id: pulumi.Input[_builtins.str]
-        """
-        The connection specifying the credentials to be used to
-        read and write to external storage, such as Cloud Storage. The connection_id can
-        have the form "&lt;project\\_id&gt;.&lt;location\\_id&gt;.&lt;connection\\_id&gt;" or
-        projects/&lt;project\\_id&gt;/locations/&lt;location\\_id&gt;/connections/&lt;connection\\_id&gt;".
-        """
-        file_format: pulumi.Input[_builtins.str]
-        """
-        The file format the table data is stored in.
-        """
-        storage_uri: pulumi.Input[_builtins.str]
-        """
-        The fully qualified location prefix of the external folder where table data
-        is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
-        """
-        table_format: pulumi.Input[_builtins.str]
-        """
-        The table format the metadata only snapshots are stored in.
-        """
-elif False:
-    TableBiglakeConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class TableBiglakeConfigurationArgsDict(TypedDict):
+    connection_id: pulumi.Input[_builtins.str]
+    """
+    The connection specifying the credentials to be used to
+    read and write to external storage, such as Cloud Storage. The connection_id can
+    have the form "&lt;project\\_id&gt;.&lt;location\\_id&gt;.&lt;connection\\_id&gt;" or
+    projects/&lt;project\\_id&gt;/locations/&lt;location\\_id&gt;/connections/&lt;connection\\_id&gt;".
+    """
+    file_format: pulumi.Input[_builtins.str]
+    """
+    The file format the table data is stored in.
+    """
+    storage_uri: pulumi.Input[_builtins.str]
+    """
+    The fully qualified location prefix of the external folder where table data
+    is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+    """
+    table_format: pulumi.Input[_builtins.str]
+    """
+    The table format the metadata only snapshots are stored in.
+    """
 
 @pulumi.input_type
 class TableBiglakeConfigurationArgs:
@@ -6444,22 +6273,19 @@ class TableBiglakeConfigurationArgs:
         pulumi.set(self, "table_format", value)
 
 
-if not MYPY:
-    class TableEncryptionConfigurationArgsDict(TypedDict):
-        kms_key_name: pulumi.Input[_builtins.str]
-        """
-        The self link or full name of a key which should be used to
-        encrypt this table.  Note that the default bigquery service account will need to have
-        encrypt/decrypt permissions on this key - you may want to see the
-        `bigquery_get_default_service_account` datasource and the
-        `kms.CryptoKeyIAMBinding` resource.
-        """
-        kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The self link or full name of the kms key version used to encrypt this table.
-        """
-elif False:
-    TableEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class TableEncryptionConfigurationArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    The self link or full name of a key which should be used to
+    encrypt this table.  Note that the default bigquery service account will need to have
+    encrypt/decrypt permissions on this key - you may want to see the
+    `bigquery_get_default_service_account` datasource and the
+    `kms.CryptoKeyIAMBinding` resource.
+    """
+    kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The self link or full name of the kms key version used to encrypt this table.
+    """
 
 @pulumi.input_type
 class TableEncryptionConfigurationArgs:
@@ -6507,29 +6333,26 @@ class TableEncryptionConfigurationArgs:
         pulumi.set(self, "kms_key_version", value)
 
 
-if not MYPY:
-    class TableExternalCatalogTableOptionsArgsDict(TypedDict):
-        connection_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The connection specifying the credentials to be
-        used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
-        connection is needed to read the open source table from BigQuery Engine. The
-        connection_id can have the form `<project_id>.<location_id>.<connection_id>`
-        or `projects/<project_id>/locations/<location_id>/connections/<connection_id>`.
-        """
-        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map of key value pairs defining the parameters and
-        properties of the open source table. Corresponds with hive meta store table
-        parameters. Maximum size of 4Mib.
-        """
-        storage_descriptor: NotRequired[pulumi.Input['TableExternalCatalogTableOptionsStorageDescriptorArgsDict']]
-        """
-        A storage descriptor containing information
-        about the physical storage of this table. Structure is documented below.
-        """
-elif False:
-    TableExternalCatalogTableOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class TableExternalCatalogTableOptionsArgsDict(TypedDict):
+    connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The connection specifying the credentials to be
+    used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+    connection is needed to read the open source table from BigQuery Engine. The
+    connection_id can have the form `<project_id>.<location_id>.<connection_id>`
+    or `projects/<project_id>/locations/<location_id>/connections/<connection_id>`.
+    """
+    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map of key value pairs defining the parameters and
+    properties of the open source table. Corresponds with hive meta store table
+    parameters. Maximum size of 4Mib.
+    """
+    storage_descriptor: NotRequired[pulumi.Input['TableExternalCatalogTableOptionsStorageDescriptorArgsDict']]
+    """
+    A storage descriptor containing information
+    about the physical storage of this table. Structure is documented below.
+    """
 
 @pulumi.input_type
 class TableExternalCatalogTableOptionsArgs:
@@ -6600,33 +6423,30 @@ class TableExternalCatalogTableOptionsArgs:
         pulumi.set(self, "storage_descriptor", value)
 
 
-if not MYPY:
-    class TableExternalCatalogTableOptionsStorageDescriptorArgsDict(TypedDict):
-        input_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the fully qualified class name of the
-        InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
-        maximum length is 128 characters.
-        """
-        location_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The physical location of the table (e.g.
-        'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
-        'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
-        """
-        output_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the fully qualified class name of the
-        OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
-        maximum length is 128 characters.
-        """
-        serde_info: NotRequired[pulumi.Input['TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgsDict']]
-        """
-        Serializer and deserializer information. Structure
-        is documented below.
-        """
-elif False:
-    TableExternalCatalogTableOptionsStorageDescriptorArgsDict: TypeAlias = Mapping[str, Any]
+class TableExternalCatalogTableOptionsStorageDescriptorArgsDict(TypedDict):
+    input_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the fully qualified class name of the
+    InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
+    maximum length is 128 characters.
+    """
+    location_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The physical location of the table (e.g.
+    'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
+    'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+    """
+    output_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the fully qualified class name of the
+    OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
+    maximum length is 128 characters.
+    """
+    serde_info: NotRequired[pulumi.Input['TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgsDict']]
+    """
+    Serializer and deserializer information. Structure
+    is documented below.
+    """
 
 @pulumi.input_type
 class TableExternalCatalogTableOptionsStorageDescriptorArgs:
@@ -6713,26 +6533,23 @@ class TableExternalCatalogTableOptionsStorageDescriptorArgs:
         pulumi.set(self, "serde_info", value)
 
 
-if not MYPY:
-    class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgsDict(TypedDict):
-        serialization_library: pulumi.Input[_builtins.str]
-        """
-        Specifies a fully-qualified class name of
-        the serialization library that is responsible for the translation of data
-        between table representation and the underlying low-level input and output
-        format structures. The maximum length is 256 characters.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the SerDe. The maximum length is 256 characters.
-        """
-        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Key-value pairs that define the initialization
-        parameters for the serialization library. Maximum size 10 Kib.
-        """
-elif False:
-    TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgsDict: TypeAlias = Mapping[str, Any]
+class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgsDict(TypedDict):
+    serialization_library: pulumi.Input[_builtins.str]
+    """
+    Specifies a fully-qualified class name of
+    the serialization library that is responsible for the translation of data
+    between table representation and the underlying low-level input and output
+    format structures. The maximum length is 256 characters.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the SerDe. The maximum length is 256 characters.
+    """
+    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Key-value pairs that define the initialization
+    parameters for the serialization library. Maximum size 10 Kib.
+    """
 
 @pulumi.input_type
 class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs:
@@ -6796,151 +6613,148 @@ class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs:
         pulumi.set(self, "parameters", value)
 
 
-if not MYPY:
-    class TableExternalDataConfigurationArgsDict(TypedDict):
-        autodetect: pulumi.Input[_builtins.bool]
-        """
-        Let BigQuery try to autodetect the schema
-        and format of the table.
-        """
-        source_uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of the fully-qualified URIs that point to
-        your data in Google Cloud.
-        """
-        avro_options: NotRequired[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgsDict']]
-        """
-        Additional options if `source_format` is set to
-        "AVRO".  Structure is documented below.
-        """
-        bigtable_options: NotRequired[pulumi.Input['TableExternalDataConfigurationBigtableOptionsArgsDict']]
-        """
-        Additional properties to set if
-        `source_format` is set to "BIGTABLE". Structure is documented below.
-        """
-        compression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The compression type of the data source.
-        Valid values are "NONE" or "GZIP".
-        """
-        connection_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The connection specifying the credentials to be used to read
-        external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
-        the form `{{project}}.{{location}}.{{connection_id}}`
-        or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+class TableExternalDataConfigurationArgsDict(TypedDict):
+    autodetect: pulumi.Input[_builtins.bool]
+    """
+    Let BigQuery try to autodetect the schema
+    and format of the table.
+    """
+    source_uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of the fully-qualified URIs that point to
+    your data in Google Cloud.
+    """
+    avro_options: NotRequired[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgsDict']]
+    """
+    Additional options if `source_format` is set to
+    "AVRO".  Structure is documented below.
+    """
+    bigtable_options: NotRequired[pulumi.Input['TableExternalDataConfigurationBigtableOptionsArgsDict']]
+    """
+    Additional properties to set if
+    `source_format` is set to "BIGTABLE". Structure is documented below.
+    """
+    compression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The compression type of the data source.
+    Valid values are "NONE" or "GZIP".
+    """
+    connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The connection specifying the credentials to be used to read
+    external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+    the form `{{project}}.{{location}}.{{connection_id}}`
+    or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
 
-        ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-        table schema must be specified using the top-level `schema` field
-        documented above.
-        """
-        csv_options: NotRequired[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgsDict']]
-        """
-        Additional properties to set if
-        `source_format` is set to "CSV". Structure is documented below.
-        """
-        decimal_target_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
+    ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+    table schema must be specified using the top-level `schema` field
+    documented above.
+    """
+    csv_options: NotRequired[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgsDict']]
+    """
+    Additional properties to set if
+    `source_format` is set to "CSV". Structure is documented below.
+    """
+    decimal_target_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
 
-        Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is:
+    Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is:
 
-        (38,9) > NUMERIC;
-        (39,9) > BIGNUMERIC (NUMERIC cannot hold 30 integer digits);
-        (38,10) > BIGNUMERIC (NUMERIC cannot hold 10 fractional digits);
-        (76,38) > BIGNUMERIC;
-        (77,38) > BIGNUMERIC (error if value exceeds supported range).
+    (38,9) > NUMERIC;
+    (39,9) > BIGNUMERIC (NUMERIC cannot hold 30 integer digits);
+    (38,10) > BIGNUMERIC (NUMERIC cannot hold 10 fractional digits);
+    (76,38) > BIGNUMERIC;
+    (77,38) > BIGNUMERIC (error if value exceeds supported range).
 
-        This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
+    This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
 
-        Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
-        """
-        file_set_spec_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies how source URIs are interpreted for constructing the file set to load.
-        By default source URIs are expanded against the underlying storage.
-        Other options include specifying manifest files. Only applicable to object storage systems. Docs
-        """
-        google_sheets_options: NotRequired[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgsDict']]
-        """
-        Additional options if
-        `source_format` is set to "GOOGLE_SHEETS". Structure is
-        documented below.
-        """
-        hive_partitioning_options: NotRequired[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgsDict']]
-        """
-        When set, configures hive partitioning
-        support. Not all storage formats support hive partitioning -- requesting hive
-        partitioning on an unsupported format will lead to an error, as will providing
-        an invalid specification. Structure is documented below.
-        """
-        ignore_unknown_values: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if BigQuery should
-        allow extra values that are not represented in the table schema.
-        If true, the extra values are ignored. If false, records with
-        extra columns are treated as bad records, and if there are too
-        many bad records, an invalid error is returned in the job result.
-        The default value is false.
-        """
-        json_extension: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
-        """
-        json_options: NotRequired[pulumi.Input['TableExternalDataConfigurationJsonOptionsArgsDict']]
-        """
-        Additional properties to set if
-        `source_format` is set to "JSON". Structure is documented below.
-        """
-        max_bad_records: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of bad records that
-        BigQuery can ignore when reading data.
-        """
-        metadata_cache_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
-        """
-        object_metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
-        """
-        parquet_options: NotRequired[pulumi.Input['TableExternalDataConfigurationParquetOptionsArgsDict']]
-        """
-        Additional properties to set if
-        `source_format` is set to "PARQUET". Structure is documented below.
-        """
-        reference_file_schema_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
-        """
-        schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON schema for the external table. Schema is required
-        for CSV and JSON formats if autodetect is not on. Schema is disallowed
-        for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
-        ~>**NOTE:** Because this field expects a JSON string, any changes to the
-        string will create a diff, even if the JSON itself hasn't changed.
-        Furthermore drift for this field cannot not be detected because BigQuery
-        only uses this schema to compute the effective schema for the table, therefore
-        any changes on the configured value will force the table to be recreated.
-        This schema is effectively only applied when creating a table from an external
-        datasource, after creation the computed schema will be stored in
-        `google_bigquery_table.schema`
+    Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+    """
+    file_set_spec_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies how source URIs are interpreted for constructing the file set to load.
+    By default source URIs are expanded against the underlying storage.
+    Other options include specifying manifest files. Only applicable to object storage systems. Docs
+    """
+    google_sheets_options: NotRequired[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgsDict']]
+    """
+    Additional options if
+    `source_format` is set to "GOOGLE_SHEETS". Structure is
+    documented below.
+    """
+    hive_partitioning_options: NotRequired[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgsDict']]
+    """
+    When set, configures hive partitioning
+    support. Not all storage formats support hive partitioning -- requesting hive
+    partitioning on an unsupported format will lead to an error, as will providing
+    an invalid specification. Structure is documented below.
+    """
+    ignore_unknown_values: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if BigQuery should
+    allow extra values that are not represented in the table schema.
+    If true, the extra values are ignored. If false, records with
+    extra columns are treated as bad records, and if there are too
+    many bad records, an invalid error is returned in the job result.
+    The default value is false.
+    """
+    json_extension: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+    """
+    json_options: NotRequired[pulumi.Input['TableExternalDataConfigurationJsonOptionsArgsDict']]
+    """
+    Additional properties to set if
+    `source_format` is set to "JSON". Structure is documented below.
+    """
+    max_bad_records: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of bad records that
+    BigQuery can ignore when reading data.
+    """
+    metadata_cache_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+    """
+    object_metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+    """
+    parquet_options: NotRequired[pulumi.Input['TableExternalDataConfigurationParquetOptionsArgsDict']]
+    """
+    Additional properties to set if
+    `source_format` is set to "PARQUET". Structure is documented below.
+    """
+    reference_file_schema_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+    """
+    schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A JSON schema for the external table. Schema is required
+    for CSV and JSON formats if autodetect is not on. Schema is disallowed
+    for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
+    ~>**NOTE:** Because this field expects a JSON string, any changes to the
+    string will create a diff, even if the JSON itself hasn't changed.
+    Furthermore drift for this field cannot not be detected because BigQuery
+    only uses this schema to compute the effective schema for the table, therefore
+    any changes on the configured value will force the table to be recreated.
+    This schema is effectively only applied when creating a table from an external
+    datasource, after creation the computed schema will be stored in
+    `google_bigquery_table.schema`
 
-        ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-        table schema must be specified using the top-level `schema` field
-        documented above.
-        """
-        source_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The data format. Please see sourceFormat under
-        [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
-        in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
-        the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
-        """
-elif False:
-    TableExternalDataConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+    ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+    table schema must be specified using the top-level `schema` field
+    documented above.
+    """
+    source_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The data format. Please see sourceFormat under
+    [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
+    in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
+    the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
+    """
 
 @pulumi.input_type
 class TableExternalDataConfigurationArgs:
@@ -7397,16 +7211,13 @@ class TableExternalDataConfigurationArgs:
         pulumi.set(self, "source_format", value)
 
 
-if not MYPY:
-    class TableExternalDataConfigurationAvroOptionsArgsDict(TypedDict):
-        use_avro_logical_types: pulumi.Input[_builtins.bool]
-        """
-        If is set to true, indicates whether
-        to interpret logical types as the corresponding BigQuery data type
-        (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
-        """
-elif False:
-    TableExternalDataConfigurationAvroOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class TableExternalDataConfigurationAvroOptionsArgsDict(TypedDict):
+    use_avro_logical_types: pulumi.Input[_builtins.bool]
+    """
+    If is set to true, indicates whether
+    to interpret logical types as the corresponding BigQuery data type
+    (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+    """
 
 @pulumi.input_type
 class TableExternalDataConfigurationAvroOptionsArgs:
@@ -7434,26 +7245,23 @@ class TableExternalDataConfigurationAvroOptionsArgs:
         pulumi.set(self, "use_avro_logical_types", value)
 
 
-if not MYPY:
-    class TableExternalDataConfigurationBigtableOptionsArgsDict(TypedDict):
-        column_families: NotRequired[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgsDict']]]]
-        """
-        A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
-        """
-        ignore_unspecified_column_families: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
-        """
-        output_column_families_as_json: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
-        """
-        read_rowkey_as_string: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
-        """
-elif False:
-    TableExternalDataConfigurationBigtableOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class TableExternalDataConfigurationBigtableOptionsArgsDict(TypedDict):
+    column_families: NotRequired[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgsDict']]]]
+    """
+    A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
+    """
+    ignore_unspecified_column_families: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+    """
+    output_column_families_as_json: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
+    """
+    read_rowkey_as_string: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
+    """
 
 @pulumi.input_type
 class TableExternalDataConfigurationBigtableOptionsArgs:
@@ -7526,30 +7334,27 @@ class TableExternalDataConfigurationBigtableOptionsArgs:
         pulumi.set(self, "read_rowkey_as_string", value)
 
 
-if not MYPY:
-    class TableExternalDataConfigurationBigtableOptionsColumnFamilyArgsDict(TypedDict):
-        columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgsDict']]]]
-        """
-        A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field.  Structure is documented below.
-        """
-        encoding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
-        """
-        family_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier of the column family.
-        """
-        only_read_latest: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
-        """
-elif False:
-    TableExternalDataConfigurationBigtableOptionsColumnFamilyArgsDict: TypeAlias = Mapping[str, Any]
+class TableExternalDataConfigurationBigtableOptionsColumnFamilyArgsDict(TypedDict):
+    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgsDict']]]]
+    """
+    A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field.  Structure is documented below.
+    """
+    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+    """
+    family_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identifier of the column family.
+    """
+    only_read_latest: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+    """
 
 @pulumi.input_type
 class TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs:
@@ -7638,34 +7443,31 @@ class TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgsDict(TypedDict):
-        encoding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
-        """
-        field_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
-        """
-        only_read_latest: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
-        """
-        qualifier_encoded: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
-        """
-        qualifier_string: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Qualifier string.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
-        """
-elif False:
-    TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgsDict: TypeAlias = Mapping[str, Any]
+class TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgsDict(TypedDict):
+    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+    """
+    field_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
+    """
+    only_read_latest: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+    """
+    qualifier_encoded: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
+    """
+    qualifier_string: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Qualifier string.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+    """
 
 @pulumi.input_type
 class TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs:
@@ -7770,54 +7572,51 @@ class TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class TableExternalDataConfigurationCsvOptionsArgsDict(TypedDict):
-        quote: pulumi.Input[_builtins.str]
-        """
-        The value that is used to quote data sections in a
-        CSV file. If your data does not contain quoted sections, set the
-        property value to an empty string. If your data contains quoted newline
-        characters, you must also set the `allow_quoted_newlines` property to true.
-        The API-side default is `"`, specified in the provider escaped as `\\"`. Due to
-        limitations with default values, this value is required to be
-        explicitly set.
-        """
-        allow_jagged_rows: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if BigQuery should accept rows
-        that are missing trailing optional columns.
-        """
-        allow_quoted_newlines: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if BigQuery should allow
-        quoted data sections that contain newline characters in a CSV file.
-        The default value is false.
-        """
-        encoding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The character encoding of the data. The supported
-        values are UTF-8 or ISO-8859-1.
-        """
-        field_delimiter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The separator for fields in a CSV file.
-        """
-        skip_leading_rows: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of rows at the top of a CSV
-        file that BigQuery will skip when reading the data.
-        """
-        source_column_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies how source columns are matched
-        to the table schema. Valid values are `POSITION` (columns matched by position,
-        assuming same ordering as the schema) or `NAME` (columns matched by name,
-        reads the header row and reorders columns to align with schema field names).
-        If not set, a default is chosen based on how the schema is provided: when
-        autodetect is used, columns are matched by name; otherwise, by position.
-        """
-elif False:
-    TableExternalDataConfigurationCsvOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class TableExternalDataConfigurationCsvOptionsArgsDict(TypedDict):
+    quote: pulumi.Input[_builtins.str]
+    """
+    The value that is used to quote data sections in a
+    CSV file. If your data does not contain quoted sections, set the
+    property value to an empty string. If your data contains quoted newline
+    characters, you must also set the `allow_quoted_newlines` property to true.
+    The API-side default is `"`, specified in the provider escaped as `\\"`. Due to
+    limitations with default values, this value is required to be
+    explicitly set.
+    """
+    allow_jagged_rows: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if BigQuery should accept rows
+    that are missing trailing optional columns.
+    """
+    allow_quoted_newlines: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if BigQuery should allow
+    quoted data sections that contain newline characters in a CSV file.
+    The default value is false.
+    """
+    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The character encoding of the data. The supported
+    values are UTF-8 or ISO-8859-1.
+    """
+    field_delimiter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The separator for fields in a CSV file.
+    """
+    skip_leading_rows: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of rows at the top of a CSV
+    file that BigQuery will skip when reading the data.
+    """
+    source_column_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies how source columns are matched
+    to the table schema. Valid values are `POSITION` (columns matched by position,
+    assuming same ordering as the schema) or `NAME` (columns matched by name,
+    reads the header row and reorders columns to align with schema field names).
+    If not set, a default is chosen based on how the schema is provided: when
+    autodetect is used, columns are matched by name; otherwise, by position.
+    """
 
 @pulumi.input_type
 class TableExternalDataConfigurationCsvOptionsArgs:
@@ -7969,23 +7768,20 @@ class TableExternalDataConfigurationCsvOptionsArgs:
         pulumi.set(self, "source_column_match", value)
 
 
-if not MYPY:
-    class TableExternalDataConfigurationGoogleSheetsOptionsArgsDict(TypedDict):
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Range of a sheet to query from. Only used when
-        non-empty. At least one of `range` or `skip_leading_rows` must be set.
-        Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id"
-        For example: "sheet1!A1:B20"
-        """
-        skip_leading_rows: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of rows at the top of the sheet
-        that BigQuery will skip when reading the data. At least one of `range` or
-        `skip_leading_rows` must be set.
-        """
-elif False:
-    TableExternalDataConfigurationGoogleSheetsOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class TableExternalDataConfigurationGoogleSheetsOptionsArgsDict(TypedDict):
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Range of a sheet to query from. Only used when
+    non-empty. At least one of `range` or `skip_leading_rows` must be set.
+    Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id"
+    For example: "sheet1!A1:B20"
+    """
+    skip_leading_rows: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of rows at the top of the sheet
+    that BigQuery will skip when reading the data. At least one of `range` or
+    `skip_leading_rows` must be set.
+    """
 
 @pulumi.input_type
 class TableExternalDataConfigurationGoogleSheetsOptionsArgs:
@@ -8036,38 +7832,35 @@ class TableExternalDataConfigurationGoogleSheetsOptionsArgs:
         pulumi.set(self, "skip_leading_rows", value)
 
 
-if not MYPY:
-    class TableExternalDataConfigurationHivePartitioningOptionsArgsDict(TypedDict):
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When set, what mode of hive partitioning to use when
-        reading data. The following modes are supported.
-        * AUTO: automatically infer partition key name(s) and type(s).
-        * STRINGS: automatically infer partition key name(s). All types are
-        Not all storage formats support hive partitioning. Requesting hive
-        partitioning on an unsupported format will lead to an error.
-        Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
-        * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
-        """
-        require_partition_filter: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, queries over this table
-        require a partition filter that can be used for partition elimination to be
-        specified.
-        """
-        source_uri_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When hive partition detection is requested,
-        a common for all source uris must be required. The prefix must end immediately
-        before the partition key encoding begins. For example, consider files following
-        this data layout. `gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro`
-        `gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro` When hive
-        partitioning is requested with either AUTO or STRINGS detection, the common prefix
-        can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
-        Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
-        """
-elif False:
-    TableExternalDataConfigurationHivePartitioningOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class TableExternalDataConfigurationHivePartitioningOptionsArgsDict(TypedDict):
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When set, what mode of hive partitioning to use when
+    reading data. The following modes are supported.
+    * AUTO: automatically infer partition key name(s) and type(s).
+    * STRINGS: automatically infer partition key name(s). All types are
+    Not all storage formats support hive partitioning. Requesting hive
+    partitioning on an unsupported format will lead to an error.
+    Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+    * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+    """
+    require_partition_filter: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, queries over this table
+    require a partition filter that can be used for partition elimination to be
+    specified.
+    """
+    source_uri_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When hive partition detection is requested,
+    a common for all source uris must be required. The prefix must end immediately
+    before the partition key encoding begins. For example, consider files following
+    this data layout. `gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro`
+    `gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro` When hive
+    partitioning is requested with either AUTO or STRINGS detection, the common prefix
+    can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
+    Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+    """
 
 @pulumi.input_type
 class TableExternalDataConfigurationHivePartitioningOptionsArgs:
@@ -8156,14 +7949,11 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgs:
         pulumi.set(self, "source_uri_prefix", value)
 
 
-if not MYPY:
-    class TableExternalDataConfigurationJsonOptionsArgsDict(TypedDict):
-        encoding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
-        """
-elif False:
-    TableExternalDataConfigurationJsonOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class TableExternalDataConfigurationJsonOptionsArgsDict(TypedDict):
+    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+    """
 
 @pulumi.input_type
 class TableExternalDataConfigurationJsonOptionsArgs:
@@ -8188,18 +7978,15 @@ class TableExternalDataConfigurationJsonOptionsArgs:
         pulumi.set(self, "encoding", value)
 
 
-if not MYPY:
-    class TableExternalDataConfigurationParquetOptionsArgsDict(TypedDict):
-        enable_list_inference: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether to use schema inference specifically for Parquet LIST logical type.
-        """
-        enum_as_string: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
-        """
-elif False:
-    TableExternalDataConfigurationParquetOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class TableExternalDataConfigurationParquetOptionsArgsDict(TypedDict):
+    enable_list_inference: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether to use schema inference specifically for Parquet LIST logical type.
+    """
+    enum_as_string: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+    """
 
 @pulumi.input_type
 class TableExternalDataConfigurationParquetOptionsArgs:
@@ -8240,29 +8027,26 @@ class TableExternalDataConfigurationParquetOptionsArgs:
         pulumi.set(self, "enum_as_string", value)
 
 
-if not MYPY:
-    class TableMaterializedViewArgsDict(TypedDict):
-        query: pulumi.Input[_builtins.str]
-        """
-        A query whose result is persisted.
-        """
-        allow_non_incremental_definition: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allow non incremental materialized view definition.
-        The default value is false.
-        """
-        enable_refresh: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
-        The default value is true.
-        """
-        refresh_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum frequency at which this materialized view will be refreshed.
-        The default value is 1800000
-        """
-elif False:
-    TableMaterializedViewArgsDict: TypeAlias = Mapping[str, Any]
+class TableMaterializedViewArgsDict(TypedDict):
+    query: pulumi.Input[_builtins.str]
+    """
+    A query whose result is persisted.
+    """
+    allow_non_incremental_definition: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow non incremental materialized view definition.
+    The default value is false.
+    """
+    enable_refresh: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
+    The default value is true.
+    """
+    refresh_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum frequency at which this materialized view will be refreshed.
+    The default value is 1800000
+    """
 
 @pulumi.input_type
 class TableMaterializedViewArgs:
@@ -8340,20 +8124,17 @@ class TableMaterializedViewArgs:
         pulumi.set(self, "refresh_interval_ms", value)
 
 
-if not MYPY:
-    class TableRangePartitioningArgsDict(TypedDict):
-        field: pulumi.Input[_builtins.str]
-        """
-        The field used to determine how to create a range-based
-        partition.
-        """
-        range: pulumi.Input['TableRangePartitioningRangeArgsDict']
-        """
-        Information required to partition based on ranges.
-        Structure is documented below.
-        """
-elif False:
-    TableRangePartitioningArgsDict: TypeAlias = Mapping[str, Any]
+class TableRangePartitioningArgsDict(TypedDict):
+    field: pulumi.Input[_builtins.str]
+    """
+    The field used to determine how to create a range-based
+    partition.
+    """
+    range: pulumi.Input['TableRangePartitioningRangeArgsDict']
+    """
+    Information required to partition based on ranges.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class TableRangePartitioningArgs:
@@ -8396,22 +8177,19 @@ class TableRangePartitioningArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class TableRangePartitioningRangeArgsDict(TypedDict):
-        end: pulumi.Input[_builtins.int]
-        """
-        End of the range partitioning, exclusive.
-        """
-        interval: pulumi.Input[_builtins.int]
-        """
-        The width of each range within the partition.
-        """
-        start: pulumi.Input[_builtins.int]
-        """
-        Start of the range partitioning, inclusive.
-        """
-elif False:
-    TableRangePartitioningRangeArgsDict: TypeAlias = Mapping[str, Any]
+class TableRangePartitioningRangeArgsDict(TypedDict):
+    end: pulumi.Input[_builtins.int]
+    """
+    End of the range partitioning, exclusive.
+    """
+    interval: pulumi.Input[_builtins.int]
+    """
+    The width of each range within the partition.
+    """
+    start: pulumi.Input[_builtins.int]
+    """
+    Start of the range partitioning, inclusive.
+    """
 
 @pulumi.input_type
 class TableRangePartitioningRangeArgs:
@@ -8465,15 +8243,12 @@ class TableRangePartitioningRangeArgs:
         pulumi.set(self, "start", value)
 
 
-if not MYPY:
-    class TableSchemaForeignTypeInfoArgsDict(TypedDict):
-        type_system: pulumi.Input[_builtins.str]
-        """
-        Specifies the system which defines the foreign data
-        type.
-        """
-elif False:
-    TableSchemaForeignTypeInfoArgsDict: TypeAlias = Mapping[str, Any]
+class TableSchemaForeignTypeInfoArgsDict(TypedDict):
+    type_system: pulumi.Input[_builtins.str]
+    """
+    Specifies the system which defines the foreign data
+    type.
+    """
 
 @pulumi.input_type
 class TableSchemaForeignTypeInfoArgs:
@@ -8499,23 +8274,20 @@ class TableSchemaForeignTypeInfoArgs:
         pulumi.set(self, "type_system", value)
 
 
-if not MYPY:
-    class TableTableConstraintsArgsDict(TypedDict):
-        foreign_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgsDict']]]]
-        """
-        Present only if the table has a foreign key.
-        The foreign key is not enforced.
-        Structure is documented below.
-        """
-        primary_key: NotRequired[pulumi.Input['TableTableConstraintsPrimaryKeyArgsDict']]
-        """
-        Represents the primary key constraint
-        on a table's columns. Present only if the table has a primary key.
-        The primary key is not enforced.
-        Structure is documented below.
-        """
-elif False:
-    TableTableConstraintsArgsDict: TypeAlias = Mapping[str, Any]
+class TableTableConstraintsArgsDict(TypedDict):
+    foreign_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgsDict']]]]
+    """
+    Present only if the table has a foreign key.
+    The foreign key is not enforced.
+    Structure is documented below.
+    """
+    primary_key: NotRequired[pulumi.Input['TableTableConstraintsPrimaryKeyArgsDict']]
+    """
+    Represents the primary key constraint
+    on a table's columns. Present only if the table has a primary key.
+    The primary key is not enforced.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class TableTableConstraintsArgs:
@@ -8566,25 +8338,22 @@ class TableTableConstraintsArgs:
         pulumi.set(self, "primary_key", value)
 
 
-if not MYPY:
-    class TableTableConstraintsForeignKeyArgsDict(TypedDict):
-        column_references: pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArgsDict']
-        """
-        The pair of the foreign key column and primary key column.
-        Structure is documented below.
-        """
-        referenced_table: pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArgsDict']
-        """
-        The table that holds the primary key
-        and is referenced by this foreign key.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set only if the foreign key constraint is named.
-        """
-elif False:
-    TableTableConstraintsForeignKeyArgsDict: TypeAlias = Mapping[str, Any]
+class TableTableConstraintsForeignKeyArgsDict(TypedDict):
+    column_references: pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArgsDict']
+    """
+    The pair of the foreign key column and primary key column.
+    Structure is documented below.
+    """
+    referenced_table: pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArgsDict']
+    """
+    The table that holds the primary key
+    and is referenced by this foreign key.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set only if the foreign key constraint is named.
+    """
 
 @pulumi.input_type
 class TableTableConstraintsForeignKeyArgs:
@@ -8645,19 +8414,16 @@ class TableTableConstraintsForeignKeyArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class TableTableConstraintsForeignKeyColumnReferencesArgsDict(TypedDict):
-        referenced_column: pulumi.Input[_builtins.str]
-        """
-        The column in the primary key that are
-        referenced by the referencingColumn
-        """
-        referencing_column: pulumi.Input[_builtins.str]
-        """
-        The column that composes the foreign key.
-        """
-elif False:
-    TableTableConstraintsForeignKeyColumnReferencesArgsDict: TypeAlias = Mapping[str, Any]
+class TableTableConstraintsForeignKeyColumnReferencesArgsDict(TypedDict):
+    referenced_column: pulumi.Input[_builtins.str]
+    """
+    The column in the primary key that are
+    referenced by the referencingColumn
+    """
+    referencing_column: pulumi.Input[_builtins.str]
+    """
+    The column that composes the foreign key.
+    """
 
 @pulumi.input_type
 class TableTableConstraintsForeignKeyColumnReferencesArgs:
@@ -8698,26 +8464,23 @@ class TableTableConstraintsForeignKeyColumnReferencesArgs:
         pulumi.set(self, "referencing_column", value)
 
 
-if not MYPY:
-    class TableTableConstraintsForeignKeyReferencedTableArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the dataset containing this table.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the project containing this table.
-        """
-        table_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the table. The ID must contain only
-        letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
-        length is 1,024 characters. Certain operations allow suffixing of
-        the table ID with a partition decorator, such as
-        sample_table$20190123.
-        """
-elif False:
-    TableTableConstraintsForeignKeyReferencedTableArgsDict: TypeAlias = Mapping[str, Any]
+class TableTableConstraintsForeignKeyReferencedTableArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the dataset containing this table.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the project containing this table.
+    """
+    table_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the table. The ID must contain only
+    letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
+    length is 1,024 characters. Certain operations allow suffixing of
+    the table ID with a partition decorator, such as
+    sample_table$20190123.
+    """
 
 @pulumi.input_type
 class TableTableConstraintsForeignKeyReferencedTableArgs:
@@ -8779,14 +8542,11 @@ class TableTableConstraintsForeignKeyReferencedTableArgs:
         pulumi.set(self, "table_id", value)
 
 
-if not MYPY:
-    class TableTableConstraintsPrimaryKeyArgsDict(TypedDict):
-        columns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The columns that are composed of the primary key constraint.
-        """
-elif False:
-    TableTableConstraintsPrimaryKeyArgsDict: TypeAlias = Mapping[str, Any]
+class TableTableConstraintsPrimaryKeyArgsDict(TypedDict):
+    columns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The columns that are composed of the primary key constraint.
+    """
 
 @pulumi.input_type
 class TableTableConstraintsPrimaryKeyArgs:
@@ -8810,27 +8570,24 @@ class TableTableConstraintsPrimaryKeyArgs:
         pulumi.set(self, "columns", value)
 
 
-if not MYPY:
-    class TableTableReplicationInfoArgsDict(TypedDict):
-        source_dataset_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the source dataset.
-        """
-        source_project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the source project.
-        """
-        source_table_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the source materialized view.
-        """
-        replication_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The interval at which the source
-        materialized view is polled for updates. The default is 300000.
-        """
-elif False:
-    TableTableReplicationInfoArgsDict: TypeAlias = Mapping[str, Any]
+class TableTableReplicationInfoArgsDict(TypedDict):
+    source_dataset_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the source dataset.
+    """
+    source_project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the source project.
+    """
+    source_table_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the source materialized view.
+    """
+    replication_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The interval at which the source
+    materialized view is polled for updates. The default is 300000.
+    """
 
 @pulumi.input_type
 class TableTableReplicationInfoArgs:
@@ -8902,33 +8659,30 @@ class TableTableReplicationInfoArgs:
         pulumi.set(self, "replication_interval_ms", value)
 
 
-if not MYPY:
-    class TableTimePartitioningArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        The supported types are DAY, HOUR, MONTH, and YEAR,
-        which will generate one partition per day, hour, month, and year, respectively.
-        """
-        expiration_ms: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of milliseconds for which to keep the
-        storage for a partition.
-        """
-        field: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The field used to determine how to create a time-based
-        partition. If time-based partitioning is enabled without this value, the
-        table is partitioned based on the load time.
-        """
-        require_partition_filter: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, queries over this table
-        require a partition filter that can be used for partition elimination to be
-        specified. `require_partition_filter` is deprecated and will be removed in
-        a future major release. Use the top level field with the same name instead.
-        """
-elif False:
-    TableTimePartitioningArgsDict: TypeAlias = Mapping[str, Any]
+class TableTimePartitioningArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The supported types are DAY, HOUR, MONTH, and YEAR,
+    which will generate one partition per day, hour, month, and year, respectively.
+    """
+    expiration_ms: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of milliseconds for which to keep the
+    storage for a partition.
+    """
+    field: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The field used to determine how to create a time-based
+    partition. If time-based partitioning is enabled without this value, the
+    table is partitioned based on the load time.
+    """
+    require_partition_filter: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, queries over this table
+    require a partition filter that can be used for partition elimination to be
+    specified. `require_partition_filter` is deprecated and will be removed in
+    a future major release. Use the top level field with the same name instead.
+    """
 
 @pulumi.input_type
 class TableTimePartitioningArgs:
@@ -9018,24 +8772,21 @@ class TableTimePartitioningArgs:
         pulumi.set(self, "require_partition_filter", value)
 
 
-if not MYPY:
-    class TableViewArgsDict(TypedDict):
-        query: pulumi.Input[_builtins.str]
-        """
-        A query that BigQuery executes when the view is referenced.
-        """
-        use_legacy_sql: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to use BigQuery's legacy SQL for this view.
-        If set to `false`, the view will use BigQuery's standard SQL. If set to
-        `true`, the view will use BigQuery's legacy SQL. If unset, the API will
-        interpret it as a `true` and assumes the legacy SQL dialect for its query
-        according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
-        > **Note**: Starting in provider version `7.0.0`, no default value is
-        provided for this field unless explicitly set in the configuration.
-        """
-elif False:
-    TableViewArgsDict: TypeAlias = Mapping[str, Any]
+class TableViewArgsDict(TypedDict):
+    query: pulumi.Input[_builtins.str]
+    """
+    A query that BigQuery executes when the view is referenced.
+    """
+    use_legacy_sql: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to use BigQuery's legacy SQL for this view.
+    If set to `false`, the view will use BigQuery's standard SQL. If set to
+    `true`, the view will use BigQuery's legacy SQL. If unset, the API will
+    interpret it as a `true` and assumes the legacy SQL dialect for its query
+    according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
+    > **Note**: Starting in provider version `7.0.0`, no default value is
+    provided for this field unless explicitly set in the configuration.
+    """
 
 @pulumi.input_type
 class TableViewArgs:

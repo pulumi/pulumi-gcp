@@ -34,22 +34,14 @@ import * as utilities from "../utilities";
  * PluginInstance can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/plugins/{{plugin}}/instances/{{plugin_instance_id}}`
- *
  * * `{{project}}/{{location}}/{{plugin}}/{{plugin_instance_id}}`
- *
  * * `{{location}}/{{plugin}}/{{plugin_instance_id}}`
  *
  * When using the `pulumi import` command, PluginInstance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apihub/pluginInstance:PluginInstance default projects/{{project}}/locations/{{location}}/plugins/{{plugin}}/instances/{{plugin_instance_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apihub/pluginInstance:PluginInstance default {{project}}/{{location}}/{{plugin}}/{{plugin_instance_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apihub/pluginInstance:PluginInstance default {{location}}/{{plugin}}/{{plugin_instance_id}}
  * ```
  */

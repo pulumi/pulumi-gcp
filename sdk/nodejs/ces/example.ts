@@ -176,22 +176,14 @@ import * as utilities from "../utilities";
  * Example can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}`
- *
  * * `{{project}}/{{location}}/{{app}}/{{name}}`
- *
  * * `{{location}}/{{app}}/{{name}}`
  *
  * When using the `pulumi import` command, Example can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:ces/example:Example default projects/{{project}}/locations/{{location}}/apps/{{app}}/examples/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:ces/example:Example default {{project}}/{{location}}/{{app}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:ces/example:Example default {{location}}/{{app}}/{{name}}
  * ```
  */
@@ -251,6 +243,10 @@ export class Example extends pulumi.CustomResource {
      * changes.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
+    /**
+     * The ID to use for the example, which will become the final component of
+     * the example's resource name. In Terraform, this field is required.
+     */
     declare public readonly exampleId: pulumi.Output<string>;
     /**
      * The example may become invalid if referencing resources are deleted.
@@ -373,6 +369,10 @@ export interface ExampleState {
      * changes.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * The ID to use for the example, which will become the final component of
+     * the example's resource name. In Terraform, this field is required.
+     */
     exampleId?: pulumi.Input<string>;
     /**
      * The example may become invalid if referencing resources are deleted.
@@ -427,6 +427,10 @@ export interface ExampleArgs {
      * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
      */
     entryAgent?: pulumi.Input<string>;
+    /**
+     * The ID to use for the example, which will become the final component of
+     * the example's resource name. In Terraform, this field is required.
+     */
     exampleId: pulumi.Input<string>;
     /**
      * Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.

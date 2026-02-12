@@ -414,22 +414,14 @@ import javax.annotation.Nullable;
  * Database can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/databases/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firestore/database:Database default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firestore/database:Database default {{name}}
  * ```
  * 
@@ -518,15 +510,47 @@ public class Database extends com.pulumi.resources.CustomResource {
     public Output<String> databaseEdition() {
         return this.databaseEdition;
     }
+    /**
+     * State of delete protection for the database.
+     * When delete protection is enabled, this database cannot be deleted.
+     * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+     * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * 
+     */
     @Export(name="deleteProtectionState", refs={String.class}, tree="[0]")
     private Output<String> deleteProtectionState;
 
+    /**
+     * @return State of delete protection for the database.
+     * When delete protection is enabled, this database cannot be deleted.
+     * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+     * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * 
+     */
     public Output<String> deleteProtectionState() {
         return this.deleteProtectionState;
     }
+    /**
+     * Deletion behavior for this database.
+     * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+     * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `ABANDON`.
+     * See also `deleteProtection`.
+     * 
+     */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 
+    /**
+     * @return Deletion behavior for this database.
+     * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+     * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `ABANDON`.
+     * See also `deleteProtection`.
+     * 
+     */
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
     }

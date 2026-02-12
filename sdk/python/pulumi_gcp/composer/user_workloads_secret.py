@@ -27,7 +27,14 @@ class UserWorkloadsSecretArgs:
         """
         The set of arguments for constructing a UserWorkloadsSecret resource.
         :param pulumi.Input[_builtins.str] environment: Environment where the Kubernetes Secret will be stored and used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: A map of the secret data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The "data" field of Kubernetes Secret, organized in key-value pairs,
+               which can contain sensitive values such as a password, a token, or a key.
+               Content of this field will not be displayed in CLI output,
+               but it will be stored in terraform state file. To protect sensitive data,
+               follow the best practices outlined in the HashiCorp documentation:
+               https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+               The values for all keys have to be base64-encoded strings.
+               For details see: https://kubernetes.io/docs/concepts/configuration/secret/
         :param pulumi.Input[_builtins.str] name: Name of the Kubernetes Secret.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -59,7 +66,14 @@ class UserWorkloadsSecretArgs:
     @pulumi.getter
     def data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A map of the secret data.
+        The "data" field of Kubernetes Secret, organized in key-value pairs,
+        which can contain sensitive values such as a password, a token, or a key.
+        Content of this field will not be displayed in CLI output,
+        but it will be stored in terraform state file. To protect sensitive data,
+        follow the best practices outlined in the HashiCorp documentation:
+        https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+        The values for all keys have to be base64-encoded strings.
+        For details see: https://kubernetes.io/docs/concepts/configuration/secret/
         """
         return pulumi.get(self, "data")
 
@@ -115,7 +129,14 @@ class _UserWorkloadsSecretState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserWorkloadsSecret resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: A map of the secret data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The "data" field of Kubernetes Secret, organized in key-value pairs,
+               which can contain sensitive values such as a password, a token, or a key.
+               Content of this field will not be displayed in CLI output,
+               but it will be stored in terraform state file. To protect sensitive data,
+               follow the best practices outlined in the HashiCorp documentation:
+               https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+               The values for all keys have to be base64-encoded strings.
+               For details see: https://kubernetes.io/docs/concepts/configuration/secret/
         :param pulumi.Input[_builtins.str] environment: Environment where the Kubernetes Secret will be stored and used.
         :param pulumi.Input[_builtins.str] name: Name of the Kubernetes Secret.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -137,7 +158,14 @@ class _UserWorkloadsSecretState:
     @pulumi.getter
     def data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A map of the secret data.
+        The "data" field of Kubernetes Secret, organized in key-value pairs,
+        which can contain sensitive values such as a password, a token, or a key.
+        Content of this field will not be displayed in CLI output,
+        but it will be stored in terraform state file. To protect sensitive data,
+        follow the best practices outlined in the HashiCorp documentation:
+        https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+        The values for all keys have to be base64-encoded strings.
+        For details see: https://kubernetes.io/docs/concepts/configuration/secret/
         """
         return pulumi.get(self, "data")
 
@@ -243,28 +271,27 @@ class UserWorkloadsSecret(pulumi.CustomResource):
         Secret can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsSecrets/{{name}}`
-
         * `{{project}}/{{region}}/{{environment}}/{{name}}`
-
         * `{{environment}}/{{name}}`
 
         When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsSecrets/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{project}}/{{region}}/{{environment}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: A map of the secret data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The "data" field of Kubernetes Secret, organized in key-value pairs,
+               which can contain sensitive values such as a password, a token, or a key.
+               Content of this field will not be displayed in CLI output,
+               but it will be stored in terraform state file. To protect sensitive data,
+               follow the best practices outlined in the HashiCorp documentation:
+               https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+               The values for all keys have to be base64-encoded strings.
+               For details see: https://kubernetes.io/docs/concepts/configuration/secret/
         :param pulumi.Input[_builtins.str] environment: Environment where the Kubernetes Secret will be stored and used.
         :param pulumi.Input[_builtins.str] name: Name of the Kubernetes Secret.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -313,22 +340,14 @@ class UserWorkloadsSecret(pulumi.CustomResource):
         Secret can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsSecrets/{{name}}`
-
         * `{{project}}/{{region}}/{{environment}}/{{name}}`
-
         * `{{environment}}/{{name}}`
 
         When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsSecrets/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{project}}/{{region}}/{{environment}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
         ```
 
@@ -392,7 +411,14 @@ class UserWorkloadsSecret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: A map of the secret data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The "data" field of Kubernetes Secret, organized in key-value pairs,
+               which can contain sensitive values such as a password, a token, or a key.
+               Content of this field will not be displayed in CLI output,
+               but it will be stored in terraform state file. To protect sensitive data,
+               follow the best practices outlined in the HashiCorp documentation:
+               https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+               The values for all keys have to be base64-encoded strings.
+               For details see: https://kubernetes.io/docs/concepts/configuration/secret/
         :param pulumi.Input[_builtins.str] environment: Environment where the Kubernetes Secret will be stored and used.
         :param pulumi.Input[_builtins.str] name: Name of the Kubernetes Secret.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -414,7 +440,14 @@ class UserWorkloadsSecret(pulumi.CustomResource):
     @pulumi.getter
     def data(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        A map of the secret data.
+        The "data" field of Kubernetes Secret, organized in key-value pairs,
+        which can contain sensitive values such as a password, a token, or a key.
+        Content of this field will not be displayed in CLI output,
+        but it will be stored in terraform state file. To protect sensitive data,
+        follow the best practices outlined in the HashiCorp documentation:
+        https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+        The values for all keys have to be base64-encoded strings.
+        For details see: https://kubernetes.io/docs/concepts/configuration/secret/
         """
         return pulumi.get(self, "data")
 

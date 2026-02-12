@@ -63,6 +63,20 @@ class CxAgentArgs:
         :param pulumi.Input[_builtins.str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
         :param pulumi.Input['CxAgentClientCertificateSettingsArgs'] client_certificate_settings: Settings for custom client certificates.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] delete_chat_engine_on_destroy: If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+               Otherwise, the chat engine will persist.
+               
+               This virtual field addresses a critical dependency chain: `agent` > `engine` > `data store`. The chat engine is automatically
+               provisioned when a data store is linked to the agent, meaning Terraform doesn't have direct control over its lifecycle as a managed
+               resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+               delete_chat_engine_on_destroy set to true, the data store's deletion would fail because the unmanaged chat engine would still be
+               using it. This setting ensures that the entire dependency chain can be properly torn down.
+               See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+               
+               Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+               or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+               or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+               The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.bool] enable_multi_language_training: Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
@@ -241,6 +255,22 @@ class CxAgentArgs:
     @_builtins.property
     @pulumi.getter(name="deleteChatEngineOnDestroy")
     def delete_chat_engine_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+        Otherwise, the chat engine will persist.
+
+        This virtual field addresses a critical dependency chain: `agent` > `engine` > `data store`. The chat engine is automatically
+        provisioned when a data store is linked to the agent, meaning Terraform doesn't have direct control over its lifecycle as a managed
+        resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+        delete_chat_engine_on_destroy set to true, the data store's deletion would fail because the unmanaged chat engine would still be
+        using it. This setting ensures that the entire dependency chain can be properly torn down.
+        See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+
+        Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+        or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+        or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+        The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
+        """
         return pulumi.get(self, "delete_chat_engine_on_destroy")
 
     @delete_chat_engine_on_destroy.setter
@@ -468,6 +498,20 @@ class _CxAgentState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] default_language_code: The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
                for a list of the currently supported language codes. This field cannot be updated after creation.
+        :param pulumi.Input[_builtins.bool] delete_chat_engine_on_destroy: If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+               Otherwise, the chat engine will persist.
+               
+               This virtual field addresses a critical dependency chain: `agent` > `engine` > `data store`. The chat engine is automatically
+               provisioned when a data store is linked to the agent, meaning Terraform doesn't have direct control over its lifecycle as a managed
+               resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+               delete_chat_engine_on_destroy set to true, the data store's deletion would fail because the unmanaged chat engine would still be
+               using it. This setting ensures that the entire dependency chain can be properly torn down.
+               See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+               
+               Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+               or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+               or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+               The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[_builtins.bool] enable_multi_language_training: Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
@@ -629,6 +673,22 @@ class _CxAgentState:
     @_builtins.property
     @pulumi.getter(name="deleteChatEngineOnDestroy")
     def delete_chat_engine_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+        Otherwise, the chat engine will persist.
+
+        This virtual field addresses a critical dependency chain: `agent` > `engine` > `data store`. The chat engine is automatically
+        provisioned when a data store is linked to the agent, meaning Terraform doesn't have direct control over its lifecycle as a managed
+        resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+        delete_chat_engine_on_destroy set to true, the data store's deletion would fail because the unmanaged chat engine would still be
+        using it. This setting ensures that the entire dependency chain can be properly torn down.
+        See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+
+        Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+        or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+        or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+        The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
+        """
         return pulumi.get(self, "delete_chat_engine_on_destroy")
 
     @delete_chat_engine_on_destroy.setter
@@ -1062,22 +1122,14 @@ class CxAgent(pulumi.CustomResource):
         Agent can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/agents/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxAgent:CxAgent default projects/{{project}}/locations/{{location}}/agents/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxAgent:CxAgent default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxAgent:CxAgent default {{location}}/{{name}}
         ```
 
@@ -1093,6 +1145,20 @@ class CxAgent(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] default_language_code: The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
                for a list of the currently supported language codes. This field cannot be updated after creation.
+        :param pulumi.Input[_builtins.bool] delete_chat_engine_on_destroy: If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+               Otherwise, the chat engine will persist.
+               
+               This virtual field addresses a critical dependency chain: `agent` > `engine` > `data store`. The chat engine is automatically
+               provisioned when a data store is linked to the agent, meaning Terraform doesn't have direct control over its lifecycle as a managed
+               resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+               delete_chat_engine_on_destroy set to true, the data store's deletion would fail because the unmanaged chat engine would still be
+               using it. This setting ensures that the entire dependency chain can be properly torn down.
+               See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+               
+               Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+               or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+               or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+               The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[_builtins.bool] enable_multi_language_training: Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
@@ -1260,22 +1326,14 @@ class CxAgent(pulumi.CustomResource):
         Agent can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/agents/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxAgent:CxAgent default projects/{{project}}/locations/{{location}}/agents/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxAgent:CxAgent default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxAgent:CxAgent default {{location}}/{{name}}
         ```
 
@@ -1415,6 +1473,20 @@ class CxAgent(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] default_language_code: The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
                for a list of the currently supported language codes. This field cannot be updated after creation.
+        :param pulumi.Input[_builtins.bool] delete_chat_engine_on_destroy: If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+               Otherwise, the chat engine will persist.
+               
+               This virtual field addresses a critical dependency chain: `agent` > `engine` > `data store`. The chat engine is automatically
+               provisioned when a data store is linked to the agent, meaning Terraform doesn't have direct control over its lifecycle as a managed
+               resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+               delete_chat_engine_on_destroy set to true, the data store's deletion would fail because the unmanaged chat engine would still be
+               using it. This setting ensures that the entire dependency chain can be properly torn down.
+               See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+               
+               Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+               or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+               or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+               The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[_builtins.bool] enable_multi_language_training: Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
@@ -1531,6 +1603,22 @@ class CxAgent(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deleteChatEngineOnDestroy")
     def delete_chat_engine_on_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
+        Otherwise, the chat engine will persist.
+
+        This virtual field addresses a critical dependency chain: `agent` > `engine` > `data store`. The chat engine is automatically
+        provisioned when a data store is linked to the agent, meaning Terraform doesn't have direct control over its lifecycle as a managed
+        resource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without
+        delete_chat_engine_on_destroy set to true, the data store's deletion would fail because the unmanaged chat engine would still be
+        using it. This setting ensures that the entire dependency chain can be properly torn down.
+        See `mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl` as an example.
+
+        Data store can be linked to an agent through the `knowledgeConnectorSettings` field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)
+        or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
+        or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
+        The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
+        """
         return pulumi.get(self, "delete_chat_engine_on_destroy")
 
     @_builtins.property

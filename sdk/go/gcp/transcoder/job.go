@@ -1006,22 +1006,14 @@ import (
 // Job can be imported using any of these accepted formats:
 //
 // * `{{project}}/{{name}}`
-//
 // * `{{project}} {{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:transcoder/job:Job default {{project}}/{{name}}
-// ```
-//
-// ```sh
-// $ pulumi import gcp:transcoder/job:Job default "{{project}} {{name}}"
-// ```
-//
-// ```sh
+// $ terraform import google_transcoder_job.default "{{project}} {{name}}"
 // $ pulumi import gcp:transcoder/job:Job default {{name}}
 // ```
 type Job struct {

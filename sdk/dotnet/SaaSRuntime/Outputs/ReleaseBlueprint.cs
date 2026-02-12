@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.SaaSRuntime.Outputs
     [OutputType]
     public sealed class ReleaseBlueprint
     {
+        /// <summary>
+        /// (Output)
+        /// Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
+        /// </summary>
         public readonly string? Engine;
         /// <summary>
         /// URI to a blueprint used by the Unit (required unless unitKind or release is

@@ -132,22 +132,14 @@ import (
 // DbSystem can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/dbSystems/{{db_system_id}}`
-//
 // * `{{project}}/{{location}}/{{db_system_id}}`
-//
 // * `{{location}}/{{db_system_id}}`
 //
 // When using the `pulumi import` command, DbSystem can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default projects/{{project}}/locations/{{location}}/dbSystems/{{db_system_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{project}}/{{location}}/{{db_system_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{location}}/{{db_system_id}}
 // ```
 type DbSystem struct {
@@ -159,7 +151,8 @@ type DbSystem struct {
 	// restricted to (^a-z?$) and must be a maximum of
 	// 63 characters in length. The value must start with a letter and end with a
 	// letter or a number.
-	DbSystemId         pulumi.StringOutput  `pulumi:"dbSystemId"`
+	DbSystemId pulumi.StringOutput `pulumi:"dbSystemId"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The display name for the System db. The name does not have to
 	// be unique within your project.
@@ -256,8 +249,9 @@ type dbSystemState struct {
 	// restricted to (^a-z?$) and must be a maximum of
 	// 63 characters in length. The value must start with a letter and end with a
 	// letter or a number.
-	DbSystemId         *string `pulumi:"dbSystemId"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	DbSystemId *string `pulumi:"dbSystemId"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The display name for the System db. The name does not have to
 	// be unique within your project.
 	DisplayName *string `pulumi:"displayName"`
@@ -307,7 +301,8 @@ type DbSystemState struct {
 	// restricted to (^a-z?$) and must be a maximum of
 	// 63 characters in length. The value must start with a letter and end with a
 	// letter or a number.
-	DbSystemId         pulumi.StringPtrInput
+	DbSystemId pulumi.StringPtrInput
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The display name for the System db. The name does not have to
 	// be unique within your project.
@@ -360,8 +355,9 @@ type dbSystemArgs struct {
 	// restricted to (^a-z?$) and must be a maximum of
 	// 63 characters in length. The value must start with a letter and end with a
 	// letter or a number.
-	DbSystemId         string `pulumi:"dbSystemId"`
-	DeletionProtection *bool  `pulumi:"deletionProtection"`
+	DbSystemId string `pulumi:"dbSystemId"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The display name for the System db. The name does not have to
 	// be unique within your project.
 	DisplayName string `pulumi:"displayName"`
@@ -398,7 +394,8 @@ type DbSystemArgs struct {
 	// restricted to (^a-z?$) and must be a maximum of
 	// 63 characters in length. The value must start with a letter and end with a
 	// letter or a number.
-	DbSystemId         pulumi.StringInput
+	DbSystemId pulumi.StringInput
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The display name for the System db. The name does not have to
 	// be unique within your project.
@@ -530,6 +527,7 @@ func (o DbSystemOutput) DbSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbSystem) pulumi.StringOutput { return v.DbSystemId }).(pulumi.StringOutput)
 }
 
+// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 func (o DbSystemOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DbSystem) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

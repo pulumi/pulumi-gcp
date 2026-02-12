@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * The Tenant resource represents the service producer's view of a service instance created for a consumer. It enables the association between the service producer's managed resources and the end consumer.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
  * ## Example Usage
  *
  * ### Saas Runtime Tenant Basic
@@ -33,22 +38,14 @@ import * as utilities from "../utilities";
  * Tenant can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}`
- *
  * * `{{project}}/{{location}}/{{tenant_id}}`
- *
  * * `{{location}}/{{tenant_id}}`
  *
  * When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:saasruntime/tenant:Tenant default projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:saasruntime/tenant:Tenant default {{project}}/{{location}}/{{tenant_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:saasruntime/tenant:Tenant default {{location}}/{{tenant_id}}
  * ```
  */
@@ -100,6 +97,9 @@ export class Tenant extends pulumi.CustomResource {
      * The timestamp when the resource was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -241,6 +241,9 @@ export interface TenantState {
      * The timestamp when the resource was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

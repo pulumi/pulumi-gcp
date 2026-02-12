@@ -64,16 +64,12 @@ import javax.annotation.Nullable;
  * CacheConfig can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/cacheConfig`
- * 
  * * `{{project}}`
  * 
  * When using the `pulumi import` command, CacheConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:vertex/aiCacheConfig:AiCacheConfig default projects/{{project}}/cacheConfig
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:vertex/aiCacheConfig:AiCacheConfig default {{project}}
  * ```
  * 

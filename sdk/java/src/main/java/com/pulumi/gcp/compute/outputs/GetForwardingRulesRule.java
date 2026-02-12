@@ -76,6 +76,10 @@ public final class GetForwardingRulesRule {
      * 
      */
     private String description;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     private Map<String,String> effectiveLabels;
     /**
      * @return The unique identifier number for the resource. This identifier is defined by the server.
@@ -326,6 +330,10 @@ public final class GetForwardingRulesRule {
      * 
      */
     private Map<String,String> pulumiLabels;
+    /**
+     * @return This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     * 
+     */
     private Boolean recreateClosedPsc;
     /**
      * @return The region you want to get the forwarding rules from.
@@ -475,6 +483,10 @@ public final class GetForwardingRulesRule {
     public String description() {
         return this.description;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
     }
@@ -765,6 +777,10 @@ public final class GetForwardingRulesRule {
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
+    /**
+     * @return This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     * 
+     */
     public Boolean recreateClosedPsc() {
         return this.recreateClosedPsc;
     }

@@ -107,22 +107,14 @@ namespace Pulumi.Gcp.Apphub
     /// ServiceProjectAttachment can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/global/serviceProjectAttachments/{{service_project_attachment_id}}`
-    /// 
     /// * `{{project}}/{{service_project_attachment_id}}`
-    /// 
     /// * `{{service_project_attachment_id}}`
     /// 
     /// When using the `pulumi import` command, ServiceProjectAttachment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment default projects/{{project}}/locations/global/serviceProjectAttachments/{{service_project_attachment_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment default {{project}}/{{service_project_attachment_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment default {{service_project_attachment_id}}
     /// ```
     /// </summary>

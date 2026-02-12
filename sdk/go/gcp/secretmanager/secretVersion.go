@@ -12,6 +12,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A secret version resource.
+//
+// To get more information about SecretVersion, see:
+//
+// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions)
+// * How-to Guides
+//   - [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
+//
+// > **Warning:** The behavior of the `secretData` field is force new.
+// While updating this field, Terraform deletes the existing resource and then creates a new one, which may cause potential outages. To mitigate
+// this, use the `createBeforeDestroy` field within the lifecycle block.
+//
+// For more details, refer to the Terraform lifecycle documentation.
+//
+// > **Note:**  All arguments marked as write-only values will not be stored in the state: `secretDataWo`.
+// Read more about Write-only Arguments.
+//
 // ## Example Usage
 //
 // ### Secret Version Basic

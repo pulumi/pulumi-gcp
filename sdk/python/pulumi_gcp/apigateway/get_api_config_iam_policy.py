@@ -106,6 +106,10 @@ def get_api_config_iam_policy(api: Optional[_builtins.str] = None,
                               project: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiConfigIamPolicyResult:
     """
+    Retrieves the current IAM policy data for apiconfig
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python
@@ -142,6 +146,10 @@ def get_api_config_iam_policy_output(api: Optional[pulumi.Input[_builtins.str]] 
                                      project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiConfigIamPolicyResult]:
     """
+    Retrieves the current IAM policy data for apiconfig
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python

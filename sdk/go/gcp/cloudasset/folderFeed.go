@@ -99,16 +99,12 @@ import (
 // FolderFeed can be imported using any of these accepted formats:
 //
 // * `folders/{{folder_id}}/feeds/{{name}}`
-//
 // * `{{folder_id}}/{{name}}`
 //
 // When using the `pulumi import` command, FolderFeed can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default folders/{{folder_id}}/feeds/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default {{folder_id}}/{{name}}
 // ```
 type FolderFeed struct {

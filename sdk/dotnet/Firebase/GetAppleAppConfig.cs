@@ -11,12 +11,48 @@ namespace Pulumi.Gcp.Firebase
 {
     public static class GetAppleAppConfig
     {
+        /// <summary>
+        /// A Google Cloud Firebase Apple application configuration
+        /// 
+        /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// To get more information about iosApp, see:
+        /// 
+        /// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://firebase.google.com/)
+        /// </summary>
         public static Task<GetAppleAppConfigResult> InvokeAsync(GetAppleAppConfigArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppleAppConfigResult>("gcp:firebase/getAppleAppConfig:getAppleAppConfig", args ?? new GetAppleAppConfigArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// A Google Cloud Firebase Apple application configuration
+        /// 
+        /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// To get more information about iosApp, see:
+        /// 
+        /// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://firebase.google.com/)
+        /// </summary>
         public static Output<GetAppleAppConfigResult> Invoke(GetAppleAppConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppleAppConfigResult>("gcp:firebase/getAppleAppConfig:getAppleAppConfig", args ?? new GetAppleAppConfigInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// A Google Cloud Firebase Apple application configuration
+        /// 
+        /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// To get more information about iosApp, see:
+        /// 
+        /// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://firebase.google.com/)
+        /// </summary>
         public static Output<GetAppleAppConfigResult> Invoke(GetAppleAppConfigInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppleAppConfigResult>("gcp:firebase/getAppleAppConfig:getAppleAppConfig", args ?? new GetAppleAppConfigInvokeArgs(), options.WithDefaults());
     }

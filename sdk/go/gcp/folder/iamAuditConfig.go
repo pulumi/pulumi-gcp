@@ -453,29 +453,13 @@ import (
 //
 // ## Import
 //
-// ### Importing Audit Configs
+// > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
-// An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g:
+//	full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
 //
-// * `"folder/{{folder_id}} foo.googleapis.com"`
+// > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
 //
-// An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
-//
-// tf
-//
-// import {
-//
-//	id = "folder/{{folder_id}} foo.googleapis.com"
-//
-//	to = google_folder_iam_audit_config.default
-//
-// }
-//
-// The `pulumi import` command can also be used:
-//
-// ```sh
-// $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig default "folder/{{folder_id}} foo.googleapis.com"
-// ```
+//	to include the title of condition, e.g. `terraform import google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
 type IamAuditConfig struct {
 	pulumi.CustomResourceState
 

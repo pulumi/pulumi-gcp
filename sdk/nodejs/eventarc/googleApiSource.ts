@@ -58,22 +58,14 @@ import * as utilities from "../utilities";
  * GoogleApiSource can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/googleApiSources/{{google_api_source_id}}`
- *
  * * `{{project}}/{{location}}/{{google_api_source_id}}`
- *
  * * `{{location}}/{{google_api_source_id}}`
  *
  * When using the `pulumi import` command, GoogleApiSource can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default projects/{{project}}/locations/{{location}}/googleApiSources/{{google_api_source_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{project}}/{{location}}/{{google_api_source_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:eventarc/googleApiSource:GoogleApiSource default {{location}}/{{google_api_source_id}}
  * ```
  */
@@ -132,6 +124,9 @@ export class GoogleApiSource extends pulumi.CustomResource {
      * Resource display name.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -286,6 +281,9 @@ export interface GoogleApiSourceState {
      * Resource display name.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

@@ -71,44 +71,39 @@ __all__ = [
     'SubnetDhcpAddressRangeArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ClusterAutoscalingSettingsArgsDict(TypedDict):
-        autoscaling_policies: pulumi.Input[Sequence[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyArgsDict']]]
-        """
-        The map with autoscaling policies applied to the cluster.
-        The key is the identifier of the policy.
-        It must meet the following requirements:
-        * Only contains 1-63 alphanumeric characters and hyphens
-        * Begins with an alphabetical character
-        * Ends with a non-hyphen character
-        * Not formatted as a UUID
-        * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        Currently the map must contain only one element
-        that describes the autoscaling policy for compute nodes.
-        Structure is documented below.
-        """
-        cool_down_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum duration between consecutive autoscale operations.
-        It starts once addition or removal of nodes is fully completed.
-        Minimum cool down period is 30m.
-        Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
-        Mandatory for successful addition of autoscaling settings in cluster.
-        """
-        max_cluster_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of nodes of any type in a cluster.
-        Mandatory for successful addition of autoscaling settings in cluster.
-        """
-        min_cluster_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of nodes of any type in a cluster.
-        Mandatory for successful addition of autoscaling settings in cluster.
-        """
-elif False:
-    ClusterAutoscalingSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAutoscalingSettingsArgsDict(TypedDict):
+    autoscaling_policies: pulumi.Input[Sequence[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyArgsDict']]]
+    """
+    The map with autoscaling policies applied to the cluster.
+    The key is the identifier of the policy.
+    It must meet the following requirements:
+    * Only contains 1-63 alphanumeric characters and hyphens
+    * Begins with an alphabetical character
+    * Ends with a non-hyphen character
+    * Not formatted as a UUID
+    * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+    Currently the map must contain only one element
+    that describes the autoscaling policy for compute nodes.
+    Structure is documented below.
+    """
+    cool_down_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum duration between consecutive autoscale operations.
+    It starts once addition or removal of nodes is fully completed.
+    Minimum cool down period is 30m.
+    Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+    Mandatory for successful addition of autoscaling settings in cluster.
+    """
+    max_cluster_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of nodes of any type in a cluster.
+    Mandatory for successful addition of autoscaling settings in cluster.
+    """
+    min_cluster_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of nodes of any type in a cluster.
+    Mandatory for successful addition of autoscaling settings in cluster.
+    """
 
 @pulumi.input_type
 class ClusterAutoscalingSettingsArgs:
@@ -212,38 +207,35 @@ class ClusterAutoscalingSettingsArgs:
         pulumi.set(self, "min_cluster_node_count", value)
 
 
-if not MYPY:
-    class ClusterAutoscalingSettingsAutoscalingPolicyArgsDict(TypedDict):
-        autoscale_policy_id: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        node_type_id: pulumi.Input[_builtins.str]
-        """
-        The canonical identifier of the node type to add or remove.
-        """
-        scale_out_size: pulumi.Input[_builtins.int]
-        """
-        Number of nodes to add to a cluster during a scale-out operation.
-        Must be divisible by 2 for stretched clusters.
-        """
-        consumed_memory_thresholds: NotRequired[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict']]
-        """
-        Utilization thresholds pertaining to amount of consumed memory.
-        Structure is documented below.
-        """
-        cpu_thresholds: NotRequired[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict']]
-        """
-        Utilization thresholds pertaining to CPU utilization.
-        Structure is documented below.
-        """
-        storage_thresholds: NotRequired[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict']]
-        """
-        Utilization thresholds pertaining to amount of consumed storage.
-        Structure is documented below.
-        """
-elif False:
-    ClusterAutoscalingSettingsAutoscalingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAutoscalingSettingsAutoscalingPolicyArgsDict(TypedDict):
+    autoscale_policy_id: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    node_type_id: pulumi.Input[_builtins.str]
+    """
+    The canonical identifier of the node type to add or remove.
+    """
+    scale_out_size: pulumi.Input[_builtins.int]
+    """
+    Number of nodes to add to a cluster during a scale-out operation.
+    Must be divisible by 2 for stretched clusters.
+    """
+    consumed_memory_thresholds: NotRequired[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict']]
+    """
+    Utilization thresholds pertaining to amount of consumed memory.
+    Structure is documented below.
+    """
+    cpu_thresholds: NotRequired[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict']]
+    """
+    Utilization thresholds pertaining to CPU utilization.
+    Structure is documented below.
+    """
+    storage_thresholds: NotRequired[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict']]
+    """
+    Utilization thresholds pertaining to amount of consumed storage.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ClusterAutoscalingSettingsAutoscalingPolicyArgs:
@@ -353,18 +345,15 @@ class ClusterAutoscalingSettingsAutoscalingPolicyArgs:
         pulumi.set(self, "storage_thresholds", value)
 
 
-if not MYPY:
-    class ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict(TypedDict):
-        scale_in: pulumi.Input[_builtins.int]
-        """
-        The utilization triggering the scale-in operation in percent.
-        """
-        scale_out: pulumi.Input[_builtins.int]
-        """
-        The utilization triggering the scale-out operation in percent.
-        """
-elif False:
-    ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict(TypedDict):
+    scale_in: pulumi.Input[_builtins.int]
+    """
+    The utilization triggering the scale-in operation in percent.
+    """
+    scale_out: pulumi.Input[_builtins.int]
+    """
+    The utilization triggering the scale-out operation in percent.
+    """
 
 @pulumi.input_type
 class ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs:
@@ -403,18 +392,15 @@ class ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs:
         pulumi.set(self, "scale_out", value)
 
 
-if not MYPY:
-    class ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict(TypedDict):
-        scale_in: pulumi.Input[_builtins.int]
-        """
-        The utilization triggering the scale-in operation in percent.
-        """
-        scale_out: pulumi.Input[_builtins.int]
-        """
-        The utilization triggering the scale-out operation in percent.
-        """
-elif False:
-    ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict(TypedDict):
+    scale_in: pulumi.Input[_builtins.int]
+    """
+    The utilization triggering the scale-in operation in percent.
+    """
+    scale_out: pulumi.Input[_builtins.int]
+    """
+    The utilization triggering the scale-out operation in percent.
+    """
 
 @pulumi.input_type
 class ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs:
@@ -453,18 +439,15 @@ class ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs:
         pulumi.set(self, "scale_out", value)
 
 
-if not MYPY:
-    class ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict(TypedDict):
-        scale_in: pulumi.Input[_builtins.int]
-        """
-        The utilization triggering the scale-in operation in percent.
-        """
-        scale_out: pulumi.Input[_builtins.int]
-        """
-        The utilization triggering the scale-out operation in percent.
-        """
-elif False:
-    ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict(TypedDict):
+    scale_in: pulumi.Input[_builtins.int]
+    """
+    The utilization triggering the scale-in operation in percent.
+    """
+    scale_out: pulumi.Input[_builtins.int]
+    """
+    The utilization triggering the scale-out operation in percent.
+    """
 
 @pulumi.input_type
 class ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs:
@@ -503,25 +486,22 @@ class ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs:
         pulumi.set(self, "scale_out", value)
 
 
-if not MYPY:
-    class ClusterNodeTypeConfigArgsDict(TypedDict):
-        node_count: pulumi.Input[_builtins.int]
-        """
-        The number of nodes of this type in the cluster.
-        """
-        node_type_id: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        custom_core_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Customized number of cores available to each node of the type.
-        This number must always be one of `nodeType.availableCustomCoreCounts`.
-        If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
-        Once the customer is created then corecount cannot be changed.
-        """
-elif False:
-    ClusterNodeTypeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeTypeConfigArgsDict(TypedDict):
+    node_count: pulumi.Input[_builtins.int]
+    """
+    The number of nodes of this type in the cluster.
+    """
+    node_type_id: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    custom_core_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Customized number of cores available to each node of the type.
+    This number must always be one of `nodeType.availableCustomCoreCounts`.
+    If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+    Once the customer is created then corecount cannot be changed.
+    """
 
 @pulumi.input_type
 class ClusterNodeTypeConfigArgs:
@@ -582,20 +562,17 @@ class ClusterNodeTypeConfigArgs:
         pulumi.set(self, "custom_core_count", value)
 
 
-if not MYPY:
-    class DatastoreNfsDatastoreArgsDict(TypedDict):
-        google_file_service: NotRequired[pulumi.Input['DatastoreNfsDatastoreGoogleFileServiceArgsDict']]
-        """
-        Google service file service configuration
-        Structure is documented below.
-        """
-        third_party_file_service: NotRequired[pulumi.Input['DatastoreNfsDatastoreThirdPartyFileServiceArgsDict']]
-        """
-        Third party file service configuration
-        Structure is documented below.
-        """
-elif False:
-    DatastoreNfsDatastoreArgsDict: TypeAlias = Mapping[str, Any]
+class DatastoreNfsDatastoreArgsDict(TypedDict):
+    google_file_service: NotRequired[pulumi.Input['DatastoreNfsDatastoreGoogleFileServiceArgsDict']]
+    """
+    Google service file service configuration
+    Structure is documented below.
+    """
+    third_party_file_service: NotRequired[pulumi.Input['DatastoreNfsDatastoreThirdPartyFileServiceArgsDict']]
+    """
+    Third party file service configuration
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DatastoreNfsDatastoreArgs:
@@ -640,20 +617,17 @@ class DatastoreNfsDatastoreArgs:
         pulumi.set(self, "third_party_file_service", value)
 
 
-if not MYPY:
-    class DatastoreNfsDatastoreGoogleFileServiceArgsDict(TypedDict):
-        filestore_instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Google filestore instance resource name
-        e.g. projects/my-project/locations/me-west1-b/instances/my-instance
-        """
-        netapp_volume: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Google netapp volume resource name
-        e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
-        """
-elif False:
-    DatastoreNfsDatastoreGoogleFileServiceArgsDict: TypeAlias = Mapping[str, Any]
+class DatastoreNfsDatastoreGoogleFileServiceArgsDict(TypedDict):
+    filestore_instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Google filestore instance resource name
+    e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+    """
+    netapp_volume: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Google netapp volume resource name
+    e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+    """
 
 @pulumi.input_type
 class DatastoreNfsDatastoreGoogleFileServiceArgs:
@@ -698,28 +672,25 @@ class DatastoreNfsDatastoreGoogleFileServiceArgs:
         pulumi.set(self, "netapp_volume", value)
 
 
-if not MYPY:
-    class DatastoreNfsDatastoreThirdPartyFileServiceArgsDict(TypedDict):
-        file_share: pulumi.Input[_builtins.str]
-        """
-        Required
-        Mount Folder name
-        """
-        network: pulumi.Input[_builtins.str]
-        """
-        Required to identify vpc peering used for NFS access
-        network name of NFS's vpc
-        e.g. projects/project-id/global/networks/my-network_id
-        """
-        servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Server IP addresses of the NFS file service.
-        NFS v3, provide a single IP address or DNS name.
-        Multiple servers can be supported in future when NFS 4.1 protocol support
-        is enabled.
-        """
-elif False:
-    DatastoreNfsDatastoreThirdPartyFileServiceArgsDict: TypeAlias = Mapping[str, Any]
+class DatastoreNfsDatastoreThirdPartyFileServiceArgsDict(TypedDict):
+    file_share: pulumi.Input[_builtins.str]
+    """
+    Required
+    Mount Folder name
+    """
+    network: pulumi.Input[_builtins.str]
+    """
+    Required to identify vpc peering used for NFS access
+    network name of NFS's vpc
+    e.g. projects/project-id/global/networks/my-network_id
+    """
+    servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Server IP addresses of the NFS file service.
+    NFS v3, provide a single IP address or DNS name.
+    Multiple servers can be supported in future when NFS 4.1 protocol support
+    is enabled.
+    """
 
 @pulumi.input_type
 class DatastoreNfsDatastoreThirdPartyFileServiceArgs:
@@ -785,18 +756,15 @@ class DatastoreNfsDatastoreThirdPartyFileServiceArgs:
         pulumi.set(self, "servers", value)
 
 
-if not MYPY:
-    class ExternalAccessRuleDestinationIpRangeArgsDict(TypedDict):
-        external_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of an `ExternalAddress` resource.
-        """
-        ip_address_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An IP address range in the CIDR format.
-        """
-elif False:
-    ExternalAccessRuleDestinationIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+class ExternalAccessRuleDestinationIpRangeArgsDict(TypedDict):
+    external_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of an `ExternalAddress` resource.
+    """
+    ip_address_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An IP address range in the CIDR format.
+    """
 
 @pulumi.input_type
 class ExternalAccessRuleDestinationIpRangeArgs:
@@ -837,18 +805,15 @@ class ExternalAccessRuleDestinationIpRangeArgs:
         pulumi.set(self, "ip_address_range", value)
 
 
-if not MYPY:
-    class ExternalAccessRuleSourceIpRangeArgsDict(TypedDict):
-        ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A single IP address.
-        """
-        ip_address_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An IP address range in the CIDR format.
-        """
-elif False:
-    ExternalAccessRuleSourceIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+class ExternalAccessRuleSourceIpRangeArgsDict(TypedDict):
+    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A single IP address.
+    """
+    ip_address_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An IP address range in the CIDR format.
+    """
 
 @pulumi.input_type
 class ExternalAccessRuleSourceIpRangeArgs:
@@ -889,19 +854,16 @@ class ExternalAccessRuleSourceIpRangeArgs:
         pulumi.set(self, "ip_address_range", value)
 
 
-if not MYPY:
-    class NetworkPolicyExternalIpArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        True if the service is enabled; false otherwise.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        State of the service. New values may be added to this enum when appropriate.
-        """
-elif False:
-    NetworkPolicyExternalIpArgsDict: TypeAlias = Mapping[str, Any]
+class NetworkPolicyExternalIpArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    True if the service is enabled; false otherwise.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    State of the service. New values may be added to this enum when appropriate.
+    """
 
 @pulumi.input_type
 class NetworkPolicyExternalIpArgs:
@@ -944,19 +906,16 @@ class NetworkPolicyExternalIpArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class NetworkPolicyInternetAccessArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        True if the service is enabled; false otherwise.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        State of the service. New values may be added to this enum when appropriate.
-        """
-elif False:
-    NetworkPolicyInternetAccessArgsDict: TypeAlias = Mapping[str, Any]
+class NetworkPolicyInternetAccessArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    True if the service is enabled; false otherwise.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    State of the service. New values may be added to this enum when appropriate.
+    """
 
 @pulumi.input_type
 class NetworkPolicyInternetAccessArgs:
@@ -999,21 +958,18 @@ class NetworkPolicyInternetAccessArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class NetworkVpcNetworkArgsDict(TypedDict):
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The relative resource name of the service VPC network this VMware Engine network is attached to.
-        For example: projects/123123/global/networks/my-network
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VMware Engine network type.
-        Possible values are: `LEGACY`, `STANDARD`.
-        """
-elif False:
-    NetworkVpcNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class NetworkVpcNetworkArgsDict(TypedDict):
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The relative resource name of the service VPC network this VMware Engine network is attached to.
+    For example: projects/123123/global/networks/my-network
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VMware Engine network type.
+    Possible values are: `LEGACY`, `STANDARD`.
+    """
 
 @pulumi.input_type
 class NetworkVpcNetworkArgs:
@@ -1060,27 +1016,24 @@ class NetworkVpcNetworkArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class PrivateCloudHcxArgsDict(TypedDict):
-        fqdn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified domain name of the appliance.
-        """
-        internal_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Internal IP address of the appliance.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        State of the appliance.
-        Possible values are: `ACTIVE`, `CREATING`.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version of the appliance.
-        """
-elif False:
-    PrivateCloudHcxArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateCloudHcxArgsDict(TypedDict):
+    fqdn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified domain name of the appliance.
+    """
+    internal_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Internal IP address of the appliance.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    State of the appliance.
+    Possible values are: `ACTIVE`, `CREATING`.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version of the appliance.
+    """
 
 @pulumi.input_type
 class PrivateCloudHcxArgs:
@@ -1155,36 +1108,33 @@ class PrivateCloudHcxArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PrivateCloudManagementClusterArgsDict(TypedDict):
-        cluster_id: pulumi.Input[_builtins.str]
-        """
-        The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
-        * Only contains 1-63 alphanumeric characters and hyphens
-        * Begins with an alphabetical character
-        * Ends with a non-hyphen character
-        * Not formatted as a UUID
-        * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        """
-        autoscaling_settings: NotRequired[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsArgsDict']]
-        """
-        Configuration of the autoscaling applied to this cluster
-        Private cloud must have a minimum of 3 nodes to add autoscale settings
-        Structure is documented below.
-        """
-        node_type_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgsDict']]]]
-        """
-        The map of cluster node types in this cluster,
-        where the key is canonical identifier of the node type (corresponds to the NodeType).
-        Structure is documented below.
-        """
-        stretched_cluster_config: NotRequired[pulumi.Input['PrivateCloudManagementClusterStretchedClusterConfigArgsDict']]
-        """
-        The stretched cluster configuration for the private cloud.
-        Structure is documented below.
-        """
-elif False:
-    PrivateCloudManagementClusterArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateCloudManagementClusterArgsDict(TypedDict):
+    cluster_id: pulumi.Input[_builtins.str]
+    """
+    The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+    * Only contains 1-63 alphanumeric characters and hyphens
+    * Begins with an alphabetical character
+    * Ends with a non-hyphen character
+    * Not formatted as a UUID
+    * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+    """
+    autoscaling_settings: NotRequired[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsArgsDict']]
+    """
+    Configuration of the autoscaling applied to this cluster
+    Private cloud must have a minimum of 3 nodes to add autoscale settings
+    Structure is documented below.
+    """
+    node_type_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgsDict']]]]
+    """
+    The map of cluster node types in this cluster,
+    where the key is canonical identifier of the node type (corresponds to the NodeType).
+    Structure is documented below.
+    """
+    stretched_cluster_config: NotRequired[pulumi.Input['PrivateCloudManagementClusterStretchedClusterConfigArgsDict']]
+    """
+    The stretched cluster configuration for the private cloud.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PrivateCloudManagementClusterArgs:
@@ -1276,42 +1226,39 @@ class PrivateCloudManagementClusterArgs:
         pulumi.set(self, "stretched_cluster_config", value)
 
 
-if not MYPY:
-    class PrivateCloudManagementClusterAutoscalingSettingsArgsDict(TypedDict):
-        autoscaling_policies: pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgsDict']]]
-        """
-        The map with autoscaling policies applied to the cluster.
-        The key is the identifier of the policy.
-        It must meet the following requirements:
-        * Only contains 1-63 alphanumeric characters and hyphens
-        * Begins with an alphabetical character
-        * Ends with a non-hyphen character
-        * Not formatted as a UUID
-        * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        Currently the map must contain only one element
-        that describes the autoscaling policy for compute nodes.
-        Structure is documented below.
-        """
-        cool_down_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum duration between consecutive autoscale operations.
-        It starts once addition or removal of nodes is fully completed.
-        Minimum cool down period is 30m.
-        Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
-        Mandatory for successful addition of autoscaling settings in cluster.
-        """
-        max_cluster_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of nodes of any type in a cluster.
-        Mandatory for successful addition of autoscaling settings in cluster.
-        """
-        min_cluster_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of nodes of any type in a cluster.
-        Mandatory for successful addition of autoscaling settings in cluster.
-        """
-elif False:
-    PrivateCloudManagementClusterAutoscalingSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateCloudManagementClusterAutoscalingSettingsArgsDict(TypedDict):
+    autoscaling_policies: pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgsDict']]]
+    """
+    The map with autoscaling policies applied to the cluster.
+    The key is the identifier of the policy.
+    It must meet the following requirements:
+    * Only contains 1-63 alphanumeric characters and hyphens
+    * Begins with an alphabetical character
+    * Ends with a non-hyphen character
+    * Not formatted as a UUID
+    * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+    Currently the map must contain only one element
+    that describes the autoscaling policy for compute nodes.
+    Structure is documented below.
+    """
+    cool_down_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum duration between consecutive autoscale operations.
+    It starts once addition or removal of nodes is fully completed.
+    Minimum cool down period is 30m.
+    Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+    Mandatory for successful addition of autoscaling settings in cluster.
+    """
+    max_cluster_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of nodes of any type in a cluster.
+    Mandatory for successful addition of autoscaling settings in cluster.
+    """
+    min_cluster_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of nodes of any type in a cluster.
+    Mandatory for successful addition of autoscaling settings in cluster.
+    """
 
 @pulumi.input_type
 class PrivateCloudManagementClusterAutoscalingSettingsArgs:
@@ -1415,38 +1362,35 @@ class PrivateCloudManagementClusterAutoscalingSettingsArgs:
         pulumi.set(self, "min_cluster_node_count", value)
 
 
-if not MYPY:
-    class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgsDict(TypedDict):
-        autoscale_policy_id: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        node_type_id: pulumi.Input[_builtins.str]
-        """
-        The canonical identifier of the node type to add or remove.
-        """
-        scale_out_size: pulumi.Input[_builtins.int]
-        """
-        Number of nodes to add to a cluster during a scale-out operation.
-        Must be divisible by 2 for stretched clusters.
-        """
-        consumed_memory_thresholds: NotRequired[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict']]
-        """
-        Utilization thresholds pertaining to amount of consumed memory.
-        Structure is documented below.
-        """
-        cpu_thresholds: NotRequired[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict']]
-        """
-        Utilization thresholds pertaining to CPU utilization.
-        Structure is documented below.
-        """
-        storage_thresholds: NotRequired[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict']]
-        """
-        Utilization thresholds pertaining to amount of consumed storage.
-        Structure is documented below.
-        """
-elif False:
-    PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgsDict(TypedDict):
+    autoscale_policy_id: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    node_type_id: pulumi.Input[_builtins.str]
+    """
+    The canonical identifier of the node type to add or remove.
+    """
+    scale_out_size: pulumi.Input[_builtins.int]
+    """
+    Number of nodes to add to a cluster during a scale-out operation.
+    Must be divisible by 2 for stretched clusters.
+    """
+    consumed_memory_thresholds: NotRequired[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict']]
+    """
+    Utilization thresholds pertaining to amount of consumed memory.
+    Structure is documented below.
+    """
+    cpu_thresholds: NotRequired[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict']]
+    """
+    Utilization thresholds pertaining to CPU utilization.
+    Structure is documented below.
+    """
+    storage_thresholds: NotRequired[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict']]
+    """
+    Utilization thresholds pertaining to amount of consumed storage.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs:
@@ -1556,18 +1500,15 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs:
         pulumi.set(self, "storage_thresholds", value)
 
 
-if not MYPY:
-    class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict(TypedDict):
-        scale_in: pulumi.Input[_builtins.int]
-        """
-        The utilization triggering the scale-in operation in percent.
-        """
-        scale_out: pulumi.Input[_builtins.int]
-        """
-        The utilization triggering the scale-out operation in percent.
-        """
-elif False:
-    PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict(TypedDict):
+    scale_in: pulumi.Input[_builtins.int]
+    """
+    The utilization triggering the scale-in operation in percent.
+    """
+    scale_out: pulumi.Input[_builtins.int]
+    """
+    The utilization triggering the scale-out operation in percent.
+    """
 
 @pulumi.input_type
 class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs:
@@ -1606,18 +1547,15 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedM
         pulumi.set(self, "scale_out", value)
 
 
-if not MYPY:
-    class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict(TypedDict):
-        scale_in: pulumi.Input[_builtins.int]
-        """
-        The utilization triggering the scale-in operation in percent.
-        """
-        scale_out: pulumi.Input[_builtins.int]
-        """
-        The utilization triggering the scale-out operation in percent.
-        """
-elif False:
-    PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict(TypedDict):
+    scale_in: pulumi.Input[_builtins.int]
+    """
+    The utilization triggering the scale-in operation in percent.
+    """
+    scale_out: pulumi.Input[_builtins.int]
+    """
+    The utilization triggering the scale-out operation in percent.
+    """
 
 @pulumi.input_type
 class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs:
@@ -1656,18 +1594,15 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresh
         pulumi.set(self, "scale_out", value)
 
 
-if not MYPY:
-    class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict(TypedDict):
-        scale_in: pulumi.Input[_builtins.int]
-        """
-        The utilization triggering the scale-in operation in percent.
-        """
-        scale_out: pulumi.Input[_builtins.int]
-        """
-        The utilization triggering the scale-out operation in percent.
-        """
-elif False:
-    PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict(TypedDict):
+    scale_in: pulumi.Input[_builtins.int]
+    """
+    The utilization triggering the scale-in operation in percent.
+    """
+    scale_out: pulumi.Input[_builtins.int]
+    """
+    The utilization triggering the scale-out operation in percent.
+    """
 
 @pulumi.input_type
 class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs:
@@ -1706,25 +1641,22 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageTh
         pulumi.set(self, "scale_out", value)
 
 
-if not MYPY:
-    class PrivateCloudManagementClusterNodeTypeConfigArgsDict(TypedDict):
-        node_count: pulumi.Input[_builtins.int]
-        """
-        The number of nodes of this type in the cluster.
-        """
-        node_type_id: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        custom_core_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Customized number of cores available to each node of the type.
-        This number must always be one of `nodeType.availableCustomCoreCounts`.
-        If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
-        This cannot be changed once the PrivateCloud is created.
-        """
-elif False:
-    PrivateCloudManagementClusterNodeTypeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateCloudManagementClusterNodeTypeConfigArgsDict(TypedDict):
+    node_count: pulumi.Input[_builtins.int]
+    """
+    The number of nodes of this type in the cluster.
+    """
+    node_type_id: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    custom_core_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Customized number of cores available to each node of the type.
+    This number must always be one of `nodeType.availableCustomCoreCounts`.
+    If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+    This cannot be changed once the PrivateCloud is created.
+    """
 
 @pulumi.input_type
 class PrivateCloudManagementClusterNodeTypeConfigArgs:
@@ -1785,20 +1717,17 @@ class PrivateCloudManagementClusterNodeTypeConfigArgs:
         pulumi.set(self, "custom_core_count", value)
 
 
-if not MYPY:
-    class PrivateCloudManagementClusterStretchedClusterConfigArgsDict(TypedDict):
-        preferred_location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Zone that will remain operational when connection between the two zones is lost.
-        Specify the zone in the following format: projects/{project}/locations/{location}.
-        """
-        secondary_location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional zone for a higher level of availability and load balancing.
-        Specify the zone in the following format: projects/{project}/locations/{location}.
-        """
-elif False:
-    PrivateCloudManagementClusterStretchedClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateCloudManagementClusterStretchedClusterConfigArgsDict(TypedDict):
+    preferred_location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Zone that will remain operational when connection between the two zones is lost.
+    Specify the zone in the following format: projects/{project}/locations/{location}.
+    """
+    secondary_location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional zone for a higher level of availability and load balancing.
+    Specify the zone in the following format: projects/{project}/locations/{location}.
+    """
 
 @pulumi.input_type
 class PrivateCloudManagementClusterStretchedClusterConfigArgs:
@@ -1843,41 +1772,38 @@ class PrivateCloudManagementClusterStretchedClusterConfigArgs:
         pulumi.set(self, "secondary_location", value)
 
 
-if not MYPY:
-    class PrivateCloudNetworkConfigArgsDict(TypedDict):
-        management_cidr: pulumi.Input[_builtins.str]
-        """
-        Management CIDR used by VMware management appliances.
-        """
-        dns_server_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        DNS Server IP of the Private Cloud.
-        """
-        management_ip_address_layout_version: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The IP address layout version of the management IP address range.
-        Possible versions include:
-        * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
-        as it does not support all features.
-        * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
-        used by all newly created private clouds. This version supports all current features.
-        """
-        vmware_engine_network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The relative resource name of the VMware Engine network attached to the private cloud.
-        Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
-        where {project} can either be a project number or a project ID.
-        """
-        vmware_engine_network_canonical: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The canonical name of the VMware Engine network in
-        the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
-        """
-elif False:
-    PrivateCloudNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateCloudNetworkConfigArgsDict(TypedDict):
+    management_cidr: pulumi.Input[_builtins.str]
+    """
+    Management CIDR used by VMware management appliances.
+    """
+    dns_server_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    DNS Server IP of the Private Cloud.
+    """
+    management_ip_address_layout_version: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The IP address layout version of the management IP address range.
+    Possible versions include:
+    * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+    as it does not support all features.
+    * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+    used by all newly created private clouds. This version supports all current features.
+    """
+    vmware_engine_network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The relative resource name of the VMware Engine network attached to the private cloud.
+    Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+    where {project} can either be a project number or a project ID.
+    """
+    vmware_engine_network_canonical: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The canonical name of the VMware Engine network in
+    the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+    """
 
 @pulumi.input_type
 class PrivateCloudNetworkConfigArgs:
@@ -1987,27 +1913,24 @@ class PrivateCloudNetworkConfigArgs:
         pulumi.set(self, "vmware_engine_network_canonical", value)
 
 
-if not MYPY:
-    class PrivateCloudNsxArgsDict(TypedDict):
-        fqdn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified domain name of the appliance.
-        """
-        internal_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Internal IP address of the appliance.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        State of the appliance.
-        Possible values are: `ACTIVE`, `CREATING`.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version of the appliance.
-        """
-elif False:
-    PrivateCloudNsxArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateCloudNsxArgsDict(TypedDict):
+    fqdn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified domain name of the appliance.
+    """
+    internal_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Internal IP address of the appliance.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    State of the appliance.
+    Possible values are: `ACTIVE`, `CREATING`.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version of the appliance.
+    """
 
 @pulumi.input_type
 class PrivateCloudNsxArgs:
@@ -2082,27 +2005,24 @@ class PrivateCloudNsxArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PrivateCloudVcenterArgsDict(TypedDict):
-        fqdn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified domain name of the appliance.
-        """
-        internal_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Internal IP address of the appliance.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        State of the appliance.
-        Possible values are: `ACTIVE`, `CREATING`.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version of the appliance.
-        """
-elif False:
-    PrivateCloudVcenterArgsDict: TypeAlias = Mapping[str, Any]
+class PrivateCloudVcenterArgsDict(TypedDict):
+    fqdn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified domain name of the appliance.
+    """
+    internal_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Internal IP address of the appliance.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    State of the appliance.
+    Possible values are: `ACTIVE`, `CREATING`.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version of the appliance.
+    """
 
 @pulumi.input_type
 class PrivateCloudVcenterArgs:
@@ -2177,20 +2097,17 @@ class PrivateCloudVcenterArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class SubnetDhcpAddressRangeArgsDict(TypedDict):
-        first_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The first IP address of the range.
-        """
-        last_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The last IP address of the range.
-        """
-elif False:
-    SubnetDhcpAddressRangeArgsDict: TypeAlias = Mapping[str, Any]
+class SubnetDhcpAddressRangeArgsDict(TypedDict):
+    first_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The first IP address of the range.
+    """
+    last_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The last IP address of the range.
+    """
 
 @pulumi.input_type
 class SubnetDhcpAddressRangeArgs:

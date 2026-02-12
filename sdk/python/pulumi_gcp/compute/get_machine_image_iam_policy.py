@@ -96,6 +96,10 @@ def get_machine_image_iam_policy(machine_image: Optional[_builtins.str] = None,
                                  project: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMachineImageIamPolicyResult:
     """
+    Retrieves the current IAM policy data for machineimage
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python
@@ -127,6 +131,10 @@ def get_machine_image_iam_policy_output(machine_image: Optional[pulumi.Input[_bu
                                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMachineImageIamPolicyResult]:
     """
+    Retrieves the current IAM policy data for machineimage
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
     ## Example Usage
 
     ```python

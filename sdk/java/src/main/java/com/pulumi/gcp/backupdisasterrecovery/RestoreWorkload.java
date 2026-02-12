@@ -23,6 +23,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * An imperative resource that triggers a GCBDR restoration event.
+ * Creating this resource will initiate a restore operation from a specified backup.
+ * The resource represents the restore operation and its result.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
  * ## Example Usage
  * 
  * ### Backup Dr Restore Workload Compute Instance Basic
@@ -341,16 +348,12 @@ import javax.annotation.Nullable;
  * RestoreWorkload can be imported using any of these accepted formats:
  * 
  * * `/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, RestoreWorkload can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
  * ```
  * 
@@ -445,9 +448,19 @@ public class RestoreWorkload extends com.pulumi.resources.CustomResource {
     public Output<String> dataSourceId() {
         return this.dataSourceId;
     }
+    /**
+     * Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     * 
+     */
     @Export(name="deleteRestoredInstance", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteRestoredInstance;
 
+    /**
+     * @return Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     * 
+     */
     public Output<Optional<Boolean>> deleteRestoredInstance() {
         return Codegen.optional(this.deleteRestoredInstance);
     }

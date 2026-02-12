@@ -178,22 +178,14 @@ import javax.annotation.Nullable;
  * ExternalVpnGateway can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/global/externalVpnGateways/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, ExternalVpnGateway can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default projects/{{project}}/global/externalVpnGateways/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{name}}
  * ```
  * 

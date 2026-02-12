@@ -344,28 +344,16 @@ import (
 // Instance can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:redis/instance:Instance default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:redis/instance:Instance default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:redis/instance:Instance default {{name}}
 // ```
 type Instance struct {
@@ -402,7 +390,13 @@ type Instance struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey pulumi.StringPtrOutput `pulumi:"customerManagedKey"`
-	DeletionProtection pulumi.BoolPtrOutput   `pulumi:"deletionProtection"`
+	// Whether Terraform will be prevented from destroying the instance.
+	// When a`terraform destroy` or `pulumi up` would delete the instance,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -584,7 +578,13 @@ type instanceState struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey *string `pulumi:"customerManagedKey"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	// Whether Terraform will be prevented from destroying the instance.
+	// When a`terraform destroy` or `pulumi up` would delete the instance,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -728,6 +728,12 @@ type InstanceState struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the instance.
+	// When a`terraform destroy` or `pulumi up` would delete the instance,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
@@ -865,7 +871,13 @@ type instanceArgs struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey *string `pulumi:"customerManagedKey"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	// Whether Terraform will be prevented from destroying the instance.
+	// When a`terraform destroy` or `pulumi up` would delete the instance,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user provided metadata.
@@ -962,6 +974,12 @@ type InstanceArgs struct {
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the instance.
+	// When a`terraform destroy` or `pulumi up` would delete the instance,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
@@ -1179,6 +1197,12 @@ func (o InstanceOutput) CustomerManagedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CustomerManagedKey }).(pulumi.StringPtrOutput)
 }
 
+// Whether Terraform will be prevented from destroying the instance.
+// When a`terraform destroy` or `pulumi up` would delete the instance,
+// the command will fail if this field is not set to false in Terraform state.
+// When the field is set to true or unset in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the instance will fail.
+// When the field is set to false, deleting the instance is allowed.
 func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

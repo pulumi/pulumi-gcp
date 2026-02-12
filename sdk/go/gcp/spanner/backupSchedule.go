@@ -154,22 +154,14 @@ import (
 // BackupSchedule can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/instances/{{instance}}/databases/{{database}}/backupSchedules/{{name}}`
-//
 // * `{{project}}/{{instance}}/{{database}}/{{name}}`
-//
 // * `{{instance}}/{{database}}/{{name}}`
 //
 // When using the `pulumi import` command, BackupSchedule can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:spanner/backupSchedule:BackupSchedule default projects/{{project}}/instances/{{instance}}/databases/{{database}}/backupSchedules/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:spanner/backupSchedule:BackupSchedule default {{project}}/{{instance}}/{{database}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:spanner/backupSchedule:BackupSchedule default {{instance}}/{{database}}/{{name}}
 // ```
 type BackupSchedule struct {

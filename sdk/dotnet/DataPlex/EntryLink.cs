@@ -180,22 +180,14 @@ namespace Pulumi.Gcp.DataPlex
     /// EntryLink can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entryLinks/{{entry_link_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{entry_group_id}}/{{entry_link_id}}`
-    /// 
     /// * `{{location}}/{{entry_group_id}}/{{entry_link_id}}`
     /// 
     /// When using the `pulumi import` command, EntryLink can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataplex/entryLink:EntryLink default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entryLinks/{{entry_link_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/entryLink:EntryLink default {{project}}/{{location}}/{{entry_group_id}}/{{entry_link_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/entryLink:EntryLink default {{location}}/{{entry_group_id}}/{{entry_link_id}}
     /// ```
     /// </summary>

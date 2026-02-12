@@ -103,24 +103,15 @@ import * as utilities from "../utilities";
  * ## Import
  *
  * NodePool can be imported using any of these accepted formats:
- *
  * * `projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}`
- *
  * * `{{project}}/{{location}}/{{cluster}}/{{name}}`
- *
  * * `{{location}}/{{cluster}}/{{name}}`
  *
  * When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:container/azureNodePool:AzureNodePool default projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{location}}/{{cluster}}/{{name}}
  * ```
  */
@@ -179,6 +170,9 @@ export class AzureNodePool extends pulumi.CustomResource {
      * Output only. The time at which this node pool was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -340,6 +334,9 @@ export interface AzureNodePoolState {
      * Output only. The time at which this node pool was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.

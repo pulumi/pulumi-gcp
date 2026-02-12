@@ -49,16 +49,12 @@ import * as utilities from "../utilities";
  * OrganizationEventThreatDetectionCustomModule can be imported using any of these accepted formats:
  *
  * * `organizations/{{organization}}/locations/{{location}}/eventThreatDetectionCustomModules/{{name}}`
- *
  * * `{{organization}}/{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, OrganizationEventThreatDetectionCustomModule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule default organizations/{{organization}}/locations/{{location}}/eventThreatDetectionCustomModules/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule default {{organization}}/{{location}}/{{name}}
  * ```
  */

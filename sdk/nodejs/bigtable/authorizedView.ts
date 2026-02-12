@@ -7,6 +7,15 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Creates a Google Cloud Bigtable authorized view inside a table. For more information see
+ * [the official documentation](https://cloud.google.com/bigtable/) and
+ * [API](https://cloud.google.com/bigtable/docs/go/reference).
+ *
+ * > **Note:** It is strongly recommended to set `lifecycle { preventDestroy = true }`
+ * on authorized views in order to prevent accidental data loss. See
+ * Terraform docs
+ * for more information on lifecycle parameters.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -75,22 +84,14 @@ import * as utilities from "../utilities";
  * Bigtable Authorized Views can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/instances/{{instance_name}}/tables/{{table_name}}/authorizedViews/{{name}}`
- *
  * * `{{project}}/{{instance_name}}/{{table_name}}/{{name}}`
- *
  * * `{{instance_name}}/{{table_name}}/{{name}}`
  *
  * When using the `pulumi import` command, Bigtable Authorized Views can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default projects/{{project}}/instances/{{instance_name}}/tables/{{table_name}}/authorizedViews/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{project}}/{{instance_name}}/{{table_name}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{instance_name}}/{{table_name}}/{{name}}
  * ```
  */
@@ -122,6 +123,10 @@ export class AuthorizedView extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthorizedView.__pulumiType;
     }
 
+    /**
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+     * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+     */
     declare public readonly deletionProtection: pulumi.Output<string>;
     /**
      * The name of the Bigtable instance in which the authorized view belongs.
@@ -190,6 +195,10 @@ export class AuthorizedView extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthorizedView resources.
  */
 export interface AuthorizedViewState {
+    /**
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+     * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+     */
     deletionProtection?: pulumi.Input<string>;
     /**
      * The name of the Bigtable instance in which the authorized view belongs.
@@ -220,6 +229,10 @@ export interface AuthorizedViewState {
  * The set of arguments for constructing a AuthorizedView resource.
  */
 export interface AuthorizedViewArgs {
+    /**
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+     * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+     */
     deletionProtection?: pulumi.Input<string>;
     /**
      * The name of the Bigtable instance in which the authorized view belongs.

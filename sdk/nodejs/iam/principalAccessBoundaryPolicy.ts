@@ -7,6 +7,18 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * An IAM Principal Access Boundary Policy resource. This resource has no effect on accesses until is bound to a target through policy bindings.
+ * You can see further documentation on policy bindings in:
+ *   - [Organizations](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_organizations_policy_binding)
+ *   - [Folders](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_folders_policy_binding)
+ *   - [Projects](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_projects_policy_binding)
+ *
+ * To get more information about PrincipalAccessBoundaryPolicy, see:
+ *
+ * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
+ * * How-to Guides
+ *     * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
+ *
  * ## Example Usage
  *
  * ### Iam Principal Access Boundary Policy
@@ -58,16 +70,12 @@ import * as utilities from "../utilities";
  * PrincipalAccessBoundaryPolicy can be imported using any of these accepted formats:
  *
  * * `organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}`
- *
  * * `{{organization}}/{{location}}/{{principal_access_boundary_policy_id}}`
  *
  * When using the `pulumi import` command, PrincipalAccessBoundaryPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default {{organization}}/{{location}}/{{principal_access_boundary_policy_id}}
  * ```
  */
@@ -120,6 +128,9 @@ export class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
      * The description of the principal access boundary policy. Must be less than or equal to 63 characters.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The etag for the principal access boundary. If this is provided on update, it must match the server's etag.
@@ -231,6 +242,9 @@ export interface PrincipalAccessBoundaryPolicyState {
      * The description of the principal access boundary policy. Must be less than or equal to 63 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The etag for the principal access boundary. If this is provided on update, it must match the server's etag.

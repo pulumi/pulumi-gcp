@@ -36,7 +36,15 @@ export interface GetClusterIamPolicyArgs {
      * The name or relative resource id of the cluster to manage IAM policies for.
      */
     cluster: string;
+    /**
+     * The project in which the cluster belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     project?: string;
+    /**
+     * The region in which the cluster belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     region?: string;
 }
 
@@ -92,6 +100,14 @@ export interface GetClusterIamPolicyOutputArgs {
      * The name or relative resource id of the cluster to manage IAM policies for.
      */
     cluster: pulumi.Input<string>;
+    /**
+     * The project in which the cluster belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     project?: pulumi.Input<string>;
+    /**
+     * The region in which the cluster belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     region?: pulumi.Input<string>;
 }

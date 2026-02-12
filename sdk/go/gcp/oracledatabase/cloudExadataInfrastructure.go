@@ -128,22 +128,14 @@ import (
 // CloudExadataInfrastructure can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}`
-//
 // * `{{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}`
-//
 // * `{{location}}/{{cloud_exadata_infrastructure_id}}`
 //
 // When using the `pulumi import` command, CloudExadataInfrastructure can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{location}}/{{cloud_exadata_infrastructure_id}}
 // ```
 type CloudExadataInfrastructure struct {
@@ -155,7 +147,8 @@ type CloudExadataInfrastructure struct {
 	// a letter or a number.
 	CloudExadataInfrastructureId pulumi.StringOutput `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
-	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -233,8 +226,9 @@ type cloudExadataInfrastructureState struct {
 	// a letter or a number.
 	CloudExadataInfrastructureId *string `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
-	CreateTime         *string `pulumi:"createTime"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CreateTime *string `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -271,7 +265,8 @@ type CloudExadataInfrastructureState struct {
 	// a letter or a number.
 	CloudExadataInfrastructureId pulumi.StringPtrInput
 	// The date and time that the Exadata Infrastructure was created.
-	CreateTime         pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// User friendly name for this resource.
 	DisplayName pulumi.StringPtrInput
@@ -312,7 +307,8 @@ type cloudExadataInfrastructureArgs struct {
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
 	CloudExadataInfrastructureId string `pulumi:"cloudExadataInfrastructureId"`
-	DeletionProtection           *bool  `pulumi:"deletionProtection"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName *string `pulumi:"displayName"`
 	// GCP location where Oracle Exadata is hosted.
@@ -338,7 +334,8 @@ type CloudExadataInfrastructureArgs struct {
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
 	CloudExadataInfrastructureId pulumi.StringInput
-	DeletionProtection           pulumi.BoolPtrInput
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+	DeletionProtection pulumi.BoolPtrInput
 	// User friendly name for this resource.
 	DisplayName pulumi.StringPtrInput
 	// GCP location where Oracle Exadata is hosted.
@@ -457,6 +454,7 @@ func (o CloudExadataInfrastructureOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudExadataInfrastructure) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 func (o CloudExadataInfrastructureOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CloudExadataInfrastructure) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

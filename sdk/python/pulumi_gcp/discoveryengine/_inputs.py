@@ -139,22 +139,17 @@ __all__ = [
     'WidgetConfigUiSettingsGenerativeAnswerConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AclConfigIdpConfigArgsDict(TypedDict):
-        external_idp_config: NotRequired[pulumi.Input['AclConfigIdpConfigExternalIdpConfigArgsDict']]
-        """
-        External third party identity provider config.
-        Structure is documented below.
-        """
-        idp_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identity provider type.
-        Possible values are: `GSUITE`, `THIRD_PARTY`.
-        """
-elif False:
-    AclConfigIdpConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AclConfigIdpConfigArgsDict(TypedDict):
+    external_idp_config: NotRequired[pulumi.Input['AclConfigIdpConfigExternalIdpConfigArgsDict']]
+    """
+    External third party identity provider config.
+    Structure is documented below.
+    """
+    idp_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identity provider type.
+    Possible values are: `GSUITE`, `THIRD_PARTY`.
+    """
 
 @pulumi.input_type
 class AclConfigIdpConfigArgs:
@@ -199,14 +194,11 @@ class AclConfigIdpConfigArgs:
         pulumi.set(self, "idp_type", value)
 
 
-if not MYPY:
-    class AclConfigIdpConfigExternalIdpConfigArgsDict(TypedDict):
-        workforce_pool_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Workforce pool name: "locations/global/workforcePools/pool_id"
-        """
-elif False:
-    AclConfigIdpConfigExternalIdpConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AclConfigIdpConfigExternalIdpConfigArgsDict(TypedDict):
+    workforce_pool_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Workforce pool name: "locations/global/workforcePools/pool_id"
+    """
 
 @pulumi.input_type
 class AclConfigIdpConfigExternalIdpConfigArgs:
@@ -231,20 +223,17 @@ class AclConfigIdpConfigExternalIdpConfigArgs:
         pulumi.set(self, "workforce_pool_name", value)
 
 
-if not MYPY:
-    class AssistantCustomerPolicyArgsDict(TypedDict):
-        banned_phrases: NotRequired[pulumi.Input[Sequence[pulumi.Input['AssistantCustomerPolicyBannedPhraseArgsDict']]]]
-        """
-        List of banned phrases.
-        Structure is documented below.
-        """
-        model_armor_config: NotRequired[pulumi.Input['AssistantCustomerPolicyModelArmorConfigArgsDict']]
-        """
-        Model Armor configuration to be used for sanitizing user prompts and assistant responses.
-        Structure is documented below.
-        """
-elif False:
-    AssistantCustomerPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class AssistantCustomerPolicyArgsDict(TypedDict):
+    banned_phrases: NotRequired[pulumi.Input[Sequence[pulumi.Input['AssistantCustomerPolicyBannedPhraseArgsDict']]]]
+    """
+    List of banned phrases.
+    Structure is documented below.
+    """
+    model_armor_config: NotRequired[pulumi.Input['AssistantCustomerPolicyModelArmorConfigArgsDict']]
+    """
+    Model Armor configuration to be used for sanitizing user prompts and assistant responses.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AssistantCustomerPolicyArgs:
@@ -289,24 +278,21 @@ class AssistantCustomerPolicyArgs:
         pulumi.set(self, "model_armor_config", value)
 
 
-if not MYPY:
-    class AssistantCustomerPolicyBannedPhraseArgsDict(TypedDict):
-        phrase: pulumi.Input[_builtins.str]
-        """
-        The raw string content to be banned.
-        """
-        ignore_diacritics: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, diacritical marks (e.g., accents, umlauts) are ignored when
-        matching banned phrases. For example, "cafe" would match "café".
-        """
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Match type for the banned phrase.
-        The supported values: 'SIMPLE_STRING_MATCH', 'WORD_BOUNDARY_STRING_MATCH'.
-        """
-elif False:
-    AssistantCustomerPolicyBannedPhraseArgsDict: TypeAlias = Mapping[str, Any]
+class AssistantCustomerPolicyBannedPhraseArgsDict(TypedDict):
+    phrase: pulumi.Input[_builtins.str]
+    """
+    The raw string content to be banned.
+    """
+    ignore_diacritics: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, diacritical marks (e.g., accents, umlauts) are ignored when
+    matching banned phrases. For example, "cafe" would match "café".
+    """
+    match_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Match type for the banned phrase.
+    The supported values: 'SIMPLE_STRING_MATCH', 'WORD_BOUNDARY_STRING_MATCH'.
+    """
 
 @pulumi.input_type
 class AssistantCustomerPolicyBannedPhraseArgs:
@@ -366,30 +352,27 @@ class AssistantCustomerPolicyBannedPhraseArgs:
         pulumi.set(self, "match_type", value)
 
 
-if not MYPY:
-    class AssistantCustomerPolicyModelArmorConfigArgsDict(TypedDict):
-        response_template: pulumi.Input[_builtins.str]
-        """
-        The resource name of the Model Armor template for sanitizing assistant
-        responses. Format:
-        `projects/{project}/locations/{location}/templates/{template_id}`
-        If not specified, no sanitization will be applied to the assistant
-        response.
-        """
-        user_prompt_template: pulumi.Input[_builtins.str]
-        """
-        The resource name of the Model Armor template for sanitizing user
-        prompts. Format:
-        `projects/{project}/locations/{location}/templates/{template_id}`
-        If not specified, no sanitization will be applied to the user prompt.
-        """
-        failure_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines the failure mode for Model Armor sanitization.
-        The supported values: 'FAIL_OPEN', 'FAIL_CLOSED'.
-        """
-elif False:
-    AssistantCustomerPolicyModelArmorConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AssistantCustomerPolicyModelArmorConfigArgsDict(TypedDict):
+    response_template: pulumi.Input[_builtins.str]
+    """
+    The resource name of the Model Armor template for sanitizing assistant
+    responses. Format:
+    `projects/{project}/locations/{location}/templates/{template_id}`
+    If not specified, no sanitization will be applied to the assistant
+    response.
+    """
+    user_prompt_template: pulumi.Input[_builtins.str]
+    """
+    The resource name of the Model Armor template for sanitizing user
+    prompts. Format:
+    `projects/{project}/locations/{location}/templates/{template_id}`
+    If not specified, no sanitization will be applied to the user prompt.
+    """
+    failure_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines the failure mode for Model Armor sanitization.
+    The supported values: 'FAIL_OPEN', 'FAIL_CLOSED'.
+    """
 
 @pulumi.input_type
 class AssistantCustomerPolicyModelArmorConfigArgs:
@@ -460,22 +443,19 @@ class AssistantCustomerPolicyModelArmorConfigArgs:
         pulumi.set(self, "failure_mode", value)
 
 
-if not MYPY:
-    class AssistantGenerationConfigArgsDict(TypedDict):
-        default_language: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default language to use for the generation of the assistant response.
-        Use an ISO 639-1 language code such as `en`.
-        If not specified, the language will be automatically detected.
-        """
-        system_instruction: NotRequired[pulumi.Input['AssistantGenerationConfigSystemInstructionArgsDict']]
-        """
-        System instruction, also known as the prompt preamble for LLM calls.
-        See also https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/system-instructions
-        Structure is documented below.
-        """
-elif False:
-    AssistantGenerationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AssistantGenerationConfigArgsDict(TypedDict):
+    default_language: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default language to use for the generation of the assistant response.
+    Use an ISO 639-1 language code such as `en`.
+    If not specified, the language will be automatically detected.
+    """
+    system_instruction: NotRequired[pulumi.Input['AssistantGenerationConfigSystemInstructionArgsDict']]
+    """
+    System instruction, also known as the prompt preamble for LLM calls.
+    See also https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/system-instructions
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AssistantGenerationConfigArgs:
@@ -524,14 +504,11 @@ class AssistantGenerationConfigArgs:
         pulumi.set(self, "system_instruction", value)
 
 
-if not MYPY:
-    class AssistantGenerationConfigSystemInstructionArgsDict(TypedDict):
-        additional_system_instruction: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional system instruction that will be added to the default system instruction.
-        """
-elif False:
-    AssistantGenerationConfigSystemInstructionArgsDict: TypeAlias = Mapping[str, Any]
+class AssistantGenerationConfigSystemInstructionArgsDict(TypedDict):
+    additional_system_instruction: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional system instruction that will be added to the default system instruction.
+    """
 
 @pulumi.input_type
 class AssistantGenerationConfigSystemInstructionArgs:
@@ -556,31 +533,28 @@ class AssistantGenerationConfigSystemInstructionArgs:
         pulumi.set(self, "additional_system_instruction", value)
 
 
-if not MYPY:
-    class ChatEngineChatEngineConfigArgsDict(TypedDict):
-        agent_creation_config: NotRequired[pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgsDict']]
-        """
-        The configuration to generate the Dialogflow agent that is associated to this Engine.
-        Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
-        Structure is documented below.
-        """
-        allow_cross_region: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If the flag set to true, we allow the agent and engine are in
-        different locations, otherwise the agent and engine are required to be
-        in the same location. The flag is set to false by default.
-        Note that the `allow_cross_region` are one-time consumed by and passed
-        to EngineService.CreateEngine. It means they cannot be retrieved using
-        EngineService.GetEngine or EngineService.ListEngines API after engine
-        creation.
-        """
-        dialogflow_agent_to_link: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
-        Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
-        """
-elif False:
-    ChatEngineChatEngineConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ChatEngineChatEngineConfigArgsDict(TypedDict):
+    agent_creation_config: NotRequired[pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgsDict']]
+    """
+    The configuration to generate the Dialogflow agent that is associated to this Engine.
+    Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+    Structure is documented below.
+    """
+    allow_cross_region: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If the flag set to true, we allow the agent and engine are in
+    different locations, otherwise the agent and engine are required to be
+    in the same location. The flag is set to false by default.
+    Note that the `allow_cross_region` are one-time consumed by and passed
+    to EngineService.CreateEngine. It means they cannot be retrieved using
+    EngineService.GetEngine or EngineService.ListEngines API after engine
+    creation.
+    """
+    dialogflow_agent_to_link: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
+    Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+    """
 
 @pulumi.input_type
 class ChatEngineChatEngineConfigArgs:
@@ -655,26 +629,23 @@ class ChatEngineChatEngineConfigArgs:
         pulumi.set(self, "dialogflow_agent_to_link", value)
 
 
-if not MYPY:
-    class ChatEngineChatEngineConfigAgentCreationConfigArgsDict(TypedDict):
-        default_language_code: pulumi.Input[_builtins.str]
-        """
-        The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
-        """
-        time_zone: pulumi.Input[_builtins.str]
-        """
-        The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
-        """
-        business: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-        """
-elif False:
-    ChatEngineChatEngineConfigAgentCreationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ChatEngineChatEngineConfigAgentCreationConfigArgsDict(TypedDict):
+    default_language_code: pulumi.Input[_builtins.str]
+    """
+    The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+    """
+    time_zone: pulumi.Input[_builtins.str]
+    """
+    The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+    """
+    business: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
+    """
 
 @pulumi.input_type
 class ChatEngineChatEngineConfigAgentCreationConfigArgs:
@@ -745,15 +716,12 @@ class ChatEngineChatEngineConfigAgentCreationConfigArgs:
         pulumi.set(self, "location", value)
 
 
-if not MYPY:
-    class ChatEngineChatEngineMetadataArgsDict(TypedDict):
-        dialogflow_agent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The resource name of a Dialogflow agent, that this Chat Engine refers to.
-        """
-elif False:
-    ChatEngineChatEngineMetadataArgsDict: TypeAlias = Mapping[str, Any]
+class ChatEngineChatEngineMetadataArgsDict(TypedDict):
+    dialogflow_agent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The resource name of a Dialogflow agent, that this Chat Engine refers to.
+    """
 
 @pulumi.input_type
 class ChatEngineChatEngineMetadataArgs:
@@ -780,14 +748,11 @@ class ChatEngineChatEngineMetadataArgs:
         pulumi.set(self, "dialogflow_agent", value)
 
 
-if not MYPY:
-    class ChatEngineCommonConfigArgsDict(TypedDict):
-        company_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
-        """
-elif False:
-    ChatEngineCommonConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ChatEngineCommonConfigArgsDict(TypedDict):
+    company_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+    """
 
 @pulumi.input_type
 class ChatEngineCommonConfigArgs:
@@ -812,16 +777,13 @@ class ChatEngineCommonConfigArgs:
         pulumi.set(self, "company_name", value)
 
 
-if not MYPY:
-    class CmekConfigSingleRegionKeyArgsDict(TypedDict):
-        kms_key: pulumi.Input[_builtins.str]
-        """
-        Single-regional kms key resource name which will be used to encrypt
-        resources
-        `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
-        """
-elif False:
-    CmekConfigSingleRegionKeyArgsDict: TypeAlias = Mapping[str, Any]
+class CmekConfigSingleRegionKeyArgsDict(TypedDict):
+    kms_key: pulumi.Input[_builtins.str]
+    """
+    Single-regional kms key resource name which will be used to encrypt
+    resources
+    `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+    """
 
 @pulumi.input_type
 class CmekConfigSingleRegionKeyArgs:
@@ -849,27 +811,24 @@ class CmekConfigSingleRegionKeyArgs:
         pulumi.set(self, "kms_key", value)
 
 
-if not MYPY:
-    class ControlBoostActionArgsDict(TypedDict):
-        data_store: pulumi.Input[_builtins.str]
-        """
-        The data store to boost.
-        """
-        filter: pulumi.Input[_builtins.str]
-        """
-        The filter to apply to the search results.
-        """
-        fixed_boost: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
-        """
-        interpolation_boost_spec: NotRequired[pulumi.Input['ControlBoostActionInterpolationBoostSpecArgsDict']]
-        """
-        The interpolation boost specification to apply to the search results.
-        Structure is documented below.
-        """
-elif False:
-    ControlBoostActionArgsDict: TypeAlias = Mapping[str, Any]
+class ControlBoostActionArgsDict(TypedDict):
+    data_store: pulumi.Input[_builtins.str]
+    """
+    The data store to boost.
+    """
+    filter: pulumi.Input[_builtins.str]
+    """
+    The filter to apply to the search results.
+    """
+    fixed_boost: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
+    """
+    interpolation_boost_spec: NotRequired[pulumi.Input['ControlBoostActionInterpolationBoostSpecArgsDict']]
+    """
+    The interpolation boost specification to apply to the search results.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ControlBoostActionArgs:
@@ -942,29 +901,26 @@ class ControlBoostActionArgs:
         pulumi.set(self, "interpolation_boost_spec", value)
 
 
-if not MYPY:
-    class ControlBoostActionInterpolationBoostSpecArgsDict(TypedDict):
-        attribute_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The attribute type to be used to determine the boost amount.
-        Possible values are: `NUMERICAL`, `FRESHNESS`.
-        """
-        control_point: NotRequired[pulumi.Input['ControlBoostActionInterpolationBoostSpecControlPointArgsDict']]
-        """
-        The control points used to define the curve.
-        Structure is documented below.
-        """
-        field_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the field whose value will be used to determine the boost amount.
-        """
-        interpolation_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The interpolation type to be applied to connect the control points.
-        Possible values are: `LINEAR`.
-        """
-elif False:
-    ControlBoostActionInterpolationBoostSpecArgsDict: TypeAlias = Mapping[str, Any]
+class ControlBoostActionInterpolationBoostSpecArgsDict(TypedDict):
+    attribute_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The attribute type to be used to determine the boost amount.
+    Possible values are: `NUMERICAL`, `FRESHNESS`.
+    """
+    control_point: NotRequired[pulumi.Input['ControlBoostActionInterpolationBoostSpecControlPointArgsDict']]
+    """
+    The control points used to define the curve.
+    Structure is documented below.
+    """
+    field_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the field whose value will be used to determine the boost amount.
+    """
+    interpolation_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The interpolation type to be applied to connect the control points.
+    Possible values are: `LINEAR`.
+    """
 
 @pulumi.input_type
 class ControlBoostActionInterpolationBoostSpecArgs:
@@ -1043,19 +999,16 @@ class ControlBoostActionInterpolationBoostSpecArgs:
         pulumi.set(self, "interpolation_type", value)
 
 
-if not MYPY:
-    class ControlBoostActionInterpolationBoostSpecControlPointArgsDict(TypedDict):
-        attribute_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The attribute value of the control point.
-        """
-        boost_amount: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The value between -1 to 1 by which to boost the score if the attributeValue
-        evaluates to the value specified above.
-        """
-elif False:
-    ControlBoostActionInterpolationBoostSpecControlPointArgsDict: TypeAlias = Mapping[str, Any]
+class ControlBoostActionInterpolationBoostSpecControlPointArgsDict(TypedDict):
+    attribute_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The attribute value of the control point.
+    """
+    boost_amount: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The value between -1 to 1 by which to boost the score if the attributeValue
+    evaluates to the value specified above.
+    """
 
 @pulumi.input_type
 class ControlBoostActionInterpolationBoostSpecControlPointArgs:
@@ -1098,24 +1051,21 @@ class ControlBoostActionInterpolationBoostSpecControlPointArgs:
         pulumi.set(self, "boost_amount", value)
 
 
-if not MYPY:
-    class ControlConditionArgsDict(TypedDict):
-        active_time_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['ControlConditionActiveTimeRangeArgsDict']]]]
-        """
-        The time range when the condition is active.
-        Structure is documented below.
-        """
-        query_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The regular expression that the query must match for this condition to be met.
-        """
-        query_terms: NotRequired[pulumi.Input[Sequence[pulumi.Input['ControlConditionQueryTermArgsDict']]]]
-        """
-        The query terms that must be present in the search request for this condition to be met.
-        Structure is documented below.
-        """
-elif False:
-    ControlConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ControlConditionArgsDict(TypedDict):
+    active_time_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['ControlConditionActiveTimeRangeArgsDict']]]]
+    """
+    The time range when the condition is active.
+    Structure is documented below.
+    """
+    query_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The regular expression that the query must match for this condition to be met.
+    """
+    query_terms: NotRequired[pulumi.Input[Sequence[pulumi.Input['ControlConditionQueryTermArgsDict']]]]
+    """
+    The query terms that must be present in the search request for this condition to be met.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ControlConditionArgs:
@@ -1176,18 +1126,15 @@ class ControlConditionArgs:
         pulumi.set(self, "query_terms", value)
 
 
-if not MYPY:
-    class ControlConditionActiveTimeRangeArgsDict(TypedDict):
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The end time of the active time range.
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The start time of the active time range.
-        """
-elif False:
-    ControlConditionActiveTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+class ControlConditionActiveTimeRangeArgsDict(TypedDict):
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The end time of the active time range.
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The start time of the active time range.
+    """
 
 @pulumi.input_type
 class ControlConditionActiveTimeRangeArgs:
@@ -1228,18 +1175,15 @@ class ControlConditionActiveTimeRangeArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class ControlConditionQueryTermArgsDict(TypedDict):
-        full_match: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the query term.
-        """
-elif False:
-    ControlConditionQueryTermArgsDict: TypeAlias = Mapping[str, Any]
+class ControlConditionQueryTermArgsDict(TypedDict):
+    full_match: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the query term.
+    """
 
 @pulumi.input_type
 class ControlConditionQueryTermArgs:
@@ -1280,18 +1224,15 @@ class ControlConditionQueryTermArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ControlFilterActionArgsDict(TypedDict):
-        data_store: pulumi.Input[_builtins.str]
-        """
-        The data store to filter.
-        """
-        filter: pulumi.Input[_builtins.str]
-        """
-        The filter to apply to the search results.
-        """
-elif False:
-    ControlFilterActionArgsDict: TypeAlias = Mapping[str, Any]
+class ControlFilterActionArgsDict(TypedDict):
+    data_store: pulumi.Input[_builtins.str]
+    """
+    The data store to filter.
+    """
+    filter: pulumi.Input[_builtins.str]
+    """
+    The filter to apply to the search results.
+    """
 
 @pulumi.input_type
 class ControlFilterActionArgs:
@@ -1330,19 +1271,16 @@ class ControlFilterActionArgs:
         pulumi.set(self, "filter", value)
 
 
-if not MYPY:
-    class ControlPromoteActionArgsDict(TypedDict):
-        data_store: pulumi.Input[_builtins.str]
-        """
-        The data store to promote.
-        """
-        search_link_promotion: pulumi.Input['ControlPromoteActionSearchLinkPromotionArgsDict']
-        """
-        The search link promotion to apply to the search results.
-        Structure is documented below.
-        """
-elif False:
-    ControlPromoteActionArgsDict: TypeAlias = Mapping[str, Any]
+class ControlPromoteActionArgsDict(TypedDict):
+    data_store: pulumi.Input[_builtins.str]
+    """
+    The data store to promote.
+    """
+    search_link_promotion: pulumi.Input['ControlPromoteActionSearchLinkPromotionArgsDict']
+    """
+    The search link promotion to apply to the search results.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ControlPromoteActionArgs:
@@ -1383,34 +1321,31 @@ class ControlPromoteActionArgs:
         pulumi.set(self, "search_link_promotion", value)
 
 
-if not MYPY:
-    class ControlPromoteActionSearchLinkPromotionArgsDict(TypedDict):
-        title: pulumi.Input[_builtins.str]
-        """
-        The title of the promoted link.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the promoted link.
-        """
-        document: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The document to promote.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Return promotions for basic site search.
-        """
-        image_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The image URI of the promoted link.
-        """
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URI to promote.
-        """
-elif False:
-    ControlPromoteActionSearchLinkPromotionArgsDict: TypeAlias = Mapping[str, Any]
+class ControlPromoteActionSearchLinkPromotionArgsDict(TypedDict):
+    title: pulumi.Input[_builtins.str]
+    """
+    The title of the promoted link.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the promoted link.
+    """
+    document: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The document to promote.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Return promotions for basic site search.
+    """
+    image_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The image URI of the promoted link.
+    """
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URI to promote.
+    """
 
 @pulumi.input_type
 class ControlPromoteActionSearchLinkPromotionArgs:
@@ -1514,14 +1449,11 @@ class ControlPromoteActionSearchLinkPromotionArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class ControlRedirectActionArgsDict(TypedDict):
-        redirect_uri: pulumi.Input[_builtins.str]
-        """
-        The URI to redirect to.
-        """
-elif False:
-    ControlRedirectActionArgsDict: TypeAlias = Mapping[str, Any]
+class ControlRedirectActionArgsDict(TypedDict):
+    redirect_uri: pulumi.Input[_builtins.str]
+    """
+    The URI to redirect to.
+    """
 
 @pulumi.input_type
 class ControlRedirectActionArgs:
@@ -1545,14 +1477,11 @@ class ControlRedirectActionArgs:
         pulumi.set(self, "redirect_uri", value)
 
 
-if not MYPY:
-    class ControlSynonymsActionArgsDict(TypedDict):
-        synonyms: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The synonyms to apply to the search results.
-        """
-elif False:
-    ControlSynonymsActionArgsDict: TypeAlias = Mapping[str, Any]
+class ControlSynonymsActionArgsDict(TypedDict):
+    synonyms: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The synonyms to apply to the search results.
+    """
 
 @pulumi.input_type
 class ControlSynonymsActionArgs:
@@ -1577,37 +1506,34 @@ class ControlSynonymsActionArgs:
         pulumi.set(self, "synonyms", value)
 
 
-if not MYPY:
-    class DataConnectorEntityArgsDict(TypedDict):
-        data_store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The full resource name of the associated data store for the source
-        entity.
-        Format: `projects/*/locations/*/collections/*/dataStores/*`.
-        When the connector is initialized by the DataConnectorService.SetUpDataConnector
-        method, a DataStore is automatically created for each source entity.
-        """
-        entity_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the entity. Supported values by data source:
-        * Salesforce: `Lead`, `Opportunity`, `Contact`, `Account`, `Case`, `Contract`, `Campaign`
-        * Jira: project, issue, attachment, comment, worklog
-        * Confluence: `Content`, `Space`
-        """
-        key_property_mappings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Attributes for indexing.
-        Key: Field name.
-        Value: The key property to map a field to, such as `title`, and
-        `description`. Supported key properties:
-        """
-        params: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The parameters for the entity to facilitate data ingestion.
-        """
-elif False:
-    DataConnectorEntityArgsDict: TypeAlias = Mapping[str, Any]
+class DataConnectorEntityArgsDict(TypedDict):
+    data_store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The full resource name of the associated data store for the source
+    entity.
+    Format: `projects/*/locations/*/collections/*/dataStores/*`.
+    When the connector is initialized by the DataConnectorService.SetUpDataConnector
+    method, a DataStore is automatically created for each source entity.
+    """
+    entity_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the entity. Supported values by data source:
+    * Salesforce: `Lead`, `Opportunity`, `Contact`, `Account`, `Case`, `Contract`, `Campaign`
+    * Jira: project, issue, attachment, comment, worklog
+    * Confluence: `Content`, `Space`
+    """
+    key_property_mappings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Attributes for indexing.
+    Key: Field name.
+    Value: The key property to map a field to, such as `title`, and
+    `description`. Supported key properties:
+    """
+    params: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The parameters for the entity to facilitate data ingestion.
+    """
 
 @pulumi.input_type
 class DataConnectorEntityArgs:
@@ -1702,20 +1628,17 @@ class DataConnectorEntityArgs:
         pulumi.set(self, "params", value)
 
 
-if not MYPY:
-    class DataConnectorErrorArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A developer-facing error message, which should be in English.
-        """
-elif False:
-    DataConnectorErrorArgsDict: TypeAlias = Mapping[str, Any]
+class DataConnectorErrorArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The status code, which should be an enum value of google.rpc.Code.
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A developer-facing error message, which should be in English.
+    """
 
 @pulumi.input_type
 class DataConnectorErrorArgs:
@@ -1760,18 +1683,15 @@ class DataConnectorErrorArgs:
         pulumi.set(self, "message", value)
 
 
-if not MYPY:
-    class DataStoreAdvancedSiteSearchConfigArgsDict(TypedDict):
-        disable_automatic_refresh: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set true, automatic refresh is disabled for the DataStore.
-        """
-        disable_initial_index: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set true, initial indexing is disabled for the DataStore.
-        """
-elif False:
-    DataStoreAdvancedSiteSearchConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataStoreAdvancedSiteSearchConfigArgsDict(TypedDict):
+    disable_automatic_refresh: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set true, automatic refresh is disabled for the DataStore.
+    """
+    disable_initial_index: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set true, initial indexing is disabled for the DataStore.
+    """
 
 @pulumi.input_type
 class DataStoreAdvancedSiteSearchConfigArgs:
@@ -1812,32 +1732,29 @@ class DataStoreAdvancedSiteSearchConfigArgs:
         pulumi.set(self, "disable_initial_index", value)
 
 
-if not MYPY:
-    class DataStoreDocumentProcessingConfigArgsDict(TypedDict):
-        chunking_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigChunkingConfigArgsDict']]
-        """
-        Whether chunking mode is enabled.
-        Structure is documented below.
-        """
-        default_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigArgsDict']]
-        """
-        Configurations for default Document parser. If not specified, this resource
-        will be configured to use a default DigitalParsingConfig, and the default parsing
-        config will be applied to all file types for Document parsing.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The full resource name of the Document Processing Config. Format:
-        `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
-        """
-        parsing_config_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideArgsDict']]]]
-        """
-        Map from file type to override the default parsing configuration based on the file type. Supported keys:
-        """
-elif False:
-    DataStoreDocumentProcessingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataStoreDocumentProcessingConfigArgsDict(TypedDict):
+    chunking_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigChunkingConfigArgsDict']]
+    """
+    Whether chunking mode is enabled.
+    Structure is documented below.
+    """
+    default_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigArgsDict']]
+    """
+    Configurations for default Document parser. If not specified, this resource
+    will be configured to use a default DigitalParsingConfig, and the default parsing
+    config will be applied to all file types for Document parsing.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The full resource name of the Document Processing Config. Format:
+    `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
+    """
+    parsing_config_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideArgsDict']]]]
+    """
+    Map from file type to override the default parsing configuration based on the file type. Supported keys:
+    """
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigArgs:
@@ -1922,15 +1839,12 @@ class DataStoreDocumentProcessingConfigArgs:
         pulumi.set(self, "parsing_config_overrides", value)
 
 
-if not MYPY:
-    class DataStoreDocumentProcessingConfigChunkingConfigArgsDict(TypedDict):
-        layout_based_chunking_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgsDict']]
-        """
-        Configuration for the layout based chunking.
-        Structure is documented below.
-        """
-elif False:
-    DataStoreDocumentProcessingConfigChunkingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataStoreDocumentProcessingConfigChunkingConfigArgsDict(TypedDict):
+    layout_based_chunking_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgsDict']]
+    """
+    Configuration for the layout based chunking.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigChunkingConfigArgs:
@@ -1957,20 +1871,17 @@ class DataStoreDocumentProcessingConfigChunkingConfigArgs:
         pulumi.set(self, "layout_based_chunking_config", value)
 
 
-if not MYPY:
-    class DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgsDict(TypedDict):
-        chunk_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The token size limit for each chunk.
-        Supported values: 100-500 (inclusive). Default value: 500.
-        """
-        include_ancestor_headings: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
-        Default value: False.
-        """
-elif False:
-    DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgsDict(TypedDict):
+    chunk_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The token size limit for each chunk.
+    Supported values: 100-500 (inclusive). Default value: 500.
+    """
+    include_ancestor_headings: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
+    Default value: False.
+    """
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs:
@@ -2015,24 +1926,21 @@ class DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigAr
         pulumi.set(self, "include_ancestor_headings", value)
 
 
-if not MYPY:
-    class DataStoreDocumentProcessingConfigDefaultParsingConfigArgsDict(TypedDict):
-        digital_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgsDict']]
-        """
-        Configurations applied to digital parser.
-        """
-        layout_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgsDict']]
-        """
-        Configurations applied to layout parser.
-        Structure is documented below.
-        """
-        ocr_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgsDict']]
-        """
-        Configurations applied to OCR parser. Currently it only applies to PDFs.
-        Structure is documented below.
-        """
-elif False:
-    DataStoreDocumentProcessingConfigDefaultParsingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataStoreDocumentProcessingConfigDefaultParsingConfigArgsDict(TypedDict):
+    digital_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgsDict']]
+    """
+    Configurations applied to digital parser.
+    """
+    layout_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgsDict']]
+    """
+    Configurations applied to layout parser.
+    Structure is documented below.
+    """
+    ocr_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgsDict']]
+    """
+    Configurations applied to OCR parser. Currently it only applies to PDFs.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigDefaultParsingConfigArgs:
@@ -2093,11 +2001,8 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigArgs:
         pulumi.set(self, "ocr_parsing_config", value)
 
 
-if not MYPY:
-    class DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgsDict(TypedDict):
-        pass
-elif False:
-    DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs:
@@ -2105,34 +2010,31 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigA
         pass
 
 
-if not MYPY:
-    class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgsDict(TypedDict):
-        enable_image_annotation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, the LLM based annotation is added to the image during parsing.
-        """
-        enable_table_annotation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, the LLM based annotation is added to the table during parsing.
-        """
-        exclude_html_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of HTML classes to exclude from the parsed content.
-        """
-        exclude_html_elements: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of HTML elements to exclude from the parsed content.
-        """
-        exclude_html_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of HTML ids to exclude from the parsed content.
-        """
-        structured_content_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
-        """
-elif False:
-    DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgsDict(TypedDict):
+    enable_image_annotation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, the LLM based annotation is added to the image during parsing.
+    """
+    enable_table_annotation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, the LLM based annotation is added to the table during parsing.
+    """
+    exclude_html_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of HTML classes to exclude from the parsed content.
+    """
+    exclude_html_elements: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of HTML elements to exclude from the parsed content.
+    """
+    exclude_html_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of HTML ids to exclude from the parsed content.
+    """
+    structured_content_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+    """
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs:
@@ -2237,14 +2139,11 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigAr
         pulumi.set(self, "structured_content_types", value)
 
 
-if not MYPY:
-    class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgsDict(TypedDict):
-        use_native_text: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, will use native text instead of OCR text on pages containing native text.
-        """
-elif False:
-    DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgsDict(TypedDict):
+    use_native_text: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, will use native text instead of OCR text on pages containing native text.
+    """
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs:
@@ -2269,28 +2168,25 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs:
         pulumi.set(self, "use_native_text", value)
 
 
-if not MYPY:
-    class DataStoreDocumentProcessingConfigParsingConfigOverrideArgsDict(TypedDict):
-        file_type: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        digital_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgsDict']]
-        """
-        Configurations applied to digital parser.
-        """
-        layout_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgsDict']]
-        """
-        Configurations applied to layout parser.
-        Structure is documented below.
-        """
-        ocr_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgsDict']]
-        """
-        Configurations applied to OCR parser. Currently it only applies to PDFs.
-        Structure is documented below.
-        """
-elif False:
-    DataStoreDocumentProcessingConfigParsingConfigOverrideArgsDict: TypeAlias = Mapping[str, Any]
+class DataStoreDocumentProcessingConfigParsingConfigOverrideArgsDict(TypedDict):
+    file_type: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    digital_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgsDict']]
+    """
+    Configurations applied to digital parser.
+    """
+    layout_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgsDict']]
+    """
+    Configurations applied to layout parser.
+    Structure is documented below.
+    """
+    ocr_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgsDict']]
+    """
+    Configurations applied to OCR parser. Currently it only applies to PDFs.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigParsingConfigOverrideArgs:
@@ -2366,11 +2262,8 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideArgs:
         pulumi.set(self, "ocr_parsing_config", value)
 
 
-if not MYPY:
-    class DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgsDict(TypedDict):
-        pass
-elif False:
-    DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs:
@@ -2378,34 +2271,31 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig
         pass
 
 
-if not MYPY:
-    class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgsDict(TypedDict):
-        enable_image_annotation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, the LLM based annotation is added to the image during parsing.
-        """
-        enable_table_annotation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, the LLM based annotation is added to the table during parsing.
-        """
-        exclude_html_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of HTML classes to exclude from the parsed content.
-        """
-        exclude_html_elements: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of HTML elements to exclude from the parsed content.
-        """
-        exclude_html_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of HTML ids to exclude from the parsed content.
-        """
-        structured_content_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
-        """
-elif False:
-    DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgsDict(TypedDict):
+    enable_image_annotation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, the LLM based annotation is added to the image during parsing.
+    """
+    enable_table_annotation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, the LLM based annotation is added to the table during parsing.
+    """
+    exclude_html_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of HTML classes to exclude from the parsed content.
+    """
+    exclude_html_elements: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of HTML elements to exclude from the parsed content.
+    """
+    exclude_html_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of HTML ids to exclude from the parsed content.
+    """
+    structured_content_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+    """
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs:
@@ -2510,14 +2400,11 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigA
         pulumi.set(self, "structured_content_types", value)
 
 
-if not MYPY:
-    class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgsDict(TypedDict):
-        use_native_text: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, will use native text instead of OCR text on pages containing native text.
-        """
-elif False:
-    DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgsDict(TypedDict):
+    use_native_text: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, will use native text instead of OCR text on pages containing native text.
+    """
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs:
@@ -2542,22 +2429,19 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs
         pulumi.set(self, "use_native_text", value)
 
 
-if not MYPY:
-    class LicenseConfigEndDateArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    LicenseConfigEndDateArgsDict: TypeAlias = Mapping[str, Any]
+class LicenseConfigEndDateArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class LicenseConfigEndDateArgs:
@@ -2614,22 +2498,19 @@ class LicenseConfigEndDateArgs:
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class LicenseConfigStartDateArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    LicenseConfigStartDateArgsDict: TypeAlias = Mapping[str, Any]
+class LicenseConfigStartDateArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class LicenseConfigStartDateArgs:
@@ -2686,14 +2567,11 @@ class LicenseConfigStartDateArgs:
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class RecommendationEngineCommonConfigArgsDict(TypedDict):
-        company_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
-        """
-elif False:
-    RecommendationEngineCommonConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RecommendationEngineCommonConfigArgsDict(TypedDict):
+    company_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
+    """
 
 @pulumi.input_type
 class RecommendationEngineCommonConfigArgs:
@@ -2718,53 +2596,50 @@ class RecommendationEngineCommonConfigArgs:
         pulumi.set(self, "company_name", value)
 
 
-if not MYPY:
-    class RecommendationEngineMediaRecommendationEngineConfigArgsDict(TypedDict):
-        engine_features_config: NotRequired[pulumi.Input['RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgsDict']]
-        """
-        More feature configs of the selected engine type.
-        Structure is documented below.
-        """
-        optimization_objective: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The optimization objective. e.g., `cvr`.
-        This field together with MediaRecommendationEngineConfig.type describes
-        engine metadata to use to control engine training and serving.
-        Currently supported values: `ctr`, `cvr`.
-        If not specified, we choose default based on engine type. Default depends on type of recommendation:
-        `recommended-for-you` => `ctr`
-        `others-you-may-like` => `ctr`
-        """
-        optimization_objective_config: NotRequired[pulumi.Input['RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgsDict']]
-        """
-        Name and value of the custom threshold for cvr optimization_objective.
-        For target_field `watch-time`, target_field_value must be an integer
-        value indicating the media progress time in seconds between (0, 86400]
-        (excludes 0, includes 86400) (e.g., 90).
-        For target_field `watch-percentage`, the target_field_value must be a
-        valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
-        Structure is documented below.
-        """
-        training_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The training state that the engine is in (e.g. `TRAINING` or `PAUSED`).
-        Since part of the cost of running the service
-        is frequency of training - this can be used to determine when to train
-        engine in order to control cost. If not specified: the default value for
-        `CreateEngine` method is `TRAINING`. The default value for
-        `UpdateEngine` method is to keep the state the same as before.
-        Possible values are: `PAUSED`, `TRAINING`.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of engine. e.g., `recommended-for-you`.
-        This field together with MediaRecommendationEngineConfig.optimizationObjective describes
-        engine metadata to use to control engine training and serving.
-        Currently supported values: `recommended-for-you`, `others-you-may-like`,
-        `more-like-this`, `most-popular-items`.
-        """
-elif False:
-    RecommendationEngineMediaRecommendationEngineConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RecommendationEngineMediaRecommendationEngineConfigArgsDict(TypedDict):
+    engine_features_config: NotRequired[pulumi.Input['RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgsDict']]
+    """
+    More feature configs of the selected engine type.
+    Structure is documented below.
+    """
+    optimization_objective: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The optimization objective. e.g., `cvr`.
+    This field together with MediaRecommendationEngineConfig.type describes
+    engine metadata to use to control engine training and serving.
+    Currently supported values: `ctr`, `cvr`.
+    If not specified, we choose default based on engine type. Default depends on type of recommendation:
+    `recommended-for-you` => `ctr`
+    `others-you-may-like` => `ctr`
+    """
+    optimization_objective_config: NotRequired[pulumi.Input['RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgsDict']]
+    """
+    Name and value of the custom threshold for cvr optimization_objective.
+    For target_field `watch-time`, target_field_value must be an integer
+    value indicating the media progress time in seconds between (0, 86400]
+    (excludes 0, includes 86400) (e.g., 90).
+    For target_field `watch-percentage`, the target_field_value must be a
+    valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
+    Structure is documented below.
+    """
+    training_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The training state that the engine is in (e.g. `TRAINING` or `PAUSED`).
+    Since part of the cost of running the service
+    is frequency of training - this can be used to determine when to train
+    engine in order to control cost. If not specified: the default value for
+    `CreateEngine` method is `TRAINING`. The default value for
+    `UpdateEngine` method is to keep the state the same as before.
+    Possible values are: `PAUSED`, `TRAINING`.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of engine. e.g., `recommended-for-you`.
+    This field together with MediaRecommendationEngineConfig.optimizationObjective describes
+    engine metadata to use to control engine training and serving.
+    Currently supported values: `recommended-for-you`, `others-you-may-like`,
+    `more-like-this`, `most-popular-items`.
+    """
 
 @pulumi.input_type
 class RecommendationEngineMediaRecommendationEngineConfigArgs:
@@ -2899,20 +2774,17 @@ class RecommendationEngineMediaRecommendationEngineConfigArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgsDict(TypedDict):
-        most_popular_config: NotRequired[pulumi.Input['RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgsDict']]
-        """
-        Feature configurations that are required for creating a Most Popular engine.
-        Structure is documented below.
-        """
-        recommended_for_you_config: NotRequired[pulumi.Input['RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgsDict']]
-        """
-        Additional feature configurations for creating a `recommended-for-you` engine.
-        Structure is documented below.
-        """
-elif False:
-    RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgsDict(TypedDict):
+    most_popular_config: NotRequired[pulumi.Input['RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgsDict']]
+    """
+    Feature configurations that are required for creating a Most Popular engine.
+    Structure is documented below.
+    """
+    recommended_for_you_config: NotRequired[pulumi.Input['RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgsDict']]
+    """
+    Additional feature configurations for creating a `recommended-for-you` engine.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs:
@@ -2957,17 +2829,14 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArg
         pulumi.set(self, "recommended_for_you_config", value)
 
 
-if not MYPY:
-    class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgsDict(TypedDict):
-        time_window_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time window of which the engine is queried at training and
-        prediction time. Positive integers only. The value translates to the
-        last X days of events. Currently required for the `most-popular-items`
-        engine.
-        """
-elif False:
-    RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgsDict(TypedDict):
+    time_window_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time window of which the engine is queried at training and
+    prediction time. Positive integers only. The value translates to the
+    last X days of events. Currently required for the `most-popular-items`
+    engine.
+    """
 
 @pulumi.input_type
 class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs:
@@ -2998,20 +2867,17 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMos
         pulumi.set(self, "time_window_days", value)
 
 
-if not MYPY:
-    class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgsDict(TypedDict):
-        context_event_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of event with which the engine is queried at prediction time.
-        If set to `generic`, only `view-item`, `media-play`,and
-        `media-complete` will be used as `context-event` in engine training. If
-        set to `view-home-page`, `view-home-page` will also be used as
-        `context-events` in addition to `view-item`, `media-play`, and
-        `media-complete`. Currently supported for the `recommended-for-you`
-        engine. Currently supported values: `view-home-page`, `generic`.
-        """
-elif False:
-    RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgsDict(TypedDict):
+    context_event_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of event with which the engine is queried at prediction time.
+    If set to `generic`, only `view-item`, `media-play`,and
+    `media-complete` will be used as `context-event` in engine training. If
+    set to `view-home-page`, `view-home-page` will also be used as
+    `context-events` in addition to `view-item`, `media-play`, and
+    `media-complete`. Currently supported for the `recommended-for-you`
+    engine. Currently supported values: `view-home-page`, `generic`.
+    """
 
 @pulumi.input_type
 class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs:
@@ -3048,18 +2914,15 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRec
         pulumi.set(self, "context_event_type", value)
 
 
-if not MYPY:
-    class RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgsDict(TypedDict):
-        target_field: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
-        """
-        target_field_value_float: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The threshold to be applied to the target (e.g., 0.5).
-        """
-elif False:
-    RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgsDict(TypedDict):
+    target_field: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
+    """
+    target_field_value_float: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The threshold to be applied to the target (e.g., 0.5).
+    """
 
 @pulumi.input_type
 class RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs:
@@ -3100,14 +2963,11 @@ class RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveCo
         pulumi.set(self, "target_field_value_float", value)
 
 
-if not MYPY:
-    class SearchEngineCommonConfigArgsDict(TypedDict):
-        company_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
-        """
-elif False:
-    SearchEngineCommonConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SearchEngineCommonConfigArgsDict(TypedDict):
+    company_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
+    """
 
 @pulumi.input_type
 class SearchEngineCommonConfigArgs:
@@ -3132,21 +2992,18 @@ class SearchEngineCommonConfigArgs:
         pulumi.set(self, "company_name", value)
 
 
-if not MYPY:
-    class SearchEngineSearchEngineConfigArgsDict(TypedDict):
-        search_add_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The add-on that this search engine enables.
-        Each value may be one of: `SEARCH_ADD_ON_LLM`.
-        """
-        search_tier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
-        Default value is `SEARCH_TIER_STANDARD`.
-        Possible values are: `SEARCH_TIER_STANDARD`, `SEARCH_TIER_ENTERPRISE`.
-        """
-elif False:
-    SearchEngineSearchEngineConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SearchEngineSearchEngineConfigArgsDict(TypedDict):
+    search_add_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The add-on that this search engine enables.
+    Each value may be one of: `SEARCH_ADD_ON_LLM`.
+    """
+    search_tier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+    Default value is `SEARCH_TIER_STANDARD`.
+    Possible values are: `SEARCH_TIER_STANDARD`, `SEARCH_TIER_ENTERPRISE`.
+    """
 
 @pulumi.input_type
 class SearchEngineSearchEngineConfigArgs:
@@ -3193,15 +3050,12 @@ class SearchEngineSearchEngineConfigArgs:
         pulumi.set(self, "search_tier", value)
 
 
-if not MYPY:
-    class TargetSiteFailureReasonArgsDict(TypedDict):
-        quota_failure: NotRequired[pulumi.Input['TargetSiteFailureReasonQuotaFailureArgsDict']]
-        """
-        Site verification state indicating the ownership and validity.
-        Structure is documented below.
-        """
-elif False:
-    TargetSiteFailureReasonArgsDict: TypeAlias = Mapping[str, Any]
+class TargetSiteFailureReasonArgsDict(TypedDict):
+    quota_failure: NotRequired[pulumi.Input['TargetSiteFailureReasonQuotaFailureArgsDict']]
+    """
+    Site verification state indicating the ownership and validity.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class TargetSiteFailureReasonArgs:
@@ -3228,15 +3082,12 @@ class TargetSiteFailureReasonArgs:
         pulumi.set(self, "quota_failure", value)
 
 
-if not MYPY:
-    class TargetSiteFailureReasonQuotaFailureArgsDict(TypedDict):
-        total_required_quota: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This number is an estimation on how much total quota this project
-        needs to successfully complete indexing.
-        """
-elif False:
-    TargetSiteFailureReasonQuotaFailureArgsDict: TypeAlias = Mapping[str, Any]
+class TargetSiteFailureReasonQuotaFailureArgsDict(TypedDict):
+    total_required_quota: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This number is an estimation on how much total quota this project
+    needs to successfully complete indexing.
+    """
 
 @pulumi.input_type
 class TargetSiteFailureReasonQuotaFailureArgs:
@@ -3263,19 +3114,16 @@ class TargetSiteFailureReasonQuotaFailureArgs:
         pulumi.set(self, "total_required_quota", value)
 
 
-if not MYPY:
-    class TargetSiteSiteVerificationInfoArgsDict(TypedDict):
-        site_verification_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Site verification state indicating the ownership and validity.
-        Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
-        """
-        verify_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Latest site verification time.
-        """
-elif False:
-    TargetSiteSiteVerificationInfoArgsDict: TypeAlias = Mapping[str, Any]
+class TargetSiteSiteVerificationInfoArgsDict(TypedDict):
+    site_verification_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Site verification state indicating the ownership and validity.
+    Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
+    """
+    verify_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Latest site verification time.
+    """
 
 @pulumi.input_type
 class TargetSiteSiteVerificationInfoArgs:
@@ -3318,32 +3166,29 @@ class TargetSiteSiteVerificationInfoArgs:
         pulumi.set(self, "verify_time", value)
 
 
-if not MYPY:
-    class WidgetConfigAccessSettingsArgsDict(TypedDict):
-        allow_public_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether public unauthenticated access is allowed.
-        """
-        allowlisted_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of domains that are allowed to integrate the search widget.
-        """
-        enable_web_app: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether web app access is enabled.
-        """
-        language_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Language code for user interface. Use language tags defined by
-        [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the
-        default language code is "en-US".
-        """
-        workforce_identity_pool_provider: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The workforce identity pool provider used to access the widget.
-        """
-elif False:
-    WidgetConfigAccessSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class WidgetConfigAccessSettingsArgsDict(TypedDict):
+    allow_public_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether public unauthenticated access is allowed.
+    """
+    allowlisted_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of domains that are allowed to integrate the search widget.
+    """
+    enable_web_app: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether web app access is enabled.
+    """
+    language_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Language code for user interface. Use language tags defined by
+    [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the
+    default language code is "en-US".
+    """
+    workforce_identity_pool_provider: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The workforce identity pool provider used to access the widget.
+    """
 
 @pulumi.input_type
 class WidgetConfigAccessSettingsArgs:
@@ -3436,15 +3281,12 @@ class WidgetConfigAccessSettingsArgs:
         pulumi.set(self, "workforce_identity_pool_provider", value)
 
 
-if not MYPY:
-    class WidgetConfigHomepageSettingArgsDict(TypedDict):
-        shortcuts: NotRequired[pulumi.Input[Sequence[pulumi.Input['WidgetConfigHomepageSettingShortcutArgsDict']]]]
-        """
-        The shortcuts to display on the homepage.
-        Structure is documented below.
-        """
-elif False:
-    WidgetConfigHomepageSettingArgsDict: TypeAlias = Mapping[str, Any]
+class WidgetConfigHomepageSettingArgsDict(TypedDict):
+    shortcuts: NotRequired[pulumi.Input[Sequence[pulumi.Input['WidgetConfigHomepageSettingShortcutArgsDict']]]]
+    """
+    The shortcuts to display on the homepage.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class WidgetConfigHomepageSettingArgs:
@@ -3471,23 +3313,20 @@ class WidgetConfigHomepageSettingArgs:
         pulumi.set(self, "shortcuts", value)
 
 
-if not MYPY:
-    class WidgetConfigHomepageSettingShortcutArgsDict(TypedDict):
-        destination_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Destination URL of shortcut.
-        """
-        icon: NotRequired[pulumi.Input['WidgetConfigHomepageSettingShortcutIconArgsDict']]
-        """
-        Icon URL of shortcut.
-        Structure is documented below.
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Title of the shortcut.
-        """
-elif False:
-    WidgetConfigHomepageSettingShortcutArgsDict: TypeAlias = Mapping[str, Any]
+class WidgetConfigHomepageSettingShortcutArgsDict(TypedDict):
+    destination_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Destination URL of shortcut.
+    """
+    icon: NotRequired[pulumi.Input['WidgetConfigHomepageSettingShortcutIconArgsDict']]
+    """
+    Icon URL of shortcut.
+    Structure is documented below.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Title of the shortcut.
+    """
 
 @pulumi.input_type
 class WidgetConfigHomepageSettingShortcutArgs:
@@ -3546,14 +3385,11 @@ class WidgetConfigHomepageSettingShortcutArgs:
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class WidgetConfigHomepageSettingShortcutIconArgsDict(TypedDict):
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Image URL.
-        """
-elif False:
-    WidgetConfigHomepageSettingShortcutIconArgsDict: TypeAlias = Mapping[str, Any]
+class WidgetConfigHomepageSettingShortcutIconArgsDict(TypedDict):
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Image URL.
+    """
 
 @pulumi.input_type
 class WidgetConfigHomepageSettingShortcutIconArgs:
@@ -3578,15 +3414,12 @@ class WidgetConfigHomepageSettingShortcutIconArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class WidgetConfigUiBrandingArgsDict(TypedDict):
-        logo: NotRequired[pulumi.Input['WidgetConfigUiBrandingLogoArgsDict']]
-        """
-        Logo image.
-        Structure is documented below.
-        """
-elif False:
-    WidgetConfigUiBrandingArgsDict: TypeAlias = Mapping[str, Any]
+class WidgetConfigUiBrandingArgsDict(TypedDict):
+    logo: NotRequired[pulumi.Input['WidgetConfigUiBrandingLogoArgsDict']]
+    """
+    Logo image.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class WidgetConfigUiBrandingArgs:
@@ -3613,14 +3446,11 @@ class WidgetConfigUiBrandingArgs:
         pulumi.set(self, "logo", value)
 
 
-if not MYPY:
-    class WidgetConfigUiBrandingLogoArgsDict(TypedDict):
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Image URL.
-        """
-elif False:
-    WidgetConfigUiBrandingLogoArgsDict: TypeAlias = Mapping[str, Any]
+class WidgetConfigUiBrandingLogoArgsDict(TypedDict):
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Image URL.
+    """
 
 @pulumi.input_type
 class WidgetConfigUiBrandingLogoArgs:
@@ -3645,69 +3475,66 @@ class WidgetConfigUiBrandingLogoArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class WidgetConfigUiSettingsArgsDict(TypedDict):
-        data_store_ui_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigArgsDict']]]]
-        """
-        Per data store configuration.
-        Structure is documented below.
-        """
-        default_search_request_order_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default ordering for search results if specified.
-        Used to set SearchRequest#orderBy on applicable requests.
-        """
-        disable_user_events_collection: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, the widget will not collect user events.
-        """
-        enable_autocomplete: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not to enable autocomplete.
-        """
-        enable_create_agent_button: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, the widget will enable the create agent button.
-        """
-        enable_people_search: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, the widget will enable people search.
-        """
-        enable_quality_feedback: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Turn on or off collecting the search result quality feedback from end users.
-        """
-        enable_safe_search: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable safe search.
-        """
-        enable_search_as_you_type: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable search-as-you-type behavior for the search widget.
-        """
-        enable_visual_content_summary: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, the widget will enable visual content summary on applicable
-        search requests. Only used by healthcare search.
-        """
-        generative_answer_config: NotRequired[pulumi.Input['WidgetConfigUiSettingsGenerativeAnswerConfigArgsDict']]
-        """
-        Describes generative answer configuration.
-        Structure is documented below.
-        """
-        interaction_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Describes widget (or web app) interaction type
-        Possible values are: `SEARCH_ONLY`, `SEARCH_WITH_ANSWER`, `SEARCH_WITH_FOLLOW_UPS`.
-        """
-        result_description_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls whether result extract is display and how (snippet or extractive answer).
-        Default to no result if unspecified.
-        Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
-        """
-elif False:
-    WidgetConfigUiSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class WidgetConfigUiSettingsArgsDict(TypedDict):
+    data_store_ui_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigArgsDict']]]]
+    """
+    Per data store configuration.
+    Structure is documented below.
+    """
+    default_search_request_order_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default ordering for search results if specified.
+    Used to set SearchRequest#orderBy on applicable requests.
+    """
+    disable_user_events_collection: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the widget will not collect user events.
+    """
+    enable_autocomplete: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not to enable autocomplete.
+    """
+    enable_create_agent_button: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the widget will enable the create agent button.
+    """
+    enable_people_search: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the widget will enable people search.
+    """
+    enable_quality_feedback: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Turn on or off collecting the search result quality feedback from end users.
+    """
+    enable_safe_search: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable safe search.
+    """
+    enable_search_as_you_type: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable search-as-you-type behavior for the search widget.
+    """
+    enable_visual_content_summary: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the widget will enable visual content summary on applicable
+    search requests. Only used by healthcare search.
+    """
+    generative_answer_config: NotRequired[pulumi.Input['WidgetConfigUiSettingsGenerativeAnswerConfigArgsDict']]
+    """
+    Describes generative answer configuration.
+    Structure is documented below.
+    """
+    interaction_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Describes widget (or web app) interaction type
+    Possible values are: `SEARCH_ONLY`, `SEARCH_WITH_ANSWER`, `SEARCH_WITH_FOLLOW_UPS`.
+    """
+    result_description_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls whether result extract is display and how (snippet or extractive answer).
+    Default to no result if unspecified.
+    Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
+    """
 
 @pulumi.input_type
 class WidgetConfigUiSettingsArgs:
@@ -3938,30 +3765,27 @@ class WidgetConfigUiSettingsArgs:
         pulumi.set(self, "result_description_type", value)
 
 
-if not MYPY:
-    class WidgetConfigUiSettingsDataStoreUiConfigArgsDict(TypedDict):
-        facet_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgsDict']]]]
-        """
-        Structure is documented below.
-        """
-        fields_ui_components_maps: NotRequired[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgsDict']]]]
-        """
-        'The key is the UI component. Currently supported `title`, `thumbnail`,
-        `url`, `custom1`, `custom2`, `custom3`. The value is the name of
-        the field along with its device visibility. The 3 custom fields are optional
-        and can be added or removed.
-        `title`, `thumbnail`, `url` are required UI components that cannot be removed.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the data store. It should be data store resource name. Format:
-        `projects/{project}/locations/{location}/collections/{collectionId}/dataStores/{dataStoreId}`.
-        For APIs under `WidgetService`, such as [WidgetService.LookUpWidgetConfig][],
-        the project number and location part is erased in this field.
-        """
-elif False:
-    WidgetConfigUiSettingsDataStoreUiConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WidgetConfigUiSettingsDataStoreUiConfigArgsDict(TypedDict):
+    facet_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgsDict']]]]
+    """
+    Structure is documented below.
+    """
+    fields_ui_components_maps: NotRequired[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgsDict']]]]
+    """
+    'The key is the UI component. Currently supported `title`, `thumbnail`,
+    `url`, `custom1`, `custom2`, `custom3`. The value is the name of
+    the field along with its device visibility. The 3 custom fields are optional
+    and can be added or removed.
+    `title`, `thumbnail`, `url` are required UI components that cannot be removed.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the data store. It should be data store resource name. Format:
+    `projects/{project}/locations/{location}/collections/{collectionId}/dataStores/{dataStoreId}`.
+    For APIs under `WidgetService`, such as [WidgetService.LookUpWidgetConfig][],
+    the project number and location part is erased in this field.
+    """
 
 @pulumi.input_type
 class WidgetConfigUiSettingsDataStoreUiConfigArgs:
@@ -4034,18 +3858,15 @@ class WidgetConfigUiSettingsDataStoreUiConfigArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgsDict(TypedDict):
-        field: pulumi.Input[_builtins.str]
-        """
-        Registered field name. The format is `field.abc`.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The field name that end users will see.
-        """
-elif False:
-    WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgsDict: TypeAlias = Mapping[str, Any]
+class WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgsDict(TypedDict):
+    field: pulumi.Input[_builtins.str]
+    """
+    Registered field name. The format is `field.abc`.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The field name that end users will see.
+    """
 
 @pulumi.input_type
 class WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs:
@@ -4085,27 +3906,24 @@ class WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgsDict(TypedDict):
-        field: pulumi.Input[_builtins.str]
-        """
-        Registered field name. The format is `field.abc`.
-        """
-        ui_component: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        device_visibilities: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Each value may be one of: `MOBILE`, `DESKTOP`.
-        """
-        display_template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The template to customize how the field is displayed.
-        An example value would be a string that looks like: "Price: {value}".
-        """
-elif False:
-    WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgsDict: TypeAlias = Mapping[str, Any]
+class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgsDict(TypedDict):
+    field: pulumi.Input[_builtins.str]
+    """
+    Registered field name. The format is `field.abc`.
+    """
+    ui_component: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    device_visibilities: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Each value may be one of: `MOBILE`, `DESKTOP`.
+    """
+    display_template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The template to customize how the field is displayed.
+    An example value would be a string that looks like: "Price: {value}".
+    """
 
 @pulumi.input_type
 class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs:
@@ -4178,58 +3996,55 @@ class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs:
         pulumi.set(self, "display_template", value)
 
 
-if not MYPY:
-    class WidgetConfigUiSettingsGenerativeAnswerConfigArgsDict(TypedDict):
-        disable_related_questions: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether generated answer contains suggested related questions.
-        """
-        ignore_adversarial_query: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to filter out queries that are adversarial.
-        """
-        ignore_low_relevant_content: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to filter out queries that are not relevant to the content.
-        """
-        ignore_non_answer_seeking_query: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to filter out queries that are not answer-seeking.
-        The default value is `false`. No answer is returned if the search query
-        is classified as a non-answer seeking query.
-        If this field is set to `true`, we skip generating answers for
-        non-answer seeking queries and return fallback messages instead.
-        """
-        image_source: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Source of image returned in the answer.
-        Possible values are: `ALL_AVAILABLE_SOURCES`, `CORPUS_IMAGE_ONLY`, `FIGURE_GENERATION_ONLY`.
-        """
-        language_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Language code for Summary. Use language tags defined by
-        [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This
-        is an experimental feature.
-        """
-        max_rephrase_steps: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max rephrase steps. The max number is 5 steps. If not set or
-        set to < 1, it will be set to 1 by default.
-        """
-        model_prompt_preamble: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Text at the beginning of the prompt that instructs the model that generates the answer.
-        """
-        model_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The model version used to generate the answer.
-        """
-        result_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of top results to generate the answer from. Up to 10.
-        """
-elif False:
-    WidgetConfigUiSettingsGenerativeAnswerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WidgetConfigUiSettingsGenerativeAnswerConfigArgsDict(TypedDict):
+    disable_related_questions: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether generated answer contains suggested related questions.
+    """
+    ignore_adversarial_query: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to filter out queries that are adversarial.
+    """
+    ignore_low_relevant_content: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to filter out queries that are not relevant to the content.
+    """
+    ignore_non_answer_seeking_query: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to filter out queries that are not answer-seeking.
+    The default value is `false`. No answer is returned if the search query
+    is classified as a non-answer seeking query.
+    If this field is set to `true`, we skip generating answers for
+    non-answer seeking queries and return fallback messages instead.
+    """
+    image_source: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Source of image returned in the answer.
+    Possible values are: `ALL_AVAILABLE_SOURCES`, `CORPUS_IMAGE_ONLY`, `FIGURE_GENERATION_ONLY`.
+    """
+    language_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Language code for Summary. Use language tags defined by
+    [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This
+    is an experimental feature.
+    """
+    max_rephrase_steps: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max rephrase steps. The max number is 5 steps. If not set or
+    set to < 1, it will be set to 1 by default.
+    """
+    model_prompt_preamble: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Text at the beginning of the prompt that instructs the model that generates the answer.
+    """
+    model_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The model version used to generate the answer.
+    """
+    result_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of top results to generate the answer from. Up to 10.
+    """
 
 @pulumi.input_type
 class WidgetConfigUiSettingsGenerativeAnswerConfigArgs:

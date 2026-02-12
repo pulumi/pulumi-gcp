@@ -103,22 +103,14 @@ namespace Pulumi.Gcp.Firestore
     /// UserCreds can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/databases/{{database}}/userCreds/{{name}}`
-    /// 
     /// * `{{project}}/{{database}}/{{name}}`
-    /// 
     /// * `{{database}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, UserCreds can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firestore/userCreds:UserCreds default projects/{{project}}/databases/{{database}}/userCreds/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firestore/userCreds:UserCreds default {{project}}/{{database}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:firestore/userCreds:UserCreds default {{database}}/{{name}}
     /// ```
     /// </summary>

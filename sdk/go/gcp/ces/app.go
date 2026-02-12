@@ -24,7 +24,6 @@ import (
 // import (
 //
 //	"encoding/json"
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -488,22 +487,14 @@ import (
 // App can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/apps/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, App can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:ces/app:App default projects/{{project}}/locations/{{location}}/apps/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:ces/app:App default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:ces/app:App default {{location}}/{{name}}
 // ```
 type App struct {

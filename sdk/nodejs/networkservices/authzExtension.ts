@@ -74,28 +74,16 @@ import * as utilities from "../utilities";
  * AuthzExtension can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/authzExtensions/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, AuthzExtension can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default projects/{{project}}/locations/{{location}}/authzExtensions/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default {{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default {{name}}
  * ```
  */

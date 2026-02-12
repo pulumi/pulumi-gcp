@@ -114,22 +114,14 @@ import javax.annotation.Nullable;
  * ApplicationEnvironment can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/applicationEnvironments/{{application_environment_id}}`
- * 
  * * `{{project}}/{{location}}/{{serviceinstance}}/{{application_environment_id}}`
- * 
  * * `{{location}}/{{serviceinstance}}/{{application_environment_id}}`
  * 
  * When using the `pulumi import` command, ApplicationEnvironment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/applicationEnvironments/{{application_environment_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default {{project}}/{{location}}/{{serviceinstance}}/{{application_environment_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment default {{location}}/{{serviceinstance}}/{{application_environment_id}}
  * ```
  * 
@@ -196,9 +188,17 @@ public class GdcApplicationEnvironment extends com.pulumi.resources.CustomResour
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

@@ -280,22 +280,14 @@ class DomainMapping(pulumi.CustomResource):
         DomainMapping can be imported using any of these accepted formats:
 
         * `locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}`
-
         * `{{location}}/{{project}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, DomainMapping can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{name}}
         ```
 
@@ -362,22 +354,14 @@ class DomainMapping(pulumi.CustomResource):
         DomainMapping can be imported using any of these accepted formats:
 
         * `locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}`
-
         * `{{location}}/{{project}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, DomainMapping can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{name}}
         ```
 
