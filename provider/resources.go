@@ -165,6 +165,7 @@ const (
 	gcpTags                     = "Tags"                     // Tags
 	gcpTranscoder               = "Transcoder"               // Transcoder
 	gcpVMwareEngine             = "VMwareEngine"             // VMWare Engine
+	gcpVectorSearch             = "VectorSearch"             // Vector Search
 	gcpVertex                   = "Vertex"                   // Vertex
 	gcpVpcAccess                = "VpcAccess"                // VPC Access
 	gcpWorkbench                = "Workbench"                // Workbench
@@ -308,6 +309,7 @@ var moduleMapping = map[string]string{
 	"tags":                       gcpTags,
 	"transcoder":                 gcpTranscoder,
 	"tpu":                        gcpTPU,
+	"vector_search":              gcpVectorSearch,
 	"vertex":                     gcpVertex,
 	"vmwareengine":               gcpVMwareEngine,
 	"vpc_access":                 gcpVpcAccess,
@@ -2803,7 +2805,8 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"google_backup_dr_backup_plan": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
-			"google_backup_dr_data_source": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_backup_dr_data_source":  {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_backup_dr_data_sources": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"google_backup_dr_backup":      {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 
 			// Vmwareengine
