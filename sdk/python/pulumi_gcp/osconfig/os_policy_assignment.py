@@ -31,6 +31,7 @@ class OsPolicyAssignmentArgs:
                  skip_await_rollout: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a OsPolicyAssignment resource.
+
         :param pulumi.Input['OsPolicyAssignmentInstanceFilterArgs'] instance_filter: Filter to select VMs. Structure is
                documented below.
         :param pulumi.Input[_builtins.str] location: The location for the resource
@@ -183,6 +184,7 @@ class _OsPolicyAssignmentState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OsPolicyAssignment resources.
+
         :param pulumi.Input[_builtins.bool] baseline: Output only. Indicates that this revision has been successfully
                rolled out in this zone and new VMs will be assigned OS policies from this
                revision. For a given OS policy assignment, there is only one revision with
@@ -579,24 +581,17 @@ class OsPolicyAssignment(pulumi.CustomResource):
         OSPolicyAssignment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, OSPolicyAssignment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment default projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -729,24 +724,17 @@ class OsPolicyAssignment(pulumi.CustomResource):
         OSPolicyAssignment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, OSPolicyAssignment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment default projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OsPolicyAssignmentArgs args: The arguments to use to populate this resource's properties.

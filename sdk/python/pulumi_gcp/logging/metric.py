@@ -33,6 +33,7 @@ class MetricArgs:
                  value_extractor: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Metric resource.
+
         :param pulumi.Input[_builtins.str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
         :param pulumi.Input[_builtins.str] bucket_name: The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
@@ -246,6 +247,7 @@ class _MetricState:
                  value_extractor: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Metric resources.
+
         :param pulumi.Input[_builtins.str] bucket_name: The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
                are supported. The bucket has to be in the same project as the metric.
         :param pulumi.Input['MetricBucketOptionsArgs'] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
@@ -587,18 +589,15 @@ class Metric(pulumi.CustomResource):
         Metric can be imported using any of these accepted formats:
 
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Metric can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:logging/metric:Metric default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_logging_metric.default "{{project}} {{name}}"
         $ pulumi import gcp:logging/metric:Metric default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -767,18 +766,15 @@ class Metric(pulumi.CustomResource):
         Metric can be imported using any of these accepted formats:
 
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Metric can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:logging/metric:Metric default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_logging_metric.default "{{project}} {{name}}"
         $ pulumi import gcp:logging/metric:Metric default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MetricArgs args: The arguments to use to populate this resource's properties.

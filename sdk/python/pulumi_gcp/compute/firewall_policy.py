@@ -24,6 +24,7 @@ class FirewallPolicyArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallPolicy resource.
+
         :param pulumi.Input[_builtins.str] parent: The parent of the firewall policy.
         :param pulumi.Input[_builtins.str] short_name: User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
                This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
@@ -89,6 +90,7 @@ class _FirewallPolicyState:
                  short_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallPolicy resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
@@ -286,18 +288,15 @@ class FirewallPolicy(pulumi.CustomResource):
         FirewallPolicy can be imported using any of these accepted formats:
 
         * `locations/global/firewallPolicies/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, FirewallPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default locations/global/firewallPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -343,18 +342,15 @@ class FirewallPolicy(pulumi.CustomResource):
         FirewallPolicy can be imported using any of these accepted formats:
 
         * `locations/global/firewallPolicies/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, FirewallPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default locations/global/firewallPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallPolicyArgs args: The arguments to use to populate this resource's properties.

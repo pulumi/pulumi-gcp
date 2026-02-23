@@ -31,6 +31,7 @@ class TargetServerArgs:
                  s_sl_info: Optional[pulumi.Input['TargetServerSSlInfoArgs']] = None):
         """
         The set of arguments for constructing a TargetServer resource.
+
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
         :param pulumi.Input[_builtins.str] host: The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
@@ -170,6 +171,7 @@ class _TargetServerState:
                  s_sl_info: Optional[pulumi.Input['TargetServerSSlInfoArgs']] = None):
         """
         Input properties used for looking up and filtering TargetServer resources.
+
         :param pulumi.Input[_builtins.str] description: A human-readable description of this TargetServer.
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
@@ -391,18 +393,15 @@ class TargetServer(pulumi.CustomResource):
         TargetServer can be imported using any of these accepted formats:
 
         * `{{env_id}}/targetservers/{{name}}`
-
         * `{{env_id}}/{{name}}`
 
         When using the `pulumi import` command, TargetServer can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/targetServer:TargetServer default {{env_id}}/targetservers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/targetServer:TargetServer default {{env_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -501,18 +500,15 @@ class TargetServer(pulumi.CustomResource):
         TargetServer can be imported using any of these accepted formats:
 
         * `{{env_id}}/targetservers/{{name}}`
-
         * `{{env_id}}/{{name}}`
 
         When using the `pulumi import` command, TargetServer can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/targetServer:TargetServer default {{env_id}}/targetservers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/targetServer:TargetServer default {{env_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TargetServerArgs args: The arguments to use to populate this resource's properties.

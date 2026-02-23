@@ -132,6 +132,8 @@ __all__ = [
     'AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef',
     'AiReasoningEngineSpecPackageSpec',
     'AiReasoningEngineSpecSourceCodeSpec',
+    'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource',
+    'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig',
     'AiReasoningEngineSpecSourceCodeSpecInlineSource',
     'AiReasoningEngineSpecSourceCodeSpecPythonSpec',
     'AiTensorboardEncryptionSpec',
@@ -7336,7 +7338,9 @@ class AiReasoningEngineSpecSourceCodeSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "inlineSource":
+        if key == "developerConnectSource":
+            suggest = "developer_connect_source"
+        elif key == "inlineSource":
             suggest = "inline_source"
         elif key == "pythonSpec":
             suggest = "python_spec"
@@ -7353,18 +7357,32 @@ class AiReasoningEngineSpecSourceCodeSpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 developer_connect_source: Optional['outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource'] = None,
                  inline_source: Optional['outputs.AiReasoningEngineSpecSourceCodeSpecInlineSource'] = None,
                  python_spec: Optional['outputs.AiReasoningEngineSpecSourceCodeSpecPythonSpec'] = None):
         """
+        :param 'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs' developer_connect_source: Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+               Structure is documented below.
         :param 'AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs' inline_source: Source code is provided directly in the request.
                Structure is documented below.
         :param 'AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs' python_spec: Specification for running a Python application from source.
                Structure is documented below.
         """
+        if developer_connect_source is not None:
+            pulumi.set(__self__, "developer_connect_source", developer_connect_source)
         if inline_source is not None:
             pulumi.set(__self__, "inline_source", inline_source)
         if python_spec is not None:
             pulumi.set(__self__, "python_spec", python_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="developerConnectSource")
+    def developer_connect_source(self) -> Optional['outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource']:
+        """
+        Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "developer_connect_source")
 
     @_builtins.property
     @pulumi.getter(name="inlineSource")
@@ -7383,6 +7401,83 @@ class AiReasoningEngineSpecSourceCodeSpec(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "python_spec")
+
+
+@pulumi.output_type
+class AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource(dict):
+    def __init__(__self__, *,
+                 config: 'outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig'):
+        """
+        :param 'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs' config: The Developer Connect configuration that defines the specific repository, revision, and directory to use as the source code root.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "config", config)
+
+    @_builtins.property
+    @pulumi.getter
+    def config(self) -> 'outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig':
+        """
+        The Developer Connect configuration that defines the specific repository, revision, and directory to use as the source code root.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "config")
+
+
+@pulumi.output_type
+class AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gitRepositoryLink":
+            suggest = "git_repository_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dir: _builtins.str,
+                 git_repository_link: _builtins.str,
+                 revision: _builtins.str):
+        """
+        :param _builtins.str dir: Directory, relative to the source root, in which to run the build.
+        :param _builtins.str git_repository_link: The Developer Connect Git repository link, formatted as projects/*/locations/*/connections/*/gitRepositoryLink/*.
+        :param _builtins.str revision: The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+        """
+        pulumi.set(__self__, "dir", dir)
+        pulumi.set(__self__, "git_repository_link", git_repository_link)
+        pulumi.set(__self__, "revision", revision)
+
+    @_builtins.property
+    @pulumi.getter
+    def dir(self) -> _builtins.str:
+        """
+        Directory, relative to the source root, in which to run the build.
+        """
+        return pulumi.get(self, "dir")
+
+    @_builtins.property
+    @pulumi.getter(name="gitRepositoryLink")
+    def git_repository_link(self) -> _builtins.str:
+        """
+        The Developer Connect Git repository link, formatted as projects/*/locations/*/connections/*/gitRepositoryLink/*.
+        """
+        return pulumi.get(self, "git_repository_link")
+
+    @_builtins.property
+    @pulumi.getter
+    def revision(self) -> _builtins.str:
+        """
+        The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+        """
+        return pulumi.get(self, "revision")
 
 
 @pulumi.output_type

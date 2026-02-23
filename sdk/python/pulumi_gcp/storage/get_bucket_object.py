@@ -193,6 +193,9 @@ class GetBucketObjectResult:
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> _builtins.str:
+        """
+        (Computed) Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+        """
         return pulumi.get(self, "detect_md5hash")
 
     @_builtins.property

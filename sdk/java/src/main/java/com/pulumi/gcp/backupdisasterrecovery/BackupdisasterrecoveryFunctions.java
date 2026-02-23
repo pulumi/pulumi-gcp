@@ -25,6 +25,8 @@ import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceReferenceArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceReferencePlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceReferencesArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceReferencesPlainArgs;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourcesArgs;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourcesPlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerPlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanAssociationResult;
@@ -35,6 +37,7 @@ import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupVaultResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourceReferenceResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourceReferencesResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourceResult;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourcesResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetManagementServerResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -1164,7 +1167,27 @@ public final class BackupdisasterrecoveryFunctions {
     public static CompletableFuture<GetDataSourceReferencesResult> getDataSourceReferencesPlain(GetDataSourceReferencesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getDataSourceReferences:getDataSourceReferences", TypeShape.of(GetDataSourceReferencesResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetDataSourcesResult> getDataSources(GetDataSourcesArgs args) {
+        return getDataSources(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetDataSourcesResult> getDataSourcesPlain(GetDataSourcesPlainArgs args) {
+        return getDataSourcesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetDataSourcesResult> getDataSources(GetDataSourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getDataSources:getDataSources", TypeShape.of(GetDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetDataSourcesResult> getDataSources(GetDataSourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getDataSources:getDataSources", TypeShape.of(GetDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetDataSourcesResult> getDataSourcesPlain(GetDataSourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getDataSources:getDataSources", TypeShape.of(GetDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1203,6 +1226,11 @@ public final class BackupdisasterrecoveryFunctions {
         return getManagementServer(args, InvokeOptions.Empty);
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1241,6 +1269,11 @@ public final class BackupdisasterrecoveryFunctions {
         return getManagementServerPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1279,6 +1312,11 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", TypeShape.of(GetManagementServerResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1317,6 +1355,11 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", TypeShape.of(GetManagementServerResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>

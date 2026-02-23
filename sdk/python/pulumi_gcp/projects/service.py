@@ -26,6 +26,7 @@ class ServiceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Service resource.
+
         :param pulumi.Input[_builtins.str] service: The service to enable.
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
@@ -34,6 +35,10 @@ class ServiceArgs:
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
                services depend on this service when destroying it.
+        :param pulumi.Input[_builtins.bool] disable_on_destroy: If `true`, disable the service when the
+               Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+               the Terraform resource is destroyed. It should generally only
+               be `true` in configurations that manage the `organizations.Project` resource itself.
         :param pulumi.Input[_builtins.str] project: The project ID. If not provided, the provider project
                is used.
         """
@@ -91,6 +96,12 @@ class ServiceArgs:
     @_builtins.property
     @pulumi.getter(name="disableOnDestroy")
     def disable_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If `true`, disable the service when the
+        Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+        the Terraform resource is destroyed. It should generally only
+        be `true` in configurations that manage the `organizations.Project` resource itself.
+        """
         return pulumi.get(self, "disable_on_destroy")
 
     @disable_on_destroy.setter
@@ -121,6 +132,7 @@ class _ServiceState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
+
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
                will be returned if the service to be disabled has usage in last 30 days.
@@ -128,6 +140,10 @@ class _ServiceState:
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
                services depend on this service when destroying it.
+        :param pulumi.Input[_builtins.bool] disable_on_destroy: If `true`, disable the service when the
+               Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+               the Terraform resource is destroyed. It should generally only
+               be `true` in configurations that manage the `organizations.Project` resource itself.
         :param pulumi.Input[_builtins.str] project: The project ID. If not provided, the provider project
                is used.
         :param pulumi.Input[_builtins.str] service: The service to enable.
@@ -175,6 +191,12 @@ class _ServiceState:
     @_builtins.property
     @pulumi.getter(name="disableOnDestroy")
     def disable_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If `true`, disable the service when the
+        Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+        the Terraform resource is destroyed. It should generally only
+        be `true` in configurations that manage the `organizations.Project` resource itself.
+        """
         return pulumi.get(self, "disable_on_destroy")
 
     @disable_on_destroy.setter
@@ -220,6 +242,22 @@ class Service(pulumi.CustomResource):
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Allows management of a single API service for a Google Cloud project.
+
+        For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+        or run `gcloud services list --available`.
+
+        This resource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+        to use.
+
+        To get more information about `projects.Service`, see:
+
+        * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+        * How-to Guides
+            * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+        * Terraform guidance
+            * [User Guide - projects.Service](https://www.terraform.io/docs/providers/google/guides/google_project_service.html)
+
         ## Example Usage
 
         ```python
@@ -244,14 +282,11 @@ class Service(pulumi.CustomResource):
         ```
 
         Note that unlike other resources that fail if they already exist,
-
         `pulumi up` can be successfully used to verify already enabled services.
-
         This means that when importing existing resources into Terraform, you can either
-
-        import the `google_project_service` resources or treat them as new
-
+        import the `projects.Service` resources or treat them as new
         infrastructure and run `pulumi up` to add them to state.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -262,6 +297,10 @@ class Service(pulumi.CustomResource):
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
                services depend on this service when destroying it.
+        :param pulumi.Input[_builtins.bool] disable_on_destroy: If `true`, disable the service when the
+               Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+               the Terraform resource is destroyed. It should generally only
+               be `true` in configurations that manage the `organizations.Project` resource itself.
         :param pulumi.Input[_builtins.str] project: The project ID. If not provided, the provider project
                is used.
         :param pulumi.Input[_builtins.str] service: The service to enable.
@@ -273,6 +312,22 @@ class Service(pulumi.CustomResource):
                  args: ServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Allows management of a single API service for a Google Cloud project.
+
+        For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+        or run `gcloud services list --available`.
+
+        This resource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+        to use.
+
+        To get more information about `projects.Service`, see:
+
+        * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+        * How-to Guides
+            * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+        * Terraform guidance
+            * [User Guide - projects.Service](https://www.terraform.io/docs/providers/google/guides/google_project_service.html)
+
         ## Example Usage
 
         ```python
@@ -297,14 +352,11 @@ class Service(pulumi.CustomResource):
         ```
 
         Note that unlike other resources that fail if they already exist,
-
         `pulumi up` can be successfully used to verify already enabled services.
-
         This means that when importing existing resources into Terraform, you can either
-
-        import the `google_project_service` resources or treat them as new
-
+        import the `projects.Service` resources or treat them as new
         infrastructure and run `pulumi up` to add them to state.
+
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.
@@ -371,6 +423,10 @@ class Service(pulumi.CustomResource):
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
                services depend on this service when destroying it.
+        :param pulumi.Input[_builtins.bool] disable_on_destroy: If `true`, disable the service when the
+               Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+               the Terraform resource is destroyed. It should generally only
+               be `true` in configurations that manage the `organizations.Project` resource itself.
         :param pulumi.Input[_builtins.str] project: The project ID. If not provided, the provider project
                is used.
         :param pulumi.Input[_builtins.str] service: The service to enable.
@@ -410,6 +466,12 @@ class Service(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="disableOnDestroy")
     def disable_on_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If `true`, disable the service when the
+        Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
+        the Terraform resource is destroyed. It should generally only
+        be `true` in configurations that manage the `organizations.Project` resource itself.
+        """
         return pulumi.get(self, "disable_on_destroy")
 
     @_builtins.property

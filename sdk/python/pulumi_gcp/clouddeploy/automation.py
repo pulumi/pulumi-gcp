@@ -34,6 +34,7 @@ class AutomationArgs:
                  suspended: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Automation resource.
+
         :param pulumi.Input[_builtins.str] delivery_pipeline: The delivery_pipeline for the resource
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input['AutomationRuleArgs']]] rules: Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
@@ -234,12 +235,14 @@ class _AutomationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Automation resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the automation was created.
         :param pulumi.Input[_builtins.str] delivery_pipeline: The delivery_pipeline for the resource
         :param pulumi.Input[_builtins.str] description: Optional. Description of the `Automation`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Optional. The weak etag of the `Automation` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
@@ -350,6 +353,9 @@ class _AutomationState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -702,24 +708,17 @@ class Automation(pulumi.CustomResource):
         Automation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}`
-
         * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}`
-
         * `{{location}}/{{delivery_pipeline}}/{{name}}`
 
         When using the `pulumi import` command, Automation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddeploy/automation:Automation default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/automation:Automation default {{project}}/{{location}}/{{delivery_pipeline}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/automation:Automation default {{location}}/{{delivery_pipeline}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -913,24 +912,17 @@ class Automation(pulumi.CustomResource):
         Automation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}`
-
         * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}`
-
         * `{{location}}/{{delivery_pipeline}}/{{name}}`
 
         When using the `pulumi import` command, Automation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddeploy/automation:Automation default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/automation:Automation default {{project}}/{{location}}/{{delivery_pipeline}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/automation:Automation default {{location}}/{{delivery_pipeline}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AutomationArgs args: The arguments to use to populate this resource's properties.
@@ -1038,6 +1030,7 @@ class Automation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the automation was created.
         :param pulumi.Input[_builtins.str] delivery_pipeline: The delivery_pipeline for the resource
         :param pulumi.Input[_builtins.str] description: Optional. Description of the `Automation`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Optional. The weak etag of the `Automation` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
@@ -1119,6 +1112,9 @@ class Automation(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

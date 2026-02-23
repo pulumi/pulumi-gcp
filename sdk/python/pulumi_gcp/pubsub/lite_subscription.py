@@ -29,6 +29,7 @@ class LiteSubscriptionArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LiteSubscription resource.
+
         :param pulumi.Input[_builtins.str] topic: A reference to a Topic resource.
         :param pulumi.Input['LiteSubscriptionDeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
@@ -136,6 +137,7 @@ class _LiteSubscriptionState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LiteSubscription resources.
+
         :param pulumi.Input['LiteSubscriptionDeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the subscription.
@@ -293,30 +295,19 @@ class LiteSubscription(pulumi.CustomResource):
         Subscription can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -382,30 +373,19 @@ class LiteSubscription(pulumi.CustomResource):
         Subscription can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LiteSubscriptionArgs args: The arguments to use to populate this resource's properties.

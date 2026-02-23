@@ -96,22 +96,14 @@ import (
 // MirroringEndpointGroupAssociation can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/mirroringEndpointGroupAssociations/{{mirroring_endpoint_group_association_id}}`
-//
 // * `{{project}}/{{location}}/{{mirroring_endpoint_group_association_id}}`
-//
 // * `{{location}}/{{mirroring_endpoint_group_association_id}}`
 //
 // When using the `pulumi import` command, MirroringEndpointGroupAssociation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default projects/{{project}}/locations/{{location}}/mirroringEndpointGroupAssociations/{{mirroring_endpoint_group_association_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default {{project}}/{{location}}/{{mirroring_endpoint_group_association_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default {{location}}/{{mirroring_endpoint_group_association_id}}
 // ```
 type MirroringEndpointGroupAssociation struct {

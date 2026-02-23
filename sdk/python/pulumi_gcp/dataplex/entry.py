@@ -32,6 +32,7 @@ class EntryArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Entry resource.
+
         :param pulumi.Input[_builtins.str] entry_type: The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
         :param pulumi.Input[Sequence[pulumi.Input['EntryAspectArgs']]] aspects: The aspects that are attached to the entry.
                Structure is documented below.
@@ -194,6 +195,7 @@ class _EntryState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Entry resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['EntryAspectArgs']]] aspects: The aspects that are attached to the entry.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the Entry was created in Dataplex.
@@ -730,24 +732,17 @@ class Entry(pulumi.CustomResource):
         Entry can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entries/{{entry_id}}`
-
         * `{{project}}/{{location}}/{{entry_group_id}}/{{entry_id}}`
-
         * `{{location}}/{{entry_group_id}}/{{entry_id}}`
 
         When using the `pulumi import` command, Entry can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/entry:Entry default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entries/{{entry_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entry:Entry default {{project}}/{{location}}/{{entry_group_id}}/{{entry_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entry:Entry default {{location}}/{{entry_group_id}}/{{entry_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1100,24 +1095,17 @@ class Entry(pulumi.CustomResource):
         Entry can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entries/{{entry_id}}`
-
         * `{{project}}/{{location}}/{{entry_group_id}}/{{entry_id}}`
-
         * `{{location}}/{{entry_group_id}}/{{entry_id}}`
 
         When using the `pulumi import` command, Entry can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/entry:Entry default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entries/{{entry_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entry:Entry default {{project}}/{{location}}/{{entry_group_id}}/{{entry_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entry:Entry default {{location}}/{{entry_group_id}}/{{entry_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EntryArgs args: The arguments to use to populate this resource's properties.

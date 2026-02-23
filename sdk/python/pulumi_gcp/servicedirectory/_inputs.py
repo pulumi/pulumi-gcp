@@ -25,15 +25,10 @@ __all__ = [
     'ServiceIamMemberConditionArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class NamespaceIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    NamespaceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class NamespaceIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class NamespaceIamBindingConditionArgs:
@@ -74,13 +69,10 @@ class NamespaceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class NamespaceIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    NamespaceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class NamespaceIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class NamespaceIamMemberConditionArgs:
@@ -121,13 +113,10 @@ class NamespaceIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ServiceIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ServiceIamBindingConditionArgs:
@@ -168,13 +157,10 @@ class ServiceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ServiceIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ServiceIamMemberConditionArgs:

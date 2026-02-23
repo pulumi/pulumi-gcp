@@ -26,6 +26,14 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         [Input("alertRule")]
         public Input<string>? AlertRule { get; set; }
 
+        /// <summary>
+        /// Whether to disable metric existence validation for this condition.
+        /// This allows alerting policies to be defined on metrics that do not yet
+        /// exist, improving advanced customer workflows such as configuring
+        /// alerting policies using Terraform.
+        /// Users with the `monitoring.alertPolicyViewer` role are able to see the
+        /// name of the non-existent metric in the alerting policy condition.
+        /// </summary>
         [Input("disableMetricValidation")]
         public Input<bool>? DisableMetricValidation { get; set; }
 

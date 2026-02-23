@@ -32,12 +32,12 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var scope = new Gcp.GkeHub.Scope("scope", new()
     ///     {
-    ///         ScopeId = "tf-test-scope_85160",
+    ///         ScopeId = "tf-test-scope_25141",
     ///     });
     /// 
     ///     var @namespace = new Gcp.GkeHub.Namespace("namespace", new()
     ///     {
-    ///         ScopeNamespaceId = "tf-test-namespace_92130",
+    ///         ScopeNamespaceId = "tf-test-namespace_30827",
     ///         ScopeId = scope.ScopeId,
     ///         Scope = scope.Name,
     ///         NamespaceLabels = 
@@ -68,22 +68,14 @@ namespace Pulumi.Gcp.GkeHub
     /// Namespace can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}`
-    /// 
     /// * `{{project}}/{{scope_id}}/{{scope_namespace_id}}`
-    /// 
     /// * `{{scope_id}}/{{scope_namespace_id}}`
     /// 
     /// When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gkehub/namespace:Namespace default projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkehub/namespace:Namespace default {{project}}/{{scope_id}}/{{scope_namespace_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkehub/namespace:Namespace default {{scope_id}}/{{scope_namespace_id}}
     /// ```
     /// </summary>

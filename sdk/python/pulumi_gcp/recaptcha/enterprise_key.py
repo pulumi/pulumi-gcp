@@ -31,6 +31,7 @@ class EnterpriseKeyArgs:
                  web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None):
         """
         The set of arguments for constructing a EnterpriseKey resource.
+
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of this key. Modifiable by user.
                
                
@@ -184,6 +185,7 @@ class _EnterpriseKeyState:
                  web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering EnterpriseKey resources.
+
         :param pulumi.Input['EnterpriseKeyAndroidSettingsArgs'] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[_builtins.str] create_time: The timestamp corresponding to the creation of this Key.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of this key. Modifiable by user.
@@ -532,26 +534,18 @@ class EnterpriseKey(pulumi.CustomResource):
         ## Import
 
         Key can be imported using any of these accepted formats:
-
         * `projects/{{project}}/keys/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -713,26 +707,18 @@ class EnterpriseKey(pulumi.CustomResource):
         ## Import
 
         Key can be imported using any of these accepted formats:
-
         * `projects/{{project}}/keys/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnterpriseKeyArgs args: The arguments to use to populate this resource's properties.

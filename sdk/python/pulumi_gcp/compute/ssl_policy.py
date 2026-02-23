@@ -27,6 +27,7 @@ class SSLPolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SSLPolicy resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_features: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. This can be one of
                `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
@@ -193,6 +194,7 @@ class _SSLPolicyState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SSLPolicy resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_features: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. This can be one of
@@ -459,24 +461,17 @@ class SSLPolicy(pulumi.CustomResource):
         SslPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/sslPolicies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, SslPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -562,24 +557,17 @@ class SSLPolicy(pulumi.CustomResource):
         SslPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/sslPolicies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, SslPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SSLPolicyArgs args: The arguments to use to populate this resource's properties.

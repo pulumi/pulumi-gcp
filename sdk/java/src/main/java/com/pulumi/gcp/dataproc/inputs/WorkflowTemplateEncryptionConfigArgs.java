@@ -16,14 +16,38 @@ public final class WorkflowTemplateEncryptionConfigArgs extends com.pulumi.resou
     public static final WorkflowTemplateEncryptionConfigArgs Empty = new WorkflowTemplateEncryptionConfigArgs();
 
     /**
-     * Optional. The Cloud KMS key name to use for encryption.
+     * The Cloud KMS key name to use for encrypting workflow template [job arguments](https://docs.docs.cloud.google.com/dataproc/docs/concepts/workflows/use-workflows).
+     * 
+     * When this this key is provided, the following workflow template job arguments, if present, are [CMEK encrypted](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data):
+     * 
+     * - [FlinkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob)
+     * - [HadoopJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob)
+     * - [SparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+     * - [SparkRJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+     * - [PySparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob)
+     * - [SparkSqlJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries
+     * - [HiveJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries
+     * - [PigJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables  and queryList.queries
+     * - [PrestoJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries
      * 
      */
     @Import(name="kmsKey")
     private @Nullable Output<String> kmsKey;
 
     /**
-     * @return Optional. The Cloud KMS key name to use for encryption.
+     * @return The Cloud KMS key name to use for encrypting workflow template [job arguments](https://docs.docs.cloud.google.com/dataproc/docs/concepts/workflows/use-workflows).
+     * 
+     * When this this key is provided, the following workflow template job arguments, if present, are [CMEK encrypted](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data):
+     * 
+     * - [FlinkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob)
+     * - [HadoopJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob)
+     * - [SparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+     * - [SparkRJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+     * - [PySparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob)
+     * - [SparkSqlJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries
+     * - [HiveJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries
+     * - [PigJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables  and queryList.queries
+     * - [PrestoJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries
      * 
      */
     public Optional<Output<String>> kmsKey() {
@@ -55,7 +79,19 @@ public final class WorkflowTemplateEncryptionConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param kmsKey Optional. The Cloud KMS key name to use for encryption.
+         * @param kmsKey The Cloud KMS key name to use for encrypting workflow template [job arguments](https://docs.docs.cloud.google.com/dataproc/docs/concepts/workflows/use-workflows).
+         * 
+         * When this this key is provided, the following workflow template job arguments, if present, are [CMEK encrypted](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data):
+         * 
+         * - [FlinkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob)
+         * - [HadoopJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob)
+         * - [SparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+         * - [SparkRJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+         * - [PySparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob)
+         * - [SparkSqlJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries
+         * - [HiveJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries
+         * - [PigJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables  and queryList.queries
+         * - [PrestoJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries
          * 
          * @return builder
          * 
@@ -66,7 +102,19 @@ public final class WorkflowTemplateEncryptionConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param kmsKey Optional. The Cloud KMS key name to use for encryption.
+         * @param kmsKey The Cloud KMS key name to use for encrypting workflow template [job arguments](https://docs.docs.cloud.google.com/dataproc/docs/concepts/workflows/use-workflows).
+         * 
+         * When this this key is provided, the following workflow template job arguments, if present, are [CMEK encrypted](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data):
+         * 
+         * - [FlinkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob)
+         * - [HadoopJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob)
+         * - [SparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+         * - [SparkRJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+         * - [PySparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob)
+         * - [SparkSqlJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries
+         * - [HiveJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries
+         * - [PigJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables  and queryList.queries
+         * - [PrestoJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries
          * 
          * @return builder
          * 

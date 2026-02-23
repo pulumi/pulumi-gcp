@@ -34,6 +34,7 @@ class AiIndexEndpointDeployedIndexArgs:
                  reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AiIndexEndpointDeployedIndex resource.
+
         :param pulumi.Input[_builtins.str] deployed_index_id: The user specified ID of the DeployedIndex. The ID can be up to 128 characters long and must start with a letter and only contain letters, numbers, and underscores. The ID must be unique within the project it is created in.
         :param pulumi.Input[_builtins.str] index: The name of the Index this is the deployment of.
         :param pulumi.Input[_builtins.str] index_endpoint: Identifies the index endpoint. Must be in the format
@@ -245,6 +246,7 @@ class _AiIndexEndpointDeployedIndexState:
                  reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AiIndexEndpointDeployedIndex resources.
+
         :param pulumi.Input['AiIndexEndpointDeployedIndexAutomaticResourcesArgs'] automatic_resources: A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -673,30 +675,19 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         IndexEndpointDeployedIndex can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{index_endpoint}}/deployedIndex/{{deployed_index_id}}`
-
         * `{{project}}/{{region}}/{{index_endpoint}}/{{deployed_index_id}}`
-
         * `{{region}}/{{index_endpoint}}/{{deployed_index_id}}`
-
         * `{{index_endpoint}}/{{deployed_index_id}}`
 
         When using the `pulumi import` command, IndexEndpointDeployedIndex can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default projects/{{project}}/locations/{{region}}/indexEndpoints/{{index_endpoint}}/deployedIndex/{{deployed_index_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default {{project}}/{{region}}/{{index_endpoint}}/{{deployed_index_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default {{region}}/{{index_endpoint}}/{{deployed_index_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default {{index_endpoint}}/{{deployed_index_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -883,30 +874,19 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         IndexEndpointDeployedIndex can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{index_endpoint}}/deployedIndex/{{deployed_index_id}}`
-
         * `{{project}}/{{region}}/{{index_endpoint}}/{{deployed_index_id}}`
-
         * `{{region}}/{{index_endpoint}}/{{deployed_index_id}}`
-
         * `{{index_endpoint}}/{{deployed_index_id}}`
 
         When using the `pulumi import` command, IndexEndpointDeployedIndex can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default projects/{{project}}/locations/{{region}}/indexEndpoints/{{index_endpoint}}/deployedIndex/{{deployed_index_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default {{project}}/{{region}}/{{index_endpoint}}/{{deployed_index_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default {{region}}/{{index_endpoint}}/{{deployed_index_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default {{index_endpoint}}/{{deployed_index_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiIndexEndpointDeployedIndexArgs args: The arguments to use to populate this resource's properties.

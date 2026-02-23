@@ -29,6 +29,7 @@ class BlockchainNodesArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BlockchainNodes resource.
+
         :param pulumi.Input[_builtins.str] blockchain_node_id: ID of the requesting object.
         :param pulumi.Input[_builtins.str] location: Location of Blockchain Node being created.
         :param pulumi.Input[_builtins.str] blockchain_type: User-provided key-value pairs
@@ -149,6 +150,7 @@ class _BlockchainNodesState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BlockchainNodes resources.
+
         :param pulumi.Input[_builtins.str] blockchain_node_id: ID of the requesting object.
         :param pulumi.Input[_builtins.str] blockchain_type: User-provided key-value pairs
                Possible values are: `ETHEREUM`.
@@ -437,24 +439,17 @@ class BlockchainNodes(pulumi.CustomResource):
         BlockchainNodes can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}`
-
         * `{{project}}/{{location}}/{{blockchain_node_id}}`
-
         * `{{location}}/{{blockchain_node_id}}`
 
         When using the `pulumi import` command, BlockchainNodes can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default {{project}}/{{location}}/{{blockchain_node_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default {{location}}/{{blockchain_node_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -553,24 +548,17 @@ class BlockchainNodes(pulumi.CustomResource):
         BlockchainNodes can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}`
-
         * `{{project}}/{{location}}/{{blockchain_node_id}}`
-
         * `{{location}}/{{blockchain_node_id}}`
 
         When using the `pulumi import` command, BlockchainNodes can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default {{project}}/{{location}}/{{blockchain_node_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default {{location}}/{{blockchain_node_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BlockchainNodesArgs args: The arguments to use to populate this resource's properties.

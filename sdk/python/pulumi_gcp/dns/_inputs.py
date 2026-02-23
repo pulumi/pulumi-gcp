@@ -89,15 +89,10 @@ __all__ = [
     'ResponsePolicyRuleLocalDataLocalDataArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DnsManagedZoneIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DnsManagedZoneIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DnsManagedZoneIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class DnsManagedZoneIamBindingConditionArgs:
@@ -138,13 +133,10 @@ class DnsManagedZoneIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class DnsManagedZoneIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DnsManagedZoneIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DnsManagedZoneIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class DnsManagedZoneIamMemberConditionArgs:
@@ -185,14 +177,11 @@ class DnsManagedZoneIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ManagedZoneCloudLoggingConfigArgsDict(TypedDict):
-        enable_logging: pulumi.Input[_builtins.bool]
-        """
-        If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
-        """
-elif False:
-    ManagedZoneCloudLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedZoneCloudLoggingConfigArgsDict(TypedDict):
+    enable_logging: pulumi.Input[_builtins.bool]
+    """
+    If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+    """
 
 @pulumi.input_type
 class ManagedZoneCloudLoggingConfigArgs:
@@ -216,33 +205,30 @@ class ManagedZoneCloudLoggingConfigArgs:
         pulumi.set(self, "enable_logging", value)
 
 
-if not MYPY:
-    class ManagedZoneDnssecConfigArgsDict(TypedDict):
-        default_key_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgsDict']]]]
-        """
-        Specifies parameters that will be used for generating initial DnsKeys
-        for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
-        you must also provide one for the other.
-        default_key_specs can only be updated when the state is `off`.
-        Structure is documented below.
-        """
-        kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifies what kind of resource this is
-        """
-        non_existence: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the mechanism used to provide authenticated denial-of-existence responses.
-        non_existence can only be updated when the state is `off`.
-        Possible values are: `nsec`, `nsec3`.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether DNSSEC is enabled, and what mode it is in
-        Possible values are: `off`, `on`, `transfer`.
-        """
-elif False:
-    ManagedZoneDnssecConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedZoneDnssecConfigArgsDict(TypedDict):
+    default_key_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgsDict']]]]
+    """
+    Specifies parameters that will be used for generating initial DnsKeys
+    for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
+    you must also provide one for the other.
+    default_key_specs can only be updated when the state is `off`.
+    Structure is documented below.
+    """
+    kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identifies what kind of resource this is
+    """
+    non_existence: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the mechanism used to provide authenticated denial-of-existence responses.
+    non_existence can only be updated when the state is `off`.
+    Possible values are: `nsec`, `nsec3`.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether DNSSEC is enabled, and what mode it is in
+    Possible values are: `off`, `on`, `transfer`.
+    """
 
 @pulumi.input_type
 class ManagedZoneDnssecConfigArgs:
@@ -329,33 +315,30 @@ class ManagedZoneDnssecConfigArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class ManagedZoneDnssecConfigDefaultKeySpecArgsDict(TypedDict):
-        algorithm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String mnemonic specifying the DNSSEC algorithm of this key
-        Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
-        """
-        key_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Length of the keys in bits
-        """
-        key_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether this is a key signing key (KSK) or a zone
-        signing key (ZSK). Key signing keys have the Secure Entry
-        Point flag set and, when active, will only be used to sign
-        resource record sets of type DNSKEY. Zone signing keys do
-        not have the Secure Entry Point flag set and will be used
-        to sign all other types of resource record sets.
-        Possible values are: `keySigning`, `zoneSigning`.
-        """
-        kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifies what kind of resource this is
-        """
-elif False:
-    ManagedZoneDnssecConfigDefaultKeySpecArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedZoneDnssecConfigDefaultKeySpecArgsDict(TypedDict):
+    algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String mnemonic specifying the DNSSEC algorithm of this key
+    Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
+    """
+    key_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Length of the keys in bits
+    """
+    key_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether this is a key signing key (KSK) or a zone
+    signing key (ZSK). Key signing keys have the Secure Entry
+    Point flag set and, when active, will only be used to sign
+    resource record sets of type DNSKEY. Zone signing keys do
+    not have the Secure Entry Point flag set and will be used
+    to sign all other types of resource record sets.
+    Possible values are: `keySigning`, `zoneSigning`.
+    """
+    kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identifies what kind of resource this is
+    """
 
 @pulumi.input_type
 class ManagedZoneDnssecConfigDefaultKeySpecArgs:
@@ -442,17 +425,14 @@ class ManagedZoneDnssecConfigDefaultKeySpecArgs:
         pulumi.set(self, "kind", value)
 
 
-if not MYPY:
-    class ManagedZoneForwardingConfigArgsDict(TypedDict):
-        target_name_servers: pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgsDict']]]
-        """
-        List of target name servers to forward to. Cloud DNS will
-        select the best available name server if more than
-        one target is given.
-        Structure is documented below.
-        """
-elif False:
-    ManagedZoneForwardingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedZoneForwardingConfigArgsDict(TypedDict):
+    target_name_servers: pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgsDict']]]
+    """
+    List of target name servers to forward to. Cloud DNS will
+    select the best available name server if more than
+    one target is given.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ManagedZoneForwardingConfigArgs:
@@ -482,33 +462,30 @@ class ManagedZoneForwardingConfigArgs:
         pulumi.set(self, "target_name_servers", value)
 
 
-if not MYPY:
-    class ManagedZoneForwardingConfigTargetNameServerArgsDict(TypedDict):
-        domain_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified domain name for the forwarding target.
-        """
-        forwarding_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Forwarding path for this TargetNameServer. If unset or `default`
-        Cloud DNS will make forwarding decision based on address ranges,
-        i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-        to the Internet. When set to `private`, Cloud DNS will always
-        send queries through VPC for this target.
-        Possible values are: `default`, `private`.
-        """
-        ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IPv4 address of a target name server.
-        Does not accept both fields (ipv4 & ipv6) being populated.
-        """
-        ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IPv6 address of a target name server.
-        Does not accept both fields (ipv4 & ipv6) being populated.
-        """
-elif False:
-    ManagedZoneForwardingConfigTargetNameServerArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedZoneForwardingConfigTargetNameServerArgsDict(TypedDict):
+    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified domain name for the forwarding target.
+    """
+    forwarding_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Forwarding path for this TargetNameServer. If unset or `default`
+    Cloud DNS will make forwarding decision based on address ranges,
+    i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+    to the Internet. When set to `private`, Cloud DNS will always
+    send queries through VPC for this target.
+    Possible values are: `default`, `private`.
+    """
+    ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IPv4 address of a target name server.
+    Does not accept both fields (ipv4 & ipv6) being populated.
+    """
+    ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IPv6 address of a target name server.
+    Does not accept both fields (ipv4 & ipv6) being populated.
+    """
 
 @pulumi.input_type
 class ManagedZoneForwardingConfigTargetNameServerArgs:
@@ -595,15 +572,12 @@ class ManagedZoneForwardingConfigTargetNameServerArgs:
         pulumi.set(self, "ipv6_address", value)
 
 
-if not MYPY:
-    class ManagedZonePeeringConfigArgsDict(TypedDict):
-        target_network: pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgsDict']
-        """
-        The network with which to peer.
-        Structure is documented below.
-        """
-elif False:
-    ManagedZonePeeringConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedZonePeeringConfigArgsDict(TypedDict):
+    target_network: pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgsDict']
+    """
+    The network with which to peer.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ManagedZonePeeringConfigArgs:
@@ -629,16 +603,13 @@ class ManagedZonePeeringConfigArgs:
         pulumi.set(self, "target_network", value)
 
 
-if not MYPY:
-    class ManagedZonePeeringConfigTargetNetworkArgsDict(TypedDict):
-        network_url: pulumi.Input[_builtins.str]
-        """
-        The id or fully qualified URL of the VPC network to forward queries to.
-        This should be formatted like `projects/{project}/global/networks/{network}` or
-        `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-        """
-elif False:
-    ManagedZonePeeringConfigTargetNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedZonePeeringConfigTargetNetworkArgsDict(TypedDict):
+    network_url: pulumi.Input[_builtins.str]
+    """
+    The id or fully qualified URL of the VPC network to forward queries to.
+    This should be formatted like `projects/{project}/global/networks/{network}` or
+    `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+    """
 
 @pulumi.input_type
 class ManagedZonePeeringConfigTargetNetworkArgs:
@@ -666,16 +637,21 @@ class ManagedZonePeeringConfigTargetNetworkArgs:
         pulumi.set(self, "network_url", value)
 
 
-if not MYPY:
-    class ManagedZonePrivateVisibilityConfigArgsDict(TypedDict):
-        gke_clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgsDict']]]]
-        """
-        The list of Google Kubernetes Engine clusters that can see this zone.
-        Structure is documented below.
-        """
-        networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgsDict']]]]
-elif False:
-    ManagedZonePrivateVisibilityConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedZonePrivateVisibilityConfigArgsDict(TypedDict):
+    gke_clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgsDict']]]]
+    """
+    The list of Google Kubernetes Engine clusters that can see this zone.
+    Structure is documented below.
+    """
+    networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgsDict']]]]
+    """
+    The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+    may experience issues with this resource while updating. If you've defined a `networks` block and
+    add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+    and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+    blocks in an update and then apply another update adding all of them back simultaneously.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ManagedZonePrivateVisibilityConfigArgs:
@@ -684,6 +660,12 @@ class ManagedZonePrivateVisibilityConfigArgs:
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]] networks: The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+               may experience issues with this resource while updating. If you've defined a `networks` block and
+               add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+               and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+               blocks in an update and then apply another update adding all of them back simultaneously.
                Structure is documented below.
         """
         if gke_clusters is not None:
@@ -707,6 +689,14 @@ class ManagedZonePrivateVisibilityConfigArgs:
     @_builtins.property
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]]:
+        """
+        The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+        may experience issues with this resource while updating. If you've defined a `networks` block and
+        add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+        and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+        blocks in an update and then apply another update adding all of them back simultaneously.
+        Structure is documented below.
+        """
         return pulumi.get(self, "networks")
 
     @networks.setter
@@ -714,16 +704,13 @@ class ManagedZonePrivateVisibilityConfigArgs:
         pulumi.set(self, "networks", value)
 
 
-if not MYPY:
-    class ManagedZonePrivateVisibilityConfigGkeClusterArgsDict(TypedDict):
-        gke_cluster_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the cluster to bind this ManagedZone to.
-        This should be specified in the format like
-        `projects/*/locations/*/clusters/*`
-        """
-elif False:
-    ManagedZonePrivateVisibilityConfigGkeClusterArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedZonePrivateVisibilityConfigGkeClusterArgsDict(TypedDict):
+    gke_cluster_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the cluster to bind this ManagedZone to.
+    This should be specified in the format like
+    `projects/*/locations/*/clusters/*`
+    """
 
 @pulumi.input_type
 class ManagedZonePrivateVisibilityConfigGkeClusterArgs:
@@ -751,16 +738,13 @@ class ManagedZonePrivateVisibilityConfigGkeClusterArgs:
         pulumi.set(self, "gke_cluster_name", value)
 
 
-if not MYPY:
-    class ManagedZonePrivateVisibilityConfigNetworkArgsDict(TypedDict):
-        network_url: pulumi.Input[_builtins.str]
-        """
-        The id or fully qualified URL of the VPC network to bind to.
-        This should be formatted like `projects/{project}/global/networks/{network}` or
-        `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-        """
-elif False:
-    ManagedZonePrivateVisibilityConfigNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedZonePrivateVisibilityConfigNetworkArgsDict(TypedDict):
+    network_url: pulumi.Input[_builtins.str]
+    """
+    The id or fully qualified URL of the VPC network to bind to.
+    This should be formatted like `projects/{project}/global/networks/{network}` or
+    `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+    """
 
 @pulumi.input_type
 class ManagedZonePrivateVisibilityConfigNetworkArgs:
@@ -788,15 +772,12 @@ class ManagedZonePrivateVisibilityConfigNetworkArgs:
         pulumi.set(self, "network_url", value)
 
 
-if not MYPY:
-    class ManagedZoneServiceDirectoryConfigArgsDict(TypedDict):
-        namespace: pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgsDict']
-        """
-        The namespace associated with the zone.
-        Structure is documented below.
-        """
-elif False:
-    ManagedZoneServiceDirectoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedZoneServiceDirectoryConfigArgsDict(TypedDict):
+    namespace: pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgsDict']
+    """
+    The namespace associated with the zone.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ManagedZoneServiceDirectoryConfigArgs:
@@ -822,18 +803,15 @@ class ManagedZoneServiceDirectoryConfigArgs:
         pulumi.set(self, "namespace", value)
 
 
-if not MYPY:
-    class ManagedZoneServiceDirectoryConfigNamespaceArgsDict(TypedDict):
-        namespace_url: pulumi.Input[_builtins.str]
-        """
-        The fully qualified or partial URL of the service directory namespace that should be
-        associated with the zone. This should be formatted like
-        `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
-        or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
-        Ignored for `public` visibility zones.
-        """
-elif False:
-    ManagedZoneServiceDirectoryConfigNamespaceArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedZoneServiceDirectoryConfigNamespaceArgsDict(TypedDict):
+    namespace_url: pulumi.Input[_builtins.str]
+    """
+    The fully qualified or partial URL of the service directory namespace that should be
+    associated with the zone. This should be formatted like
+    `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
+    or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
+    Ignored for `public` visibility zones.
+    """
 
 @pulumi.input_type
 class ManagedZoneServiceDirectoryConfigNamespaceArgs:
@@ -865,17 +843,14 @@ class ManagedZoneServiceDirectoryConfigNamespaceArgs:
         pulumi.set(self, "namespace_url", value)
 
 
-if not MYPY:
-    class PolicyAlternativeNameServerConfigArgsDict(TypedDict):
-        target_name_servers: pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgsDict']]]
-        """
-        Sets an alternative name server for the associated networks. When specified,
-        all DNS queries are forwarded to a name server that you choose. Names such as .internal
-        are not available when an alternative name server is specified.
-        Structure is documented below.
-        """
-elif False:
-    PolicyAlternativeNameServerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyAlternativeNameServerConfigArgsDict(TypedDict):
+    target_name_servers: pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgsDict']]]
+    """
+    Sets an alternative name server for the associated networks. When specified,
+    all DNS queries are forwarded to a name server that you choose. Names such as .internal
+    are not available when an alternative name server is specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PolicyAlternativeNameServerConfigArgs:
@@ -905,23 +880,20 @@ class PolicyAlternativeNameServerConfigArgs:
         pulumi.set(self, "target_name_servers", value)
 
 
-if not MYPY:
-    class PolicyAlternativeNameServerConfigTargetNameServerArgsDict(TypedDict):
-        ipv4_address: pulumi.Input[_builtins.str]
-        """
-        IPv4 address to forward to.
-        """
-        forwarding_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
-        decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-        to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-        Possible values are: `default`, `private`.
+class PolicyAlternativeNameServerConfigTargetNameServerArgsDict(TypedDict):
+    ipv4_address: pulumi.Input[_builtins.str]
+    """
+    IPv4 address to forward to.
+    """
+    forwarding_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+    decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+    to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+    Possible values are: `default`, `private`.
 
-        <a name="nested_dns64_config"></a>The `dns64_config` block supports:
-        """
-elif False:
-    PolicyAlternativeNameServerConfigTargetNameServerArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_dns64_config"></a>The `dns64_config` block supports:
+    """
 
 @pulumi.input_type
 class PolicyAlternativeNameServerConfigTargetNameServerArgs:
@@ -971,14 +943,11 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
         pulumi.set(self, "forwarding_path", value)
 
 
-if not MYPY:
-    class PolicyDns64ConfigArgsDict(TypedDict):
-        scope: pulumi.Input['PolicyDns64ConfigScopeArgsDict']
-        """
-        The scope to which DNS64 config will be applied to.
-        """
-elif False:
-    PolicyDns64ConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyDns64ConfigArgsDict(TypedDict):
+    scope: pulumi.Input['PolicyDns64ConfigScopeArgsDict']
+    """
+    The scope to which DNS64 config will be applied to.
+    """
 
 @pulumi.input_type
 class PolicyDns64ConfigArgs:
@@ -1002,14 +971,11 @@ class PolicyDns64ConfigArgs:
         pulumi.set(self, "scope", value)
 
 
-if not MYPY:
-    class PolicyDns64ConfigScopeArgsDict(TypedDict):
-        all_queries: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Controls whether DNS64 is enabled globally at the network level.
-        """
-elif False:
-    PolicyDns64ConfigScopeArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyDns64ConfigScopeArgsDict(TypedDict):
+    all_queries: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Controls whether DNS64 is enabled globally at the network level.
+    """
 
 @pulumi.input_type
 class PolicyDns64ConfigScopeArgs:
@@ -1034,16 +1000,13 @@ class PolicyDns64ConfigScopeArgs:
         pulumi.set(self, "all_queries", value)
 
 
-if not MYPY:
-    class PolicyNetworkArgsDict(TypedDict):
-        network_url: pulumi.Input[_builtins.str]
-        """
-        The id or fully qualified URL of the VPC network to forward queries to.
-        This should be formatted like `projects/{project}/global/networks/{network}` or
-        `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-        """
-elif False:
-    PolicyNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyNetworkArgsDict(TypedDict):
+    network_url: pulumi.Input[_builtins.str]
+    """
+    The id or fully qualified URL of the VPC network to forward queries to.
+    This should be formatted like `projects/{project}/global/networks/{network}` or
+    `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+    """
 
 @pulumi.input_type
 class PolicyNetworkArgs:
@@ -1071,33 +1034,30 @@ class PolicyNetworkArgs:
         pulumi.set(self, "network_url", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyArgsDict(TypedDict):
-        enable_geo_fencing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable fencing for geo queries.
-        """
-        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgsDict']]]]
-        """
-        The configuration for Geolocation based routing policy.
-        Structure is documented below.
-        """
-        health_check: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the health check (used with external endpoints).
-        """
-        primary_backup: NotRequired[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgsDict']]
-        """
-        The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-        Structure is documented below.
-        """
-        wrrs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgsDict']]]]
-        """
-        The configuration for Weighted Round Robin based routing policy.
-        Structure is documented below.
-        """
-elif False:
-    RecordSetRoutingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyArgsDict(TypedDict):
+    enable_geo_fencing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable fencing for geo queries.
+    """
+    geos: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgsDict']]]]
+    """
+    The configuration for Geolocation based routing policy.
+    Structure is documented below.
+    """
+    health_check: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the health check (used with external endpoints).
+    """
+    primary_backup: NotRequired[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgsDict']]
+    """
+    The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+    Structure is documented below.
+    """
+    wrrs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgsDict']]]]
+    """
+    The configuration for Weighted Round Robin based routing policy.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyArgs:
@@ -1192,23 +1152,20 @@ class RecordSetRoutingPolicyArgs:
         pulumi.set(self, "wrrs", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyGeoArgsDict(TypedDict):
-        location: pulumi.Input[_builtins.str]
-        """
-        The location name defined in Google Cloud.
-        """
-        health_checked_targets: NotRequired[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgsDict']]
-        """
-        For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-        Structure is documented below.
-        """
-        rrdatas: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Same as `rrdatas` above.
-        """
-elif False:
-    RecordSetRoutingPolicyGeoArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyGeoArgsDict(TypedDict):
+    location: pulumi.Input[_builtins.str]
+    """
+    The location name defined in Google Cloud.
+    """
+    health_checked_targets: NotRequired[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgsDict']]
+    """
+    For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+    Structure is documented below.
+    """
+    rrdatas: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Same as `rrdatas` above.
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyGeoArgs:
@@ -1266,19 +1223,16 @@ class RecordSetRoutingPolicyGeoArgs:
         pulumi.set(self, "rrdatas", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgsDict(TypedDict):
-        external_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of external endpoint addresses to health check.
-        """
-        internal_load_balancers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgsDict']]]]
-        """
-        The list of internal load balancers to health check.
-        Structure is documented below.
-        """
-elif False:
-    RecordSetRoutingPolicyGeoHealthCheckedTargetsArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgsDict(TypedDict):
+    external_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of external endpoint addresses to health check.
+    """
+    internal_load_balancers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgsDict']]]]
+    """
+    The list of internal load balancers to health check.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs:
@@ -1321,38 +1275,35 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs:
         pulumi.set(self, "internal_load_balancers", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgsDict(TypedDict):
-        ip_address: pulumi.Input[_builtins.str]
-        """
-        The frontend IP address of the load balancer.
-        """
-        ip_protocol: pulumi.Input[_builtins.str]
-        """
-        The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        """
-        network_url: pulumi.Input[_builtins.str]
-        """
-        The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
-        """
-        port: pulumi.Input[_builtins.str]
-        """
-        The configured port of the load balancer.
-        """
-        project: pulumi.Input[_builtins.str]
-        """
-        The ID of the project in which the load balancer belongs.
-        """
-        load_balancer_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the load balancer. Only needed for regional load balancers.
-        """
-elif False:
-    RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgsDict(TypedDict):
+    ip_address: pulumi.Input[_builtins.str]
+    """
+    The frontend IP address of the load balancer.
+    """
+    ip_protocol: pulumi.Input[_builtins.str]
+    """
+    The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+    """
+    network_url: pulumi.Input[_builtins.str]
+    """
+    The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+    """
+    port: pulumi.Input[_builtins.str]
+    """
+    The configured port of the load balancer.
+    """
+    project: pulumi.Input[_builtins.str]
+    """
+    The ID of the project in which the load balancer belongs.
+    """
+    load_balancer_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the load balancer. Only needed for regional load balancers.
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs:
@@ -1468,28 +1419,25 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs:
         pulumi.set(self, "region", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyPrimaryBackupArgsDict(TypedDict):
-        backup_geos: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgsDict']]]
-        """
-        The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
-        Structure is document above.
-        """
-        primary: pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArgsDict']
-        """
-        The list of global primary targets to be health checked.
-        Structure is documented below.
-        """
-        enable_geo_fencing_for_backups: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable fencing for backup geo queries.
-        """
-        trickle_ratio: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
-        """
-elif False:
-    RecordSetRoutingPolicyPrimaryBackupArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyPrimaryBackupArgsDict(TypedDict):
+    backup_geos: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgsDict']]]
+    """
+    The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
+    Structure is document above.
+    """
+    primary: pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArgsDict']
+    """
+    The list of global primary targets to be health checked.
+    Structure is documented below.
+    """
+    enable_geo_fencing_for_backups: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable fencing for backup geo queries.
+    """
+    trickle_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyPrimaryBackupArgs:
@@ -1564,19 +1512,20 @@ class RecordSetRoutingPolicyPrimaryBackupArgs:
         pulumi.set(self, "trickle_ratio", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgsDict(TypedDict):
-        location: pulumi.Input[_builtins.str]
-        """
-        The location name defined in Google Cloud.
-        """
-        health_checked_targets: NotRequired[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgsDict']]
-        """
-        For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-        """
-        rrdatas: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-elif False:
-    RecordSetRoutingPolicyPrimaryBackupBackupGeoArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgsDict(TypedDict):
+    location: pulumi.Input[_builtins.str]
+    """
+    The location name defined in Google Cloud.
+    """
+    health_checked_targets: NotRequired[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgsDict']]
+    """
+    For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+    """
+    rrdatas: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The string data for the records in this record set
+    whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\\" \\"` inside the Terraform configuration string (e.g. `"first255characters\\" \\"morecharacters"`).
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
@@ -1587,6 +1536,8 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
         """
         :param pulumi.Input[_builtins.str] location: The location name defined in Google Cloud.
         :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs'] health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rrdatas: The string data for the records in this record set
+               whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\\" \\"` inside the Terraform configuration string (e.g. `"first255characters\\" \\"morecharacters"`).
         """
         pulumi.set(__self__, "location", location)
         if health_checked_targets is not None:
@@ -1621,6 +1572,10 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
     @_builtins.property
     @pulumi.getter
     def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The string data for the records in this record set
+        whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\\" \\"` inside the Terraform configuration string (e.g. `"first255characters\\" \\"morecharacters"`).
+        """
         return pulumi.get(self, "rrdatas")
 
     @rrdatas.setter
@@ -1628,19 +1583,16 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
         pulumi.set(self, "rrdatas", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgsDict(TypedDict):
-        external_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of external endpoint addresses to health check.
-        """
-        internal_load_balancers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgsDict']]]]
-        """
-        The list of internal load balancers to health check.
-        Structure is documented below.
-        """
-elif False:
-    RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgsDict(TypedDict):
+    external_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of external endpoint addresses to health check.
+    """
+    internal_load_balancers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgsDict']]]]
+    """
+    The list of internal load balancers to health check.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs:
@@ -1683,38 +1635,35 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs:
         pulumi.set(self, "internal_load_balancers", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgsDict(TypedDict):
-        ip_address: pulumi.Input[_builtins.str]
-        """
-        The frontend IP address of the load balancer.
-        """
-        ip_protocol: pulumi.Input[_builtins.str]
-        """
-        The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        """
-        network_url: pulumi.Input[_builtins.str]
-        """
-        The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
-        """
-        port: pulumi.Input[_builtins.str]
-        """
-        The configured port of the load balancer.
-        """
-        project: pulumi.Input[_builtins.str]
-        """
-        The ID of the project in which the load balancer belongs.
-        """
-        load_balancer_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the load balancer. Only needed for regional load balancers.
-        """
-elif False:
-    RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgsDict(TypedDict):
+    ip_address: pulumi.Input[_builtins.str]
+    """
+    The frontend IP address of the load balancer.
+    """
+    ip_protocol: pulumi.Input[_builtins.str]
+    """
+    The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+    """
+    network_url: pulumi.Input[_builtins.str]
+    """
+    The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+    """
+    port: pulumi.Input[_builtins.str]
+    """
+    The configured port of the load balancer.
+    """
+    project: pulumi.Input[_builtins.str]
+    """
+    The ID of the project in which the load balancer belongs.
+    """
+    load_balancer_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the load balancer. Only needed for regional load balancers.
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs:
@@ -1830,18 +1779,15 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
         pulumi.set(self, "region", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyPrimaryBackupPrimaryArgsDict(TypedDict):
-        external_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The Internet IP addresses to be health checked.
-        """
-        internal_load_balancers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgsDict']]]]
-        """
-        The list of internal load balancers to health check.
-        """
-elif False:
-    RecordSetRoutingPolicyPrimaryBackupPrimaryArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyPrimaryBackupPrimaryArgsDict(TypedDict):
+    external_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The Internet IP addresses to be health checked.
+    """
+    internal_load_balancers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgsDict']]]]
+    """
+    The list of internal load balancers to health check.
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs:
@@ -1882,38 +1828,35 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs:
         pulumi.set(self, "internal_load_balancers", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgsDict(TypedDict):
-        ip_address: pulumi.Input[_builtins.str]
-        """
-        The frontend IP address of the load balancer.
-        """
-        ip_protocol: pulumi.Input[_builtins.str]
-        """
-        The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        """
-        network_url: pulumi.Input[_builtins.str]
-        """
-        The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
-        """
-        port: pulumi.Input[_builtins.str]
-        """
-        The configured port of the load balancer.
-        """
-        project: pulumi.Input[_builtins.str]
-        """
-        The ID of the project in which the load balancer belongs.
-        """
-        load_balancer_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the load balancer. Only needed for regional load balancers.
-        """
-elif False:
-    RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgsDict(TypedDict):
+    ip_address: pulumi.Input[_builtins.str]
+    """
+    The frontend IP address of the load balancer.
+    """
+    ip_protocol: pulumi.Input[_builtins.str]
+    """
+    The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+    """
+    network_url: pulumi.Input[_builtins.str]
+    """
+    The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+    """
+    port: pulumi.Input[_builtins.str]
+    """
+    The configured port of the load balancer.
+    """
+    project: pulumi.Input[_builtins.str]
+    """
+    The ID of the project in which the load balancer belongs.
+    """
+    load_balancer_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the load balancer. Only needed for regional load balancers.
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs:
@@ -2029,23 +1972,20 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs:
         pulumi.set(self, "region", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyWrrArgsDict(TypedDict):
-        weight: pulumi.Input[_builtins.float]
-        """
-        The ratio of traffic routed to the target.
-        """
-        health_checked_targets: NotRequired[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgsDict']]
-        """
-        The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
-        Structure is documented below.
-        """
-        rrdatas: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Same as `rrdatas` above.
-        """
-elif False:
-    RecordSetRoutingPolicyWrrArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyWrrArgsDict(TypedDict):
+    weight: pulumi.Input[_builtins.float]
+    """
+    The ratio of traffic routed to the target.
+    """
+    health_checked_targets: NotRequired[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgsDict']]
+    """
+    The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+    Structure is documented below.
+    """
+    rrdatas: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Same as `rrdatas` above.
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyWrrArgs:
@@ -2103,19 +2043,16 @@ class RecordSetRoutingPolicyWrrArgs:
         pulumi.set(self, "rrdatas", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyWrrHealthCheckedTargetsArgsDict(TypedDict):
-        external_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of external endpoint addresses to health check.
-        """
-        internal_load_balancers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgsDict']]]]
-        """
-        The list of internal load balancers to health check.
-        Structure is documented below.
-        """
-elif False:
-    RecordSetRoutingPolicyWrrHealthCheckedTargetsArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyWrrHealthCheckedTargetsArgsDict(TypedDict):
+    external_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of external endpoint addresses to health check.
+    """
+    internal_load_balancers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgsDict']]]]
+    """
+    The list of internal load balancers to health check.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs:
@@ -2158,38 +2095,35 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs:
         pulumi.set(self, "internal_load_balancers", value)
 
 
-if not MYPY:
-    class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgsDict(TypedDict):
-        ip_address: pulumi.Input[_builtins.str]
-        """
-        The frontend IP address of the load balancer.
-        """
-        ip_protocol: pulumi.Input[_builtins.str]
-        """
-        The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        """
-        network_url: pulumi.Input[_builtins.str]
-        """
-        The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
-        """
-        port: pulumi.Input[_builtins.str]
-        """
-        The configured port of the load balancer.
-        """
-        project: pulumi.Input[_builtins.str]
-        """
-        The ID of the project in which the load balancer belongs.
-        """
-        load_balancer_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the load balancer. Only needed for regional load balancers.
-        """
-elif False:
-    RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
+class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgsDict(TypedDict):
+    ip_address: pulumi.Input[_builtins.str]
+    """
+    The frontend IP address of the load balancer.
+    """
+    ip_protocol: pulumi.Input[_builtins.str]
+    """
+    The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+    """
+    network_url: pulumi.Input[_builtins.str]
+    """
+    The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+    """
+    port: pulumi.Input[_builtins.str]
+    """
+    The configured port of the load balancer.
+    """
+    project: pulumi.Input[_builtins.str]
+    """
+    The ID of the project in which the load balancer belongs.
+    """
+    load_balancer_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the load balancer. Only needed for regional load balancers.
+    """
 
 @pulumi.input_type
 class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs:
@@ -2305,16 +2239,13 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs:
         pulumi.set(self, "region", value)
 
 
-if not MYPY:
-    class ResponsePolicyGkeClusterArgsDict(TypedDict):
-        gke_cluster_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the cluster to bind this ManagedZone to.
-        This should be specified in the format like
-        `projects/*/locations/*/clusters/*`
-        """
-elif False:
-    ResponsePolicyGkeClusterArgsDict: TypeAlias = Mapping[str, Any]
+class ResponsePolicyGkeClusterArgsDict(TypedDict):
+    gke_cluster_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the cluster to bind this ManagedZone to.
+    This should be specified in the format like
+    `projects/*/locations/*/clusters/*`
+    """
 
 @pulumi.input_type
 class ResponsePolicyGkeClusterArgs:
@@ -2342,16 +2273,13 @@ class ResponsePolicyGkeClusterArgs:
         pulumi.set(self, "gke_cluster_name", value)
 
 
-if not MYPY:
-    class ResponsePolicyNetworkArgsDict(TypedDict):
-        network_url: pulumi.Input[_builtins.str]
-        """
-        The fully qualified URL of the VPC network to bind to.
-        This should be formatted like
-        `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-        """
-elif False:
-    ResponsePolicyNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class ResponsePolicyNetworkArgsDict(TypedDict):
+    network_url: pulumi.Input[_builtins.str]
+    """
+    The fully qualified URL of the VPC network to bind to.
+    This should be formatted like
+    `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+    """
 
 @pulumi.input_type
 class ResponsePolicyNetworkArgs:
@@ -2379,15 +2307,12 @@ class ResponsePolicyNetworkArgs:
         pulumi.set(self, "network_url", value)
 
 
-if not MYPY:
-    class ResponsePolicyRuleLocalDataArgsDict(TypedDict):
-        local_datas: pulumi.Input[Sequence[pulumi.Input['ResponsePolicyRuleLocalDataLocalDataArgsDict']]]
-        """
-        All resource record sets for this selector, one per resource record type. The name must match the dns_name.
-        Structure is documented below.
-        """
-elif False:
-    ResponsePolicyRuleLocalDataArgsDict: TypeAlias = Mapping[str, Any]
+class ResponsePolicyRuleLocalDataArgsDict(TypedDict):
+    local_datas: pulumi.Input[Sequence[pulumi.Input['ResponsePolicyRuleLocalDataLocalDataArgsDict']]]
+    """
+    All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ResponsePolicyRuleLocalDataArgs:
@@ -2413,28 +2338,25 @@ class ResponsePolicyRuleLocalDataArgs:
         pulumi.set(self, "local_datas", value)
 
 
-if not MYPY:
-    class ResponsePolicyRuleLocalDataLocalDataArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        For example, www.example.com.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        One of valid DNS resource types.
-        Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
-        """
-        rrdatas: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
-        """
-        ttl: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of seconds that this ResourceRecordSet can be cached by
-        resolvers.
-        """
-elif False:
-    ResponsePolicyRuleLocalDataLocalDataArgsDict: TypeAlias = Mapping[str, Any]
+class ResponsePolicyRuleLocalDataLocalDataArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    For example, www.example.com.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    One of valid DNS resource types.
+    Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
+    """
+    rrdatas: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+    """
+    ttl: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of seconds that this ResourceRecordSet can be cached by
+    resolvers.
+    """
 
 @pulumi.input_type
 class ResponsePolicyRuleLocalDataLocalDataArgs:

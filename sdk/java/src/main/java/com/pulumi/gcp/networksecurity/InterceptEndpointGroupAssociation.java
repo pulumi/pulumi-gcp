@@ -100,22 +100,14 @@ import javax.annotation.Nullable;
  * InterceptEndpointGroupAssociation can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/interceptEndpointGroupAssociations/{{intercept_endpoint_group_association_id}}`
- * 
  * * `{{project}}/{{location}}/{{intercept_endpoint_group_association_id}}`
- * 
  * * `{{location}}/{{intercept_endpoint_group_association_id}}`
  * 
  * When using the `pulumi import` command, InterceptEndpointGroupAssociation can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default projects/{{project}}/locations/{{location}}/interceptEndpointGroupAssociations/{{intercept_endpoint_group_association_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default {{project}}/{{location}}/{{intercept_endpoint_group_association_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation default {{location}}/{{intercept_endpoint_group_association_id}}
  * ```
  * 

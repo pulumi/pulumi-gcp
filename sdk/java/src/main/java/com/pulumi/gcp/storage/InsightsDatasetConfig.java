@@ -158,22 +158,14 @@ import javax.annotation.Nullable;
  * DatasetConfig can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/datasetConfigs/{{dataset_config_id}}`
- * 
  * * `{{project}}/{{location}}/{{dataset_config_id}}`
- * 
  * * `{{location}}/{{dataset_config_id}}`
  * 
  * When using the `pulumi import` command, DatasetConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default projects/{{project}}/locations/{{location}}/datasetConfigs/{{dataset_config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{project}}/{{location}}/{{dataset_config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{location}}/{{dataset_config_id}}
  * ```
  * 
@@ -344,9 +336,25 @@ public class InsightsDatasetConfig extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> includeNewlyCreatedBuckets() {
         return Codegen.optional(this.includeNewlyCreatedBuckets);
     }
+    /**
+     * A boolean terraform only flag to link/unlink dataset.
+     * 
+     * Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+     * &gt; **Note** A dataset config resource can only be destroyed once it is unlinked,
+     * so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+     * 
+     */
     @Export(name="linkDataset", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> linkDataset;
 
+    /**
+     * @return A boolean terraform only flag to link/unlink dataset.
+     * 
+     * Setting this field to true while creation will automatically link the created dataset as an additional functionality.
+     * &gt; **Note** A dataset config resource can only be destroyed once it is unlinked,
+     * so users must set this field to false to unlink the dataset and destroy the dataset config resource.
+     * 
+     */
     public Output<Optional<Boolean>> linkDataset() {
         return Codegen.optional(this.linkDataset);
     }

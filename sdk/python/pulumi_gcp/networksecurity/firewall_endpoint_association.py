@@ -29,6 +29,7 @@ class FirewallEndpointAssociationArgs:
                  tls_inspection_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallEndpointAssociation resource.
+
         :param pulumi.Input[_builtins.str] firewall_endpoint: The URL of the firewall endpoint that is being associated.
         :param pulumi.Input[_builtins.str] location: The location (zone) of the firewall endpoint association.
         :param pulumi.Input[_builtins.str] network: The URL of the network that is being associated.
@@ -181,6 +182,7 @@ class _FirewallEndpointAssociationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallEndpointAssociation resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the firewall endpoint was created in UTC.
         :param pulumi.Input[_builtins.bool] disabled: Whether the association is disabled. True indicates that traffic will not be intercepted.
                > **Note:** The API will reject the request if this value is set to true when creating the resource,
@@ -471,6 +473,7 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
         $ pulumi import gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation default {{parent}}/locations/{{location}}/firewallEndpointAssociations/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disabled: Whether the association is disabled. True indicates that traffic will not be intercepted.
@@ -526,6 +529,7 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation default {{parent}}/locations/{{location}}/firewallEndpointAssociations/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallEndpointAssociationArgs args: The arguments to use to populate this resource's properties.

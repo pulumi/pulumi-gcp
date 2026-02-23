@@ -64,14 +64,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * Number of days elapsed since the user-specified timestamp set on an object.
+     * Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceCustomTime` condition.
      * 
      */
     @Import(name="daysSinceCustomTime")
     private @Nullable Output<Integer> daysSinceCustomTime;
 
     /**
-     * @return Number of days elapsed since the user-specified timestamp set on an object.
+     * @return Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceCustomTime` condition.
      * 
      */
     public Optional<Output<Integer>> daysSinceCustomTime() {
@@ -79,16 +79,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * Number of days elapsed since the noncurrent timestamp of an object. This
-     * 										condition is relevant only for versioned objects.
+     * Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceNoncurrentTime` condition.
      * 
      */
     @Import(name="daysSinceNoncurrentTime")
     private @Nullable Output<Integer> daysSinceNoncurrentTime;
 
     /**
-     * @return Number of days elapsed since the noncurrent timestamp of an object. This
-     * 										condition is relevant only for versioned objects.
+     * @return Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceNoncurrentTime` condition.
      * 
      */
     public Optional<Output<Integer>> daysSinceNoncurrentTime() {
@@ -141,14 +139,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+     * Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrentTimeBefore` condition.
      * 
      */
     @Import(name="noncurrentTimeBefore")
     private @Nullable Output<String> noncurrentTimeBefore;
 
     /**
-     * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+     * @return Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrentTimeBefore` condition.
      * 
      */
     public Optional<Output<String>> noncurrentTimeBefore() {
@@ -156,14 +154,14 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
-     * Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+     * Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `numNewerVersions` condition.
      * 
      */
     @Import(name="numNewerVersions")
     private @Nullable Output<Integer> numNewerVersions;
 
     /**
-     * @return Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+     * @return Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `numNewerVersions` condition.
      * 
      */
     public Optional<Output<Integer>> numNewerVersions() {
@@ -347,7 +345,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param daysSinceCustomTime Number of days elapsed since the user-specified timestamp set on an object.
+         * @param daysSinceCustomTime Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceCustomTime` condition.
          * 
          * @return builder
          * 
@@ -358,7 +356,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param daysSinceCustomTime Number of days elapsed since the user-specified timestamp set on an object.
+         * @param daysSinceCustomTime Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceCustomTime` condition.
          * 
          * @return builder
          * 
@@ -368,8 +366,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param daysSinceNoncurrentTime Number of days elapsed since the noncurrent timestamp of an object. This
-         * 										condition is relevant only for versioned objects.
+         * @param daysSinceNoncurrentTime Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceNoncurrentTime` condition.
          * 
          * @return builder
          * 
@@ -380,8 +377,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param daysSinceNoncurrentTime Number of days elapsed since the noncurrent timestamp of an object. This
-         * 										condition is relevant only for versioned objects.
+         * @param daysSinceNoncurrentTime Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `daysSinceNoncurrentTime` condition.
          * 
          * @return builder
          * 
@@ -484,7 +480,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noncurrentTimeBefore Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+         * @param noncurrentTimeBefore Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrentTimeBefore` condition.
          * 
          * @return builder
          * 
@@ -495,7 +491,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param noncurrentTimeBefore Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+         * @param noncurrentTimeBefore Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrentTimeBefore` condition.
          * 
          * @return builder
          * 
@@ -505,7 +501,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param numNewerVersions Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+         * @param numNewerVersions Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `numNewerVersions` condition.
          * 
          * @return builder
          * 
@@ -516,7 +512,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param numNewerVersions Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+         * @param numNewerVersions Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `numNewerVersions` condition.
          * 
          * @return builder
          * 

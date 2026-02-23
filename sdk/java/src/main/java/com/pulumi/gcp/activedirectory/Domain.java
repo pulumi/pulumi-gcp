@@ -69,22 +69,14 @@ import javax.annotation.Nullable;
  * Domain can be imported using any of these accepted formats:
  * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{project}} {{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:activedirectory/domain:Domain default {{project}}/{{name}}
- * ```
- * 
- * ```sh
- * $ pulumi import gcp:activedirectory/domain:Domain default &#34;{{project}} {{name}}&#34;
- * ```
- * 
- * ```sh
+ * $ terraform import google_active_directory_domain.default &#34;{{project}} {{name}}&#34;
  * $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
  * ```
  * 
@@ -123,9 +115,27 @@ public class Domain extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> authorizedNetworks() {
         return Codegen.optional(this.authorizedNetworks);
     }
+    /**
+     * Whether Terraform will be prevented from destroying the domain. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the domain,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the domain will fail.
+     * When the field is set to false, deleting the domain is allowed.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the domain. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the domain,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the domain will fail.
+     * When the field is set to false, deleting the domain is allowed.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }

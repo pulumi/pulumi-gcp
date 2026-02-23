@@ -31,6 +31,7 @@ class EnvironmentArgs:
                  vm_image: Optional[pulumi.Input['EnvironmentVmImageArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
+
         :param pulumi.Input[_builtins.str] location: A reference to the zone where the machine resides.
         :param pulumi.Input['EnvironmentContainerImageArgs'] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
@@ -177,6 +178,7 @@ class _EnvironmentState:
                  vm_image: Optional[pulumi.Input['EnvironmentVmImageArgs']] = None):
         """
         Input properties used for looking up and filtering Environment resources.
+
         :param pulumi.Input['EnvironmentContainerImageArgs'] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Instance creation time
@@ -370,24 +372,17 @@ class Environment(pulumi.CustomResource):
         Environment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/environments/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:notebooks/environment:Environment default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:notebooks/environment:Environment default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -441,24 +436,17 @@ class Environment(pulumi.CustomResource):
         Environment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/environments/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:notebooks/environment:Environment default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:notebooks/environment:Environment default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvironmentArgs args: The arguments to use to populate this resource's properties.

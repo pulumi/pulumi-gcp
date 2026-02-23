@@ -29,7 +29,9 @@ public final class FeatureMembershipConfigmanagement {
      */
     private @Nullable FeatureMembershipConfigmanagementHierarchyController hierarchyController;
     /**
-     * @return Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * @return Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+     * and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * This field was introduced in Terraform version 5.41.0.
      * 
      */
     private @Nullable String management;
@@ -66,7 +68,9 @@ public final class FeatureMembershipConfigmanagement {
         return Optional.ofNullable(this.hierarchyController);
     }
     /**
-     * @return Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * @return Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+     * and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * This field was introduced in Terraform version 5.41.0.
      * 
      */
     public Optional<String> management() {

@@ -26,6 +26,9 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectivityTestsConnectivityTestDestinationResult> Destinations;
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// Resource labels to represent user-provided metadata.

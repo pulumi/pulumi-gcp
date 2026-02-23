@@ -43,6 +43,7 @@ class VmwareAdminClusterArgs:
                  vcenter: Optional[pulumi.Input['VmwareAdminClusterVcenterArgs']] = None):
         """
         The set of arguments for constructing a VmwareAdminCluster resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input['VmwareAdminClusterNetworkConfigArgs'] network_config: The VMware admin cluster network configuration.
                Structure is documented below.
@@ -426,6 +427,7 @@ class _VmwareAdminClusterState:
                  vcenter: Optional[pulumi.Input['VmwareAdminClusterVcenterArgs']] = None):
         """
         Input properties used for looking up and filtering VmwareAdminCluster resources.
+
         :param pulumi.Input['VmwareAdminClusterAddonNodeArgs'] addon_node: The VMware admin cluster addon node configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the VMware Admin Cluster.
@@ -451,6 +453,7 @@ class _VmwareAdminClusterState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: A human readable description of this VMware admin cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_advanced_cluster: If set, the advanced cluster feature is enabled.
         :param pulumi.Input[_builtins.str] endpoint: The DNS name of VMware admin cluster's API server.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other
@@ -686,6 +689,9 @@ class _VmwareAdminClusterState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1214,24 +1220,17 @@ class VmwareAdminCluster(pulumi.CustomResource):
         VmwareAdminCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vmwareAdminClusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, VmwareAdminCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default projects/{{project}}/locations/{{location}}/vmwareAdminClusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1504,24 +1503,17 @@ class VmwareAdminCluster(pulumi.CustomResource):
         VmwareAdminCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vmwareAdminClusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, VmwareAdminCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default projects/{{project}}/locations/{{location}}/vmwareAdminClusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VmwareAdminClusterArgs args: The arguments to use to populate this resource's properties.
@@ -1675,6 +1667,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: A human readable description of this VMware admin cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_advanced_cluster: If set, the advanced cluster feature is enabled.
         :param pulumi.Input[_builtins.str] endpoint: The DNS name of VMware admin cluster's API server.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other
@@ -1848,6 +1841,9 @@ class VmwareAdminCluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

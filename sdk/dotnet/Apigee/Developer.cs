@@ -187,16 +187,12 @@ namespace Pulumi.Gcp.Apigee
     /// Developer can be imported using any of these accepted formats:
     /// 
     /// * `{{org_id}}/developers/{{email}}`
-    /// 
     /// * `{{org_id}}/{{email}}`
     /// 
     /// When using the `pulumi import` command, Developer can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:apigee/developer:Developer default {{org_id}}/developers/{{email}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:apigee/developer:Developer default {{org_id}}/{{email}}
     /// ```
     /// </summary>

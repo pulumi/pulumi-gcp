@@ -28,6 +28,7 @@ class NetworkArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Network resource.
+
         :param pulumi.Input[_builtins.str] location: The location where the VMwareEngineNetwork should reside.
         :param pulumi.Input[_builtins.str] type: VMware Engine network type.
                Possible values are: `LEGACY`, `STANDARD`.
@@ -124,6 +125,7 @@ class _NetworkState:
                  vpc_networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArgs']]]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+
         :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -377,24 +379,17 @@ class Network(pulumi.CustomResource):
         Network can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vmwareEngineNetworks/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/network:Network default projects/{{project}}/locations/{{location}}/vmwareEngineNetworks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vmwareengine/network:Network default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vmwareengine/network:Network default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -467,24 +462,17 @@ class Network(pulumi.CustomResource):
         Network can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vmwareEngineNetworks/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/network:Network default projects/{{project}}/locations/{{location}}/vmwareEngineNetworks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vmwareengine/network:Network default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vmwareengine/network:Network default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkArgs args: The arguments to use to populate this resource's properties.

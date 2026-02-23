@@ -42,9 +42,19 @@ public final class InstanceIamPolicyArgs extends com.pulumi.resources.ResourceAr
         return this.policyData;
     }
 
+    /**
+     * The project in which the instance belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The project in which the instance belongs. If it
+     * is not provided, Terraform will use the provider default.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -109,11 +119,25 @@ public final class InstanceIamPolicyArgs extends com.pulumi.resources.ResourceAr
             return policyData(Output.of(policyData));
         }
 
+        /**
+         * @param project The project in which the instance belongs. If it
+         * is not provided, Terraform will use the provider default.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The project in which the instance belongs. If it
+         * is not provided, Terraform will use the provider default.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

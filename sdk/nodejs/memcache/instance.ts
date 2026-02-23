@@ -77,28 +77,16 @@ import * as utilities from "../utilities";
  * Instance can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:memcache/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:memcache/instance:Instance default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:memcache/instance:Instance default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:memcache/instance:Instance default {{name}}
  * ```
  */
@@ -139,6 +127,14 @@ export class Instance extends pulumi.CustomResource {
      * Creation timestamp in RFC3339 text format.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the instance.
+     * When a `terraform destroy` or `pulumi up` would delete the instance,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the instance will fail.
+     * When the field is set to false, deleting the instance is allowed.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * Endpoint for Discovery API
@@ -314,6 +310,14 @@ export interface InstanceState {
      * Creation timestamp in RFC3339 text format.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the instance.
+     * When a `terraform destroy` or `pulumi up` would delete the instance,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the instance will fail.
+     * When the field is set to false, deleting the instance is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Endpoint for Discovery API
@@ -415,6 +419,14 @@ export interface InstanceArgs {
      * 'default' will be used.
      */
     authorizedNetwork?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the instance.
+     * When a `terraform destroy` or `pulumi up` would delete the instance,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the instance will fail.
+     * When the field is set to false, deleting the instance is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * A user-visible name for the instance.

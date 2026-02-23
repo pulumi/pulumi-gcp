@@ -27,6 +27,7 @@ class OauthClientCredentialArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OauthClientCredential resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] oauth_client_credential_id: Required. The ID to use for the OauthClientCredential, which becomes the
                final component of the resource name. This value should be 4-32 characters,
@@ -142,6 +143,7 @@ class _OauthClientCredentialState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OauthClientCredential resources.
+
         :param pulumi.Input[_builtins.str] client_secret: The system-generated OAuth client secret.
                The client secret must be stored securely. If the client secret is
                leaked, you must delete and re-create the client credential. To learn
@@ -343,24 +345,17 @@ class OauthClientCredential(pulumi.CustomResource):
         OauthClientCredential can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/oauthClients/{{oauthclient}}/credentials/{{oauth_client_credential_id}}`
-
         * `{{project}}/{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}`
-
         * `{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}`
 
         When using the `pulumi import` command, OauthClientCredential can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default projects/{{project}}/locations/{{location}}/oauthClients/{{oauthclient}}/credentials/{{oauth_client_credential_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default {{project}}/{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default {{location}}/{{oauthclient}}/{{oauth_client_credential_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -422,24 +417,17 @@ class OauthClientCredential(pulumi.CustomResource):
         OauthClientCredential can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/oauthClients/{{oauthclient}}/credentials/{{oauth_client_credential_id}}`
-
         * `{{project}}/{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}`
-
         * `{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}`
 
         When using the `pulumi import` command, OauthClientCredential can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default projects/{{project}}/locations/{{location}}/oauthClients/{{oauthclient}}/credentials/{{oauth_client_credential_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default {{project}}/{{location}}/{{oauthclient}}/{{oauth_client_credential_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/oauthClientCredential:OauthClientCredential default {{location}}/{{oauthclient}}/{{oauth_client_credential_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OauthClientCredentialArgs args: The arguments to use to populate this resource's properties.

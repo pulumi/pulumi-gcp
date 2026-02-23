@@ -151,7 +151,19 @@ def get_resource_policy(name: Optional[_builtins.str] = None,
                         region: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourcePolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    daily = gcp.compute.get_resource_policy(name="daily",
+        region="us-central1")
+    ```
+
 
     :param _builtins.str name: The name of the Resource Policy.
     :param _builtins.str project: Project from which to list the Resource Policy. Defaults to project declared in the provider.
@@ -181,7 +193,19 @@ def get_resource_policy_output(name: Optional[pulumi.Input[_builtins.str]] = Non
                                region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourcePolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta resources.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    daily = gcp.compute.get_resource_policy(name="daily",
+        region="us-central1")
+    ```
+
 
     :param _builtins.str name: The name of the Resource Policy.
     :param _builtins.str project: Project from which to list the Resource Policy. Defaults to project declared in the provider.

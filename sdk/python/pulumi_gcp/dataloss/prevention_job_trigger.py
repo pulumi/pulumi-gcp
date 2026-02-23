@@ -30,6 +30,7 @@ class PreventionJobTriggerArgs:
                  trigger_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PreventionJobTrigger resource.
+
         :param pulumi.Input[_builtins.str] parent: The parent of the trigger, either in the format `projects/{{project}}`
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]] triggers: What event needs to occur for a new job to be started.
@@ -166,6 +167,7 @@ class _PreventionJobTriggerState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PreventionJobTrigger resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation timestamp of an inspectTemplate. Set by the server.
         :param pulumi.Input[_builtins.str] description: A description of the job trigger.
         :param pulumi.Input[_builtins.str] display_name: User set display name of the job trigger.
@@ -925,18 +927,15 @@ class PreventionJobTrigger(pulumi.CustomResource):
         JobTrigger can be imported using any of these accepted formats:
 
         * `{{parent}}/jobTriggers/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, JobTrigger can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/jobTriggers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1524,18 +1523,15 @@ class PreventionJobTrigger(pulumi.CustomResource):
         JobTrigger can be imported using any of these accepted formats:
 
         * `{{parent}}/jobTriggers/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, JobTrigger can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/jobTriggers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PreventionJobTriggerArgs args: The arguments to use to populate this resource's properties.

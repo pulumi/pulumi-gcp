@@ -29,6 +29,7 @@ class CertificateMapEntryArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CertificateMapEntry resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificates: A set of Certificates defines for the given hostname.
                There can be defined up to fifteen certificates in each Certificate Map Entry.
                Each certificate must match pattern projects/*/locations/*/certificates/*.
@@ -192,6 +193,7 @@ class _CertificateMapEntryState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CertificateMapEntry resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificates: A set of Certificates defines for the given hostname.
                There can be defined up to fifteen certificates in each Certificate Map Entry.
                Each certificate must match pattern projects/*/locations/*/certificates/*.
@@ -497,24 +499,17 @@ class CertificateMapEntry(pulumi.CustomResource):
         CertificateMapEntry can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}`
-
         * `{{project}}/{{map}}/{{name}}`
-
         * `{{map}}/{{name}}`
 
         When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{project}}/{{map}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{map}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -603,24 +598,17 @@ class CertificateMapEntry(pulumi.CustomResource):
         CertificateMapEntry can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}`
-
         * `{{project}}/{{map}}/{{name}}`
-
         * `{{map}}/{{name}}`
 
         When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{project}}/{{map}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{map}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CertificateMapEntryArgs args: The arguments to use to populate this resource's properties.

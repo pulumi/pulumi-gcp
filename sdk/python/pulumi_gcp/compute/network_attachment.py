@@ -31,6 +31,7 @@ class NetworkAttachmentArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkAttachment resource.
+
         :param pulumi.Input[_builtins.str] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
                Possible values are: `ACCEPT_AUTOMATIC`, `ACCEPT_MANUAL`, `INVALID`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnetworks: An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
@@ -176,6 +177,7 @@ class _NetworkAttachmentState:
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering NetworkAttachment resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAttachmentConnectionEndpointArgs']]] connection_endpoints: An array of connections for all the producers connected to this network attachment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
@@ -519,30 +521,19 @@ class NetworkAttachment(pulumi.CustomResource):
         NetworkAttachment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, NetworkAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -653,30 +644,19 @@ class NetworkAttachment(pulumi.CustomResource):
         NetworkAttachment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, NetworkAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkAttachmentArgs args: The arguments to use to populate this resource's properties.

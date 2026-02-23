@@ -30,6 +30,7 @@ class BudgetArgs:
                  threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]] = None):
         """
         The set of arguments for constructing a Budget resource.
+
         :param pulumi.Input['BudgetAmountArgs'] amount: The budgeted amount for each usage period.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] billing_account: ID of the billing account to set a budget on.
@@ -171,6 +172,7 @@ class _BudgetState:
                  threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering Budget resources.
+
         :param pulumi.Input['BudgetAllUpdatesRuleArgs'] all_updates_rule: Defines notifications that are sent on every update to the
                billing account's spend, regardless of the thresholds defined
                using threshold rules.
@@ -543,24 +545,17 @@ class Budget(pulumi.CustomResource):
         Budget can be imported using any of these accepted formats:
 
         * `billingAccounts/{{billing_account}}/budgets/{{name}}`
-
         * `{{billing_account}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:billing/budget:Budget default {{billing_account}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:billing/budget:Budget default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -798,24 +793,17 @@ class Budget(pulumi.CustomResource):
         Budget can be imported using any of these accepted formats:
 
         * `billingAccounts/{{billing_account}}/budgets/{{name}}`
-
         * `{{billing_account}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:billing/budget:Budget default {{billing_account}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:billing/budget:Budget default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BudgetArgs args: The arguments to use to populate this resource's properties.

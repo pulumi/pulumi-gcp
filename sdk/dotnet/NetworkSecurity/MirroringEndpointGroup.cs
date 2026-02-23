@@ -108,22 +108,14 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// MirroringEndpointGroup can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{mirroring_endpoint_group_id}}`
-    /// 
     /// * `{{location}}/{{mirroring_endpoint_group_id}}`
     /// 
     /// When using the `pulumi import` command, MirroringEndpointGroup can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{project}}/{{location}}/{{mirroring_endpoint_group_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{location}}/{{mirroring_endpoint_group_id}}
     /// ```
     /// </summary>
@@ -188,7 +180,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string?> MirroringDeploymentGroup { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// A list of the deployment groups that this BROKER endpoint group is
         /// connected to, for example:
         /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -248,7 +239,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// The type of the endpoint group.
         /// If left unspecified, defaults to DIRECT.
         /// Possible values:
@@ -355,7 +345,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<string>? _mirroringDeploymentGroups;
 
         /// <summary>
-        /// (Optional, Beta)
         /// A list of the deployment groups that this BROKER endpoint group is
         /// connected to, for example:
         /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -382,7 +371,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// The type of the endpoint group.
         /// If left unspecified, defaults to DIRECT.
         /// Possible values:
@@ -489,7 +477,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<string>? _mirroringDeploymentGroups;
 
         /// <summary>
-        /// (Optional, Beta)
         /// A list of the deployment groups that this BROKER endpoint group is
         /// connected to, for example:
         /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -562,7 +549,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// The type of the endpoint group.
         /// If left unspecified, defaults to DIRECT.
         /// Possible values:

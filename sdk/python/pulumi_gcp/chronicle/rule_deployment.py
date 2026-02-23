@@ -29,6 +29,7 @@ class RuleDeploymentArgs:
                  run_frequency: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RuleDeployment resource.
+
         :param pulumi.Input[_builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[_builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         :param pulumi.Input[_builtins.str] rule: The Rule ID of the rule.
@@ -192,6 +193,7 @@ class _RuleDeploymentState:
                  run_frequency: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RuleDeployment resources.
+
         :param pulumi.Input[_builtins.bool] alerting: Whether detections resulting from this deployment should be considered
                alerts.
         :param pulumi.Input[_builtins.str] archive_time: Output only. The timestamp when the rule deployment archive state was last set to true. If the rule deployment's current archive state is not set to true, the field will be empty.
@@ -554,24 +556,17 @@ class RuleDeployment(pulumi.CustomResource):
         RuleDeployment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/deployment`
-
         * `{{project}}/{{location}}/{{instance}}/{{rule}}`
-
         * `{{location}}/{{instance}}/{{rule}}`
 
         When using the `pulumi import` command, RuleDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:chronicle/ruleDeployment:RuleDeployment default projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/deployment
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/ruleDeployment:RuleDeployment default {{project}}/{{location}}/{{instance}}/{{rule}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/ruleDeployment:RuleDeployment default {{location}}/{{instance}}/{{rule}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -682,24 +677,17 @@ class RuleDeployment(pulumi.CustomResource):
         RuleDeployment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/deployment`
-
         * `{{project}}/{{location}}/{{instance}}/{{rule}}`
-
         * `{{location}}/{{instance}}/{{rule}}`
 
         When using the `pulumi import` command, RuleDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:chronicle/ruleDeployment:RuleDeployment default projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/deployment
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/ruleDeployment:RuleDeployment default {{project}}/{{location}}/{{instance}}/{{rule}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/ruleDeployment:RuleDeployment default {{location}}/{{instance}}/{{rule}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleDeploymentArgs args: The arguments to use to populate this resource's properties.

@@ -37,14 +37,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     }
 
     /**
-     * The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+     * The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
      * 
      */
     @Import(name="metadata")
     private @Nullable Output<Map<String,String>> metadata;
 
     /**
-     * @return The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+     * @return The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
      * 
      */
     public Optional<Output<Map<String,String>>> metadata() {
@@ -112,14 +112,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     }
 
     /**
-     * The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+     * The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      * 
      */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+     * @return The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -127,14 +127,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     }
 
     /**
-     * The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+     * The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
      * 
      */
     @Import(name="serviceAccountScopes")
     private @Nullable Output<List<String>> serviceAccountScopes;
 
     /**
-     * @return The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+     * @return The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
      * 
      */
     public Optional<Output<List<String>>> serviceAccountScopes() {
@@ -142,14 +142,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     }
 
     /**
-     * Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+     * Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
      * 
      */
     @Import(name="shieldedInstanceConfig")
     private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs> shieldedInstanceConfig;
 
     /**
-     * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+     * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
      * 
      */
     public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs>> shieldedInstanceConfig() {
@@ -172,14 +172,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     }
 
     /**
-     * The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+     * The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+     * @return The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -258,7 +258,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param metadata The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+         * @param metadata The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param metadata The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+         * @param metadata The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param serviceAccount The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+         * @param serviceAccount The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param serviceAccount The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+         * @param serviceAccount The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param serviceAccountScopes The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+         * @param serviceAccountScopes The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param serviceAccountScopes The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+         * @param serviceAccountScopes The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param serviceAccountScopes The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+         * @param serviceAccountScopes The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param shieldedInstanceConfig Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+         * @param shieldedInstanceConfig Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param shieldedInstanceConfig Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+         * @param shieldedInstanceConfig Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param tags The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+         * @param tags The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param tags The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+         * @param tags The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param tags The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+         * @param tags The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
          * 
          * @return builder
          * 

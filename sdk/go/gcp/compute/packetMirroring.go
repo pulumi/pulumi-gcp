@@ -109,6 +109,7 @@ import (
 //			_, err = compute.NewPacketMirroring(ctx, "foobar", &compute.PacketMirroringArgs{
 //				Name:        pulumi.String("my-mirroring"),
 //				Description: pulumi.String("bar"),
+//				Enable:      pulumi.String("TRUE"),
 //				Network: &compute.PacketMirroringNetworkArgs{
 //					Url: _default.ID(),
 //				},
@@ -154,28 +155,16 @@ import (
 // PacketMirroring can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
 // ```
 type PacketMirroring struct {
@@ -189,6 +178,10 @@ type PacketMirroring struct {
 	CollectorIlb PacketMirroringCollectorIlbOutput `pulumi:"collectorIlb"`
 	// A human-readable description of the rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+	// policy will not be enforced on the network. The default is TRUE.
+	// Possible values are: `TRUE`, `FALSE`.
+	Enable pulumi.StringOutput `pulumi:"enable"`
 	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
 	// Structure is documented below.
 	Filter PacketMirroringFilterPtrOutput `pulumi:"filter"`
@@ -261,6 +254,10 @@ type packetMirroringState struct {
 	CollectorIlb *PacketMirroringCollectorIlb `pulumi:"collectorIlb"`
 	// A human-readable description of the rule.
 	Description *string `pulumi:"description"`
+	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+	// policy will not be enforced on the network. The default is TRUE.
+	// Possible values are: `TRUE`, `FALSE`.
+	Enable *string `pulumi:"enable"`
 	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
 	// Structure is documented below.
 	Filter *PacketMirroringFilter `pulumi:"filter"`
@@ -295,6 +292,10 @@ type PacketMirroringState struct {
 	CollectorIlb PacketMirroringCollectorIlbPtrInput
 	// A human-readable description of the rule.
 	Description pulumi.StringPtrInput
+	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+	// policy will not be enforced on the network. The default is TRUE.
+	// Possible values are: `TRUE`, `FALSE`.
+	Enable pulumi.StringPtrInput
 	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
 	// Structure is documented below.
 	Filter PacketMirroringFilterPtrInput
@@ -333,6 +334,10 @@ type packetMirroringArgs struct {
 	CollectorIlb PacketMirroringCollectorIlb `pulumi:"collectorIlb"`
 	// A human-readable description of the rule.
 	Description *string `pulumi:"description"`
+	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+	// policy will not be enforced on the network. The default is TRUE.
+	// Possible values are: `TRUE`, `FALSE`.
+	Enable *string `pulumi:"enable"`
 	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
 	// Structure is documented below.
 	Filter *PacketMirroringFilter `pulumi:"filter"`
@@ -368,6 +373,10 @@ type PacketMirroringArgs struct {
 	CollectorIlb PacketMirroringCollectorIlbInput
 	// A human-readable description of the rule.
 	Description pulumi.StringPtrInput
+	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+	// policy will not be enforced on the network. The default is TRUE.
+	// Possible values are: `TRUE`, `FALSE`.
+	Enable pulumi.StringPtrInput
 	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
 	// Structure is documented below.
 	Filter PacketMirroringFilterPtrInput
@@ -492,6 +501,13 @@ func (o PacketMirroringOutput) CollectorIlb() PacketMirroringCollectorIlbOutput 
 // A human-readable description of the rule.
 func (o PacketMirroringOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PacketMirroring) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+// policy will not be enforced on the network. The default is TRUE.
+// Possible values are: `TRUE`, `FALSE`.
+func (o PacketMirroringOutput) Enable() pulumi.StringOutput {
+	return o.ApplyT(func(v *PacketMirroring) pulumi.StringOutput { return v.Enable }).(pulumi.StringOutput)
 }
 
 // A filter for mirrored traffic.  If unset, all traffic is mirrored.

@@ -31,6 +31,7 @@ class PrivateConnectionArgs:
                  vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None):
         """
         The set of arguments for constructing a PrivateConnection resource.
+
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[_builtins.str] location: The name of the location this private connection is located in.
         :param pulumi.Input[_builtins.str] private_connection_id: The private connectivity identifier.
@@ -183,6 +184,7 @@ class _PrivateConnectionState:
                  vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None):
         """
         Input properties used for looking up and filtering PrivateConnection resources.
+
         :param pulumi.Input[_builtins.bool] create_without_validation: If set to true, will skip validations.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -481,24 +483,17 @@ class PrivateConnection(pulumi.CustomResource):
         PrivateConnection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
-
         * `{{project}}/{{location}}/{{private_connection_id}}`
-
         * `{{location}}/{{private_connection_id}}`
 
         When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datastream/privateConnection:PrivateConnection default projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datastream/privateConnection:PrivateConnection default {{project}}/{{location}}/{{private_connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datastream/privateConnection:PrivateConnection default {{location}}/{{private_connection_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -591,24 +586,17 @@ class PrivateConnection(pulumi.CustomResource):
         PrivateConnection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
-
         * `{{project}}/{{location}}/{{private_connection_id}}`
-
         * `{{location}}/{{private_connection_id}}`
 
         When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datastream/privateConnection:PrivateConnection default projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datastream/privateConnection:PrivateConnection default {{project}}/{{location}}/{{private_connection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datastream/privateConnection:PrivateConnection default {{location}}/{{private_connection_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PrivateConnectionArgs args: The arguments to use to populate this resource's properties.

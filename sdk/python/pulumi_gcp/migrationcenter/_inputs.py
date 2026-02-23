@@ -33,44 +33,39 @@ __all__ = [
     'PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class PreferenceSetVirtualMachinePreferencesArgsDict(TypedDict):
-        commitment_plan: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
-        """
-        compute_engine_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgsDict']]
-        """
-        The user preferences relating to Compute Engine target platform.
-        Structure is documented below.
-        """
-        region_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesRegionPreferencesArgsDict']]
-        """
-        The user preferences relating to target regions.
-        Structure is documented below.
-        """
-        sizing_optimization_strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
-        """
-        sole_tenancy_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgsDict']]
-        """
-        Preferences concerning Sole Tenancy nodes and VMs.
-        Structure is documented below.
-        """
-        target_product: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
-        """
-        vmware_engine_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgsDict']]
-        """
-        The user preferences relating to Google Cloud VMware Engine target platform.
-        Structure is documented below.
-        """
-elif False:
-    PreferenceSetVirtualMachinePreferencesArgsDict: TypeAlias = Mapping[str, Any]
+class PreferenceSetVirtualMachinePreferencesArgsDict(TypedDict):
+    commitment_plan: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
+    """
+    compute_engine_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgsDict']]
+    """
+    The user preferences relating to Compute Engine target platform.
+    Structure is documented below.
+    """
+    region_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesRegionPreferencesArgsDict']]
+    """
+    The user preferences relating to target regions.
+    Structure is documented below.
+    """
+    sizing_optimization_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
+    """
+    sole_tenancy_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgsDict']]
+    """
+    Preferences concerning Sole Tenancy nodes and VMs.
+    Structure is documented below.
+    """
+    target_product: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
+    """
+    vmware_engine_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgsDict']]
+    """
+    The user preferences relating to Google Cloud VMware Engine target platform.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesArgs:
@@ -199,19 +194,16 @@ class PreferenceSetVirtualMachinePreferencesArgs:
         pulumi.set(self, "vmware_engine_preferences", value)
 
 
-if not MYPY:
-    class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgsDict(TypedDict):
-        license_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
-        """
-        machine_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgsDict']]
-        """
-        The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
-        Structure is documented below.
-        """
-elif False:
-    PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgsDict: TypeAlias = Mapping[str, Any]
+class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgsDict(TypedDict):
+    license_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
+    """
+    machine_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgsDict']]
+    """
+    The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs:
@@ -254,15 +246,12 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs:
         pulumi.set(self, "machine_preferences", value)
 
 
-if not MYPY:
-    class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgsDict(TypedDict):
-        allowed_machine_series: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgsDict']]]]
-        """
-        Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
-        Structure is documented below.
-        """
-elif False:
-    PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgsDict: TypeAlias = Mapping[str, Any]
+class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgsDict(TypedDict):
+    allowed_machine_series: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgsDict']]]]
+    """
+    Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs:
@@ -289,14 +278,11 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
         pulumi.set(self, "allowed_machine_series", value)
 
 
-if not MYPY:
-    class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
-        """
-elif False:
-    PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgsDict: TypeAlias = Mapping[str, Any]
+class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+    """
 
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs:
@@ -321,14 +307,11 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
         pulumi.set(self, "code", value)
 
 
-if not MYPY:
-    class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgsDict(TypedDict):
-        preferred_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
-        """
-elif False:
-    PreferenceSetVirtualMachinePreferencesRegionPreferencesArgsDict: TypeAlias = Mapping[str, Any]
+class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgsDict(TypedDict):
+    preferred_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+    """
 
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs:
@@ -353,27 +336,24 @@ class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs:
         pulumi.set(self, "preferred_regions", value)
 
 
-if not MYPY:
-    class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgsDict(TypedDict):
-        commitment_plan: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
-        """
-        cpu_overcommit_ratio: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
-        """
-        host_maintenance_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
-        """
-        node_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgsDict']]]]
-        """
-        A list of sole tenant node types. An empty list means that all possible node types will be considered.
-        Structure is documented below.
-        """
-elif False:
-    PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgsDict: TypeAlias = Mapping[str, Any]
+class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgsDict(TypedDict):
+    commitment_plan: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
+    """
+    cpu_overcommit_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
+    """
+    host_maintenance_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
+    """
+    node_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgsDict']]]]
+    """
+    A list of sole tenant node types. An empty list means that all possible node types will be considered.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs:
@@ -448,14 +428,11 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs:
         pulumi.set(self, "node_types", value)
 
 
-if not MYPY:
-    class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgsDict(TypedDict):
-        node_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
-        """
-elif False:
-    PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgsDict(TypedDict):
+    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+    """
 
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs:
@@ -480,26 +457,23 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs:
         pulumi.set(self, "node_name", value)
 
 
-if not MYPY:
-    class PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgsDict(TypedDict):
-        commitment_plan: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
-        """
-        cpu_overcommit_ratio: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
-        """
-        memory_overcommit_ratio: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
-        """
-        storage_deduplication_compression_ratio: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
-        """
-elif False:
-    PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgsDict: TypeAlias = Mapping[str, Any]
+class PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgsDict(TypedDict):
+    commitment_plan: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
+    """
+    cpu_overcommit_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
+    """
+    memory_overcommit_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
+    """
+    storage_deduplication_compression_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+    """
 
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs:

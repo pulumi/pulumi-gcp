@@ -140,6 +140,68 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for Spanner Instances
+ * 
+ * Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
+ * 
+ * * `gcp.spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+ * 
+ * &gt; **Warning:** It&#39;s entirely possibly to lock yourself out of your instance using `gcp.spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+ * 
+ * * `gcp.spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+ * * `gcp.spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+ * 
+ * &gt; **Note:** `gcp.spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIAMBinding` and `gcp.spanner.InstanceIAMMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## gcp.spanner.InstanceIAMPolicy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.spanner.InstanceIAMPolicy;
+ * import com.pulumi.gcp.spanner.InstanceIAMPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/editor")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var instance = new InstanceIAMPolicy("instance", InstanceIAMPolicyArgs.builder()
+ *             .instance("your-instance-name")
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## gcp.spanner.InstanceIAMBinding
  * 
  * <pre>
@@ -212,29 +274,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies
- * 
- * IAM policy imports use the identifier of the Spanner Instances resource . For example:
- * 
- * * `{{project}}/{{instance}}`
- * 
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- * 
- * tf
- * 
- * import {
- * 
- *   id = {{project}}/{{instance}}
- * 
- *   to = google_spanner_instance_iam_policy.default
- * 
- * }
- * 
- * The `pulumi import` command can also be used:
- * 
- * ```sh
- * $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy default {{project}}/{{instance}}
- * ```
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy")

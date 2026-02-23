@@ -218,22 +218,14 @@ import * as utilities from "../utilities";
  * Agent can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/apps/{{app}}/agents/{{name}}`
- *
  * * `{{project}}/{{location}}/{{app}}/{{name}}`
- *
  * * `{{location}}/{{app}}/{{name}}`
  *
  * When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:ces/agent:Agent default projects/{{project}}/locations/{{location}}/apps/{{app}}/agents/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:ces/agent:Agent default {{project}}/{{location}}/{{app}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:ces/agent:Agent default {{location}}/{{app}}/{{name}}
  * ```
  */

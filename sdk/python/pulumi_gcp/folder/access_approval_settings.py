@@ -27,6 +27,7 @@ class AccessApprovalSettingsArgs:
                  notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AccessApprovalSettings resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can only be done on an all or nothing basis.
@@ -117,6 +118,7 @@ class _AccessApprovalSettingsState:
                  notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AccessApprovalSettings resources.
+
         :param pulumi.Input[_builtins.str] active_key_version: The asymmetric crypto key version to use for signing approval requests.
                Empty active_key_version indicates that a Google-managed key should be used for signing.
                This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
@@ -348,18 +350,15 @@ class AccessApprovalSettings(pulumi.CustomResource):
         FolderSettings can be imported using any of these accepted formats:
 
         * `folders/{{folder_id}}/accessApprovalSettings`
-
         * `{{folder_id}}`
 
         When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default folders/{{folder_id}}/accessApprovalSettings
-        ```
-
-        ```sh
         $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default {{folder_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -457,18 +456,15 @@ class AccessApprovalSettings(pulumi.CustomResource):
         FolderSettings can be imported using any of these accepted formats:
 
         * `folders/{{folder_id}}/accessApprovalSettings`
-
         * `{{folder_id}}`
 
         When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default folders/{{folder_id}}/accessApprovalSettings
-        ```
-
-        ```sh
         $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default {{folder_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessApprovalSettingsArgs args: The arguments to use to populate this resource's properties.

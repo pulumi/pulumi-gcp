@@ -32,6 +32,7 @@ class FoldersPolicyBindingArgs:
                  policy_kind: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FoldersPolicyBinding resource.
+
         :param pulumi.Input[_builtins.str] folder: The parent folder for the PolicyBinding.
         :param pulumi.Input[_builtins.str] location: The location of the PolicyBinding.
         :param pulumi.Input[_builtins.str] policy: Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
@@ -244,6 +245,7 @@ class _FoldersPolicyBindingState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FoldersPolicyBinding resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -274,6 +276,7 @@ class _FoldersPolicyBindingState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the policy binding was created.
         :param pulumi.Input[_builtins.str] display_name: Optional. The description of the policy binding. Must be less than or equal to 63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[_builtins.str] folder: The parent folder for the PolicyBinding.
         :param pulumi.Input[_builtins.str] location: The location of the PolicyBinding.
@@ -399,6 +402,9 @@ class _FoldersPolicyBindingState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -558,6 +564,14 @@ class FoldersPolicyBinding(pulumi.CustomResource):
                  target: Optional[pulumi.Input[Union['FoldersPolicyBindingTargetArgs', 'FoldersPolicyBindingTargetArgsDict']]] = None,
                  __props__=None):
         """
+        A policy binding to a folder. This is a Terraform resource, and maps to a policy binding resource in GCP.
+
+        To get more information about FoldersPolicyBinding, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/folders.locations.policyBindings)
+        * How-to Guides
+            * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+
         ## Example Usage
 
         ### Iam Folders Policy Binding
@@ -596,18 +610,15 @@ class FoldersPolicyBinding(pulumi.CustomResource):
         FoldersPolicyBinding can be imported using any of these accepted formats:
 
         * `folders/{{folder}}/locations/{{location}}/policyBindings/{{policy_binding_id}}`
-
         * `{{folder}}/{{location}}/{{policy_binding_id}}`
 
         When using the `pulumi import` command, FoldersPolicyBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/foldersPolicyBinding:FoldersPolicyBinding default folders/{{folder}}/locations/{{location}}/policyBindings/{{policy_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/foldersPolicyBinding:FoldersPolicyBinding default {{folder}}/{{location}}/{{policy_binding_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -657,6 +668,14 @@ class FoldersPolicyBinding(pulumi.CustomResource):
                  args: FoldersPolicyBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A policy binding to a folder. This is a Terraform resource, and maps to a policy binding resource in GCP.
+
+        To get more information about FoldersPolicyBinding, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/folders.locations.policyBindings)
+        * How-to Guides
+            * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+
         ## Example Usage
 
         ### Iam Folders Policy Binding
@@ -695,18 +714,15 @@ class FoldersPolicyBinding(pulumi.CustomResource):
         FoldersPolicyBinding can be imported using any of these accepted formats:
 
         * `folders/{{folder}}/locations/{{location}}/policyBindings/{{policy_binding_id}}`
-
         * `{{folder}}/{{location}}/{{policy_binding_id}}`
 
         When using the `pulumi import` command, FoldersPolicyBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/foldersPolicyBinding:FoldersPolicyBinding default folders/{{folder}}/locations/{{location}}/policyBindings/{{policy_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/foldersPolicyBinding:FoldersPolicyBinding default {{folder}}/{{location}}/{{policy_binding_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FoldersPolicyBindingArgs args: The arguments to use to populate this resource's properties.
@@ -830,6 +846,7 @@ class FoldersPolicyBinding(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the policy binding was created.
         :param pulumi.Input[_builtins.str] display_name: Optional. The description of the policy binding. Must be less than or equal to 63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[_builtins.str] folder: The parent folder for the PolicyBinding.
         :param pulumi.Input[_builtins.str] location: The location of the PolicyBinding.
@@ -928,6 +945,9 @@ class FoldersPolicyBinding(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

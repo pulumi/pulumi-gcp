@@ -32,6 +32,7 @@ class SecurityPolicyArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityPolicy resource.
+
         :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs'] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
                Structure is documented below.
@@ -219,6 +220,7 @@ class _SecurityPolicyState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityPolicy resources.
+
         :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs'] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
                Structure is documented below.
@@ -633,24 +635,17 @@ class SecurityPolicy(pulumi.CustomResource):
         Security policies can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/securityPolicies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, security policies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -840,24 +835,17 @@ class SecurityPolicy(pulumi.CustomResource):
         Security policies can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/securityPolicies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, security policies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityPolicyArgs args: The arguments to use to populate this resource's properties.

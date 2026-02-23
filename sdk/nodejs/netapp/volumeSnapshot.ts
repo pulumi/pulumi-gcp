@@ -58,22 +58,14 @@ import * as utilities from "../utilities";
  * VolumeSnapshot can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/snapshots/{{name}}`
- *
  * * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
- *
  * * `{{location}}/{{volume_name}}/{{name}}`
  *
  * When using the `pulumi import` command, VolumeSnapshot can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:netapp/volumeSnapshot:VolumeSnapshot default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/snapshots/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/volumeSnapshot:VolumeSnapshot default {{project}}/{{location}}/{{volume_name}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/volumeSnapshot:VolumeSnapshot default {{location}}/{{volume_name}}/{{name}}
  * ```
  */

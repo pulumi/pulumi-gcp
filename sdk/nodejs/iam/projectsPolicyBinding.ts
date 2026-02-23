@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A policy binding to a project. This is a Terraform resource, and maps to a policy binding resource in GCP.
+ *
+ * To get more information about ProjectsPolicyBinding, see:
+ *
+ * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/projects.locations.policyBindings)
+ * * How-to Guides
+ *     * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+ *
  * ## Example Usage
  *
  * ### Iam Projects Policy Binding
@@ -46,22 +54,14 @@ import * as utilities from "../utilities";
  * ProjectsPolicyBinding can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/policyBindings/{{policy_binding_id}}`
- *
  * * `{{project}}/{{location}}/{{policy_binding_id}}`
- *
  * * `{{location}}/{{policy_binding_id}}`
  *
  * When using the `pulumi import` command, ProjectsPolicyBinding can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default projects/{{project}}/locations/{{location}}/policyBindings/{{policy_binding_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{project}}/{{location}}/{{policy_binding_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{location}}/{{policy_binding_id}}
  * ```
  */
@@ -135,6 +135,9 @@ export class ProjectsPolicyBinding extends pulumi.CustomResource {
      * Optional. The description of the policy binding. Must be less than or equal to 63 characters.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
@@ -296,6 +299,9 @@ export interface ProjectsPolicyBindingState {
      * Optional. The description of the policy binding. Must be less than or equal to 63 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.

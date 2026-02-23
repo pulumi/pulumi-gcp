@@ -108,6 +108,15 @@ def get_variable(name: Optional[_builtins.str] = None,
                  project: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVariableResult:
     """
+    To get more information about RuntimeConfigs, see:
+
+    * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+    * How-to Guides
+        * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta datasources.
+
     ## Example Usage
 
     ```python
@@ -146,6 +155,15 @@ def get_variable_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVariableResult]:
     """
+    To get more information about RuntimeConfigs, see:
+
+    * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+    * How-to Guides
+        * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+
+    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+    See Provider Versions for more details on beta datasources.
+
     ## Example Usage
 
     ```python

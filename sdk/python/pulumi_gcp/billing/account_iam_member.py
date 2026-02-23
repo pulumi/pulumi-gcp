@@ -27,6 +27,7 @@ class AccountIamMemberArgs:
                  condition: Optional[pulumi.Input['AccountIamMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a AccountIamMember resource.
+
         :param pulumi.Input[_builtins.str] billing_account_id: The billing account id.
                
                For `billing.AccountIamMember` or `billing.AccountIamBinding`:
@@ -115,6 +116,7 @@ class _AccountIamMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountIamMember resources.
+
         :param pulumi.Input[_builtins.str] billing_account_id: The billing account id.
                
                For `billing.AccountIamMember` or `billing.AccountIamBinding`:
@@ -313,29 +315,9 @@ class AccountIamMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
 
-        IAM policy imports use the `billing_account_id` identifier of the Billing Account resource only. For example:
-
-        * `{{billing_account_id}}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = {{billing_account_id}}
-
-          to = google_billing_account_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:billing/accountIamMember:AccountIamMember default {{billing_account_id}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -451,29 +433,9 @@ class AccountIamMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
 
-        IAM policy imports use the `billing_account_id` identifier of the Billing Account resource only. For example:
-
-        * `{{billing_account_id}}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = {{billing_account_id}}
-
-          to = google_billing_account_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:billing/accountIamMember:AccountIamMember default {{billing_account_id}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param AccountIamMemberArgs args: The arguments to use to populate this resource's properties.

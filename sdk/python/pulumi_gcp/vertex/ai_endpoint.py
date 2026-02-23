@@ -36,6 +36,7 @@ class AiEndpointArgs:
                  traffic_split: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiEndpoint resource.
+
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.bool] dedicated_endpoint_enabled: If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
@@ -280,6 +281,7 @@ class _AiEndpointState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiEndpoint resources.
+
         :param pulumi.Input[_builtins.str] create_time: (Output)
                Output only. Timestamp when the DeployedModel was created.
         :param pulumi.Input[_builtins.str] dedicated_endpoint_dns: Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
@@ -717,10 +719,10 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", name="psc-network-_3686")
+        default = gcp.compute.Network("default", name="psc-network-_44339")
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_54136",
+            name="endpoint-name_34599",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -744,7 +746,7 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_11171",
+            name="endpoint-name_79513",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -761,24 +763,17 @@ class AiEndpoint(pulumi.CustomResource):
         Endpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -884,10 +879,10 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", name="psc-network-_3686")
+        default = gcp.compute.Network("default", name="psc-network-_44339")
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_54136",
+            name="endpoint-name_34599",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -911,7 +906,7 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_11171",
+            name="endpoint-name_79513",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -928,24 +923,17 @@ class AiEndpoint(pulumi.CustomResource):
         Endpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiEndpointArgs args: The arguments to use to populate this resource's properties.

@@ -57,12 +57,14 @@ class InstanceFromTemplateArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceFromTemplate resource.
+
         :param pulumi.Input[_builtins.str] source_instance_template: Name or self link of an instance
                template to create the instance based on. It is recommended to reference
                instance templates through their unique id (`self_link_unique` attribute).
                
                - - -
         :param pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
+        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateAttachedDiskArgs']]] attached_disks: List of disks attached to the instance
         :param pulumi.Input['InstanceFromTemplateBootDiskArgs'] boot_disk: The boot disk for the instance.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
@@ -203,6 +205,9 @@ class InstanceFromTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        """
         return pulumi.get(self, "allow_stopping_for_update")
 
     @allow_stopping_for_update.setter
@@ -640,7 +645,9 @@ class _InstanceFromTemplateState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceFromTemplate resources.
+
         :param pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
+        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateAttachedDiskArgs']]] attached_disks: List of disks attached to the instance
         :param pulumi.Input['InstanceFromTemplateBootDiskArgs'] boot_disk: The boot disk for the instance.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
@@ -653,6 +660,7 @@ class _InstanceFromTemplateState:
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[_builtins.str] description: A brief description of the resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -802,6 +810,9 @@ class _InstanceFromTemplateState:
     @_builtins.property
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        """
         return pulumi.get(self, "allow_stopping_for_update")
 
     @allow_stopping_for_update.setter
@@ -933,6 +944,9 @@ class _InstanceFromTemplateState:
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
@@ -1412,9 +1426,11 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceFromTemplateAdvancedMachineFeaturesArgs', 'InstanceFromTemplateAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Controls for advanced machine-related behavior features.
+        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateAttachedDiskArgs', 'InstanceFromTemplateAttachedDiskArgsDict']]]] attached_disks: List of disks attached to the instance
         :param pulumi.Input[Union['InstanceFromTemplateBootDiskArgs', 'InstanceFromTemplateBootDiskArgsDict']] boot_disk: The boot disk for the instance.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
@@ -1512,6 +1528,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param InstanceFromTemplateArgs args: The arguments to use to populate this resource's properties.
@@ -1681,6 +1698,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceFromTemplateAdvancedMachineFeaturesArgs', 'InstanceFromTemplateAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Controls for advanced machine-related behavior features.
+        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateAttachedDiskArgs', 'InstanceFromTemplateAttachedDiskArgsDict']]]] attached_disks: List of disks attached to the instance
         :param pulumi.Input[Union['InstanceFromTemplateBootDiskArgs', 'InstanceFromTemplateBootDiskArgsDict']] boot_disk: The boot disk for the instance.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
@@ -1693,6 +1711,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[_builtins.str] description: A brief description of the resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateGuestAcceleratorArgs', 'InstanceFromTemplateGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -1799,6 +1818,9 @@ class InstanceFromTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> pulumi.Output[_builtins.bool]:
+        """
+        If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        """
         return pulumi.get(self, "allow_stopping_for_update")
 
     @_builtins.property
@@ -1886,6 +1908,9 @@ class InstanceFromTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property

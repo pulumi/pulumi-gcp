@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.ApiGateway
     public static class GetGatewayIamPolicy
     {
         /// <summary>
+        /// Retrieves the current IAM policy data for gateway
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +41,11 @@ namespace Pulumi.Gcp.ApiGateway
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayIamPolicyResult>("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", args ?? new GetGatewayIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for gateway
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +70,11 @@ namespace Pulumi.Gcp.ApiGateway
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayIamPolicyResult>("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", args ?? new GetGatewayIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for gateway
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

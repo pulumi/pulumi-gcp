@@ -27,6 +27,7 @@ class EndpointArgs:
                  port: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Endpoint resource.
+
         :param pulumi.Input[_builtins.str] endpoint_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
         :param pulumi.Input[_builtins.str] service: The resource name of the service that this endpoint provides.
@@ -140,6 +141,7 @@ class _EndpointState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Endpoint resources.
+
         :param pulumi.Input[_builtins.str] address: IPv4 or IPv6 address of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
@@ -337,24 +339,17 @@ class Endpoint(pulumi.CustomResource):
         Endpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}`
-
         * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
-
         * `{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
 
         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -440,24 +435,17 @@ class Endpoint(pulumi.CustomResource):
         Endpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}`
-
         * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
-
         * `{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
 
         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EndpointArgs args: The arguments to use to populate this resource's properties.

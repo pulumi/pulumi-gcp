@@ -27,6 +27,7 @@ class V2QueuedResourceArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2QueuedResource resource.
+
         :param pulumi.Input[_builtins.str] name: The immutable name of the Queued Resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -103,6 +104,7 @@ class _V2QueuedResourceState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2QueuedResource resources.
+
         :param pulumi.Input[_builtins.str] name: The immutable name of the Queued Resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -182,6 +184,17 @@ class V2QueuedResource(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A Cloud TPU Queued Resource.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about QueuedResource, see:
+
+        * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.queuedResources)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/tpu/docs/)
+
         ## Example Usage
 
         ### Tpu V2 Queued Resource Basic
@@ -249,30 +262,19 @@ class V2QueuedResource(pulumi.CustomResource):
         QueuedResource can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{zone}}/queuedResources/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, QueuedResource can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default projects/{{project}}/locations/{{zone}}/queuedResources/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -290,6 +292,17 @@ class V2QueuedResource(pulumi.CustomResource):
                  args: Optional[V2QueuedResourceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Cloud TPU Queued Resource.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about QueuedResource, see:
+
+        * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.queuedResources)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/tpu/docs/)
+
         ## Example Usage
 
         ### Tpu V2 Queued Resource Basic
@@ -357,30 +370,19 @@ class V2QueuedResource(pulumi.CustomResource):
         QueuedResource can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{zone}}/queuedResources/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, QueuedResource can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default projects/{{project}}/locations/{{zone}}/queuedResources/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V2QueuedResourceArgs args: The arguments to use to populate this resource's properties.

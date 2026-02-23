@@ -33,6 +33,7 @@ class BackupArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Backup resource.
+
         :param pulumi.Input[_builtins.str] backup_id: The ID of the alloydb backup.
         :param pulumi.Input[_builtins.str] cluster_name: The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
         :param pulumi.Input[_builtins.str] location: The location where the alloydb backup should reside.
@@ -234,6 +235,7 @@ class _BackupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Backup resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -248,6 +250,7 @@ class _BackupState:
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] description: User-provided description of the backup.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Backup.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['BackupEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -437,6 +440,9 @@ class _BackupState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -770,24 +776,17 @@ class Backup(pulumi.CustomResource):
         Backup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
-
         * `{{project}}/{{location}}/{{backup_id}}`
-
         * `{{location}}/{{backup_id}}`
 
         When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/backup:Backup default {{project}}/{{location}}/{{backup_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/backup:Backup default {{location}}/{{backup_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -910,24 +909,17 @@ class Backup(pulumi.CustomResource):
         Backup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
-
         * `{{project}}/{{location}}/{{backup_id}}`
-
         * `{{location}}/{{backup_id}}`
 
         When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/backup:Backup default {{project}}/{{location}}/{{backup_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/backup:Backup default {{location}}/{{backup_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupArgs args: The arguments to use to populate this resource's properties.
@@ -1054,6 +1046,7 @@ class Backup(pulumi.CustomResource):
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] description: User-provided description of the backup.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Backup.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -1190,6 +1183,9 @@ class Backup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

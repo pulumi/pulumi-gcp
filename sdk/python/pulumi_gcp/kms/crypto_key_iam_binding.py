@@ -27,6 +27,7 @@ class CryptoKeyIAMBindingArgs:
                  condition: Optional[pulumi.Input['CryptoKeyIAMBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a CryptoKeyIAMBinding resource.
+
         :param pulumi.Input[_builtins.str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
                `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -121,6 +122,7 @@ class _CryptoKeyIAMBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CryptoKeyIAMBinding resources.
+
         :param pulumi.Input['CryptoKeyIAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] crypto_key_id: The crypto key ID, in the form
@@ -338,29 +340,6 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
-
-        IAM policy imports use the identifier of the KMS crypto key only. For example:
-
-        * `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}"
-
-          to = google_kms_crypto_key_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding default {{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -491,29 +470,6 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
-
-        IAM policy imports use the identifier of the KMS crypto key only. For example:
-
-        * `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}"
-
-          to = google_kms_crypto_key_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding default {{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param CryptoKeyIAMBindingArgs args: The arguments to use to populate this resource's properties.

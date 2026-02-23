@@ -56,22 +56,14 @@ namespace Pulumi.Gcp.Gemini
     /// GeminiGcpEnablementSettingBinding can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}/settingBindings/{{setting_binding_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}`
-    /// 
     /// * `{{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}`
     /// 
     /// When using the `pulumi import` command, GeminiGcpEnablementSettingBinding can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding default projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}/settingBindings/{{setting_binding_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding default {{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding default {{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}
     /// ```
     /// </summary>

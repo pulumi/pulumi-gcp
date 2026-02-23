@@ -27,6 +27,7 @@ class InstanceDesiredUserCreatedEndpointsArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceDesiredUserCreatedEndpoints resource.
+
         :param pulumi.Input[_builtins.str] region: The name of the region of the Memorystore instance these endpoints should be added to.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]] desired_user_created_endpoints: A list of desired user endpoints
                Structure is documented below.
@@ -102,6 +103,7 @@ class _InstanceDesiredUserCreatedEndpointsState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceDesiredUserCreatedEndpoints resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]] desired_user_created_endpoints: A list of desired user endpoints
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Memorystore instance these endpoints should be added to.
@@ -181,6 +183,18 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages user created connections for Memorystore instance
+
+        To get more information about InstanceDesiredUserCreatedEndpoints, see:
+
+        * [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest/v1/projects.locations.instances)
+
+        > **Note:** Please ensure your connections meet the requirements outlined at
+        https://cloud.google.com/memorystore/docs/valkey/about-multiple-vpc-networking#application_connection_requirements.
+        If you remove a connections item from the resource, the corresponding forwarding rule will no longer be functioning.
+        If the corresponding forwarding rule is represented in your terraform configuration it is recommended to delete that
+        `compute.ForwardingRule` resource at the same time.
+
         ## Example Usage
 
         ### Memorystore Instance Desired User Created Endpoints
@@ -415,30 +429,19 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         InstanceDesiredUserCreatedEndpoints can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InstanceDesiredUserCreatedEndpoints can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default projects/{{project}}/locations/{{region}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -456,6 +459,18 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
                  args: InstanceDesiredUserCreatedEndpointsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages user created connections for Memorystore instance
+
+        To get more information about InstanceDesiredUserCreatedEndpoints, see:
+
+        * [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest/v1/projects.locations.instances)
+
+        > **Note:** Please ensure your connections meet the requirements outlined at
+        https://cloud.google.com/memorystore/docs/valkey/about-multiple-vpc-networking#application_connection_requirements.
+        If you remove a connections item from the resource, the corresponding forwarding rule will no longer be functioning.
+        If the corresponding forwarding rule is represented in your terraform configuration it is recommended to delete that
+        `compute.ForwardingRule` resource at the same time.
+
         ## Example Usage
 
         ### Memorystore Instance Desired User Created Endpoints
@@ -690,30 +705,19 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         InstanceDesiredUserCreatedEndpoints can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InstanceDesiredUserCreatedEndpoints can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default projects/{{project}}/locations/{{region}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceDesiredUserCreatedEndpointsArgs args: The arguments to use to populate this resource's properties.

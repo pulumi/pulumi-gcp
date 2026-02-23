@@ -36,7 +36,15 @@ export interface GetJobIamPolicyArgs {
      * The name or relative resource id of the job to manage IAM policies for.
      */
     jobId: string;
+    /**
+     * The project in which the job belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     project?: string;
+    /**
+     * The region in which the job belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     region?: string;
 }
 
@@ -92,6 +100,14 @@ export interface GetJobIamPolicyOutputArgs {
      * The name or relative resource id of the job to manage IAM policies for.
      */
     jobId: pulumi.Input<string>;
+    /**
+     * The project in which the job belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     project?: pulumi.Input<string>;
+    /**
+     * The region in which the job belongs. If it
+     * is not provided, Terraform will use the provider default.
+     */
     region?: pulumi.Input<string>;
 }

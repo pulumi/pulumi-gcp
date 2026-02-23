@@ -36,6 +36,7 @@ class JobArgs:
                  start_execution_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the cloud run job
         :param pulumi.Input['JobTemplateArgs'] template: The template used to create executions for this Job.
                Structure is documented below.
@@ -49,6 +50,12 @@ class JobArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[_builtins.str] client_version: Arbitrary version identifier for the API client.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the job. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the job,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the job will fail.
+               When the field is set to false, deleting the job is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
                environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -176,6 +183,14 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the job. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the job,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the job will fail.
+        When the field is set to false, deleting the job is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -304,6 +319,7 @@ class _JobState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
                All system annotations in v1 now have a corresponding field in v2 Job.
@@ -321,6 +337,13 @@ class _JobState:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] creator: Email address of the authenticated creator.
         :param pulumi.Input[_builtins.str] delete_time: The deletion time.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the job. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the job,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the job will fail.
+               When the field is set to false, deleting the job is allowed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.int] execution_count: Number of executions created for this job.
@@ -534,6 +557,14 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the job. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the job,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the job will fail.
+        When the field is set to false, deleting the job is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -543,6 +574,9 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1182,24 +1216,17 @@ class Job(pulumi.CustomResource):
         Job can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrunv2/job:Job default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrunv2/job:Job default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1213,6 +1240,12 @@ class Job(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[_builtins.str] client_version: Arbitrary version identifier for the API client.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the job. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the job,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the job will fail.
+               When the field is set to false, deleting the job is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
                environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -1582,24 +1615,17 @@ class Job(pulumi.CustomResource):
         Job can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrunv2/job:Job default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudrunv2/job:Job default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.
@@ -1740,6 +1766,13 @@ class Job(pulumi.CustomResource):
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] creator: Email address of the authenticated creator.
         :param pulumi.Input[_builtins.str] delete_time: The deletion time.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the job. Defaults to true.
+               When a`terraform destroy` or `pulumi up` would delete the job,
+               the command will fail if this field is not set to false in Terraform state.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the job will fail.
+               When the field is set to false, deleting the job is allowed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.int] execution_count: Number of executions created for this job.
@@ -1895,11 +1928,22 @@ class Job(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the job. Defaults to true.
+        When a`terraform destroy` or `pulumi up` would delete the job,
+        the command will fail if this field is not set to false in Terraform state.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the job will fail.
+        When the field is set to false, deleting the job is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

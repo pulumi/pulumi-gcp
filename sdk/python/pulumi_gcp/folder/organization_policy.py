@@ -29,6 +29,7 @@ class OrganizationPolicyArgs:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a OrganizationPolicy resource.
+
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
                - - -
@@ -149,6 +150,7 @@ class _OrganizationPolicyState:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering OrganizationPolicy resources.
+
         :param pulumi.Input['OrganizationPolicyBooleanPolicyArgs'] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
@@ -380,18 +382,15 @@ class OrganizationPolicy(pulumi.CustomResource):
         Folder organization policies can be imported using any of the follow formats:
 
         * `folders/{{folder_id}}/constraints/serviceuser.services`
-
         * `{{folder_id}}/serviceuser.services`
 
         When using the `pulumi import` command, folder organization policies can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy * `google_folder_organization_policy.default folders/* ``{{folder_id}}/constraints/serviceuser.services`
+        * `$ terraform import google_folder_organization_policy.default folders/* ``{{folder_id}}/constraints/serviceuser.services`
+        * `* `$ terraform import google_folder_organization_policy.default {{folder_id}}/``serviceuser.services
         ```
 
-        ```sh
-        $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy * `* `google_folder_organization_policy.default {{folder_id}}/``serviceuser.services
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -495,18 +494,15 @@ class OrganizationPolicy(pulumi.CustomResource):
         Folder organization policies can be imported using any of the follow formats:
 
         * `folders/{{folder_id}}/constraints/serviceuser.services`
-
         * `{{folder_id}}/serviceuser.services`
 
         When using the `pulumi import` command, folder organization policies can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy * `google_folder_organization_policy.default folders/* ``{{folder_id}}/constraints/serviceuser.services`
+        * `$ terraform import google_folder_organization_policy.default folders/* ``{{folder_id}}/constraints/serviceuser.services`
+        * `* `$ terraform import google_folder_organization_policy.default {{folder_id}}/``serviceuser.services
         ```
 
-        ```sh
-        $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy * `* `google_folder_organization_policy.default {{folder_id}}/``serviceuser.services
-        ```
 
         :param str resource_name: The name of the resource.
         :param OrganizationPolicyArgs args: The arguments to use to populate this resource's properties.

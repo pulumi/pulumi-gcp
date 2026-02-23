@@ -143,22 +143,14 @@ import javax.annotation.Nullable;
  * MirroringEndpointGroup can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}`
- * 
  * * `{{project}}/{{location}}/{{mirroring_endpoint_group_id}}`
- * 
  * * `{{location}}/{{mirroring_endpoint_group_id}}`
  * 
  * When using the `pulumi import` command, MirroringEndpointGroup can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{project}}/{{location}}/{{mirroring_endpoint_group_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{location}}/{{mirroring_endpoint_group_id}}
  * ```
  * 
@@ -296,7 +288,6 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.mirroringDeploymentGroup);
     }
     /**
-     * (Optional, Beta)
      * A list of the deployment groups that this BROKER endpoint group is
      * connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -307,8 +298,7 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
     private Output</* @Nullable */ List<String>> mirroringDeploymentGroups;
 
     /**
-     * @return (Optional, Beta)
-     * A list of the deployment groups that this BROKER endpoint group is
+     * @return A list of the deployment groups that this BROKER endpoint group is
      * connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
      * See https://google.aip.dev/124.
@@ -430,7 +420,6 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
         return this.state;
     }
     /**
-     * (Optional, Beta)
      * The type of the endpoint group.
      * If left unspecified, defaults to DIRECT.
      * Possible values:
@@ -442,8 +431,7 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return (Optional, Beta)
-     * The type of the endpoint group.
+     * @return The type of the endpoint group.
      * If left unspecified, defaults to DIRECT.
      * Possible values:
      * DIRECT

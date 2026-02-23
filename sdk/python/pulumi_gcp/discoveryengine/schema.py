@@ -26,6 +26,7 @@ class SchemaArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Schema resource.
+
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
@@ -116,6 +117,7 @@ class _SchemaState:
                  schema_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Schema resources.
+
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
         :param pulumi.Input[_builtins.str] json_schema: The JSON representation of the schema.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
@@ -269,24 +271,17 @@ class Schema(pulumi.CustomResource):
         Schema can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}/schemas/{{schema_id}}`
-
         * `{{project}}/{{location}}/{{data_store_id}}/{{schema_id}}`
-
         * `{{location}}/{{data_store_id}}/{{schema_id}}`
 
         When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/schema:Schema default projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}/schemas/{{schema_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/schema:Schema default {{project}}/{{location}}/{{data_store_id}}/{{schema_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/schema:Schema default {{location}}/{{data_store_id}}/{{schema_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -342,24 +337,17 @@ class Schema(pulumi.CustomResource):
         Schema can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}/schemas/{{schema_id}}`
-
         * `{{project}}/{{location}}/{{data_store_id}}/{{schema_id}}`
-
         * `{{location}}/{{data_store_id}}/{{schema_id}}`
 
         When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/schema:Schema default projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}/schemas/{{schema_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/schema:Schema default {{project}}/{{location}}/{{data_store_id}}/{{schema_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/schema:Schema default {{location}}/{{data_store_id}}/{{schema_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SchemaArgs args: The arguments to use to populate this resource's properties.

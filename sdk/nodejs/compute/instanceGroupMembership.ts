@@ -57,28 +57,16 @@ import * as utilities from "../utilities";
  * InstanceGroupMembership can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{instance_group}}/{{instance}}`
- *
  * * `{{project}}/{{zone}}/{{instance_group}}/{{instance}}`
- *
  * * `{{zone}}/{{instance_group}}/{{instance}}`
- *
  * * `{{instance_group}}/{{instance}}`
  *
  * When using the `pulumi import` command, InstanceGroupMembership can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default projects/{{project}}/zones/{{zone}}/instanceGroups/{{instance_group}}/{{instance}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default {{project}}/{{zone}}/{{instance_group}}/{{instance}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default {{zone}}/{{instance_group}}/{{instance}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default {{instance_group}}/{{instance}}
  * ```
  */

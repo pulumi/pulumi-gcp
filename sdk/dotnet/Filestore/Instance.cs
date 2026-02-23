@@ -206,22 +206,14 @@ namespace Pulumi.Gcp.Filestore
     /// Instance can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
     /// ```
     /// </summary>
@@ -251,6 +243,12 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The DesiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+        /// </summary>
+        [Output("desiredReplicaState")]
+        public Output<string?> DesiredReplicaState { get; private set; } = null!;
 
         /// <summary>
         /// Directory Services configuration.
@@ -464,6 +462,12 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The DesiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+        /// </summary>
+        [Input("desiredReplicaState")]
+        public Input<string>? DesiredReplicaState { get; set; }
+
+        /// <summary>
         /// Directory Services configuration.
         /// Should only be set if protocol is "NFS_V4_1".
         /// Structure is documented below.
@@ -627,6 +631,12 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The DesiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+        /// </summary>
+        [Input("desiredReplicaState")]
+        public Input<string>? DesiredReplicaState { get; set; }
 
         /// <summary>
         /// Directory Services configuration.

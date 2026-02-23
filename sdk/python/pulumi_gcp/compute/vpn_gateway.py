@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['VPNGatewayArgs', 'VPNGateway']
 
@@ -22,10 +24,12 @@ class VPNGatewayArgs:
                  network: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['VPNGatewayParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VPNGateway resource.
+
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -35,6 +39,9 @@ class VPNGatewayArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input['VPNGatewayParamsArgs'] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region this gateway should sit in.
@@ -44,6 +51,8 @@ class VPNGatewayArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -93,6 +102,20 @@ class VPNGatewayArgs:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['VPNGatewayParamsArgs']]:
+        """
+        (Optional, Beta)
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['VPNGatewayParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -125,11 +148,13 @@ class _VPNGatewayState:
                  gateway_id: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['VPNGatewayParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VPNGateway resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.int] gateway_id: The unique identifier for the resource.
@@ -141,6 +166,9 @@ class _VPNGatewayState:
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
+        :param pulumi.Input['VPNGatewayParamsArgs'] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region this gateway should sit in.
@@ -156,6 +184,8 @@ class _VPNGatewayState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -231,6 +261,20 @@ class _VPNGatewayState:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['VPNGatewayParamsArgs']]:
+        """
+        (Optional, Beta)
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['VPNGatewayParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -276,6 +320,7 @@ class VPNGateway(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -343,30 +388,19 @@ class VPNGateway(pulumi.CustomResource):
         VpnGateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, VpnGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -379,6 +413,9 @@ class VPNGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
+        :param pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region this gateway should sit in.
@@ -453,30 +490,19 @@ class VPNGateway(pulumi.CustomResource):
         VpnGateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, VpnGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VPNGatewayArgs args: The arguments to use to populate this resource's properties.
@@ -496,6 +522,7 @@ class VPNGateway(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -512,6 +539,7 @@ class VPNGateway(pulumi.CustomResource):
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["creation_timestamp"] = None
@@ -532,6 +560,7 @@ class VPNGateway(pulumi.CustomResource):
             gateway_id: Optional[pulumi.Input[_builtins.int]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             network: Optional[pulumi.Input[_builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             self_link: Optional[pulumi.Input[_builtins.str]] = None) -> 'VPNGateway':
@@ -553,6 +582,9 @@ class VPNGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
+        :param pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region this gateway should sit in.
@@ -567,6 +599,7 @@ class VPNGateway(pulumi.CustomResource):
         __props__.__dict__["gateway_id"] = gateway_id
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
@@ -617,6 +650,16 @@ class VPNGateway(pulumi.CustomResource):
         The network this VPN gateway is accepting traffic for.
         """
         return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.VPNGatewayParams']]:
+        """
+        (Optional, Beta)
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter

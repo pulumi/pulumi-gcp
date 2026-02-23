@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Google Cloud Firebase web application instance
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
 func LookupWebApp(ctx *pulumi.Context, args *LookupWebAppArgs, opts ...pulumi.InvokeOption) (*LookupWebAppResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppResult

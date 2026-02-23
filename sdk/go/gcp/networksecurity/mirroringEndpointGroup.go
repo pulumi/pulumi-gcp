@@ -129,22 +129,14 @@ import (
 // MirroringEndpointGroup can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}`
-//
 // * `{{project}}/{{location}}/{{mirroring_endpoint_group_id}}`
-//
 // * `{{location}}/{{mirroring_endpoint_group_id}}`
 //
 // When using the `pulumi import` command, MirroringEndpointGroup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default projects/{{project}}/locations/{{location}}/mirroringEndpointGroups/{{mirroring_endpoint_group_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{project}}/{{location}}/{{mirroring_endpoint_group_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup default {{location}}/{{mirroring_endpoint_group_id}}
 // ```
 type MirroringEndpointGroup struct {
@@ -175,7 +167,6 @@ type MirroringEndpointGroup struct {
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
 	// See https://google.aip.dev/124.
 	MirroringDeploymentGroup pulumi.StringPtrOutput `pulumi:"mirroringDeploymentGroup"`
-	// (Optional, Beta)
 	// A list of the deployment groups that this BROKER endpoint group is
 	// connected to, for example:
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -207,7 +198,6 @@ type MirroringEndpointGroup struct {
 	// ACTIVE
 	// OUT_OF_SYNC
 	State pulumi.StringOutput `pulumi:"state"`
-	// (Optional, Beta)
 	// The type of the endpoint group.
 	// If left unspecified, defaults to DIRECT.
 	// Possible values:
@@ -285,7 +275,6 @@ type mirroringEndpointGroupState struct {
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
 	// See https://google.aip.dev/124.
 	MirroringDeploymentGroup *string `pulumi:"mirroringDeploymentGroup"`
-	// (Optional, Beta)
 	// A list of the deployment groups that this BROKER endpoint group is
 	// connected to, for example:
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -317,7 +306,6 @@ type mirroringEndpointGroupState struct {
 	// ACTIVE
 	// OUT_OF_SYNC
 	State *string `pulumi:"state"`
-	// (Optional, Beta)
 	// The type of the endpoint group.
 	// If left unspecified, defaults to DIRECT.
 	// Possible values:
@@ -355,7 +343,6 @@ type MirroringEndpointGroupState struct {
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
 	// See https://google.aip.dev/124.
 	MirroringDeploymentGroup pulumi.StringPtrInput
-	// (Optional, Beta)
 	// A list of the deployment groups that this BROKER endpoint group is
 	// connected to, for example:
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -387,7 +374,6 @@ type MirroringEndpointGroupState struct {
 	// ACTIVE
 	// OUT_OF_SYNC
 	State pulumi.StringPtrInput
-	// (Optional, Beta)
 	// The type of the endpoint group.
 	// If left unspecified, defaults to DIRECT.
 	// Possible values:
@@ -417,7 +403,6 @@ type mirroringEndpointGroupArgs struct {
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
 	// See https://google.aip.dev/124.
 	MirroringDeploymentGroup *string `pulumi:"mirroringDeploymentGroup"`
-	// (Optional, Beta)
 	// A list of the deployment groups that this BROKER endpoint group is
 	// connected to, for example:
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -429,7 +414,6 @@ type mirroringEndpointGroupArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// (Optional, Beta)
 	// The type of the endpoint group.
 	// If left unspecified, defaults to DIRECT.
 	// Possible values:
@@ -453,7 +437,6 @@ type MirroringEndpointGroupArgs struct {
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
 	// See https://google.aip.dev/124.
 	MirroringDeploymentGroup pulumi.StringPtrInput
-	// (Optional, Beta)
 	// A list of the deployment groups that this BROKER endpoint group is
 	// connected to, for example:
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -465,7 +448,6 @@ type MirroringEndpointGroupArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// (Optional, Beta)
 	// The type of the endpoint group.
 	// If left unspecified, defaults to DIRECT.
 	// Possible values:
@@ -614,7 +596,6 @@ func (o MirroringEndpointGroupOutput) MirroringDeploymentGroup() pulumi.StringPt
 	return o.ApplyT(func(v *MirroringEndpointGroup) pulumi.StringPtrOutput { return v.MirroringDeploymentGroup }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // A list of the deployment groups that this BROKER endpoint group is
 // connected to, for example:
 // `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -667,7 +648,6 @@ func (o MirroringEndpointGroupOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringEndpointGroup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // The type of the endpoint group.
 // If left unspecified, defaults to DIRECT.
 // Possible values:

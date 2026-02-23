@@ -222,22 +222,14 @@ import javax.annotation.Nullable;
  * CustomTargetType can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/customTargetTypes/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, CustomTargetType can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default projects/{{project}}/locations/{{location}}/customTargetTypes/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default {{location}}/{{name}}
  * ```
  * 
@@ -320,9 +312,17 @@ public class CustomTargetType extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

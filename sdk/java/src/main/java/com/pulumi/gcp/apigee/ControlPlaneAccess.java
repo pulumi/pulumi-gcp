@@ -109,16 +109,12 @@ import javax.annotation.Nullable;
  * ControlPlaneAccess can be imported using any of these accepted formats:
  * 
  * * `organizations/{{name}}/controlPlaneAccess`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, ControlPlaneAccess can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:apigee/controlPlaneAccess:ControlPlaneAccess default organizations/{{name}}/controlPlaneAccess
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apigee/controlPlaneAccess:ControlPlaneAccess default {{name}}
  * ```
  * 

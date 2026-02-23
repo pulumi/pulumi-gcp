@@ -306,28 +306,16 @@ import javax.annotation.Nullable;
  * RouterNat can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{router}}/{{name}}`
- * 
  * * `{{region}}/{{router}}/{{name}}`
- * 
  * * `{{router}}/{{name}}`
  * 
  * When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/routerNat:RouterNat default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/routerNat:RouterNat default {{project}}/{{region}}/{{router}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/routerNat:RouterNat default {{region}}/{{router}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/routerNat:RouterNat default {{router}}/{{name}}
  * ```
  * 

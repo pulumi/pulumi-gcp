@@ -26,6 +26,7 @@ class IamAuditConfigArgs:
                  service: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a IamAuditConfig resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
         :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
@@ -80,6 +81,7 @@ class _IamAuditConfigState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IamAuditConfig resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: The etag of iam policy
         :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
@@ -176,8 +178,9 @@ class IamAuditConfig(pulumi.CustomResource):
         IAM audit config imports use the identifier of the resource in question and the service, e.g.
 
         ```sh
-        $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config "your-organization-id foo.googleapis.com"
+        terraform import google_organization_iam_audit_config.config "your-organization-id foo.googleapis.com"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -214,8 +217,9 @@ class IamAuditConfig(pulumi.CustomResource):
         IAM audit config imports use the identifier of the resource in question and the service, e.g.
 
         ```sh
-        $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config "your-organization-id foo.googleapis.com"
+        terraform import google_organization_iam_audit_config.config "your-organization-id foo.googleapis.com"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IamAuditConfigArgs args: The arguments to use to populate this resource's properties.

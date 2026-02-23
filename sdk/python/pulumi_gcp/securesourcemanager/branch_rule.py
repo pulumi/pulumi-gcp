@@ -33,6 +33,7 @@ class BranchRuleArgs:
                  require_pull_request: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BranchRule resource.
+
         :param pulumi.Input[_builtins.str] branch_rule_id: The ID for the BranchRule.
         :param pulumi.Input[_builtins.str] include_pattern: The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
@@ -235,6 +236,7 @@ class _BranchRuleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BranchRule resources.
+
         :param pulumi.Input[_builtins.bool] allow_stale_reviews: Determines if allow stale reviews or approvals before merging to the branch.
         :param pulumi.Input[_builtins.str] branch_rule_id: The ID for the BranchRule.
         :param pulumi.Input[_builtins.str] create_time: Time the BranchRule was created in UTC.
@@ -565,30 +567,19 @@ class BranchRule(pulumi.CustomResource):
         BranchRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/branchRules/{{branch_rule_id}}`
-
         * `{{project}}/{{location}}/{{repository_id}}/{{branch_rule_id}}`
-
         * `{{location}}/{{repository_id}}/{{branch_rule_id}}`
-
         * `{{branch_rule_id}}`
 
         When using the `pulumi import` command, BranchRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/branchRules/{{branch_rule_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{project}}/{{location}}/{{repository_id}}/{{branch_rule_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{location}}/{{repository_id}}/{{branch_rule_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{branch_rule_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -678,30 +669,19 @@ class BranchRule(pulumi.CustomResource):
         BranchRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/branchRules/{{branch_rule_id}}`
-
         * `{{project}}/{{location}}/{{repository_id}}/{{branch_rule_id}}`
-
         * `{{location}}/{{repository_id}}/{{branch_rule_id}}`
-
         * `{{branch_rule_id}}`
 
         When using the `pulumi import` command, BranchRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/branchRules/{{branch_rule_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{project}}/{{location}}/{{repository_id}}/{{branch_rule_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{location}}/{{repository_id}}/{{branch_rule_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{branch_rule_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BranchRuleArgs args: The arguments to use to populate this resource's properties.

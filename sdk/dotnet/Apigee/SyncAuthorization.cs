@@ -94,16 +94,12 @@ namespace Pulumi.Gcp.Apigee
     /// SyncAuthorization can be imported using any of these accepted formats:
     /// 
     /// * `organizations/{{name}}/syncAuthorization`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, SyncAuthorization can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default organizations/{{name}}/syncAuthorization
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default {{name}}
     /// ```
     /// </summary>

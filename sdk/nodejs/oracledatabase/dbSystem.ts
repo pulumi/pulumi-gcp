@@ -93,22 +93,14 @@ import * as utilities from "../utilities";
  * DbSystem can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/dbSystems/{{db_system_id}}`
- *
  * * `{{project}}/{{location}}/{{db_system_id}}`
- *
  * * `{{location}}/{{db_system_id}}`
  *
  * When using the `pulumi import` command, DbSystem can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default projects/{{project}}/locations/{{location}}/dbSystems/{{db_system_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{project}}/{{location}}/{{db_system_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/dbSystem:DbSystem default {{location}}/{{db_system_id}}
  * ```
  */
@@ -151,6 +143,9 @@ export class DbSystem extends pulumi.CustomResource {
      * letter or a number.
      */
     declare public readonly dbSystemId: pulumi.Output<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * The display name for the System db. The name does not have to
@@ -301,6 +296,9 @@ export interface DbSystemState {
      * letter or a number.
      */
     dbSystemId?: pulumi.Input<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The display name for the System db. The name does not have to
@@ -381,6 +379,9 @@ export interface DbSystemArgs {
      * letter or a number.
      */
     dbSystemId: pulumi.Input<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The display name for the System db. The name does not have to

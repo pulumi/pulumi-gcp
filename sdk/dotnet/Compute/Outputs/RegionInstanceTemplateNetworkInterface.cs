@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class RegionInstanceTemplateNetworkInterface
     {
+        /// <summary>
+        /// Access configurations, i.e. IPs via which this
+        /// instance can be accessed via the Internet. Omit to ensure that the instance
+        /// is not accessible from the Internet (this means that ssh provisioners will
+        /// not work unless you are running Terraform can send traffic to the instance's
+        /// network (e.g. via tunnel or because it is running on another cloud instance
+        /// on that network). This block can be specified once per `NetworkInterface`. Structure documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RegionInstanceTemplateNetworkInterfaceAccessConfig> AccessConfigs;
         /// <summary>
         /// An
@@ -43,7 +51,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Ipv6Address;
         /// <summary>
-        /// The name of the network_interface.
+        /// The name of the instance template. If you leave
+        /// this blank, Terraform will auto-generate a unique name.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -53,6 +62,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Network;
         /// <summary>
+        /// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        public readonly string? NetworkAttachment;
+        /// <summary>
         /// The private IP address to assign to the instance. If
         /// empty, the address will be automatically assigned.
         /// </summary>
@@ -61,6 +74,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
         /// </summary>
         public readonly string? NicType;
+        /// <summary>
+        /// Name of the parent network interface of a dynamic network interface.
+        /// </summary>
+        public readonly string? ParentNicName;
         /// <summary>
         /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         /// </summary>
@@ -80,6 +97,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// If it is not provided, the provider project is used.
         /// </summary>
         public readonly string? SubnetworkProject;
+        /// <summary>
+        /// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        /// </summary>
+        public readonly int? Vlan;
 
         [OutputConstructor]
         private RegionInstanceTemplateNetworkInterface(
@@ -101,9 +122,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? network,
 
+            string? networkAttachment,
+
             string? networkIp,
 
             string? nicType,
+
+            string? parentNicName,
 
             int? queueCount,
 
@@ -111,7 +136,9 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? subnetwork,
 
-            string? subnetworkProject)
+            string? subnetworkProject,
+
+            int? vlan)
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
@@ -122,12 +149,15 @@ namespace Pulumi.Gcp.Compute.Outputs
             Ipv6Address = ipv6Address;
             Name = name;
             Network = network;
+            NetworkAttachment = networkAttachment;
             NetworkIp = networkIp;
             NicType = nicType;
+            ParentNicName = parentNicName;
             QueueCount = queueCount;
             StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
+            Vlan = vlan;
         }
     }
 }

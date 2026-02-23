@@ -41,6 +41,7 @@ class FirewallArgs:
                  target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Firewall resource.
+
         :param pulumi.Input[_builtins.str] network: The name or self_link of the network to attach this firewall to.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]] allows: The list of ALLOW rules specified by this firewall. Each rule
                specifies a protocol and port-range tuple that describes a permitted
@@ -474,6 +475,7 @@ class _FirewallState:
                  target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Firewall resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]] allows: The list of ALLOW rules specified by this firewall. Each rule
                specifies a protocol and port-range tuple that describes a permitted
                connection.
@@ -1013,24 +1015,17 @@ class Firewall(pulumi.CustomResource):
         Firewall can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/firewalls/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Firewall can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/firewall:Firewall default projects/{{project}}/global/firewalls/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/firewall:Firewall default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/firewall:Firewall default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1200,24 +1195,17 @@ class Firewall(pulumi.CustomResource):
         Firewall can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/firewalls/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Firewall can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/firewall:Firewall default projects/{{project}}/global/firewalls/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/firewall:Firewall default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/firewall:Firewall default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallArgs args: The arguments to use to populate this resource's properties.

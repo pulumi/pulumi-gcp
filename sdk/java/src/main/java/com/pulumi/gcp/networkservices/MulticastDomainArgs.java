@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.inputs.MulticastDomainConnectionConfigArgs;
+import com.pulumi.gcp.networkservices.inputs.MulticastDomainUllMulticastDomainArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -160,6 +161,23 @@ public final class MulticastDomainArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Information for an Ultra-Low-Latency multicast domain.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="ullMulticastDomain")
+    private @Nullable Output<MulticastDomainUllMulticastDomainArgs> ullMulticastDomain;
+
+    /**
+     * @return Information for an Ultra-Low-Latency multicast domain.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<MulticastDomainUllMulticastDomainArgs>> ullMulticastDomain() {
+        return Optional.ofNullable(this.ullMulticastDomain);
+    }
+
     private MulticastDomainArgs() {}
 
     private MulticastDomainArgs(MulticastDomainArgs $) {
@@ -171,6 +189,7 @@ public final class MulticastDomainArgs extends com.pulumi.resources.ResourceArgs
         this.multicastDomainGroup = $.multicastDomainGroup;
         this.multicastDomainId = $.multicastDomainId;
         this.project = $.project;
+        this.ullMulticastDomain = $.ullMulticastDomain;
     }
 
     public static Builder builder() {
@@ -379,6 +398,29 @@ public final class MulticastDomainArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param ullMulticastDomain Information for an Ultra-Low-Latency multicast domain.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ullMulticastDomain(@Nullable Output<MulticastDomainUllMulticastDomainArgs> ullMulticastDomain) {
+            $.ullMulticastDomain = ullMulticastDomain;
+            return this;
+        }
+
+        /**
+         * @param ullMulticastDomain Information for an Ultra-Low-Latency multicast domain.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ullMulticastDomain(MulticastDomainUllMulticastDomainArgs ullMulticastDomain) {
+            return ullMulticastDomain(Output.of(ullMulticastDomain));
         }
 
         public MulticastDomainArgs build() {

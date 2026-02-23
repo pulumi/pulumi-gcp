@@ -24,6 +24,7 @@ class FolderArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Folder resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket that contains the folder.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, items within folder if any will be force destroyed.
         :param pulumi.Input[_builtins.str] name: The name of the folder expressed as a path. Must include
@@ -85,6 +86,7 @@ class _FolderState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket that contains the folder.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which this folder was created.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, items within folder if any will be force destroyed.
@@ -244,18 +246,15 @@ class Folder(pulumi.CustomResource):
         Folder can be imported using any of these accepted formats:
 
         * `{{bucket}}/folders/{{name}}`
-
         * `{{bucket}}/{{name}}`
 
         When using the `pulumi import` command, Folder can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/folder:Folder default {{bucket}}/folders/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/folder:Folder default {{bucket}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -309,18 +308,15 @@ class Folder(pulumi.CustomResource):
         Folder can be imported using any of these accepted formats:
 
         * `{{bucket}}/folders/{{name}}`
-
         * `{{bucket}}/{{name}}`
 
         When using the `pulumi import` command, Folder can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/folder:Folder default {{bucket}}/folders/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/folder:Folder default {{bucket}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FolderArgs args: The arguments to use to populate this resource's properties.

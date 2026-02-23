@@ -113,6 +113,243 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Vmware Engine Cluster Nfs Datastore Filestore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * // Use this network for filestore instance
+ * const fsNetwork = gcp.compute.getNetwork({
+ *     name: "filestore_nw",
+ * });
+ * // Create a filestore instance with delete protection enabled
+ * //### Use ip range of private cloud service subnet in the 'nfs_export_options'
+ * const testInstance = new gcp.filestore.Instance("test_instance", {
+ *     name: "test-fs-filestore",
+ *     location: "",
+ *     tier: "ZONAL",
+ *     deletionProtectionEnabled: "yes",
+ *     fileShares: {
+ *         capacityGb: 1024,
+ *         name: "share101",
+ *         nfsExportOptions: [{
+ *             ipRanges: ["10.0.0.0/24"],
+ *         }],
+ *     },
+ *     networks: [{
+ *         network: fsNetwork.then(fsNetwork => fsNetwork.id),
+ *         modes: ["MODE_IPV4"],
+ *         connectMode: "PRIVATE_SERVICE_ACCESS",
+ *     }],
+ * });
+ * const cluster_nw = new gcp.vmwareengine.Network("cluster-nw", {
+ *     name: "pc-nw",
+ *     type: "STANDARD",
+ *     location: "global",
+ *     description: "PC network description.",
+ * });
+ * const cluster_pc = new gcp.vmwareengine.PrivateCloud("cluster-pc", {
+ *     location: "",
+ *     name: "sample-pc",
+ *     description: "Sample test PC.",
+ *     networkConfig: {
+ *         managementCidr: "192.168.30.0/24",
+ *         vmwareEngineNetwork: cluster_nw.id,
+ *     },
+ *     managementCluster: {
+ *         clusterId: "sample-mgmt-cluster",
+ *         nodeTypeConfigs: [{
+ *             nodeTypeId: "standard-72",
+ *             nodeCount: 3,
+ *             customCoreCount: 32,
+ *         }],
+ *     },
+ * });
+ * // Update service subnet
+ * //###  Service subnet is used by nfs datastore mounts
+ * //### ip_cidr_range configured on subnet must also be allowed in filestore instance's 'nfs_export_options'
+ * const cluster_pc_subnet = new gcp.vmwareengine.Subnet("cluster-pc-subnet", {
+ *     name: "service-1",
+ *     parent: cluster_pc.id,
+ *     ipCidrRange: "10.0.0.0/24",
+ * });
+ * // Read network peering
+ * //### This peering is created by filestore instance
+ * const snPeering = fsNetwork.then(fsNetwork => gcp.compute.getNetworkPeering({
+ *     name: "servicenetworking-googleapis-com",
+ *     network: fsNetwork.id,
+ * }));
+ * // Create vmware engine network peering
+ * //## vmware network peering is required for filestore mount on cluster
+ * const psaNetworkPeering = new gcp.vmwareengine.NetworkPeering("psa_network_peering", {
+ *     name: "tf-test-psa-network-peering",
+ *     description: "test description",
+ *     vmwareEngineNetwork: cluster_nw.id,
+ *     peerNetwork: snPeering.then(snPeering => std.trimprefix({
+ *         input: snPeering.peerNetwork,
+ *         prefix: "https://www.googleapis.com/compute/v1",
+ *     })).then(invoke => invoke.result),
+ *     peerNetworkType: "PRIVATE_SERVICES_ACCESS",
+ * });
+ * const testFsDatastore = new gcp.vmwareengine.Datastore("test_fs_datastore", {
+ *     name: "ext-fs-datastore",
+ *     location: "",
+ *     description: "test description",
+ *     nfsDatastore: {
+ *         googleFileService: {
+ *             filestoreInstance: testInstance.id,
+ *         },
+ *     },
+ * });
+ * const vmw_ext_cluster = new gcp.vmwareengine.Cluster("vmw-ext-cluster", {
+ *     name: "ext-cluster",
+ *     parent: cluster_pc.id,
+ *     nodeTypeConfigs: [{
+ *         nodeTypeId: "standard-72",
+ *         nodeCount: 3,
+ *     }],
+ *     datastoreMountConfigs: [{
+ *         datastore: testFsDatastore.id,
+ *         datastoreNetwork: {
+ *             subnet: cluster_pc_subnet.id,
+ *             connectionCount: 4,
+ *             mtu: 1500,
+ *         },
+ *         nfsVersion: "NFS_V3",
+ *         accessMode: "READ_WRITE",
+ *         ignoreColocation: false,
+ *     }],
+ * }, {
+ *     dependsOn: [psaNetworkPeering],
+ * });
+ * ```
+ * ### Vmware Engine Cluster Nfs Datastore Netapp
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * // Use this network for netapp volume
+ * const npNetwork = gcp.compute.getNetwork({
+ *     name: "netapp_nw",
+ * });
+ * const cluster_nw = new gcp.vmwareengine.Network("cluster-nw", {
+ *     name: "pc-nw",
+ *     type: "STANDARD",
+ *     location: "global",
+ *     description: "PC network description.",
+ * });
+ * // Read network peering
+ * //### This peering is created by netapp volume
+ * const snPeering = npNetwork.then(npNetwork => gcp.compute.getNetworkPeering({
+ *     name: "sn-netapp-prod",
+ *     network: npNetwork.id,
+ * }));
+ * // Create vmware engine network peering
+ * //### vmware network peering is required for netapp mount on cluster
+ * const gcnvNetworkPeering = new gcp.vmwareengine.NetworkPeering("gcnv_network_peering", {
+ *     name: "tf-test-gcnv-network-peering",
+ *     description: "test description",
+ *     vmwareEngineNetwork: cluster_nw.id,
+ *     peerNetwork: snPeering.then(snPeering => std.trimprefix({
+ *         input: snPeering.peerNetwork,
+ *         prefix: "https://www.googleapis.com/compute/v1",
+ *     })).then(invoke => invoke.result),
+ *     peerNetworkType: "GOOGLE_CLOUD_NETAPP_VOLUMES",
+ * });
+ * const cluster_pc = new gcp.vmwareengine.PrivateCloud("cluster-pc", {
+ *     location: "",
+ *     name: "sample-pc",
+ *     description: "Sample test PC.",
+ *     networkConfig: {
+ *         managementCidr: "192.168.30.0/24",
+ *         vmwareEngineNetwork: cluster_nw.id,
+ *     },
+ *     managementCluster: {
+ *         clusterId: "sample-mgmt-cluster",
+ *         nodeTypeConfigs: [{
+ *             nodeTypeId: "standard-72",
+ *             nodeCount: 3,
+ *             customCoreCount: 32,
+ *         }],
+ *     },
+ * });
+ * // Update service subnet
+ * //###  Service subnet is used by nfs datastore mounts
+ * //### ip_cidr_range configured on subnet must also be allowed in in netapp volumes's 'export_policy'
+ * const cluster_pc_subnet = new gcp.vmwareengine.Subnet("cluster-pc-subnet", {
+ *     name: "service-1",
+ *     parent: cluster_pc.id,
+ *     ipCidrRange: "10.0.0.0/24",
+ * });
+ * const _default = new gcp.netapp.StoragePool("default", {
+ *     name: "tf-test-test-pool",
+ *     location: "us-west1",
+ *     serviceLevel: "PREMIUM",
+ *     capacityGib: "2048",
+ *     network: npNetwork.then(npNetwork => npNetwork.id),
+ * });
+ * // Create a netapp volume with delete protection enabled
+ * //## Use ip range of private cloud service subnet in the 'export_policy'
+ * const testVolume = new gcp.netapp.Volume("test_volume", {
+ *     location: "us-west1",
+ *     name: "tf-test-test-volume",
+ *     capacityGib: "100",
+ *     shareName: "tf-test-test-volume",
+ *     storagePool: _default.name,
+ *     protocols: ["NFSV3"],
+ *     exportPolicy: {
+ *         rules: [{
+ *             accessType: "READ_WRITE",
+ *             allowedClients: "10.0.0.0/24",
+ *             hasRootAccess: "true",
+ *             kerberos5ReadOnly: false,
+ *             kerberos5ReadWrite: false,
+ *             kerberos5iReadOnly: false,
+ *             kerberos5iReadWrite: false,
+ *             kerberos5pReadOnly: false,
+ *             kerberos5pReadWrite: false,
+ *             nfsv3: true,
+ *             nfsv4: false,
+ *         }],
+ *     },
+ *     restrictedActions: ["DELETE"],
+ * });
+ * const testFsDatastore = new gcp.vmwareengine.Datastore("test_fs_datastore", {
+ *     name: "ext-fs-datastore",
+ *     location: "us-west1",
+ *     description: "example google_file_service.netapp datastore.",
+ *     nfsDatastore: {
+ *         googleFileService: {
+ *             netappVolume: testVolume.id,
+ *         },
+ *     },
+ * });
+ * const vmw_ext_cluster = new gcp.vmwareengine.Cluster("vmw-ext-cluster", {
+ *     name: "ext-cluster",
+ *     parent: cluster_pc.id,
+ *     nodeTypeConfigs: [{
+ *         nodeTypeId: "standard-72",
+ *         nodeCount: 3,
+ *     }],
+ *     datastoreMountConfigs: [{
+ *         datastore: testFsDatastore.id,
+ *         datastoreNetwork: {
+ *             subnet: cluster_pc_subnet.id,
+ *             connectionCount: 4,
+ *             mtu: 1500,
+ *         },
+ *         nfsVersion: "NFS_V3",
+ *         accessMode: "READ_WRITE",
+ *         ignoreColocation: true,
+ *     }],
+ * }, {
+ *     dependsOn: [gcnvNetworkPeering],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -166,6 +403,14 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Optional. Configuration to mount a datastore.
+     * Mount can be done along with cluster create or during cluster update
+     * Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+     * for unmount remove 'datastore_mount_config' config from the update of cluster resource
+     * Structure is documented below.
+     */
+    declare public readonly datastoreMountConfigs: pulumi.Output<outputs.vmwareengine.ClusterDatastoreMountConfig[] | undefined>;
+    /**
      * True if the cluster is a management cluster; false otherwise.
      * There can only be one management cluster in a private cloud and it has to be the first one.
      */
@@ -216,6 +461,7 @@ export class Cluster extends pulumi.CustomResource {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["autoscalingSettings"] = state?.autoscalingSettings;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["datastoreMountConfigs"] = state?.datastoreMountConfigs;
             resourceInputs["management"] = state?.management;
             resourceInputs["name"] = state?.name;
             resourceInputs["nodeTypeConfigs"] = state?.nodeTypeConfigs;
@@ -229,6 +475,7 @@ export class Cluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'parent'");
             }
             resourceInputs["autoscalingSettings"] = args?.autoscalingSettings;
+            resourceInputs["datastoreMountConfigs"] = args?.datastoreMountConfigs;
             resourceInputs["name"] = args?.name;
             resourceInputs["nodeTypeConfigs"] = args?.nodeTypeConfigs;
             resourceInputs["parent"] = args?.parent;
@@ -258,6 +505,14 @@ export interface ClusterState {
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Optional. Configuration to mount a datastore.
+     * Mount can be done along with cluster create or during cluster update
+     * Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+     * for unmount remove 'datastore_mount_config' config from the update of cluster resource
+     * Structure is documented below.
+     */
+    datastoreMountConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterDatastoreMountConfig>[]>;
     /**
      * True if the cluster is a management cluster; false otherwise.
      * There can only be one management cluster in a private cloud and it has to be the first one.
@@ -304,6 +559,14 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     autoscalingSettings?: pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettings>;
+    /**
+     * Optional. Configuration to mount a datastore.
+     * Mount can be done along with cluster create or during cluster update
+     * Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+     * for unmount remove 'datastore_mount_config' config from the update of cluster resource
+     * Structure is documented below.
+     */
+    datastoreMountConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterDatastoreMountConfig>[]>;
     /**
      * The ID of the Cluster.
      */

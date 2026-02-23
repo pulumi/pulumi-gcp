@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerBuildInfo;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerEnv;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerLivenessProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerPort;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerReadinessProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerResource;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerSourceCode;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerStartupProbe;
@@ -71,6 +72,11 @@ public final class GetServiceTemplateContainer {
      * 
      */
     private List<GetServiceTemplateContainerPort> ports;
+    /**
+     * @return Periodic probe of container readiness.
+     * 
+     */
+    private List<GetServiceTemplateContainerReadinessProbe> readinessProbes;
     /**
      * @return Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
      * 
@@ -171,6 +177,13 @@ public final class GetServiceTemplateContainer {
         return this.ports;
     }
     /**
+     * @return Periodic probe of container readiness.
+     * 
+     */
+    public List<GetServiceTemplateContainerReadinessProbe> readinessProbes() {
+        return this.readinessProbes;
+    }
+    /**
      * @return Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
      * 
      */
@@ -225,6 +238,7 @@ public final class GetServiceTemplateContainer {
         private List<GetServiceTemplateContainerLivenessProbe> livenessProbes;
         private String name;
         private List<GetServiceTemplateContainerPort> ports;
+        private List<GetServiceTemplateContainerReadinessProbe> readinessProbes;
         private List<GetServiceTemplateContainerResource> resources;
         private List<GetServiceTemplateContainerSourceCode> sourceCodes;
         private List<GetServiceTemplateContainerStartupProbe> startupProbes;
@@ -243,6 +257,7 @@ public final class GetServiceTemplateContainer {
     	      this.livenessProbes = defaults.livenessProbes;
     	      this.name = defaults.name;
     	      this.ports = defaults.ports;
+    	      this.readinessProbes = defaults.readinessProbes;
     	      this.resources = defaults.resources;
     	      this.sourceCodes = defaults.sourceCodes;
     	      this.startupProbes = defaults.startupProbes;
@@ -352,6 +367,17 @@ public final class GetServiceTemplateContainer {
             return ports(List.of(ports));
         }
         @CustomType.Setter
+        public Builder readinessProbes(List<GetServiceTemplateContainerReadinessProbe> readinessProbes) {
+            if (readinessProbes == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainer", "readinessProbes");
+            }
+            this.readinessProbes = readinessProbes;
+            return this;
+        }
+        public Builder readinessProbes(GetServiceTemplateContainerReadinessProbe... readinessProbes) {
+            return readinessProbes(List.of(readinessProbes));
+        }
+        @CustomType.Setter
         public Builder resources(List<GetServiceTemplateContainerResource> resources) {
             if (resources == null) {
               throw new MissingRequiredPropertyException("GetServiceTemplateContainer", "resources");
@@ -415,6 +441,7 @@ public final class GetServiceTemplateContainer {
             _resultValue.livenessProbes = livenessProbes;
             _resultValue.name = name;
             _resultValue.ports = ports;
+            _resultValue.readinessProbes = readinessProbes;
             _resultValue.resources = resources;
             _resultValue.sourceCodes = sourceCodes;
             _resultValue.startupProbes = startupProbes;

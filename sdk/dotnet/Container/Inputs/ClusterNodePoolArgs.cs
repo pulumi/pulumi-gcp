@@ -155,6 +155,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("upgradeSettings")]
         public Input<Inputs.ClusterNodePoolUpgradeSettingsArgs>? UpgradeSettings { get; set; }
 
+        /// <summary>
+        /// The Kubernetes version for the nodes in this pool. Note that if this field and AutoUpgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the gcp.container.getEngineVersions data source's VersionPrefix field to approximate fuzzy versions in a Terraform-compatible way.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

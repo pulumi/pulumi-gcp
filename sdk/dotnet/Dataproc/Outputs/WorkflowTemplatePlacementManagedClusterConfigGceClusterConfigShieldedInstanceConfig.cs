@@ -14,15 +14,15 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig
     {
         /// <summary>
-        /// Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+        /// Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
         /// </summary>
         public readonly bool? EnableIntegrityMonitoring;
         /// <summary>
-        /// Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+        /// Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
         /// </summary>
         public readonly bool? EnableSecureBoot;
         /// <summary>
-        /// Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+        /// Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
         /// </summary>
         public readonly bool? EnableVtpm;
 

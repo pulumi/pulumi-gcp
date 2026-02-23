@@ -28,6 +28,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ManagementProjectSecurityHealthAnalyticsCustomModule resource.
+
         :param pulumi.Input['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Security Health Analytics custom module. This
@@ -134,6 +135,7 @@ class _ManagementProjectSecurityHealthAnalyticsCustomModuleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagementProjectSecurityHealthAnalyticsCustomModule resources.
+
         :param pulumi.Input[_builtins.str] ancestor_module: If empty, indicates that the custom module was created in the organization,folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
@@ -387,24 +389,17 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
         ProjectSecurityHealthAnalyticsCustomModule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/securityHealthAnalyticsCustomModules/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, ProjectSecurityHealthAnalyticsCustomModule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule default projects/{{project}}/locations/{{location}}/securityHealthAnalyticsCustomModules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -506,24 +501,17 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
         ProjectSecurityHealthAnalyticsCustomModule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/securityHealthAnalyticsCustomModules/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, ProjectSecurityHealthAnalyticsCustomModule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule default projects/{{project}}/locations/{{location}}/securityHealthAnalyticsCustomModules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ManagementProjectSecurityHealthAnalyticsCustomModuleArgs args: The arguments to use to populate this resource's properties.

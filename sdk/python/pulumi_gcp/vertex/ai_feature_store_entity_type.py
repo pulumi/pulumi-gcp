@@ -29,6 +29,7 @@ class AiFeatureStoreEntityTypeArgs:
                  offline_storage_ttl_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a AiFeatureStoreEntityType resource.
+
         :param pulumi.Input[_builtins.str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the EntityType.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs to assign to this EntityType.
@@ -150,6 +151,7 @@ class _AiFeatureStoreEntityTypeState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStoreEntityType resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the EntityType.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -465,6 +467,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/entityTypes/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the EntityType.
@@ -590,6 +593,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/entityTypes/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiFeatureStoreEntityTypeArgs args: The arguments to use to populate this resource's properties.

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.ExternalVpnGatewayArgs;
 import com.pulumi.gcp.compute.inputs.ExternalVpnGatewayState;
 import com.pulumi.gcp.compute.outputs.ExternalVpnGatewayInterface;
+import com.pulumi.gcp.compute.outputs.ExternalVpnGatewayParams;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -178,22 +179,14 @@ import javax.annotation.Nullable;
  * ExternalVpnGateway can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/global/externalVpnGateways/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, ExternalVpnGateway can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default projects/{{project}}/global/externalVpnGateways/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{name}}
  * ```
  * 
@@ -303,6 +296,24 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={ExternalVpnGatewayParams.class}, tree="[0]")
+    private Output</* @Nullable */ ExternalVpnGatewayParams> params;
+
+    /**
+     * @return (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ExternalVpnGatewayParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs.

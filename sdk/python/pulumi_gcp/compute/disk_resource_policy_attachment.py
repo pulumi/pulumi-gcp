@@ -25,6 +25,7 @@ class DiskResourcePolicyAttachmentArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DiskResourcePolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] disk: The name of the disk in which the resource policies are attached to.
         :param pulumi.Input[_builtins.str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
@@ -100,6 +101,7 @@ class _DiskResourcePolicyAttachmentState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DiskResourcePolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] disk: The name of the disk in which the resource policies are attached to.
         :param pulumi.Input[_builtins.str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
@@ -222,30 +224,19 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         DiskResourcePolicyAttachment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}`
-
         * `{{project}}/{{zone}}/{{disk}}/{{name}}`
-
         * `{{zone}}/{{disk}}/{{name}}`
-
         * `{{disk}}/{{name}}`
 
         When using the `pulumi import` command, DiskResourcePolicyAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{project}}/{{zone}}/{{disk}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{zone}}/{{disk}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{disk}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -306,30 +297,19 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         DiskResourcePolicyAttachment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}`
-
         * `{{project}}/{{zone}}/{{disk}}/{{name}}`
-
         * `{{zone}}/{{disk}}/{{name}}`
-
         * `{{disk}}/{{name}}`
 
         When using the `pulumi import` command, DiskResourcePolicyAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{project}}/{{zone}}/{{disk}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{zone}}/{{disk}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{disk}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiskResourcePolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

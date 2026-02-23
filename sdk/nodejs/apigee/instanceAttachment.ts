@@ -20,16 +20,12 @@ import * as utilities from "../utilities";
  * InstanceAttachment can be imported using any of these accepted formats:
  *
  * * `{{instance_id}}/attachments/{{name}}`
- *
  * * `{{instance_id}}/{{name}}`
  *
  * When using the `pulumi import` command, InstanceAttachment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/attachments/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/{{name}}
  * ```
  */

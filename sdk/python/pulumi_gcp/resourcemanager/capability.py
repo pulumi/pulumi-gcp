@@ -24,6 +24,7 @@ class CapabilityArgs:
                  value: pulumi.Input[_builtins.bool]):
         """
         The set of arguments for constructing a Capability resource.
+
         :param pulumi.Input[_builtins.str] capability_name: Capability name that should be updated on the folder.
         :param pulumi.Input[_builtins.str] parent: Folder on which Capability needs to be updated in the format folders/folder_id.
         :param pulumi.Input[_builtins.bool] value: Capability Value.
@@ -77,6 +78,7 @@ class _CapabilityState:
                  value: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Capability resources.
+
         :param pulumi.Input[_builtins.str] capability_name: Capability name that should be updated on the folder.
         :param pulumi.Input[_builtins.str] parent: Folder on which Capability needs to be updated in the format folders/folder_id.
         :param pulumi.Input[_builtins.bool] value: Capability Value.
@@ -171,18 +173,15 @@ class Capability(pulumi.CustomResource):
         Capability can be imported using any of these accepted formats:
 
         * `{{parent}}/capabilities/{{capability_name}}`
-
         * `{{parent}}/{{capability_name}}`
 
         When using the `pulumi import` command, Capability can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:resourcemanager/capability:Capability default {{parent}}/capabilities/{{capability_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:resourcemanager/capability:Capability default {{parent}}/{{capability_name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -232,18 +231,15 @@ class Capability(pulumi.CustomResource):
         Capability can be imported using any of these accepted formats:
 
         * `{{parent}}/capabilities/{{capability_name}}`
-
         * `{{parent}}/{{capability_name}}`
 
         When using the `pulumi import` command, Capability can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:resourcemanager/capability:Capability default {{parent}}/capabilities/{{capability_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:resourcemanager/capability:Capability default {{parent}}/{{capability_name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CapabilityArgs args: The arguments to use to populate this resource's properties.

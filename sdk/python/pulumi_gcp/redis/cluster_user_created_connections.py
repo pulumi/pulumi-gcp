@@ -27,6 +27,7 @@ class ClusterUserCreatedConnectionsArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterUserCreatedConnections resource.
+
         :param pulumi.Input[_builtins.str] region: The name of the region of the Redis cluster these endpoints should be added to.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]] cluster_endpoints: A list of cluster endpoints
                Structure is documented below.
@@ -102,6 +103,7 @@ class _ClusterUserCreatedConnectionsState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClusterUserCreatedConnections resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]] cluster_endpoints: A list of cluster endpoints
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Redis cluster these endpoints should be added to.
@@ -181,6 +183,18 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages user created connections for Redis cluster
+
+        To get more information about ClusterUserCreatedConnections, see:
+
+        * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
+
+        > **Note:** Please ensure your connections meet the requirements outlined at
+        https://cloud.google.com/memorystore/docs/cluster/about-multiple-vpc-networking.
+        If you remove a connections item from the resource, the corresponding forwarding rule will no longer be functioning.
+        If the corresponding forwarding rule is represented in your terraform configuration it is recommended to delete that
+        `compute.ForwardingRule` resource at the same time.
+
         ## Example Usage
 
         ### Redis Cluster User Created Connections
@@ -416,30 +430,19 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         ClusterUserCreatedConnections can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/clusters/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ClusterUserCreatedConnections can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default projects/{{project}}/locations/{{region}}/clusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -457,6 +460,18 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
                  args: ClusterUserCreatedConnectionsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages user created connections for Redis cluster
+
+        To get more information about ClusterUserCreatedConnections, see:
+
+        * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
+
+        > **Note:** Please ensure your connections meet the requirements outlined at
+        https://cloud.google.com/memorystore/docs/cluster/about-multiple-vpc-networking.
+        If you remove a connections item from the resource, the corresponding forwarding rule will no longer be functioning.
+        If the corresponding forwarding rule is represented in your terraform configuration it is recommended to delete that
+        `compute.ForwardingRule` resource at the same time.
+
         ## Example Usage
 
         ### Redis Cluster User Created Connections
@@ -692,30 +707,19 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         ClusterUserCreatedConnections can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/clusters/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ClusterUserCreatedConnections can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default projects/{{project}}/locations/{{region}}/clusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterUserCreatedConnectionsArgs args: The arguments to use to populate this resource's properties.

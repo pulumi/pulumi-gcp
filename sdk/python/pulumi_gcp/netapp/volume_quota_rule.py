@@ -30,6 +30,7 @@ class VolumeQuotaRuleArgs:
                  target: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VolumeQuotaRule resource.
+
         :param pulumi.Input[_builtins.int] disk_limit_mib: The maximum allowed capacity in MiB.
         :param pulumi.Input[_builtins.str] type: Types of Quota Rule.
                Possible values are: `INDIVIDUAL_USER_QUOTA`, `INDIVIDUAL_GROUP_QUOTA`, `DEFAULT_USER_QUOTA`, `DEFAULT_GROUP_QUOTA`.
@@ -206,6 +207,7 @@ class _VolumeQuotaRuleState:
                  volume_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeQuotaRule resources.
+
         :param pulumi.Input[_builtins.str] create_time: Create time of the quota rule. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[_builtins.str] description: Description for the quota rule.
         :param pulumi.Input[_builtins.int] disk_limit_mib: The maximum allowed capacity in MiB.
@@ -504,24 +506,17 @@ class VolumeQuotaRule(pulumi.CustomResource):
         VolumeQuotaRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}`
-
         * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
-
         * `{{location}}/{{volume_name}}/{{name}}`
 
         When using the `pulumi import` command, VolumeQuotaRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{project}}/{{location}}/{{volume_name}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{location}}/{{volume_name}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -597,24 +592,17 @@ class VolumeQuotaRule(pulumi.CustomResource):
         VolumeQuotaRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}`
-
         * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
-
         * `{{location}}/{{volume_name}}/{{name}}`
 
         When using the `pulumi import` command, VolumeQuotaRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{project}}/{{location}}/{{volume_name}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{location}}/{{volume_name}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VolumeQuotaRuleArgs args: The arguments to use to populate this resource's properties.

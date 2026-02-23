@@ -36,6 +36,7 @@ class AddressArgs:
                  subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Address resource.
+
         :param pulumi.Input[_builtins.str] address: The static external IP address represented by this resource.
                The IP address must be inside the specified subnetwork,
                if any. Set by the API if undefined.
@@ -382,6 +383,7 @@ class _AddressState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Address resources.
+
         :param pulumi.Input[_builtins.str] address: The static external IP address represented by this resource.
                The IP address must be inside the specified subnetwork,
                if any. Set by the API if undefined.
@@ -927,30 +929,19 @@ class Address(pulumi.CustomResource):
         Address can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/addresses/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Address can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/address:Address default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/address:Address default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/address:Address default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1131,30 +1122,19 @@ class Address(pulumi.CustomResource):
         Address can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/addresses/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Address can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/address:Address default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/address:Address default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/address:Address default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AddressArgs args: The arguments to use to populate this resource's properties.

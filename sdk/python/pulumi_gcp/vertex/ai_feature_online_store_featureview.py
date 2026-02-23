@@ -32,6 +32,7 @@ class AiFeatureOnlineStoreFeatureviewArgs:
                  vector_search_config: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs']] = None):
         """
         The set of arguments for constructing a AiFeatureOnlineStoreFeatureview resource.
+
         :param pulumi.Input[_builtins.str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview.
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs'] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
@@ -205,6 +206,7 @@ class _AiFeatureOnlineStoreFeatureviewState:
                  vector_search_config: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs']] = None):
         """
         Input properties used for looking up and filtering AiFeatureOnlineStoreFeatureview resources.
+
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs'] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -612,8 +614,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_40472",
-            name="tf-test_44339",
+            project_id="tf-test_55500",
+            name="tf-test_12223",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -823,30 +825,19 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         FeatureOnlineStoreFeatureview can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}`
-
         * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}`
-
         * `{{region}}/{{feature_online_store}}/{{name}}`
-
         * `{{feature_online_store}}/{{name}}`
 
         When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{project}}/{{region}}/{{feature_online_store}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{region}}/{{feature_online_store}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1048,8 +1039,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_40472",
-            name="tf-test_44339",
+            project_id="tf-test_55500",
+            name="tf-test_12223",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -1259,30 +1250,19 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         FeatureOnlineStoreFeatureview can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}`
-
         * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}`
-
         * `{{region}}/{{feature_online_store}}/{{name}}`
-
         * `{{feature_online_store}}/{{name}}`
 
         When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{project}}/{{region}}/{{feature_online_store}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{region}}/{{feature_online_store}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiFeatureOnlineStoreFeatureviewArgs args: The arguments to use to populate this resource's properties.

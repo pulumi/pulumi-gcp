@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.RuntimeConfig
 {
     /// <summary>
+    /// Manages a RuntimeConfig variable in Google Cloud. For more information, see the
+    /// [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
+    /// or the
+    /// [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
     /// ## Example Usage
     /// 
     /// Example creating a RuntimeConfig variable.
@@ -73,22 +81,17 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// ## Import
     /// 
-    /// Runtime Config Variables can be imported using the `name` or full variable name, e.g.
+    /// Runtime Config Variables can be imported using the `Name` or full variable name, e.g.
     /// 
     /// * `projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}`
-    /// 
     /// * `{{config_id}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Runtime Config Variables can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:runtimeconfig/variable:Variable default projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:runtimeconfig/variable:Variable default {{config_id}}/{{name}}
     /// ```
-    /// 
     /// When importing using only the name, the provider project must be set.
     /// </summary>
     [GcpResourceType("gcp:runtimeconfig/variable:Variable")]

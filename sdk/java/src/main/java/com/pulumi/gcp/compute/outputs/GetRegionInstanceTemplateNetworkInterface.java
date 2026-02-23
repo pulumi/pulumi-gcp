@@ -15,6 +15,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegionInstanceTemplateNetworkInterface {
+    /**
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet (this means that ssh provisioners will
+     * not work unless you are running Terraform can send traffic to the instance&#39;s
+     * network (e.g. via tunnel or because it is running on another cloud instance
+     * on that network). This block can be repeated multiple times. Structure documented below.
+     * 
+     */
     private List<GetRegionInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
     /**
      * @return An
@@ -61,6 +70,11 @@ public final class GetRegionInstanceTemplateNetworkInterface {
      */
     private String network;
     /**
+     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * 
+     */
+    private String networkAttachment;
+    /**
      * @return The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
      * 
@@ -71,6 +85,11 @@ public final class GetRegionInstanceTemplateNetworkInterface {
      * 
      */
     private String nicType;
+    /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    private String parentNicName;
     /**
      * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
      * 
@@ -94,8 +113,22 @@ public final class GetRegionInstanceTemplateNetworkInterface {
      * 
      */
     private String subnetworkProject;
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    private Integer vlan;
 
     private GetRegionInstanceTemplateNetworkInterface() {}
+    /**
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet (this means that ssh provisioners will
+     * not work unless you are running Terraform can send traffic to the instance&#39;s
+     * network (e.g. via tunnel or because it is running on another cloud instance
+     * on that network). This block can be repeated multiple times. Structure documented below.
+     * 
+     */
     public List<GetRegionInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs() {
         return this.accessConfigs;
     }
@@ -160,6 +193,13 @@ public final class GetRegionInstanceTemplateNetworkInterface {
         return this.network;
     }
     /**
+     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * 
+     */
+    public String networkAttachment() {
+        return this.networkAttachment;
+    }
+    /**
      * @return The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
      * 
@@ -173,6 +213,13 @@ public final class GetRegionInstanceTemplateNetworkInterface {
      */
     public String nicType() {
         return this.nicType;
+    }
+    /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    public String parentNicName() {
+        return this.parentNicName;
     }
     /**
      * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
@@ -205,6 +252,13 @@ public final class GetRegionInstanceTemplateNetworkInterface {
     public String subnetworkProject() {
         return this.subnetworkProject;
     }
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    public Integer vlan() {
+        return this.vlan;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -224,12 +278,15 @@ public final class GetRegionInstanceTemplateNetworkInterface {
         private String ipv6Address;
         private String name;
         private String network;
+        private String networkAttachment;
         private String networkIp;
         private String nicType;
+        private String parentNicName;
         private Integer queueCount;
         private String stackType;
         private String subnetwork;
         private String subnetworkProject;
+        private Integer vlan;
         public Builder() {}
         public Builder(GetRegionInstanceTemplateNetworkInterface defaults) {
     	      Objects.requireNonNull(defaults);
@@ -242,12 +299,15 @@ public final class GetRegionInstanceTemplateNetworkInterface {
     	      this.ipv6Address = defaults.ipv6Address;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.networkAttachment = defaults.networkAttachment;
     	      this.networkIp = defaults.networkIp;
     	      this.nicType = defaults.nicType;
+    	      this.parentNicName = defaults.parentNicName;
     	      this.queueCount = defaults.queueCount;
     	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
     	      this.subnetworkProject = defaults.subnetworkProject;
+    	      this.vlan = defaults.vlan;
         }
 
         @CustomType.Setter
@@ -332,6 +392,14 @@ public final class GetRegionInstanceTemplateNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder networkAttachment(String networkAttachment) {
+            if (networkAttachment == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "networkAttachment");
+            }
+            this.networkAttachment = networkAttachment;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkIp(String networkIp) {
             if (networkIp == null) {
               throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "networkIp");
@@ -345,6 +413,14 @@ public final class GetRegionInstanceTemplateNetworkInterface {
               throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "nicType");
             }
             this.nicType = nicType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parentNicName(String parentNicName) {
+            if (parentNicName == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "parentNicName");
+            }
+            this.parentNicName = parentNicName;
             return this;
         }
         @CustomType.Setter
@@ -379,6 +455,14 @@ public final class GetRegionInstanceTemplateNetworkInterface {
             this.subnetworkProject = subnetworkProject;
             return this;
         }
+        @CustomType.Setter
+        public Builder vlan(Integer vlan) {
+            if (vlan == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "vlan");
+            }
+            this.vlan = vlan;
+            return this;
+        }
         public GetRegionInstanceTemplateNetworkInterface build() {
             final var _resultValue = new GetRegionInstanceTemplateNetworkInterface();
             _resultValue.accessConfigs = accessConfigs;
@@ -390,12 +474,15 @@ public final class GetRegionInstanceTemplateNetworkInterface {
             _resultValue.ipv6Address = ipv6Address;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.networkAttachment = networkAttachment;
             _resultValue.networkIp = networkIp;
             _resultValue.nicType = nicType;
+            _resultValue.parentNicName = parentNicName;
             _resultValue.queueCount = queueCount;
             _resultValue.stackType = stackType;
             _resultValue.subnetwork = subnetwork;
             _resultValue.subnetworkProject = subnetworkProject;
+            _resultValue.vlan = vlan;
             return _resultValue;
         }
     }

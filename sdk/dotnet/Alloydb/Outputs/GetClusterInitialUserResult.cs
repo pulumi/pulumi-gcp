@@ -18,6 +18,14 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// </summary>
         public readonly string Password;
         /// <summary>
+        /// The initial password for the user.
+        /// </summary>
+        public readonly string PasswordWo;
+        /// <summary>
+        /// Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string PasswordWoVersion;
+        /// <summary>
         /// The database username.
         /// </summary>
         public readonly string User;
@@ -26,9 +34,15 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         private GetClusterInitialUserResult(
             string password,
 
+            string passwordWo,
+
+            string passwordWoVersion,
+
             string user)
         {
             Password = password;
+            PasswordWo = passwordWo;
+            PasswordWoVersion = passwordWoVersion;
             User = user;
         }
     }

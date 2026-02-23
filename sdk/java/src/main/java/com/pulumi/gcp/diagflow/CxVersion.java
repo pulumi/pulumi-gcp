@@ -89,16 +89,12 @@ import javax.annotation.Nullable;
  * Version can be imported using any of these accepted formats:
  * 
  * * `{{parent}}/versions/{{name}}`
- * 
  * * `{{parent}}/{{name}}`
  * 
  * When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/versions/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/{{name}}
  * ```
  * 

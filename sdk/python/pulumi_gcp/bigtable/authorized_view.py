@@ -29,8 +29,11 @@ class AuthorizedViewArgs:
                  subset_view: Optional[pulumi.Input['AuthorizedViewSubsetViewArgs']] = None):
         """
         The set of arguments for constructing a AuthorizedView resource.
+
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
         :param pulumi.Input[_builtins.str] table_name: The name of the Bigtable table in which the authorized view belongs.
+        :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+               If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] name: The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -76,6 +79,10 @@ class AuthorizedViewArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+        If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -133,6 +140,9 @@ class _AuthorizedViewState:
                  table_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthorizedView resources.
+
+        :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+               If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
         :param pulumi.Input[_builtins.str] name: The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
@@ -158,6 +168,10 @@ class _AuthorizedViewState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+        If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -242,6 +256,15 @@ class AuthorizedView(pulumi.CustomResource):
                  table_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Creates a Google Cloud Bigtable authorized view inside a table. For more information see
+        [the official documentation](https://cloud.google.com/bigtable/) and
+        [API](https://cloud.google.com/bigtable/docs/go/reference).
+
+        > **Note:** It is strongly recommended to set `lifecycle { prevent_destroy = true }`
+        on authorized views in order to prevent accidental data loss. See
+        Terraform docs
+        for more information on lifecycle parameters.
+
         ## Example Usage
 
         ```python
@@ -301,27 +324,22 @@ class AuthorizedView(pulumi.CustomResource):
         Bigtable Authorized Views can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance_name}}/tables/{{table_name}}/authorizedViews/{{name}}`
-
         * `{{project}}/{{instance_name}}/{{table_name}}/{{name}}`
-
         * `{{instance_name}}/{{table_name}}/{{name}}`
 
         When using the `pulumi import` command, Bigtable Authorized Views can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default projects/{{project}}/instances/{{instance_name}}/tables/{{table_name}}/authorizedViews/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{project}}/{{instance_name}}/{{table_name}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{instance_name}}/{{table_name}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+               If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
         :param pulumi.Input[_builtins.str] name: The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
@@ -338,6 +356,15 @@ class AuthorizedView(pulumi.CustomResource):
                  args: AuthorizedViewArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Creates a Google Cloud Bigtable authorized view inside a table. For more information see
+        [the official documentation](https://cloud.google.com/bigtable/) and
+        [API](https://cloud.google.com/bigtable/docs/go/reference).
+
+        > **Note:** It is strongly recommended to set `lifecycle { prevent_destroy = true }`
+        on authorized views in order to prevent accidental data loss. See
+        Terraform docs
+        for more information on lifecycle parameters.
+
         ## Example Usage
 
         ```python
@@ -397,24 +424,17 @@ class AuthorizedView(pulumi.CustomResource):
         Bigtable Authorized Views can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance_name}}/tables/{{table_name}}/authorizedViews/{{name}}`
-
         * `{{project}}/{{instance_name}}/{{table_name}}/{{name}}`
-
         * `{{instance_name}}/{{table_name}}/{{name}}`
 
         When using the `pulumi import` command, Bigtable Authorized Views can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default projects/{{project}}/instances/{{instance_name}}/tables/{{table_name}}/authorizedViews/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{project}}/{{instance_name}}/{{table_name}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{instance_name}}/{{table_name}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuthorizedViewArgs args: The arguments to use to populate this resource's properties.
@@ -479,6 +499,8 @@ class AuthorizedView(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+               If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
         :param pulumi.Input[_builtins.str] name: The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
@@ -503,6 +525,10 @@ class AuthorizedView(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[_builtins.str]:
+        """
+        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+        If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property

@@ -7,6 +7,17 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Instance of a metadata store. Contains a set of metadata that can be queried.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about MetadataStore, see:
+ *
+ * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.metadataStores)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ *
  * ## Example Usage
  *
  * ### Vertex Ai Metadata Store
@@ -27,28 +38,16 @@ import * as utilities from "../utilities";
  * MetadataStore can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{region}}/metadataStores/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, MetadataStore can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default projects/{{project}}/locations/{{region}}/metadataStores/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{name}}
  * ```
  */

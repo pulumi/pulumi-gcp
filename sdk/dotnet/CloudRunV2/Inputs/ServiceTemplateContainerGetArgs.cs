@@ -109,6 +109,13 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<Inputs.ServiceTemplateContainerPortsGetArgs>? Ports { get; set; }
 
         /// <summary>
+        /// Periodic probe of container readiness.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("readinessProbe")]
+        public Input<Inputs.ServiceTemplateContainerReadinessProbeGetArgs>? ReadinessProbe { get; set; }
+
+        /// <summary>
         /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         /// Structure is documented below.
         /// </summary>

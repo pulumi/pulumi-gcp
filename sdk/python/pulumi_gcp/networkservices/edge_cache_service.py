@@ -35,6 +35,7 @@ class EdgeCacheServiceArgs:
                  ssl_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EdgeCacheService resource.
+
         :param pulumi.Input['EdgeCacheServiceRoutingArgs'] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
@@ -264,6 +265,7 @@ class _EdgeCacheServiceState:
                  ssl_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EdgeCacheService resources.
+
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[_builtins.bool] disable_http2: Disables HTTP/2.
                HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
@@ -934,24 +936,17 @@ class EdgeCacheService(pulumi.CustomResource):
         EdgeCacheService can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/edgeCacheServices/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, EdgeCacheService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default projects/{{project}}/locations/global/edgeCacheServices/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1367,24 +1362,17 @@ class EdgeCacheService(pulumi.CustomResource):
         EdgeCacheService can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/edgeCacheServices/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, EdgeCacheService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default projects/{{project}}/locations/global/edgeCacheServices/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EdgeCacheServiceArgs args: The arguments to use to populate this resource's properties.

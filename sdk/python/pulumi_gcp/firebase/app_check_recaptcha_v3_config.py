@@ -25,6 +25,7 @@ class AppCheckRecaptchaV3ConfigArgs:
                  token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppCheckRecaptchaV3Config resource.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of an
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
         :param pulumi.Input[_builtins.str] site_secret: The site secret used to identify your service for reCAPTCHA v3 verification.
@@ -109,6 +110,7 @@ class _AppCheckRecaptchaV3ConfigState:
                  token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppCheckRecaptchaV3Config resources.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of an
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
         :param pulumi.Input[_builtins.str] name: The relative resource name of the reCAPTCHA V3 configuration object
@@ -263,24 +265,17 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
         RecaptchaV3Config can be imported using any of these accepted formats:
 
         * `projects/{{project}}/apps/{{app_id}}/recaptchaV3Config`
-
         * `{{project}}/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, RecaptchaV3Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default projects/{{project}}/apps/{{app_id}}/recaptchaV3Config
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default {{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default {{app_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -339,24 +334,17 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
         RecaptchaV3Config can be imported using any of these accepted formats:
 
         * `projects/{{project}}/apps/{{app_id}}/recaptchaV3Config`
-
         * `{{project}}/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, RecaptchaV3Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default projects/{{project}}/apps/{{app_id}}/recaptchaV3Config
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default {{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default {{app_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppCheckRecaptchaV3ConfigArgs args: The arguments to use to populate this resource's properties.

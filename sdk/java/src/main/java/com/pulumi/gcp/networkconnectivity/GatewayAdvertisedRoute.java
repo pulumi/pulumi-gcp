@@ -18,6 +18,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A gateway advertised route is a route that a gateway spoke advertises somewhere.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about GatewayAdvertisedRoute, see:
+ * 
+ * * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes.gatewayAdvertisedRoutes)
+ * * How-to Guides
+ *     * [QUICKSTART_TITLE](https://docs.cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ncc-gateway-overview)
+ * 
  * ## Example Usage
  * 
  * ### Network Connectivity Gateway Advertised Route Basic
@@ -59,7 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
- *             .name("tf-test-subnet_32270")
+ *             .name("tf-test-subnet_42503")
  *             .ipCidrRange("10.0.0.0/28")
  *             .region("us-central1")
  *             .network(network.selfLink())
@@ -108,22 +119,14 @@ import javax.annotation.Nullable;
  * GatewayAdvertisedRoute can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{spoke}}/{{name}}`
- * 
  * * `{{location}}/{{spoke}}/{{name}}`
  * 
  * When using the `pulumi import` command, GatewayAdvertisedRoute can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{project}}/{{location}}/{{spoke}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{location}}/{{spoke}}/{{name}}
  * ```
  * 

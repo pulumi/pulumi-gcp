@@ -15,6 +15,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Google Cloud Firebase Apple application instance
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about AppleApp, see:
+ * 
+ * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/docs/ios/setup)
+ * 
  * ## Example Usage
  * 
  * ### Firebase Apple App Basic
@@ -109,34 +120,18 @@ import javax.annotation.Nullable;
  * AppleApp can be imported using any of these accepted formats:
  * 
  * * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
- * 
  * * `projects/{{project}}/iosApps/{{app_id}}`
- * 
  * * `{{project}}/{{project}}/{{app_id}}`
- * 
  * * `iosApps/{{app_id}}`
- * 
  * * `{{app_id}}`
  * 
  * When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
  * 
  * ```sh
- * $ pulumi import gcp:firebase/appleApp:AppleApp default &#34;{{project}} projects/{{project}}/iosApps/{{app_id}}&#34;
- * ```
- * 
- * ```sh
+ * $ terraform import google_firebase_apple_app.default &#34;{{project}} projects/{{project}}/iosApps/{{app_id}}&#34;
  * $ pulumi import gcp:firebase/appleApp:AppleApp default projects/{{project}}/iosApps/{{app_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}}/{{project}}/{{app_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/appleApp:AppleApp default iosApps/{{app_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/appleApp:AppleApp default {{app_id}}
  * ```
  * 
@@ -205,9 +200,21 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
     public Output<String> bundleId() {
         return this.bundleId;
     }
+    /**
+     * (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
+     * rather than deleted upon `terraform destroy`. This is useful because the Apple may be
+     * serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+     * 
+     */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 
+    /**
+     * @return (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
+     * rather than deleted upon `terraform destroy`. This is useful because the Apple may be
+     * serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+     * 
+     */
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
     }

@@ -33,6 +33,18 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * Manages a VM instance resource within GCE. For more information see
+ * [the official documentation](https://cloud.google.com/compute/docs/instances)
+ * and
+ * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+ * 
+ * This resource is specifically to create a compute instance from a given
+ * `sourceMachineImage`. To create an instance without a machine image, use the
+ * `gcp.compute.Instance` resource.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -87,9 +99,17 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
     public Output<InstanceFromMachineImageAdvancedMachineFeatures> advancedMachineFeatures() {
         return this.advancedMachineFeatures;
     }
+    /**
+     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     * 
+     */
     @Export(name="allowStoppingForUpdate", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowStoppingForUpdate;
 
+    /**
+     * @return If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+     * 
+     */
     public Output<Boolean> allowStoppingForUpdate() {
         return this.allowStoppingForUpdate;
     }
@@ -237,9 +257,17 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
     public Output<String> desiredStatus() {
         return this.desiredStatus;
     }
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }

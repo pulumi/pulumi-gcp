@@ -11,7 +11,10 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.biglake.inputs.GetIcebergCatalogIamPolicyArgs;
 import com.pulumi.gcp.biglake.inputs.GetIcebergCatalogIamPolicyPlainArgs;
+import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyArgs;
+import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyPlainArgs;
 import com.pulumi.gcp.biglake.outputs.GetIcebergCatalogIamPolicyResult;
+import com.pulumi.gcp.biglake.outputs.GetIcebergNamespaceIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class BiglakeFunctions {
@@ -219,5 +222,40 @@ public final class BiglakeFunctions {
      */
     public static CompletableFuture<GetIcebergCatalogIamPolicyResult> getIcebergCatalogIamPolicyPlain(GetIcebergCatalogIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:biglake/getIcebergCatalogIamPolicy:getIcebergCatalogIamPolicy", TypeShape.of(GetIcebergCatalogIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for icebergnamespace
+     * 
+     */
+    public static Output<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs args) {
+        return getIcebergNamespaceIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for icebergnamespace
+     * 
+     */
+    public static CompletableFuture<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicyPlain(GetIcebergNamespaceIamPolicyPlainArgs args) {
+        return getIcebergNamespaceIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for icebergnamespace
+     * 
+     */
+    public static Output<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy", TypeShape.of(GetIcebergNamespaceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for icebergnamespace
+     * 
+     */
+    public static Output<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy", TypeShape.of(GetIcebergNamespaceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for icebergnamespace
+     * 
+     */
+    public static CompletableFuture<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicyPlain(GetIcebergNamespaceIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy", TypeShape.of(GetIcebergNamespaceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

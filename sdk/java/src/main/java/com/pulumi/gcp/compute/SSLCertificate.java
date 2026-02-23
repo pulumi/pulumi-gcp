@@ -27,6 +27,9 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
  * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `privateKeyWo`.
+ * Read more about Write-only Arguments.
+ * 
  * ## Example Usage
  * 
  * ## Import
@@ -34,22 +37,14 @@ import javax.annotation.Nullable;
  * SslCertificate can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/global/sslCertificates/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, SslCertificate can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default projects/{{project}}/global/sslCertificates/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{name}}
  * ```
  * 
@@ -194,15 +189,53 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="privateKey", refs={String.class}, tree="[0]")
-    private Output<String> privateKey;
+    private Output</* @Nullable */ String> privateKey;
 
     /**
      * @return The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> privateKey() {
-        return this.privateKey;
+    public Output<Optional<String>> privateKey() {
+        return Codegen.optional(this.privateKey);
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The write-only private key in PEM format.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+     * 
+     */
+    @Export(name="privateKeyWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> privateKeyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The write-only private key in PEM format.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+     * 
+     */
+    public Output<Optional<String>> privateKeyWo() {
+        return Codegen.optional(this.privateKeyWo);
+    }
+    /**
+     * Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Export(name="privateKeyWoVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> privateKeyWoVersion;
+
+    /**
+     * @return Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Output<Optional<String>> privateKeyWoVersion() {
+        return Codegen.optional(this.privateKeyWoVersion);
     }
     /**
      * The ID of the project in which the resource belongs.
@@ -276,7 +309,8 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
                 "certificate",
-                "privateKey"
+                "privateKey",
+                "privateKeyWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

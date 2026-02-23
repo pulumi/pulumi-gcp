@@ -28,9 +28,11 @@ class MulticastDomainArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  multicast_domain_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 ull_multicast_domain: Optional[pulumi.Input['MulticastDomainUllMulticastDomainArgs']] = None):
         """
         The set of arguments for constructing a MulticastDomain resource.
+
         :param pulumi.Input[_builtins.str] admin_network: The resource name of the multicast admin VPC network.
                Use the following format:
                `projects/{project}/locations/global/networks/{network}`.
@@ -50,6 +52,8 @@ class MulticastDomainArgs:
                `projects/{project}/locations/global/multicastDomainGroups/{multicast_domain_group}`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['MulticastDomainUllMulticastDomainArgs'] ull_multicast_domain: Information for an Ultra-Low-Latency multicast domain.
+               Structure is documented below.
         """
         pulumi.set(__self__, "admin_network", admin_network)
         pulumi.set(__self__, "connection_config", connection_config)
@@ -63,6 +67,8 @@ class MulticastDomainArgs:
             pulumi.set(__self__, "multicast_domain_group", multicast_domain_group)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if ull_multicast_domain is not None:
+            pulumi.set(__self__, "ull_multicast_domain", ull_multicast_domain)
 
     @_builtins.property
     @pulumi.getter(name="adminNetwork")
@@ -171,6 +177,19 @@ class MulticastDomainArgs:
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="ullMulticastDomain")
+    def ull_multicast_domain(self) -> Optional[pulumi.Input['MulticastDomainUllMulticastDomainArgs']]:
+        """
+        Information for an Ultra-Low-Latency multicast domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ull_multicast_domain")
+
+    @ull_multicast_domain.setter
+    def ull_multicast_domain(self, value: Optional[pulumi.Input['MulticastDomainUllMulticastDomainArgs']]):
+        pulumi.set(self, "ull_multicast_domain", value)
+
 
 @pulumi.input_type
 class _MulticastDomainState:
@@ -188,10 +207,12 @@ class _MulticastDomainState:
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  states: Optional[pulumi.Input[Sequence[pulumi.Input['MulticastDomainStateArgs']]]] = None,
+                 ull_multicast_domain: Optional[pulumi.Input['MulticastDomainUllMulticastDomainArgs']] = None,
                  unique_id: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MulticastDomain resources.
+
         :param pulumi.Input[_builtins.str] admin_network: The resource name of the multicast admin VPC network.
                Use the following format:
                `projects/{project}/locations/global/networks/{network}`.
@@ -228,6 +249,8 @@ class _MulticastDomainState:
                UPDATING
                UPDATE_FAILED
                INACTIVE
+        :param pulumi.Input['MulticastDomainUllMulticastDomainArgs'] ull_multicast_domain: Information for an Ultra-Low-Latency multicast domain.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] unique_id: The Google-generated UUID for the resource. This value is
                unique across all multicast domain resources. If a domain is deleted and
                another with the same name is created, the new domain is assigned a
@@ -261,6 +284,8 @@ class _MulticastDomainState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if states is not None:
             pulumi.set(__self__, "states", states)
+        if ull_multicast_domain is not None:
+            pulumi.set(__self__, "ull_multicast_domain", ull_multicast_domain)
         if unique_id is not None:
             pulumi.set(__self__, "unique_id", unique_id)
         if update_time is not None:
@@ -446,6 +471,19 @@ class _MulticastDomainState:
         pulumi.set(self, "states", value)
 
     @_builtins.property
+    @pulumi.getter(name="ullMulticastDomain")
+    def ull_multicast_domain(self) -> Optional[pulumi.Input['MulticastDomainUllMulticastDomainArgs']]:
+        """
+        Information for an Ultra-Low-Latency multicast domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ull_multicast_domain")
+
+    @ull_multicast_domain.setter
+    def ull_multicast_domain(self, value: Optional[pulumi.Input['MulticastDomainUllMulticastDomainArgs']]):
+        pulumi.set(self, "ull_multicast_domain", value)
+
+    @_builtins.property
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -488,6 +526,7 @@ class MulticastDomain(pulumi.CustomResource):
                  multicast_domain_group: Optional[pulumi.Input[_builtins.str]] = None,
                  multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 ull_multicast_domain: Optional[pulumi.Input[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict']]] = None,
                  __props__=None):
         """
         Create a multicast domain in the current project.
@@ -530,24 +569,17 @@ class MulticastDomain(pulumi.CustomResource):
         MulticastDomain can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}`
-
         * `{{project}}/{{location}}/{{multicast_domain_id}}`
-
         * `{{location}}/{{multicast_domain_id}}`
 
         When using the `pulumi import` command, MulticastDomain can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{project}}/{{location}}/{{multicast_domain_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{location}}/{{multicast_domain_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -570,6 +602,8 @@ class MulticastDomain(pulumi.CustomResource):
                exceed 48 characters.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict']] ull_multicast_domain: Information for an Ultra-Low-Latency multicast domain.
+               Structure is documented below.
         """
         ...
     @overload
@@ -618,24 +652,17 @@ class MulticastDomain(pulumi.CustomResource):
         MulticastDomain can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}`
-
         * `{{project}}/{{location}}/{{multicast_domain_id}}`
-
         * `{{location}}/{{multicast_domain_id}}`
 
         When using the `pulumi import` command, MulticastDomain can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{project}}/{{location}}/{{multicast_domain_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{location}}/{{multicast_domain_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MulticastDomainArgs args: The arguments to use to populate this resource's properties.
@@ -660,6 +687,7 @@ class MulticastDomain(pulumi.CustomResource):
                  multicast_domain_group: Optional[pulumi.Input[_builtins.str]] = None,
                  multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 ull_multicast_domain: Optional[pulumi.Input[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -685,6 +713,7 @@ class MulticastDomain(pulumi.CustomResource):
                 raise TypeError("Missing required property 'multicast_domain_id'")
             __props__.__dict__["multicast_domain_id"] = multicast_domain_id
             __props__.__dict__["project"] = project
+            __props__.__dict__["ull_multicast_domain"] = ull_multicast_domain
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
@@ -717,6 +746,7 @@ class MulticastDomain(pulumi.CustomResource):
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MulticastDomainStateArgs', 'MulticastDomainStateArgsDict']]]]] = None,
+            ull_multicast_domain: Optional[pulumi.Input[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict']]] = None,
             unique_id: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'MulticastDomain':
         """
@@ -762,6 +792,8 @@ class MulticastDomain(pulumi.CustomResource):
                UPDATING
                UPDATE_FAILED
                INACTIVE
+        :param pulumi.Input[Union['MulticastDomainUllMulticastDomainArgs', 'MulticastDomainUllMulticastDomainArgsDict']] ull_multicast_domain: Information for an Ultra-Low-Latency multicast domain.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] unique_id: The Google-generated UUID for the resource. This value is
                unique across all multicast domain resources. If a domain is deleted and
                another with the same name is created, the new domain is assigned a
@@ -786,6 +818,7 @@ class MulticastDomain(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["states"] = states
+        __props__.__dict__["ull_multicast_domain"] = ull_multicast_domain
         __props__.__dict__["unique_id"] = unique_id
         __props__.__dict__["update_time"] = update_time
         return MulticastDomain(resource_name, opts=opts, __props__=__props__)
@@ -916,6 +949,15 @@ class MulticastDomain(pulumi.CustomResource):
         INACTIVE
         """
         return pulumi.get(self, "states")
+
+    @_builtins.property
+    @pulumi.getter(name="ullMulticastDomain")
+    def ull_multicast_domain(self) -> pulumi.Output[Optional['outputs.MulticastDomainUllMulticastDomain']]:
+        """
+        Information for an Ultra-Low-Latency multicast domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ull_multicast_domain")
 
     @_builtins.property
     @pulumi.getter(name="uniqueId")

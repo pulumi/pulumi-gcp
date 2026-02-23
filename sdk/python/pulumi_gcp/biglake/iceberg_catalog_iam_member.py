@@ -28,6 +28,7 @@ class IcebergCatalogIamMemberArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IcebergCatalogIamMember resource.
+
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -139,6 +140,7 @@ class _IcebergCatalogIamMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IcebergCatalogIamMember resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -392,9 +394,7 @@ class IcebergCatalogIamMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/catalogs/{{name}}
-
         * {{project}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -402,26 +402,23 @@ class IcebergCatalogIamMember(pulumi.CustomResource):
         Biglake icebergcatalog IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:biglake/icebergCatalogIamMember:IcebergCatalogIamMember editor "projects/{{project}}/catalogs/{{iceberg_catalog}} roles/biglake.editor user:jane@example.com"
+        $ terraform import google_biglake_iceberg_catalog_iam_member.editor "projects/{{project}}/catalogs/{{iceberg_catalog}} roles/biglake.editor user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:biglake/icebergCatalogIamMember:IcebergCatalogIamMember editor "projects/{{project}}/catalogs/{{iceberg_catalog}} roles/biglake.editor"
+        $ terraform import google_biglake_iceberg_catalog_iam_binding.editor "projects/{{project}}/catalogs/{{iceberg_catalog}} roles/biglake.editor"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:biglake/icebergCatalogIamMember:IcebergCatalogIamMember editor projects/{{project}}/catalogs/{{iceberg_catalog}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -574,9 +571,7 @@ class IcebergCatalogIamMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/catalogs/{{name}}
-
         * {{project}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -584,26 +579,23 @@ class IcebergCatalogIamMember(pulumi.CustomResource):
         Biglake icebergcatalog IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:biglake/icebergCatalogIamMember:IcebergCatalogIamMember editor "projects/{{project}}/catalogs/{{iceberg_catalog}} roles/biglake.editor user:jane@example.com"
+        $ terraform import google_biglake_iceberg_catalog_iam_member.editor "projects/{{project}}/catalogs/{{iceberg_catalog}} roles/biglake.editor user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:biglake/icebergCatalogIamMember:IcebergCatalogIamMember editor "projects/{{project}}/catalogs/{{iceberg_catalog}} roles/biglake.editor"
+        $ terraform import google_biglake_iceberg_catalog_iam_binding.editor "projects/{{project}}/catalogs/{{iceberg_catalog}} roles/biglake.editor"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:biglake/icebergCatalogIamMember:IcebergCatalogIamMember editor projects/{{project}}/catalogs/{{iceberg_catalog}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param IcebergCatalogIamMemberArgs args: The arguments to use to populate this resource's properties.

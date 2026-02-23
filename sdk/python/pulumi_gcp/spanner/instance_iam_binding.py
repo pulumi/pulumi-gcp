@@ -28,6 +28,7 @@ class InstanceIAMBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceIAMBinding resource.
+
         :param pulumi.Input[_builtins.str] instance: The name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -134,6 +135,7 @@ class _InstanceIAMBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceIAMBinding resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the instance's IAM policy.
         :param pulumi.Input[_builtins.str] instance: The name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
@@ -312,6 +314,40 @@ class InstanceIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Spanner Instances
+
+        Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
+
+        * `spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+
+        > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+
+        * `spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+        * `spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+
+        > **Note:** `spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `spanner.InstanceIAMBinding` and `spanner.InstanceIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## spanner.InstanceIAMPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        instance = gcp.spanner.InstanceIAMPolicy("instance",
+            instance="your-instance-name",
+            policy_data=admin.policy_data)
+        ```
+
         ## spanner.InstanceIAMBinding
 
         ```python
@@ -338,29 +374,9 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the identifier of the Spanner Instances resource . For example:
-
-        * `{{project}}/{{instance}}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = {{project}}/{{instance}}
-
-          to = google_spanner_instance_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:spanner/instanceIAMBinding:InstanceIAMBinding default {{project}}/{{instance}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -440,6 +456,40 @@ class InstanceIAMBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Spanner Instances
+
+        Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
+
+        * `spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+
+        > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+
+        * `spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+        * `spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+
+        > **Note:** `spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `spanner.InstanceIAMBinding` and `spanner.InstanceIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## spanner.InstanceIAMPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        instance = gcp.spanner.InstanceIAMPolicy("instance",
+            instance="your-instance-name",
+            policy_data=admin.policy_data)
+        ```
+
         ## spanner.InstanceIAMBinding
 
         ```python
@@ -466,29 +516,9 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the identifier of the Spanner Instances resource . For example:
-
-        * `{{project}}/{{instance}}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = {{project}}/{{instance}}
-
-          to = google_spanner_instance_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:spanner/instanceIAMBinding:InstanceIAMBinding default {{project}}/{{instance}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param InstanceIAMBindingArgs args: The arguments to use to populate this resource's properties.

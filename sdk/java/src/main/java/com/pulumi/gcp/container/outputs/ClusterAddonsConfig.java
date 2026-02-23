@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.outputs.ClusterAddonsConfigNetworkPolicyConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigPodSnapshotConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigRayOperatorConfig;
+import com.pulumi.gcp.container.outputs.ClusterAddonsConfigSliceControllerConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigStatefulHaConfig;
 import java.util.List;
 import java.util.Objects;
@@ -161,6 +162,11 @@ public final class ClusterAddonsConfig {
      * 
      */
     private @Nullable List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
+    /**
+     * @return The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+     * 
+     */
+    private @Nullable ClusterAddonsConfigSliceControllerConfig sliceControllerConfig;
     /**
      * @return .
      * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
@@ -336,6 +342,13 @@ public final class ClusterAddonsConfig {
         return this.rayOperatorConfigs == null ? List.of() : this.rayOperatorConfigs;
     }
     /**
+     * @return The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+     * 
+     */
+    public Optional<ClusterAddonsConfigSliceControllerConfig> sliceControllerConfig() {
+        return Optional.ofNullable(this.sliceControllerConfig);
+    }
+    /**
      * @return .
      * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
      * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
@@ -370,6 +383,7 @@ public final class ClusterAddonsConfig {
         private @Nullable ClusterAddonsConfigParallelstoreCsiDriverConfig parallelstoreCsiDriverConfig;
         private @Nullable ClusterAddonsConfigPodSnapshotConfig podSnapshotConfig;
         private @Nullable List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
+        private @Nullable ClusterAddonsConfigSliceControllerConfig sliceControllerConfig;
         private @Nullable ClusterAddonsConfigStatefulHaConfig statefulHaConfig;
         public Builder() {}
         public Builder(ClusterAddonsConfig defaults) {
@@ -390,6 +404,7 @@ public final class ClusterAddonsConfig {
     	      this.parallelstoreCsiDriverConfig = defaults.parallelstoreCsiDriverConfig;
     	      this.podSnapshotConfig = defaults.podSnapshotConfig;
     	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
+    	      this.sliceControllerConfig = defaults.sliceControllerConfig;
     	      this.statefulHaConfig = defaults.statefulHaConfig;
         }
 
@@ -493,6 +508,12 @@ public final class ClusterAddonsConfig {
             return rayOperatorConfigs(List.of(rayOperatorConfigs));
         }
         @CustomType.Setter
+        public Builder sliceControllerConfig(@Nullable ClusterAddonsConfigSliceControllerConfig sliceControllerConfig) {
+
+            this.sliceControllerConfig = sliceControllerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder statefulHaConfig(@Nullable ClusterAddonsConfigStatefulHaConfig statefulHaConfig) {
 
             this.statefulHaConfig = statefulHaConfig;
@@ -516,6 +537,7 @@ public final class ClusterAddonsConfig {
             _resultValue.parallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
             _resultValue.podSnapshotConfig = podSnapshotConfig;
             _resultValue.rayOperatorConfigs = rayOperatorConfigs;
+            _resultValue.sliceControllerConfig = sliceControllerConfig;
             _resultValue.statefulHaConfig = statefulHaConfig;
             return _resultValue;
         }

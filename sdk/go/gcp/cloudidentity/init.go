@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Group{}
 	case "gcp:cloudidentity/groupMembership:GroupMembership":
 		r = &GroupMembership{}
+	case "gcp:cloudidentity/policy:Policy":
+		r = &Policy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -46,6 +48,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"cloudidentity/groupMembership",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudidentity/policy",
 		&module{version},
 	)
 }

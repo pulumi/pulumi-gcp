@@ -48,24 +48,15 @@ import * as utilities from "../utilities";
  * ## Import
  *
  * Zone can be imported using any of these accepted formats:
- *
  * * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}`
- *
  * * `{{project}}/{{location}}/{{lake}}/{{name}}`
- *
  * * `{{location}}/{{lake}}/{{name}}`
  *
  * When using the `pulumi import` command, Zone can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataplex/zone:Zone default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/zone:Zone default {{project}}/{{location}}/{{lake}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/zone:Zone default {{location}}/{{lake}}/{{name}}
  * ```
  */

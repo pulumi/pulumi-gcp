@@ -81,22 +81,17 @@ __all__ = [
     'TenantInboundSamlConfigSpConfigSpCertificateArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ConfigBlockingFunctionsArgsDict(TypedDict):
-        triggers: pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArgsDict']]]
-        """
-        Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
-        Structure is documented below.
-        """
-        forward_inbound_credentials: NotRequired[pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArgsDict']]
-        """
-        The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
-        Structure is documented below.
-        """
-elif False:
-    ConfigBlockingFunctionsArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigBlockingFunctionsArgsDict(TypedDict):
+    triggers: pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArgsDict']]]
+    """
+    Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+    Structure is documented below.
+    """
+    forward_inbound_credentials: NotRequired[pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArgsDict']]
+    """
+    The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConfigBlockingFunctionsArgs:
@@ -140,22 +135,19 @@ class ConfigBlockingFunctionsArgs:
         pulumi.set(self, "forward_inbound_credentials", value)
 
 
-if not MYPY:
-    class ConfigBlockingFunctionsForwardInboundCredentialsArgsDict(TypedDict):
-        access_token: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to pass the user's OAuth identity provider's access token.
-        """
-        id_token: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to pass the user's OIDC identity provider's ID token.
-        """
-        refresh_token: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to pass the user's OAuth identity provider's refresh token.
-        """
-elif False:
-    ConfigBlockingFunctionsForwardInboundCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigBlockingFunctionsForwardInboundCredentialsArgsDict(TypedDict):
+    access_token: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to pass the user's OAuth identity provider's access token.
+    """
+    id_token: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to pass the user's OIDC identity provider's ID token.
+    """
+    refresh_token: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to pass the user's OAuth identity provider's refresh token.
+    """
 
 @pulumi.input_type
 class ConfigBlockingFunctionsForwardInboundCredentialsArgs:
@@ -212,23 +204,20 @@ class ConfigBlockingFunctionsForwardInboundCredentialsArgs:
         pulumi.set(self, "refresh_token", value)
 
 
-if not MYPY:
-    class ConfigBlockingFunctionsTriggerArgsDict(TypedDict):
-        event_type: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        function_uri: pulumi.Input[_builtins.str]
-        """
-        HTTP URI trigger for the Cloud Function.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        When the trigger was changed.
-        """
-elif False:
-    ConfigBlockingFunctionsTriggerArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigBlockingFunctionsTriggerArgsDict(TypedDict):
+    event_type: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    function_uri: pulumi.Input[_builtins.str]
+    """
+    HTTP URI trigger for the Cloud Function.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    When the trigger was changed.
+    """
 
 @pulumi.input_type
 class ConfigBlockingFunctionsTriggerArgs:
@@ -285,26 +274,23 @@ class ConfigBlockingFunctionsTriggerArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class ConfigClientArgsDict(TypedDict):
-        api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        API key that can be used when making requests for this project.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        firebase_subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Firebase subdomain.
-        """
-        permissions: NotRequired[pulumi.Input['ConfigClientPermissionsArgsDict']]
-        """
-        Configuration related to restricting a user's ability to affect their account.
-        Structure is documented below.
-        """
-elif False:
-    ConfigClientArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigClientArgsDict(TypedDict):
+    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    API key that can be used when making requests for this project.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    firebase_subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Firebase subdomain.
+    """
+    permissions: NotRequired[pulumi.Input['ConfigClientPermissionsArgsDict']]
+    """
+    Configuration related to restricting a user's ability to affect their account.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConfigClientArgs:
@@ -369,18 +355,15 @@ class ConfigClientArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class ConfigClientPermissionsArgsDict(TypedDict):
-        disabled_user_deletion: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, end users cannot delete their account on the associated project through any of our API methods
-        """
-        disabled_user_signup: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, end users cannot sign up for a new account on the associated project through any of our API methods
-        """
-elif False:
-    ConfigClientPermissionsArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigClientPermissionsArgsDict(TypedDict):
+    disabled_user_deletion: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, end users cannot delete their account on the associated project through any of our API methods
+    """
+    disabled_user_signup: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, end users cannot sign up for a new account on the associated project through any of our API methods
+    """
 
 @pulumi.input_type
 class ConfigClientPermissionsArgs:
@@ -421,26 +404,23 @@ class ConfigClientPermissionsArgs:
         pulumi.set(self, "disabled_user_signup", value)
 
 
-if not MYPY:
-    class ConfigMfaArgsDict(TypedDict):
-        enabled_providers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of usable second factors for this project.
-        Each value may be one of: `PHONE_SMS`.
-        """
-        provider_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigMfaProviderConfigArgsDict']]]]
-        """
-        A list of usable second factors for this project along with their configurations.
-        This field does not support phone based MFA, for that use the 'enabledProviders' field.
-        Structure is documented below.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether MultiFactor Authentication has been enabled for this project.
-        Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
-        """
-elif False:
-    ConfigMfaArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigMfaArgsDict(TypedDict):
+    enabled_providers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of usable second factors for this project.
+    Each value may be one of: `PHONE_SMS`.
+    """
+    provider_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigMfaProviderConfigArgsDict']]]]
+    """
+    A list of usable second factors for this project along with their configurations.
+    This field does not support phone based MFA, for that use the 'enabledProviders' field.
+    Structure is documented below.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether MultiFactor Authentication has been enabled for this project.
+    Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+    """
 
 @pulumi.input_type
 class ConfigMfaArgs:
@@ -505,20 +485,17 @@ class ConfigMfaArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class ConfigMfaProviderConfigArgsDict(TypedDict):
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether MultiFactor Authentication has been enabled for this project.
-        Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
-        """
-        totp_provider_config: NotRequired[pulumi.Input['ConfigMfaProviderConfigTotpProviderConfigArgsDict']]
-        """
-        TOTP MFA provider config for this project.
-        Structure is documented below.
-        """
-elif False:
-    ConfigMfaProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigMfaProviderConfigArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether MultiFactor Authentication has been enabled for this project.
+    Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+    """
+    totp_provider_config: NotRequired[pulumi.Input['ConfigMfaProviderConfigTotpProviderConfigArgsDict']]
+    """
+    TOTP MFA provider config for this project.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConfigMfaProviderConfigArgs:
@@ -563,14 +540,11 @@ class ConfigMfaProviderConfigArgs:
         pulumi.set(self, "totp_provider_config", value)
 
 
-if not MYPY:
-    class ConfigMfaProviderConfigTotpProviderConfigArgsDict(TypedDict):
-        adjacent_intervals: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
-        """
-elif False:
-    ConfigMfaProviderConfigTotpProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigMfaProviderConfigTotpProviderConfigArgsDict(TypedDict):
+    adjacent_intervals: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+    """
 
 @pulumi.input_type
 class ConfigMfaProviderConfigTotpProviderConfigArgs:
@@ -595,15 +569,12 @@ class ConfigMfaProviderConfigTotpProviderConfigArgs:
         pulumi.set(self, "adjacent_intervals", value)
 
 
-if not MYPY:
-    class ConfigMonitoringArgsDict(TypedDict):
-        request_logging: NotRequired[pulumi.Input['ConfigMonitoringRequestLoggingArgsDict']]
-        """
-        Configuration for logging requests made to this project to Stackdriver Logging
-        Structure is documented below.
-        """
-elif False:
-    ConfigMonitoringArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigMonitoringArgsDict(TypedDict):
+    request_logging: NotRequired[pulumi.Input['ConfigMonitoringRequestLoggingArgsDict']]
+    """
+    Configuration for logging requests made to this project to Stackdriver Logging
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConfigMonitoringArgs:
@@ -630,14 +601,11 @@ class ConfigMonitoringArgs:
         pulumi.set(self, "request_logging", value)
 
 
-if not MYPY:
-    class ConfigMonitoringRequestLoggingArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether logging is enabled for this project or not.
-        """
-elif False:
-    ConfigMonitoringRequestLoggingArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigMonitoringRequestLoggingArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether logging is enabled for this project or not.
+    """
 
 @pulumi.input_type
 class ConfigMonitoringRequestLoggingArgs:
@@ -662,20 +630,17 @@ class ConfigMonitoringRequestLoggingArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class ConfigMultiTenantArgsDict(TypedDict):
-        allow_tenants: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether this project can have tenants or not.
-        """
-        default_tenant_location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default cloud parent org or folder that the tenant project should be created under.
-        The parent resource name should be in the format of "/", such as "folders/123" or "organizations/456".
-        If the value is not set, the tenant will be created under the same organization or folder as the agent project.
-        """
-elif False:
-    ConfigMultiTenantArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigMultiTenantArgsDict(TypedDict):
+    allow_tenants: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether this project can have tenants or not.
+    """
+    default_tenant_location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default cloud parent org or folder that the tenant project should be created under.
+    The parent resource name should be in the format of "/", such as "folders/123" or "organizations/456".
+    If the value is not set, the tenant will be created under the same organization or folder as the agent project.
+    """
 
 @pulumi.input_type
 class ConfigMultiTenantArgs:
@@ -720,15 +685,12 @@ class ConfigMultiTenantArgs:
         pulumi.set(self, "default_tenant_location", value)
 
 
-if not MYPY:
-    class ConfigQuotaArgsDict(TypedDict):
-        sign_up_quota_config: NotRequired[pulumi.Input['ConfigQuotaSignUpQuotaConfigArgsDict']]
-        """
-        Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
-        Structure is documented below.
-        """
-elif False:
-    ConfigQuotaArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigQuotaArgsDict(TypedDict):
+    sign_up_quota_config: NotRequired[pulumi.Input['ConfigQuotaSignUpQuotaConfigArgsDict']]
+    """
+    Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConfigQuotaArgs:
@@ -755,22 +717,19 @@ class ConfigQuotaArgs:
         pulumi.set(self, "sign_up_quota_config", value)
 
 
-if not MYPY:
-    class ConfigQuotaSignUpQuotaConfigArgsDict(TypedDict):
-        quota: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
-        """
-        quota_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When this quota will take affect.
-        """
-elif False:
-    ConfigQuotaSignUpQuotaConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigQuotaSignUpQuotaConfigArgsDict(TypedDict):
+    quota: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+    """
+    quota_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When this quota will take affect.
+    """
 
 @pulumi.input_type
 class ConfigQuotaSignUpQuotaConfigArgs:
@@ -827,35 +786,32 @@ class ConfigQuotaSignUpQuotaConfigArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class ConfigSignInArgsDict(TypedDict):
-        allow_duplicate_emails: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to allow more than one account to have the same email.
-        """
-        anonymous: NotRequired[pulumi.Input['ConfigSignInAnonymousArgsDict']]
-        """
-        Configuration options related to authenticating an anonymous user.
-        Structure is documented below.
-        """
-        email: NotRequired[pulumi.Input['ConfigSignInEmailArgsDict']]
-        """
-        Configuration options related to authenticating a user by their email address.
-        Structure is documented below.
-        """
-        hash_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArgsDict']]]]
-        """
-        (Output)
-        Output only. Hash config information.
-        Structure is documented below.
-        """
-        phone_number: NotRequired[pulumi.Input['ConfigSignInPhoneNumberArgsDict']]
-        """
-        Configuration options related to authenticated a user by their phone number.
-        Structure is documented below.
-        """
-elif False:
-    ConfigSignInArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigSignInArgsDict(TypedDict):
+    allow_duplicate_emails: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow more than one account to have the same email.
+    """
+    anonymous: NotRequired[pulumi.Input['ConfigSignInAnonymousArgsDict']]
+    """
+    Configuration options related to authenticating an anonymous user.
+    Structure is documented below.
+    """
+    email: NotRequired[pulumi.Input['ConfigSignInEmailArgsDict']]
+    """
+    Configuration options related to authenticating a user by their email address.
+    Structure is documented below.
+    """
+    hash_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArgsDict']]]]
+    """
+    (Output)
+    Output only. Hash config information.
+    Structure is documented below.
+    """
+    phone_number: NotRequired[pulumi.Input['ConfigSignInPhoneNumberArgsDict']]
+    """
+    Configuration options related to authenticated a user by their phone number.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConfigSignInArgs:
@@ -954,16 +910,13 @@ class ConfigSignInArgs:
         pulumi.set(self, "phone_number", value)
 
 
-if not MYPY:
-    class ConfigSignInAnonymousArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Whether anonymous user auth is enabled for the project or not.
+class ConfigSignInAnonymousArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether anonymous user auth is enabled for the project or not.
 
-        <a name="nested_sign_in_hash_config"></a>The `hash_config` block contains:
-        """
-elif False:
-    ConfigSignInAnonymousArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_sign_in_hash_config"></a>The `hash_config` block contains:
+    """
 
 @pulumi.input_type
 class ConfigSignInAnonymousArgs:
@@ -991,20 +944,17 @@ class ConfigSignInAnonymousArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class ConfigSignInEmailArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Whether email auth is enabled for the project or not.
-        """
-        password_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether a password is required for email auth or not. If true, both an email and
-        password must be provided to sign in. If false, a user may sign in via either
-        email/password or email link.
-        """
-elif False:
-    ConfigSignInEmailArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigSignInEmailArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether email auth is enabled for the project or not.
+    """
+    password_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether a password is required for email auth or not. If true, both an email and
+    password must be provided to sign in. If false, a user may sign in via either
+    email/password or email link.
+    """
 
 @pulumi.input_type
 class ConfigSignInEmailArgs:
@@ -1048,30 +998,27 @@ class ConfigSignInEmailArgs:
         pulumi.set(self, "password_required", value)
 
 
-if not MYPY:
-    class ConfigSignInHashConfigArgsDict(TypedDict):
-        algorithm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Different password hash algorithms used in Identity Toolkit.
-        """
-        memory_cost: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
-        """
-        rounds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
-        """
-        salt_separator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Non-printable character to be inserted between the salt and plain text password in base64.
-        """
-        signer_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Signer key in base64.
-        """
-elif False:
-    ConfigSignInHashConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigSignInHashConfigArgsDict(TypedDict):
+    algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Different password hash algorithms used in Identity Toolkit.
+    """
+    memory_cost: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+    """
+    rounds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+    """
+    salt_separator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Non-printable character to be inserted between the salt and plain text password in base64.
+    """
+    signer_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Signer key in base64.
+    """
 
 @pulumi.input_type
 class ConfigSignInHashConfigArgs:
@@ -1160,18 +1107,15 @@ class ConfigSignInHashConfigArgs:
         pulumi.set(self, "signer_key", value)
 
 
-if not MYPY:
-    class ConfigSignInPhoneNumberArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Whether phone number auth is enabled for the project or not.
-        """
-        test_phone_numbers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map of <test phone number, fake code> that can be used for phone auth testing.
-        """
-elif False:
-    ConfigSignInPhoneNumberArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigSignInPhoneNumberArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether phone number auth is enabled for the project or not.
+    """
+    test_phone_numbers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map of <test phone number, fake code> that can be used for phone auth testing.
+    """
 
 @pulumi.input_type
 class ConfigSignInPhoneNumberArgs:
@@ -1211,20 +1155,17 @@ class ConfigSignInPhoneNumberArgs:
         pulumi.set(self, "test_phone_numbers", value)
 
 
-if not MYPY:
-    class ConfigSmsRegionConfigArgsDict(TypedDict):
-        allow_by_default: NotRequired[pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArgsDict']]
-        """
-        A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
-        Structure is documented below.
-        """
-        allowlist_only: NotRequired[pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArgsDict']]
-        """
-        A policy of only allowing regions by explicitly adding them to an allowlist.
-        Structure is documented below.
-        """
-elif False:
-    ConfigSmsRegionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigSmsRegionConfigArgsDict(TypedDict):
+    allow_by_default: NotRequired[pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArgsDict']]
+    """
+    A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+    Structure is documented below.
+    """
+    allowlist_only: NotRequired[pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArgsDict']]
+    """
+    A policy of only allowing regions by explicitly adding them to an allowlist.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConfigSmsRegionConfigArgs:
@@ -1269,14 +1210,11 @@ class ConfigSmsRegionConfigArgs:
         pulumi.set(self, "allowlist_only", value)
 
 
-if not MYPY:
-    class ConfigSmsRegionConfigAllowByDefaultArgsDict(TypedDict):
-        disallowed_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
-        """
-elif False:
-    ConfigSmsRegionConfigAllowByDefaultArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigSmsRegionConfigAllowByDefaultArgsDict(TypedDict):
+    disallowed_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+    """
 
 @pulumi.input_type
 class ConfigSmsRegionConfigAllowByDefaultArgs:
@@ -1301,14 +1239,11 @@ class ConfigSmsRegionConfigAllowByDefaultArgs:
         pulumi.set(self, "disallowed_regions", value)
 
 
-if not MYPY:
-    class ConfigSmsRegionConfigAllowlistOnlyArgsDict(TypedDict):
-        allowed_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
-        """
-elif False:
-    ConfigSmsRegionConfigAllowlistOnlyArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigSmsRegionConfigAllowlistOnlyArgsDict(TypedDict):
+    allowed_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+    """
 
 @pulumi.input_type
 class ConfigSmsRegionConfigAllowlistOnlyArgs:
@@ -1333,27 +1268,24 @@ class ConfigSmsRegionConfigAllowlistOnlyArgs:
         pulumi.set(self, "allowed_regions", value)
 
 
-if not MYPY:
-    class InboundSamlConfigIdpConfigArgsDict(TypedDict):
-        idp_certificates: pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgsDict']]]
-        """
-        The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
-        Structure is documented below.
-        """
-        idp_entity_id: pulumi.Input[_builtins.str]
-        """
-        Unique identifier for all SAML entities
-        """
-        sso_url: pulumi.Input[_builtins.str]
-        """
-        URL to send Authentication request to.
-        """
-        sign_request: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if outbounding SAMLRequest should be signed.
-        """
-elif False:
-    InboundSamlConfigIdpConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InboundSamlConfigIdpConfigArgsDict(TypedDict):
+    idp_certificates: pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigIdpConfigIdpCertificateArgsDict']]]
+    """
+    The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+    Structure is documented below.
+    """
+    idp_entity_id: pulumi.Input[_builtins.str]
+    """
+    Unique identifier for all SAML entities
+    """
+    sso_url: pulumi.Input[_builtins.str]
+    """
+    URL to send Authentication request to.
+    """
+    sign_request: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if outbounding SAMLRequest should be signed.
+    """
 
 @pulumi.input_type
 class InboundSamlConfigIdpConfigArgs:
@@ -1425,14 +1357,11 @@ class InboundSamlConfigIdpConfigArgs:
         pulumi.set(self, "sign_request", value)
 
 
-if not MYPY:
-    class InboundSamlConfigIdpConfigIdpCertificateArgsDict(TypedDict):
-        x509_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IdP's x509 certificate.
-        """
-elif False:
-    InboundSamlConfigIdpConfigIdpCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class InboundSamlConfigIdpConfigIdpCertificateArgsDict(TypedDict):
+    x509_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IdP's x509 certificate.
+    """
 
 @pulumi.input_type
 class InboundSamlConfigIdpConfigIdpCertificateArgs:
@@ -1457,27 +1386,24 @@ class InboundSamlConfigIdpConfigIdpCertificateArgs:
         pulumi.set(self, "x509_certificate", value)
 
 
-if not MYPY:
-    class InboundSamlConfigSpConfigArgsDict(TypedDict):
-        callback_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Callback URI where responses from IDP are handled. Must start with `https://`.
-        """
-        sp_certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgsDict']]]]
-        """
-        (Output)
-        The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
-        Structure is documented below.
+class InboundSamlConfigSpConfigArgsDict(TypedDict):
+    callback_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Callback URI where responses from IDP are handled. Must start with `https://`.
+    """
+    sp_certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgsDict']]]]
+    """
+    (Output)
+    The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+    Structure is documented below.
 
 
-        <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
-        """
-        sp_entity_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique identifier for all SAML entities.
-        """
-elif False:
-    InboundSamlConfigSpConfigArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
+    """
+    sp_entity_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique identifier for all SAML entities.
+    """
 
 @pulumi.input_type
 class InboundSamlConfigSpConfigArgs:
@@ -1544,14 +1470,11 @@ class InboundSamlConfigSpConfigArgs:
         pulumi.set(self, "sp_entity_id", value)
 
 
-if not MYPY:
-    class InboundSamlConfigSpConfigSpCertificateArgsDict(TypedDict):
-        x509_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The x509 certificate
-        """
-elif False:
-    InboundSamlConfigSpConfigSpCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class InboundSamlConfigSpConfigSpCertificateArgsDict(TypedDict):
+    x509_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The x509 certificate
+    """
 
 @pulumi.input_type
 class InboundSamlConfigSpConfigSpCertificateArgs:
@@ -1576,18 +1499,15 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
         pulumi.set(self, "x509_certificate", value)
 
 
-if not MYPY:
-    class OauthIdpConfigResponseTypeArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, authorization code is returned from IdP's authorization endpoint.
-        """
-        id_token: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, ID token is returned from IdP's authorization endpoint.
-        """
-elif False:
-    OauthIdpConfigResponseTypeArgsDict: TypeAlias = Mapping[str, Any]
+class OauthIdpConfigResponseTypeArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, authorization code is returned from IdP's authorization endpoint.
+    """
+    id_token: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, ID token is returned from IdP's authorization endpoint.
+    """
 
 @pulumi.input_type
 class OauthIdpConfigResponseTypeArgs:
@@ -1628,15 +1548,12 @@ class OauthIdpConfigResponseTypeArgs:
         pulumi.set(self, "id_token", value)
 
 
-if not MYPY:
-    class TenantClientArgsDict(TypedDict):
-        permissions: NotRequired[pulumi.Input['TenantClientPermissionsArgsDict']]
-        """
-        Configuration related to restricting a user's ability to affect their account.
-        Structure is documented below.
-        """
-elif False:
-    TenantClientArgsDict: TypeAlias = Mapping[str, Any]
+class TenantClientArgsDict(TypedDict):
+    permissions: NotRequired[pulumi.Input['TenantClientPermissionsArgsDict']]
+    """
+    Configuration related to restricting a user's ability to affect their account.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class TenantClientArgs:
@@ -1663,18 +1580,15 @@ class TenantClientArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class TenantClientPermissionsArgsDict(TypedDict):
-        disabled_user_deletion: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, end users cannot delete their account on the associated project through any of our API methods.
-        """
-        disabled_user_signup: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, end users cannot sign up for a new account on the associated project through any of our API methods.
-        """
-elif False:
-    TenantClientPermissionsArgsDict: TypeAlias = Mapping[str, Any]
+class TenantClientPermissionsArgsDict(TypedDict):
+    disabled_user_deletion: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, end users cannot delete their account on the associated project through any of our API methods.
+    """
+    disabled_user_signup: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, end users cannot sign up for a new account on the associated project through any of our API methods.
+    """
 
 @pulumi.input_type
 class TenantClientPermissionsArgs:
@@ -1715,27 +1629,24 @@ class TenantClientPermissionsArgs:
         pulumi.set(self, "disabled_user_signup", value)
 
 
-if not MYPY:
-    class TenantInboundSamlConfigIdpConfigArgsDict(TypedDict):
-        idp_certificates: pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgsDict']]]
-        """
-        The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
-        Structure is documented below.
-        """
-        idp_entity_id: pulumi.Input[_builtins.str]
-        """
-        Unique identifier for all SAML entities
-        """
-        sso_url: pulumi.Input[_builtins.str]
-        """
-        URL to send Authentication request to.
-        """
-        sign_request: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if outbounding SAMLRequest should be signed.
-        """
-elif False:
-    TenantInboundSamlConfigIdpConfigArgsDict: TypeAlias = Mapping[str, Any]
+class TenantInboundSamlConfigIdpConfigArgsDict(TypedDict):
+    idp_certificates: pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigIdpConfigIdpCertificateArgsDict']]]
+    """
+    The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+    Structure is documented below.
+    """
+    idp_entity_id: pulumi.Input[_builtins.str]
+    """
+    Unique identifier for all SAML entities
+    """
+    sso_url: pulumi.Input[_builtins.str]
+    """
+    URL to send Authentication request to.
+    """
+    sign_request: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if outbounding SAMLRequest should be signed.
+    """
 
 @pulumi.input_type
 class TenantInboundSamlConfigIdpConfigArgs:
@@ -1807,14 +1718,11 @@ class TenantInboundSamlConfigIdpConfigArgs:
         pulumi.set(self, "sign_request", value)
 
 
-if not MYPY:
-    class TenantInboundSamlConfigIdpConfigIdpCertificateArgsDict(TypedDict):
-        x509_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The x509 certificate
-        """
-elif False:
-    TenantInboundSamlConfigIdpConfigIdpCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class TenantInboundSamlConfigIdpConfigIdpCertificateArgsDict(TypedDict):
+    x509_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The x509 certificate
+    """
 
 @pulumi.input_type
 class TenantInboundSamlConfigIdpConfigIdpCertificateArgs:
@@ -1839,27 +1747,24 @@ class TenantInboundSamlConfigIdpConfigIdpCertificateArgs:
         pulumi.set(self, "x509_certificate", value)
 
 
-if not MYPY:
-    class TenantInboundSamlConfigSpConfigArgsDict(TypedDict):
-        callback_uri: pulumi.Input[_builtins.str]
-        """
-        Callback URI where responses from IDP are handled. Must start with `https://`.
-        """
-        sp_entity_id: pulumi.Input[_builtins.str]
-        """
-        Unique identifier for all SAML entities.
-        """
-        sp_certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgsDict']]]]
-        """
-        (Output)
-        The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
-        Structure is documented below.
+class TenantInboundSamlConfigSpConfigArgsDict(TypedDict):
+    callback_uri: pulumi.Input[_builtins.str]
+    """
+    Callback URI where responses from IDP are handled. Must start with `https://`.
+    """
+    sp_entity_id: pulumi.Input[_builtins.str]
+    """
+    Unique identifier for all SAML entities.
+    """
+    sp_certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgsDict']]]]
+    """
+    (Output)
+    The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+    Structure is documented below.
 
 
-        <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
-        """
-elif False:
-    TenantInboundSamlConfigSpConfigArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
+    """
 
 @pulumi.input_type
 class TenantInboundSamlConfigSpConfigArgs:
@@ -1924,14 +1829,11 @@ class TenantInboundSamlConfigSpConfigArgs:
         pulumi.set(self, "sp_certificates", value)
 
 
-if not MYPY:
-    class TenantInboundSamlConfigSpConfigSpCertificateArgsDict(TypedDict):
-        x509_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The x509 certificate
-        """
-elif False:
-    TenantInboundSamlConfigSpConfigSpCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class TenantInboundSamlConfigSpConfigSpCertificateArgsDict(TypedDict):
+    x509_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The x509 certificate
+    """
 
 @pulumi.input_type
 class TenantInboundSamlConfigSpConfigSpCertificateArgs:

@@ -6,6 +6,7 @@ package com.pulumi.gcp.networksecurity.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyHttpRuleToOperationHeaderSet;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyHttpRuleToOperationHost;
+import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyHttpRuleToOperationMcp;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyHttpRuleToOperationPath;
 import java.lang.String;
 import java.util.List;
@@ -28,6 +29,12 @@ public final class AuthzPolicyHttpRuleToOperation {
      * 
      */
     private @Nullable List<AuthzPolicyHttpRuleToOperationHost> hosts;
+    /**
+     * @return Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AuthzPolicyHttpRuleToOperationMcp mcp;
     /**
      * @return A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
      * 
@@ -61,6 +68,14 @@ public final class AuthzPolicyHttpRuleToOperation {
         return this.hosts == null ? List.of() : this.hosts;
     }
     /**
+     * @return Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AuthzPolicyHttpRuleToOperationMcp> mcp() {
+        return Optional.ofNullable(this.mcp);
+    }
+    /**
      * @return A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
      * 
      */
@@ -89,6 +104,7 @@ public final class AuthzPolicyHttpRuleToOperation {
     public static final class Builder {
         private @Nullable AuthzPolicyHttpRuleToOperationHeaderSet headerSet;
         private @Nullable List<AuthzPolicyHttpRuleToOperationHost> hosts;
+        private @Nullable AuthzPolicyHttpRuleToOperationMcp mcp;
         private @Nullable List<String> methods;
         private @Nullable List<AuthzPolicyHttpRuleToOperationPath> paths;
         public Builder() {}
@@ -96,6 +112,7 @@ public final class AuthzPolicyHttpRuleToOperation {
     	      Objects.requireNonNull(defaults);
     	      this.headerSet = defaults.headerSet;
     	      this.hosts = defaults.hosts;
+    	      this.mcp = defaults.mcp;
     	      this.methods = defaults.methods;
     	      this.paths = defaults.paths;
         }
@@ -114,6 +131,12 @@ public final class AuthzPolicyHttpRuleToOperation {
         }
         public Builder hosts(AuthzPolicyHttpRuleToOperationHost... hosts) {
             return hosts(List.of(hosts));
+        }
+        @CustomType.Setter
+        public Builder mcp(@Nullable AuthzPolicyHttpRuleToOperationMcp mcp) {
+
+            this.mcp = mcp;
+            return this;
         }
         @CustomType.Setter
         public Builder methods(@Nullable List<String> methods) {
@@ -137,6 +160,7 @@ public final class AuthzPolicyHttpRuleToOperation {
             final var _resultValue = new AuthzPolicyHttpRuleToOperation();
             _resultValue.headerSet = headerSet;
             _resultValue.hosts = hosts;
+            _resultValue.mcp = mcp;
             _resultValue.methods = methods;
             _resultValue.paths = paths;
             return _resultValue;

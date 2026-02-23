@@ -22,6 +22,7 @@ class ProjectArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -50,6 +51,7 @@ class _ProjectState:
                  project_number: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.str] display_name: The GCP project display name
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -109,6 +111,24 @@ class Project(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A Google Cloud Firebase instance. This enables Firebase resources on a given Google Project.
+        Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
+        identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
+        Once Firebase has been added to a Google Project it cannot be removed.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Project, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
+        * How-to Guides
+            * Official Documentation
+
+        > **Note:** This resource should usually be used with a provider configuration
+        with `user_project_override = true` unless you wish for your quota
+        project to be different from the Firebase project.
+
         ## Example Usage
 
         ### Firebase Project Basic
@@ -133,18 +153,15 @@ class Project(pulumi.CustomResource):
         Project can be imported using any of these accepted formats:
 
         * `projects/{{project}}`
-
         * `{{project}}`
 
         When using the `pulumi import` command, Project can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/project:Project default projects/{{project}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/project:Project default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -158,6 +175,24 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Google Cloud Firebase instance. This enables Firebase resources on a given Google Project.
+        Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
+        identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
+        Once Firebase has been added to a Google Project it cannot be removed.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Project, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
+        * How-to Guides
+            * Official Documentation
+
+        > **Note:** This resource should usually be used with a provider configuration
+        with `user_project_override = true` unless you wish for your quota
+        project to be different from the Firebase project.
+
         ## Example Usage
 
         ### Firebase Project Basic
@@ -182,18 +217,15 @@ class Project(pulumi.CustomResource):
         Project can be imported using any of these accepted formats:
 
         * `projects/{{project}}`
-
         * `{{project}}`
 
         When using the `pulumi import` command, Project can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/project:Project default projects/{{project}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/project:Project default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

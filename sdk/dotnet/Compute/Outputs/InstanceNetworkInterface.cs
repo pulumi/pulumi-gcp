@@ -14,7 +14,12 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceNetworkInterface
     {
         /// <summary>
-        /// Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        /// Access configurations, i.e. IPs via which this
+        /// instance can be accessed via the Internet. Omit to ensure that the instance
+        /// is not accessible from the Internet. If omitted, ssh provisioners will not
+        /// work unless Terraform can send traffic to the instance's network (e.g. via
+        /// tunnel or because it is running on another cloud instance on that network).
+        /// This block can be specified once per `NetworkInterface`. Structure documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceNetworkInterfaceAccessConfig> AccessConfigs;
         /// <summary>
@@ -75,6 +80,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? NicType;
         /// <summary>
+        /// Name of the parent network interface of a dynamic network interface.
+        /// </summary>
+        public readonly string? ParentNicName;
+        /// <summary>
         /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         /// </summary>
         public readonly int? QueueCount;
@@ -103,6 +112,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// field is not provided, the provider project is used.
         /// </summary>
         public readonly string? SubnetworkProject;
+        /// <summary>
+        /// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        /// </summary>
+        public readonly int? Vlan;
 
         [OutputConstructor]
         private InstanceNetworkInterface(
@@ -132,6 +145,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? nicType,
 
+            string? parentNicName,
+
             int? queueCount,
 
             string? securityPolicy,
@@ -140,7 +155,9 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? subnetwork,
 
-            string? subnetworkProject)
+            string? subnetworkProject,
+
+            int? vlan)
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
@@ -155,11 +172,13 @@ namespace Pulumi.Gcp.Compute.Outputs
             NetworkAttachment = networkAttachment;
             NetworkIp = networkIp;
             NicType = nicType;
+            ParentNicName = parentNicName;
             QueueCount = queueCount;
             SecurityPolicy = securityPolicy;
             StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
+            Vlan = vlan;
         }
     }
 }

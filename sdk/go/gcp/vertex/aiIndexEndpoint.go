@@ -168,28 +168,16 @@ import (
 // IndexEndpoint can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, IndexEndpoint can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{name}}
 // ```
 type AiIndexEndpoint struct {

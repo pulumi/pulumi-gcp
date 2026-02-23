@@ -44,6 +44,7 @@ class StandardAppVersionArgs:
                  vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None):
         """
         The set of arguments for constructing a StandardAppVersion resource.
+
         :param pulumi.Input['StandardAppVersionDeploymentArgs'] deployment: Code and application artifacts that make up this version.
                Structure is documented below.
         :param pulumi.Input['StandardAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
@@ -417,6 +418,7 @@ class _StandardAppVersionState:
                  vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None):
         """
         Input properties used for looking up and filtering StandardAppVersion resources.
+
         :param pulumi.Input[_builtins.bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
         :param pulumi.Input['StandardAppVersionAutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
@@ -914,24 +916,17 @@ class StandardAppVersion(pulumi.CustomResource):
         StandardAppVersion can be imported using any of these accepted formats:
 
         * `apps/{{project}}/services/{{service}}/versions/{{version_id}}`
-
         * `{{project}}/{{service}}/{{version_id}}`
-
         * `{{service}}/{{version_id}}`
 
         When using the `pulumi import` command, StandardAppVersion can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{project}}/{{service}}/{{version_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{service}}/{{version_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1083,24 +1078,17 @@ class StandardAppVersion(pulumi.CustomResource):
         StandardAppVersion can be imported using any of these accepted formats:
 
         * `apps/{{project}}/services/{{service}}/versions/{{version_id}}`
-
         * `{{project}}/{{service}}/{{version_id}}`
-
         * `{{service}}/{{version_id}}`
 
         When using the `pulumi import` command, StandardAppVersion can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{project}}/{{service}}/{{version_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{service}}/{{version_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StandardAppVersionArgs args: The arguments to use to populate this resource's properties.

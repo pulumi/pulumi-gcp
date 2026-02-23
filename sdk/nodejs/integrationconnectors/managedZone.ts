@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const targetProject = new gcp.organizations.Project("target_project", {
- *     projectId: "tf-test_16178",
- *     name: "tf-test_26317",
+ *     projectId: "tf-test_32270",
+ *     name: "tf-test_44703",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
@@ -50,8 +50,8 @@ import * as utilities from "../utilities";
  *     dependsOn: [compute],
  * });
  * const zone = new gcp.dns.ManagedZone("zone", {
- *     name: "tf-test-dns_4866",
- *     dnsName: "private_12618.example.com.",
+ *     name: "tf-test-dns_9329",
+ *     dnsName: "private_37135.example.com.",
  *     visibility: "private",
  *     privateVisibilityConfig: {
  *         networks: [{
@@ -83,22 +83,14 @@ import * as utilities from "../utilities";
  * ManagedZone can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/global/managedZones/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default projects/{{project}}/locations/global/managedZones/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{name}}
  * ```
  */

@@ -22,6 +22,15 @@ import java.util.concurrent.CompletableFuture;
 
 public final class RuntimeconfigFunctions {
     /**
+     * To get more information about RuntimeConfigs, see:
+     * 
+     * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+     * * How-to Guides
+     *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta datasources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -60,6 +69,15 @@ public final class RuntimeconfigFunctions {
         return getConfig(args, InvokeOptions.Empty);
     }
     /**
+     * To get more information about RuntimeConfigs, see:
+     * 
+     * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+     * * How-to Guides
+     *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta datasources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -98,6 +116,15 @@ public final class RuntimeconfigFunctions {
         return getConfigPlain(args, InvokeOptions.Empty);
     }
     /**
+     * To get more information about RuntimeConfigs, see:
+     * 
+     * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+     * * How-to Guides
+     *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta datasources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -136,6 +163,15 @@ public final class RuntimeconfigFunctions {
         return Deployment.getInstance().invoke("gcp:runtimeconfig/getConfig:getConfig", TypeShape.of(GetConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * To get more information about RuntimeConfigs, see:
+     * 
+     * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+     * * How-to Guides
+     *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta datasources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -174,6 +210,15 @@ public final class RuntimeconfigFunctions {
         return Deployment.getInstance().invoke("gcp:runtimeconfig/getConfig:getConfig", TypeShape.of(GetConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * To get more information about RuntimeConfigs, see:
+     * 
+     * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+     * * How-to Guides
+     *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta datasources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -212,6 +257,10 @@ public final class RuntimeconfigFunctions {
         return Deployment.getInstance().invokeAsync("gcp:runtimeconfig/getConfig:getConfig", TypeShape.of(GetConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for config
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -251,6 +300,10 @@ public final class RuntimeconfigFunctions {
         return getConfigIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for config
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -290,6 +343,10 @@ public final class RuntimeconfigFunctions {
         return getConfigIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for config
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -329,6 +386,10 @@ public final class RuntimeconfigFunctions {
         return Deployment.getInstance().invoke("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", TypeShape.of(GetConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for config
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -368,6 +429,10 @@ public final class RuntimeconfigFunctions {
         return Deployment.getInstance().invoke("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", TypeShape.of(GetConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for config
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -407,6 +472,15 @@ public final class RuntimeconfigFunctions {
         return Deployment.getInstance().invokeAsync("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", TypeShape.of(GetConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * To get more information about RuntimeConfigs, see:
+     * 
+     * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+     * * How-to Guides
+     *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta datasources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -446,6 +520,15 @@ public final class RuntimeconfigFunctions {
         return getVariable(args, InvokeOptions.Empty);
     }
     /**
+     * To get more information about RuntimeConfigs, see:
+     * 
+     * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+     * * How-to Guides
+     *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta datasources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -485,6 +568,15 @@ public final class RuntimeconfigFunctions {
         return getVariablePlain(args, InvokeOptions.Empty);
     }
     /**
+     * To get more information about RuntimeConfigs, see:
+     * 
+     * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+     * * How-to Guides
+     *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta datasources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -524,6 +616,15 @@ public final class RuntimeconfigFunctions {
         return Deployment.getInstance().invoke("gcp:runtimeconfig/getVariable:getVariable", TypeShape.of(GetVariableResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * To get more information about RuntimeConfigs, see:
+     * 
+     * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+     * * How-to Guides
+     *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta datasources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -563,6 +664,15 @@ public final class RuntimeconfigFunctions {
         return Deployment.getInstance().invoke("gcp:runtimeconfig/getVariable:getVariable", TypeShape.of(GetVariableResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * To get more information about RuntimeConfigs, see:
+     * 
+     * * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+     * * How-to Guides
+     *     * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta datasources.
+     * 
      * ## Example Usage
      * 
      * <pre>

@@ -565,7 +565,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Optional, Beta)
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      * 
@@ -574,8 +573,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs> networkPassThroughLbTrafficPolicy;
 
     /**
-     * @return (Optional, Beta)
-     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * @return Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      * 
      */
@@ -1548,8 +1546,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networkPassThroughLbTrafficPolicy (Optional, Beta)
-         * Configures traffic steering properties of internal passthrough Network Load Balancers.
+         * @param networkPassThroughLbTrafficPolicy Configures traffic steering properties of internal passthrough Network Load Balancers.
          * Structure is documented below.
          * 
          * @return builder
@@ -1561,8 +1558,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networkPassThroughLbTrafficPolicy (Optional, Beta)
-         * Configures traffic steering properties of internal passthrough Network Load Balancers.
+         * @param networkPassThroughLbTrafficPolicy Configures traffic steering properties of internal passthrough Network Load Balancers.
          * Structure is documented below.
          * 
          * @return builder

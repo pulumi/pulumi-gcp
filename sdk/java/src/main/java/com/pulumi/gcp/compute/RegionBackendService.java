@@ -1038,28 +1038,16 @@ import javax.annotation.Nullable;
  * RegionBackendService can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/regions/{{region}}/backendServices/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
  * ```
  * 
@@ -1619,7 +1607,6 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.network);
     }
     /**
-     * (Optional, Beta)
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      * 
@@ -1628,8 +1615,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicy;
 
     /**
-     * @return (Optional, Beta)
-     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * @return Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      * 
      */

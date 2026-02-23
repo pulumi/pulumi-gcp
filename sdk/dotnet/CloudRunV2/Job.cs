@@ -586,22 +586,14 @@ namespace Pulumi.Gcp.CloudRunV2
     /// Job can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:cloudrunv2/job:Job default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:cloudrunv2/job:Job default {{location}}/{{name}}
     /// ```
     /// </summary>
@@ -665,9 +657,20 @@ namespace Pulumi.Gcp.CloudRunV2
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the job. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the job,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the job will fail.
+        /// When the field is set to false, deleting the job is allowed.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -904,6 +907,14 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("clientVersion")]
         public Input<string>? ClientVersion { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the job. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the job,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the job will fail.
+        /// When the field is set to false, deleting the job is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -1052,11 +1063,23 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the job. Defaults to true.
+        /// When a`terraform destroy` or `pulumi up` would delete the job,
+        /// the command will fail if this field is not set to false in Terraform state.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the job will fail.
+        /// When the field is set to false, deleting the job is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());

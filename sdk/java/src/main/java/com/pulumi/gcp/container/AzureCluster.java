@@ -205,24 +205,15 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * Cluster can be imported using any of these accepted formats:
- * 
  * * `projects/{{project}}/locations/{{location}}/azureClusters/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:container/azureCluster:AzureCluster default projects/{{project}}/locations/{{location}}/azureClusters/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:container/azureCluster:AzureCluster default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:container/azureCluster:AzureCluster default {{location}}/{{name}}
  * ```
  * 
@@ -347,9 +338,17 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

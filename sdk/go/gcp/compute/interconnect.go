@@ -30,8 +30,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -66,22 +64,14 @@ import (
 // Interconnect can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/global/interconnects/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Interconnect can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/interconnect:Interconnect default projects/{{project}}/global/interconnects/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/interconnect:Interconnect default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/interconnect:Interconnect default {{name}}
 // ```
 type Interconnect struct {

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigAcceleratorArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigDiskConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -64,6 +65,21 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
      */
     public Optional<Output<String>> imageUri() {
         return Optional.ofNullable(this.imageUri);
+    }
+
+    /**
+     * Instance flexibility Policy allowing a mixture of VM shapes.
+     * 
+     */
+    @Import(name="instanceFlexibilityPolicy")
+    private @Nullable Output<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs> instanceFlexibilityPolicy;
+
+    /**
+     * @return Instance flexibility Policy allowing a mixture of VM shapes.
+     * 
+     */
+    public Optional<Output<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs>> instanceFlexibilityPolicy() {
+        return Optional.ofNullable(this.instanceFlexibilityPolicy);
     }
 
     /**
@@ -146,6 +162,7 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
         this.accelerators = $.accelerators;
         this.diskConfig = $.diskConfig;
         this.imageUri = $.imageUri;
+        this.instanceFlexibilityPolicy = $.instanceFlexibilityPolicy;
         this.instanceNames = $.instanceNames;
         this.machineType = $.machineType;
         this.minCpuPlatform = $.minCpuPlatform;
@@ -243,6 +260,27 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
          */
         public Builder imageUri(String imageUri) {
             return imageUri(Output.of(imageUri));
+        }
+
+        /**
+         * @param instanceFlexibilityPolicy Instance flexibility Policy allowing a mixture of VM shapes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceFlexibilityPolicy(@Nullable Output<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs> instanceFlexibilityPolicy) {
+            $.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
+            return this;
+        }
+
+        /**
+         * @param instanceFlexibilityPolicy Instance flexibility Policy allowing a mixture of VM shapes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceFlexibilityPolicy(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs instanceFlexibilityPolicy) {
+            return instanceFlexibilityPolicy(Output.of(instanceFlexibilityPolicy));
         }
 
         /**

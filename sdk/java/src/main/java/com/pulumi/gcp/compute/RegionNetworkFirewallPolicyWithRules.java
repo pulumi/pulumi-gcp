@@ -207,28 +207,16 @@ import javax.annotation.Nullable;
  * RegionNetworkFirewallPolicyWithRules can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, RegionNetworkFirewallPolicyWithRules can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default {{name}}
  * ```
  * 
@@ -319,7 +307,7 @@ public class RegionNetworkFirewallPolicyWithRules extends com.pulumi.resources.C
      * Policy type is used to determine which resources (networks) the policy can be associated with.
      * A policy can be associated with a network only if the network has the matching policyType in its network profile.
      * Different policy types may support some of the Firewall Rules features.
-     * Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+     * Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
      * 
      */
     @Export(name="policyType", refs={String.class}, tree="[0]")
@@ -329,7 +317,7 @@ public class RegionNetworkFirewallPolicyWithRules extends com.pulumi.resources.C
      * @return Policy type is used to determine which resources (networks) the policy can be associated with.
      * A policy can be associated with a network only if the network has the matching policyType in its network profile.
      * Different policy types may support some of the Firewall Rules features.
-     * Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+     * Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
      * 
      */
     public Output<String> policyType() {

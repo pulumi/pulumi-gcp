@@ -48,22 +48,14 @@ import * as utilities from "../utilities";
  * Job can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/global/jobs/{{job_id}}`
- *
  * * `{{project}}/{{job_id}}`
- *
  * * `{{job_id}}`
  *
  * When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:storage/batchOperationsJob:BatchOperationsJob default projects/{{project}}/locations/global/jobs/{{job_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:storage/batchOperationsJob:BatchOperationsJob default {{project}}/{{job_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:storage/batchOperationsJob:BatchOperationsJob default {{job_id}}
  * ```
  */

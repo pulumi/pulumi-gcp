@@ -27,10 +27,10 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly string KeyName;
         /// <summary>
-        /// Key location in the request.
+        /// Key location in the request. For API key auth on MCP toolsets,
+        /// the API key can only be sent in the request header.
         /// Possible values:
         /// HEADER
-        /// QUERY_STRING
         /// </summary>
         public readonly string RequestLocation;
 

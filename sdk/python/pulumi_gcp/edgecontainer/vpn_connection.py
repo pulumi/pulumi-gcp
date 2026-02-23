@@ -33,6 +33,7 @@ class VpnConnectionArgs:
                  vpc_project: Optional[pulumi.Input['VpnConnectionVpcProjectArgs']] = None):
         """
         The set of arguments for constructing a VpnConnection resource.
+
         :param pulumi.Input[_builtins.str] cluster: The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
         :param pulumi.Input[_builtins.str] location: Google Cloud Platform location.
         :param pulumi.Input[_builtins.bool] enable_high_availability: Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
@@ -214,6 +215,7 @@ class _VpnConnectionState:
                  vpc_project: Optional[pulumi.Input['VpnConnectionVpcProjectArgs']] = None):
         """
         Input properties used for looking up and filtering VpnConnection resources.
+
         :param pulumi.Input[_builtins.str] cluster: The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
         :param pulumi.Input[_builtins.str] create_time: The time when the VPN connection was created.
         :param pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArgs']]] details: A nested object resource.
@@ -531,24 +533,17 @@ class VpnConnection(pulumi.CustomResource):
         VpnConnection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, VpnConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -632,24 +627,17 @@ class VpnConnection(pulumi.CustomResource):
         VpnConnection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, VpnConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpnConnectionArgs args: The arguments to use to populate this resource's properties.

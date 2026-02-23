@@ -41,22 +41,14 @@ import * as utilities from "../utilities";
  * CodeToolsSetting can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/codeToolsSettings/{{code_tools_setting_id}}`
- *
  * * `{{project}}/{{location}}/{{code_tools_setting_id}}`
- *
  * * `{{location}}/{{code_tools_setting_id}}`
  *
  * When using the `pulumi import` command, CodeToolsSetting can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gemini/codeToolsSetting:CodeToolsSetting default projects/{{project}}/locations/{{location}}/codeToolsSettings/{{code_tools_setting_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/codeToolsSetting:CodeToolsSetting default {{project}}/{{location}}/{{code_tools_setting_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/codeToolsSetting:CodeToolsSetting default {{location}}/{{code_tools_setting_id}}
  * ```
  */

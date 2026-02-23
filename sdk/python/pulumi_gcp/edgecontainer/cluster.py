@@ -38,6 +38,7 @@ class ClusterArgs:
                  target_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input['ClusterAuthorizationArgs'] authorization: RBAC policy that will be applied and managed by GEC.
                Structure is documented below.
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet related configuration.
@@ -333,6 +334,7 @@ class _ClusterState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input['ClusterAuthorizationArgs'] authorization: RBAC policy that will be applied and managed by GEC.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster_ca_certificate: The PEM-encoded public certificate of the cluster's CA.
@@ -851,24 +853,17 @@ class Cluster(pulumi.CustomResource):
         Cluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/clusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgecontainer/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgecontainer/cluster:Cluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgecontainer/cluster:Cluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -963,24 +958,17 @@ class Cluster(pulumi.CustomResource):
         Cluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/clusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgecontainer/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgecontainer/cluster:Cluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgecontainer/cluster:Cluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

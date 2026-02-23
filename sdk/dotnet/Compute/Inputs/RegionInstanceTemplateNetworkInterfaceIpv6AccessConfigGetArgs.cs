@@ -25,7 +25,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? ExternalIpv6PrefixLength { get; set; }
 
         /// <summary>
-        /// The name of this access configuration.
+        /// The name of the instance template. If you leave
+        /// this blank, Terraform will auto-generate a unique name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

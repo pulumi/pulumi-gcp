@@ -27,34 +27,29 @@ __all__ = [
     'RepositoryGroupRepositoryArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class CodeToolsSettingEnabledToolArgsDict(TypedDict):
-        handle: pulumi.Input[_builtins.str]
-        """
-        Handle used to invoke the tool.
-        """
-        tool: pulumi.Input[_builtins.str]
-        """
-        Link to the Tool
-        """
-        account_connector: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Link to the Dev Connect Account Connector that holds the user credentials.
-        projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
-        """
-        configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['CodeToolsSettingEnabledToolConfigArgsDict']]]]
-        """
-        Configuration parameters for the tool.
-        Structure is documented below.
-        """
-        uri_override: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Overridden URI, if allowed by Tool.
-        """
-elif False:
-    CodeToolsSettingEnabledToolArgsDict: TypeAlias = Mapping[str, Any]
+class CodeToolsSettingEnabledToolArgsDict(TypedDict):
+    handle: pulumi.Input[_builtins.str]
+    """
+    Handle used to invoke the tool.
+    """
+    tool: pulumi.Input[_builtins.str]
+    """
+    Link to the Tool
+    """
+    account_connector: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Link to the Dev Connect Account Connector that holds the user credentials.
+    projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
+    """
+    configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['CodeToolsSettingEnabledToolConfigArgsDict']]]]
+    """
+    Configuration parameters for the tool.
+    Structure is documented below.
+    """
+    uri_override: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Overridden URI, if allowed by Tool.
+    """
 
 @pulumi.input_type
 class CodeToolsSettingEnabledToolArgs:
@@ -145,18 +140,15 @@ class CodeToolsSettingEnabledToolArgs:
         pulumi.set(self, "uri_override", value)
 
 
-if not MYPY:
-    class CodeToolsSettingEnabledToolConfigArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Key of the configuration item.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Value of the configuration item.
-        """
-elif False:
-    CodeToolsSettingEnabledToolConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CodeToolsSettingEnabledToolConfigArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Key of the configuration item.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Value of the configuration item.
+    """
 
 @pulumi.input_type
 class CodeToolsSettingEnabledToolConfigArgs:
@@ -195,13 +187,10 @@ class CodeToolsSettingEnabledToolConfigArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class RepositoryGroupIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RepositoryGroupIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RepositoryGroupIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RepositoryGroupIamBindingConditionArgs:
@@ -242,13 +231,10 @@ class RepositoryGroupIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RepositoryGroupIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RepositoryGroupIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RepositoryGroupIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RepositoryGroupIamMemberConditionArgs:
@@ -289,20 +275,17 @@ class RepositoryGroupIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RepositoryGroupRepositoryArgsDict(TypedDict):
-        branch_pattern: pulumi.Input[_builtins.str]
-        """
-        Required. The Git branch pattern used for indexing in RE2 syntax.
-        See https://github.com/google/re2/wiki/syntax for syntax.
-        """
-        resource: pulumi.Input[_builtins.str]
-        """
-        Required. The DeveloperConnect repository full resource name, relative resource name
-        or resource URL to be indexed.
-        """
-elif False:
-    RepositoryGroupRepositoryArgsDict: TypeAlias = Mapping[str, Any]
+class RepositoryGroupRepositoryArgsDict(TypedDict):
+    branch_pattern: pulumi.Input[_builtins.str]
+    """
+    Required. The Git branch pattern used for indexing in RE2 syntax.
+    See https://github.com/google/re2/wiki/syntax for syntax.
+    """
+    resource: pulumi.Input[_builtins.str]
+    """
+    Required. The DeveloperConnect repository full resource name, relative resource name
+    or resource URL to be indexed.
+    """
 
 @pulumi.input_type
 class RepositoryGroupRepositoryArgs:

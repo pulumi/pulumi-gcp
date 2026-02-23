@@ -89,22 +89,14 @@ import * as utilities from "../utilities";
  * ResponsePolicy can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/responsePolicies/{{response_policy_name}}`
- *
  * * `{{project}}/{{response_policy_name}}`
- *
  * * `{{response_policy_name}}`
  *
  * When using the `pulumi import` command, ResponsePolicy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default projects/{{project}}/responsePolicies/{{response_policy_name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{project}}/{{response_policy_name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{response_policy_name}}
  * ```
  */

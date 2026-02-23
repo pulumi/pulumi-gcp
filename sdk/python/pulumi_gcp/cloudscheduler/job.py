@@ -35,6 +35,7 @@ class JobArgs:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
+
         :param pulumi.Input['JobAppEngineHttpTargetArgs'] app_engine_http_target: App Engine HTTP target.
                If the job providers a App Engine HTTP target the cron will
                send a request to the service instance
@@ -280,6 +281,7 @@ class _JobState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
+
         :param pulumi.Input['JobAppEngineHttpTargetArgs'] app_engine_http_target: App Engine HTTP target.
                If the job providers a App Engine HTTP target the cron will
                send a request to the service instance
@@ -697,30 +699,19 @@ class Job(pulumi.CustomResource):
         Job can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/jobs/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default projects/{{project}}/locations/{{region}}/jobs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -921,30 +912,19 @@ class Job(pulumi.CustomResource):
         Job can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/jobs/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default projects/{{project}}/locations/{{region}}/jobs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudscheduler/job:Job default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.

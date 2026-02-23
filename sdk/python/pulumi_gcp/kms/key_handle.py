@@ -25,6 +25,7 @@ class KeyHandleArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeyHandle resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the KeyHandle.
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[_builtins.str] resource_type_selector: Selector of the resource type where we want to protect resources.
@@ -102,6 +103,7 @@ class _KeyHandleState:
                  resource_type_selector: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyHandle resources.
+
         :param pulumi.Input[_builtins.str] kms_key: A reference to a Cloud KMS CryptoKey that can be used for CMEK in the requested
                product/project/location, for example
                `projects/1/locations/us-east1/keyRings/foo/cryptoKeys/bar-ffffff`
@@ -202,6 +204,18 @@ class KeyHandle(pulumi.CustomResource):
                  resource_type_selector: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A `KeyHandle` is a resource used to auto-provision CryptoKeys for CMEK.
+
+        > **Note:** KeyHandles cannot be deleted from Google Cloud Platform.
+        Destroying a Terraform-managed KeyHandle will remove it from state but
+        *will not delete the resource from the project.*
+
+        To get more information about KeyHandle, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles)
+        * How-to Guides
+            * [Cloud KMS with Autokey](https://cloud.google.com/kms/docs/kms-with-autokey)
+
         ## Example Usage
 
         ### Kms Key Handle Basic
@@ -278,24 +292,17 @@ class KeyHandle(pulumi.CustomResource):
         KeyHandle can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/keyHandles/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, KeyHandle can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/keyHandle:KeyHandle default projects/{{project}}/locations/{{location}}/keyHandles/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/keyHandle:KeyHandle default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/keyHandle:KeyHandle default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -314,6 +321,18 @@ class KeyHandle(pulumi.CustomResource):
                  args: KeyHandleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A `KeyHandle` is a resource used to auto-provision CryptoKeys for CMEK.
+
+        > **Note:** KeyHandles cannot be deleted from Google Cloud Platform.
+        Destroying a Terraform-managed KeyHandle will remove it from state but
+        *will not delete the resource from the project.*
+
+        To get more information about KeyHandle, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles)
+        * How-to Guides
+            * [Cloud KMS with Autokey](https://cloud.google.com/kms/docs/kms-with-autokey)
+
         ## Example Usage
 
         ### Kms Key Handle Basic
@@ -390,24 +409,17 @@ class KeyHandle(pulumi.CustomResource):
         KeyHandle can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/keyHandles/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, KeyHandle can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/keyHandle:KeyHandle default projects/{{project}}/locations/{{location}}/keyHandles/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/keyHandle:KeyHandle default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/keyHandle:KeyHandle default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeyHandleArgs args: The arguments to use to populate this resource's properties.

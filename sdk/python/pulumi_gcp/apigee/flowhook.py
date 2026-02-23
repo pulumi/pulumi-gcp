@@ -27,6 +27,7 @@ class FlowhookArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Flowhook resource.
+
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
         :param pulumi.Input[_builtins.str] flow_hook_point: Where in the API call flow the flow hook is invoked. Must be one of PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook, or PostTargetFlowHook.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the environment
@@ -127,6 +128,7 @@ class _FlowhookState:
                  sharedflow: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Flowhook resources.
+
         :param pulumi.Input[_builtins.bool] continue_on_error: Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
         :param pulumi.Input[_builtins.str] description: Description of the flow hook.
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
@@ -247,18 +249,15 @@ class Flowhook(pulumi.CustomResource):
         Flowhook can be imported using any of these accepted formats:
 
         * `organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}`
-
         * `{{org_id}}/{{environment}}/{{flow_hook_point}}`
 
         When using the `pulumi import` command, Flowhook can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/flowhook:Flowhook default organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/flowhook:Flowhook default {{org_id}}/{{environment}}/{{flow_hook_point}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -289,18 +288,15 @@ class Flowhook(pulumi.CustomResource):
         Flowhook can be imported using any of these accepted formats:
 
         * `organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}`
-
         * `{{org_id}}/{{environment}}/{{flow_hook_point}}`
 
         When using the `pulumi import` command, Flowhook can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/flowhook:Flowhook default organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/flowhook:Flowhook default {{org_id}}/{{environment}}/{{flow_hook_point}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlowhookArgs args: The arguments to use to populate this resource's properties.

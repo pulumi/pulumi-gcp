@@ -28,6 +28,7 @@ class GeminiGcpEnablementSettingBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GeminiGcpEnablementSettingBinding resource.
+
         :param pulumi.Input[_builtins.str] gemini_gcp_enablement_setting_id: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] setting_binding_id: Id of the setting binding.
         :param pulumi.Input[_builtins.str] target: Target of the binding.
@@ -156,6 +157,7 @@ class _GeminiGcpEnablementSettingBindingState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GeminiGcpEnablementSettingBinding resources.
+
         :param pulumi.Input[_builtins.str] create_time: Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] gemini_gcp_enablement_setting_id: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -398,24 +400,17 @@ class GeminiGcpEnablementSettingBinding(pulumi.CustomResource):
         GeminiGcpEnablementSettingBinding can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}/settingBindings/{{setting_binding_id}}`
-
         * `{{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}`
-
         * `{{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}`
 
         When using the `pulumi import` command, GeminiGcpEnablementSettingBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding default projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}/settingBindings/{{setting_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding default {{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding default {{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -471,24 +466,17 @@ class GeminiGcpEnablementSettingBinding(pulumi.CustomResource):
         GeminiGcpEnablementSettingBinding can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}/settingBindings/{{setting_binding_id}}`
-
         * `{{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}`
-
         * `{{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}`
 
         When using the `pulumi import` command, GeminiGcpEnablementSettingBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding default projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}/settingBindings/{{setting_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding default {{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding default {{location}}/{{gemini_gcp_enablement_setting_id}}/{{setting_binding_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GeminiGcpEnablementSettingBindingArgs args: The arguments to use to populate this resource's properties.

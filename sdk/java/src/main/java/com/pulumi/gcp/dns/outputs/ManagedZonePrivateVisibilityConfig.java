@@ -18,6 +18,15 @@ public final class ManagedZonePrivateVisibilityConfig {
      * 
      */
     private @Nullable List<ManagedZonePrivateVisibilityConfigGkeCluster> gkeClusters;
+    /**
+     * @return The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+     * may experience issues with this resource while updating. If you&#39;ve defined a `networks` block and
+     * add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+     * and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+     * blocks in an update and then apply another update adding all of them back simultaneously.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<ManagedZonePrivateVisibilityConfigNetwork> networks;
 
     private ManagedZonePrivateVisibilityConfig() {}
@@ -29,6 +38,15 @@ public final class ManagedZonePrivateVisibilityConfig {
     public List<ManagedZonePrivateVisibilityConfigGkeCluster> gkeClusters() {
         return this.gkeClusters == null ? List.of() : this.gkeClusters;
     }
+    /**
+     * @return The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+     * may experience issues with this resource while updating. If you&#39;ve defined a `networks` block and
+     * add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+     * and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+     * blocks in an update and then apply another update adding all of them back simultaneously.
+     * Structure is documented below.
+     * 
+     */
     public List<ManagedZonePrivateVisibilityConfigNetwork> networks() {
         return this.networks == null ? List.of() : this.networks;
     }

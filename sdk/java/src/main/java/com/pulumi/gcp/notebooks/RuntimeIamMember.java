@@ -293,11 +293,8 @@ import javax.annotation.Nullable;
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
  * * projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}}
- * 
  * * {{project}}/{{location}}/{{runtime_name}}
- * 
  * * {{location}}/{{runtime_name}}
- * 
  * * {{runtime_name}}
  * 
  * Any variables not passed in the import command will be taken from the provider configuration.
@@ -305,25 +302,21 @@ import javax.annotation.Nullable;
  * Cloud AI Notebooks runtime IAM resources can be imported using the resource identifiers, role, and member.
  * 
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
- * 
  * ```sh
- * $ pulumi import gcp:notebooks/runtimeIamMember:RuntimeIamMember editor &#34;projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}} roles/viewer user:jane{@literal @}example.com&#34;
+ * $ terraform import google_notebooks_runtime_iam_member.editor &#34;projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}} roles/viewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
- * 
  * ```sh
- * $ pulumi import gcp:notebooks/runtimeIamMember:RuntimeIamMember editor &#34;projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}} roles/viewer&#34;
+ * $ terraform import google_notebooks_runtime_iam_binding.editor &#34;projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}} roles/viewer&#34;
  * ```
  * 
  * IAM policy imports use the identifier of the resource in question, e.g.
- * 
  * ```sh
  * $ pulumi import gcp:notebooks/runtimeIamMember:RuntimeIamMember editor projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}}
  * ```
  * 
- * -&gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
- * 
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */

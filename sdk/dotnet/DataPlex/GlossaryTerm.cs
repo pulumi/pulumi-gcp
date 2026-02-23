@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var termTestId = new Gcp.DataPlex.Glossary("term_test_id", new()
     ///     {
-    ///         GlossaryId = "tf-test-glossary_40289",
+    ///         GlossaryId = "tf-test-glossary_76044",
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         }),
     ///         GlossaryId = termTestId.GlossaryId,
     ///         Location = "us-central1",
-    ///         TermId = "tf-test-term-basic_33395",
+    ///         TermId = "tf-test-term-basic_69391",
     ///     });
     /// 
     /// });
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var termTestIdFull = new Gcp.DataPlex.Glossary("term_test_id_full", new()
     ///     {
-    ///         GlossaryId = "tf-test-glossary_76044",
+    ///         GlossaryId = "tf-test-glossary_8270",
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         }),
     ///         GlossaryId = termTestIdFull.GlossaryId,
     ///         Location = "us-central1",
-    ///         TermId = "tf-test-term-full_69391",
+    ///         TermId = "tf-test-term-full_41150",
     ///         Labels = 
     ///         {
     ///             { "tag", "test-tf" },
@@ -88,22 +88,14 @@ namespace Pulumi.Gcp.DataPlex
     /// GlossaryTerm can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{glossary_id}}/{{term_id}}`
-    /// 
     /// * `{{location}}/{{glossary_id}}/{{term_id}}`
     /// 
     /// When using the `pulumi import` command, GlossaryTerm can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/terms/{{term_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{project}}/{{location}}/{{glossary_id}}/{{term_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/glossaryTerm:GlossaryTerm default {{location}}/{{glossary_id}}/{{term_id}}
     /// ```
     /// </summary>

@@ -26,6 +26,7 @@ class EnvReferencesArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvReferences resource.
+
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
         :param pulumi.Input[_builtins.str] refers: Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
@@ -113,6 +114,7 @@ class _EnvReferencesState:
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvReferences resources.
+
         :param pulumi.Input[_builtins.str] description: Optional. A human-readable description of this reference.
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
@@ -219,18 +221,15 @@ class EnvReferences(pulumi.CustomResource):
         EnvReferences can be imported using any of these accepted formats:
 
         * `{{env_id}}/references/{{name}}`
-
         * `{{env_id}}/{{name}}`
 
         When using the `pulumi import` command, EnvReferences can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/references/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -261,18 +260,15 @@ class EnvReferences(pulumi.CustomResource):
         EnvReferences can be imported using any of these accepted formats:
 
         * `{{env_id}}/references/{{name}}`
-
         * `{{env_id}}/{{name}}`
 
         When using the `pulumi import` command, EnvReferences can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/references/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvReferencesArgs args: The arguments to use to populate this resource's properties.

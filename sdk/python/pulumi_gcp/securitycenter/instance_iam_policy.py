@@ -25,6 +25,7 @@ class InstanceIamPolicyArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceIamPolicy resource.
+
         :param pulumi.Input[_builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -95,6 +96,7 @@ class _InstanceIamPolicyState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceIamPolicy resources.
+
         :param pulumi.Input[_builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -362,30 +364,19 @@ class InstanceIamPolicy(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy default projects/{{project}}/locations/{{region}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -584,30 +575,19 @@ class InstanceIamPolicy(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy default projects/{{project}}/locations/{{region}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceIamPolicyArgs args: The arguments to use to populate this resource's properties.

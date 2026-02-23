@@ -479,34 +479,21 @@ import (
 // Subnetwork can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Subnetwork can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/subnetwork:Subnetwork default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/subnetwork:Subnetwork default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/subnetwork:Subnetwork default {{name}}
 // ```
 type Subnetwork struct {
 	pulumi.CustomResourceState
 
-	// (Optional, Beta)
 	// Typically packets destined to IPs within the subnetwork range that do not match
 	// existing resources are dropped and prevented from leaving the VPC.
 	// Setting this field to true will allow these packets to match dynamic routes injected
@@ -672,7 +659,6 @@ func GetSubnetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Subnetwork resources.
 type subnetworkState struct {
-	// (Optional, Beta)
 	// Typically packets destined to IPs within the subnetwork range that do not match
 	// existing resources are dropped and prevented from leaving the VPC.
 	// Setting this field to true will allow these packets to match dynamic routes injected
@@ -806,7 +792,6 @@ type subnetworkState struct {
 }
 
 type SubnetworkState struct {
-	// (Optional, Beta)
 	// Typically packets destined to IPs within the subnetwork range that do not match
 	// existing resources are dropped and prevented from leaving the VPC.
 	// Setting this field to true will allow these packets to match dynamic routes injected
@@ -944,7 +929,6 @@ func (SubnetworkState) ElementType() reflect.Type {
 }
 
 type subnetworkArgs struct {
-	// (Optional, Beta)
 	// Typically packets destined to IPs within the subnetwork range that do not match
 	// existing resources are dropped and prevented from leaving the VPC.
 	// Setting this field to true will allow these packets to match dynamic routes injected
@@ -1053,7 +1037,6 @@ type subnetworkArgs struct {
 
 // The set of arguments for constructing a Subnetwork resource.
 type SubnetworkArgs struct {
-	// (Optional, Beta)
 	// Typically packets destined to IPs within the subnetwork range that do not match
 	// existing resources are dropped and prevented from leaving the VPC.
 	// Setting this field to true will allow these packets to match dynamic routes injected
@@ -1247,7 +1230,6 @@ func (o SubnetworkOutput) ToSubnetworkOutputWithContext(ctx context.Context) Sub
 	return o
 }
 
-// (Optional, Beta)
 // Typically packets destined to IPs within the subnetwork range that do not match
 // existing resources are dropped and prevented from leaving the VPC.
 // Setting this field to true will allow these packets to match dynamic routes injected

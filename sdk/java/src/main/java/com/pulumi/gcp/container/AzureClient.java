@@ -60,24 +60,15 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * Client can be imported using any of these accepted formats:
- * 
  * * `projects/{{project}}/locations/{{location}}/azureClients/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:container/azureClient:AzureClient default projects/{{project}}/locations/{{location}}/azureClients/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:container/azureClient:AzureClient default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:container/azureClient:AzureClient default {{location}}/{{name}}
  * ```
  * 

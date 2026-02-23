@@ -29,6 +29,7 @@ class V2ProjectNotificationConfigArgs:
                  pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2ProjectNotificationConfig resource.
+
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the project.
         :param pulumi.Input['V2ProjectNotificationConfigStreamingConfigArgs'] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
@@ -139,6 +140,7 @@ class _V2ProjectNotificationConfigState:
                  streaming_config: Optional[pulumi.Input['V2ProjectNotificationConfigStreamingConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V2ProjectNotificationConfig resources.
+
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[_builtins.str] location: Location ID for the parent project. Defaults to `global` if location is not provided.
@@ -318,24 +320,17 @@ class V2ProjectNotificationConfig(pulumi.CustomResource):
         ProjectNotificationConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/notificationConfigs/{{config_id}}`
-
         * `{{project}}/{{location}}/{{config_id}}`
-
         * `{{location}}/{{config_id}}`
 
         When using the `pulumi import` command, ProjectNotificationConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig default projects/{{project}}/locations/{{location}}/notificationConfigs/{{config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig default {{project}}/{{location}}/{{config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig default {{location}}/{{config_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -388,24 +383,17 @@ class V2ProjectNotificationConfig(pulumi.CustomResource):
         ProjectNotificationConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/notificationConfigs/{{config_id}}`
-
         * `{{project}}/{{location}}/{{config_id}}`
-
         * `{{location}}/{{config_id}}`
 
         When using the `pulumi import` command, ProjectNotificationConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig default projects/{{project}}/locations/{{location}}/notificationConfigs/{{config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig default {{project}}/{{location}}/{{config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig default {{location}}/{{config_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V2ProjectNotificationConfigArgs args: The arguments to use to populate this resource's properties.

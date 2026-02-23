@@ -27,6 +27,7 @@ class DataSharingWithGoogleSettingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataSharingWithGoogleSetting resource.
+
         :param pulumi.Input[_builtins.str] data_sharing_with_google_setting_id: Id of the Data Sharing With Google Setting.
         :param pulumi.Input[_builtins.bool] enable_data_sharing: Whether data sharing should be enabled in GA products.
         :param pulumi.Input[_builtins.bool] enable_preview_data_sharing: Whether data sharing should be enabled in Preview products.
@@ -141,6 +142,7 @@ class _DataSharingWithGoogleSettingState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataSharingWithGoogleSetting resources.
+
         :param pulumi.Input[_builtins.str] create_time: Create time stamp.
         :param pulumi.Input[_builtins.str] data_sharing_with_google_setting_id: Id of the Data Sharing With Google Setting.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -358,24 +360,17 @@ class DataSharingWithGoogleSetting(pulumi.CustomResource):
         DataSharingWithGoogleSetting can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataSharingWithGoogleSettings/{{data_sharing_with_google_setting_id}}`
-
         * `{{project}}/{{location}}/{{data_sharing_with_google_setting_id}}`
-
         * `{{location}}/{{data_sharing_with_google_setting_id}}`
 
         When using the `pulumi import` command, DataSharingWithGoogleSetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default projects/{{project}}/locations/{{location}}/dataSharingWithGoogleSettings/{{data_sharing_with_google_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default {{project}}/{{location}}/{{data_sharing_with_google_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default {{location}}/{{data_sharing_with_google_setting_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -421,24 +416,17 @@ class DataSharingWithGoogleSetting(pulumi.CustomResource):
         DataSharingWithGoogleSetting can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataSharingWithGoogleSettings/{{data_sharing_with_google_setting_id}}`
-
         * `{{project}}/{{location}}/{{data_sharing_with_google_setting_id}}`
-
         * `{{location}}/{{data_sharing_with_google_setting_id}}`
 
         When using the `pulumi import` command, DataSharingWithGoogleSetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default projects/{{project}}/locations/{{location}}/dataSharingWithGoogleSettings/{{data_sharing_with_google_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default {{project}}/{{location}}/{{data_sharing_with_google_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting default {{location}}/{{data_sharing_with_google_setting_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataSharingWithGoogleSettingArgs args: The arguments to use to populate this resource's properties.

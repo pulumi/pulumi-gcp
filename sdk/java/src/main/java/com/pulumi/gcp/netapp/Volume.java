@@ -103,22 +103,14 @@ import javax.annotation.Nullable;
  * Volume can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/volumes/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, Volume can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:netapp/volume:Volume default projects/{{project}}/locations/{{location}}/volumes/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:netapp/volume:Volume default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:netapp/volume:Volume default {{location}}/{{name}}
  * ```
  * 

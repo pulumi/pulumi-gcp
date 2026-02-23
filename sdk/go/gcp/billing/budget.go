@@ -79,8 +79,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -130,8 +128,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -200,8 +196,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
@@ -277,8 +271,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -330,8 +322,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -404,22 +394,14 @@ import (
 // Budget can be imported using any of these accepted formats:
 //
 // * `billingAccounts/{{billing_account}}/budgets/{{name}}`
-//
 // * `{{billing_account}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:billing/budget:Budget default {{billing_account}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:billing/budget:Budget default {{name}}
 // ```
 type Budget struct {

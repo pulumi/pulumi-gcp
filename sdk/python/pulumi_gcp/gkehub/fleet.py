@@ -26,6 +26,7 @@ class FleetArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Fleet resource.
+
         :param pulumi.Input['FleetDefaultClusterConfigArgs'] default_cluster_config: The default cluster configurations to apply across the fleet.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
@@ -93,6 +94,7 @@ class _FleetState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Fleet resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time the fleet was created, in RFC3339 text format.
         :param pulumi.Input['FleetDefaultClusterConfigArgs'] default_cluster_config: The default cluster configurations to apply across the fleet.
                Structure is documented below.
@@ -270,18 +272,15 @@ class Fleet(pulumi.CustomResource):
         Fleet can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/fleets/default`
-
         * `{{project}}`
 
         When using the `pulumi import` command, Fleet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/fleet:Fleet default projects/{{project}}/locations/global/fleets/default
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/fleet:Fleet default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -330,18 +329,15 @@ class Fleet(pulumi.CustomResource):
         Fleet can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/fleets/default`
-
         * `{{project}}`
 
         When using the `pulumi import` command, Fleet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/fleet:Fleet default projects/{{project}}/locations/global/fleets/default
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/fleet:Fleet default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FleetArgs args: The arguments to use to populate this resource's properties.

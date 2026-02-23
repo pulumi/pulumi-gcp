@@ -201,6 +201,101 @@ namespace Pulumi.Gcp.Spanner
     /// });
     /// ```
     /// 
+    /// ## This resource supports User Project Overrides.
+    /// 
+    /// - 
+    /// 
+    /// # IAM policy for Spanner Databases
+    /// 
+    /// Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
+    /// 
+    /// &gt; **Warning:** It's entirely possibly to lock yourself out of your database using `gcp.spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+    /// 
+    /// * `gcp.spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
+    /// * `gcp.spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.DatabaseIAMBinding` and `gcp.spanner.DatabaseIAMMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## gcp.spanner.DatabaseIAMPolicy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var database = new Gcp.Spanner.DatabaseIAMPolicy("database", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "My Role",
+    ///                     Description = "Grant permissions on my_role",
+    ///                     Expression = "(resource.type == \"spanner.googleapis.com/DatabaseRole\" &amp;&amp; (resource.name.endsWith(\"/myrole\")))",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var database = new Gcp.Spanner.DatabaseIAMPolicy("database", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## gcp.spanner.DatabaseIAMBinding
     /// 
     /// ```csharp
@@ -305,29 +400,13 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// ## Import
     /// 
-    /// ### Importing IAM policies
+    /// &gt; **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
+    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// 
-    /// IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+    /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
-    /// * `{{project}}/{{instance}}/{{database}}`
-    /// 
-    /// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-    /// 
-    /// tf
-    /// 
-    /// import {
-    /// 
-    ///   id = {{project}}/{{instance}}/{{database}}
-    /// 
-    ///   to = google_spanner_database_iam_policy.default
-    /// 
-    /// }
-    /// 
-    /// The `pulumi import` command can also be used:
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember default {{project}}/{{instance}}/{{database}}
-    /// ```
+    /// * {{project}}/{{instance}}/{{database}}
+    /// * {{instance}}/{{database}} (project is taken from provider project)
     /// </summary>
     [GcpResourceType("gcp:spanner/databaseIAMMember:DatabaseIAMMember")]
     public partial class DatabaseIAMMember : global::Pulumi.CustomResource

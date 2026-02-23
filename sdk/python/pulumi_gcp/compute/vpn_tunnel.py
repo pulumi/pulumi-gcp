@@ -27,6 +27,7 @@ class VPNTunnelArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['VPNTunnelParamsArgs']] = None,
                  peer_external_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  peer_external_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None,
                  peer_gcp_gateway: Optional[pulumi.Input[_builtins.str]] = None,
@@ -43,6 +44,7 @@ class VPNTunnelArgs:
                  vpn_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a VPNTunnel resource.
+
         :param pulumi.Input['VPNTunnelCipherSuiteArgs'] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -63,6 +65,9 @@ class VPNTunnelArgs:
                must be a lowercase letter, and all following characters must
                be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input['VPNTunnelParamsArgs'] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
@@ -108,6 +113,8 @@ class VPNTunnelArgs:
             pulumi.set(__self__, "local_traffic_selectors", local_traffic_selectors)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if peer_external_gateway is not None:
             pulumi.set(__self__, "peer_external_gateway", peer_external_gateway)
         if peer_external_gateway_interface is not None:
@@ -222,6 +229,20 @@ class VPNTunnelArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['VPNTunnelParamsArgs']]:
+        """
+        (Optional, Beta)
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['VPNTunnelParamsArgs']]):
+        pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="peerExternalGateway")
@@ -423,6 +444,7 @@ class _VPNTunnelState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['VPNTunnelParamsArgs']] = None,
                  peer_external_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  peer_external_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None,
                  peer_gcp_gateway: Optional[pulumi.Input[_builtins.str]] = None,
@@ -443,6 +465,7 @@ class _VPNTunnelState:
                  vpn_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VPNTunnel resources.
+
         :param pulumi.Input['VPNTunnelCipherSuiteArgs'] cipher_suite: User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -468,6 +491,9 @@ class _VPNTunnelState:
                must be a lowercase letter, and all following characters must
                be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input['VPNTunnelParamsArgs'] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
@@ -526,6 +552,8 @@ class _VPNTunnelState:
             pulumi.set(__self__, "local_traffic_selectors", local_traffic_selectors)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if peer_external_gateway is not None:
             pulumi.set(__self__, "peer_external_gateway", peer_external_gateway)
         if peer_external_gateway_interface is not None:
@@ -697,6 +725,20 @@ class _VPNTunnelState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['VPNTunnelParamsArgs']]:
+        """
+        (Optional, Beta)
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['VPNTunnelParamsArgs']]):
+        pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="peerExternalGateway")
@@ -946,6 +988,7 @@ class VPNTunnel(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']]] = None,
                  peer_external_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  peer_external_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None,
                  peer_gcp_gateway: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1091,30 +1134,19 @@ class VPNTunnel(pulumi.CustomResource):
         VpnTunnel can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, VpnTunnel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1138,6 +1170,9 @@ class VPNTunnel(pulumi.CustomResource):
                must be a lowercase letter, and all following characters must
                be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
@@ -1307,30 +1342,19 @@ class VPNTunnel(pulumi.CustomResource):
         VpnTunnel can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, VpnTunnel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VPNTunnelArgs args: The arguments to use to populate this resource's properties.
@@ -1353,6 +1377,7 @@ class VPNTunnel(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']]] = None,
                  peer_external_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  peer_external_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None,
                  peer_gcp_gateway: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1382,6 +1407,7 @@ class VPNTunnel(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["local_traffic_selectors"] = local_traffic_selectors
             __props__.__dict__["name"] = name
+            __props__.__dict__["params"] = params
             __props__.__dict__["peer_external_gateway"] = peer_external_gateway
             __props__.__dict__["peer_external_gateway_interface"] = peer_external_gateway_interface
             __props__.__dict__["peer_gcp_gateway"] = peer_gcp_gateway
@@ -1426,6 +1452,7 @@ class VPNTunnel(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']]] = None,
             peer_external_gateway: Optional[pulumi.Input[_builtins.str]] = None,
             peer_external_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None,
             peer_gcp_gateway: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1476,6 +1503,9 @@ class VPNTunnel(pulumi.CustomResource):
                must be a lowercase letter, and all following characters must
                be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[_builtins.str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
@@ -1528,6 +1558,7 @@ class VPNTunnel(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["local_traffic_selectors"] = local_traffic_selectors
         __props__.__dict__["name"] = name
+        __props__.__dict__["params"] = params
         __props__.__dict__["peer_external_gateway"] = peer_external_gateway
         __props__.__dict__["peer_external_gateway_interface"] = peer_external_gateway_interface
         __props__.__dict__["peer_gcp_gateway"] = peer_gcp_gateway
@@ -1642,6 +1673,16 @@ class VPNTunnel(pulumi.CustomResource):
         except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.VPNTunnelParams']]:
+        """
+        (Optional, Beta)
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter(name="peerExternalGateway")

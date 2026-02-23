@@ -223,6 +223,16 @@ __all__ = [
     'ToolOpenApiToolTlsConfigCaCert',
     'ToolPythonFunction',
     'ToolSystemTool',
+    'ToolsetMcpToolset',
+    'ToolsetMcpToolsetApiAuthentication',
+    'ToolsetMcpToolsetApiAuthenticationApiKeyConfig',
+    'ToolsetMcpToolsetApiAuthenticationBearerTokenConfig',
+    'ToolsetMcpToolsetApiAuthenticationOauthConfig',
+    'ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig',
+    'ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig',
+    'ToolsetMcpToolsetServiceDirectoryConfig',
+    'ToolsetMcpToolsetTlsConfig',
+    'ToolsetMcpToolsetTlsConfigCaCert',
     'ToolsetOpenApiToolset',
     'ToolsetOpenApiToolsetApiAuthentication',
     'ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig',
@@ -16569,6 +16579,591 @@ class ToolSystemTool(dict):
 
 
 @pulumi.output_type
+class ToolsetMcpToolset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverAddress":
+            suggest = "server_address"
+        elif key == "apiAuthentication":
+            suggest = "api_authentication"
+        elif key == "serviceDirectoryConfig":
+            suggest = "service_directory_config"
+        elif key == "tlsConfig":
+            suggest = "tls_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetMcpToolset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetMcpToolset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetMcpToolset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 server_address: _builtins.str,
+                 api_authentication: Optional['outputs.ToolsetMcpToolsetApiAuthentication'] = None,
+                 service_directory_config: Optional['outputs.ToolsetMcpToolsetServiceDirectoryConfig'] = None,
+                 tls_config: Optional['outputs.ToolsetMcpToolsetTlsConfig'] = None):
+        """
+        :param _builtins.str server_address: The address of the MCP server, for example, "https://example.com/mcp/". If
+               the server is built with the MCP SDK, the url should be suffixed with
+               "/mcp/". Only Streamable HTTP transport based servers are supported. See
+               https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http
+               for more details.
+        :param 'ToolsetMcpToolsetApiAuthenticationArgs' api_authentication: Authentication information required to access tools and execute a tool
+               against the MCP server. For API key auth, the API key can only be sent in
+               the request header; sending it via query parameters is not supported.
+               Structure is documented below.
+        :param 'ToolsetMcpToolsetServiceDirectoryConfigArgs' service_directory_config: Service Directory configuration for VPC-SC, used to resolve service names
+               within a perimeter.
+               Structure is documented below.
+        :param 'ToolsetMcpToolsetTlsConfigArgs' tls_config: The TLS configuration. Includes the custom server certificates that the
+               client should trust.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "server_address", server_address)
+        if api_authentication is not None:
+            pulumi.set(__self__, "api_authentication", api_authentication)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
+
+    @_builtins.property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> _builtins.str:
+        """
+        The address of the MCP server, for example, "https://example.com/mcp/". If
+        the server is built with the MCP SDK, the url should be suffixed with
+        "/mcp/". Only Streamable HTTP transport based servers are supported. See
+        https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http
+        for more details.
+        """
+        return pulumi.get(self, "server_address")
+
+    @_builtins.property
+    @pulumi.getter(name="apiAuthentication")
+    def api_authentication(self) -> Optional['outputs.ToolsetMcpToolsetApiAuthentication']:
+        """
+        Authentication information required to access tools and execute a tool
+        against the MCP server. For API key auth, the API key can only be sent in
+        the request header; sending it via query parameters is not supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_authentication")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> Optional['outputs.ToolsetMcpToolsetServiceDirectoryConfig']:
+        """
+        Service Directory configuration for VPC-SC, used to resolve service names
+        within a perimeter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> Optional['outputs.ToolsetMcpToolsetTlsConfig']:
+        """
+        The TLS configuration. Includes the custom server certificates that the
+        client should trust.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tls_config")
+
+
+@pulumi.output_type
+class ToolsetMcpToolsetApiAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKeyConfig":
+            suggest = "api_key_config"
+        elif key == "bearerTokenConfig":
+            suggest = "bearer_token_config"
+        elif key == "oauthConfig":
+            suggest = "oauth_config"
+        elif key == "serviceAccountAuthConfig":
+            suggest = "service_account_auth_config"
+        elif key == "serviceAgentIdTokenAuthConfig":
+            suggest = "service_agent_id_token_auth_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetMcpToolsetApiAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetMcpToolsetApiAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetMcpToolsetApiAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key_config: Optional['outputs.ToolsetMcpToolsetApiAuthenticationApiKeyConfig'] = None,
+                 bearer_token_config: Optional['outputs.ToolsetMcpToolsetApiAuthenticationBearerTokenConfig'] = None,
+                 oauth_config: Optional['outputs.ToolsetMcpToolsetApiAuthenticationOauthConfig'] = None,
+                 service_account_auth_config: Optional['outputs.ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig'] = None,
+                 service_agent_id_token_auth_config: Optional['outputs.ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig'] = None):
+        """
+        :param 'ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs' api_key_config: Configurations for authentication with API key.
+               Structure is documented below.
+        :param 'ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs' bearer_token_config: Configurations for authentication with a bearer token.
+               Structure is documented below.
+        :param 'ToolsetMcpToolsetApiAuthenticationOauthConfigArgs' oauth_config: Configurations for authentication with OAuth.
+               Structure is documented below.
+        :param 'ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs' service_account_auth_config: Configurations for authentication using a custom service account.
+               Structure is documented below.
+        :param 'ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs' service_agent_id_token_auth_config: Configurations for authentication with [ID
+               token](https://cloud.google.com/docs/authentication/token-types#id) generated
+               from service agent.
+        """
+        if api_key_config is not None:
+            pulumi.set(__self__, "api_key_config", api_key_config)
+        if bearer_token_config is not None:
+            pulumi.set(__self__, "bearer_token_config", bearer_token_config)
+        if oauth_config is not None:
+            pulumi.set(__self__, "oauth_config", oauth_config)
+        if service_account_auth_config is not None:
+            pulumi.set(__self__, "service_account_auth_config", service_account_auth_config)
+        if service_agent_id_token_auth_config is not None:
+            pulumi.set(__self__, "service_agent_id_token_auth_config", service_agent_id_token_auth_config)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyConfig")
+    def api_key_config(self) -> Optional['outputs.ToolsetMcpToolsetApiAuthenticationApiKeyConfig']:
+        """
+        Configurations for authentication with API key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_key_config")
+
+    @_builtins.property
+    @pulumi.getter(name="bearerTokenConfig")
+    def bearer_token_config(self) -> Optional['outputs.ToolsetMcpToolsetApiAuthenticationBearerTokenConfig']:
+        """
+        Configurations for authentication with a bearer token.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bearer_token_config")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfig")
+    def oauth_config(self) -> Optional['outputs.ToolsetMcpToolsetApiAuthenticationOauthConfig']:
+        """
+        Configurations for authentication with OAuth.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth_config")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountAuthConfig")
+    def service_account_auth_config(self) -> Optional['outputs.ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig']:
+        """
+        Configurations for authentication using a custom service account.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_account_auth_config")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentIdTokenAuthConfig")
+    def service_agent_id_token_auth_config(self) -> Optional['outputs.ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig']:
+        """
+        Configurations for authentication with [ID
+        token](https://cloud.google.com/docs/authentication/token-types#id) generated
+        from service agent.
+        """
+        return pulumi.get(self, "service_agent_id_token_auth_config")
+
+
+@pulumi.output_type
+class ToolsetMcpToolsetApiAuthenticationApiKeyConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKeySecretVersion":
+            suggest = "api_key_secret_version"
+        elif key == "keyName":
+            suggest = "key_name"
+        elif key == "requestLocation":
+            suggest = "request_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetMcpToolsetApiAuthenticationApiKeyConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetMcpToolsetApiAuthenticationApiKeyConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetMcpToolsetApiAuthenticationApiKeyConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key_secret_version: _builtins.str,
+                 key_name: _builtins.str,
+                 request_location: _builtins.str):
+        """
+        :param _builtins.str api_key_secret_version: The name of the SecretManager secret version resource storing the API key.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+               Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+               service agent
+               `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param _builtins.str key_name: The parameter name or the header name of the API key.
+               E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        :param _builtins.str request_location: Key location in the request. For API key auth on MCP toolsets,
+               the API key can only be sent in the request header.
+               Possible values:
+               HEADER
+        """
+        pulumi.set(__self__, "api_key_secret_version", api_key_secret_version)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "request_location", request_location)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeySecretVersion")
+    def api_key_secret_version(self) -> _builtins.str:
+        """
+        The name of the SecretManager secret version resource storing the API key.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+        service agent
+        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "api_key_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> _builtins.str:
+        """
+        The parameter name or the header name of the API key.
+        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        """
+        return pulumi.get(self, "key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="requestLocation")
+    def request_location(self) -> _builtins.str:
+        """
+        Key location in the request. For API key auth on MCP toolsets,
+        the API key can only be sent in the request header.
+        Possible values:
+        HEADER
+        """
+        return pulumi.get(self, "request_location")
+
+
+@pulumi.output_type
+class ToolsetMcpToolsetApiAuthenticationBearerTokenConfig(dict):
+    def __init__(__self__, *,
+                 token: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str token: (Optional)
+        """
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> Optional[_builtins.str]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class ToolsetMcpToolsetApiAuthenticationOauthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecretVersion":
+            suggest = "client_secret_version"
+        elif key == "oauthGrantType":
+            suggest = "oauth_grant_type"
+        elif key == "tokenEndpoint":
+            suggest = "token_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetMcpToolsetApiAuthenticationOauthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetMcpToolsetApiAuthenticationOauthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetMcpToolsetApiAuthenticationOauthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: _builtins.str,
+                 client_secret_version: _builtins.str,
+                 oauth_grant_type: _builtins.str,
+                 token_endpoint: _builtins.str,
+                 scopes: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str client_id: The client ID from the OAuth provider.
+        :param _builtins.str client_secret_version: The name of the SecretManager secret version resource storing the
+               client secret.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+               Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+               service agent
+               `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param _builtins.str oauth_grant_type: OAuth grant types.
+               Possible values:
+               CLIENT_CREDENTIAL
+        :param _builtins.str token_endpoint: The token endpoint in the OAuth provider to exchange for an access token.
+        :param Sequence[_builtins.str] scopes: The OAuth scopes to grant.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret_version", client_secret_version)
+        pulumi.set(__self__, "oauth_grant_type", oauth_grant_type)
+        pulumi.set(__self__, "token_endpoint", token_endpoint)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The client ID from the OAuth provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecretVersion")
+    def client_secret_version(self) -> _builtins.str:
+        """
+        The name of the SecretManager secret version resource storing the
+        client secret.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+        service agent
+        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "client_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthGrantType")
+    def oauth_grant_type(self) -> _builtins.str:
+        """
+        OAuth grant types.
+        Possible values:
+        CLIENT_CREDENTIAL
+        """
+        return pulumi.get(self, "oauth_grant_type")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> _builtins.str:
+        """
+        The token endpoint in the OAuth provider to exchange for an access token.
+        """
+        return pulumi.get(self, "token_endpoint")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The OAuth scopes to grant.
+        """
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account: _builtins.str):
+        """
+        :param _builtins.str service_account: The email address of the service account used for authenticatation. CES
+               uses this service account to exchange an access token and the access token
+               is then sent in the `Authorization` header of the request.
+               The service account must have the
+               `roles/iam.serviceAccountTokenCreator` role granted to the
+               CES service agent
+               `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> _builtins.str:
+        """
+        The email address of the service account used for authenticatation. CES
+        uses this service account to exchange an access token and the access token
+        is then sent in the `Authorization` header of the request.
+        The service account must have the
+        `roles/iam.serviceAccountTokenCreator` role granted to the
+        CES service agent
+        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "service_account")
+
+
+@pulumi.output_type
+class ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class ToolsetMcpToolsetServiceDirectoryConfig(dict):
+    def __init__(__self__, *,
+                 service: _builtins.str):
+        """
+        :param _builtins.str service: The name of [Service
+               Directory](https://cloud.google.com/service-directory) service.
+               Format:
+               `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+               Location of the service directory must be the same as the location of the
+               app.
+        """
+        pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> _builtins.str:
+        """
+        The name of [Service
+        Directory](https://cloud.google.com/service-directory) service.
+        Format:
+        `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+        Location of the service directory must be the same as the location of the
+        app.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class ToolsetMcpToolsetTlsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCerts":
+            suggest = "ca_certs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetMcpToolsetTlsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetMcpToolsetTlsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetMcpToolsetTlsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certs: Sequence['outputs.ToolsetMcpToolsetTlsConfigCaCert']):
+        """
+        :param Sequence['ToolsetMcpToolsetTlsConfigCaCertArgs'] ca_certs: Specifies a list of allowed custom CA certificates for HTTPS
+               verification.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "ca_certs", ca_certs)
+
+    @_builtins.property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> Sequence['outputs.ToolsetMcpToolsetTlsConfigCaCert']:
+        """
+        Specifies a list of allowed custom CA certificates for HTTPS
+        verification.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ca_certs")
+
+
+@pulumi.output_type
+class ToolsetMcpToolsetTlsConfigCaCert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolsetMcpToolsetTlsConfigCaCert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolsetMcpToolsetTlsConfigCaCert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolsetMcpToolsetTlsConfigCaCert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cert: _builtins.str,
+                 display_name: _builtins.str):
+        """
+        :param _builtins.str cert: The allowed custom CA certificates (in DER format) for
+               HTTPS verification. This overrides the default SSL trust store. If this
+               is empty or unspecified, CES will use Google's default trust
+               store to verify certificates. N.B. Make sure the HTTPS server
+               certificates are signed with "subject alt name". For instance a
+               certificate can be self-signed using the following command,
+               openssl x509 -req -days 200 -in example.com.csr \\
+               -signkey example.com.key \\
+               -out example.com.crt \\
+               -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+        :param _builtins.str display_name: The name of the allowed custom CA certificates. This
+               can be used to disambiguate the custom CA certificates.
+        """
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "display_name", display_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def cert(self) -> _builtins.str:
+        """
+        The allowed custom CA certificates (in DER format) for
+        HTTPS verification. This overrides the default SSL trust store. If this
+        is empty or unspecified, CES will use Google's default trust
+        store to verify certificates. N.B. Make sure the HTTPS server
+        certificates are signed with "subject alt name". For instance a
+        certificate can be self-signed using the following command,
+        openssl x509 -req -days 200 -in example.com.csr \\
+        -signkey example.com.key \\
+        -out example.com.crt \\
+        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+        """
+        return pulumi.get(self, "cert")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        The name of the allowed custom CA certificates. This
+        can be used to disambiguate the custom CA certificates.
+        """
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
 class ToolsetOpenApiToolset(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -16830,10 +17425,10 @@ class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig(dict):
                `service-@gcp-sa-ces.iam.gserviceaccount.com`.
         :param _builtins.str key_name: The parameter name or the header name of the API key.
                E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
-        :param _builtins.str request_location: Key location in the request.
+        :param _builtins.str request_location: Key location in the request. For API key auth on MCP toolsets,
+               the API key can only be sent in the request header.
                Possible values:
                HEADER
-               QUERY_STRING
         """
         pulumi.set(__self__, "api_key_secret_version", api_key_secret_version)
         pulumi.set(__self__, "key_name", key_name)
@@ -16864,10 +17459,10 @@ class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig(dict):
     @pulumi.getter(name="requestLocation")
     def request_location(self) -> _builtins.str:
         """
-        Key location in the request.
+        Key location in the request. For API key auth on MCP toolsets,
+        the API key can only be sent in the request header.
         Possible values:
         HEADER
-        QUERY_STRING
         """
         return pulumi.get(self, "request_location")
 

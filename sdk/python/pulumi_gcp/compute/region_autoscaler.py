@@ -29,6 +29,7 @@ class RegionAutoscalerArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionAutoscaler resource.
+
         :param pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs'] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
@@ -153,6 +154,7 @@ class _RegionAutoscalerState:
                  target: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionAutoscaler resources.
+
         :param pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs'] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
@@ -385,30 +387,19 @@ class RegionAutoscaler(pulumi.CustomResource):
         RegionAutoscaler can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/autoscalers/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionAutoscaler can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default projects/{{project}}/regions/{{region}}/autoscalers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -511,30 +502,19 @@ class RegionAutoscaler(pulumi.CustomResource):
         RegionAutoscaler can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/autoscalers/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionAutoscaler can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default projects/{{project}}/regions/{{region}}/autoscalers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionAutoscalerArgs args: The arguments to use to populate this resource's properties.

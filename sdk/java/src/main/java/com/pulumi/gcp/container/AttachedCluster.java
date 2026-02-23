@@ -260,22 +260,14 @@ import javax.annotation.Nullable;
  * Cluster can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:container/attachedCluster:AttachedCluster default projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{location}}/{{name}}
  * ```
  * 
@@ -424,9 +416,17 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
     public Output<String> distribution() {
         return this.distribution;
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

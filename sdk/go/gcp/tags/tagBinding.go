@@ -135,16 +135,12 @@ import (
 // TagBinding can be imported using any of these accepted formats:
 //
 // * `tagBindings/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, TagBinding can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:tags/tagBinding:TagBinding default tagBindings/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:tags/tagBinding:TagBinding default {{name}}
 // ```
 type TagBinding struct {

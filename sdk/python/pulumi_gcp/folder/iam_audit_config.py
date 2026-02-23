@@ -26,6 +26,7 @@ class IamAuditConfigArgs:
                  service: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a IamAuditConfig resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
@@ -80,6 +81,7 @@ class _IamAuditConfigState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IamAuditConfig resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the folder's IAM policy.
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
@@ -369,29 +371,12 @@ class IamAuditConfig(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing Audit Configs
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
 
-        An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g:
+        > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
+         to include the title of condition, e.g. `terraform import google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
 
-        * `"folder/{{folder_id}} foo.googleapis.com"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
-
-        tf
-
-        import {
-
-          id = "folder/{{folder_id}} foo.googleapis.com"
-
-          to = google_folder_iam_audit_config.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig default "folder/{{folder_id}} foo.googleapis.com"
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -621,29 +606,12 @@ class IamAuditConfig(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing Audit Configs
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
 
-        An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g:
+        > **Conditional IAM Bindings**: If you're importing a IAM binding with a condition block, make sure
+         to include the title of condition, e.g. `terraform import google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
 
-        * `"folder/{{folder_id}} foo.googleapis.com"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
-
-        tf
-
-        import {
-
-          id = "folder/{{folder_id}} foo.googleapis.com"
-
-          to = google_folder_iam_audit_config.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig default "folder/{{folder_id}} foo.googleapis.com"
-        ```
 
         :param str resource_name: The name of the resource.
         :param IamAuditConfigArgs args: The arguments to use to populate this resource's properties.

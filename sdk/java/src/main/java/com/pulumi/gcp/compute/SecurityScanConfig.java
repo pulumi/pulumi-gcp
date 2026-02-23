@@ -19,6 +19,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A ScanConfig resource contains the configurations to launch a scan.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about ScanConfig, see:
+ * 
+ * * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
+ * * How-to Guides
+ *     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+ * 
  * ## Example Usage
  * 
  * ### Scan Config Basic
@@ -67,22 +78,14 @@ import javax.annotation.Nullable;
  * ScanConfig can be imported using any of these accepted formats:
  * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{project}} {{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, ScanConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{project}}/{{name}}
- * ```
- * 
- * ```sh
- * $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default &#34;{{project}} {{name}}&#34;
- * ```
- * 
- * ```sh
+ * $ terraform import google_security_scanner_scan_config.default &#34;{{project}} {{name}}&#34;
  * $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{name}}
  * ```
  * 

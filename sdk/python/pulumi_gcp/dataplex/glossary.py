@@ -27,6 +27,7 @@ class GlossaryArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Glossary resource.
+
         :param pulumi.Input[_builtins.str] glossary_id: The glossary id for creation.
         :param pulumi.Input[_builtins.str] location: The location where the glossary should reside.
         :param pulumi.Input[_builtins.str] description: The user-mutable description of the glossary.
@@ -145,6 +146,7 @@ class _GlossaryState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Glossary resources.
+
         :param pulumi.Input[_builtins.int] category_count: The number of categories in the glossary.
         :param pulumi.Input[_builtins.str] create_time: The time at which the glossary was created.
         :param pulumi.Input[_builtins.str] description: The user-mutable description of the glossary.
@@ -417,24 +419,17 @@ class Glossary(pulumi.CustomResource):
         Glossary can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}`
-
         * `{{project}}/{{location}}/{{glossary_id}}`
-
         * `{{location}}/{{glossary_id}}`
 
         When using the `pulumi import` command, Glossary can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/glossary:Glossary default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossary:Glossary default {{project}}/{{location}}/{{glossary_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossary:Glossary default {{location}}/{{glossary_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -491,24 +486,17 @@ class Glossary(pulumi.CustomResource):
         Glossary can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}`
-
         * `{{project}}/{{location}}/{{glossary_id}}`
-
         * `{{location}}/{{glossary_id}}`
 
         When using the `pulumi import` command, Glossary can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/glossary:Glossary default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossary:Glossary default {{project}}/{{location}}/{{glossary_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/glossary:Glossary default {{location}}/{{glossary_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GlossaryArgs args: The arguments to use to populate this resource's properties.

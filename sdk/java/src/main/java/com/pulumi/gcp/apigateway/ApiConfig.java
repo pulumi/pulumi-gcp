@@ -21,6 +21,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * An API Configuration is an association of an API Controller Config and a Gateway Config
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about ApiConfig, see:
+ * 
+ * * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
+ * 
  * ## Example Usage
  * 
  * ## Import
@@ -28,22 +39,14 @@ import javax.annotation.Nullable;
  * ApiConfig can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
- * 
  * * `{{project}}/{{api}}/{{api_config_id}}`
- * 
  * * `{{api}}/{{api_config_id}}`
  * 
  * When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{api_config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{api_config_id}}
  * ```
  * 

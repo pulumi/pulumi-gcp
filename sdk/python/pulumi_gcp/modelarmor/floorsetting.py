@@ -31,6 +31,7 @@ class FloorsettingArgs:
                  integrated_services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Floorsetting resource.
+
         :param pulumi.Input['FloorsettingFilterConfigArgs'] filter_config: Filters configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -181,6 +182,7 @@ class _FloorsettingState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Floorsetting resources.
+
         :param pulumi.Input['FloorsettingAiPlatformFloorSettingArgs'] ai_platform_floor_setting: AI Platform floor setting.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: [Output only] Create timestamp
@@ -454,18 +456,15 @@ class Floorsetting(pulumi.CustomResource):
         Floorsetting can be imported using any of these accepted formats:
 
         * `{{parent}}/locations/{{location}}/floorSetting`
-
         * `{{parent}}/{{location}}`
 
         When using the `pulumi import` command, Floorsetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:modelarmor/floorsetting:Floorsetting default {{parent}}/locations/{{location}}/floorSetting
-        ```
-
-        ```sh
         $ pulumi import gcp:modelarmor/floorsetting:Floorsetting default {{parent}}/{{location}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -567,18 +566,15 @@ class Floorsetting(pulumi.CustomResource):
         Floorsetting can be imported using any of these accepted formats:
 
         * `{{parent}}/locations/{{location}}/floorSetting`
-
         * `{{parent}}/{{location}}`
 
         When using the `pulumi import` command, Floorsetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:modelarmor/floorsetting:Floorsetting default {{parent}}/locations/{{location}}/floorSetting
-        ```
-
-        ```sh
         $ pulumi import gcp:modelarmor/floorsetting:Floorsetting default {{parent}}/{{location}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FloorsettingArgs args: The arguments to use to populate this resource's properties.

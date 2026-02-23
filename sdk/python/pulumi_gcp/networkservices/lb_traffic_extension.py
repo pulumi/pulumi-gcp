@@ -31,6 +31,7 @@ class LbTrafficExtensionArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LbTrafficExtension resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['LbTrafficExtensionExtensionChainArgs']]] extension_chains: A set of ordered extension chains that contain the match conditions and extensions to execute.
                Match conditions for each extension chain are evaluated in sequence for a given request.
                The first extension chain that has a condition that matches the request is executed.
@@ -189,6 +190,7 @@ class _LbTrafficExtensionState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering LbTrafficExtension resources.
+
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['LbTrafficExtensionExtensionChainArgs']]] extension_chains: A set of ordered extension chains that contain the match conditions and extensions to execute.
@@ -399,24 +401,17 @@ class LbTrafficExtension(pulumi.CustomResource):
         LbTrafficExtension can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/lbTrafficExtensions/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, LbTrafficExtension can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default projects/{{project}}/locations/{{location}}/lbTrafficExtensions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -463,24 +458,17 @@ class LbTrafficExtension(pulumi.CustomResource):
         LbTrafficExtension can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/lbTrafficExtensions/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, LbTrafficExtension can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default projects/{{project}}/locations/{{location}}/lbTrafficExtensions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LbTrafficExtensionArgs args: The arguments to use to populate this resource's properties.

@@ -16,6 +16,11 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AgentGatewayAgentGatewayCard',
+    'AgentGatewayGoogleManaged',
+    'AgentGatewayNetworkConfig',
+    'AgentGatewayNetworkConfigEgress',
+    'AgentGatewaySelfManaged',
     'EdgeCacheKeysetPublicKey',
     'EdgeCacheKeysetValidationSharedKey',
     'EdgeCacheOriginAwsV4Authentication',
@@ -95,6 +100,7 @@ __all__ = [
     'MulticastDomainConnectionConfig',
     'MulticastDomainGroupState',
     'MulticastDomainState',
+    'MulticastDomainUllMulticastDomain',
     'MulticastGroupConsumerActivationLogConfig',
     'MulticastGroupConsumerActivationState',
     'MulticastGroupProducerActivationState',
@@ -118,6 +124,205 @@ __all__ = [
     'WasmPluginUsedBy',
     'WasmPluginVersion',
 ]
+
+@pulumi.output_type
+class AgentGatewayAgentGatewayCard(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mtlsEndpoint":
+            suggest = "mtls_endpoint"
+        elif key == "rootCertificates":
+            suggest = "root_certificates"
+        elif key == "serviceExtensionsServiceAccount":
+            suggest = "service_extensions_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentGatewayAgentGatewayCard. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentGatewayAgentGatewayCard.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentGatewayAgentGatewayCard.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mtls_endpoint: Optional[_builtins.str] = None,
+                 root_certificates: Optional[Sequence[_builtins.str]] = None,
+                 service_extensions_service_account: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str mtls_endpoint: (Output)
+               mTLS Endpoint associated with this AgentGateway.
+        :param Sequence[_builtins.str] root_certificates: (Output)
+               Root Certificates for Agents to validate this AgentGateway.
+        :param _builtins.str service_extensions_service_account: (Output)
+               Service Account used by Service Extensions to operate.
+        """
+        if mtls_endpoint is not None:
+            pulumi.set(__self__, "mtls_endpoint", mtls_endpoint)
+        if root_certificates is not None:
+            pulumi.set(__self__, "root_certificates", root_certificates)
+        if service_extensions_service_account is not None:
+            pulumi.set(__self__, "service_extensions_service_account", service_extensions_service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="mtlsEndpoint")
+    def mtls_endpoint(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        mTLS Endpoint associated with this AgentGateway.
+        """
+        return pulumi.get(self, "mtls_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="rootCertificates")
+    def root_certificates(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        Root Certificates for Agents to validate this AgentGateway.
+        """
+        return pulumi.get(self, "root_certificates")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceExtensionsServiceAccount")
+    def service_extensions_service_account(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Service Account used by Service Extensions to operate.
+        """
+        return pulumi.get(self, "service_extensions_service_account")
+
+
+@pulumi.output_type
+class AgentGatewayGoogleManaged(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "governedAccessPath":
+            suggest = "governed_access_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentGatewayGoogleManaged. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentGatewayGoogleManaged.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentGatewayGoogleManaged.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 governed_access_path: _builtins.str):
+        """
+        :param _builtins.str governed_access_path: Operating Mode of Agent Gateway.
+               Possible values are: `AGENT_TO_ANYWHERE`, `CLIENT_TO_AGENT`.
+        """
+        pulumi.set(__self__, "governed_access_path", governed_access_path)
+
+    @_builtins.property
+    @pulumi.getter(name="governedAccessPath")
+    def governed_access_path(self) -> _builtins.str:
+        """
+        Operating Mode of Agent Gateway.
+        Possible values are: `AGENT_TO_ANYWHERE`, `CLIENT_TO_AGENT`.
+        """
+        return pulumi.get(self, "governed_access_path")
+
+
+@pulumi.output_type
+class AgentGatewayNetworkConfig(dict):
+    def __init__(__self__, *,
+                 egress: 'outputs.AgentGatewayNetworkConfigEgress'):
+        """
+        :param 'AgentGatewayNetworkConfigEgressArgs' egress: Optional PSC-Interface network attachment for connectivity to your
+               private VPCs network.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "egress", egress)
+
+    @_builtins.property
+    @pulumi.getter
+    def egress(self) -> 'outputs.AgentGatewayNetworkConfigEgress':
+        """
+        Optional PSC-Interface network attachment for connectivity to your
+        private VPCs network.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "egress")
+
+
+@pulumi.output_type
+class AgentGatewayNetworkConfigEgress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkAttachment":
+            suggest = "network_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentGatewayNetworkConfigEgress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentGatewayNetworkConfigEgress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentGatewayNetworkConfigEgress.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_attachment: _builtins.str):
+        """
+        :param _builtins.str network_attachment: The URI of the Network Attachment resource.
+        """
+        pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> _builtins.str:
+        """
+        The URI of the Network Attachment resource.
+        """
+        return pulumi.get(self, "network_attachment")
+
+
+@pulumi.output_type
+class AgentGatewaySelfManaged(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceUri":
+            suggest = "resource_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentGatewaySelfManaged. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentGatewaySelfManaged.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentGatewaySelfManaged.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_uri: _builtins.str):
+        """
+        :param _builtins.str resource_uri: A supported Google Cloud networking proxy in the Project and Location.
+        """
+        pulumi.set(__self__, "resource_uri", resource_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceUri")
+    def resource_uri(self) -> _builtins.str:
+        """
+        A supported Google Cloud networking proxy in the Project and Location.
+        """
+        return pulumi.get(self, "resource_uri")
+
 
 @pulumi.output_type
 class EdgeCacheKeysetPublicKey(dict):
@@ -5738,6 +5943,42 @@ class MulticastDomainState(dict):
         INACTIVE
         """
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class MulticastDomainUllMulticastDomain(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preconfiguredUllDomain":
+            suggest = "preconfigured_ull_domain"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MulticastDomainUllMulticastDomain. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MulticastDomainUllMulticastDomain.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MulticastDomainUllMulticastDomain.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 preconfigured_ull_domain: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str preconfigured_ull_domain: The preconfigured Ultra-Low-Latency domain name.
+        """
+        if preconfigured_ull_domain is not None:
+            pulumi.set(__self__, "preconfigured_ull_domain", preconfigured_ull_domain)
+
+    @_builtins.property
+    @pulumi.getter(name="preconfiguredUllDomain")
+    def preconfigured_ull_domain(self) -> Optional[_builtins.str]:
+        """
+        The preconfigured Ultra-Low-Latency domain name.
+        """
+        return pulumi.get(self, "preconfigured_ull_domain")
 
 
 @pulumi.output_type

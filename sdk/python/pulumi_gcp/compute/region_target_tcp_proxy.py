@@ -28,6 +28,7 @@ class RegionTargetTcpProxyArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionTargetTcpProxy resource.
+
         :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -174,6 +175,7 @@ class _RegionTargetTcpProxyState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionTargetTcpProxy resources.
+
         :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -410,30 +412,19 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
         RegionTargetTcpProxy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionTargetTcpProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -508,30 +499,19 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
         RegionTargetTcpProxy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionTargetTcpProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionTargetTcpProxyArgs args: The arguments to use to populate this resource's properties.

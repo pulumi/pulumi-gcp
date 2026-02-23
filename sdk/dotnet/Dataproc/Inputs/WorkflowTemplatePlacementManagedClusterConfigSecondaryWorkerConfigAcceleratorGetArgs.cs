@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<int>? AcceleratorCount { get; set; }
 
         /// <summary>
-        /// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        /// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         /// </summary>
         [Input("acceleratorType")]
         public Input<string>? AcceleratorType { get; set; }

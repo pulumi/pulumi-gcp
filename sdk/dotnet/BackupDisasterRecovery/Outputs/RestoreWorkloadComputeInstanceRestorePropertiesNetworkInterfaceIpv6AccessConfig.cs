@@ -26,7 +26,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly int? ExternalIpv6PrefixLength;
         /// <summary>
-        /// Required. The resource name of the backup instance.
+        /// (Optional, Deprecated)
+        /// The resource name of the backup instance.
+        /// 
+        /// &gt; **Warning:** `Name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         /// </summary>
         public readonly string? Name;
         /// <summary>

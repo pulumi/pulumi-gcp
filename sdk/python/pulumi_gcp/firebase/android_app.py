@@ -28,12 +28,16 @@ class AndroidAppArgs:
                  sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AndroidApp resource.
+
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[_builtins.str] package_name: The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+               rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+               serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
@@ -94,6 +98,11 @@ class AndroidAppArgs:
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+        rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+        serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -153,11 +162,15 @@ class _AndroidAppState:
                  sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AndroidApp resources.
+
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[_builtins.str] app_id: The globally unique, Firebase-assigned identifier of the AndroidApp.
                This identifier should be treated as an opaque token, as the data format is not specified.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+               rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+               serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent
                with update requests to ensure the client has an up-to-date value before proceeding.
@@ -221,6 +234,11 @@ class _AndroidAppState:
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+        rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+        serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -331,6 +349,17 @@ class AndroidApp(pulumi.CustomResource):
                  sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        A Google Cloud Firebase Android application instance
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about AndroidApp, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/android/setup)
+
         ## Example Usage
 
         ### Firebase Android App Basic
@@ -378,42 +407,30 @@ class AndroidApp(pulumi.CustomResource):
         AndroidApp can be imported using any of these accepted formats:
 
         * `{{project}} projects/{{project}}/androidApps/{{app_id}}`
-
         * `projects/{{project}}/androidApps/{{app_id}}`
-
         * `{{project}}/{{project}}/{{app_id}}`
-
         * `androidApps/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, AndroidApp can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:firebase/androidApp:AndroidApp default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
-        ```
-
-        ```sh
+        $ terraform import google_firebase_android_app.default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
         $ pulumi import gcp:firebase/androidApp:AndroidApp default projects/{{project}}/androidApps/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}}/{{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/androidApp:AndroidApp default androidApps/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/androidApp:AndroidApp default {{app_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+               rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+               serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[_builtins.str] package_name: The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
@@ -429,6 +446,17 @@ class AndroidApp(pulumi.CustomResource):
                  args: AndroidAppArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Google Cloud Firebase Android application instance
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about AndroidApp, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/android/setup)
+
         ## Example Usage
 
         ### Firebase Android App Basic
@@ -476,36 +504,21 @@ class AndroidApp(pulumi.CustomResource):
         AndroidApp can be imported using any of these accepted formats:
 
         * `{{project}} projects/{{project}}/androidApps/{{app_id}}`
-
         * `projects/{{project}}/androidApps/{{app_id}}`
-
         * `{{project}}/{{project}}/{{app_id}}`
-
         * `androidApps/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, AndroidApp can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:firebase/androidApp:AndroidApp default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
-        ```
-
-        ```sh
+        $ terraform import google_firebase_android_app.default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
         $ pulumi import gcp:firebase/androidApp:AndroidApp default projects/{{project}}/androidApps/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}}/{{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/androidApp:AndroidApp default androidApps/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/androidApp:AndroidApp default {{app_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AndroidAppArgs args: The arguments to use to populate this resource's properties.
@@ -584,6 +597,9 @@ class AndroidApp(pulumi.CustomResource):
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[_builtins.str] app_id: The globally unique, Firebase-assigned identifier of the AndroidApp.
                This identifier should be treated as an opaque token, as the data format is not specified.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+               rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+               serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent
                with update requests to ensure the client has an up-to-date value before proceeding.
@@ -634,6 +650,11 @@ class AndroidApp(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+        rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+        serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @_builtins.property

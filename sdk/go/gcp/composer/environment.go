@@ -11,35 +11,804 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
+// An environment for running orchestration tasks.
 //
-// Environment can be imported using any of these accepted formats:
+// Environments run Apache Airflow software on Google infrastructure.
 //
-// * `projects/{{project}}/locations/{{region}}/environments/{{name}}`
+// To get more information about Environments, see:
 //
-// * `{{project}}/{{region}}/{{name}}`
+// * [Cloud Composer documentation](https://cloud.google.com/composer/docs)
+// * [Cloud Composer API documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments)
+// * How-to Guides (Cloud Composer 2)
+//   - [Creating environments](https://cloud.google.com/composer/docs/composer-2/create-environments)
+//   - [Scaling environments](https://cloud.google.com/composer/docs/composer-2/scale-environments)
+//   - [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/composer-2/configure-shared-vpc)
 //
-// * `{{name}}`
+// * How-to Guides (Cloud Composer 3)
+//   - [Creating environments](https://cloud.google.com/composer/docs/composer-3/create-environments)
+//   - [Scaling environments](https://cloud.google.com/composer/docs/composer-3/scale-environments)
+//   - [Change environment networking type (Private or Public IP)](https://cloud.google.com/composer/docs/composer-3/change-networking-type)
+//   - [Connect an environment to a VPC network](https://cloud.google.com/composer/docs/composer-3/connect-vpc-network)
 //
-// When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
+// * [Apache Airflow Documentation](http://airflow.apache.org/)
 //
-// ```sh
-// $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
+// > **Note**
+//
+//	Cloud Composer 1 is in the post-maintenance mode. Google does
+//	not release any further updates to Cloud Composer 1, including new versions
+//	of Airflow, bugfixes, and security updates. We recommend using
+//	Cloud Composer 2 or Cloud Composer 3 instead.
+//
+// We **STRONGLY** recommend you read the [GCP
+// guides](https://cloud.google.com/composer/docs/how-to) as the Environment resource requires a long
+// deployment process and involves several layers of GCP infrastructure, including a Kubernetes Engine
+// cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Pulumi
+// will not be able to find or manage many of these underlying resources automatically. In particular:
+//   - Creating or updating an environment resource can take up to one hour. In addition, GCP may only
+//     detect some errors in the configuration when they are used (e.g., ~40-50 minutes into the creation
+//     process), and is prone to limited error reporting. If you encounter confusing or uninformative
+//     errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
+//     against the provider.
+//   - **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer's use of Cloud
+//     Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
+//   - Please review the [known
+//     issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
+//     problems.***
+//
+// ## Example Usage
+//
+// ### Basic Usage (Cloud Composer 3)
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
+//				Name:   pulumi.String("example-composer-env"),
+//				Region: pulumi.String("us-central1"),
+//				Config: &composer.EnvironmentConfigArgs{
+//					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
+//						ImageVersion: pulumi.String("composer-3-airflow-2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// ```sh
-// $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
+// ### Basic Usage (Cloud Composer 2)
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
+//				Name:   pulumi.String("example-composer-env"),
+//				Region: pulumi.String("us-central1"),
+//				Config: &composer.EnvironmentConfigArgs{
+//					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
+//						ImageVersion: pulumi.String("composer-2-airflow-2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// ```sh
-// $ pulumi import gcp:composer/environment:Environment default {{name}}
+// ### Basic Usage (Cloud Composer 1)
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
+//				Name:   pulumi.String("example-composer-env"),
+//				Region: pulumi.String("us-central1"),
+//				Config: &composer.EnvironmentConfigArgs{
+//					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
+//						ImageVersion: pulumi.String("composer-1-airflow-2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
+//
+// ### With GKE and Compute Resource Dependencies
+//
+// > **Note**
+//
+//	To use custom service accounts, you must give at least the
+//	`role/composer.worker` role to the service account of the Cloud Composer
+//	environment. For more information, see the
+//	[Access Control](https://cloud.google.com/composer/docs/how-to/access-control)
+//	page in the Cloud Composer documentation.
+//	You might need to assign additional roles depending on specific workflows
+//	that the Airflow DAGs will be running.
+//
+// ### GKE and Compute Resource Dependencies (Cloud Composer 3)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testAccount, err := serviceaccount.NewAccount(ctx, "test", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("composer-env-account"),
+//				DisplayName: pulumi.String("Test Service Account for Composer Environment"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
+//				Name:   pulumi.String("example-composer-env-tf-c3"),
+//				Region: pulumi.String("us-central1"),
+//				Config: &composer.EnvironmentConfigArgs{
+//					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
+//						ImageVersion: pulumi.String("composer-3-airflow-2"),
+//					},
+//					WorkloadsConfig: &composer.EnvironmentConfigWorkloadsConfigArgs{
+//						Scheduler: &composer.EnvironmentConfigWorkloadsConfigSchedulerArgs{
+//							Cpu:       pulumi.Float64(0.5),
+//							MemoryGb:  pulumi.Float64(2),
+//							StorageGb: pulumi.Float64(1),
+//							Count:     pulumi.Int(1),
+//						},
+//						Triggerer: &composer.EnvironmentConfigWorkloadsConfigTriggererArgs{
+//							Cpu:      pulumi.Float64(0.5),
+//							MemoryGb: pulumi.Float64(1),
+//							Count:    pulumi.Int(1),
+//						},
+//						DagProcessor: &composer.EnvironmentConfigWorkloadsConfigDagProcessorArgs{
+//							Cpu:       pulumi.Float64(1),
+//							MemoryGb:  pulumi.Float64(2),
+//							StorageGb: pulumi.Float64(1),
+//							Count:     pulumi.Int(1),
+//						},
+//						WebServer: &composer.EnvironmentConfigWorkloadsConfigWebServerArgs{
+//							Cpu:       pulumi.Float64(0.5),
+//							MemoryGb:  pulumi.Float64(2),
+//							StorageGb: pulumi.Float64(1),
+//						},
+//						Worker: &composer.EnvironmentConfigWorkloadsConfigWorkerArgs{
+//							Cpu:       pulumi.Float64(0.5),
+//							MemoryGb:  pulumi.Float64(2),
+//							StorageGb: pulumi.Float64(1),
+//							MinCount:  pulumi.Int(1),
+//							MaxCount:  pulumi.Int(3),
+//						},
+//					},
+//					EnvironmentSize: pulumi.String("ENVIRONMENT_SIZE_SMALL"),
+//					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
+//						ServiceAccount: testAccount.Name,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "composer-worker", &projects.IAMMemberArgs{
+//				Project: pulumi.String("your-project-id"),
+//				Role:    pulumi.String("roles/composer.worker"),
+//				Member: testAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### GKE and Compute Resource Dependencies (Cloud Composer 2)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testNetwork, err := compute.NewNetwork(ctx, "test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("composer-test-network3"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testSubnetwork, err := compute.NewSubnetwork(ctx, "test", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("composer-test-subnetwork"),
+//				IpCidrRange: pulumi.String("10.2.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     testNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testAccount, err := serviceaccount.NewAccount(ctx, "test", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("composer-env-account"),
+//				DisplayName: pulumi.String("Test Service Account for Composer Environment"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
+//				Name:   pulumi.String("example-composer-env-tf-c2"),
+//				Region: pulumi.String("us-central1"),
+//				Config: &composer.EnvironmentConfigArgs{
+//					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
+//						ImageVersion: pulumi.String("composer-2-airflow-2"),
+//					},
+//					WorkloadsConfig: &composer.EnvironmentConfigWorkloadsConfigArgs{
+//						Scheduler: &composer.EnvironmentConfigWorkloadsConfigSchedulerArgs{
+//							Cpu:       pulumi.Float64(0.5),
+//							MemoryGb:  pulumi.Float64(1.875),
+//							StorageGb: pulumi.Float64(1),
+//							Count:     pulumi.Int(1),
+//						},
+//						WebServer: &composer.EnvironmentConfigWorkloadsConfigWebServerArgs{
+//							Cpu:       pulumi.Float64(0.5),
+//							MemoryGb:  pulumi.Float64(1.875),
+//							StorageGb: pulumi.Float64(1),
+//						},
+//						Worker: &composer.EnvironmentConfigWorkloadsConfigWorkerArgs{
+//							Cpu:       pulumi.Float64(0.5),
+//							MemoryGb:  pulumi.Float64(1.875),
+//							StorageGb: pulumi.Float64(1),
+//							MinCount:  pulumi.Int(1),
+//							MaxCount:  pulumi.Int(3),
+//						},
+//					},
+//					EnvironmentSize: pulumi.String("ENVIRONMENT_SIZE_SMALL"),
+//					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
+//						Network:        testNetwork.ID(),
+//						Subnetwork:     testSubnetwork.ID(),
+//						ServiceAccount: testAccount.Name,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "composer-worker", &projects.IAMMemberArgs{
+//				Project: pulumi.String("your-project-id"),
+//				Role:    pulumi.String("roles/composer.worker"),
+//				Member: testAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### GKE and Compute Resource Dependencies (Cloud Composer 1)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testNetwork, err := compute.NewNetwork(ctx, "test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("composer-test-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testSubnetwork, err := compute.NewSubnetwork(ctx, "test", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("composer-test-subnetwork"),
+//				IpCidrRange: pulumi.String("10.2.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     testNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testAccount, err := serviceaccount.NewAccount(ctx, "test", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("composer-env-account"),
+//				DisplayName: pulumi.String("Test Service Account for Composer Environment"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
+//				Name:   pulumi.String("example-composer-env"),
+//				Region: pulumi.String("us-central1"),
+//				Config: &composer.EnvironmentConfigArgs{
+//					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
+//						ImageVersion: pulumi.String("composer-1-airflow-2"),
+//					},
+//					NodeCount: pulumi.Int(4),
+//					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
+//						Zone:           pulumi.String("us-central1-a"),
+//						MachineType:    pulumi.String("n1-standard-1"),
+//						Network:        testNetwork.ID(),
+//						Subnetwork:     testSubnetwork.ID(),
+//						ServiceAccount: testAccount.Name,
+//					},
+//					DatabaseConfig: &composer.EnvironmentConfigDatabaseConfigArgs{
+//						MachineType: pulumi.String("db-n1-standard-2"),
+//					},
+//					WebServerConfig: &composer.EnvironmentConfigWebServerConfigArgs{
+//						MachineType: pulumi.String("composer-n1-webserver-2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "composer-worker", &projects.IAMMemberArgs{
+//				Role: pulumi.String("roles/composer.worker"),
+//				Member: testAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Cloud Composer 3 networking configuration
+//
+// In Cloud Composer 3, networking configuration is simplified compared to
+// previous versions. You don't need to specify network ranges, and can attach
+// custom VPC networks to your environment.
+//
+// > **Note**
+//
+//	It's not possible to detach a VPC network using Terraform. Instead, you can
+//	attach a different VPC network in its place, or detach the network using
+//	other tools like Google Cloud CLI.
+//
+// Use Private IP networking:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := composer.NewEnvironment(ctx, "example", &composer.EnvironmentArgs{
+//				Name:   pulumi.String("example-environment"),
+//				Region: pulumi.String("us-central1"),
+//				Config: &composer.EnvironmentConfigArgs{
+//					EnablePrivateEnvironment: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Attach a custom VPC network (Cloud Composer creates a new network attachment):
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := composer.NewEnvironment(ctx, "example", &composer.EnvironmentArgs{
+//				Name:   pulumi.String("example-environment"),
+//				Region: pulumi.String("us-central1"),
+//				Config: &composer.EnvironmentConfigArgs{
+//					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
+//						Network:    pulumi.String("projects/example-project/global/networks/example-network"),
+//						Subnetwork: pulumi.String("projects/example-project/regions/us-central1/subnetworks/example-subnetwork"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Attach a custom VPC network (use existing network attachment):
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := composer.NewEnvironment(ctx, "example", &composer.EnvironmentArgs{
+//				Name:   pulumi.String("example-environment"),
+//				Region: pulumi.String("us-central1"),
+//				Config: &composer.EnvironmentConfigArgs{
+//					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
+//						ComposerNetworkAttachment: pulumi.String(projects / example_project / regions / us_central1 / networkAttachments / example_network_attachment),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// If you specify an existing network attachment that you also manage in Terraform, then Terraform will revert changes
+// to the attachment done by Cloud Composer when you apply configuration changes. As a result, the environment will no
+// longer use the attachment. To address this problem, make sure that Terraform ignores changes to the
+// `producerAcceptLists` parameter of the attachment, as follows:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := compute.NewNetworkAttachment(ctx, "example", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = composer.NewEnvironment(ctx, "example", &composer.EnvironmentArgs{
+//				Name:   pulumi.String("example-environment"),
+//				Region: pulumi.String("us-central1"),
+//				Config: &composer.EnvironmentConfigArgs{
+//					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
+//						ComposerNetworkAttachment: example.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Argument Reference - Cloud Composer 1
+//
+// The following arguments are supported:
+//
+// * `name` -
+// (Required)
+// Name of the environment
+//
+// * `config` -
+// (Optional)
+// Configuration parameters for this environment  Structure is documented below.
+//
+// * `labels` -
+// (Optional)
+// User-defined labels for this environment. The labels map can contain
+// no more than 64 entries. Entries of the labels map are UTF8 strings
+// that comply with the following restrictions:
+// Label keys must be between 1 and 63 characters long and must conform
+// to the following regular expression: `a-z?`.
+// Label values must be between 0 and 63 characters long and must
+// conform to the regular expression `(a-z?)?`.
+// No more than 64 labels can be associated with a given environment.
+// Both keys and values must be <= 128 bytes in size.
+//
+//	**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+//
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+//
+// * `terraformLabels` -
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+//
+// * `effectiveLabels` -
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+//
+// * `region` -
+// (Optional)
+// The location or Compute Engine region for the environment.
+//
+// * `project` -
+// (Optional) The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
+//
+// <a name="nestedConfigC1"></a>The `config` block supports:
+//
+// * `nodeCount` -
+// (Optional, Cloud Composer 1 only)
+// The number of nodes in the Kubernetes Engine cluster of the environment.
+//
+// * `nodeConfig` -
+// (Optional)
+// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
+//
+// * `softwareConfig` -
+// (Optional)
+// The configuration settings for software inside the environment.  Structure is documented below.
+//
+// * `privateEnvironmentConfig` -
+// (Optional)
+// The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
+//
+// * `webServerNetworkAccessControl` -
+// The network-level access control policy for the Airflow web server.
+// If unspecified, no network-level access restrictions are applied.
+//
+// * `databaseConfig` -
+// (Optional, Cloud Composer 1 only)
+// The configuration settings for Cloud SQL instance used internally
+// by Apache Airflow software.
+//
+// * `webServerConfig` -
+// (Optional, Cloud Composer 1 only)
+// The configuration settings for the Airflow web server App Engine instance.
+//
+// * `encryptionConfig` -
+// (Optional)
+// The encryption options for the Cloud Composer environment and its
+// dependencies.
+//
+// * `maintenanceWindow` -
+// (Optional, Beta)
+// The configuration settings for Cloud Composer maintenance windows.
+//
+// * `masterAuthorizedNetworksConfig` -
+// (Optional)
+// Configuration options for the master authorized networks feature. Enabled
+// master authorized networks will disallow all external traffic to access
+// Kubernetes master through HTTPS except traffic from the given CIDR blocks,
+// Google Compute Engine Public IPs and Google Prod IPs. Structure is
+// documented below.
+//
+// <a name="nestedNodeConfigC1"></a>The `nodeConfig` block supports:
+//
+// * `zone` -
+// (Optional, Cloud Composer 1 only)
+// The Compute Engine zone in which to deploy the VMs running the
+// Apache Airflow software, specified as the zone name or
+// relative resource name (e.g. "projects/{project}/zones/{zone}"). Must
+// belong to the enclosing environment's project and region.
+//
+// * `machineType` -
+// (Optional, Cloud Composer 1 only)
+// The Compute Engine machine type used for cluster instances,
+// specified as a name or relative resource name. For example:
+// "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong
+// to the enclosing environment's project and region/zone.
+//
+// * `network` -
+// (Optional)
+// The Compute Engine network to be used for machine
+// communications, specified as a self-link, relative resource name
+// (for example "projects/{project}/global/networks/{network}"), by name.
+//
+//	The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's
+//
+// project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+//
+// * `subnetwork` -
+// (Optional)
+// The Compute Engine subnetwork to be used for machine
+// communications, specified as a self-link, relative resource name (for example,
+// "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
+// network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+//
+// * `diskSizeGb` -
+// (Optional, Cloud Composer 1 only)
+// The disk size in GB used for node VMs. Minimum size is 20GB.
+// If unspecified, defaults to 100GB. Cannot be updated.
+//
+// * `oauthScopes` -
+// (Optional, Cloud Composer 1 only)
+// The set of Google API scopes to be made available on all node
+// VMs. Cannot be updated. If empty, defaults to
+// `["https://www.googleapis.com/auth/cloud-platform"]`.
+//
+// * `serviceAccount` -
+// (Optional)
+// The Google Cloud Platform Service Account to be used by the
+// node VMs. If a service account is not specified, the "default"
+// Compute Engine service account is used. Cannot be updated. If given,
+// note that the service account must have `roles/composer.worker`
+// for any GCP resources created under the Cloud Composer Environment.
+//
+// * `tags` -
+// (Optional)
+// The list of instance tags applied to all node VMs. Tags are
+// used to identify valid sources or targets for network
+// firewalls. Each tag within the list must comply with RFC1035.
+// Cannot be updated.
+//
+// * `ipAllocationPolicy` -
+// (Optional)
+// Configuration for controlling how IPs are allocated in the GKE cluster.
+// Structure is documented below.
+// Cannot be updated.
+//
+// * `maxPodsPerNode` -
+// (Optional, Beta,
+// Cloud Composer 1 only)
+// The maximum pods per node in the GKE cluster allocated during environment
+// creation. Lowering this value reduces IP address consumption by the Cloud
+// Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
+// The range of possible values is 8-110, and the default is 32.
+// Cannot be updated.
+//
+// * `enableIpMasqAgent` -
+// (Optional)
+// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
+// nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
+// all destination addresses, except between pods traffic.
+// See the [documentation](https://cloud.google.com/composer/docs/enable-ip-masquerade-agent).
+//
+// <a name="nestedSoftwareConfigC1"></a>The `softwareConfig` block supports:
+//
+// * `airflowConfigOverrides` -
+// (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
+// separated by a hyphen, for example "core-dags_are_paused_at_creation".
+//
+//	Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]").
+//
+// The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain
+// characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can
+// contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration
+// property values are [blacklisted](https://cloud.google.com/composer/docs/concepts/airflow-configurations#airflow_configuration_blacklists),
+// and cannot be overridden.
+//
+// * `pypiPackages` -
+// (Optional)
+// Custom Python Package Index (PyPI) packages to be installed
+// in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
+// version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without
+// pinning it to a version specifier, use the empty string as the value.
+//
+// * `envVariables` -
+// (Optional)
+// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
+// Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
+// They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
+// `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
+//
+//	AIRFLOW_HOME
+//	C_FORCE_ROOT
+//	CONTAINER_NAME
+//	DAGS_FOLDER
+//	GCP_PROJECT
+//	GCS_BUCKET
+//	GKE_CLUSTER_NAME
+//	SQL_DATABASE
+//	SQL_INSTANCE
+//	SQL_PASSWORD
+//	SQL_PROJECT
+//	SQL_REGION
+//	SQL_USER
+//
+//	AIRFLOW_HOME
+//	C_FORCE_ROOT
+//	CONTAINER_NAME
+//	DAGS_FOLDER
+//	GCP_PROJECT
+//	GCS_BUCKET
+//	GKE_CLUSTER_NAME
+//	SQL_DATABASE
+//	SQL_INSTANCE
+//	SQL_PASSWORD
+//	SQL_PROJECT
+//	SQL_REGION
+//	SQL_USER
 type Environment struct {
 	pulumi.CustomResourceState
 
 	// Configuration parameters for this environment.
-	Config          EnvironmentConfigOutput `pulumi:"config"`
-	EffectiveLabels pulumi.StringMapOutput  `pulumi:"effectiveLabels"`
+	Config EnvironmentConfigOutput `pulumi:"config"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
 	//
 	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -93,8 +862,9 @@ func GetEnvironment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
 	// Configuration parameters for this environment.
-	Config          *EnvironmentConfig `pulumi:"config"`
-	EffectiveLabels map[string]string  `pulumi:"effectiveLabels"`
+	Config *EnvironmentConfig `pulumi:"config"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
 	//
 	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -114,7 +884,8 @@ type environmentState struct {
 
 type EnvironmentState struct {
 	// Configuration parameters for this environment.
-	Config          EnvironmentConfigPtrInput
+	Config EnvironmentConfigPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
 	//
@@ -266,6 +1037,7 @@ func (o EnvironmentOutput) Config() EnvironmentConfigOutput {
 	return o.ApplyT(func(v *Environment) EnvironmentConfigOutput { return v.Config }).(EnvironmentConfigOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o EnvironmentOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

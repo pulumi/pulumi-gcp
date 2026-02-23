@@ -213,28 +213,16 @@ import * as utilities from "../utilities";
  * Instance can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:redis/instance:Instance default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:redis/instance:Instance default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:redis/instance:Instance default {{name}}
  * ```
  */
@@ -313,6 +301,14 @@ export class Instance extends pulumi.CustomResource {
      * instance. If this is provided, CMEK is enabled.
      */
     declare public readonly customerManagedKey: pulumi.Output<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the instance.
+     * When a`terraform destroy` or `pulumi up` would delete the instance,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the instance will fail.
+     * When the field is set to false, deleting the instance is allowed.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * An arbitrary and optional user-provided name for the instance.
@@ -635,6 +631,14 @@ export interface InstanceState {
      * instance. If this is provided, CMEK is enabled.
      */
     customerManagedKey?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the instance.
+     * When a`terraform destroy` or `pulumi up` would delete the instance,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the instance will fail.
+     * When the field is set to false, deleting the instance is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * An arbitrary and optional user-provided name for the instance.
@@ -839,6 +843,14 @@ export interface InstanceArgs {
      * instance. If this is provided, CMEK is enabled.
      */
     customerManagedKey?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the instance.
+     * When a`terraform destroy` or `pulumi up` would delete the instance,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the instance will fail.
+     * When the field is set to false, deleting the instance is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * An arbitrary and optional user-provided name for the instance.

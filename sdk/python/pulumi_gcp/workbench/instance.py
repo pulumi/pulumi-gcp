@@ -34,6 +34,7 @@ class InstanceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
@@ -249,6 +250,7 @@ class _InstanceState:
                  upgrade_histories: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUpgradeHistoryArgs']]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] create_time: An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
                The milliseconds portion (".SSS") is optional.
         :param pulumi.Input[_builtins.str] creator: Output only. Email address of entity that sent original CreateInstance request.
@@ -880,24 +882,17 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:workbench/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workbench/instance:Instance default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workbench/instance:Instance default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1189,24 +1184,17 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:workbench/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workbench/instance:Instance default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workbench/instance:Instance default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

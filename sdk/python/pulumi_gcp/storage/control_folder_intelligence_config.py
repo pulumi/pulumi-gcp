@@ -26,6 +26,7 @@ class ControlFolderIntelligenceConfigArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ControlFolderIntelligenceConfig resource.
+
         :param pulumi.Input[_builtins.str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         :param pulumi.Input['ControlFolderIntelligenceConfigFilterArgs'] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
                Structure is documented below.
@@ -87,6 +88,7 @@ class _ControlFolderIntelligenceConfigState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ControlFolderIntelligenceConfig resources.
+
         :param pulumi.Input[_builtins.str] edition_config: Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         :param pulumi.Input[Sequence[pulumi.Input['ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs']]] effective_intelligence_configs: The Intelligence config that is effective for the resource.
                Structure is documented below.
@@ -197,6 +199,13 @@ class ControlFolderIntelligenceConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The Folder Storage Intelligence resource represents GCS Storage Intelligence operating on individual GCP Folder. Storage Intelligence is a singleton resource and individual instance exists on each GCP Folder.
+
+        Storage Intelligence is for Storage Admins to manage GCP storage assets at scale for performance, cost, security & compliance.
+
+        > **Warning:** Storage Intelligence Config is a singleton resource which cannot be created or deleted. A single instance of Storage Intelligence Config exist for each GCP Folder. Terraform does not create or destroy this resource.
+        Terraform resource creation for this resource is simply an update operation on existing resource with specified properties, absense of any optional field in the create operation will result in clearance of that field. Terraform deletion won't have any effect on this resource rather it will only remove it from the state file.
+
         ## Example Usage
 
         ### Storage Control Folder Intelligence Config Basic
@@ -229,18 +238,15 @@ class ControlFolderIntelligenceConfig(pulumi.CustomResource):
         FolderIntelligenceConfig can be imported using any of these accepted formats:
 
         * `folders/{{name}}/locations/global/intelligenceConfig`
-
         * `{{name}}`
 
         When using the `pulumi import` command, FolderIntelligenceConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig default folders/{{name}}/locations/global/intelligenceConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -256,6 +262,13 @@ class ControlFolderIntelligenceConfig(pulumi.CustomResource):
                  args: Optional[ControlFolderIntelligenceConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The Folder Storage Intelligence resource represents GCS Storage Intelligence operating on individual GCP Folder. Storage Intelligence is a singleton resource and individual instance exists on each GCP Folder.
+
+        Storage Intelligence is for Storage Admins to manage GCP storage assets at scale for performance, cost, security & compliance.
+
+        > **Warning:** Storage Intelligence Config is a singleton resource which cannot be created or deleted. A single instance of Storage Intelligence Config exist for each GCP Folder. Terraform does not create or destroy this resource.
+        Terraform resource creation for this resource is simply an update operation on existing resource with specified properties, absense of any optional field in the create operation will result in clearance of that field. Terraform deletion won't have any effect on this resource rather it will only remove it from the state file.
+
         ## Example Usage
 
         ### Storage Control Folder Intelligence Config Basic
@@ -288,18 +301,15 @@ class ControlFolderIntelligenceConfig(pulumi.CustomResource):
         FolderIntelligenceConfig can be imported using any of these accepted formats:
 
         * `folders/{{name}}/locations/global/intelligenceConfig`
-
         * `{{name}}`
 
         When using the `pulumi import` command, FolderIntelligenceConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig default folders/{{name}}/locations/global/intelligenceConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ControlFolderIntelligenceConfigArgs args: The arguments to use to populate this resource's properties.

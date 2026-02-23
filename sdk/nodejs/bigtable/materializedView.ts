@@ -54,22 +54,14 @@ import * as utilities from "../utilities";
  * MaterializedView can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/instances/{{instance}}/materializedViews/{{materialized_view_id}}`
- *
  * * `{{project}}/{{instance}}/{{materialized_view_id}}`
- *
  * * `{{instance}}/{{materialized_view_id}}`
  *
  * When using the `pulumi import` command, MaterializedView can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:bigtable/materializedView:MaterializedView default projects/{{project}}/instances/{{instance}}/materializedViews/{{materialized_view_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigtable/materializedView:MaterializedView default {{project}}/{{instance}}/{{materialized_view_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigtable/materializedView:MaterializedView default {{instance}}/{{materialized_view_id}}
  * ```
  */

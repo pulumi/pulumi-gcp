@@ -22,7 +22,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? ExternalIpv6PrefixLength;
         /// <summary>
-        /// The name of this access configuration.
+        /// The name of the instance template. If you leave
+        /// this blank, Terraform will auto-generate a unique name.
         /// </summary>
         public readonly string? Name;
         /// <summary>

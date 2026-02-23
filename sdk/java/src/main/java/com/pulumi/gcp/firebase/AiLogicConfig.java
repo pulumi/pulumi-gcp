@@ -17,6 +17,20 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Configuration for Firebase AI Logic.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about Config, see:
+ * 
+ * * [API documentation](https://firebase.google.com/docs/reference/ai-logic/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/docs/ai-logic)
+ * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `generative_language_config.api_key_wo`.
+ * Read more about Write-only Arguments.
+ * 
  * ## Example Usage
  * 
  * ### Firebaseailogic Config Basic
@@ -192,22 +206,14 @@ import javax.annotation.Nullable;
  * Config can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/config`
- * 
  * * `{{project}}/{{location}}`
- * 
  * * `{{location}}`
  * 
  * When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default projects/{{project}}/locations/{{location}}/config
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default {{project}}/{{location}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default {{location}}
  * ```
  * 

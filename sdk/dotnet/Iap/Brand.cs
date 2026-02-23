@@ -10,6 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iap
 {
     /// <summary>
+    /// &gt; **Warning:** This resource is deprecated on Jan 22, 2025. After Jan 19, 2026 the `gcp.iap.Brand` Terraform resource will no longer function as intended due to the deprecation of the IAP OAuth Admin APIs. New projects will not be able to use these APIs. March 19, 2026 The IAP OAuth Admin APIs will be permanently shut down. Access to this feature will no longer be available.
+    /// 
+    /// OAuth brand data. Only "Organization Internal" brands can be created
+    /// programmatically via API. To convert it into an external brands
+    /// please use the GCP Console.
+    /// 
+    /// &gt; **Note:** Brands can only be created once for a Google Cloud
+    /// project and the underlying Google API doesn't not support DELETE or PATCH methods.
+    /// Destroying a Terraform-managed Brand will remove it from state
+    /// but *will not delete it from Google Cloud.*
+    /// 
+    /// To get more information about Brand, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands)
+    /// * How-to Guides
+    ///     * [Setting up IAP Brand](https://cloud.google.com/iap/docs/tutorial-gce#set_up_iap)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Iap Brand
@@ -51,22 +68,14 @@ namespace Pulumi.Gcp.Iap
     /// Brand can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project_id}}/brands/{{brand_id}}`
-    /// 
     /// * `projects/{{project_number}}/brands/{{brand_id}}`
-    /// 
     /// * `{{project_number}}/{{brand_id}}`
     /// 
     /// When using the `pulumi import` command, Brand can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:iap/brand:Brand default projects/{{project_id}}/brands/{{brand_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:iap/brand:Brand default projects/{{project_number}}/brands/{{brand_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:iap/brand:Brand default {{project_number}}/{{brand_id}}
     /// ```
     /// </summary>

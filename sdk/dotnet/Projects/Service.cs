@@ -10,6 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects
 {
     /// <summary>
+    /// Allows management of a single API service for a Google Cloud project.
+    /// 
+    /// For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+    /// or run `gcloud services list --available`.
+    /// 
+    /// This resource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+    /// to use.
+    /// 
+    /// To get more information about `gcp.projects.Service`, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+    /// * How-to Guides
+    ///     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+    /// * Terraform guidance
+    ///     * [User Guide - gcp.projects.Service](https://www.terraform.io/docs/providers/google/guides/google_project_service.html)
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -31,7 +47,7 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// ## Import
     /// 
-    /// Project services can be imported using the `project_id` and `service`, e.g.
+    /// Project services can be imported using the `ProjectId` and `Service`, e.g.
     /// 
     /// * `{{project_id}}/{{service}}`
     /// 
@@ -42,13 +58,9 @@ namespace Pulumi.Gcp.Projects
     /// ```
     /// 
     /// Note that unlike other resources that fail if they already exist,
-    /// 
     /// `pulumi up` can be successfully used to verify already enabled services.
-    /// 
     /// This means that when importing existing resources into Terraform, you can either
-    /// 
-    /// import the `google_project_service` resources or treat them as new
-    /// 
+    /// import the `gcp.projects.Service` resources or treat them as new
     /// infrastructure and run `pulumi up` to add them to state.
     /// </summary>
     [GcpResourceType("gcp:projects/service:Service")]
@@ -71,6 +83,12 @@ namespace Pulumi.Gcp.Projects
         [Output("disableDependentServices")]
         public Output<bool?> DisableDependentServices { get; private set; } = null!;
 
+        /// <summary>
+        /// If `True`, disable the service when the
+        /// Terraform resource is destroyed. If `False` or unset, the service will be left enabled when
+        /// the Terraform resource is destroyed. It should generally only
+        /// be `True` in configurations that manage the `gcp.organizations.Project` resource itself.
+        /// </summary>
         [Output("disableOnDestroy")]
         public Output<bool?> DisableOnDestroy { get; private set; } = null!;
 
@@ -150,6 +168,12 @@ namespace Pulumi.Gcp.Projects
         [Input("disableDependentServices")]
         public Input<bool>? DisableDependentServices { get; set; }
 
+        /// <summary>
+        /// If `True`, disable the service when the
+        /// Terraform resource is destroyed. If `False` or unset, the service will be left enabled when
+        /// the Terraform resource is destroyed. It should generally only
+        /// be `True` in configurations that manage the `gcp.organizations.Project` resource itself.
+        /// </summary>
         [Input("disableOnDestroy")]
         public Input<bool>? DisableOnDestroy { get; set; }
 
@@ -191,6 +215,12 @@ namespace Pulumi.Gcp.Projects
         [Input("disableDependentServices")]
         public Input<bool>? DisableDependentServices { get; set; }
 
+        /// <summary>
+        /// If `True`, disable the service when the
+        /// Terraform resource is destroyed. If `False` or unset, the service will be left enabled when
+        /// the Terraform resource is destroyed. It should generally only
+        /// be `True` in configurations that manage the `gcp.organizations.Project` resource itself.
+        /// </summary>
         [Input("disableOnDestroy")]
         public Input<bool>? DisableOnDestroy { get; set; }
 

@@ -29,6 +29,7 @@ class RetrohuntArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Retrohunt resource.
+
         :param pulumi.Input[_builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[_builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         :param pulumi.Input['RetrohuntProcessIntervalArgs'] process_interval: Represents a time interval, encoded as a Timestamp start (inclusive) and a
@@ -145,6 +146,7 @@ class _RetrohuntState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Retrohunt resources.
+
         :param pulumi.Input[_builtins.str] retrohunt_id: The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
         :param pulumi.Input[Sequence[pulumi.Input['RetrohuntExecutionIntervalArgs']]] execution_intervals: Represents a time interval, encoded as a Timestamp start (inclusive) and a
                Timestamp end (exclusive).
@@ -391,24 +393,17 @@ class Retrohunt(pulumi.CustomResource):
         Retrohunt can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/retrohunts/{{retrohunt}}`
-
         * `{{project}}/{{location}}/{{instance}}/{{rule}}/{{retrohunt}}`
-
         * `{{location}}/{{instance}}/{{rule}}/{{retrohunt}}`
 
         When using the `pulumi import` command, Retrohunt can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:chronicle/retrohunt:Retrohunt default projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/retrohunts/{{retrohunt}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/retrohunt:Retrohunt default {{project}}/{{location}}/{{instance}}/{{rule}}/{{retrohunt}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/retrohunt:Retrohunt default {{location}}/{{instance}}/{{rule}}/{{retrohunt}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -471,24 +466,17 @@ class Retrohunt(pulumi.CustomResource):
         Retrohunt can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/retrohunts/{{retrohunt}}`
-
         * `{{project}}/{{location}}/{{instance}}/{{rule}}/{{retrohunt}}`
-
         * `{{location}}/{{instance}}/{{rule}}/{{retrohunt}}`
 
         When using the `pulumi import` command, Retrohunt can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:chronicle/retrohunt:Retrohunt default projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/retrohunts/{{retrohunt}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/retrohunt:Retrohunt default {{project}}/{{location}}/{{instance}}/{{rule}}/{{retrohunt}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/retrohunt:Retrohunt default {{location}}/{{instance}}/{{rule}}/{{retrohunt}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RetrohuntArgs args: The arguments to use to populate this resource's properties.

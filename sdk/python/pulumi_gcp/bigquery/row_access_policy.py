@@ -27,6 +27,7 @@ class RowAccessPolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RowAccessPolicy resource.
+
         :param pulumi.Input[_builtins.str] dataset_id: The ID of the dataset containing this row access policy.
         :param pulumi.Input[_builtins.str] filter_predicate: A SQL boolean expression that represents the rows defined by this row
                access policy, similar to the boolean expression in a WHERE clause of a
@@ -191,6 +192,7 @@ class _RowAccessPolicyState:
                  table_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RowAccessPolicy resources.
+
         :param pulumi.Input[_builtins.str] creation_time: The time when this row access policy was created, in milliseconds since
                the epoch.
         :param pulumi.Input[_builtins.str] dataset_id: The ID of the dataset containing this row access policy.
@@ -424,24 +426,17 @@ class RowAccessPolicy(pulumi.CustomResource):
         RowAccessPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}/rowAccessPolicies/{{policy_id}}`
-
         * `{{project}}/{{dataset_id}}/{{table_id}}/{{policy_id}}`
-
         * `{{dataset_id}}/{{table_id}}/{{policy_id}}`
 
         When using the `pulumi import` command, RowAccessPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}/rowAccessPolicies/{{policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default {{project}}/{{dataset_id}}/{{table_id}}/{{policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default {{dataset_id}}/{{table_id}}/{{policy_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -520,24 +515,17 @@ class RowAccessPolicy(pulumi.CustomResource):
         RowAccessPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}/rowAccessPolicies/{{policy_id}}`
-
         * `{{project}}/{{dataset_id}}/{{table_id}}/{{policy_id}}`
-
         * `{{dataset_id}}/{{table_id}}/{{policy_id}}`
 
         When using the `pulumi import` command, RowAccessPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}/rowAccessPolicies/{{policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default {{project}}/{{dataset_id}}/{{table_id}}/{{policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default {{dataset_id}}/{{table_id}}/{{policy_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RowAccessPolicyArgs args: The arguments to use to populate this resource's properties.

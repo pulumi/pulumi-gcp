@@ -118,9 +118,17 @@ public final class UnitState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dependents);
     }
 
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Import(name="effectiveAnnotations")
     private @Nullable Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Optional<Output<Map<String,String>>> effectiveAnnotations() {
         return Optional.ofNullable(this.effectiveAnnotations);
     }
@@ -275,9 +283,25 @@ public final class UnitState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ongoingOperations);
     }
 
+    /**
+     * Set of key/value pairs corresponding to output variables from execution of
+     * actuation templates. The variables are declared in actuation configs (e.g
+     * in helm chart or terraform) and the values are fetched and returned by the
+     * actuation engine upon completion of execution.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="outputVariables")
     private @Nullable Output<List<UnitOutputVariableArgs>> outputVariables;
 
+    /**
+     * @return Set of key/value pairs corresponding to output variables from execution of
+     * actuation templates. The variables are declared in actuation configs (e.g
+     * in helm chart or terraform) and the values are fetched and returned by the
+     * actuation engine upon completion of execution.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<UnitOutputVariableArgs>>> outputVariables() {
         return Optional.ofNullable(this.outputVariables);
     }
@@ -732,11 +756,23 @@ public final class UnitState extends com.pulumi.resources.ResourceArgs {
             return dependents(List.of(dependents));
         }
 
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
             $.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
 
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
             return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
@@ -960,15 +996,45 @@ public final class UnitState extends com.pulumi.resources.ResourceArgs {
             return ongoingOperations(List.of(ongoingOperations));
         }
 
+        /**
+         * @param outputVariables Set of key/value pairs corresponding to output variables from execution of
+         * actuation templates. The variables are declared in actuation configs (e.g
+         * in helm chart or terraform) and the values are fetched and returned by the
+         * actuation engine upon completion of execution.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputVariables(@Nullable Output<List<UnitOutputVariableArgs>> outputVariables) {
             $.outputVariables = outputVariables;
             return this;
         }
 
+        /**
+         * @param outputVariables Set of key/value pairs corresponding to output variables from execution of
+         * actuation templates. The variables are declared in actuation configs (e.g
+         * in helm chart or terraform) and the values are fetched and returned by the
+         * actuation engine upon completion of execution.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputVariables(List<UnitOutputVariableArgs> outputVariables) {
             return outputVariables(Output.of(outputVariables));
         }
 
+        /**
+         * @param outputVariables Set of key/value pairs corresponding to output variables from execution of
+         * actuation templates. The variables are declared in actuation configs (e.g
+         * in helm chart or terraform) and the values are fetched and returned by the
+         * actuation engine upon completion of execution.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputVariables(UnitOutputVariableArgs... outputVariables) {
             return outputVariables(List.of(outputVariables));
         }

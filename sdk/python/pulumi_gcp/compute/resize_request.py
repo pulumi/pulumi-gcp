@@ -30,6 +30,7 @@ class ResizeRequestArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResizeRequest resource.
+
         :param pulumi.Input[_builtins.str] instance_group_manager: The reference of the instance group manager this ResizeRequest is a part of.
         :param pulumi.Input[_builtins.int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         :param pulumi.Input[_builtins.str] description: An optional description of this resize-request.
@@ -155,6 +156,7 @@ class _ResizeRequestState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResizeRequest resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: The creation timestamp for this resize request in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resize-request.
         :param pulumi.Input[_builtins.str] instance_group_manager: The reference of the instance group manager this ResizeRequest is a part of.
@@ -410,30 +412,19 @@ class ResizeRequest(pulumi.CustomResource):
         ResizeRequest can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}`
-
         * `{{project}}/{{zone}}/{{instance_group_manager}}/{{name}}`
-
         * `{{zone}}/{{instance_group_manager}}/{{name}}`
-
         * `{{instance_group_manager}}/{{name}}`
 
         When using the `pulumi import` command, ResizeRequest can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/resizeRequest:ResizeRequest default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/resizeRequest:ResizeRequest default {{project}}/{{zone}}/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/resizeRequest:ResizeRequest default {{zone}}/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/resizeRequest:ResizeRequest default {{instance_group_manager}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -535,30 +526,19 @@ class ResizeRequest(pulumi.CustomResource):
         ResizeRequest can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}`
-
         * `{{project}}/{{zone}}/{{instance_group_manager}}/{{name}}`
-
         * `{{zone}}/{{instance_group_manager}}/{{name}}`
-
         * `{{instance_group_manager}}/{{name}}`
 
         When using the `pulumi import` command, ResizeRequest can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/resizeRequest:ResizeRequest default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/resizeRequest:ResizeRequest default {{project}}/{{zone}}/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/resizeRequest:ResizeRequest default {{zone}}/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/resizeRequest:ResizeRequest default {{instance_group_manager}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResizeRequestArgs args: The arguments to use to populate this resource's properties.

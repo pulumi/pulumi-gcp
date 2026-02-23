@@ -25,6 +25,7 @@ class AppCheckDebugTokenArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppCheckDebugToken resource.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of a
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
@@ -115,6 +116,7 @@ class _AppCheckDebugTokenState:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppCheckDebugToken resources.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of a
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
@@ -265,24 +267,17 @@ class AppCheckDebugToken(pulumi.CustomResource):
         DebugToken can be imported using any of these accepted formats:
 
         * `projects/{{project}}/apps/{{app_id}}/debugTokens/{{debug_token_id}}`
-
         * `{{project}}/{{app_id}}/{{debug_token_id}}`
-
         * `{{app_id}}/{{debug_token_id}}`
 
         When using the `pulumi import` command, DebugToken can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default projects/{{project}}/apps/{{app_id}}/debugTokens/{{debug_token_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default {{project}}/{{app_id}}/{{debug_token_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default {{app_id}}/{{debug_token_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -348,24 +343,17 @@ class AppCheckDebugToken(pulumi.CustomResource):
         DebugToken can be imported using any of these accepted formats:
 
         * `projects/{{project}}/apps/{{app_id}}/debugTokens/{{debug_token_id}}`
-
         * `{{project}}/{{app_id}}/{{debug_token_id}}`
-
         * `{{app_id}}/{{debug_token_id}}`
 
         When using the `pulumi import` command, DebugToken can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default projects/{{project}}/apps/{{app_id}}/debugTokens/{{debug_token_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default {{project}}/{{app_id}}/{{debug_token_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default {{app_id}}/{{debug_token_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppCheckDebugTokenArgs args: The arguments to use to populate this resource's properties.

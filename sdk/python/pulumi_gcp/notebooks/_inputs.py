@@ -63,21 +63,16 @@ __all__ = [
     'RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class EnvironmentContainerImageArgsDict(TypedDict):
-        repository: pulumi.Input[_builtins.str]
-        """
-        The path to the container image repository.
-        For example: gcr.io/{project_id}/{imageName}
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag of the container image. If not specified, this defaults to the latest tag.
-        """
-elif False:
-    EnvironmentContainerImageArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentContainerImageArgsDict(TypedDict):
+    repository: pulumi.Input[_builtins.str]
+    """
+    The path to the container image repository.
+    For example: gcr.io/{project_id}/{imageName}
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag of the container image. If not specified, this defaults to the latest tag.
+    """
 
 @pulumi.input_type
 class EnvironmentContainerImageArgs:
@@ -119,23 +114,20 @@ class EnvironmentContainerImageArgs:
         pulumi.set(self, "tag", value)
 
 
-if not MYPY:
-    class EnvironmentVmImageArgsDict(TypedDict):
-        project: pulumi.Input[_builtins.str]
-        """
-        The name of the Google Cloud project that this VM image belongs to.
-        Format: projects/{project_id}
-        """
-        image_family: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this VM image family to find the image; the newest image in this family will be used.
-        """
-        image_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use VM image name to find the image.
-        """
-elif False:
-    EnvironmentVmImageArgsDict: TypeAlias = Mapping[str, Any]
+class EnvironmentVmImageArgsDict(TypedDict):
+    project: pulumi.Input[_builtins.str]
+    """
+    The name of the Google Cloud project that this VM image belongs to.
+    Format: projects/{project_id}
+    """
+    image_family: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this VM image family to find the image; the newest image in this family will be used.
+    """
+    image_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use VM image name to find the image.
+    """
 
 @pulumi.input_type
 class EnvironmentVmImageArgs:
@@ -193,19 +185,16 @@ class EnvironmentVmImageArgs:
         pulumi.set(self, "image_name", value)
 
 
-if not MYPY:
-    class InstanceAcceleratorConfigArgsDict(TypedDict):
-        core_count: pulumi.Input[_builtins.int]
-        """
-        Count of cores of this accelerator.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of this accelerator.
-        Possible values are: `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, `TPU_V3`.
-        """
-elif False:
-    InstanceAcceleratorConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAcceleratorConfigArgsDict(TypedDict):
+    core_count: pulumi.Input[_builtins.int]
+    """
+    Count of cores of this accelerator.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of this accelerator.
+    Possible values are: `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, `TPU_V3`.
+    """
 
 @pulumi.input_type
 class InstanceAcceleratorConfigArgs:
@@ -246,19 +235,16 @@ class InstanceAcceleratorConfigArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class InstanceContainerImageArgsDict(TypedDict):
-        repository: pulumi.Input[_builtins.str]
-        """
-        The path to the container image repository.
-        For example: gcr.io/{project_id}/{imageName}
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag of the container image. If not specified, this defaults to the latest tag.
-        """
-elif False:
-    InstanceContainerImageArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceContainerImageArgsDict(TypedDict):
+    repository: pulumi.Input[_builtins.str]
+    """
+    The path to the container image repository.
+    For example: gcr.io/{project_id}/{imageName}
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag of the container image. If not specified, this defaults to the latest tag.
+    """
 
 @pulumi.input_type
 class InstanceContainerImageArgs:
@@ -300,13 +286,10 @@ class InstanceContainerImageArgs:
         pulumi.set(self, "tag", value)
 
 
-if not MYPY:
-    class InstanceIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    InstanceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class InstanceIamBindingConditionArgs:
@@ -347,13 +330,10 @@ class InstanceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class InstanceIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    InstanceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class InstanceIamMemberConditionArgs:
@@ -394,23 +374,20 @@ class InstanceIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class InstanceReservationAffinityArgsDict(TypedDict):
-        consume_reservation_type: pulumi.Input[_builtins.str]
-        """
-        The type of Compute Reservation.
-        Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Corresponds to the label key of reservation resource.
-        """
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Corresponds to the label values of reservation resource.
-        """
-elif False:
-    InstanceReservationAffinityArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceReservationAffinityArgsDict(TypedDict):
+    consume_reservation_type: pulumi.Input[_builtins.str]
+    """
+    The type of Compute Reservation.
+    Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Corresponds to the label key of reservation resource.
+    """
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Corresponds to the label values of reservation resource.
+    """
 
 @pulumi.input_type
 class InstanceReservationAffinityArgs:
@@ -468,29 +445,26 @@ class InstanceReservationAffinityArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class InstanceShieldedInstanceConfigArgsDict(TypedDict):
-        enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
-        boot integrity of the instance. The attestation is performed against the integrity policy baseline.
-        This baseline is initially derived from the implicitly trusted boot image when the instance is created.
-        Enabled by default.
-        """
-        enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
-        authentic software by verifying the digital signature of all boot components, and halting the boot process
-        if signature verification fails.
-        Disabled by default.
-        """
-        enable_vtpm: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether the instance has the vTPM enabled.
-        Enabled by default.
-        """
-elif False:
-    InstanceShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceShieldedInstanceConfigArgsDict(TypedDict):
+    enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
+    boot integrity of the instance. The attestation is performed against the integrity policy baseline.
+    This baseline is initially derived from the implicitly trusted boot image when the instance is created.
+    Enabled by default.
+    """
+    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
+    authentic software by verifying the digital signature of all boot components, and halting the boot process
+    if signature verification fails.
+    Disabled by default.
+    """
+    enable_vtpm: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether the instance has the vTPM enabled.
+    Enabled by default.
+    """
 
 @pulumi.input_type
 class InstanceShieldedInstanceConfigArgs:
@@ -561,23 +535,20 @@ class InstanceShieldedInstanceConfigArgs:
         pulumi.set(self, "enable_vtpm", value)
 
 
-if not MYPY:
-    class InstanceVmImageArgsDict(TypedDict):
-        project: pulumi.Input[_builtins.str]
-        """
-        The name of the Google Cloud project that this VM image belongs to.
-        Format: projects/{project_id}
-        """
-        image_family: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this VM image family to find the image; the newest image in this family will be used.
-        """
-        image_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use VM image name to find the image.
-        """
-elif False:
-    InstanceVmImageArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceVmImageArgsDict(TypedDict):
+    project: pulumi.Input[_builtins.str]
+    """
+    The name of the Google Cloud project that this VM image belongs to.
+    Format: projects/{project_id}
+    """
+    image_family: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this VM image family to find the image; the newest image in this family will be used.
+    """
+    image_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use VM image name to find the image.
+    """
 
 @pulumi.input_type
 class InstanceVmImageArgs:
@@ -635,26 +606,23 @@ class InstanceVmImageArgs:
         pulumi.set(self, "image_name", value)
 
 
-if not MYPY:
-    class RuntimeAccessConfigArgsDict(TypedDict):
-        access_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of access mode this instance. For valid values, see
-        `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-        rest/v1/projects.locations.runtimes#RuntimeAccessType`.
-        """
-        proxy_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The proxy endpoint that is used to access the runtime.
-        """
-        runtime_owner: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The owner of this runtime after creation. Format: `alias@example.com`.
-        Currently supports one owner only.
-        """
-elif False:
-    RuntimeAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeAccessConfigArgsDict(TypedDict):
+    access_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of access mode this instance. For valid values, see
+    `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+    rest/v1/projects.locations.runtimes#RuntimeAccessType`.
+    """
+    proxy_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The proxy endpoint that is used to access the runtime.
+    """
+    runtime_owner: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The owner of this runtime after creation. Format: `alias@example.com`.
+    Currently supports one owner only.
+    """
 
 @pulumi.input_type
 class RuntimeAccessConfigArgs:
@@ -719,13 +687,10 @@ class RuntimeAccessConfigArgs:
         pulumi.set(self, "runtime_owner", value)
 
 
-if not MYPY:
-    class RuntimeIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RuntimeIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RuntimeIamBindingConditionArgs:
@@ -766,13 +731,10 @@ class RuntimeIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RuntimeIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RuntimeIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RuntimeIamMemberConditionArgs:
@@ -813,16 +775,13 @@ class RuntimeIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RuntimeMetricArgsDict(TypedDict):
-        system_metrics: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Contains runtime daemon metrics, such as OS and kernels and
-        sessions stats.
-        """
-elif False:
-    RuntimeMetricArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeMetricArgsDict(TypedDict):
+    system_metrics: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Contains runtime daemon metrics, such as OS and kernels and
+    sessions stats.
+    """
 
 @pulumi.input_type
 class RuntimeMetricArgs:
@@ -851,59 +810,56 @@ class RuntimeMetricArgs:
         pulumi.set(self, "system_metrics", value)
 
 
-if not MYPY:
-    class RuntimeSoftwareConfigArgsDict(TypedDict):
-        custom_gpu_driver_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specify a custom Cloud Storage path where the GPU driver is stored.
-        If not specified, we'll automatically choose from official GPU drivers.
-        """
-        enable_health_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Verifies core internal services are running. Default: True.
-        """
-        idle_shutdown: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Runtime will automatically shutdown after idle_shutdown_time.
-        Default: True
-        """
-        idle_shutdown_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Time in minutes to wait before shuting down runtime.
-        Default: 180 minutes
-        """
-        install_gpu_driver: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Install Nvidia Driver automatically.
-        """
-        kernels: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgsDict']]]]
-        """
-        Use a list of container images to use as Kernels in the notebook instance.
-        Structure is documented below.
-        """
-        notebook_upgrade_schedule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cron expression in UTC timezone for schedule instance auto upgrade.
-        Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
-        """
-        post_startup_script: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Path to a Bash script that automatically runs after a notebook instance
-        fully boots up. The path must be a URL or
-        Cloud Storage path (gs://path-to-file/file-name).
-        """
-        post_startup_script_behavior: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Behavior for the post startup script.
-        Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-        """
-        upgradeable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Bool indicating whether an newer image is available in an image family.
-        """
-elif False:
-    RuntimeSoftwareConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeSoftwareConfigArgsDict(TypedDict):
+    custom_gpu_driver_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specify a custom Cloud Storage path where the GPU driver is stored.
+    If not specified, we'll automatically choose from official GPU drivers.
+    """
+    enable_health_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Verifies core internal services are running. Default: True.
+    """
+    idle_shutdown: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Runtime will automatically shutdown after idle_shutdown_time.
+    Default: True
+    """
+    idle_shutdown_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Time in minutes to wait before shuting down runtime.
+    Default: 180 minutes
+    """
+    install_gpu_driver: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Install Nvidia Driver automatically.
+    """
+    kernels: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgsDict']]]]
+    """
+    Use a list of container images to use as Kernels in the notebook instance.
+    Structure is documented below.
+    """
+    notebook_upgrade_schedule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cron expression in UTC timezone for schedule instance auto upgrade.
+    Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+    """
+    post_startup_script: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to a Bash script that automatically runs after a notebook instance
+    fully boots up. The path must be a URL or
+    Cloud Storage path (gs://path-to-file/file-name).
+    """
+    post_startup_script_behavior: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Behavior for the post startup script.
+    Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+    """
+    upgradeable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Bool indicating whether an newer image is available in an image family.
+    """
 
 @pulumi.input_type
 class RuntimeSoftwareConfigArgs:
@@ -1090,19 +1046,16 @@ class RuntimeSoftwareConfigArgs:
         pulumi.set(self, "upgradeable", value)
 
 
-if not MYPY:
-    class RuntimeSoftwareConfigKernelArgsDict(TypedDict):
-        repository: pulumi.Input[_builtins.str]
-        """
-        The path to the container image repository.
-        For example: gcr.io/{project_id}/{imageName}
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag of the container image. If not specified, this defaults to the latest tag.
-        """
-elif False:
-    RuntimeSoftwareConfigKernelArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeSoftwareConfigKernelArgsDict(TypedDict):
+    repository: pulumi.Input[_builtins.str]
+    """
+    The path to the container image repository.
+    For example: gcr.io/{project_id}/{imageName}
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag of the container image. If not specified, this defaults to the latest tag.
+    """
 
 @pulumi.input_type
 class RuntimeSoftwareConfigKernelArgs:
@@ -1144,25 +1097,22 @@ class RuntimeSoftwareConfigKernelArgs:
         pulumi.set(self, "tag", value)
 
 
-if not MYPY:
-    class RuntimeVirtualMachineArgsDict(TypedDict):
-        instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique identifier of the Managed Compute Engine instance.
-        """
-        instance_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The user-friendly name of the Managed Compute Engine instance.
-        """
-        virtual_machine_config: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArgsDict']]
-        """
-        Virtual Machine configuration settings.
-        Structure is documented below.
-        """
-elif False:
-    RuntimeVirtualMachineArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeVirtualMachineArgsDict(TypedDict):
+    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique identifier of the Managed Compute Engine instance.
+    """
+    instance_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The user-friendly name of the Managed Compute Engine instance.
+    """
+    virtual_machine_config: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArgsDict']]
+    """
+    Virtual Machine configuration settings.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RuntimeVirtualMachineArgs:
@@ -1225,119 +1175,116 @@ class RuntimeVirtualMachineArgs:
         pulumi.set(self, "virtual_machine_config", value)
 
 
-if not MYPY:
-    class RuntimeVirtualMachineVirtualMachineConfigArgsDict(TypedDict):
-        data_disk: pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskArgsDict']
-        """
-        Data disk option configuration settings.
-        Structure is documented below.
-        """
-        machine_type: pulumi.Input[_builtins.str]
-        """
-        The Compute Engine machine type used for runtimes.
-        """
-        accelerator_config: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgsDict']]
-        """
-        The Compute Engine accelerator configuration for this runtime.
-        Structure is documented below.
-        """
-        container_images: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgsDict']]]]
-        """
-        Use a list of container images to start the notebook instance.
-        Structure is documented below.
-        """
-        encryption_config: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgsDict']]
-        """
-        Encryption settings for virtual machine data disk.
-        Structure is documented below.
-        """
-        guest_attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        The Compute Engine guest attributes. (see [Project and instance
-        guest attributes](https://cloud.google.com/compute/docs/
-        storing-retrieving-metadata#guest_attributes)).
-        """
-        internal_ip_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, runtime will only have internal IP addresses. By default,
-        runtimes are not restricted to internal IP addresses, and will
-        have ephemeral external IP addresses assigned to each vm. This
-        `internal_ip_only` restriction can only be enabled for subnetwork
-        enabled networks, and all dependencies must be configured to be
-        accessible without external IP addresses.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The labels to associate with this runtime. Label **keys** must
-        contain 1 to 63 characters, and must conform to [RFC 1035]
-        (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
-        empty, but, if present, must contain 1 to 63 characters, and must
-        conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
-        more than 32 labels can be associated with a cluster.
-        """
-        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The Compute Engine metadata entries to add to virtual machine.
-        (see [Project and instance metadata](https://cloud.google.com
-        /compute/docs/storing-retrieving-metadata#project_and_instance
-        _metadata)).
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Compute Engine network to be used for machine communications.
-        Cannot be specified with subnetwork. If neither `network` nor
-        `subnet` is specified, the "default" network of the project is
-        used, if it exists. A full URL or partial URI. Examples:
-        * `https://www.googleapis.com/compute/v1/projects/[project_id]/
-        regions/global/default`
-        * `projects/[project_id]/regions/global/default`
-        Runtimes are managed resources inside Google Infrastructure.
-        Runtimes support the following network configurations:
-        * Google Managed Network (Network & subnet are empty)
-        * Consumer Project VPC (network & subnet are required). Requires
-        configuring Private Service Access.
-        * Shared VPC (network & subnet are required). Requires
-        configuring Private Service Access.
-        """
-        nic_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of vNIC to be used on this interface. This may be gVNIC
-        or VirtioNet.
-        Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
-        """
-        reserved_ip_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Reserved IP Range name is used for VPC Peering. The
-        subnetwork allocation will use the range *name* if it's assigned.
-        """
-        shielded_instance_config: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgsDict']]
-        """
-        Shielded VM Instance configuration settings.
-        Structure is documented below.
-        """
-        subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Compute Engine subnetwork to be used for machine
-        communications. Cannot be specified with network. A full URL or
-        partial URI are valid. Examples:
-        * `https://www.googleapis.com/compute/v1/projects/[project_id]/
-        regions/us-east1/subnetworks/sub0`
-        * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The Compute Engine tags to add to runtime (see [Tagging instances]
-        (https://cloud.google.com/compute/docs/
-        label-or-tag-resources#tags)).
-        """
-        zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The zone where the virtual machine is located.
-        """
-elif False:
-    RuntimeVirtualMachineVirtualMachineConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeVirtualMachineVirtualMachineConfigArgsDict(TypedDict):
+    data_disk: pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskArgsDict']
+    """
+    Data disk option configuration settings.
+    Structure is documented below.
+    """
+    machine_type: pulumi.Input[_builtins.str]
+    """
+    The Compute Engine machine type used for runtimes.
+    """
+    accelerator_config: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgsDict']]
+    """
+    The Compute Engine accelerator configuration for this runtime.
+    Structure is documented below.
+    """
+    container_images: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgsDict']]]]
+    """
+    Use a list of container images to start the notebook instance.
+    Structure is documented below.
+    """
+    encryption_config: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgsDict']]
+    """
+    Encryption settings for virtual machine data disk.
+    Structure is documented below.
+    """
+    guest_attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    The Compute Engine guest attributes. (see [Project and instance
+    guest attributes](https://cloud.google.com/compute/docs/
+    storing-retrieving-metadata#guest_attributes)).
+    """
+    internal_ip_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, runtime will only have internal IP addresses. By default,
+    runtimes are not restricted to internal IP addresses, and will
+    have ephemeral external IP addresses assigned to each vm. This
+    `internal_ip_only` restriction can only be enabled for subnetwork
+    enabled networks, and all dependencies must be configured to be
+    accessible without external IP addresses.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The labels to associate with this runtime. Label **keys** must
+    contain 1 to 63 characters, and must conform to [RFC 1035]
+    (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+    empty, but, if present, must contain 1 to 63 characters, and must
+    conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+    more than 32 labels can be associated with a cluster.
+    """
+    metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The Compute Engine metadata entries to add to virtual machine.
+    (see [Project and instance metadata](https://cloud.google.com
+    /compute/docs/storing-retrieving-metadata#project_and_instance
+    _metadata)).
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Compute Engine network to be used for machine communications.
+    Cannot be specified with subnetwork. If neither `network` nor
+    `subnet` is specified, the "default" network of the project is
+    used, if it exists. A full URL or partial URI. Examples:
+    * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+    regions/global/default`
+    * `projects/[project_id]/regions/global/default`
+    Runtimes are managed resources inside Google Infrastructure.
+    Runtimes support the following network configurations:
+    * Google Managed Network (Network & subnet are empty)
+    * Consumer Project VPC (network & subnet are required). Requires
+    configuring Private Service Access.
+    * Shared VPC (network & subnet are required). Requires
+    configuring Private Service Access.
+    """
+    nic_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of vNIC to be used on this interface. This may be gVNIC
+    or VirtioNet.
+    Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
+    """
+    reserved_ip_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Reserved IP Range name is used for VPC Peering. The
+    subnetwork allocation will use the range *name* if it's assigned.
+    """
+    shielded_instance_config: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgsDict']]
+    """
+    Shielded VM Instance configuration settings.
+    Structure is documented below.
+    """
+    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Compute Engine subnetwork to be used for machine
+    communications. Cannot be specified with network. A full URL or
+    partial URI are valid. Examples:
+    * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+    regions/us-east1/subnetworks/sub0`
+    * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The Compute Engine tags to add to runtime (see [Tagging instances]
+    (https://cloud.google.com/compute/docs/
+    label-or-tag-resources#tags)).
+    """
+    zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The zone where the virtual machine is located.
+    """
 
 @pulumi.input_type
 class RuntimeVirtualMachineVirtualMachineConfigArgs:
@@ -1690,20 +1637,17 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         pulumi.set(self, "zone", value)
 
 
-if not MYPY:
-    class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgsDict(TypedDict):
-        core_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Count of cores of this accelerator.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Accelerator model. For valid values, see
-        `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-        rest/v1/projects.locations.runtimes#AcceleratorType`
-        """
-elif False:
-    RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgsDict(TypedDict):
+    core_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Count of cores of this accelerator.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Accelerator model. For valid values, see
+    `https://cloud.google.com/vertex-ai/docs/workbench/reference/
+    rest/v1/projects.locations.runtimes#AcceleratorType`
+    """
 
 @pulumi.input_type
 class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs:
@@ -1748,19 +1692,16 @@ class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class RuntimeVirtualMachineVirtualMachineConfigContainerImageArgsDict(TypedDict):
-        repository: pulumi.Input[_builtins.str]
-        """
-        The path to the container image repository.
-        For example: gcr.io/{project_id}/{imageName}
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag of the container image. If not specified, this defaults to the latest tag.
-        """
-elif False:
-    RuntimeVirtualMachineVirtualMachineConfigContainerImageArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeVirtualMachineVirtualMachineConfigContainerImageArgsDict(TypedDict):
+    repository: pulumi.Input[_builtins.str]
+    """
+    The path to the container image repository.
+    For example: gcr.io/{project_id}/{imageName}
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag of the container image. If not specified, this defaults to the latest tag.
+    """
 
 @pulumi.input_type
 class RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs:
@@ -1802,99 +1743,96 @@ class RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs:
         pulumi.set(self, "tag", value)
 
 
-if not MYPY:
-    class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgsDict(TypedDict):
-        auto_delete: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Optional. Specifies whether the disk will be auto-deleted
-        when the instance is deleted (but not when the disk is
-        detached from the instance).
-        """
-        boot: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Optional. Indicates that this is a boot disk. The virtual
-        machine will use the first partition of the disk for its
-        root filesystem.
-        """
-        device_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional. Specifies a unique device name of your choice
-        that is reflected into the /dev/disk/by-id/google-* tree
-        of a Linux operating system running within the instance.
-        This name can be used to reference the device for mounting,
-        resizing, and so on, from within the instance.
-        If not specified, the server chooses a default device name
-        to apply to this disk, in the form persistent-disk-x, where
-        x is a number assigned by Google Compute Engine. This field
-        is only applicable for persistent disks.
-        """
-        guest_os_features: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Indicates a list of features to enable on the guest operating
-        system. Applicable only for bootable images. To see a list of
-        available features, read `https://cloud.google.com/compute/docs/
-        images/create-delete-deprecate-private-images#guest-os-features`
-        options. ``
-        """
-        index: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. A zero-based index to this disk, where 0 is
-        reserved for the boot disk. If you have many disks attached
-        to an instance, each disk would have a unique index number.
-        """
-        initialize_params: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgsDict']]
-        """
-        Input only. Specifies the parameters for a new disk that will
-        be created alongside the new instance. Use initialization
-        parameters to create boot disks or local SSDs attached to the
-        new instance. This property is mutually exclusive with the
-        source property; you can only define one or the other, but not
-        both.
-        Structure is documented below.
-        """
-        interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        "Specifies the disk interface to use for attaching this disk,
-        which is either SCSI or NVME. The default is SCSI. Persistent
-        disks must always use SCSI and the request will fail if you attempt
-        to attach a persistent disk in any other format than SCSI. Local SSDs
-        can use either NVME or SCSI. For performance characteristics of SCSI
-        over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
-        """
-        kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Type of the resource. Always compute#attachedDisk for attached
-        disks.
-        """
-        licenses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Output only. Any valid publicly visible licenses.
-        """
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mode in which to attach this disk, either READ_WRITE
-        or READ_ONLY. If not specified, the default is to attach
-        the disk in READ_WRITE mode.
-        """
-        source: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a valid partial or full URL to an existing
-        Persistent Disk resource.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the type of the disk, either SCRATCH or PERSISTENT.
-        If not specified, the default is PERSISTENT.
-        """
-elif False:
-    RuntimeVirtualMachineVirtualMachineConfigDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgsDict(TypedDict):
+    auto_delete: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Optional. Specifies whether the disk will be auto-deleted
+    when the instance is deleted (but not when the disk is
+    detached from the instance).
+    """
+    boot: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Optional. Indicates that this is a boot disk. The virtual
+    machine will use the first partition of the disk for its
+    root filesystem.
+    """
+    device_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional. Specifies a unique device name of your choice
+    that is reflected into the /dev/disk/by-id/google-* tree
+    of a Linux operating system running within the instance.
+    This name can be used to reference the device for mounting,
+    resizing, and so on, from within the instance.
+    If not specified, the server chooses a default device name
+    to apply to this disk, in the form persistent-disk-x, where
+    x is a number assigned by Google Compute Engine. This field
+    is only applicable for persistent disks.
+    """
+    guest_os_features: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Indicates a list of features to enable on the guest operating
+    system. Applicable only for bootable images. To see a list of
+    available features, read `https://cloud.google.com/compute/docs/
+    images/create-delete-deprecate-private-images#guest-os-features`
+    options. ``
+    """
+    index: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. A zero-based index to this disk, where 0 is
+    reserved for the boot disk. If you have many disks attached
+    to an instance, each disk would have a unique index number.
+    """
+    initialize_params: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgsDict']]
+    """
+    Input only. Specifies the parameters for a new disk that will
+    be created alongside the new instance. Use initialization
+    parameters to create boot disks or local SSDs attached to the
+    new instance. This property is mutually exclusive with the
+    source property; you can only define one or the other, but not
+    both.
+    Structure is documented below.
+    """
+    interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    "Specifies the disk interface to use for attaching this disk,
+    which is either SCSI or NVME. The default is SCSI. Persistent
+    disks must always use SCSI and the request will fail if you attempt
+    to attach a persistent disk in any other format than SCSI. Local SSDs
+    can use either NVME or SCSI. For performance characteristics of SCSI
+    over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
+    """
+    kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Type of the resource. Always compute#attachedDisk for attached
+    disks.
+    """
+    licenses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Output only. Any valid publicly visible licenses.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mode in which to attach this disk, either READ_WRITE
+    or READ_ONLY. If not specified, the default is to attach
+    the disk in READ_WRITE mode.
+    """
+    source: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies a valid partial or full URL to an existing
+    Persistent Disk resource.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the type of the disk, either SCRATCH or PERSISTENT.
+    If not specified, the default is PERSISTENT.
+    """
 
 @pulumi.input_type
 class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
@@ -2177,41 +2115,38 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Provide this property when creating the disk.
-        """
-        disk_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the disk name. If not specified, the default is
-        to use the name of the instance. If the disk with the
-        instance name exists already in the given zone/region, a
-        new name will be automatically generated.
-        """
-        disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the size of the disk in base-2 GB. If not
-        specified, the disk will be the same size as the image
-        (usually 10GB). If specified, the size must be equal to
-        or larger than 10GB. Default 100 GB.
-        """
-        disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the boot disk attached to this runtime,
-        defaults to standard persistent disk. For valid values,
-        see `https://cloud.google.com/vertex-ai/docs/workbench/
-        reference/rest/v1/projects.locations.runtimes#disktype`
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Labels to apply to this disk. These can be later modified
-        by the disks.setLabels method. This field is only
-        applicable for persistent disks.
-        """
-elif False:
-    RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Provide this property when creating the disk.
+    """
+    disk_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the disk name. If not specified, the default is
+    to use the name of the instance. If the disk with the
+    instance name exists already in the given zone/region, a
+    new name will be automatically generated.
+    """
+    disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the disk in base-2 GB. If not
+    specified, the disk will be the same size as the image
+    (usually 10GB). If specified, the size must be equal to
+    or larger than 10GB. Default 100 GB.
+    """
+    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the boot disk attached to this runtime,
+    defaults to standard persistent disk. For valid values,
+    see `https://cloud.google.com/vertex-ai/docs/workbench/
+    reference/rest/v1/projects.locations.runtimes#disktype`
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Labels to apply to this disk. These can be later modified
+    by the disks.setLabels method. This field is only
+    applicable for persistent disks.
+    """
 
 @pulumi.input_type
 class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs:
@@ -2322,18 +2257,15 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs:
         pulumi.set(self, "labels", value)
 
 
-if not MYPY:
-    class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgsDict(TypedDict):
-        kms_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud KMS resource identifier of the customer-managed
-        encryption key used to protect a resource, such as a disks.
-        It has the following format:
-        `projects/{PROJECT_ID}/locations/{REGION}/keyRings/
-        {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
-        """
-elif False:
-    RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgsDict(TypedDict):
+    kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud KMS resource identifier of the customer-managed
+    encryption key used to protect a resource, such as a disks.
+    It has the following format:
+    `projects/{PROJECT_ID}/locations/{REGION}/keyRings/
+    {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+    """
 
 @pulumi.input_type
 class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs:
@@ -2366,32 +2298,29 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs:
         pulumi.set(self, "kms_key", value)
 
 
-if not MYPY:
-    class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgsDict(TypedDict):
-        enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether the instance has integrity monitoring enabled.
-        Enables monitoring and attestation of the boot integrity of
-        the instance. The attestation is performed against the
-        integrity policy baseline. This baseline is initially derived
-        from the implicitly trusted boot image when the instance is
-        created. Enabled by default.
-        """
-        enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether the instance has Secure Boot enabled.Secure
-        Boot helps ensure that the system only runs authentic software
-        by verifying the digital signature of all boot components, and
-        halting the boot process if signature verification fails.
-        Disabled by default.
-        """
-        enable_vtpm: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether the instance has the vTPM enabled. Enabled by
-        default.
-        """
-elif False:
-    RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgsDict(TypedDict):
+    enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether the instance has integrity monitoring enabled.
+    Enables monitoring and attestation of the boot integrity of
+    the instance. The attestation is performed against the
+    integrity policy baseline. This baseline is initially derived
+    from the implicitly trusted boot image when the instance is
+    created. Enabled by default.
+    """
+    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether the instance has Secure Boot enabled.Secure
+    Boot helps ensure that the system only runs authentic software
+    by verifying the digital signature of all boot components, and
+    halting the boot process if signature verification fails.
+    Disabled by default.
+    """
+    enable_vtpm: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether the instance has the vTPM enabled. Enabled by
+    default.
+    """
 
 @pulumi.input_type
 class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs:

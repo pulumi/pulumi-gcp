@@ -142,24 +142,15 @@ import (
 // ## Import
 //
 // NodePool can be imported using any of these accepted formats:
-//
 // * `projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}`
-//
 // * `{{project}}/{{location}}/{{cluster}}/{{name}}`
-//
 // * `{{location}}/{{cluster}}/{{name}}`
 //
 // When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:container/azureNodePool:AzureNodePool default projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{location}}/{{cluster}}/{{name}}
 // ```
 type AzureNodePool struct {
@@ -179,7 +170,8 @@ type AzureNodePool struct {
 	// The node configuration of the node pool.
 	Config AzureNodePoolConfigOutput `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
-	CreateTime           pulumi.StringOutput    `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -272,7 +264,8 @@ type azureNodePoolState struct {
 	// The node configuration of the node pool.
 	Config *AzureNodePoolConfig `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
-	CreateTime           *string           `pulumi:"createTime"`
+	CreateTime *string `pulumi:"createTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
@@ -315,7 +308,8 @@ type AzureNodePoolState struct {
 	// The node configuration of the node pool.
 	Config AzureNodePoolConfigPtrInput
 	// Output only. The time at which this node pool was created.
-	CreateTime           pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
@@ -528,6 +522,7 @@ func (o AzureNodePoolOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureNodePool) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o AzureNodePoolOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AzureNodePool) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

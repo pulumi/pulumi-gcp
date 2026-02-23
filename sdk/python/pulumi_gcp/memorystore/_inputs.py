@@ -87,23 +87,18 @@ __all__ = [
     'InstanceZoneDistributionConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceAutomatedBackupConfigArgsDict(TypedDict):
-        fixed_frequency_schedule: pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleArgsDict']
-        """
-        Trigger automated backups at a fixed frequency.
-        Structure is documented below.
-        """
-        retention: pulumi.Input[_builtins.str]
-        """
-        How long to keep automated backups before the backups are deleted.
-        The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The default_value is "3024000s"
-        """
-elif False:
-    InstanceAutomatedBackupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAutomatedBackupConfigArgsDict(TypedDict):
+    fixed_frequency_schedule: pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleArgsDict']
+    """
+    Trigger automated backups at a fixed frequency.
+    Structure is documented below.
+    """
+    retention: pulumi.Input[_builtins.str]
+    """
+    How long to keep automated backups before the backups are deleted.
+    The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The default_value is "3024000s"
+    """
 
 @pulumi.input_type
 class InstanceAutomatedBackupConfigArgs:
@@ -148,16 +143,13 @@ class InstanceAutomatedBackupConfigArgs:
         pulumi.set(self, "retention", value)
 
 
-if not MYPY:
-    class InstanceAutomatedBackupConfigFixedFrequencyScheduleArgsDict(TypedDict):
-        start_time: pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgsDict']
-        """
-        The start time of every automated backup in UTC.
-        It must be set to the start of an hour. This field is required.
-        Structure is documented below.
-        """
-elif False:
-    InstanceAutomatedBackupConfigFixedFrequencyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAutomatedBackupConfigFixedFrequencyScheduleArgsDict(TypedDict):
+    start_time: pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgsDict']
+    """
+    The start time of every automated backup in UTC.
+    It must be set to the start of an hour. This field is required.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs:
@@ -185,15 +177,12 @@ class InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgsDict(TypedDict):
-        hours: pulumi.Input[_builtins.int]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23.
-        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-elif False:
-    InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgsDict(TypedDict):
+    hours: pulumi.Input[_builtins.int]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23.
+    An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
 
 @pulumi.input_type
 class InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs:
@@ -219,40 +208,37 @@ class InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs:
         pulumi.set(self, "hours", value)
 
 
-if not MYPY:
-    class InstanceCrossInstanceReplicationConfigArgsDict(TypedDict):
-        instance_role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance role supports the following values:
-        1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
-        2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
-        3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
-        4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
-        Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
-        """
-        memberships: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgsDict']]]]
-        """
-        (Output)
-        An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
-        Structure is documented below.
-        """
-        primary_instance: NotRequired[pulumi.Input['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict']]
-        """
-        This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
-        Structure is documented below.
-        """
-        secondary_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict']]]]
-        """
-        List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
-        Structure is documented below.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The last time cross instance replication config was updated.
-        """
-elif False:
-    InstanceCrossInstanceReplicationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceCrossInstanceReplicationConfigArgsDict(TypedDict):
+    instance_role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance role supports the following values:
+    1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
+    2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+    3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+    4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
+    Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+    """
+    memberships: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgsDict']]]]
+    """
+    (Output)
+    An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
+    Structure is documented below.
+    """
+    primary_instance: NotRequired[pulumi.Input['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict']]
+    """
+    This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+    Structure is documented below.
+    """
+    secondary_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict']]]]
+    """
+    List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
+    Structure is documented below.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The last time cross instance replication config was updated.
+    """
 
 @pulumi.input_type
 class InstanceCrossInstanceReplicationConfigArgs:
@@ -361,18 +347,15 @@ class InstanceCrossInstanceReplicationConfigArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class InstanceCrossInstanceReplicationConfigMembershipArgsDict(TypedDict):
-        primary_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict']]]]
-        """
-        Details of the primary instance that is used as the replication source for all the secondary instances.
-        """
-        secondary_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict']]]]
-        """
-        List of secondary instances that are replicating from the primary instance.
-        """
-elif False:
-    InstanceCrossInstanceReplicationConfigMembershipArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceCrossInstanceReplicationConfigMembershipArgsDict(TypedDict):
+    primary_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict']]]]
+    """
+    Details of the primary instance that is used as the replication source for all the secondary instances.
+    """
+    secondary_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict']]]]
+    """
+    List of secondary instances that are replicating from the primary instance.
+    """
 
 @pulumi.input_type
 class InstanceCrossInstanceReplicationConfigMembershipArgs:
@@ -413,19 +396,16 @@ class InstanceCrossInstanceReplicationConfigMembershipArgs:
         pulumi.set(self, "secondary_instances", value)
 
 
-if not MYPY:
-    class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict(TypedDict):
-        instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
-        """
-        uid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique id of the primary instance.
-        """
-elif False:
-    InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict(TypedDict):
+    instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+    """
+    uid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique id of the primary instance.
+    """
 
 @pulumi.input_type
 class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs:
@@ -468,18 +448,15 @@ class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs:
         pulumi.set(self, "uid", value)
 
 
-if not MYPY:
-    class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict(TypedDict):
-        instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
-        """
-        uid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output only. System assigned, unique identifier for the instance.
-        """
-elif False:
-    InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict(TypedDict):
+    instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+    """
+    uid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output only. System assigned, unique identifier for the instance.
+    """
 
 @pulumi.input_type
 class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs:
@@ -520,19 +497,16 @@ class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs:
         pulumi.set(self, "uid", value)
 
 
-if not MYPY:
-    class InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict(TypedDict):
-        instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
-        """
-        uid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique id of the primary instance.
-        """
-elif False:
-    InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict(TypedDict):
+    instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+    """
+    uid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique id of the primary instance.
+    """
 
 @pulumi.input_type
 class InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs:
@@ -575,20 +549,17 @@ class InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs:
         pulumi.set(self, "uid", value)
 
 
-if not MYPY:
-    class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict(TypedDict):
-        instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
-        """
-        uid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique id of the secondary instance.
-        """
-elif False:
-    InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict(TypedDict):
+    instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+    """
+    uid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique id of the secondary instance.
+    """
 
 @pulumi.input_type
 class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs:
@@ -633,21 +604,18 @@ class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs:
         pulumi.set(self, "uid", value)
 
 
-if not MYPY:
-    class InstanceDesiredAutoCreatedEndpointArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        Output only. The consumer network where the IP address resides, in the form of
-        projects/{project_id}/global/networks/{network_id}.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        Output only. The consumer project_id where the forwarding rule is created from.
-        """
-elif False:
-    InstanceDesiredAutoCreatedEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDesiredAutoCreatedEndpointArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    Output only. The consumer network where the IP address resides, in the form of
+    projects/{project_id}/global/networks/{network_id}.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    Output only. The consumer project_id where the forwarding rule is created from.
+    """
 
 @pulumi.input_type
 class InstanceDesiredAutoCreatedEndpointArgs:
@@ -692,21 +660,18 @@ class InstanceDesiredAutoCreatedEndpointArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class InstanceDesiredPscAutoConnectionArgsDict(TypedDict):
-        network: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        Output only. The consumer network where the IP address resides, in the form of
-        projects/{project_id}/global/networks/{network_id}.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        (Output)
-        Output only. The consumer project_id where the forwarding rule is created from.
-        """
-elif False:
-    InstanceDesiredPscAutoConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDesiredPscAutoConnectionArgsDict(TypedDict):
+    network: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    Output only. The consumer network where the IP address resides, in the form of
+    projects/{project_id}/global/networks/{network_id}.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    (Output)
+    Output only. The consumer project_id where the forwarding rule is created from.
+    """
 
 @pulumi.input_type
 class InstanceDesiredPscAutoConnectionArgs:
@@ -751,14 +716,11 @@ class InstanceDesiredPscAutoConnectionArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict(TypedDict):
-        connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict']]]]
-        """
-        Structure is documented below.
-        """
-elif False:
-    InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict(TypedDict):
+    connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict']]]]
+    """
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs:
@@ -783,16 +745,13 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs:
         pulumi.set(self, "connections", value)
 
 
-if not MYPY:
-    class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict(TypedDict):
-        psc_connection: NotRequired[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgsDict']]
-        """
-        Detailed information of a PSC connection that is created by the customer
-        who owns the cluster.
-        Structure is documented below.
-        """
-elif False:
-    InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict(TypedDict):
+    psc_connection: NotRequired[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgsDict']]
+    """
+    Detailed information of a PSC connection that is created by the customer
+    who owns the cluster.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs:
@@ -821,55 +780,52 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArg
         pulumi.set(self, "psc_connection", value)
 
 
-if not MYPY:
-    class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgsDict(TypedDict):
-        forwarding_rule: pulumi.Input[_builtins.str]
-        """
-        The URI of the consumer side forwarding rule.
-        Format:
-        projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
-        """
-        ip_address: pulumi.Input[_builtins.str]
-        """
-        The IP allocated on the consumer network for the PSC forwarding rule.
-        """
-        network: pulumi.Input[_builtins.str]
-        """
-        The consumer network where the IP address resides, in the form of
-        projects/{project_id}/global/networks/{network_id}.
-        """
-        psc_connection_id: pulumi.Input[_builtins.str]
-        """
-        The PSC connection id of the forwarding rule connected to the
-        service attachment.
-        """
-        service_attachment: pulumi.Input[_builtins.str]
-        """
-        The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
-        """
-        connection_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output Only. Type of a PSC Connection.
-        Possible values:
-        CONNECTION_TYPE_DISCOVERY
-        CONNECTION_TYPE_PRIMARY
-        CONNECTION_TYPE_READER
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The consumer project_id where the forwarding rule is created from.
-        """
-        psc_connection_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
-        Possible values:
-        ACTIVE
-        NOT_FOUND
-        """
-elif False:
-    InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgsDict(TypedDict):
+    forwarding_rule: pulumi.Input[_builtins.str]
+    """
+    The URI of the consumer side forwarding rule.
+    Format:
+    projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+    """
+    ip_address: pulumi.Input[_builtins.str]
+    """
+    The IP allocated on the consumer network for the PSC forwarding rule.
+    """
+    network: pulumi.Input[_builtins.str]
+    """
+    The consumer network where the IP address resides, in the form of
+    projects/{project_id}/global/networks/{network_id}.
+    """
+    psc_connection_id: pulumi.Input[_builtins.str]
+    """
+    The PSC connection id of the forwarding rule connected to the
+    service attachment.
+    """
+    service_attachment: pulumi.Input[_builtins.str]
+    """
+    The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+    """
+    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output Only. Type of a PSC Connection.
+    Possible values:
+    CONNECTION_TYPE_DISCOVERY
+    CONNECTION_TYPE_PRIMARY
+    CONNECTION_TYPE_READER
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The consumer project_id where the forwarding rule is created from.
+    """
+    psc_connection_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+    Possible values:
+    ACTIVE
+    NOT_FOUND
+    """
 
 @pulumi.input_type
 class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs:
@@ -1027,26 +983,23 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
         pulumi.set(self, "psc_connection_status", value)
 
 
-if not MYPY:
-    class InstanceDiscoveryEndpointArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. IP address of the exposed endpoint clients connect to.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The consumer network where the IP address resides, in the form of
-        projects/{project_id}/global/networks/{network_id}.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. Ports of the exposed endpoint.
-        """
-elif False:
-    InstanceDiscoveryEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDiscoveryEndpointArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. IP address of the exposed endpoint clients connect to.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The consumer network where the IP address resides, in the form of
+    projects/{project_id}/global/networks/{network_id}.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. Ports of the exposed endpoint.
+    """
 
 @pulumi.input_type
 class InstanceDiscoveryEndpointArgs:
@@ -1111,15 +1064,12 @@ class InstanceDiscoveryEndpointArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class InstanceEndpointArgsDict(TypedDict):
-        connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointConnectionArgsDict']]]]
-        """
-        A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
-        Structure is documented below.
-        """
-elif False:
-    InstanceEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceEndpointArgsDict(TypedDict):
+    connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointConnectionArgsDict']]]]
+    """
+    A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceEndpointArgs:
@@ -1146,15 +1096,12 @@ class InstanceEndpointArgs:
         pulumi.set(self, "connections", value)
 
 
-if not MYPY:
-    class InstanceEndpointConnectionArgsDict(TypedDict):
-        psc_auto_connection: NotRequired[pulumi.Input['InstanceEndpointConnectionPscAutoConnectionArgsDict']]
-        """
-        Detailed information of a PSC connection that is created through service connectivity automation.
-        Structure is documented below.
-        """
-elif False:
-    InstanceEndpointConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceEndpointConnectionArgsDict(TypedDict):
+    psc_auto_connection: NotRequired[pulumi.Input['InstanceEndpointConnectionPscAutoConnectionArgsDict']]
+    """
+    Detailed information of a PSC connection that is created through service connectivity automation.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceEndpointConnectionArgs:
@@ -1181,58 +1128,55 @@ class InstanceEndpointConnectionArgs:
         pulumi.set(self, "psc_auto_connection", value)
 
 
-if not MYPY:
-    class InstanceEndpointConnectionPscAutoConnectionArgsDict(TypedDict):
-        connection_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output Only. Type of a PSC Connection.
-        Possible values:
-        CONNECTION_TYPE_DISCOVERY
-        CONNECTION_TYPE_PRIMARY
-        CONNECTION_TYPE_READER
-        """
-        forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The URI of the consumer side forwarding rule.
-        Format:
-        projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
-        """
-        ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The IP allocated on the consumer network for the PSC forwarding rule.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The consumer network where the IP address resides, in the form of
-        projects/{project_id}/global/networks/{network_id}.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. Ports of the exposed endpoint.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The consumer project_id where the forwarding rule is created from.
-        """
-        psc_connection_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The PSC connection id of the forwarding rule connected to the
-        service attachment.
-        """
-        service_attachment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
-        """
-elif False:
-    InstanceEndpointConnectionPscAutoConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceEndpointConnectionPscAutoConnectionArgsDict(TypedDict):
+    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output Only. Type of a PSC Connection.
+    Possible values:
+    CONNECTION_TYPE_DISCOVERY
+    CONNECTION_TYPE_PRIMARY
+    CONNECTION_TYPE_READER
+    """
+    forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The URI of the consumer side forwarding rule.
+    Format:
+    projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+    """
+    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The consumer network where the IP address resides, in the form of
+    projects/{project_id}/global/networks/{network_id}.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. Ports of the exposed endpoint.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The consumer project_id where the forwarding rule is created from.
+    """
+    psc_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The PSC connection id of the forwarding rule connected to the
+    service attachment.
+    """
+    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+    """
 
 @pulumi.input_type
 class InstanceEndpointConnectionPscAutoConnectionArgs:
@@ -1401,15 +1345,12 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
         pulumi.set(self, "service_attachment", value)
 
 
-if not MYPY:
-    class InstanceGcsSourceArgsDict(TypedDict):
-        uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        URIs of the GCS objects to import.
-        Example: gs://bucket1/object1, gs://bucket2/folder2/object2
-        """
-elif False:
-    InstanceGcsSourceArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceGcsSourceArgsDict(TypedDict):
+    uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    URIs of the GCS objects to import.
+    Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+    """
 
 @pulumi.input_type
 class InstanceGcsSourceArgs:
@@ -1435,31 +1376,28 @@ class InstanceGcsSourceArgs:
         pulumi.set(self, "uris", value)
 
 
-if not MYPY:
-    class InstanceMaintenancePolicyArgsDict(TypedDict):
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The time when the policy was created.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The time when the policy was last updated.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
-        """
-        weekly_maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict']]]]
-        """
-        Optional. Maintenance window that is applied to resources covered by this policy.
-        Minimum 1. For the current version, the maximum number
-        of weekly_window is expected to be one.
-        Structure is documented below.
-        """
-elif False:
-    InstanceMaintenancePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceMaintenancePolicyArgsDict(TypedDict):
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The time when the policy was created.
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+    resolution and up to nine fractional digits.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The time when the policy was last updated.
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+    resolution and up to nine fractional digits.
+    """
+    weekly_maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict']]]]
+    """
+    Optional. Maintenance window that is applied to resources covered by this policy.
+    Minimum 1. For the current version, the maximum number
+    of weekly_window is expected to be one.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceMaintenancePolicyArgs:
@@ -1534,36 +1472,33 @@ class InstanceMaintenancePolicyArgs:
         pulumi.set(self, "weekly_maintenance_windows", value)
 
 
-if not MYPY:
-    class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict(TypedDict):
-        day: pulumi.Input[_builtins.str]
-        """
-        The day of week that maintenance updates occur.
-        - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
-        - MONDAY: Monday
-        - TUESDAY: Tuesday
-        - WEDNESDAY: Wednesday
-        - THURSDAY: Thursday
-        - FRIDAY: Friday
-        - SATURDAY: Saturday
-        - SUNDAY: Sunday
-        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict']
-        """
-        Start time of the window in UTC time.
-        Structure is documented below.
-        """
-        duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Duration of the maintenance window.
-        The current window is fixed at 1 hour.
-        A duration in seconds with up to nine fractional digits,
-        terminated by 's'. Example: "3.5s".
-        """
-elif False:
-    InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict(TypedDict):
+    day: pulumi.Input[_builtins.str]
+    """
+    The day of week that maintenance updates occur.
+    - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+    - MONDAY: Monday
+    - TUESDAY: Tuesday
+    - WEDNESDAY: Wednesday
+    - THURSDAY: Thursday
+    - FRIDAY: Friday
+    - SATURDAY: Saturday
+    - SUNDAY: Sunday
+    Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict']
+    """
+    Start time of the window in UTC time.
+    Structure is documented below.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Duration of the maintenance window.
+    The current window is fixed at 1 hour.
+    A duration in seconds with up to nine fractional digits,
+    terminated by 's'. Example: "3.5s".
+    """
 
 @pulumi.input_type
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
@@ -1646,28 +1581,25 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
         pulumi.set(self, "duration", value)
 
 
-if not MYPY:
-    class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23.
-        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59.
-        An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23.
+    An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59.
+    An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
@@ -1744,32 +1676,29 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class InstanceMaintenanceScheduleArgsDict(TypedDict):
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The end time of any upcoming scheduled maintenance for this cluster.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
-        """
-        schedule_deadline_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The deadline that the maintenance schedule start time
-        can not go beyond, including reschedule.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The start time of any upcoming scheduled maintenance for this cluster.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
-        """
-elif False:
-    InstanceMaintenanceScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceMaintenanceScheduleArgsDict(TypedDict):
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The end time of any upcoming scheduled maintenance for this cluster.
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+    resolution and up to nine fractional digits.
+    """
+    schedule_deadline_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The deadline that the maintenance schedule start time
+    can not go beyond, including reschedule.
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+    resolution and up to nine fractional digits.
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The start time of any upcoming scheduled maintenance for this cluster.
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+    resolution and up to nine fractional digits.
+    """
 
 @pulumi.input_type
 class InstanceMaintenanceScheduleArgs:
@@ -1846,14 +1775,11 @@ class InstanceMaintenanceScheduleArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class InstanceManagedBackupSourceArgsDict(TypedDict):
-        backup: pulumi.Input[_builtins.str]
-        """
-        Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
-        """
-elif False:
-    InstanceManagedBackupSourceArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceManagedBackupSourceArgsDict(TypedDict):
+    backup: pulumi.Input[_builtins.str]
+    """
+    Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
+    """
 
 @pulumi.input_type
 class InstanceManagedBackupSourceArgs:
@@ -1877,16 +1803,13 @@ class InstanceManagedBackupSourceArgs:
         pulumi.set(self, "backup", value)
 
 
-if not MYPY:
-    class InstanceManagedServerCaArgsDict(TypedDict):
-        ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgsDict']]]]
-        """
-        (Output)
-        The PEM encoded CA certificate chains for managed server authentication
-        Structure is documented below.
-        """
-elif False:
-    InstanceManagedServerCaArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceManagedServerCaArgsDict(TypedDict):
+    ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgsDict']]]]
+    """
+    (Output)
+    The PEM encoded CA certificate chains for managed server authentication
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceManagedServerCaArgs:
@@ -1915,15 +1838,12 @@ class InstanceManagedServerCaArgs:
         pulumi.set(self, "ca_certs", value)
 
 
-if not MYPY:
-    class InstanceManagedServerCaCaCertArgsDict(TypedDict):
-        certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        The certificates that form the CA chain, from leaf to root order
-        """
-elif False:
-    InstanceManagedServerCaCaCertArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceManagedServerCaCaCertArgsDict(TypedDict):
+    certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    The certificates that form the CA chain, from leaf to root order
+    """
 
 @pulumi.input_type
 class InstanceManagedServerCaCaCertArgs:
@@ -1950,15 +1870,12 @@ class InstanceManagedServerCaCaCertArgs:
         pulumi.set(self, "certificates", value)
 
 
-if not MYPY:
-    class InstanceNodeConfigArgsDict(TypedDict):
-        size_gb: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        (Output)
-        Output only. Memory size in GB of the node.
-        """
-elif False:
-    InstanceNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceNodeConfigArgsDict(TypedDict):
+    size_gb: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    (Output)
+    Output only. Memory size in GB of the node.
+    """
 
 @pulumi.input_type
 class InstanceNodeConfigArgs:
@@ -1985,29 +1902,26 @@ class InstanceNodeConfigArgs:
         pulumi.set(self, "size_gb", value)
 
 
-if not MYPY:
-    class InstancePersistenceConfigArgsDict(TypedDict):
-        aof_config: NotRequired[pulumi.Input['InstancePersistenceConfigAofConfigArgsDict']]
-        """
-        Configuration for AOF based persistence.
-        Structure is documented below.
-        """
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Current persistence mode.
-        Possible values:
-        DISABLED
-        RDB
-        AOF
-        Possible values are: `DISABLED`, `RDB`, `AOF`.
-        """
-        rdb_config: NotRequired[pulumi.Input['InstancePersistenceConfigRdbConfigArgsDict']]
-        """
-        Configuration for RDB based persistence.
-        Structure is documented below.
-        """
-elif False:
-    InstancePersistenceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePersistenceConfigArgsDict(TypedDict):
+    aof_config: NotRequired[pulumi.Input['InstancePersistenceConfigAofConfigArgsDict']]
+    """
+    Configuration for AOF based persistence.
+    Structure is documented below.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Current persistence mode.
+    Possible values:
+    DISABLED
+    RDB
+    AOF
+    Possible values are: `DISABLED`, `RDB`, `AOF`.
+    """
+    rdb_config: NotRequired[pulumi.Input['InstancePersistenceConfigRdbConfigArgsDict']]
+    """
+    Configuration for RDB based persistence.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstancePersistenceConfigArgs:
@@ -2078,18 +1992,15 @@ class InstancePersistenceConfigArgs:
         pulumi.set(self, "rdb_config", value)
 
 
-if not MYPY:
-    class InstancePersistenceConfigAofConfigArgsDict(TypedDict):
-        append_fsync: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The fsync mode.
-        Possible values:
-        NEVER
-        EVERY_SEC
-        ALWAYS
-        """
-elif False:
-    InstancePersistenceConfigAofConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePersistenceConfigAofConfigArgsDict(TypedDict):
+    append_fsync: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The fsync mode.
+    Possible values:
+    NEVER
+    EVERY_SEC
+    ALWAYS
+    """
 
 @pulumi.input_type
 class InstancePersistenceConfigAofConfigArgs:
@@ -2122,25 +2033,22 @@ class InstancePersistenceConfigAofConfigArgs:
         pulumi.set(self, "append_fsync", value)
 
 
-if not MYPY:
-    class InstancePersistenceConfigRdbConfigArgsDict(TypedDict):
-        rdb_snapshot_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Period between RDB snapshots.
-        Possible values:
-        ONE_HOUR
-        SIX_HOURS
-        TWELVE_HOURS
-        TWENTY_FOUR_HOURS
-        """
-        rdb_snapshot_start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Time that the first snapshot was/will be attempted, and to which future
-        snapshots will be aligned. If not provided, the current time will be
-        used.
-        """
-elif False:
-    InstancePersistenceConfigRdbConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePersistenceConfigRdbConfigArgsDict(TypedDict):
+    rdb_snapshot_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Period between RDB snapshots.
+    Possible values:
+    ONE_HOUR
+    SIX_HOURS
+    TWELVE_HOURS
+    TWENTY_FOUR_HOURS
+    """
+    rdb_snapshot_start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Time that the first snapshot was/will be attempted, and to which future
+    snapshots will be aligned. If not provided, the current time will be
+    used.
+    """
 
 @pulumi.input_type
 class InstancePersistenceConfigRdbConfigArgs:
@@ -2195,24 +2103,21 @@ class InstancePersistenceConfigRdbConfigArgs:
         pulumi.set(self, "rdb_snapshot_start_time", value)
 
 
-if not MYPY:
-    class InstancePscAttachmentDetailArgsDict(TypedDict):
-        connection_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output Only. Type of a PSC Connection.
-        Possible values:
-        CONNECTION_TYPE_DISCOVERY
-        CONNECTION_TYPE_PRIMARY
-        CONNECTION_TYPE_READER
-        """
-        service_attachment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
-        """
-elif False:
-    InstancePscAttachmentDetailArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePscAttachmentDetailArgsDict(TypedDict):
+    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output Only. Type of a PSC Connection.
+    Possible values:
+    CONNECTION_TYPE_DISCOVERY
+    CONNECTION_TYPE_PRIMARY
+    CONNECTION_TYPE_READER
+    """
+    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+    """
 
 @pulumi.input_type
 class InstancePscAttachmentDetailArgs:
@@ -2265,66 +2170,63 @@ class InstancePscAttachmentDetailArgs:
         pulumi.set(self, "service_attachment", value)
 
 
-if not MYPY:
-    class InstancePscAutoConnectionArgsDict(TypedDict):
-        connection_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output Only. Type of a PSC Connection.
-        Possible values:
-        CONNECTION_TYPE_DISCOVERY
-        CONNECTION_TYPE_PRIMARY
-        CONNECTION_TYPE_READER
-        """
-        forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The URI of the consumer side forwarding rule.
-        Format:
-        projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
-        """
-        ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The IP allocated on the consumer network for the PSC forwarding rule.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The consumer network where the IP address resides, in the form of
-        projects/{project_id}/global/networks/{network_id}.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. Ports of the exposed endpoint.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The consumer project_id where the forwarding rule is created from.
-        """
-        psc_connection_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The PSC connection id of the forwarding rule connected to the
-        service attachment.
-        """
-        psc_connection_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
-        Possible values:
-        ACTIVE
-        NOT_FOUND
-        """
-        service_attachment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
-        """
-elif False:
-    InstancePscAutoConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePscAutoConnectionArgsDict(TypedDict):
+    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output Only. Type of a PSC Connection.
+    Possible values:
+    CONNECTION_TYPE_DISCOVERY
+    CONNECTION_TYPE_PRIMARY
+    CONNECTION_TYPE_READER
+    """
+    forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The URI of the consumer side forwarding rule.
+    Format:
+    projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+    """
+    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The consumer network where the IP address resides, in the form of
+    projects/{project_id}/global/networks/{network_id}.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. Ports of the exposed endpoint.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The consumer project_id where the forwarding rule is created from.
+    """
+    psc_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The PSC connection id of the forwarding rule connected to the
+    service attachment.
+    """
+    psc_connection_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+    Possible values:
+    ACTIVE
+    NOT_FOUND
+    """
+    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+    """
 
 @pulumi.input_type
 class InstancePscAutoConnectionArgs:
@@ -2517,16 +2419,13 @@ class InstancePscAutoConnectionArgs:
         pulumi.set(self, "service_attachment", value)
 
 
-if not MYPY:
-    class InstanceStateInfoArgsDict(TypedDict):
-        update_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgsDict']]]]
-        """
-        (Output)
-        Represents information about instance with state UPDATING.
-        Structure is documented below.
-        """
-elif False:
-    InstanceStateInfoArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceStateInfoArgsDict(TypedDict):
+    update_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgsDict']]]]
+    """
+    (Output)
+    Represents information about instance with state UPDATING.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceStateInfoArgs:
@@ -2555,30 +2454,27 @@ class InstanceStateInfoArgs:
         pulumi.set(self, "update_infos", value)
 
 
-if not MYPY:
-    class InstanceStateInfoUpdateInfoArgsDict(TypedDict):
-        target_engine_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Target engine version for the instance.
-        """
-        target_node_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Target node type for the instance.
-        """
-        target_replica_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. Target number of replica nodes per shard for the instance.
-        """
-        target_shard_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        Output only. Target number of shards for the instance.
-        """
-elif False:
-    InstanceStateInfoUpdateInfoArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceStateInfoUpdateInfoArgsDict(TypedDict):
+    target_engine_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Target engine version for the instance.
+    """
+    target_node_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Target node type for the instance.
+    """
+    target_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. Target number of replica nodes per shard for the instance.
+    """
+    target_shard_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    Output only. Target number of shards for the instance.
+    """
 
 @pulumi.input_type
 class InstanceStateInfoUpdateInfoArgs:
@@ -2659,23 +2555,20 @@ class InstanceStateInfoUpdateInfoArgs:
         pulumi.set(self, "target_shard_count", value)
 
 
-if not MYPY:
-    class InstanceZoneDistributionConfigArgsDict(TypedDict):
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
-        Possible values:
-        MULTI_ZONE
-        SINGLE_ZONE
-        Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
-        """
-        zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
-        Ignored for MULTI_ZONE mode.
-        """
-elif False:
-    InstanceZoneDistributionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceZoneDistributionConfigArgsDict(TypedDict):
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
+    Possible values:
+    MULTI_ZONE
+    SINGLE_ZONE
+    Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+    """
+    zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
+    Ignored for MULTI_ZONE mode.
+    """
 
 @pulumi.input_type
 class InstanceZoneDistributionConfigArgs:

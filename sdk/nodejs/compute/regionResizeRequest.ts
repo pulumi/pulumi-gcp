@@ -7,6 +7,21 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Represents a Regional Managed Instance Group Resize Request
+ *
+ * Resize Requests are the Managed Instance Group implementation of Dynamic Workload Scheduler Flex Start.
+ *
+ * With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about RegionResizeRequest, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagerResizeRequests)
+ * * How-to Guides
+ *     * [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
+ *
  * ## Example Usage
  *
  * ### Compute Rmig Resize Request
@@ -93,28 +108,16 @@ import * as utilities from "../utilities";
  * RegionResizeRequest can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}`
- *
  * * `{{project}}/{{region}}/{{instance_group_manager}}/{{name}}`
- *
  * * `{{region}}/{{instance_group_manager}}/{{name}}`
- *
  * * `{{instance_group_manager}}/{{name}}`
  *
  * When using the `pulumi import` command, RegionResizeRequest can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{project}}/{{region}}/{{instance_group_manager}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{region}}/{{instance_group_manager}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{instance_group_manager}}/{{name}}
  * ```
  */

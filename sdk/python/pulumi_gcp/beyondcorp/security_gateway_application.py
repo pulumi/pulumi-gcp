@@ -30,6 +30,7 @@ class SecurityGatewayApplicationArgs:
                  upstreams: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamArgs']]]] = None):
         """
         The set of arguments for constructing a SecurityGatewayApplication resource.
+
         :param pulumi.Input[_builtins.str] application_id: User-settable Application resource ID.
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
@@ -187,6 +188,7 @@ class _SecurityGatewayApplicationState:
                  upstreams: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamArgs']]]] = None):
         """
         Input properties used for looking up and filtering SecurityGatewayApplication resources.
+
         :param pulumi.Input[_builtins.str] application_id: User-settable Application resource ID.
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
@@ -531,24 +533,17 @@ class SecurityGatewayApplication(pulumi.CustomResource):
         SecurityGatewayApplication can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/securityGateways/{{security_gateway_id}}/applications/{{application_id}}`
-
         * `{{project}}/{{security_gateway_id}}/{{application_id}}`
-
         * `{{security_gateway_id}}/{{application_id}}`
 
         When using the `pulumi import` command, SecurityGatewayApplication can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default projects/{{project}}/locations/global/securityGateways/{{security_gateway_id}}/applications/{{application_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default {{project}}/{{security_gateway_id}}/{{application_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default {{security_gateway_id}}/{{application_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -725,24 +720,17 @@ class SecurityGatewayApplication(pulumi.CustomResource):
         SecurityGatewayApplication can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/securityGateways/{{security_gateway_id}}/applications/{{application_id}}`
-
         * `{{project}}/{{security_gateway_id}}/{{application_id}}`
-
         * `{{security_gateway_id}}/{{application_id}}`
 
         When using the `pulumi import` command, SecurityGatewayApplication can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default projects/{{project}}/locations/global/securityGateways/{{security_gateway_id}}/applications/{{application_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default {{project}}/{{security_gateway_id}}/{{application_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default {{security_gateway_id}}/{{application_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityGatewayApplicationArgs args: The arguments to use to populate this resource's properties.

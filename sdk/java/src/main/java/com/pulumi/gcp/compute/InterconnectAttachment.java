@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.InterconnectAttachmentArgs;
 import com.pulumi.gcp.compute.inputs.InterconnectAttachmentState;
 import com.pulumi.gcp.compute.outputs.InterconnectAttachmentL2Forwarding;
+import com.pulumi.gcp.compute.outputs.InterconnectAttachmentParams;
 import com.pulumi.gcp.compute.outputs.InterconnectAttachmentPrivateInterconnectInfo;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -220,28 +221,16 @@ import javax.annotation.Nullable;
  * InterconnectAttachment can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
  * ```
  * 
@@ -755,6 +744,22 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
         return this.pairingKey;
     }
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={InterconnectAttachmentParams.class}, tree="[0]")
+    private Output</* @Nullable */ InterconnectAttachmentParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InterconnectAttachmentParams>> params() {
+        return Codegen.optional(this.params);
+    }
+    /**
      * [Output only for type PARTNER. Not present for DEDICATED]. Optional
      * BGP ASN for the router that should be supplied by a layer 3 Partner if
      * they configured BGP on behalf of the customer.
@@ -794,8 +799,6 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
-     * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
-     * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
@@ -803,8 +806,6 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
     /**
      * @return The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
-     * 
-     * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
      * 
      */
     public Output<String> project() {

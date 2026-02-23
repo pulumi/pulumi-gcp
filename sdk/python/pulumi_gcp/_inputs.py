@@ -21,14 +21,9 @@ __all__ = [
     'ProviderExternalCredentialsArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ProviderBatchingArgsDict(TypedDict):
-        enable_batching: NotRequired[pulumi.Input[_builtins.bool]]
-        send_after: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ProviderBatchingArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderBatchingArgsDict(TypedDict):
+    enable_batching: NotRequired[pulumi.Input[_builtins.bool]]
+    send_after: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ProviderBatchingArgs:
@@ -59,13 +54,10 @@ class ProviderBatchingArgs:
         pulumi.set(self, "send_after", value)
 
 
-if not MYPY:
-    class ProviderExternalCredentialsArgsDict(TypedDict):
-        audience: pulumi.Input[_builtins.str]
-        identity_token: pulumi.Input[_builtins.str]
-        service_account_email: pulumi.Input[_builtins.str]
-elif False:
-    ProviderExternalCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderExternalCredentialsArgsDict(TypedDict):
+    audience: pulumi.Input[_builtins.str]
+    identity_token: pulumi.Input[_builtins.str]
+    service_account_email: pulumi.Input[_builtins.str]
 
 @pulumi.input_type
 class ProviderExternalCredentialsArgs:

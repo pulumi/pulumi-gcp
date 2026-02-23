@@ -75,22 +75,14 @@ namespace Pulumi.Gcp.Eventarc
     /// MessageBus can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/messageBuses/{{message_bus_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{message_bus_id}}`
-    /// 
     /// * `{{location}}/{{message_bus_id}}`
     /// 
     /// When using the `pulumi import` command, MessageBus can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:eventarc/messageBus:MessageBus default projects/{{project}}/locations/{{location}}/messageBuses/{{message_bus_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:eventarc/messageBus:MessageBus default {{project}}/{{location}}/{{message_bus_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:eventarc/messageBus:MessageBus default {{location}}/{{message_bus_id}}
     /// ```
     /// </summary>
@@ -126,6 +118,9 @@ namespace Pulumi.Gcp.Eventarc
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -373,6 +368,10 @@ namespace Pulumi.Gcp.Eventarc
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());

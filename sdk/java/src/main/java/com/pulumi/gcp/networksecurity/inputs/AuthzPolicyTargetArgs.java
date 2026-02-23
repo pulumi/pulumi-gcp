@@ -5,7 +5,6 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,33 +17,37 @@ public final class AuthzPolicyTargetArgs extends com.pulumi.resources.ResourceAr
     public static final AuthzPolicyTargetArgs Empty = new AuthzPolicyTargetArgs();
 
     /**
-     * All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+     * Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+     * Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
      * For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
-    @Import(name="loadBalancingScheme", required=true)
-    private Output<String> loadBalancingScheme;
+    @Import(name="loadBalancingScheme")
+    private @Nullable Output<String> loadBalancingScheme;
 
     /**
-     * @return All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+     * @return Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+     * Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
      * For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
-    public Output<String> loadBalancingScheme() {
-        return this.loadBalancingScheme;
+    public Optional<Output<String>> loadBalancingScheme() {
+        return Optional.ofNullable(this.loadBalancingScheme);
     }
 
     /**
-     * A list of references to the Forwarding Rules on which this policy will be applied.
+     * A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+     * policy will be applied.
      * 
      */
     @Import(name="resources")
     private @Nullable Output<List<String>> resources;
 
     /**
-     * @return A list of references to the Forwarding Rules on which this policy will be applied.
+     * @return A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+     * policy will be applied.
      * 
      */
     public Optional<Output<List<String>>> resources() {
@@ -77,20 +80,22 @@ public final class AuthzPolicyTargetArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param loadBalancingScheme All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+         * @param loadBalancingScheme Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+         * Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
          * For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
          * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
          * 
          * @return builder
          * 
          */
-        public Builder loadBalancingScheme(Output<String> loadBalancingScheme) {
+        public Builder loadBalancingScheme(@Nullable Output<String> loadBalancingScheme) {
             $.loadBalancingScheme = loadBalancingScheme;
             return this;
         }
 
         /**
-         * @param loadBalancingScheme All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+         * @param loadBalancingScheme Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+         * Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
          * For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
          * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
          * 
@@ -102,7 +107,8 @@ public final class AuthzPolicyTargetArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param resources A list of references to the Forwarding Rules on which this policy will be applied.
+         * @param resources A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+         * policy will be applied.
          * 
          * @return builder
          * 
@@ -113,7 +119,8 @@ public final class AuthzPolicyTargetArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param resources A list of references to the Forwarding Rules on which this policy will be applied.
+         * @param resources A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+         * policy will be applied.
          * 
          * @return builder
          * 
@@ -123,7 +130,8 @@ public final class AuthzPolicyTargetArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param resources A list of references to the Forwarding Rules on which this policy will be applied.
+         * @param resources A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+         * policy will be applied.
          * 
          * @return builder
          * 
@@ -133,9 +141,6 @@ public final class AuthzPolicyTargetArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AuthzPolicyTargetArgs build() {
-            if ($.loadBalancingScheme == null) {
-                throw new MissingRequiredPropertyException("AuthzPolicyTargetArgs", "loadBalancingScheme");
-            }
             return $;
         }
     }

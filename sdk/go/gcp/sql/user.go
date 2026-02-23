@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
+//
+// Read more about sensitive data in state. Passwords will not be retrieved when running
+// "terraform import".
+//
 // ## Example Usage
 //
 // Example creating a SQL User.
@@ -20,8 +25,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
@@ -62,14 +65,62 @@ import (
 //
 // ```
 //
-// Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
+// Example creating a SQL User with database roles(applicable for Postgres/MySQL
+// only).
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"fmt"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dbNameSuffix, err := random.NewId(ctx, "db_name_suffix", &random.IdArgs{
+//				ByteLength: 4,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.Sprintf("main-instance-%v", dbNameSuffix.Hex),
+//				DatabaseVersion: pulumi.String("POSTGRES_15"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sql.NewUser(ctx, "users", &sql.UserArgs{
+//				Name:     pulumi.String("me"),
+//				Instance: main.Name,
+//				Host:     pulumi.String("me.com"),
+//				Password: pulumi.String("changeme"),
+//				DatabaseRoles: pulumi.StringArray{
+//					pulumi.String("cloudsqlsuperuser"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
+//
+// ```go
+// package main
+//
+// import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
@@ -137,8 +188,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
@@ -220,7 +269,13 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
-	// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+	// A list of database roles to be assigned to the user.
+	// This option is only available for MySQL 8+ and PostgreSQL instances. You
+	// can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+	// own custom roles. Custom roles must be created in the database before
+	// you can assign them. You can create roles using the CREATE ROLE
+	// statement for both MySQL and PostgreSQL.
+	// **Note**: This property is write-only and will not be read from the API.
 	DatabaseRoles pulumi.StringArrayOutput `pulumi:"databaseRoles"`
 	// The deletion policy for the user.
 	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
@@ -232,7 +287,7 @@ type User struct {
 	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
 	Host pulumi.StringOutput `pulumi:"host"`
-	// The email address for MySQL IAM database users.
+	// IAM email address for MySQL IAM database users.
 	IamEmail pulumi.StringOutput `pulumi:"iamEmail"`
 	// The name of the Cloud SQL instance. Changing this
 	// forces a new resource to be created.
@@ -311,7 +366,13 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+	// A list of database roles to be assigned to the user.
+	// This option is only available for MySQL 8+ and PostgreSQL instances. You
+	// can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+	// own custom roles. Custom roles must be created in the database before
+	// you can assign them. You can create roles using the CREATE ROLE
+	// statement for both MySQL and PostgreSQL.
+	// **Note**: This property is write-only and will not be read from the API.
 	DatabaseRoles []string `pulumi:"databaseRoles"`
 	// The deletion policy for the user.
 	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
@@ -323,7 +384,7 @@ type userState struct {
 	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
 	Host *string `pulumi:"host"`
-	// The email address for MySQL IAM database users.
+	// IAM email address for MySQL IAM database users.
 	IamEmail *string `pulumi:"iamEmail"`
 	// The name of the Cloud SQL instance. Changing this
 	// forces a new resource to be created.
@@ -359,7 +420,13 @@ type userState struct {
 }
 
 type UserState struct {
-	// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+	// A list of database roles to be assigned to the user.
+	// This option is only available for MySQL 8+ and PostgreSQL instances. You
+	// can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+	// own custom roles. Custom roles must be created in the database before
+	// you can assign them. You can create roles using the CREATE ROLE
+	// statement for both MySQL and PostgreSQL.
+	// **Note**: This property is write-only and will not be read from the API.
 	DatabaseRoles pulumi.StringArrayInput
 	// The deletion policy for the user.
 	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
@@ -371,7 +438,7 @@ type UserState struct {
 	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
 	Host pulumi.StringPtrInput
-	// The email address for MySQL IAM database users.
+	// IAM email address for MySQL IAM database users.
 	IamEmail pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. Changing this
 	// forces a new resource to be created.
@@ -411,7 +478,13 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+	// A list of database roles to be assigned to the user.
+	// This option is only available for MySQL 8+ and PostgreSQL instances. You
+	// can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+	// own custom roles. Custom roles must be created in the database before
+	// you can assign them. You can create roles using the CREATE ROLE
+	// statement for both MySQL and PostgreSQL.
+	// **Note**: This property is write-only and will not be read from the API.
 	DatabaseRoles []string `pulumi:"databaseRoles"`
 	// The deletion policy for the user.
 	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
@@ -457,7 +530,13 @@ type userArgs struct {
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+	// A list of database roles to be assigned to the user.
+	// This option is only available for MySQL 8+ and PostgreSQL instances. You
+	// can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+	// own custom roles. Custom roles must be created in the database before
+	// you can assign them. You can create roles using the CREATE ROLE
+	// statement for both MySQL and PostgreSQL.
+	// **Note**: This property is write-only and will not be read from the API.
 	DatabaseRoles pulumi.StringArrayInput
 	// The deletion policy for the user.
 	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
@@ -588,7 +667,13 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
-// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+// A list of database roles to be assigned to the user.
+// This option is only available for MySQL 8+ and PostgreSQL instances. You
+// can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+// own custom roles. Custom roles must be created in the database before
+// you can assign them. You can create roles using the CREATE ROLE
+// statement for both MySQL and PostgreSQL.
+// **Note**: This property is write-only and will not be read from the API.
 func (o UserOutput) DatabaseRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.DatabaseRoles }).(pulumi.StringArrayOutput)
 }
@@ -609,7 +694,7 @@ func (o UserOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
-// The email address for MySQL IAM database users.
+// IAM email address for MySQL IAM database users.
 func (o UserOutput) IamEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.IamEmail }).(pulumi.StringOutput)
 }

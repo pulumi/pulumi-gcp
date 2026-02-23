@@ -25,6 +25,7 @@ from .get_bucket import *
 from .get_bucket_iam_policy import *
 from .get_bucket_object import *
 from .get_bucket_object_content import *
+from .get_bucket_object_contents import *
 from .get_bucket_objects import *
 from .get_buckets import *
 from .get_control_folder_intelligence_config import *

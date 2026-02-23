@@ -28,6 +28,7 @@ class GenericServiceArgs:
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a GenericService resource.
+
         :param pulumi.Input[_builtins.str] service_id: An optional service ID to use. If not given, the server will generate a
                service ID.
         :param pulumi.Input['GenericServiceBasicServiceArgs'] basic_service: A well-known service type, defined by its service type and service labels.
@@ -137,6 +138,7 @@ class _GenericServiceState:
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering GenericService resources.
+
         :param pulumi.Input['GenericServiceBasicServiceArgs'] basic_service: A well-known service type, defined by its service type and service labels.
                Valid values of service types and services labels are described at
                https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
@@ -323,24 +325,17 @@ class GenericService(pulumi.CustomResource):
         GenericService can be imported using any of these accepted formats:
 
         * `projects/{{project}}/services/{{service_id}}`
-
         * `{{project}}/{{service_id}}`
-
         * `{{service_id}}`
 
         When using the `pulumi import` command, GenericService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/genericService:GenericService default projects/{{project}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:monitoring/genericService:GenericService default {{project}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:monitoring/genericService:GenericService default {{service_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -408,24 +403,17 @@ class GenericService(pulumi.CustomResource):
         GenericService can be imported using any of these accepted formats:
 
         * `projects/{{project}}/services/{{service_id}}`
-
         * `{{project}}/{{service_id}}`
-
         * `{{service_id}}`
 
         When using the `pulumi import` command, GenericService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/genericService:GenericService default projects/{{project}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:monitoring/genericService:GenericService default {{project}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:monitoring/genericService:GenericService default {{service_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GenericServiceArgs args: The arguments to use to populate this resource's properties.

@@ -91,9 +91,23 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * Whether Terraform will be prevented from destroying the CertificateAuthority.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the CertificateAuthority will fail.
+     * When the field is set to false, deleting the CertificateAuthority is allowed.
+     * 
+     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the CertificateAuthority.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the CertificateAuthority will fail.
+     * When the field is set to false, deleting the CertificateAuthority is allowed.
+     * 
+     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -621,11 +635,29 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the CertificateAuthority.
+         * When the field is set to true or unset in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the CertificateAuthority will fail.
+         * When the field is set to false, deleting the CertificateAuthority is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the CertificateAuthority.
+         * When the field is set to true or unset in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the CertificateAuthority will fail.
+         * When the field is set to false, deleting the CertificateAuthority is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }

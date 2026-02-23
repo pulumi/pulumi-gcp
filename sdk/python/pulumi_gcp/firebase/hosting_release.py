@@ -26,6 +26,7 @@ class HostingReleaseArgs:
                  version_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostingRelease resource.
+
         :param pulumi.Input[_builtins.str] site_id: Required. The ID of the site to which the release belongs.
         :param pulumi.Input[_builtins.str] channel_id: The ID of the channel to which the release belongs. If not provided, the release will
                belong to the default "live" channel
@@ -133,6 +134,7 @@ class _HostingReleaseState:
                  version_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostingRelease resources.
+
         :param pulumi.Input[_builtins.str] channel_id: The ID of the channel to which the release belongs. If not provided, the release will
                belong to the default "live" channel
         :param pulumi.Input[_builtins.str] message: The deploy description when the release was created. The value can be up to 512 characters.
@@ -276,6 +278,17 @@ class HostingRelease(pulumi.CustomResource):
                  version_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A Release is a particular collection of configurations that is set to be public at a particular time.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Release, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.releases)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Release In Site
@@ -348,30 +361,19 @@ class HostingRelease(pulumi.CustomResource):
         Release can be imported using any of these accepted formats:
 
         * `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}`
-
         * `sites/{{site_id}}/releases/{{release_id}}`
-
         * `{{site_id}}/{{channel_id}}/{{release_id}}`
-
         * `{{site_id}}/{{release_id}}`
 
         When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/releases/{{release_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{channel_id}}/{{release_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{release_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -397,6 +399,17 @@ class HostingRelease(pulumi.CustomResource):
                  args: HostingReleaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Release is a particular collection of configurations that is set to be public at a particular time.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Release, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.releases)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Release In Site
@@ -469,30 +482,19 @@ class HostingRelease(pulumi.CustomResource):
         Release can be imported using any of these accepted formats:
 
         * `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}`
-
         * `sites/{{site_id}}/releases/{{release_id}}`
-
         * `{{site_id}}/{{channel_id}}/{{release_id}}`
-
         * `{{site_id}}/{{release_id}}`
 
         When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/releases/{{release_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{channel_id}}/{{release_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{release_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostingReleaseArgs args: The arguments to use to populate this resource's properties.

@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
  * SharedFlow can be imported using any of these accepted formats:
  * 
  * * `{{org_id}}/sharedflows/{{name}}`
- * 
  * * `{{org_id}}/{{name}}`
  * 
  * When using the `pulumi import` command, SharedFlow can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
  * ```
  * 
@@ -64,9 +60,17 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
     public Output<String> configBundle() {
         return this.configBundle;
     }
+    /**
+     * (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+     * 
+     */
     @Export(name="detectMd5hash", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> detectMd5hash;
 
+    /**
+     * @return (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+     * 
+     */
     public Output<Optional<String>> detectMd5hash() {
         return Codegen.optional(this.detectMd5hash);
     }

@@ -29,6 +29,7 @@ class RouterRoutePolicyArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterRoutePolicy resource.
+
         :param pulumi.Input[_builtins.str] router: The name of the Cloud Router in which this route policy will be configured.
         :param pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermArgs']]] terms: List of terms (the order in the list is not important, they are evaluated in order of priority).
                Structure is documented below.
@@ -138,6 +139,7 @@ class _RouterRoutePolicyState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterRoutePolicy resources.
+
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[_builtins.str] name: Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
@@ -350,30 +352,19 @@ class RouterRoutePolicy(pulumi.CustomResource):
         RouterRoutePolicy can be imported using any of these accepted formats:
 
         * `{{project}}/{{region}}/{{router}}/routePolicies/{{name}}`
-
         * `{{project}}/{{region}}/{{router}}/{{name}}`
-
         * `{{region}}/{{router}}/{{name}}`
-
         * `{{router}}/{{name}}`
 
         When using the `pulumi import` command, RouterRoutePolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{project}}/{{region}}/{{router}}/routePolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{project}}/{{region}}/{{router}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{region}}/{{router}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{router}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -476,30 +467,19 @@ class RouterRoutePolicy(pulumi.CustomResource):
         RouterRoutePolicy can be imported using any of these accepted formats:
 
         * `{{project}}/{{region}}/{{router}}/routePolicies/{{name}}`
-
         * `{{project}}/{{region}}/{{router}}/{{name}}`
-
         * `{{region}}/{{router}}/{{name}}`
-
         * `{{router}}/{{name}}`
 
         When using the `pulumi import` command, RouterRoutePolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{project}}/{{region}}/{{router}}/routePolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{project}}/{{region}}/{{router}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{region}}/{{router}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{router}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterRoutePolicyArgs args: The arguments to use to populate this resource's properties.

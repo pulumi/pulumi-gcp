@@ -72,27 +72,85 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Encryption Config With Spark Jobs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // Grant Dataproc service account KMS permissions at project level
+ * const dataprocKmsEncrypterDecrypter = new gcp.projects.IAMMember("dataproc_kms_encrypter_decrypter", {
+ *     project: project.name,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: `serviceAccount:service-${project.number}@dataproc-accounts.iam.gserviceaccount.com`,
+ * });
+ * const example = new gcp.dataproc.WorkflowTemplate("example", {
+ *     name: workflowTemplateName,
+ *     location: region,
+ *     encryptionConfig: {
+ *         kmsKey: "<<-- uri to desired crypto key for customer management -->>",
+ *     },
+ *     placement: {
+ *         managedCluster: {
+ *             clusterName: clusterName,
+ *             config: {
+ *                 gceClusterConfig: {
+ *                     zone: zone,
+ *                     network: network,
+ *                 },
+ *                 masterConfig: {
+ *                     numInstances: 1,
+ *                     machineType: machineType,
+ *                     diskConfig: {
+ *                         bootDiskType: "pd-standard",
+ *                         bootDiskSizeGb: 100,
+ *                     },
+ *                 },
+ *                 workerConfig: {
+ *                     numInstances: 2,
+ *                     machineType: machineType,
+ *                     diskConfig: {
+ *                         bootDiskType: "pd-standard",
+ *                         bootDiskSizeGb: 100,
+ *                     },
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     jobs: [
+ *         {
+ *             stepId: "example-job",
+ *             sparkJob: {
+ *                 mainClass: "org.apache.spark.examples.SparkPi",
+ *                 jarFileUris: ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
+ *                 args: ["1000"],
+ *             },
+ *         },
+ *         {
+ *             stepId: "example-pyspark-job",
+ *             pysparkJob: {
+ *                 mainPythonFileUri: "gs://dataproc-examples/pyspark/hello-world/hello-world.py",
+ *             },
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [dataprocKmsEncrypterDecrypter],
+ * });
+ * ```
+ *
  * ## Import
  *
  * WorkflowTemplate can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, WorkflowTemplate can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
  * ```
  */
@@ -132,13 +190,16 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
      */
     declare public readonly dagTimeout: pulumi.Output<string | undefined>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. The encryption configuration for the workflow template.
+     * Encryption settings for encrypting workflow template job arguments. Structure is documented below
      */
     declare public readonly encryptionConfig: pulumi.Output<outputs.dataproc.WorkflowTemplateEncryptionConfig | undefined>;
     /**
-     * Required. The Directed Acyclic Graph of Jobs to submit.
+     * (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
      */
     declare public readonly jobs: pulumi.Output<outputs.dataproc.WorkflowTemplateJob[]>;
     /**
@@ -153,7 +214,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
-     * Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+     * (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -161,7 +222,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      */
     declare public readonly parameters: pulumi.Output<outputs.dataproc.WorkflowTemplateParameter[] | undefined>;
     /**
-     * Required. WorkflowTemplate scheduling information.
+     * (Required) WorkflowTemplate scheduling information.
      */
     declare public readonly placement: pulumi.Output<outputs.dataproc.WorkflowTemplatePlacement>;
     /**
@@ -255,13 +316,16 @@ export interface WorkflowTemplateState {
      * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
      */
     dagTimeout?: pulumi.Input<string>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. The encryption configuration for the workflow template.
+     * Encryption settings for encrypting workflow template job arguments. Structure is documented below
      */
     encryptionConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplateEncryptionConfig>;
     /**
-     * Required. The Directed Acyclic Graph of Jobs to submit.
+     * (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
      */
     jobs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateJob>[]>;
     /**
@@ -276,7 +340,7 @@ export interface WorkflowTemplateState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+     * (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      */
     name?: pulumi.Input<string>;
     /**
@@ -284,7 +348,7 @@ export interface WorkflowTemplateState {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[]>;
     /**
-     * Required. WorkflowTemplate scheduling information.
+     * (Required) WorkflowTemplate scheduling information.
      */
     placement?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacement>;
     /**
@@ -316,11 +380,11 @@ export interface WorkflowTemplateArgs {
      */
     dagTimeout?: pulumi.Input<string>;
     /**
-     * Optional. The encryption configuration for the workflow template.
+     * Encryption settings for encrypting workflow template job arguments. Structure is documented below
      */
     encryptionConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplateEncryptionConfig>;
     /**
-     * Required. The Directed Acyclic Graph of Jobs to submit.
+     * (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
      */
     jobs: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateJob>[]>;
     /**
@@ -335,7 +399,7 @@ export interface WorkflowTemplateArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+     * (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      */
     name?: pulumi.Input<string>;
     /**
@@ -343,7 +407,7 @@ export interface WorkflowTemplateArgs {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[]>;
     /**
-     * Required. WorkflowTemplate scheduling information.
+     * (Required) WorkflowTemplate scheduling information.
      */
     placement: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacement>;
     /**

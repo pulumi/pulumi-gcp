@@ -30,6 +30,7 @@ class TrustConfigArgs:
                  trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArgs']]]] = None):
         """
         The set of arguments for constructing a TrustConfig resource.
+
         :param pulumi.Input[_builtins.str] location: The trust config location.
         :param pulumi.Input[Sequence[pulumi.Input['TrustConfigAllowlistedCertificateArgs']]] allowlisted_certificates: Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
                the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
@@ -167,6 +168,7 @@ class _TrustConfigState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrustConfig resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['TrustConfigAllowlistedCertificateArgs']]] allowlisted_certificates: Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
                the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
                Structure is documented below.
@@ -436,24 +438,17 @@ class TrustConfig(pulumi.CustomResource):
         TrustConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, TrustConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -541,24 +536,17 @@ class TrustConfig(pulumi.CustomResource):
         TrustConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, TrustConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TrustConfigArgs args: The arguments to use to populate this resource's properties.

@@ -39,6 +39,7 @@ class NetworkArgs:
                  routing_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Network resource.
+
         :param pulumi.Input[_builtins.bool] auto_create_subnetworks: When set to `true`, the network is created in "auto subnet mode" and
                it will create a subnet for each region automatically across the
                `10.128.0.0/9` address range.
@@ -383,6 +384,7 @@ class _NetworkState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+
         :param pulumi.Input[_builtins.bool] auto_create_subnetworks: When set to `true`, the network is created in "auto subnet mode" and
                it will create a subnet for each region automatically across the
                `10.128.0.0/9` address range.
@@ -894,24 +896,17 @@ class Network(pulumi.CustomResource):
         Network can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/networks/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/network:Network default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/network:Network default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1077,24 +1072,17 @@ class Network(pulumi.CustomResource):
         Network can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/networks/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/network:Network default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/network:Network default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkArgs args: The arguments to use to populate this resource's properties.

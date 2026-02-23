@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         /// </summary>
         [Input("networkAttachment")]
         public Input<string>? NetworkAttachment { get; set; }
@@ -114,6 +114,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("nicType")]
         public Input<string>? NicType { get; set; }
+
+        /// <summary>
+        /// Name of the parent network interface of a dynamic network interface.
+        /// </summary>
+        [Input("parentNicName")]
+        public Input<string>? ParentNicName { get; set; }
 
         /// <summary>
         /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
@@ -141,6 +147,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("subnetworkProject")]
         public Input<string>? SubnetworkProject { get; set; }
+
+        /// <summary>
+        /// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        /// </summary>
+        [Input("vlan")]
+        public Input<int>? Vlan { get; set; }
 
         public InstanceTemplateNetworkInterfaceGetArgs()
         {

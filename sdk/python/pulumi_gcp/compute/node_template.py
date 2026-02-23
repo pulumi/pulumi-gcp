@@ -34,6 +34,7 @@ class NodeTemplateArgs:
                  server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None):
         """
         The set of arguments for constructing a NodeTemplate resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]] accelerators: List of the type and count of accelerator cards attached to the
                node template
                Structure is documented below.
@@ -252,6 +253,7 @@ class _NodeTemplateState:
                  server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None):
         """
         Input properties used for looking up and filtering NodeTemplate resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]] accelerators: List of the type and count of accelerator cards attached to the
                node template
                Structure is documented below.
@@ -581,30 +583,19 @@ class NodeTemplate(pulumi.CustomResource):
         NodeTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, NodeTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -723,30 +714,19 @@ class NodeTemplate(pulumi.CustomResource):
         NodeTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, NodeTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeTemplateArgs args: The arguments to use to populate this resource's properties.

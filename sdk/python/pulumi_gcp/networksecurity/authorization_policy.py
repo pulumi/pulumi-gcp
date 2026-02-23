@@ -30,6 +30,7 @@ class AuthorizationPolicyArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]] = None):
         """
         The set of arguments for constructing a AuthorizationPolicy resource.
+
         :param pulumi.Input[_builtins.str] action: The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
@@ -167,6 +168,7 @@ class _AuthorizationPolicyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthorizationPolicy resources.
+
         :param pulumi.Input[_builtins.str] action: The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.str] create_time: Time the AuthorizationPolicy was created in UTC.
@@ -366,6 +368,15 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPolicyRuleArgs', 'AuthorizationPolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         """
+        AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint config selector resource.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about AuthorizationPolicy, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.authorizationPolicies)
+
         ## Example Usage
 
         ### Network Security Authorization Policy Basic
@@ -423,24 +434,17 @@ class AuthorizationPolicy(pulumi.CustomResource):
         AuthorizationPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, AuthorizationPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -466,6 +470,15 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  args: AuthorizationPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint config selector resource.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about AuthorizationPolicy, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.authorizationPolicies)
+
         ## Example Usage
 
         ### Network Security Authorization Policy Basic
@@ -523,24 +536,17 @@ class AuthorizationPolicy(pulumi.CustomResource):
         AuthorizationPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, AuthorizationPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuthorizationPolicyArgs args: The arguments to use to populate this resource's properties.

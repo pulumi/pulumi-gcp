@@ -109,22 +109,14 @@ import (
 // MulticastGroupRangeActivation can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/multicastGroupRangeActivations/{{multicast_group_range_activation_id}}`
-//
 // * `{{project}}/{{location}}/{{multicast_group_range_activation_id}}`
-//
 // * `{{location}}/{{multicast_group_range_activation_id}}`
 //
 // When using the `pulumi import` command, MulticastGroupRangeActivation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation default projects/{{project}}/locations/{{location}}/multicastGroupRangeActivations/{{multicast_group_range_activation_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation default {{project}}/{{location}}/{{multicast_group_range_activation_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation default {{location}}/{{multicast_group_range_activation_id}}
 // ```
 type MulticastGroupRangeActivation struct {

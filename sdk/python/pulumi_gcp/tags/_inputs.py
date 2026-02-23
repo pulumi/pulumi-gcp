@@ -25,15 +25,10 @@ __all__ = [
     'TagValueIamMemberConditionArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class TagKeyIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    TagKeyIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class TagKeyIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class TagKeyIamBindingConditionArgs:
@@ -74,13 +69,10 @@ class TagKeyIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class TagKeyIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    TagKeyIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class TagKeyIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class TagKeyIamMemberConditionArgs:
@@ -121,13 +113,10 @@ class TagKeyIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class TagValueIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    TagValueIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class TagValueIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class TagValueIamBindingConditionArgs:
@@ -168,13 +157,10 @@ class TagValueIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class TagValueIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    TagValueIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class TagValueIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class TagValueIamMemberConditionArgs:

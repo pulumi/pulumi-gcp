@@ -5,6 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A health source resource specifies the source resources and the health
+ * aggregation policy applied to the source resources to determine the
+ * aggregated health status.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about RegionHealthSource, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionHealthSources)
+ * * How-to Guides
+ *     * [Health checks overview](https://cloud.google.com/load-balancing/docs/health-check-concepts)
+ *
  * ## Example Usage
  *
  * ### Compute Region Health Source Basic
@@ -45,28 +58,16 @@ import * as utilities from "../utilities";
  * RegionHealthSource can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/healthSources/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, RegionHealthSource can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default projects/{{project}}/regions/{{region}}/healthSources/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default {{name}}
  * ```
  */

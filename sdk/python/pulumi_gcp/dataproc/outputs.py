@@ -58,6 +58,9 @@ __all__ = [
     'ClusterClusterConfigMasterConfig',
     'ClusterClusterConfigMasterConfigAccelerator',
     'ClusterClusterConfigMasterConfigDiskConfig',
+    'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy',
+    'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList',
+    'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult',
     'ClusterClusterConfigMetastoreConfig',
     'ClusterClusterConfigPreemptibleWorkerConfig',
     'ClusterClusterConfigPreemptibleWorkerConfigDiskConfig',
@@ -72,6 +75,9 @@ __all__ = [
     'ClusterClusterConfigWorkerConfig',
     'ClusterClusterConfigWorkerConfigAccelerator',
     'ClusterClusterConfigWorkerConfigDiskConfig',
+    'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy',
+    'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList',
+    'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult',
     'ClusterIAMBindingCondition',
     'ClusterIAMMemberCondition',
     'ClusterVirtualClusterConfig',
@@ -3381,6 +3387,8 @@ class ClusterClusterConfigMasterConfig(dict):
             suggest = "disk_config"
         elif key == "imageUri":
             suggest = "image_uri"
+        elif key == "instanceFlexibilityPolicy":
+            suggest = "instance_flexibility_policy"
         elif key == "instanceNames":
             suggest = "instance_names"
         elif key == "machineType":
@@ -3405,6 +3413,7 @@ class ClusterClusterConfigMasterConfig(dict):
                  accelerators: Optional[Sequence['outputs.ClusterClusterConfigMasterConfigAccelerator']] = None,
                  disk_config: Optional['outputs.ClusterClusterConfigMasterConfigDiskConfig'] = None,
                  image_uri: Optional[_builtins.str] = None,
+                 instance_flexibility_policy: Optional['outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy'] = None,
                  instance_names: Optional[Sequence[_builtins.str]] = None,
                  machine_type: Optional[_builtins.str] = None,
                  min_cpu_platform: Optional[_builtins.str] = None,
@@ -3414,6 +3423,7 @@ class ClusterClusterConfigMasterConfig(dict):
         :param 'ClusterClusterConfigMasterConfigDiskConfigArgs' disk_config: Disk Config
         :param _builtins.str image_uri: The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
                for more information.
+        :param 'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs' instance_flexibility_policy: Instance flexibility Policy allowing a mixture of VM shapes.
         :param Sequence[_builtins.str] instance_names: List of master instance names which
                have been assigned to the cluster.
         :param _builtins.str machine_type: The name of a Google Compute Engine machine type
@@ -3432,6 +3442,8 @@ class ClusterClusterConfigMasterConfig(dict):
             pulumi.set(__self__, "disk_config", disk_config)
         if image_uri is not None:
             pulumi.set(__self__, "image_uri", image_uri)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_names is not None:
             pulumi.set(__self__, "instance_names", instance_names)
         if machine_type is not None:
@@ -3465,6 +3477,14 @@ class ClusterClusterConfigMasterConfig(dict):
         for more information.
         """
         return pulumi.get(self, "image_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> Optional['outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy']:
+        """
+        Instance flexibility Policy allowing a mixture of VM shapes.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
 
     @_builtins.property
     @pulumi.getter(name="instanceNames")
@@ -3660,6 +3680,154 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
         attached to each master cluster node. Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceSelectionLists":
+            suggest = "instance_selection_lists"
+        elif key == "instanceSelectionResults":
+            suggest = "instance_selection_results"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_selection_lists: Optional[Sequence['outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList']] = None,
+                 instance_selection_results: Optional[Sequence['outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult']] = None):
+        """
+        :param Sequence['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs'] instance_selection_lists: List of instance selection options that the group will use when creating new VMs.
+        :param Sequence['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs'] instance_selection_results: A list of instance selection results in the group.
+        """
+        if instance_selection_lists is not None:
+            pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
+        if instance_selection_results is not None:
+            pulumi.set(__self__, "instance_selection_results", instance_selection_results)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionLists")
+    def instance_selection_lists(self) -> Optional[Sequence['outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList']]:
+        """
+        List of instance selection options that the group will use when creating new VMs.
+        """
+        return pulumi.get(self, "instance_selection_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionResults")
+    def instance_selection_results(self) -> Optional[Sequence['outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult']]:
+        """
+        A list of instance selection results in the group.
+        """
+        return pulumi.get(self, "instance_selection_results")
+
+
+@pulumi.output_type
+class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineTypes":
+            suggest = "machine_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_types: Optional[Sequence[_builtins.str]] = None,
+                 rank: Optional[_builtins.int] = None):
+        """
+        :param Sequence[_builtins.str] machine_types: Full machine-type names, e.g. `"n1-standard-16"`.
+        :param _builtins.int rank: Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        if machine_types is not None:
+            pulumi.set(__self__, "machine_types", machine_types)
+        if rank is not None:
+            pulumi.set(__self__, "rank", rank)
+
+    @_builtins.property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Full machine-type names, e.g. `"n1-standard-16"`.
+        """
+        return pulumi.get(self, "machine_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def rank(self) -> Optional[_builtins.int]:
+        """
+        Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        return pulumi.get(self, "rank")
+
+
+@pulumi.output_type
+class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineType":
+            suggest = "machine_type"
+        elif key == "vmCount":
+            suggest = "vm_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_type: Optional[_builtins.str] = None,
+                 vm_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str machine_type: Full machine-type names, e.g. "n1-standard-16".
+        :param _builtins.int vm_count: Number of VM provisioned with the machine_type.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if vm_count is not None:
+            pulumi.set(__self__, "vm_count", vm_count)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[_builtins.str]:
+        """
+        Full machine-type names, e.g. "n1-standard-16".
+        """
+        return pulumi.get(self, "machine_type")
+
+    @_builtins.property
+    @pulumi.getter(name="vmCount")
+    def vm_count(self) -> Optional[_builtins.int]:
+        """
+        Number of VM provisioned with the machine_type.
+        """
+        return pulumi.get(self, "vm_count")
 
 
 @pulumi.output_type
@@ -4569,6 +4737,8 @@ class ClusterClusterConfigWorkerConfig(dict):
             suggest = "disk_config"
         elif key == "imageUri":
             suggest = "image_uri"
+        elif key == "instanceFlexibilityPolicy":
+            suggest = "instance_flexibility_policy"
         elif key == "instanceNames":
             suggest = "instance_names"
         elif key == "machineType":
@@ -4595,6 +4765,7 @@ class ClusterClusterConfigWorkerConfig(dict):
                  accelerators: Optional[Sequence['outputs.ClusterClusterConfigWorkerConfigAccelerator']] = None,
                  disk_config: Optional['outputs.ClusterClusterConfigWorkerConfigDiskConfig'] = None,
                  image_uri: Optional[_builtins.str] = None,
+                 instance_flexibility_policy: Optional['outputs.ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy'] = None,
                  instance_names: Optional[Sequence[_builtins.str]] = None,
                  machine_type: Optional[_builtins.str] = None,
                  min_cpu_platform: Optional[_builtins.str] = None,
@@ -4605,6 +4776,7 @@ class ClusterClusterConfigWorkerConfig(dict):
         :param 'ClusterClusterConfigWorkerConfigDiskConfigArgs' disk_config: Disk Config
         :param _builtins.str image_uri: The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
                for more information.
+        :param 'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs' instance_flexibility_policy: Instance flexibility Policy allowing a mixture of VM shapes.
         :param Sequence[_builtins.str] instance_names: List of worker instance names which have been assigned
                to the cluster.
         :param _builtins.str machine_type: The name of a Google Compute Engine machine type
@@ -4629,6 +4801,8 @@ class ClusterClusterConfigWorkerConfig(dict):
             pulumi.set(__self__, "disk_config", disk_config)
         if image_uri is not None:
             pulumi.set(__self__, "image_uri", image_uri)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_names is not None:
             pulumi.set(__self__, "instance_names", instance_names)
         if machine_type is not None:
@@ -4664,6 +4838,14 @@ class ClusterClusterConfigWorkerConfig(dict):
         for more information.
         """
         return pulumi.get(self, "image_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> Optional['outputs.ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy']:
+        """
+        Instance flexibility Policy allowing a mixture of VM shapes.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
 
     @_builtins.property
     @pulumi.getter(name="instanceNames")
@@ -4864,6 +5046,154 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
         attached to each worker cluster node. Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceSelectionLists":
+            suggest = "instance_selection_lists"
+        elif key == "instanceSelectionResults":
+            suggest = "instance_selection_results"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_selection_lists: Optional[Sequence['outputs.ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList']] = None,
+                 instance_selection_results: Optional[Sequence['outputs.ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult']] = None):
+        """
+        :param Sequence['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs'] instance_selection_lists: List of instance selection options that the group will use when creating new VMs.
+        :param Sequence['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs'] instance_selection_results: A list of instance selection results in the group.
+        """
+        if instance_selection_lists is not None:
+            pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
+        if instance_selection_results is not None:
+            pulumi.set(__self__, "instance_selection_results", instance_selection_results)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionLists")
+    def instance_selection_lists(self) -> Optional[Sequence['outputs.ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList']]:
+        """
+        List of instance selection options that the group will use when creating new VMs.
+        """
+        return pulumi.get(self, "instance_selection_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionResults")
+    def instance_selection_results(self) -> Optional[Sequence['outputs.ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult']]:
+        """
+        A list of instance selection results in the group.
+        """
+        return pulumi.get(self, "instance_selection_results")
+
+
+@pulumi.output_type
+class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineTypes":
+            suggest = "machine_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_types: Optional[Sequence[_builtins.str]] = None,
+                 rank: Optional[_builtins.int] = None):
+        """
+        :param Sequence[_builtins.str] machine_types: Full machine-type names, e.g. `"n1-standard-16"`.
+        :param _builtins.int rank: Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        if machine_types is not None:
+            pulumi.set(__self__, "machine_types", machine_types)
+        if rank is not None:
+            pulumi.set(__self__, "rank", rank)
+
+    @_builtins.property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Full machine-type names, e.g. `"n1-standard-16"`.
+        """
+        return pulumi.get(self, "machine_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def rank(self) -> Optional[_builtins.int]:
+        """
+        Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        return pulumi.get(self, "rank")
+
+
+@pulumi.output_type
+class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineType":
+            suggest = "machine_type"
+        elif key == "vmCount":
+            suggest = "vm_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_type: Optional[_builtins.str] = None,
+                 vm_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str machine_type: Full machine-type names, e.g. "n1-standard-16".
+        :param _builtins.int vm_count: Number of VM provisioned with the machine_type.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if vm_count is not None:
+            pulumi.set(__self__, "vm_count", vm_count)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[_builtins.str]:
+        """
+        Full machine-type names, e.g. "n1-standard-16".
+        """
+        return pulumi.get(self, "machine_type")
+
+    @_builtins.property
+    @pulumi.getter(name="vmCount")
+    def vm_count(self) -> Optional[_builtins.int]:
+        """
+        Number of VM provisioned with the machine_type.
+        """
+        return pulumi.get(self, "vm_count")
 
 
 @pulumi.output_type
@@ -8969,7 +9299,19 @@ class WorkflowTemplateEncryptionConfig(dict):
     def __init__(__self__, *,
                  kms_key: Optional[_builtins.str] = None):
         """
-        :param _builtins.str kms_key: Optional. The Cloud KMS key name to use for encryption.
+        :param _builtins.str kms_key: The Cloud KMS key name to use for encrypting workflow template [job arguments](https://docs.docs.cloud.google.com/dataproc/docs/concepts/workflows/use-workflows).
+               
+               When this this key is provided, the following workflow template job arguments, if present, are [CMEK encrypted](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data):
+               
+               - [FlinkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob)
+               - [HadoopJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob)
+               - [SparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+               - [SparkRJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+               - [PySparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob)
+               - [SparkSqlJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries
+               - [HiveJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries
+               - [PigJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables  and queryList.queries
+               - [PrestoJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries
         """
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
@@ -8978,7 +9320,19 @@ class WorkflowTemplateEncryptionConfig(dict):
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[_builtins.str]:
         """
-        Optional. The Cloud KMS key name to use for encryption.
+        The Cloud KMS key name to use for encrypting workflow template [job arguments](https://docs.docs.cloud.google.com/dataproc/docs/concepts/workflows/use-workflows).
+
+        When this this key is provided, the following workflow template job arguments, if present, are [CMEK encrypted](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data):
+
+        - [FlinkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob)
+        - [HadoopJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob)
+        - [SparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+        - [SparkRJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+        - [PySparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob)
+        - [SparkSqlJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries
+        - [HiveJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries
+        - [PigJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables  and queryList.queries
+        - [PrestoJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries
         """
         return pulumi.get(self, "kms_key")
 
@@ -10827,7 +11181,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
         :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs' secondary_worker_config: The Compute Engine config settings for additional worker instances in a cluster.
         :param 'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs' security_config: Security settings for the cluster.
         :param 'WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs' software_config: The config settings for software inside the cluster.
-        :param _builtins.str staging_bucket: A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+        :param _builtins.str staging_bucket: A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
         :param _builtins.str temp_bucket: A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
         :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs' worker_config: The Compute Engine config settings for additional worker instances in a cluster.
                
@@ -10964,7 +11318,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="stagingBucket")
     def staging_bucket(self) -> Optional[_builtins.str]:
         """
-        A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+        A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
         """
         return pulumi.get(self, "staging_bucket")
 
@@ -11138,16 +11492,16 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
                  zone: Optional[_builtins.str] = None):
         """
         :param _builtins.bool internal_ip_only: If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
-        :param Mapping[str, _builtins.str] metadata: The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+        :param Mapping[str, _builtins.str] metadata: The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
         :param _builtins.str network: The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
         :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs' node_group_affinity: Node Group Affinity for sole-tenant clusters.
         :param _builtins.str private_ipv6_google_access: The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
         :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs' reservation_affinity: Reservation Affinity for consuming Zonal reservation.
-        :param _builtins.str service_account: The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
-        :param Sequence[_builtins.str] service_account_scopes: The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+        :param _builtins.str service_account: The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+        :param Sequence[_builtins.str] service_account_scopes: The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
         :param _builtins.str subnetwork: The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
-        :param Sequence[_builtins.str] tags: The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+        :param Sequence[_builtins.str] tags: The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
         :param _builtins.str zone: The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
         """
         if internal_ip_only is not None:
@@ -11187,7 +11541,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter
     def metadata(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+        The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
         """
         return pulumi.get(self, "metadata")
 
@@ -11227,7 +11581,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[_builtins.str]:
         """
-        The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+        The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         """
         return pulumi.get(self, "service_account")
 
@@ -11235,7 +11589,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="serviceAccountScopes")
     def service_account_scopes(self) -> Optional[Sequence[_builtins.str]]:
         """
-        The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+        The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
         """
         return pulumi.get(self, "service_account_scopes")
 
@@ -11243,7 +11597,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="shieldedInstanceConfig")
     def shielded_instance_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig']:
         """
-        Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+        Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
         """
         return pulumi.get(self, "shielded_instance_config")
 
@@ -11259,7 +11613,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence[_builtins.str]]:
         """
-        The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+        The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
         """
         return pulumi.get(self, "tags")
 
@@ -11395,9 +11749,9 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
                  enable_secure_boot: Optional[_builtins.bool] = None,
                  enable_vtpm: Optional[_builtins.bool] = None):
         """
-        :param _builtins.bool enable_integrity_monitoring: Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
-        :param _builtins.bool enable_secure_boot: Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
-        :param _builtins.bool enable_vtpm: Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+        :param _builtins.bool enable_integrity_monitoring: Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+        :param _builtins.bool enable_secure_boot: Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+        :param _builtins.bool enable_vtpm: Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
         """
         if enable_integrity_monitoring is not None:
             pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
@@ -11410,7 +11764,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
     @pulumi.getter(name="enableIntegrityMonitoring")
     def enable_integrity_monitoring(self) -> Optional[_builtins.bool]:
         """
-        Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+        Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
         """
         return pulumi.get(self, "enable_integrity_monitoring")
 
@@ -11418,7 +11772,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> Optional[_builtins.bool]:
         """
-        Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+        Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
         """
         return pulumi.get(self, "enable_secure_boot")
 
@@ -11426,7 +11780,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
     @pulumi.getter(name="enableVtpm")
     def enable_vtpm(self) -> Optional[_builtins.bool]:
         """
-        Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+        Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
         """
         return pulumi.get(self, "enable_vtpm")
 
@@ -11693,9 +12047,9 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
         :param _builtins.str image: The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         :param Sequence[_builtins.str] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         :param _builtins.bool is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
-        :param _builtins.str machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        :param _builtins.str machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
         :param Sequence['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        :param _builtins.str min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        :param _builtins.str min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://docs.cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         :param _builtins.int num_instances: The number of VM instances in the instance group. For master instance groups, must be set to 1.
         :param _builtins.str preemptibility: Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
         """
@@ -11764,7 +12118,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[_builtins.str]:
         """
-        The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
         """
         return pulumi.get(self, "machine_type")
 
@@ -11780,7 +12134,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[_builtins.str]:
         """
-        Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://docs.cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -11827,7 +12181,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator(dict)
                  accelerator_type: Optional[_builtins.str] = None):
         """
         :param _builtins.int accelerator_count: The number of the accelerator cards of this type exposed to this instance.
-        :param _builtins.str accelerator_type: Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        :param _builtins.str accelerator_type: Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         """
         if accelerator_count is not None:
             pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -11846,7 +12200,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator(dict)
     @pulumi.getter(name="acceleratorType")
     def accelerator_type(self) -> Optional[_builtins.str]:
         """
-        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "accelerator_type")
 
@@ -12182,7 +12536,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelera
                  accelerator_type: Optional[_builtins.str] = None):
         """
         :param _builtins.int accelerator_count: The number of the accelerator cards of this type exposed to this instance.
-        :param _builtins.str accelerator_type: Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        :param _builtins.str accelerator_type: Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         """
         if accelerator_count is not None:
             pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -12201,7 +12555,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelera
     @pulumi.getter(name="acceleratorType")
     def accelerator_type(self) -> Optional[_builtins.str]:
         """
-        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "accelerator_type")
 
@@ -12608,7 +12962,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
                  optional_components: Optional[Sequence[_builtins.str]] = None,
                  properties: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str image_version: The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+        :param _builtins.str image_version: The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
         :param Sequence[_builtins.str] optional_components: The set of components to activate on the cluster.
         :param Mapping[str, _builtins.str] properties: The properties to set on daemon config files.
                
@@ -12625,7 +12979,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
                * yarn: `yarn-site.xml`
                
                
-               For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+               For more information, see [Cluster properties](https://docs.cloud.google.com/dataproc/docs/concepts/cluster-properties).
         """
         if image_version is not None:
             pulumi.set(__self__, "image_version", image_version)
@@ -12638,7 +12992,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
     @pulumi.getter(name="imageVersion")
     def image_version(self) -> Optional[_builtins.str]:
         """
-        The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+        The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
         """
         return pulumi.get(self, "image_version")
 
@@ -12669,7 +13023,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
         * yarn: `yarn-site.xml`
 
 
-        For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+        For more information, see [Cluster properties](https://docs.cloud.google.com/dataproc/docs/concepts/cluster-properties).
         """
         return pulumi.get(self, "properties")
 
@@ -12856,7 +13210,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator(dict)
                  accelerator_type: Optional[_builtins.str] = None):
         """
         :param _builtins.int accelerator_count: The number of the accelerator cards of this type exposed to this instance.
-        :param _builtins.str accelerator_type: Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        :param _builtins.str accelerator_type: Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         """
         if accelerator_count is not None:
             pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -12875,7 +13229,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator(dict)
     @pulumi.getter(name="acceleratorType")
     def accelerator_type(self) -> Optional[_builtins.str]:
         """
-        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "accelerator_type")
 

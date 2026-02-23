@@ -74,22 +74,14 @@ namespace Pulumi.Gcp.ApiHub
     /// ApiHubInstance can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/apiHubInstances/{{api_hub_instance_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{api_hub_instance_id}}`
-    /// 
     /// * `{{location}}/{{api_hub_instance_id}}`
     /// 
     /// When using the `pulumi import` command, ApiHubInstance can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default projects/{{project}}/locations/{{location}}/apiHubInstances/{{api_hub_instance_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{project}}/{{location}}/{{api_hub_instance_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{location}}/{{api_hub_instance_id}}
     /// ```
     /// </summary>

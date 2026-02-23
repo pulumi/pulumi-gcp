@@ -17,6 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The Tenant resource represents the service producer&#39;s view of a service instance created for a consumer. It enables the association between the service producer&#39;s managed resources and the end consumer.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
  * ## Example Usage
  * 
  * ### Saas Runtime Tenant Basic
@@ -71,22 +76,14 @@ import javax.annotation.Nullable;
  * Tenant can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}`
- * 
  * * `{{project}}/{{location}}/{{tenant_id}}`
- * 
  * * `{{location}}/{{tenant_id}}`
  * 
  * When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:saasruntime/tenant:Tenant default projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:saasruntime/tenant:Tenant default {{project}}/{{location}}/{{tenant_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:saasruntime/tenant:Tenant default {{location}}/{{tenant_id}}
  * ```
  * 
@@ -151,9 +148,17 @@ public class Tenant extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

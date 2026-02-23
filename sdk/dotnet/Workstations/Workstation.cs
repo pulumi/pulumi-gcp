@@ -10,6 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Workstations
 {
     /// <summary>
+    /// A single instance of a developer workstation with its own persistent storage.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about Workstation, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs.workstations)
+    /// * How-to Guides
+    ///     * [Workstations](https://cloud.google.com/workstations/docs/)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Workstation Basic
@@ -96,22 +107,14 @@ namespace Pulumi.Gcp.Workstations
     /// Workstation can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}`
-    /// 
     /// * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}`
     /// 
     /// When using the `pulumi import` command, Workstation can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:workstations/workstation:Workstation default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:workstations/workstation:Workstation default {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:workstations/workstation:Workstation default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
     /// ```
     /// </summary>
@@ -138,6 +141,9 @@ namespace Pulumi.Gcp.Workstations
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -403,6 +409,10 @@ namespace Pulumi.Gcp.Workstations
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());

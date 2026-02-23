@@ -37,6 +37,7 @@ class UptimeCheckConfigArgs:
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a UptimeCheckConfig resource.
+
         :param pulumi.Input[_builtins.str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input[_builtins.str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
         :param pulumi.Input[_builtins.str] checker_type: The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
@@ -289,6 +290,7 @@ class _UptimeCheckConfigState:
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering UptimeCheckConfig resources.
+
         :param pulumi.Input[_builtins.str] checker_type: The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
                Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
@@ -818,24 +820,17 @@ class UptimeCheckConfig(pulumi.CustomResource):
         UptimeCheckConfig can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, UptimeCheckConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_monitoring_uptime_check_config.default "{{project}} {{name}}"
         $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1115,24 +1110,17 @@ class UptimeCheckConfig(pulumi.CustomResource):
         UptimeCheckConfig can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, UptimeCheckConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_monitoring_uptime_check_config.default "{{project}} {{name}}"
         $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UptimeCheckConfigArgs args: The arguments to use to populate this resource's properties.

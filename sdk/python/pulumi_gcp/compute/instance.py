@@ -56,6 +56,7 @@ class InstanceArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input['InstanceBootDiskArgs'] boot_disk: The boot disk for the instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
@@ -719,6 +720,7 @@ class _InstanceState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -1618,27 +1620,24 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
+        > **Note:** The fields `boot_disk.0.disk_encryption_raw` and `attached_disk.*.disk_encryption_key_raw` cannot be imported automatically. The API doesn't return this information. If you are setting one of these fields in your config, you will need to update your state manually after importing the resource.
+
+        > **Note:** The `desired_status` field will not be set on import. If you have it set, Terraform will update the field on the next `pulumi up`, bringing your instance to the desired status.
+
         Instances can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/instances/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, instances can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instance:Instance default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1833,27 +1832,24 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
+        > **Note:** The fields `boot_disk.0.disk_encryption_raw` and `attached_disk.*.disk_encryption_key_raw` cannot be imported automatically. The API doesn't return this information. If you are setting one of these fields in your config, you will need to update your state manually after importing the resource.
+
+        > **Note:** The `desired_status` field will not be set on import. If you have it set, Terraform will update the field on the next `pulumi up`, bringing your instance to the desired status.
+
         Instances can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/instances/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, instances can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instance:Instance default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var targetProject = new Project("targetProject", ProjectArgs.builder()
- *             .projectId("tf-test_16178")
- *             .name("tf-test_26317")
+ *             .projectId("tf-test_32270")
+ *             .name("tf-test_44703")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")
@@ -97,8 +97,8 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var zone = new com.pulumi.gcp.dns.ManagedZone("zone", com.pulumi.gcp.dns.ManagedZoneArgs.builder()
- *             .name("tf-test-dns_4866")
- *             .dnsName("private_12618.example.com.")
+ *             .name("tf-test-dns_9329")
+ *             .dnsName("private_37135.example.com.")
  *             .visibility("private")
  *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
  *                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
@@ -132,22 +132,14 @@ import javax.annotation.Nullable;
  * ManagedZone can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/global/managedZones/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default projects/{{project}}/locations/global/managedZones/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:integrationconnectors/managedZone:ManagedZone default {{name}}
  * ```
  * 

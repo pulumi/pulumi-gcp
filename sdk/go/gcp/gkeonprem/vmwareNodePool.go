@@ -229,22 +229,14 @@ import (
 // VmwareNodePool can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}`
-//
 // * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}`
-//
 // * `{{location}}/{{vmware_cluster}}/{{name}}`
 //
 // When using the `pulumi import` command, VmwareNodePool can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{project}}/{{location}}/{{vmware_cluster}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{location}}/{{vmware_cluster}}/{{name}}
 // ```
 type VMwareNodePool struct {
@@ -270,7 +262,8 @@ type VMwareNodePool struct {
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// The display name for the node pool.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
@@ -365,7 +358,8 @@ type vmwareNodePoolState struct {
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// The display name for the node pool.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
@@ -422,7 +416,8 @@ type VMwareNodePoolState struct {
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringPtrInput
 	// The display name for the node pool.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
@@ -654,6 +649,7 @@ func (o VMwareNodePoolOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMwareNodePool) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o VMwareNodePoolOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VMwareNodePool) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

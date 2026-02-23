@@ -27,6 +27,7 @@ class AiLogicConfigArgs:
                  telemetry_config: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']] = None):
         """
         The set of arguments for constructing a AiLogicConfig resource.
+
         :param pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs'] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
                When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
                API key is stored in this configuration *on the server* so that you do
@@ -116,6 +117,7 @@ class _AiLogicConfigState:
                  telemetry_config: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']] = None):
         """
         Input properties used for looking up and filtering AiLogicConfig resources.
+
         :param pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs'] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
                When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
                API key is stored in this configuration *on the server* so that you do
@@ -224,6 +226,20 @@ class AiLogicConfig(pulumi.CustomResource):
                  telemetry_config: Optional[pulumi.Input[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict']]] = None,
                  __props__=None):
         """
+        Configuration for Firebase AI Logic.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Config, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/ai-logic/rest)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/ai-logic)
+
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `generative_language_config.api_key_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Firebaseailogic Config Basic
@@ -312,24 +328,17 @@ class AiLogicConfig(pulumi.CustomResource):
         Config can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/config`
-
         * `{{project}}/{{location}}`
-
         * `{{location}}`
 
         When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default projects/{{project}}/locations/{{location}}/config
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default {{project}}/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default {{location}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -353,6 +362,20 @@ class AiLogicConfig(pulumi.CustomResource):
                  args: Optional[AiLogicConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Configuration for Firebase AI Logic.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Config, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/ai-logic/rest)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/ai-logic)
+
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `generative_language_config.api_key_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Firebaseailogic Config Basic
@@ -441,24 +464,17 @@ class AiLogicConfig(pulumi.CustomResource):
         Config can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/config`
-
         * `{{project}}/{{location}}`
-
         * `{{location}}`
 
         When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default projects/{{project}}/locations/{{location}}/config
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default {{project}}/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default {{location}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiLogicConfigArgs args: The arguments to use to populate this resource's properties.

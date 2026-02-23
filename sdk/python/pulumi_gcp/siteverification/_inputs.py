@@ -19,22 +19,17 @@ __all__ = [
     'WebResourceSiteArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class WebResourceSiteArgsDict(TypedDict):
-        identifier: pulumi.Input[_builtins.str]
-        """
-        The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
-        set to INET_DOMAIN, the identifier is a domain name.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of resource to be verified.
-        Possible values are: `INET_DOMAIN`, `SITE`.
-        """
-elif False:
-    WebResourceSiteArgsDict: TypeAlias = Mapping[str, Any]
+class WebResourceSiteArgsDict(TypedDict):
+    identifier: pulumi.Input[_builtins.str]
+    """
+    The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
+    set to INET_DOMAIN, the identifier is a domain name.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of resource to be verified.
+    Possible values are: `INET_DOMAIN`, `SITE`.
+    """
 
 @pulumi.input_type
 class WebResourceSiteArgs:

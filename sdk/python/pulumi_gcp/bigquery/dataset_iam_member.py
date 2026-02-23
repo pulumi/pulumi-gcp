@@ -28,6 +28,7 @@ class DatasetIamMemberArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatasetIamMember resource.
+
         :param pulumi.Input[_builtins.str] dataset_id: The dataset ID.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -144,6 +145,7 @@ class _DatasetIamMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatasetIamMember resources.
+
         :param pulumi.Input['DatasetIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset_id: The dataset ID.
@@ -498,29 +500,8 @@ class DatasetIamMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the identifier of the BigQuery Dataset resource. For example:
-
-        * `projects/{{project_id}}/datasets/{{dataset_id}}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = projects/{{project_id}}/datasets/{{dataset_id}}
-
-          to = google_bigquery_dataset_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:bigquery/datasetIamMember:DatasetIamMember default projects/{{project_id}}/datasets/{{dataset_id}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -770,29 +751,8 @@ class DatasetIamMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the identifier of the BigQuery Dataset resource. For example:
-
-        * `projects/{{project_id}}/datasets/{{dataset_id}}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = projects/{{project_id}}/datasets/{{dataset_id}}
-
-          to = google_bigquery_dataset_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:bigquery/datasetIamMember:DatasetIamMember default projects/{{project_id}}/datasets/{{dataset_id}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param DatasetIamMemberArgs args: The arguments to use to populate this resource's properties.

@@ -173,6 +173,14 @@ export class Workflow extends pulumi.CustomResource {
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
      */
     declare public readonly cryptoKeyName: pulumi.Output<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the workflow,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the workflow will fail.
+     * When the field is set to false, deleting the workflow is allowed.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
@@ -339,6 +347,14 @@ export interface WorkflowState {
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
      */
     cryptoKeyName?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the workflow,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the workflow will fail.
+     * When the field is set to false, deleting the workflow is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
@@ -439,6 +455,14 @@ export interface WorkflowArgs {
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
      */
     cryptoKeyName?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the workflow,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the workflow will fail.
+     * When the field is set to false, deleting the workflow is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.

@@ -26,6 +26,7 @@ class GroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] display_name: A user-assigned name for this group, used only for display
                purposes.
         :param pulumi.Input[_builtins.str] filter: The filter used to determine which monitored resources
@@ -127,6 +128,7 @@ class _GroupState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[_builtins.str] display_name: A user-assigned name for this group, used only for display
                purposes.
         :param pulumi.Input[_builtins.str] filter: The filter used to determine which monitored resources
@@ -292,24 +294,17 @@ class Group(pulumi.CustomResource):
         Group can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/group:Group default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:monitoring/group:Group default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_monitoring_group.default "{{project}} {{name}}"
         $ pulumi import gcp:monitoring/group:Group default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -376,24 +371,17 @@ class Group(pulumi.CustomResource):
         Group can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/group:Group default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:monitoring/group:Group default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_monitoring_group.default "{{project}} {{name}}"
         $ pulumi import gcp:monitoring/group:Group default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

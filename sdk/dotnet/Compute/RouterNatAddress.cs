@@ -29,28 +29,16 @@ namespace Pulumi.Gcp.Compute
     /// RouterNatAddress can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{router_nat}}`
-    /// 
     /// * `{{project}}/{{region}}/{{router}}/{{router_nat}}`
-    /// 
     /// * `{{region}}/{{router}}/{{router_nat}}`
-    /// 
     /// * `{{router}}/{{router_nat}}`
     /// 
     /// When using the `pulumi import` command, RouterNatAddress can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{router_nat}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{project}}/{{region}}/{{router}}/{{router_nat}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{region}}/{{router}}/{{router_nat}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{router}}/{{router_nat}}
     /// ```
     /// </summary>

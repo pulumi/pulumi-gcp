@@ -276,6 +276,33 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Service Readiness Probes
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     launchStage: "BETA",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             readinessProbe: {
+ *                 timeoutSeconds: 20,
+ *                 periodSeconds: 30,
+ *                 successThreshold: 3,
+ *                 failureThreshold: 2,
+ *                 grpc: {
+ *                     port: 8080,
+ *                 },
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
  * ### Cloudrunv2 Service Secret
  *
  * ```typescript
@@ -573,22 +600,14 @@ import * as utilities from "../utilities";
  * Service can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/services/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:cloudrunv2/service:Service default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:cloudrunv2/service:Service default {{location}}/{{name}}
  * ```
  */
@@ -673,11 +692,22 @@ export class Service extends pulumi.CustomResource {
      * The deletion time.
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the service. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the service,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the service will fail.
+     * When the field is set to false, deleting the service is allowed.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -984,11 +1014,22 @@ export interface ServiceState {
      * The deletion time.
      */
     deleteTime?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the service. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the service,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the service will fail.
+     * When the field is set to false, deleting the service is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
     description?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1166,6 +1207,14 @@ export interface ServiceArgs {
      * Disables public resolution of the default URI of this service.
      */
     defaultUriDisabled?: pulumi.Input<boolean>;
+    /**
+     * Whether Terraform will be prevented from destroying the service. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the service,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the service will fail.
+     * When the field is set to false, deleting the service is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.

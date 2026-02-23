@@ -608,9 +608,17 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     * 
+     */
     @Import(name="recreateClosedPsc")
     private @Nullable Output<Boolean> recreateClosedPsc;
 
+    /**
+     * @return This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     * 
+     */
     public Optional<Output<Boolean>> recreateClosedPsc() {
         return Optional.ofNullable(this.recreateClosedPsc);
     }
@@ -1530,11 +1538,23 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
             return project(Output.of(project));
         }
 
+        /**
+         * @param recreateClosedPsc This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+         * 
+         * @return builder
+         * 
+         */
         public Builder recreateClosedPsc(@Nullable Output<Boolean> recreateClosedPsc) {
             $.recreateClosedPsc = recreateClosedPsc;
             return this;
         }
 
+        /**
+         * @param recreateClosedPsc This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+         * 
+         * @return builder
+         * 
+         */
         public Builder recreateClosedPsc(Boolean recreateClosedPsc) {
             return recreateClosedPsc(Output.of(recreateClosedPsc));
         }

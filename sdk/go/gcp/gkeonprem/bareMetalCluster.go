@@ -400,22 +400,14 @@ import (
 // BareMetalCluster can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, BareMetalCluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{location}}/{{name}}
 // ```
 type BareMetalCluster struct {
@@ -452,7 +444,8 @@ type BareMetalCluster struct {
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// A human readable description of this Bare Metal User Cluster.
-	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// The IP address name of Bare Metal User Cluster's API server.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
@@ -618,7 +611,8 @@ type bareMetalClusterState struct {
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// A human readable description of this Bare Metal User Cluster.
-	Description          *string           `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// The IP address name of Bare Metal User Cluster's API server.
 	Endpoint *string `pulumi:"endpoint"`
@@ -734,7 +728,8 @@ type BareMetalClusterState struct {
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringPtrInput
 	// A human readable description of this Bare Metal User Cluster.
-	Description          pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// The IP address name of Bare Metal User Cluster's API server.
 	Endpoint pulumi.StringPtrInput
@@ -1105,6 +1100,7 @@ func (o BareMetalClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o BareMetalClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

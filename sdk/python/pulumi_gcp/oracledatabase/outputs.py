@@ -44,6 +44,10 @@ __all__ = [
     'DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail',
     'DbSystemPropertiesDbSystemOptions',
     'DbSystemPropertiesTimeZone',
+    'ExadbVmClusterProperties',
+    'ExadbVmClusterPropertiesDataCollectionOptions',
+    'ExadbVmClusterPropertiesTimeZone',
+    'ExadbVmClusterPropertiesVmFileSystemStorage',
     'ExascaleDbStorageVaultProperties',
     'ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails',
     'ExascaleDbStorageVaultPropertiesTimeZone',
@@ -4727,6 +4731,494 @@ class DbSystemPropertiesTimeZone(dict):
 
 
 @pulumi.output_type
+class ExadbVmClusterProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enabledEcpuCountPerNode":
+            suggest = "enabled_ecpu_count_per_node"
+        elif key == "exascaleDbStorageVault":
+            suggest = "exascale_db_storage_vault"
+        elif key == "gridImageId":
+            suggest = "grid_image_id"
+        elif key == "hostnamePrefix":
+            suggest = "hostname_prefix"
+        elif key == "nodeCount":
+            suggest = "node_count"
+        elif key == "shapeAttribute":
+            suggest = "shape_attribute"
+        elif key == "sshPublicKeys":
+            suggest = "ssh_public_keys"
+        elif key == "vmFileSystemStorage":
+            suggest = "vm_file_system_storage"
+        elif key == "additionalEcpuCountPerNode":
+            suggest = "additional_ecpu_count_per_node"
+        elif key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "dataCollectionOptions":
+            suggest = "data_collection_options"
+        elif key == "giVersion":
+            suggest = "gi_version"
+        elif key == "licenseModel":
+            suggest = "license_model"
+        elif key == "lifecycleState":
+            suggest = "lifecycle_state"
+        elif key == "memorySizeGb":
+            suggest = "memory_size_gb"
+        elif key == "ociUri":
+            suggest = "oci_uri"
+        elif key == "scanListenerPortTcp":
+            suggest = "scan_listener_port_tcp"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExadbVmClusterProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExadbVmClusterProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExadbVmClusterProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled_ecpu_count_per_node: _builtins.int,
+                 exascale_db_storage_vault: _builtins.str,
+                 grid_image_id: _builtins.str,
+                 hostname_prefix: _builtins.str,
+                 node_count: _builtins.int,
+                 shape_attribute: _builtins.str,
+                 ssh_public_keys: Sequence[_builtins.str],
+                 vm_file_system_storage: 'outputs.ExadbVmClusterPropertiesVmFileSystemStorage',
+                 additional_ecpu_count_per_node: Optional[_builtins.int] = None,
+                 cluster_name: Optional[_builtins.str] = None,
+                 data_collection_options: Optional['outputs.ExadbVmClusterPropertiesDataCollectionOptions'] = None,
+                 gi_version: Optional[_builtins.str] = None,
+                 hostname: Optional[_builtins.str] = None,
+                 license_model: Optional[_builtins.str] = None,
+                 lifecycle_state: Optional[_builtins.str] = None,
+                 memory_size_gb: Optional[_builtins.int] = None,
+                 oci_uri: Optional[_builtins.str] = None,
+                 scan_listener_port_tcp: Optional[_builtins.int] = None,
+                 time_zone: Optional['outputs.ExadbVmClusterPropertiesTimeZone'] = None):
+        """
+        :param _builtins.int enabled_ecpu_count_per_node: The number of ECPUs enabled per node for an exadata vm cluster on
+               exascale infrastructure.
+        :param _builtins.str exascale_db_storage_vault: The name of ExascaleDbStorageVault associated with the ExadbVmCluster.
+               It can refer to an existing ExascaleDbStorageVault. Or a new one can be
+               created during the ExadbVmCluster creation (requires
+               storage_vault_properties to be set).
+               Format:
+               projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        :param _builtins.str grid_image_id: Grid Infrastructure Version.
+        :param _builtins.str hostname_prefix: Prefix for VM cluster host names.
+        :param _builtins.int node_count: The number of nodes/VMs in the ExadbVmCluster.
+        :param _builtins.str shape_attribute: The shape attribute of the VM cluster. The type of Exascale storage used
+               for Exadata VM cluster. The default is SMART_STORAGE which supports Oracle
+               Database 23ai and later
+               Possible values:
+               SMART_STORAGE
+               BLOCK_STORAGE
+        :param Sequence[_builtins.str] ssh_public_keys: The SSH public keys for the ExadbVmCluster.
+        :param 'ExadbVmClusterPropertiesVmFileSystemStorageArgs' vm_file_system_storage: The storage allocation for the exadbvmcluster, in gigabytes (GB).
+               Structure is documented below.
+        :param _builtins.int additional_ecpu_count_per_node: The number of additional ECPUs per node for an Exadata VM cluster on
+               exascale infrastructure.
+        :param _builtins.str cluster_name: The cluster name for Exascale vm cluster. The cluster name must begin with
+               an alphabetic character and may contain hyphens(-) but can not contain
+               underscores(_). It should be not more than 11 characters and is not case
+               sensitive.
+               OCI Cluster name.
+        :param 'ExadbVmClusterPropertiesDataCollectionOptionsArgs' data_collection_options: Data collection options for diagnostics.
+               https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/DataCollectionOptions
+               Structure is documented below.
+        :param _builtins.str gi_version: (Output)
+               The Oracle Grid Infrastructure (GI) software version.
+        :param _builtins.str hostname: (Output)
+               The hostname of the ExadbVmCluster.
+        :param _builtins.str license_model: The license type of the ExadbVmCluster.
+               Possible values:
+               LICENSE_INCLUDED
+               BRING_YOUR_OWN_LICENSE
+        :param _builtins.str lifecycle_state: (Output)
+               State of the cluster.
+               Possible values:
+               PROVISIONING
+               AVAILABLE
+               UPDATING
+               TERMINATING
+               TERMINATED
+               FAILED
+               MAINTENANCE_IN_PROGRESS
+        :param _builtins.int memory_size_gb: (Output)
+               Memory per VM (GB) (Read-only): Shows the amount of memory allocated to
+               each VM. Memory is calculated based on 2.75 GB per Total ECPUs.
+        :param _builtins.str oci_uri: (Output)
+               Deep link to the OCI console to view this resource.
+        :param _builtins.int scan_listener_port_tcp: SCAN listener port - TCP
+        :param 'ExadbVmClusterPropertiesTimeZoneArgs' time_zone: Represents a time zone from the
+               [IANA Time Zone Database](https://www.iana.org/time-zones).
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "enabled_ecpu_count_per_node", enabled_ecpu_count_per_node)
+        pulumi.set(__self__, "exascale_db_storage_vault", exascale_db_storage_vault)
+        pulumi.set(__self__, "grid_image_id", grid_image_id)
+        pulumi.set(__self__, "hostname_prefix", hostname_prefix)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "shape_attribute", shape_attribute)
+        pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        pulumi.set(__self__, "vm_file_system_storage", vm_file_system_storage)
+        if additional_ecpu_count_per_node is not None:
+            pulumi.set(__self__, "additional_ecpu_count_per_node", additional_ecpu_count_per_node)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if data_collection_options is not None:
+            pulumi.set(__self__, "data_collection_options", data_collection_options)
+        if gi_version is not None:
+            pulumi.set(__self__, "gi_version", gi_version)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if license_model is not None:
+            pulumi.set(__self__, "license_model", license_model)
+        if lifecycle_state is not None:
+            pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+        if memory_size_gb is not None:
+            pulumi.set(__self__, "memory_size_gb", memory_size_gb)
+        if oci_uri is not None:
+            pulumi.set(__self__, "oci_uri", oci_uri)
+        if scan_listener_port_tcp is not None:
+            pulumi.set(__self__, "scan_listener_port_tcp", scan_listener_port_tcp)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @_builtins.property
+    @pulumi.getter(name="enabledEcpuCountPerNode")
+    def enabled_ecpu_count_per_node(self) -> _builtins.int:
+        """
+        The number of ECPUs enabled per node for an exadata vm cluster on
+        exascale infrastructure.
+        """
+        return pulumi.get(self, "enabled_ecpu_count_per_node")
+
+    @_builtins.property
+    @pulumi.getter(name="exascaleDbStorageVault")
+    def exascale_db_storage_vault(self) -> _builtins.str:
+        """
+        The name of ExascaleDbStorageVault associated with the ExadbVmCluster.
+        It can refer to an existing ExascaleDbStorageVault. Or a new one can be
+        created during the ExadbVmCluster creation (requires
+        storage_vault_properties to be set).
+        Format:
+        projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        """
+        return pulumi.get(self, "exascale_db_storage_vault")
+
+    @_builtins.property
+    @pulumi.getter(name="gridImageId")
+    def grid_image_id(self) -> _builtins.str:
+        """
+        Grid Infrastructure Version.
+        """
+        return pulumi.get(self, "grid_image_id")
+
+    @_builtins.property
+    @pulumi.getter(name="hostnamePrefix")
+    def hostname_prefix(self) -> _builtins.str:
+        """
+        Prefix for VM cluster host names.
+        """
+        return pulumi.get(self, "hostname_prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> _builtins.int:
+        """
+        The number of nodes/VMs in the ExadbVmCluster.
+        """
+        return pulumi.get(self, "node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="shapeAttribute")
+    def shape_attribute(self) -> _builtins.str:
+        """
+        The shape attribute of the VM cluster. The type of Exascale storage used
+        for Exadata VM cluster. The default is SMART_STORAGE which supports Oracle
+        Database 23ai and later
+        Possible values:
+        SMART_STORAGE
+        BLOCK_STORAGE
+        """
+        return pulumi.get(self, "shape_attribute")
+
+    @_builtins.property
+    @pulumi.getter(name="sshPublicKeys")
+    def ssh_public_keys(self) -> Sequence[_builtins.str]:
+        """
+        The SSH public keys for the ExadbVmCluster.
+        """
+        return pulumi.get(self, "ssh_public_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="vmFileSystemStorage")
+    def vm_file_system_storage(self) -> 'outputs.ExadbVmClusterPropertiesVmFileSystemStorage':
+        """
+        The storage allocation for the exadbvmcluster, in gigabytes (GB).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vm_file_system_storage")
+
+    @_builtins.property
+    @pulumi.getter(name="additionalEcpuCountPerNode")
+    def additional_ecpu_count_per_node(self) -> Optional[_builtins.int]:
+        """
+        The number of additional ECPUs per node for an Exadata VM cluster on
+        exascale infrastructure.
+        """
+        return pulumi.get(self, "additional_ecpu_count_per_node")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[_builtins.str]:
+        """
+        The cluster name for Exascale vm cluster. The cluster name must begin with
+        an alphabetic character and may contain hyphens(-) but can not contain
+        underscores(_). It should be not more than 11 characters and is not case
+        sensitive.
+        OCI Cluster name.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @_builtins.property
+    @pulumi.getter(name="dataCollectionOptions")
+    def data_collection_options(self) -> Optional['outputs.ExadbVmClusterPropertiesDataCollectionOptions']:
+        """
+        Data collection options for diagnostics.
+        https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/DataCollectionOptions
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_collection_options")
+
+    @_builtins.property
+    @pulumi.getter(name="giVersion")
+    def gi_version(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The Oracle Grid Infrastructure (GI) software version.
+        """
+        return pulumi.get(self, "gi_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The hostname of the ExadbVmCluster.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter(name="licenseModel")
+    def license_model(self) -> Optional[_builtins.str]:
+        """
+        The license type of the ExadbVmCluster.
+        Possible values:
+        LICENSE_INCLUDED
+        BRING_YOUR_OWN_LICENSE
+        """
+        return pulumi.get(self, "license_model")
+
+    @_builtins.property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        State of the cluster.
+        Possible values:
+        PROVISIONING
+        AVAILABLE
+        UPDATING
+        TERMINATING
+        TERMINATED
+        FAILED
+        MAINTENANCE_IN_PROGRESS
+        """
+        return pulumi.get(self, "lifecycle_state")
+
+    @_builtins.property
+    @pulumi.getter(name="memorySizeGb")
+    def memory_size_gb(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        Memory per VM (GB) (Read-only): Shows the amount of memory allocated to
+        each VM. Memory is calculated based on 2.75 GB per Total ECPUs.
+        """
+        return pulumi.get(self, "memory_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="ociUri")
+    def oci_uri(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Deep link to the OCI console to view this resource.
+        """
+        return pulumi.get(self, "oci_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="scanListenerPortTcp")
+    def scan_listener_port_tcp(self) -> Optional[_builtins.int]:
+        """
+        SCAN listener port - TCP
+        """
+        return pulumi.get(self, "scan_listener_port_tcp")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional['outputs.ExadbVmClusterPropertiesTimeZone']:
+        """
+        Represents a time zone from the
+        [IANA Time Zone Database](https://www.iana.org/time-zones).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "time_zone")
+
+
+@pulumi.output_type
+class ExadbVmClusterPropertiesDataCollectionOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isDiagnosticsEventsEnabled":
+            suggest = "is_diagnostics_events_enabled"
+        elif key == "isHealthMonitoringEnabled":
+            suggest = "is_health_monitoring_enabled"
+        elif key == "isIncidentLogsEnabled":
+            suggest = "is_incident_logs_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExadbVmClusterPropertiesDataCollectionOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExadbVmClusterPropertiesDataCollectionOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExadbVmClusterPropertiesDataCollectionOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_diagnostics_events_enabled: Optional[_builtins.bool] = None,
+                 is_health_monitoring_enabled: Optional[_builtins.bool] = None,
+                 is_incident_logs_enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool is_diagnostics_events_enabled: Indicates whether to enable data collection for diagnostics.
+        :param _builtins.bool is_health_monitoring_enabled: Indicates whether to enable health monitoring.
+        :param _builtins.bool is_incident_logs_enabled: Indicates whether to enable incident logs and trace collection.
+        """
+        if is_diagnostics_events_enabled is not None:
+            pulumi.set(__self__, "is_diagnostics_events_enabled", is_diagnostics_events_enabled)
+        if is_health_monitoring_enabled is not None:
+            pulumi.set(__self__, "is_health_monitoring_enabled", is_health_monitoring_enabled)
+        if is_incident_logs_enabled is not None:
+            pulumi.set(__self__, "is_incident_logs_enabled", is_incident_logs_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="isDiagnosticsEventsEnabled")
+    def is_diagnostics_events_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether to enable data collection for diagnostics.
+        """
+        return pulumi.get(self, "is_diagnostics_events_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="isHealthMonitoringEnabled")
+    def is_health_monitoring_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether to enable health monitoring.
+        """
+        return pulumi.get(self, "is_health_monitoring_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="isIncidentLogsEnabled")
+    def is_incident_logs_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether to enable incident logs and trace collection.
+        """
+        return pulumi.get(self, "is_incident_logs_enabled")
+
+
+@pulumi.output_type
+class ExadbVmClusterPropertiesTimeZone(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: IANA Time Zone Database time zone. For example "America/New_York".
+        :param _builtins.str version: IANA Time Zone Database version number. For example "2019a".
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        IANA Time Zone Database time zone. For example "America/New_York".
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        IANA Time Zone Database version number. For example "2019a".
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ExadbVmClusterPropertiesVmFileSystemStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeInGbsPerNode":
+            suggest = "size_in_gbs_per_node"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExadbVmClusterPropertiesVmFileSystemStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExadbVmClusterPropertiesVmFileSystemStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExadbVmClusterPropertiesVmFileSystemStorage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 size_in_gbs_per_node: _builtins.int):
+        """
+        :param _builtins.int size_in_gbs_per_node: The storage allocation for the exadbvmcluster per node, in gigabytes (GB).
+               This field is used to calculate the total storage allocation for the
+               exadbvmcluster.
+        """
+        pulumi.set(__self__, "size_in_gbs_per_node", size_in_gbs_per_node)
+
+    @_builtins.property
+    @pulumi.getter(name="sizeInGbsPerNode")
+    def size_in_gbs_per_node(self) -> _builtins.int:
+        """
+        The storage allocation for the exadbvmcluster per node, in gigabytes (GB).
+        This field is used to calculate the total storage allocation for the
+        exadbvmcluster.
+        """
+        return pulumi.get(self, "size_in_gbs_per_node")
+
+
+@pulumi.output_type
 class ExascaleDbStorageVaultProperties(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6674,9 +7166,11 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         :param _builtins.str database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param _builtins.bool deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
         :param Sequence[_builtins.str] disaster_recovery_supported_locations: List of supported GCP region to clone the Autonomous Database for disaster recovery.
         :param _builtins.str display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str entitlement_id: The ID of the subscription entitlement associated with the Autonomous
                Database.
         :param Mapping[str, _builtins.str] labels: The labels or tags associated with the Autonomous Database. 
@@ -6776,6 +7270,9 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -6798,6 +7295,9 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
@@ -9079,7 +9579,9 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
                characters in length. The value must start with a letter and end with
                a letter or a number.
         :param _builtins.str create_time: The date and time that the Exadata Infrastructure was created.
+        :param _builtins.bool deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
         :param _builtins.str display_name: User friendly name for this resource.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str entitlement_id: Entitlement ID of the private offer against which this infrastructure
                resource is provisioned.
         :param _builtins.str gcp_oracle_zone: GCP location where Oracle Exadata is hosted.
@@ -9134,6 +9636,9 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -9147,6 +9652,9 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
@@ -10244,7 +10752,9 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
                characters in length. The value must start with a letter and end with
                a letter or a number.
         :param _builtins.str create_time: The date and time that the VM cluster was created.
+        :param _builtins.bool deletion_protection: Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
         :param _builtins.str display_name: User friendly name for this resource.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str exadata_infrastructure: The name of the Exadata Infrastructure resource on which VM cluster
                resource is created, in the following format:
                projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
@@ -10343,6 +10853,9 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
+        """
+        Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -10356,6 +10869,9 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property

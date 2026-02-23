@@ -31,6 +31,7 @@ class AppHostingBuildArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppHostingBuild resource.
+
         :param pulumi.Input[_builtins.str] backend: The ID of the Backend that this Build applies to
         :param pulumi.Input[_builtins.str] build_id: The user-specified ID of the build being created.
         :param pulumi.Input[_builtins.str] location: The location of the Backend that this Build applies to
@@ -195,6 +196,7 @@ class _AppHostingBuildState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppHostingBuild resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to
                store and arbitrary metadata. They are not queryable and should be
                preserved when modifying objects.
@@ -207,6 +209,7 @@ class _AppHostingBuildState:
                process.
         :param pulumi.Input[_builtins.str] create_time: Time at which the build was created.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name. 63 character limit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] environment: The environment name of the backend when this build was created.
         :param pulumi.Input[_builtins.str] error_source: The source of the error for the build, if in a `FAILED` state.
@@ -378,6 +381,9 @@ class _AppHostingBuildState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -761,24 +767,17 @@ class AppHostingBuild(pulumi.CustomResource):
         Build can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/builds/{{build_id}}`
-
         * `{{project}}/{{location}}/{{backend}}/{{build_id}}`
-
         * `{{location}}/{{backend}}/{{build_id}}`
 
         When using the `pulumi import` command, Build can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default projects/{{project}}/locations/{{location}}/backends/{{backend}}/builds/{{build_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{project}}/{{location}}/{{backend}}/{{build_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{location}}/{{backend}}/{{build_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -958,24 +957,17 @@ class AppHostingBuild(pulumi.CustomResource):
         Build can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/builds/{{build_id}}`
-
         * `{{project}}/{{location}}/{{backend}}/{{build_id}}`
-
         * `{{location}}/{{backend}}/{{build_id}}`
 
         When using the `pulumi import` command, Build can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default projects/{{project}}/locations/{{location}}/backends/{{backend}}/builds/{{build_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{project}}/{{location}}/{{backend}}/{{build_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{location}}/{{backend}}/{{build_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppHostingBuildArgs args: The arguments to use to populate this resource's properties.
@@ -1092,6 +1084,7 @@ class AppHostingBuild(pulumi.CustomResource):
                process.
         :param pulumi.Input[_builtins.str] create_time: Time at which the build was created.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name. 63 character limit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] environment: The environment name of the backend when this build was created.
         :param pulumi.Input[_builtins.str] error_source: The source of the error for the build, if in a `FAILED` state.
@@ -1222,6 +1215,9 @@ class AppHostingBuild(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

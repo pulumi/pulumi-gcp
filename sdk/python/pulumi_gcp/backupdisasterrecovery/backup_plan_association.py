@@ -29,6 +29,7 @@ class BackupPlanAssociationArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPlanAssociation resource.
+
         :param pulumi.Input[_builtins.str] backup_plan: The BP with which resource needs to be created
                Note:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
@@ -145,6 +146,7 @@ class _BackupPlanAssociationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPlanAssociation resources.
+
         :param pulumi.Input[_builtins.str] backup_plan: The BP with which resource needs to be created
                Note:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
@@ -467,24 +469,17 @@ class BackupPlanAssociation(pulumi.CustomResource):
         BackupPlanAssociation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backupPlanAssociations/{{backup_plan_association_id}}`
-
         * `{{project}}/{{location}}/{{backup_plan_association_id}}`
-
         * `{{location}}/{{backup_plan_association_id}}`
 
         When using the `pulumi import` command, BackupPlanAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default projects/{{project}}/locations/{{location}}/backupPlanAssociations/{{backup_plan_association_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default {{project}}/{{location}}/{{backup_plan_association_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default {{location}}/{{backup_plan_association_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -634,24 +629,17 @@ class BackupPlanAssociation(pulumi.CustomResource):
         BackupPlanAssociation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backupPlanAssociations/{{backup_plan_association_id}}`
-
         * `{{project}}/{{location}}/{{backup_plan_association_id}}`
-
         * `{{location}}/{{backup_plan_association_id}}`
 
         When using the `pulumi import` command, BackupPlanAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default projects/{{project}}/locations/{{location}}/backupPlanAssociations/{{backup_plan_association_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default {{project}}/{{location}}/{{backup_plan_association_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default {{location}}/{{backup_plan_association_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPlanAssociationArgs args: The arguments to use to populate this resource's properties.

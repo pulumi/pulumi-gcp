@@ -28,6 +28,7 @@ class JobArgs:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the transcoding job resource.
         :param pulumi.Input['JobConfigArgs'] config: The configuration for this template.
                Structure is documented below.
@@ -134,6 +135,7 @@ class _JobState:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
+
         :param pulumi.Input['JobConfigArgs'] config: The configuration for this template.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time the job was created.
@@ -1103,24 +1105,17 @@ class Job(pulumi.CustomResource):
         Job can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:transcoder/job:Job default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:transcoder/job:Job default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_transcoder_job.default "{{project}} {{name}}"
         $ pulumi import gcp:transcoder/job:Job default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1902,24 +1897,17 @@ class Job(pulumi.CustomResource):
         Job can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:transcoder/job:Job default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:transcoder/job:Job default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_transcoder_job.default "{{project}} {{name}}"
         $ pulumi import gcp:transcoder/job:Job default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.

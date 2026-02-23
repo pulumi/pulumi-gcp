@@ -72,6 +72,7 @@ import * as utilities from "../utilities";
  * const foobar = new gcp.compute.PacketMirroring("foobar", {
  *     name: "my-mirroring",
  *     description: "bar",
+ *     enable: "TRUE",
  *     network: {
  *         url: _default.id,
  *     },
@@ -100,28 +101,16 @@ import * as utilities from "../utilities";
  * PacketMirroring can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
  * ```
  */
@@ -165,6 +154,12 @@ export class PacketMirroring extends pulumi.CustomResource {
      * A human-readable description of the rule.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+     * policy will not be enforced on the network. The default is TRUE.
+     * Possible values are: `TRUE`, `FALSE`.
+     */
+    declare public readonly enable: pulumi.Output<string>;
     /**
      * A filter for mirrored traffic.  If unset, all traffic is mirrored.
      * Structure is documented below.
@@ -218,6 +213,7 @@ export class PacketMirroring extends pulumi.CustomResource {
             const state = argsOrState as PacketMirroringState | undefined;
             resourceInputs["collectorIlb"] = state?.collectorIlb;
             resourceInputs["description"] = state?.description;
+            resourceInputs["enable"] = state?.enable;
             resourceInputs["filter"] = state?.filter;
             resourceInputs["mirroredResources"] = state?.mirroredResources;
             resourceInputs["name"] = state?.name;
@@ -238,6 +234,7 @@ export class PacketMirroring extends pulumi.CustomResource {
             }
             resourceInputs["collectorIlb"] = args?.collectorIlb;
             resourceInputs["description"] = args?.description;
+            resourceInputs["enable"] = args?.enable;
             resourceInputs["filter"] = args?.filter;
             resourceInputs["mirroredResources"] = args?.mirroredResources;
             resourceInputs["name"] = args?.name;
@@ -267,6 +264,12 @@ export interface PacketMirroringState {
      * A human-readable description of the rule.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+     * policy will not be enforced on the network. The default is TRUE.
+     * Possible values are: `TRUE`, `FALSE`.
+     */
+    enable?: pulumi.Input<string>;
     /**
      * A filter for mirrored traffic.  If unset, all traffic is mirrored.
      * Structure is documented below.
@@ -322,6 +325,12 @@ export interface PacketMirroringArgs {
      * A human-readable description of the rule.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+     * policy will not be enforced on the network. The default is TRUE.
+     * Possible values are: `TRUE`, `FALSE`.
+     */
+    enable?: pulumi.Input<string>;
     /**
      * A filter for mirrored traffic.  If unset, all traffic is mirrored.
      * Structure is documented below.

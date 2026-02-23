@@ -31,6 +31,7 @@ class RepositoryWorkflowConfigArgs:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RepositoryWorkflowConfig resource.
+
         :param pulumi.Input[_builtins.str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
@@ -171,6 +172,7 @@ class _RepositoryWorkflowConfigState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RepositoryWorkflowConfig resources.
+
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
@@ -331,6 +333,17 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A resource represents a Dataform workflow configuration
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about RepositoryWorkflowConfig, see:
+
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.workflowConfigs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataform/docs/workflow-configurations)
+
         ## Example Usage
 
         ### Dataform Repository Workflow Config
@@ -418,30 +431,19 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         RepositoryWorkflowConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}`
-
         * `{{project}}/{{region}}/{{repository}}/{{name}}`
-
         * `{{region}}/{{repository}}/{{name}}`
-
         * `{{repository}}/{{name}}`
 
         When using the `pulumi import` command, RepositoryWorkflowConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{project}}/{{region}}/{{repository}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{region}}/{{repository}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{repository}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -463,6 +465,17 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  args: RepositoryWorkflowConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A resource represents a Dataform workflow configuration
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about RepositoryWorkflowConfig, see:
+
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.workflowConfigs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataform/docs/workflow-configurations)
+
         ## Example Usage
 
         ### Dataform Repository Workflow Config
@@ -550,30 +563,19 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         RepositoryWorkflowConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}`
-
         * `{{project}}/{{region}}/{{repository}}/{{name}}`
-
         * `{{region}}/{{repository}}/{{name}}`
-
         * `{{repository}}/{{name}}`
 
         When using the `pulumi import` command, RepositoryWorkflowConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{project}}/{{region}}/{{repository}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{region}}/{{repository}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{repository}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RepositoryWorkflowConfigArgs args: The arguments to use to populate this resource's properties.

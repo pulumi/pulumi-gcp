@@ -318,14 +318,20 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+     * The target number of running instances for this managed
+     * instance group. This value will fight with autoscaler settings when set, and generally shouldn&#39;t be set
+     * when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+     * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      * 
      */
     @Import(name="targetSize")
     private @Nullable Output<Integer> targetSize;
 
     /**
-     * @return The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+     * @return The target number of running instances for this managed
+     * instance group. This value will fight with autoscaler settings when set, and generally shouldn&#39;t be set
+     * when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+     * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      * 
      */
     public Optional<Output<Integer>> targetSize() {
@@ -940,7 +946,10 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param targetSize The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+         * @param targetSize The target number of running instances for this managed
+         * instance group. This value will fight with autoscaler settings when set, and generally shouldn&#39;t be set
+         * when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+         * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
          * 
          * @return builder
          * 
@@ -951,7 +960,10 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param targetSize The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+         * @param targetSize The target number of running instances for this managed
+         * instance group. This value will fight with autoscaler settings when set, and generally shouldn&#39;t be set
+         * when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+         * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
          * 
          * @return builder
          * 

@@ -74,22 +74,14 @@ import (
 // MulticastDomain can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}`
-//
 // * `{{project}}/{{location}}/{{multicast_domain_id}}`
-//
 // * `{{location}}/{{multicast_domain_id}}`
 //
 // When using the `pulumi import` command, MulticastDomain can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{project}}/{{location}}/{{multicast_domain_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{location}}/{{multicast_domain_id}}
 // ```
 type MulticastDomain struct {
@@ -144,6 +136,9 @@ type MulticastDomain struct {
 	// UPDATE_FAILED
 	// INACTIVE
 	States MulticastDomainStateTypeArrayOutput `pulumi:"states"`
+	// Information for an Ultra-Low-Latency multicast domain.
+	// Structure is documented below.
+	UllMulticastDomain MulticastDomainUllMulticastDomainPtrOutput `pulumi:"ullMulticastDomain"`
 	// The Google-generated UUID for the resource. This value is
 	// unique across all multicast domain resources. If a domain is deleted and
 	// another with the same name is created, the new domain is assigned a
@@ -250,6 +245,9 @@ type multicastDomainState struct {
 	// UPDATE_FAILED
 	// INACTIVE
 	States []MulticastDomainStateType `pulumi:"states"`
+	// Information for an Ultra-Low-Latency multicast domain.
+	// Structure is documented below.
+	UllMulticastDomain *MulticastDomainUllMulticastDomain `pulumi:"ullMulticastDomain"`
 	// The Google-generated UUID for the resource. This value is
 	// unique across all multicast domain resources. If a domain is deleted and
 	// another with the same name is created, the new domain is assigned a
@@ -310,6 +308,9 @@ type MulticastDomainState struct {
 	// UPDATE_FAILED
 	// INACTIVE
 	States MulticastDomainStateTypeArrayInput
+	// Information for an Ultra-Low-Latency multicast domain.
+	// Structure is documented below.
+	UllMulticastDomain MulticastDomainUllMulticastDomainPtrInput
 	// The Google-generated UUID for the resource. This value is
 	// unique across all multicast domain resources. If a domain is deleted and
 	// another with the same name is created, the new domain is assigned a
@@ -352,6 +353,9 @@ type multicastDomainArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Information for an Ultra-Low-Latency multicast domain.
+	// Structure is documented below.
+	UllMulticastDomain *MulticastDomainUllMulticastDomain `pulumi:"ullMulticastDomain"`
 }
 
 // The set of arguments for constructing a MulticastDomain resource.
@@ -383,6 +387,9 @@ type MulticastDomainArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Information for an Ultra-Low-Latency multicast domain.
+	// Structure is documented below.
+	UllMulticastDomain MulticastDomainUllMulticastDomainPtrInput
 }
 
 func (MulticastDomainArgs) ElementType() reflect.Type {
@@ -558,6 +565,12 @@ func (o MulticastDomainOutput) PulumiLabels() pulumi.StringMapOutput {
 // INACTIVE
 func (o MulticastDomainOutput) States() MulticastDomainStateTypeArrayOutput {
 	return o.ApplyT(func(v *MulticastDomain) MulticastDomainStateTypeArrayOutput { return v.States }).(MulticastDomainStateTypeArrayOutput)
+}
+
+// Information for an Ultra-Low-Latency multicast domain.
+// Structure is documented below.
+func (o MulticastDomainOutput) UllMulticastDomain() MulticastDomainUllMulticastDomainPtrOutput {
+	return o.ApplyT(func(v *MulticastDomain) MulticastDomainUllMulticastDomainPtrOutput { return v.UllMulticastDomain }).(MulticastDomainUllMulticastDomainPtrOutput)
 }
 
 // The Google-generated UUID for the resource. This value is

@@ -10,6 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Alloydb
 {
     /// <summary>
+    /// A managed alloydb cluster.
+    /// 
+    /// To get more information about Cluster, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+    /// * How-to Guides
+    ///     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+    /// 
+    /// &gt; **Note:** Users can promote a secondary cluster to a primary cluster with the help of `ClusterType`.
+    /// To promote, users have to set the `ClusterType` property as `PRIMARY` and remove the `SecondaryConfig` field from cluster configuration.
+    /// See Example.
+    /// 
+    /// Switchover is supported in terraform by refreshing the state of the terraform configurations.
+    /// The switchover operation still needs to be called outside of terraform.
+    /// After the switchover operation is completed successfully:
+    ///   1. Refresh the state of the AlloyDB resources by running `pulumi up -refresh-only --auto-approve` .
+    ///   2. Manually update the terraform configuration file(s) to match the actual state of the resources by modifying the `ClusterType` and `SecondaryConfig` fields.
+    ///   3. Verify the sync of terraform state by running `pulumi preview` and ensure that the infrastructure matches the configuration and no changes are required.
+    /// 
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `initial_user.password_wo`.
+    /// Read more about Write-only Arguments.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Alloydb Cluster Basic
@@ -415,28 +437,16 @@ namespace Pulumi.Gcp.Alloydb
     /// Cluster can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{cluster_id}}`
-    /// 
     /// * `{{location}}/{{cluster_id}}`
-    /// 
     /// * `{{cluster_id}}`
     /// 
     /// When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:alloydb/cluster:Cluster default {{project}}/{{location}}/{{cluster_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:alloydb/cluster:Cluster default {{location}}/{{cluster_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:alloydb/cluster:Cluster default {{cluster_id}}
     /// ```
     /// </summary>
@@ -519,6 +529,12 @@ namespace Pulumi.Gcp.Alloydb
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the cluster.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the cluster will fail.
+        /// When the field is set to false, deleting the cluster is allowed.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -528,6 +544,9 @@ namespace Pulumi.Gcp.Alloydb
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -816,6 +835,12 @@ namespace Pulumi.Gcp.Alloydb
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the cluster.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the cluster will fail.
+        /// When the field is set to false, deleting the cluster is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -1051,6 +1076,12 @@ namespace Pulumi.Gcp.Alloydb
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the cluster.
+        /// When the field is set to true or unset in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the cluster will fail.
+        /// When the field is set to false, deleting the cluster is allowed.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -1062,6 +1093,10 @@ namespace Pulumi.Gcp.Alloydb
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());

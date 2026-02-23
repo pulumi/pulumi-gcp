@@ -62,22 +62,14 @@ import (
 // HttpHealthCheck can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/global/httpHealthChecks/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, HttpHealthCheck can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default projects/{{project}}/global/httpHealthChecks/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default {{name}}
 // ```
 type HttpHealthCheck struct {

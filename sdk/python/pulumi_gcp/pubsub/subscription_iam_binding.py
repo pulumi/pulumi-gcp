@@ -28,6 +28,7 @@ class SubscriptionIAMBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SubscriptionIAMBinding resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -130,6 +131,7 @@ class _SubscriptionIAMBindingState:
                  subscription: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SubscriptionIAMBinding resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the subscription's IAM policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -327,29 +329,9 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the identifier of the Pubsub Subscription resource. For example:
-
-        * `"projects/{{project_id}}/subscriptions/{{subscription}}"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "projects/{{project_id}}/subscriptions/{{subscription}}"
-
-          to = google_pubsub_subscription_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding default projects/{{project_id}}/subscriptions/{{subscription}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -450,29 +432,9 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the identifier of the Pubsub Subscription resource. For example:
-
-        * `"projects/{{project_id}}/subscriptions/{{subscription}}"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "projects/{{project_id}}/subscriptions/{{subscription}}"
-
-          to = google_pubsub_subscription_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding default projects/{{project_id}}/subscriptions/{{subscription}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param SubscriptionIAMBindingArgs args: The arguments to use to populate this resource's properties.

@@ -15,9 +15,19 @@ public final class ReleaseBlueprintArgs extends com.pulumi.resources.ResourceArg
 
     public static final ReleaseBlueprintArgs Empty = new ReleaseBlueprintArgs();
 
+    /**
+     * (Output)
+     * Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
+     * 
+     */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
+    /**
+     * @return (Output)
+     * Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
+     * 
+     */
     public Optional<Output<String>> engine() {
         return Optional.ofNullable(this.engine);
     }
@@ -82,11 +92,25 @@ public final class ReleaseBlueprintArgs extends com.pulumi.resources.ResourceArg
             $ = new ReleaseBlueprintArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param engine (Output)
+         * Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
+         * 
+         * @return builder
+         * 
+         */
         public Builder engine(@Nullable Output<String> engine) {
             $.engine = engine;
             return this;
         }
 
+        /**
+         * @param engine (Output)
+         * Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
+         * 
+         * @return builder
+         * 
+         */
         public Builder engine(String engine) {
             return engine(Output.of(engine));
         }

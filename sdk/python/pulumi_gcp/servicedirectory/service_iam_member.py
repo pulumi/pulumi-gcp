@@ -27,6 +27,7 @@ class ServiceIamMemberArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceIamMember resource.
+
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -120,6 +121,7 @@ class _ServiceIamMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceIamMember resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -350,9 +352,7 @@ class ServiceIamMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}
-
         * {{project}}/{{location}}/{{namespace_id}}/{{service_id}}
-
         * {{location}}/{{namespace_id}}/{{service_id}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -360,26 +360,23 @@ class ServiceIamMember(pulumi.CustomResource):
         Service Directory service IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:servicedirectory/serviceIamMember:ServiceIamMember editor "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}} roles/viewer user:jane@example.com"
+        $ terraform import google_service_directory_service_iam_member.editor "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:servicedirectory/serviceIamMember:ServiceIamMember editor "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}} roles/viewer"
+        $ terraform import google_service_directory_service_iam_binding.editor "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:servicedirectory/serviceIamMember:ServiceIamMember editor projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -525,9 +522,7 @@ class ServiceIamMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}
-
         * {{project}}/{{location}}/{{namespace_id}}/{{service_id}}
-
         * {{location}}/{{namespace_id}}/{{service_id}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -535,26 +530,23 @@ class ServiceIamMember(pulumi.CustomResource):
         Service Directory service IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:servicedirectory/serviceIamMember:ServiceIamMember editor "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}} roles/viewer user:jane@example.com"
+        $ terraform import google_service_directory_service_iam_member.editor "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:servicedirectory/serviceIamMember:ServiceIamMember editor "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}} roles/viewer"
+        $ terraform import google_service_directory_service_iam_binding.editor "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:servicedirectory/serviceIamMember:ServiceIamMember editor projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param ServiceIamMemberArgs args: The arguments to use to populate this resource's properties.

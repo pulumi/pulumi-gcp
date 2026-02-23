@@ -26,6 +26,7 @@ class ReleaseChannelSettingArgs:
                  release_channel: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReleaseChannelSetting resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] release_channel_setting_id: Id of the Release Channel Setting.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
@@ -129,6 +130,7 @@ class _ReleaseChannelSettingState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReleaseChannelSetting resources.
+
         :param pulumi.Input[_builtins.str] create_time: Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
@@ -335,24 +337,17 @@ class ReleaseChannelSetting(pulumi.CustomResource):
         ReleaseChannelSetting can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}`
-
         * `{{project}}/{{location}}/{{release_channel_setting_id}}`
-
         * `{{location}}/{{release_channel_setting_id}}`
 
         When using the `pulumi import` command, ReleaseChannelSetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{project}}/{{location}}/{{release_channel_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{location}}/{{release_channel_setting_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -399,24 +394,17 @@ class ReleaseChannelSetting(pulumi.CustomResource):
         ReleaseChannelSetting can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}`
-
         * `{{project}}/{{location}}/{{release_channel_setting_id}}`
-
         * `{{location}}/{{release_channel_setting_id}}`
 
         When using the `pulumi import` command, ReleaseChannelSetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{project}}/{{location}}/{{release_channel_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{location}}/{{release_channel_setting_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReleaseChannelSettingArgs args: The arguments to use to populate this resource's properties.

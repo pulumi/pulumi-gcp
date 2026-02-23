@@ -37,13 +37,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-//				ScopeId: pulumi.String("tf-test-scope_85160"),
+//				ScopeId: pulumi.String("tf-test-scope_25141"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gkehub.NewNamespace(ctx, "namespace", &gkehub.NamespaceArgs{
-//				ScopeNamespaceId: pulumi.String("tf-test-namespace_92130"),
+//				ScopeNamespaceId: pulumi.String("tf-test-namespace_30827"),
 //				ScopeId:          scope.ScopeId,
 //				Scope:            scope.Name,
 //				NamespaceLabels: pulumi.StringMap{
@@ -73,22 +73,14 @@ import (
 // Namespace can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}`
-//
 // * `{{project}}/{{scope_id}}/{{scope_namespace_id}}`
-//
 // * `{{scope_id}}/{{scope_namespace_id}}`
 //
 // When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkehub/namespace:Namespace default projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/namespace:Namespace default {{project}}/{{scope_id}}/{{scope_namespace_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:gkehub/namespace:Namespace default {{scope_id}}/{{scope_namespace_id}}
 // ```
 type Namespace struct {

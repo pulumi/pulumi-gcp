@@ -1134,6 +1134,10 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getBackendBucket:getBackendBucket", TypeShape.of(GetBackendBucketResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for backendbucket
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1173,6 +1177,10 @@ public final class ComputeFunctions {
         return getBackendBucketIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for backendbucket
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1212,6 +1220,10 @@ public final class ComputeFunctions {
         return getBackendBucketIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for backendbucket
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1251,6 +1263,10 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", TypeShape.of(GetBackendBucketIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for backendbucket
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1290,6 +1306,10 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", TypeShape.of(GetBackendBucketIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for backendbucket
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1574,6 +1594,10 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getBackendService:getBackendService", TypeShape.of(GetBackendServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for backendservice
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1613,6 +1637,10 @@ public final class ComputeFunctions {
         return getBackendServiceIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for backendservice
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1652,6 +1680,10 @@ public final class ComputeFunctions {
         return getBackendServiceIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for backendservice
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1691,6 +1723,10 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy", TypeShape.of(GetBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for backendservice
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1730,6 +1766,10 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy", TypeShape.of(GetBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for backendservice
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8705,6 +8745,10 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getLBIPRanges:getLBIPRanges", TypeShape.of(GetLBIPRangesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for machineimage
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8744,6 +8788,10 @@ public final class ComputeFunctions {
         return getMachineImageIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for machineimage
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8783,6 +8831,10 @@ public final class ComputeFunctions {
         return getMachineImageIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for machineimage
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8822,6 +8874,10 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", TypeShape.of(GetMachineImageIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for machineimage
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8861,6 +8917,10 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", TypeShape.of(GetMachineImageIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for machineimage
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -12013,6 +12073,10 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionBackendService:getRegionBackendService", TypeShape.of(GetRegionBackendServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for regionbackendservice
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -12053,6 +12117,10 @@ public final class ComputeFunctions {
         return getRegionBackendServiceIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for regionbackendservice
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -12093,6 +12161,10 @@ public final class ComputeFunctions {
         return getRegionBackendServiceIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for regionbackendservice
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -12133,6 +12205,10 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", TypeShape.of(GetRegionBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for regionbackendservice
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -12173,6 +12249,10 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", TypeShape.of(GetRegionBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for regionbackendservice
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -15211,18 +15291,213 @@ public final class ComputeFunctions {
     public static CompletableFuture<GetReservationSubBlockResult> getReservationSubBlockPlain(GetReservationSubBlockPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getReservationSubBlock:getReservationSubBlock", TypeShape.of(GetReservationSubBlockResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provide access to a Resource Policy&#39;s attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
+     *             .name("daily")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetResourcePolicyResult> getResourcePolicy(GetResourcePolicyArgs args) {
         return getResourcePolicy(args, InvokeOptions.Empty);
     }
+    /**
+     * Provide access to a Resource Policy&#39;s attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
+     *             .name("daily")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetResourcePolicyResult> getResourcePolicyPlain(GetResourcePolicyPlainArgs args) {
         return getResourcePolicyPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Provide access to a Resource Policy&#39;s attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
+     *             .name("daily")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetResourcePolicyResult> getResourcePolicy(GetResourcePolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getResourcePolicy:getResourcePolicy", TypeShape.of(GetResourcePolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provide access to a Resource Policy&#39;s attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
+     *             .name("daily")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetResourcePolicyResult> getResourcePolicy(GetResourcePolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getResourcePolicy:getResourcePolicy", TypeShape.of(GetResourcePolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provide access to a Resource Policy&#39;s attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+     * 
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
+     *             .name("daily")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetResourcePolicyResult> getResourcePolicyPlain(GetResourcePolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getResourcePolicy:getResourcePolicy", TypeShape.of(GetResourcePolicyResult.class), args, Utilities.withVersion(options));
     }

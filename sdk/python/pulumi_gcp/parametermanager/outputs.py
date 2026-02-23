@@ -213,6 +213,7 @@ class GetParametersParameterResult(dict):
                  update_time: _builtins.str):
         """
         :param _builtins.str create_time: The time at which the parameter was created.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str format: The format type of the parameter.
         :param _builtins.str kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
         :param Mapping[str, _builtins.str] labels: The labels assigned to the parameter.
@@ -247,6 +248,9 @@ class GetParametersParameterResult(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
@@ -418,6 +422,7 @@ class GetRegionalParametersParameterResult(dict):
                  update_time: _builtins.str):
         """
         :param _builtins.str create_time: The time at which the regional parameter was created.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str format: The format type of the regional parameter.
         :param _builtins.str kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
         :param Mapping[str, _builtins.str] labels: The labels assigned to the regional parameter.
@@ -454,6 +459,9 @@ class GetRegionalParametersParameterResult(dict):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property

@@ -24,6 +24,7 @@ class FirewallPolicyAssociationArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallPolicyAssociation resource.
+
         :param pulumi.Input[_builtins.str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
                This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
@@ -87,6 +88,7 @@ class _FirewallPolicyAssociationState:
                  short_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallPolicyAssociation resources.
+
         :param pulumi.Input[_builtins.str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
                This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
@@ -202,18 +204,15 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         FirewallPolicyAssociation can be imported using any of these accepted formats:
 
         * `locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
-
         * `{{firewall_policy}}/{{name}}`
 
         When using the `pulumi import` command, FirewallPolicyAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default {{firewall_policy}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -265,18 +264,15 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         FirewallPolicyAssociation can be imported using any of these accepted formats:
 
         * `locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
-
         * `{{firewall_policy}}/{{name}}`
 
         When using the `pulumi import` command, FirewallPolicyAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default {{firewall_policy}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallPolicyAssociationArgs args: The arguments to use to populate this resource's properties.

@@ -27,7 +27,7 @@ class GetHcVpnGatewayResult:
     """
     A collection of values returned by getHcVpnGateway.
     """
-    def __init__(__self__, description=None, effective_labels=None, gateway_ip_version=None, id=None, label_fingerprint=None, labels=None, name=None, network=None, project=None, pulumi_labels=None, region=None, self_link=None, stack_type=None, vpn_interfaces=None):
+    def __init__(__self__, description=None, effective_labels=None, gateway_ip_version=None, id=None, label_fingerprint=None, labels=None, name=None, network=None, params=None, project=None, pulumi_labels=None, region=None, self_link=None, stack_type=None, vpn_interfaces=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -52,6 +52,9 @@ class GetHcVpnGatewayResult:
         if network and not isinstance(network, str):
             raise TypeError("Expected argument 'network' to be a str")
         pulumi.set(__self__, "network", network)
+        if params and not isinstance(params, list):
+            raise TypeError("Expected argument 'params' to be a list")
+        pulumi.set(__self__, "params", params)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -116,6 +119,11 @@ class GetHcVpnGatewayResult:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Sequence['outputs.GetHcVpnGatewayParamResult']:
+        return pulumi.get(self, "params")
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
 
@@ -159,6 +167,7 @@ class AwaitableGetHcVpnGatewayResult(GetHcVpnGatewayResult):
             labels=self.labels,
             name=self.name,
             network=self.network,
+            params=self.params,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
             region=self.region,
@@ -209,6 +218,7 @@ def get_hc_vpn_gateway(name: Optional[_builtins.str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
+        params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
@@ -256,6 +266,7 @@ def get_hc_vpn_gateway_output(name: Optional[pulumi.Input[_builtins.str]] = None
         labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),
+        params=pulumi.get(__response__, 'params'),
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         region=pulumi.get(__response__, 'region'),

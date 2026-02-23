@@ -29,6 +29,7 @@ class AutoscalingPolicyArgs:
                  worker_config: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']] = None):
         """
         The set of arguments for constructing a AutoscalingPolicy resource.
+
         :param pulumi.Input[_builtins.str] policy_id: The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 50 characters.
@@ -147,6 +148,7 @@ class _AutoscalingPolicyState:
                  worker_config: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']] = None):
         """
         Input properties used for looking up and filtering AutoscalingPolicy resources.
+
         :param pulumi.Input['AutoscalingPolicyBasicAlgorithmArgs'] basic_algorithm: Basic algorithm for autoscaling.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The  location where the autoscaling policy should reside.
@@ -321,24 +323,17 @@ class AutoscalingPolicy(pulumi.CustomResource):
         AutoscalingPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}`
-
         * `{{project}}/{{location}}/{{policy_id}}`
-
         * `{{location}}/{{policy_id}}`
 
         When using the `pulumi import` command, AutoscalingPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{project}}/{{location}}/{{policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{location}}/{{policy_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -401,24 +396,17 @@ class AutoscalingPolicy(pulumi.CustomResource):
         AutoscalingPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}`
-
         * `{{project}}/{{location}}/{{policy_id}}`
-
         * `{{location}}/{{policy_id}}`
 
         When using the `pulumi import` command, AutoscalingPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{project}}/{{location}}/{{policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{location}}/{{policy_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AutoscalingPolicyArgs args: The arguments to use to populate this resource's properties.

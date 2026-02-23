@@ -178,16 +178,12 @@ import javax.annotation.Nullable;
  * Floorsetting can be imported using any of these accepted formats:
  * 
  * * `{{parent}}/locations/{{location}}/floorSetting`
- * 
  * * `{{parent}}/{{location}}`
  * 
  * When using the `pulumi import` command, Floorsetting can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:modelarmor/floorsetting:Floorsetting default {{parent}}/locations/{{location}}/floorSetting
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:modelarmor/floorsetting:Floorsetting default {{parent}}/{{location}}
  * ```
  * 

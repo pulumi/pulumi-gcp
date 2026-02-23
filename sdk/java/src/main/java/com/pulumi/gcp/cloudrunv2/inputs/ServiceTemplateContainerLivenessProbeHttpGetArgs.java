@@ -36,14 +36,14 @@ public final class ServiceTemplateContainerLivenessProbeHttpGetArgs extends com.
     }
 
     /**
-     * Path to access on the HTTP server. Defaults to &#39;/&#39;.
+     * Path to access on the HTTP server. If set, it should not be empty string.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return Path to access on the HTTP server. Defaults to &#39;/&#39;.
+     * @return Path to access on the HTTP server. If set, it should not be empty string.
      * 
      */
     public Optional<Output<String>> path() {
@@ -51,7 +51,7 @@ public final class ServiceTemplateContainerLivenessProbeHttpGetArgs extends com.
     }
 
     /**
-     * Port number to access on the container. Must be in the range 1 to 65535.
+     * Port number to access on the container. Number must be in the range 1 to 65535.
      * If not specified, defaults to the same value as container.ports[0].containerPort.
      * 
      */
@@ -59,7 +59,7 @@ public final class ServiceTemplateContainerLivenessProbeHttpGetArgs extends com.
     private @Nullable Output<Integer> port;
 
     /**
-     * @return Port number to access on the container. Must be in the range 1 to 65535.
+     * @return Port number to access on the container. Number must be in the range 1 to 65535.
      * If not specified, defaults to the same value as container.ports[0].containerPort.
      * 
      */
@@ -128,7 +128,7 @@ public final class ServiceTemplateContainerLivenessProbeHttpGetArgs extends com.
         }
 
         /**
-         * @param path Path to access on the HTTP server. Defaults to &#39;/&#39;.
+         * @param path Path to access on the HTTP server. If set, it should not be empty string.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class ServiceTemplateContainerLivenessProbeHttpGetArgs extends com.
         }
 
         /**
-         * @param path Path to access on the HTTP server. Defaults to &#39;/&#39;.
+         * @param path Path to access on the HTTP server. If set, it should not be empty string.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class ServiceTemplateContainerLivenessProbeHttpGetArgs extends com.
         }
 
         /**
-         * @param port Port number to access on the container. Must be in the range 1 to 65535.
+         * @param port Port number to access on the container. Number must be in the range 1 to 65535.
          * If not specified, defaults to the same value as container.ports[0].containerPort.
          * 
          * @return builder
@@ -161,7 +161,7 @@ public final class ServiceTemplateContainerLivenessProbeHttpGetArgs extends com.
         }
 
         /**
-         * @param port Port number to access on the container. Must be in the range 1 to 65535.
+         * @param port Port number to access on the container. Number must be in the range 1 to 65535.
          * If not specified, defaults to the same value as container.ports[0].containerPort.
          * 
          * @return builder

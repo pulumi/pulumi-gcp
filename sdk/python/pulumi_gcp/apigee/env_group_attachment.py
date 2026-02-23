@@ -23,6 +23,7 @@ class EnvGroupAttachmentArgs:
                  environment: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a EnvGroupAttachment resource.
+
         :param pulumi.Input[_builtins.str] envgroup_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
@@ -64,6 +65,7 @@ class _EnvGroupAttachmentState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvGroupAttachment resources.
+
         :param pulumi.Input[_builtins.str] envgroup_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
@@ -139,18 +141,15 @@ class EnvGroupAttachment(pulumi.CustomResource):
         EnvgroupAttachment can be imported using any of these accepted formats:
 
         * `{{envgroup_id}}/attachments/{{name}}`
-
         * `{{envgroup_id}}/{{name}}`
 
         When using the `pulumi import` command, EnvgroupAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment default {{envgroup_id}}/attachments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment default {{envgroup_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -180,18 +179,15 @@ class EnvGroupAttachment(pulumi.CustomResource):
         EnvgroupAttachment can be imported using any of these accepted formats:
 
         * `{{envgroup_id}}/attachments/{{name}}`
-
         * `{{envgroup_id}}/{{name}}`
 
         When using the `pulumi import` command, EnvgroupAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment default {{envgroup_id}}/attachments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment default {{envgroup_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvGroupAttachmentArgs args: The arguments to use to populate this resource's properties.

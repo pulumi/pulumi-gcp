@@ -87,28 +87,16 @@ import javax.annotation.Nullable;
  * Database can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
- * 
  * * `instances/{{instance}}/databases/{{name}}`
- * 
  * * `{{project}}/{{instance}}/{{name}}`
- * 
  * * `{{instance}}/{{name}}`
  * 
  * When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:spanner/database:Database default instances/{{instance}}/databases/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
  * ```
  * 
@@ -133,9 +121,31 @@ public class Database extends com.pulumi.resources.CustomResource {
     public Output<String> databaseDialect() {
         return this.databaseDialect;
     }
+    /**
+     * An optional list of DDL statements to run inside the database. Statements can create
+     * tables, indexes, etc.
+     * During creation these statements execute atomically with the creation of the database
+     * and if there is an error in any statement, the database is not created.
+     * Terraform does not perform drift detection on this field and assumes that the values
+     * recorded in state are accurate. Limited updates to this field are supported, and
+     * newly appended DDL statements can be executed in an update. However, modifications
+     * to prior statements will create a plan that marks the resource for recreation.
+     * 
+     */
     @Export(name="ddls", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ddls;
 
+    /**
+     * @return An optional list of DDL statements to run inside the database. Statements can create
+     * tables, indexes, etc.
+     * During creation these statements execute atomically with the creation of the database
+     * and if there is an error in any statement, the database is not created.
+     * Terraform does not perform drift detection on this field and assumes that the values
+     * recorded in state are accurate. Limited updates to this field are supported, and
+     * newly appended DDL statements can be executed in an update. However, modifications
+     * to prior statements will create a plan that marks the resource for recreation.
+     * 
+     */
     public Output<Optional<List<String>>> ddls() {
         return Codegen.optional(this.ddls);
     }
@@ -171,9 +181,29 @@ public class Database extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
+    /**
+     * Whether drop protection is enabled for this database. Defaults to false.
+     * Drop protection is different from
+     * the &#34;deletionProtection&#34; attribute in the following ways:
+     * (1) &#34;deletionProtection&#34; only protects the database from deletions in Terraform.
+     * whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+     * (2) Setting &#34;enableDropProtection&#34; to true also prevents the deletion of the parent instance containing the database.
+     * &#34;deletionProtection&#34; attribute does not provide protection against the deletion of the parent instance.
+     * 
+     */
     @Export(name="enableDropProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableDropProtection;
 
+    /**
+     * @return Whether drop protection is enabled for this database. Defaults to false.
+     * Drop protection is different from
+     * the &#34;deletionProtection&#34; attribute in the following ways:
+     * (1) &#34;deletionProtection&#34; only protects the database from deletions in Terraform.
+     * whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+     * (2) Setting &#34;enableDropProtection&#34; to true also prevents the deletion of the parent instance containing the database.
+     * &#34;deletionProtection&#34; attribute does not provide protection against the deletion of the parent instance.
+     * 
+     */
     public Output<Optional<Boolean>> enableDropProtection() {
         return Codegen.optional(this.enableDropProtection);
     }

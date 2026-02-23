@@ -140,22 +140,14 @@ import (
 // Parameter can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
-//
 // * `{{project}}/{{parameter_id}}`
-//
 // * `{{parameter_id}}`
 //
 // When using the `pulumi import` command, Parameter can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:parametermanager/parameter:Parameter default projects/{{project}}/locations/global/parameters/{{parameter_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:parametermanager/parameter:Parameter default {{project}}/{{parameter_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:parametermanager/parameter:Parameter default {{parameter_id}}
 // ```
 type Parameter struct {

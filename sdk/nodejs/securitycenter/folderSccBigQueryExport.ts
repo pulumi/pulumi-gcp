@@ -57,16 +57,12 @@ import * as utilities from "../utilities";
  * FolderSccBigQueryExport can be imported using any of these accepted formats:
  *
  * * `folders/{{folder}}/bigQueryExports/{{big_query_export_id}}`
- *
  * * `{{folder}}/{{big_query_export_id}}`
  *
  * When using the `pulumi import` command, FolderSccBigQueryExport can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport default folders/{{folder}}/bigQueryExports/{{big_query_export_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport default {{folder}}/{{big_query_export_id}}
  * ```
  */

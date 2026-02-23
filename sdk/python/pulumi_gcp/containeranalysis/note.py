@@ -31,6 +31,7 @@ class NoteArgs:
                  short_description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Note resource.
+
         :param pulumi.Input['NoteAttestationAuthorityArgs'] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
                For example, an organization might have one AttestationAuthority for
                "QA" and one for "build". This Note is intended to act strictly as a
@@ -191,6 +192,7 @@ class _NoteState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Note resources.
+
         :param pulumi.Input['NoteAttestationAuthorityArgs'] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
                For example, an organization might have one AttestationAuthority for
                "QA" and one for "build". This Note is intended to act strictly as a
@@ -455,24 +457,17 @@ class Note(pulumi.CustomResource):
         Note can be imported using any of these accepted formats:
 
         * `projects/{{project}}/notes/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Note can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:containeranalysis/note:Note default projects/{{project}}/notes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:containeranalysis/note:Note default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:containeranalysis/note:Note default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -561,24 +556,17 @@ class Note(pulumi.CustomResource):
         Note can be imported using any of these accepted formats:
 
         * `projects/{{project}}/notes/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Note can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:containeranalysis/note:Note default projects/{{project}}/notes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:containeranalysis/note:Note default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:containeranalysis/note:Note default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NoteArgs args: The arguments to use to populate this resource's properties.

@@ -14,12 +14,17 @@ import javax.annotation.Nullable;
 public final class UptimeCheckConfigHttpCheckAuthInfo {
     /**
      * @return The password to authenticate.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private @Nullable String password;
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * The password to authenticate.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `password` or `passwordWo` can only be set.
      * 
      */
     private @Nullable String passwordWo;
@@ -37,6 +42,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
     private UptimeCheckConfigHttpCheckAuthInfo() {}
     /**
      * @return The password to authenticate.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<String> password() {
@@ -44,7 +50,11 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
     }
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * The password to authenticate.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `password` or `passwordWo` can only be set.
      * 
      */
     public Optional<String> passwordWo() {

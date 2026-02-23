@@ -23,8 +23,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -74,8 +72,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
@@ -144,8 +140,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
@@ -198,22 +192,14 @@ import (
 // Cluster can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
-//
 // * `{{project}}/{{location}}/{{cluster_id}}`
-//
 // * `{{location}}/{{cluster_id}}`
 //
 // When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:managedkafka/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:managedkafka/cluster:Cluster default {{project}}/{{location}}/{{cluster_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:managedkafka/cluster:Cluster default {{location}}/{{cluster_id}}
 // ```
 type Cluster struct {

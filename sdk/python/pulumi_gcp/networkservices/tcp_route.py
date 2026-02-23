@@ -30,6 +30,7 @@ class TcpRouteArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TcpRoute resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
@@ -170,6 +171,7 @@ class _TcpRouteState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TcpRoute resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the TcpRoute was created in UTC.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -552,24 +554,17 @@ class TcpRoute(pulumi.CustomResource):
         TcpRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/tcpRoutes/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, TcpRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default projects/{{project}}/locations/global/tcpRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -762,24 +757,17 @@ class TcpRoute(pulumi.CustomResource):
         TcpRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/tcpRoutes/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, TcpRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default projects/{{project}}/locations/global/tcpRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TcpRouteArgs args: The arguments to use to populate this resource's properties.

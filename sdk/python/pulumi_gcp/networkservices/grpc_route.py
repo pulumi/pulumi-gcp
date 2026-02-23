@@ -32,6 +32,7 @@ class GrpcRouteArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GrpcRoute resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Required. Service hostnames with an optional port for which this route describes traffic.
         :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
@@ -195,6 +196,7 @@ class _GrpcRouteState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GrpcRoute resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the GrpcRoute was created in UTC.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -585,24 +587,17 @@ class GrpcRoute(pulumi.CustomResource):
         GrpcRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -777,24 +772,17 @@ class GrpcRoute(pulumi.CustomResource):
         GrpcRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/{{location}}/grpcRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GrpcRouteArgs args: The arguments to use to populate this resource's properties.

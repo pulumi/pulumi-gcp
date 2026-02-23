@@ -20,6 +20,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A UnitKind serves as a template or type definition for a group of Units. Units that belong to the same UnitKind are managed together, follow the same release model, and are typically updated together through rollouts.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
  * ## Example Usage
  * 
  * ### Saas Runtime Unit Kind Basic
@@ -97,22 +102,14 @@ import javax.annotation.Nullable;
  * UnitKind can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/unitKinds/{{unit_kind_id}}`
- * 
  * * `{{project}}/{{location}}/{{unit_kind_id}}`
- * 
  * * `{{location}}/{{unit_kind_id}}`
  * 
  * When using the `pulumi import` command, UnitKind can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:saasruntime/unitKind:UnitKind default projects/{{project}}/locations/{{location}}/unitKinds/{{unit_kind_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:saasruntime/unitKind:UnitKind default {{project}}/{{location}}/{{unit_kind_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:saasruntime/unitKind:UnitKind default {{location}}/{{unit_kind_id}}
  * ```
  * 
@@ -195,9 +192,17 @@ public class UnitKind extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<UnitKindDependency>>> dependencies() {
         return Codegen.optional(this.dependencies);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

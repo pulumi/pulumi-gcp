@@ -23,6 +23,7 @@ class VersionArgs:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Version resource.
+
         :param pulumi.Input[_builtins.str] description: The developer-provided description of this version.
         :param pulumi.Input[_builtins.str] parent: The Flow to create an Version for.
                Format: projects/<Project ID>/agent.
@@ -68,6 +69,7 @@ class _VersionState:
                  version_number: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Version resources.
+
         :param pulumi.Input[_builtins.str] description: The developer-provided description of this version.
         :param pulumi.Input[_builtins.str] name: The unique identifier of this agent version.
         :param pulumi.Input[_builtins.str] parent: The Flow to create an Version for.
@@ -207,18 +209,15 @@ class Version(pulumi.CustomResource):
         Version can be imported using any of these accepted formats:
 
         * `{{parent}}/versions/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/version:Version default {{parent}}/versions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/version:Version default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -282,18 +281,15 @@ class Version(pulumi.CustomResource):
         Version can be imported using any of these accepted formats:
 
         * `{{parent}}/versions/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/version:Version default {{parent}}/versions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/version:Version default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VersionArgs args: The arguments to use to populate this resource's properties.

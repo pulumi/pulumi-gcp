@@ -14,6 +14,18 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * A `KeyHandle` is a resource used to auto-provision CryptoKeys for CMEK.
+ * 
+ * &gt; **Note:** KeyHandles cannot be deleted from Google Cloud Platform.
+ * Destroying a Terraform-managed KeyHandle will remove it from state but
+ * *will not delete the resource from the project.*
+ * 
+ * To get more information about KeyHandle, see:
+ * 
+ * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles)
+ * * How-to Guides
+ *     * [Cloud KMS with Autokey](https://cloud.google.com/kms/docs/kms-with-autokey)
+ * 
  * ## Example Usage
  * 
  * ### Kms Key Handle Basic
@@ -164,22 +176,14 @@ import javax.annotation.Nullable;
  * KeyHandle can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/keyHandles/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, KeyHandle can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:kms/keyHandle:KeyHandle default projects/{{project}}/locations/{{location}}/keyHandles/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:kms/keyHandle:KeyHandle default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:kms/keyHandle:KeyHandle default {{location}}/{{name}}
  * ```
  * 

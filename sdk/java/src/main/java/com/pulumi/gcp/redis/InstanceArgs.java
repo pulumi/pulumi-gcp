@@ -116,9 +116,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.customerManagedKey);
     }
 
+    /**
+     * Whether Terraform will be prevented from destroying the instance.
+     * When a`terraform destroy` or `pulumi up` would delete the instance,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the instance will fail.
+     * When the field is set to false, deleting the instance is allowed.
+     * 
+     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance.
+     * When a`terraform destroy` or `pulumi up` would delete the instance,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the instance will fail.
+     * When the field is set to false, deleting the instance is allowed.
+     * 
+     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -637,11 +655,33 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return customerManagedKey(Output.of(customerManagedKey));
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the instance.
+         * When a`terraform destroy` or `pulumi up` would delete the instance,
+         * the command will fail if this field is not set to false in Terraform state.
+         * When the field is set to true or unset in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the instance will fail.
+         * When the field is set to false, deleting the instance is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the instance.
+         * When a`terraform destroy` or `pulumi up` would delete the instance,
+         * the command will fail if this field is not set to false in Terraform state.
+         * When the field is set to true or unset in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the instance will fail.
+         * When the field is set to false, deleting the instance is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }

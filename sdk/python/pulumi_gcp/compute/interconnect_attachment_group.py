@@ -29,6 +29,7 @@ class InterconnectAttachmentGroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InterconnectAttachmentGroup resource.
+
         :param pulumi.Input['InterconnectAttachmentGroupIntentArgs'] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
@@ -163,6 +164,7 @@ class _InterconnectAttachmentGroupState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterconnectAttachmentGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
                format for resource links as keys.
@@ -382,24 +384,17 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
         InterconnectAttachmentGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/interconnectAttachmentGroups/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InterconnectAttachmentGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup default projects/{{project}}/global/interconnectAttachmentGroups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -460,24 +455,17 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
         InterconnectAttachmentGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/interconnectAttachmentGroups/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InterconnectAttachmentGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup default projects/{{project}}/global/interconnectAttachmentGroups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InterconnectAttachmentGroupArgs args: The arguments to use to populate this resource's properties.

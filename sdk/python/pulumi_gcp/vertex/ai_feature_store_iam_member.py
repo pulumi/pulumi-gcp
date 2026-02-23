@@ -29,6 +29,7 @@ class AiFeatureStoreIamMemberArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiFeatureStoreIamMember resource.
+
         :param pulumi.Input[_builtins.str] featurestore: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -159,6 +160,7 @@ class _AiFeatureStoreIamMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStoreIamMember resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] featurestore: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
@@ -309,16 +311,143 @@ class AiFeatureStoreIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Vertex AI Featurestore. Each of these resources serves a different use case:
+
+        * `vertex.AiFeatureStoreIamPolicy`: Authoritative. Sets the IAM policy for the featurestore and replaces any existing policy already attached.
+        * `vertex.AiFeatureStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featurestore are preserved.
+        * `vertex.AiFeatureStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featurestore are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `vertex.AiFeatureStoreIamPolicy`: Retrieves the IAM policy for the featurestore
+
+        > **Note:** `vertex.AiFeatureStoreIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureStoreIamBinding` and `vertex.AiFeatureStoreIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `vertex.AiFeatureStoreIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureStoreIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## vertex.AiFeatureStoreIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.vertex.AiFeatureStoreIamPolicy("policy",
+            project=featurestore["project"],
+            region=featurestore["region"],
+            featurestore=featurestore["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## vertex.AiFeatureStoreIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.vertex.AiFeatureStoreIamBinding("binding",
+            project=featurestore["project"],
+            region=featurestore["region"],
+            featurestore=featurestore["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## vertex.AiFeatureStoreIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.vertex.AiFeatureStoreIamMember("member",
+            project=featurestore["project"],
+            region=featurestore["region"],
+            featurestore=featurestore["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Vertex AI Featurestore
+
+        Three different resources help you manage your IAM policy for Vertex AI Featurestore. Each of these resources serves a different use case:
+
+        * `vertex.AiFeatureStoreIamPolicy`: Authoritative. Sets the IAM policy for the featurestore and replaces any existing policy already attached.
+        * `vertex.AiFeatureStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featurestore are preserved.
+        * `vertex.AiFeatureStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featurestore are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `vertex.AiFeatureStoreIamPolicy`: Retrieves the IAM policy for the featurestore
+
+        > **Note:** `vertex.AiFeatureStoreIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureStoreIamBinding` and `vertex.AiFeatureStoreIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `vertex.AiFeatureStoreIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureStoreIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## vertex.AiFeatureStoreIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.vertex.AiFeatureStoreIamPolicy("policy",
+            project=featurestore["project"],
+            region=featurestore["region"],
+            featurestore=featurestore["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## vertex.AiFeatureStoreIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.vertex.AiFeatureStoreIamBinding("binding",
+            project=featurestore["project"],
+            region=featurestore["region"],
+            featurestore=featurestore["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## vertex.AiFeatureStoreIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.vertex.AiFeatureStoreIamMember("member",
+            project=featurestore["project"],
+            region=featurestore["region"],
+            featurestore=featurestore["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/locations/{{region}}/featurestores/{{name}}
-
         * {{project}}/{{region}}/{{name}}
-
         * {{region}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -326,26 +455,23 @@ class AiFeatureStoreIamMember(pulumi.CustomResource):
         Vertex AI featurestore IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer user:jane@example.com"
+        $ terraform import google_vertex_ai_featurestore_iam_member.editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer"
+        $ terraform import google_vertex_ai_featurestore_iam_binding.editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember editor projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -378,16 +504,143 @@ class AiFeatureStoreIamMember(pulumi.CustomResource):
                  args: AiFeatureStoreIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Vertex AI Featurestore. Each of these resources serves a different use case:
+
+        * `vertex.AiFeatureStoreIamPolicy`: Authoritative. Sets the IAM policy for the featurestore and replaces any existing policy already attached.
+        * `vertex.AiFeatureStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featurestore are preserved.
+        * `vertex.AiFeatureStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featurestore are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `vertex.AiFeatureStoreIamPolicy`: Retrieves the IAM policy for the featurestore
+
+        > **Note:** `vertex.AiFeatureStoreIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureStoreIamBinding` and `vertex.AiFeatureStoreIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `vertex.AiFeatureStoreIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureStoreIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## vertex.AiFeatureStoreIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.vertex.AiFeatureStoreIamPolicy("policy",
+            project=featurestore["project"],
+            region=featurestore["region"],
+            featurestore=featurestore["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## vertex.AiFeatureStoreIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.vertex.AiFeatureStoreIamBinding("binding",
+            project=featurestore["project"],
+            region=featurestore["region"],
+            featurestore=featurestore["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## vertex.AiFeatureStoreIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.vertex.AiFeatureStoreIamMember("member",
+            project=featurestore["project"],
+            region=featurestore["region"],
+            featurestore=featurestore["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Vertex AI Featurestore
+
+        Three different resources help you manage your IAM policy for Vertex AI Featurestore. Each of these resources serves a different use case:
+
+        * `vertex.AiFeatureStoreIamPolicy`: Authoritative. Sets the IAM policy for the featurestore and replaces any existing policy already attached.
+        * `vertex.AiFeatureStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featurestore are preserved.
+        * `vertex.AiFeatureStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featurestore are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `vertex.AiFeatureStoreIamPolicy`: Retrieves the IAM policy for the featurestore
+
+        > **Note:** `vertex.AiFeatureStoreIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureStoreIamBinding` and `vertex.AiFeatureStoreIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `vertex.AiFeatureStoreIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureStoreIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## vertex.AiFeatureStoreIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.vertex.AiFeatureStoreIamPolicy("policy",
+            project=featurestore["project"],
+            region=featurestore["region"],
+            featurestore=featurestore["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## vertex.AiFeatureStoreIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.vertex.AiFeatureStoreIamBinding("binding",
+            project=featurestore["project"],
+            region=featurestore["region"],
+            featurestore=featurestore["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## vertex.AiFeatureStoreIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.vertex.AiFeatureStoreIamMember("member",
+            project=featurestore["project"],
+            region=featurestore["region"],
+            featurestore=featurestore["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/locations/{{region}}/featurestores/{{name}}
-
         * {{project}}/{{region}}/{{name}}
-
         * {{region}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -395,26 +648,23 @@ class AiFeatureStoreIamMember(pulumi.CustomResource):
         Vertex AI featurestore IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer user:jane@example.com"
+        $ terraform import google_vertex_ai_featurestore_iam_member.editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer"
+        $ terraform import google_vertex_ai_featurestore_iam_binding.editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember editor projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param AiFeatureStoreIamMemberArgs args: The arguments to use to populate this resource's properties.

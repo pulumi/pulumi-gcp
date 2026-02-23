@@ -29,6 +29,7 @@ class InterceptEndpointGroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InterceptEndpointGroup resource.
+
         :param pulumi.Input[_builtins.str] intercept_deployment_group: The deployment group that this endpoint group is connected to, for example:
                `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
                See https://google.aip.dev/124.
@@ -153,6 +154,7 @@ class _InterceptEndpointGroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterceptEndpointGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationArgs']]] associations: List of associations to this endpoint group.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupArgs']]] connected_deployment_groups: The endpoint group's view of a connected deployment group.
@@ -477,24 +479,17 @@ class InterceptEndpointGroup(pulumi.CustomResource):
         InterceptEndpointGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/interceptEndpointGroups/{{intercept_endpoint_group_id}}`
-
         * `{{project}}/{{location}}/{{intercept_endpoint_group_id}}`
-
         * `{{location}}/{{intercept_endpoint_group_id}}`
 
         When using the `pulumi import` command, InterceptEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default projects/{{project}}/locations/{{location}}/interceptEndpointGroups/{{intercept_endpoint_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{project}}/{{location}}/{{intercept_endpoint_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{location}}/{{intercept_endpoint_group_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -555,24 +550,17 @@ class InterceptEndpointGroup(pulumi.CustomResource):
         InterceptEndpointGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/interceptEndpointGroups/{{intercept_endpoint_group_id}}`
-
         * `{{project}}/{{location}}/{{intercept_endpoint_group_id}}`
-
         * `{{location}}/{{intercept_endpoint_group_id}}`
 
         When using the `pulumi import` command, InterceptEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default projects/{{project}}/locations/{{location}}/interceptEndpointGroups/{{intercept_endpoint_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{project}}/{{location}}/{{intercept_endpoint_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup default {{location}}/{{intercept_endpoint_group_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InterceptEndpointGroupArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,15 @@ namespace Pulumi.Gcp.Dns.Inputs
 
         [Input("networks")]
         private InputList<Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs>? _networks;
+
+        /// <summary>
+        /// The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+        /// may experience issues with this resource while updating. If you've defined a `Networks` block and
+        /// add another `Networks` block while keeping the old block, Terraform will see an incorrect diff
+        /// and apply an incorrect update to the resource. If you encounter this issue, remove all `Networks`
+        /// blocks in an update and then apply another update adding all of them back simultaneously.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs>());

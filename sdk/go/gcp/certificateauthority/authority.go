@@ -34,8 +34,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -88,8 +86,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -140,8 +136,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -339,8 +333,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -395,8 +387,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -459,22 +449,14 @@ import (
 // CertificateAuthority can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}`
-//
 // * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}`
-//
 // * `{{location}}/{{pool}}/{{certificate_authority_id}}`
 //
 // When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{pool}}/{{certificate_authority_id}}
 // ```
 type Authority struct {
@@ -491,7 +473,11 @@ type Authority struct {
 	// The time at which this CertificateAuthority was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the CertificateAuthority.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the CertificateAuthority will fail.
+	// When the field is set to false, deleting the CertificateAuthority is allowed.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	// Possible values: ENABLED, DISABLED, STAGED.
@@ -632,8 +618,12 @@ type authorityState struct {
 	// The time at which this CertificateAuthority was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	CreateTime         *string `pulumi:"createTime"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the CertificateAuthority.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the CertificateAuthority will fail.
+	// When the field is set to false, deleting the CertificateAuthority is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	// Possible values: ENABLED, DISABLED, STAGED.
 	DesiredState *string `pulumi:"desiredState"`
@@ -724,7 +714,11 @@ type AuthorityState struct {
 	// The time at which this CertificateAuthority was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	CreateTime         pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the CertificateAuthority.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the CertificateAuthority will fail.
+	// When the field is set to false, deleting the CertificateAuthority is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	// Possible values: ENABLED, DISABLED, STAGED.
@@ -813,8 +807,12 @@ type authorityArgs struct {
 	CertificateAuthorityId string `pulumi:"certificateAuthorityId"`
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
-	Config             AuthorityConfig `pulumi:"config"`
-	DeletionProtection *bool           `pulumi:"deletionProtection"`
+	Config AuthorityConfig `pulumi:"config"`
+	// Whether Terraform will be prevented from destroying the CertificateAuthority.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the CertificateAuthority will fail.
+	// When the field is set to false, deleting the CertificateAuthority is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	// Possible values: ENABLED, DISABLED, STAGED.
 	DesiredState *string `pulumi:"desiredState"`
@@ -880,7 +878,11 @@ type AuthorityArgs struct {
 	CertificateAuthorityId pulumi.StringInput
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
-	Config             AuthorityConfigInput
+	Config AuthorityConfigInput
+	// Whether Terraform will be prevented from destroying the CertificateAuthority.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the CertificateAuthority will fail.
+	// When the field is set to false, deleting the CertificateAuthority is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	// Possible values: ENABLED, DISABLED, STAGED.
@@ -1052,6 +1054,10 @@ func (o AuthorityOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the CertificateAuthority.
+// When the field is set to true or unset in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the CertificateAuthority will fail.
+// When the field is set to false, deleting the CertificateAuthority is allowed.
 func (o AuthorityOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Authority) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

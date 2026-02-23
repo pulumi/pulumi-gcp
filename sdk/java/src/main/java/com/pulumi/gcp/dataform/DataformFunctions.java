@@ -16,6 +16,10 @@ import java.util.concurrent.CompletableFuture;
 
 public final class DataformFunctions {
     /**
+     * Retrieves the current IAM policy data for repository
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -56,6 +60,10 @@ public final class DataformFunctions {
         return getRepositoryIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for repository
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -96,6 +104,10 @@ public final class DataformFunctions {
         return getRepositoryIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for repository
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -136,6 +148,10 @@ public final class DataformFunctions {
         return Deployment.getInstance().invoke("gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy", TypeShape.of(GetRepositoryIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for repository
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -176,6 +192,10 @@ public final class DataformFunctions {
         return Deployment.getInstance().invoke("gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy", TypeShape.of(GetRepositoryIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for repository
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>

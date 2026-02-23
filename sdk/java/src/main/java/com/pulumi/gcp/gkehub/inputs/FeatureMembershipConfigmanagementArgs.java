@@ -57,14 +57,18 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
     }
 
     /**
-     * Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+     * and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * This field was introduced in Terraform version 5.41.0.
      * 
      */
     @Import(name="management")
     private @Nullable Output<String> management;
 
     /**
-     * @return Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * @return Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+     * and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+     * This field was introduced in Terraform version 5.41.0.
      * 
      */
     public Optional<Output<String>> management() {
@@ -184,7 +188,9 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
         }
 
         /**
-         * @param management Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+         * @param management Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+         * and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+         * This field was introduced in Terraform version 5.41.0.
          * 
          * @return builder
          * 
@@ -195,7 +201,9 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
         }
 
         /**
-         * @param management Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+         * @param management Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+         * and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+         * This field was introduced in Terraform version 5.41.0.
          * 
          * @return builder
          * 

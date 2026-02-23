@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Vertex
     public static class GetAiFeaturestoreEntitytypeIamPolicy
     {
         /// <summary>
+        /// Retrieves the current IAM policy data for featurestoreentitytype
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Gcp.Vertex
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiFeaturestoreEntitytypeIamPolicyResult>("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", args ?? new GetAiFeaturestoreEntitytypeIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for featurestoreentitytype
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Gcp.Vertex
             => global::Pulumi.Deployment.Instance.Invoke<GetAiFeaturestoreEntitytypeIamPolicyResult>("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", args ?? new GetAiFeaturestoreEntitytypeIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for featurestoreentitytype
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

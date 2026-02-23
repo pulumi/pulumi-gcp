@@ -43,38 +43,33 @@ __all__ = [
     'RegistrationYearlyPriceArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class RegistrationContactSettingsArgsDict(TypedDict):
-        admin_contact: pulumi.Input['RegistrationContactSettingsAdminContactArgsDict']
-        """
-        Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.
-        Warning: For new Registrations, the registrant receives an email confirmation that they must complete within 15 days to
-        avoid domain suspension.
-        Structure is documented below.
-        """
-        privacy: pulumi.Input[_builtins.str]
-        """
-        Required. Privacy setting for the contacts associated with the Registration.
-        Values are PUBLIC_CONTACT_DATA, PRIVATE_CONTACT_DATA, and REDACTED_CONTACT_DATA
-        """
-        registrant_contact: pulumi.Input['RegistrationContactSettingsRegistrantContactArgsDict']
-        """
-        Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.
-        Warning: For new Registrations, the registrant receives an email confirmation that they must complete within 15 days to
-        avoid domain suspension.
-        Structure is documented below.
-        """
-        technical_contact: pulumi.Input['RegistrationContactSettingsTechnicalContactArgsDict']
-        """
-        Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.
-        Warning: For new Registrations, the registrant receives an email confirmation that they must complete within 15 days to
-        avoid domain suspension.
-        Structure is documented below.
-        """
-elif False:
-    RegistrationContactSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationContactSettingsArgsDict(TypedDict):
+    admin_contact: pulumi.Input['RegistrationContactSettingsAdminContactArgsDict']
+    """
+    Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.
+    Warning: For new Registrations, the registrant receives an email confirmation that they must complete within 15 days to
+    avoid domain suspension.
+    Structure is documented below.
+    """
+    privacy: pulumi.Input[_builtins.str]
+    """
+    Required. Privacy setting for the contacts associated with the Registration.
+    Values are PUBLIC_CONTACT_DATA, PRIVATE_CONTACT_DATA, and REDACTED_CONTACT_DATA
+    """
+    registrant_contact: pulumi.Input['RegistrationContactSettingsRegistrantContactArgsDict']
+    """
+    Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.
+    Warning: For new Registrations, the registrant receives an email confirmation that they must complete within 15 days to
+    avoid domain suspension.
+    Structure is documented below.
+    """
+    technical_contact: pulumi.Input['RegistrationContactSettingsTechnicalContactArgsDict']
+    """
+    Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.
+    Warning: For new Registrations, the registrant receives an email confirmation that they must complete within 15 days to
+    avoid domain suspension.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RegistrationContactSettingsArgs:
@@ -163,27 +158,24 @@ class RegistrationContactSettingsArgs:
         pulumi.set(self, "technical_contact", value)
 
 
-if not MYPY:
-    class RegistrationContactSettingsAdminContactArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Required. Email address of the contact.
-        """
-        phone_number: pulumi.Input[_builtins.str]
-        """
-        Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
-        """
-        postal_address: pulumi.Input['RegistrationContactSettingsAdminContactPostalAddressArgsDict']
-        """
-        Required. Postal address of the contact.
-        Structure is documented below.
-        """
-        fax_number: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fax number of the contact in international format. For example, "+1-800-555-0123".
-        """
-elif False:
-    RegistrationContactSettingsAdminContactArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationContactSettingsAdminContactArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Required. Email address of the contact.
+    """
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
+    """
+    postal_address: pulumi.Input['RegistrationContactSettingsAdminContactPostalAddressArgsDict']
+    """
+    Required. Postal address of the contact.
+    Structure is documented below.
+    """
+    fax_number: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fax number of the contact in international format. For example, "+1-800-555-0123".
+    """
 
 @pulumi.input_type
 class RegistrationContactSettingsAdminContactArgs:
@@ -255,51 +247,48 @@ class RegistrationContactSettingsAdminContactArgs:
         pulumi.set(self, "fax_number", value)
 
 
-if not MYPY:
-    class RegistrationContactSettingsAdminContactPostalAddressArgsDict(TypedDict):
-        region_code: pulumi.Input[_builtins.str]
-        """
-        Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        ensure the value is correct. See https://cldr.unicode.org/ and
-        https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-        """
-        address_lines: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Unstructured address lines describing the lower levels of an address.
-        Because values in addressLines do not have type information and may sometimes contain multiple values in a single
-        field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
-        "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language
-        is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
-        the most specific line of an address can be selected based on the language.
-        """
-        administrative_area: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
-        a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
-        (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
-        this should be left unpopulated.
-        """
-        locality: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
-        where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
-        """
-        organization: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the organization at the address.
-        """
-        postal_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
-        they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
-        """
-        recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
-        it might contain "care of" information.
-        """
-elif False:
-    RegistrationContactSettingsAdminContactPostalAddressArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationContactSettingsAdminContactPostalAddressArgsDict(TypedDict):
+    region_code: pulumi.Input[_builtins.str]
+    """
+    Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
+    ensure the value is correct. See https://cldr.unicode.org/ and
+    https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+    """
+    address_lines: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Unstructured address lines describing the lower levels of an address.
+    Because values in addressLines do not have type information and may sometimes contain multiple values in a single
+    field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
+    "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language
+    is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
+    the most specific line of an address can be selected based on the language.
+    """
+    administrative_area: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
+    a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
+    (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
+    this should be left unpopulated.
+    """
+    locality: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
+    where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
+    """
+    organization: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the organization at the address.
+    """
+    postal_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
+    they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+    """
+    recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
+    it might contain "care of" information.
+    """
 
 @pulumi.input_type
 class RegistrationContactSettingsAdminContactPostalAddressArgs:
@@ -445,27 +434,24 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
         pulumi.set(self, "recipients", value)
 
 
-if not MYPY:
-    class RegistrationContactSettingsRegistrantContactArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Required. Email address of the contact.
-        """
-        phone_number: pulumi.Input[_builtins.str]
-        """
-        Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
-        """
-        postal_address: pulumi.Input['RegistrationContactSettingsRegistrantContactPostalAddressArgsDict']
-        """
-        Required. Postal address of the contact.
-        Structure is documented below.
-        """
-        fax_number: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fax number of the contact in international format. For example, "+1-800-555-0123".
-        """
-elif False:
-    RegistrationContactSettingsRegistrantContactArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationContactSettingsRegistrantContactArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Required. Email address of the contact.
+    """
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
+    """
+    postal_address: pulumi.Input['RegistrationContactSettingsRegistrantContactPostalAddressArgsDict']
+    """
+    Required. Postal address of the contact.
+    Structure is documented below.
+    """
+    fax_number: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fax number of the contact in international format. For example, "+1-800-555-0123".
+    """
 
 @pulumi.input_type
 class RegistrationContactSettingsRegistrantContactArgs:
@@ -537,51 +523,48 @@ class RegistrationContactSettingsRegistrantContactArgs:
         pulumi.set(self, "fax_number", value)
 
 
-if not MYPY:
-    class RegistrationContactSettingsRegistrantContactPostalAddressArgsDict(TypedDict):
-        region_code: pulumi.Input[_builtins.str]
-        """
-        Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        ensure the value is correct. See https://cldr.unicode.org/ and
-        https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-        """
-        address_lines: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Unstructured address lines describing the lower levels of an address.
-        Because values in addressLines do not have type information and may sometimes contain multiple values in a single
-        field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
-        "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language
-        is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
-        the most specific line of an address can be selected based on the language.
-        """
-        administrative_area: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
-        a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
-        (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
-        this should be left unpopulated.
-        """
-        locality: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
-        where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
-        """
-        organization: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the organization at the address.
-        """
-        postal_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
-        they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
-        """
-        recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
-        it might contain "care of" information.
-        """
-elif False:
-    RegistrationContactSettingsRegistrantContactPostalAddressArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationContactSettingsRegistrantContactPostalAddressArgsDict(TypedDict):
+    region_code: pulumi.Input[_builtins.str]
+    """
+    Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
+    ensure the value is correct. See https://cldr.unicode.org/ and
+    https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+    """
+    address_lines: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Unstructured address lines describing the lower levels of an address.
+    Because values in addressLines do not have type information and may sometimes contain multiple values in a single
+    field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
+    "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language
+    is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
+    the most specific line of an address can be selected based on the language.
+    """
+    administrative_area: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
+    a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
+    (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
+    this should be left unpopulated.
+    """
+    locality: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
+    where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
+    """
+    organization: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the organization at the address.
+    """
+    postal_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
+    they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+    """
+    recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
+    it might contain "care of" information.
+    """
 
 @pulumi.input_type
 class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
@@ -727,27 +710,24 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
         pulumi.set(self, "recipients", value)
 
 
-if not MYPY:
-    class RegistrationContactSettingsTechnicalContactArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        Required. Email address of the contact.
-        """
-        phone_number: pulumi.Input[_builtins.str]
-        """
-        Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
-        """
-        postal_address: pulumi.Input['RegistrationContactSettingsTechnicalContactPostalAddressArgsDict']
-        """
-        Required. Postal address of the contact.
-        Structure is documented below.
-        """
-        fax_number: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fax number of the contact in international format. For example, "+1-800-555-0123".
-        """
-elif False:
-    RegistrationContactSettingsTechnicalContactArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationContactSettingsTechnicalContactArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Required. Email address of the contact.
+    """
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
+    """
+    postal_address: pulumi.Input['RegistrationContactSettingsTechnicalContactPostalAddressArgsDict']
+    """
+    Required. Postal address of the contact.
+    Structure is documented below.
+    """
+    fax_number: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fax number of the contact in international format. For example, "+1-800-555-0123".
+    """
 
 @pulumi.input_type
 class RegistrationContactSettingsTechnicalContactArgs:
@@ -819,51 +799,48 @@ class RegistrationContactSettingsTechnicalContactArgs:
         pulumi.set(self, "fax_number", value)
 
 
-if not MYPY:
-    class RegistrationContactSettingsTechnicalContactPostalAddressArgsDict(TypedDict):
-        region_code: pulumi.Input[_builtins.str]
-        """
-        Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        ensure the value is correct. See https://cldr.unicode.org/ and
-        https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-        """
-        address_lines: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Unstructured address lines describing the lower levels of an address.
-        Because values in addressLines do not have type information and may sometimes contain multiple values in a single
-        field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
-        "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language
-        is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
-        the most specific line of an address can be selected based on the language.
-        """
-        administrative_area: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
-        a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
-        (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
-        this should be left unpopulated.
-        """
-        locality: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
-        where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
-        """
-        organization: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the organization at the address.
-        """
-        postal_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
-        they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
-        """
-        recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
-        it might contain "care of" information.
-        """
-elif False:
-    RegistrationContactSettingsTechnicalContactPostalAddressArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationContactSettingsTechnicalContactPostalAddressArgsDict(TypedDict):
+    region_code: pulumi.Input[_builtins.str]
+    """
+    Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
+    ensure the value is correct. See https://cldr.unicode.org/ and
+    https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+    """
+    address_lines: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Unstructured address lines describing the lower levels of an address.
+    Because values in addressLines do not have type information and may sometimes contain multiple values in a single
+    field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
+    "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language
+    is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
+    the most specific line of an address can be selected based on the language.
+    """
+    administrative_area: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
+    a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
+    (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
+    this should be left unpopulated.
+    """
+    locality: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
+    where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
+    """
+    organization: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the organization at the address.
+    """
+    postal_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
+    they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+    """
+    recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
+    it might contain "care of" information.
+    """
 
 @pulumi.input_type
 class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
@@ -1009,20 +986,17 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
         pulumi.set(self, "recipients", value)
 
 
-if not MYPY:
-    class RegistrationDnsSettingsArgsDict(TypedDict):
-        custom_dns: NotRequired[pulumi.Input['RegistrationDnsSettingsCustomDnsArgsDict']]
-        """
-        Configuration for an arbitrary DNS provider.
-        Structure is documented below.
-        """
-        glue_records: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegistrationDnsSettingsGlueRecordArgsDict']]]]
-        """
-        The list of glue records for this Registration. Commonly empty.
-        Structure is documented below.
-        """
-elif False:
-    RegistrationDnsSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationDnsSettingsArgsDict(TypedDict):
+    custom_dns: NotRequired[pulumi.Input['RegistrationDnsSettingsCustomDnsArgsDict']]
+    """
+    Configuration for an arbitrary DNS provider.
+    Structure is documented below.
+    """
+    glue_records: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegistrationDnsSettingsGlueRecordArgsDict']]]]
+    """
+    The list of glue records for this Registration. Commonly empty.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RegistrationDnsSettingsArgs:
@@ -1067,21 +1041,18 @@ class RegistrationDnsSettingsArgs:
         pulumi.set(self, "glue_records", value)
 
 
-if not MYPY:
-    class RegistrationDnsSettingsCustomDnsArgsDict(TypedDict):
-        name_servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain
-        name, with Unicode domain names expressed in Punycode format.
-        """
-        ds_records: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegistrationDnsSettingsCustomDnsDsRecordArgsDict']]]]
-        """
-        The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide
-        the values to set here. If this field is empty, DNSSEC is disabled.
-        Structure is documented below.
-        """
-elif False:
-    RegistrationDnsSettingsCustomDnsArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationDnsSettingsCustomDnsArgsDict(TypedDict):
+    name_servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain
+    name, with Unicode domain names expressed in Punycode format.
+    """
+    ds_records: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegistrationDnsSettingsCustomDnsDsRecordArgsDict']]]]
+    """
+    The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide
+    the values to set here. If this field is empty, DNSSEC is disabled.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RegistrationDnsSettingsCustomDnsArgs:
@@ -1127,26 +1098,23 @@ class RegistrationDnsSettingsCustomDnsArgs:
         pulumi.set(self, "ds_records", value)
 
 
-if not MYPY:
-    class RegistrationDnsSettingsCustomDnsDsRecordArgsDict(TypedDict):
-        algorithm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The algorithm used to generate the referenced DNSKEY.
-        """
-        digest: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The digest generated from the referenced DNSKEY.
-        """
-        digest_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The hash function used to generate the digest of the referenced DNSKEY.
-        """
-        key_tag: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The key tag of the record. Must be set in range 0 -- 65535.
-        """
-elif False:
-    RegistrationDnsSettingsCustomDnsDsRecordArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationDnsSettingsCustomDnsDsRecordArgsDict(TypedDict):
+    algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The algorithm used to generate the referenced DNSKEY.
+    """
+    digest: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The digest generated from the referenced DNSKEY.
+    """
+    digest_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The hash function used to generate the digest of the referenced DNSKEY.
+    """
+    key_tag: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The key tag of the record. Must be set in range 0 -- 65535.
+    """
 
 @pulumi.input_type
 class RegistrationDnsSettingsCustomDnsDsRecordArgs:
@@ -1219,24 +1187,21 @@ class RegistrationDnsSettingsCustomDnsDsRecordArgs:
         pulumi.set(self, "key_tag", value)
 
 
-if not MYPY:
-    class RegistrationDnsSettingsGlueRecordArgsDict(TypedDict):
-        host_name: pulumi.Input[_builtins.str]
-        """
-        Required. Domain name of the host in Punycode format.
-        """
-        ipv4_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-        At least one of ipv4_address and ipv6_address must be set.
-        """
-        ipv6_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
-        At least one of ipv4_address and ipv6_address must be set.
-        """
-elif False:
-    RegistrationDnsSettingsGlueRecordArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationDnsSettingsGlueRecordArgsDict(TypedDict):
+    host_name: pulumi.Input[_builtins.str]
+    """
+    Required. Domain name of the host in Punycode format.
+    """
+    ipv4_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
+    At least one of ipv4_address and ipv6_address must be set.
+    """
+    ipv6_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
+    At least one of ipv4_address and ipv6_address must be set.
+    """
 
 @pulumi.input_type
 class RegistrationDnsSettingsGlueRecordArgs:
@@ -1296,32 +1261,29 @@ class RegistrationDnsSettingsGlueRecordArgs:
         pulumi.set(self, "ipv6_addresses", value)
 
 
-if not MYPY:
-    class RegistrationManagementSettingsArgsDict(TypedDict):
-        preferred_renewal_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The desired renewal method for this Registration. The actual renewalMethod is automatically updated to reflect this choice.
-        If unset or equal to RENEWAL_METHOD_UNSPECIFIED, the actual renewalMethod is treated as if it were set to AUTOMATIC_RENEWAL.
-        You cannot use RENEWAL_DISABLED during resource creation, and you can update the renewal status only when the Registration
-        resource has state ACTIVE or SUSPENDED.
-        When preferredRenewalMethod is set to AUTOMATIC_RENEWAL, the actual renewalMethod can be set to RENEWAL_DISABLED in case of
-        problems with the billing account or reported domain abuse. In such cases, check the issues field on the Registration. After
-        the problem is resolved, the renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
-        """
-        renewal_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The actual renewal method for this Registration. When preferredRenewalMethod is set to AUTOMATIC_RENEWAL,
-        the actual renewalMethod can be equal to RENEWAL_DISABLED—for example, when there are problems with the billing account
-        or reported domain abuse. In such cases, check the issues field on the Registration. After the problem is resolved, the
-        renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
-        """
-        transfer_lock_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls whether the domain can be transferred to another registrar. Values are UNLOCKED or LOCKED.
-        """
-elif False:
-    RegistrationManagementSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationManagementSettingsArgsDict(TypedDict):
+    preferred_renewal_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The desired renewal method for this Registration. The actual renewalMethod is automatically updated to reflect this choice.
+    If unset or equal to RENEWAL_METHOD_UNSPECIFIED, the actual renewalMethod is treated as if it were set to AUTOMATIC_RENEWAL.
+    You cannot use RENEWAL_DISABLED during resource creation, and you can update the renewal status only when the Registration
+    resource has state ACTIVE or SUSPENDED.
+    When preferredRenewalMethod is set to AUTOMATIC_RENEWAL, the actual renewalMethod can be set to RENEWAL_DISABLED in case of
+    problems with the billing account or reported domain abuse. In such cases, check the issues field on the Registration. After
+    the problem is resolved, the renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
+    """
+    renewal_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The actual renewal method for this Registration. When preferredRenewalMethod is set to AUTOMATIC_RENEWAL,
+    the actual renewalMethod can be equal to RENEWAL_DISABLED—for example, when there are problems with the billing account
+    or reported domain abuse. In such cases, check the issues field on the Registration. After the problem is resolved, the
+    renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
+    """
+    transfer_lock_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls whether the domain can be transferred to another registrar. Values are UNLOCKED or LOCKED.
+    """
 
 @pulumi.input_type
 class RegistrationManagementSettingsArgs:
@@ -1398,18 +1360,15 @@ class RegistrationManagementSettingsArgs:
         pulumi.set(self, "transfer_lock_state", value)
 
 
-if not MYPY:
-    class RegistrationYearlyPriceArgsDict(TypedDict):
-        currency_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The three-letter currency code defined in ISO 4217.
-        """
-        units: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The whole units of the amount. For example if currencyCode is "USD", then 1 unit is one US dollar.
-        """
-elif False:
-    RegistrationYearlyPriceArgsDict: TypeAlias = Mapping[str, Any]
+class RegistrationYearlyPriceArgsDict(TypedDict):
+    currency_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The three-letter currency code defined in ISO 4217.
+    """
+    units: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The whole units of the amount. For example if currencyCode is "USD", then 1 unit is one US dollar.
+    """
 
 @pulumi.input_type
 class RegistrationYearlyPriceArgs:

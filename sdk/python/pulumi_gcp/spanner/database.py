@@ -33,14 +33,30 @@ class DatabaseArgs:
                  version_retention_period: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
+
         :param pulumi.Input[_builtins.str] instance: The instance to create the database on.
         :param pulumi.Input[_builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
                Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ddls: An optional list of DDL statements to run inside the database. Statements can create
+               tables, indexes, etc.
+               During creation these statements execute atomically with the creation of the database
+               and if there is an error in any statement, the database is not created.
+               Terraform does not perform drift detection on this field and assumes that the values
+               recorded in state are accurate. Limited updates to this field are supported, and
+               newly appended DDL statements can be executed in an update. However, modifications
+               to prior statements will create a plan that marks the resource for recreation.
         :param pulumi.Input[_builtins.str] default_time_zone: The default time zone for the database. The default time zone must be a valid name
                from the tz database. Default value is "America/Los_angeles".
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false.
+               Drop protection is different from
+               the "deletion_protection" attribute in the following ways:
+               (1) "deletion_protection" only protects the database from deletions in Terraform.
+               whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+               (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+               "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
         :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: A unique identifier for the database, which cannot be changed after the
@@ -102,6 +118,16 @@ class DatabaseArgs:
     @_builtins.property
     @pulumi.getter
     def ddls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        An optional list of DDL statements to run inside the database. Statements can create
+        tables, indexes, etc.
+        During creation these statements execute atomically with the creation of the database
+        and if there is an error in any statement, the database is not created.
+        Terraform does not perform drift detection on this field and assumes that the values
+        recorded in state are accurate. Limited updates to this field are supported, and
+        newly appended DDL statements can be executed in an update. However, modifications
+        to prior statements will create a plan that marks the resource for recreation.
+        """
         return pulumi.get(self, "ddls")
 
     @ddls.setter
@@ -137,6 +163,15 @@ class DatabaseArgs:
     @_builtins.property
     @pulumi.getter(name="enableDropProtection")
     def enable_drop_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether drop protection is enabled for this database. Defaults to false.
+        Drop protection is different from
+        the "deletion_protection" attribute in the following ways:
+        (1) "deletion_protection" only protects the database from deletions in Terraform.
+        whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+        (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+        "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+        """
         return pulumi.get(self, "enable_drop_protection")
 
     @enable_drop_protection.setter
@@ -215,13 +250,29 @@ class _DatabaseState:
                  version_retention_period: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
+
         :param pulumi.Input[_builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
                Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ddls: An optional list of DDL statements to run inside the database. Statements can create
+               tables, indexes, etc.
+               During creation these statements execute atomically with the creation of the database
+               and if there is an error in any statement, the database is not created.
+               Terraform does not perform drift detection on this field and assumes that the values
+               recorded in state are accurate. Limited updates to this field are supported, and
+               newly appended DDL statements can be executed in an update. However, modifications
+               to prior statements will create a plan that marks the resource for recreation.
         :param pulumi.Input[_builtins.str] default_time_zone: The default time zone for the database. The default time zone must be a valid name
                from the tz database. Default value is "America/Los_angeles".
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false.
+               Drop protection is different from
+               the "deletion_protection" attribute in the following ways:
+               (1) "deletion_protection" only protects the database from deletions in Terraform.
+               whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+               (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+               "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
         :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The instance to create the database on.
@@ -276,6 +327,16 @@ class _DatabaseState:
     @_builtins.property
     @pulumi.getter
     def ddls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        An optional list of DDL statements to run inside the database. Statements can create
+        tables, indexes, etc.
+        During creation these statements execute atomically with the creation of the database
+        and if there is an error in any statement, the database is not created.
+        Terraform does not perform drift detection on this field and assumes that the values
+        recorded in state are accurate. Limited updates to this field are supported, and
+        newly appended DDL statements can be executed in an update. However, modifications
+        to prior statements will create a plan that marks the resource for recreation.
+        """
         return pulumi.get(self, "ddls")
 
     @ddls.setter
@@ -311,6 +372,15 @@ class _DatabaseState:
     @_builtins.property
     @pulumi.getter(name="enableDropProtection")
     def enable_drop_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether drop protection is enabled for this database. Defaults to false.
+        Drop protection is different from
+        the "deletion_protection" attribute in the following ways:
+        (1) "deletion_protection" only protects the database from deletions in Terraform.
+        whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+        (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+        "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+        """
         return pulumi.get(self, "enable_drop_protection")
 
     @enable_drop_protection.setter
@@ -458,40 +528,44 @@ class Database(pulumi.CustomResource):
         Database can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
-
         * `instances/{{instance}}/databases/{{name}}`
-
         * `{{project}}/{{instance}}/{{name}}`
-
         * `{{instance}}/{{name}}`
 
         When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/database:Database default instances/{{instance}}/databases/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
                Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ddls: An optional list of DDL statements to run inside the database. Statements can create
+               tables, indexes, etc.
+               During creation these statements execute atomically with the creation of the database
+               and if there is an error in any statement, the database is not created.
+               Terraform does not perform drift detection on this field and assumes that the values
+               recorded in state are accurate. Limited updates to this field are supported, and
+               newly appended DDL statements can be executed in an update. However, modifications
+               to prior statements will create a plan that marks the resource for recreation.
         :param pulumi.Input[_builtins.str] default_time_zone: The default time zone for the database. The default time zone must be a valid name
                from the tz database. Default value is "America/Los_angeles".
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false.
+               Drop protection is different from
+               the "deletion_protection" attribute in the following ways:
+               (1) "deletion_protection" only protects the database from deletions in Terraform.
+               whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+               (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+               "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
         :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The instance to create the database on.
@@ -555,30 +629,19 @@ class Database(pulumi.CustomResource):
         Database can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
-
         * `instances/{{instance}}/databases/{{name}}`
-
         * `{{project}}/{{instance}}/{{name}}`
-
         * `{{instance}}/{{name}}`
 
         When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/database:Database default instances/{{instance}}/databases/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.
@@ -658,10 +721,25 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
                Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ddls: An optional list of DDL statements to run inside the database. Statements can create
+               tables, indexes, etc.
+               During creation these statements execute atomically with the creation of the database
+               and if there is an error in any statement, the database is not created.
+               Terraform does not perform drift detection on this field and assumes that the values
+               recorded in state are accurate. Limited updates to this field are supported, and
+               newly appended DDL statements can be executed in an update. However, modifications
+               to prior statements will create a plan that marks the resource for recreation.
         :param pulumi.Input[_builtins.str] default_time_zone: The default time zone for the database. The default time zone must be a valid name
                from the tz database. Default value is "America/Los_angeles".
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[_builtins.bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false.
+               Drop protection is different from
+               the "deletion_protection" attribute in the following ways:
+               (1) "deletion_protection" only protects the database from deletions in Terraform.
+               whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+               (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+               "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
         :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The instance to create the database on.
@@ -706,6 +784,16 @@ class Database(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def ddls(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        An optional list of DDL statements to run inside the database. Statements can create
+        tables, indexes, etc.
+        During creation these statements execute atomically with the creation of the database
+        and if there is an error in any statement, the database is not created.
+        Terraform does not perform drift detection on this field and assumes that the values
+        recorded in state are accurate. Limited updates to this field are supported, and
+        newly appended DDL statements can be executed in an update. However, modifications
+        to prior statements will create a plan that marks the resource for recreation.
+        """
         return pulumi.get(self, "ddls")
 
     @_builtins.property
@@ -729,6 +817,15 @@ class Database(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="enableDropProtection")
     def enable_drop_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether drop protection is enabled for this database. Defaults to false.
+        Drop protection is different from
+        the "deletion_protection" attribute in the following ways:
+        (1) "deletion_protection" only protects the database from deletions in Terraform.
+        whereas setting “enableDropProtection” to true protects the database from deletions in all interfaces.
+        (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
+        "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+        """
         return pulumi.get(self, "enable_drop_protection")
 
     @_builtins.property

@@ -303,30 +303,6 @@ namespace Pulumi.Gcp.Kms
     /// ```
     /// 
     /// ## Import
-    /// 
-    /// ### Importing IAM policies
-    /// 
-    /// IAM policy imports use the identifier of the Cloud KMS key ring only. For example:
-    /// 
-    /// * `{{project_id}}/{{location}}/{{key_ring_name}}`
-    /// 
-    /// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-    /// 
-    /// tf
-    /// 
-    /// import {
-    /// 
-    ///   id = "{{project_id}}/{{location}}/{{key_ring_name}}"
-    /// 
-    ///   to = google_kms_key_ring_iam_policy.default
-    /// 
-    /// }
-    /// 
-    /// The `pulumi import` command can also be used:
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding default {{project_id}}/{{location}}/{{key_ring_name}}
-    /// ```
     /// </summary>
     [GcpResourceType("gcp:kms/keyRingIAMBinding:KeyRingIAMBinding")]
     public partial class KeyRingIAMBinding : global::Pulumi.CustomResource

@@ -32,6 +32,7 @@ class AppConnectionArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppConnection resource.
+
         :param pulumi.Input['AppConnectionApplicationEndpointArgs'] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
@@ -201,6 +202,7 @@ class _AppConnectionState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppConnection resources.
+
         :param pulumi.Input['AppConnectionApplicationEndpointArgs'] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
@@ -484,30 +486,19 @@ class AppConnection(pulumi.CustomResource):
         AppConnection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/appConnections/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, AppConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:beyondcorp/appConnection:AppConnection default projects/{{project}}/locations/{{region}}/appConnections/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -616,30 +607,19 @@ class AppConnection(pulumi.CustomResource):
         AppConnection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/appConnections/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, AppConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:beyondcorp/appConnection:AppConnection default projects/{{project}}/locations/{{region}}/appConnections/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppConnectionArgs args: The arguments to use to populate this resource's properties.

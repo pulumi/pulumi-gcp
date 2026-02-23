@@ -371,16 +371,12 @@ import javax.annotation.Nullable;
  * FhirStore can be imported using any of these accepted formats:
  * 
  * * `{{dataset}}/fhirStores/{{name}}`
- * 
  * * `{{dataset}}/{{name}}`
  * 
  * When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/{{name}}
  * ```
  * 

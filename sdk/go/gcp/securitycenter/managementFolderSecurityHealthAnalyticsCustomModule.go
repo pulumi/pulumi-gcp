@@ -148,16 +148,12 @@ import (
 // FolderSecurityHealthAnalyticsCustomModule can be imported using any of these accepted formats:
 //
 // * `folders/{{folder}}/locations/{{location}}/securityHealthAnalyticsCustomModules/{{name}}`
-//
 // * `{{folder}}/{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, FolderSecurityHealthAnalyticsCustomModule can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule default folders/{{folder}}/locations/{{location}}/securityHealthAnalyticsCustomModules/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule default {{folder}}/{{location}}/{{name}}
 // ```
 type ManagementFolderSecurityHealthAnalyticsCustomModule struct {

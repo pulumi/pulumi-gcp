@@ -119,22 +119,14 @@ import * as utilities from "../utilities";
  * CustomTargetType can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/customTargetTypes/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, CustomTargetType can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default projects/{{project}}/locations/{{location}}/customTargetTypes/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default {{location}}/{{name}}
  * ```
  */
@@ -189,6 +181,9 @@ export class CustomTargetType extends pulumi.CustomResource {
      * Description of the `CustomTargetType`. Max length is 255 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -314,6 +309,9 @@ export interface CustomTargetTypeState {
      * Description of the `CustomTargetType`. Max length is 255 characters.
      */
     description?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

@@ -30,6 +30,7 @@ class BackupPolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
+
         :param pulumi.Input[_builtins.int] daily_backup_limit: Number of daily backups to keep. Note that the minimum daily backup limit is 2.
         :param pulumi.Input[_builtins.str] location: Name of the region for the policy to apply to.
         :param pulumi.Input[_builtins.int] monthly_backup_limit: Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
@@ -193,6 +194,7 @@ class _BackupPolicyState:
                  weekly_backup_limit: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
+
         :param pulumi.Input[_builtins.int] assigned_volume_count: The total number of volumes assigned by this backup policy.
         :param pulumi.Input[_builtins.str] create_time: Create time of the backup policy. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[_builtins.int] daily_backup_limit: Number of daily backups to keep. Note that the minimum daily backup limit is 2.
@@ -471,24 +473,17 @@ class BackupPolicy(pulumi.CustomResource):
         BackupPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, BackupPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -550,24 +545,17 @@ class BackupPolicy(pulumi.CustomResource):
         BackupPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, BackupPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPolicyArgs args: The arguments to use to populate this resource's properties.

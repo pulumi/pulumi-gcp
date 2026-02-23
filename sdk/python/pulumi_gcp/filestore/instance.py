@@ -27,6 +27,7 @@ class InstanceArgs:
                  deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 desired_replica_state: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_services: Optional[pulumi.Input['InstanceDirectoryServicesArgs']] = None,
                  initial_replication: Optional[pulumi.Input['InstanceInitialReplicationArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -40,6 +41,7 @@ class InstanceArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input['InstanceFileSharesArgs'] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
@@ -51,6 +53,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
         :param pulumi.Input[_builtins.str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[_builtins.str] description: A description of the instance.
+        :param pulumi.Input[_builtins.str] desired_replica_state: The desired_replica_state field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
         :param pulumi.Input['InstanceDirectoryServicesArgs'] directory_services: Directory Services configuration.
                Should only be set if protocol is "NFS_V4_1".
                Structure is documented below.
@@ -98,6 +101,8 @@ class InstanceArgs:
             pulumi.set(__self__, "deletion_protection_reason", deletion_protection_reason)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if desired_replica_state is not None:
+            pulumi.set(__self__, "desired_replica_state", desired_replica_state)
         if directory_services is not None:
             pulumi.set(__self__, "directory_services", directory_services)
         if initial_replication is not None:
@@ -200,6 +205,18 @@ class InstanceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="desiredReplicaState")
+    def desired_replica_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The desired_replica_state field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+        """
+        return pulumi.get(self, "desired_replica_state")
+
+    @desired_replica_state.setter
+    def desired_replica_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "desired_replica_state", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryServices")
@@ -368,6 +385,7 @@ class _InstanceState:
                  deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 desired_replica_state: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_services: Optional[pulumi.Input['InstanceDirectoryServicesArgs']] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  effective_replications: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationArgs']]]] = None,
@@ -388,10 +406,12 @@ class _InstanceState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
         :param pulumi.Input[_builtins.str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[_builtins.str] description: A description of the instance.
+        :param pulumi.Input[_builtins.str] desired_replica_state: The desired_replica_state field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
         :param pulumi.Input['InstanceDirectoryServicesArgs'] directory_services: Directory Services configuration.
                Should only be set if protocol is "NFS_V4_1".
                Structure is documented below.
@@ -453,6 +473,8 @@ class _InstanceState:
             pulumi.set(__self__, "deletion_protection_reason", deletion_protection_reason)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if desired_replica_state is not None:
+            pulumi.set(__self__, "desired_replica_state", desired_replica_state)
         if directory_services is not None:
             pulumi.set(__self__, "directory_services", directory_services)
         if effective_labels is not None:
@@ -540,6 +562,18 @@ class _InstanceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="desiredReplicaState")
+    def desired_replica_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The desired_replica_state field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+        """
+        return pulumi.get(self, "desired_replica_state")
+
+    @desired_replica_state.setter
+    def desired_replica_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "desired_replica_state", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryServices")
@@ -802,6 +836,7 @@ class Instance(pulumi.CustomResource):
                  deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 desired_replica_state: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_services: Optional[pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']]] = None,
                  file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
                  initial_replication: Optional[pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
@@ -935,30 +970,24 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
         :param pulumi.Input[_builtins.str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[_builtins.str] description: A description of the instance.
+        :param pulumi.Input[_builtins.str] desired_replica_state: The desired_replica_state field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
         :param pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']] directory_services: Directory Services configuration.
                Should only be set if protocol is "NFS_V4_1".
                Structure is documented below.
@@ -1129,24 +1158,17 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.
@@ -1166,6 +1188,7 @@ class Instance(pulumi.CustomResource):
                  deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 desired_replica_state: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_services: Optional[pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']]] = None,
                  file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
                  initial_replication: Optional[pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
@@ -1192,6 +1215,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
             __props__.__dict__["deletion_protection_reason"] = deletion_protection_reason
             __props__.__dict__["description"] = description
+            __props__.__dict__["desired_replica_state"] = desired_replica_state
             __props__.__dict__["directory_services"] = directory_services
             if file_shares is None and not opts.urn:
                 raise TypeError("Missing required property 'file_shares'")
@@ -1233,6 +1257,7 @@ class Instance(pulumi.CustomResource):
             deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            desired_replica_state: Optional[pulumi.Input[_builtins.str]] = None,
             directory_services: Optional[pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_replications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEffectiveReplicationArgs', 'InstanceEffectiveReplicationArgsDict']]]]] = None,
@@ -1262,6 +1287,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
         :param pulumi.Input[_builtins.str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[_builtins.str] description: A description of the instance.
+        :param pulumi.Input[_builtins.str] desired_replica_state: The desired_replica_state field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
         :param pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']] directory_services: Directory Services configuration.
                Should only be set if protocol is "NFS_V4_1".
                Structure is documented below.
@@ -1323,6 +1349,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
         __props__.__dict__["deletion_protection_reason"] = deletion_protection_reason
         __props__.__dict__["description"] = description
+        __props__.__dict__["desired_replica_state"] = desired_replica_state
         __props__.__dict__["directory_services"] = directory_services
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["effective_replications"] = effective_replications
@@ -1374,6 +1401,14 @@ class Instance(pulumi.CustomResource):
         A description of the instance.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="desiredReplicaState")
+    def desired_replica_state(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The desired_replica_state field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+        """
+        return pulumi.get(self, "desired_replica_state")
 
     @_builtins.property
     @pulumi.getter(name="directoryServices")

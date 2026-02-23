@@ -52,16 +52,12 @@ namespace Pulumi.Gcp.Billing
     /// ProjectInfo can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}`
-    /// 
     /// * `{{project}}`
     /// 
     /// When using the `pulumi import` command, ProjectInfo can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:billing/projectInfo:ProjectInfo default projects/{{project}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:billing/projectInfo:ProjectInfo default {{project}}
     /// ```
     /// </summary>

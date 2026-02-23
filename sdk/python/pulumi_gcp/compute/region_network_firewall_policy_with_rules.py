@@ -29,6 +29,7 @@ class RegionNetworkFirewallPolicyWithRulesArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionNetworkFirewallPolicyWithRules resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleArgs']]] rules: A list of firewall policy rules.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -41,7 +42,7 @@ class RegionNetworkFirewallPolicyWithRulesArgs:
         :param pulumi.Input[_builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
                A policy can be associated with a network only if the network has the matching policyType in its network profile.
                Different policy types may support some of the Firewall Rules features.
-               Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+               Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of this resource.
@@ -107,7 +108,7 @@ class RegionNetworkFirewallPolicyWithRulesArgs:
         Policy type is used to determine which resources (networks) the policy can be associated with.
         A policy can be associated with a network only if the network has the matching policyType in its network profile.
         Different policy types may support some of the Firewall Rules features.
-        Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+        Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
         """
         return pulumi.get(self, "policy_type")
 
@@ -159,6 +160,7 @@ class _RegionNetworkFirewallPolicyWithRulesState:
                  self_link_with_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionNetworkFirewallPolicyWithRules resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
@@ -172,7 +174,7 @@ class _RegionNetworkFirewallPolicyWithRulesState:
         :param pulumi.Input[_builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
                A policy can be associated with a network only if the network has the matching policyType in its network profile.
                Different policy types may support some of the Firewall Rules features.
-               Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+               Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
         :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgs']]] predefined_rules: A list of firewall policy pre-defined rules.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -283,7 +285,7 @@ class _RegionNetworkFirewallPolicyWithRulesState:
         Policy type is used to determine which resources (networks) the policy can be associated with.
         A policy can be associated with a network only if the network has the matching policyType in its network profile.
         Different policy types may support some of the Firewall Rules features.
-        Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+        Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
         """
         return pulumi.get(self, "policy_type")
 
@@ -525,30 +527,19 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
         RegionNetworkFirewallPolicyWithRules can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionNetworkFirewallPolicyWithRules can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -562,7 +553,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
                A policy can be associated with a network only if the network has the matching policyType in its network profile.
                Different policy types may support some of the Firewall Rules features.
-               Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+               Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of this resource.
@@ -708,30 +699,19 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
         RegionNetworkFirewallPolicyWithRules can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionNetworkFirewallPolicyWithRules can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionNetworkFirewallPolicyWithRulesArgs args: The arguments to use to populate this resource's properties.
@@ -821,7 +801,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
                A policy can be associated with a network only if the network has the matching policyType in its network profile.
                Different policy types may support some of the Firewall Rules features.
-               Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+               Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgs', 'RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgsDict']]]] predefined_rules: A list of firewall policy pre-defined rules.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -904,7 +884,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
         Policy type is used to determine which resources (networks) the policy can be associated with.
         A policy can be associated with a network only if the network has the matching policyType in its network profile.
         Different policy types may support some of the Firewall Rules features.
-        Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+        Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
         """
         return pulumi.get(self, "policy_type")
 

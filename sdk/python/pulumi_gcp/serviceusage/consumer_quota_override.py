@@ -28,6 +28,7 @@ class ConsumerQuotaOverrideArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConsumerQuotaOverride resource.
+
         :param pulumi.Input[_builtins.str] limit: The limit on the metric, e.g. `/project/region`.
                > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
                E.g. use `/project/user` instead of `1/{project}/{user}`.
@@ -153,6 +154,7 @@ class _ConsumerQuotaOverrideState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConsumerQuotaOverride resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
         :param pulumi.Input[_builtins.bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
                If `force` is `true`, that safety check is ignored.
@@ -299,6 +301,18 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A consumer override is applied to the consumer on its own authority to limit its own quota usage.
+        Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides,
+        producer overrides, or the default limit of the service.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about ConsumerQuotaOverride, see:
+        * How-to Guides
+            * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
+            * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
+
         ## Example Usage
 
         ### Consumer Quota Override
@@ -373,24 +387,17 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         ConsumerQuotaOverride can be imported using any of these accepted formats:
 
         * `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
-
         * `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
-
         * `{{service}}/{{metric}}/{{limit}}/{{name}}`
 
         When using the `pulumi import` command, ConsumerQuotaOverride can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -413,6 +420,18 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
                  args: ConsumerQuotaOverrideArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A consumer override is applied to the consumer on its own authority to limit its own quota usage.
+        Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides,
+        producer overrides, or the default limit of the service.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about ConsumerQuotaOverride, see:
+        * How-to Guides
+            * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
+            * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
+
         ## Example Usage
 
         ### Consumer Quota Override
@@ -487,24 +506,17 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         ConsumerQuotaOverride can be imported using any of these accepted formats:
 
         * `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
-
         * `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
-
         * `{{service}}/{{metric}}/{{limit}}/{{name}}`
 
         When using the `pulumi import` command, ConsumerQuotaOverride can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConsumerQuotaOverrideArgs args: The arguments to use to populate this resource's properties.

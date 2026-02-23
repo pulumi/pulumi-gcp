@@ -25,6 +25,7 @@ class OrganizationKajPolicyConfigArgs:
                  default_key_access_justification_policy: Optional[pulumi.Input['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None):
         """
         The set of arguments for constructing a OrganizationKajPolicyConfig resource.
+
         :param pulumi.Input[_builtins.str] organization: The organization number for which to retrieve config.
         :param pulumi.Input['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs'] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
                created in this organization. This is only used when a Key Access Justifications
@@ -70,6 +71,7 @@ class _OrganizationKajPolicyConfigState:
                  organization: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationKajPolicyConfig resources.
+
         :param pulumi.Input['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs'] default_key_access_justification_policy: The default key access justification policy used when a CryptoKey is
                created in this organization. This is only used when a Key Access Justifications
                policy is not provided in the CreateCryptoKeyRequest.
@@ -119,6 +121,22 @@ class OrganizationKajPolicyConfig(pulumi.CustomResource):
                  organization: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        `OrganizationKajPolicyConfig` is a organization-level singleton resource
+        used to configure the default KAJ policy of newly created key.
+
+        > **Note:** OrganizationKajPolicyConfig cannot be deleted from Google Cloud Platform.
+        Destroying a Terraform-managed OrganizationKajPolicyConfig will remove it from state but
+        *will not delete the resource from Google Cloud Platform.*
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about OrganizationKajPolicyConfig, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/KeyAccessJustificationsPolicyConfig)
+        * How-to Guides
+            * [Set default Key Access Justifications policy](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy)
+
         ## Example Usage
 
         ### Kms Organization Kaj Policy Config Basic
@@ -142,18 +160,15 @@ class OrganizationKajPolicyConfig(pulumi.CustomResource):
         OrganizationKajPolicyConfig can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/kajPolicyConfig`
-
         * `{{organization}}`
 
         When using the `pulumi import` command, OrganizationKajPolicyConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig default organizations/{{organization}}/kajPolicyConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig default {{organization}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -170,6 +185,22 @@ class OrganizationKajPolicyConfig(pulumi.CustomResource):
                  args: OrganizationKajPolicyConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        `OrganizationKajPolicyConfig` is a organization-level singleton resource
+        used to configure the default KAJ policy of newly created key.
+
+        > **Note:** OrganizationKajPolicyConfig cannot be deleted from Google Cloud Platform.
+        Destroying a Terraform-managed OrganizationKajPolicyConfig will remove it from state but
+        *will not delete the resource from Google Cloud Platform.*
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about OrganizationKajPolicyConfig, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/KeyAccessJustificationsPolicyConfig)
+        * How-to Guides
+            * [Set default Key Access Justifications policy](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy)
+
         ## Example Usage
 
         ### Kms Organization Kaj Policy Config Basic
@@ -193,18 +224,15 @@ class OrganizationKajPolicyConfig(pulumi.CustomResource):
         OrganizationKajPolicyConfig can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/kajPolicyConfig`
-
         * `{{organization}}`
 
         When using the `pulumi import` command, OrganizationKajPolicyConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig default organizations/{{organization}}/kajPolicyConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig default {{organization}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationKajPolicyConfigArgs args: The arguments to use to populate this resource's properties.

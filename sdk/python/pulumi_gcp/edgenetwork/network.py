@@ -28,6 +28,7 @@ class NetworkArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Network resource.
+
         :param pulumi.Input[_builtins.str] location: The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
         :param pulumi.Input[_builtins.str] network_id: A unique ID that identifies this network.
         :param pulumi.Input[_builtins.str] zone: The name of the target Distributed Cloud Edge zone.
@@ -158,6 +159,7 @@ class _NetworkState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the subnet was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
@@ -408,36 +410,21 @@ class Network(pulumi.CustomResource):
         Network can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
-
         * `{{project}}/{{location}}/{{zone}}/{{network_id}}`
-
         * `{{location}}/{{zone}}/{{network_id}}`
-
         * `{{location}}/{{network_id}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgenetwork/network:Network default projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/network:Network default {{project}}/{{location}}/{{zone}}/{{network_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{zone}}/{{network_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{network_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/network:Network default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -492,36 +479,21 @@ class Network(pulumi.CustomResource):
         Network can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
-
         * `{{project}}/{{location}}/{{zone}}/{{network_id}}`
-
         * `{{location}}/{{zone}}/{{network_id}}`
-
         * `{{location}}/{{network_id}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgenetwork/network:Network default projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/network:Network default {{project}}/{{location}}/{{zone}}/{{network_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{zone}}/{{network_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{network_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/network:Network default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkArgs args: The arguments to use to populate this resource's properties.

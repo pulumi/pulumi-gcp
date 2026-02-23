@@ -32,6 +32,7 @@ class EntitlementArgs:
                  approval_workflow: Optional[pulumi.Input['EntitlementApprovalWorkflowArgs']] = None):
         """
         The set of arguments for constructing a Entitlement resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
                Structure is documented below.
         :param pulumi.Input[_builtins.str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
@@ -202,6 +203,7 @@ class _EntitlementState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Entitlement resources.
+
         :param pulumi.Input['EntitlementAdditionalNotificationTargetsArgs'] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
                Structure is documented below.
         :param pulumi.Input['EntitlementApprovalWorkflowArgs'] approval_workflow: The approvals needed before access will be granted to a requester.
@@ -526,6 +528,7 @@ class Entitlement(pulumi.CustomResource):
         $ pulumi import gcp:privilegedaccessmanager/entitlement:entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
@@ -622,6 +625,7 @@ class Entitlement(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:privilegedaccessmanager/entitlement:entitlement default {{parent}}/locations/{{location}}/entitlements/{{entitlement_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EntitlementArgs args: The arguments to use to populate this resource's properties.

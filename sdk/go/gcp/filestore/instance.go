@@ -222,22 +222,14 @@ import (
 // Instance can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
 // ```
 type Instance struct {
@@ -251,6 +243,8 @@ type Instance struct {
 	DeletionProtectionReason pulumi.StringPtrOutput `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+	DesiredReplicaState pulumi.StringPtrOutput `pulumi:"desiredReplicaState"`
 	// Directory Services configuration.
 	// Should only be set if protocol is "NFS_V4_1".
 	// Structure is documented below.
@@ -377,6 +371,8 @@ type instanceState struct {
 	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description *string `pulumi:"description"`
+	// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+	DesiredReplicaState *string `pulumi:"desiredReplicaState"`
 	// Directory Services configuration.
 	// Should only be set if protocol is "NFS_V4_1".
 	// Structure is documented below.
@@ -460,6 +456,8 @@ type InstanceState struct {
 	DeletionProtectionReason pulumi.StringPtrInput
 	// A description of the instance.
 	Description pulumi.StringPtrInput
+	// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+	DesiredReplicaState pulumi.StringPtrInput
 	// Directory Services configuration.
 	// Should only be set if protocol is "NFS_V4_1".
 	// Structure is documented below.
@@ -545,6 +543,8 @@ type instanceArgs struct {
 	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description *string `pulumi:"description"`
+	// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+	DesiredReplicaState *string `pulumi:"desiredReplicaState"`
 	// Directory Services configuration.
 	// Should only be set if protocol is "NFS_V4_1".
 	// Structure is documented below.
@@ -616,6 +616,8 @@ type InstanceArgs struct {
 	DeletionProtectionReason pulumi.StringPtrInput
 	// A description of the instance.
 	Description pulumi.StringPtrInput
+	// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+	DesiredReplicaState pulumi.StringPtrInput
 	// Directory Services configuration.
 	// Should only be set if protocol is "NFS_V4_1".
 	// Structure is documented below.
@@ -784,6 +786,11 @@ func (o InstanceOutput) DeletionProtectionReason() pulumi.StringPtrOutput {
 // A description of the instance.
 func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+func (o InstanceOutput) DesiredReplicaState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DesiredReplicaState }).(pulumi.StringPtrOutput)
 }
 
 // Directory Services configuration.

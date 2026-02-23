@@ -26,6 +26,7 @@ class ExtensionsInstanceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExtensionsInstance resource.
+
         :param pulumi.Input['ExtensionsInstanceConfigArgs'] config: The current Config of the Extension Instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] instance_id: The ID to use for the Extension Instance, which will become the final
@@ -96,6 +97,7 @@ class _ExtensionsInstanceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExtensionsInstance resources.
+
         :param pulumi.Input['ExtensionsInstanceConfigArgs'] config: The current Config of the Extension Instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time at which the Extension Instance was created.
@@ -325,6 +327,15 @@ class ExtensionsInstance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        An Instance is an installation of an Extension into a user's project.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Instance, see:
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/products/extensions)
+
         ## Example Usage
 
         ### Firebase Extensions Instance Resize Image
@@ -374,24 +385,17 @@ class ExtensionsInstance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance_id}}`
-
         * `{{project}}/{{instance_id}}`
-
         * `{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default projects/{{project}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default {{project}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default {{instance_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -409,6 +413,15 @@ class ExtensionsInstance(pulumi.CustomResource):
                  args: ExtensionsInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An Instance is an installation of an Extension into a user's project.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Instance, see:
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/products/extensions)
+
         ## Example Usage
 
         ### Firebase Extensions Instance Resize Image
@@ -458,24 +471,17 @@ class ExtensionsInstance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance_id}}`
-
         * `{{project}}/{{instance_id}}`
-
         * `{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default projects/{{project}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default {{project}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default {{instance_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExtensionsInstanceArgs args: The arguments to use to populate this resource's properties.

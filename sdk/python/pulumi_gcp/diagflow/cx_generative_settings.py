@@ -29,6 +29,7 @@ class CxGenerativeSettingsArgs:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CxGenerativeSettings resource.
+
         :param pulumi.Input[_builtins.str] language_code: Language for this settings.
         :param pulumi.Input['CxGenerativeSettingsFallbackSettingsArgs'] fallback_settings: Settings for Generative Fallback.
                Structure is documented below.
@@ -143,6 +144,7 @@ class _CxGenerativeSettingsState:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxGenerativeSettings resources.
+
         :param pulumi.Input['CxGenerativeSettingsFallbackSettingsArgs'] fallback_settings: Settings for Generative Fallback.
                Structure is documented below.
         :param pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsArgs'] generative_safety_settings: Settings for Generative Safety.
@@ -336,18 +338,15 @@ class CxGenerativeSettings(pulumi.CustomResource):
         GenerativeSettings can be imported using any of these accepted formats:
 
         * `{{parent}}/generativeSettings`
-
         * `{{parent}}`
 
         When using the `pulumi import` command, GenerativeSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings default {{parent}}/generativeSettings
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings default {{parent}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -429,18 +428,15 @@ class CxGenerativeSettings(pulumi.CustomResource):
         GenerativeSettings can be imported using any of these accepted formats:
 
         * `{{parent}}/generativeSettings`
-
         * `{{parent}}`
 
         When using the `pulumi import` command, GenerativeSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings default {{parent}}/generativeSettings
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings default {{parent}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CxGenerativeSettingsArgs args: The arguments to use to populate this resource's properties.

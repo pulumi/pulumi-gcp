@@ -89,17 +89,12 @@ __all__ = [
     'TopicSchemaSettingsArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class LiteSubscriptionDeliveryConfigArgsDict(TypedDict):
-        delivery_requirement: pulumi.Input[_builtins.str]
-        """
-        When this subscription should send messages to subscribers relative to messages persistence in storage.
-        Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
-        """
-elif False:
-    LiteSubscriptionDeliveryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class LiteSubscriptionDeliveryConfigArgsDict(TypedDict):
+    delivery_requirement: pulumi.Input[_builtins.str]
+    """
+    When this subscription should send messages to subscribers relative to messages persistence in storage.
+    Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+    """
 
 @pulumi.input_type
 class LiteSubscriptionDeliveryConfigArgs:
@@ -125,19 +120,16 @@ class LiteSubscriptionDeliveryConfigArgs:
         pulumi.set(self, "delivery_requirement", value)
 
 
-if not MYPY:
-    class LiteTopicPartitionConfigArgsDict(TypedDict):
-        count: pulumi.Input[_builtins.int]
-        """
-        The number of partitions in the topic. Must be at least 1.
-        """
-        capacity: NotRequired[pulumi.Input['LiteTopicPartitionConfigCapacityArgsDict']]
-        """
-        The capacity configuration.
-        Structure is documented below.
-        """
-elif False:
-    LiteTopicPartitionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class LiteTopicPartitionConfigArgsDict(TypedDict):
+    count: pulumi.Input[_builtins.int]
+    """
+    The number of partitions in the topic. Must be at least 1.
+    """
+    capacity: NotRequired[pulumi.Input['LiteTopicPartitionConfigCapacityArgsDict']]
+    """
+    The capacity configuration.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class LiteTopicPartitionConfigArgs:
@@ -179,18 +171,15 @@ class LiteTopicPartitionConfigArgs:
         pulumi.set(self, "capacity", value)
 
 
-if not MYPY:
-    class LiteTopicPartitionConfigCapacityArgsDict(TypedDict):
-        publish_mib_per_sec: pulumi.Input[_builtins.int]
-        """
-        Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
-        """
-        subscribe_mib_per_sec: pulumi.Input[_builtins.int]
-        """
-        Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
-        """
-elif False:
-    LiteTopicPartitionConfigCapacityArgsDict: TypeAlias = Mapping[str, Any]
+class LiteTopicPartitionConfigCapacityArgsDict(TypedDict):
+    publish_mib_per_sec: pulumi.Input[_builtins.int]
+    """
+    Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+    """
+    subscribe_mib_per_sec: pulumi.Input[_builtins.int]
+    """
+    Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+    """
 
 @pulumi.input_type
 class LiteTopicPartitionConfigCapacityArgs:
@@ -229,14 +218,11 @@ class LiteTopicPartitionConfigCapacityArgs:
         pulumi.set(self, "subscribe_mib_per_sec", value)
 
 
-if not MYPY:
-    class LiteTopicReservationConfigArgsDict(TypedDict):
-        throughput_reservation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Reservation to use for this topic's throughput capacity.
-        """
-elif False:
-    LiteTopicReservationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class LiteTopicReservationConfigArgsDict(TypedDict):
+    throughput_reservation: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Reservation to use for this topic's throughput capacity.
+    """
 
 @pulumi.input_type
 class LiteTopicReservationConfigArgs:
@@ -261,23 +247,20 @@ class LiteTopicReservationConfigArgs:
         pulumi.set(self, "throughput_reservation", value)
 
 
-if not MYPY:
-    class LiteTopicRetentionConfigArgsDict(TypedDict):
-        per_partition_bytes: pulumi.Input[_builtins.str]
-        """
-        The provisioned storage, in bytes, per partition. If the number of bytes stored
-        in any of the topic's partitions grows beyond this value, older messages will be
-        dropped to make room for newer ones, regardless of the value of period.
-        """
-        period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How long a published message is retained. If unset, messages will be retained as
-        long as the bytes retained for each partition is below perPartitionBytes. A
-        duration in seconds with up to nine fractional digits, terminated by 's'.
-        Example: "3.5s".
-        """
-elif False:
-    LiteTopicRetentionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class LiteTopicRetentionConfigArgsDict(TypedDict):
+    per_partition_bytes: pulumi.Input[_builtins.str]
+    """
+    The provisioned storage, in bytes, per partition. If the number of bytes stored
+    in any of the topic's partitions grows beyond this value, older messages will be
+    dropped to make room for newer ones, regardless of the value of period.
+    """
+    period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How long a published message is retained. If unset, messages will be retained as
+    long as the bytes retained for each partition is below perPartitionBytes. A
+    duration in seconds with up to nine fractional digits, terminated by 's'.
+    Example: "3.5s".
+    """
 
 @pulumi.input_type
 class LiteTopicRetentionConfigArgs:
@@ -327,13 +310,10 @@ class LiteTopicRetentionConfigArgs:
         pulumi.set(self, "period", value)
 
 
-if not MYPY:
-    class SchemaIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SchemaIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class SchemaIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class SchemaIamBindingConditionArgs:
@@ -374,13 +354,10 @@ class SchemaIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class SchemaIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SchemaIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class SchemaIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class SchemaIamMemberConditionArgs:
@@ -421,41 +398,38 @@ class SchemaIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class SubscriptionBigqueryConfigArgsDict(TypedDict):
-        table: pulumi.Input[_builtins.str]
-        """
-        The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
-        """
-        drop_unknown_fields: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
-        are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
-        and any messages with extra fields are not written and remain in the subscription's backlog.
-        """
-        service_account_email: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service account to use to write to BigQuery. If not specified, the Pub/Sub
-        [service agent](https://cloud.google.com/iam/docs/service-agents),
-        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
-        """
-        use_table_schema: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
-        must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
-        """
-        use_topic_schema: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
-        Only one of use_topic_schema and use_table_schema can be set.
-        """
-        write_metadata: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
-        The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
-        """
-elif False:
-    SubscriptionBigqueryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionBigqueryConfigArgsDict(TypedDict):
+    table: pulumi.Input[_builtins.str]
+    """
+    The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+    """
+    drop_unknown_fields: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+    are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+    and any messages with extra fields are not written and remain in the subscription's backlog.
+    """
+    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service account to use to write to BigQuery. If not specified, the Pub/Sub
+    [service agent](https://cloud.google.com/iam/docs/service-agents),
+    service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+    """
+    use_table_schema: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+    must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+    """
+    use_topic_schema: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+    Only one of use_topic_schema and use_table_schema can be set.
+    """
+    write_metadata: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+    The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+    """
 
 @pulumi.input_type
 class SubscriptionBigqueryConfigArgs:
@@ -573,57 +547,54 @@ class SubscriptionBigqueryConfigArgs:
         pulumi.set(self, "write_metadata", value)
 
 
-if not MYPY:
-    class SubscriptionCloudStorageConfigArgsDict(TypedDict):
-        bucket: pulumi.Input[_builtins.str]
-        """
-        User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
-        """
-        avro_config: NotRequired[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgsDict']]
-        """
-        If set, message data will be written to Cloud Storage in Avro format.
-        Structure is documented below.
-        """
-        filename_datetime_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
-        """
-        filename_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User-provided prefix for Cloud Storage filename.
-        """
-        filename_suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User-provided suffix for Cloud Storage filename. Must not end in "/".
-        """
-        max_bytes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
-        The maxBytes limit may be exceeded in cases where messages are larger than the limit.
-        """
-        max_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
-        May not exceed the subscription's acknowledgement deadline.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-        """
-        max_messages: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
-        """
-        service_account_email: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
-        [service agent](https://cloud.google.com/iam/docs/service-agents),
-        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        An output-only field that indicates whether or not the subscription can receive messages.
-        """
-elif False:
-    SubscriptionCloudStorageConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionCloudStorageConfigArgsDict(TypedDict):
+    bucket: pulumi.Input[_builtins.str]
+    """
+    User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+    """
+    avro_config: NotRequired[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgsDict']]
+    """
+    If set, message data will be written to Cloud Storage in Avro format.
+    Structure is documented below.
+    """
+    filename_datetime_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+    """
+    filename_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User-provided prefix for Cloud Storage filename.
+    """
+    filename_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User-provided suffix for Cloud Storage filename. Must not end in "/".
+    """
+    max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+    The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+    """
+    max_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+    May not exceed the subscription's acknowledgement deadline.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+    """
+    max_messages: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+    """
+    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+    [service agent](https://cloud.google.com/iam/docs/service-agents),
+    service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    An output-only field that indicates whether or not the subscription can receive messages.
+    """
 
 @pulumi.input_type
 class SubscriptionCloudStorageConfigArgs:
@@ -805,18 +776,15 @@ class SubscriptionCloudStorageConfigArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class SubscriptionCloudStorageConfigAvroConfigArgsDict(TypedDict):
-        use_topic_schema: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
-        """
-        write_metadata: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
-        """
-elif False:
-    SubscriptionCloudStorageConfigAvroConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionCloudStorageConfigAvroConfigArgsDict(TypedDict):
+    use_topic_schema: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+    """
+    write_metadata: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+    """
 
 @pulumi.input_type
 class SubscriptionCloudStorageConfigAvroConfigArgs:
@@ -857,33 +825,30 @@ class SubscriptionCloudStorageConfigAvroConfigArgs:
         pulumi.set(self, "write_metadata", value)
 
 
-if not MYPY:
-    class SubscriptionDeadLetterPolicyArgsDict(TypedDict):
-        dead_letter_topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the topic to which dead letter messages should be published.
-        Format is `projects/{project}/topics/{topic}`.
-        The Cloud Pub/Sub service account associated with the enclosing subscription's
-        parent project (i.e.,
-        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-        permission to Publish() to this topic.
-        The operation will fail if the topic does not exist.
-        Users should ensure that there is a subscription attached to this topic
-        since messages published to a topic with no subscriptions are lost.
-        """
-        max_delivery_attempts: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of delivery attempts for any message. The value must be
-        between 5 and 100.
-        The number of delivery attempts is defined as 1 + (the sum of number of
-        NACKs and number of times the acknowledgement deadline has been exceeded for the message).
-        A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
-        client libraries may automatically extend ack_deadlines.
-        This field will be honored on a best effort basis.
-        If this parameter is 0, a default value of 5 is used.
-        """
-elif False:
-    SubscriptionDeadLetterPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionDeadLetterPolicyArgsDict(TypedDict):
+    dead_letter_topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the topic to which dead letter messages should be published.
+    Format is `projects/{project}/topics/{topic}`.
+    The Cloud Pub/Sub service account associated with the enclosing subscription's
+    parent project (i.e.,
+    service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+    permission to Publish() to this topic.
+    The operation will fail if the topic does not exist.
+    Users should ensure that there is a subscription attached to this topic
+    since messages published to a topic with no subscriptions are lost.
+    """
+    max_delivery_attempts: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of delivery attempts for any message. The value must be
+    between 5 and 100.
+    The number of delivery attempts is defined as 1 + (the sum of number of
+    NACKs and number of times the acknowledgement deadline has been exceeded for the message).
+    A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
+    client libraries may automatically extend ack_deadlines.
+    This field will be honored on a best effort basis.
+    If this parameter is 0, a default value of 5 is used.
+    """
 
 @pulumi.input_type
 class SubscriptionDeadLetterPolicyArgs:
@@ -954,18 +919,15 @@ class SubscriptionDeadLetterPolicyArgs:
         pulumi.set(self, "max_delivery_attempts", value)
 
 
-if not MYPY:
-    class SubscriptionExpirationPolicyArgsDict(TypedDict):
-        ttl: pulumi.Input[_builtins.str]
-        """
-        Specifies the "time-to-live" duration for an associated resource. The
-        resource expires if it is not active for a period of ttl.
-        If ttl is set to "", the associated resource never expires.
-        A duration in seconds with up to nine fractional digits, terminated by 's'.
-        Example - "3.5s".
-        """
-elif False:
-    SubscriptionExpirationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionExpirationPolicyArgsDict(TypedDict):
+    ttl: pulumi.Input[_builtins.str]
+    """
+    Specifies the "time-to-live" duration for an associated resource. The
+    resource expires if it is not active for a period of ttl.
+    If ttl is set to "", the associated resource never expires.
+    A duration in seconds with up to nine fractional digits, terminated by 's'.
+    Example - "3.5s".
+    """
 
 @pulumi.input_type
 class SubscriptionExpirationPolicyArgs:
@@ -997,13 +959,10 @@ class SubscriptionExpirationPolicyArgs:
         pulumi.set(self, "ttl", value)
 
 
-if not MYPY:
-    class SubscriptionIAMBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SubscriptionIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionIAMBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class SubscriptionIAMBindingConditionArgs:
@@ -1044,13 +1003,10 @@ class SubscriptionIAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class SubscriptionIAMMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SubscriptionIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionIAMMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class SubscriptionIAMMemberConditionArgs:
@@ -1091,21 +1047,18 @@ class SubscriptionIAMMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class SubscriptionMessageTransformArgsDict(TypedDict):
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Controls whether or not to use this transform. If not set or `false`,
-        the transform will be applied to messages. Default: `true`.
-        """
-        javascript_udf: NotRequired[pulumi.Input['SubscriptionMessageTransformJavascriptUdfArgsDict']]
-        """
-        Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-        each one must have a unique `function_name`.
-        Structure is documented below.
-        """
-elif False:
-    SubscriptionMessageTransformArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionMessageTransformArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Controls whether or not to use this transform. If not set or `false`,
+    the transform will be applied to messages. Default: `true`.
+    """
+    javascript_udf: NotRequired[pulumi.Input['SubscriptionMessageTransformJavascriptUdfArgsDict']]
+    """
+    Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
+    each one must have a unique `function_name`.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SubscriptionMessageTransformArgs:
@@ -1152,45 +1105,42 @@ class SubscriptionMessageTransformArgs:
         pulumi.set(self, "javascript_udf", value)
 
 
-if not MYPY:
-    class SubscriptionMessageTransformJavascriptUdfArgsDict(TypedDict):
-        code: pulumi.Input[_builtins.str]
-        """
-        JavaScript code that contains a function `function_name` with the
-        following signature:
-        ```
-        /**
-        * Transforms a Pub/Sub message.
-        *
-        * @return {(Object<string, (string | Object<string, string>)>|null)} - To
-        * filter a message, return `null`. To transform a message return a map
-        * with the following keys:
-        *   - (required) 'data' : {string}
-        *   - (optional) 'attributes' : {Object<string, string>}
-        * Returning empty `attributes` will remove all attributes from the
-        * message.
-        *
-        * @param  {(Object<string, (string | Object<string, string>)>} Pub/Sub
-        * message. Keys:
-        *   - (required) 'data' : {string}
-        *   - (required) 'attributes' : {Object<string, string>}
-        *
-        * @param  {Object<string, any>} metadata - Pub/Sub message metadata.
-        * Keys:
-        *   - (required) 'message_id'  : {string}
-        *   - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format
-        *   - (optional) 'ordering_key': {string}
-        */
-        function <function_name>(message, metadata) {
-        }
-        ```
-        """
-        function_name: pulumi.Input[_builtins.str]
-        """
-        Name of the JavaScript function that should be applied to Pub/Sub messages.
-        """
-elif False:
-    SubscriptionMessageTransformJavascriptUdfArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionMessageTransformJavascriptUdfArgsDict(TypedDict):
+    code: pulumi.Input[_builtins.str]
+    """
+    JavaScript code that contains a function `function_name` with the
+    following signature:
+    ```
+    /**
+    * Transforms a Pub/Sub message.
+    *
+    * @return {(Object<string, (string | Object<string, string>)>|null)} - To
+    * filter a message, return `null`. To transform a message return a map
+    * with the following keys:
+    *   - (required) 'data' : {string}
+    *   - (optional) 'attributes' : {Object<string, string>}
+    * Returning empty `attributes` will remove all attributes from the
+    * message.
+    *
+    * @param  {(Object<string, (string | Object<string, string>)>} Pub/Sub
+    * message. Keys:
+    *   - (required) 'data' : {string}
+    *   - (required) 'attributes' : {Object<string, string>}
+    *
+    * @param  {Object<string, any>} metadata - Pub/Sub message metadata.
+    * Keys:
+    *   - (required) 'message_id'  : {string}
+    *   - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format
+    *   - (optional) 'ordering_key': {string}
+    */
+    function <function_name>(message, metadata) {
+    }
+    ```
+    """
+    function_name: pulumi.Input[_builtins.str]
+    """
+    Name of the JavaScript function that should be applied to Pub/Sub messages.
+    """
 
 @pulumi.input_type
 class SubscriptionMessageTransformJavascriptUdfArgs:
@@ -1283,49 +1233,46 @@ class SubscriptionMessageTransformJavascriptUdfArgs:
         pulumi.set(self, "function_name", value)
 
 
-if not MYPY:
-    class SubscriptionPushConfigArgsDict(TypedDict):
-        push_endpoint: pulumi.Input[_builtins.str]
-        """
-        A URL locating the endpoint to which messages should be pushed.
-        For example, a Webhook endpoint might use
-        "https://example.com/push".
-        """
-        attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Endpoint configuration attributes.
-        Every endpoint has a set of API supported attributes that can
-        be used to control different aspects of the message delivery.
-        The currently supported attribute is x-goog-version, which you
-        can use to change the format of the pushed message. This
-        attribute indicates the version of the data expected by
-        the endpoint. This controls the shape of the pushed message
-        (i.e., its fields and metadata). The endpoint version is
-        based on the version of the Pub/Sub API.
-        If not present during the subscriptions.create call,
-        it will default to the version of the API used to make
-        such call. If not present during a subscriptions.modifyPushConfig
-        call, its value will not be changed. subscriptions.get
-        calls will always return a valid version, even if the
-        subscription was created without this attribute.
-        The possible values for this attribute are:
-        - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
-        - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
-        """
-        no_wrapper: NotRequired[pulumi.Input['SubscriptionPushConfigNoWrapperArgsDict']]
-        """
-        When set, the payload to the push endpoint is not wrapped.Sets the
-        `data` field as the HTTP body for delivery.
-        Structure is documented below.
-        """
-        oidc_token: NotRequired[pulumi.Input['SubscriptionPushConfigOidcTokenArgsDict']]
-        """
-        If specified, Pub/Sub will generate and attach an OIDC JWT token as
-        an Authorization header in the HTTP request for every pushed message.
-        Structure is documented below.
-        """
-elif False:
-    SubscriptionPushConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionPushConfigArgsDict(TypedDict):
+    push_endpoint: pulumi.Input[_builtins.str]
+    """
+    A URL locating the endpoint to which messages should be pushed.
+    For example, a Webhook endpoint might use
+    "https://example.com/push".
+    """
+    attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Endpoint configuration attributes.
+    Every endpoint has a set of API supported attributes that can
+    be used to control different aspects of the message delivery.
+    The currently supported attribute is x-goog-version, which you
+    can use to change the format of the pushed message. This
+    attribute indicates the version of the data expected by
+    the endpoint. This controls the shape of the pushed message
+    (i.e., its fields and metadata). The endpoint version is
+    based on the version of the Pub/Sub API.
+    If not present during the subscriptions.create call,
+    it will default to the version of the API used to make
+    such call. If not present during a subscriptions.modifyPushConfig
+    call, its value will not be changed. subscriptions.get
+    calls will always return a valid version, even if the
+    subscription was created without this attribute.
+    The possible values for this attribute are:
+    - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
+    - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
+    """
+    no_wrapper: NotRequired[pulumi.Input['SubscriptionPushConfigNoWrapperArgsDict']]
+    """
+    When set, the payload to the push endpoint is not wrapped.Sets the
+    `data` field as the HTTP body for delivery.
+    Structure is documented below.
+    """
+    oidc_token: NotRequired[pulumi.Input['SubscriptionPushConfigOidcTokenArgsDict']]
+    """
+    If specified, Pub/Sub will generate and attach an OIDC JWT token as
+    an Authorization header in the HTTP request for every pushed message.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class SubscriptionPushConfigArgs:
@@ -1443,16 +1390,13 @@ class SubscriptionPushConfigArgs:
         pulumi.set(self, "oidc_token", value)
 
 
-if not MYPY:
-    class SubscriptionPushConfigNoWrapperArgsDict(TypedDict):
-        write_metadata: pulumi.Input[_builtins.bool]
-        """
-        When true, writes the Pub/Sub message metadata to
-        `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
-        Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
-        """
-elif False:
-    SubscriptionPushConfigNoWrapperArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionPushConfigNoWrapperArgsDict(TypedDict):
+    write_metadata: pulumi.Input[_builtins.bool]
+    """
+    When true, writes the Pub/Sub message metadata to
+    `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
+    Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+    """
 
 @pulumi.input_type
 class SubscriptionPushConfigNoWrapperArgs:
@@ -1480,26 +1424,23 @@ class SubscriptionPushConfigNoWrapperArgs:
         pulumi.set(self, "write_metadata", value)
 
 
-if not MYPY:
-    class SubscriptionPushConfigOidcTokenArgsDict(TypedDict):
-        service_account_email: pulumi.Input[_builtins.str]
-        """
-        Service account email to be used for generating the OIDC token.
-        The caller (for subscriptions.create, subscriptions.patch, and
-        subscriptions.modifyPushConfig RPCs) must have the
-        iam.serviceAccounts.actAs permission for the service account.
-        """
-        audience: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Audience to be used when generating OIDC token. The audience claim
-        identifies the recipients that the JWT is intended for. The audience
-        value is a single case-sensitive string. Having multiple values (array)
-        for the audience field is not supported. More info about the OIDC JWT
-        token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
-        Note: if not specified, the Push endpoint URL will be used.
-        """
-elif False:
-    SubscriptionPushConfigOidcTokenArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionPushConfigOidcTokenArgsDict(TypedDict):
+    service_account_email: pulumi.Input[_builtins.str]
+    """
+    Service account email to be used for generating the OIDC token.
+    The caller (for subscriptions.create, subscriptions.patch, and
+    subscriptions.modifyPushConfig RPCs) must have the
+    iam.serviceAccounts.actAs permission for the service account.
+    """
+    audience: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Audience to be used when generating OIDC token. The audience claim
+    identifies the recipients that the JWT is intended for. The audience
+    value is a single case-sensitive string. Having multiple values (array)
+    for the audience field is not supported. More info about the OIDC JWT
+    token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+    Note: if not specified, the Push endpoint URL will be used.
+    """
 
 @pulumi.input_type
 class SubscriptionPushConfigOidcTokenArgs:
@@ -1555,20 +1496,17 @@ class SubscriptionPushConfigOidcTokenArgs:
         pulumi.set(self, "audience", value)
 
 
-if not MYPY:
-    class SubscriptionRetryPolicyArgsDict(TypedDict):
-        maximum_backoff: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        """
-        minimum_backoff: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        """
-elif False:
-    SubscriptionRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class SubscriptionRetryPolicyArgsDict(TypedDict):
+    maximum_backoff: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+    """
+    minimum_backoff: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+    """
 
 @pulumi.input_type
 class SubscriptionRetryPolicyArgs:
@@ -1613,13 +1551,10 @@ class SubscriptionRetryPolicyArgs:
         pulumi.set(self, "minimum_backoff", value)
 
 
-if not MYPY:
-    class TopicIAMBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    TopicIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class TopicIAMBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class TopicIAMBindingConditionArgs:
@@ -1660,13 +1595,10 @@ class TopicIAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class TopicIAMMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    TopicIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class TopicIAMMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class TopicIAMMemberConditionArgs:
@@ -1707,41 +1639,38 @@ class TopicIAMMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class TopicIngestionDataSourceSettingsArgsDict(TypedDict):
-        aws_kinesis: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgsDict']]
-        """
-        Settings for ingestion from Amazon Kinesis Data Streams.
-        Structure is documented below.
-        """
-        aws_msk: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsAwsMskArgsDict']]
-        """
-        Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
-        Structure is documented below.
-        """
-        azure_event_hubs: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgsDict']]
-        """
-        Settings for ingestion from Azure Event Hubs.
-        Structure is documented below.
-        """
-        cloud_storage: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgsDict']]
-        """
-        Settings for ingestion from Cloud Storage.
-        Structure is documented below.
-        """
-        confluent_cloud: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsConfluentCloudArgsDict']]
-        """
-        Settings for ingestion from Confluent Cloud.
-        Structure is documented below.
-        """
-        platform_logs_settings: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict']]
-        """
-        Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
-        no Platform Logs will be generated.'
-        Structure is documented below.
-        """
-elif False:
-    TopicIngestionDataSourceSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class TopicIngestionDataSourceSettingsArgsDict(TypedDict):
+    aws_kinesis: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgsDict']]
+    """
+    Settings for ingestion from Amazon Kinesis Data Streams.
+    Structure is documented below.
+    """
+    aws_msk: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsAwsMskArgsDict']]
+    """
+    Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
+    Structure is documented below.
+    """
+    azure_event_hubs: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgsDict']]
+    """
+    Settings for ingestion from Azure Event Hubs.
+    Structure is documented below.
+    """
+    cloud_storage: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgsDict']]
+    """
+    Settings for ingestion from Cloud Storage.
+    Structure is documented below.
+    """
+    confluent_cloud: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsConfluentCloudArgsDict']]
+    """
+    Settings for ingestion from Confluent Cloud.
+    Structure is documented below.
+    """
+    platform_logs_settings: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict']]
+    """
+    Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+    no Platform Logs will be generated.'
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsArgs:
@@ -1860,33 +1789,30 @@ class TopicIngestionDataSourceSettingsArgs:
         pulumi.set(self, "platform_logs_settings", value)
 
 
-if not MYPY:
-    class TopicIngestionDataSourceSettingsAwsKinesisArgsDict(TypedDict):
-        aws_role_arn: pulumi.Input[_builtins.str]
-        """
-        AWS role ARN to be used for Federated Identity authentication with
-        Kinesis. Check the Pub/Sub docs for how to set up this role and the
-        required permissions that need to be attached to it.
-        """
-        consumer_arn: pulumi.Input[_builtins.str]
-        """
-        The Kinesis consumer ARN to used for ingestion in
-        Enhanced Fan-Out mode. The consumer must be already
-        created and ready to be used.
-        """
-        gcp_service_account: pulumi.Input[_builtins.str]
-        """
-        The GCP service account to be used for Federated Identity authentication
-        with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided
-        role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
-        equals to this service account number.
-        """
-        stream_arn: pulumi.Input[_builtins.str]
-        """
-        The Kinesis stream ARN to ingest data from.
-        """
-elif False:
-    TopicIngestionDataSourceSettingsAwsKinesisArgsDict: TypeAlias = Mapping[str, Any]
+class TopicIngestionDataSourceSettingsAwsKinesisArgsDict(TypedDict):
+    aws_role_arn: pulumi.Input[_builtins.str]
+    """
+    AWS role ARN to be used for Federated Identity authentication with
+    Kinesis. Check the Pub/Sub docs for how to set up this role and the
+    required permissions that need to be attached to it.
+    """
+    consumer_arn: pulumi.Input[_builtins.str]
+    """
+    The Kinesis consumer ARN to used for ingestion in
+    Enhanced Fan-Out mode. The consumer must be already
+    created and ready to be used.
+    """
+    gcp_service_account: pulumi.Input[_builtins.str]
+    """
+    The GCP service account to be used for Federated Identity authentication
+    with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided
+    role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+    equals to this service account number.
+    """
+    stream_arn: pulumi.Input[_builtins.str]
+    """
+    The Kinesis stream ARN to ingest data from.
+    """
 
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsAwsKinesisArgs:
@@ -1969,31 +1895,28 @@ class TopicIngestionDataSourceSettingsAwsKinesisArgs:
         pulumi.set(self, "stream_arn", value)
 
 
-if not MYPY:
-    class TopicIngestionDataSourceSettingsAwsMskArgsDict(TypedDict):
-        aws_role_arn: pulumi.Input[_builtins.str]
-        """
-        AWS role ARN to be used for Federated Identity authentication with
-        MSK. Check the Pub/Sub docs for how to set up this role and the
-        required permissions that need to be attached to it.
-        """
-        cluster_arn: pulumi.Input[_builtins.str]
-        """
-        ARN that uniquely identifies the MSK cluster.
-        """
-        gcp_service_account: pulumi.Input[_builtins.str]
-        """
-        The GCP service account to be used for Federated Identity authentication
-        with MSK (via a `AssumeRoleWithWebIdentity` call for the provided
-        role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
-        equals to this service account number.
-        """
-        topic: pulumi.Input[_builtins.str]
-        """
-        The name of the MSK topic that Pub/Sub will import from.
-        """
-elif False:
-    TopicIngestionDataSourceSettingsAwsMskArgsDict: TypeAlias = Mapping[str, Any]
+class TopicIngestionDataSourceSettingsAwsMskArgsDict(TypedDict):
+    aws_role_arn: pulumi.Input[_builtins.str]
+    """
+    AWS role ARN to be used for Federated Identity authentication with
+    MSK. Check the Pub/Sub docs for how to set up this role and the
+    required permissions that need to be attached to it.
+    """
+    cluster_arn: pulumi.Input[_builtins.str]
+    """
+    ARN that uniquely identifies the MSK cluster.
+    """
+    gcp_service_account: pulumi.Input[_builtins.str]
+    """
+    The GCP service account to be used for Federated Identity authentication
+    with MSK (via a `AssumeRoleWithWebIdentity` call for the provided
+    role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+    equals to this service account number.
+    """
+    topic: pulumi.Input[_builtins.str]
+    """
+    The name of the MSK topic that Pub/Sub will import from.
+    """
 
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsAwsMskArgs:
@@ -2072,40 +1995,37 @@ class TopicIngestionDataSourceSettingsAwsMskArgs:
         pulumi.set(self, "topic", value)
 
 
-if not MYPY:
-    class TopicIngestionDataSourceSettingsAzureEventHubsArgsDict(TypedDict):
-        client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Azure event hub client ID to use for ingestion.
-        """
-        event_hub: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Azure event hub to ingest data from.
-        """
-        gcp_service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The GCP service account to be used for Federated Identity authentication
-        with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
-        role).
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Azure event hub namespace to ingest data from.
-        """
-        resource_group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the resource group within an Azure subscription.
-        """
-        subscription_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Azure event hub subscription ID to use for ingestion.
-        """
-        tenant_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Azure event hub tenant ID to use for ingestion.
-        """
-elif False:
-    TopicIngestionDataSourceSettingsAzureEventHubsArgsDict: TypeAlias = Mapping[str, Any]
+class TopicIngestionDataSourceSettingsAzureEventHubsArgsDict(TypedDict):
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Azure event hub client ID to use for ingestion.
+    """
+    event_hub: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Azure event hub to ingest data from.
+    """
+    gcp_service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The GCP service account to be used for Federated Identity authentication
+    with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
+    role).
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Azure event hub namespace to ingest data from.
+    """
+    resource_group: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the resource group within an Azure subscription.
+    """
+    subscription_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Azure event hub subscription ID to use for ingestion.
+    """
+    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Azure event hub tenant ID to use for ingestion.
+    """
 
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsAzureEventHubsArgs:
@@ -2230,47 +2150,44 @@ class TopicIngestionDataSourceSettingsAzureEventHubsArgs:
         pulumi.set(self, "tenant_id", value)
 
 
-if not MYPY:
-    class TopicIngestionDataSourceSettingsCloudStorageArgsDict(TypedDict):
-        bucket: pulumi.Input[_builtins.str]
-        """
-        Cloud Storage bucket. The bucket name must be without any
-        prefix like "gs://". See the bucket naming requirements:
-        https://cloud.google.com/storage/docs/buckets#naming.
-        """
-        avro_format: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgsDict']]
-        """
-        Configuration for reading Cloud Storage data in Avro binary format. The
-        bytes of each object will be set to the `data` field of a Pub/Sub message.
-        """
-        match_glob: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Glob pattern used to match objects that will be ingested. If unset, all
-        objects will be ingested. See the supported patterns:
-        https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
-        """
-        minimum_object_create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The timestamp set in RFC3339 text format. If set, only objects with a
-        larger or equal timestamp will be ingested. Unset by default, meaning
-        all objects will be ingested.
-        """
-        pubsub_avro_format: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgsDict']]
-        """
-        Configuration for reading Cloud Storage data written via Cloud Storage
-        subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
-        data and attributes fields of the originally exported Pub/Sub message
-        will be restored when publishing.
-        """
-        text_format: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict']]
-        """
-        Configuration for reading Cloud Storage data in text format. Each line of
-        text as specified by the delimiter will be set to the `data` field of a
-        Pub/Sub message.
-        Structure is documented below.
-        """
-elif False:
-    TopicIngestionDataSourceSettingsCloudStorageArgsDict: TypeAlias = Mapping[str, Any]
+class TopicIngestionDataSourceSettingsCloudStorageArgsDict(TypedDict):
+    bucket: pulumi.Input[_builtins.str]
+    """
+    Cloud Storage bucket. The bucket name must be without any
+    prefix like "gs://". See the bucket naming requirements:
+    https://cloud.google.com/storage/docs/buckets#naming.
+    """
+    avro_format: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgsDict']]
+    """
+    Configuration for reading Cloud Storage data in Avro binary format. The
+    bytes of each object will be set to the `data` field of a Pub/Sub message.
+    """
+    match_glob: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Glob pattern used to match objects that will be ingested. If unset, all
+    objects will be ingested. See the supported patterns:
+    https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
+    """
+    minimum_object_create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The timestamp set in RFC3339 text format. If set, only objects with a
+    larger or equal timestamp will be ingested. Unset by default, meaning
+    all objects will be ingested.
+    """
+    pubsub_avro_format: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgsDict']]
+    """
+    Configuration for reading Cloud Storage data written via Cloud Storage
+    subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
+    data and attributes fields of the originally exported Pub/Sub message
+    will be restored when publishing.
+    """
+    text_format: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict']]
+    """
+    Configuration for reading Cloud Storage data in text format. Each line of
+    text as specified by the delimiter will be set to the `data` field of a
+    Pub/Sub message.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsCloudStorageArgs:
@@ -2400,11 +2317,8 @@ class TopicIngestionDataSourceSettingsCloudStorageArgs:
         pulumi.set(self, "text_format", value)
 
 
-if not MYPY:
-    class TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgsDict(TypedDict):
-        pass
-elif False:
-    TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgsDict: TypeAlias = Mapping[str, Any]
+class TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs:
@@ -2412,11 +2326,8 @@ class TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs:
         pass
 
 
-if not MYPY:
-    class TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgsDict(TypedDict):
-        pass
-elif False:
-    TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgsDict: TypeAlias = Mapping[str, Any]
+class TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs:
@@ -2424,16 +2335,13 @@ class TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs:
         pass
 
 
-if not MYPY:
-    class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict(TypedDict):
-        delimiter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The delimiter to use when using the 'text' format. Each line of text as
-        specified by the delimiter will be set to the 'data' field of a Pub/Sub
-        message. When unset, '\\n' is used.
-        """
-elif False:
-    TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict: TypeAlias = Mapping[str, Any]
+class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict(TypedDict):
+    delimiter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The delimiter to use when using the 'text' format. Each line of text as
+    specified by the delimiter will be set to the 'data' field of a Pub/Sub
+    message. When unset, '\\n' is used.
+    """
 
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs:
@@ -2462,31 +2370,28 @@ class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs:
         pulumi.set(self, "delimiter", value)
 
 
-if not MYPY:
-    class TopicIngestionDataSourceSettingsConfluentCloudArgsDict(TypedDict):
-        bootstrap_server: pulumi.Input[_builtins.str]
-        """
-        The Confluent Cloud bootstrap server. The format is url:port.
-        """
-        gcp_service_account: pulumi.Input[_builtins.str]
-        """
-        The GCP service account to be used for Federated Identity authentication
-        with Confluent Cloud.
-        """
-        identity_pool_id: pulumi.Input[_builtins.str]
-        """
-        Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
-        """
-        topic: pulumi.Input[_builtins.str]
-        """
-        Name of the Confluent Cloud topic that Pub/Sub will import from.
-        """
-        cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Confluent Cloud cluster ID.
-        """
-elif False:
-    TopicIngestionDataSourceSettingsConfluentCloudArgsDict: TypeAlias = Mapping[str, Any]
+class TopicIngestionDataSourceSettingsConfluentCloudArgsDict(TypedDict):
+    bootstrap_server: pulumi.Input[_builtins.str]
+    """
+    The Confluent Cloud bootstrap server. The format is url:port.
+    """
+    gcp_service_account: pulumi.Input[_builtins.str]
+    """
+    The GCP service account to be used for Federated Identity authentication
+    with Confluent Cloud.
+    """
+    identity_pool_id: pulumi.Input[_builtins.str]
+    """
+    Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
+    """
+    topic: pulumi.Input[_builtins.str]
+    """
+    Name of the Confluent Cloud topic that Pub/Sub will import from.
+    """
+    cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Confluent Cloud cluster ID.
+    """
 
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsConfluentCloudArgs:
@@ -2573,17 +2478,14 @@ class TopicIngestionDataSourceSettingsConfluentCloudArgs:
         pulumi.set(self, "cluster_id", value)
 
 
-if not MYPY:
-    class TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict(TypedDict):
-        severity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum severity level of Platform Logs that will be written. If unspecified,
-        no Platform Logs will be written.
-        Default value is `SEVERITY_UNSPECIFIED`.
-        Possible values are: `SEVERITY_UNSPECIFIED`, `DISABLED`, `DEBUG`, `INFO`, `WARNING`, `ERROR`.
-        """
-elif False:
-    TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict(TypedDict):
+    severity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum severity level of Platform Logs that will be written. If unspecified,
+    no Platform Logs will be written.
+    Default value is `SEVERITY_UNSPECIFIED`.
+    Possible values are: `SEVERITY_UNSPECIFIED`, `DISABLED`, `DEBUG`, `INFO`, `WARNING`, `ERROR`.
+    """
 
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs:
@@ -2614,26 +2516,23 @@ class TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs:
         pulumi.set(self, "severity", value)
 
 
-if not MYPY:
-    class TopicMessageStoragePolicyArgsDict(TypedDict):
-        allowed_persistence_regions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of IDs of GCP regions where messages that are published to
-        the topic may be persisted in storage. Messages published by
-        publishers running in non-allowed GCP regions (or running outside
-        of GCP altogether) will be routed for storage in one of the
-        allowed regions. An empty list means that no regions are allowed,
-        and is not a valid configuration.
-        """
-        enforce_in_transit: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, `allowedPersistenceRegions` is also used to enforce in-transit
-        guarantees for messages. That is, Pub/Sub will fail topics.publish
-        operations on this topic and subscribe operations on any subscription
-        attached to this topic in any region that is not in `allowedPersistenceRegions`.
-        """
-elif False:
-    TopicMessageStoragePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class TopicMessageStoragePolicyArgsDict(TypedDict):
+    allowed_persistence_regions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of IDs of GCP regions where messages that are published to
+    the topic may be persisted in storage. Messages published by
+    publishers running in non-allowed GCP regions (or running outside
+    of GCP altogether) will be routed for storage in one of the
+    allowed regions. An empty list means that no regions are allowed,
+    and is not a valid configuration.
+    """
+    enforce_in_transit: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, `allowedPersistenceRegions` is also used to enforce in-transit
+    guarantees for messages. That is, Pub/Sub will fail topics.publish
+    operations on this topic and subscribe operations on any subscription
+    attached to this topic in any region that is not in `allowedPersistenceRegions`.
+    """
 
 @pulumi.input_type
 class TopicMessageStoragePolicyArgs:
@@ -2689,21 +2588,18 @@ class TopicMessageStoragePolicyArgs:
         pulumi.set(self, "enforce_in_transit", value)
 
 
-if not MYPY:
-    class TopicMessageTransformArgsDict(TypedDict):
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Controls whether or not to use this transform. If not set or `false`,
-        the transform will be applied to messages. Default: `true`.
-        """
-        javascript_udf: NotRequired[pulumi.Input['TopicMessageTransformJavascriptUdfArgsDict']]
-        """
-        Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-        each one must have a unique `function_name`.
-        Structure is documented below.
-        """
-elif False:
-    TopicMessageTransformArgsDict: TypeAlias = Mapping[str, Any]
+class TopicMessageTransformArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Controls whether or not to use this transform. If not set or `false`,
+    the transform will be applied to messages. Default: `true`.
+    """
+    javascript_udf: NotRequired[pulumi.Input['TopicMessageTransformJavascriptUdfArgsDict']]
+    """
+    Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
+    each one must have a unique `function_name`.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class TopicMessageTransformArgs:
@@ -2750,45 +2646,42 @@ class TopicMessageTransformArgs:
         pulumi.set(self, "javascript_udf", value)
 
 
-if not MYPY:
-    class TopicMessageTransformJavascriptUdfArgsDict(TypedDict):
-        code: pulumi.Input[_builtins.str]
-        """
-        JavaScript code that contains a function `function_name` with the
-        following signature:
-        ```
-        /**
-        * Transforms a Pub/Sub message.
-        *
-        * @return {(Object<string, (string | Object<string, string>)>|null)} - To
-        * filter a message, return `null`. To transform a message return a map
-        * with the following keys:
-        *   - (required) 'data' : {string}
-        *   - (optional) 'attributes' : {Object<string, string>}
-        * Returning empty `attributes` will remove all attributes from the
-        * message.
-        *
-        * @param  {(Object<string, (string | Object<string, string>)>} Pub/Sub
-        * message. Keys:
-        *   - (required) 'data' : {string}
-        *   - (required) 'attributes' : {Object<string, string>}
-        *
-        * @param  {Object<string, any>} metadata - Pub/Sub message metadata.
-        * Keys:
-        *   - (required) 'message_id'  : {string}
-        *   - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format
-        *   - (optional) 'ordering_key': {string}
-        */
-        function <function_name>(message, metadata) {
-        }
-        ```
-        """
-        function_name: pulumi.Input[_builtins.str]
-        """
-        Name of the JavaScript function that should be applied to Pub/Sub messages.
-        """
-elif False:
-    TopicMessageTransformJavascriptUdfArgsDict: TypeAlias = Mapping[str, Any]
+class TopicMessageTransformJavascriptUdfArgsDict(TypedDict):
+    code: pulumi.Input[_builtins.str]
+    """
+    JavaScript code that contains a function `function_name` with the
+    following signature:
+    ```
+    /**
+    * Transforms a Pub/Sub message.
+    *
+    * @return {(Object<string, (string | Object<string, string>)>|null)} - To
+    * filter a message, return `null`. To transform a message return a map
+    * with the following keys:
+    *   - (required) 'data' : {string}
+    *   - (optional) 'attributes' : {Object<string, string>}
+    * Returning empty `attributes` will remove all attributes from the
+    * message.
+    *
+    * @param  {(Object<string, (string | Object<string, string>)>} Pub/Sub
+    * message. Keys:
+    *   - (required) 'data' : {string}
+    *   - (required) 'attributes' : {Object<string, string>}
+    *
+    * @param  {Object<string, any>} metadata - Pub/Sub message metadata.
+    * Keys:
+    *   - (required) 'message_id'  : {string}
+    *   - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format
+    *   - (optional) 'ordering_key': {string}
+    */
+    function <function_name>(message, metadata) {
+    }
+    ```
+    """
+    function_name: pulumi.Input[_builtins.str]
+    """
+    Name of the JavaScript function that should be applied to Pub/Sub messages.
+    """
 
 @pulumi.input_type
 class TopicMessageTransformJavascriptUdfArgs:
@@ -2881,23 +2774,20 @@ class TopicMessageTransformJavascriptUdfArgs:
         pulumi.set(self, "function_name", value)
 
 
-if not MYPY:
-    class TopicSchemaSettingsArgsDict(TypedDict):
-        schema: pulumi.Input[_builtins.str]
-        """
-        The name of the schema that messages published should be
-        validated against. Format is projects/{project}/schemas/{schema}.
-        The value of this field will be _deleted-schema_
-        if the schema has been deleted.
-        """
-        encoding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The encoding of messages validated against schema.
-        Default value is `ENCODING_UNSPECIFIED`.
-        Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
-        """
-elif False:
-    TopicSchemaSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class TopicSchemaSettingsArgsDict(TypedDict):
+    schema: pulumi.Input[_builtins.str]
+    """
+    The name of the schema that messages published should be
+    validated against. Format is projects/{project}/schemas/{schema}.
+    The value of this field will be _deleted-schema_
+    if the schema has been deleted.
+    """
+    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The encoding of messages validated against schema.
+    Default value is `ENCODING_UNSPECIFIED`.
+    Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
+    """
 
 @pulumi.input_type
 class TopicSchemaSettingsArgs:

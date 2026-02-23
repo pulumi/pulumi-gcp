@@ -444,6 +444,9 @@ namespace Pulumi.Gcp
         [Output("parameterManagerRegionalCustomEndpoint")]
         public Output<string?> ParameterManagerRegionalCustomEndpoint { get; private set; } = null!;
 
+        [Output("pollInterval")]
+        public Output<string?> PollInterval { get; private set; } = null!;
+
         [Output("privatecaCustomEndpoint")]
         public Output<string?> PrivatecaCustomEndpoint { get; private set; } = null!;
 
@@ -575,6 +578,9 @@ namespace Pulumi.Gcp
 
         [Output("universeDomain")]
         public Output<string?> UniverseDomain { get; private set; } = null!;
+
+        [Output("vectorSearchCustomEndpoint")]
+        public Output<string?> VectorSearchCustomEndpoint { get; private set; } = null!;
 
         [Output("vertexAiCustomEndpoint")]
         public Output<string?> VertexAiCustomEndpoint { get; private set; } = null!;
@@ -1098,6 +1104,9 @@ namespace Pulumi.Gcp
         [Input("parameterManagerRegionalCustomEndpoint")]
         public Input<string>? ParameterManagerRegionalCustomEndpoint { get; set; }
 
+        [Input("pollInterval")]
+        public Input<string>? PollInterval { get; set; }
+
         [Input("privatecaCustomEndpoint")]
         public Input<string>? PrivatecaCustomEndpoint { get; set; }
 
@@ -1240,6 +1249,9 @@ namespace Pulumi.Gcp
 
         [Input("userProjectOverride", json: true)]
         public Input<bool>? UserProjectOverride { get; set; }
+
+        [Input("vectorSearchCustomEndpoint")]
+        public Input<string>? VectorSearchCustomEndpoint { get; set; }
 
         [Input("vertexAiCustomEndpoint")]
         public Input<string>? VertexAiCustomEndpoint { get; set; }

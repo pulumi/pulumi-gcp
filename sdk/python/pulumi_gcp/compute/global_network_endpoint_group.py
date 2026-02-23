@@ -26,6 +26,7 @@ class GlobalNetworkEndpointGroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalNetworkEndpointGroup resource.
+
         :param pulumi.Input[_builtins.str] network_endpoint_type: Type of network endpoints in this network endpoint group.
                Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
         :param pulumi.Input[_builtins.int] default_port: The default port used if the port number is not specified in the
@@ -134,6 +135,7 @@ class _GlobalNetworkEndpointGroupState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalNetworkEndpointGroup resources.
+
         :param pulumi.Input[_builtins.int] default_port: The default port used if the port number is not specified in the
                network endpoint.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
@@ -303,24 +305,17 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         GlobalNetworkEndpointGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/networkEndpointGroups/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, GlobalNetworkEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default projects/{{project}}/global/networkEndpointGroups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -390,24 +385,17 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         GlobalNetworkEndpointGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/networkEndpointGroups/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, GlobalNetworkEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default projects/{{project}}/global/networkEndpointGroups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GlobalNetworkEndpointGroupArgs args: The arguments to use to populate this resource's properties.

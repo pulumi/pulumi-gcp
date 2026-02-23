@@ -19,41 +19,36 @@ __all__ = [
     'SQuotaPreferenceQuotaConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class SQuotaPreferenceQuotaConfigArgsDict(TypedDict):
-        preferred_value: pulumi.Input[_builtins.str]
-        """
-        The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
-        """
-        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
-        An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-        """
-        granted_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Granted quota value.
-        """
-        request_origin: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The origin of the quota preference request.
-        """
-        state_detail: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Optional details about the state of this quota preference.
-        """
-        trace_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.
-        """
-elif False:
-    SQuotaPreferenceQuotaConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SQuotaPreferenceQuotaConfigArgsDict(TypedDict):
+    preferred_value: pulumi.Input[_builtins.str]
+    """
+    The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
+    """
+    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+    An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+    """
+    granted_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Granted quota value.
+    """
+    request_origin: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The origin of the quota preference request.
+    """
+    state_detail: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Optional details about the state of this quota preference.
+    """
+    trace_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.
+    """
 
 @pulumi.input_type
 class SQuotaPreferenceQuotaConfigArgs:

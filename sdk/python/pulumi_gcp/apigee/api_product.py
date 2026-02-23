@@ -41,6 +41,7 @@ class ApiProductArgs:
                  space: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiProduct resource.
+
         :param pulumi.Input[_builtins.str] display_name: Name displayed in the UI or developer portal to developers registering for API access.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee API product,
                in the format `organizations/{{org_name}}`.
@@ -365,6 +366,7 @@ class _ApiProductState:
                  space: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiProduct resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_resources: Comma-separated list of API resources to be bundled in the API product. By default, the resource paths are mapped from the proxy.pathsuffix variable.
                The proxy path suffix is defined as the URI fragment following the ProxyEndpoint base path. For example, if the apiResources element is defined to be /forecastrss and the base path defined for the API proxy is /weather, then only requests to /weather/forecastrss are permitted by the API product.
         :param pulumi.Input[_builtins.str] approval_type: Flag that specifies how API keys are approved to access the APIs defined by the API product.
@@ -837,18 +839,15 @@ class ApiProduct(pulumi.CustomResource):
         ApiProduct can be imported using any of these accepted formats:
 
         * `{{org_id}}/apiproducts/{{name}}`
-
         * `{{org_id}}/{{name}}`
 
         When using the `pulumi import` command, ApiProduct can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/apiProduct:ApiProduct default {{org_id}}/apiproducts/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/apiProduct:ApiProduct default {{org_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1007,18 +1006,15 @@ class ApiProduct(pulumi.CustomResource):
         ApiProduct can be imported using any of these accepted formats:
 
         * `{{org_id}}/apiproducts/{{name}}`
-
         * `{{org_id}}/{{name}}`
 
         When using the `pulumi import` command, ApiProduct can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/apiProduct:ApiProduct default {{org_id}}/apiproducts/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/apiProduct:ApiProduct default {{org_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiProductArgs args: The arguments to use to populate this resource's properties.

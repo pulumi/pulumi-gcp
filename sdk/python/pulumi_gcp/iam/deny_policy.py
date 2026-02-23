@@ -27,6 +27,7 @@ class DenyPolicyArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DenyPolicy resource.
+
         :param pulumi.Input[_builtins.str] parent: The attachment point is identified by its URL-encoded full resource name.
         :param pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArgs']]] rules: Rules to be applied.
                Structure is documented below.
@@ -100,6 +101,7 @@ class _DenyPolicyState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering DenyPolicy resources.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the rule.
         :param pulumi.Input[_builtins.str] etag: The hash of the resource. Used internally during updates.
         :param pulumi.Input[_builtins.str] name: The name of the policy.
@@ -262,6 +264,7 @@ class DenyPolicy(pulumi.CustomResource):
         $ pulumi import gcp:iam/denyPolicy:DenyPolicy default {{parent}}/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name of the rule.
@@ -346,6 +349,7 @@ class DenyPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:iam/denyPolicy:DenyPolicy default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DenyPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -35,6 +35,7 @@ class PipelineArgs:
                  retry_policy: Optional[pulumi.Input['PipelineRetryPolicyArgs']] = None):
         """
         The set of arguments for constructing a Pipeline resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['PipelineDestinationArgs']]] destinations: List of destinations to which messages will be forwarded. Currently,
                exactly one destination is supported per Pipeline.
                Structure is documented below.
@@ -292,6 +293,7 @@ class _PipelineState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Pipeline resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User-defined annotations. See https://google.aip.dev/128#annotations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -307,6 +309,7 @@ class _PipelineState:
                exactly one destination is supported per Pipeline.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Display name of resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of
                other fields, and might be sent only on create requests to ensure that the
@@ -465,6 +468,9 @@ class _PipelineState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -947,24 +953,17 @@ class Pipeline(pulumi.CustomResource):
         Pipeline can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/pipelines/{{pipeline_id}}`
-
         * `{{project}}/{{location}}/{{pipeline_id}}`
-
         * `{{location}}/{{pipeline_id}}`
 
         When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/pipeline:Pipeline default projects/{{project}}/locations/{{location}}/pipelines/{{pipeline_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/pipeline:Pipeline default {{project}}/{{location}}/{{pipeline_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/pipeline:Pipeline default {{location}}/{{pipeline_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1272,24 +1271,17 @@ class Pipeline(pulumi.CustomResource):
         Pipeline can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/pipelines/{{pipeline_id}}`
-
         * `{{project}}/{{location}}/{{pipeline_id}}`
-
         * `{{location}}/{{pipeline_id}}`
 
         When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/pipeline:Pipeline default projects/{{project}}/locations/{{location}}/pipelines/{{pipeline_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/pipeline:Pipeline default {{project}}/{{location}}/{{pipeline_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/pipeline:Pipeline default {{location}}/{{pipeline_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PipelineArgs args: The arguments to use to populate this resource's properties.
@@ -1407,6 +1399,7 @@ class Pipeline(pulumi.CustomResource):
                exactly one destination is supported per Pipeline.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Display name of resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of
                other fields, and might be sent only on create requests to ensure that the
@@ -1530,6 +1523,9 @@ class Pipeline(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

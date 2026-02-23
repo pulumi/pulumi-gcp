@@ -47,31 +47,26 @@ __all__ = [
     'ConnectorTaskRestartPolicyArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AclAclEntryArgsDict(TypedDict):
-        operation: pulumi.Input[_builtins.str]
-        """
-        The operation type. Allowed values are (case insensitive): ALL, READ,
-        WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
-        ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols
-        for valid combinations of resource_type and operation for different Kafka API requests.
-        """
-        principal: pulumi.Input[_builtins.str]
-        """
-        The principal. Specified as Google Cloud account, with the Kafka StandardAuthorizer prefix User:". For example: "User:test-kafka-client@test-project.iam.gserviceaccount.com". Can be the wildcard "User:*" to refer to all users.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The host. Must be set to "*" for Managed Service for Apache Kafka.
-        """
-        permission_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The permission type. Accepted values are (case insensitive): ALLOW, DENY.
-        """
-elif False:
-    AclAclEntryArgsDict: TypeAlias = Mapping[str, Any]
+class AclAclEntryArgsDict(TypedDict):
+    operation: pulumi.Input[_builtins.str]
+    """
+    The operation type. Allowed values are (case insensitive): ALL, READ,
+    WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
+    ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols
+    for valid combinations of resource_type and operation for different Kafka API requests.
+    """
+    principal: pulumi.Input[_builtins.str]
+    """
+    The principal. Specified as Google Cloud account, with the Kafka StandardAuthorizer prefix User:". For example: "User:test-kafka-client@test-project.iam.gserviceaccount.com". Can be the wildcard "User:*" to refer to all users.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The host. Must be set to "*" for Managed Service for Apache Kafka.
+    """
+    permission_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The permission type. Accepted values are (case insensitive): ALLOW, DENY.
+    """
 
 @pulumi.input_type
 class AclAclEntryArgs:
@@ -148,14 +143,11 @@ class AclAclEntryArgs:
         pulumi.set(self, "permission_type", value)
 
 
-if not MYPY:
-    class ClusterBrokerCapacityConfigArgsDict(TypedDict):
-        disk_size_gib: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
-        """
-elif False:
-    ClusterBrokerCapacityConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterBrokerCapacityConfigArgsDict(TypedDict):
+    disk_size_gib: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
+    """
 
 @pulumi.input_type
 class ClusterBrokerCapacityConfigArgs:
@@ -180,18 +172,15 @@ class ClusterBrokerCapacityConfigArgs:
         pulumi.set(self, "disk_size_gib", value)
 
 
-if not MYPY:
-    class ClusterCapacityConfigArgsDict(TypedDict):
-        memory_bytes: pulumi.Input[_builtins.str]
-        """
-        The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-        """
-        vcpu_count: pulumi.Input[_builtins.str]
-        """
-        The number of vCPUs to provision for the cluster. The minimum is 3.
-        """
-elif False:
-    ClusterCapacityConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterCapacityConfigArgsDict(TypedDict):
+    memory_bytes: pulumi.Input[_builtins.str]
+    """
+    The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
+    """
+    vcpu_count: pulumi.Input[_builtins.str]
+    """
+    The number of vCPUs to provision for the cluster. The minimum is 3.
+    """
 
 @pulumi.input_type
 class ClusterCapacityConfigArgs:
@@ -230,19 +219,16 @@ class ClusterCapacityConfigArgs:
         pulumi.set(self, "vcpu_count", value)
 
 
-if not MYPY:
-    class ClusterGcpConfigArgsDict(TypedDict):
-        access_config: pulumi.Input['ClusterGcpConfigAccessConfigArgsDict']
-        """
-        The configuration of access to the Kafka cluster.
-        Structure is documented below.
-        """
-        kms_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud KMS Key name to use for encryption. The key must be located in the same region as the cluster and cannot be changed. Must be in the format `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`.
-        """
-elif False:
-    ClusterGcpConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterGcpConfigArgsDict(TypedDict):
+    access_config: pulumi.Input['ClusterGcpConfigAccessConfigArgsDict']
+    """
+    The configuration of access to the Kafka cluster.
+    Structure is documented below.
+    """
+    kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud KMS Key name to use for encryption. The key must be located in the same region as the cluster and cannot be changed. Must be in the format `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`.
+    """
 
 @pulumi.input_type
 class ClusterGcpConfigArgs:
@@ -284,15 +270,12 @@ class ClusterGcpConfigArgs:
         pulumi.set(self, "kms_key", value)
 
 
-if not MYPY:
-    class ClusterGcpConfigAccessConfigArgsDict(TypedDict):
-        network_configs: pulumi.Input[Sequence[pulumi.Input['ClusterGcpConfigAccessConfigNetworkConfigArgsDict']]]
-        """
-        Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
-        Structure is documented below.
-        """
-elif False:
-    ClusterGcpConfigAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterGcpConfigAccessConfigArgsDict(TypedDict):
+    network_configs: pulumi.Input[Sequence[pulumi.Input['ClusterGcpConfigAccessConfigNetworkConfigArgsDict']]]
+    """
+    Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ClusterGcpConfigAccessConfigArgs:
@@ -318,14 +301,11 @@ class ClusterGcpConfigAccessConfigArgs:
         pulumi.set(self, "network_configs", value)
 
 
-if not MYPY:
-    class ClusterGcpConfigAccessConfigNetworkConfigArgsDict(TypedDict):
-        subnet: pulumi.Input[_builtins.str]
-        """
-        Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. There can only be one subnet per network, and the subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
-        """
-elif False:
-    ClusterGcpConfigAccessConfigNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterGcpConfigAccessConfigNetworkConfigArgsDict(TypedDict):
+    subnet: pulumi.Input[_builtins.str]
+    """
+    Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. There can only be one subnet per network, and the subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
+    """
 
 @pulumi.input_type
 class ClusterGcpConfigAccessConfigNetworkConfigArgs:
@@ -349,14 +329,11 @@ class ClusterGcpConfigAccessConfigNetworkConfigArgs:
         pulumi.set(self, "subnet", value)
 
 
-if not MYPY:
-    class ClusterRebalanceConfigArgsDict(TypedDict):
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. Possible values: `MODE_UNSPECIFIED`, `NO_REBALANCE`, `AUTO_REBALANCE_ON_SCALE_UP`.
-        """
-elif False:
-    ClusterRebalanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterRebalanceConfigArgsDict(TypedDict):
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. Possible values: `MODE_UNSPECIFIED`, `NO_REBALANCE`, `AUTO_REBALANCE_ON_SCALE_UP`.
+    """
 
 @pulumi.input_type
 class ClusterRebalanceConfigArgs:
@@ -381,19 +358,16 @@ class ClusterRebalanceConfigArgs:
         pulumi.set(self, "mode", value)
 
 
-if not MYPY:
-    class ClusterTlsConfigArgsDict(TypedDict):
-        ssl_principal_mapping_rules: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: `RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT`
-        """
-        trust_config: NotRequired[pulumi.Input['ClusterTlsConfigTrustConfigArgsDict']]
-        """
-        The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
-        Structure is documented below.
-        """
-elif False:
-    ClusterTlsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterTlsConfigArgsDict(TypedDict):
+    ssl_principal_mapping_rules: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: `RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT`
+    """
+    trust_config: NotRequired[pulumi.Input['ClusterTlsConfigTrustConfigArgsDict']]
+    """
+    The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ClusterTlsConfigArgs:
@@ -436,15 +410,12 @@ class ClusterTlsConfigArgs:
         pulumi.set(self, "trust_config", value)
 
 
-if not MYPY:
-    class ClusterTlsConfigTrustConfigArgsDict(TypedDict):
-        cas_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgsDict']]]]
-        """
-        Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
-        Structure is documented below.
-        """
-elif False:
-    ClusterTlsConfigTrustConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterTlsConfigTrustConfigArgsDict(TypedDict):
+    cas_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgsDict']]]]
+    """
+    Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ClusterTlsConfigTrustConfigArgs:
@@ -471,14 +442,11 @@ class ClusterTlsConfigTrustConfigArgs:
         pulumi.set(self, "cas_configs", value)
 
 
-if not MYPY:
-    class ClusterTlsConfigTrustConfigCasConfigArgsDict(TypedDict):
-        ca_pool: pulumi.Input[_builtins.str]
-        """
-        The name of the CA pool to pull CA certificates from. The CA pool does not need to be in the same project or location as the Kafka cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/caPools/CA_POOL_ID.
-        """
-elif False:
-    ClusterTlsConfigTrustConfigCasConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterTlsConfigTrustConfigCasConfigArgsDict(TypedDict):
+    ca_pool: pulumi.Input[_builtins.str]
+    """
+    The name of the CA pool to pull CA certificates from. The CA pool does not need to be in the same project or location as the Kafka cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/caPools/CA_POOL_ID.
+    """
 
 @pulumi.input_type
 class ClusterTlsConfigTrustConfigCasConfigArgs:
@@ -502,18 +470,15 @@ class ClusterTlsConfigTrustConfigCasConfigArgs:
         pulumi.set(self, "ca_pool", value)
 
 
-if not MYPY:
-    class ConnectClusterCapacityConfigArgsDict(TypedDict):
-        memory_bytes: pulumi.Input[_builtins.str]
-        """
-        The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB).
-        """
-        vcpu_count: pulumi.Input[_builtins.str]
-        """
-        The number of vCPUs to provision for the cluster. The minimum is 3.
-        """
-elif False:
-    ConnectClusterCapacityConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectClusterCapacityConfigArgsDict(TypedDict):
+    memory_bytes: pulumi.Input[_builtins.str]
+    """
+    The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB).
+    """
+    vcpu_count: pulumi.Input[_builtins.str]
+    """
+    The number of vCPUs to provision for the cluster. The minimum is 3.
+    """
 
 @pulumi.input_type
 class ConnectClusterCapacityConfigArgs:
@@ -552,15 +517,12 @@ class ConnectClusterCapacityConfigArgs:
         pulumi.set(self, "vcpu_count", value)
 
 
-if not MYPY:
-    class ConnectClusterGcpConfigArgsDict(TypedDict):
-        access_config: pulumi.Input['ConnectClusterGcpConfigAccessConfigArgsDict']
-        """
-        The configuration of access to the Kafka Connect cluster.
-        Structure is documented below.
-        """
-elif False:
-    ConnectClusterGcpConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectClusterGcpConfigArgsDict(TypedDict):
+    access_config: pulumi.Input['ConnectClusterGcpConfigAccessConfigArgsDict']
+    """
+    The configuration of access to the Kafka Connect cluster.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectClusterGcpConfigArgs:
@@ -586,15 +548,12 @@ class ConnectClusterGcpConfigArgs:
         pulumi.set(self, "access_config", value)
 
 
-if not MYPY:
-    class ConnectClusterGcpConfigAccessConfigArgsDict(TypedDict):
-        network_configs: pulumi.Input[Sequence[pulumi.Input['ConnectClusterGcpConfigAccessConfigNetworkConfigArgsDict']]]
-        """
-        Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
-        Structure is documented below.
-        """
-elif False:
-    ConnectClusterGcpConfigAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectClusterGcpConfigAccessConfigArgsDict(TypedDict):
+    network_configs: pulumi.Input[Sequence[pulumi.Input['ConnectClusterGcpConfigAccessConfigNetworkConfigArgsDict']]]
+    """
+    Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConnectClusterGcpConfigAccessConfigArgs:
@@ -620,25 +579,22 @@ class ConnectClusterGcpConfigAccessConfigArgs:
         pulumi.set(self, "network_configs", value)
 
 
-if not MYPY:
-    class ConnectClusterGcpConfigAccessConfigNetworkConfigArgsDict(TypedDict):
-        primary_subnet: pulumi.Input[_builtins.str]
-        """
-        VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
-        """
-        additional_subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Optional, Deprecated)
-        Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
+class ConnectClusterGcpConfigAccessConfigNetworkConfigArgsDict(TypedDict):
+    primary_subnet: pulumi.Input[_builtins.str]
+    """
+    VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
+    """
+    additional_subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Optional, Deprecated)
+    Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
 
-        > **Warning:** `additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.
-        """
-        dns_domain_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
-        """
-elif False:
-    ConnectClusterGcpConfigAccessConfigNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+    > **Warning:** `additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.
+    """
+    dns_domain_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
+    """
 
 @pulumi.input_type
 class ConnectClusterGcpConfigAccessConfigNetworkConfigArgs:
@@ -704,20 +660,17 @@ class ConnectClusterGcpConfigAccessConfigNetworkConfigArgs:
         pulumi.set(self, "dns_domain_names", value)
 
 
-if not MYPY:
-    class ConnectorTaskRestartPolicyArgsDict(TypedDict):
-        maximum_backoff: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        """
-        minimum_backoff: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        """
-elif False:
-    ConnectorTaskRestartPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectorTaskRestartPolicyArgsDict(TypedDict):
+    maximum_backoff: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+    """
+    minimum_backoff: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+    """
 
 @pulumi.input_type
 class ConnectorTaskRestartPolicyArgs:

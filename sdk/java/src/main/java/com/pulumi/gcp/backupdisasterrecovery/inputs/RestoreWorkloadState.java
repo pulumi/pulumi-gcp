@@ -117,9 +117,19 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.dataSourceId);
     }
 
+    /**
+     * Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     * 
+     */
     @Import(name="deleteRestoredInstance")
     private @Nullable Output<Boolean> deleteRestoredInstance;
 
+    /**
+     * @return Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+     * If false, only the restore record is removed from the state, leaving the resource active.
+     * 
+     */
     public Optional<Output<Boolean>> deleteRestoredInstance() {
         return Optional.ofNullable(this.deleteRestoredInstance);
     }
@@ -174,16 +184,30 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Required. The resource name of the backup instance.
+     * (Optional, Deprecated)
+     * The resource name of the backup instance.
+     * 
+     * &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+     * 
+     * @deprecated
+     * `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      * 
      */
+    @Deprecated /* `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id). */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Required. The resource name of the backup instance.
+     * @return (Optional, Deprecated)
+     * The resource name of the backup instance.
+     * 
+     * &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+     * 
+     * @deprecated
+     * `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      * 
      */
+    @Deprecated /* `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id). */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -408,11 +432,25 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
             return dataSourceId(Output.of(dataSourceId));
         }
 
+        /**
+         * @param deleteRestoredInstance Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+         * If false, only the restore record is removed from the state, leaving the resource active.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteRestoredInstance(@Nullable Output<Boolean> deleteRestoredInstance) {
             $.deleteRestoredInstance = deleteRestoredInstance;
             return this;
         }
 
+        /**
+         * @param deleteRestoredInstance Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+         * If false, only the restore record is removed from the state, leaving the resource active.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteRestoredInstance(Boolean deleteRestoredInstance) {
             return deleteRestoredInstance(Output.of(deleteRestoredInstance));
         }
@@ -485,22 +523,36 @@ public final class RestoreWorkloadState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Required. The resource name of the backup instance.
+         * @param name (Optional, Deprecated)
+         * The resource name of the backup instance.
+         * 
+         * &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
          * 
          * @return builder
          * 
+         * @deprecated
+         * `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+         * 
          */
+        @Deprecated /* `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id). */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Required. The resource name of the backup instance.
+         * @param name (Optional, Deprecated)
+         * The resource name of the backup instance.
+         * 
+         * &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
          * 
          * @return builder
          * 
+         * @deprecated
+         * `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
+         * 
          */
+        @Deprecated /* `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id). */
         public Builder name(String name) {
             return name(Output.of(name));
         }

@@ -28,6 +28,7 @@ class WorkforcePoolIamMemberArgs:
                  location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkforcePoolIamMember resource.
+
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -140,6 +141,7 @@ class _WorkforcePoolIamMemberState:
                  workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkforcePoolIamMember resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] location: The location for the resource. Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -396,9 +398,7 @@ class WorkforcePoolIamMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * locations/{{location}}/workforcePools/{{workforce_pool_id}}
-
         * {{location}}/{{workforce_pool_id}}
-
         * {{workforce_pool_id}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -406,26 +406,23 @@ class WorkforcePoolIamMember(pulumi.CustomResource):
         Cloud IAM workforcepool IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:iam/workforcePoolIamMember:WorkforcePoolIamMember editor "locations/{{location}}/workforcePools/{{workforce_pool_id}} roles/iam.workforcePoolViewer user:jane@example.com"
+        $ terraform import google_iam_workforce_pool_iam_member.editor "locations/{{location}}/workforcePools/{{workforce_pool_id}} roles/iam.workforcePoolViewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:iam/workforcePoolIamMember:WorkforcePoolIamMember editor "locations/{{location}}/workforcePools/{{workforce_pool_id}} roles/iam.workforcePoolViewer"
+        $ terraform import google_iam_workforce_pool_iam_binding.editor "locations/{{location}}/workforcePools/{{workforce_pool_id}} roles/iam.workforcePoolViewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:iam/workforcePoolIamMember:WorkforcePoolIamMember editor locations/{{location}}/workforcePools/{{workforce_pool_id}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -580,9 +577,7 @@ class WorkforcePoolIamMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * locations/{{location}}/workforcePools/{{workforce_pool_id}}
-
         * {{location}}/{{workforce_pool_id}}
-
         * {{workforce_pool_id}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -590,26 +585,23 @@ class WorkforcePoolIamMember(pulumi.CustomResource):
         Cloud IAM workforcepool IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:iam/workforcePoolIamMember:WorkforcePoolIamMember editor "locations/{{location}}/workforcePools/{{workforce_pool_id}} roles/iam.workforcePoolViewer user:jane@example.com"
+        $ terraform import google_iam_workforce_pool_iam_member.editor "locations/{{location}}/workforcePools/{{workforce_pool_id}} roles/iam.workforcePoolViewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:iam/workforcePoolIamMember:WorkforcePoolIamMember editor "locations/{{location}}/workforcePools/{{workforce_pool_id}} roles/iam.workforcePoolViewer"
+        $ terraform import google_iam_workforce_pool_iam_binding.editor "locations/{{location}}/workforcePools/{{workforce_pool_id}} roles/iam.workforcePoolViewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:iam/workforcePoolIamMember:WorkforcePoolIamMember editor locations/{{location}}/workforcePools/{{workforce_pool_id}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param WorkforcePoolIamMemberArgs args: The arguments to use to populate this resource's properties.

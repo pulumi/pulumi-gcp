@@ -28,6 +28,7 @@ class FolderNotificationConfigArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FolderNotificationConfig resource.
+
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] folder: Numerical ID of the parent folder.
         :param pulumi.Input[_builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
@@ -118,6 +119,7 @@ class _FolderNotificationConfigState:
                  streaming_config: Optional[pulumi.Input['FolderNotificationConfigStreamingConfigArgs']] = None):
         """
         Input properties used for looking up and filtering FolderNotificationConfig resources.
+
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[_builtins.str] folder: Numerical ID of the parent folder.
@@ -289,18 +291,15 @@ class FolderNotificationConfig(pulumi.CustomResource):
         FolderNotificationConfig can be imported using any of these accepted formats:
 
         * `folders/{{folder}}/notificationConfigs/{{config_id}}`
-
         * `{{folder}}/{{config_id}}`
 
         When using the `pulumi import` command, FolderNotificationConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig default folders/{{folder}}/notificationConfigs/{{config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig default {{folder}}/{{config_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -361,18 +360,15 @@ class FolderNotificationConfig(pulumi.CustomResource):
         FolderNotificationConfig can be imported using any of these accepted formats:
 
         * `folders/{{folder}}/notificationConfigs/{{config_id}}`
-
         * `{{folder}}/{{config_id}}`
 
         When using the `pulumi import` command, FolderNotificationConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig default folders/{{folder}}/notificationConfigs/{{config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig default {{folder}}/{{config_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FolderNotificationConfigArgs args: The arguments to use to populate this resource's properties.

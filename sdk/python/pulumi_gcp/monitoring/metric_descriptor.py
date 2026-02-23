@@ -33,6 +33,7 @@ class MetricDescriptorArgs:
                  unit: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MetricDescriptor resource.
+
         :param pulumi.Input[_builtins.str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
         :param pulumi.Input[_builtins.str] type: The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
@@ -244,6 +245,7 @@ class _MetricDescriptorState:
                  value_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetricDescriptor resources.
+
         :param pulumi.Input[_builtins.str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[_builtins.str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
         :param pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
@@ -554,24 +556,17 @@ class MetricDescriptor(pulumi.CustomResource):
         MetricDescriptor can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, MetricDescriptor can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_monitoring_metric_descriptor.default "{{project}} {{name}}"
         $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -680,24 +675,17 @@ class MetricDescriptor(pulumi.CustomResource):
         MetricDescriptor can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, MetricDescriptor can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_monitoring_metric_descriptor.default "{{project}} {{name}}"
         $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MetricDescriptorArgs args: The arguments to use to populate this resource's properties.

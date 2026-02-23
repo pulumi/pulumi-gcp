@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/integrationconnectors"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -73,8 +71,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/integrationconnectors"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -351,22 +347,14 @@ import (
 // Connection can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:integrationconnectors/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:integrationconnectors/connection:Connection default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:integrationconnectors/connection:Connection default {{location}}/{{name}}
 // ```
 type Connection struct {

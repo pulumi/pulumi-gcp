@@ -31,6 +31,7 @@ class ServiceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Service resource.
+
         :param pulumi.Input[_builtins.str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         :param pulumi.Input[_builtins.str] discovered_service: Immutable. The resource name of the original discovered service.
         :param pulumi.Input[_builtins.str] location: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
@@ -174,6 +175,7 @@ class _ServiceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
+
         :param pulumi.Input[_builtins.str] application_id: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         :param pulumi.Input['ServiceAttributesArgs'] attributes: Consumer provided attributes.
                Structure is documented below.
@@ -618,24 +620,17 @@ class Service(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/applications/{{application_id}}/services/{{service_id}}`
-
         * `{{project}}/{{location}}/{{application_id}}/{{service_id}}`
-
         * `{{location}}/{{application_id}}/{{service_id}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apphub/service:Service default projects/{{project}}/locations/{{location}}/applications/{{application_id}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apphub/service:Service default {{project}}/{{location}}/{{application_id}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apphub/service:Service default {{location}}/{{application_id}}/{{service_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -845,24 +840,17 @@ class Service(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/applications/{{application_id}}/services/{{service_id}}`
-
         * `{{project}}/{{location}}/{{application_id}}/{{service_id}}`
-
         * `{{location}}/{{application_id}}/{{service_id}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apphub/service:Service default projects/{{project}}/locations/{{location}}/applications/{{application_id}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apphub/service:Service default {{project}}/{{location}}/{{application_id}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apphub/service:Service default {{location}}/{{application_id}}/{{service_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

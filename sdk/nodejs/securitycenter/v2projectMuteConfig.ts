@@ -37,22 +37,14 @@ import * as utilities from "../utilities";
  * ProjectMuteConfig can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/muteConfigs/{{mute_config_id}}`
- *
  * * `{{project}}/{{location}}/{{mute_config_id}}`
- *
  * * `{{location}}/{{mute_config_id}}`
  *
  * When using the `pulumi import` command, ProjectMuteConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig default projects/{{project}}/locations/{{location}}/muteConfigs/{{mute_config_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig default {{project}}/{{location}}/{{mute_config_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig default {{location}}/{{mute_config_id}}
  * ```
  */

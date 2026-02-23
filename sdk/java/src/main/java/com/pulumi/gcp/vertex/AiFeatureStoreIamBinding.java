@@ -17,16 +17,291 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Three different resources help you manage your IAM policy for Vertex AI Featurestore. Each of these resources serves a different use case:
+ * 
+ * * `gcp.vertex.AiFeatureStoreIamPolicy`: Authoritative. Sets the IAM policy for the featurestore and replaces any existing policy already attached.
+ * * `gcp.vertex.AiFeatureStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featurestore are preserved.
+ * * `gcp.vertex.AiFeatureStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featurestore are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.vertex.AiFeatureStoreIamPolicy`: Retrieves the IAM policy for the featurestore
+ * 
+ * &gt; **Note:** `gcp.vertex.AiFeatureStoreIamPolicy` **cannot** be used in conjunction with `gcp.vertex.AiFeatureStoreIamBinding` and `gcp.vertex.AiFeatureStoreIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.vertex.AiFeatureStoreIamBinding` resources **can be** used in conjunction with `gcp.vertex.AiFeatureStoreIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * ## gcp.vertex.AiFeatureStoreIamPolicy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreIamPolicy;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/viewer")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new AiFeatureStoreIamPolicy("policy", AiFeatureStoreIamPolicyArgs.builder()
+ *             .project(featurestore.project())
+ *             .region(featurestore.region())
+ *             .featurestore(featurestore.name())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.vertex.AiFeatureStoreIamBinding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreIamBinding;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new AiFeatureStoreIamBinding("binding", AiFeatureStoreIamBindingArgs.builder()
+ *             .project(featurestore.project())
+ *             .region(featurestore.region())
+ *             .featurestore(featurestore.name())
+ *             .role("roles/viewer")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.vertex.AiFeatureStoreIamMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreIamMember;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new AiFeatureStoreIamMember("member", AiFeatureStoreIamMemberArgs.builder()
+ *             .project(featurestore.project())
+ *             .region(featurestore.region())
+ *             .featurestore(featurestore.name())
+ *             .role("roles/viewer")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for Vertex AI Featurestore
+ * 
+ * Three different resources help you manage your IAM policy for Vertex AI Featurestore. Each of these resources serves a different use case:
+ * 
+ * * `gcp.vertex.AiFeatureStoreIamPolicy`: Authoritative. Sets the IAM policy for the featurestore and replaces any existing policy already attached.
+ * * `gcp.vertex.AiFeatureStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featurestore are preserved.
+ * * `gcp.vertex.AiFeatureStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featurestore are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.vertex.AiFeatureStoreIamPolicy`: Retrieves the IAM policy for the featurestore
+ * 
+ * &gt; **Note:** `gcp.vertex.AiFeatureStoreIamPolicy` **cannot** be used in conjunction with `gcp.vertex.AiFeatureStoreIamBinding` and `gcp.vertex.AiFeatureStoreIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.vertex.AiFeatureStoreIamBinding` resources **can be** used in conjunction with `gcp.vertex.AiFeatureStoreIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * ## gcp.vertex.AiFeatureStoreIamPolicy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreIamPolicy;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/viewer")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new AiFeatureStoreIamPolicy("policy", AiFeatureStoreIamPolicyArgs.builder()
+ *             .project(featurestore.project())
+ *             .region(featurestore.region())
+ *             .featurestore(featurestore.name())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.vertex.AiFeatureStoreIamBinding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreIamBinding;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new AiFeatureStoreIamBinding("binding", AiFeatureStoreIamBindingArgs.builder()
+ *             .project(featurestore.project())
+ *             .region(featurestore.region())
+ *             .featurestore(featurestore.name())
+ *             .role("roles/viewer")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.vertex.AiFeatureStoreIamMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreIamMember;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new AiFeatureStoreIamMember("member", AiFeatureStoreIamMemberArgs.builder()
+ *             .project(featurestore.project())
+ *             .region(featurestore.region())
+ *             .featurestore(featurestore.name())
+ *             .role("roles/viewer")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
  * * projects/{{project}}/locations/{{region}}/featurestores/{{name}}
- * 
  * * {{project}}/{{region}}/{{name}}
- * 
  * * {{region}}/{{name}}
- * 
  * * {{name}}
  * 
  * Any variables not passed in the import command will be taken from the provider configuration.
@@ -34,25 +309,21 @@ import javax.annotation.Nullable;
  * Vertex AI featurestore IAM resources can be imported using the resource identifiers, role, and member.
  * 
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
- * 
  * ```sh
- * $ pulumi import gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding editor &#34;projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer user:jane{@literal @}example.com&#34;
+ * $ terraform import google_vertex_ai_featurestore_iam_member.editor &#34;projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
- * 
  * ```sh
- * $ pulumi import gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding editor &#34;projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer&#34;
+ * $ terraform import google_vertex_ai_featurestore_iam_binding.editor &#34;projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer&#34;
  * ```
  * 
  * IAM policy imports use the identifier of the resource in question, e.g.
- * 
  * ```sh
  * $ pulumi import gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding editor projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}}
  * ```
  * 
- * -&gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
- * 
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */

@@ -150,28 +150,16 @@ import * as utilities from "../utilities";
  * VpnTunnel can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, VpnTunnel can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
  * ```
  */
@@ -258,6 +246,12 @@ export class VPNTunnel extends pulumi.CustomResource {
      * except the last character, which cannot be a dash.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.VPNTunnelParams | undefined>;
     /**
      * URL of the peer side external VPN gateway to which this VPN tunnel is connected.
      */
@@ -373,6 +367,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["labels"] = state?.labels;
             resourceInputs["localTrafficSelectors"] = state?.localTrafficSelectors;
             resourceInputs["name"] = state?.name;
+            resourceInputs["params"] = state?.params;
             resourceInputs["peerExternalGateway"] = state?.peerExternalGateway;
             resourceInputs["peerExternalGatewayInterface"] = state?.peerExternalGatewayInterface;
             resourceInputs["peerGcpGateway"] = state?.peerGcpGateway;
@@ -399,6 +394,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["localTrafficSelectors"] = args?.localTrafficSelectors;
             resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
             resourceInputs["peerExternalGateway"] = args?.peerExternalGateway;
             resourceInputs["peerExternalGatewayInterface"] = args?.peerExternalGatewayInterface;
             resourceInputs["peerGcpGateway"] = args?.peerGcpGateway;
@@ -488,6 +484,12 @@ export interface VPNTunnelState {
      * except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.VPNTunnelParams>;
     /**
      * URL of the peer side external VPN gateway to which this VPN tunnel is connected.
      */
@@ -623,6 +625,12 @@ export interface VPNTunnelArgs {
      * except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.VPNTunnelParams>;
     /**
      * URL of the peer side external VPN gateway to which this VPN tunnel is connected.
      */

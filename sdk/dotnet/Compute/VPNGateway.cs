@@ -107,28 +107,16 @@ namespace Pulumi.Gcp.Compute
     /// VpnGateway can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{name}}`
-    /// 
     /// * `{{region}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, VpnGateway can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/vPNGateway:VPNGateway default projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{project}}/{{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{name}}
     /// ```
     /// </summary>
@@ -170,6 +158,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.VPNGatewayParams?> Params { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -261,6 +257,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.VPNGatewayParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -316,6 +320,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.VPNGatewayParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

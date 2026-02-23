@@ -166,6 +166,361 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// ### Vmware Engine Cluster Nfs Datastore Filestore
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Use this network for filestore instance
+    ///     var fsNetwork = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "filestore_nw",
+    ///     });
+    /// 
+    ///     // Create a filestore instance with delete protection enabled
+    ///     //### Use ip range of private cloud service subnet in the 'nfs_export_options'
+    ///     var testInstance = new Gcp.Filestore.Instance("test_instance", new()
+    ///     {
+    ///         Name = "test-fs-filestore",
+    ///         Location = "",
+    ///         Tier = "ZONAL",
+    ///         DeletionProtectionEnabled = "yes",
+    ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+    ///         {
+    ///             CapacityGb = 1024,
+    ///             Name = "share101",
+    ///             NfsExportOptions = new[]
+    ///             {
+    ///                 new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
+    ///                 {
+    ///                     IpRanges = new[]
+    ///                     {
+    ///                         "10.0.0.0/24",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new Gcp.Filestore.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Network = fsNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///                 Modes = new[]
+    ///                 {
+    ///                     "MODE_IPV4",
+    ///                 },
+    ///                 ConnectMode = "PRIVATE_SERVICE_ACCESS",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var cluster_nw = new Gcp.VMwareEngine.Network("cluster-nw", new()
+    ///     {
+    ///         Name = "pc-nw",
+    ///         Type = "STANDARD",
+    ///         Location = "global",
+    ///         Description = "PC network description.",
+    ///     });
+    /// 
+    ///     var cluster_pc = new Gcp.VMwareEngine.PrivateCloud("cluster-pc", new()
+    ///     {
+    ///         Location = "",
+    ///         Name = "sample-pc",
+    ///         Description = "Sample test PC.",
+    ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs
+    ///         {
+    ///             ManagementCidr = "192.168.30.0/24",
+    ///             VmwareEngineNetwork = cluster_nw.Id,
+    ///         },
+    ///         ManagementCluster = new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterArgs
+    ///         {
+    ///             ClusterId = "sample-mgmt-cluster",
+    ///             NodeTypeConfigs = new[]
+    ///             {
+    ///                 new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterNodeTypeConfigArgs
+    ///                 {
+    ///                     NodeTypeId = "standard-72",
+    ///                     NodeCount = 3,
+    ///                     CustomCoreCount = 32,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Update service subnet
+    ///     //###  Service subnet is used by nfs datastore mounts
+    ///     //### ip_cidr_range configured on subnet must also be allowed in filestore instance's 'nfs_export_options'
+    ///     var cluster_pc_subnet = new Gcp.VMwareEngine.Subnet("cluster-pc-subnet", new()
+    ///     {
+    ///         Name = "service-1",
+    ///         Parent = cluster_pc.Id,
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///     });
+    /// 
+    ///     // Read network peering
+    ///     //### This peering is created by filestore instance
+    ///     var snPeering = Gcp.Compute.GetNetworkPeering.Invoke(new()
+    ///     {
+    ///         Name = "servicenetworking-googleapis-com",
+    ///         Network = fsNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///     });
+    /// 
+    ///     // Create vmware engine network peering
+    ///     //## vmware network peering is required for filestore mount on cluster
+    ///     var psaNetworkPeering = new Gcp.VMwareEngine.NetworkPeering("psa_network_peering", new()
+    ///     {
+    ///         Name = "tf-test-psa-network-peering",
+    ///         Description = "test description",
+    ///         VmwareEngineNetwork = cluster_nw.Id,
+    ///         PeerNetwork = Std.Trimprefix.Invoke(new()
+    ///         {
+    ///             Input = snPeering.Apply(getNetworkPeeringResult =&gt; getNetworkPeeringResult.PeerNetwork),
+    ///             Prefix = "https://www.googleapis.com/compute/v1",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         PeerNetworkType = "PRIVATE_SERVICES_ACCESS",
+    ///     });
+    /// 
+    ///     var testFsDatastore = new Gcp.VMwareEngine.Datastore("test_fs_datastore", new()
+    ///     {
+    ///         Name = "ext-fs-datastore",
+    ///         Location = "",
+    ///         Description = "test description",
+    ///         NfsDatastore = new Gcp.VMwareEngine.Inputs.DatastoreNfsDatastoreArgs
+    ///         {
+    ///             GoogleFileService = new Gcp.VMwareEngine.Inputs.DatastoreNfsDatastoreGoogleFileServiceArgs
+    ///             {
+    ///                 FilestoreInstance = testInstance.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var vmw_ext_cluster = new Gcp.VMwareEngine.Cluster("vmw-ext-cluster", new()
+    ///     {
+    ///         Name = "ext-cluster",
+    ///         Parent = cluster_pc.Id,
+    ///         NodeTypeConfigs = new[]
+    ///         {
+    ///             new Gcp.VMwareEngine.Inputs.ClusterNodeTypeConfigArgs
+    ///             {
+    ///                 NodeTypeId = "standard-72",
+    ///                 NodeCount = 3,
+    ///             },
+    ///         },
+    ///         DatastoreMountConfigs = new[]
+    ///         {
+    ///             new Gcp.VMwareEngine.Inputs.ClusterDatastoreMountConfigArgs
+    ///             {
+    ///                 Datastore = testFsDatastore.Id,
+    ///                 DatastoreNetwork = new Gcp.VMwareEngine.Inputs.ClusterDatastoreMountConfigDatastoreNetworkArgs
+    ///                 {
+    ///                     Subnet = cluster_pc_subnet.Id,
+    ///                     ConnectionCount = 4,
+    ///                     Mtu = 1500,
+    ///                 },
+    ///                 NfsVersion = "NFS_V3",
+    ///                 AccessMode = "READ_WRITE",
+    ///                 IgnoreColocation = false,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             psaNetworkPeering,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Vmware Engine Cluster Nfs Datastore Netapp
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Use this network for netapp volume
+    ///     var npNetwork = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "netapp_nw",
+    ///     });
+    /// 
+    ///     var cluster_nw = new Gcp.VMwareEngine.Network("cluster-nw", new()
+    ///     {
+    ///         Name = "pc-nw",
+    ///         Type = "STANDARD",
+    ///         Location = "global",
+    ///         Description = "PC network description.",
+    ///     });
+    /// 
+    ///     // Read network peering
+    ///     //### This peering is created by netapp volume
+    ///     var snPeering = Gcp.Compute.GetNetworkPeering.Invoke(new()
+    ///     {
+    ///         Name = "sn-netapp-prod",
+    ///         Network = npNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///     });
+    /// 
+    ///     // Create vmware engine network peering
+    ///     //### vmware network peering is required for netapp mount on cluster
+    ///     var gcnvNetworkPeering = new Gcp.VMwareEngine.NetworkPeering("gcnv_network_peering", new()
+    ///     {
+    ///         Name = "tf-test-gcnv-network-peering",
+    ///         Description = "test description",
+    ///         VmwareEngineNetwork = cluster_nw.Id,
+    ///         PeerNetwork = Std.Trimprefix.Invoke(new()
+    ///         {
+    ///             Input = snPeering.Apply(getNetworkPeeringResult =&gt; getNetworkPeeringResult.PeerNetwork),
+    ///             Prefix = "https://www.googleapis.com/compute/v1",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         PeerNetworkType = "GOOGLE_CLOUD_NETAPP_VOLUMES",
+    ///     });
+    /// 
+    ///     var cluster_pc = new Gcp.VMwareEngine.PrivateCloud("cluster-pc", new()
+    ///     {
+    ///         Location = "",
+    ///         Name = "sample-pc",
+    ///         Description = "Sample test PC.",
+    ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs
+    ///         {
+    ///             ManagementCidr = "192.168.30.0/24",
+    ///             VmwareEngineNetwork = cluster_nw.Id,
+    ///         },
+    ///         ManagementCluster = new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterArgs
+    ///         {
+    ///             ClusterId = "sample-mgmt-cluster",
+    ///             NodeTypeConfigs = new[]
+    ///             {
+    ///                 new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterNodeTypeConfigArgs
+    ///                 {
+    ///                     NodeTypeId = "standard-72",
+    ///                     NodeCount = 3,
+    ///                     CustomCoreCount = 32,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Update service subnet
+    ///     //###  Service subnet is used by nfs datastore mounts
+    ///     //### ip_cidr_range configured on subnet must also be allowed in in netapp volumes's 'export_policy'
+    ///     var cluster_pc_subnet = new Gcp.VMwareEngine.Subnet("cluster-pc-subnet", new()
+    ///     {
+    ///         Name = "service-1",
+    ///         Parent = cluster_pc.Id,
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Netapp.StoragePool("default", new()
+    ///     {
+    ///         Name = "tf-test-test-pool",
+    ///         Location = "us-west1",
+    ///         ServiceLevel = "PREMIUM",
+    ///         CapacityGib = "2048",
+    ///         Network = npNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///     });
+    /// 
+    ///     // Create a netapp volume with delete protection enabled
+    ///     //## Use ip range of private cloud service subnet in the 'export_policy'
+    ///     var testVolume = new Gcp.Netapp.Volume("test_volume", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Name = "tf-test-test-volume",
+    ///         CapacityGib = "100",
+    ///         ShareName = "tf-test-test-volume",
+    ///         StoragePool = @default.Name,
+    ///         Protocols = new[]
+    ///         {
+    ///             "NFSV3",
+    ///         },
+    ///         ExportPolicy = new Gcp.Netapp.Inputs.VolumeExportPolicyArgs
+    ///         {
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.Netapp.Inputs.VolumeExportPolicyRuleArgs
+    ///                 {
+    ///                     AccessType = "READ_WRITE",
+    ///                     AllowedClients = "10.0.0.0/24",
+    ///                     HasRootAccess = "true",
+    ///                     Kerberos5ReadOnly = false,
+    ///                     Kerberos5ReadWrite = false,
+    ///                     Kerberos5iReadOnly = false,
+    ///                     Kerberos5iReadWrite = false,
+    ///                     Kerberos5pReadOnly = false,
+    ///                     Kerberos5pReadWrite = false,
+    ///                     Nfsv3 = true,
+    ///                     Nfsv4 = false,
+    ///                 },
+    ///             },
+    ///         },
+    ///         RestrictedActions = new[]
+    ///         {
+    ///             "DELETE",
+    ///         },
+    ///     });
+    /// 
+    ///     var testFsDatastore = new Gcp.VMwareEngine.Datastore("test_fs_datastore", new()
+    ///     {
+    ///         Name = "ext-fs-datastore",
+    ///         Location = "us-west1",
+    ///         Description = "example google_file_service.netapp datastore.",
+    ///         NfsDatastore = new Gcp.VMwareEngine.Inputs.DatastoreNfsDatastoreArgs
+    ///         {
+    ///             GoogleFileService = new Gcp.VMwareEngine.Inputs.DatastoreNfsDatastoreGoogleFileServiceArgs
+    ///             {
+    ///                 NetappVolume = testVolume.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var vmw_ext_cluster = new Gcp.VMwareEngine.Cluster("vmw-ext-cluster", new()
+    ///     {
+    ///         Name = "ext-cluster",
+    ///         Parent = cluster_pc.Id,
+    ///         NodeTypeConfigs = new[]
+    ///         {
+    ///             new Gcp.VMwareEngine.Inputs.ClusterNodeTypeConfigArgs
+    ///             {
+    ///                 NodeTypeId = "standard-72",
+    ///                 NodeCount = 3,
+    ///             },
+    ///         },
+    ///         DatastoreMountConfigs = new[]
+    ///         {
+    ///             new Gcp.VMwareEngine.Inputs.ClusterDatastoreMountConfigArgs
+    ///             {
+    ///                 Datastore = testFsDatastore.Id,
+    ///                 DatastoreNetwork = new Gcp.VMwareEngine.Inputs.ClusterDatastoreMountConfigDatastoreNetworkArgs
+    ///                 {
+    ///                     Subnet = cluster_pc_subnet.Id,
+    ///                     ConnectionCount = 4,
+    ///                     Mtu = 1500,
+    ///                 },
+    ///                 NfsVersion = "NFS_V3",
+    ///                 AccessMode = "READ_WRITE",
+    ///                 IgnoreColocation = true,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             gcnvNetworkPeering,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -196,6 +551,16 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Configuration to mount a datastore.
+        /// Mount can be done along with cluster create or during cluster update
+        /// Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+        /// for unmount remove 'datastore_mount_config' config from the update of cluster resource
+        /// Structure is documented below.
+        /// </summary>
+        [Output("datastoreMountConfigs")]
+        public Output<ImmutableArray<Outputs.ClusterDatastoreMountConfig>> DatastoreMountConfigs { get; private set; } = null!;
 
         /// <summary>
         /// True if the cluster is a management cluster; false otherwise.
@@ -299,6 +664,22 @@ namespace Pulumi.Gcp.VMwareEngine
         [Input("autoscalingSettings")]
         public Input<Inputs.ClusterAutoscalingSettingsArgs>? AutoscalingSettings { get; set; }
 
+        [Input("datastoreMountConfigs")]
+        private InputList<Inputs.ClusterDatastoreMountConfigArgs>? _datastoreMountConfigs;
+
+        /// <summary>
+        /// Optional. Configuration to mount a datastore.
+        /// Mount can be done along with cluster create or during cluster update
+        /// Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+        /// for unmount remove 'datastore_mount_config' config from the update of cluster resource
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ClusterDatastoreMountConfigArgs> DatastoreMountConfigs
+        {
+            get => _datastoreMountConfigs ?? (_datastoreMountConfigs = new InputList<Inputs.ClusterDatastoreMountConfigArgs>());
+            set => _datastoreMountConfigs = value;
+        }
+
         /// <summary>
         /// The ID of the Cluster.
         /// </summary>
@@ -349,6 +730,22 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        [Input("datastoreMountConfigs")]
+        private InputList<Inputs.ClusterDatastoreMountConfigGetArgs>? _datastoreMountConfigs;
+
+        /// <summary>
+        /// Optional. Configuration to mount a datastore.
+        /// Mount can be done along with cluster create or during cluster update
+        /// Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+        /// for unmount remove 'datastore_mount_config' config from the update of cluster resource
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ClusterDatastoreMountConfigGetArgs> DatastoreMountConfigs
+        {
+            get => _datastoreMountConfigs ?? (_datastoreMountConfigs = new InputList<Inputs.ClusterDatastoreMountConfigGetArgs>());
+            set => _datastoreMountConfigs = value;
+        }
 
         /// <summary>
         /// True if the cluster is a management cluster; false otherwise.

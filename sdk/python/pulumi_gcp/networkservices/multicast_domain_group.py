@@ -28,6 +28,7 @@ class MulticastDomainGroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MulticastDomainGroup resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] multicast_domain_group_id: A unique name for the multicast domain group.
                The name is restricted to letters, numbers, and hyphen, with the first
@@ -134,6 +135,7 @@ class _MulticastDomainGroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MulticastDomainGroup resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the multicast domain group was created.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast domain group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -442,24 +444,17 @@ class MulticastDomainGroup(pulumi.CustomResource):
         MulticastDomainGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicastDomainGroups/{{multicast_domain_group_id}}`
-
         * `{{project}}/{{location}}/{{multicast_domain_group_id}}`
-
         * `{{location}}/{{multicast_domain_group_id}}`
 
         When using the `pulumi import` command, MulticastDomainGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default projects/{{project}}/locations/{{location}}/multicastDomainGroups/{{multicast_domain_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default {{project}}/{{location}}/{{multicast_domain_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default {{location}}/{{multicast_domain_group_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -533,24 +528,17 @@ class MulticastDomainGroup(pulumi.CustomResource):
         MulticastDomainGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicastDomainGroups/{{multicast_domain_group_id}}`
-
         * `{{project}}/{{location}}/{{multicast_domain_group_id}}`
-
         * `{{location}}/{{multicast_domain_group_id}}`
 
         When using the `pulumi import` command, MulticastDomainGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default projects/{{project}}/locations/{{location}}/multicastDomainGroups/{{multicast_domain_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default {{project}}/{{location}}/{{multicast_domain_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastDomainGroup:MulticastDomainGroup default {{location}}/{{multicast_domain_group_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MulticastDomainGroupArgs args: The arguments to use to populate this resource's properties.

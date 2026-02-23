@@ -28,6 +28,7 @@ class OccurenceArgs:
                  remediation: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Occurence resource.
+
         :param pulumi.Input['OccurenceAttestationArgs'] attestation: Occurrence that represents a single "attestation". The authenticity
                of an attestation can be verified using the attached signature.
                If the verifier trusts the public key of the signer, then verifying
@@ -143,6 +144,7 @@ class _OccurenceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Occurence resources.
+
         :param pulumi.Input['OccurenceAttestationArgs'] attestation: Occurrence that represents a single "attestation". The authenticity
                of an attestation can be verified using the attached signature.
                If the verifier trusts the public key of the signer, then verifying
@@ -383,24 +385,17 @@ class Occurence(pulumi.CustomResource):
         Occurrence can be imported using any of these accepted formats:
 
         * `projects/{{project}}/occurrences/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Occurrence can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:containeranalysis/occurence:Occurence default projects/{{project}}/occurrences/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:containeranalysis/occurence:Occurence default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:containeranalysis/occurence:Occurence default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -489,24 +484,17 @@ class Occurence(pulumi.CustomResource):
         Occurrence can be imported using any of these accepted formats:
 
         * `projects/{{project}}/occurrences/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Occurrence can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:containeranalysis/occurence:Occurence default projects/{{project}}/occurrences/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:containeranalysis/occurence:Occurence default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:containeranalysis/occurence:Occurence default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OccurenceArgs args: The arguments to use to populate this resource's properties.

@@ -503,7 +503,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
  * ## Import
  * 
  * Index can be imported using any of these accepted formats:
@@ -564,6 +563,26 @@ public class Index extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> database() {
         return Codegen.optional(this.database);
+    }
+    /**
+     * Deletion behavior for this index.
+     * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+     * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `DELETE`.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return Deletion behavior for this index.
+     * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+     * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `DELETE`.
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * The density configuration for this index.

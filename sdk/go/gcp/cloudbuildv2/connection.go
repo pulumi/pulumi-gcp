@@ -242,28 +242,16 @@ import (
 // Connection can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudbuildv2/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudbuildv2/connection:Connection default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudbuildv2/connection:Connection default {{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudbuildv2/connection:Connection default {{name}}
 // ```
 type Connection struct {
@@ -282,7 +270,8 @@ type Connection struct {
 	// Output only. Server assigned timestamp for when the connection was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
-	Disabled             pulumi.BoolPtrOutput   `pulumi:"disabled"`
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -357,7 +346,8 @@ type connectionState struct {
 	// Output only. Server assigned timestamp for when the connection was created.
 	CreateTime *string `pulumi:"createTime"`
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
-	Disabled             *bool             `pulumi:"disabled"`
+	Disabled *bool `pulumi:"disabled"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
@@ -400,7 +390,8 @@ type ConnectionState struct {
 	// Output only. Server assigned timestamp for when the connection was created.
 	CreateTime pulumi.StringPtrInput
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
-	Disabled             pulumi.BoolPtrInput
+	Disabled pulumi.BoolPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
@@ -612,6 +603,7 @@ func (o ConnectionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o ConnectionOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

@@ -28,6 +28,7 @@ class DatasetArgs:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Dataset resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the Dataset.
         :param pulumi.Input['DatasetEncryptionSpecArgs'] encryption_spec: A nested object resource.
                Structure is documented below.
@@ -124,6 +125,7 @@ class _DatasetState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Dataset resources.
+
         :param pulumi.Input['DatasetEncryptionSpecArgs'] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the Dataset.
@@ -292,24 +294,17 @@ class Dataset(pulumi.CustomResource):
         Dataset can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/datasets/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:healthcare/dataset:Dataset default projects/{{project}}/locations/{{location}}/datasets/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:healthcare/dataset:Dataset default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:healthcare/dataset:Dataset default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -384,24 +379,17 @@ class Dataset(pulumi.CustomResource):
         Dataset can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/datasets/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:healthcare/dataset:Dataset default projects/{{project}}/locations/{{location}}/datasets/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:healthcare/dataset:Dataset default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:healthcare/dataset:Dataset default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatasetArgs args: The arguments to use to populate this resource's properties.

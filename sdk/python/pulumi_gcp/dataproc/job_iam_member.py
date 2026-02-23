@@ -29,6 +29,7 @@ class JobIAMMemberArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a JobIAMMember resource.
+
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -149,6 +150,7 @@ class _JobIAMMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering JobIAMMember resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the jobs's IAM policy.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -383,29 +385,9 @@ class JobIAMMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example:
-
-        * `projects/{project}/regions/{region}/jobs/{job_id}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "projects/{project}/regions/{region}/jobs/{job_id}"
-
-          to = google_dataproc_job_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember default "projects/{project}/regions/{region}/jobs/{job_id}"
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -528,29 +510,9 @@ class JobIAMMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example:
-
-        * `projects/{project}/regions/{region}/jobs/{job_id}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "projects/{project}/regions/{region}/jobs/{job_id}"
-
-          to = google_dataproc_job_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember default "projects/{project}/regions/{region}/jobs/{job_id}"
-        ```
 
         :param str resource_name: The name of the resource.
         :param JobIAMMemberArgs args: The arguments to use to populate this resource's properties.

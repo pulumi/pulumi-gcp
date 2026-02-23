@@ -46,9 +46,27 @@ public final class ReleaseArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.annotations);
     }
 
+    /**
+     * Blueprints are OCI Images that contain all of the artifacts needed to
+     * provision a unit. Metadata such as, type of the engine used to actuate the
+     * blueprint (e.g. terraform, helm etc) and version will come from the image
+     * manifest. If the hostname is omitted, it will be assumed to be the regional
+     * path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+     * Structure is documented below.
+     * 
+     */
     @Import(name="blueprint")
     private @Nullable Output<ReleaseBlueprintArgs> blueprint;
 
+    /**
+     * @return Blueprints are OCI Images that contain all of the artifacts needed to
+     * provision a unit. Metadata such as, type of the engine used to actuate the
+     * blueprint (e.g. terraform, helm etc) and version will come from the image
+     * manifest. If the hostname is omitted, it will be assumed to be the regional
+     * path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<ReleaseBlueprintArgs>> blueprint() {
         return Optional.ofNullable(this.blueprint);
     }
@@ -235,11 +253,33 @@ public final class ReleaseArgs extends com.pulumi.resources.ResourceArgs {
             return annotations(Output.of(annotations));
         }
 
+        /**
+         * @param blueprint Blueprints are OCI Images that contain all of the artifacts needed to
+         * provision a unit. Metadata such as, type of the engine used to actuate the
+         * blueprint (e.g. terraform, helm etc) and version will come from the image
+         * manifest. If the hostname is omitted, it will be assumed to be the regional
+         * path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blueprint(@Nullable Output<ReleaseBlueprintArgs> blueprint) {
             $.blueprint = blueprint;
             return this;
         }
 
+        /**
+         * @param blueprint Blueprints are OCI Images that contain all of the artifacts needed to
+         * provision a unit. Metadata such as, type of the engine used to actuate the
+         * blueprint (e.g. terraform, helm etc) and version will come from the image
+         * manifest. If the hostname is omitted, it will be assumed to be the regional
+         * path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blueprint(ReleaseBlueprintArgs blueprint) {
             return blueprint(Output.of(blueprint));
         }

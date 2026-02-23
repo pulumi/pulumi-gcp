@@ -34,6 +34,7 @@ class WorkstationClusterArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a WorkstationCluster resource.
+
         :param pulumi.Input[_builtins.str] network: The relative resource name of the VPC network on which the instance can be accessed.
                It is specified in the following form: "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input[_builtins.str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
@@ -249,6 +250,7 @@ class _WorkstationClusterState:
                  workstation_cluster_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkstationCluster resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -262,6 +264,7 @@ class _WorkstationClusterState:
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
         :param pulumi.Input['WorkstationClusterDomainConfigArgs'] domain_config: Configuration options for a custom domain.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Checksum computed by the server.
                May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
@@ -423,6 +426,9 @@ class _WorkstationClusterState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -616,6 +622,17 @@ class WorkstationCluster(pulumi.CustomResource):
                  workstation_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A grouping of workstation configurations and the associated workstations in that region.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about WorkstationCluster, see:
+
+        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters/create)
+        * How-to Guides
+            * [Workstations](https://cloud.google.com/workstations/docs/)
+
         ## Example Usage
 
         ### Workstation Cluster Basic
@@ -748,24 +765,17 @@ class WorkstationCluster(pulumi.CustomResource):
         WorkstationCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
-
         * `{{project}}/{{location}}/{{workstation_cluster_id}}`
-
         * `{{location}}/{{workstation_cluster_id}}`
 
         When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{project}}/{{location}}/{{workstation_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -800,6 +810,17 @@ class WorkstationCluster(pulumi.CustomResource):
                  args: WorkstationClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A grouping of workstation configurations and the associated workstations in that region.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about WorkstationCluster, see:
+
+        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters/create)
+        * How-to Guides
+            * [Workstations](https://cloud.google.com/workstations/docs/)
+
         ## Example Usage
 
         ### Workstation Cluster Basic
@@ -932,24 +953,17 @@ class WorkstationCluster(pulumi.CustomResource):
         WorkstationCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
-
         * `{{project}}/{{location}}/{{workstation_cluster_id}}`
-
         * `{{location}}/{{workstation_cluster_id}}`
 
         When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{project}}/{{location}}/{{workstation_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkstationClusterArgs args: The arguments to use to populate this resource's properties.
@@ -1066,6 +1080,7 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
         :param pulumi.Input[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict']] domain_config: Configuration options for a custom domain.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Checksum computed by the server.
                May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
@@ -1183,6 +1198,9 @@ class WorkstationCluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

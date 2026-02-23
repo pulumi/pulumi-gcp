@@ -126,22 +126,14 @@ import * as utilities from "../utilities";
  * SecurityPolicyRule can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/global/securityPolicies/{{security_policy}}/priority/{{priority}}`
- *
  * * `{{project}}/{{security_policy}}/{{priority}}`
- *
  * * `{{security_policy}}/{{priority}}`
  *
  * When using the `pulumi import` command, SecurityPolicyRule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/securityPolicyRule:SecurityPolicyRule default projects/{{project}}/global/securityPolicies/{{security_policy}}/priority/{{priority}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/securityPolicyRule:SecurityPolicyRule default {{project}}/{{security_policy}}/{{priority}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/securityPolicyRule:SecurityPolicyRule default {{security_policy}}/{{priority}}
  * ```
  */

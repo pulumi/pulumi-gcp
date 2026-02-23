@@ -22,6 +22,8 @@ __all__ = [
     'GroupMembershipPreferredMemberKey',
     'GroupMembershipRole',
     'GroupMembershipRoleExpiryDetail',
+    'PolicyPolicyQuery',
+    'PolicySetting',
     'GetGroupLookupGroupKeyResult',
     'GetGroupMembershipsMembershipResult',
     'GetGroupMembershipsMembershipMemberKeyResult',
@@ -336,6 +338,127 @@ class GroupMembershipRoleExpiryDetail(dict):
         Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "expire_time")
+
+
+@pulumi.output_type
+class PolicyPolicyQuery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "orgUnit":
+            suggest = "org_unit"
+        elif key == "sortOrder":
+            suggest = "sort_order"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyPolicyQuery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyPolicyQuery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyPolicyQuery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 org_unit: _builtins.str,
+                 group: Optional[_builtins.str] = None,
+                 query: Optional[_builtins.str] = None,
+                 sort_order: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str org_unit: The OrgUnit the query applies to.
+        :param _builtins.str group: The group that the query applies to.
+        :param _builtins.str query: The CEL query that defines which entities the Policy applies to.
+        :param _builtins.int sort_order: (Output)
+               Decimal sort order of this PolicyQuery.
+        """
+        pulumi.set(__self__, "org_unit", org_unit)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if sort_order is not None:
+            pulumi.set(__self__, "sort_order", sort_order)
+
+    @_builtins.property
+    @pulumi.getter(name="orgUnit")
+    def org_unit(self) -> _builtins.str:
+        """
+        The OrgUnit the query applies to.
+        """
+        return pulumi.get(self, "org_unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> Optional[_builtins.str]:
+        """
+        The group that the query applies to.
+        """
+        return pulumi.get(self, "group")
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> Optional[_builtins.str]:
+        """
+        The CEL query that defines which entities the Policy applies to.
+        """
+        return pulumi.get(self, "query")
+
+    @_builtins.property
+    @pulumi.getter(name="sortOrder")
+    def sort_order(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        Decimal sort order of this PolicyQuery.
+        """
+        return pulumi.get(self, "sort_order")
+
+
+@pulumi.output_type
+class PolicySetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueJson":
+            suggest = "value_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicySetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicySetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicySetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 value_json: _builtins.str):
+        """
+        :param _builtins.str type: The type of the Setting.
+        :param _builtins.str value_json: The value of the Setting as JSON string.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value_json", value_json)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the Setting.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> _builtins.str:
+        """
+        The value of the Setting as JSON string.
+        """
+        return pulumi.get(self, "value_json")
 
 
 @pulumi.output_type

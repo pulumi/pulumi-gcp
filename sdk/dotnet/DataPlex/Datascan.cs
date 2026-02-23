@@ -428,7 +428,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_39249",
+    ///         Name = "tf-test-bucket-name-_16511",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -471,16 +471,16 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_74391",
+    ///         Name = "tf-test-bucket-name-_8493",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
     ///     var tfTestConnection = new Gcp.BigQuery.Connection("tf_test_connection", new()
     ///     {
-    ///         ConnectionId = "tf-test-connection-_16511",
+    ///         ConnectionId = "tf-test-connection-_9106",
     ///         Location = "us-central1",
-    ///         FriendlyName = "tf-test-connection-_8493",
+    ///         FriendlyName = "tf-test-connection-_27169",
     ///         Description = "a bigquery connection for tf test",
     ///         CloudResource = null,
     ///     });
@@ -573,7 +573,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_9106",
+    ///         Name = "tf-test-bucket-name-_75223",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -619,14 +619,14 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_dataplex_test_dataset_id__27169",
+    ///         DatasetId = "tf_dataplex_test_dataset_id__41819",
     ///         DefaultTableExpirationMs = 3600000,
     ///     });
     /// 
     ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
     ///     {
     ///         DatasetId = tfDataplexTestDataset.DatasetId,
-    ///         TableId = "tf_dataplex_test_table_id__75223",
+    ///         TableId = "tf_dataplex_test_table_id__75092",
     ///         DeletionProtection = false,
     ///         Schema = @"    [
     ///     {
@@ -718,14 +718,14 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_dataplex_test_dataset_id__41819",
+    ///         DatasetId = "tf_dataplex_test_dataset_id__2605",
     ///         DefaultTableExpirationMs = 3600000,
     ///     });
     /// 
     ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
     ///     {
     ///         DatasetId = tfDataplexTestDataset.DatasetId,
-    ///         TableId = "tf_dataplex_test_table_id__75092",
+    ///         TableId = "tf_dataplex_test_table_id__34535",
     ///         DeletionProtection = false,
     ///         Schema = @"    [
     ///     {
@@ -814,28 +814,16 @@ namespace Pulumi.Gcp.DataPlex
     /// Datascan can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{data_scan_id}}`
-    /// 
     /// * `{{location}}/{{data_scan_id}}`
-    /// 
     /// * `{{data_scan_id}}`
     /// 
     /// When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataplex/datascan:Datascan default projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/datascan:Datascan default {{project}}/{{location}}/{{data_scan_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/datascan:Datascan default {{location}}/{{data_scan_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataplex/datascan:Datascan default {{data_scan_id}}
     /// ```
     /// </summary>

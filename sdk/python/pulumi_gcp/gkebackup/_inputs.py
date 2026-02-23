@@ -87,53 +87,48 @@ __all__ = [
     'RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class BackupPlanBackupConfigArgsDict(TypedDict):
-        all_namespaces: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If True, include all namespaced resources.
-        """
-        encryption_key: NotRequired[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArgsDict']]
-        """
-        This defines a customer managed encryption key that will be used to encrypt the "config"
-        portion (the Kubernetes resources) of Backups created via this plan.
-        Structure is documented below.
-        """
-        include_secrets: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        This flag specifies whether Kubernetes Secret resources should be included
-        when they fall into the scope of Backups.
-        """
-        include_volume_data: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        This flag specifies whether volume data should be backed up when PVCs are
-        included in the scope of a Backup.
-        """
-        permissive_mode: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        This flag specifies whether Backups will not fail when
-        Backup for GKE detects Kubernetes configuration that is
-        non-standard or requires additional setup to restore.
-        """
-        selected_applications: NotRequired[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgsDict']]
-        """
-        A list of namespaced Kubernetes Resources.
-        Structure is documented below.
-        """
-        selected_namespace_labels: NotRequired[pulumi.Input['BackupPlanBackupConfigSelectedNamespaceLabelsArgsDict']]
-        """
-        If set, include just the resources in the listed namespace Labels.
-        Structure is documented below.
-        """
-        selected_namespaces: NotRequired[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgsDict']]
-        """
-        If set, include just the resources in the listed namespaces.
-        Structure is documented below.
-        """
-elif False:
-    BackupPlanBackupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupConfigArgsDict(TypedDict):
+    all_namespaces: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If True, include all namespaced resources.
+    """
+    encryption_key: NotRequired[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArgsDict']]
+    """
+    This defines a customer managed encryption key that will be used to encrypt the "config"
+    portion (the Kubernetes resources) of Backups created via this plan.
+    Structure is documented below.
+    """
+    include_secrets: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    This flag specifies whether Kubernetes Secret resources should be included
+    when they fall into the scope of Backups.
+    """
+    include_volume_data: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    This flag specifies whether volume data should be backed up when PVCs are
+    included in the scope of a Backup.
+    """
+    permissive_mode: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    This flag specifies whether Backups will not fail when
+    Backup for GKE detects Kubernetes configuration that is
+    non-standard or requires additional setup to restore.
+    """
+    selected_applications: NotRequired[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgsDict']]
+    """
+    A list of namespaced Kubernetes Resources.
+    Structure is documented below.
+    """
+    selected_namespace_labels: NotRequired[pulumi.Input['BackupPlanBackupConfigSelectedNamespaceLabelsArgsDict']]
+    """
+    If set, include just the resources in the listed namespace Labels.
+    Structure is documented below.
+    """
+    selected_namespaces: NotRequired[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgsDict']]
+    """
+    If set, include just the resources in the listed namespaces.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class BackupPlanBackupConfigArgs:
@@ -288,14 +283,11 @@ class BackupPlanBackupConfigArgs:
         pulumi.set(self, "selected_namespaces", value)
 
 
-if not MYPY:
-    class BackupPlanBackupConfigEncryptionKeyArgsDict(TypedDict):
-        gcp_kms_encryption_key: pulumi.Input[_builtins.str]
-        """
-        Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
-        """
-elif False:
-    BackupPlanBackupConfigEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupConfigEncryptionKeyArgsDict(TypedDict):
+    gcp_kms_encryption_key: pulumi.Input[_builtins.str]
+    """
+    Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+    """
 
 @pulumi.input_type
 class BackupPlanBackupConfigEncryptionKeyArgs:
@@ -319,15 +311,12 @@ class BackupPlanBackupConfigEncryptionKeyArgs:
         pulumi.set(self, "gcp_kms_encryption_key", value)
 
 
-if not MYPY:
-    class BackupPlanBackupConfigSelectedApplicationsArgsDict(TypedDict):
-        namespaced_names: pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgsDict']]]
-        """
-        A list of namespaced Kubernetes resources.
-        Structure is documented below.
-        """
-elif False:
-    BackupPlanBackupConfigSelectedApplicationsArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupConfigSelectedApplicationsArgsDict(TypedDict):
+    namespaced_names: pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgsDict']]]
+    """
+    A list of namespaced Kubernetes resources.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class BackupPlanBackupConfigSelectedApplicationsArgs:
@@ -353,18 +342,15 @@ class BackupPlanBackupConfigSelectedApplicationsArgs:
         pulumi.set(self, "namespaced_names", value)
 
 
-if not MYPY:
-    class BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of a Kubernetes Resource.
-        """
-        namespace: pulumi.Input[_builtins.str]
-        """
-        The namespace of a Kubernetes Resource.
-        """
-elif False:
-    BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of a Kubernetes Resource.
+    """
+    namespace: pulumi.Input[_builtins.str]
+    """
+    The namespace of a Kubernetes Resource.
+    """
 
 @pulumi.input_type
 class BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs:
@@ -403,15 +389,12 @@ class BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs:
         pulumi.set(self, "namespace", value)
 
 
-if not MYPY:
-    class BackupPlanBackupConfigSelectedNamespaceLabelsArgsDict(TypedDict):
-        resource_labels: pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgsDict']]]
-        """
-        A list of Kubernetes Namespace labels.
-        Structure is documented below.
-        """
-elif False:
-    BackupPlanBackupConfigSelectedNamespaceLabelsArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupConfigSelectedNamespaceLabelsArgsDict(TypedDict):
+    resource_labels: pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgsDict']]]
+    """
+    A list of Kubernetes Namespace labels.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class BackupPlanBackupConfigSelectedNamespaceLabelsArgs:
@@ -437,18 +420,15 @@ class BackupPlanBackupConfigSelectedNamespaceLabelsArgs:
         pulumi.set(self, "resource_labels", value)
 
 
-if not MYPY:
-    class BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The key of the kubernetes label.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The value of the Label.
-        """
-elif False:
-    BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key of the kubernetes label.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the Label.
+    """
 
 @pulumi.input_type
 class BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs:
@@ -487,14 +467,11 @@ class BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class BackupPlanBackupConfigSelectedNamespacesArgsDict(TypedDict):
-        namespaces: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of Kubernetes Namespaces.
-        """
-elif False:
-    BackupPlanBackupConfigSelectedNamespacesArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupConfigSelectedNamespacesArgsDict(TypedDict):
+    namespaces: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of Kubernetes Namespaces.
+    """
 
 @pulumi.input_type
 class BackupPlanBackupConfigSelectedNamespacesArgs:
@@ -518,29 +495,26 @@ class BackupPlanBackupConfigSelectedNamespacesArgs:
         pulumi.set(self, "namespaces", value)
 
 
-if not MYPY:
-    class BackupPlanBackupScheduleArgsDict(TypedDict):
-        cron_schedule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A standard cron string that defines a repeating schedule for
-        creating Backups via this BackupPlan.
-        This is mutually exclusive with the rpoConfig field since at most one
-        schedule can be defined for a BackupPlan.
-        If this is defined, then backupRetainDays must also be defined.
-        """
-        paused: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        This flag denotes whether automatic Backup creation is paused for this BackupPlan.
-        """
-        rpo_config: NotRequired[pulumi.Input['BackupPlanBackupScheduleRpoConfigArgsDict']]
-        """
-        Defines the RPO schedule configuration for this BackupPlan. This is mutually
-        exclusive with the cronSchedule field since at most one schedule can be defined
-        for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
-        Structure is documented below.
-        """
-elif False:
-    BackupPlanBackupScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupScheduleArgsDict(TypedDict):
+    cron_schedule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A standard cron string that defines a repeating schedule for
+    creating Backups via this BackupPlan.
+    This is mutually exclusive with the rpoConfig field since at most one
+    schedule can be defined for a BackupPlan.
+    If this is defined, then backupRetainDays must also be defined.
+    """
+    paused: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    This flag denotes whether automatic Backup creation is paused for this BackupPlan.
+    """
+    rpo_config: NotRequired[pulumi.Input['BackupPlanBackupScheduleRpoConfigArgsDict']]
+    """
+    Defines the RPO schedule configuration for this BackupPlan. This is mutually
+    exclusive with the cronSchedule field since at most one schedule can be defined
+    for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class BackupPlanBackupScheduleArgs:
@@ -611,27 +585,24 @@ class BackupPlanBackupScheduleArgs:
         pulumi.set(self, "rpo_config", value)
 
 
-if not MYPY:
-    class BackupPlanBackupScheduleRpoConfigArgsDict(TypedDict):
-        target_rpo_minutes: pulumi.Input[_builtins.int]
-        """
-        Defines the target RPO for the BackupPlan in minutes, which means the target
-        maximum data loss in time that is acceptable for this BackupPlan. This must be
-        at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
-        """
-        exclusion_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgsDict']]]]
-        """
-        User specified time windows during which backup can NOT happen for this BackupPlan.
-        Backups should start and finish outside of any given exclusion window. Note: backup
-        jobs will be scheduled to start and finish outside the duration of the window as
-        much as possible, but running jobs will not get canceled when it runs into the window.
-        All the time and date values in exclusionWindows entry in the API are in UTC. We
-        only allow <=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no
-        restriction on number of single occurrence windows.
-        Structure is documented below.
-        """
-elif False:
-    BackupPlanBackupScheduleRpoConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupScheduleRpoConfigArgsDict(TypedDict):
+    target_rpo_minutes: pulumi.Input[_builtins.int]
+    """
+    Defines the target RPO for the BackupPlan in minutes, which means the target
+    maximum data loss in time that is acceptable for this BackupPlan. This must be
+    at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
+    """
+    exclusion_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgsDict']]]]
+    """
+    User specified time windows during which backup can NOT happen for this BackupPlan.
+    Backups should start and finish outside of any given exclusion window. Note: backup
+    jobs will be scheduled to start and finish outside the duration of the window as
+    much as possible, but running jobs will not get canceled when it runs into the window.
+    All the time and date values in exclusionWindows entry in the API are in UTC. We
+    only allow <=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no
+    restriction on number of single occurrence windows.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class BackupPlanBackupScheduleRpoConfigArgs:
@@ -689,44 +660,41 @@ class BackupPlanBackupScheduleRpoConfigArgs:
         pulumi.set(self, "exclusion_windows", value)
 
 
-if not MYPY:
-    class BackupPlanBackupScheduleRpoConfigExclusionWindowArgsDict(TypedDict):
-        duration: pulumi.Input[_builtins.str]
-        """
-        Specifies duration of the window in seconds with up to nine fractional digits,
-        terminated by 's'. Example: "3.5s". Restrictions for duration based on the
-        recurrence type to allow some time for backup to happen:
-        - single_occurrence_date:  no restriction
-        - daily window: duration < 24 hours
-        - weekly window:
-        - days of week includes all seven days of a week: duration < 24 hours
-        - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours)
-        """
-        start_time: pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgsDict']
-        """
-        Specifies the start time of the window using time of the day in UTC.
-        Structure is documented below.
-        """
-        daily: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The exclusion window occurs every day if set to "True".
-        Specifying this field to "False" is an error.
-        Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
-        """
-        days_of_week: NotRequired[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgsDict']]
-        """
-        The exclusion window occurs on these days of each week in UTC.
-        Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
-        Structure is documented below.
-        """
-        single_occurrence_date: NotRequired[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgsDict']]
-        """
-        No recurrence. The exclusion window occurs only once and on this date in UTC.
-        Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
-        Structure is documented below.
-        """
-elif False:
-    BackupPlanBackupScheduleRpoConfigExclusionWindowArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupScheduleRpoConfigExclusionWindowArgsDict(TypedDict):
+    duration: pulumi.Input[_builtins.str]
+    """
+    Specifies duration of the window in seconds with up to nine fractional digits,
+    terminated by 's'. Example: "3.5s". Restrictions for duration based on the
+    recurrence type to allow some time for backup to happen:
+    - single_occurrence_date:  no restriction
+    - daily window: duration < 24 hours
+    - weekly window:
+    - days of week includes all seven days of a week: duration < 24 hours
+    - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours)
+    """
+    start_time: pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgsDict']
+    """
+    Specifies the start time of the window using time of the day in UTC.
+    Structure is documented below.
+    """
+    daily: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The exclusion window occurs every day if set to "True".
+    Specifying this field to "False" is an error.
+    Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+    """
+    days_of_week: NotRequired[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgsDict']]
+    """
+    The exclusion window occurs on these days of each week in UTC.
+    Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+    Structure is documented below.
+    """
+    single_occurrence_date: NotRequired[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgsDict']]
+    """
+    No recurrence. The exclusion window occurs only once and on this date in UTC.
+    Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class BackupPlanBackupScheduleRpoConfigExclusionWindowArgs:
@@ -841,15 +809,12 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowArgs:
         pulumi.set(self, "single_occurrence_date", value)
 
 
-if not MYPY:
-    class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgsDict(TypedDict):
-        days_of_weeks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of days of week.
-        Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-elif False:
-    BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgsDict(TypedDict):
+    days_of_weeks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of days of week.
+    Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
 
 @pulumi.input_type
 class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs:
@@ -876,22 +841,19 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs:
         pulumi.set(self, "days_of_weeks", value)
 
 
-if not MYPY:
-    class BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date.
-        """
-elif False:
-    BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date.
+    """
 
 @pulumi.input_type
 class BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs:
@@ -948,26 +910,23 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs:
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time.
-        """
-elif False:
-    BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time.
+    """
 
 @pulumi.input_type
 class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs:
@@ -1040,13 +999,10 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class BackupPlanIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    BackupPlanIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class BackupPlanIamBindingConditionArgs:
@@ -1087,13 +1043,10 @@ class BackupPlanIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class BackupPlanIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    BackupPlanIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class BackupPlanIamMemberConditionArgs:
@@ -1134,40 +1087,37 @@ class BackupPlanIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class BackupPlanRetentionPolicyArgsDict(TypedDict):
-        backup_delete_lock_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum age for a Backup created via this BackupPlan (in days).
-        Must be an integer value between 0-90 (inclusive).
-        A Backup created under this BackupPlan will not be deletable
-        until it reaches Backup's (create time + backup_delete_lock_days).
-        Updating this field of a BackupPlan does not affect existing Backups.
-        Backups created after a successful update will inherit this new value.
-        """
-        backup_retain_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The default maximum age of a Backup created via this BackupPlan.
-        This field MUST be an integer value >= 0 and <= 365. If specified,
-        a Backup created under this BackupPlan will be automatically deleted
-        after its age reaches (createTime + backupRetainDays).
-        If not specified, Backups created under this BackupPlan will NOT be
-        subject to automatic deletion. Updating this field does NOT affect
-        existing Backups under it. Backups created AFTER a successful update
-        will automatically pick up the new value.
-        NOTE: backupRetainDays must be >= backupDeleteLockDays.
-        If cronSchedule is defined, then this must be <= 360 * the creation interval.
-        If rpo_config is defined, then this must be
-        <= 360 * targetRpoMinutes/(1440minutes/day)
-        """
-        locked: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        This flag denotes whether the retention policy of this BackupPlan is locked.
-        If set to True, no further update is allowed on this policy, including
-        the locked field itself.
-        """
-elif False:
-    BackupPlanRetentionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class BackupPlanRetentionPolicyArgsDict(TypedDict):
+    backup_delete_lock_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum age for a Backup created via this BackupPlan (in days).
+    Must be an integer value between 0-90 (inclusive).
+    A Backup created under this BackupPlan will not be deletable
+    until it reaches Backup's (create time + backup_delete_lock_days).
+    Updating this field of a BackupPlan does not affect existing Backups.
+    Backups created after a successful update will inherit this new value.
+    """
+    backup_retain_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The default maximum age of a Backup created via this BackupPlan.
+    This field MUST be an integer value >= 0 and <= 365. If specified,
+    a Backup created under this BackupPlan will be automatically deleted
+    after its age reaches (createTime + backupRetainDays).
+    If not specified, Backups created under this BackupPlan will NOT be
+    subject to automatic deletion. Updating this field does NOT affect
+    existing Backups under it. Backups created AFTER a successful update
+    will automatically pick up the new value.
+    NOTE: backupRetainDays must be >= backupDeleteLockDays.
+    If cronSchedule is defined, then this must be <= 360 * the creation interval.
+    If rpo_config is defined, then this must be
+    <= 360 * targetRpoMinutes/(1440minutes/day)
+    """
+    locked: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    This flag denotes whether the retention policy of this BackupPlan is locked.
+    If set to True, no further update is allowed on this policy, including
+    the locked field itself.
+    """
 
 @pulumi.input_type
 class BackupPlanRetentionPolicyArgs:
@@ -1260,13 +1210,10 @@ class BackupPlanRetentionPolicyArgs:
         pulumi.set(self, "locked", value)
 
 
-if not MYPY:
-    class RestorePlanIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RestorePlanIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RestorePlanIamBindingConditionArgs:
@@ -1307,13 +1254,10 @@ class RestorePlanIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RestorePlanIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RestorePlanIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RestorePlanIamMemberConditionArgs:
@@ -1354,95 +1298,92 @@ class RestorePlanIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigArgsDict(TypedDict):
-        all_namespaces: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If True, restore all namespaced resources in the Backup.
-        Setting this field to False will result in an error.
-        """
-        cluster_resource_conflict_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines the behavior for handling the situation where cluster-scoped resources
-        being restored already exist in the target cluster.
-        This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
-        if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
-        See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
-        for more information on each policy option.
-        Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
-        """
-        cluster_resource_restore_scope: NotRequired[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgsDict']]
-        """
-        Identifies the cluster-scoped resources to restore from the Backup.
-        Structure is documented below.
-        """
-        excluded_namespaces: NotRequired[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgsDict']]
-        """
-        A list of selected namespaces excluded from restoration.
-        All namespaces except those in this list will be restored.
-        Structure is documented below.
-        """
-        namespaced_resource_restore_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines the behavior for handling the situation where sets of namespaced resources
-        being restored already exist in the target cluster.
-        This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
-        if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
-        See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
-        for more information on each mode.
-        Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
-        """
-        no_namespaces: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Do not restore any namespaced resources if set to "True".
-        Specifying this field to "False" is not allowed.
-        """
-        restore_order: NotRequired[pulumi.Input['RestorePlanRestoreConfigRestoreOrderArgsDict']]
-        """
-        It contains custom ordering to use on a Restore.
-        Structure is documented below.
-        """
-        selected_applications: NotRequired[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgsDict']]
-        """
-        A list of selected ProtectedApplications to restore.
-        The listed ProtectedApplications and all the resources
-        to which they refer will be restored.
-        Structure is documented below.
-        """
-        selected_namespaces: NotRequired[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgsDict']]
-        """
-        A list of selected namespaces to restore from the Backup.
-        The listed Namespaces and all resources contained in them will be restored.
-        Structure is documented below.
-        """
-        transformation_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgsDict']]]]
-        """
-        A list of transformation rules to be applied against Kubernetes
-        resources as they are selected for restoration from a Backup.
-        Rules are executed in order defined - this order matters,
-        as changes made by a rule may impact the filtering logic of subsequent
-        rules. An empty list means no transformation will occur.
-        Structure is documented below.
-        """
-        volume_data_restore_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the mechanism to be used to restore volume data.
-        This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
-        if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
-        If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
-        See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
-        for more information on each policy option.
-        Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
-        """
-        volume_data_restore_policy_bindings: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgsDict']]]]
-        """
-        A table that binds volumes by their scope to a restore policy. Bindings
-        must have a unique scope. Any volumes not scoped in the bindings are
-        subject to the policy defined in volume_data_restore_policy.
-        Structure is documented below.
-        """
-elif False:
-    RestorePlanRestoreConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigArgsDict(TypedDict):
+    all_namespaces: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If True, restore all namespaced resources in the Backup.
+    Setting this field to False will result in an error.
+    """
+    cluster_resource_conflict_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines the behavior for handling the situation where cluster-scoped resources
+    being restored already exist in the target cluster.
+    This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
+    if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
+    See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+    for more information on each policy option.
+    Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
+    """
+    cluster_resource_restore_scope: NotRequired[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgsDict']]
+    """
+    Identifies the cluster-scoped resources to restore from the Backup.
+    Structure is documented below.
+    """
+    excluded_namespaces: NotRequired[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgsDict']]
+    """
+    A list of selected namespaces excluded from restoration.
+    All namespaces except those in this list will be restored.
+    Structure is documented below.
+    """
+    namespaced_resource_restore_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines the behavior for handling the situation where sets of namespaced resources
+    being restored already exist in the target cluster.
+    This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+    if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+    See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+    for more information on each mode.
+    Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
+    """
+    no_namespaces: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Do not restore any namespaced resources if set to "True".
+    Specifying this field to "False" is not allowed.
+    """
+    restore_order: NotRequired[pulumi.Input['RestorePlanRestoreConfigRestoreOrderArgsDict']]
+    """
+    It contains custom ordering to use on a Restore.
+    Structure is documented below.
+    """
+    selected_applications: NotRequired[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgsDict']]
+    """
+    A list of selected ProtectedApplications to restore.
+    The listed ProtectedApplications and all the resources
+    to which they refer will be restored.
+    Structure is documented below.
+    """
+    selected_namespaces: NotRequired[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgsDict']]
+    """
+    A list of selected namespaces to restore from the Backup.
+    The listed Namespaces and all resources contained in them will be restored.
+    Structure is documented below.
+    """
+    transformation_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgsDict']]]]
+    """
+    A list of transformation rules to be applied against Kubernetes
+    resources as they are selected for restoration from a Backup.
+    Rules are executed in order defined - this order matters,
+    as changes made by a rule may impact the filtering logic of subsequent
+    rules. An empty list means no transformation will occur.
+    Structure is documented below.
+    """
+    volume_data_restore_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the mechanism to be used to restore volume data.
+    This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+    if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+    If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
+    See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+    for more information on each policy option.
+    Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+    """
+    volume_data_restore_policy_bindings: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgsDict']]]]
+    """
+    A table that binds volumes by their scope to a restore policy. Bindings
+    must have a unique scope. Any volumes not scoped in the bindings are
+    subject to the policy defined in volume_data_restore_policy.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigArgs:
@@ -1717,35 +1658,32 @@ class RestorePlanRestoreConfigArgs:
         pulumi.set(self, "volume_data_restore_policy_bindings", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigClusterResourceRestoreScopeArgsDict(TypedDict):
-        all_group_kinds: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If True, all valid cluster-scoped resources will be restored.
-        Mutually exclusive to any other field in `clusterResourceRestoreScope`.
-        """
-        excluded_group_kinds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgsDict']]]]
-        """
-        A list of cluster-scoped resource group kinds to NOT restore from the backup.
-        If specified, all valid cluster-scoped resources will be restored except
-        for those specified in the list.
-        Mutually exclusive to any other field in `clusterResourceRestoreScope`.
-        Structure is documented below.
-        """
-        no_group_kinds: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If True, no cluster-scoped resources will be restored.
-        Mutually exclusive to any other field in `clusterResourceRestoreScope`.
-        """
-        selected_group_kinds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgsDict']]]]
-        """
-        A list of cluster-scoped resource group kinds to restore from the backup.
-        If specified, only the selected resources will be restored.
-        Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
-        Structure is documented below.
-        """
-elif False:
-    RestorePlanRestoreConfigClusterResourceRestoreScopeArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigClusterResourceRestoreScopeArgsDict(TypedDict):
+    all_group_kinds: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If True, all valid cluster-scoped resources will be restored.
+    Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+    """
+    excluded_group_kinds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgsDict']]]]
+    """
+    A list of cluster-scoped resource group kinds to NOT restore from the backup.
+    If specified, all valid cluster-scoped resources will be restored except
+    for those specified in the list.
+    Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+    Structure is documented below.
+    """
+    no_group_kinds: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If True, no cluster-scoped resources will be restored.
+    Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+    """
+    selected_group_kinds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgsDict']]]]
+    """
+    A list of cluster-scoped resource group kinds to restore from the backup.
+    If specified, only the selected resources will be restored.
+    Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
@@ -1836,21 +1774,18 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
         pulumi.set(self, "selected_group_kinds", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgsDict(TypedDict):
-        resource_group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Group string of a Kubernetes resource, e.g.
-        "apiextensions.k8s.io", "storage.k8s.io", etc.
-        Use empty string for core group.
-        """
-        resource_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kind of a Kubernetes resource, e.g.
-        "CustomResourceDefinition", "StorageClass", etc.
-        """
-elif False:
-    RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgsDict(TypedDict):
+    resource_group: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Group string of a Kubernetes resource, e.g.
+    "apiextensions.k8s.io", "storage.k8s.io", etc.
+    Use empty string for core group.
+    """
+    resource_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kind of a Kubernetes resource, e.g.
+    "CustomResourceDefinition", "StorageClass", etc.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs:
@@ -1897,21 +1832,18 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs:
         pulumi.set(self, "resource_kind", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgsDict(TypedDict):
-        resource_group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Group string of a Kubernetes resource, e.g.
-        "apiextensions.k8s.io", "storage.k8s.io", etc.
-        Use empty string for core group.
-        """
-        resource_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kind of a Kubernetes resource, e.g.
-        "CustomResourceDefinition", "StorageClass", etc.
-        """
-elif False:
-    RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgsDict(TypedDict):
+    resource_group: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Group string of a Kubernetes resource, e.g.
+    "apiextensions.k8s.io", "storage.k8s.io", etc.
+    Use empty string for core group.
+    """
+    resource_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kind of a Kubernetes resource, e.g.
+    "CustomResourceDefinition", "StorageClass", etc.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs:
@@ -1958,14 +1890,11 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs:
         pulumi.set(self, "resource_kind", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigExcludedNamespacesArgsDict(TypedDict):
-        namespaces: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of Kubernetes Namespaces.
-        """
-elif False:
-    RestorePlanRestoreConfigExcludedNamespacesArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigExcludedNamespacesArgsDict(TypedDict):
+    namespaces: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of Kubernetes Namespaces.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigExcludedNamespacesArgs:
@@ -1989,17 +1918,14 @@ class RestorePlanRestoreConfigExcludedNamespacesArgs:
         pulumi.set(self, "namespaces", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigRestoreOrderArgsDict(TypedDict):
-        group_kind_dependencies: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgsDict']]]
-        """
-        A list of group kind dependency pairs
-        that is used by Backup for GKE to
-        generate a group kind restore order.
-        Structure is documented below.
-        """
-elif False:
-    RestorePlanRestoreConfigRestoreOrderArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigRestoreOrderArgsDict(TypedDict):
+    group_kind_dependencies: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgsDict']]]
+    """
+    A list of group kind dependency pairs
+    that is used by Backup for GKE to
+    generate a group kind restore order.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigRestoreOrderArgs:
@@ -2029,22 +1955,19 @@ class RestorePlanRestoreConfigRestoreOrderArgs:
         pulumi.set(self, "group_kind_dependencies", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgsDict(TypedDict):
-        requiring: pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgsDict']
-        """
-        The requiring group kind requires that the satisfying
-        group kind be restored first.
-        Structure is documented below.
-        """
-        satisfying: pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgsDict']
-        """
-        The satisfying group kind must be restored first
-        in order to satisfy the dependency.
-        Structure is documented below.
-        """
-elif False:
-    RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgsDict(TypedDict):
+    requiring: pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgsDict']
+    """
+    The requiring group kind requires that the satisfying
+    group kind be restored first.
+    Structure is documented below.
+    """
+    satisfying: pulumi.Input['RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgsDict']
+    """
+    The satisfying group kind must be restored first
+    in order to satisfy the dependency.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs:
@@ -2091,21 +2014,18 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs:
         pulumi.set(self, "satisfying", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgsDict(TypedDict):
-        resource_group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Group of a Kubernetes resource, e.g.
-        "apiextensions.k8s.io", "storage.k8s.io", etc.
-        Use empty string for core group.
-        """
-        resource_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kind of a Kubernetes resource, e.g.
-        "CustomResourceDefinition", "StorageClass", etc.
-        """
-elif False:
-    RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgsDict(TypedDict):
+    resource_group: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Group of a Kubernetes resource, e.g.
+    "apiextensions.k8s.io", "storage.k8s.io", etc.
+    Use empty string for core group.
+    """
+    resource_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kind of a Kubernetes resource, e.g.
+    "CustomResourceDefinition", "StorageClass", etc.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs:
@@ -2152,21 +2072,18 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs:
         pulumi.set(self, "resource_kind", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgsDict(TypedDict):
-        resource_group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Group of a Kubernetes resource, e.g.
-        "apiextensions.k8s.io", "storage.k8s.io", etc.
-        Use empty string for core group.
-        """
-        resource_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kind of a Kubernetes resource, e.g.
-        "CustomResourceDefinition", "StorageClass", etc.
-        """
-elif False:
-    RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgsDict(TypedDict):
+    resource_group: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Group of a Kubernetes resource, e.g.
+    "apiextensions.k8s.io", "storage.k8s.io", etc.
+    Use empty string for core group.
+    """
+    resource_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kind of a Kubernetes resource, e.g.
+    "CustomResourceDefinition", "StorageClass", etc.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs:
@@ -2213,15 +2130,12 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs:
         pulumi.set(self, "resource_kind", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigSelectedApplicationsArgsDict(TypedDict):
-        namespaced_names: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgsDict']]]
-        """
-        A list of namespaced Kubernetes resources.
-        Structure is documented below.
-        """
-elif False:
-    RestorePlanRestoreConfigSelectedApplicationsArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigSelectedApplicationsArgsDict(TypedDict):
+    namespaced_names: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgsDict']]]
+    """
+    A list of namespaced Kubernetes resources.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigSelectedApplicationsArgs:
@@ -2247,18 +2161,15 @@ class RestorePlanRestoreConfigSelectedApplicationsArgs:
         pulumi.set(self, "namespaced_names", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of a Kubernetes Resource.
-        """
-        namespace: pulumi.Input[_builtins.str]
-        """
-        The namespace of a Kubernetes Resource.
-        """
-elif False:
-    RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of a Kubernetes Resource.
+    """
+    namespace: pulumi.Input[_builtins.str]
+    """
+    The namespace of a Kubernetes Resource.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs:
@@ -2297,14 +2208,11 @@ class RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs:
         pulumi.set(self, "namespace", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigSelectedNamespacesArgsDict(TypedDict):
-        namespaces: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of Kubernetes Namespaces.
-        """
-elif False:
-    RestorePlanRestoreConfigSelectedNamespacesArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigSelectedNamespacesArgsDict(TypedDict):
+    namespaces: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of Kubernetes Namespaces.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigSelectedNamespacesArgs:
@@ -2328,31 +2236,28 @@ class RestorePlanRestoreConfigSelectedNamespacesArgs:
         pulumi.set(self, "namespaces", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigTransformationRuleArgsDict(TypedDict):
-        field_actions: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgsDict']]]
-        """
-        A list of transformation rule actions to take against candidate
-        resources. Actions are executed in order defined - this order
-        matters, as they could potentially interfere with each other and
-        the first operation could affect the outcome of the second operation.
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description is a user specified string description
-        of the transformation rule.
-        """
-        resource_filter: NotRequired[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgsDict']]
-        """
-        This field is used to specify a set of fields that should be used to
-        determine which resources in backup should be acted upon by the
-        supplied transformation rule actions, and this will ensure that only
-        specific resources are affected by transformation rule actions.
-        Structure is documented below.
-        """
-elif False:
-    RestorePlanRestoreConfigTransformationRuleArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigTransformationRuleArgsDict(TypedDict):
+    field_actions: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgsDict']]]
+    """
+    A list of transformation rule actions to take against candidate
+    resources. Actions are executed in order defined - this order
+    matters, as they could potentially interfere with each other and
+    the first operation could affect the outcome of the second operation.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description is a user specified string description
+    of the transformation rule.
+    """
+    resource_filter: NotRequired[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgsDict']]
+    """
+    This field is used to specify a set of fields that should be used to
+    determine which resources in backup should be acted upon by the
+    supplied transformation rule actions, and this will ensure that only
+    specific resources are affected by transformation rule actions.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigTransformationRuleArgs:
@@ -2426,30 +2331,27 @@ class RestorePlanRestoreConfigTransformationRuleArgs:
         pulumi.set(self, "resource_filter", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigTransformationRuleFieldActionArgsDict(TypedDict):
-        op: pulumi.Input[_builtins.str]
-        """
-        Specifies the operation to perform.
-        Possible values are: `REMOVE`, `MOVE`, `COPY`, `ADD`, `TEST`, `REPLACE`.
-        """
-        from_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string containing a JSON Pointer value that references the
-        location in the target document to move the value from.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string containing a JSON-Pointer value that references a
-        location within the target document where the operation is performed.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that specifies the desired value in string format
-        to use for transformation.
-        """
-elif False:
-    RestorePlanRestoreConfigTransformationRuleFieldActionArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigTransformationRuleFieldActionArgsDict(TypedDict):
+    op: pulumi.Input[_builtins.str]
+    """
+    Specifies the operation to perform.
+    Possible values are: `REMOVE`, `MOVE`, `COPY`, `ADD`, `TEST`, `REPLACE`.
+    """
+    from_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string containing a JSON Pointer value that references the
+    location in the target document to move the value from.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string containing a JSON-Pointer value that references a
+    location within the target document where the operation is performed.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that specifies the desired value in string format
+    to use for transformation.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
@@ -2529,36 +2431,33 @@ class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigTransformationRuleResourceFilterArgsDict(TypedDict):
-        group_kinds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgsDict']]]]
-        """
-        (Filtering parameter) Any resource subject to transformation must
-        belong to one of the listed "types". If this field is not provided,
-        no type filtering will be performed
-        (all resources of all types matching previous filtering parameters
-        will be candidates for transformation).
-        Structure is documented below.
-        """
-        json_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This is a JSONPath expression that matches specific fields of
-        candidate resources and it operates as a filtering parameter
-        (resources that are not matched with this expression will not
-        be candidates for transformation).
-        """
-        namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Filtering parameter) Any resource subject to transformation must
-        be contained within one of the listed Kubernetes Namespace in the
-        Backup. If this field is not provided, no namespace filtering will
-        be performed (all resources in all Namespaces, including all
-        cluster-scoped resources, will be candidates for transformation).
-        To mix cluster-scoped and namespaced resources in the same rule,
-        use an empty string ("") as one of the target namespaces.
-        """
-elif False:
-    RestorePlanRestoreConfigTransformationRuleResourceFilterArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigTransformationRuleResourceFilterArgsDict(TypedDict):
+    group_kinds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgsDict']]]]
+    """
+    (Filtering parameter) Any resource subject to transformation must
+    belong to one of the listed "types". If this field is not provided,
+    no type filtering will be performed
+    (all resources of all types matching previous filtering parameters
+    will be candidates for transformation).
+    Structure is documented below.
+    """
+    json_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This is a JSONPath expression that matches specific fields of
+    candidate resources and it operates as a filtering parameter
+    (resources that are not matched with this expression will not
+    be candidates for transformation).
+    """
+    namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Filtering parameter) Any resource subject to transformation must
+    be contained within one of the listed Kubernetes Namespace in the
+    Backup. If this field is not provided, no namespace filtering will
+    be performed (all resources in all Namespaces, including all
+    cluster-scoped resources, will be candidates for transformation).
+    To mix cluster-scoped and namespaced resources in the same rule,
+    use an empty string ("") as one of the target namespaces.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
@@ -2643,21 +2542,18 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
         pulumi.set(self, "namespaces", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgsDict(TypedDict):
-        resource_group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Group string of a Kubernetes resource, e.g.
-        "apiextensions.k8s.io", "storage.k8s.io", etc.
-        Use empty string for core group.
-        """
-        resource_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Kind of a Kubernetes resource, e.g.
-        "CustomResourceDefinition", "StorageClass", etc.
-        """
-elif False:
-    RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgsDict(TypedDict):
+    resource_group: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Group string of a Kubernetes resource, e.g.
+    "apiextensions.k8s.io", "storage.k8s.io", etc.
+    Use empty string for core group.
+    """
+    resource_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Kind of a Kubernetes resource, e.g.
+    "CustomResourceDefinition", "StorageClass", etc.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs:
@@ -2704,23 +2600,20 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs:
         pulumi.set(self, "resource_kind", value)
 
 
-if not MYPY:
-    class RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgsDict(TypedDict):
-        policy: pulumi.Input[_builtins.str]
-        """
-        Specifies the mechanism to be used to restore this volume data.
-        See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
-        for more information on each policy option.
-        Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
-        """
-        volume_type: pulumi.Input[_builtins.str]
-        """
-        The volume type, as determined by the PVC's
-        bound PV, to apply the policy to.
-        Possible values are: `GCE_PERSISTENT_DISK`.
-        """
-elif False:
-    RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgsDict: TypeAlias = Mapping[str, Any]
+class RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgsDict(TypedDict):
+    policy: pulumi.Input[_builtins.str]
+    """
+    Specifies the mechanism to be used to restore this volume data.
+    See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+    for more information on each policy option.
+    Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+    """
+    volume_type: pulumi.Input[_builtins.str]
+    """
+    The volume type, as determined by the PVC's
+    bound PV, to apply the policy to.
+    Possible values are: `GCE_PERSISTENT_DISK`.
+    """
 
 @pulumi.input_type
 class RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs:

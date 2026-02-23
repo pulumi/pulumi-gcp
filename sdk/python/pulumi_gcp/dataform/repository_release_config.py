@@ -31,6 +31,7 @@ class RepositoryReleaseConfigArgs:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RepositoryReleaseConfig resource.
+
         :param pulumi.Input[_builtins.str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
         :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
@@ -171,6 +172,7 @@ class _RepositoryReleaseConfigState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RepositoryReleaseConfig resources.
+
         :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
@@ -331,6 +333,17 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A resource represents a Dataform release configuration
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about RepositoryReleaseConfig, see:
+
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.releaseConfigs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataform/docs/release-configurations)
+
         ## Example Usage
 
         ### Dataform Repository Release Config
@@ -388,30 +401,19 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         RepositoryReleaseConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}`
-
         * `{{project}}/{{region}}/{{repository}}/{{name}}`
-
         * `{{region}}/{{repository}}/{{name}}`
-
         * `{{repository}}/{{name}}`
 
         When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{project}}/{{region}}/{{repository}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{region}}/{{repository}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{repository}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -433,6 +435,17 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  args: RepositoryReleaseConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A resource represents a Dataform release configuration
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about RepositoryReleaseConfig, see:
+
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.releaseConfigs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataform/docs/release-configurations)
+
         ## Example Usage
 
         ### Dataform Repository Release Config
@@ -490,30 +503,19 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         RepositoryReleaseConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}`
-
         * `{{project}}/{{region}}/{{repository}}/{{name}}`
-
         * `{{region}}/{{repository}}/{{name}}`
-
         * `{{repository}}/{{name}}`
 
         When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{project}}/{{region}}/{{repository}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{region}}/{{repository}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{repository}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RepositoryReleaseConfigArgs args: The arguments to use to populate this resource's properties.

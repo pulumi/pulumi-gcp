@@ -129,8 +129,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -261,8 +259,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -355,28 +351,52 @@ import (
 //	}
 //
 // ```
+// ### Firestore Database Data Access
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firestore.NewDatabase(ctx, "firestore_access_database", &firestore.DatabaseArgs{
+//				Project:                         pulumi.String("my-project-name"),
+//				Name:                            pulumi.String("data-access-database-id"),
+//				LocationId:                      pulumi.String("nam5"),
+//				Type:                            pulumi.String("FIRESTORE_NATIVE"),
+//				DatabaseEdition:                 pulumi.String("ENTERPRISE"),
+//				FirestoreDataAccessMode:         pulumi.String("DATA_ACCESS_MODE_ENABLED"),
+//				MongodbCompatibleDataAccessMode: pulumi.String("DATA_ACCESS_MODE_DISABLED"),
+//				RealtimeUpdatesMode:             pulumi.String("REALTIME_UPDATES_MODE_DISABLED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
 // Database can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/databases/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firestore/database:Database default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firestore/database:Database default {{name}}
 // ```
 type Database struct {
@@ -395,11 +415,22 @@ type Database struct {
 	ConcurrencyMode pulumi.StringOutput `pulumi:"concurrencyMode"`
 	// Output only. The timestamp at which this database was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The database edition.
+	// The database edition. When set to 'ENTERPRISE', then type must be set to
+	// 'FIRESTORE_NATIVE'.
 	// Possible values are: `STANDARD`, `ENTERPRISE`.
-	DatabaseEdition       pulumi.StringOutput    `pulumi:"databaseEdition"`
-	DeleteProtectionState pulumi.StringOutput    `pulumi:"deleteProtectionState"`
-	DeletionPolicy        pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	DatabaseEdition pulumi.StringOutput `pulumi:"databaseEdition"`
+	// State of delete protection for the database.
+	// When delete protection is enabled, this database cannot be deleted.
+	// The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+	// **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+	// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+	DeleteProtectionState pulumi.StringOutput `pulumi:"deleteProtectionState"`
+	// Deletion behavior for this database.
+	// If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+	// If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+	// The default value is `ABANDON`.
+	// See also `deleteProtection`.
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
 	// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -408,6 +439,10 @@ type Database struct {
 	// and may be sent on update and delete requests to ensure the client has an
 	// up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The Firestore API data access mode to use for this database. Can only be
+	// specified for 'ENTERPRISE' edition databases.
+	// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+	FirestoreDataAccessMode pulumi.StringOutput `pulumi:"firestoreDataAccessMode"`
 	// Output only. The keyPrefix for this database.
 	// This keyPrefix is used, in combination with the project id ("~") to construct the application id
 	// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
@@ -416,6 +451,10 @@ type Database struct {
 	// The location of the database. Available locations are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId pulumi.StringOutput `pulumi:"locationId"`
+	// The MongoDB compatible API data access mode to use for this database. Can
+	// only be specified for 'ENTERPRISE' edition databases.
+	// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+	MongodbCompatibleDataAccessMode pulumi.StringOutput `pulumi:"mongodbCompatibleDataAccessMode"`
 	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
 	// characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -434,6 +473,10 @@ type Database struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The Realtime Updates mode to use for this database. Can only be specified
+	// for 'ENTERPRISE' edition databases.
+	// Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+	RealtimeUpdatesMode pulumi.StringOutput `pulumi:"realtimeUpdatesMode"`
 	// Input only. A map of resource manager tags. Resource manager tag keys
 	// and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -506,11 +549,22 @@ type databaseState struct {
 	ConcurrencyMode *string `pulumi:"concurrencyMode"`
 	// Output only. The timestamp at which this database was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The database edition.
+	// The database edition. When set to 'ENTERPRISE', then type must be set to
+	// 'FIRESTORE_NATIVE'.
 	// Possible values are: `STANDARD`, `ENTERPRISE`.
-	DatabaseEdition       *string `pulumi:"databaseEdition"`
+	DatabaseEdition *string `pulumi:"databaseEdition"`
+	// State of delete protection for the database.
+	// When delete protection is enabled, this database cannot be deleted.
+	// The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+	// **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+	// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
 	DeleteProtectionState *string `pulumi:"deleteProtectionState"`
-	DeletionPolicy        *string `pulumi:"deletionPolicy"`
+	// Deletion behavior for this database.
+	// If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+	// If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+	// The default value is `ABANDON`.
+	// See also `deleteProtection`.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
 	// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -519,6 +573,10 @@ type databaseState struct {
 	// and may be sent on update and delete requests to ensure the client has an
 	// up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
+	// The Firestore API data access mode to use for this database. Can only be
+	// specified for 'ENTERPRISE' edition databases.
+	// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+	FirestoreDataAccessMode *string `pulumi:"firestoreDataAccessMode"`
 	// Output only. The keyPrefix for this database.
 	// This keyPrefix is used, in combination with the project id ("~") to construct the application id
 	// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
@@ -527,6 +585,10 @@ type databaseState struct {
 	// The location of the database. Available locations are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId *string `pulumi:"locationId"`
+	// The MongoDB compatible API data access mode to use for this database. Can
+	// only be specified for 'ENTERPRISE' edition databases.
+	// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+	MongodbCompatibleDataAccessMode *string `pulumi:"mongodbCompatibleDataAccessMode"`
 	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
 	// characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -545,6 +607,10 @@ type databaseState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The Realtime Updates mode to use for this database. Can only be specified
+	// for 'ENTERPRISE' edition databases.
+	// Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+	RealtimeUpdatesMode *string `pulumi:"realtimeUpdatesMode"`
 	// Input only. A map of resource manager tags. Resource manager tag keys
 	// and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -582,11 +648,22 @@ type DatabaseState struct {
 	ConcurrencyMode pulumi.StringPtrInput
 	// Output only. The timestamp at which this database was created.
 	CreateTime pulumi.StringPtrInput
-	// The database edition.
+	// The database edition. When set to 'ENTERPRISE', then type must be set to
+	// 'FIRESTORE_NATIVE'.
 	// Possible values are: `STANDARD`, `ENTERPRISE`.
-	DatabaseEdition       pulumi.StringPtrInput
+	DatabaseEdition pulumi.StringPtrInput
+	// State of delete protection for the database.
+	// When delete protection is enabled, this database cannot be deleted.
+	// The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+	// **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+	// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
 	DeleteProtectionState pulumi.StringPtrInput
-	DeletionPolicy        pulumi.StringPtrInput
+	// Deletion behavior for this database.
+	// If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+	// If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+	// The default value is `ABANDON`.
+	// See also `deleteProtection`.
+	DeletionPolicy pulumi.StringPtrInput
 	// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
 	// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -595,6 +672,10 @@ type DatabaseState struct {
 	// and may be sent on update and delete requests to ensure the client has an
 	// up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
+	// The Firestore API data access mode to use for this database. Can only be
+	// specified for 'ENTERPRISE' edition databases.
+	// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+	FirestoreDataAccessMode pulumi.StringPtrInput
 	// Output only. The keyPrefix for this database.
 	// This keyPrefix is used, in combination with the project id ("~") to construct the application id
 	// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
@@ -603,6 +684,10 @@ type DatabaseState struct {
 	// The location of the database. Available locations are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId pulumi.StringPtrInput
+	// The MongoDB compatible API data access mode to use for this database. Can
+	// only be specified for 'ENTERPRISE' edition databases.
+	// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+	MongodbCompatibleDataAccessMode pulumi.StringPtrInput
 	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
 	// characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -621,6 +706,10 @@ type DatabaseState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The Realtime Updates mode to use for this database. Can only be specified
+	// for 'ENTERPRISE' edition databases.
+	// Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+	RealtimeUpdatesMode pulumi.StringPtrInput
 	// Input only. A map of resource manager tags. Resource manager tag keys
 	// and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -660,14 +749,33 @@ type databaseArgs struct {
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode *string `pulumi:"concurrencyMode"`
-	// The database edition.
+	// The database edition. When set to 'ENTERPRISE', then type must be set to
+	// 'FIRESTORE_NATIVE'.
 	// Possible values are: `STANDARD`, `ENTERPRISE`.
-	DatabaseEdition       *string `pulumi:"databaseEdition"`
+	DatabaseEdition *string `pulumi:"databaseEdition"`
+	// State of delete protection for the database.
+	// When delete protection is enabled, this database cannot be deleted.
+	// The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+	// **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+	// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
 	DeleteProtectionState *string `pulumi:"deleteProtectionState"`
-	DeletionPolicy        *string `pulumi:"deletionPolicy"`
+	// Deletion behavior for this database.
+	// If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+	// If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+	// The default value is `ABANDON`.
+	// See also `deleteProtection`.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// The Firestore API data access mode to use for this database. Can only be
+	// specified for 'ENTERPRISE' edition databases.
+	// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+	FirestoreDataAccessMode *string `pulumi:"firestoreDataAccessMode"`
 	// The location of the database. Available locations are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId string `pulumi:"locationId"`
+	// The MongoDB compatible API data access mode to use for this database. Can
+	// only be specified for 'ENTERPRISE' edition databases.
+	// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+	MongodbCompatibleDataAccessMode *string `pulumi:"mongodbCompatibleDataAccessMode"`
 	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
 	// characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -686,6 +794,10 @@ type databaseArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The Realtime Updates mode to use for this database. Can only be specified
+	// for 'ENTERPRISE' edition databases.
+	// Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+	RealtimeUpdatesMode *string `pulumi:"realtimeUpdatesMode"`
 	// Input only. A map of resource manager tags. Resource manager tag keys
 	// and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -713,14 +825,33 @@ type DatabaseArgs struct {
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode pulumi.StringPtrInput
-	// The database edition.
+	// The database edition. When set to 'ENTERPRISE', then type must be set to
+	// 'FIRESTORE_NATIVE'.
 	// Possible values are: `STANDARD`, `ENTERPRISE`.
-	DatabaseEdition       pulumi.StringPtrInput
+	DatabaseEdition pulumi.StringPtrInput
+	// State of delete protection for the database.
+	// When delete protection is enabled, this database cannot be deleted.
+	// The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+	// **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+	// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
 	DeleteProtectionState pulumi.StringPtrInput
-	DeletionPolicy        pulumi.StringPtrInput
+	// Deletion behavior for this database.
+	// If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+	// If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+	// The default value is `ABANDON`.
+	// See also `deleteProtection`.
+	DeletionPolicy pulumi.StringPtrInput
+	// The Firestore API data access mode to use for this database. Can only be
+	// specified for 'ENTERPRISE' edition databases.
+	// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+	FirestoreDataAccessMode pulumi.StringPtrInput
 	// The location of the database. Available locations are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId pulumi.StringInput
+	// The MongoDB compatible API data access mode to use for this database. Can
+	// only be specified for 'ENTERPRISE' edition databases.
+	// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+	MongodbCompatibleDataAccessMode pulumi.StringPtrInput
 	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
 	// characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -739,6 +870,10 @@ type DatabaseArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The Realtime Updates mode to use for this database. Can only be specified
+	// for 'ENTERPRISE' edition databases.
+	// Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+	RealtimeUpdatesMode pulumi.StringPtrInput
 	// Input only. A map of resource manager tags. Resource manager tag keys
 	// and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -865,16 +1000,27 @@ func (o DatabaseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The database edition.
+// The database edition. When set to 'ENTERPRISE', then type must be set to
+// 'FIRESTORE_NATIVE'.
 // Possible values are: `STANDARD`, `ENTERPRISE`.
 func (o DatabaseOutput) DatabaseEdition() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DatabaseEdition }).(pulumi.StringOutput)
 }
 
+// State of delete protection for the database.
+// When delete protection is enabled, this database cannot be deleted.
+// The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+// **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
 func (o DatabaseOutput) DeleteProtectionState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DeleteProtectionState }).(pulumi.StringOutput)
 }
 
+// Deletion behavior for this database.
+// If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+// If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+// The default value is `ABANDON`.
+// See also `deleteProtection`.
 func (o DatabaseOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
@@ -893,6 +1039,13 @@ func (o DatabaseOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The Firestore API data access mode to use for this database. Can only be
+// specified for 'ENTERPRISE' edition databases.
+// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+func (o DatabaseOutput) FirestoreDataAccessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.FirestoreDataAccessMode }).(pulumi.StringOutput)
+}
+
 // Output only. The keyPrefix for this database.
 // This keyPrefix is used, in combination with the project id ("~") to construct the application id
 // that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
@@ -905,6 +1058,13 @@ func (o DatabaseOutput) KeyPrefix() pulumi.StringOutput {
 // https://cloud.google.com/firestore/docs/locations.
 func (o DatabaseOutput) LocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.LocationId }).(pulumi.StringOutput)
+}
+
+// The MongoDB compatible API data access mode to use for this database. Can
+// only be specified for 'ENTERPRISE' edition databases.
+// Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+func (o DatabaseOutput) MongodbCompatibleDataAccessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.MongodbCompatibleDataAccessMode }).(pulumi.StringOutput)
 }
 
 // The ID to use for the database, which will become the final
@@ -932,6 +1092,13 @@ func (o DatabaseOutput) PointInTimeRecoveryEnablement() pulumi.StringPtrOutput {
 // If it is not provided, the provider project is used.
 func (o DatabaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The Realtime Updates mode to use for this database. Can only be specified
+// for 'ENTERPRISE' edition databases.
+// Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+func (o DatabaseOutput) RealtimeUpdatesMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.RealtimeUpdatesMode }).(pulumi.StringOutput)
 }
 
 // Input only. A map of resource manager tags. Resource manager tag keys

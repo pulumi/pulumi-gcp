@@ -318,22 +318,14 @@ import javax.annotation.Nullable;
  * SparkApplication can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}`
- * 
  * * `{{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}`
- * 
  * * `{{location}}/{{serviceinstance}}/{{spark_application_id}}`
  * 
  * When using the `pulumi import` command, SparkApplication can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{location}}/{{serviceinstance}}/{{spark_application_id}}
  * ```
  * 
@@ -414,9 +406,17 @@ public class GdcSparkApplication extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

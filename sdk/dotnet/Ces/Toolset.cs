@@ -412,28 +412,373 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// ### Ces Toolset Mcp Service Account Auth Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cesAppForToolset = new Gcp.Ces.App("ces_app_for_toolset", new()
+    ///     {
+    ///         AppId = "app-id",
+    ///         Location = "us",
+    ///         Description = "App used as parent for CES Toolset example",
+    ///         DisplayName = "my-app",
+    ///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+    ///         {
+    ///             DefaultLanguageCode = "en-US",
+    ///             SupportedLanguageCodes = new[]
+    ///             {
+    ///                 "es-ES",
+    ///                 "fr-FR",
+    ///             },
+    ///             EnableMultilingualSupport = true,
+    ///             FallbackAction = "escalate",
+    ///         },
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesToolsetMcpServiceAccountAuthConfig = new Gcp.Ces.Toolset("ces_toolset_mcp_service_account_auth_config", new()
+    ///     {
+    ///         ToolsetId = "toolset1",
+    ///         Location = "us",
+    ///         App = cesAppForToolset.AppId,
+    ///         DisplayName = "Basic toolset display name",
+    ///         McpToolset = new Gcp.Ces.Inputs.ToolsetMcpToolsetArgs
+    ///         {
+    ///             ServerAddress = "https://api.example.com/mcp/",
+    ///             TlsConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetTlsConfigArgs
+    ///             {
+    ///                 CaCerts = new[]
+    ///                 {
+    ///                     new Gcp.Ces.Inputs.ToolsetMcpToolsetTlsConfigCaCertArgs
+    ///                     {
+    ///                         DisplayName = "example",
+    ///                         Cert = "ZXhhbXBsZQ==",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ServiceDirectoryConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs
+    ///             {
+    ///                 Service = "projects/example/locations/us/namespaces/namespace/services/service",
+    ///             },
+    ///             ApiAuthentication = new Gcp.Ces.Inputs.ToolsetMcpToolsetApiAuthenticationArgs
+    ///             {
+    ///                 ServiceAccountAuthConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs
+    ///                 {
+    ///                     ServiceAccount = "my@service-account.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Ces Toolset Mcp Oauth Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cesAppForToolset = new Gcp.Ces.App("ces_app_for_toolset", new()
+    ///     {
+    ///         AppId = "app-id",
+    ///         Location = "us",
+    ///         Description = "App used as parent for CES Toolset example",
+    ///         DisplayName = "my-app",
+    ///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+    ///         {
+    ///             DefaultLanguageCode = "en-US",
+    ///             SupportedLanguageCodes = new[]
+    ///             {
+    ///                 "es-ES",
+    ///                 "fr-FR",
+    ///             },
+    ///             EnableMultilingualSupport = true,
+    ///             FallbackAction = "escalate",
+    ///         },
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesToolsetMcpOauthConfig = new Gcp.Ces.Toolset("ces_toolset_mcp_oauth_config", new()
+    ///     {
+    ///         ToolsetId = "toolset1",
+    ///         Location = "us",
+    ///         App = cesAppForToolset.AppId,
+    ///         DisplayName = "Basic toolset display name",
+    ///         McpToolset = new Gcp.Ces.Inputs.ToolsetMcpToolsetArgs
+    ///         {
+    ///             ServerAddress = "https://api.example.com/mcp/",
+    ///             TlsConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetTlsConfigArgs
+    ///             {
+    ///                 CaCerts = new[]
+    ///                 {
+    ///                     new Gcp.Ces.Inputs.ToolsetMcpToolsetTlsConfigCaCertArgs
+    ///                     {
+    ///                         DisplayName = "example",
+    ///                         Cert = "ZXhhbXBsZQ==",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ServiceDirectoryConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs
+    ///             {
+    ///                 Service = "projects/example/locations/us/namespaces/namespace/services/service",
+    ///             },
+    ///             ApiAuthentication = new Gcp.Ces.Inputs.ToolsetMcpToolsetApiAuthenticationArgs
+    ///             {
+    ///                 OauthConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetApiAuthenticationOauthConfigArgs
+    ///                 {
+    ///                     OauthGrantType = "CLIENT_CREDENTIAL",
+    ///                     ClientId = "example_client_id",
+    ///                     ClientSecretVersion = "projects/fake-project/secrets/fake-secret/versions/version1",
+    ///                     TokenEndpoint = "123",
+    ///                     Scopes = new[]
+    ///                     {
+    ///                         "scope1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Ces Toolset Mcp Service Agent Id Token Auth Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cesAppForToolset = new Gcp.Ces.App("ces_app_for_toolset", new()
+    ///     {
+    ///         AppId = "app-id",
+    ///         Location = "us",
+    ///         Description = "App used as parent for CES Toolset example",
+    ///         DisplayName = "my-app",
+    ///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+    ///         {
+    ///             DefaultLanguageCode = "en-US",
+    ///             SupportedLanguageCodes = new[]
+    ///             {
+    ///                 "es-ES",
+    ///                 "fr-FR",
+    ///             },
+    ///             EnableMultilingualSupport = true,
+    ///             FallbackAction = "escalate",
+    ///         },
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesToolsetMcpServiceAgentIdTokenAuthConfig = new Gcp.Ces.Toolset("ces_toolset_mcp_service_agent_id_token_auth_config", new()
+    ///     {
+    ///         ToolsetId = "toolset1",
+    ///         Location = "us",
+    ///         App = cesAppForToolset.AppId,
+    ///         DisplayName = "Basic toolset display name",
+    ///         McpToolset = new Gcp.Ces.Inputs.ToolsetMcpToolsetArgs
+    ///         {
+    ///             ServerAddress = "https://api.example.com/mcp/",
+    ///             TlsConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetTlsConfigArgs
+    ///             {
+    ///                 CaCerts = new[]
+    ///                 {
+    ///                     new Gcp.Ces.Inputs.ToolsetMcpToolsetTlsConfigCaCertArgs
+    ///                     {
+    ///                         DisplayName = "example",
+    ///                         Cert = "ZXhhbXBsZQ==",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ServiceDirectoryConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs
+    ///             {
+    ///                 Service = "projects/example/locations/us/namespaces/namespace/services/service",
+    ///             },
+    ///             ApiAuthentication = new Gcp.Ces.Inputs.ToolsetMcpToolsetApiAuthenticationArgs
+    ///             {
+    ///                 ServiceAgentIdTokenAuthConfig = null,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Ces Toolset Mcp Api Key Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cesAppForToolset = new Gcp.Ces.App("ces_app_for_toolset", new()
+    ///     {
+    ///         AppId = "app-id",
+    ///         Location = "us",
+    ///         Description = "App used as parent for CES Toolset example",
+    ///         DisplayName = "my-app",
+    ///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+    ///         {
+    ///             DefaultLanguageCode = "en-US",
+    ///             SupportedLanguageCodes = new[]
+    ///             {
+    ///                 "es-ES",
+    ///                 "fr-FR",
+    ///             },
+    ///             EnableMultilingualSupport = true,
+    ///             FallbackAction = "escalate",
+    ///         },
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesToolsetMcpApiKeyConfig = new Gcp.Ces.Toolset("ces_toolset_mcp_api_key_config", new()
+    ///     {
+    ///         ToolsetId = "toolset1",
+    ///         Location = "us",
+    ///         App = cesAppForToolset.AppId,
+    ///         DisplayName = "Basic toolset display name",
+    ///         Description = "Test description",
+    ///         ExecutionType = "SYNCHRONOUS",
+    ///         McpToolset = new Gcp.Ces.Inputs.ToolsetMcpToolsetArgs
+    ///         {
+    ///             ServerAddress = "https://api.example.com/mcp/",
+    ///             TlsConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetTlsConfigArgs
+    ///             {
+    ///                 CaCerts = new[]
+    ///                 {
+    ///                     new Gcp.Ces.Inputs.ToolsetMcpToolsetTlsConfigCaCertArgs
+    ///                     {
+    ///                         DisplayName = "example",
+    ///                         Cert = "ZXhhbXBsZQ==",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ServiceDirectoryConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs
+    ///             {
+    ///                 Service = "projects/example/locations/us/namespaces/namespace/services/service",
+    ///             },
+    ///             ApiAuthentication = new Gcp.Ces.Inputs.ToolsetMcpToolsetApiAuthenticationArgs
+    ///             {
+    ///                 ApiKeyConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs
+    ///                 {
+    ///                     KeyName = "ExampleKey",
+    ///                     ApiKeySecretVersion = "projects/fake-project/secrets/fake-secret/versions/version-1",
+    ///                     RequestLocation = "HEADER",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Ces Toolset Mcp Bearer Token Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cesAppForToolset = new Gcp.Ces.App("ces_app_for_toolset", new()
+    ///     {
+    ///         AppId = "app-id",
+    ///         Location = "us",
+    ///         Description = "App used as parent for CES Toolset example",
+    ///         DisplayName = "my-app",
+    ///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+    ///         {
+    ///             DefaultLanguageCode = "en-US",
+    ///             SupportedLanguageCodes = new[]
+    ///             {
+    ///                 "es-ES",
+    ///                 "fr-FR",
+    ///             },
+    ///             EnableMultilingualSupport = true,
+    ///             FallbackAction = "escalate",
+    ///         },
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesToolsetMcpBearerTokenConfig = new Gcp.Ces.Toolset("ces_toolset_mcp_bearer_token_config", new()
+    ///     {
+    ///         ToolsetId = "toolset1",
+    ///         Location = "us",
+    ///         App = cesAppForToolset.AppId,
+    ///         DisplayName = "Basic toolset display name",
+    ///         McpToolset = new Gcp.Ces.Inputs.ToolsetMcpToolsetArgs
+    ///         {
+    ///             ServerAddress = "https://api.example.com/mcp/",
+    ///             TlsConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetTlsConfigArgs
+    ///             {
+    ///                 CaCerts = new[]
+    ///                 {
+    ///                     new Gcp.Ces.Inputs.ToolsetMcpToolsetTlsConfigCaCertArgs
+    ///                     {
+    ///                         DisplayName = "example",
+    ///                         Cert = "ZXhhbXBsZQ==",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ServiceDirectoryConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs
+    ///             {
+    ///                 Service = "projects/example/locations/us/namespaces/namespace/services/service",
+    ///             },
+    ///             ApiAuthentication = new Gcp.Ces.Inputs.ToolsetMcpToolsetApiAuthenticationArgs
+    ///             {
+    ///                 BearerTokenConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs
+    ///                 {
+    ///                     Token = "$context.variables.my_ces_toolset_auth_token",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
     /// Toolset can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{app}}/{{toolset_id}}`
-    /// 
     /// * `{{location}}/{{app}}/{{toolset_id}}`
     /// 
     /// When using the `pulumi import` command, Toolset can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:ces/toolset:Toolset default projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:ces/toolset:Toolset default {{project}}/{{location}}/{{app}}/{{toolset_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:ces/toolset:Toolset default {{location}}/{{app}}/{{toolset_id}}
     /// ```
     /// </summary>
@@ -485,6 +830,14 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// A toolset that contains a list of tools that are offered by the MCP
+        /// server.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("mcpToolset")]
+        public Output<Outputs.ToolsetMcpToolset?> McpToolset { get; private set; } = null!;
 
         /// <summary>
         /// Identifier. The unique identifier of the toolset.
@@ -602,6 +955,14 @@ namespace Pulumi.Gcp.Ces
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// A toolset that contains a list of tools that are offered by the MCP
+        /// server.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("mcpToolset")]
+        public Input<Inputs.ToolsetMcpToolsetArgs>? McpToolset { get; set; }
+
+        /// <summary>
         /// A toolset that contains a list of tools that are defined by an OpenAPI
         /// schema.
         /// Structure is documented below.
@@ -677,6 +1038,14 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// A toolset that contains a list of tools that are offered by the MCP
+        /// server.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("mcpToolset")]
+        public Input<Inputs.ToolsetMcpToolsetGetArgs>? McpToolset { get; set; }
 
         /// <summary>
         /// Identifier. The unique identifier of the toolset.

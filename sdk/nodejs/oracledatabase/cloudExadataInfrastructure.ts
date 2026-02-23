@@ -85,22 +85,14 @@ import * as utilities from "../utilities";
  * CloudExadataInfrastructure can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}`
- *
  * * `{{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}`
- *
  * * `{{location}}/{{cloud_exadata_infrastructure_id}}`
  *
  * When using the `pulumi import` command, CloudExadataInfrastructure can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{location}}/{{cloud_exadata_infrastructure_id}}
  * ```
  */
@@ -143,6 +135,9 @@ export class CloudExadataInfrastructure extends pulumi.CustomResource {
      * The date and time that the Exadata Infrastructure was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * User friendly name for this resource.
@@ -262,6 +257,9 @@ export interface CloudExadataInfrastructureState {
      * The date and time that the Exadata Infrastructure was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * User friendly name for this resource.
@@ -323,6 +321,9 @@ export interface CloudExadataInfrastructureArgs {
      * a letter or a number.
      */
     cloudExadataInfrastructureId: pulumi.Input<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * User friendly name for this resource.

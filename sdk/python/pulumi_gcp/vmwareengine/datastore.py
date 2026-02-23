@@ -28,6 +28,7 @@ class DatastoreArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Datastore resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input['DatastoreNfsDatastoreArgs'] nfs_datastore: The NFS datastore configuration.
                Structure is documented below.
@@ -141,6 +142,7 @@ class _DatastoreState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Datastore resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] clusters: Clusters to which the datastore is attached.
         :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
         :param pulumi.Input[_builtins.str] description: User-provided description for this datastore
@@ -415,24 +417,17 @@ class Datastore(pulumi.CustomResource):
         Datastore can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/datastores/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Datastore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/datastore:Datastore default projects/{{project}}/locations/{{location}}/datastores/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vmwareengine/datastore:Datastore default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vmwareengine/datastore:Datastore default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -532,24 +527,17 @@ class Datastore(pulumi.CustomResource):
         Datastore can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/datastores/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Datastore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/datastore:Datastore default projects/{{project}}/locations/{{location}}/datastores/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vmwareengine/datastore:Datastore default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vmwareengine/datastore:Datastore default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatastoreArgs args: The arguments to use to populate this resource's properties.

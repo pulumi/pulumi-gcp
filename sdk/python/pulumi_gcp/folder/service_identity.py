@@ -23,6 +23,7 @@ class ServiceIdentityArgs:
                  service: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ServiceIdentity resource.
+
         :param pulumi.Input[_builtins.str] folder: The folder in which the resource belongs.
         :param pulumi.Input[_builtins.str] service: The service to generate identity for.
                
@@ -67,6 +68,7 @@ class _ServiceIdentityState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceIdentity resources.
+
         :param pulumi.Input[_builtins.str] email: The email address of the Google managed service account.
         :param pulumi.Input[_builtins.str] folder: The folder in which the resource belongs.
         :param pulumi.Input[_builtins.str] member: The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
@@ -144,6 +146,22 @@ class ServiceIdentity(pulumi.CustomResource):
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Generate folder service identity for a service.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        > **Note:** Once created, this resource cannot be updated or destroyed. These
+        actions are a no-op.
+
+        > **Note:** This resource can be used to retrieve the emails of the [Google-managed folder service accounts](https://cloud.google.com/iam/docs/service-agents)
+        of the APIs that Google has configured with a Service Identity. You can run `gcloud beta services identity create --service SERVICE_NAME.googleapis.com --folder FOLDER` to
+        verify if an API supports this.
+
+        To get more information about Service Identity, see:
+
+        * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
+
         ## Example Usage
 
         ### Folder Service Identity Basic
@@ -167,6 +185,7 @@ class ServiceIdentity(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -182,6 +201,22 @@ class ServiceIdentity(pulumi.CustomResource):
                  args: ServiceIdentityArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Generate folder service identity for a service.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        > **Note:** Once created, this resource cannot be updated or destroyed. These
+        actions are a no-op.
+
+        > **Note:** This resource can be used to retrieve the emails of the [Google-managed folder service accounts](https://cloud.google.com/iam/docs/service-agents)
+        of the APIs that Google has configured with a Service Identity. You can run `gcloud beta services identity create --service SERVICE_NAME.googleapis.com --folder FOLDER` to
+        verify if an API supports this.
+
+        To get more information about Service Identity, see:
+
+        * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
+
         ## Example Usage
 
         ### Folder Service Identity Basic
@@ -205,6 +240,7 @@ class ServiceIdentity(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param ServiceIdentityArgs args: The arguments to use to populate this resource's properties.

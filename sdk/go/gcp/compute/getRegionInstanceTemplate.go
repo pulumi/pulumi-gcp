@@ -125,9 +125,11 @@ type LookupRegionInstanceTemplateResult struct {
 	MetadataStartupScript string `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-	MinCpuPlatform string  `pulumi:"minCpuPlatform"`
-	MostRecent     *bool   `pulumi:"mostRecent"`
-	Name           *string `pulumi:"name"`
+	MinCpuPlatform string `pulumi:"minCpuPlatform"`
+	MostRecent     *bool  `pulumi:"mostRecent"`
+	// The name of the instance template. If you leave
+	// this blank, Terraform will auto-generate a unique name.
+	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
 	NamePrefix string `pulumi:"namePrefix"`
@@ -324,6 +326,8 @@ func (o LookupRegionInstanceTemplateResultOutput) MostRecent() pulumi.BoolPtrOut
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) *bool { return v.MostRecent }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the instance template. If you leave
+// this blank, Terraform will auto-generate a unique name.
 func (o LookupRegionInstanceTemplateResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

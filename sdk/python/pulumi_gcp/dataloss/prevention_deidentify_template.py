@@ -28,6 +28,7 @@ class PreventionDeidentifyTemplateArgs:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PreventionDeidentifyTemplate resource.
+
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The parent of the template in any of the following formats:
@@ -131,6 +132,7 @@ class _PreventionDeidentifyTemplateState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PreventionDeidentifyTemplate resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation timestamp of an deidentifyTemplate. Set by the server.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
@@ -431,18 +433,15 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         DeidentifyTemplate can be imported using any of these accepted formats:
 
         * `{{parent}}/deidentifyTemplates/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, DeidentifyTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/deidentifyTemplates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -616,18 +615,15 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         DeidentifyTemplate can be imported using any of these accepted formats:
 
         * `{{parent}}/deidentifyTemplates/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, DeidentifyTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/deidentifyTemplates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PreventionDeidentifyTemplateArgs args: The arguments to use to populate this resource's properties.

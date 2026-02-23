@@ -10,16 +10,421 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// Three different resources help you manage your IAM policy for Compute Engine RegionBackendService. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.compute.RegionBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the regionbackendservice and replaces any existing policy already attached.
+    /// * `gcp.compute.RegionBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regionbackendservice are preserved.
+    /// * `gcp.compute.RegionBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regionbackendservice are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.compute.RegionBackendServiceIamPolicy`: Retrieves the IAM policy for the regionbackendservice
+    /// 
+    /// &gt; **Note:** `gcp.compute.RegionBackendServiceIamPolicy` **cannot** be used in conjunction with `gcp.compute.RegionBackendServiceIamBinding` and `gcp.compute.RegionBackendServiceIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.compute.RegionBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// ## gcp.compute.RegionBackendServiceIamPolicy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/compute.admin",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Compute.RegionBackendServiceIamPolicy("policy", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         Name = @default.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/compute.admin",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Compute.RegionBackendServiceIamPolicy("policy", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         Name = @default.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## gcp.compute.RegionBackendServiceIamBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Compute.RegionBackendServiceIamBinding("binding", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         Name = @default.Name,
+    ///         Role = "roles/compute.admin",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Compute.RegionBackendServiceIamBinding("binding", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         Name = @default.Name,
+    ///         Role = "roles/compute.admin",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Compute.Inputs.RegionBackendServiceIamBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## gcp.compute.RegionBackendServiceIamMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Compute.RegionBackendServiceIamMember("member", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         Name = @default.Name,
+    ///         Role = "roles/compute.admin",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Compute.RegionBackendServiceIamMember("member", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         Name = @default.Name,
+    ///         Role = "roles/compute.admin",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Compute.Inputs.RegionBackendServiceIamMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## This resource supports User Project Overrides.
+    /// 
+    /// - 
+    /// 
+    /// # IAM policy for Compute Engine RegionBackendService
+    /// 
+    /// Three different resources help you manage your IAM policy for Compute Engine RegionBackendService. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.compute.RegionBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the regionbackendservice and replaces any existing policy already attached.
+    /// * `gcp.compute.RegionBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regionbackendservice are preserved.
+    /// * `gcp.compute.RegionBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regionbackendservice are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.compute.RegionBackendServiceIamPolicy`: Retrieves the IAM policy for the regionbackendservice
+    /// 
+    /// &gt; **Note:** `gcp.compute.RegionBackendServiceIamPolicy` **cannot** be used in conjunction with `gcp.compute.RegionBackendServiceIamBinding` and `gcp.compute.RegionBackendServiceIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.compute.RegionBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// ## gcp.compute.RegionBackendServiceIamPolicy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/compute.admin",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Compute.RegionBackendServiceIamPolicy("policy", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         Name = @default.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/compute.admin",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Compute.RegionBackendServiceIamPolicy("policy", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         Name = @default.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## gcp.compute.RegionBackendServiceIamBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Compute.RegionBackendServiceIamBinding("binding", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         Name = @default.Name,
+    ///         Role = "roles/compute.admin",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Compute.RegionBackendServiceIamBinding("binding", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         Name = @default.Name,
+    ///         Role = "roles/compute.admin",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Compute.Inputs.RegionBackendServiceIamBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## gcp.compute.RegionBackendServiceIamMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Compute.RegionBackendServiceIamMember("member", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         Name = @default.Name,
+    ///         Role = "roles/compute.admin",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Compute.RegionBackendServiceIamMember("member", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Region = @default.Region,
+    ///         Name = @default.Name,
+    ///         Role = "roles/compute.admin",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Compute.Inputs.RegionBackendServiceIamMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
     /// * projects/{{project}}/regions/{{region}}/backendServices/{{name}}
-    /// 
     /// * {{project}}/{{region}}/{{name}}
-    /// 
     /// * {{region}}/{{name}}
-    /// 
     /// * {{name}}
     /// 
     /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -27,25 +432,21 @@ namespace Pulumi.Gcp.Compute
     /// Compute Engine regionbackendservice IAM resources can be imported using the resource identifiers, role, and member.
     /// 
     /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding editor "projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin user:jane@example.com"
+    /// $ terraform import google_compute_region_backend_service_iam_member.editor "projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin user:jane@example.com"
     /// ```
     /// 
     /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding editor "projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin"
+    /// $ terraform import google_compute_region_backend_service_iam_binding.editor "projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin"
     /// ```
     /// 
     /// IAM policy imports use the identifier of the resource in question, e.g.
-    /// 
     /// ```sh
     /// $ pulumi import gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding editor projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}}
     /// ```
     /// 
-    /// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
+    /// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
     ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding")]

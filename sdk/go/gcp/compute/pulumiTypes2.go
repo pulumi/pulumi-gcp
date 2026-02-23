@@ -13,6 +13,1693 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRegionBackendServiceConsistentHash struct {
+	// Hash is based on HTTP Cookie. This field describes a HTTP cookie
+	// that will be used as the hash key for the consistent hash load
+	// balancer. If the cookie is not present, it will be generated.
+	// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+	HttpCookies []GetRegionBackendServiceConsistentHashHttpCooky `pulumi:"httpCookies"`
+	// The hash based on the value of the specified header field.
+	// This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+	HttpHeaderName string `pulumi:"httpHeaderName"`
+	// The minimum number of virtual nodes to use for the hash ring.
+	// Larger ring sizes result in more granular load
+	// distributions. If the number of hosts in the load balancing pool
+	// is larger than the ring size, each host will be assigned a single
+	// virtual node.
+	// Defaults to 1024.
+	MinimumRingSize int `pulumi:"minimumRingSize"`
+}
+
+// GetRegionBackendServiceConsistentHashInput is an input type that accepts GetRegionBackendServiceConsistentHashArgs and GetRegionBackendServiceConsistentHashOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceConsistentHashInput` via:
+//
+//	GetRegionBackendServiceConsistentHashArgs{...}
+type GetRegionBackendServiceConsistentHashInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceConsistentHashOutput() GetRegionBackendServiceConsistentHashOutput
+	ToGetRegionBackendServiceConsistentHashOutputWithContext(context.Context) GetRegionBackendServiceConsistentHashOutput
+}
+
+type GetRegionBackendServiceConsistentHashArgs struct {
+	// Hash is based on HTTP Cookie. This field describes a HTTP cookie
+	// that will be used as the hash key for the consistent hash load
+	// balancer. If the cookie is not present, it will be generated.
+	// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+	HttpCookies GetRegionBackendServiceConsistentHashHttpCookyArrayInput `pulumi:"httpCookies"`
+	// The hash based on the value of the specified header field.
+	// This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+	HttpHeaderName pulumi.StringInput `pulumi:"httpHeaderName"`
+	// The minimum number of virtual nodes to use for the hash ring.
+	// Larger ring sizes result in more granular load
+	// distributions. If the number of hosts in the load balancing pool
+	// is larger than the ring size, each host will be assigned a single
+	// virtual node.
+	// Defaults to 1024.
+	MinimumRingSize pulumi.IntInput `pulumi:"minimumRingSize"`
+}
+
+func (GetRegionBackendServiceConsistentHashArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceConsistentHash)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceConsistentHashArgs) ToGetRegionBackendServiceConsistentHashOutput() GetRegionBackendServiceConsistentHashOutput {
+	return i.ToGetRegionBackendServiceConsistentHashOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceConsistentHashArgs) ToGetRegionBackendServiceConsistentHashOutputWithContext(ctx context.Context) GetRegionBackendServiceConsistentHashOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceConsistentHashOutput)
+}
+
+// GetRegionBackendServiceConsistentHashArrayInput is an input type that accepts GetRegionBackendServiceConsistentHashArray and GetRegionBackendServiceConsistentHashArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceConsistentHashArrayInput` via:
+//
+//	GetRegionBackendServiceConsistentHashArray{ GetRegionBackendServiceConsistentHashArgs{...} }
+type GetRegionBackendServiceConsistentHashArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceConsistentHashArrayOutput() GetRegionBackendServiceConsistentHashArrayOutput
+	ToGetRegionBackendServiceConsistentHashArrayOutputWithContext(context.Context) GetRegionBackendServiceConsistentHashArrayOutput
+}
+
+type GetRegionBackendServiceConsistentHashArray []GetRegionBackendServiceConsistentHashInput
+
+func (GetRegionBackendServiceConsistentHashArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceConsistentHash)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceConsistentHashArray) ToGetRegionBackendServiceConsistentHashArrayOutput() GetRegionBackendServiceConsistentHashArrayOutput {
+	return i.ToGetRegionBackendServiceConsistentHashArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceConsistentHashArray) ToGetRegionBackendServiceConsistentHashArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceConsistentHashArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceConsistentHashArrayOutput)
+}
+
+type GetRegionBackendServiceConsistentHashOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceConsistentHashOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceConsistentHash)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceConsistentHashOutput) ToGetRegionBackendServiceConsistentHashOutput() GetRegionBackendServiceConsistentHashOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceConsistentHashOutput) ToGetRegionBackendServiceConsistentHashOutputWithContext(ctx context.Context) GetRegionBackendServiceConsistentHashOutput {
+	return o
+}
+
+// Hash is based on HTTP Cookie. This field describes a HTTP cookie
+// that will be used as the hash key for the consistent hash load
+// balancer. If the cookie is not present, it will be generated.
+// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+func (o GetRegionBackendServiceConsistentHashOutput) HttpCookies() GetRegionBackendServiceConsistentHashHttpCookyArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceConsistentHash) []GetRegionBackendServiceConsistentHashHttpCooky {
+		return v.HttpCookies
+	}).(GetRegionBackendServiceConsistentHashHttpCookyArrayOutput)
+}
+
+// The hash based on the value of the specified header field.
+// This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+func (o GetRegionBackendServiceConsistentHashOutput) HttpHeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceConsistentHash) string { return v.HttpHeaderName }).(pulumi.StringOutput)
+}
+
+// The minimum number of virtual nodes to use for the hash ring.
+// Larger ring sizes result in more granular load
+// distributions. If the number of hosts in the load balancing pool
+// is larger than the ring size, each host will be assigned a single
+// virtual node.
+// Defaults to 1024.
+func (o GetRegionBackendServiceConsistentHashOutput) MinimumRingSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceConsistentHash) int { return v.MinimumRingSize }).(pulumi.IntOutput)
+}
+
+type GetRegionBackendServiceConsistentHashArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceConsistentHashArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceConsistentHash)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceConsistentHashArrayOutput) ToGetRegionBackendServiceConsistentHashArrayOutput() GetRegionBackendServiceConsistentHashArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceConsistentHashArrayOutput) ToGetRegionBackendServiceConsistentHashArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceConsistentHashArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceConsistentHashArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceConsistentHashOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceConsistentHash {
+		return vs[0].([]GetRegionBackendServiceConsistentHash)[vs[1].(int)]
+	}).(GetRegionBackendServiceConsistentHashOutput)
+}
+
+type GetRegionBackendServiceConsistentHashHttpCooky struct {
+	// The name of the regional backend service.
+	Name string `pulumi:"name"`
+	// Path to set for the cookie.
+	Path string `pulumi:"path"`
+	// Lifetime of the cookie.
+	Ttls []GetRegionBackendServiceConsistentHashHttpCookyTtl `pulumi:"ttls"`
+}
+
+// GetRegionBackendServiceConsistentHashHttpCookyInput is an input type that accepts GetRegionBackendServiceConsistentHashHttpCookyArgs and GetRegionBackendServiceConsistentHashHttpCookyOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceConsistentHashHttpCookyInput` via:
+//
+//	GetRegionBackendServiceConsistentHashHttpCookyArgs{...}
+type GetRegionBackendServiceConsistentHashHttpCookyInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceConsistentHashHttpCookyOutput() GetRegionBackendServiceConsistentHashHttpCookyOutput
+	ToGetRegionBackendServiceConsistentHashHttpCookyOutputWithContext(context.Context) GetRegionBackendServiceConsistentHashHttpCookyOutput
+}
+
+type GetRegionBackendServiceConsistentHashHttpCookyArgs struct {
+	// The name of the regional backend service.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path to set for the cookie.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Lifetime of the cookie.
+	Ttls GetRegionBackendServiceConsistentHashHttpCookyTtlArrayInput `pulumi:"ttls"`
+}
+
+func (GetRegionBackendServiceConsistentHashHttpCookyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceConsistentHashHttpCooky)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceConsistentHashHttpCookyArgs) ToGetRegionBackendServiceConsistentHashHttpCookyOutput() GetRegionBackendServiceConsistentHashHttpCookyOutput {
+	return i.ToGetRegionBackendServiceConsistentHashHttpCookyOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceConsistentHashHttpCookyArgs) ToGetRegionBackendServiceConsistentHashHttpCookyOutputWithContext(ctx context.Context) GetRegionBackendServiceConsistentHashHttpCookyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceConsistentHashHttpCookyOutput)
+}
+
+// GetRegionBackendServiceConsistentHashHttpCookyArrayInput is an input type that accepts GetRegionBackendServiceConsistentHashHttpCookyArray and GetRegionBackendServiceConsistentHashHttpCookyArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceConsistentHashHttpCookyArrayInput` via:
+//
+//	GetRegionBackendServiceConsistentHashHttpCookyArray{ GetRegionBackendServiceConsistentHashHttpCookyArgs{...} }
+type GetRegionBackendServiceConsistentHashHttpCookyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceConsistentHashHttpCookyArrayOutput() GetRegionBackendServiceConsistentHashHttpCookyArrayOutput
+	ToGetRegionBackendServiceConsistentHashHttpCookyArrayOutputWithContext(context.Context) GetRegionBackendServiceConsistentHashHttpCookyArrayOutput
+}
+
+type GetRegionBackendServiceConsistentHashHttpCookyArray []GetRegionBackendServiceConsistentHashHttpCookyInput
+
+func (GetRegionBackendServiceConsistentHashHttpCookyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceConsistentHashHttpCooky)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceConsistentHashHttpCookyArray) ToGetRegionBackendServiceConsistentHashHttpCookyArrayOutput() GetRegionBackendServiceConsistentHashHttpCookyArrayOutput {
+	return i.ToGetRegionBackendServiceConsistentHashHttpCookyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceConsistentHashHttpCookyArray) ToGetRegionBackendServiceConsistentHashHttpCookyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceConsistentHashHttpCookyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceConsistentHashHttpCookyArrayOutput)
+}
+
+type GetRegionBackendServiceConsistentHashHttpCookyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceConsistentHashHttpCookyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceConsistentHashHttpCooky)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceConsistentHashHttpCookyOutput) ToGetRegionBackendServiceConsistentHashHttpCookyOutput() GetRegionBackendServiceConsistentHashHttpCookyOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceConsistentHashHttpCookyOutput) ToGetRegionBackendServiceConsistentHashHttpCookyOutputWithContext(ctx context.Context) GetRegionBackendServiceConsistentHashHttpCookyOutput {
+	return o
+}
+
+// The name of the regional backend service.
+func (o GetRegionBackendServiceConsistentHashHttpCookyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceConsistentHashHttpCooky) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path to set for the cookie.
+func (o GetRegionBackendServiceConsistentHashHttpCookyOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceConsistentHashHttpCooky) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Lifetime of the cookie.
+func (o GetRegionBackendServiceConsistentHashHttpCookyOutput) Ttls() GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceConsistentHashHttpCooky) []GetRegionBackendServiceConsistentHashHttpCookyTtl {
+		return v.Ttls
+	}).(GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput)
+}
+
+type GetRegionBackendServiceConsistentHashHttpCookyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceConsistentHashHttpCookyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceConsistentHashHttpCooky)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceConsistentHashHttpCookyArrayOutput) ToGetRegionBackendServiceConsistentHashHttpCookyArrayOutput() GetRegionBackendServiceConsistentHashHttpCookyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceConsistentHashHttpCookyArrayOutput) ToGetRegionBackendServiceConsistentHashHttpCookyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceConsistentHashHttpCookyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceConsistentHashHttpCookyArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceConsistentHashHttpCookyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceConsistentHashHttpCooky {
+		return vs[0].([]GetRegionBackendServiceConsistentHashHttpCooky)[vs[1].(int)]
+	}).(GetRegionBackendServiceConsistentHashHttpCookyOutput)
+}
+
+type GetRegionBackendServiceConsistentHashHttpCookyTtl struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetRegionBackendServiceConsistentHashHttpCookyTtlInput is an input type that accepts GetRegionBackendServiceConsistentHashHttpCookyTtlArgs and GetRegionBackendServiceConsistentHashHttpCookyTtlOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceConsistentHashHttpCookyTtlInput` via:
+//
+//	GetRegionBackendServiceConsistentHashHttpCookyTtlArgs{...}
+type GetRegionBackendServiceConsistentHashHttpCookyTtlInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceConsistentHashHttpCookyTtlOutput() GetRegionBackendServiceConsistentHashHttpCookyTtlOutput
+	ToGetRegionBackendServiceConsistentHashHttpCookyTtlOutputWithContext(context.Context) GetRegionBackendServiceConsistentHashHttpCookyTtlOutput
+}
+
+type GetRegionBackendServiceConsistentHashHttpCookyTtlArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetRegionBackendServiceConsistentHashHttpCookyTtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceConsistentHashHttpCookyTtl)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceConsistentHashHttpCookyTtlArgs) ToGetRegionBackendServiceConsistentHashHttpCookyTtlOutput() GetRegionBackendServiceConsistentHashHttpCookyTtlOutput {
+	return i.ToGetRegionBackendServiceConsistentHashHttpCookyTtlOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceConsistentHashHttpCookyTtlArgs) ToGetRegionBackendServiceConsistentHashHttpCookyTtlOutputWithContext(ctx context.Context) GetRegionBackendServiceConsistentHashHttpCookyTtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceConsistentHashHttpCookyTtlOutput)
+}
+
+// GetRegionBackendServiceConsistentHashHttpCookyTtlArrayInput is an input type that accepts GetRegionBackendServiceConsistentHashHttpCookyTtlArray and GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceConsistentHashHttpCookyTtlArrayInput` via:
+//
+//	GetRegionBackendServiceConsistentHashHttpCookyTtlArray{ GetRegionBackendServiceConsistentHashHttpCookyTtlArgs{...} }
+type GetRegionBackendServiceConsistentHashHttpCookyTtlArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput() GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput
+	ToGetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutputWithContext(context.Context) GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput
+}
+
+type GetRegionBackendServiceConsistentHashHttpCookyTtlArray []GetRegionBackendServiceConsistentHashHttpCookyTtlInput
+
+func (GetRegionBackendServiceConsistentHashHttpCookyTtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceConsistentHashHttpCookyTtl)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceConsistentHashHttpCookyTtlArray) ToGetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput() GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput {
+	return i.ToGetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceConsistentHashHttpCookyTtlArray) ToGetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput)
+}
+
+type GetRegionBackendServiceConsistentHashHttpCookyTtlOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceConsistentHashHttpCookyTtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceConsistentHashHttpCookyTtl)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceConsistentHashHttpCookyTtlOutput) ToGetRegionBackendServiceConsistentHashHttpCookyTtlOutput() GetRegionBackendServiceConsistentHashHttpCookyTtlOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceConsistentHashHttpCookyTtlOutput) ToGetRegionBackendServiceConsistentHashHttpCookyTtlOutputWithContext(ctx context.Context) GetRegionBackendServiceConsistentHashHttpCookyTtlOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
+func (o GetRegionBackendServiceConsistentHashHttpCookyTtlOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceConsistentHashHttpCookyTtl) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
+func (o GetRegionBackendServiceConsistentHashHttpCookyTtlOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceConsistentHashHttpCookyTtl) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceConsistentHashHttpCookyTtl)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput) ToGetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput() GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput) ToGetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceConsistentHashHttpCookyTtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceConsistentHashHttpCookyTtl {
+		return vs[0].([]GetRegionBackendServiceConsistentHashHttpCookyTtl)[vs[1].(int)]
+	}).(GetRegionBackendServiceConsistentHashHttpCookyTtlOutput)
+}
+
+type GetRegionBackendServiceCustomMetric struct {
+	// If true, the metric data is not used for load balancing.
+	DryRun bool `pulumi:"dryRun"`
+	// The name of the regional backend service.
+	Name string `pulumi:"name"`
+}
+
+// GetRegionBackendServiceCustomMetricInput is an input type that accepts GetRegionBackendServiceCustomMetricArgs and GetRegionBackendServiceCustomMetricOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceCustomMetricInput` via:
+//
+//	GetRegionBackendServiceCustomMetricArgs{...}
+type GetRegionBackendServiceCustomMetricInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceCustomMetricOutput() GetRegionBackendServiceCustomMetricOutput
+	ToGetRegionBackendServiceCustomMetricOutputWithContext(context.Context) GetRegionBackendServiceCustomMetricOutput
+}
+
+type GetRegionBackendServiceCustomMetricArgs struct {
+	// If true, the metric data is not used for load balancing.
+	DryRun pulumi.BoolInput `pulumi:"dryRun"`
+	// The name of the regional backend service.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRegionBackendServiceCustomMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceCustomMetric)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceCustomMetricArgs) ToGetRegionBackendServiceCustomMetricOutput() GetRegionBackendServiceCustomMetricOutput {
+	return i.ToGetRegionBackendServiceCustomMetricOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceCustomMetricArgs) ToGetRegionBackendServiceCustomMetricOutputWithContext(ctx context.Context) GetRegionBackendServiceCustomMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceCustomMetricOutput)
+}
+
+// GetRegionBackendServiceCustomMetricArrayInput is an input type that accepts GetRegionBackendServiceCustomMetricArray and GetRegionBackendServiceCustomMetricArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceCustomMetricArrayInput` via:
+//
+//	GetRegionBackendServiceCustomMetricArray{ GetRegionBackendServiceCustomMetricArgs{...} }
+type GetRegionBackendServiceCustomMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceCustomMetricArrayOutput() GetRegionBackendServiceCustomMetricArrayOutput
+	ToGetRegionBackendServiceCustomMetricArrayOutputWithContext(context.Context) GetRegionBackendServiceCustomMetricArrayOutput
+}
+
+type GetRegionBackendServiceCustomMetricArray []GetRegionBackendServiceCustomMetricInput
+
+func (GetRegionBackendServiceCustomMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceCustomMetric)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceCustomMetricArray) ToGetRegionBackendServiceCustomMetricArrayOutput() GetRegionBackendServiceCustomMetricArrayOutput {
+	return i.ToGetRegionBackendServiceCustomMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceCustomMetricArray) ToGetRegionBackendServiceCustomMetricArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceCustomMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceCustomMetricArrayOutput)
+}
+
+type GetRegionBackendServiceCustomMetricOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceCustomMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceCustomMetric)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceCustomMetricOutput) ToGetRegionBackendServiceCustomMetricOutput() GetRegionBackendServiceCustomMetricOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCustomMetricOutput) ToGetRegionBackendServiceCustomMetricOutputWithContext(ctx context.Context) GetRegionBackendServiceCustomMetricOutput {
+	return o
+}
+
+// If true, the metric data is not used for load balancing.
+func (o GetRegionBackendServiceCustomMetricOutput) DryRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCustomMetric) bool { return v.DryRun }).(pulumi.BoolOutput)
+}
+
+// The name of the regional backend service.
+func (o GetRegionBackendServiceCustomMetricOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceCustomMetric) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRegionBackendServiceCustomMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceCustomMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceCustomMetric)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceCustomMetricArrayOutput) ToGetRegionBackendServiceCustomMetricArrayOutput() GetRegionBackendServiceCustomMetricArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCustomMetricArrayOutput) ToGetRegionBackendServiceCustomMetricArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceCustomMetricArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceCustomMetricArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceCustomMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceCustomMetric {
+		return vs[0].([]GetRegionBackendServiceCustomMetric)[vs[1].(int)]
+	}).(GetRegionBackendServiceCustomMetricOutput)
+}
+
+type GetRegionBackendServiceDynamicForwarding struct {
+	// IP:PORT based dynamic forwarding configuration.
+	IpPortSelections []GetRegionBackendServiceDynamicForwardingIpPortSelection `pulumi:"ipPortSelections"`
+}
+
+// GetRegionBackendServiceDynamicForwardingInput is an input type that accepts GetRegionBackendServiceDynamicForwardingArgs and GetRegionBackendServiceDynamicForwardingOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceDynamicForwardingInput` via:
+//
+//	GetRegionBackendServiceDynamicForwardingArgs{...}
+type GetRegionBackendServiceDynamicForwardingInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceDynamicForwardingOutput() GetRegionBackendServiceDynamicForwardingOutput
+	ToGetRegionBackendServiceDynamicForwardingOutputWithContext(context.Context) GetRegionBackendServiceDynamicForwardingOutput
+}
+
+type GetRegionBackendServiceDynamicForwardingArgs struct {
+	// IP:PORT based dynamic forwarding configuration.
+	IpPortSelections GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayInput `pulumi:"ipPortSelections"`
+}
+
+func (GetRegionBackendServiceDynamicForwardingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceDynamicForwarding)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceDynamicForwardingArgs) ToGetRegionBackendServiceDynamicForwardingOutput() GetRegionBackendServiceDynamicForwardingOutput {
+	return i.ToGetRegionBackendServiceDynamicForwardingOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceDynamicForwardingArgs) ToGetRegionBackendServiceDynamicForwardingOutputWithContext(ctx context.Context) GetRegionBackendServiceDynamicForwardingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceDynamicForwardingOutput)
+}
+
+// GetRegionBackendServiceDynamicForwardingArrayInput is an input type that accepts GetRegionBackendServiceDynamicForwardingArray and GetRegionBackendServiceDynamicForwardingArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceDynamicForwardingArrayInput` via:
+//
+//	GetRegionBackendServiceDynamicForwardingArray{ GetRegionBackendServiceDynamicForwardingArgs{...} }
+type GetRegionBackendServiceDynamicForwardingArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceDynamicForwardingArrayOutput() GetRegionBackendServiceDynamicForwardingArrayOutput
+	ToGetRegionBackendServiceDynamicForwardingArrayOutputWithContext(context.Context) GetRegionBackendServiceDynamicForwardingArrayOutput
+}
+
+type GetRegionBackendServiceDynamicForwardingArray []GetRegionBackendServiceDynamicForwardingInput
+
+func (GetRegionBackendServiceDynamicForwardingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceDynamicForwarding)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceDynamicForwardingArray) ToGetRegionBackendServiceDynamicForwardingArrayOutput() GetRegionBackendServiceDynamicForwardingArrayOutput {
+	return i.ToGetRegionBackendServiceDynamicForwardingArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceDynamicForwardingArray) ToGetRegionBackendServiceDynamicForwardingArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceDynamicForwardingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceDynamicForwardingArrayOutput)
+}
+
+type GetRegionBackendServiceDynamicForwardingOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceDynamicForwardingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceDynamicForwarding)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceDynamicForwardingOutput) ToGetRegionBackendServiceDynamicForwardingOutput() GetRegionBackendServiceDynamicForwardingOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceDynamicForwardingOutput) ToGetRegionBackendServiceDynamicForwardingOutputWithContext(ctx context.Context) GetRegionBackendServiceDynamicForwardingOutput {
+	return o
+}
+
+// IP:PORT based dynamic forwarding configuration.
+func (o GetRegionBackendServiceDynamicForwardingOutput) IpPortSelections() GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceDynamicForwarding) []GetRegionBackendServiceDynamicForwardingIpPortSelection {
+		return v.IpPortSelections
+	}).(GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput)
+}
+
+type GetRegionBackendServiceDynamicForwardingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceDynamicForwardingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceDynamicForwarding)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceDynamicForwardingArrayOutput) ToGetRegionBackendServiceDynamicForwardingArrayOutput() GetRegionBackendServiceDynamicForwardingArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceDynamicForwardingArrayOutput) ToGetRegionBackendServiceDynamicForwardingArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceDynamicForwardingArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceDynamicForwardingArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceDynamicForwardingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceDynamicForwarding {
+		return vs[0].([]GetRegionBackendServiceDynamicForwarding)[vs[1].(int)]
+	}).(GetRegionBackendServiceDynamicForwardingOutput)
+}
+
+type GetRegionBackendServiceDynamicForwardingIpPortSelection struct {
+	// A boolean flag enabling IP:PORT based dynamic forwarding.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetRegionBackendServiceDynamicForwardingIpPortSelectionInput is an input type that accepts GetRegionBackendServiceDynamicForwardingIpPortSelectionArgs and GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceDynamicForwardingIpPortSelectionInput` via:
+//
+//	GetRegionBackendServiceDynamicForwardingIpPortSelectionArgs{...}
+type GetRegionBackendServiceDynamicForwardingIpPortSelectionInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceDynamicForwardingIpPortSelectionOutput() GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput
+	ToGetRegionBackendServiceDynamicForwardingIpPortSelectionOutputWithContext(context.Context) GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput
+}
+
+type GetRegionBackendServiceDynamicForwardingIpPortSelectionArgs struct {
+	// A boolean flag enabling IP:PORT based dynamic forwarding.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetRegionBackendServiceDynamicForwardingIpPortSelectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingIpPortSelection)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceDynamicForwardingIpPortSelectionArgs) ToGetRegionBackendServiceDynamicForwardingIpPortSelectionOutput() GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput {
+	return i.ToGetRegionBackendServiceDynamicForwardingIpPortSelectionOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceDynamicForwardingIpPortSelectionArgs) ToGetRegionBackendServiceDynamicForwardingIpPortSelectionOutputWithContext(ctx context.Context) GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput)
+}
+
+// GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayInput is an input type that accepts GetRegionBackendServiceDynamicForwardingIpPortSelectionArray and GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayInput` via:
+//
+//	GetRegionBackendServiceDynamicForwardingIpPortSelectionArray{ GetRegionBackendServiceDynamicForwardingIpPortSelectionArgs{...} }
+type GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput() GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput
+	ToGetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutputWithContext(context.Context) GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput
+}
+
+type GetRegionBackendServiceDynamicForwardingIpPortSelectionArray []GetRegionBackendServiceDynamicForwardingIpPortSelectionInput
+
+func (GetRegionBackendServiceDynamicForwardingIpPortSelectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceDynamicForwardingIpPortSelection)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceDynamicForwardingIpPortSelectionArray) ToGetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput() GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
+	return i.ToGetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceDynamicForwardingIpPortSelectionArray) ToGetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput)
+}
+
+type GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingIpPortSelection)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput) ToGetRegionBackendServiceDynamicForwardingIpPortSelectionOutput() GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput) ToGetRegionBackendServiceDynamicForwardingIpPortSelectionOutputWithContext(ctx context.Context) GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput {
+	return o
+}
+
+// A boolean flag enabling IP:PORT based dynamic forwarding.
+func (o GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceDynamicForwardingIpPortSelection) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceDynamicForwardingIpPortSelection)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput) ToGetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput() GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput) ToGetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceDynamicForwardingIpPortSelection {
+		return vs[0].([]GetRegionBackendServiceDynamicForwardingIpPortSelection)[vs[1].(int)]
+	}).(GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput)
+}
+
+type GetRegionBackendServiceFailoverPolicy struct {
+	// On failover or failback, this field indicates whether connection drain
+	// will be honored. Setting this to true has the following effect: connections
+	// to the old active pool are not drained. Connections to the new active pool
+	// use the timeout of 10 min (currently fixed). Setting to false has the
+	// following effect: both old and new connections will have a drain timeout
+	// of 10 min.
+	// This can be set to true only if the protocol is TCP.
+	// The default is false.
+	DisableConnectionDrainOnFailover bool `pulumi:"disableConnectionDrainOnFailover"`
+	// This option is used only when no healthy VMs are detected in the primary
+	// and backup instance groups. When set to true, traffic is dropped. When
+	// set to false, new connections are sent across all VMs in the primary group.
+	// The default is false.
+	DropTrafficIfUnhealthy bool `pulumi:"dropTrafficIfUnhealthy"`
+	// The value of the field must be in [0, 1]. If the ratio of the healthy
+	// VMs in the primary backend is at or below this number, traffic arriving
+	// at the load-balanced IP will be directed to the failover backend.
+	// In case where 'failoverRatio' is not set or all the VMs in the backup
+	// backend are unhealthy, the traffic will be directed back to the primary
+	// backend in the "force" mode, where traffic will be spread to the healthy
+	// VMs with the best effort, or to all VMs when no VM is healthy.
+	// This field is only used with l4 load balancing.
+	FailoverRatio float64 `pulumi:"failoverRatio"`
+}
+
+// GetRegionBackendServiceFailoverPolicyInput is an input type that accepts GetRegionBackendServiceFailoverPolicyArgs and GetRegionBackendServiceFailoverPolicyOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceFailoverPolicyInput` via:
+//
+//	GetRegionBackendServiceFailoverPolicyArgs{...}
+type GetRegionBackendServiceFailoverPolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceFailoverPolicyOutput() GetRegionBackendServiceFailoverPolicyOutput
+	ToGetRegionBackendServiceFailoverPolicyOutputWithContext(context.Context) GetRegionBackendServiceFailoverPolicyOutput
+}
+
+type GetRegionBackendServiceFailoverPolicyArgs struct {
+	// On failover or failback, this field indicates whether connection drain
+	// will be honored. Setting this to true has the following effect: connections
+	// to the old active pool are not drained. Connections to the new active pool
+	// use the timeout of 10 min (currently fixed). Setting to false has the
+	// following effect: both old and new connections will have a drain timeout
+	// of 10 min.
+	// This can be set to true only if the protocol is TCP.
+	// The default is false.
+	DisableConnectionDrainOnFailover pulumi.BoolInput `pulumi:"disableConnectionDrainOnFailover"`
+	// This option is used only when no healthy VMs are detected in the primary
+	// and backup instance groups. When set to true, traffic is dropped. When
+	// set to false, new connections are sent across all VMs in the primary group.
+	// The default is false.
+	DropTrafficIfUnhealthy pulumi.BoolInput `pulumi:"dropTrafficIfUnhealthy"`
+	// The value of the field must be in [0, 1]. If the ratio of the healthy
+	// VMs in the primary backend is at or below this number, traffic arriving
+	// at the load-balanced IP will be directed to the failover backend.
+	// In case where 'failoverRatio' is not set or all the VMs in the backup
+	// backend are unhealthy, the traffic will be directed back to the primary
+	// backend in the "force" mode, where traffic will be spread to the healthy
+	// VMs with the best effort, or to all VMs when no VM is healthy.
+	// This field is only used with l4 load balancing.
+	FailoverRatio pulumi.Float64Input `pulumi:"failoverRatio"`
+}
+
+func (GetRegionBackendServiceFailoverPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceFailoverPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceFailoverPolicyArgs) ToGetRegionBackendServiceFailoverPolicyOutput() GetRegionBackendServiceFailoverPolicyOutput {
+	return i.ToGetRegionBackendServiceFailoverPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceFailoverPolicyArgs) ToGetRegionBackendServiceFailoverPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceFailoverPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceFailoverPolicyOutput)
+}
+
+// GetRegionBackendServiceFailoverPolicyArrayInput is an input type that accepts GetRegionBackendServiceFailoverPolicyArray and GetRegionBackendServiceFailoverPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceFailoverPolicyArrayInput` via:
+//
+//	GetRegionBackendServiceFailoverPolicyArray{ GetRegionBackendServiceFailoverPolicyArgs{...} }
+type GetRegionBackendServiceFailoverPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceFailoverPolicyArrayOutput() GetRegionBackendServiceFailoverPolicyArrayOutput
+	ToGetRegionBackendServiceFailoverPolicyArrayOutputWithContext(context.Context) GetRegionBackendServiceFailoverPolicyArrayOutput
+}
+
+type GetRegionBackendServiceFailoverPolicyArray []GetRegionBackendServiceFailoverPolicyInput
+
+func (GetRegionBackendServiceFailoverPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceFailoverPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceFailoverPolicyArray) ToGetRegionBackendServiceFailoverPolicyArrayOutput() GetRegionBackendServiceFailoverPolicyArrayOutput {
+	return i.ToGetRegionBackendServiceFailoverPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceFailoverPolicyArray) ToGetRegionBackendServiceFailoverPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceFailoverPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceFailoverPolicyArrayOutput)
+}
+
+type GetRegionBackendServiceFailoverPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceFailoverPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceFailoverPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceFailoverPolicyOutput) ToGetRegionBackendServiceFailoverPolicyOutput() GetRegionBackendServiceFailoverPolicyOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceFailoverPolicyOutput) ToGetRegionBackendServiceFailoverPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceFailoverPolicyOutput {
+	return o
+}
+
+// On failover or failback, this field indicates whether connection drain
+// will be honored. Setting this to true has the following effect: connections
+// to the old active pool are not drained. Connections to the new active pool
+// use the timeout of 10 min (currently fixed). Setting to false has the
+// following effect: both old and new connections will have a drain timeout
+// of 10 min.
+// This can be set to true only if the protocol is TCP.
+// The default is false.
+func (o GetRegionBackendServiceFailoverPolicyOutput) DisableConnectionDrainOnFailover() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceFailoverPolicy) bool { return v.DisableConnectionDrainOnFailover }).(pulumi.BoolOutput)
+}
+
+// This option is used only when no healthy VMs are detected in the primary
+// and backup instance groups. When set to true, traffic is dropped. When
+// set to false, new connections are sent across all VMs in the primary group.
+// The default is false.
+func (o GetRegionBackendServiceFailoverPolicyOutput) DropTrafficIfUnhealthy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceFailoverPolicy) bool { return v.DropTrafficIfUnhealthy }).(pulumi.BoolOutput)
+}
+
+// The value of the field must be in [0, 1]. If the ratio of the healthy
+// VMs in the primary backend is at or below this number, traffic arriving
+// at the load-balanced IP will be directed to the failover backend.
+// In case where 'failoverRatio' is not set or all the VMs in the backup
+// backend are unhealthy, the traffic will be directed back to the primary
+// backend in the "force" mode, where traffic will be spread to the healthy
+// VMs with the best effort, or to all VMs when no VM is healthy.
+// This field is only used with l4 load balancing.
+func (o GetRegionBackendServiceFailoverPolicyOutput) FailoverRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v GetRegionBackendServiceFailoverPolicy) float64 { return v.FailoverRatio }).(pulumi.Float64Output)
+}
+
+type GetRegionBackendServiceFailoverPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceFailoverPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceFailoverPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceFailoverPolicyArrayOutput) ToGetRegionBackendServiceFailoverPolicyArrayOutput() GetRegionBackendServiceFailoverPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceFailoverPolicyArrayOutput) ToGetRegionBackendServiceFailoverPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceFailoverPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceFailoverPolicyArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceFailoverPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceFailoverPolicy {
+		return vs[0].([]GetRegionBackendServiceFailoverPolicy)[vs[1].(int)]
+	}).(GetRegionBackendServiceFailoverPolicyOutput)
+}
+
+type GetRegionBackendServiceHaPolicy struct {
+	// Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.
+	// Supported values are:
+	//
+	// * 'DISABLED': Fast IP Move is disabled. You can only use the haPolicy.leader API to
+	//             update the leader.
+	//
+	// * 'GARP_RA': Provides a method to very quickly define a new network endpoint as the
+	//            leader. This method is faster than updating the leader using the
+	//            haPolicy.leader API. Fast IP move works as follows: The VM hosting the
+	//            network endpoint that should become the new leader sends either a
+	//            Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA)
+	//            packet (IPv6). Google Cloud immediately but temporarily associates the
+	//            forwarding rule IP address with that VM, and both new and in-flight packets
+	//            are quickly delivered to that VM. Possible values: ["DISABLED", "GARP_RA"]
+	FastIpMove string `pulumi:"fastIpMove"`
+	// Selects one of the network endpoints attached to the backend NEGs of this service as the
+	// active endpoint (the leader) that receives all traffic.
+	Leaders []GetRegionBackendServiceHaPolicyLeader `pulumi:"leaders"`
+}
+
+// GetRegionBackendServiceHaPolicyInput is an input type that accepts GetRegionBackendServiceHaPolicyArgs and GetRegionBackendServiceHaPolicyOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceHaPolicyInput` via:
+//
+//	GetRegionBackendServiceHaPolicyArgs{...}
+type GetRegionBackendServiceHaPolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceHaPolicyOutput() GetRegionBackendServiceHaPolicyOutput
+	ToGetRegionBackendServiceHaPolicyOutputWithContext(context.Context) GetRegionBackendServiceHaPolicyOutput
+}
+
+type GetRegionBackendServiceHaPolicyArgs struct {
+	// Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.
+	// Supported values are:
+	//
+	// * 'DISABLED': Fast IP Move is disabled. You can only use the haPolicy.leader API to
+	//             update the leader.
+	//
+	// * 'GARP_RA': Provides a method to very quickly define a new network endpoint as the
+	//            leader. This method is faster than updating the leader using the
+	//            haPolicy.leader API. Fast IP move works as follows: The VM hosting the
+	//            network endpoint that should become the new leader sends either a
+	//            Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA)
+	//            packet (IPv6). Google Cloud immediately but temporarily associates the
+	//            forwarding rule IP address with that VM, and both new and in-flight packets
+	//            are quickly delivered to that VM. Possible values: ["DISABLED", "GARP_RA"]
+	FastIpMove pulumi.StringInput `pulumi:"fastIpMove"`
+	// Selects one of the network endpoints attached to the backend NEGs of this service as the
+	// active endpoint (the leader) that receives all traffic.
+	Leaders GetRegionBackendServiceHaPolicyLeaderArrayInput `pulumi:"leaders"`
+}
+
+func (GetRegionBackendServiceHaPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceHaPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceHaPolicyArgs) ToGetRegionBackendServiceHaPolicyOutput() GetRegionBackendServiceHaPolicyOutput {
+	return i.ToGetRegionBackendServiceHaPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceHaPolicyArgs) ToGetRegionBackendServiceHaPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceHaPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceHaPolicyOutput)
+}
+
+// GetRegionBackendServiceHaPolicyArrayInput is an input type that accepts GetRegionBackendServiceHaPolicyArray and GetRegionBackendServiceHaPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceHaPolicyArrayInput` via:
+//
+//	GetRegionBackendServiceHaPolicyArray{ GetRegionBackendServiceHaPolicyArgs{...} }
+type GetRegionBackendServiceHaPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceHaPolicyArrayOutput() GetRegionBackendServiceHaPolicyArrayOutput
+	ToGetRegionBackendServiceHaPolicyArrayOutputWithContext(context.Context) GetRegionBackendServiceHaPolicyArrayOutput
+}
+
+type GetRegionBackendServiceHaPolicyArray []GetRegionBackendServiceHaPolicyInput
+
+func (GetRegionBackendServiceHaPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceHaPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceHaPolicyArray) ToGetRegionBackendServiceHaPolicyArrayOutput() GetRegionBackendServiceHaPolicyArrayOutput {
+	return i.ToGetRegionBackendServiceHaPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceHaPolicyArray) ToGetRegionBackendServiceHaPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceHaPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceHaPolicyArrayOutput)
+}
+
+type GetRegionBackendServiceHaPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceHaPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceHaPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceHaPolicyOutput) ToGetRegionBackendServiceHaPolicyOutput() GetRegionBackendServiceHaPolicyOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceHaPolicyOutput) ToGetRegionBackendServiceHaPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceHaPolicyOutput {
+	return o
+}
+
+// Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.
+// Supported values are:
+//
+//   - 'DISABLED': Fast IP Move is disabled. You can only use the haPolicy.leader API to
+//     update the leader.
+//
+//   - 'GARP_RA': Provides a method to very quickly define a new network endpoint as the
+//     leader. This method is faster than updating the leader using the
+//     haPolicy.leader API. Fast IP move works as follows: The VM hosting the
+//     network endpoint that should become the new leader sends either a
+//     Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA)
+//     packet (IPv6). Google Cloud immediately but temporarily associates the
+//     forwarding rule IP address with that VM, and both new and in-flight packets
+//     are quickly delivered to that VM. Possible values: ["DISABLED", "GARP_RA"]
+func (o GetRegionBackendServiceHaPolicyOutput) FastIpMove() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceHaPolicy) string { return v.FastIpMove }).(pulumi.StringOutput)
+}
+
+// Selects one of the network endpoints attached to the backend NEGs of this service as the
+// active endpoint (the leader) that receives all traffic.
+func (o GetRegionBackendServiceHaPolicyOutput) Leaders() GetRegionBackendServiceHaPolicyLeaderArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceHaPolicy) []GetRegionBackendServiceHaPolicyLeader { return v.Leaders }).(GetRegionBackendServiceHaPolicyLeaderArrayOutput)
+}
+
+type GetRegionBackendServiceHaPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceHaPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceHaPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceHaPolicyArrayOutput) ToGetRegionBackendServiceHaPolicyArrayOutput() GetRegionBackendServiceHaPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceHaPolicyArrayOutput) ToGetRegionBackendServiceHaPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceHaPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceHaPolicyArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceHaPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceHaPolicy {
+		return vs[0].([]GetRegionBackendServiceHaPolicy)[vs[1].(int)]
+	}).(GetRegionBackendServiceHaPolicyOutput)
+}
+
+type GetRegionBackendServiceHaPolicyLeader struct {
+	// A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is
+	// attached to.
+	BackendGroup string `pulumi:"backendGroup"`
+	// The network endpoint within the leader.backendGroup that is designated as the leader.
+	NetworkEndpoints []GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint `pulumi:"networkEndpoints"`
+}
+
+// GetRegionBackendServiceHaPolicyLeaderInput is an input type that accepts GetRegionBackendServiceHaPolicyLeaderArgs and GetRegionBackendServiceHaPolicyLeaderOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceHaPolicyLeaderInput` via:
+//
+//	GetRegionBackendServiceHaPolicyLeaderArgs{...}
+type GetRegionBackendServiceHaPolicyLeaderInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceHaPolicyLeaderOutput() GetRegionBackendServiceHaPolicyLeaderOutput
+	ToGetRegionBackendServiceHaPolicyLeaderOutputWithContext(context.Context) GetRegionBackendServiceHaPolicyLeaderOutput
+}
+
+type GetRegionBackendServiceHaPolicyLeaderArgs struct {
+	// A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is
+	// attached to.
+	BackendGroup pulumi.StringInput `pulumi:"backendGroup"`
+	// The network endpoint within the leader.backendGroup that is designated as the leader.
+	NetworkEndpoints GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayInput `pulumi:"networkEndpoints"`
+}
+
+func (GetRegionBackendServiceHaPolicyLeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceHaPolicyLeader)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceHaPolicyLeaderArgs) ToGetRegionBackendServiceHaPolicyLeaderOutput() GetRegionBackendServiceHaPolicyLeaderOutput {
+	return i.ToGetRegionBackendServiceHaPolicyLeaderOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceHaPolicyLeaderArgs) ToGetRegionBackendServiceHaPolicyLeaderOutputWithContext(ctx context.Context) GetRegionBackendServiceHaPolicyLeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceHaPolicyLeaderOutput)
+}
+
+// GetRegionBackendServiceHaPolicyLeaderArrayInput is an input type that accepts GetRegionBackendServiceHaPolicyLeaderArray and GetRegionBackendServiceHaPolicyLeaderArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceHaPolicyLeaderArrayInput` via:
+//
+//	GetRegionBackendServiceHaPolicyLeaderArray{ GetRegionBackendServiceHaPolicyLeaderArgs{...} }
+type GetRegionBackendServiceHaPolicyLeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceHaPolicyLeaderArrayOutput() GetRegionBackendServiceHaPolicyLeaderArrayOutput
+	ToGetRegionBackendServiceHaPolicyLeaderArrayOutputWithContext(context.Context) GetRegionBackendServiceHaPolicyLeaderArrayOutput
+}
+
+type GetRegionBackendServiceHaPolicyLeaderArray []GetRegionBackendServiceHaPolicyLeaderInput
+
+func (GetRegionBackendServiceHaPolicyLeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceHaPolicyLeader)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceHaPolicyLeaderArray) ToGetRegionBackendServiceHaPolicyLeaderArrayOutput() GetRegionBackendServiceHaPolicyLeaderArrayOutput {
+	return i.ToGetRegionBackendServiceHaPolicyLeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceHaPolicyLeaderArray) ToGetRegionBackendServiceHaPolicyLeaderArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceHaPolicyLeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceHaPolicyLeaderArrayOutput)
+}
+
+type GetRegionBackendServiceHaPolicyLeaderOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceHaPolicyLeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceHaPolicyLeader)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceHaPolicyLeaderOutput) ToGetRegionBackendServiceHaPolicyLeaderOutput() GetRegionBackendServiceHaPolicyLeaderOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceHaPolicyLeaderOutput) ToGetRegionBackendServiceHaPolicyLeaderOutputWithContext(ctx context.Context) GetRegionBackendServiceHaPolicyLeaderOutput {
+	return o
+}
+
+// A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is
+// attached to.
+func (o GetRegionBackendServiceHaPolicyLeaderOutput) BackendGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceHaPolicyLeader) string { return v.BackendGroup }).(pulumi.StringOutput)
+}
+
+// The network endpoint within the leader.backendGroup that is designated as the leader.
+func (o GetRegionBackendServiceHaPolicyLeaderOutput) NetworkEndpoints() GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceHaPolicyLeader) []GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint {
+		return v.NetworkEndpoints
+	}).(GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput)
+}
+
+type GetRegionBackendServiceHaPolicyLeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceHaPolicyLeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceHaPolicyLeader)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceHaPolicyLeaderArrayOutput) ToGetRegionBackendServiceHaPolicyLeaderArrayOutput() GetRegionBackendServiceHaPolicyLeaderArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceHaPolicyLeaderArrayOutput) ToGetRegionBackendServiceHaPolicyLeaderArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceHaPolicyLeaderArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceHaPolicyLeaderArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceHaPolicyLeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceHaPolicyLeader {
+		return vs[0].([]GetRegionBackendServiceHaPolicyLeader)[vs[1].(int)]
+	}).(GetRegionBackendServiceHaPolicyLeaderOutput)
+}
+
+type GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint struct {
+	// The name of the VM instance of the leader network endpoint. The instance must
+	// already be attached to the NEG specified in the haPolicy.leader.backendGroup.
+	Instance string `pulumi:"instance"`
+}
+
+// GetRegionBackendServiceHaPolicyLeaderNetworkEndpointInput is an input type that accepts GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArgs and GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceHaPolicyLeaderNetworkEndpointInput` via:
+//
+//	GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArgs{...}
+type GetRegionBackendServiceHaPolicyLeaderNetworkEndpointInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput() GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput
+	ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutputWithContext(context.Context) GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput
+}
+
+type GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArgs struct {
+	// The name of the VM instance of the leader network endpoint. The instance must
+	// already be attached to the NEG specified in the haPolicy.leader.backendGroup.
+	Instance pulumi.StringInput `pulumi:"instance"`
+}
+
+func (GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArgs) ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput() GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput {
+	return i.ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArgs) ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutputWithContext(ctx context.Context) GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput)
+}
+
+// GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayInput is an input type that accepts GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArray and GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayInput` via:
+//
+//	GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArray{ GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArgs{...} }
+type GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput() GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput
+	ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutputWithContext(context.Context) GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput
+}
+
+type GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArray []GetRegionBackendServiceHaPolicyLeaderNetworkEndpointInput
+
+func (GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArray) ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput() GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput {
+	return i.ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArray) ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput)
+}
+
+type GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput) ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput() GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput) ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutputWithContext(ctx context.Context) GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput {
+	return o
+}
+
+// The name of the VM instance of the leader network endpoint. The instance must
+// already be attached to the NEG specified in the haPolicy.leader.backendGroup.
+func (o GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+type GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput) ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput() GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput) ToGetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint {
+		return vs[0].([]GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint)[vs[1].(int)]
+	}).(GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput)
+}
+
+type GetRegionBackendServiceIap struct {
+	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
+	Enabled bool `pulumi:"enabled"`
+	// OAuth2 Client ID for IAP
+	Oauth2ClientId string `pulumi:"oauth2ClientId"`
+	// OAuth2 Client Secret for IAP
+	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
+	// OAuth2 Client Secret SHA-256 for IAP
+	Oauth2ClientSecretSha256 string `pulumi:"oauth2ClientSecretSha256"`
+}
+
+// GetRegionBackendServiceIapInput is an input type that accepts GetRegionBackendServiceIapArgs and GetRegionBackendServiceIapOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceIapInput` via:
+//
+//	GetRegionBackendServiceIapArgs{...}
+type GetRegionBackendServiceIapInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceIapOutput() GetRegionBackendServiceIapOutput
+	ToGetRegionBackendServiceIapOutputWithContext(context.Context) GetRegionBackendServiceIapOutput
+}
+
+type GetRegionBackendServiceIapArgs struct {
+	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// OAuth2 Client ID for IAP
+	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
+	// OAuth2 Client Secret for IAP
+	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
+	// OAuth2 Client Secret SHA-256 for IAP
+	Oauth2ClientSecretSha256 pulumi.StringInput `pulumi:"oauth2ClientSecretSha256"`
+}
+
+func (GetRegionBackendServiceIapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceIap)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceIapArgs) ToGetRegionBackendServiceIapOutput() GetRegionBackendServiceIapOutput {
+	return i.ToGetRegionBackendServiceIapOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceIapArgs) ToGetRegionBackendServiceIapOutputWithContext(ctx context.Context) GetRegionBackendServiceIapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceIapOutput)
+}
+
+// GetRegionBackendServiceIapArrayInput is an input type that accepts GetRegionBackendServiceIapArray and GetRegionBackendServiceIapArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceIapArrayInput` via:
+//
+//	GetRegionBackendServiceIapArray{ GetRegionBackendServiceIapArgs{...} }
+type GetRegionBackendServiceIapArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceIapArrayOutput() GetRegionBackendServiceIapArrayOutput
+	ToGetRegionBackendServiceIapArrayOutputWithContext(context.Context) GetRegionBackendServiceIapArrayOutput
+}
+
+type GetRegionBackendServiceIapArray []GetRegionBackendServiceIapInput
+
+func (GetRegionBackendServiceIapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceIap)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceIapArray) ToGetRegionBackendServiceIapArrayOutput() GetRegionBackendServiceIapArrayOutput {
+	return i.ToGetRegionBackendServiceIapArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceIapArray) ToGetRegionBackendServiceIapArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceIapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceIapArrayOutput)
+}
+
+type GetRegionBackendServiceIapOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceIapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceIap)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceIapOutput) ToGetRegionBackendServiceIapOutput() GetRegionBackendServiceIapOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceIapOutput) ToGetRegionBackendServiceIapOutputWithContext(ctx context.Context) GetRegionBackendServiceIapOutput {
+	return o
+}
+
+// Whether the serving infrastructure will authenticate and authorize all incoming requests.
+func (o GetRegionBackendServiceIapOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceIap) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// OAuth2 Client ID for IAP
+func (o GetRegionBackendServiceIapOutput) Oauth2ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
+}
+
+// OAuth2 Client Secret for IAP
+func (o GetRegionBackendServiceIapOutput) Oauth2ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
+}
+
+// OAuth2 Client Secret SHA-256 for IAP
+func (o GetRegionBackendServiceIapOutput) Oauth2ClientSecretSha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceIap) string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringOutput)
+}
+
+type GetRegionBackendServiceIapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceIapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceIap)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceIapArrayOutput) ToGetRegionBackendServiceIapArrayOutput() GetRegionBackendServiceIapArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceIapArrayOutput) ToGetRegionBackendServiceIapArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceIapArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceIapArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceIapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceIap {
+		return vs[0].([]GetRegionBackendServiceIap)[vs[1].(int)]
+	}).(GetRegionBackendServiceIapOutput)
+}
+
+type GetRegionBackendServiceLogConfig struct {
+	// Whether to enable logging for the load balancer traffic served by this backend service.
+	Enable bool `pulumi:"enable"`
+	// Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+	OptionalFields []string `pulumi:"optionalFields"`
+	// Specifies the optional logging mode for the load balancer traffic.
+	// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
+	OptionalMode string `pulumi:"optionalMode"`
+	// This field can only be specified if logging is enabled for this backend service. The value of
+	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+	// The default value is 1.0.
+	SampleRate float64 `pulumi:"sampleRate"`
+}
+
+// GetRegionBackendServiceLogConfigInput is an input type that accepts GetRegionBackendServiceLogConfigArgs and GetRegionBackendServiceLogConfigOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceLogConfigInput` via:
+//
+//	GetRegionBackendServiceLogConfigArgs{...}
+type GetRegionBackendServiceLogConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceLogConfigOutput() GetRegionBackendServiceLogConfigOutput
+	ToGetRegionBackendServiceLogConfigOutputWithContext(context.Context) GetRegionBackendServiceLogConfigOutput
+}
+
+type GetRegionBackendServiceLogConfigArgs struct {
+	// Whether to enable logging for the load balancer traffic served by this backend service.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+	OptionalFields pulumi.StringArrayInput `pulumi:"optionalFields"`
+	// Specifies the optional logging mode for the load balancer traffic.
+	// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
+	OptionalMode pulumi.StringInput `pulumi:"optionalMode"`
+	// This field can only be specified if logging is enabled for this backend service. The value of
+	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+	// The default value is 1.0.
+	SampleRate pulumi.Float64Input `pulumi:"sampleRate"`
+}
+
+func (GetRegionBackendServiceLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceLogConfig)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceLogConfigArgs) ToGetRegionBackendServiceLogConfigOutput() GetRegionBackendServiceLogConfigOutput {
+	return i.ToGetRegionBackendServiceLogConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceLogConfigArgs) ToGetRegionBackendServiceLogConfigOutputWithContext(ctx context.Context) GetRegionBackendServiceLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceLogConfigOutput)
+}
+
+// GetRegionBackendServiceLogConfigArrayInput is an input type that accepts GetRegionBackendServiceLogConfigArray and GetRegionBackendServiceLogConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceLogConfigArrayInput` via:
+//
+//	GetRegionBackendServiceLogConfigArray{ GetRegionBackendServiceLogConfigArgs{...} }
+type GetRegionBackendServiceLogConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceLogConfigArrayOutput() GetRegionBackendServiceLogConfigArrayOutput
+	ToGetRegionBackendServiceLogConfigArrayOutputWithContext(context.Context) GetRegionBackendServiceLogConfigArrayOutput
+}
+
+type GetRegionBackendServiceLogConfigArray []GetRegionBackendServiceLogConfigInput
+
+func (GetRegionBackendServiceLogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceLogConfig)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceLogConfigArray) ToGetRegionBackendServiceLogConfigArrayOutput() GetRegionBackendServiceLogConfigArrayOutput {
+	return i.ToGetRegionBackendServiceLogConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceLogConfigArray) ToGetRegionBackendServiceLogConfigArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceLogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceLogConfigArrayOutput)
+}
+
+type GetRegionBackendServiceLogConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceLogConfig)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceLogConfigOutput) ToGetRegionBackendServiceLogConfigOutput() GetRegionBackendServiceLogConfigOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceLogConfigOutput) ToGetRegionBackendServiceLogConfigOutputWithContext(ctx context.Context) GetRegionBackendServiceLogConfigOutput {
+	return o
+}
+
+// Whether to enable logging for the load balancer traffic served by this backend service.
+func (o GetRegionBackendServiceLogConfigOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceLogConfig) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+func (o GetRegionBackendServiceLogConfigOutput) OptionalFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceLogConfig) []string { return v.OptionalFields }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the optional logging mode for the load balancer traffic.
+// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
+func (o GetRegionBackendServiceLogConfigOutput) OptionalMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceLogConfig) string { return v.OptionalMode }).(pulumi.StringOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service. The value of
+// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+// The default value is 1.0.
+func (o GetRegionBackendServiceLogConfigOutput) SampleRate() pulumi.Float64Output {
+	return o.ApplyT(func(v GetRegionBackendServiceLogConfig) float64 { return v.SampleRate }).(pulumi.Float64Output)
+}
+
+type GetRegionBackendServiceLogConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceLogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceLogConfig)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceLogConfigArrayOutput) ToGetRegionBackendServiceLogConfigArrayOutput() GetRegionBackendServiceLogConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceLogConfigArrayOutput) ToGetRegionBackendServiceLogConfigArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceLogConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceLogConfigArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceLogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceLogConfig {
+		return vs[0].([]GetRegionBackendServiceLogConfig)[vs[1].(int)]
+	}).(GetRegionBackendServiceLogConfigOutput)
+}
+
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy struct {
+	// When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+	ZonalAffinities []GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity `pulumi:"zonalAffinities"`
+}
+
+// GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyInput is an input type that accepts GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs and GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyInput` via:
+//
+//	GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs{...}
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput
+	ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutputWithContext(context.Context) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput
+}
+
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs struct {
+	// When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+	ZonalAffinities GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput `pulumi:"zonalAffinities"`
+}
+
+func (GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
+	return i.ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput)
+}
+
+// GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayInput is an input type that accepts GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArray and GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayInput` via:
+//
+//	GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArray{ GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs{...} }
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput
+	ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutputWithContext(context.Context) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput
+}
+
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArray []GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyInput
+
+func (GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArray) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
+	return i.ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArray) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput)
+}
+
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutputWithContext(ctx context.Context) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
+	return o
+}
+
+// When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput) ZonalAffinities() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy) []GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
+		return v.ZonalAffinities
+	}).(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput)
+}
+
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy {
+		return vs[0].([]GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy)[vs[1].(int)]
+	}).(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput)
+}
+
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity struct {
+	// This field indicates whether zonal affinity is enabled or not. Default value: "ZONAL_AFFINITY_DISABLED" Possible values: ["ZONAL_AFFINITY_DISABLED", "ZONAL_AFFINITY_SPILL_CROSS_ZONE", "ZONAL_AFFINITY_STAY_WITHIN_ZONE"]
+	Spillover string `pulumi:"spillover"`
+	// The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+	// to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+	// distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+	// of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+	// threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+	SpilloverRatio float64 `pulumi:"spilloverRatio"`
+}
+
+// GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput is an input type that accepts GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs and GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput` via:
+//
+//	GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs{...}
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput
+	ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutputWithContext(context.Context) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput
+}
+
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs struct {
+	// This field indicates whether zonal affinity is enabled or not. Default value: "ZONAL_AFFINITY_DISABLED" Possible values: ["ZONAL_AFFINITY_DISABLED", "ZONAL_AFFINITY_SPILL_CROSS_ZONE", "ZONAL_AFFINITY_STAY_WITHIN_ZONE"]
+	Spillover pulumi.StringInput `pulumi:"spillover"`
+	// The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+	// to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+	// distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+	// of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+	// threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+	SpilloverRatio pulumi.Float64Input `pulumi:"spilloverRatio"`
+}
+
+func (GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
+	return i.ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutputWithContext(ctx context.Context) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput)
+}
+
+// GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput is an input type that accepts GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray and GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput` via:
+//
+//	GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray{ GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs{...} }
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput
+	ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutputWithContext(context.Context) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput
+}
+
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray []GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput
+
+func (GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
+	return i.ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput)
+}
+
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutputWithContext(ctx context.Context) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
+	return o
+}
+
+// This field indicates whether zonal affinity is enabled or not. Default value: "ZONAL_AFFINITY_DISABLED" Possible values: ["ZONAL_AFFINITY_DISABLED", "ZONAL_AFFINITY_SPILL_CROSS_ZONE", "ZONAL_AFFINITY_STAY_WITHIN_ZONE"]
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) Spillover() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity) string {
+		return v.Spillover
+	}).(pulumi.StringOutput)
+}
+
+// The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+// to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+// distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+// of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+// threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) SpilloverRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity) float64 {
+		return v.SpilloverRatio
+	}).(pulumi.Float64Output)
+}
+
+type GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput) ToGetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
+		return vs[0].([]GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)[vs[1].(int)]
+	}).(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput)
+}
+
 type GetRegionBackendServiceOutlierDetection struct {
 	// The base time that a host is ejected for. The real time is equal to the base
 	// time multiplied by the number of times the host has been ejected. Defaults to
@@ -6208,6 +7895,12 @@ func (o GetRegionInstanceTemplateGuestAcceleratorArrayOutput) Index(i pulumi.Int
 }
 
 type GetRegionInstanceTemplateNetworkInterface struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Omit to ensure that the instance
+	// is not accessible from the Internet (this means that ssh provisioners will
+	// not work unless you are running Terraform can send traffic to the instance's
+	// network (e.g. via tunnel or because it is running on another cloud instance
+	// on that network). This block can be repeated multiple times. Structure documented below.
 	AccessConfigs []GetRegionInstanceTemplateNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
@@ -6229,11 +7922,15 @@ type GetRegionInstanceTemplateNetworkInterface struct {
 	// Use `network` attribute for Legacy or Auto subnetted networks and
 	// `subnetwork` for custom subnetted networks.
 	Network string `pulumi:"network"`
+	// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+	NetworkAttachment string `pulumi:"networkAttachment"`
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp string `pulumi:"networkIp"`
 	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
 	NicType string `pulumi:"nicType"`
+	// Name of the parent network interface of a dynamic network interface.
+	ParentNicName string `pulumi:"parentNicName"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount int `pulumi:"queueCount"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -6245,6 +7942,8 @@ type GetRegionInstanceTemplateNetworkInterface struct {
 	// The ID of the project in which the subnetwork belongs.
 	// If it is not provided, the provider project is used.
 	SubnetworkProject string `pulumi:"subnetworkProject"`
+	// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+	Vlan int `pulumi:"vlan"`
 }
 
 // GetRegionInstanceTemplateNetworkInterfaceInput is an input type that accepts GetRegionInstanceTemplateNetworkInterfaceArgs and GetRegionInstanceTemplateNetworkInterfaceOutput values.
@@ -6259,6 +7958,12 @@ type GetRegionInstanceTemplateNetworkInterfaceInput interface {
 }
 
 type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Omit to ensure that the instance
+	// is not accessible from the Internet (this means that ssh provisioners will
+	// not work unless you are running Terraform can send traffic to the instance's
+	// network (e.g. via tunnel or because it is running on another cloud instance
+	// on that network). This block can be repeated multiple times. Structure documented below.
 	AccessConfigs GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
@@ -6280,11 +7985,15 @@ type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
 	// Use `network` attribute for Legacy or Auto subnetted networks and
 	// `subnetwork` for custom subnetted networks.
 	Network pulumi.StringInput `pulumi:"network"`
+	// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
 	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
 	NicType pulumi.StringInput `pulumi:"nicType"`
+	// Name of the parent network interface of a dynamic network interface.
+	ParentNicName pulumi.StringInput `pulumi:"parentNicName"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount pulumi.IntInput `pulumi:"queueCount"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -6296,6 +8005,8 @@ type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
 	// The ID of the project in which the subnetwork belongs.
 	// If it is not provided, the provider project is used.
 	SubnetworkProject pulumi.StringInput `pulumi:"subnetworkProject"`
+	// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+	Vlan pulumi.IntInput `pulumi:"vlan"`
 }
 
 func (GetRegionInstanceTemplateNetworkInterfaceArgs) ElementType() reflect.Type {
@@ -6349,6 +8060,12 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) ToGetRegionInstanceTemp
 	return o
 }
 
+// Access configurations, i.e. IPs via which this
+// instance can be accessed via the Internet. Omit to ensure that the instance
+// is not accessible from the Internet (this means that ssh provisioners will
+// not work unless you are running Terraform can send traffic to the instance's
+// network (e.g. via tunnel or because it is running on another cloud instance
+// on that network). This block can be repeated multiple times. Structure documented below.
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) AccessConfigs() GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) []GetRegionInstanceTemplateNetworkInterfaceAccessConfig {
 		return v.AccessConfigs
@@ -6403,6 +8120,11 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Network() pulumi.String
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
 // The private IP address to assign to the instance. If
 // empty, the address will be automatically assigned.
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
@@ -6412,6 +8134,11 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.Stri
 // The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
+}
+
+// Name of the parent network interface of a dynamic network interface.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) ParentNicName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.ParentNicName }).(pulumi.StringOutput)
 }
 
 // The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
@@ -6435,6 +8162,11 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Subnetwork() pulumi.Str
 // If it is not provided, the provider project is used.
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) SubnetworkProject() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.SubnetworkProject }).(pulumi.StringOutput)
+}
+
+// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Vlan() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) int { return v.Vlan }).(pulumi.IntOutput)
 }
 
 type GetRegionInstanceTemplateNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
@@ -23986,6 +25718,34 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceConsistentHashInput)(nil)).Elem(), GetRegionBackendServiceConsistentHashArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceConsistentHashArrayInput)(nil)).Elem(), GetRegionBackendServiceConsistentHashArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceConsistentHashHttpCookyInput)(nil)).Elem(), GetRegionBackendServiceConsistentHashHttpCookyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceConsistentHashHttpCookyArrayInput)(nil)).Elem(), GetRegionBackendServiceConsistentHashHttpCookyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceConsistentHashHttpCookyTtlInput)(nil)).Elem(), GetRegionBackendServiceConsistentHashHttpCookyTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceConsistentHashHttpCookyTtlArrayInput)(nil)).Elem(), GetRegionBackendServiceConsistentHashHttpCookyTtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCustomMetricInput)(nil)).Elem(), GetRegionBackendServiceCustomMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCustomMetricArrayInput)(nil)).Elem(), GetRegionBackendServiceCustomMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingInput)(nil)).Elem(), GetRegionBackendServiceDynamicForwardingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingArrayInput)(nil)).Elem(), GetRegionBackendServiceDynamicForwardingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingIpPortSelectionInput)(nil)).Elem(), GetRegionBackendServiceDynamicForwardingIpPortSelectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayInput)(nil)).Elem(), GetRegionBackendServiceDynamicForwardingIpPortSelectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceFailoverPolicyInput)(nil)).Elem(), GetRegionBackendServiceFailoverPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceFailoverPolicyArrayInput)(nil)).Elem(), GetRegionBackendServiceFailoverPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceHaPolicyInput)(nil)).Elem(), GetRegionBackendServiceHaPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceHaPolicyArrayInput)(nil)).Elem(), GetRegionBackendServiceHaPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceHaPolicyLeaderInput)(nil)).Elem(), GetRegionBackendServiceHaPolicyLeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceHaPolicyLeaderArrayInput)(nil)).Elem(), GetRegionBackendServiceHaPolicyLeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceHaPolicyLeaderNetworkEndpointInput)(nil)).Elem(), GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayInput)(nil)).Elem(), GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceIapInput)(nil)).Elem(), GetRegionBackendServiceIapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceIapArrayInput)(nil)).Elem(), GetRegionBackendServiceIapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceLogConfigInput)(nil)).Elem(), GetRegionBackendServiceLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceLogConfigArrayInput)(nil)).Elem(), GetRegionBackendServiceLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyInput)(nil)).Elem(), GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayInput)(nil)).Elem(), GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput)(nil)).Elem(), GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput)(nil)).Elem(), GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionInput)(nil)).Elem(), GetRegionBackendServiceOutlierDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionArrayInput)(nil)).Elem(), GetRegionBackendServiceOutlierDetectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionBaseEjectionTimeInput)(nil)).Elem(), GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArgs{})
@@ -24352,6 +26112,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceConsistentHashOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceConsistentHashArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceConsistentHashHttpCookyOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceConsistentHashHttpCookyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceConsistentHashHttpCookyTtlOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceConsistentHashHttpCookyTtlArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceCustomMetricOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceCustomMetricArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceDynamicForwardingOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceDynamicForwardingArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceFailoverPolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceFailoverPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceHaPolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceHaPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceHaPolicyLeaderOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceHaPolicyLeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceHaPolicyLeaderNetworkEndpointOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceIapOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceIapArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceLogConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceOutlierDetectionOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceOutlierDetectionArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput{})

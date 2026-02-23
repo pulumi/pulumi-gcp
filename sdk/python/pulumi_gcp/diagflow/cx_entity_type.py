@@ -32,6 +32,7 @@ class CxEntityTypeArgs:
                  redact: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a CxEntityType resource.
+
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]] entities: The collection of entity entries associated with the entity type.
                Structure is documented below.
@@ -212,6 +213,7 @@ class _CxEntityTypeState:
                  redact: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering CxEntityType resources.
+
         :param pulumi.Input[_builtins.str] auto_expansion_mode: Represents kinds of entities.
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
@@ -476,18 +478,15 @@ class CxEntityType(pulumi.CustomResource):
         EntityType can be imported using any of these accepted formats:
 
         * `{{parent}}/entityTypes/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/entityTypes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -585,18 +584,15 @@ class CxEntityType(pulumi.CustomResource):
         EntityType can be imported using any of these accepted formats:
 
         * `{{parent}}/entityTypes/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/entityTypes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CxEntityTypeArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class RegionHealthSourceArgs:
                  sources: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionHealthSource resource.
+
         :param pulumi.Input[_builtins.str] region: URL of the region where the health source resides.
         :param pulumi.Input[_builtins.str] source_type: Specifies the type of the `HealthSource`. The only allowed value
                is `BACKEND_SERVICE`. Must be specified when the
@@ -193,6 +194,7 @@ class _RegionHealthSourceState:
                  sources: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionHealthSource resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you
                create the resource.
@@ -407,6 +409,19 @@ class RegionHealthSource(pulumi.CustomResource):
                  sources: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A health source resource specifies the source resources and the health
+        aggregation policy applied to the source resources to determine the
+        aggregated health status.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about RegionHealthSource, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionHealthSources)
+        * How-to Guides
+            * [Health checks overview](https://cloud.google.com/load-balancing/docs/health-check-concepts)
+
         ## Example Usage
 
         ### Compute Region Health Source Basic
@@ -443,30 +458,19 @@ class RegionHealthSource(pulumi.CustomResource):
         RegionHealthSource can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/healthSources/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionHealthSource can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default projects/{{project}}/regions/{{region}}/healthSources/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -507,6 +511,19 @@ class RegionHealthSource(pulumi.CustomResource):
                  args: RegionHealthSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A health source resource specifies the source resources and the health
+        aggregation policy applied to the source resources to determine the
+        aggregated health status.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about RegionHealthSource, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionHealthSources)
+        * How-to Guides
+            * [Health checks overview](https://cloud.google.com/load-balancing/docs/health-check-concepts)
+
         ## Example Usage
 
         ### Compute Region Health Source Basic
@@ -543,30 +560,19 @@ class RegionHealthSource(pulumi.CustomResource):
         RegionHealthSource can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/healthSources/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionHealthSource can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default projects/{{project}}/regions/{{region}}/healthSources/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionHealthSource:RegionHealthSource default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionHealthSourceArgs args: The arguments to use to populate this resource's properties.

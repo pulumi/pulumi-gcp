@@ -52,9 +52,13 @@ func GetJobIamPolicy(ctx *pulumi.Context, args *GetJobIamPolicyArgs, opts ...pul
 // A collection of arguments for invoking getJobIamPolicy.
 type GetJobIamPolicyArgs struct {
 	// The name or relative resource id of the job to manage IAM policies for.
-	JobId   string  `pulumi:"jobId"`
+	JobId string `pulumi:"jobId"`
+	// The project in which the job belongs. If it
+	// is not provided, Terraform will use the provider default.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// The region in which the job belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getJobIamPolicy.
@@ -82,9 +86,13 @@ func GetJobIamPolicyOutput(ctx *pulumi.Context, args GetJobIamPolicyOutputArgs, 
 // A collection of arguments for invoking getJobIamPolicy.
 type GetJobIamPolicyOutputArgs struct {
 	// The name or relative resource id of the job to manage IAM policies for.
-	JobId   pulumi.StringInput    `pulumi:"jobId"`
+	JobId pulumi.StringInput `pulumi:"jobId"`
+	// The project in which the job belongs. If it
+	// is not provided, Terraform will use the provider default.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	Region  pulumi.StringPtrInput `pulumi:"region"`
+	// The region in which the job belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetJobIamPolicyOutputArgs) ElementType() reflect.Type {

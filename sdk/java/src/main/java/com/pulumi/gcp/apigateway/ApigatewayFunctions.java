@@ -22,6 +22,10 @@ import java.util.concurrent.CompletableFuture;
 
 public final class ApigatewayFunctions {
     /**
+     * Retrieves the current IAM policy data for apiconfig
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -61,6 +65,10 @@ public final class ApigatewayFunctions {
         return getApiConfigIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for apiconfig
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -100,6 +108,10 @@ public final class ApigatewayFunctions {
         return getApiConfigIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for apiconfig
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -139,6 +151,10 @@ public final class ApigatewayFunctions {
         return Deployment.getInstance().invoke("gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy", TypeShape.of(GetApiConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for apiconfig
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -178,6 +194,10 @@ public final class ApigatewayFunctions {
         return Deployment.getInstance().invoke("gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy", TypeShape.of(GetApiConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for apiconfig
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -217,6 +237,10 @@ public final class ApigatewayFunctions {
         return Deployment.getInstance().invokeAsync("gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy", TypeShape.of(GetApiConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for api
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -256,6 +280,10 @@ public final class ApigatewayFunctions {
         return getApiIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for api
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -295,6 +323,10 @@ public final class ApigatewayFunctions {
         return getApiIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for api
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -334,6 +366,10 @@ public final class ApigatewayFunctions {
         return Deployment.getInstance().invoke("gcp:apigateway/getApiIamPolicy:getApiIamPolicy", TypeShape.of(GetApiIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for api
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -373,6 +409,10 @@ public final class ApigatewayFunctions {
         return Deployment.getInstance().invoke("gcp:apigateway/getApiIamPolicy:getApiIamPolicy", TypeShape.of(GetApiIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for api
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -412,6 +452,10 @@ public final class ApigatewayFunctions {
         return Deployment.getInstance().invokeAsync("gcp:apigateway/getApiIamPolicy:getApiIamPolicy", TypeShape.of(GetApiIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for gateway
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -452,6 +496,10 @@ public final class ApigatewayFunctions {
         return getGatewayIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for gateway
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -492,6 +540,10 @@ public final class ApigatewayFunctions {
         return getGatewayIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for gateway
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -532,6 +584,10 @@ public final class ApigatewayFunctions {
         return Deployment.getInstance().invoke("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", TypeShape.of(GetGatewayIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for gateway
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -572,6 +628,10 @@ public final class ApigatewayFunctions {
         return Deployment.getInstance().invoke("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", TypeShape.of(GetGatewayIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for gateway
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>

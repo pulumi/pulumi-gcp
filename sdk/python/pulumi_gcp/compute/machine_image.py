@@ -29,6 +29,7 @@ class MachineImageArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MachineImage resource.
+
         :param pulumi.Input[_builtins.str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
         :param pulumi.Input[_builtins.str] description: A text description of the resource.
         :param pulumi.Input[_builtins.bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
@@ -146,6 +147,7 @@ class _MachineImageState:
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering MachineImage resources.
+
         :param pulumi.Input[_builtins.str] description: A text description of the resource.
         :param pulumi.Input[_builtins.bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
@@ -295,6 +297,19 @@ class MachineImage(pulumi.CustomResource):
                  source_instance: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Represents a Machine Image resource. Machine images store all the configuration,
+        metadata, permissions, and data from one or more disks required to create a
+        Virtual machine (VM) instance.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about MachineImage, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/machineImages)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
+
         ## Example Usage
 
         ### Machine Image Basic
@@ -354,24 +369,17 @@ class MachineImage(pulumi.CustomResource):
         MachineImage can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/machineImages/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -395,6 +403,19 @@ class MachineImage(pulumi.CustomResource):
                  args: MachineImageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Represents a Machine Image resource. Machine images store all the configuration,
+        metadata, permissions, and data from one or more disks required to create a
+        Virtual machine (VM) instance.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about MachineImage, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/machineImages)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
+
         ## Example Usage
 
         ### Machine Image Basic
@@ -454,24 +475,17 @@ class MachineImage(pulumi.CustomResource):
         MachineImage can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/machineImages/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MachineImageArgs args: The arguments to use to populate this resource's properties.

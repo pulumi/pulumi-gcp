@@ -172,22 +172,14 @@ import * as utilities from "../utilities";
  * VmwareNodePool can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}`
- *
  * * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}`
- *
  * * `{{location}}/{{vmware_cluster}}/{{name}}`
  *
  * When using the `pulumi import` command, VmwareNodePool can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{project}}/{{location}}/{{vmware_cluster}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{location}}/{{vmware_cluster}}/{{name}}
  * ```
  */
@@ -250,6 +242,9 @@ export class VMwareNodePool extends pulumi.CustomResource {
      * The display name for the node pool.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * This checksum is computed by the server based on the value of other
@@ -409,6 +404,9 @@ export interface VMwareNodePoolState {
      * The display name for the node pool.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This checksum is computed by the server based on the value of other

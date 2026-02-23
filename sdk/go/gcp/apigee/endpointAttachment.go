@@ -25,16 +25,12 @@ import (
 // EndpointAttachment can be imported using any of these accepted formats:
 //
 // * `{{org_id}}/endpointAttachments/{{endpoint_attachment_id}}`
-//
 // * `{{org_id}}/{{endpoint_attachment_id}}`
 //
 // When using the `pulumi import` command, EndpointAttachment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment default {{org_id}}/endpointAttachments/{{endpoint_attachment_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment default {{org_id}}/{{endpoint_attachment_id}}
 // ```
 type EndpointAttachment struct {

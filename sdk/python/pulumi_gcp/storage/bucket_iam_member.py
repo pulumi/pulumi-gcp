@@ -27,6 +27,7 @@ class BucketIAMMemberArgs:
                  condition: Optional[pulumi.Input['BucketIAMMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a BucketIAMMember resource.
+
         :param pulumi.Input[_builtins.str] bucket: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -123,6 +124,7 @@ class _BucketIAMMemberState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketIAMMember resources.
+
         :param pulumi.Input[_builtins.str] bucket: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input['BucketIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
@@ -463,7 +465,6 @@ class BucketIAMMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * b/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -471,26 +472,23 @@ class BucketIAMMember(pulumi.CustomResource):
         Cloud Storage bucket IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
+        $ terraform import google_storage_bucket_iam_member.editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor "b/{{bucket}} roles/storage.objectViewer"
+        $ terraform import google_storage_bucket_iam_binding.editor "b/{{bucket}} roles/storage.objectViewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor b/{{bucket}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -743,7 +741,6 @@ class BucketIAMMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * b/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -751,26 +748,23 @@ class BucketIAMMember(pulumi.CustomResource):
         Cloud Storage bucket IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
+        $ terraform import google_storage_bucket_iam_member.editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor "b/{{bucket}} roles/storage.objectViewer"
+        $ terraform import google_storage_bucket_iam_binding.editor "b/{{bucket}} roles/storage.objectViewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor b/{{bucket}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param BucketIAMMemberArgs args: The arguments to use to populate this resource's properties.

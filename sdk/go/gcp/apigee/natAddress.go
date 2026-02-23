@@ -259,16 +259,12 @@ import (
 // NatAddress can be imported using any of these accepted formats:
 //
 // * `{{instance_id}}/natAddresses/{{name}}`
-//
 // * `{{instance_id}}/{{name}}`
 //
 // When using the `pulumi import` command, NatAddress can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apigee/natAddress:NatAddress default {{instance_id}}/natAddresses/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:apigee/natAddress:NatAddress default {{instance_id}}/{{name}}
 // ```
 type NatAddress struct {

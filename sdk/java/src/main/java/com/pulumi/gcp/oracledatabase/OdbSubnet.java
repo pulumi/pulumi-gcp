@@ -71,22 +71,14 @@ import javax.annotation.Nullable;
  * OdbSubnet can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/odbNetworks/{{odbnetwork}}/odbSubnets/{{odb_subnet_id}}`
- * 
  * * `{{project}}/{{location}}/{{odbnetwork}}/{{odb_subnet_id}}`
- * 
  * * `{{location}}/{{odbnetwork}}/{{odb_subnet_id}}`
  * 
  * When using the `pulumi import` command, OdbSubnet can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default projects/{{project}}/locations/{{location}}/odbNetworks/{{odbnetwork}}/odbSubnets/{{odb_subnet_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default {{project}}/{{location}}/{{odbnetwork}}/{{odb_subnet_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default {{location}}/{{odbnetwork}}/{{odb_subnet_id}}
  * ```
  * 
@@ -121,9 +113,17 @@ public class OdbSubnet extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }

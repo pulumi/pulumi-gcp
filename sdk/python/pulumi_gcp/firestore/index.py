@@ -25,6 +25,7 @@ class IndexArgs:
                  fields: pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]],
                  api_scope: Optional[pulumi.Input[_builtins.str]] = None,
                  database: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  density: Optional[pulumi.Input[_builtins.str]] = None,
                  multikey: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -33,6 +34,7 @@ class IndexArgs:
                  unique: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Index resource.
+
         :param pulumi.Input[_builtins.str] collection: The collection being indexed.
         :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last non-stored field entry is
                always for the field path `__name__`. If, on creation, `__name__` was not
@@ -45,6 +47,10 @@ class IndexArgs:
                Default value is `ANY_API`.
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         :param pulumi.Input[_builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Deletion behavior for this index.
+               If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+               If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+               The default value is `DELETE`.
         :param pulumi.Input[_builtins.str] density: The density configuration for this index.
                Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         :param pulumi.Input[_builtins.bool] multikey: Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
@@ -62,6 +68,8 @@ class IndexArgs:
             pulumi.set(__self__, "api_scope", api_scope)
         if database is not None:
             pulumi.set(__self__, "database", database)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if density is not None:
             pulumi.set(__self__, "density", density)
         if multikey is not None:
@@ -130,6 +138,21 @@ class IndexArgs:
     @database.setter
     def database(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "database", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deletion behavior for this index.
+        If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+        If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+        The default value is `DELETE`.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -214,6 +237,7 @@ class _IndexState:
                  api_scope: Optional[pulumi.Input[_builtins.str]] = None,
                  collection: Optional[pulumi.Input[_builtins.str]] = None,
                  database: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  density: Optional[pulumi.Input[_builtins.str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]] = None,
                  multikey: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -224,11 +248,16 @@ class _IndexState:
                  unique: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Index resources.
+
         :param pulumi.Input[_builtins.str] api_scope: The API scope at which a query is run.
                Default value is `ANY_API`.
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         :param pulumi.Input[_builtins.str] collection: The collection being indexed.
         :param pulumi.Input[_builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Deletion behavior for this index.
+               If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+               If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+               The default value is `DELETE`.
         :param pulumi.Input[_builtins.str] density: The density configuration for this index.
                Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last non-stored field entry is
@@ -255,6 +284,8 @@ class _IndexState:
             pulumi.set(__self__, "collection", collection)
         if database is not None:
             pulumi.set(__self__, "database", database)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if density is not None:
             pulumi.set(__self__, "density", density)
         if fields is not None:
@@ -309,6 +340,21 @@ class _IndexState:
     @database.setter
     def database(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "database", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deletion behavior for this index.
+        If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+        If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+        The default value is `DELETE`.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -427,6 +473,7 @@ class Index(pulumi.CustomResource):
                  api_scope: Optional[pulumi.Input[_builtins.str]] = None,
                  collection: Optional[pulumi.Input[_builtins.str]] = None,
                  database: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  density: Optional[pulumi.Input[_builtins.str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
                  multikey: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -701,7 +748,6 @@ class Index(pulumi.CustomResource):
             ],
             skip_wait=True)
         ```
-
         ## Import
 
         Index can be imported using any of these accepted formats:
@@ -714,6 +760,7 @@ class Index(pulumi.CustomResource):
         $ pulumi import gcp:firestore/index:Index default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_scope: The API scope at which a query is run.
@@ -721,6 +768,10 @@ class Index(pulumi.CustomResource):
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         :param pulumi.Input[_builtins.str] collection: The collection being indexed.
         :param pulumi.Input[_builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Deletion behavior for this index.
+               If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+               If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+               The default value is `DELETE`.
         :param pulumi.Input[_builtins.str] density: The density configuration for this index.
                Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]] fields: The fields supported by this index. The last non-stored field entry is
@@ -1011,7 +1062,6 @@ class Index(pulumi.CustomResource):
             ],
             skip_wait=True)
         ```
-
         ## Import
 
         Index can be imported using any of these accepted formats:
@@ -1023,6 +1073,7 @@ class Index(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:firestore/index:Index default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IndexArgs args: The arguments to use to populate this resource's properties.
@@ -1042,6 +1093,7 @@ class Index(pulumi.CustomResource):
                  api_scope: Optional[pulumi.Input[_builtins.str]] = None,
                  collection: Optional[pulumi.Input[_builtins.str]] = None,
                  database: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  density: Optional[pulumi.Input[_builtins.str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
                  multikey: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1063,6 +1115,7 @@ class Index(pulumi.CustomResource):
                 raise TypeError("Missing required property 'collection'")
             __props__.__dict__["collection"] = collection
             __props__.__dict__["database"] = database
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["density"] = density
             if fields is None and not opts.urn:
                 raise TypeError("Missing required property 'fields'")
@@ -1086,6 +1139,7 @@ class Index(pulumi.CustomResource):
             api_scope: Optional[pulumi.Input[_builtins.str]] = None,
             collection: Optional[pulumi.Input[_builtins.str]] = None,
             database: Optional[pulumi.Input[_builtins.str]] = None,
+            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
             density: Optional[pulumi.Input[_builtins.str]] = None,
             fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
             multikey: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1106,6 +1160,10 @@ class Index(pulumi.CustomResource):
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         :param pulumi.Input[_builtins.str] collection: The collection being indexed.
         :param pulumi.Input[_builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Deletion behavior for this index.
+               If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+               If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+               The default value is `DELETE`.
         :param pulumi.Input[_builtins.str] density: The density configuration for this index.
                Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]] fields: The fields supported by this index. The last non-stored field entry is
@@ -1133,6 +1191,7 @@ class Index(pulumi.CustomResource):
         __props__.__dict__["api_scope"] = api_scope
         __props__.__dict__["collection"] = collection
         __props__.__dict__["database"] = database
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["density"] = density
         __props__.__dict__["fields"] = fields
         __props__.__dict__["multikey"] = multikey
@@ -1168,6 +1227,17 @@ class Index(pulumi.CustomResource):
         The Firestore database id. Defaults to `"(default)"`.
         """
         return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Deletion behavior for this index.
+        If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+        If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+        The default value is `DELETE`.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

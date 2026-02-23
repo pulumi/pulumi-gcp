@@ -12,6 +12,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// Manages a VM instance resource within GCE. For more information see
+// [the official documentation](https://cloud.google.com/compute/docs/instances)
+// and
+// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+//
+// This resource is specifically to create a compute instance from a given
+// `sourceMachineImage`. To create an instance without a machine image, use the
+// `compute.Instance` resource.
+//
 // ## Example Usage
 //
 // ```go
@@ -48,7 +60,8 @@ type InstanceFromMachineImage struct {
 
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures InstanceFromMachineImageAdvancedMachineFeaturesOutput `pulumi:"advancedMachineFeatures"`
-	AllowStoppingForUpdate  pulumi.BoolOutput                                     `pulumi:"allowStoppingForUpdate"`
+	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+	AllowStoppingForUpdate pulumi.BoolOutput `pulumi:"allowStoppingForUpdate"`
 	// List of disks attached to the instance
 	AttachedDisks InstanceFromMachineImageAttachedDiskArrayOutput `pulumi:"attachedDisks"`
 	// The boot disk for the instance.
@@ -70,7 +83,8 @@ type InstanceFromMachineImage struct {
 	// A brief description of the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
-	DesiredStatus   pulumi.StringOutput    `pulumi:"desiredStatus"`
+	DesiredStatus pulumi.StringOutput `pulumi:"desiredStatus"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay pulumi.BoolOutput `pulumi:"enableDisplay"`
@@ -192,7 +206,8 @@ func GetInstanceFromMachineImage(ctx *pulumi.Context,
 type instanceFromMachineImageState struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures *InstanceFromMachineImageAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	AllowStoppingForUpdate  *bool                                            `pulumi:"allowStoppingForUpdate"`
+	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
 	// List of disks attached to the instance
 	AttachedDisks []InstanceFromMachineImageAttachedDisk `pulumi:"attachedDisks"`
 	// The boot disk for the instance.
@@ -214,7 +229,8 @@ type instanceFromMachineImageState struct {
 	// A brief description of the resource.
 	Description *string `pulumi:"description"`
 	// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
-	DesiredStatus   *string           `pulumi:"desiredStatus"`
+	DesiredStatus *string `pulumi:"desiredStatus"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
@@ -299,7 +315,8 @@ type instanceFromMachineImageState struct {
 type InstanceFromMachineImageState struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures InstanceFromMachineImageAdvancedMachineFeaturesPtrInput
-	AllowStoppingForUpdate  pulumi.BoolPtrInput
+	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+	AllowStoppingForUpdate pulumi.BoolPtrInput
 	// List of disks attached to the instance
 	AttachedDisks InstanceFromMachineImageAttachedDiskArrayInput
 	// The boot disk for the instance.
@@ -321,7 +338,8 @@ type InstanceFromMachineImageState struct {
 	// A brief description of the resource.
 	Description pulumi.StringPtrInput
 	// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
-	DesiredStatus   pulumi.StringPtrInput
+	DesiredStatus pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay pulumi.BoolPtrInput
@@ -410,7 +428,8 @@ func (InstanceFromMachineImageState) ElementType() reflect.Type {
 type instanceFromMachineImageArgs struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures *InstanceFromMachineImageAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	AllowStoppingForUpdate  *bool                                            `pulumi:"allowStoppingForUpdate"`
+	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward *bool `pulumi:"canIpForward"`
 	// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
@@ -491,7 +510,8 @@ type instanceFromMachineImageArgs struct {
 type InstanceFromMachineImageArgs struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures InstanceFromMachineImageAdvancedMachineFeaturesPtrInput
-	AllowStoppingForUpdate  pulumi.BoolPtrInput
+	// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+	AllowStoppingForUpdate pulumi.BoolPtrInput
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolPtrInput
 	// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
@@ -662,6 +682,7 @@ func (o InstanceFromMachineImageOutput) AdvancedMachineFeatures() InstanceFromMa
 	}).(InstanceFromMachineImageAdvancedMachineFeaturesOutput)
 }
 
+// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 func (o InstanceFromMachineImageOutput) AllowStoppingForUpdate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.BoolOutput { return v.AllowStoppingForUpdate }).(pulumi.BoolOutput)
 }
@@ -723,6 +744,7 @@ func (o InstanceFromMachineImageOutput) DesiredStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.DesiredStatus }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o InstanceFromMachineImageOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

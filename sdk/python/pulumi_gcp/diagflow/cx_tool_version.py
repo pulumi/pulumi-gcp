@@ -26,6 +26,7 @@ class CxToolVersionArgs:
                  tool: pulumi.Input['CxToolVersionToolArgs']):
         """
         The set of arguments for constructing a CxToolVersion resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the tool version.
         :param pulumi.Input[_builtins.str] parent: The tool to create a Version for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
@@ -86,6 +87,7 @@ class _CxToolVersionState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxToolVersion resources.
+
         :param pulumi.Input[_builtins.str] create_time: Last time the tool version was created or modified.
                Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits.
                Offsets other than "Z" are also accepted.
@@ -613,18 +615,15 @@ class CxToolVersion(pulumi.CustomResource):
         ToolVersion can be imported using any of these accepted formats:
 
         * `{{parent}}/versions/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, ToolVersion can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxToolVersion:CxToolVersion default {{parent}}/versions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxToolVersion:CxToolVersion default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1046,18 +1045,15 @@ class CxToolVersion(pulumi.CustomResource):
         ToolVersion can be imported using any of these accepted formats:
 
         * `{{parent}}/versions/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, ToolVersion can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxToolVersion:CxToolVersion default {{parent}}/versions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxToolVersion:CxToolVersion default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CxToolVersionArgs args: The arguments to use to populate this resource's properties.

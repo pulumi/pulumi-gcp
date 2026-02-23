@@ -104,9 +104,10 @@ import (
 //				DataStoreIds: pulumi.StringArray{
 //					agentspaceBasic.DataStoreId,
 //				},
-//				IndustryVertical:   pulumi.String("GENERIC"),
-//				AppType:            pulumi.String("APP_TYPE_INTRANET"),
-//				SearchEngineConfig: &discoveryengine.SearchEngineSearchEngineConfigArgs{},
+//				IndustryVertical:     pulumi.String("GENERIC"),
+//				AppType:              pulumi.String("APP_TYPE_INTRANET"),
+//				SearchEngineConfig:   &discoveryengine.SearchEngineSearchEngineConfigArgs{},
+//				KnowledgeGraphConfig: &discoveryengine.SearchEngineKnowledgeGraphConfigArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -122,22 +123,14 @@ import (
 // SearchEngine can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
-//
 // * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
-//
 // * `{{location}}/{{collection_id}}/{{engine_id}}`
 //
 // When using the `pulumi import` command, SearchEngine can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default {{location}}/{{collection_id}}/{{engine_id}}
 // ```
 type SearchEngine struct {
@@ -171,6 +164,9 @@ type SearchEngine struct {
 	// If this field is set and processed successfully, the Engine will be
 	// protected by the KMS key, as indicated in the cmekConfig field.
 	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
+	// Configurations for the Knowledge Graph.
+	// Structure is documented below.
+	KnowledgeGraphConfig SearchEngineKnowledgeGraphConfigPtrOutput `pulumi:"knowledgeGraphConfig"`
 	// Location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The unique full resource name of the search engine. Values are of the format
@@ -264,6 +260,9 @@ type searchEngineState struct {
 	// If this field is set and processed successfully, the Engine will be
 	// protected by the KMS key, as indicated in the cmekConfig field.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
+	// Configurations for the Knowledge Graph.
+	// Structure is documented below.
+	KnowledgeGraphConfig *SearchEngineKnowledgeGraphConfig `pulumi:"knowledgeGraphConfig"`
 	// Location.
 	Location *string `pulumi:"location"`
 	// The unique full resource name of the search engine. Values are of the format
@@ -310,6 +309,9 @@ type SearchEngineState struct {
 	// If this field is set and processed successfully, the Engine will be
 	// protected by the KMS key, as indicated in the cmekConfig field.
 	KmsKeyName pulumi.StringPtrInput
+	// Configurations for the Knowledge Graph.
+	// Structure is documented below.
+	KnowledgeGraphConfig SearchEngineKnowledgeGraphConfigPtrInput
 	// Location.
 	Location pulumi.StringPtrInput
 	// The unique full resource name of the search engine. Values are of the format
@@ -358,6 +360,9 @@ type searchEngineArgs struct {
 	// If this field is set and processed successfully, the Engine will be
 	// protected by the KMS key, as indicated in the cmekConfig field.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
+	// Configurations for the Knowledge Graph.
+	// Structure is documented below.
+	KnowledgeGraphConfig *SearchEngineKnowledgeGraphConfig `pulumi:"knowledgeGraphConfig"`
 	// Location.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -396,6 +401,9 @@ type SearchEngineArgs struct {
 	// If this field is set and processed successfully, the Engine will be
 	// protected by the KMS key, as indicated in the cmekConfig field.
 	KmsKeyName pulumi.StringPtrInput
+	// Configurations for the Knowledge Graph.
+	// Structure is documented below.
+	KnowledgeGraphConfig SearchEngineKnowledgeGraphConfigPtrInput
 	// Location.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -549,6 +557,12 @@ func (o SearchEngineOutput) IndustryVertical() pulumi.StringPtrOutput {
 // protected by the KMS key, as indicated in the cmekConfig field.
 func (o SearchEngineOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SearchEngine) pulumi.StringPtrOutput { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+// Configurations for the Knowledge Graph.
+// Structure is documented below.
+func (o SearchEngineOutput) KnowledgeGraphConfig() SearchEngineKnowledgeGraphConfigPtrOutput {
+	return o.ApplyT(func(v *SearchEngine) SearchEngineKnowledgeGraphConfigPtrOutput { return v.KnowledgeGraphConfig }).(SearchEngineKnowledgeGraphConfigPtrOutput)
 }
 
 // Location.

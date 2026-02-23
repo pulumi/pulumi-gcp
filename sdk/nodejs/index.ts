@@ -142,6 +142,7 @@ import * as tags from "./tags";
 import * as tpu from "./tpu";
 import * as transcoder from "./transcoder";
 import * as types from "./types";
+import * as vectorsearch from "./vectorsearch";
 import * as vertex from "./vertex";
 import * as vmwareengine from "./vmwareengine";
 import * as vpcaccess from "./vpcaccess";
@@ -281,6 +282,7 @@ export {
     tpu,
     transcoder,
     types,
+    vectorsearch,
     vertex,
     vmwareengine,
     vpcaccess,

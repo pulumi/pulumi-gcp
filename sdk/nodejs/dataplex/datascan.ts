@@ -299,7 +299,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
- *     name: "tf-test-bucket-name-_39249",
+ *     name: "tf-test-bucket-name-_16511",
  *     location: "us-west1",
  *     uniformBucketLevelAccess: true,
  * });
@@ -325,14 +325,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
- *     name: "tf-test-bucket-name-_74391",
+ *     name: "tf-test-bucket-name-_8493",
  *     location: "us-west1",
  *     uniformBucketLevelAccess: true,
  * });
  * const tfTestConnection = new gcp.bigquery.Connection("tf_test_connection", {
- *     connectionId: "tf-test-connection-_16511",
+ *     connectionId: "tf-test-connection-_9106",
  *     location: "us-central1",
- *     friendlyName: "tf-test-connection-_8493",
+ *     friendlyName: "tf-test-connection-_27169",
  *     description: "a bigquery connection for tf test",
  *     cloudResource: {},
  * });
@@ -393,7 +393,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
- *     name: "tf-test-bucket-name-_9106",
+ *     name: "tf-test-bucket-name-_75223",
  *     location: "us-west1",
  *     uniformBucketLevelAccess: true,
  * });
@@ -421,12 +421,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfDataplexTestDataset = new gcp.bigquery.Dataset("tf_dataplex_test_dataset", {
- *     datasetId: "tf_dataplex_test_dataset_id__27169",
+ *     datasetId: "tf_dataplex_test_dataset_id__41819",
  *     defaultTableExpirationMs: 3600000,
  * });
  * const tfDataplexTestTable = new gcp.bigquery.Table("tf_dataplex_test_table", {
  *     datasetId: tfDataplexTestDataset.datasetId,
- *     tableId: "tf_dataplex_test_table_id__75223",
+ *     tableId: "tf_dataplex_test_table_id__75092",
  *     deletionProtection: false,
  *     schema: `    [
  *     {
@@ -501,12 +501,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfDataplexTestDataset = new gcp.bigquery.Dataset("tf_dataplex_test_dataset", {
- *     datasetId: "tf_dataplex_test_dataset_id__41819",
+ *     datasetId: "tf_dataplex_test_dataset_id__2605",
  *     defaultTableExpirationMs: 3600000,
  * });
  * const tfDataplexTestTable = new gcp.bigquery.Table("tf_dataplex_test_table", {
  *     datasetId: tfDataplexTestDataset.datasetId,
- *     tableId: "tf_dataplex_test_table_id__75092",
+ *     tableId: "tf_dataplex_test_table_id__34535",
  *     deletionProtection: false,
  *     schema: `    [
  *     {
@@ -582,28 +582,16 @@ import * as utilities from "../utilities";
  * Datascan can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
- *
  * * `{{project}}/{{location}}/{{data_scan_id}}`
- *
  * * `{{location}}/{{data_scan_id}}`
- *
  * * `{{data_scan_id}}`
  *
  * When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataplex/datascan:Datascan default projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/datascan:Datascan default {{project}}/{{location}}/{{data_scan_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/datascan:Datascan default {{location}}/{{data_scan_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:dataplex/datascan:Datascan default {{data_scan_id}}
  * ```
  */

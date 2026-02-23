@@ -34,6 +34,7 @@ class CxIntentArgs:
                  training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]] = None):
         """
         The set of arguments for constructing a CxIntent resource.
+
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the intent, unique within the agent.
         :param pulumi.Input[_builtins.str] description: Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         :param pulumi.Input[_builtins.bool] is_default_negative_intent: Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
@@ -260,6 +261,7 @@ class _CxIntentState:
                  training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]] = None):
         """
         Input properties used for looking up and filtering CxIntent resources.
+
         :param pulumi.Input[_builtins.str] description: Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the intent, unique within the agent.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -603,18 +605,15 @@ class CxIntent(pulumi.CustomResource):
         Intent can be imported using any of these accepted formats:
 
         * `{{parent}}/intents/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/intents/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -724,18 +723,15 @@ class CxIntent(pulumi.CustomResource):
         Intent can be imported using any of these accepted formats:
 
         * `{{parent}}/intents/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/intents/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CxIntentArgs args: The arguments to use to populate this resource's properties.

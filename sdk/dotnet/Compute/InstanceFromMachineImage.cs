@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// Manages a VM instance resource within GCE. For more information see
+    /// [the official documentation](https://cloud.google.com/compute/docs/instances)
+    /// and
+    /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+    /// 
+    /// This resource is specifically to create a compute instance from a given
+    /// `SourceMachineImage`. To create an instance without a machine image, use the
+    /// `gcp.compute.Instance` resource.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -44,6 +56,9 @@ namespace Pulumi.Gcp.Compute
         [Output("advancedMachineFeatures")]
         public Output<Outputs.InstanceFromMachineImageAdvancedMachineFeatures> AdvancedMachineFeatures { get; private set; } = null!;
 
+        /// <summary>
+        /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        /// </summary>
         [Output("allowStoppingForUpdate")]
         public Output<bool> AllowStoppingForUpdate { get; private set; } = null!;
 
@@ -109,6 +124,9 @@ namespace Pulumi.Gcp.Compute
         [Output("desiredStatus")]
         public Output<string> DesiredStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
@@ -375,6 +393,9 @@ namespace Pulumi.Gcp.Compute
         [Input("advancedMachineFeatures")]
         public Input<Inputs.InstanceFromMachineImageAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
 
+        /// <summary>
+        /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        /// </summary>
         [Input("allowStoppingForUpdate")]
         public Input<bool>? AllowStoppingForUpdate { get; set; }
 
@@ -622,6 +643,9 @@ namespace Pulumi.Gcp.Compute
         [Input("advancedMachineFeatures")]
         public Input<Inputs.InstanceFromMachineImageAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
 
+        /// <summary>
+        /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        /// </summary>
         [Input("allowStoppingForUpdate")]
         public Input<bool>? AllowStoppingForUpdate { get; set; }
 
@@ -701,6 +725,10 @@ namespace Pulumi.Gcp.Compute
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveLabels
         {
             get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());

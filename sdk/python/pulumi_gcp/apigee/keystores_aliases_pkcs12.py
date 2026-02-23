@@ -30,6 +30,7 @@ class KeystoresAliasesPkcs12Args:
                  password: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeystoresAliasesPkcs12 resource.
+
         :param pulumi.Input[_builtins.str] alias: Alias Name
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
         :param pulumi.Input[_builtins.str] file: PKCS12 file content
@@ -150,6 +151,7 @@ class _KeystoresAliasesPkcs12State:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeystoresAliasesPkcs12 resources.
+
         :param pulumi.Input[_builtins.str] alias: Alias Name
         :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
@@ -322,18 +324,15 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         KeystoresAliasesPkcs12 can be imported using any of these accepted formats:
 
         * `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}`
-
         * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}`
 
         When using the `pulumi import` command, KeystoresAliasesPkcs12 can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -367,18 +366,15 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         KeystoresAliasesPkcs12 can be imported using any of these accepted formats:
 
         * `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}`
-
         * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}`
 
         When using the `pulumi import` command, KeystoresAliasesPkcs12 can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeystoresAliasesPkcs12Args args: The arguments to use to populate this resource's properties.

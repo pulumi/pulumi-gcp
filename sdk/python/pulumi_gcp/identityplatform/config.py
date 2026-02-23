@@ -34,6 +34,7 @@ class ConfigArgs:
                  sms_region_config: Optional[pulumi.Input['ConfigSmsRegionConfigArgs']] = None):
         """
         The set of arguments for constructing a Config resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[_builtins.bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
         :param pulumi.Input['ConfigBlockingFunctionsArgs'] blocking_functions: Configuration related to blocking functions.
@@ -237,6 +238,7 @@ class _ConfigState:
                  sms_region_config: Optional[pulumi.Input['ConfigSmsRegionConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Config resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[_builtins.bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
         :param pulumi.Input['ConfigBlockingFunctionsArgs'] blocking_functions: Configuration related to blocking functions.
@@ -548,24 +550,17 @@ class Config(pulumi.CustomResource):
         Config can be imported using any of these accepted formats:
 
         * `projects/{{project}}/config`
-
         * `projects/{{project}}`
-
         * `{{project}}`
 
         When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}/config
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/config:Config default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -688,24 +683,17 @@ class Config(pulumi.CustomResource):
         Config can be imported using any of these accepted formats:
 
         * `projects/{{project}}/config`
-
         * `projects/{{project}}`
-
         * `{{project}}`
 
         When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}/config
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/config:Config default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConfigArgs args: The arguments to use to populate this resource's properties.

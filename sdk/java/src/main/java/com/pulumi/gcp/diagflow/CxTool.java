@@ -432,16 +432,12 @@ import javax.annotation.Nullable;
  * Tool can be imported using any of these accepted formats:
  * 
  * * `{{parent}}/tools/{{name}}`
- * 
  * * `{{parent}}/{{name}}`
  * 
  * When using the `pulumi import` command, Tool can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:diagflow/cxTool:CxTool default {{parent}}/tools/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:diagflow/cxTool:CxTool default {{parent}}/{{name}}
  * ```
  * 

@@ -204,22 +204,14 @@ import * as utilities from "../utilities";
  * BareMetalNodePool can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}`
- *
  * * `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}`
- *
  * * `{{location}}/{{bare_metal_cluster}}/{{name}}`
  *
  * When using the `pulumi import` command, BareMetalNodePool can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default {{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default {{location}}/{{bare_metal_cluster}}/{{name}}
  * ```
  */
@@ -281,6 +273,9 @@ export class BareMetalNodePool extends pulumi.CustomResource {
      * The display name for the Bare Metal Node Pool.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * This checksum is computed by the server based on the value of other
@@ -427,6 +422,9 @@ export interface BareMetalNodePoolState {
      * The display name for the Bare Metal Node Pool.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This checksum is computed by the server based on the value of other

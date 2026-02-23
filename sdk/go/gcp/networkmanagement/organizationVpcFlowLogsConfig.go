@@ -49,16 +49,12 @@ import (
 // OrganizationVpcFlowLogsConfig can be imported using any of these accepted formats:
 //
 // * `organizations/{{organization}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}`
-//
 // * `{{organization}}/{{location}}/{{vpc_flow_logs_config_id}}`
 //
 // When using the `pulumi import` command, OrganizationVpcFlowLogsConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig default organizations/{{organization}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig default {{organization}}/{{location}}/{{vpc_flow_logs_config_id}}
 // ```
 type OrganizationVpcFlowLogsConfig struct {

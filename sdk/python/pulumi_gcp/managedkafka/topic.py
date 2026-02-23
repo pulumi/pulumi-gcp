@@ -28,6 +28,7 @@ class TopicArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Topic resource.
+
         :param pulumi.Input[_builtins.str] cluster: The cluster name.
         :param pulumi.Input[_builtins.str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[_builtins.int] replication_factor: The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
@@ -147,6 +148,7 @@ class _TopicState:
                  topic_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
+
         :param pulumi.Input[_builtins.str] cluster: The cluster name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configs: Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
         :param pulumi.Input[_builtins.str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
@@ -328,24 +330,17 @@ class Topic(pulumi.CustomResource):
         Topic can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/topics/{{topic_id}}`
-
         * `{{project}}/{{location}}/{{cluster}}/{{topic_id}}`
-
         * `{{location}}/{{cluster}}/{{topic_id}}`
 
         When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:managedkafka/topic:Topic default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/topics/{{topic_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/topic:Topic default {{project}}/{{location}}/{{cluster}}/{{topic_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/topic:Topic default {{location}}/{{cluster}}/{{topic_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -406,24 +401,17 @@ class Topic(pulumi.CustomResource):
         Topic can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/topics/{{topic_id}}`
-
         * `{{project}}/{{location}}/{{cluster}}/{{topic_id}}`
-
         * `{{location}}/{{cluster}}/{{topic_id}}`
 
         When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:managedkafka/topic:Topic default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/topics/{{topic_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/topic:Topic default {{project}}/{{location}}/{{cluster}}/{{topic_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/topic:Topic default {{location}}/{{cluster}}/{{topic_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TopicArgs args: The arguments to use to populate this resource's properties.

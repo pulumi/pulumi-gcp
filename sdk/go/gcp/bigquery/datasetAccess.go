@@ -12,6 +12,25 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gives dataset access for a single entity. This resource is intended to be used in cases where
+// it is not possible to compile a full list of access blocks to include in a
+// `bigquery.Dataset` resource, to enable them to be added separately.
+//
+// > **Note:** If this resource is used alongside a `bigquery.Dataset` resource, the
+// dataset resource must either have no defined `access` blocks or a `lifecycle` block with
+// `ignoreChanges = [access]` so they don't fight over which accesses should be on the dataset.
+// Additionally, both resource cannot be modified in the same apply.
+//
+// To get more information about DatasetAccess, see:
+//
+// * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
+// * How-to Guides
+//   - [Controlling access to datasets](https://cloud.google.com/bigquery/docs/dataset-access-controls)
+//
+// > **Warning:** You must specify the role field using the legacy format `OWNER` instead of `roles/bigquery.dataOwner`.
+// The API does accept both formats but it will always return the legacy format which results in Terraform
+// showing permanent diff on each plan and apply operation.
+//
 // ## Example Usage
 //
 // ### Bigquery Dataset Access Basic User

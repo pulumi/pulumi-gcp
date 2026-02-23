@@ -30,6 +30,7 @@ class PreventionStoredInfoTypeArgs:
                  stored_info_type_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PreventionStoredInfoType resource.
+
         :param pulumi.Input[_builtins.str] parent: The parent of the info type in any of the following formats:
                * `projects/{{project}}`
                * `projects/{{project}}/locations/{{location}}`
@@ -168,6 +169,7 @@ class _PreventionStoredInfoTypeState:
                  stored_info_type_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PreventionStoredInfoType resources.
+
         :param pulumi.Input[_builtins.str] description: A description of the info type.
         :param pulumi.Input['PreventionStoredInfoTypeDictionaryArgs'] dictionary: Dictionary which defines the rule.
                Structure is documented below.
@@ -421,18 +423,15 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         StoredInfoType can be imported using any of these accepted formats:
 
         * `{{parent}}/storedInfoTypes/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, StoredInfoType can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -557,18 +556,15 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         StoredInfoType can be imported using any of these accepted formats:
 
         * `{{parent}}/storedInfoTypes/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, StoredInfoType can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PreventionStoredInfoTypeArgs args: The arguments to use to populate this resource's properties.

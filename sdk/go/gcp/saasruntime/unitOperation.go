@@ -255,22 +255,14 @@ import (
 // UnitOperation can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/unitOperations/{{unit_operation_id}}`
-//
 // * `{{project}}/{{location}}/{{unit_operation_id}}`
-//
 // * `{{location}}/{{unit_operation_id}}`
 //
 // When using the `pulumi import` command, UnitOperation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default projects/{{project}}/locations/{{location}}/unitOperations/{{unit_operation_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{project}}/{{location}}/{{unit_operation_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{location}}/{{unit_operation_id}}
 // ```
 type UnitOperation struct {
@@ -292,8 +284,9 @@ type UnitOperation struct {
 	// Deprovision is the unit operation that deprovision the underlying
 	// resources represented by a Unit. Can only execute if the Unit is currently
 	// provisioned.
-	Deprovision          UnitOperationDeprovisionPtrOutput `pulumi:"deprovision"`
-	EffectiveAnnotations pulumi.StringMapOutput            `pulumi:"effectiveAnnotations"`
+	Deprovision UnitOperationDeprovisionPtrOutput `pulumi:"deprovision"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The engine state for on-going
@@ -427,8 +420,9 @@ type unitOperationState struct {
 	// Deprovision is the unit operation that deprovision the underlying
 	// resources represented by a Unit. Can only execute if the Unit is currently
 	// provisioned.
-	Deprovision          *UnitOperationDeprovision `pulumi:"deprovision"`
-	EffectiveAnnotations map[string]string         `pulumi:"effectiveAnnotations"`
+	Deprovision *UnitOperationDeprovision `pulumi:"deprovision"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The engine state for on-going
@@ -519,7 +513,8 @@ type UnitOperationState struct {
 	// Deprovision is the unit operation that deprovision the underlying
 	// resources represented by a Unit. Can only execute if the Unit is currently
 	// provisioned.
-	Deprovision          UnitOperationDeprovisionPtrInput
+	Deprovision UnitOperationDeprovisionPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -797,6 +792,7 @@ func (o UnitOperationOutput) Deprovision() UnitOperationDeprovisionPtrOutput {
 	return o.ApplyT(func(v *UnitOperation) UnitOperationDeprovisionPtrOutput { return v.Deprovision }).(UnitOperationDeprovisionPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o UnitOperationOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *UnitOperation) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

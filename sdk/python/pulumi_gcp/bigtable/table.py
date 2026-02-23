@@ -32,6 +32,7 @@ class TableArgs:
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Table resource.
+
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input['TableAutomatedBackupPolicyArgs'] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automated_backup_policy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automated_backup_policy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
                
@@ -203,6 +204,7 @@ class _TableState:
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Table resources.
+
         :param pulumi.Input['TableAutomatedBackupPolicyArgs'] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automated_backup_policy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automated_backup_policy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
                
                -----
@@ -438,29 +440,22 @@ class Table(pulumi.CustomResource):
 
         ## Import
 
-        -> **Fields affected by import** The following fields can't be read and will show diffs if set in config when imported: `split_keys`
+        > **Fields affected by import** The following fields can't be read and will show diffs if set in config when imported: `split_keys`
 
         Bigtable Tables can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance_name}}/tables/{{name}}`
-
         * `{{project}}/{{instance_name}}/{{name}}`
-
         * `{{instance_name}}/{{name}}`
 
         When using the `pulumi import` command, Bigtable Tables can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -551,29 +546,22 @@ class Table(pulumi.CustomResource):
 
         ## Import
 
-        -> **Fields affected by import** The following fields can't be read and will show diffs if set in config when imported: `split_keys`
+        > **Fields affected by import** The following fields can't be read and will show diffs if set in config when imported: `split_keys`
 
         Bigtable Tables can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance_name}}/tables/{{name}}`
-
         * `{{project}}/{{instance_name}}/{{name}}`
-
         * `{{instance_name}}/{{name}}`
 
         When using the `pulumi import` command, Bigtable Tables can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TableArgs args: The arguments to use to populate this resource's properties.

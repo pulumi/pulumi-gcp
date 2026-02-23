@@ -17,16 +17,563 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Three different resources help you manage your IAM policy for Compute Engine RegionBackendService. Each of these resources serves a different use case:
+ * 
+ * * `gcp.compute.RegionBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the regionbackendservice and replaces any existing policy already attached.
+ * * `gcp.compute.RegionBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regionbackendservice are preserved.
+ * * `gcp.compute.RegionBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regionbackendservice are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.compute.RegionBackendServiceIamPolicy`: Retrieves the IAM policy for the regionbackendservice
+ * 
+ * &gt; **Note:** `gcp.compute.RegionBackendServiceIamPolicy` **cannot** be used in conjunction with `gcp.compute.RegionBackendServiceIamBinding` and `gcp.compute.RegionBackendServiceIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.compute.RegionBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * ## gcp.compute.RegionBackendServiceIamPolicy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamPolicy;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/compute.admin")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new RegionBackendServiceIamPolicy("policy", RegionBackendServiceIamPolicyArgs.builder()
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .name(default_.name())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamPolicy;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/compute.admin")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new RegionBackendServiceIamPolicy("policy", RegionBackendServiceIamPolicyArgs.builder()
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .name(default_.name())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ## gcp.compute.RegionBackendServiceIamBinding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamBinding;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new RegionBackendServiceIamBinding("binding", RegionBackendServiceIamBindingArgs.builder()
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .name(default_.name())
+ *             .role("roles/compute.admin")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamBinding;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamBindingArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceIamBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new RegionBackendServiceIamBinding("binding", RegionBackendServiceIamBindingArgs.builder()
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .name(default_.name())
+ *             .role("roles/compute.admin")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .condition(RegionBackendServiceIamBindingConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ## gcp.compute.RegionBackendServiceIamMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamMember;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new RegionBackendServiceIamMember("member", RegionBackendServiceIamMemberArgs.builder()
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .name(default_.name())
+ *             .role("roles/compute.admin")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamMember;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamMemberArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceIamMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new RegionBackendServiceIamMember("member", RegionBackendServiceIamMemberArgs.builder()
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .name(default_.name())
+ *             .role("roles/compute.admin")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .condition(RegionBackendServiceIamMemberConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for Compute Engine RegionBackendService
+ * 
+ * Three different resources help you manage your IAM policy for Compute Engine RegionBackendService. Each of these resources serves a different use case:
+ * 
+ * * `gcp.compute.RegionBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the regionbackendservice and replaces any existing policy already attached.
+ * * `gcp.compute.RegionBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regionbackendservice are preserved.
+ * * `gcp.compute.RegionBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regionbackendservice are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.compute.RegionBackendServiceIamPolicy`: Retrieves the IAM policy for the regionbackendservice
+ * 
+ * &gt; **Note:** `gcp.compute.RegionBackendServiceIamPolicy` **cannot** be used in conjunction with `gcp.compute.RegionBackendServiceIamBinding` and `gcp.compute.RegionBackendServiceIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.compute.RegionBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * ## gcp.compute.RegionBackendServiceIamPolicy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamPolicy;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/compute.admin")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new RegionBackendServiceIamPolicy("policy", RegionBackendServiceIamPolicyArgs.builder()
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .name(default_.name())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamPolicy;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/compute.admin")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new RegionBackendServiceIamPolicy("policy", RegionBackendServiceIamPolicyArgs.builder()
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .name(default_.name())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ## gcp.compute.RegionBackendServiceIamBinding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamBinding;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new RegionBackendServiceIamBinding("binding", RegionBackendServiceIamBindingArgs.builder()
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .name(default_.name())
+ *             .role("roles/compute.admin")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamBinding;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamBindingArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceIamBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new RegionBackendServiceIamBinding("binding", RegionBackendServiceIamBindingArgs.builder()
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .name(default_.name())
+ *             .role("roles/compute.admin")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .condition(RegionBackendServiceIamBindingConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ## gcp.compute.RegionBackendServiceIamMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamMember;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new RegionBackendServiceIamMember("member", RegionBackendServiceIamMemberArgs.builder()
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .name(default_.name())
+ *             .role("roles/compute.admin")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamMember;
+ * import com.pulumi.gcp.compute.RegionBackendServiceIamMemberArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceIamMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new RegionBackendServiceIamMember("member", RegionBackendServiceIamMemberArgs.builder()
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .name(default_.name())
+ *             .role("roles/compute.admin")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .condition(RegionBackendServiceIamMemberConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
  * * projects/{{project}}/regions/{{region}}/backendServices/{{name}}
- * 
  * * {{project}}/{{region}}/{{name}}
- * 
  * * {{region}}/{{name}}
- * 
  * * {{name}}
  * 
  * Any variables not passed in the import command will be taken from the provider configuration.
@@ -34,25 +581,21 @@ import javax.annotation.Nullable;
  * Compute Engine regionbackendservice IAM resources can be imported using the resource identifiers, role, and member.
  * 
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
- * 
  * ```sh
- * $ pulumi import gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding editor &#34;projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin user:jane{@literal @}example.com&#34;
+ * $ terraform import google_compute_region_backend_service_iam_member.editor &#34;projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
- * 
  * ```sh
- * $ pulumi import gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding editor &#34;projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin&#34;
+ * $ terraform import google_compute_region_backend_service_iam_binding.editor &#34;projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}} roles/compute.admin&#34;
  * ```
  * 
  * IAM policy imports use the identifier of the resource in question, e.g.
- * 
  * ```sh
  * $ pulumi import gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding editor projects/{{project}}/regions/{{region}}/backendServices/{{region_backend_service}}
  * ```
  * 
- * -&gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
- * 
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */

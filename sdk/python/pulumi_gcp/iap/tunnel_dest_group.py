@@ -26,6 +26,7 @@ class TunnelDestGroupArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TunnelDestGroup resource.
+
         :param pulumi.Input[_builtins.str] group_name: Unique tunnel destination group name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cidrs: List of CIDRs that this group applies to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fqdns: List of FQDNs that this group applies to.
@@ -116,6 +117,7 @@ class _TunnelDestGroupState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TunnelDestGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cidrs: List of CIDRs that this group applies to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[_builtins.str] group_name: Unique tunnel destination group name.
@@ -242,7 +244,7 @@ class TunnelDestGroup(pulumi.CustomResource):
 
         dest_group = gcp.iap.TunnelDestGroup("dest_group",
             region="us-central1",
-            group_name="testgroup_6529",
+            group_name="testgroup_12618",
             cidrs=[
                 "10.1.0.0/16",
                 "192.168.10.0/24",
@@ -254,42 +256,23 @@ class TunnelDestGroup(pulumi.CustomResource):
         TunnelDestGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}`
-
         * `{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}`
-
         * `{{project}}/{{region}}/{{group_name}}`
-
         * `{{region}}/destGroups/{{group_name}}`
-
         * `{{region}}/{{group_name}}`
-
         * `{{group_name}}`
 
         When using the `pulumi import` command, TunnelDestGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default projects/{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{project}}/{{region}}/{{group_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{region}}/destGroups/{{group_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{region}}/{{group_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{group_name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -325,7 +308,7 @@ class TunnelDestGroup(pulumi.CustomResource):
 
         dest_group = gcp.iap.TunnelDestGroup("dest_group",
             region="us-central1",
-            group_name="testgroup_6529",
+            group_name="testgroup_12618",
             cidrs=[
                 "10.1.0.0/16",
                 "192.168.10.0/24",
@@ -337,42 +320,23 @@ class TunnelDestGroup(pulumi.CustomResource):
         TunnelDestGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}`
-
         * `{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}`
-
         * `{{project}}/{{region}}/{{group_name}}`
-
         * `{{region}}/destGroups/{{group_name}}`
-
         * `{{region}}/{{group_name}}`
-
         * `{{group_name}}`
 
         When using the `pulumi import` command, TunnelDestGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default projects/{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{project}}/iap_tunnel/locations/{{region}}/destGroups/{{group_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{project}}/{{region}}/{{group_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{region}}/destGroups/{{group_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{region}}/{{group_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{group_name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TunnelDestGroupArgs args: The arguments to use to populate this resource's properties.

@@ -12,6 +12,13 @@ namespace Pulumi.Gcp.Spanner.Inputs
 
     public sealed class DatabaseIAMBindingConditionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// 
+        /// &gt; **Warning:** Terraform considers the `Role` and condition contents (`Title`+`Description`+`Expression`) as the
+        /// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        /// consider it to be an entirely different resource and will treat it as such.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 

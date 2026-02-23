@@ -89,22 +89,14 @@ import javax.annotation.Nullable;
  * DebugToken can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/apps/{{app_id}}/debugTokens/{{debug_token_id}}`
- * 
  * * `{{project}}/{{app_id}}/{{debug_token_id}}`
- * 
  * * `{{app_id}}/{{debug_token_id}}`
  * 
  * When using the `pulumi import` command, DebugToken can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default projects/{{project}}/apps/{{app_id}}/debugTokens/{{debug_token_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default {{project}}/{{app_id}}/{{debug_token_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default {{app_id}}/{{debug_token_id}}
  * ```
  * 

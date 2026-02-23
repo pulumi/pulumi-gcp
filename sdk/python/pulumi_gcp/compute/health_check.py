@@ -39,6 +39,7 @@ class HealthCheckArgs:
                  unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HealthCheck resource.
+
         :param pulumi.Input[_builtins.int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
                seconds.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
@@ -370,6 +371,7 @@ class _HealthCheckState:
                  unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HealthCheck resources.
+
         :param pulumi.Input[_builtins.int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
                seconds.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -1091,24 +1093,17 @@ class HealthCheck(pulumi.CustomResource):
         HealthCheck can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/healthChecks/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, HealthCheck can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/healthCheck:HealthCheck default projects/{{project}}/global/healthChecks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/healthCheck:HealthCheck default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/healthCheck:HealthCheck default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1513,24 +1508,17 @@ class HealthCheck(pulumi.CustomResource):
         HealthCheck can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/healthChecks/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, HealthCheck can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/healthCheck:HealthCheck default projects/{{project}}/global/healthChecks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/healthCheck:HealthCheck default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/healthCheck:HealthCheck default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HealthCheckArgs args: The arguments to use to populate this resource's properties.

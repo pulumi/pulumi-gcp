@@ -36,22 +36,14 @@ import * as utilities from "../utilities";
  * HostGroup can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/hostGroups/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, HostGroup can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:netapp/hostGroup:HostGroup default projects/{{project}}/locations/{{location}}/hostGroups/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/hostGroup:HostGroup default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:netapp/hostGroup:HostGroup default {{location}}/{{name}}
  * ```
  */

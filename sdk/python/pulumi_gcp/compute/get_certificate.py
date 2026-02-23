@@ -26,7 +26,7 @@ class GetCertificateResult:
     """
     A collection of values returned by getCertificate.
     """
-    def __init__(__self__, certificate=None, certificate_id=None, creation_timestamp=None, description=None, expire_time=None, id=None, name=None, name_prefix=None, private_key=None, project=None, self_link=None):
+    def __init__(__self__, certificate=None, certificate_id=None, creation_timestamp=None, description=None, expire_time=None, id=None, name=None, name_prefix=None, private_key=None, private_key_wo=None, private_key_wo_version=None, project=None, self_link=None):
         if certificate and not isinstance(certificate, str):
             raise TypeError("Expected argument 'certificate' to be a str")
         pulumi.set(__self__, "certificate", certificate)
@@ -54,6 +54,12 @@ class GetCertificateResult:
         if private_key and not isinstance(private_key, str):
             raise TypeError("Expected argument 'private_key' to be a str")
         pulumi.set(__self__, "private_key", private_key)
+        if private_key_wo and not isinstance(private_key_wo, str):
+            raise TypeError("Expected argument 'private_key_wo' to be a str")
+        pulumi.set(__self__, "private_key_wo", private_key_wo)
+        if private_key_wo_version and not isinstance(private_key_wo_version, str):
+            raise TypeError("Expected argument 'private_key_wo_version' to be a str")
+        pulumi.set(__self__, "private_key_wo_version", private_key_wo_version)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -110,6 +116,16 @@ class GetCertificateResult:
         return pulumi.get(self, "private_key")
 
     @_builtins.property
+    @pulumi.getter(name="privateKeyWo")
+    def private_key_wo(self) -> _builtins.str:
+        return pulumi.get(self, "private_key_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyWoVersion")
+    def private_key_wo_version(self) -> _builtins.str:
+        return pulumi.get(self, "private_key_wo_version")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
@@ -135,6 +151,8 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             name=self.name,
             name_prefix=self.name_prefix,
             private_key=self.private_key,
+            private_key_wo=self.private_key_wo,
+            private_key_wo_version=self.private_key_wo_version,
             project=self.project,
             self_link=self.self_link)
 
@@ -180,6 +198,8 @@ def get_certificate(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         name_prefix=pulumi.get(__ret__, 'name_prefix'),
         private_key=pulumi.get(__ret__, 'private_key'),
+        private_key_wo=pulumi.get(__ret__, 'private_key_wo'),
+        private_key_wo_version=pulumi.get(__ret__, 'private_key_wo_version'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'))
 def get_certificate_output(name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -222,5 +242,7 @@ def get_certificate_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         name=pulumi.get(__response__, 'name'),
         name_prefix=pulumi.get(__response__, 'name_prefix'),
         private_key=pulumi.get(__response__, 'private_key'),
+        private_key_wo=pulumi.get(__response__, 'private_key_wo'),
+        private_key_wo_version=pulumi.get(__response__, 'private_key_wo_version'),
         project=pulumi.get(__response__, 'project'),
         self_link=pulumi.get(__response__, 'self_link')))

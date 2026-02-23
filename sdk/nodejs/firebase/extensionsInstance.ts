@@ -7,6 +7,15 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * An Instance is an installation of an Extension into a user's project.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about Instance, see:
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/products/extensions)
+ *
  * ## Example Usage
  *
  * ### Firebase Extensions Instance Resize Image
@@ -58,22 +67,14 @@ import * as utilities from "../utilities";
  * Instance can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/instances/{{instance_id}}`
- *
  * * `{{project}}/{{instance_id}}`
- *
  * * `{{instance_id}}`
  *
  * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default projects/{{project}}/instances/{{instance_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default {{project}}/{{instance_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default {{instance_id}}
  * ```
  */

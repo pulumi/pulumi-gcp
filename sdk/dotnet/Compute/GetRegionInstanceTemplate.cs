@@ -285,6 +285,10 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string MinCpuPlatform;
         public readonly bool? MostRecent;
+        /// <summary>
+        /// The name of the instance template. If you leave
+        /// this blank, Terraform will auto-generate a unique name.
+        /// </summary>
         public readonly string? Name;
         /// <summary>
         /// Creates a unique name beginning with the specified

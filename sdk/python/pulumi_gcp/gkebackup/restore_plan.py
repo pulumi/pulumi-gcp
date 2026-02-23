@@ -31,6 +31,7 @@ class RestorePlanArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RestorePlan resource.
+
         :param pulumi.Input[_builtins.str] backup_plan: A reference to the BackupPlan from which Backups may be used
                as the source for Restores created via this RestorePlan.
         :param pulumi.Input[_builtins.str] cluster: The source cluster from which Restores will be created via this RestorePlan.
@@ -184,6 +185,7 @@ class _RestorePlanState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RestorePlan resources.
+
         :param pulumi.Input[_builtins.str] backup_plan: A reference to the BackupPlan from which Backups may be used
                as the source for Restores created via this RestorePlan.
         :param pulumi.Input[_builtins.str] cluster: The source cluster from which Restores will be created via this RestorePlan.
@@ -931,24 +933,17 @@ class RestorePlan(pulumi.CustomResource):
         RestorePlan can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1491,24 +1486,17 @@ class RestorePlan(pulumi.CustomResource):
         RestorePlan can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RestorePlanArgs args: The arguments to use to populate this resource's properties.

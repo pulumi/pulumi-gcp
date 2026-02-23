@@ -16,8 +16,59 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The PromptTemplate resource for Firebase AI Logic.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about PromptTemplate, see:
+ * 
+ * * [API documentation](https://firebase.google.com/docs/reference/ai-logic/rest/v1beta/projects.locations.templates)
+ * * How-to Guides
+ *     * [Get started with server prompt templates](https://firebase.google.com/docs/ai-logic/server-prompt-templates/get-started)
+ *     * [Product documentation for Firebase AI Logic](https://firebase.google.com/docs/ai-logic)
+ *     * [Specification for Dotprompt format](https://google.github.io/dotprompt/getting-started)
+ * 
  * ## Example Usage
  * 
+ * ### Firebaseailogic Prompt Template File
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firebase.AiLogicPromptTemplate;
+ * import com.pulumi.gcp.firebase.AiLogicPromptTemplateArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var file = new AiLogicPromptTemplate("file", AiLogicPromptTemplateArgs.builder()
+ *             .location("global")
+ *             .templateId("file-template")
+ *             .templateString(StdFunctions.file(FileArgs.builder()
+ *                 .input("test-fixtures/hello_world.prompt")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Firebaseailogic Prompt Template Basic
  * 
  * <pre>
@@ -63,22 +114,14 @@ import javax.annotation.Nullable;
  * PromptTemplate can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
- * 
  * * `{{project}}/{{location}}/{{template_id}}`
- * 
  * * `{{location}}/{{template_id}}`
  * 
  * When using the `pulumi import` command, PromptTemplate can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{project}}/{{location}}/{{template_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{location}}/{{template_id}}
  * ```
  * 
@@ -228,14 +271,14 @@ public class AiLogicPromptTemplate extends com.pulumi.resources.CustomResource {
         return this.templateId;
     }
     /**
-     * The DotPrompt raw template string.
+     * The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
      * 
      */
     @Export(name="templateString", refs={String.class}, tree="[0]")
     private Output<String> templateString;
 
     /**
-     * @return The DotPrompt raw template string.
+     * @return The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
      * 
      */
     public Output<String> templateString() {

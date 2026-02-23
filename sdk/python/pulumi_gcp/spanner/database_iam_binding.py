@@ -29,6 +29,7 @@ class DatabaseIAMBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseIAMBinding resource.
+
         :param pulumi.Input[_builtins.str] database: The name of the Spanner database.
         :param pulumi.Input[_builtins.str] instance: The name of the Spanner instance the database belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
@@ -152,6 +153,7 @@ class _DatabaseIAMBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseIAMBinding resources.
+
         :param pulumi.Input['DatabaseIAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] database: The name of the Spanner database.
@@ -408,6 +410,62 @@ class DatabaseIAMBinding(pulumi.CustomResource):
             })
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Spanner Databases
+
+        Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
+
+        * `spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
+
+        > **Warning:** It's entirely possibly to lock yourself out of your database using `spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+
+        * `spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
+        * `spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
+
+        > **Note:** `spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `spanner.DatabaseIAMBinding` and `spanner.DatabaseIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## spanner.DatabaseIAMPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "My Role",
+                "description": "Grant permissions on my_role",
+                "expression": "(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            },
+        }])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+
         ## spanner.DatabaseIAMBinding
 
         ```python
@@ -472,29 +530,14 @@ class DatabaseIAMBinding(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+        For all import syntaxes, the "resource in question" can take any of the following forms:
 
-        * `{{project}}/{{instance}}/{{database}}`
+        * {{project}}/{{instance}}/{{database}}
+        * {{instance}}/{{database}} (project is taken from provider project)
 
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = {{project}}/{{instance}}/{{database}}
-
-          to = google_spanner_database_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:spanner/databaseIAMBinding:DatabaseIAMBinding default {{project}}/{{instance}}/{{database}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -635,6 +678,62 @@ class DatabaseIAMBinding(pulumi.CustomResource):
             })
         ```
 
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Spanner Databases
+
+        Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
+
+        * `spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
+
+        > **Warning:** It's entirely possibly to lock yourself out of your database using `spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+
+        * `spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
+        * `spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
+
+        > **Note:** `spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `spanner.DatabaseIAMBinding` and `spanner.DatabaseIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## spanner.DatabaseIAMPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "My Role",
+                "description": "Grant permissions on my_role",
+                "expression": "(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            },
+        }])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+
         ## spanner.DatabaseIAMBinding
 
         ```python
@@ -699,29 +798,14 @@ class DatabaseIAMBinding(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+        For all import syntaxes, the "resource in question" can take any of the following forms:
 
-        * `{{project}}/{{instance}}/{{database}}`
+        * {{project}}/{{instance}}/{{database}}
+        * {{instance}}/{{database}} (project is taken from provider project)
 
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = {{project}}/{{instance}}/{{database}}
-
-          to = google_spanner_database_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:spanner/databaseIAMBinding:DatabaseIAMBinding default {{project}}/{{instance}}/{{database}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param DatabaseIAMBindingArgs args: The arguments to use to populate this resource's properties.

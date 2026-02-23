@@ -364,22 +364,14 @@ namespace Pulumi.Gcp.Monitoring
     /// UptimeCheckConfig can be imported using any of these accepted formats:
     /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{project}} {{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, UptimeCheckConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default "{{project}} {{name}}"
-    /// ```
-    /// 
-    /// ```sh
+    /// $ terraform import google_monitoring_uptime_check_config.default "{{project}} {{name}}"
     /// $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
     /// ```
     /// </summary>

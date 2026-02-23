@@ -26,10 +26,11 @@ class AiLogicPromptTemplateArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiLogicPromptTemplate resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] template_id: The unique ID of the PromptTemplate, which is the final component of the
                PromptTemplate's resource name.
-        :param pulumi.Input[_builtins.str] template_string: The DotPrompt raw template string.
+        :param pulumi.Input[_builtins.str] template_string: The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
         :param pulumi.Input[_builtins.str] display_name: The display name of the PromptTemplate.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -71,7 +72,7 @@ class AiLogicPromptTemplateArgs:
     @pulumi.getter(name="templateString")
     def template_string(self) -> pulumi.Input[_builtins.str]:
         """
-        The DotPrompt raw template string.
+        The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
         """
         return pulumi.get(self, "template_string")
 
@@ -121,6 +122,7 @@ class _AiLogicPromptTemplateState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiLogicPromptTemplate resources.
+
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the PromptTemplate was created.
         :param pulumi.Input[_builtins.str] display_name: The display name of the PromptTemplate.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -138,7 +140,7 @@ class _AiLogicPromptTemplateState:
         :param pulumi.Input[_builtins.str] state_change_time: Timestamp when the PromptTemplate state was last changed.
         :param pulumi.Input[_builtins.str] template_id: The unique ID of the PromptTemplate, which is the final component of the
                PromptTemplate's resource name.
-        :param pulumi.Input[_builtins.str] template_string: The DotPrompt raw template string.
+        :param pulumi.Input[_builtins.str] template_string: The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the PromptTemplate was last updated.
         """
         if create_time is not None:
@@ -284,7 +286,7 @@ class _AiLogicPromptTemplateState:
     @pulumi.getter(name="templateString")
     def template_string(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The DotPrompt raw template string.
+        The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
         """
         return pulumi.get(self, "template_string")
 
@@ -318,8 +320,33 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
                  template_string: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The PromptTemplate resource for Firebase AI Logic.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about PromptTemplate, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/ai-logic/rest/v1beta/projects.locations.templates)
+        * How-to Guides
+            * [Get started with server prompt templates](https://firebase.google.com/docs/ai-logic/server-prompt-templates/get-started)
+            * [Product documentation for Firebase AI Logic](https://firebase.google.com/docs/ai-logic)
+            * [Specification for Dotprompt format](https://google.github.io/dotprompt/getting-started)
+
         ## Example Usage
 
+        ### Firebaseailogic Prompt Template File
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        file = gcp.firebase.AiLogicPromptTemplate("file",
+            location="global",
+            template_id="file-template",
+            template_string=std.file(input="test-fixtures/hello_world.prompt").result)
+        ```
         ### Firebaseailogic Prompt Template Basic
 
         ```python
@@ -341,24 +368,17 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
         PromptTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
-
         * `{{project}}/{{location}}/{{template_id}}`
-
         * `{{location}}/{{template_id}}`
 
         When using the `pulumi import` command, PromptTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{project}}/{{location}}/{{template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{location}}/{{template_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -368,7 +388,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] template_id: The unique ID of the PromptTemplate, which is the final component of the
                PromptTemplate's resource name.
-        :param pulumi.Input[_builtins.str] template_string: The DotPrompt raw template string.
+        :param pulumi.Input[_builtins.str] template_string: The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
         """
         ...
     @overload
@@ -377,8 +397,33 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
                  args: AiLogicPromptTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The PromptTemplate resource for Firebase AI Logic.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about PromptTemplate, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/ai-logic/rest/v1beta/projects.locations.templates)
+        * How-to Guides
+            * [Get started with server prompt templates](https://firebase.google.com/docs/ai-logic/server-prompt-templates/get-started)
+            * [Product documentation for Firebase AI Logic](https://firebase.google.com/docs/ai-logic)
+            * [Specification for Dotprompt format](https://google.github.io/dotprompt/getting-started)
+
         ## Example Usage
 
+        ### Firebaseailogic Prompt Template File
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        file = gcp.firebase.AiLogicPromptTemplate("file",
+            location="global",
+            template_id="file-template",
+            template_string=std.file(input="test-fixtures/hello_world.prompt").result)
+        ```
         ### Firebaseailogic Prompt Template Basic
 
         ```python
@@ -400,24 +445,17 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
         PromptTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
-
         * `{{project}}/{{location}}/{{template_id}}`
-
         * `{{location}}/{{template_id}}`
 
         When using the `pulumi import` command, PromptTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{project}}/{{location}}/{{template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{location}}/{{template_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiLogicPromptTemplateArgs args: The arguments to use to populate this resource's properties.
@@ -510,7 +548,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state_change_time: Timestamp when the PromptTemplate state was last changed.
         :param pulumi.Input[_builtins.str] template_id: The unique ID of the PromptTemplate, which is the final component of the
                PromptTemplate's resource name.
-        :param pulumi.Input[_builtins.str] template_string: The DotPrompt raw template string.
+        :param pulumi.Input[_builtins.str] template_string: The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the PromptTemplate was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -614,7 +652,7 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
     @pulumi.getter(name="templateString")
     def template_string(self) -> pulumi.Output[_builtins.str]:
         """
-        The DotPrompt raw template string.
+        The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
         """
         return pulumi.get(self, "template_string")
 

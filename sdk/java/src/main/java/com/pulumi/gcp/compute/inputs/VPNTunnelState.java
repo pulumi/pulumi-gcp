@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.VPNTunnelCipherSuiteArgs;
+import com.pulumi.gcp.compute.inputs.VPNTunnelParamsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -197,6 +198,25 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<VPNTunnelParamsArgs> params;
+
+    /**
+     * @return (Optional, Beta)
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VPNTunnelParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
     }
 
     /**
@@ -520,6 +540,7 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.localTrafficSelectors = $.localTrafficSelectors;
         this.name = $.name;
+        this.params = $.params;
         this.peerExternalGateway = $.peerExternalGateway;
         this.peerExternalGatewayInterface = $.peerExternalGatewayInterface;
         this.peerGcpGateway = $.peerGcpGateway;
@@ -809,6 +830,31 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param params (Optional, Beta)
+         * Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<VPNTunnelParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params (Optional, Beta)
+         * Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(VPNTunnelParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

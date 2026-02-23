@@ -6,6 +6,7 @@ package com.pulumi.gcp.discoveryengine.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.discoveryengine.inputs.SearchEngineCommonConfigArgs;
+import com.pulumi.gcp.discoveryengine.inputs.SearchEngineKnowledgeGraphConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.SearchEngineSearchEngineConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -186,6 +187,23 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configurations for the Knowledge Graph.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="knowledgeGraphConfig")
+    private @Nullable Output<SearchEngineKnowledgeGraphConfigArgs> knowledgeGraphConfig;
+
+    /**
+     * @return Configurations for the Knowledge Graph.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SearchEngineKnowledgeGraphConfigArgs>> knowledgeGraphConfig() {
+        return Optional.ofNullable(this.knowledgeGraphConfig);
+    }
+
+    /**
      * Location.
      * 
      */
@@ -283,6 +301,7 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
         this.features = $.features;
         this.industryVertical = $.industryVertical;
         this.kmsKeyName = $.kmsKeyName;
+        this.knowledgeGraphConfig = $.knowledgeGraphConfig;
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
@@ -542,6 +561,29 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kmsKeyName(String kmsKeyName) {
             return kmsKeyName(Output.of(kmsKeyName));
+        }
+
+        /**
+         * @param knowledgeGraphConfig Configurations for the Knowledge Graph.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knowledgeGraphConfig(@Nullable Output<SearchEngineKnowledgeGraphConfigArgs> knowledgeGraphConfig) {
+            $.knowledgeGraphConfig = knowledgeGraphConfig;
+            return this;
+        }
+
+        /**
+         * @param knowledgeGraphConfig Configurations for the Knowledge Graph.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knowledgeGraphConfig(SearchEngineKnowledgeGraphConfigArgs knowledgeGraphConfig) {
+            return knowledgeGraphConfig(Output.of(knowledgeGraphConfig));
         }
 
         /**

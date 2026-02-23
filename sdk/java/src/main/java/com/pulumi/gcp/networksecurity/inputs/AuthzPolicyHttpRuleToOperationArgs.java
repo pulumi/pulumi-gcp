@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleToOperationHeaderSetArgs;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleToOperationHostArgs;
+import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleToOperationMcpArgs;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyHttpRuleToOperationPathArgs;
 import java.lang.String;
 import java.util.List;
@@ -56,6 +57,23 @@ public final class AuthzPolicyHttpRuleToOperationArgs extends com.pulumi.resourc
     }
 
     /**
+     * Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="mcp")
+    private @Nullable Output<AuthzPolicyHttpRuleToOperationMcpArgs> mcp;
+
+    /**
+     * @return Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AuthzPolicyHttpRuleToOperationMcpArgs>> mcp() {
+        return Optional.ofNullable(this.mcp);
+    }
+
+    /**
      * A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
      * 
      */
@@ -96,6 +114,7 @@ public final class AuthzPolicyHttpRuleToOperationArgs extends com.pulumi.resourc
     private AuthzPolicyHttpRuleToOperationArgs(AuthzPolicyHttpRuleToOperationArgs $) {
         this.headerSet = $.headerSet;
         this.hosts = $.hosts;
+        this.mcp = $.mcp;
         this.methods = $.methods;
         this.paths = $.paths;
     }
@@ -176,6 +195,29 @@ public final class AuthzPolicyHttpRuleToOperationArgs extends com.pulumi.resourc
          */
         public Builder hosts(AuthzPolicyHttpRuleToOperationHostArgs... hosts) {
             return hosts(List.of(hosts));
+        }
+
+        /**
+         * @param mcp Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mcp(@Nullable Output<AuthzPolicyHttpRuleToOperationMcpArgs> mcp) {
+            $.mcp = mcp;
+            return this;
+        }
+
+        /**
+         * @param mcp Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mcp(AuthzPolicyHttpRuleToOperationMcpArgs mcp) {
+            return mcp(Output.of(mcp));
         }
 
         /**

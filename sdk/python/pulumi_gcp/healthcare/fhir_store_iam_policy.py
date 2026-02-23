@@ -23,6 +23,7 @@ class FhirStoreIamPolicyArgs:
                  policy_data: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a FhirStoreIamPolicy resource.
+
         :param pulumi.Input[_builtins.str] fhir_store_id: The FHIR store ID, in the form
                `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
                `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
@@ -70,6 +71,7 @@ class _FhirStoreIamPolicyState:
                  policy_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FhirStoreIamPolicy resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the FHIR store's IAM policy.
         :param pulumi.Input[_builtins.str] fhir_store_id: The FHIR store ID, in the form
                `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
@@ -136,31 +138,87 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
                  policy_data: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
+
+        * `healthcare.FhirStoreIamPolicy`: Authoritative. Sets the IAM policy for the FHIR store and replaces any existing policy already attached.
+        * `healthcare.FhirStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the FHIR store are preserved.
+        * `healthcare.FhirStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the FHIR store are preserved.
+
+        > **Note:** `healthcare.FhirStoreIamPolicy` **cannot** be used in conjunction with `healthcare.FhirStoreIamBinding` and `healthcare.FhirStoreIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## healthcare.FhirStoreIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhir_store",
+            fhir_store_id="your-fhir-store-id",
+            policy_data=admin.policy_data)
+        ```
+
+        ## healthcare.FhirStoreIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        fhir_store = gcp.healthcare.FhirStoreIamBinding("fhir_store",
+            fhir_store_id="your-fhir-store-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+
+        ## healthcare.FhirStoreIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        fhir_store = gcp.healthcare.FhirStoreIamMember("fhir_store",
+            fhir_store_id="your-fhir-store-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+
+        ## healthcare.FhirStoreIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        fhir_store = gcp.healthcare.FhirStoreIamBinding("fhir_store",
+            fhir_store_id="your-fhir-store-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+
+        ## healthcare.FhirStoreIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        fhir_store = gcp.healthcare.FhirStoreIamMember("fhir_store",
+            fhir_store_id="your-fhir-store-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the identifier of the Healthcare FHIR store resource. For example:
-
-        * `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
-
-          to = google_healthcare_fhir_store_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy default {{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -178,31 +236,87 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
                  args: FhirStoreIamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
+
+        * `healthcare.FhirStoreIamPolicy`: Authoritative. Sets the IAM policy for the FHIR store and replaces any existing policy already attached.
+        * `healthcare.FhirStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the FHIR store are preserved.
+        * `healthcare.FhirStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the FHIR store are preserved.
+
+        > **Note:** `healthcare.FhirStoreIamPolicy` **cannot** be used in conjunction with `healthcare.FhirStoreIamBinding` and `healthcare.FhirStoreIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## healthcare.FhirStoreIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhir_store",
+            fhir_store_id="your-fhir-store-id",
+            policy_data=admin.policy_data)
+        ```
+
+        ## healthcare.FhirStoreIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        fhir_store = gcp.healthcare.FhirStoreIamBinding("fhir_store",
+            fhir_store_id="your-fhir-store-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+
+        ## healthcare.FhirStoreIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        fhir_store = gcp.healthcare.FhirStoreIamMember("fhir_store",
+            fhir_store_id="your-fhir-store-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+
+        ## healthcare.FhirStoreIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        fhir_store = gcp.healthcare.FhirStoreIamBinding("fhir_store",
+            fhir_store_id="your-fhir-store-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+
+        ## healthcare.FhirStoreIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        fhir_store = gcp.healthcare.FhirStoreIamMember("fhir_store",
+            fhir_store_id="your-fhir-store-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the identifier of the Healthcare FHIR store resource. For example:
-
-        * `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
-
-          to = google_healthcare_fhir_store_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy default {{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}
-        ```
 
         :param str resource_name: The name of the resource.
         :param FhirStoreIamPolicyArgs args: The arguments to use to populate this resource's properties.

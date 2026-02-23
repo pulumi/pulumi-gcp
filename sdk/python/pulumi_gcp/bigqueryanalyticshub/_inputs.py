@@ -69,15 +69,10 @@ __all__ = [
     'ListingSubscriptionLinkedResourceArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DataExchangeIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DataExchangeIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DataExchangeIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class DataExchangeIamBindingConditionArgs:
@@ -118,13 +113,10 @@ class DataExchangeIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class DataExchangeIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DataExchangeIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DataExchangeIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class DataExchangeIamMemberConditionArgs:
@@ -165,18 +157,15 @@ class DataExchangeIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class DataExchangeSharingEnvironmentConfigArgsDict(TypedDict):
-        dcr_exchange_config: NotRequired[pulumi.Input['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgsDict']]
-        """
-        Data Clean Room (DCR), used for privacy-safe and secured data sharing.
-        """
-        default_exchange_config: NotRequired[pulumi.Input['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgsDict']]
-        """
-        Default Analytics Hub data exchange, used for secured data sharing.
-        """
-elif False:
-    DataExchangeSharingEnvironmentConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataExchangeSharingEnvironmentConfigArgsDict(TypedDict):
+    dcr_exchange_config: NotRequired[pulumi.Input['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgsDict']]
+    """
+    Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+    """
+    default_exchange_config: NotRequired[pulumi.Input['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgsDict']]
+    """
+    Default Analytics Hub data exchange, used for secured data sharing.
+    """
 
 @pulumi.input_type
 class DataExchangeSharingEnvironmentConfigArgs:
@@ -217,11 +206,8 @@ class DataExchangeSharingEnvironmentConfigArgs:
         pulumi.set(self, "default_exchange_config", value)
 
 
-if not MYPY:
-    class DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgsDict(TypedDict):
-        pass
-elif False:
-    DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs:
@@ -229,11 +215,8 @@ class DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs:
         pass
 
 
-if not MYPY:
-    class DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgsDict(TypedDict):
-        pass
-elif False:
-    DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs:
@@ -241,33 +224,30 @@ class DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs:
         pass
 
 
-if not MYPY:
-    class DataExchangeSubscriptionDestinationDatasetArgsDict(TypedDict):
-        dataset_reference: pulumi.Input['DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgsDict']
-        """
-        A reference that identifies the destination dataset.
-        Structure is documented below.
-        """
-        location: pulumi.Input[_builtins.str]
-        """
-        The geographic location where the dataset should reside.
-        See https://cloud.google.com/bigquery/docs/locations for supported locations.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A user-friendly description of the dataset.
-        """
-        friendly_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A descriptive name for the dataset.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The labels associated with this dataset. You can use these to
-        organize and group your datasets.
-        """
-elif False:
-    DataExchangeSubscriptionDestinationDatasetArgsDict: TypeAlias = Mapping[str, Any]
+class DataExchangeSubscriptionDestinationDatasetArgsDict(TypedDict):
+    dataset_reference: pulumi.Input['DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgsDict']
+    """
+    A reference that identifies the destination dataset.
+    Structure is documented below.
+    """
+    location: pulumi.Input[_builtins.str]
+    """
+    The geographic location where the dataset should reside.
+    See https://cloud.google.com/bigquery/docs/locations for supported locations.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A user-friendly description of the dataset.
+    """
+    friendly_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A descriptive name for the dataset.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The labels associated with this dataset. You can use these to
+    organize and group your datasets.
+    """
 
 @pulumi.input_type
 class DataExchangeSubscriptionDestinationDatasetArgs:
@@ -360,18 +340,15 @@ class DataExchangeSubscriptionDestinationDatasetArgs:
         pulumi.set(self, "labels", value)
 
 
-if not MYPY:
-    class DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the project containing this dataset.
-        """
-elif False:
-    DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgsDict: TypeAlias = Mapping[str, Any]
+class DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the project containing this dataset.
+    """
 
 @pulumi.input_type
 class DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs:
@@ -410,29 +387,26 @@ class DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class DataExchangeSubscriptionLinkedDatasetMapArgsDict(TypedDict):
-        resource_name: pulumi.Input[_builtins.str]
-        """
-        (Required) The identifier for this object. Format specified above.
-        """
-        linked_dataset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
-        """
-        linked_pubsub_subscription: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/subscriptions/sub_id
-        """
-        listing: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Listing for which linked resource is created.
-        """
-elif False:
-    DataExchangeSubscriptionLinkedDatasetMapArgsDict: TypeAlias = Mapping[str, Any]
+class DataExchangeSubscriptionLinkedDatasetMapArgsDict(TypedDict):
+    resource_name: pulumi.Input[_builtins.str]
+    """
+    (Required) The identifier for this object. Format specified above.
+    """
+    linked_dataset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+    """
+    linked_pubsub_subscription: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/subscriptions/sub_id
+    """
+    listing: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Listing for which linked resource is created.
+    """
 
 @pulumi.input_type
 class DataExchangeSubscriptionLinkedDatasetMapArgs:
@@ -510,20 +484,17 @@ class DataExchangeSubscriptionLinkedDatasetMapArgs:
         pulumi.set(self, "listing", value)
 
 
-if not MYPY:
-    class DataExchangeSubscriptionLinkedResourceArgsDict(TypedDict):
-        linked_dataset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
-        """
-        listing: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Listing for which linked resource is created.
-        """
-elif False:
-    DataExchangeSubscriptionLinkedResourceArgsDict: TypeAlias = Mapping[str, Any]
+class DataExchangeSubscriptionLinkedResourceArgsDict(TypedDict):
+    linked_dataset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+    """
+    listing: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Listing for which linked resource is created.
+    """
 
 @pulumi.input_type
 class DataExchangeSubscriptionLinkedResourceArgs:
@@ -568,31 +539,28 @@ class DataExchangeSubscriptionLinkedResourceArgs:
         pulumi.set(self, "listing", value)
 
 
-if not MYPY:
-    class ListingBigqueryDatasetArgsDict(TypedDict):
-        dataset: pulumi.Input[_builtins.str]
-        """
-        Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-        """
-        effective_replicas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgsDict']]]]
-        """
-        (Output, Beta)
-        Server owned effective state of replicas. Contains both primary and secondary replicas.
-        Each replica includes a system-computed (output-only) state and primary designation.
-        Structure is documented below.
-        """
-        replica_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Optional, Beta)
-        A list of regions where the publisher has created shared dataset replicas.
-        """
-        selected_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgsDict']]]]
-        """
-        Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
-        Structure is documented below.
-        """
-elif False:
-    ListingBigqueryDatasetArgsDict: TypeAlias = Mapping[str, Any]
+class ListingBigqueryDatasetArgsDict(TypedDict):
+    dataset: pulumi.Input[_builtins.str]
+    """
+    Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+    """
+    effective_replicas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgsDict']]]]
+    """
+    (Output, Beta)
+    Server owned effective state of replicas. Contains both primary and secondary replicas.
+    Each replica includes a system-computed (output-only) state and primary designation.
+    Structure is documented below.
+    """
+    replica_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Optional, Beta)
+    A list of regions where the publisher has created shared dataset replicas.
+    """
+    selected_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgsDict']]]]
+    """
+    Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ListingBigqueryDatasetArgs:
@@ -674,24 +642,21 @@ class ListingBigqueryDatasetArgs:
         pulumi.set(self, "selected_resources", value)
 
 
-if not MYPY:
-    class ListingBigqueryDatasetEffectiveReplicaArgsDict(TypedDict):
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the location this data exchange listing.
-        """
-        primary_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output-only. Indicates that this replica is the primary replica.
-        Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
-        """
-        replica_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
-        Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
-        """
-elif False:
-    ListingBigqueryDatasetEffectiveReplicaArgsDict: TypeAlias = Mapping[str, Any]
+class ListingBigqueryDatasetEffectiveReplicaArgsDict(TypedDict):
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the location this data exchange listing.
+    """
+    primary_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output-only. Indicates that this replica is the primary replica.
+    Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
+    """
+    replica_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
+    Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
+    """
 
 @pulumi.input_type
 class ListingBigqueryDatasetEffectiveReplicaArgs:
@@ -752,21 +717,18 @@ class ListingBigqueryDatasetEffectiveReplicaArgs:
         pulumi.set(self, "replica_state", value)
 
 
-if not MYPY:
-    class ListingBigqueryDatasetSelectedResourceArgsDict(TypedDict):
-        routine: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional, Beta)
-        Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+class ListingBigqueryDatasetSelectedResourceArgsDict(TypedDict):
+    routine: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional, Beta)
+    Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
 
-        <a name="nested_bigquery_dataset_effective_replicas"></a>The `effective_replicas` block contains:
-        """
-        table: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-        """
-elif False:
-    ListingBigqueryDatasetSelectedResourceArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_bigquery_dataset_effective_replicas"></a>The `effective_replicas` block contains:
+    """
+    table: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
+    """
 
 @pulumi.input_type
 class ListingBigqueryDatasetSelectedResourceArgs:
@@ -813,16 +775,13 @@ class ListingBigqueryDatasetSelectedResourceArgs:
         pulumi.set(self, "table", value)
 
 
-if not MYPY:
-    class ListingCommercialInfoArgsDict(TypedDict):
-        cloud_marketplaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgsDict']]]]
-        """
-        (Output)
-        Details of the Marketplace Data Product associated with the Listing.
-        Structure is documented below.
-        """
-elif False:
-    ListingCommercialInfoArgsDict: TypeAlias = Mapping[str, Any]
+class ListingCommercialInfoArgsDict(TypedDict):
+    cloud_marketplaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgsDict']]]]
+    """
+    (Output)
+    Details of the Marketplace Data Product associated with the Listing.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ListingCommercialInfoArgs:
@@ -851,21 +810,18 @@ class ListingCommercialInfoArgs:
         pulumi.set(self, "cloud_marketplaces", value)
 
 
-if not MYPY:
-    class ListingCommercialInfoCloudMarketplaceArgsDict(TypedDict):
-        commercial_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Commercial state of the Marketplace Data Product.
-        Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
-        """
-        service: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
-        """
-elif False:
-    ListingCommercialInfoCloudMarketplaceArgsDict: TypeAlias = Mapping[str, Any]
+class ListingCommercialInfoCloudMarketplaceArgsDict(TypedDict):
+    commercial_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Commercial state of the Marketplace Data Product.
+    Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
+    """
+    service: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
+    """
 
 @pulumi.input_type
 class ListingCommercialInfoCloudMarketplaceArgs:
@@ -912,18 +868,15 @@ class ListingCommercialInfoCloudMarketplaceArgs:
         pulumi.set(self, "service", value)
 
 
-if not MYPY:
-    class ListingDataProviderArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the data provider.
-        """
-        primary_contact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Email or URL of the data provider.
-        """
-elif False:
-    ListingDataProviderArgsDict: TypeAlias = Mapping[str, Any]
+class ListingDataProviderArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the data provider.
+    """
+    primary_contact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Email or URL of the data provider.
+    """
 
 @pulumi.input_type
 class ListingDataProviderArgs:
@@ -963,13 +916,10 @@ class ListingDataProviderArgs:
         pulumi.set(self, "primary_contact", value)
 
 
-if not MYPY:
-    class ListingIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ListingIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ListingIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ListingIamBindingConditionArgs:
@@ -1010,13 +960,10 @@ class ListingIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ListingIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ListingIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ListingIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ListingIamMemberConditionArgs:
@@ -1057,18 +1004,15 @@ class ListingIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ListingPublisherArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the listing publisher.
-        """
-        primary_contact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Email or URL of the listing publisher.
-        """
-elif False:
-    ListingPublisherArgsDict: TypeAlias = Mapping[str, Any]
+class ListingPublisherArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the listing publisher.
+    """
+    primary_contact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Email or URL of the listing publisher.
+    """
 
 @pulumi.input_type
 class ListingPublisherArgs:
@@ -1108,19 +1052,16 @@ class ListingPublisherArgs:
         pulumi.set(self, "primary_contact", value)
 
 
-if not MYPY:
-    class ListingPubsubTopicArgsDict(TypedDict):
-        topic: pulumi.Input[_builtins.str]
-        """
-        Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
-        """
-        data_affinity_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Region hint on where the data might be published. Data affinity regions are modifiable.
-        See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
-        """
-elif False:
-    ListingPubsubTopicArgsDict: TypeAlias = Mapping[str, Any]
+class ListingPubsubTopicArgsDict(TypedDict):
+    topic: pulumi.Input[_builtins.str]
+    """
+    Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
+    """
+    data_affinity_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Region hint on where the data might be published. Data affinity regions are modifiable.
+    See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
+    """
 
 @pulumi.input_type
 class ListingPubsubTopicArgs:
@@ -1162,23 +1103,20 @@ class ListingPubsubTopicArgs:
         pulumi.set(self, "data_affinity_regions", value)
 
 
-if not MYPY:
-    class ListingRestrictedExportConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, enable restricted export.
-        """
-        restrict_direct_table_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        If true, restrict direct table access(read api/tabledata.list) on linked table.
-        """
-        restrict_query_result: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, restrict export of query result derived from restricted linked dataset table.
-        """
-elif False:
-    ListingRestrictedExportConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ListingRestrictedExportConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, enable restricted export.
+    """
+    restrict_direct_table_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    If true, restrict direct table access(read api/tabledata.list) on linked table.
+    """
+    restrict_query_result: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, restrict export of query result derived from restricted linked dataset table.
+    """
 
 @pulumi.input_type
 class ListingRestrictedExportConfigArgs:
@@ -1237,16 +1175,13 @@ class ListingRestrictedExportConfigArgs:
         pulumi.set(self, "restrict_query_result", value)
 
 
-if not MYPY:
-    class ListingSubscriptionCommercialInfoArgsDict(TypedDict):
-        cloud_marketplaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict']]]]
-        """
-        (Output)
-        Cloud Marketplace commercial metadata for this subscription.
-        Structure is documented below.
-        """
-elif False:
-    ListingSubscriptionCommercialInfoArgsDict: TypeAlias = Mapping[str, Any]
+class ListingSubscriptionCommercialInfoArgsDict(TypedDict):
+    cloud_marketplaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict']]]]
+    """
+    (Output)
+    Cloud Marketplace commercial metadata for this subscription.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ListingSubscriptionCommercialInfoArgs:
@@ -1275,15 +1210,12 @@ class ListingSubscriptionCommercialInfoArgs:
         pulumi.set(self, "cloud_marketplaces", value)
 
 
-if not MYPY:
-    class ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict(TypedDict):
-        order: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Resource name of the Marketplace Order.
-        """
-elif False:
-    ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict: TypeAlias = Mapping[str, Any]
+class ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict(TypedDict):
+    order: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Resource name of the Marketplace Order.
+    """
 
 @pulumi.input_type
 class ListingSubscriptionCommercialInfoCloudMarketplaceArgs:
@@ -1310,38 +1242,35 @@ class ListingSubscriptionCommercialInfoCloudMarketplaceArgs:
         pulumi.set(self, "order", value)
 
 
-if not MYPY:
-    class ListingSubscriptionDestinationDatasetArgsDict(TypedDict):
-        dataset_reference: pulumi.Input['ListingSubscriptionDestinationDatasetDatasetReferenceArgsDict']
-        """
-        A reference that identifies the destination dataset.
-        Structure is documented below.
-        """
-        location: pulumi.Input[_builtins.str]
-        """
-        The geographic location where the dataset should reside.
-        See https://cloud.google.com/bigquery/docs/locations for supported locations.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A user-friendly description of the dataset.
-        """
-        friendly_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A descriptive name for the dataset.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The labels associated with this dataset. You can use these to
-        organize and group your datasets.
-        """
-        replica_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Optional, Beta)
-        List of regions where the subscriber wants dataset replicas.
-        """
-elif False:
-    ListingSubscriptionDestinationDatasetArgsDict: TypeAlias = Mapping[str, Any]
+class ListingSubscriptionDestinationDatasetArgsDict(TypedDict):
+    dataset_reference: pulumi.Input['ListingSubscriptionDestinationDatasetDatasetReferenceArgsDict']
+    """
+    A reference that identifies the destination dataset.
+    Structure is documented below.
+    """
+    location: pulumi.Input[_builtins.str]
+    """
+    The geographic location where the dataset should reside.
+    See https://cloud.google.com/bigquery/docs/locations for supported locations.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A user-friendly description of the dataset.
+    """
+    friendly_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A descriptive name for the dataset.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The labels associated with this dataset. You can use these to
+    organize and group your datasets.
+    """
+    replica_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Optional, Beta)
+    List of regions where the subscriber wants dataset replicas.
+    """
 
 @pulumi.input_type
 class ListingSubscriptionDestinationDatasetArgs:
@@ -1452,18 +1381,15 @@ class ListingSubscriptionDestinationDatasetArgs:
         pulumi.set(self, "replica_locations", value)
 
 
-if not MYPY:
-    class ListingSubscriptionDestinationDatasetDatasetReferenceArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the project containing this dataset.
-        """
-elif False:
-    ListingSubscriptionDestinationDatasetDatasetReferenceArgsDict: TypeAlias = Mapping[str, Any]
+class ListingSubscriptionDestinationDatasetDatasetReferenceArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the project containing this dataset.
+    """
 
 @pulumi.input_type
 class ListingSubscriptionDestinationDatasetDatasetReferenceArgs:
@@ -1502,24 +1428,21 @@ class ListingSubscriptionDestinationDatasetDatasetReferenceArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class ListingSubscriptionLinkedDatasetMapArgsDict(TypedDict):
-        resource_name: pulumi.Input[_builtins.str]
-        """
-        (Required) The identifier for this object. Format specified above.
-        """
-        linked_dataset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
-        """
-        listing: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Listing for which linked resource is created.
-        """
-elif False:
-    ListingSubscriptionLinkedDatasetMapArgsDict: TypeAlias = Mapping[str, Any]
+class ListingSubscriptionLinkedDatasetMapArgsDict(TypedDict):
+    resource_name: pulumi.Input[_builtins.str]
+    """
+    (Required) The identifier for this object. Format specified above.
+    """
+    linked_dataset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+    """
+    listing: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Listing for which linked resource is created.
+    """
 
 @pulumi.input_type
 class ListingSubscriptionLinkedDatasetMapArgs:
@@ -1579,20 +1502,17 @@ class ListingSubscriptionLinkedDatasetMapArgs:
         pulumi.set(self, "listing", value)
 
 
-if not MYPY:
-    class ListingSubscriptionLinkedResourceArgsDict(TypedDict):
-        linked_dataset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
-        """
-        listing: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. Listing for which linked resource is created.
-        """
-elif False:
-    ListingSubscriptionLinkedResourceArgsDict: TypeAlias = Mapping[str, Any]
+class ListingSubscriptionLinkedResourceArgsDict(TypedDict):
+    linked_dataset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+    """
+    listing: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. Listing for which linked resource is created.
+    """
 
 @pulumi.input_type
 class ListingSubscriptionLinkedResourceArgs:

@@ -977,16 +977,48 @@ class ClusterEncryptionInfo(dict):
 
 @pulumi.output_type
 class ClusterInitialUser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordWo":
+            suggest = "password_wo"
+        elif key == "passwordWoVersion":
+            suggest = "password_wo_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterInitialUser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterInitialUser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterInitialUser.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  password: Optional[_builtins.str] = None,
+                 password_wo: Optional[_builtins.str] = None,
+                 password_wo_version: Optional[_builtins.str] = None,
                  user: Optional[_builtins.str] = None):
         """
         :param _builtins.str password: The initial password for the user.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The initial password for the user.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `password` or `password_wo` can only be set.
+        :param _builtins.str password_wo_version: Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param _builtins.str user: The database username.
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if user is not None:
             pulumi.set(__self__, "user", user)
 
@@ -998,6 +1030,27 @@ class ClusterInitialUser(dict):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The initial password for the user.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `password` or `password_wo` can only be set.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[_builtins.str]:
+        """
+        Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "password_wo_version")
 
     @_builtins.property
     @pulumi.getter
@@ -1697,6 +1750,15 @@ class InstanceConnectionPoolConfig(dict):
                  pooler_count: Optional[_builtins.int] = None):
         """
         :param _builtins.bool enabled: Whether to enabled Managed Connection Pool.
+        :param Mapping[str, _builtins.str] flags: Flags for configuring managed connection pooling when it is enabled.
+               These flags will only be set if `connection_pool_config.enabled` is
+               true.
+               Please see
+               https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+               for a comprehensive list of flags that can be set. To specify the flags
+               in Terraform, please remove the "connection-pooling-" prefix and use
+               underscores instead of dashes in the name. For example,
+               "connection-pooling-pool-mode" would be "pool_mode".
         :param _builtins.int pooler_count: (Output)
                The number of running poolers per instance.
         """
@@ -1717,6 +1779,17 @@ class InstanceConnectionPoolConfig(dict):
     @_builtins.property
     @pulumi.getter
     def flags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Flags for configuring managed connection pooling when it is enabled.
+        These flags will only be set if `connection_pool_config.enabled` is
+        true.
+        Please see
+        https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+        for a comprehensive list of flags that can be set. To specify the flags
+        in Terraform, please remove the "connection-pooling-" prefix and use
+        underscores instead of dashes in the name. For example,
+        "connection-pooling-pool-mode" would be "pool_mode".
+        """
         return pulumi.get(self, "flags")
 
     @_builtins.property
@@ -2899,12 +2972,18 @@ class GetClusterEncryptionInfoResult(dict):
 class GetClusterInitialUserResult(dict):
     def __init__(__self__, *,
                  password: _builtins.str,
+                 password_wo: _builtins.str,
+                 password_wo_version: _builtins.str,
                  user: _builtins.str):
         """
         :param _builtins.str password: The initial password for the user.
+        :param _builtins.str password_wo: The initial password for the user.
+        :param _builtins.str password_wo_version: Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param _builtins.str user: The database username.
         """
         pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "password_wo", password_wo)
+        pulumi.set(__self__, "password_wo_version", password_wo_version)
         pulumi.set(__self__, "user", user)
 
     @_builtins.property
@@ -2914,6 +2993,22 @@ class GetClusterInitialUserResult(dict):
         The initial password for the user.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> _builtins.str:
+        """
+        The initial password for the user.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> _builtins.str:
+        """
+        Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "password_wo_version")
 
     @_builtins.property
     @pulumi.getter
@@ -3346,6 +3441,15 @@ class GetInstanceConnectionPoolConfigResult(dict):
                  pooler_count: _builtins.int):
         """
         :param _builtins.bool enabled: Whether to enabled Managed Connection Pool.
+        :param Mapping[str, _builtins.str] flags: Flags for configuring managed connection pooling when it is enabled.
+               These flags will only be set if 'connection_pool_config.enabled' is
+               true.
+               Please see
+               https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+               for a comprehensive list of flags that can be set. To specify the flags
+               in Terraform, please remove the "connection-pooling-" prefix and use
+               underscores instead of dashes in the name. For example,
+               "connection-pooling-pool-mode" would be "pool_mode".
         :param _builtins.int pooler_count: The number of running poolers per instance.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -3363,6 +3467,17 @@ class GetInstanceConnectionPoolConfigResult(dict):
     @_builtins.property
     @pulumi.getter
     def flags(self) -> Mapping[str, _builtins.str]:
+        """
+        Flags for configuring managed connection pooling when it is enabled.
+        These flags will only be set if 'connection_pool_config.enabled' is
+        true.
+        Please see
+        https://cloud.google.com/alloydb/docs/configure-managed-connection-pooling#configuration-options
+        for a comprehensive list of flags that can be set. To specify the flags
+        in Terraform, please remove the "connection-pooling-" prefix and use
+        underscores instead of dashes in the name. For example,
+        "connection-pooling-pool-mode" would be "pool_mode".
+        """
         return pulumi.get(self, "flags")
 
     @_builtins.property

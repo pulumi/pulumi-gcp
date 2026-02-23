@@ -1201,6 +1201,14 @@ Object.defineProperty(exports, "parameterManagerRegionalCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const pollInterval: string | undefined;
+Object.defineProperty(exports, "pollInterval", {
+    get() {
+        return __config.get("pollInterval");
+    },
+    enumerable: true,
+});
+
 export declare const privatecaCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "privatecaCustomEndpoint", {
     get() {
@@ -1573,6 +1581,14 @@ export declare const userProjectOverride: boolean | undefined;
 Object.defineProperty(exports, "userProjectOverride", {
     get() {
         return __config.getObject<boolean>("userProjectOverride");
+    },
+    enumerable: true,
+});
+
+export declare const vectorSearchCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "vectorSearchCustomEndpoint", {
+    get() {
+        return __config.get("vectorSearchCustomEndpoint");
     },
     enumerable: true,
 });

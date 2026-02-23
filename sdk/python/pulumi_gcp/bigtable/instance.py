@@ -31,6 +31,7 @@ class InstanceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
@@ -199,6 +200,7 @@ class _InstanceState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
@@ -472,24 +474,17 @@ class Instance(pulumi.CustomResource):
         Bigtable Instances can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Bigtable Instances can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigtable/instance:Instance default projects/{{project}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/instance:Instance default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -592,24 +587,17 @@ class Instance(pulumi.CustomResource):
         Bigtable Instances can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Bigtable Instances can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigtable/instance:Instance default projects/{{project}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/instance:Instance default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigtable/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

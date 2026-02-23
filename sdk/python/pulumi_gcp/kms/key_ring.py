@@ -24,6 +24,7 @@ class KeyRingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeyRing resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the KeyRing.
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[_builtins.str] name: The resource name for the KeyRing.
@@ -83,6 +84,7 @@ class _KeyRingState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyRing resources.
+
         :param pulumi.Input[_builtins.str] location: The location for the KeyRing.
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[_builtins.str] name: The resource name for the KeyRing.
@@ -176,24 +178,17 @@ class KeyRing(pulumi.CustomResource):
         KeyRing can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/keyRings/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, KeyRing can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/keyRing:KeyRing default projects/{{project}}/locations/{{location}}/keyRings/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/keyRing:KeyRing default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/keyRing:KeyRing default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -240,24 +235,17 @@ class KeyRing(pulumi.CustomResource):
         KeyRing can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/keyRings/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, KeyRing can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/keyRing:KeyRing default projects/{{project}}/locations/{{location}}/keyRings/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/keyRing:KeyRing default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/keyRing:KeyRing default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeyRingArgs args: The arguments to use to populate this resource's properties.

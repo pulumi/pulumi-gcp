@@ -875,6 +875,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> parameterManagerRegionalCustomEndpoint() {
         return Codegen.optional(this.parameterManagerRegionalCustomEndpoint);
     }
+    @Export(name="pollInterval", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> pollInterval;
+
+    public Output<Optional<String>> pollInterval() {
+        return Codegen.optional(this.pollInterval);
+    }
     @Export(name="privatecaCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privatecaCustomEndpoint;
 
@@ -1138,6 +1144,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> universeDomain() {
         return Codegen.optional(this.universeDomain);
+    }
+    @Export(name="vectorSearchCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vectorSearchCustomEndpoint;
+
+    public Output<Optional<String>> vectorSearchCustomEndpoint() {
+        return Codegen.optional(this.vectorSearchCustomEndpoint);
     }
     @Export(name="vertexAiCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vertexAiCustomEndpoint;

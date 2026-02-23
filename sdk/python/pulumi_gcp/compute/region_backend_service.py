@@ -57,6 +57,7 @@ class RegionBackendServiceArgs:
                  tls_settings: Optional[pulumi.Input['RegionBackendServiceTlsSettingsArgs']] = None):
         """
         The set of arguments for constructing a RegionBackendService resource.
+
         :param pulumi.Input[_builtins.int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
                GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
                only until the end of the browser session (or equivalent). The
@@ -185,8 +186,7 @@ class RegionBackendServiceArgs:
                This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
                This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
                Changes to this field force recreation of the resource.
-        :param pulumi.Input['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: (Optional, Beta)
-               Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
         :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
@@ -658,7 +658,6 @@ class RegionBackendServiceArgs:
     @pulumi.getter(name="networkPassThroughLbTrafficPolicy")
     def network_pass_through_lb_traffic_policy(self) -> Optional[pulumi.Input['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs']]:
         """
-        (Optional, Beta)
         Configures traffic steering properties of internal passthrough Network Load Balancers.
         Structure is documented below.
         """
@@ -881,6 +880,7 @@ class _RegionBackendServiceState:
                  tls_settings: Optional[pulumi.Input['RegionBackendServiceTlsSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering RegionBackendService resources.
+
         :param pulumi.Input[_builtins.int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
                GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
                only until the end of the browser session (or equivalent). The
@@ -1013,8 +1013,7 @@ class _RegionBackendServiceState:
                This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
                This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
                Changes to this field force recreation of the resource.
-        :param pulumi.Input['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: (Optional, Beta)
-               Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
         :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
@@ -1532,7 +1531,6 @@ class _RegionBackendServiceState:
     @pulumi.getter(name="networkPassThroughLbTrafficPolicy")
     def network_pass_through_lb_traffic_policy(self) -> Optional[pulumi.Input['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs']]:
         """
-        (Optional, Beta)
         Configures traffic steering properties of internal passthrough Network Load Balancers.
         Structure is documented below.
         """
@@ -2252,30 +2250,19 @@ class RegionBackendService(pulumi.CustomResource):
         RegionBackendService can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/backendServices/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2407,8 +2394,7 @@ class RegionBackendService(pulumi.CustomResource):
                This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
                This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
                Changes to this field force recreation of the resource.
-        :param pulumi.Input[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: (Optional, Beta)
-               Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
         :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
@@ -2941,30 +2927,19 @@ class RegionBackendService(pulumi.CustomResource):
         RegionBackendService can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/backendServices/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionBackendServiceArgs args: The arguments to use to populate this resource's properties.
@@ -3249,8 +3224,7 @@ class RegionBackendService(pulumi.CustomResource):
                This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
                This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
                Changes to this field force recreation of the resource.
-        :param pulumi.Input[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: (Optional, Beta)
-               Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
         :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
@@ -3639,7 +3613,6 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="networkPassThroughLbTrafficPolicy")
     def network_pass_through_lb_traffic_policy(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicy']]:
         """
-        (Optional, Beta)
         Configures traffic steering properties of internal passthrough Network Load Balancers.
         Structure is documented below.
         """

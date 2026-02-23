@@ -225,22 +225,14 @@ import javax.annotation.Nullable;
  * BitbucketServerConfig can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}`
- * 
  * * `{{project}}/{{location}}/{{config_id}}`
- * 
  * * `{{location}}/{{config_id}}`
  * 
  * When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default {{project}}/{{location}}/{{config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default {{location}}/{{config_id}}
  * ```
  * 

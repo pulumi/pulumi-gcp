@@ -45,6 +45,7 @@ class VMwareClusterArgs:
                  vm_tracking_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VMwareCluster resource.
+
         :param pulumi.Input[_builtins.str] admin_cluster_membership: The admin cluster this VMware User Cluster belongs to.
                This is the full resource name of the admin cluster's hub membership.
                In the future, references to other resource types might be allowed if
@@ -468,6 +469,7 @@ class _VMwareClusterState:
                  vm_tracking_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering VMwareCluster resources.
+
         :param pulumi.Input[_builtins.str] admin_cluster_membership: The admin cluster this VMware User Cluster belongs to.
                This is the full resource name of the admin cluster's hub membership.
                In the future, references to other resource types might be allowed if
@@ -498,6 +500,7 @@ class _VMwareClusterState:
         :param pulumi.Input[_builtins.str] delete_time: The time at which VMware User Cluster was deleted.
         :param pulumi.Input[_builtins.str] description: A human readable description of this VMware User Cluster.
         :param pulumi.Input[_builtins.bool] disable_bundled_ingress: Disable bundled ingress.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_advanced_cluster: Enable advanced cluster. Default to false.
         :param pulumi.Input[_builtins.bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[_builtins.str] endpoint: The DNS name of VMware User Cluster's API server.
@@ -773,6 +776,9 @@ class _VMwareClusterState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1350,24 +1356,17 @@ class VMwareCluster(pulumi.CustomResource):
         VmwareCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1666,24 +1665,17 @@ class VMwareCluster(pulumi.CustomResource):
         VmwareCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VMwareClusterArgs args: The arguments to use to populate this resource's properties.
@@ -1856,6 +1848,7 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] delete_time: The time at which VMware User Cluster was deleted.
         :param pulumi.Input[_builtins.str] description: A human readable description of this VMware User Cluster.
         :param pulumi.Input[_builtins.bool] disable_bundled_ingress: Disable bundled ingress.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_advanced_cluster: Enable advanced cluster. Default to false.
         :param pulumi.Input[_builtins.bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[_builtins.str] endpoint: The DNS name of VMware User Cluster's API server.
@@ -2057,6 +2050,9 @@ class VMwareCluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

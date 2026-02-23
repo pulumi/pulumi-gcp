@@ -34,6 +34,7 @@ class URLMapArgs:
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None):
         """
         The set of arguments for constructing a URLMap resource.
+
         :param pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs'] default_custom_error_response_policy: defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
                This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
                For example, consider a UrlMap with the following configuration:
@@ -284,6 +285,7 @@ class _URLMapState:
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None):
         """
         Input properties used for looking up and filtering URLMap resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs'] default_custom_error_response_policy: defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
                This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
@@ -1786,24 +1788,17 @@ class URLMap(pulumi.CustomResource):
         UrlMap can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/urlMaps/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, UrlMap can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/uRLMap:URLMap default projects/{{project}}/global/urlMaps/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/uRLMap:URLMap default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/uRLMap:URLMap default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -3048,24 +3043,17 @@ class URLMap(pulumi.CustomResource):
         UrlMap can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/urlMaps/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, UrlMap can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/uRLMap:URLMap default projects/{{project}}/global/urlMaps/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/uRLMap:URLMap default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/uRLMap:URLMap default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param URLMapArgs args: The arguments to use to populate this resource's properties.

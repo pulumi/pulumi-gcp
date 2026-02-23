@@ -43,7 +43,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
      */
     private @Nullable Boolean isPreemptible;
     /**
-     * @return The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+     * @return The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
      * 
      */
     private @Nullable String machineType;
@@ -53,7 +53,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
      */
     private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig> managedGroupConfigs;
     /**
-     * @return Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+     * @return Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://docs.cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
      * 
      */
     private @Nullable String minCpuPlatform;
@@ -105,7 +105,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
         return Optional.ofNullable(this.isPreemptible);
     }
     /**
-     * @return The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+     * @return The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
      * 
      */
     public Optional<String> machineType() {
@@ -119,7 +119,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
         return this.managedGroupConfigs == null ? List.of() : this.managedGroupConfigs;
     }
     /**
-     * @return Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+     * @return Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://docs.cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
      * 
      */
     public Optional<String> minCpuPlatform() {

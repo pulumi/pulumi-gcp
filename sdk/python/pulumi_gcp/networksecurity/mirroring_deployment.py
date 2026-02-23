@@ -28,6 +28,7 @@ class MirroringDeploymentArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MirroringDeployment resource.
+
         :param pulumi.Input[_builtins.str] forwarding_rule: The regional forwarding rule that fronts the mirroring collectors, for
                example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
                See https://google.aip.dev/124.
@@ -169,6 +170,7 @@ class _MirroringDeploymentState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MirroringDeployment resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
                See https://google.aip.dev/148#timestamps.
         :param pulumi.Input[_builtins.str] description: User-provided description of the deployment.
@@ -516,24 +518,17 @@ class MirroringDeployment(pulumi.CustomResource):
         MirroringDeployment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}`
-
         * `{{project}}/{{location}}/{{mirroring_deployment_id}}`
-
         * `{{location}}/{{mirroring_deployment_id}}`
 
         When using the `pulumi import` command, MirroringDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{project}}/{{location}}/{{mirroring_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{location}}/{{mirroring_deployment_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -630,24 +625,17 @@ class MirroringDeployment(pulumi.CustomResource):
         MirroringDeployment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}`
-
         * `{{project}}/{{location}}/{{mirroring_deployment_id}}`
-
         * `{{location}}/{{mirroring_deployment_id}}`
 
         When using the `pulumi import` command, MirroringDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{project}}/{{location}}/{{mirroring_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{location}}/{{mirroring_deployment_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MirroringDeploymentArgs args: The arguments to use to populate this resource's properties.

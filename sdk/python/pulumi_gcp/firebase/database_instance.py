@@ -26,6 +26,7 @@ class DatabaseInstanceArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseInstance resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The globally unique identifier of the Firebase Realtime Database instance.
                Instance IDs cannot be reused after deletion.
         :param pulumi.Input[_builtins.str] region: A reference to the region where the Firebase Realtime database resides.
@@ -131,6 +132,7 @@ class _DatabaseInstanceState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
+
         :param pulumi.Input[_builtins.str] database_url: The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
                or https://{instance-id}.{region}.firebasedatabase.app in other regions.
         :param pulumi.Input[_builtins.str] desired_state: The intended database state. Possible values: ACTIVE, DISABLED.
@@ -291,6 +293,17 @@ class DatabaseInstance(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A Firebase Realtime Database instance.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/rest/database/database-management/rest)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/products/realtime-database)
+
         ## Example Usage
 
         ### Firebase Database Instance Basic
@@ -355,30 +368,19 @@ class DatabaseInstance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{instance_id}}`
-
         * `{{project}}/{{region}}/{{instance_id}}`
-
         * `{{region}}/{{instance_id}}`
-
         * `{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default projects/{{project}}/locations/{{region}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{project}}/{{region}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{region}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{instance_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -403,6 +405,17 @@ class DatabaseInstance(pulumi.CustomResource):
                  args: DatabaseInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Firebase Realtime Database instance.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/rest/database/database-management/rest)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/products/realtime-database)
+
         ## Example Usage
 
         ### Firebase Database Instance Basic
@@ -467,30 +480,19 @@ class DatabaseInstance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{instance_id}}`
-
         * `{{project}}/{{region}}/{{instance_id}}`
-
         * `{{region}}/{{instance_id}}`
-
         * `{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default projects/{{project}}/locations/{{region}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{project}}/{{region}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{region}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{instance_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseInstanceArgs args: The arguments to use to populate this resource's properties.

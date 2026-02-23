@@ -132,22 +132,14 @@ import javax.annotation.Nullable;
  * TargetSite can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}/siteSearchEngine/targetSites/{{target_site_id}}`
- * 
  * * `{{project}}/{{location}}/{{data_store_id}}/{{target_site_id}}`
- * 
  * * `{{location}}/{{data_store_id}}/{{target_site_id}}`
  * 
  * When using the `pulumi import` command, TargetSite can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:discoveryengine/targetSite:TargetSite default projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}/siteSearchEngine/targetSites/{{target_site_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:discoveryengine/targetSite:TargetSite default {{project}}/{{location}}/{{data_store_id}}/{{target_site_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:discoveryengine/targetSite:TargetSite default {{location}}/{{data_store_id}}/{{target_site_id}}
  * ```
  * 

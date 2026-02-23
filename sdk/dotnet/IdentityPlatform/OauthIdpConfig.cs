@@ -51,22 +51,14 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// OauthIdpConfig can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/oauthIdpConfigs/{{name}}`
-    /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, OauthIdpConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default projects/{{project}}/oauthIdpConfigs/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{name}}
     /// ```
     /// </summary>

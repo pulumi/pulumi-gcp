@@ -27,6 +27,7 @@ class TransferAgentPoolArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransferAgentPool resource.
+
         :param pulumi.Input['TransferAgentPoolBandwidthLimitArgs'] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Specifies the client-specified AgentPool description.
@@ -118,6 +119,7 @@ class _TransferAgentPoolState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransferAgentPool resources.
+
         :param pulumi.Input['TransferAgentPoolBandwidthLimitArgs'] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Specifies the client-specified AgentPool description.
@@ -261,24 +263,17 @@ class TransferAgentPool(pulumi.CustomResource):
         AgentPool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/agentPools/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -338,24 +333,17 @@ class TransferAgentPool(pulumi.CustomResource):
         AgentPool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/agentPools/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransferAgentPoolArgs args: The arguments to use to populate this resource's properties.

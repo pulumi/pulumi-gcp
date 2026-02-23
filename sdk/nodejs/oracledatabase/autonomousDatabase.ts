@@ -143,22 +143,14 @@ import * as utilities from "../utilities";
  * AutonomousDatabase can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}`
- *
  * * `{{project}}/{{location}}/{{autonomous_database_id}}`
- *
  * * `{{location}}/{{autonomous_database_id}}`
  *
  * When using the `pulumi import` command, AutonomousDatabase can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{project}}/{{location}}/{{autonomous_database_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{location}}/{{autonomous_database_id}}
  * ```
  */
@@ -215,6 +207,9 @@ export class AutonomousDatabase extends pulumi.CustomResource {
      * contain a maximum of 30 alphanumeric characters.
      */
     declare public readonly database: pulumi.Output<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * List of supported GCP region to clone the Autonomous Database for disaster recovery.
@@ -393,6 +388,9 @@ export interface AutonomousDatabaseState {
      * contain a maximum of 30 alphanumeric characters.
      */
     database?: pulumi.Input<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * List of supported GCP region to clone the Autonomous Database for disaster recovery.
@@ -497,6 +495,9 @@ export interface AutonomousDatabaseArgs {
      * contain a maximum of 30 alphanumeric characters.
      */
     database?: pulumi.Input<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The display name for the Autonomous Database. The name does not have to

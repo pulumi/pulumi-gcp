@@ -24,6 +24,7 @@ class SourceArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Source resource.
+
         :param pulumi.Input[_builtins.str] display_name: The source’s display name. A source’s display name must be unique
                amongst its siblings, for example, two sources with the same parent
                can't share the same display name. The display name must start and end
@@ -89,6 +90,7 @@ class _SourceState:
                  organization: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Source resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the source (max of 1024 characters).
         :param pulumi.Input[_builtins.str] display_name: The source’s display name. A source’s display name must be unique
                amongst its siblings, for example, two sources with the same parent
@@ -205,18 +207,15 @@ class Source(pulumi.CustomResource):
         Source can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/sources/{{name}}`
-
         * `{{organization}}/{{name}}`
 
         When using the `pulumi import` command, Source can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/source:Source default organizations/{{organization}}/sources/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/source:Source default {{organization}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -266,18 +265,15 @@ class Source(pulumi.CustomResource):
         Source can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/sources/{{name}}`
-
         * `{{organization}}/{{name}}`
 
         When using the `pulumi import` command, Source can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/source:Source default organizations/{{organization}}/sources/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/source:Source default {{organization}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SourceArgs args: The arguments to use to populate this resource's properties.

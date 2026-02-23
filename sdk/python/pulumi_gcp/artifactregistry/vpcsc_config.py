@@ -24,6 +24,7 @@ class VpcscConfigArgs:
                  vpcsc_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcscConfig resource.
+
         :param pulumi.Input[_builtins.str] location: The name of the location this config is located in.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -85,6 +86,7 @@ class _VpcscConfigState:
                  vpcsc_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcscConfig resources.
+
         :param pulumi.Input[_builtins.str] location: The name of the location this config is located in.
         :param pulumi.Input[_builtins.str] name: The name of the project's VPC SC Config.
                Always of the form: projects/{project}/location/{location}/vpcscConfig
@@ -165,6 +167,19 @@ class VpcscConfig(pulumi.CustomResource):
                  vpcsc_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The Artifact Registry VPC SC config that applies to a Project.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about VPCSCConfig, see:
+
+        * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/VPCSCConfig)
+
+        > **Note:** VPC SC configs are automatically created for a given location. Creating a
+        resource of this type will acquire and update the resource that already
+        exists at the location. Deleting this resource will remove the config from
+        your Terraform state but leave the resource as is.
         ## Example Usage
 
         ### Artifact Registry Vpcsc Config
@@ -183,24 +198,17 @@ class VpcscConfig(pulumi.CustomResource):
         VPCSCConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, VPCSCConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -217,6 +225,19 @@ class VpcscConfig(pulumi.CustomResource):
                  args: Optional[VpcscConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The Artifact Registry VPC SC config that applies to a Project.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about VPCSCConfig, see:
+
+        * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/VPCSCConfig)
+
+        > **Note:** VPC SC configs are automatically created for a given location. Creating a
+        resource of this type will acquire and update the resource that already
+        exists at the location. Deleting this resource will remove the config from
+        your Terraform state but leave the resource as is.
         ## Example Usage
 
         ### Artifact Registry Vpcsc Config
@@ -235,24 +256,17 @@ class VpcscConfig(pulumi.CustomResource):
         VPCSCConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, VPCSCConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcscConfigArgs args: The arguments to use to populate this resource's properties.

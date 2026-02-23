@@ -55,9 +55,27 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.cryptoKeyName);
     }
 
+    /**
+     * Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the workflow,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the workflow will fail.
+     * When the field is set to false, deleting the workflow is allowed.
+     * 
+     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+     * When a`terraform destroy` or `pulumi up` would delete the workflow,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the workflow will fail.
+     * When the field is set to false, deleting the workflow is allowed.
+     * 
+     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -346,11 +364,33 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
             return cryptoKeyName(Output.of(cryptoKeyName));
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+         * When a`terraform destroy` or `pulumi up` would delete the workflow,
+         * the command will fail if this field is not set to false in Terraform state.
+         * When the field is set to true or unset in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the workflow will fail.
+         * When the field is set to false, deleting the workflow is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
+        /**
+         * @param deletionProtection Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+         * When a`terraform destroy` or `pulumi up` would delete the workflow,
+         * the command will fail if this field is not set to false in Terraform state.
+         * When the field is set to true or unset in Terraform state, a `pulumi up`
+         * or `terraform destroy` that would delete the workflow will fail.
+         * When the field is set to false, deleting the workflow is allowed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }

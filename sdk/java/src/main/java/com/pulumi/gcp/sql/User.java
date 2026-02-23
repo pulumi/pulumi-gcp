@@ -19,6 +19,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
+ * 
+ * Read more about sensitive data in state. Passwords will not be retrieved when running
+ * &#34;terraform import&#34;.
+ * 
  * ## Example Usage
  * 
  * Example creating a SQL User.
@@ -67,6 +72,61 @@ import javax.annotation.Nullable;
  *             .instance(main.name())
  *             .host("me.com")
  *             .password("changeme")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Example creating a SQL User with database roles(applicable for Postgres/MySQL
+ * only).
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Id;
+ * import com.pulumi.random.IdArgs;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
+ *             .byteLength(4)
+ *             .build());
+ * 
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
+ *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+ *             .databaseVersion("POSTGRES_15")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-f1-micro")
+ *                 .build())
+ *             .build());
+ * 
+ *         var users = new User("users", UserArgs.builder()
+ *             .name("me")
+ *             .instance(main.name())
+ *             .host("me.com")
+ *             .password("changeme")
+ *             .databaseRoles("cloudsqlsuperuser")
  *             .build());
  * 
  *     }
@@ -235,14 +295,26 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:sql/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
-     * A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     * A list of database roles to be assigned to the user.
+     * This option is only available for MySQL 8+ and PostgreSQL instances. You
+     * can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+     * own custom roles. Custom roles must be created in the database before
+     * you can assign them. You can create roles using the CREATE ROLE
+     * statement for both MySQL and PostgreSQL.
+     * **Note**: This property is write-only and will not be read from the API.
      * 
      */
     @Export(name="databaseRoles", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> databaseRoles;
 
     /**
-     * @return A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     * @return A list of database roles to be assigned to the user.
+     * This option is only available for MySQL 8+ and PostgreSQL instances. You
+     * can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+     * own custom roles. Custom roles must be created in the database before
+     * you can assign them. You can create roles using the CREATE ROLE
+     * statement for both MySQL and PostgreSQL.
+     * **Note**: This property is write-only and will not be read from the API.
      * 
      */
     public Output<Optional<List<String>>> databaseRoles() {
@@ -289,14 +361,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.host;
     }
     /**
-     * The email address for MySQL IAM database users.
+     * IAM email address for MySQL IAM database users.
      * 
      */
     @Export(name="iamEmail", refs={String.class}, tree="[0]")
     private Output<String> iamEmail;
 
     /**
-     * @return The email address for MySQL IAM database users.
+     * @return IAM email address for MySQL IAM database users.
      * 
      */
     public Output<String> iamEmail() {

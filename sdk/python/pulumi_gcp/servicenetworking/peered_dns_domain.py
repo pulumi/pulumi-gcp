@@ -26,6 +26,7 @@ class PeeredDnsDomainArgs:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PeeredDnsDomain resource.
+
         :param pulumi.Input[_builtins.str] dns_suffix: The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
         :param pulumi.Input[_builtins.str] network: The network in the consumer project.
         :param pulumi.Input[_builtins.str] name: Internal name used for the peered DNS domain.
@@ -113,6 +114,7 @@ class _PeeredDnsDomainState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PeeredDnsDomain resources.
+
         :param pulumi.Input[_builtins.str] dns_suffix: The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
         :param pulumi.Input[_builtins.str] name: Internal name used for the peered DNS domain.
         :param pulumi.Input[_builtins.str] network: The network in the consumer project.
@@ -244,11 +246,8 @@ class PeeredDnsDomain(pulumi.CustomResource):
         Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, where:
 
         - `service` is the service connection, defaults to `servicenetworking.googleapis.com`.
-
         - `project` is the producer project name.
-
         - `network` is the consumer network name.
-
         - `name` is the name of your peered DNS domain.
 
         * `services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}`
@@ -258,6 +257,7 @@ class PeeredDnsDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain default services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -299,11 +299,8 @@ class PeeredDnsDomain(pulumi.CustomResource):
         Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, where:
 
         - `service` is the service connection, defaults to `servicenetworking.googleapis.com`.
-
         - `project` is the producer project name.
-
         - `network` is the consumer network name.
-
         - `name` is the name of your peered DNS domain.
 
         * `services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}`
@@ -313,6 +310,7 @@ class PeeredDnsDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain default services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PeeredDnsDomainArgs args: The arguments to use to populate this resource's properties.

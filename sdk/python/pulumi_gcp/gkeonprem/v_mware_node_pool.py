@@ -32,6 +32,7 @@ class VMwareNodePoolArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VMwareNodePool resource.
+
         :param pulumi.Input['VMwareNodePoolConfigArgs'] config: The node configuration of the node pool.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
@@ -216,6 +217,7 @@ class _VMwareNodePoolState:
                  vmware_cluster: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VMwareNodePool resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the node Pool.
                This field has the same restrictions as Kubernetes annotations.
                The total size of all keys and values combined is limited to 256k.
@@ -232,6 +234,7 @@ class _VMwareNodePoolState:
         :param pulumi.Input[_builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] delete_time: The time the cluster was deleted, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] display_name: The display name for the node pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
@@ -364,6 +367,9 @@ class _VMwareNodePoolState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -701,24 +707,17 @@ class VMwareNodePool(pulumi.CustomResource):
         VmwareNodePool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}`
-
         * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}`
-
         * `{{location}}/{{vmware_cluster}}/{{name}}`
 
         When using the `pulumi import` command, VmwareNodePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{project}}/{{location}}/{{vmware_cluster}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{location}}/{{vmware_cluster}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -913,24 +912,17 @@ class VMwareNodePool(pulumi.CustomResource):
         VmwareNodePool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}`
-
         * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}`
-
         * `{{location}}/{{vmware_cluster}}/{{name}}`
 
         When using the `pulumi import` command, VmwareNodePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{project}}/{{location}}/{{vmware_cluster}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{location}}/{{vmware_cluster}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VMwareNodePoolArgs args: The arguments to use to populate this resource's properties.
@@ -1040,6 +1032,7 @@ class VMwareNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] delete_time: The time the cluster was deleted, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] display_name: The display name for the node pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
@@ -1139,6 +1132,9 @@ class VMwareNodePool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

@@ -41,6 +41,7 @@ class DatasetArgs:
                  storage_billing_model: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Dataset resource.
+
         :param pulumi.Input[_builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
@@ -466,6 +467,7 @@ class _DatasetState:
                  storage_billing_model: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Dataset resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] creation_time: The time when this dataset was created, in milliseconds since the
@@ -985,6 +987,18 @@ class Dataset(pulumi.CustomResource):
                  storage_billing_model: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Datasets allow you to organize and control access to your tables.
+
+        To get more information about Dataset, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
+        * How-to Guides
+            * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
+
+        > **Warning:** You must specify the role field using the legacy format `OWNER` instead of `roles/bigquery.dataOwner`.
+        The API does accept both formats but it will always return the legacy format which results in Terraform
+        showing permanent diff on each plan and apply operation.
+
         ## Example Usage
 
         ### Bigquery Dataset Basic
@@ -1179,24 +1193,17 @@ class Dataset(pulumi.CustomResource):
         Dataset can be imported using any of these accepted formats:
 
         * `projects/{{project}}/datasets/{{dataset_id}}`
-
         * `{{project}}/{{dataset_id}}`
-
         * `{{dataset_id}}`
 
         When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1288,6 +1295,18 @@ class Dataset(pulumi.CustomResource):
                  args: DatasetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Datasets allow you to organize and control access to your tables.
+
+        To get more information about Dataset, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
+        * How-to Guides
+            * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
+
+        > **Warning:** You must specify the role field using the legacy format `OWNER` instead of `roles/bigquery.dataOwner`.
+        The API does accept both formats but it will always return the legacy format which results in Terraform
+        showing permanent diff on each plan and apply operation.
+
         ## Example Usage
 
         ### Bigquery Dataset Basic
@@ -1482,24 +1501,17 @@ class Dataset(pulumi.CustomResource):
         Dataset can be imported using any of these accepted formats:
 
         * `projects/{{project}}/datasets/{{dataset_id}}`
-
         * `{{project}}/{{dataset_id}}`
-
         * `{{dataset_id}}`
 
         When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatasetArgs args: The arguments to use to populate this resource's properties.

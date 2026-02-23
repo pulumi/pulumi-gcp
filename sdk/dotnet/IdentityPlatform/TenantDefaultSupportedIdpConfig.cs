@@ -50,22 +50,14 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}`
-    /// 
     /// * `{{project}}/{{tenant}}/{{idp_id}}`
-    /// 
     /// * `{{tenant}}/{{idp_id}}`
     /// 
     /// When using the `pulumi import` command, TenantDefaultSupportedIdpConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{project}}/{{tenant}}/{{idp_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{tenant}}/{{idp_id}}
     /// ```
     /// </summary>

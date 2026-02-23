@@ -31,6 +31,7 @@ class InstanceArgs:
                  workforce_identity_federation_config: Optional[pulumi.Input['InstanceWorkforceIdentityFederationConfigArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The name for the Instance.
         :param pulumi.Input[_builtins.str] location: The location for the Instance.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the instance. Setting `ABANDON` allows the resource
@@ -201,6 +202,7 @@ class _InstanceState:
                  workforce_identity_federation_config: Optional[pulumi.Input['InstanceWorkforceIdentityFederationConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the Instance was created in UTC.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the instance. Setting `ABANDON` allows the resource
                to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
@@ -886,30 +888,19 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-
         * `{{project}}/{{location}}/{{instance_id}}`
-
         * `{{location}}/{{instance_id}}`
-
         * `{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default {{location}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default {{instance_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1337,30 +1328,19 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-
         * `{{project}}/{{location}}/{{instance_id}}`
-
         * `{{location}}/{{instance_id}}`
-
         * `{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default {{location}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/instance:Instance default {{instance_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

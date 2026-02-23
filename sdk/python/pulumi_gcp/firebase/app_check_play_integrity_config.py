@@ -24,6 +24,7 @@ class AppCheckPlayIntegrityConfigArgs:
                  token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppCheckPlayIntegrityConfig resource.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of an
                [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -88,6 +89,7 @@ class _AppCheckPlayIntegrityConfigState:
                  token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppCheckPlayIntegrityConfig resources.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of an
                [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
         :param pulumi.Input[_builtins.str] name: The relative resource name of the Play Integrity configuration object
@@ -240,24 +242,17 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         PlayIntegrityConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/apps/{{app_id}}/playIntegrityConfig`
-
         * `{{project}}/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, PlayIntegrityConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default projects/{{project}}/apps/{{app_id}}/playIntegrityConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default {{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default {{app_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -346,24 +341,17 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         PlayIntegrityConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/apps/{{app_id}}/playIntegrityConfig`
-
         * `{{project}}/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, PlayIntegrityConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default projects/{{project}}/apps/{{app_id}}/playIntegrityConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default {{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default {{app_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppCheckPlayIntegrityConfigArgs args: The arguments to use to populate this resource's properties.

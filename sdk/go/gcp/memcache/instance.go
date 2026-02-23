@@ -114,28 +114,16 @@ import (
 // Instance can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:memcache/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:memcache/instance:Instance default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:memcache/instance:Instance default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:memcache/instance:Instance default {{name}}
 // ```
 type Instance struct {
@@ -145,7 +133,13 @@ type Instance struct {
 	// 'default' will be used.
 	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
 	// Creation timestamp in RFC3339 text format.
-	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance.
+	// When a `terraform destroy` or `pulumi up` would delete the instance,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Endpoint for Discovery API
 	DiscoveryEndpoint pulumi.StringOutput `pulumi:"discoveryEndpoint"`
@@ -247,8 +241,14 @@ type instanceState struct {
 	// 'default' will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// Creation timestamp in RFC3339 text format.
-	CreateTime         *string `pulumi:"createTime"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance.
+	// When a `terraform destroy` or `pulumi up` would delete the instance,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Endpoint for Discovery API
 	DiscoveryEndpoint *string `pulumi:"discoveryEndpoint"`
 	// A user-visible name for the instance.
@@ -309,7 +309,13 @@ type InstanceState struct {
 	// 'default' will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
-	CreateTime         pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the instance.
+	// When a `terraform destroy` or `pulumi up` would delete the instance,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// Endpoint for Discovery API
 	DiscoveryEndpoint pulumi.StringPtrInput
@@ -373,8 +379,14 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
-	AuthorizedNetwork  *string `pulumi:"authorizedNetwork"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
+	// Whether Terraform will be prevented from destroying the instance.
+	// When a `terraform destroy` or `pulumi up` would delete the instance,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A user-visible name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
@@ -419,7 +431,13 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
-	AuthorizedNetwork  pulumi.StringPtrInput
+	AuthorizedNetwork pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the instance.
+	// When a `terraform destroy` or `pulumi up` would delete the instance,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the instance will fail.
+	// When the field is set to false, deleting the instance is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// A user-visible name for the instance.
 	DisplayName pulumi.StringPtrInput
@@ -559,6 +577,12 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the instance.
+// When a `terraform destroy` or `pulumi up` would delete the instance,
+// the command will fail if this field is not set to false in Terraform state.
+// When the field is set to true or unset in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the instance will fail.
+// When the field is set to false, deleting the instance is allowed.
 func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

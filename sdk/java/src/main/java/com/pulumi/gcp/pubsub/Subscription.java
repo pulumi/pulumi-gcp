@@ -550,7 +550,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_60461")
+ *                 .filenameSuffix("-_54136")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -626,7 +626,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_45397")
+ *                 .filenameSuffix("-_11171")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -709,7 +709,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_16451")
+ *                 .filenameSuffix("-_40472")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -925,22 +925,14 @@ import javax.annotation.Nullable;
  * Subscription can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/subscriptions/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:pubsub/subscription:Subscription default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
  * ```
  * 

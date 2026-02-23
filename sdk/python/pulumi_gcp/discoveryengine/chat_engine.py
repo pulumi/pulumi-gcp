@@ -32,6 +32,7 @@ class ChatEngineArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ChatEngine resource.
+
         :param pulumi.Input['ChatEngineChatEngineConfigArgs'] chat_engine_config: Configurations for a chat Engine.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
@@ -192,6 +193,7 @@ class _ChatEngineState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ChatEngine resources.
+
         :param pulumi.Input['ChatEngineChatEngineConfigArgs'] chat_engine_config: Configurations for a chat Engine.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ChatEngineChatEngineMetadataArgs']]] chat_engine_metadatas: Additional information of the Chat Engine.
@@ -515,24 +517,17 @@ class ChatEngine(pulumi.CustomResource):
         ChatEngine can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}`
 
         When using the `pulumi import` command, ChatEngine can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default {{location}}/{{collection_id}}/{{engine_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -648,24 +643,17 @@ class ChatEngine(pulumi.CustomResource):
         ChatEngine can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}`
 
         When using the `pulumi import` command, ChatEngine can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default {{location}}/{{collection_id}}/{{engine_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ChatEngineArgs args: The arguments to use to populate this resource's properties.

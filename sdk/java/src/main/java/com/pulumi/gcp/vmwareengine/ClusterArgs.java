@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.inputs.ClusterAutoscalingSettingsArgs;
+import com.pulumi.gcp.vmwareengine.inputs.ClusterDatastoreMountConfigArgs;
 import com.pulumi.gcp.vmwareengine.inputs.ClusterNodeTypeConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -34,6 +35,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterAutoscalingSettingsArgs>> autoscalingSettings() {
         return Optional.ofNullable(this.autoscalingSettings);
+    }
+
+    /**
+     * Optional. Configuration to mount a datastore.
+     * Mount can be done along with cluster create or during cluster update
+     * Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+     * for unmount remove &#39;datastore_mount_config&#39; config from the update of cluster resource
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="datastoreMountConfigs")
+    private @Nullable Output<List<ClusterDatastoreMountConfigArgs>> datastoreMountConfigs;
+
+    /**
+     * @return Optional. Configuration to mount a datastore.
+     * Mount can be done along with cluster create or during cluster update
+     * Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+     * for unmount remove &#39;datastore_mount_config&#39; config from the update of cluster resource
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterDatastoreMountConfigArgs>>> datastoreMountConfigs() {
+        return Optional.ofNullable(this.datastoreMountConfigs);
     }
 
     /**
@@ -93,6 +117,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     private ClusterArgs(ClusterArgs $) {
         this.autoscalingSettings = $.autoscalingSettings;
+        this.datastoreMountConfigs = $.datastoreMountConfigs;
         this.name = $.name;
         this.nodeTypeConfigs = $.nodeTypeConfigs;
         this.parent = $.parent;
@@ -137,6 +162,49 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoscalingSettings(ClusterAutoscalingSettingsArgs autoscalingSettings) {
             return autoscalingSettings(Output.of(autoscalingSettings));
+        }
+
+        /**
+         * @param datastoreMountConfigs Optional. Configuration to mount a datastore.
+         * Mount can be done along with cluster create or during cluster update
+         * Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+         * for unmount remove &#39;datastore_mount_config&#39; config from the update of cluster resource
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastoreMountConfigs(@Nullable Output<List<ClusterDatastoreMountConfigArgs>> datastoreMountConfigs) {
+            $.datastoreMountConfigs = datastoreMountConfigs;
+            return this;
+        }
+
+        /**
+         * @param datastoreMountConfigs Optional. Configuration to mount a datastore.
+         * Mount can be done along with cluster create or during cluster update
+         * Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+         * for unmount remove &#39;datastore_mount_config&#39; config from the update of cluster resource
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastoreMountConfigs(List<ClusterDatastoreMountConfigArgs> datastoreMountConfigs) {
+            return datastoreMountConfigs(Output.of(datastoreMountConfigs));
+        }
+
+        /**
+         * @param datastoreMountConfigs Optional. Configuration to mount a datastore.
+         * Mount can be done along with cluster create or during cluster update
+         * Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+         * for unmount remove &#39;datastore_mount_config&#39; config from the update of cluster resource
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datastoreMountConfigs(ClusterDatastoreMountConfigArgs... datastoreMountConfigs) {
+            return datastoreMountConfigs(List.of(datastoreMountConfigs));
         }
 
         /**

@@ -193,8 +193,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -387,28 +385,16 @@ import (
 // Instance can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default projects/{{project}}/locations/{{region}}/instances/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{name}}
 // ```
 type InstanceIamBinding struct {

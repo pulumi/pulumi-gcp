@@ -28,6 +28,7 @@ class RolloutSequenceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RolloutSequence resource.
+
         :param pulumi.Input[_builtins.str] rollout_sequence_id: The user-provided identifier of the RolloutSequence.
         :param pulumi.Input[Sequence[pulumi.Input['RolloutSequenceStageArgs']]] stages: Ordered list of stages that constitute this Rollout Sequence.
                Structure is documented below.
@@ -132,6 +133,7 @@ class _RolloutSequenceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RolloutSequence resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which the Rollout Sequence was created.
         :param pulumi.Input[_builtins.str] delete_time: The timestamp at the Rollout Sequence was deleted.
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
@@ -355,29 +357,33 @@ class RolloutSequence(pulumi.CustomResource):
                  stages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict']]]]] = None,
                  __props__=None):
         """
+        RolloutSequence defines the desired order of upgrades.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about RolloutSequence, see:
+
+        * [API documentation](https://docs.cloud.google.com/kubernetes-engine/fleet-management/docs/reference/rest/v1beta/projects.locations.rolloutSequences)
+        * How-to Guides
+            * [Rollout Sequencing Overview](https://cloud.google.com/kubernetes-engine/docs/concepts/rollout-sequencing-custom-stages/about-rollout-sequencing)
+
         ## Import
 
         RolloutSequence can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/rolloutSequences/{{rollout_sequence_id}}`
-
         * `{{project}}/{{rollout_sequence_id}}`
-
         * `{{rollout_sequence_id}}`
 
         When using the `pulumi import` command, RolloutSequence can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default projects/{{project}}/locations/global/rolloutSequences/{{rollout_sequence_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default {{project}}/{{rollout_sequence_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default {{rollout_sequence_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -399,29 +405,33 @@ class RolloutSequence(pulumi.CustomResource):
                  args: RolloutSequenceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        RolloutSequence defines the desired order of upgrades.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about RolloutSequence, see:
+
+        * [API documentation](https://docs.cloud.google.com/kubernetes-engine/fleet-management/docs/reference/rest/v1beta/projects.locations.rolloutSequences)
+        * How-to Guides
+            * [Rollout Sequencing Overview](https://cloud.google.com/kubernetes-engine/docs/concepts/rollout-sequencing-custom-stages/about-rollout-sequencing)
+
         ## Import
 
         RolloutSequence can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/rolloutSequences/{{rollout_sequence_id}}`
-
         * `{{project}}/{{rollout_sequence_id}}`
-
         * `{{rollout_sequence_id}}`
 
         When using the `pulumi import` command, RolloutSequence can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default projects/{{project}}/locations/global/rolloutSequences/{{rollout_sequence_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default {{project}}/{{rollout_sequence_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default {{rollout_sequence_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RolloutSequenceArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class TagBindingArgs:
                  tag_value: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a TagBinding resource.
+
         :param pulumi.Input[_builtins.str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[_builtins.str] tag_value: The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
         """
@@ -62,6 +63,7 @@ class _TagBindingState:
                  tag_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TagBinding resources.
+
         :param pulumi.Input[_builtins.str] name: The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
         :param pulumi.Input[_builtins.str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[_builtins.str] tag_value: The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
@@ -179,18 +181,15 @@ class TagBinding(pulumi.CustomResource):
         TagBinding can be imported using any of these accepted formats:
 
         * `tagBindings/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, TagBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tags/tagBinding:TagBinding default tagBindings/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tags/tagBinding:TagBinding default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -263,18 +262,15 @@ class TagBinding(pulumi.CustomResource):
         TagBinding can be imported using any of these accepted formats:
 
         * `tagBindings/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, TagBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tags/tagBinding:TagBinding default tagBindings/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tags/tagBinding:TagBinding default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TagBindingArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class PacketMirroringArgs:
                  mirrored_resources: pulumi.Input['PacketMirroringMirroredResourcesArgs'],
                  network: pulumi.Input['PacketMirroringNetworkArgs'],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable: Optional[pulumi.Input[_builtins.str]] = None,
                  filter: Optional[pulumi.Input['PacketMirroringFilterArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  priority: Optional[pulumi.Input[_builtins.int]] = None,
@@ -32,6 +33,7 @@ class PacketMirroringArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PacketMirroring resource.
+
         :param pulumi.Input['PacketMirroringCollectorIlbArgs'] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
                that will be used as collector for mirrored traffic. The
                specified forwarding rule must have is_mirroring_collector
@@ -44,6 +46,9 @@ class PacketMirroringArgs:
                network. All mirrored subnetworks should belong to the given network.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the rule.
+        :param pulumi.Input[_builtins.str] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+               policy will not be enforced on the network. The default is TRUE.
+               Possible values are: `TRUE`, `FALSE`.
         :param pulumi.Input['PacketMirroringFilterArgs'] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the packet mirroring rule
@@ -60,6 +65,8 @@ class PacketMirroringArgs:
         pulumi.set(__self__, "network", network)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
         if name is not None:
@@ -126,6 +133,20 @@ class PacketMirroringArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+        policy will not be enforced on the network. The default is TRUE.
+        Possible values are: `TRUE`, `FALSE`.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter
@@ -198,6 +219,7 @@ class _PacketMirroringState:
     def __init__(__self__, *,
                  collector_ilb: Optional[pulumi.Input['PacketMirroringCollectorIlbArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable: Optional[pulumi.Input[_builtins.str]] = None,
                  filter: Optional[pulumi.Input['PacketMirroringFilterArgs']] = None,
                  mirrored_resources: Optional[pulumi.Input['PacketMirroringMirroredResourcesArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -207,12 +229,16 @@ class _PacketMirroringState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PacketMirroring resources.
+
         :param pulumi.Input['PacketMirroringCollectorIlbArgs'] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
                that will be used as collector for mirrored traffic. The
                specified forwarding rule must have is_mirroring_collector
                set to true.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the rule.
+        :param pulumi.Input[_builtins.str] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+               policy will not be enforced on the network. The default is TRUE.
+               Possible values are: `TRUE`, `FALSE`.
         :param pulumi.Input['PacketMirroringFilterArgs'] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
                Structure is documented below.
         :param pulumi.Input['PacketMirroringMirroredResourcesArgs'] mirrored_resources: A means of specifying which resources to mirror.
@@ -234,6 +260,8 @@ class _PacketMirroringState:
             pulumi.set(__self__, "collector_ilb", collector_ilb)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
         if mirrored_resources is not None:
@@ -276,6 +304,20 @@ class _PacketMirroringState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+        policy will not be enforced on the network. The default is TRUE.
+        Possible values are: `TRUE`, `FALSE`.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter
@@ -379,6 +421,7 @@ class PacketMirroring(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collector_ilb: Optional[pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable: Optional[pulumi.Input[_builtins.str]] = None,
                  filter: Optional[pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
                  mirrored_resources: Optional[pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -447,6 +490,7 @@ class PacketMirroring(pulumi.CustomResource):
         foobar = gcp.compute.PacketMirroring("foobar",
             name="my-mirroring",
             description="bar",
+            enable="TRUE",
             network={
                 "url": default.id,
             },
@@ -474,30 +518,19 @@ class PacketMirroring(pulumi.CustomResource):
         PacketMirroring can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -507,6 +540,9 @@ class PacketMirroring(pulumi.CustomResource):
                set to true.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the rule.
+        :param pulumi.Input[_builtins.str] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+               policy will not be enforced on the network. The default is TRUE.
+               Possible values are: `TRUE`, `FALSE`.
         :param pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
                Structure is documented below.
         :param pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']] mirrored_resources: A means of specifying which resources to mirror.
@@ -590,6 +626,7 @@ class PacketMirroring(pulumi.CustomResource):
         foobar = gcp.compute.PacketMirroring("foobar",
             name="my-mirroring",
             description="bar",
+            enable="TRUE",
             network={
                 "url": default.id,
             },
@@ -617,30 +654,19 @@ class PacketMirroring(pulumi.CustomResource):
         PacketMirroring can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PacketMirroringArgs args: The arguments to use to populate this resource's properties.
@@ -659,6 +685,7 @@ class PacketMirroring(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collector_ilb: Optional[pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable: Optional[pulumi.Input[_builtins.str]] = None,
                  filter: Optional[pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
                  mirrored_resources: Optional[pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -679,6 +706,7 @@ class PacketMirroring(pulumi.CustomResource):
                 raise TypeError("Missing required property 'collector_ilb'")
             __props__.__dict__["collector_ilb"] = collector_ilb
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable"] = enable
             __props__.__dict__["filter"] = filter
             if mirrored_resources is None and not opts.urn:
                 raise TypeError("Missing required property 'mirrored_resources'")
@@ -702,6 +730,7 @@ class PacketMirroring(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             collector_ilb: Optional[pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            enable: Optional[pulumi.Input[_builtins.str]] = None,
             filter: Optional[pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
             mirrored_resources: Optional[pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -722,6 +751,9 @@ class PacketMirroring(pulumi.CustomResource):
                set to true.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the rule.
+        :param pulumi.Input[_builtins.str] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+               policy will not be enforced on the network. The default is TRUE.
+               Possible values are: `TRUE`, `FALSE`.
         :param pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
                Structure is documented below.
         :param pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']] mirrored_resources: A means of specifying which resources to mirror.
@@ -745,6 +777,7 @@ class PacketMirroring(pulumi.CustomResource):
 
         __props__.__dict__["collector_ilb"] = collector_ilb
         __props__.__dict__["description"] = description
+        __props__.__dict__["enable"] = enable
         __props__.__dict__["filter"] = filter
         __props__.__dict__["mirrored_resources"] = mirrored_resources
         __props__.__dict__["name"] = name
@@ -773,6 +806,16 @@ class PacketMirroring(pulumi.CustomResource):
         A human-readable description of the rule.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> pulumi.Output[_builtins.str]:
+        """
+        Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+        policy will not be enforced on the network. The default is TRUE.
+        Possible values are: `TRUE`, `FALSE`.
+        """
+        return pulumi.get(self, "enable")
 
     @_builtins.property
     @pulumi.getter

@@ -31,6 +31,7 @@ class MessageBusArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MessageBus resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] message_bus_id: Required. The user-provided ID to be assigned to the MessageBus. It should match the
                format `^a-z?$`.
@@ -195,6 +196,7 @@ class _MessageBusState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MessageBus resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Resource annotations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -204,6 +206,7 @@ class _MessageBusState:
                It must match the pattern
                `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[_builtins.str] display_name: Optional. Resource display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Output only. This checksum is computed by the server based on the value of other
                fields, and might be sent only on update and delete requests to ensure that
@@ -316,6 +319,9 @@ class _MessageBusState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -519,24 +525,17 @@ class MessageBus(pulumi.CustomResource):
         MessageBus can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/messageBuses/{{message_bus_id}}`
-
         * `{{project}}/{{location}}/{{message_bus_id}}`
-
         * `{{location}}/{{message_bus_id}}`
 
         When using the `pulumi import` command, MessageBus can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/messageBus:MessageBus default projects/{{project}}/locations/{{location}}/messageBuses/{{message_bus_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/messageBus:MessageBus default {{project}}/{{location}}/{{message_bus_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/messageBus:MessageBus default {{location}}/{{message_bus_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -604,24 +603,17 @@ class MessageBus(pulumi.CustomResource):
         MessageBus can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/messageBuses/{{message_bus_id}}`
-
         * `{{project}}/{{location}}/{{message_bus_id}}`
-
         * `{{location}}/{{message_bus_id}}`
 
         When using the `pulumi import` command, MessageBus can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/messageBus:MessageBus default projects/{{project}}/locations/{{location}}/messageBuses/{{message_bus_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/messageBus:MessageBus default {{project}}/{{location}}/{{message_bus_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/messageBus:MessageBus default {{location}}/{{message_bus_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MessageBusArgs args: The arguments to use to populate this resource's properties.
@@ -719,6 +711,7 @@ class MessageBus(pulumi.CustomResource):
                It must match the pattern
                `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[_builtins.str] display_name: Optional. Resource display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Output only. This checksum is computed by the server based on the value of other
                fields, and might be sent only on update and delete requests to ensure that
@@ -804,6 +797,9 @@ class MessageBus(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

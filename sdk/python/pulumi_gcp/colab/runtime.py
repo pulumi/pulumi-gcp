@@ -32,6 +32,7 @@ class RuntimeArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Runtime resource.
+
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Runtime.
         :param pulumi.Input[_builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input[_builtins.str] runtime_user: The user email of the NotebookRuntime.
@@ -189,6 +190,7 @@ class _RuntimeState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Runtime resources.
+
         :param pulumi.Input[_builtins.bool] auto_upgrade: Triggers an upgrade anytime the runtime is started if it is upgradable.
         :param pulumi.Input[_builtins.str] description: The description of the Runtime.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
@@ -532,24 +534,17 @@ class Runtime(pulumi.CustomResource):
         Runtime can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/notebookRuntimes/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Runtime can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:colab/runtime:Runtime default projects/{{project}}/locations/{{location}}/notebookRuntimes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:colab/runtime:Runtime default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:colab/runtime:Runtime default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -696,24 +691,17 @@ class Runtime(pulumi.CustomResource):
         Runtime can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/notebookRuntimes/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Runtime can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:colab/runtime:Runtime default projects/{{project}}/locations/{{location}}/notebookRuntimes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:colab/runtime:Runtime default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:colab/runtime:Runtime default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuntimeArgs args: The arguments to use to populate this resource's properties.

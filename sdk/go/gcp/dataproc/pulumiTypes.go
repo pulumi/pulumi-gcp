@@ -7646,6 +7646,8 @@ type ClusterClusterConfigMasterConfig struct {
 	// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
 	// for more information.
 	ImageUri *string `pulumi:"imageUri"`
+	// Instance flexibility Policy allowing a mixture of VM shapes.
+	InstanceFlexibilityPolicy *ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicy"`
 	// List of master instance names which
 	// have been assigned to the cluster.
 	InstanceNames []string `pulumi:"instanceNames"`
@@ -7682,6 +7684,8 @@ type ClusterClusterConfigMasterConfigArgs struct {
 	// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
 	// for more information.
 	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+	// Instance flexibility Policy allowing a mixture of VM shapes.
+	InstanceFlexibilityPolicy ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput `pulumi:"instanceFlexibilityPolicy"`
 	// List of master instance names which
 	// have been assigned to the cluster.
 	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
@@ -7796,6 +7800,13 @@ func (o ClusterClusterConfigMasterConfigOutput) ImageUri() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfig) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
 }
 
+// Instance flexibility Policy allowing a mixture of VM shapes.
+func (o ClusterClusterConfigMasterConfigOutput) InstanceFlexibilityPolicy() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfig) *ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy {
+		return v.InstanceFlexibilityPolicy
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
 // List of master instance names which
 // have been assigned to the cluster.
 func (o ClusterClusterConfigMasterConfigOutput) InstanceNames() pulumi.StringArrayOutput {
@@ -7876,6 +7887,16 @@ func (o ClusterClusterConfigMasterConfigPtrOutput) ImageUri() pulumi.StringPtrOu
 		}
 		return v.ImageUri
 	}).(pulumi.StringPtrOutput)
+}
+
+// Instance flexibility Policy allowing a mixture of VM shapes.
+func (o ClusterClusterConfigMasterConfigPtrOutput) InstanceFlexibilityPolicy() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterConfig) *ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceFlexibilityPolicy
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput)
 }
 
 // List of master instance names which
@@ -8277,6 +8298,386 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) NumLocalSsds() pulu
 		}
 		return v.NumLocalSsds
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy struct {
+	// List of instance selection options that the group will use when creating new VMs.
+	InstanceSelectionLists []ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList `pulumi:"instanceSelectionLists"`
+	// A list of instance selection results in the group.
+	InstanceSelectionResults []ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult `pulumi:"instanceSelectionResults"`
+}
+
+// ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInput is an input type that accepts ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs and ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInput` via:
+//
+//	ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs{...}
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutputWithContext(context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs struct {
+	// List of instance selection options that the group will use when creating new VMs.
+	InstanceSelectionLists ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput `pulumi:"instanceSelectionLists"`
+	// A list of instance selection results in the group.
+	InstanceSelectionResults ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput `pulumi:"instanceSelectionResults"`
+}
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput {
+	return i.ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput)
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return i.ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput).ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput is an input type that accepts ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs, ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtr and ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput` via:
+//
+//	        ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput
+}
+
+type clusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrType ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs
+
+func ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtr(v *ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput {
+	return (*clusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrType)(v)
+}
+
+func (*clusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrType) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return i.ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrType) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy) *ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy {
+		return &v
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+// List of instance selection options that the group will use when creating new VMs.
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) InstanceSelectionLists() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy) []ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		return v.InstanceSelectionLists
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+// A list of instance selection results in the group.
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) InstanceSelectionResults() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy) []ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		return v.InstanceSelectionResults
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) Elem() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy
+		return ret
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput)
+}
+
+// List of instance selection options that the group will use when creating new VMs.
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) InstanceSelectionLists() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy) []ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelectionLists
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+// A list of instance selection results in the group.
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) InstanceSelectionResults() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy) []ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelectionResults
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList struct {
+	// Full machine-type names, e.g. `"n1-standard-16"`.
+	MachineTypes []string `pulumi:"machineTypes"`
+	// Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank *int `pulumi:"rank"`
+}
+
+// ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListInput is an input type that accepts ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs and ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListInput` via:
+//
+//	ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{...}
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs struct {
+	// Full machine-type names, e.g. `"n1-standard-16"`.
+	MachineTypes pulumi.StringArrayInput `pulumi:"machineTypes"`
+	// Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank pulumi.IntPtrInput `pulumi:"rank"`
+}
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return i.ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput)
+}
+
+// ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput is an input type that accepts ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray and ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput` via:
+//
+//	ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray{ ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{...} }
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray []ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListInput
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return i.ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return o
+}
+
+// Full machine-type names, e.g. `"n1-standard-16"`.
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) MachineTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList) []string {
+		return v.MachineTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) Rank() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList) *int {
+		return v.Rank
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		return vs[0].([]ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList)[vs[1].(int)]
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput)
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult struct {
+	// Full machine-type names, e.g. "n1-standard-16".
+	MachineType *string `pulumi:"machineType"`
+	// Number of VM provisioned with the machine_type.
+	VmCount *int `pulumi:"vmCount"`
+}
+
+// ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultInput is an input type that accepts ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs and ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultInput` via:
+//
+//	ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{...}
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs struct {
+	// Full machine-type names, e.g. "n1-standard-16".
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Number of VM provisioned with the machine_type.
+	VmCount pulumi.IntPtrInput `pulumi:"vmCount"`
+}
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return i.ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
+}
+
+// ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput is an input type that accepts ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray and ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput` via:
+//
+//	ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{ ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{...} }
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray []ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultInput
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return i.ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return o
+}
+
+// Full machine-type names, e.g. "n1-standard-16".
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult) *string {
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of VM provisioned with the machine_type.
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) VmCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult) *int {
+		return v.VmCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		return vs[0].([]ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult)[vs[1].(int)]
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
 }
 
 type ClusterClusterConfigMetastoreConfig struct {
@@ -10482,6 +10883,8 @@ type ClusterClusterConfigWorkerConfig struct {
 	// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
 	// for more information.
 	ImageUri *string `pulumi:"imageUri"`
+	// Instance flexibility Policy allowing a mixture of VM shapes.
+	InstanceFlexibilityPolicy *ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicy"`
 	// List of worker instance names which have been assigned
 	// to the cluster.
 	InstanceNames []string `pulumi:"instanceNames"`
@@ -10525,6 +10928,8 @@ type ClusterClusterConfigWorkerConfigArgs struct {
 	// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
 	// for more information.
 	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+	// Instance flexibility Policy allowing a mixture of VM shapes.
+	InstanceFlexibilityPolicy ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput `pulumi:"instanceFlexibilityPolicy"`
 	// List of worker instance names which have been assigned
 	// to the cluster.
 	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
@@ -10646,6 +11051,13 @@ func (o ClusterClusterConfigWorkerConfigOutput) ImageUri() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfig) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
 }
 
+// Instance flexibility Policy allowing a mixture of VM shapes.
+func (o ClusterClusterConfigWorkerConfigOutput) InstanceFlexibilityPolicy() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfig) *ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy {
+		return v.InstanceFlexibilityPolicy
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
 // List of worker instance names which have been assigned
 // to the cluster.
 func (o ClusterClusterConfigWorkerConfigOutput) InstanceNames() pulumi.StringArrayOutput {
@@ -10736,6 +11148,16 @@ func (o ClusterClusterConfigWorkerConfigPtrOutput) ImageUri() pulumi.StringPtrOu
 		}
 		return v.ImageUri
 	}).(pulumi.StringPtrOutput)
+}
+
+// Instance flexibility Policy allowing a mixture of VM shapes.
+func (o ClusterClusterConfigWorkerConfigPtrOutput) InstanceFlexibilityPolicy() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfig) *ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceFlexibilityPolicy
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput)
 }
 
 // List of worker instance names which have been assigned
@@ -11136,6 +11558,386 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulu
 		}
 		return v.NumLocalSsds
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy struct {
+	// List of instance selection options that the group will use when creating new VMs.
+	InstanceSelectionLists []ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList `pulumi:"instanceSelectionLists"`
+	// A list of instance selection results in the group.
+	InstanceSelectionResults []ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult `pulumi:"instanceSelectionResults"`
+}
+
+// ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInput is an input type that accepts ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs and ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInput` via:
+//
+//	ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs{...}
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutputWithContext(context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs struct {
+	// List of instance selection options that the group will use when creating new VMs.
+	InstanceSelectionLists ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput `pulumi:"instanceSelectionLists"`
+	// A list of instance selection results in the group.
+	InstanceSelectionResults ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput `pulumi:"instanceSelectionResults"`
+}
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput {
+	return i.ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput)
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return i.ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput).ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput is an input type that accepts ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs, ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtr and ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput` via:
+//
+//	        ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput
+}
+
+type clusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrType ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs
+
+func ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtr(v *ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput {
+	return (*clusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrType)(v)
+}
+
+func (*clusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrType) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return i.ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrType) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy) *ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy {
+		return &v
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+// List of instance selection options that the group will use when creating new VMs.
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) InstanceSelectionLists() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy) []ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		return v.InstanceSelectionLists
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+// A list of instance selection results in the group.
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) InstanceSelectionResults() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy) []ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		return v.InstanceSelectionResults
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) Elem() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy
+		return ret
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput)
+}
+
+// List of instance selection options that the group will use when creating new VMs.
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) InstanceSelectionLists() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy) []ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelectionLists
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+// A list of instance selection results in the group.
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) InstanceSelectionResults() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy) []ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelectionResults
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList struct {
+	// Full machine-type names, e.g. `"n1-standard-16"`.
+	MachineTypes []string `pulumi:"machineTypes"`
+	// Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank *int `pulumi:"rank"`
+}
+
+// ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput is an input type that accepts ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs and ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput` via:
+//
+//	ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{...}
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs struct {
+	// Full machine-type names, e.g. `"n1-standard-16"`.
+	MachineTypes pulumi.StringArrayInput `pulumi:"machineTypes"`
+	// Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank pulumi.IntPtrInput `pulumi:"rank"`
+}
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return i.ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput)
+}
+
+// ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput is an input type that accepts ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray and ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput` via:
+//
+//	ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{ ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{...} }
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray []ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return i.ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return o
+}
+
+// Full machine-type names, e.g. `"n1-standard-16"`.
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) MachineTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList) []string {
+		return v.MachineTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) Rank() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList) *int {
+		return v.Rank
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		return vs[0].([]ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)[vs[1].(int)]
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput)
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult struct {
+	// Full machine-type names, e.g. "n1-standard-16".
+	MachineType *string `pulumi:"machineType"`
+	// Number of VM provisioned with the machine_type.
+	VmCount *int `pulumi:"vmCount"`
+}
+
+// ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput is an input type that accepts ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs and ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput` via:
+//
+//	ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{...}
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs struct {
+	// Full machine-type names, e.g. "n1-standard-16".
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Number of VM provisioned with the machine_type.
+	VmCount pulumi.IntPtrInput `pulumi:"vmCount"`
+}
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return i.ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
+}
+
+// ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput is an input type that accepts ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray and ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput` via:
+//
+//	ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{ ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{...} }
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray []ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return i.ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return o
+}
+
+// Full machine-type names, e.g. "n1-standard-16".
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult) *string {
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of VM provisioned with the machine_type.
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) VmCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult) *int {
+		return v.VmCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		return vs[0].([]ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)[vs[1].(int)]
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
 }
 
 type ClusterIAMBindingCondition struct {
@@ -23648,7 +24450,19 @@ func (o SessionTemplateSparkConnectSessionPtrOutput) Elem() SessionTemplateSpark
 }
 
 type WorkflowTemplateEncryptionConfig struct {
-	// Optional. The Cloud KMS key name to use for encryption.
+	// The Cloud KMS key name to use for encrypting workflow template [job arguments](https://docs.docs.cloud.google.com/dataproc/docs/concepts/workflows/use-workflows).
+	//
+	// When this this key is provided, the following workflow template job arguments, if present, are [CMEK encrypted](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data):
+	//
+	// - [FlinkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob)
+	// - [HadoopJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob)
+	// - [SparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+	// - [SparkRJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+	// - [PySparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob)
+	// - [SparkSqlJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries
+	// - [HiveJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries
+	// - [PigJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables  and queryList.queries
+	// - [PrestoJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries
 	KmsKey *string `pulumi:"kmsKey"`
 }
 
@@ -23664,7 +24478,19 @@ type WorkflowTemplateEncryptionConfigInput interface {
 }
 
 type WorkflowTemplateEncryptionConfigArgs struct {
-	// Optional. The Cloud KMS key name to use for encryption.
+	// The Cloud KMS key name to use for encrypting workflow template [job arguments](https://docs.docs.cloud.google.com/dataproc/docs/concepts/workflows/use-workflows).
+	//
+	// When this this key is provided, the following workflow template job arguments, if present, are [CMEK encrypted](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data):
+	//
+	// - [FlinkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob)
+	// - [HadoopJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob)
+	// - [SparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+	// - [SparkRJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+	// - [PySparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob)
+	// - [SparkSqlJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries
+	// - [HiveJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries
+	// - [PigJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables  and queryList.queries
+	// - [PrestoJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 }
 
@@ -23745,7 +24571,19 @@ func (o WorkflowTemplateEncryptionConfigOutput) ToWorkflowTemplateEncryptionConf
 	}).(WorkflowTemplateEncryptionConfigPtrOutput)
 }
 
-// Optional. The Cloud KMS key name to use for encryption.
+// The Cloud KMS key name to use for encrypting workflow template [job arguments](https://docs.docs.cloud.google.com/dataproc/docs/concepts/workflows/use-workflows).
+//
+// When this this key is provided, the following workflow template job arguments, if present, are [CMEK encrypted](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data):
+//
+// - [FlinkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob)
+// - [HadoopJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob)
+// - [SparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+// - [SparkRJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+// - [PySparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob)
+// - [SparkSqlJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries
+// - [HiveJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries
+// - [PigJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables  and queryList.queries
+// - [PrestoJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries
 func (o WorkflowTemplateEncryptionConfigOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplateEncryptionConfig) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
@@ -23774,7 +24612,19 @@ func (o WorkflowTemplateEncryptionConfigPtrOutput) Elem() WorkflowTemplateEncryp
 	}).(WorkflowTemplateEncryptionConfigOutput)
 }
 
-// Optional. The Cloud KMS key name to use for encryption.
+// The Cloud KMS key name to use for encrypting workflow template [job arguments](https://docs.docs.cloud.google.com/dataproc/docs/concepts/workflows/use-workflows).
+//
+// When this this key is provided, the following workflow template job arguments, if present, are [CMEK encrypted](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data):
+//
+// - [FlinkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob)
+// - [HadoopJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob)
+// - [SparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+// - [SparkRJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+// - [PySparkJob args](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob)
+// - [SparkSqlJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries
+// - [HiveJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries
+// - [PigJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables  and queryList.queries
+// - [PrestoJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries
 func (o WorkflowTemplateEncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplateEncryptionConfig) *string {
 		if v == nil {
@@ -28731,7 +29581,7 @@ type WorkflowTemplatePlacementManagedClusterConfig struct {
 	SecurityConfig *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig `pulumi:"securityConfig"`
 	// The config settings for software inside the cluster.
 	SoftwareConfig *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig `pulumi:"softwareConfig"`
-	// A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+	// A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
 	StagingBucket *string `pulumi:"stagingBucket"`
 	// A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
 	TempBucket *string `pulumi:"tempBucket"`
@@ -28777,7 +29627,7 @@ type WorkflowTemplatePlacementManagedClusterConfigArgs struct {
 	SecurityConfig WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrInput `pulumi:"securityConfig"`
 	// The config settings for software inside the cluster.
 	SoftwareConfig WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrInput `pulumi:"softwareConfig"`
-	// A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+	// A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
 	StagingBucket pulumi.StringPtrInput `pulumi:"stagingBucket"`
 	// A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
 	TempBucket pulumi.StringPtrInput `pulumi:"tempBucket"`
@@ -28948,7 +29798,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigOutput) SoftwareConfig() Wo
 	}).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput)
 }
 
-// A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+// A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
 func (o WorkflowTemplatePlacementManagedClusterConfigOutput) StagingBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *string { return v.StagingBucket }).(pulumi.StringPtrOutput)
 }
@@ -29111,7 +29961,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) SoftwareConfig()
 	}).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput)
 }
 
-// A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+// A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
 func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) StagingBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *string {
 		if v == nil {
@@ -29582,7 +30432,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput) Ht
 type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig struct {
 	// If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internalIpOnly` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
 	InternalIpOnly *bool `pulumi:"internalIpOnly"`
-	// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+	// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
 	Metadata map[string]string `pulumi:"metadata"`
 	// The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
 	Network *string `pulumi:"network"`
@@ -29592,15 +30442,15 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig struct {
 	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
 	// Reservation Affinity for consuming Zonal reservation.
 	ReservationAffinity *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity `pulumi:"reservationAffinity"`
-	// The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+	// The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
-	// The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+	// The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
 	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
-	// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+	// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
 	ShieldedInstanceConfig *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
 	Subnetwork *string `pulumi:"subnetwork"`
-	// The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+	// The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
 	Tags []string `pulumi:"tags"`
 	// The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
 	Zone *string `pulumi:"zone"`
@@ -29620,7 +30470,7 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigInput interfac
 type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs struct {
 	// If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internalIpOnly` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
 	InternalIpOnly pulumi.BoolPtrInput `pulumi:"internalIpOnly"`
-	// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+	// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
 	Network pulumi.StringPtrInput `pulumi:"network"`
@@ -29630,15 +30480,15 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs struct {
 	PrivateIpv6GoogleAccess pulumi.StringPtrInput `pulumi:"privateIpv6GoogleAccess"`
 	// Reservation Affinity for consuming Zonal reservation.
 	ReservationAffinity WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
-	// The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+	// The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
-	// The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+	// The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
 	ServiceAccountScopes pulumi.StringArrayInput `pulumi:"serviceAccountScopes"`
-	// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+	// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
 	ShieldedInstanceConfig WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
-	// The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+	// The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
@@ -29726,7 +30576,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Int
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *bool { return v.InternalIpOnly }).(pulumi.BoolPtrOutput)
 }
 
-// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) map[string]string {
 		return v.Metadata
@@ -29759,19 +30609,19 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Res
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput)
 }
 
-// The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+// The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-// The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+// The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) []string {
 		return v.ServiceAccountScopes
 	}).(pulumi.StringArrayOutput)
 }
 
-// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ShieldedInstanceConfig() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig {
 		return v.ShieldedInstanceConfig
@@ -29783,7 +30633,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Sub
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
 
-// The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+// The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -29827,7 +30677,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
+// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) map[string]string {
 		if v == nil {
@@ -29877,7 +30727,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) 
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput)
 }
 
-// The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+// The (https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string {
 		if v == nil {
@@ -29887,7 +30737,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+// The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) []string {
 		if v == nil {
@@ -29897,7 +30747,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) 
 	}).(pulumi.StringArrayOutput)
 }
 
-// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) ShieldedInstanceConfig() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig {
 		if v == nil {
@@ -29917,7 +30767,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
+// The Compute Engine tags to add to all instances (see [Manage tags for resources](https://docs.cloud.google.com/compute/docs/tag-resources)).
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) []string {
 		if v == nil {
@@ -30258,11 +31108,11 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservation
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig struct {
-	// Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+	// Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
-	// Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+	// Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
 	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
-	// Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+	// Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
 	EnableVtpm *bool `pulumi:"enableVtpm"`
 }
 
@@ -30278,11 +31128,11 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstan
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs struct {
-	// Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+	// Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
-	// Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+	// Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
 	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
-	// Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+	// Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
 	EnableVtpm pulumi.BoolPtrInput `pulumi:"enableVtpm"`
 }
 
@@ -30363,21 +31213,21 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedIns
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
 }
 
-// Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+// Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
 		return v.EnableIntegrityMonitoring
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+// Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
 		return v.EnableSecureBoot
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+// Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
 		return v.EnableVtpm
@@ -30408,7 +31258,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedIns
 	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput)
 }
 
-// Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+// Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -30418,7 +31268,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedIns
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+// Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -30428,7 +31278,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedIns
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+// Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -31052,11 +31902,11 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfig struct {
 	InstanceNames []string `pulumi:"instanceNames"`
 	// Output only. Specifies that this instance group contains preemptible instances.
 	IsPreemptible *bool `pulumi:"isPreemptible"`
-	// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+	// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
 	MachineType *string `pulumi:"machineType"`
 	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
 	ManagedGroupConfigs []WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig `pulumi:"managedGroupConfigs"`
-	// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://docs.cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The number of VM instances in the instance group. For master instance groups, must be set to 1.
 	NumInstances *int `pulumi:"numInstances"`
@@ -31086,11 +31936,11 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs struct {
 	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
 	// Output only. Specifies that this instance group contains preemptible instances.
 	IsPreemptible pulumi.BoolPtrInput `pulumi:"isPreemptible"`
-	// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+	// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
 	ManagedGroupConfigs WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayInput `pulumi:"managedGroupConfigs"`
-	// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://docs.cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// The number of VM instances in the instance group. For master instance groups, must be set to 1.
 	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
@@ -31204,7 +32054,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) IsPreem
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *bool { return v.IsPreemptible }).(pulumi.BoolPtrOutput)
 }
 
-// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
@@ -31216,7 +32066,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) Managed
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput)
 }
 
-// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://docs.cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
@@ -31305,7 +32155,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) IsPr
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string {
 		if v == nil {
@@ -31325,7 +32175,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Mana
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput)
 }
 
-// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://docs.cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string {
 		if v == nil {
@@ -31358,7 +32208,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Pree
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator struct {
 	// The number of the accelerator cards of this type exposed to this instance.
 	AcceleratorCount *int `pulumi:"acceleratorCount"`
-	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
 	AcceleratorType *string `pulumi:"acceleratorType"`
 }
 
@@ -31376,7 +32226,7 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorInput i
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs struct {
 	// The number of the accelerator cards of this type exposed to this instance.
 	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
-	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
 }
 
@@ -31438,7 +32288,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorOutput) AcceleratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator) *string {
 		return v.AcceleratorType
@@ -32222,7 +33072,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator struct {
 	// The number of the accelerator cards of this type exposed to this instance.
 	AcceleratorCount *int `pulumi:"acceleratorCount"`
-	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
 	AcceleratorType *string `pulumi:"acceleratorType"`
 }
 
@@ -32240,7 +33090,7 @@ type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerat
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs struct {
 	// The number of the accelerator cards of this type exposed to this instance.
 	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
-	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
 }
 
@@ -32302,7 +33152,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccele
 	}).(pulumi.IntPtrOutput)
 }
 
-// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorOutput) AcceleratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator) *string {
 		return v.AcceleratorType
@@ -33193,7 +34043,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfi
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig struct {
-	// The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+	// The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
 	ImageVersion *string `pulumi:"imageVersion"`
 	// The set of components to activate on the cluster.
 	OptionalComponents []string `pulumi:"optionalComponents"`
@@ -33211,7 +34061,7 @@ type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig struct {
 	// * spark: `spark-defaults.conf`
 	// * yarn: `yarn-site.xml`
 	//
-	// For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	// For more information, see [Cluster properties](https://docs.cloud.google.com/dataproc/docs/concepts/cluster-properties).
 	Properties map[string]string `pulumi:"properties"`
 }
 
@@ -33227,7 +34077,7 @@ type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigInput interface 
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs struct {
-	// The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+	// The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
 	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
 	// The set of components to activate on the cluster.
 	OptionalComponents pulumi.StringArrayInput `pulumi:"optionalComponents"`
@@ -33245,7 +34095,7 @@ type WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs struct {
 	// * spark: `spark-defaults.conf`
 	// * yarn: `yarn-site.xml`
 	//
-	// For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	// For more information, see [Cluster properties](https://docs.cloud.google.com/dataproc/docs/concepts/cluster-properties).
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 }
 
@@ -33326,7 +34176,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ToWor
 	}).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput)
 }
 
-// The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+// The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
 func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) ImageVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
@@ -33352,7 +34202,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) Optio
 // * spark: `spark-defaults.conf`
 // * yarn: `yarn-site.xml`
 //
-// For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+// For more information, see [Cluster properties](https://docs.cloud.google.com/dataproc/docs/concepts/cluster-properties).
 func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) map[string]string {
 		return v.Properties
@@ -33383,7 +34233,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) El
 	}).(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigOutput)
 }
 
-// The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+// The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
 func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) ImageVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) *string {
 		if v == nil {
@@ -33417,7 +34267,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) Op
 // * spark: `spark-defaults.conf`
 // * yarn: `yarn-site.xml`
 //
-// For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+// For more information, see [Cluster properties](https://docs.cloud.google.com/dataproc/docs/concepts/cluster-properties).
 func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig) map[string]string {
 		if v == nil {
@@ -33744,7 +34594,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Pree
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator struct {
 	// The number of the accelerator cards of this type exposed to this instance.
 	AcceleratorCount *int `pulumi:"acceleratorCount"`
-	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
 	AcceleratorType *string `pulumi:"acceleratorType"`
 }
 
@@ -33762,7 +34612,7 @@ type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorInput i
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs struct {
 	// The number of the accelerator cards of this type exposed to this instance.
 	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
-	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
 }
 
@@ -33824,7 +34674,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorOutput) AcceleratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator) *string {
 		return v.AcceleratorType
@@ -35906,6 +36756,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigAcceleratorArrayInput)(nil)).Elem(), ClusterClusterConfigMasterConfigAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigDiskConfigInput)(nil)).Elem(), ClusterClusterConfigMasterConfigDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigDiskConfigPtrInput)(nil)).Elem(), ClusterClusterConfigMasterConfigDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMetastoreConfigInput)(nil)).Elem(), ClusterClusterConfigMetastoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMetastoreConfigPtrInput)(nil)).Elem(), ClusterClusterConfigMetastoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigArgs{})
@@ -35934,6 +36790,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigAcceleratorArrayInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigDiskConfigInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigDiskConfigPtrInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMBindingConditionInput)(nil)).Elem(), ClusterIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMBindingConditionPtrInput)(nil)).Elem(), ClusterIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberConditionInput)(nil)).Elem(), ClusterIAMMemberConditionArgs{})
@@ -36306,6 +37168,12 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigDiskConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMetastoreConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMetastoreConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigOutput{})
@@ -36334,6 +37202,12 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigDiskConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
 	pulumi.RegisterOutputType(ClusterIAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(ClusterIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIAMMemberConditionOutput{})

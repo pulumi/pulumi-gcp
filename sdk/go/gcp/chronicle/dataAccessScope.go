@@ -230,22 +230,14 @@ import (
 // DataAccessScope can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/dataAccessScopes/{{data_access_scope_id}}`
-//
 // * `{{project}}/{{location}}/{{instance}}/{{data_access_scope_id}}`
-//
 // * `{{location}}/{{instance}}/{{data_access_scope_id}}`
 //
 // When using the `pulumi import` command, DataAccessScope can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default projects/{{project}}/locations/{{location}}/instances/{{instance}}/dataAccessScopes/{{data_access_scope_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default {{project}}/{{location}}/{{instance}}/{{data_access_scope_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default {{location}}/{{instance}}/{{data_access_scope_id}}
 // ```
 type DataAccessScope struct {

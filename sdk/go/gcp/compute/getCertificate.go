@@ -70,12 +70,14 @@ type GetCertificateResult struct {
 	Description       string `pulumi:"description"`
 	ExpireTime        string `pulumi:"expireTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	Name       string  `pulumi:"name"`
-	NamePrefix string  `pulumi:"namePrefix"`
-	PrivateKey string  `pulumi:"privateKey"`
-	Project    *string `pulumi:"project"`
-	SelfLink   string  `pulumi:"selfLink"`
+	Id                  string  `pulumi:"id"`
+	Name                string  `pulumi:"name"`
+	NamePrefix          string  `pulumi:"namePrefix"`
+	PrivateKey          string  `pulumi:"privateKey"`
+	PrivateKeyWo        string  `pulumi:"privateKeyWo"`
+	PrivateKeyWoVersion string  `pulumi:"privateKeyWoVersion"`
+	Project             *string `pulumi:"project"`
+	SelfLink            string  `pulumi:"selfLink"`
 }
 
 func GetCertificateOutput(ctx *pulumi.Context, args GetCertificateOutputArgs, opts ...pulumi.InvokeOption) GetCertificateResultOutput {
@@ -152,6 +154,14 @@ func (o GetCertificateResultOutput) NamePrefix() pulumi.StringOutput {
 
 func (o GetCertificateResultOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateResult) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateResultOutput) PrivateKeyWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateResult) string { return v.PrivateKeyWo }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateResultOutput) PrivateKeyWoVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateResult) string { return v.PrivateKeyWoVersion }).(pulumi.StringOutput)
 }
 
 func (o GetCertificateResultOutput) Project() pulumi.StringPtrOutput {

@@ -31,6 +31,7 @@ class GeneratorArgs:
                  trigger_event: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Generator resource.
+
         :param pulumi.Input[_builtins.str] location: desc
         :param pulumi.Input['GeneratorSummarizationContextArgs'] summarization_context: Input of prebuilt Summarization feature.
                Structure is documented below.
@@ -174,6 +175,7 @@ class _GeneratorState:
                  trigger_event: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Generator resources.
+
         :param pulumi.Input[_builtins.str] description: Optional. Human readable description of the generator.
         :param pulumi.Input[_builtins.str] generator_id: Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
         :param pulumi.Input['GeneratorInferenceParameterArgs'] inference_parameter: Optional. Inference parameters for this generator.
@@ -373,24 +375,17 @@ class Generator(pulumi.CustomResource):
         Generator can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/generators/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Generator can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/generator:Generator default projects/{{project}}/locations/{{location}}/generators/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/generator:Generator default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/generator:Generator default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -451,24 +446,17 @@ class Generator(pulumi.CustomResource):
         Generator can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/generators/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Generator can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/generator:Generator default projects/{{project}}/locations/{{location}}/generators/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/generator:Generator default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/generator:Generator default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GeneratorArgs args: The arguments to use to populate this resource's properties.

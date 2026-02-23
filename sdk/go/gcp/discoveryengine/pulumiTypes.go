@@ -7447,6 +7447,402 @@ func (o SearchEngineCommonConfigPtrOutput) CompanyName() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type SearchEngineKnowledgeGraphConfig struct {
+	// Specify entity types to support.
+	CloudKnowledgeGraphTypes []string `pulumi:"cloudKnowledgeGraphTypes"`
+	// Whether to enable the Cloud Knowledge Graph for the engine.
+	EnableCloudKnowledgeGraph *bool `pulumi:"enableCloudKnowledgeGraph"`
+	// Whether to enable the Private Knowledge Graph for the engine.
+	EnablePrivateKnowledgeGraph *bool `pulumi:"enablePrivateKnowledgeGraph"`
+	// Feature config for the Knowledge Graph.
+	// Structure is documented below.
+	FeatureConfig *SearchEngineKnowledgeGraphConfigFeatureConfig `pulumi:"featureConfig"`
+}
+
+// SearchEngineKnowledgeGraphConfigInput is an input type that accepts SearchEngineKnowledgeGraphConfigArgs and SearchEngineKnowledgeGraphConfigOutput values.
+// You can construct a concrete instance of `SearchEngineKnowledgeGraphConfigInput` via:
+//
+//	SearchEngineKnowledgeGraphConfigArgs{...}
+type SearchEngineKnowledgeGraphConfigInput interface {
+	pulumi.Input
+
+	ToSearchEngineKnowledgeGraphConfigOutput() SearchEngineKnowledgeGraphConfigOutput
+	ToSearchEngineKnowledgeGraphConfigOutputWithContext(context.Context) SearchEngineKnowledgeGraphConfigOutput
+}
+
+type SearchEngineKnowledgeGraphConfigArgs struct {
+	// Specify entity types to support.
+	CloudKnowledgeGraphTypes pulumi.StringArrayInput `pulumi:"cloudKnowledgeGraphTypes"`
+	// Whether to enable the Cloud Knowledge Graph for the engine.
+	EnableCloudKnowledgeGraph pulumi.BoolPtrInput `pulumi:"enableCloudKnowledgeGraph"`
+	// Whether to enable the Private Knowledge Graph for the engine.
+	EnablePrivateKnowledgeGraph pulumi.BoolPtrInput `pulumi:"enablePrivateKnowledgeGraph"`
+	// Feature config for the Knowledge Graph.
+	// Structure is documented below.
+	FeatureConfig SearchEngineKnowledgeGraphConfigFeatureConfigPtrInput `pulumi:"featureConfig"`
+}
+
+func (SearchEngineKnowledgeGraphConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchEngineKnowledgeGraphConfig)(nil)).Elem()
+}
+
+func (i SearchEngineKnowledgeGraphConfigArgs) ToSearchEngineKnowledgeGraphConfigOutput() SearchEngineKnowledgeGraphConfigOutput {
+	return i.ToSearchEngineKnowledgeGraphConfigOutputWithContext(context.Background())
+}
+
+func (i SearchEngineKnowledgeGraphConfigArgs) ToSearchEngineKnowledgeGraphConfigOutputWithContext(ctx context.Context) SearchEngineKnowledgeGraphConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchEngineKnowledgeGraphConfigOutput)
+}
+
+func (i SearchEngineKnowledgeGraphConfigArgs) ToSearchEngineKnowledgeGraphConfigPtrOutput() SearchEngineKnowledgeGraphConfigPtrOutput {
+	return i.ToSearchEngineKnowledgeGraphConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SearchEngineKnowledgeGraphConfigArgs) ToSearchEngineKnowledgeGraphConfigPtrOutputWithContext(ctx context.Context) SearchEngineKnowledgeGraphConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchEngineKnowledgeGraphConfigOutput).ToSearchEngineKnowledgeGraphConfigPtrOutputWithContext(ctx)
+}
+
+// SearchEngineKnowledgeGraphConfigPtrInput is an input type that accepts SearchEngineKnowledgeGraphConfigArgs, SearchEngineKnowledgeGraphConfigPtr and SearchEngineKnowledgeGraphConfigPtrOutput values.
+// You can construct a concrete instance of `SearchEngineKnowledgeGraphConfigPtrInput` via:
+//
+//	        SearchEngineKnowledgeGraphConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SearchEngineKnowledgeGraphConfigPtrInput interface {
+	pulumi.Input
+
+	ToSearchEngineKnowledgeGraphConfigPtrOutput() SearchEngineKnowledgeGraphConfigPtrOutput
+	ToSearchEngineKnowledgeGraphConfigPtrOutputWithContext(context.Context) SearchEngineKnowledgeGraphConfigPtrOutput
+}
+
+type searchEngineKnowledgeGraphConfigPtrType SearchEngineKnowledgeGraphConfigArgs
+
+func SearchEngineKnowledgeGraphConfigPtr(v *SearchEngineKnowledgeGraphConfigArgs) SearchEngineKnowledgeGraphConfigPtrInput {
+	return (*searchEngineKnowledgeGraphConfigPtrType)(v)
+}
+
+func (*searchEngineKnowledgeGraphConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchEngineKnowledgeGraphConfig)(nil)).Elem()
+}
+
+func (i *searchEngineKnowledgeGraphConfigPtrType) ToSearchEngineKnowledgeGraphConfigPtrOutput() SearchEngineKnowledgeGraphConfigPtrOutput {
+	return i.ToSearchEngineKnowledgeGraphConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *searchEngineKnowledgeGraphConfigPtrType) ToSearchEngineKnowledgeGraphConfigPtrOutputWithContext(ctx context.Context) SearchEngineKnowledgeGraphConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchEngineKnowledgeGraphConfigPtrOutput)
+}
+
+type SearchEngineKnowledgeGraphConfigOutput struct{ *pulumi.OutputState }
+
+func (SearchEngineKnowledgeGraphConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchEngineKnowledgeGraphConfig)(nil)).Elem()
+}
+
+func (o SearchEngineKnowledgeGraphConfigOutput) ToSearchEngineKnowledgeGraphConfigOutput() SearchEngineKnowledgeGraphConfigOutput {
+	return o
+}
+
+func (o SearchEngineKnowledgeGraphConfigOutput) ToSearchEngineKnowledgeGraphConfigOutputWithContext(ctx context.Context) SearchEngineKnowledgeGraphConfigOutput {
+	return o
+}
+
+func (o SearchEngineKnowledgeGraphConfigOutput) ToSearchEngineKnowledgeGraphConfigPtrOutput() SearchEngineKnowledgeGraphConfigPtrOutput {
+	return o.ToSearchEngineKnowledgeGraphConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SearchEngineKnowledgeGraphConfigOutput) ToSearchEngineKnowledgeGraphConfigPtrOutputWithContext(ctx context.Context) SearchEngineKnowledgeGraphConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchEngineKnowledgeGraphConfig) *SearchEngineKnowledgeGraphConfig {
+		return &v
+	}).(SearchEngineKnowledgeGraphConfigPtrOutput)
+}
+
+// Specify entity types to support.
+func (o SearchEngineKnowledgeGraphConfigOutput) CloudKnowledgeGraphTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SearchEngineKnowledgeGraphConfig) []string { return v.CloudKnowledgeGraphTypes }).(pulumi.StringArrayOutput)
+}
+
+// Whether to enable the Cloud Knowledge Graph for the engine.
+func (o SearchEngineKnowledgeGraphConfigOutput) EnableCloudKnowledgeGraph() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SearchEngineKnowledgeGraphConfig) *bool { return v.EnableCloudKnowledgeGraph }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable the Private Knowledge Graph for the engine.
+func (o SearchEngineKnowledgeGraphConfigOutput) EnablePrivateKnowledgeGraph() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SearchEngineKnowledgeGraphConfig) *bool { return v.EnablePrivateKnowledgeGraph }).(pulumi.BoolPtrOutput)
+}
+
+// Feature config for the Knowledge Graph.
+// Structure is documented below.
+func (o SearchEngineKnowledgeGraphConfigOutput) FeatureConfig() SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput {
+	return o.ApplyT(func(v SearchEngineKnowledgeGraphConfig) *SearchEngineKnowledgeGraphConfigFeatureConfig {
+		return v.FeatureConfig
+	}).(SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput)
+}
+
+type SearchEngineKnowledgeGraphConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchEngineKnowledgeGraphConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchEngineKnowledgeGraphConfig)(nil)).Elem()
+}
+
+func (o SearchEngineKnowledgeGraphConfigPtrOutput) ToSearchEngineKnowledgeGraphConfigPtrOutput() SearchEngineKnowledgeGraphConfigPtrOutput {
+	return o
+}
+
+func (o SearchEngineKnowledgeGraphConfigPtrOutput) ToSearchEngineKnowledgeGraphConfigPtrOutputWithContext(ctx context.Context) SearchEngineKnowledgeGraphConfigPtrOutput {
+	return o
+}
+
+func (o SearchEngineKnowledgeGraphConfigPtrOutput) Elem() SearchEngineKnowledgeGraphConfigOutput {
+	return o.ApplyT(func(v *SearchEngineKnowledgeGraphConfig) SearchEngineKnowledgeGraphConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SearchEngineKnowledgeGraphConfig
+		return ret
+	}).(SearchEngineKnowledgeGraphConfigOutput)
+}
+
+// Specify entity types to support.
+func (o SearchEngineKnowledgeGraphConfigPtrOutput) CloudKnowledgeGraphTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SearchEngineKnowledgeGraphConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudKnowledgeGraphTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether to enable the Cloud Knowledge Graph for the engine.
+func (o SearchEngineKnowledgeGraphConfigPtrOutput) EnableCloudKnowledgeGraph() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SearchEngineKnowledgeGraphConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCloudKnowledgeGraph
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable the Private Knowledge Graph for the engine.
+func (o SearchEngineKnowledgeGraphConfigPtrOutput) EnablePrivateKnowledgeGraph() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SearchEngineKnowledgeGraphConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivateKnowledgeGraph
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Feature config for the Knowledge Graph.
+// Structure is documented below.
+func (o SearchEngineKnowledgeGraphConfigPtrOutput) FeatureConfig() SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput {
+	return o.ApplyT(func(v *SearchEngineKnowledgeGraphConfig) *SearchEngineKnowledgeGraphConfigFeatureConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureConfig
+	}).(SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput)
+}
+
+type SearchEngineKnowledgeGraphConfigFeatureConfig struct {
+	// Whether to disable the private KG auto complete for the engine.
+	DisablePrivateKgAutoComplete *bool `pulumi:"disablePrivateKgAutoComplete"`
+	// Whether to disable the private KG enrichment for the engine.
+	DisablePrivateKgEnrichment *bool `pulumi:"disablePrivateKgEnrichment"`
+	// Whether to disable the private KG for query UI chips.
+	DisablePrivateKgQueryUiChips *bool `pulumi:"disablePrivateKgQueryUiChips"`
+	// Whether to disable the private KG query understanding for the engine.
+	DisablePrivateKgQueryUnderstanding *bool `pulumi:"disablePrivateKgQueryUnderstanding"`
+}
+
+// SearchEngineKnowledgeGraphConfigFeatureConfigInput is an input type that accepts SearchEngineKnowledgeGraphConfigFeatureConfigArgs and SearchEngineKnowledgeGraphConfigFeatureConfigOutput values.
+// You can construct a concrete instance of `SearchEngineKnowledgeGraphConfigFeatureConfigInput` via:
+//
+//	SearchEngineKnowledgeGraphConfigFeatureConfigArgs{...}
+type SearchEngineKnowledgeGraphConfigFeatureConfigInput interface {
+	pulumi.Input
+
+	ToSearchEngineKnowledgeGraphConfigFeatureConfigOutput() SearchEngineKnowledgeGraphConfigFeatureConfigOutput
+	ToSearchEngineKnowledgeGraphConfigFeatureConfigOutputWithContext(context.Context) SearchEngineKnowledgeGraphConfigFeatureConfigOutput
+}
+
+type SearchEngineKnowledgeGraphConfigFeatureConfigArgs struct {
+	// Whether to disable the private KG auto complete for the engine.
+	DisablePrivateKgAutoComplete pulumi.BoolPtrInput `pulumi:"disablePrivateKgAutoComplete"`
+	// Whether to disable the private KG enrichment for the engine.
+	DisablePrivateKgEnrichment pulumi.BoolPtrInput `pulumi:"disablePrivateKgEnrichment"`
+	// Whether to disable the private KG for query UI chips.
+	DisablePrivateKgQueryUiChips pulumi.BoolPtrInput `pulumi:"disablePrivateKgQueryUiChips"`
+	// Whether to disable the private KG query understanding for the engine.
+	DisablePrivateKgQueryUnderstanding pulumi.BoolPtrInput `pulumi:"disablePrivateKgQueryUnderstanding"`
+}
+
+func (SearchEngineKnowledgeGraphConfigFeatureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchEngineKnowledgeGraphConfigFeatureConfig)(nil)).Elem()
+}
+
+func (i SearchEngineKnowledgeGraphConfigFeatureConfigArgs) ToSearchEngineKnowledgeGraphConfigFeatureConfigOutput() SearchEngineKnowledgeGraphConfigFeatureConfigOutput {
+	return i.ToSearchEngineKnowledgeGraphConfigFeatureConfigOutputWithContext(context.Background())
+}
+
+func (i SearchEngineKnowledgeGraphConfigFeatureConfigArgs) ToSearchEngineKnowledgeGraphConfigFeatureConfigOutputWithContext(ctx context.Context) SearchEngineKnowledgeGraphConfigFeatureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchEngineKnowledgeGraphConfigFeatureConfigOutput)
+}
+
+func (i SearchEngineKnowledgeGraphConfigFeatureConfigArgs) ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput() SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput {
+	return i.ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SearchEngineKnowledgeGraphConfigFeatureConfigArgs) ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutputWithContext(ctx context.Context) SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchEngineKnowledgeGraphConfigFeatureConfigOutput).ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutputWithContext(ctx)
+}
+
+// SearchEngineKnowledgeGraphConfigFeatureConfigPtrInput is an input type that accepts SearchEngineKnowledgeGraphConfigFeatureConfigArgs, SearchEngineKnowledgeGraphConfigFeatureConfigPtr and SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput values.
+// You can construct a concrete instance of `SearchEngineKnowledgeGraphConfigFeatureConfigPtrInput` via:
+//
+//	        SearchEngineKnowledgeGraphConfigFeatureConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SearchEngineKnowledgeGraphConfigFeatureConfigPtrInput interface {
+	pulumi.Input
+
+	ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput() SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput
+	ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutputWithContext(context.Context) SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput
+}
+
+type searchEngineKnowledgeGraphConfigFeatureConfigPtrType SearchEngineKnowledgeGraphConfigFeatureConfigArgs
+
+func SearchEngineKnowledgeGraphConfigFeatureConfigPtr(v *SearchEngineKnowledgeGraphConfigFeatureConfigArgs) SearchEngineKnowledgeGraphConfigFeatureConfigPtrInput {
+	return (*searchEngineKnowledgeGraphConfigFeatureConfigPtrType)(v)
+}
+
+func (*searchEngineKnowledgeGraphConfigFeatureConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchEngineKnowledgeGraphConfigFeatureConfig)(nil)).Elem()
+}
+
+func (i *searchEngineKnowledgeGraphConfigFeatureConfigPtrType) ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput() SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput {
+	return i.ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *searchEngineKnowledgeGraphConfigFeatureConfigPtrType) ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutputWithContext(ctx context.Context) SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput)
+}
+
+type SearchEngineKnowledgeGraphConfigFeatureConfigOutput struct{ *pulumi.OutputState }
+
+func (SearchEngineKnowledgeGraphConfigFeatureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchEngineKnowledgeGraphConfigFeatureConfig)(nil)).Elem()
+}
+
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigOutput) ToSearchEngineKnowledgeGraphConfigFeatureConfigOutput() SearchEngineKnowledgeGraphConfigFeatureConfigOutput {
+	return o
+}
+
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigOutput) ToSearchEngineKnowledgeGraphConfigFeatureConfigOutputWithContext(ctx context.Context) SearchEngineKnowledgeGraphConfigFeatureConfigOutput {
+	return o
+}
+
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigOutput) ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput() SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput {
+	return o.ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigOutput) ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutputWithContext(ctx context.Context) SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchEngineKnowledgeGraphConfigFeatureConfig) *SearchEngineKnowledgeGraphConfigFeatureConfig {
+		return &v
+	}).(SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput)
+}
+
+// Whether to disable the private KG auto complete for the engine.
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigOutput) DisablePrivateKgAutoComplete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SearchEngineKnowledgeGraphConfigFeatureConfig) *bool { return v.DisablePrivateKgAutoComplete }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable the private KG enrichment for the engine.
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigOutput) DisablePrivateKgEnrichment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SearchEngineKnowledgeGraphConfigFeatureConfig) *bool { return v.DisablePrivateKgEnrichment }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable the private KG for query UI chips.
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigOutput) DisablePrivateKgQueryUiChips() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SearchEngineKnowledgeGraphConfigFeatureConfig) *bool { return v.DisablePrivateKgQueryUiChips }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable the private KG query understanding for the engine.
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigOutput) DisablePrivateKgQueryUnderstanding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SearchEngineKnowledgeGraphConfigFeatureConfig) *bool {
+		return v.DisablePrivateKgQueryUnderstanding
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchEngineKnowledgeGraphConfigFeatureConfig)(nil)).Elem()
+}
+
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput) ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput() SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput {
+	return o
+}
+
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput) ToSearchEngineKnowledgeGraphConfigFeatureConfigPtrOutputWithContext(ctx context.Context) SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput {
+	return o
+}
+
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput) Elem() SearchEngineKnowledgeGraphConfigFeatureConfigOutput {
+	return o.ApplyT(func(v *SearchEngineKnowledgeGraphConfigFeatureConfig) SearchEngineKnowledgeGraphConfigFeatureConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SearchEngineKnowledgeGraphConfigFeatureConfig
+		return ret
+	}).(SearchEngineKnowledgeGraphConfigFeatureConfigOutput)
+}
+
+// Whether to disable the private KG auto complete for the engine.
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput) DisablePrivateKgAutoComplete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SearchEngineKnowledgeGraphConfigFeatureConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePrivateKgAutoComplete
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable the private KG enrichment for the engine.
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput) DisablePrivateKgEnrichment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SearchEngineKnowledgeGraphConfigFeatureConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePrivateKgEnrichment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable the private KG for query UI chips.
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput) DisablePrivateKgQueryUiChips() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SearchEngineKnowledgeGraphConfigFeatureConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePrivateKgQueryUiChips
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable the private KG query understanding for the engine.
+func (o SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput) DisablePrivateKgQueryUnderstanding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SearchEngineKnowledgeGraphConfigFeatureConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePrivateKgQueryUnderstanding
+	}).(pulumi.BoolPtrOutput)
+}
+
 type SearchEngineSearchEngineConfig struct {
 	// The add-on that this search engine enables.
 	// Each value may be one of: `SEARCH_ADD_ON_LLM`.
@@ -10066,6 +10462,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineCommonConfigInput)(nil)).Elem(), SearchEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineCommonConfigPtrInput)(nil)).Elem(), SearchEngineCommonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineKnowledgeGraphConfigInput)(nil)).Elem(), SearchEngineKnowledgeGraphConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineKnowledgeGraphConfigPtrInput)(nil)).Elem(), SearchEngineKnowledgeGraphConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineKnowledgeGraphConfigFeatureConfigInput)(nil)).Elem(), SearchEngineKnowledgeGraphConfigFeatureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineKnowledgeGraphConfigFeatureConfigPtrInput)(nil)).Elem(), SearchEngineKnowledgeGraphConfigFeatureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineSearchEngineConfigInput)(nil)).Elem(), SearchEngineSearchEngineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineSearchEngineConfigPtrInput)(nil)).Elem(), SearchEngineSearchEngineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteFailureReasonInput)(nil)).Elem(), TargetSiteFailureReasonArgs{})
@@ -10188,6 +10588,10 @@ func init() {
 	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput{})
 	pulumi.RegisterOutputType(SearchEngineCommonConfigOutput{})
 	pulumi.RegisterOutputType(SearchEngineCommonConfigPtrOutput{})
+	pulumi.RegisterOutputType(SearchEngineKnowledgeGraphConfigOutput{})
+	pulumi.RegisterOutputType(SearchEngineKnowledgeGraphConfigPtrOutput{})
+	pulumi.RegisterOutputType(SearchEngineKnowledgeGraphConfigFeatureConfigOutput{})
+	pulumi.RegisterOutputType(SearchEngineKnowledgeGraphConfigFeatureConfigPtrOutput{})
 	pulumi.RegisterOutputType(SearchEngineSearchEngineConfigOutput{})
 	pulumi.RegisterOutputType(SearchEngineSearchEngineConfigPtrOutput{})
 	pulumi.RegisterOutputType(TargetSiteFailureReasonOutput{})

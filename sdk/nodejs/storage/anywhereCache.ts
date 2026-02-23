@@ -40,16 +40,12 @@ import * as utilities from "../utilities";
  * AnywhereCache can be imported using any of these accepted formats:
  *
  * * `b/{{bucket}}/anywhereCaches/{{anywhere_cache_id}}`
- *
  * * `{{bucket}}/{{anywhere_cache_id}}`
  *
  * When using the `pulumi import` command, AnywhereCache can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:storage/anywhereCache:AnywhereCache default b/{{bucket}}/anywhereCaches/{{anywhere_cache_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:storage/anywhereCache:AnywhereCache default {{bucket}}/{{anywhere_cache_id}}
  * ```
  */

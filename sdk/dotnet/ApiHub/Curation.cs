@@ -49,22 +49,14 @@ namespace Pulumi.Gcp.ApiHub
     /// Curation can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/curations/{{curation_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{curation_id}}`
-    /// 
     /// * `{{location}}/{{curation_id}}`
     /// 
     /// When using the `pulumi import` command, Curation can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:apihub/curation:Curation default projects/{{project}}/locations/{{location}}/curations/{{curation_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:apihub/curation:Curation default {{project}}/{{location}}/{{curation_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:apihub/curation:Curation default {{location}}/{{curation_id}}
     /// ```
     /// </summary>

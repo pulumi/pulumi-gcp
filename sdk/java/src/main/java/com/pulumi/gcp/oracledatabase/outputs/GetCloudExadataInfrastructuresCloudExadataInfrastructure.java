@@ -27,12 +27,20 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
      * 
      */
     private String createTime;
+    /**
+     * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+     * 
+     */
     private Boolean deletionProtection;
     /**
      * @return User friendly name for this resource.
      * 
      */
     private String displayName;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     private Map<String,String> effectiveLabels;
     /**
      * @return Entitlement ID of the private offer against which this infrastructure
@@ -102,6 +110,10 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+     * 
+     */
     public Boolean deletionProtection() {
         return this.deletionProtection;
     }
@@ -112,6 +124,10 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     public String displayName() {
         return this.displayName;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
     }

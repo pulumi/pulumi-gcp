@@ -43,6 +43,7 @@ class ListingArgs:
                  restricted_export_config: Optional[pulumi.Input['ListingRestrictedExportConfigArgs']] = None):
         """
         The set of arguments for constructing a Listing resource.
+
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
         :param pulumi.Input[_builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -384,6 +385,7 @@ class _ListingState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Listing resources.
+
         :param pulumi.Input[_builtins.bool] allow_only_metadata_sharing: If true, the listing is only available to get the resource metadata. Listing is non subscribable.
         :param pulumi.Input['ListingBigqueryDatasetArgs'] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
                Structure is documented below.
@@ -1092,24 +1094,17 @@ class Listing(pulumi.CustomResource):
         Listing can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}`
-
         * `{{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}`
-
         * `{{location}}/{{data_exchange_id}}/{{listing_id}}`
 
         When using the `pulumi import` command, Listing can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default {{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default {{location}}/{{data_exchange_id}}/{{listing_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1464,24 +1459,17 @@ class Listing(pulumi.CustomResource):
         Listing can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}`
-
         * `{{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}`
-
         * `{{location}}/{{data_exchange_id}}/{{listing_id}}`
 
         When using the `pulumi import` command, Listing can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default {{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default {{location}}/{{data_exchange_id}}/{{listing_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListingArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class TaskIamBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TaskIamBinding resource.
+
         :param pulumi.Input[_builtins.str] lake: The lake in which the task will be created in.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
@@ -179,6 +180,7 @@ class _TaskIamBindingState:
                  task_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TaskIamBinding resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] lake: The lake in which the task will be created in.
                Used to find the parent resource to bind the IAM policy to
@@ -484,11 +486,8 @@ class TaskIamBinding(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
-
         * {{project}}/{{location}}/{{lake}}/{{task_id}}
-
         * {{location}}/{{lake}}/{{task_id}}
-
         * {{task_id}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -496,26 +495,23 @@ class TaskIamBinding(pulumi.CustomResource):
         Dataplex task IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:dataplex/taskIamBinding:TaskIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer user:jane@example.com"
+        $ terraform import google_dataplex_task_iam_member.editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:dataplex/taskIamBinding:TaskIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer"
+        $ terraform import google_dataplex_task_iam_binding.editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:dataplex/taskIamBinding:TaskIamBinding editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -686,11 +682,8 @@ class TaskIamBinding(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
-
         * {{project}}/{{location}}/{{lake}}/{{task_id}}
-
         * {{location}}/{{lake}}/{{task_id}}
-
         * {{task_id}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -698,26 +691,23 @@ class TaskIamBinding(pulumi.CustomResource):
         Dataplex task IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:dataplex/taskIamBinding:TaskIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer user:jane@example.com"
+        $ terraform import google_dataplex_task_iam_member.editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:dataplex/taskIamBinding:TaskIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer"
+        $ terraform import google_dataplex_task_iam_binding.editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:dataplex/taskIamBinding:TaskIamBinding editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param TaskIamBindingArgs args: The arguments to use to populate this resource's properties.

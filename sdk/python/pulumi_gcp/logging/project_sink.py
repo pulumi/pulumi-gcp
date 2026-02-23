@@ -33,6 +33,7 @@ class ProjectSinkArgs:
                  unique_writer_identity: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectSink resource.
+
         :param pulumi.Input[_builtins.str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
                
                - `storage.googleapis.com/[GCS_BUCKET]`
@@ -233,6 +234,7 @@ class _ProjectSinkState:
                  writer_identity: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectSink resources.
+
         :param pulumi.Input['ProjectSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[_builtins.str] custom_writer_identity: A user managed service account that will be used to write
                the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
@@ -453,6 +455,138 @@ class ProjectSink(pulumi.CustomResource):
                  unique_writer_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Manages a project-level logging sink. For more information see:
+
+        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks)
+        * How-to Guides
+            * [Exporting Logs](https://cloud.google.com/logging/docs/export)
+
+        > You can specify exclusions for log sinks created by terraform by using the exclusions field of `logging.FolderSink`
+
+        > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.
+
+        > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
+
+        > **Note:** The `_Default` and `_Required` logging sinks are automatically created for a given project and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These sinks cannot be removed so deleting this resource will remove the sink config from your terraform state but will leave the logging sink unchanged. The sinks that are currently automatically created are "_Default" and "_Required".
+
+        ## Example Usage
+
+        ### Basic Sink
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_sink = gcp.logging.ProjectSink("my-sink",
+            name="my-pubsub-instance-sink",
+            destination="pubsub.googleapis.com/projects/my-project/topics/instance-activity",
+            filter="resource.type = gce_instance AND severity >= WARNING",
+            unique_writer_identity=True)
+        ```
+
+        ### Cloud Storage Bucket Destination
+
+        A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
+        cloud storage bucket. Because we are using `unique_writer_identity`, we must grant it access to the bucket.
+
+        Note that this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the
+        credentials used with Terraform.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Our logged compute instance
+        my_logged_instance = gcp.compute.Instance("my-logged-instance",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "network": "default",
+            }],
+            name="my-instance",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            boot_disk={
+                "initialize_params": {
+                    "image": "debian-cloud/debian-11",
+                },
+            })
+        # A gcs bucket to store logs in
+        gcs_bucket = gcp.storage.Bucket("gcs-bucket",
+            name="my-unique-logging-bucket",
+            location="US")
+        # Our sink; this logs all activity related to our "my-logged-instance" instance
+        instance_sink = gcp.logging.ProjectSink("instance-sink",
+            name="my-instance-sink",
+            description="some explanation on what this is",
+            destination=gcs_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
+            filter=my_logged_instance.instance_id.apply(lambda instance_id: f"resource.type = gce_instance AND resource.labels.instance_id = \\"{instance_id}\\""),
+            unique_writer_identity=True)
+        # Because our sink uses a unique_writer, we must grant that writer access to the bucket.
+        gcs_bucket_writer = gcp.projects.IAMBinding("gcs-bucket-writer",
+            project="your-project-id",
+            role="roles/storage.objectCreator",
+            members=[instance_sink.writer_identity])
+        ```
+
+        ### User-Managed Service Account
+
+        The following example creates a sink that are configured with user-managed service accounts, by specifying
+        the `custom_writer_identity` field.
+
+        Note that you can only create a sink that uses a user-managed service account when the sink destination
+        is a log bucket.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_sa = gcp.serviceaccount.Account("custom-sa",
+            project="other-project-id",
+            account_id="gce-log-bucket-sink",
+            display_name="gce-log-bucket-sink")
+        # Create a sink that uses user-managed service account
+        my_sink = gcp.logging.ProjectSink("my-sink",
+            name="other-project-log-bucket-sink",
+            destination="logging.googleapis.com/projects/other-project-id/locations/global/buckets/gce-logs",
+            filter="resource.type = gce_instance AND severity >= WARNING",
+            unique_writer_identity=True,
+            custom_writer_identity=custom_sa.email)
+        # grant writer access to the user-managed service account
+        custom_sa_logbucket_binding = gcp.projects.IAMMember("custom-sa-logbucket-binding",
+            project="destination-project-id",
+            role="roles/logging.bucketWriter",
+            member=custom_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+
+        The above example will create a log sink that route logs to destination GCP project using
+        an user-managed service account.
+
+        ### Sink Exclusions
+
+        The following example uses `exclusions` to filter logs that will not be exported. In this example logs are exported to a [log bucket](https://cloud.google.com/logging/docs/buckets) and there are 2 exclusions configured
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        log_bucket = gcp.logging.ProjectSink("log-bucket",
+            name="my-logging-sink",
+            destination="logging.googleapis.com/projects/my-project/locations/global/buckets/_Default",
+            exclusions=[
+                {
+                    "name": "nsexcllusion1",
+                    "description": "Exclude logs from namespace-1 in k8s",
+                    "filter": "resource.type = k8s_container resource.labels.namespace_name=\\"namespace-1\\" ",
+                },
+                {
+                    "name": "nsexcllusion2",
+                    "description": "Exclude logs from namespace-2 in k8s",
+                    "filter": "resource.type = k8s_container resource.labels.namespace_name=\\"namespace-2\\" ",
+                },
+            ],
+            unique_writer_identity=True)
+        ```
+
         ## Import
 
         Project-level logging sinks can be imported using their URI, e.g.
@@ -464,6 +598,7 @@ class ProjectSink(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -501,6 +636,138 @@ class ProjectSink(pulumi.CustomResource):
                  args: ProjectSinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a project-level logging sink. For more information see:
+
+        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks)
+        * How-to Guides
+            * [Exporting Logs](https://cloud.google.com/logging/docs/export)
+
+        > You can specify exclusions for log sinks created by terraform by using the exclusions field of `logging.FolderSink`
+
+        > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.
+
+        > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
+
+        > **Note:** The `_Default` and `_Required` logging sinks are automatically created for a given project and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These sinks cannot be removed so deleting this resource will remove the sink config from your terraform state but will leave the logging sink unchanged. The sinks that are currently automatically created are "_Default" and "_Required".
+
+        ## Example Usage
+
+        ### Basic Sink
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_sink = gcp.logging.ProjectSink("my-sink",
+            name="my-pubsub-instance-sink",
+            destination="pubsub.googleapis.com/projects/my-project/topics/instance-activity",
+            filter="resource.type = gce_instance AND severity >= WARNING",
+            unique_writer_identity=True)
+        ```
+
+        ### Cloud Storage Bucket Destination
+
+        A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
+        cloud storage bucket. Because we are using `unique_writer_identity`, we must grant it access to the bucket.
+
+        Note that this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the
+        credentials used with Terraform.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Our logged compute instance
+        my_logged_instance = gcp.compute.Instance("my-logged-instance",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "network": "default",
+            }],
+            name="my-instance",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            boot_disk={
+                "initialize_params": {
+                    "image": "debian-cloud/debian-11",
+                },
+            })
+        # A gcs bucket to store logs in
+        gcs_bucket = gcp.storage.Bucket("gcs-bucket",
+            name="my-unique-logging-bucket",
+            location="US")
+        # Our sink; this logs all activity related to our "my-logged-instance" instance
+        instance_sink = gcp.logging.ProjectSink("instance-sink",
+            name="my-instance-sink",
+            description="some explanation on what this is",
+            destination=gcs_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
+            filter=my_logged_instance.instance_id.apply(lambda instance_id: f"resource.type = gce_instance AND resource.labels.instance_id = \\"{instance_id}\\""),
+            unique_writer_identity=True)
+        # Because our sink uses a unique_writer, we must grant that writer access to the bucket.
+        gcs_bucket_writer = gcp.projects.IAMBinding("gcs-bucket-writer",
+            project="your-project-id",
+            role="roles/storage.objectCreator",
+            members=[instance_sink.writer_identity])
+        ```
+
+        ### User-Managed Service Account
+
+        The following example creates a sink that are configured with user-managed service accounts, by specifying
+        the `custom_writer_identity` field.
+
+        Note that you can only create a sink that uses a user-managed service account when the sink destination
+        is a log bucket.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_sa = gcp.serviceaccount.Account("custom-sa",
+            project="other-project-id",
+            account_id="gce-log-bucket-sink",
+            display_name="gce-log-bucket-sink")
+        # Create a sink that uses user-managed service account
+        my_sink = gcp.logging.ProjectSink("my-sink",
+            name="other-project-log-bucket-sink",
+            destination="logging.googleapis.com/projects/other-project-id/locations/global/buckets/gce-logs",
+            filter="resource.type = gce_instance AND severity >= WARNING",
+            unique_writer_identity=True,
+            custom_writer_identity=custom_sa.email)
+        # grant writer access to the user-managed service account
+        custom_sa_logbucket_binding = gcp.projects.IAMMember("custom-sa-logbucket-binding",
+            project="destination-project-id",
+            role="roles/logging.bucketWriter",
+            member=custom_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+
+        The above example will create a log sink that route logs to destination GCP project using
+        an user-managed service account.
+
+        ### Sink Exclusions
+
+        The following example uses `exclusions` to filter logs that will not be exported. In this example logs are exported to a [log bucket](https://cloud.google.com/logging/docs/buckets) and there are 2 exclusions configured
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        log_bucket = gcp.logging.ProjectSink("log-bucket",
+            name="my-logging-sink",
+            destination="logging.googleapis.com/projects/my-project/locations/global/buckets/_Default",
+            exclusions=[
+                {
+                    "name": "nsexcllusion1",
+                    "description": "Exclude logs from namespace-1 in k8s",
+                    "filter": "resource.type = k8s_container resource.labels.namespace_name=\\"namespace-1\\" ",
+                },
+                {
+                    "name": "nsexcllusion2",
+                    "description": "Exclude logs from namespace-2 in k8s",
+                    "filter": "resource.type = k8s_container resource.labels.namespace_name=\\"namespace-2\\" ",
+                },
+            ],
+            unique_writer_identity=True)
+        ```
+
         ## Import
 
         Project-level logging sinks can be imported using their URI, e.g.
@@ -512,6 +779,7 @@ class ProjectSink(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectSinkArgs args: The arguments to use to populate this resource's properties.

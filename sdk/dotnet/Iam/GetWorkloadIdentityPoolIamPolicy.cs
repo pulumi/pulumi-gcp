@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Iam
     public static class GetWorkloadIdentityPoolIamPolicy
     {
         /// <summary>
+        /// Retrieves the current IAM policy data for workloadidentitypool
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Gcp.Iam
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadIdentityPoolIamPolicyResult>("gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy", args ?? new GetWorkloadIdentityPoolIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for workloadidentitypool
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Gcp.Iam
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkloadIdentityPoolIamPolicyResult>("gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy", args ?? new GetWorkloadIdentityPoolIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for workloadidentitypool
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

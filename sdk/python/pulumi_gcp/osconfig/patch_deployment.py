@@ -32,6 +32,7 @@ class PatchDeploymentArgs:
                  rollout: Optional[pulumi.Input['PatchDeploymentRolloutArgs']] = None):
         """
         The set of arguments for constructing a PatchDeployment resource.
+
         :param pulumi.Input['PatchDeploymentInstanceFilterArgs'] instance_filter: VM instances to patch.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] patch_deployment_id: A name for the patch deployment in the project. When creating a name the following rules apply:
@@ -210,6 +211,7 @@ class _PatchDeploymentState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PatchDeployment resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the patch deployment was created. Timestamp is in RFC3339 text format.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] description: Description of the patch deployment. Length of the description is limited to 1024 characters.
@@ -698,24 +700,17 @@ class PatchDeployment(pulumi.CustomResource):
         PatchDeployment can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_os_config_patch_deployment.default "{{project}} {{name}}"
         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -989,24 +984,17 @@ class PatchDeployment(pulumi.CustomResource):
         PatchDeployment can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_os_config_patch_deployment.default "{{project}} {{name}}"
         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PatchDeploymentArgs args: The arguments to use to populate this resource's properties.

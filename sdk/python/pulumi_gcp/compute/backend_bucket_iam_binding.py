@@ -28,6 +28,7 @@ class BackendBucketIamBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackendBucketIamBinding resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -139,6 +140,7 @@ class _BackendBucketIamBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackendBucketIamBinding resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -269,14 +271,136 @@ class BackendBucketIamBinding(pulumi.CustomResource):
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Compute Engine BackendBucket. Each of these resources serves a different use case:
+
+        * `compute.BackendBucketIamPolicy`: Authoritative. Sets the IAM policy for the backendbucket and replaces any existing policy already attached.
+        * `compute.BackendBucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backendbucket are preserved.
+        * `compute.BackendBucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backendbucket are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.BackendBucketIamPolicy`: Retrieves the IAM policy for the backendbucket
+
+        > **Note:** `compute.BackendBucketIamPolicy` **cannot** be used in conjunction with `compute.BackendBucketIamBinding` and `compute.BackendBucketIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.BackendBucketIamBinding` resources **can be** used in conjunction with `compute.BackendBucketIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## compute.BackendBucketIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.compute.BackendBucketIamPolicy("policy",
+            project=image_backend["project"],
+            name=image_backend["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## compute.BackendBucketIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.BackendBucketIamBinding("binding",
+            project=image_backend["project"],
+            name=image_backend["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## compute.BackendBucketIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.BackendBucketIamMember("member",
+            project=image_backend["project"],
+            name=image_backend["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Compute Engine BackendBucket
+
+        Three different resources help you manage your IAM policy for Compute Engine BackendBucket. Each of these resources serves a different use case:
+
+        * `compute.BackendBucketIamPolicy`: Authoritative. Sets the IAM policy for the backendbucket and replaces any existing policy already attached.
+        * `compute.BackendBucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backendbucket are preserved.
+        * `compute.BackendBucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backendbucket are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.BackendBucketIamPolicy`: Retrieves the IAM policy for the backendbucket
+
+        > **Note:** `compute.BackendBucketIamPolicy` **cannot** be used in conjunction with `compute.BackendBucketIamBinding` and `compute.BackendBucketIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.BackendBucketIamBinding` resources **can be** used in conjunction with `compute.BackendBucketIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## compute.BackendBucketIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.compute.BackendBucketIamPolicy("policy",
+            project=image_backend["project"],
+            name=image_backend["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## compute.BackendBucketIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.BackendBucketIamBinding("binding",
+            project=image_backend["project"],
+            name=image_backend["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## compute.BackendBucketIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.BackendBucketIamMember("member",
+            project=image_backend["project"],
+            name=image_backend["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/global/backendBuckets/{{name}}
-
         * {{project}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -284,26 +408,23 @@ class BackendBucketIamBinding(pulumi.CustomResource):
         Compute Engine backendbucket IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:compute/backendBucketIamBinding:BackendBucketIamBinding editor "projects/{{project}}/global/backendBuckets/{{backend_bucket}} roles/viewer user:jane@example.com"
+        $ terraform import google_compute_backend_bucket_iam_member.editor "projects/{{project}}/global/backendBuckets/{{backend_bucket}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:compute/backendBucketIamBinding:BackendBucketIamBinding editor "projects/{{project}}/global/backendBuckets/{{backend_bucket}} roles/viewer"
+        $ terraform import google_compute_backend_bucket_iam_binding.editor "projects/{{project}}/global/backendBuckets/{{backend_bucket}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:compute/backendBucketIamBinding:BackendBucketIamBinding editor projects/{{project}}/global/backendBuckets/{{backend_bucket}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -333,14 +454,136 @@ class BackendBucketIamBinding(pulumi.CustomResource):
                  args: BackendBucketIamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Compute Engine BackendBucket. Each of these resources serves a different use case:
+
+        * `compute.BackendBucketIamPolicy`: Authoritative. Sets the IAM policy for the backendbucket and replaces any existing policy already attached.
+        * `compute.BackendBucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backendbucket are preserved.
+        * `compute.BackendBucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backendbucket are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.BackendBucketIamPolicy`: Retrieves the IAM policy for the backendbucket
+
+        > **Note:** `compute.BackendBucketIamPolicy` **cannot** be used in conjunction with `compute.BackendBucketIamBinding` and `compute.BackendBucketIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.BackendBucketIamBinding` resources **can be** used in conjunction with `compute.BackendBucketIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## compute.BackendBucketIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.compute.BackendBucketIamPolicy("policy",
+            project=image_backend["project"],
+            name=image_backend["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## compute.BackendBucketIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.BackendBucketIamBinding("binding",
+            project=image_backend["project"],
+            name=image_backend["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## compute.BackendBucketIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.BackendBucketIamMember("member",
+            project=image_backend["project"],
+            name=image_backend["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Compute Engine BackendBucket
+
+        Three different resources help you manage your IAM policy for Compute Engine BackendBucket. Each of these resources serves a different use case:
+
+        * `compute.BackendBucketIamPolicy`: Authoritative. Sets the IAM policy for the backendbucket and replaces any existing policy already attached.
+        * `compute.BackendBucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backendbucket are preserved.
+        * `compute.BackendBucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backendbucket are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.BackendBucketIamPolicy`: Retrieves the IAM policy for the backendbucket
+
+        > **Note:** `compute.BackendBucketIamPolicy` **cannot** be used in conjunction with `compute.BackendBucketIamBinding` and `compute.BackendBucketIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.BackendBucketIamBinding` resources **can be** used in conjunction with `compute.BackendBucketIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## compute.BackendBucketIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.compute.BackendBucketIamPolicy("policy",
+            project=image_backend["project"],
+            name=image_backend["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## compute.BackendBucketIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.BackendBucketIamBinding("binding",
+            project=image_backend["project"],
+            name=image_backend["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## compute.BackendBucketIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.BackendBucketIamMember("member",
+            project=image_backend["project"],
+            name=image_backend["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/global/backendBuckets/{{name}}
-
         * {{project}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -348,26 +591,23 @@ class BackendBucketIamBinding(pulumi.CustomResource):
         Compute Engine backendbucket IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:compute/backendBucketIamBinding:BackendBucketIamBinding editor "projects/{{project}}/global/backendBuckets/{{backend_bucket}} roles/viewer user:jane@example.com"
+        $ terraform import google_compute_backend_bucket_iam_member.editor "projects/{{project}}/global/backendBuckets/{{backend_bucket}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:compute/backendBucketIamBinding:BackendBucketIamBinding editor "projects/{{project}}/global/backendBuckets/{{backend_bucket}} roles/viewer"
+        $ terraform import google_compute_backend_bucket_iam_binding.editor "projects/{{project}}/global/backendBuckets/{{backend_bucket}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:compute/backendBucketIamBinding:BackendBucketIamBinding editor projects/{{project}}/global/backendBuckets/{{backend_bucket}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param BackendBucketIamBindingArgs args: The arguments to use to populate this resource's properties.

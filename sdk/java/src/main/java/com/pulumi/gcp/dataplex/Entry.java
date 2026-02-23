@@ -502,22 +502,14 @@ import javax.annotation.Nullable;
  * Entry can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entries/{{entry_id}}`
- * 
  * * `{{project}}/{{location}}/{{entry_group_id}}/{{entry_id}}`
- * 
  * * `{{location}}/{{entry_group_id}}/{{entry_id}}`
  * 
  * When using the `pulumi import` command, Entry can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataplex/entry:Entry default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entries/{{entry_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/entry:Entry default {{project}}/{{location}}/{{entry_group_id}}/{{entry_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/entry:Entry default {{location}}/{{entry_group_id}}/{{entry_id}}
  * ```
  * 

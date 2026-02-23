@@ -5225,6 +5225,143 @@ func (o InsightsConfigRuntimeConfigGkeWorkloadPtrOutput) Deployment() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+type InsightsConfigTargetProjects struct {
+	// The project IDs. Format {project}.
+	ProjectIds []string `pulumi:"projectIds"`
+}
+
+// InsightsConfigTargetProjectsInput is an input type that accepts InsightsConfigTargetProjectsArgs and InsightsConfigTargetProjectsOutput values.
+// You can construct a concrete instance of `InsightsConfigTargetProjectsInput` via:
+//
+//	InsightsConfigTargetProjectsArgs{...}
+type InsightsConfigTargetProjectsInput interface {
+	pulumi.Input
+
+	ToInsightsConfigTargetProjectsOutput() InsightsConfigTargetProjectsOutput
+	ToInsightsConfigTargetProjectsOutputWithContext(context.Context) InsightsConfigTargetProjectsOutput
+}
+
+type InsightsConfigTargetProjectsArgs struct {
+	// The project IDs. Format {project}.
+	ProjectIds pulumi.StringArrayInput `pulumi:"projectIds"`
+}
+
+func (InsightsConfigTargetProjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigTargetProjects)(nil)).Elem()
+}
+
+func (i InsightsConfigTargetProjectsArgs) ToInsightsConfigTargetProjectsOutput() InsightsConfigTargetProjectsOutput {
+	return i.ToInsightsConfigTargetProjectsOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigTargetProjectsArgs) ToInsightsConfigTargetProjectsOutputWithContext(ctx context.Context) InsightsConfigTargetProjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigTargetProjectsOutput)
+}
+
+func (i InsightsConfigTargetProjectsArgs) ToInsightsConfigTargetProjectsPtrOutput() InsightsConfigTargetProjectsPtrOutput {
+	return i.ToInsightsConfigTargetProjectsPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigTargetProjectsArgs) ToInsightsConfigTargetProjectsPtrOutputWithContext(ctx context.Context) InsightsConfigTargetProjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigTargetProjectsOutput).ToInsightsConfigTargetProjectsPtrOutputWithContext(ctx)
+}
+
+// InsightsConfigTargetProjectsPtrInput is an input type that accepts InsightsConfigTargetProjectsArgs, InsightsConfigTargetProjectsPtr and InsightsConfigTargetProjectsPtrOutput values.
+// You can construct a concrete instance of `InsightsConfigTargetProjectsPtrInput` via:
+//
+//	        InsightsConfigTargetProjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsConfigTargetProjectsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsConfigTargetProjectsPtrOutput() InsightsConfigTargetProjectsPtrOutput
+	ToInsightsConfigTargetProjectsPtrOutputWithContext(context.Context) InsightsConfigTargetProjectsPtrOutput
+}
+
+type insightsConfigTargetProjectsPtrType InsightsConfigTargetProjectsArgs
+
+func InsightsConfigTargetProjectsPtr(v *InsightsConfigTargetProjectsArgs) InsightsConfigTargetProjectsPtrInput {
+	return (*insightsConfigTargetProjectsPtrType)(v)
+}
+
+func (*insightsConfigTargetProjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsConfigTargetProjects)(nil)).Elem()
+}
+
+func (i *insightsConfigTargetProjectsPtrType) ToInsightsConfigTargetProjectsPtrOutput() InsightsConfigTargetProjectsPtrOutput {
+	return i.ToInsightsConfigTargetProjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsConfigTargetProjectsPtrType) ToInsightsConfigTargetProjectsPtrOutputWithContext(ctx context.Context) InsightsConfigTargetProjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigTargetProjectsPtrOutput)
+}
+
+type InsightsConfigTargetProjectsOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigTargetProjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigTargetProjects)(nil)).Elem()
+}
+
+func (o InsightsConfigTargetProjectsOutput) ToInsightsConfigTargetProjectsOutput() InsightsConfigTargetProjectsOutput {
+	return o
+}
+
+func (o InsightsConfigTargetProjectsOutput) ToInsightsConfigTargetProjectsOutputWithContext(ctx context.Context) InsightsConfigTargetProjectsOutput {
+	return o
+}
+
+func (o InsightsConfigTargetProjectsOutput) ToInsightsConfigTargetProjectsPtrOutput() InsightsConfigTargetProjectsPtrOutput {
+	return o.ToInsightsConfigTargetProjectsPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsConfigTargetProjectsOutput) ToInsightsConfigTargetProjectsPtrOutputWithContext(ctx context.Context) InsightsConfigTargetProjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsConfigTargetProjects) *InsightsConfigTargetProjects {
+		return &v
+	}).(InsightsConfigTargetProjectsPtrOutput)
+}
+
+// The project IDs. Format {project}.
+func (o InsightsConfigTargetProjectsOutput) ProjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InsightsConfigTargetProjects) []string { return v.ProjectIds }).(pulumi.StringArrayOutput)
+}
+
+type InsightsConfigTargetProjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigTargetProjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsConfigTargetProjects)(nil)).Elem()
+}
+
+func (o InsightsConfigTargetProjectsPtrOutput) ToInsightsConfigTargetProjectsPtrOutput() InsightsConfigTargetProjectsPtrOutput {
+	return o
+}
+
+func (o InsightsConfigTargetProjectsPtrOutput) ToInsightsConfigTargetProjectsPtrOutputWithContext(ctx context.Context) InsightsConfigTargetProjectsPtrOutput {
+	return o
+}
+
+func (o InsightsConfigTargetProjectsPtrOutput) Elem() InsightsConfigTargetProjectsOutput {
+	return o.ApplyT(func(v *InsightsConfigTargetProjects) InsightsConfigTargetProjects {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsConfigTargetProjects
+		return ret
+	}).(InsightsConfigTargetProjectsOutput)
+}
+
+// The project IDs. Format {project}.
+func (o InsightsConfigTargetProjectsPtrOutput) ProjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InsightsConfigTargetProjects) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectIds
+	}).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorProviderOauthConfigInput)(nil)).Elem(), AccountConnectorProviderOauthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorProviderOauthConfigPtrInput)(nil)).Elem(), AccountConnectorProviderOauthConfigArgs{})
@@ -5284,6 +5421,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigRuntimeConfigAppHubWorkloadPtrInput)(nil)).Elem(), InsightsConfigRuntimeConfigAppHubWorkloadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigRuntimeConfigGkeWorkloadInput)(nil)).Elem(), InsightsConfigRuntimeConfigGkeWorkloadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigRuntimeConfigGkeWorkloadPtrInput)(nil)).Elem(), InsightsConfigRuntimeConfigGkeWorkloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigTargetProjectsInput)(nil)).Elem(), InsightsConfigTargetProjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigTargetProjectsPtrInput)(nil)).Elem(), InsightsConfigTargetProjectsArgs{})
 	pulumi.RegisterOutputType(AccountConnectorProviderOauthConfigOutput{})
 	pulumi.RegisterOutputType(AccountConnectorProviderOauthConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigOutput{})
@@ -5342,4 +5481,6 @@ func init() {
 	pulumi.RegisterOutputType(InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput{})
 	pulumi.RegisterOutputType(InsightsConfigRuntimeConfigGkeWorkloadOutput{})
 	pulumi.RegisterOutputType(InsightsConfigRuntimeConfigGkeWorkloadPtrOutput{})
+	pulumi.RegisterOutputType(InsightsConfigTargetProjectsOutput{})
+	pulumi.RegisterOutputType(InsightsConfigTargetProjectsPtrOutput{})
 }

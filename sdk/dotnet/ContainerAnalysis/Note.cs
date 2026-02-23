@@ -91,22 +91,14 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// Note can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/notes/{{name}}`
-    /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, Note can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:containeranalysis/note:Note default projects/{{project}}/notes/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:containeranalysis/note:Note default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:containeranalysis/note:Note default {{name}}
     /// ```
     /// </summary>

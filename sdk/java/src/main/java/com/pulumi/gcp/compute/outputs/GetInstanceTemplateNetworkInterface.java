@@ -86,6 +86,11 @@ public final class GetInstanceTemplateNetworkInterface {
      */
     private String nicType;
     /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    private String parentNicName;
+    /**
      * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
      * 
      */
@@ -108,6 +113,11 @@ public final class GetInstanceTemplateNetworkInterface {
      * 
      */
     private String subnetworkProject;
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    private Integer vlan;
 
     private GetInstanceTemplateNetworkInterface() {}
     /**
@@ -205,6 +215,13 @@ public final class GetInstanceTemplateNetworkInterface {
         return this.nicType;
     }
     /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    public String parentNicName() {
+        return this.parentNicName;
+    }
+    /**
      * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
      * 
      */
@@ -235,6 +252,13 @@ public final class GetInstanceTemplateNetworkInterface {
     public String subnetworkProject() {
         return this.subnetworkProject;
     }
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    public Integer vlan() {
+        return this.vlan;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -257,10 +281,12 @@ public final class GetInstanceTemplateNetworkInterface {
         private String networkAttachment;
         private String networkIp;
         private String nicType;
+        private String parentNicName;
         private Integer queueCount;
         private String stackType;
         private String subnetwork;
         private String subnetworkProject;
+        private Integer vlan;
         public Builder() {}
         public Builder(GetInstanceTemplateNetworkInterface defaults) {
     	      Objects.requireNonNull(defaults);
@@ -276,10 +302,12 @@ public final class GetInstanceTemplateNetworkInterface {
     	      this.networkAttachment = defaults.networkAttachment;
     	      this.networkIp = defaults.networkIp;
     	      this.nicType = defaults.nicType;
+    	      this.parentNicName = defaults.parentNicName;
     	      this.queueCount = defaults.queueCount;
     	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
     	      this.subnetworkProject = defaults.subnetworkProject;
+    	      this.vlan = defaults.vlan;
         }
 
         @CustomType.Setter
@@ -388,6 +416,14 @@ public final class GetInstanceTemplateNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder parentNicName(String parentNicName) {
+            if (parentNicName == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateNetworkInterface", "parentNicName");
+            }
+            this.parentNicName = parentNicName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder queueCount(Integer queueCount) {
             if (queueCount == null) {
               throw new MissingRequiredPropertyException("GetInstanceTemplateNetworkInterface", "queueCount");
@@ -419,6 +455,14 @@ public final class GetInstanceTemplateNetworkInterface {
             this.subnetworkProject = subnetworkProject;
             return this;
         }
+        @CustomType.Setter
+        public Builder vlan(Integer vlan) {
+            if (vlan == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateNetworkInterface", "vlan");
+            }
+            this.vlan = vlan;
+            return this;
+        }
         public GetInstanceTemplateNetworkInterface build() {
             final var _resultValue = new GetInstanceTemplateNetworkInterface();
             _resultValue.accessConfigs = accessConfigs;
@@ -433,10 +477,12 @@ public final class GetInstanceTemplateNetworkInterface {
             _resultValue.networkAttachment = networkAttachment;
             _resultValue.networkIp = networkIp;
             _resultValue.nicType = nicType;
+            _resultValue.parentNicName = parentNicName;
             _resultValue.queueCount = queueCount;
             _resultValue.stackType = stackType;
             _resultValue.subnetwork = subnetwork;
             _resultValue.subnetworkProject = subnetworkProject;
+            _resultValue.vlan = vlan;
             return _resultValue;
         }
     }

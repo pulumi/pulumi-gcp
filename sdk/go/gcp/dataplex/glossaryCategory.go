@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			categoryTestId, err := dataplex.NewGlossary(ctx, "category_test_id", &dataplex.GlossaryArgs{
-//				GlossaryId: pulumi.String("tf-test-glossary_91980"),
+//				GlossaryId: pulumi.String("tf-test-glossary_80332"),
 //				Location:   pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -47,7 +47,7 @@ import (
 //				}).(pulumi.StringOutput),
 //				GlossaryId: categoryTestId.GlossaryId,
 //				Location:   pulumi.String("us-central1"),
-//				CategoryId: pulumi.String("tf-test-category-basic_37118"),
+//				CategoryId: pulumi.String("tf-test-category-basic_13293"),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			categoryTestIdFull, err := dataplex.NewGlossary(ctx, "category_test_id_full", &dataplex.GlossaryArgs{
-//				GlossaryId: pulumi.String("tf-test-glossary_80332"),
+//				GlossaryId: pulumi.String("tf-test-glossary_40289"),
 //				Location:   pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -88,7 +88,7 @@ import (
 //				}).(pulumi.StringOutput),
 //				GlossaryId: categoryTestIdFull.GlossaryId,
 //				Location:   pulumi.String("us-central1"),
-//				CategoryId: pulumi.String("tf-test-category-full_13293"),
+//				CategoryId: pulumi.String("tf-test-category-full_33395"),
 //				Labels: pulumi.StringMap{
 //					"tag": pulumi.String("test-tf"),
 //				},
@@ -109,22 +109,14 @@ import (
 // GlossaryCategory can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/categories/{{category_id}}`
-//
 // * `{{project}}/{{location}}/{{glossary_id}}/{{category_id}}`
-//
 // * `{{location}}/{{glossary_id}}/{{category_id}}`
 //
 // When using the `pulumi import` command, GlossaryCategory can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/categories/{{category_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{project}}/{{location}}/{{glossary_id}}/{{category_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{location}}/{{glossary_id}}/{{category_id}}
 // ```
 type GlossaryCategory struct {

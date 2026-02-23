@@ -109,8 +109,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -441,14 +439,56 @@ import (
 //	}
 //
 // ```
-// ### Cloudrunv2 Service Secret
+// ### Cloudrunv2 Service Readiness Probes
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"fmt"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				LaunchStage:        pulumi.String("BETA"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							ReadinessProbe: &cloudrunv2.ServiceTemplateContainerReadinessProbeArgs{
+//								TimeoutSeconds:   pulumi.Int(20),
+//								PeriodSeconds:    pulumi.Int(30),
+//								SuccessThreshold: pulumi.Int(3),
+//								FailureThreshold: pulumi.Int(2),
+//								Grpc: &cloudrunv2.ServiceTemplateContainerReadinessProbeGrpcArgs{
+//									Port: pulumi.Int(8080),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudrunv2 Service Secret
+//
+// ```go
+// package main
+//
+// import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -883,8 +923,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
@@ -954,22 +992,14 @@ import (
 // Service can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/services/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudrunv2/service:Service default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudrunv2/service:Service default {{location}}/{{name}}
 // ```
 type Service struct {
@@ -1005,10 +1035,17 @@ type Service struct {
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled pulumi.BoolPtrOutput `pulumi:"defaultUriDisabled"`
 	// The deletion time.
-	DeleteTime         pulumi.StringOutput  `pulumi:"deleteTime"`
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the service. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the service,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the service will fail.
+	// When the field is set to false, deleting the service is allowed.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
-	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -1161,10 +1198,17 @@ type serviceState struct {
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled *bool `pulumi:"defaultUriDisabled"`
 	// The deletion time.
-	DeleteTime         *string `pulumi:"deleteTime"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the service. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the service,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the service will fail.
+	// When the field is set to false, deleting the service is allowed.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
-	Description          *string           `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -1277,10 +1321,17 @@ type ServiceState struct {
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled pulumi.BoolPtrInput
 	// The deletion time.
-	DeleteTime         pulumi.StringPtrInput
+	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the service. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the service,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the service will fail.
+	// When the field is set to false, deleting the service is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
-	Description          pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -1389,6 +1440,12 @@ type serviceArgs struct {
 	CustomAudiences []string `pulumi:"customAudiences"`
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled *bool `pulumi:"defaultUriDisabled"`
+	// Whether Terraform will be prevented from destroying the service. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the service,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the service will fail.
+	// When the field is set to false, deleting the service is allowed.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description *string `pulumi:"description"`
@@ -1457,6 +1514,12 @@ type ServiceArgs struct {
 	CustomAudiences pulumi.StringArrayInput
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the service. Defaults to true.
+	// When a`terraform destroy` or `pulumi up` would delete the service,
+	// the command will fail if this field is not set to false in Terraform state.
+	// When the field is set to true or unset in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the service will fail.
+	// When the field is set to false, deleting the service is allowed.
 	DeletionProtection pulumi.BoolPtrInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringPtrInput
@@ -1652,6 +1715,12 @@ func (o ServiceOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the service. Defaults to true.
+// When a`terraform destroy` or `pulumi up` would delete the service,
+// the command will fail if this field is not set to false in Terraform state.
+// When the field is set to true or unset in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the service will fail.
+// When the field is set to false, deleting the service is allowed.
 func (o ServiceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -1661,6 +1730,7 @@ func (o ServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o ServiceOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

@@ -72,22 +72,14 @@ namespace Pulumi.Gcp.Monitoring
     /// Group can be imported using any of these accepted formats:
     /// 
     /// * `{{project}}/{{name}}`
-    /// 
     /// * `{{project}} {{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:monitoring/group:Group default {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:monitoring/group:Group default "{{project}} {{name}}"
-    /// ```
-    /// 
-    /// ```sh
+    /// $ terraform import google_monitoring_group.default "{{project}} {{name}}"
     /// $ pulumi import gcp:monitoring/group:Group default {{name}}
     /// ```
     /// </summary>

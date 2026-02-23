@@ -47,6 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.certificatemanager.CertificateMap;
+ * import com.pulumi.gcp.certificatemanager.CertificateMapArgs;
  * import com.pulumi.gcp.compute.TargetSSLProxy;
  * import com.pulumi.gcp.compute.TargetSSLProxyArgs;
  * import java.util.List;
@@ -87,10 +89,16 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
+ *         var defaultCertificateMap = new CertificateMap("defaultCertificateMap", CertificateMapArgs.builder()
+ *             .name("certificate-map-test")
+ *             .description("My acceptance test certificate map")
+ *             .build());
+ * 
  *         var default_ = new TargetSSLProxy("default", TargetSSLProxyArgs.builder()
  *             .name("test-proxy")
  *             .backendService(defaultBackendService.id())
  *             .sslCertificates(defaultSSLCertificate.id())
+ *             .certificateMap(defaultCertificateMap.id().applyValue(_id -> String.format("//certificatemanager.googleapis.com/%s", _id)))
  *             .build());
  * 
  *     }
@@ -103,22 +111,14 @@ import javax.annotation.Nullable;
  * TargetSslProxy can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/global/targetSslProxies/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, TargetSslProxy can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{name}}
  * ```
  * 

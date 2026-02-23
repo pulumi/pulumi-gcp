@@ -18,6 +18,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A data asset resource that can be packaged and shared via a data product.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about DataAsset, see:
+ * 
+ * * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts.dataAssets)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/dataplex/docs)
+ * 
  * ## Example Usage
  * 
  * ### Dataplex Data Asset Basic
@@ -53,7 +64,7 @@ import javax.annotation.Nullable;
  *         var example = new DataProduct("example", DataProductArgs.builder()
  *             .project("my-project-name")
  *             .location("us-central1")
- *             .dataProductId("tf-test-dp-_89605")
+ *             .dataProductId("tf-test-dp-_95154")
  *             .displayName("Parent Data Product")
  *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .accessGroups(DataProductAccessGroupArgs.builder()
@@ -61,14 +72,14 @@ import javax.annotation.Nullable;
  *                 .groupId("analyst")
  *                 .displayName("Data Analyst")
  *                 .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                     .googleGroup("tf-test-analysts-_56730}{@literal @}{@code example.com")
+ *                     .googleGroup("tf-test-analysts-_64336}{@literal @}{@code example.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         var exampleDataset = new Dataset("exampleDataset", DatasetArgs.builder()
  *             .project("my-project-name")
- *             .datasetId("tf_test_dataset__95154")
+ *             .datasetId("tf_test_dataset__34962")
  *             .location("us-central1")
  *             .build());
  * 
@@ -122,7 +133,7 @@ import javax.annotation.Nullable;
  *         var example = new DataProduct("example", DataProductArgs.builder()
  *             .project("my-project-name")
  *             .location("us-central1")
- *             .dataProductId("tf-test-dp-_64336")
+ *             .dataProductId("tf-test-dp-_74000")
  *             .displayName("Full Example Parent DP")
  *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .accessGroups(            
@@ -146,7 +157,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleDataset = new Dataset("exampleDataset", DatasetArgs.builder()
  *             .project("my-project-name")
- *             .datasetId("tf_test_dataset__34962")
+ *             .datasetId("tf_test_dataset__75125")
  *             .location("us-central1")
  *             .build());
  * 
@@ -185,22 +196,14 @@ import javax.annotation.Nullable;
  * DataAsset can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}/dataAssets/{{data_asset_id}}`
- * 
  * * `{{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}`
- * 
  * * `{{location}}/{{data_product_id}}/{{data_asset_id}}`
  * 
  * When using the `pulumi import` command, DataAsset can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataplex/dataAsset:DataAsset default projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}/dataAssets/{{data_asset_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{location}}/{{data_product_id}}/{{data_asset_id}}
  * ```
  * 

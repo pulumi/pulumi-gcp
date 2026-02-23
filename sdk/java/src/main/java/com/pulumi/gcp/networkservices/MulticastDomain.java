@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkservices.MulticastDomainArgs;
 import com.pulumi.gcp.networkservices.outputs.MulticastDomainConnectionConfig;
 import com.pulumi.gcp.networkservices.outputs.MulticastDomainState;
+import com.pulumi.gcp.networkservices.outputs.MulticastDomainUllMulticastDomain;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -86,22 +87,14 @@ import javax.annotation.Nullable;
  * MulticastDomain can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}`
- * 
  * * `{{project}}/{{location}}/{{multicast_domain_id}}`
- * 
  * * `{{location}}/{{multicast_domain_id}}`
  * 
  * When using the `pulumi import` command, MulticastDomain can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default projects/{{project}}/locations/{{location}}/multicastDomains/{{multicast_domain_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{project}}/{{location}}/{{multicast_domain_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkservices/multicastDomain:MulticastDomain default {{location}}/{{multicast_domain_id}}
  * ```
  * 
@@ -335,6 +328,22 @@ public class MulticastDomain extends com.pulumi.resources.CustomResource {
      */
     public Output<List<MulticastDomainState>> states() {
         return this.states;
+    }
+    /**
+     * Information for an Ultra-Low-Latency multicast domain.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="ullMulticastDomain", refs={MulticastDomainUllMulticastDomain.class}, tree="[0]")
+    private Output</* @Nullable */ MulticastDomainUllMulticastDomain> ullMulticastDomain;
+
+    /**
+     * @return Information for an Ultra-Low-Latency multicast domain.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<MulticastDomainUllMulticastDomain>> ullMulticastDomain() {
+        return Codegen.optional(this.ullMulticastDomain);
     }
     /**
      * The Google-generated UUID for the resource. This value is

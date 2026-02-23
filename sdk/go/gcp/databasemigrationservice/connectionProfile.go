@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
@@ -464,11 +462,11 @@ import (
 //					"foo": pulumi.String("bar"),
 //				},
 //				Alloydb: &databasemigrationservice.ConnectionProfileAlloydbArgs{
-//					ClusterId: pulumi.String("tf-test-dbmsalloycluster_22811"),
+//					ClusterId: pulumi.String("tf-test-dbmsalloycluster_91042"),
 //					Settings: &databasemigrationservice.ConnectionProfileAlloydbSettingsArgs{
 //						InitialUser: &databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUserArgs{
-//							User:     pulumi.String("alloyuser_91042"),
-//							Password: pulumi.String("alloypass_72490"),
+//							User:     pulumi.String("alloyuser_72490"),
+//							Password: pulumi.String("alloypass_89605"),
 //						},
 //						VpcNetwork: _default.ID(),
 //						Labels: pulumi.StringMap{
@@ -705,22 +703,14 @@ import (
 // ConnectionProfile can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
-//
 // * `{{project}}/{{location}}/{{connection_profile_id}}`
-//
 // * `{{location}}/{{connection_profile_id}}`
 //
 // When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
 // ```
 type ConnectionProfile struct {

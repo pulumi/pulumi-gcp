@@ -33,6 +33,7 @@ class SourceRepresentationInstanceArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SourceRepresentationInstance resource.
+
         :param pulumi.Input[_builtins.str] database_version: The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
         :param pulumi.Input[_builtins.str] host: The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
         :param pulumi.Input[_builtins.str] ca_certificate: The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
@@ -239,6 +240,7 @@ class _SourceRepresentationInstanceState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SourceRepresentationInstance resources.
+
         :param pulumi.Input[_builtins.str] ca_certificate: The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[_builtins.str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[_builtins.str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
@@ -496,24 +498,17 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         SourceRepresentationInstance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -587,24 +582,17 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         SourceRepresentationInstance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SourceRepresentationInstanceArgs args: The arguments to use to populate this resource's properties.

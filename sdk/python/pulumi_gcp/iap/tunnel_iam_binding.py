@@ -27,6 +27,7 @@ class TunnelIamBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TunnelIamBinding resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -128,6 +129,7 @@ class _TunnelIamBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TunnelIamBinding resources.
+
         :param pulumi.Input['TunnelIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
@@ -473,7 +475,6 @@ class TunnelIamBinding(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/iap_tunnel
-
         * {{project}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -481,26 +482,23 @@ class TunnelIamBinding(pulumi.CustomResource):
         Identity-Aware Proxy tunnel IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor user:jane@example.com"
+        $ terraform import google_iap_tunnel_iam_member.editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor"
+        $ terraform import google_iap_tunnel_iam_binding.editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor projects/{{project}}/iap_tunnel
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -756,7 +754,6 @@ class TunnelIamBinding(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/iap_tunnel
-
         * {{project}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -764,26 +761,23 @@ class TunnelIamBinding(pulumi.CustomResource):
         Identity-Aware Proxy tunnel IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor user:jane@example.com"
+        $ terraform import google_iap_tunnel_iam_member.editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor"
+        $ terraform import google_iap_tunnel_iam_binding.editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor projects/{{project}}/iap_tunnel
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param TunnelIamBindingArgs args: The arguments to use to populate this resource's properties.

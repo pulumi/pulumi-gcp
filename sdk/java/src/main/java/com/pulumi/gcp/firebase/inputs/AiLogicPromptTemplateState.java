@@ -168,14 +168,14 @@ public final class AiLogicPromptTemplateState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The DotPrompt raw template string.
+     * The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
      * 
      */
     @Import(name="templateString")
     private @Nullable Output<String> templateString;
 
     /**
-     * @return The DotPrompt raw template string.
+     * @return The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
      * 
      */
     public Optional<Output<String>> templateString() {
@@ -437,7 +437,7 @@ public final class AiLogicPromptTemplateState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param templateString The DotPrompt raw template string.
+         * @param templateString The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class AiLogicPromptTemplateState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param templateString The DotPrompt raw template string.
+         * @param templateString The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
          * 
          * @return builder
          * 

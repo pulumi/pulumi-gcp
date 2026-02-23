@@ -28,6 +28,7 @@ class RegionalSecretVersionArgs:
                  is_secret_data_base64: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegionalSecretVersion resource.
+
         :param pulumi.Input[_builtins.str] secret: Secret Manager regional secret resource.
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -132,6 +133,7 @@ class _RegionalSecretVersionState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalSecretVersion resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time at which the regional secret version was created.
         :param pulumi.Input[Sequence[pulumi.Input['RegionalSecretVersionCustomerManagedEncryptionArgs']]] customer_managed_encryptions: The customer-managed encryption configuration of the regional secret.
                Structure is documented below.
@@ -329,6 +331,20 @@ class RegionalSecretVersion(pulumi.CustomResource):
                  secret_data: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A regional secret version resource.
+
+        To get more information about RegionalSecretVersion, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions)
+        * How-to Guides
+            * [Create and deploy a Regional Secret Version](https://cloud.google.com/secret-manager/regional-secrets/add-secret-version-rs)
+
+        > **Warning:** The behavior of the `secret_data` field is force new.
+        While updating this field, Terraform deletes the existing resource and then creates a new one, which may cause potential outages. To mitigate
+        this, use the `create_before_destroy` field within the lifecycle block.
+
+        For more details, refer to the Terraform lifecycle documentation.
+
         ## Example Usage
 
         ### Regional Secret Version Basic
@@ -413,6 +429,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion default projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -435,6 +452,20 @@ class RegionalSecretVersion(pulumi.CustomResource):
                  args: RegionalSecretVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A regional secret version resource.
+
+        To get more information about RegionalSecretVersion, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions)
+        * How-to Guides
+            * [Create and deploy a Regional Secret Version](https://cloud.google.com/secret-manager/regional-secrets/add-secret-version-rs)
+
+        > **Warning:** The behavior of the `secret_data` field is force new.
+        While updating this field, Terraform deletes the existing resource and then creates a new one, which may cause potential outages. To mitigate
+        this, use the `create_before_destroy` field within the lifecycle block.
+
+        For more details, refer to the Terraform lifecycle documentation.
+
         ## Example Usage
 
         ### Regional Secret Version Basic
@@ -519,6 +550,7 @@ class RegionalSecretVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion default projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionalSecretVersionArgs args: The arguments to use to populate this resource's properties.

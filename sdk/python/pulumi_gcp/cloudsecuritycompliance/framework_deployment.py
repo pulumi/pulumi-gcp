@@ -30,6 +30,7 @@ class FrameworkDeploymentArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FrameworkDeployment resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataArgs']]] cloud_control_metadatas: Deployment mode and parameters for each of the Cloud Controls in
                the framework. Every Cloud Control in the framework must have a
                CloudControlMetadata.
@@ -166,6 +167,7 @@ class _FrameworkDeploymentState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FrameworkDeployment resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlDeploymentReferenceArgs']]] cloud_control_deployment_references: The references to the cloud control deployments. It has all the
                CloudControlDeployments which are either directly added in the framework or
                through a CloudControlGroup.
@@ -496,18 +498,15 @@ class FrameworkDeployment(pulumi.CustomResource):
         FrameworkDeployment can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
-
         * `{{organization}}/{{location}}/{{framework_deployment_id}}`
 
         When using the `pulumi import` command, FrameworkDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{organization}}/{{location}}/{{framework_deployment_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -546,18 +545,15 @@ class FrameworkDeployment(pulumi.CustomResource):
         FrameworkDeployment can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}`
-
         * `{{organization}}/{{location}}/{{framework_deployment_id}}`
 
         When using the `pulumi import` command, FrameworkDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default organizations/{{organization}}/locations/{{location}}/frameworkDeployments/{{framework_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{organization}}/{{location}}/{{framework_deployment_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FrameworkDeploymentArgs args: The arguments to use to populate this resource's properties.

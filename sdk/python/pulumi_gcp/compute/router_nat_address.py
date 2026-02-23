@@ -27,6 +27,7 @@ class RouterNatAddressArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterNatAddress resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nat_ips: Self-links of NAT IPs to be used in a Nat service. Only valid if the referenced RouterNat
                natIpAllocateOption is set to MANUAL_ONLY.
         :param pulumi.Input[_builtins.str] router: The name of the Cloud Router in which the referenced NAT service is configured.
@@ -134,6 +135,7 @@ class _RouterNatAddressState:
                  router_nat: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterNatAddress resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nat_ips: Self-links of NAT IPs to be used in a Nat service. Only valid if the referenced RouterNat
@@ -266,30 +268,19 @@ class RouterNatAddress(pulumi.CustomResource):
         RouterNatAddress can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{router_nat}}`
-
         * `{{project}}/{{region}}/{{router}}/{{router_nat}}`
-
         * `{{region}}/{{router}}/{{router_nat}}`
-
         * `{{router}}/{{router_nat}}`
 
         When using the `pulumi import` command, RouterNatAddress can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{router_nat}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{project}}/{{region}}/{{router}}/{{router_nat}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{region}}/{{router}}/{{router_nat}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{router}}/{{router_nat}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -329,30 +320,19 @@ class RouterNatAddress(pulumi.CustomResource):
         RouterNatAddress can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{router_nat}}`
-
         * `{{project}}/{{region}}/{{router}}/{{router_nat}}`
-
         * `{{region}}/{{router}}/{{router_nat}}`
-
         * `{{router}}/{{router_nat}}`
 
         When using the `pulumi import` command, RouterNatAddress can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{router_nat}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{project}}/{{region}}/{{router}}/{{router_nat}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{region}}/{{router}}/{{router_nat}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{router}}/{{router_nat}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterNatAddressArgs args: The arguments to use to populate this resource's properties.

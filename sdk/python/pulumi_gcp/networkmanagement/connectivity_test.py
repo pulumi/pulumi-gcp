@@ -33,6 +33,7 @@ class ConnectivityTestArgs:
                  round_trip: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ConnectivityTest resource.
+
         :param pulumi.Input['ConnectivityTestDestinationArgs'] destination: Required. Destination specification of the Connectivity Test.
                You can use a combination of destination IP address, URI of a supported
                endpoint, project ID, or VPC network to identify the destination location.
@@ -241,6 +242,7 @@ class _ConnectivityTestState:
                  source: Optional[pulumi.Input['ConnectivityTestSourceArgs']] = None):
         """
         Input properties used for looking up and filtering ConnectivityTest resources.
+
         :param pulumi.Input[_builtins.bool] bypass_firewall_checks: Whether the analysis should skip firewall checking. Default value is false.
         :param pulumi.Input[_builtins.str] description: The user-supplied description of the Connectivity Test.
                Maximum of 512 characters.
@@ -621,24 +623,17 @@ class ConnectivityTest(pulumi.CustomResource):
         ConnectivityTest can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/connectivityTests/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ConnectivityTest can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default projects/{{project}}/locations/global/connectivityTests/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -817,24 +812,17 @@ class ConnectivityTest(pulumi.CustomResource):
         ConnectivityTest can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/connectivityTests/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ConnectivityTest can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default projects/{{project}}/locations/global/connectivityTests/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectivityTestArgs args: The arguments to use to populate this resource's properties.

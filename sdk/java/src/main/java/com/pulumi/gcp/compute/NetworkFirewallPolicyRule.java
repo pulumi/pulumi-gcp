@@ -249,22 +249,14 @@ import javax.annotation.Nullable;
  * NetworkFirewallPolicyRule can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}`
- * 
  * * `{{project}}/{{firewall_policy}}/{{priority}}`
- * 
  * * `{{firewall_policy}}/{{priority}}`
  * 
  * When using the `pulumi import` command, NetworkFirewallPolicyRule can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule default {{project}}/{{firewall_policy}}/{{priority}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule default {{firewall_policy}}/{{priority}}
  * ```
  * 

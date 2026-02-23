@@ -29,6 +29,7 @@ class PreferenceSetArgs:
                  virtual_machine_preferences: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesArgs']] = None):
         """
         The set of arguments for constructing a PreferenceSet resource.
+
         :param pulumi.Input[_builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[_builtins.str] preference_set_id: Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
         :param pulumi.Input[_builtins.str] description: A description of the preference set.
@@ -138,6 +139,7 @@ class _PreferenceSetState:
                  virtual_machine_preferences: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesArgs']] = None):
         """
         Input properties used for looking up and filtering PreferenceSet resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp when the preference set was created.
         :param pulumi.Input[_builtins.str] description: A description of the preference set.
         :param pulumi.Input[_builtins.str] display_name: User-friendly display name. Maximum length is 63 characters.
@@ -370,24 +372,17 @@ class PreferenceSet(pulumi.CustomResource):
         PreferenceSet can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}`
-
         * `{{project}}/{{location}}/{{preference_set_id}}`
-
         * `{{location}}/{{preference_set_id}}`
 
         When using the `pulumi import` command, PreferenceSet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default {{project}}/{{location}}/{{preference_set_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default {{location}}/{{preference_set_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -483,24 +478,17 @@ class PreferenceSet(pulumi.CustomResource):
         PreferenceSet can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}`
-
         * `{{project}}/{{location}}/{{preference_set_id}}`
-
         * `{{location}}/{{preference_set_id}}`
 
         When using the `pulumi import` command, PreferenceSet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default {{project}}/{{location}}/{{preference_set_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default {{location}}/{{preference_set_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PreferenceSetArgs args: The arguments to use to populate this resource's properties.

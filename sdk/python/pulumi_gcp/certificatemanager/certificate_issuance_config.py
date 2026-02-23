@@ -32,6 +32,7 @@ class CertificateIssuanceConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CertificateIssuanceConfig resource.
+
         :param pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs'] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] key_algorithm: Key algorithm to use when generating the private key.
@@ -208,6 +209,7 @@ class _CertificateIssuanceConfigState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CertificateIssuanceConfig resources.
+
         :param pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs'] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The creation timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
@@ -535,24 +537,17 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         CertificateIssuanceConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, CertificateIssuanceConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -663,24 +658,17 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         CertificateIssuanceConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, CertificateIssuanceConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CertificateIssuanceConfigArgs args: The arguments to use to populate this resource's properties.

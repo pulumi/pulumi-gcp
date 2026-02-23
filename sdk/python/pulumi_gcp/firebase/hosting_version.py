@@ -25,6 +25,7 @@ class HostingVersionArgs:
                  config: Optional[pulumi.Input['HostingVersionConfigArgs']] = None):
         """
         The set of arguments for constructing a HostingVersion resource.
+
         :param pulumi.Input[_builtins.str] site_id: Required. The ID of the site in which to create this Version.
         :param pulumi.Input['HostingVersionConfigArgs'] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
@@ -68,6 +69,7 @@ class _HostingVersionState:
                  version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostingVersion resources.
+
         :param pulumi.Input['HostingVersionConfigArgs'] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The fully-qualified resource name for the version, in the format:
@@ -145,6 +147,17 @@ class HostingVersion(pulumi.CustomResource):
                  site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A `Version` is a configuration which determine how a site is displayed. Static files are not supported at the moment.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Version, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.versions)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Version Redirect
@@ -333,18 +346,15 @@ class HostingVersion(pulumi.CustomResource):
         Version can be imported using any of these accepted formats:
 
         * `sites/{{site_id}}/versions/{{version_id}}`
-
         * `{{site_id}}/{{version_id}}`
 
         When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default {{site_id}}/{{version_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -359,6 +369,17 @@ class HostingVersion(pulumi.CustomResource):
                  args: HostingVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A `Version` is a configuration which determine how a site is displayed. Static files are not supported at the moment.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Version, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.versions)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Version Redirect
@@ -547,18 +568,15 @@ class HostingVersion(pulumi.CustomResource):
         Version can be imported using any of these accepted formats:
 
         * `sites/{{site_id}}/versions/{{version_id}}`
-
         * `{{site_id}}/{{version_id}}`
 
         When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default {{site_id}}/{{version_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostingVersionArgs args: The arguments to use to populate this resource's properties.

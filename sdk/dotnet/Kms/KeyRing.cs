@@ -48,22 +48,14 @@ namespace Pulumi.Gcp.Kms
     /// KeyRing can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/keyRings/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, KeyRing can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:kms/keyRing:KeyRing default projects/{{project}}/locations/{{location}}/keyRings/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:kms/keyRing:KeyRing default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:kms/keyRing:KeyRing default {{location}}/{{name}}
     /// ```
     /// </summary>

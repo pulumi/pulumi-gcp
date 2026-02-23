@@ -19,27 +19,84 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string? AuthToken;
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// An authorization token for a notification channel. Channel types that support this field include: slack
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `AuthToken` or `AuthTokenWo` can only be set.
+        /// </summary>
+        public readonly string? AuthTokenWo;
+        /// <summary>
+        /// Triggers update of `AuthTokenWo` write-only. Increment this value when an update to `AuthTokenWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string? AuthTokenWoVersion;
+        /// <summary>
         /// An password for a notification channel. Channel types that support this field include: WebhookBasicauth
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? Password;
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// An password for a notification channel. Channel types that support this field include: WebhookBasicauth
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `Password` or `PasswordWo` can only be set.
+        /// </summary>
+        public readonly string? PasswordWo;
+        /// <summary>
+        /// Triggers update of `PasswordWo` write-only. Increment this value when an update to `PasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string? PasswordWoVersion;
+        /// <summary>
         /// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? ServiceKey;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `ServiceKey` or `ServiceKeyWo` can only be set.
+        /// </summary>
+        public readonly string? ServiceKeyWo;
+        /// <summary>
+        /// Triggers update of `ServiceKeyWo` write-only. Increment this value when an update to `ServiceKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string? ServiceKeyWoVersion;
 
         [OutputConstructor]
         private NotificationChannelSensitiveLabels(
             string? authToken,
 
+            string? authTokenWo,
+
+            string? authTokenWoVersion,
+
             string? password,
 
-            string? serviceKey)
+            string? passwordWo,
+
+            string? passwordWoVersion,
+
+            string? serviceKey,
+
+            string? serviceKeyWo,
+
+            string? serviceKeyWoVersion)
         {
             AuthToken = authToken;
+            AuthTokenWo = authTokenWo;
+            AuthTokenWoVersion = authTokenWoVersion;
             Password = password;
+            PasswordWo = passwordWo;
+            PasswordWoVersion = passwordWoVersion;
             ServiceKey = serviceKey;
+            ServiceKeyWo = serviceKeyWo;
+            ServiceKeyWoVersion = serviceKeyWoVersion;
         }
     }
 }

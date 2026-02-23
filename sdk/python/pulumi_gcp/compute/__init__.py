@@ -212,6 +212,7 @@ from .reservation import *
 from .resize_request import *
 from .resource_policy import *
 from .resource_policy_attachment import *
+from .rollout_plan import *
 from .route import *
 from .router import *
 from .router_interface import *

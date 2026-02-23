@@ -168,9 +168,17 @@ namespace Pulumi.Gcp.Storage
         [Output("customerEncryption")]
         public Output<Outputs.BucketObjectCustomerEncryption?> CustomerEncryption { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
+        /// <summary>
+        /// Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+        /// 
+        /// &gt; **Warning:** For dynamically populated files or objects, `DetectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `SourceMd5hash` instead.
+        /// </summary>
         [Output("detectMd5hash")]
         public Output<string?> DetectMd5hash { get; private set; } = null!;
 
@@ -405,9 +413,17 @@ namespace Pulumi.Gcp.Storage
             }
         }
 
+        /// <summary>
+        /// When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
+        /// <summary>
+        /// Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+        /// 
+        /// &gt; **Warning:** For dynamically populated files or objects, `DetectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `SourceMd5hash` instead.
+        /// </summary>
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
 
@@ -574,9 +590,17 @@ namespace Pulumi.Gcp.Storage
             }
         }
 
+        /// <summary>
+        /// When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
+        /// <summary>
+        /// Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+        /// 
+        /// &gt; **Warning:** For dynamically populated files or objects, `DetectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `SourceMd5hash` instead.
+        /// </summary>
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
 

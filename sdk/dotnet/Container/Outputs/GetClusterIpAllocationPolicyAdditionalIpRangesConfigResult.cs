@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PodIpv4RangeNames;
         /// <summary>
+        /// Status of the subnetwork, If in draining status, subnet will not be selected for new node pools.
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
         /// Name of the subnetwork. This can be the full path of the subnetwork or just the name.
         /// </summary>
         public readonly string Subnetwork;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private GetClusterIpAllocationPolicyAdditionalIpRangesConfigResult(
             ImmutableArray<string> podIpv4RangeNames,
 
+            string status,
+
             string subnetwork)
         {
             PodIpv4RangeNames = podIpv4RangeNames;
+            Status = status;
             Subnetwork = subnetwork;
         }
     }

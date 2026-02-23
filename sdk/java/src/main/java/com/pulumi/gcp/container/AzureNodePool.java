@@ -154,24 +154,15 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * NodePool can be imported using any of these accepted formats:
- * 
  * * `projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{cluster}}/{{name}}`
- * 
  * * `{{location}}/{{cluster}}/{{name}}`
  * 
  * When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:container/azureNodePool:AzureNodePool default projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{location}}/{{cluster}}/{{name}}
  * ```
  * 
@@ -268,9 +259,17 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

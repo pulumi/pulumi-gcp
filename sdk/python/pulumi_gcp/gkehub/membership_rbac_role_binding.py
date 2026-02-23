@@ -29,6 +29,7 @@ class MembershipRbacRoleBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MembershipRbacRoleBinding resource.
+
         :param pulumi.Input[_builtins.str] location: Location of the Membership
         :param pulumi.Input[_builtins.str] membership_id: Id of the membership
         :param pulumi.Input[_builtins.str] membership_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
@@ -144,6 +145,7 @@ class _MembershipRbacRoleBindingState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MembershipRbacRoleBinding resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the RBAC Role Binding was created in UTC.
         :param pulumi.Input[_builtins.str] delete_time: Time the RBAC Role Binding was deleted in UTC.
         :param pulumi.Input[_builtins.str] location: Location of the Membership
@@ -353,6 +355,17 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  user: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        RBACRoleBinding represents a rbacrolebinding across the Fleet.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about MembershipRBACRoleBinding, see:
+
+        * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.memberships)
+        * How-to Guides
+            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+
         ## Example Usage
 
         ### Gkehub Membership Rbac Role Binding Basic
@@ -369,7 +382,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
-            membership_id="tf-test-membership_15335",
+            membership_id="tf-test-membership_16199",
             endpoint={
                 "gke_cluster": {
                     "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
@@ -378,7 +391,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[primary]))
         project = gcp.organizations.get_project()
         membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
-            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_20665",
+            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_21563",
             membership_id=membership.membership_id,
             user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
             role={
@@ -393,24 +406,17 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         MembershipRBACRoleBinding can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}`
-
         * `{{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
-
         * `{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
 
         When using the `pulumi import` command, MembershipRBACRoleBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default {{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default {{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -433,6 +439,17 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  args: MembershipRbacRoleBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        RBACRoleBinding represents a rbacrolebinding across the Fleet.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about MembershipRBACRoleBinding, see:
+
+        * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.memberships)
+        * How-to Guides
+            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+
         ## Example Usage
 
         ### Gkehub Membership Rbac Role Binding Basic
@@ -449,7 +466,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
-            membership_id="tf-test-membership_15335",
+            membership_id="tf-test-membership_16199",
             endpoint={
                 "gke_cluster": {
                     "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
@@ -458,7 +475,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[primary]))
         project = gcp.organizations.get_project()
         membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
-            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_20665",
+            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_21563",
             membership_id=membership.membership_id,
             user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
             role={
@@ -473,24 +490,17 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         MembershipRBACRoleBinding can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}`
-
         * `{{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
-
         * `{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
 
         When using the `pulumi import` command, MembershipRBACRoleBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default {{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default {{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MembershipRbacRoleBindingArgs args: The arguments to use to populate this resource's properties.

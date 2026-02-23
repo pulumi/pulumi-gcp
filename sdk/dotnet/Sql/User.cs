@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql
 {
     /// <summary>
+    /// Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
+    /// 
+    /// Read more about sensitive data in state. Passwords will not be retrieved when running
+    /// "terraform import".
+    /// 
     /// ## Example Usage
     /// 
     /// Example creating a SQL User.
@@ -44,6 +49,48 @@ namespace Pulumi.Gcp.Sql
     ///         Instance = main.Name,
     ///         Host = "me.com",
     ///         Password = "changeme",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Example creating a SQL User with database roles(applicable for Postgres/MySQL
+    /// only).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+    ///     {
+    ///         ByteLength = 4,
+    ///     });
+    /// 
+    ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
+    ///     {
+    ///         Name = $"main-instance-{dbNameSuffix.Hex}",
+    ///         DatabaseVersion = "POSTGRES_15",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///     });
+    /// 
+    ///     var users = new Gcp.Sql.User("users", new()
+    ///     {
+    ///         Name = "me",
+    ///         Instance = main.Name,
+    ///         Host = "me.com",
+    ///         Password = "changeme",
+    ///         DatabaseRoles = new[]
+    ///         {
+    ///             "cloudsqlsuperuser",
+    ///         },
     ///     });
     /// 
     /// });
@@ -161,11 +208,11 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// ## Import
     /// 
-    /// SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
+    /// SQL users for MySQL databases can be imported using the `Project`, `Instance`, `Host` and `Name`, e.g.
     /// 
     /// * `{{project_id}}/{{instance}}/{{host}}/{{name}}`
     /// 
-    /// SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
+    /// SQL users for PostgreSQL databases can be imported using the `Project`, `Instance` and `Name`, e.g.
     /// 
     /// * `{{project_id}}/{{instance}}/{{name}}`
     /// 
@@ -187,7 +234,13 @@ namespace Pulumi.Gcp.Sql
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        /// A list of database roles to be assigned to the user.
+        /// This option is only available for MySQL 8+ and PostgreSQL instances. You
+        /// can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+        /// own custom roles. Custom roles must be created in the database before
+        /// you can assign them. You can create roles using the CREATE ROLE
+        /// statement for both MySQL and PostgreSQL.
+        /// **Note**: This property is write-only and will not be read from the API.
         /// </summary>
         [Output("databaseRoles")]
         public Output<ImmutableArray<string>> DatabaseRoles { get; private set; } = null!;
@@ -211,7 +264,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
-        /// The email address for MySQL IAM database users.
+        /// IAM email address for MySQL IAM database users.
         /// </summary>
         [Output("iamEmail")]
         public Output<string> IamEmail { get; private set; } = null!;
@@ -334,7 +387,13 @@ namespace Pulumi.Gcp.Sql
         private InputList<string>? _databaseRoles;
 
         /// <summary>
-        /// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        /// A list of database roles to be assigned to the user.
+        /// This option is only available for MySQL 8+ and PostgreSQL instances. You
+        /// can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+        /// own custom roles. Custom roles must be created in the database before
+        /// you can assign them. You can create roles using the CREATE ROLE
+        /// statement for both MySQL and PostgreSQL.
+        /// **Note**: This property is write-only and will not be read from the API.
         /// </summary>
         public InputList<string> DatabaseRoles
         {
@@ -452,7 +511,13 @@ namespace Pulumi.Gcp.Sql
         private InputList<string>? _databaseRoles;
 
         /// <summary>
-        /// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        /// A list of database roles to be assigned to the user.
+        /// This option is only available for MySQL 8+ and PostgreSQL instances. You
+        /// can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+        /// own custom roles. Custom roles must be created in the database before
+        /// you can assign them. You can create roles using the CREATE ROLE
+        /// statement for both MySQL and PostgreSQL.
+        /// **Note**: This property is write-only and will not be read from the API.
         /// </summary>
         public InputList<string> DatabaseRoles
         {
@@ -479,7 +544,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// The email address for MySQL IAM database users.
+        /// IAM email address for MySQL IAM database users.
         /// </summary>
         [Input("iamEmail")]
         public Input<string>? IamEmail { get; set; }

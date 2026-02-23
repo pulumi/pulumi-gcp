@@ -27,6 +27,7 @@ class IAMBindingArgs:
                  condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a IAMBinding resource.
+
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: An array of identities that will be granted the privilege in the `role`.
                Each entry can have one of the following values:
@@ -109,6 +110,7 @@ class _IAMBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IAMBinding resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the folder's IAM policy.
         :param pulumi.Input[_builtins.str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: An array of identities that will be granted the privilege in the `role`.
@@ -242,12 +244,12 @@ class IAMBinding(pulumi.CustomResource):
         IAM binding imports use space-delimited identifiers; first the resource in question and then the role.  These bindings can be imported using the `folder` and role, e.g.
 
         ```sh
-        $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
+        $ terraform import google_folder_iam_binding.viewer "folder-name roles/viewer"
         ```
 
-        -> **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
-
+        > **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -301,12 +303,12 @@ class IAMBinding(pulumi.CustomResource):
         IAM binding imports use space-delimited identifiers; first the resource in question and then the role.  These bindings can be imported using the `folder` and role, e.g.
 
         ```sh
-        $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
+        $ terraform import google_folder_iam_binding.viewer "folder-name roles/viewer"
         ```
 
-        -> **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
-
+        > **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param IAMBindingArgs args: The arguments to use to populate this resource's properties.

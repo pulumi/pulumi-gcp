@@ -24,6 +24,7 @@ class AiLogicPromptTemplateLockArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiLogicPromptTemplateLock resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the prompt template.
         :param pulumi.Input[_builtins.str] template_id: The ID of the prompt template.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -82,6 +83,7 @@ class _AiLogicPromptTemplateLockState:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiLogicPromptTemplateLock resources.
+
         :param pulumi.Input[_builtins.str] location: The location of the prompt template.
         :param pulumi.Input[_builtins.bool] locked: Indicates if the prompt template is currently locked.
                This is verified against the server-side PromptTemplate resource.
@@ -175,6 +177,13 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
                  template_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A resource that manages the lock state of a PromptTemplate.
+        When this resource is created, the template is locked.
+        When this resource is deleted, the template is unlocked.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Firebaseailogic Prompt Template Lock Basic
@@ -201,24 +210,17 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
         PromptTemplateLock can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
-
         * `{{project}}/{{location}}/{{template_id}}`
-
         * `{{location}}/{{template_id}}`
 
         When using the `pulumi import` command, PromptTemplateLock can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default {{project}}/{{location}}/{{template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default {{location}}/{{template_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -234,6 +236,13 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
                  args: AiLogicPromptTemplateLockArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A resource that manages the lock state of a PromptTemplate.
+        When this resource is created, the template is locked.
+        When this resource is deleted, the template is unlocked.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Firebaseailogic Prompt Template Lock Basic
@@ -260,24 +269,17 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
         PromptTemplateLock can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/templates/{{template_id}}`
-
         * `{{project}}/{{location}}/{{template_id}}`
-
         * `{{location}}/{{template_id}}`
 
         When using the `pulumi import` command, PromptTemplateLock can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default projects/{{project}}/locations/{{location}}/templates/{{template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default {{project}}/{{location}}/{{template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default {{location}}/{{template_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiLogicPromptTemplateLockArgs args: The arguments to use to populate this resource's properties.

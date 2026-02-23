@@ -35,6 +35,7 @@ class WorkloadIdentityPoolProviderArgs:
                  x509: Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']] = None):
         """
         The set of arguments for constructing a WorkloadIdentityPoolProvider resource.
+
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID used for the pool, which is the final component of the pool resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -365,6 +366,7 @@ class _WorkloadIdentityPoolProviderState:
                  x509: Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']] = None):
         """
         Input properties used for looking up and filtering WorkloadIdentityPoolProvider resources.
+
         :param pulumi.Input[_builtins.str] attribute_condition: [A Common Expression Language](https://github.com/google/cel-spec) expression, in
                plain text, to restrict what otherwise valid authentication credentials issued by the
                provider should not be accepted.
@@ -996,24 +998,17 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         WorkloadIdentityPoolProvider can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
-
         * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
-
         * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
 
         When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1356,24 +1351,17 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         WorkloadIdentityPoolProvider can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
-
         * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
-
         * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
 
         When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkloadIdentityPoolProviderArgs args: The arguments to use to populate this resource's properties.

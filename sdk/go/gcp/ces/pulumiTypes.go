@@ -34130,6 +34130,1793 @@ func (o ToolSystemToolArrayOutput) Index(i pulumi.IntInput) ToolSystemToolOutput
 	}).(ToolSystemToolOutput)
 }
 
+type ToolsetMcpToolset struct {
+	// Authentication information required to access tools and execute a tool
+	// against the MCP server. For API key auth, the API key can only be sent in
+	// the request header; sending it via query parameters is not supported.
+	// Structure is documented below.
+	ApiAuthentication *ToolsetMcpToolsetApiAuthentication `pulumi:"apiAuthentication"`
+	// The address of the MCP server, for example, "https://example.com/mcp/". If
+	// the server is built with the MCP SDK, the url should be suffixed with
+	// "/mcp/". Only Streamable HTTP transport based servers are supported. See
+	// https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http
+	// for more details.
+	ServerAddress string `pulumi:"serverAddress"`
+	// Service Directory configuration for VPC-SC, used to resolve service names
+	// within a perimeter.
+	// Structure is documented below.
+	ServiceDirectoryConfig *ToolsetMcpToolsetServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
+	// The TLS configuration. Includes the custom server certificates that the
+	// client should trust.
+	// Structure is documented below.
+	TlsConfig *ToolsetMcpToolsetTlsConfig `pulumi:"tlsConfig"`
+}
+
+// ToolsetMcpToolsetInput is an input type that accepts ToolsetMcpToolsetArgs and ToolsetMcpToolsetOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetInput` via:
+//
+//	ToolsetMcpToolsetArgs{...}
+type ToolsetMcpToolsetInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetOutput() ToolsetMcpToolsetOutput
+	ToToolsetMcpToolsetOutputWithContext(context.Context) ToolsetMcpToolsetOutput
+}
+
+type ToolsetMcpToolsetArgs struct {
+	// Authentication information required to access tools and execute a tool
+	// against the MCP server. For API key auth, the API key can only be sent in
+	// the request header; sending it via query parameters is not supported.
+	// Structure is documented below.
+	ApiAuthentication ToolsetMcpToolsetApiAuthenticationPtrInput `pulumi:"apiAuthentication"`
+	// The address of the MCP server, for example, "https://example.com/mcp/". If
+	// the server is built with the MCP SDK, the url should be suffixed with
+	// "/mcp/". Only Streamable HTTP transport based servers are supported. See
+	// https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http
+	// for more details.
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
+	// Service Directory configuration for VPC-SC, used to resolve service names
+	// within a perimeter.
+	// Structure is documented below.
+	ServiceDirectoryConfig ToolsetMcpToolsetServiceDirectoryConfigPtrInput `pulumi:"serviceDirectoryConfig"`
+	// The TLS configuration. Includes the custom server certificates that the
+	// client should trust.
+	// Structure is documented below.
+	TlsConfig ToolsetMcpToolsetTlsConfigPtrInput `pulumi:"tlsConfig"`
+}
+
+func (ToolsetMcpToolsetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolset)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetArgs) ToToolsetMcpToolsetOutput() ToolsetMcpToolsetOutput {
+	return i.ToToolsetMcpToolsetOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetArgs) ToToolsetMcpToolsetOutputWithContext(ctx context.Context) ToolsetMcpToolsetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetOutput)
+}
+
+func (i ToolsetMcpToolsetArgs) ToToolsetMcpToolsetPtrOutput() ToolsetMcpToolsetPtrOutput {
+	return i.ToToolsetMcpToolsetPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetArgs) ToToolsetMcpToolsetPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetOutput).ToToolsetMcpToolsetPtrOutputWithContext(ctx)
+}
+
+// ToolsetMcpToolsetPtrInput is an input type that accepts ToolsetMcpToolsetArgs, ToolsetMcpToolsetPtr and ToolsetMcpToolsetPtrOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetPtrInput` via:
+//
+//	        ToolsetMcpToolsetArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetMcpToolsetPtrInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetPtrOutput() ToolsetMcpToolsetPtrOutput
+	ToToolsetMcpToolsetPtrOutputWithContext(context.Context) ToolsetMcpToolsetPtrOutput
+}
+
+type toolsetMcpToolsetPtrType ToolsetMcpToolsetArgs
+
+func ToolsetMcpToolsetPtr(v *ToolsetMcpToolsetArgs) ToolsetMcpToolsetPtrInput {
+	return (*toolsetMcpToolsetPtrType)(v)
+}
+
+func (*toolsetMcpToolsetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolset)(nil)).Elem()
+}
+
+func (i *toolsetMcpToolsetPtrType) ToToolsetMcpToolsetPtrOutput() ToolsetMcpToolsetPtrOutput {
+	return i.ToToolsetMcpToolsetPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetMcpToolsetPtrType) ToToolsetMcpToolsetPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetPtrOutput)
+}
+
+type ToolsetMcpToolsetOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolset)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetOutput) ToToolsetMcpToolsetOutput() ToolsetMcpToolsetOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetOutput) ToToolsetMcpToolsetOutputWithContext(ctx context.Context) ToolsetMcpToolsetOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetOutput) ToToolsetMcpToolsetPtrOutput() ToolsetMcpToolsetPtrOutput {
+	return o.ToToolsetMcpToolsetPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetMcpToolsetOutput) ToToolsetMcpToolsetPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetMcpToolset) *ToolsetMcpToolset {
+		return &v
+	}).(ToolsetMcpToolsetPtrOutput)
+}
+
+// Authentication information required to access tools and execute a tool
+// against the MCP server. For API key auth, the API key can only be sent in
+// the request header; sending it via query parameters is not supported.
+// Structure is documented below.
+func (o ToolsetMcpToolsetOutput) ApiAuthentication() ToolsetMcpToolsetApiAuthenticationPtrOutput {
+	return o.ApplyT(func(v ToolsetMcpToolset) *ToolsetMcpToolsetApiAuthentication { return v.ApiAuthentication }).(ToolsetMcpToolsetApiAuthenticationPtrOutput)
+}
+
+// The address of the MCP server, for example, "https://example.com/mcp/". If
+// the server is built with the MCP SDK, the url should be suffixed with
+// "/mcp/". Only Streamable HTTP transport based servers are supported. See
+// https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http
+// for more details.
+func (o ToolsetMcpToolsetOutput) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolset) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+// Service Directory configuration for VPC-SC, used to resolve service names
+// within a perimeter.
+// Structure is documented below.
+func (o ToolsetMcpToolsetOutput) ServiceDirectoryConfig() ToolsetMcpToolsetServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v ToolsetMcpToolset) *ToolsetMcpToolsetServiceDirectoryConfig { return v.ServiceDirectoryConfig }).(ToolsetMcpToolsetServiceDirectoryConfigPtrOutput)
+}
+
+// The TLS configuration. Includes the custom server certificates that the
+// client should trust.
+// Structure is documented below.
+func (o ToolsetMcpToolsetOutput) TlsConfig() ToolsetMcpToolsetTlsConfigPtrOutput {
+	return o.ApplyT(func(v ToolsetMcpToolset) *ToolsetMcpToolsetTlsConfig { return v.TlsConfig }).(ToolsetMcpToolsetTlsConfigPtrOutput)
+}
+
+type ToolsetMcpToolsetPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolset)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetPtrOutput) ToToolsetMcpToolsetPtrOutput() ToolsetMcpToolsetPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetPtrOutput) ToToolsetMcpToolsetPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetPtrOutput) Elem() ToolsetMcpToolsetOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolset) ToolsetMcpToolset {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetMcpToolset
+		return ret
+	}).(ToolsetMcpToolsetOutput)
+}
+
+// Authentication information required to access tools and execute a tool
+// against the MCP server. For API key auth, the API key can only be sent in
+// the request header; sending it via query parameters is not supported.
+// Structure is documented below.
+func (o ToolsetMcpToolsetPtrOutput) ApiAuthentication() ToolsetMcpToolsetApiAuthenticationPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolset) *ToolsetMcpToolsetApiAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.ApiAuthentication
+	}).(ToolsetMcpToolsetApiAuthenticationPtrOutput)
+}
+
+// The address of the MCP server, for example, "https://example.com/mcp/". If
+// the server is built with the MCP SDK, the url should be suffixed with
+// "/mcp/". Only Streamable HTTP transport based servers are supported. See
+// https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http
+// for more details.
+func (o ToolsetMcpToolsetPtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service Directory configuration for VPC-SC, used to resolve service names
+// within a perimeter.
+// Structure is documented below.
+func (o ToolsetMcpToolsetPtrOutput) ServiceDirectoryConfig() ToolsetMcpToolsetServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolset) *ToolsetMcpToolsetServiceDirectoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDirectoryConfig
+	}).(ToolsetMcpToolsetServiceDirectoryConfigPtrOutput)
+}
+
+// The TLS configuration. Includes the custom server certificates that the
+// client should trust.
+// Structure is documented below.
+func (o ToolsetMcpToolsetPtrOutput) TlsConfig() ToolsetMcpToolsetTlsConfigPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolset) *ToolsetMcpToolsetTlsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TlsConfig
+	}).(ToolsetMcpToolsetTlsConfigPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthentication struct {
+	// Configurations for authentication with API key.
+	// Structure is documented below.
+	ApiKeyConfig *ToolsetMcpToolsetApiAuthenticationApiKeyConfig `pulumi:"apiKeyConfig"`
+	// Configurations for authentication with a bearer token.
+	// Structure is documented below.
+	BearerTokenConfig *ToolsetMcpToolsetApiAuthenticationBearerTokenConfig `pulumi:"bearerTokenConfig"`
+	// Configurations for authentication with OAuth.
+	// Structure is documented below.
+	OauthConfig *ToolsetMcpToolsetApiAuthenticationOauthConfig `pulumi:"oauthConfig"`
+	// Configurations for authentication using a custom service account.
+	// Structure is documented below.
+	ServiceAccountAuthConfig *ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig `pulumi:"serviceAccountAuthConfig"`
+	// Configurations for authentication with [ID
+	// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+	// from service agent.
+	ServiceAgentIdTokenAuthConfig *ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig `pulumi:"serviceAgentIdTokenAuthConfig"`
+}
+
+// ToolsetMcpToolsetApiAuthenticationInput is an input type that accepts ToolsetMcpToolsetApiAuthenticationArgs and ToolsetMcpToolsetApiAuthenticationOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetApiAuthenticationInput` via:
+//
+//	ToolsetMcpToolsetApiAuthenticationArgs{...}
+type ToolsetMcpToolsetApiAuthenticationInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetApiAuthenticationOutput() ToolsetMcpToolsetApiAuthenticationOutput
+	ToToolsetMcpToolsetApiAuthenticationOutputWithContext(context.Context) ToolsetMcpToolsetApiAuthenticationOutput
+}
+
+type ToolsetMcpToolsetApiAuthenticationArgs struct {
+	// Configurations for authentication with API key.
+	// Structure is documented below.
+	ApiKeyConfig ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrInput `pulumi:"apiKeyConfig"`
+	// Configurations for authentication with a bearer token.
+	// Structure is documented below.
+	BearerTokenConfig ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrInput `pulumi:"bearerTokenConfig"`
+	// Configurations for authentication with OAuth.
+	// Structure is documented below.
+	OauthConfig ToolsetMcpToolsetApiAuthenticationOauthConfigPtrInput `pulumi:"oauthConfig"`
+	// Configurations for authentication using a custom service account.
+	// Structure is documented below.
+	ServiceAccountAuthConfig ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrInput `pulumi:"serviceAccountAuthConfig"`
+	// Configurations for authentication with [ID
+	// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+	// from service agent.
+	ServiceAgentIdTokenAuthConfig ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrInput `pulumi:"serviceAgentIdTokenAuthConfig"`
+}
+
+func (ToolsetMcpToolsetApiAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetApiAuthentication)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationArgs) ToToolsetMcpToolsetApiAuthenticationOutput() ToolsetMcpToolsetApiAuthenticationOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationArgs) ToToolsetMcpToolsetApiAuthenticationOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationOutput)
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationArgs) ToToolsetMcpToolsetApiAuthenticationPtrOutput() ToolsetMcpToolsetApiAuthenticationPtrOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationArgs) ToToolsetMcpToolsetApiAuthenticationPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationOutput).ToToolsetMcpToolsetApiAuthenticationPtrOutputWithContext(ctx)
+}
+
+// ToolsetMcpToolsetApiAuthenticationPtrInput is an input type that accepts ToolsetMcpToolsetApiAuthenticationArgs, ToolsetMcpToolsetApiAuthenticationPtr and ToolsetMcpToolsetApiAuthenticationPtrOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetApiAuthenticationPtrInput` via:
+//
+//	        ToolsetMcpToolsetApiAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetMcpToolsetApiAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetApiAuthenticationPtrOutput() ToolsetMcpToolsetApiAuthenticationPtrOutput
+	ToToolsetMcpToolsetApiAuthenticationPtrOutputWithContext(context.Context) ToolsetMcpToolsetApiAuthenticationPtrOutput
+}
+
+type toolsetMcpToolsetApiAuthenticationPtrType ToolsetMcpToolsetApiAuthenticationArgs
+
+func ToolsetMcpToolsetApiAuthenticationPtr(v *ToolsetMcpToolsetApiAuthenticationArgs) ToolsetMcpToolsetApiAuthenticationPtrInput {
+	return (*toolsetMcpToolsetApiAuthenticationPtrType)(v)
+}
+
+func (*toolsetMcpToolsetApiAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetApiAuthentication)(nil)).Elem()
+}
+
+func (i *toolsetMcpToolsetApiAuthenticationPtrType) ToToolsetMcpToolsetApiAuthenticationPtrOutput() ToolsetMcpToolsetApiAuthenticationPtrOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetMcpToolsetApiAuthenticationPtrType) ToToolsetMcpToolsetApiAuthenticationPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetApiAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetApiAuthentication)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationOutput) ToToolsetMcpToolsetApiAuthenticationOutput() ToolsetMcpToolsetApiAuthenticationOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationOutput) ToToolsetMcpToolsetApiAuthenticationOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationOutput) ToToolsetMcpToolsetApiAuthenticationPtrOutput() ToolsetMcpToolsetApiAuthenticationPtrOutput {
+	return o.ToToolsetMcpToolsetApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationOutput) ToToolsetMcpToolsetApiAuthenticationPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetMcpToolsetApiAuthentication) *ToolsetMcpToolsetApiAuthentication {
+		return &v
+	}).(ToolsetMcpToolsetApiAuthenticationPtrOutput)
+}
+
+// Configurations for authentication with API key.
+// Structure is documented below.
+func (o ToolsetMcpToolsetApiAuthenticationOutput) ApiKeyConfig() ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthentication) *ToolsetMcpToolsetApiAuthenticationApiKeyConfig {
+		return v.ApiKeyConfig
+	}).(ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput)
+}
+
+// Configurations for authentication with a bearer token.
+// Structure is documented below.
+func (o ToolsetMcpToolsetApiAuthenticationOutput) BearerTokenConfig() ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthentication) *ToolsetMcpToolsetApiAuthenticationBearerTokenConfig {
+		return v.BearerTokenConfig
+	}).(ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput)
+}
+
+// Configurations for authentication with OAuth.
+// Structure is documented below.
+func (o ToolsetMcpToolsetApiAuthenticationOutput) OauthConfig() ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthentication) *ToolsetMcpToolsetApiAuthenticationOauthConfig {
+		return v.OauthConfig
+	}).(ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput)
+}
+
+// Configurations for authentication using a custom service account.
+// Structure is documented below.
+func (o ToolsetMcpToolsetApiAuthenticationOutput) ServiceAccountAuthConfig() ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthentication) *ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig {
+		return v.ServiceAccountAuthConfig
+	}).(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput)
+}
+
+// Configurations for authentication with [ID
+// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+// from service agent.
+func (o ToolsetMcpToolsetApiAuthenticationOutput) ServiceAgentIdTokenAuthConfig() ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthentication) *ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig {
+		return v.ServiceAgentIdTokenAuthConfig
+	}).(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetApiAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetApiAuthentication)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationPtrOutput) ToToolsetMcpToolsetApiAuthenticationPtrOutput() ToolsetMcpToolsetApiAuthenticationPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationPtrOutput) ToToolsetMcpToolsetApiAuthenticationPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationPtrOutput) Elem() ToolsetMcpToolsetApiAuthenticationOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthentication) ToolsetMcpToolsetApiAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetMcpToolsetApiAuthentication
+		return ret
+	}).(ToolsetMcpToolsetApiAuthenticationOutput)
+}
+
+// Configurations for authentication with API key.
+// Structure is documented below.
+func (o ToolsetMcpToolsetApiAuthenticationPtrOutput) ApiKeyConfig() ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthentication) *ToolsetMcpToolsetApiAuthenticationApiKeyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyConfig
+	}).(ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput)
+}
+
+// Configurations for authentication with a bearer token.
+// Structure is documented below.
+func (o ToolsetMcpToolsetApiAuthenticationPtrOutput) BearerTokenConfig() ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthentication) *ToolsetMcpToolsetApiAuthenticationBearerTokenConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BearerTokenConfig
+	}).(ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput)
+}
+
+// Configurations for authentication with OAuth.
+// Structure is documented below.
+func (o ToolsetMcpToolsetApiAuthenticationPtrOutput) OauthConfig() ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthentication) *ToolsetMcpToolsetApiAuthenticationOauthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OauthConfig
+	}).(ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput)
+}
+
+// Configurations for authentication using a custom service account.
+// Structure is documented below.
+func (o ToolsetMcpToolsetApiAuthenticationPtrOutput) ServiceAccountAuthConfig() ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthentication) *ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountAuthConfig
+	}).(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput)
+}
+
+// Configurations for authentication with [ID
+// token](https://cloud.google.com/docs/authentication/token-types#id) generated
+// from service agent.
+func (o ToolsetMcpToolsetApiAuthenticationPtrOutput) ServiceAgentIdTokenAuthConfig() ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthentication) *ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAgentIdTokenAuthConfig
+	}).(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationApiKeyConfig struct {
+	// The name of the SecretManager secret version resource storing the API key.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+	ApiKeySecretVersion string `pulumi:"apiKeySecretVersion"`
+	// The parameter name or the header name of the API key.
+	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+	KeyName string `pulumi:"keyName"`
+	// Key location in the request. For API key auth on MCP toolsets,
+	// the API key can only be sent in the request header.
+	// Possible values:
+	// HEADER
+	RequestLocation string `pulumi:"requestLocation"`
+}
+
+// ToolsetMcpToolsetApiAuthenticationApiKeyConfigInput is an input type that accepts ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs and ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetApiAuthenticationApiKeyConfigInput` via:
+//
+//	ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs{...}
+type ToolsetMcpToolsetApiAuthenticationApiKeyConfigInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput() ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput
+	ToToolsetMcpToolsetApiAuthenticationApiKeyConfigOutputWithContext(context.Context) ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput
+}
+
+type ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs struct {
+	// The name of the SecretManager secret version resource storing the API key.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+	ApiKeySecretVersion pulumi.StringInput `pulumi:"apiKeySecretVersion"`
+	// The parameter name or the header name of the API key.
+	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// Key location in the request. For API key auth on MCP toolsets,
+	// the API key can only be sent in the request header.
+	// Possible values:
+	// HEADER
+	RequestLocation pulumi.StringInput `pulumi:"requestLocation"`
+}
+
+func (ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs) ToToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput() ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationApiKeyConfigOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs) ToToolsetMcpToolsetApiAuthenticationApiKeyConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput)
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs) ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs) ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput).ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutputWithContext(ctx)
+}
+
+// ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrInput is an input type that accepts ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs, ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtr and ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrInput` via:
+//
+//	        ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput
+	ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutputWithContext(context.Context) ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput
+}
+
+type toolsetMcpToolsetApiAuthenticationApiKeyConfigPtrType ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs
+
+func ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtr(v *ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs) ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrInput {
+	return (*toolsetMcpToolsetApiAuthenticationApiKeyConfigPtrType)(v)
+}
+
+func (*toolsetMcpToolsetApiAuthenticationApiKeyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (i *toolsetMcpToolsetApiAuthenticationApiKeyConfigPtrType) ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetMcpToolsetApiAuthenticationApiKeyConfigPtrType) ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput) ToToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput() ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput) ToToolsetMcpToolsetApiAuthenticationApiKeyConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput) ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput {
+	return o.ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput) ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetMcpToolsetApiAuthenticationApiKeyConfig) *ToolsetMcpToolsetApiAuthenticationApiKeyConfig {
+		return &v
+	}).(ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput)
+}
+
+// The name of the SecretManager secret version resource storing the API key.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+// service agent
+// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput) ApiKeySecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthenticationApiKeyConfig) string { return v.ApiKeySecretVersion }).(pulumi.StringOutput)
+}
+
+// The parameter name or the header name of the API key.
+// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthenticationApiKeyConfig) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// Key location in the request. For API key auth on MCP toolsets,
+// the API key can only be sent in the request header.
+// Possible values:
+// HEADER
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput) RequestLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthenticationApiKeyConfig) string { return v.RequestLocation }).(pulumi.StringOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetApiAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput) ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput) ToToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput) Elem() ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationApiKeyConfig) ToolsetMcpToolsetApiAuthenticationApiKeyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetMcpToolsetApiAuthenticationApiKeyConfig
+		return ret
+	}).(ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput)
+}
+
+// The name of the SecretManager secret version resource storing the API key.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+// service agent
+// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput) ApiKeySecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKeySecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The parameter name or the header name of the API key.
+// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key location in the request. For API key auth on MCP toolsets,
+// the API key can only be sent in the request header.
+// Possible values:
+// HEADER
+func (o ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput) RequestLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RequestLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationBearerTokenConfig struct {
+	// (Optional)
+	Token *string `pulumi:"token"`
+}
+
+// ToolsetMcpToolsetApiAuthenticationBearerTokenConfigInput is an input type that accepts ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs and ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetApiAuthenticationBearerTokenConfigInput` via:
+//
+//	ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs{...}
+type ToolsetMcpToolsetApiAuthenticationBearerTokenConfigInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput() ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput
+	ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutputWithContext(context.Context) ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput
+}
+
+type ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs struct {
+	// (Optional)
+	Token pulumi.StringPtrInput `pulumi:"token"`
+}
+
+func (ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs) ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput() ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs) ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput)
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs) ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs) ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput).ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(ctx)
+}
+
+// ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrInput is an input type that accepts ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs, ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtr and ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrInput` via:
+//
+//	        ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput
+	ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(context.Context) ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput
+}
+
+type toolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrType ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs
+
+func ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtr(v *ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs) ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrInput {
+	return (*toolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrType)(v)
+}
+
+func (*toolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (i *toolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrType) ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrType) ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput) ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput() ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput) ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput) ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return o.ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput) ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetMcpToolsetApiAuthenticationBearerTokenConfig) *ToolsetMcpToolsetApiAuthenticationBearerTokenConfig {
+		return &v
+	}).(ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput)
+}
+
+// (Optional)
+func (o ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthenticationBearerTokenConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetApiAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput) ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput) ToToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput) Elem() ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationBearerTokenConfig) ToolsetMcpToolsetApiAuthenticationBearerTokenConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetMcpToolsetApiAuthenticationBearerTokenConfig
+		return ret
+	}).(ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput)
+}
+
+// (Optional)
+func (o ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationBearerTokenConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationOauthConfig struct {
+	// The client ID from the OAuth provider.
+	ClientId string `pulumi:"clientId"`
+	// The name of the SecretManager secret version resource storing the
+	// client secret.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+	ClientSecretVersion string `pulumi:"clientSecretVersion"`
+	// OAuth grant types.
+	// Possible values:
+	// CLIENT_CREDENTIAL
+	OauthGrantType string `pulumi:"oauthGrantType"`
+	// The OAuth scopes to grant.
+	Scopes []string `pulumi:"scopes"`
+	// The token endpoint in the OAuth provider to exchange for an access token.
+	TokenEndpoint string `pulumi:"tokenEndpoint"`
+}
+
+// ToolsetMcpToolsetApiAuthenticationOauthConfigInput is an input type that accepts ToolsetMcpToolsetApiAuthenticationOauthConfigArgs and ToolsetMcpToolsetApiAuthenticationOauthConfigOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetApiAuthenticationOauthConfigInput` via:
+//
+//	ToolsetMcpToolsetApiAuthenticationOauthConfigArgs{...}
+type ToolsetMcpToolsetApiAuthenticationOauthConfigInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetApiAuthenticationOauthConfigOutput() ToolsetMcpToolsetApiAuthenticationOauthConfigOutput
+	ToToolsetMcpToolsetApiAuthenticationOauthConfigOutputWithContext(context.Context) ToolsetMcpToolsetApiAuthenticationOauthConfigOutput
+}
+
+type ToolsetMcpToolsetApiAuthenticationOauthConfigArgs struct {
+	// The client ID from the OAuth provider.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The name of the SecretManager secret version resource storing the
+	// client secret.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+	// service agent
+	// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+	ClientSecretVersion pulumi.StringInput `pulumi:"clientSecretVersion"`
+	// OAuth grant types.
+	// Possible values:
+	// CLIENT_CREDENTIAL
+	OauthGrantType pulumi.StringInput `pulumi:"oauthGrantType"`
+	// The OAuth scopes to grant.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// The token endpoint in the OAuth provider to exchange for an access token.
+	TokenEndpoint pulumi.StringInput `pulumi:"tokenEndpoint"`
+}
+
+func (ToolsetMcpToolsetApiAuthenticationOauthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationOauthConfigArgs) ToToolsetMcpToolsetApiAuthenticationOauthConfigOutput() ToolsetMcpToolsetApiAuthenticationOauthConfigOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationOauthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationOauthConfigArgs) ToToolsetMcpToolsetApiAuthenticationOauthConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationOauthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationOauthConfigOutput)
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationOauthConfigArgs) ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationOauthConfigArgs) ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationOauthConfigOutput).ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutputWithContext(ctx)
+}
+
+// ToolsetMcpToolsetApiAuthenticationOauthConfigPtrInput is an input type that accepts ToolsetMcpToolsetApiAuthenticationOauthConfigArgs, ToolsetMcpToolsetApiAuthenticationOauthConfigPtr and ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetApiAuthenticationOauthConfigPtrInput` via:
+//
+//	        ToolsetMcpToolsetApiAuthenticationOauthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetMcpToolsetApiAuthenticationOauthConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput
+	ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutputWithContext(context.Context) ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput
+}
+
+type toolsetMcpToolsetApiAuthenticationOauthConfigPtrType ToolsetMcpToolsetApiAuthenticationOauthConfigArgs
+
+func ToolsetMcpToolsetApiAuthenticationOauthConfigPtr(v *ToolsetMcpToolsetApiAuthenticationOauthConfigArgs) ToolsetMcpToolsetApiAuthenticationOauthConfigPtrInput {
+	return (*toolsetMcpToolsetApiAuthenticationOauthConfigPtrType)(v)
+}
+
+func (*toolsetMcpToolsetApiAuthenticationOauthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (i *toolsetMcpToolsetApiAuthenticationOauthConfigPtrType) ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetMcpToolsetApiAuthenticationOauthConfigPtrType) ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationOauthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetApiAuthenticationOauthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigOutput) ToToolsetMcpToolsetApiAuthenticationOauthConfigOutput() ToolsetMcpToolsetApiAuthenticationOauthConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigOutput) ToToolsetMcpToolsetApiAuthenticationOauthConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationOauthConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigOutput) ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput {
+	return o.ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigOutput) ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetMcpToolsetApiAuthenticationOauthConfig) *ToolsetMcpToolsetApiAuthenticationOauthConfig {
+		return &v
+	}).(ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput)
+}
+
+// The client ID from the OAuth provider.
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthenticationOauthConfig) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The name of the SecretManager secret version resource storing the
+// client secret.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+// service agent
+// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigOutput) ClientSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthenticationOauthConfig) string { return v.ClientSecretVersion }).(pulumi.StringOutput)
+}
+
+// OAuth grant types.
+// Possible values:
+// CLIENT_CREDENTIAL
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigOutput) OauthGrantType() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthenticationOauthConfig) string { return v.OauthGrantType }).(pulumi.StringOutput)
+}
+
+// The OAuth scopes to grant.
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthenticationOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The token endpoint in the OAuth provider to exchange for an access token.
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigOutput) TokenEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthenticationOauthConfig) string { return v.TokenEndpoint }).(pulumi.StringOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetApiAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput) ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput) ToToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput) Elem() ToolsetMcpToolsetApiAuthenticationOauthConfigOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationOauthConfig) ToolsetMcpToolsetApiAuthenticationOauthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetMcpToolsetApiAuthenticationOauthConfig
+		return ret
+	}).(ToolsetMcpToolsetApiAuthenticationOauthConfigOutput)
+}
+
+// The client ID from the OAuth provider.
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SecretManager secret version resource storing the
+// client secret.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+// service agent
+// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput) ClientSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// OAuth grant types.
+// Possible values:
+// CLIENT_CREDENTIAL
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput) OauthGrantType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OauthGrantType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OAuth scopes to grant.
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationOauthConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The token endpoint in the OAuth provider to exchange for an access token.
+func (o ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig struct {
+	// The email address of the service account used for authenticatation. CES
+	// uses this service account to exchange an access token and the access token
+	// is then sent in the `Authorization` header of the request.
+	// The service account must have the
+	// `roles/iam.serviceAccountTokenCreator` role granted to the
+	// CES service agent
+	// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+	ServiceAccount string `pulumi:"serviceAccount"`
+}
+
+// ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigInput is an input type that accepts ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs and ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigInput` via:
+//
+//	ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs{...}
+type ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput() ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput
+	ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutputWithContext(context.Context) ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput
+}
+
+type ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs struct {
+	// The email address of the service account used for authenticatation. CES
+	// uses this service account to exchange an access token and the access token
+	// is then sent in the `Authorization` header of the request.
+	// The service account must have the
+	// `roles/iam.serviceAccountTokenCreator` role granted to the
+	// CES service agent
+	// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+}
+
+func (ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs) ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput() ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs) ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput)
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs) ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs) ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput).ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutputWithContext(ctx)
+}
+
+// ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrInput is an input type that accepts ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs, ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtr and ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrInput` via:
+//
+//	        ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput
+	ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutputWithContext(context.Context) ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput
+}
+
+type toolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrType ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs
+
+func ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtr(v *ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs) ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrInput {
+	return (*toolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrType)(v)
+}
+
+func (*toolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (i *toolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrType) ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrType) ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput) ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput() ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput) ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput) ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput {
+	return o.ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput) ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig) *ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig {
+		return &v
+	}).(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput)
+}
+
+// The email address of the service account used for authenticatation. CES
+// uses this service account to exchange an access token and the access token
+// is then sent in the `Authorization` header of the request.
+// The service account must have the
+// `roles/iam.serviceAccountTokenCreator` role granted to the
+// CES service agent
+// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput) ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput) ToToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput) Elem() ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig) ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig
+		return ret
+	}).(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput)
+}
+
+// The email address of the service account used for authenticatation. CES
+// uses this service account to exchange an access token and the access token
+// is then sent in the `Authorization` header of the request.
+// The service account must have the
+// `roles/iam.serviceAccountTokenCreator` role granted to the
+// CES service agent
+// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig struct {
+}
+
+// ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigInput is an input type that accepts ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs and ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigInput` via:
+//
+//	ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs{...}
+type ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput() ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput
+	ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(context.Context) ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput
+}
+
+type ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs struct {
+}
+
+func (ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput() ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput)
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput).ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutputWithContext(ctx)
+}
+
+// ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrInput is an input type that accepts ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs, ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtr and ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrInput` via:
+//
+//	        ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput
+	ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutputWithContext(context.Context) ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput
+}
+
+type toolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrType ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs
+
+func ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtr(v *ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs) ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrInput {
+	return (*toolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrType)(v)
+}
+
+func (*toolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (i *toolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrType) ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput {
+	return i.ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrType) ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput() ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput {
+	return o.ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput) ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig) *ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig {
+		return &v
+	}).(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput)
+}
+
+type ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput) ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput() ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput) ToToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput) Elem() ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig) ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfig
+		return ret
+	}).(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput)
+}
+
+type ToolsetMcpToolsetServiceDirectoryConfig struct {
+	// The name of [Service
+	// Directory](https://cloud.google.com/service-directory) service.
+	// Format:
+	// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+	// Location of the service directory must be the same as the location of the
+	// app.
+	Service string `pulumi:"service"`
+}
+
+// ToolsetMcpToolsetServiceDirectoryConfigInput is an input type that accepts ToolsetMcpToolsetServiceDirectoryConfigArgs and ToolsetMcpToolsetServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetServiceDirectoryConfigInput` via:
+//
+//	ToolsetMcpToolsetServiceDirectoryConfigArgs{...}
+type ToolsetMcpToolsetServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetServiceDirectoryConfigOutput() ToolsetMcpToolsetServiceDirectoryConfigOutput
+	ToToolsetMcpToolsetServiceDirectoryConfigOutputWithContext(context.Context) ToolsetMcpToolsetServiceDirectoryConfigOutput
+}
+
+type ToolsetMcpToolsetServiceDirectoryConfigArgs struct {
+	// The name of [Service
+	// Directory](https://cloud.google.com/service-directory) service.
+	// Format:
+	// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+	// Location of the service directory must be the same as the location of the
+	// app.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (ToolsetMcpToolsetServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetServiceDirectoryConfigArgs) ToToolsetMcpToolsetServiceDirectoryConfigOutput() ToolsetMcpToolsetServiceDirectoryConfigOutput {
+	return i.ToToolsetMcpToolsetServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetServiceDirectoryConfigArgs) ToToolsetMcpToolsetServiceDirectoryConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetServiceDirectoryConfigOutput)
+}
+
+func (i ToolsetMcpToolsetServiceDirectoryConfigArgs) ToToolsetMcpToolsetServiceDirectoryConfigPtrOutput() ToolsetMcpToolsetServiceDirectoryConfigPtrOutput {
+	return i.ToToolsetMcpToolsetServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetServiceDirectoryConfigArgs) ToToolsetMcpToolsetServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetServiceDirectoryConfigOutput).ToToolsetMcpToolsetServiceDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// ToolsetMcpToolsetServiceDirectoryConfigPtrInput is an input type that accepts ToolsetMcpToolsetServiceDirectoryConfigArgs, ToolsetMcpToolsetServiceDirectoryConfigPtr and ToolsetMcpToolsetServiceDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetServiceDirectoryConfigPtrInput` via:
+//
+//	        ToolsetMcpToolsetServiceDirectoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetMcpToolsetServiceDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetServiceDirectoryConfigPtrOutput() ToolsetMcpToolsetServiceDirectoryConfigPtrOutput
+	ToToolsetMcpToolsetServiceDirectoryConfigPtrOutputWithContext(context.Context) ToolsetMcpToolsetServiceDirectoryConfigPtrOutput
+}
+
+type toolsetMcpToolsetServiceDirectoryConfigPtrType ToolsetMcpToolsetServiceDirectoryConfigArgs
+
+func ToolsetMcpToolsetServiceDirectoryConfigPtr(v *ToolsetMcpToolsetServiceDirectoryConfigArgs) ToolsetMcpToolsetServiceDirectoryConfigPtrInput {
+	return (*toolsetMcpToolsetServiceDirectoryConfigPtrType)(v)
+}
+
+func (*toolsetMcpToolsetServiceDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i *toolsetMcpToolsetServiceDirectoryConfigPtrType) ToToolsetMcpToolsetServiceDirectoryConfigPtrOutput() ToolsetMcpToolsetServiceDirectoryConfigPtrOutput {
+	return i.ToToolsetMcpToolsetServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetMcpToolsetServiceDirectoryConfigPtrType) ToToolsetMcpToolsetServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetServiceDirectoryConfigPtrOutput)
+}
+
+type ToolsetMcpToolsetServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetServiceDirectoryConfigOutput) ToToolsetMcpToolsetServiceDirectoryConfigOutput() ToolsetMcpToolsetServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetServiceDirectoryConfigOutput) ToToolsetMcpToolsetServiceDirectoryConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetServiceDirectoryConfigOutput) ToToolsetMcpToolsetServiceDirectoryConfigPtrOutput() ToolsetMcpToolsetServiceDirectoryConfigPtrOutput {
+	return o.ToToolsetMcpToolsetServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetMcpToolsetServiceDirectoryConfigOutput) ToToolsetMcpToolsetServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetServiceDirectoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetMcpToolsetServiceDirectoryConfig) *ToolsetMcpToolsetServiceDirectoryConfig {
+		return &v
+	}).(ToolsetMcpToolsetServiceDirectoryConfigPtrOutput)
+}
+
+// The name of [Service
+// Directory](https://cloud.google.com/service-directory) service.
+// Format:
+// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+// Location of the service directory must be the same as the location of the
+// app.
+func (o ToolsetMcpToolsetServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetServiceDirectoryConfig) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type ToolsetMcpToolsetServiceDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetServiceDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetServiceDirectoryConfigPtrOutput) ToToolsetMcpToolsetServiceDirectoryConfigPtrOutput() ToolsetMcpToolsetServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetServiceDirectoryConfigPtrOutput) ToToolsetMcpToolsetServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetServiceDirectoryConfigPtrOutput) Elem() ToolsetMcpToolsetServiceDirectoryConfigOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetServiceDirectoryConfig) ToolsetMcpToolsetServiceDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetMcpToolsetServiceDirectoryConfig
+		return ret
+	}).(ToolsetMcpToolsetServiceDirectoryConfigOutput)
+}
+
+// The name of [Service
+// Directory](https://cloud.google.com/service-directory) service.
+// Format:
+// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+// Location of the service directory must be the same as the location of the
+// app.
+func (o ToolsetMcpToolsetServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetServiceDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolsetMcpToolsetTlsConfig struct {
+	// Specifies a list of allowed custom CA certificates for HTTPS
+	// verification.
+	// Structure is documented below.
+	CaCerts []ToolsetMcpToolsetTlsConfigCaCert `pulumi:"caCerts"`
+}
+
+// ToolsetMcpToolsetTlsConfigInput is an input type that accepts ToolsetMcpToolsetTlsConfigArgs and ToolsetMcpToolsetTlsConfigOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetTlsConfigInput` via:
+//
+//	ToolsetMcpToolsetTlsConfigArgs{...}
+type ToolsetMcpToolsetTlsConfigInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetTlsConfigOutput() ToolsetMcpToolsetTlsConfigOutput
+	ToToolsetMcpToolsetTlsConfigOutputWithContext(context.Context) ToolsetMcpToolsetTlsConfigOutput
+}
+
+type ToolsetMcpToolsetTlsConfigArgs struct {
+	// Specifies a list of allowed custom CA certificates for HTTPS
+	// verification.
+	// Structure is documented below.
+	CaCerts ToolsetMcpToolsetTlsConfigCaCertArrayInput `pulumi:"caCerts"`
+}
+
+func (ToolsetMcpToolsetTlsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetTlsConfig)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetTlsConfigArgs) ToToolsetMcpToolsetTlsConfigOutput() ToolsetMcpToolsetTlsConfigOutput {
+	return i.ToToolsetMcpToolsetTlsConfigOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetTlsConfigArgs) ToToolsetMcpToolsetTlsConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetTlsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetTlsConfigOutput)
+}
+
+func (i ToolsetMcpToolsetTlsConfigArgs) ToToolsetMcpToolsetTlsConfigPtrOutput() ToolsetMcpToolsetTlsConfigPtrOutput {
+	return i.ToToolsetMcpToolsetTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetTlsConfigArgs) ToToolsetMcpToolsetTlsConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetTlsConfigOutput).ToToolsetMcpToolsetTlsConfigPtrOutputWithContext(ctx)
+}
+
+// ToolsetMcpToolsetTlsConfigPtrInput is an input type that accepts ToolsetMcpToolsetTlsConfigArgs, ToolsetMcpToolsetTlsConfigPtr and ToolsetMcpToolsetTlsConfigPtrOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetTlsConfigPtrInput` via:
+//
+//	        ToolsetMcpToolsetTlsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolsetMcpToolsetTlsConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetTlsConfigPtrOutput() ToolsetMcpToolsetTlsConfigPtrOutput
+	ToToolsetMcpToolsetTlsConfigPtrOutputWithContext(context.Context) ToolsetMcpToolsetTlsConfigPtrOutput
+}
+
+type toolsetMcpToolsetTlsConfigPtrType ToolsetMcpToolsetTlsConfigArgs
+
+func ToolsetMcpToolsetTlsConfigPtr(v *ToolsetMcpToolsetTlsConfigArgs) ToolsetMcpToolsetTlsConfigPtrInput {
+	return (*toolsetMcpToolsetTlsConfigPtrType)(v)
+}
+
+func (*toolsetMcpToolsetTlsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetTlsConfig)(nil)).Elem()
+}
+
+func (i *toolsetMcpToolsetTlsConfigPtrType) ToToolsetMcpToolsetTlsConfigPtrOutput() ToolsetMcpToolsetTlsConfigPtrOutput {
+	return i.ToToolsetMcpToolsetTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolsetMcpToolsetTlsConfigPtrType) ToToolsetMcpToolsetTlsConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetTlsConfigPtrOutput)
+}
+
+type ToolsetMcpToolsetTlsConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetTlsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetTlsConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetTlsConfigOutput) ToToolsetMcpToolsetTlsConfigOutput() ToolsetMcpToolsetTlsConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetTlsConfigOutput) ToToolsetMcpToolsetTlsConfigOutputWithContext(ctx context.Context) ToolsetMcpToolsetTlsConfigOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetTlsConfigOutput) ToToolsetMcpToolsetTlsConfigPtrOutput() ToolsetMcpToolsetTlsConfigPtrOutput {
+	return o.ToToolsetMcpToolsetTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolsetMcpToolsetTlsConfigOutput) ToToolsetMcpToolsetTlsConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetTlsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolsetMcpToolsetTlsConfig) *ToolsetMcpToolsetTlsConfig {
+		return &v
+	}).(ToolsetMcpToolsetTlsConfigPtrOutput)
+}
+
+// Specifies a list of allowed custom CA certificates for HTTPS
+// verification.
+// Structure is documented below.
+func (o ToolsetMcpToolsetTlsConfigOutput) CaCerts() ToolsetMcpToolsetTlsConfigCaCertArrayOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetTlsConfig) []ToolsetMcpToolsetTlsConfigCaCert { return v.CaCerts }).(ToolsetMcpToolsetTlsConfigCaCertArrayOutput)
+}
+
+type ToolsetMcpToolsetTlsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetTlsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolsetMcpToolsetTlsConfig)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetTlsConfigPtrOutput) ToToolsetMcpToolsetTlsConfigPtrOutput() ToolsetMcpToolsetTlsConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetTlsConfigPtrOutput) ToToolsetMcpToolsetTlsConfigPtrOutputWithContext(ctx context.Context) ToolsetMcpToolsetTlsConfigPtrOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetTlsConfigPtrOutput) Elem() ToolsetMcpToolsetTlsConfigOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetTlsConfig) ToolsetMcpToolsetTlsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolsetMcpToolsetTlsConfig
+		return ret
+	}).(ToolsetMcpToolsetTlsConfigOutput)
+}
+
+// Specifies a list of allowed custom CA certificates for HTTPS
+// verification.
+// Structure is documented below.
+func (o ToolsetMcpToolsetTlsConfigPtrOutput) CaCerts() ToolsetMcpToolsetTlsConfigCaCertArrayOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetTlsConfig) []ToolsetMcpToolsetTlsConfigCaCert {
+		if v == nil {
+			return nil
+		}
+		return v.CaCerts
+	}).(ToolsetMcpToolsetTlsConfigCaCertArrayOutput)
+}
+
+type ToolsetMcpToolsetTlsConfigCaCert struct {
+	// The allowed custom CA certificates (in DER format) for
+	// HTTPS verification. This overrides the default SSL trust store. If this
+	// is empty or unspecified, CES will use Google's default trust
+	// store to verify certificates. N.B. Make sure the HTTPS server
+	// certificates are signed with "subject alt name". For instance a
+	// certificate can be self-signed using the following command,
+	// openssl x509 -req -days 200 -in example.com.csr\
+	// -signkey example.com.key\
+	// -out example.com.crt\
+	// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	Cert string `pulumi:"cert"`
+	// The name of the allowed custom CA certificates. This
+	// can be used to disambiguate the custom CA certificates.
+	DisplayName string `pulumi:"displayName"`
+}
+
+// ToolsetMcpToolsetTlsConfigCaCertInput is an input type that accepts ToolsetMcpToolsetTlsConfigCaCertArgs and ToolsetMcpToolsetTlsConfigCaCertOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetTlsConfigCaCertInput` via:
+//
+//	ToolsetMcpToolsetTlsConfigCaCertArgs{...}
+type ToolsetMcpToolsetTlsConfigCaCertInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetTlsConfigCaCertOutput() ToolsetMcpToolsetTlsConfigCaCertOutput
+	ToToolsetMcpToolsetTlsConfigCaCertOutputWithContext(context.Context) ToolsetMcpToolsetTlsConfigCaCertOutput
+}
+
+type ToolsetMcpToolsetTlsConfigCaCertArgs struct {
+	// The allowed custom CA certificates (in DER format) for
+	// HTTPS verification. This overrides the default SSL trust store. If this
+	// is empty or unspecified, CES will use Google's default trust
+	// store to verify certificates. N.B. Make sure the HTTPS server
+	// certificates are signed with "subject alt name". For instance a
+	// certificate can be self-signed using the following command,
+	// openssl x509 -req -days 200 -in example.com.csr\
+	// -signkey example.com.key\
+	// -out example.com.crt\
+	// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	Cert pulumi.StringInput `pulumi:"cert"`
+	// The name of the allowed custom CA certificates. This
+	// can be used to disambiguate the custom CA certificates.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+}
+
+func (ToolsetMcpToolsetTlsConfigCaCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetTlsConfigCaCert)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetTlsConfigCaCertArgs) ToToolsetMcpToolsetTlsConfigCaCertOutput() ToolsetMcpToolsetTlsConfigCaCertOutput {
+	return i.ToToolsetMcpToolsetTlsConfigCaCertOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetTlsConfigCaCertArgs) ToToolsetMcpToolsetTlsConfigCaCertOutputWithContext(ctx context.Context) ToolsetMcpToolsetTlsConfigCaCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetTlsConfigCaCertOutput)
+}
+
+// ToolsetMcpToolsetTlsConfigCaCertArrayInput is an input type that accepts ToolsetMcpToolsetTlsConfigCaCertArray and ToolsetMcpToolsetTlsConfigCaCertArrayOutput values.
+// You can construct a concrete instance of `ToolsetMcpToolsetTlsConfigCaCertArrayInput` via:
+//
+//	ToolsetMcpToolsetTlsConfigCaCertArray{ ToolsetMcpToolsetTlsConfigCaCertArgs{...} }
+type ToolsetMcpToolsetTlsConfigCaCertArrayInput interface {
+	pulumi.Input
+
+	ToToolsetMcpToolsetTlsConfigCaCertArrayOutput() ToolsetMcpToolsetTlsConfigCaCertArrayOutput
+	ToToolsetMcpToolsetTlsConfigCaCertArrayOutputWithContext(context.Context) ToolsetMcpToolsetTlsConfigCaCertArrayOutput
+}
+
+type ToolsetMcpToolsetTlsConfigCaCertArray []ToolsetMcpToolsetTlsConfigCaCertInput
+
+func (ToolsetMcpToolsetTlsConfigCaCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolsetMcpToolsetTlsConfigCaCert)(nil)).Elem()
+}
+
+func (i ToolsetMcpToolsetTlsConfigCaCertArray) ToToolsetMcpToolsetTlsConfigCaCertArrayOutput() ToolsetMcpToolsetTlsConfigCaCertArrayOutput {
+	return i.ToToolsetMcpToolsetTlsConfigCaCertArrayOutputWithContext(context.Background())
+}
+
+func (i ToolsetMcpToolsetTlsConfigCaCertArray) ToToolsetMcpToolsetTlsConfigCaCertArrayOutputWithContext(ctx context.Context) ToolsetMcpToolsetTlsConfigCaCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolsetMcpToolsetTlsConfigCaCertArrayOutput)
+}
+
+type ToolsetMcpToolsetTlsConfigCaCertOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetTlsConfigCaCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolsetMcpToolsetTlsConfigCaCert)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetTlsConfigCaCertOutput) ToToolsetMcpToolsetTlsConfigCaCertOutput() ToolsetMcpToolsetTlsConfigCaCertOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetTlsConfigCaCertOutput) ToToolsetMcpToolsetTlsConfigCaCertOutputWithContext(ctx context.Context) ToolsetMcpToolsetTlsConfigCaCertOutput {
+	return o
+}
+
+// The allowed custom CA certificates (in DER format) for
+// HTTPS verification. This overrides the default SSL trust store. If this
+// is empty or unspecified, CES will use Google's default trust
+// store to verify certificates. N.B. Make sure the HTTPS server
+// certificates are signed with "subject alt name". For instance a
+// certificate can be self-signed using the following command,
+// openssl x509 -req -days 200 -in example.com.csr\
+// -signkey example.com.key\
+// -out example.com.crt\
+// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+func (o ToolsetMcpToolsetTlsConfigCaCertOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetTlsConfigCaCert) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+// The name of the allowed custom CA certificates. This
+// can be used to disambiguate the custom CA certificates.
+func (o ToolsetMcpToolsetTlsConfigCaCertOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetTlsConfigCaCert) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+type ToolsetMcpToolsetTlsConfigCaCertArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolsetMcpToolsetTlsConfigCaCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolsetMcpToolsetTlsConfigCaCert)(nil)).Elem()
+}
+
+func (o ToolsetMcpToolsetTlsConfigCaCertArrayOutput) ToToolsetMcpToolsetTlsConfigCaCertArrayOutput() ToolsetMcpToolsetTlsConfigCaCertArrayOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetTlsConfigCaCertArrayOutput) ToToolsetMcpToolsetTlsConfigCaCertArrayOutputWithContext(ctx context.Context) ToolsetMcpToolsetTlsConfigCaCertArrayOutput {
+	return o
+}
+
+func (o ToolsetMcpToolsetTlsConfigCaCertArrayOutput) Index(i pulumi.IntInput) ToolsetMcpToolsetTlsConfigCaCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolsetMcpToolsetTlsConfigCaCert {
+		return vs[0].([]ToolsetMcpToolsetTlsConfigCaCert)[vs[1].(int)]
+	}).(ToolsetMcpToolsetTlsConfigCaCertOutput)
+}
+
 type ToolsetOpenApiToolset struct {
 	// Authentication information required for API calls.
 	// Structure is documented below.
@@ -34661,10 +36448,10 @@ type ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig struct {
 	// The parameter name or the header name of the API key.
 	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
 	KeyName string `pulumi:"keyName"`
-	// Key location in the request.
+	// Key location in the request. For API key auth on MCP toolsets,
+	// the API key can only be sent in the request header.
 	// Possible values:
 	// HEADER
-	// QUERY_STRING
 	RequestLocation string `pulumi:"requestLocation"`
 }
 
@@ -34689,10 +36476,10 @@ type ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs struct {
 	// The parameter name or the header name of the API key.
 	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
 	KeyName pulumi.StringInput `pulumi:"keyName"`
-	// Key location in the request.
+	// Key location in the request. For API key auth on MCP toolsets,
+	// the API key can only be sent in the request header.
 	// Possible values:
 	// HEADER
-	// QUERY_STRING
 	RequestLocation pulumi.StringInput `pulumi:"requestLocation"`
 }
 
@@ -34788,10 +36575,10 @@ func (o ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigOutput) KeyName() pulu
 	return o.ApplyT(func(v ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// Key location in the request.
+// Key location in the request. For API key auth on MCP toolsets,
+// the API key can only be sent in the request header.
 // Possible values:
 // HEADER
-// QUERY_STRING
 func (o ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigOutput) RequestLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig) string { return v.RequestLocation }).(pulumi.StringOutput)
 }
@@ -34845,10 +36632,10 @@ func (o ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigPtrOutput) KeyName() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Key location in the request.
+// Key location in the request. For API key auth on MCP toolsets,
+// the API key can only be sent in the request header.
 // Possible values:
 // HEADER
-// QUERY_STRING
 func (o ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigPtrOutput) RequestLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig) *string {
 		if v == nil {
@@ -36367,6 +38154,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolPythonFunctionPtrInput)(nil)).Elem(), ToolPythonFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolSystemToolInput)(nil)).Elem(), ToolSystemToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolSystemToolArrayInput)(nil)).Elem(), ToolSystemToolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetInput)(nil)).Elem(), ToolsetMcpToolsetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetPtrInput)(nil)).Elem(), ToolsetMcpToolsetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationPtrInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationApiKeyConfigInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationBearerTokenConfigInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationOauthConfigInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationOauthConfigPtrInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrInput)(nil)).Elem(), ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetServiceDirectoryConfigInput)(nil)).Elem(), ToolsetMcpToolsetServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetServiceDirectoryConfigPtrInput)(nil)).Elem(), ToolsetMcpToolsetServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetTlsConfigInput)(nil)).Elem(), ToolsetMcpToolsetTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetTlsConfigPtrInput)(nil)).Elem(), ToolsetMcpToolsetTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetTlsConfigCaCertInput)(nil)).Elem(), ToolsetMcpToolsetTlsConfigCaCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetMcpToolsetTlsConfigCaCertArrayInput)(nil)).Elem(), ToolsetMcpToolsetTlsConfigCaCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetInput)(nil)).Elem(), ToolsetOpenApiToolsetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetPtrInput)(nil)).Elem(), ToolsetOpenApiToolsetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolsetOpenApiToolsetApiAuthenticationInput)(nil)).Elem(), ToolsetOpenApiToolsetApiAuthenticationArgs{})
@@ -36800,6 +38607,26 @@ func init() {
 	pulumi.RegisterOutputType(ToolPythonFunctionPtrOutput{})
 	pulumi.RegisterOutputType(ToolSystemToolOutput{})
 	pulumi.RegisterOutputType(ToolSystemToolArrayOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationApiKeyConfigOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationApiKeyConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationBearerTokenConfigOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationBearerTokenConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationOauthConfigOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetServiceDirectoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetTlsConfigOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetTlsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetTlsConfigCaCertOutput{})
+	pulumi.RegisterOutputType(ToolsetMcpToolsetTlsConfigCaCertArrayOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetPtrOutput{})
 	pulumi.RegisterOutputType(ToolsetOpenApiToolsetApiAuthenticationOutput{})

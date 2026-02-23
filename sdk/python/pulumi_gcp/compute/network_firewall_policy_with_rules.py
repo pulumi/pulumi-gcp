@@ -28,6 +28,7 @@ class NetworkFirewallPolicyWithRulesArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkFirewallPolicyWithRules resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesRuleArgs']]] rules: A list of firewall policy rules.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -142,6 +143,7 @@ class _NetworkFirewallPolicyWithRulesState:
                  self_link_with_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkFirewallPolicyWithRules resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
@@ -493,24 +495,17 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
         NetworkFirewallPolicyWithRules can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/firewallPolicies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, NetworkFirewallPolicyWithRules can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules default projects/{{project}}/global/firewallPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -670,24 +665,17 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
         NetworkFirewallPolicyWithRules can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/firewallPolicies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, NetworkFirewallPolicyWithRules can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules default projects/{{project}}/global/firewallPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkFirewallPolicyWithRulesArgs args: The arguments to use to populate this resource's properties.

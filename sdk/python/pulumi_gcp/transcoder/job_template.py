@@ -28,6 +28,7 @@ class JobTemplateArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a JobTemplate resource.
+
         :param pulumi.Input[_builtins.str] job_template_id: ID to use for the Transcoding job template.
         :param pulumi.Input[_builtins.str] location: The location of the transcoding job template resource.
         :param pulumi.Input['JobTemplateConfigArgs'] config: The configuration for this template.
@@ -127,6 +128,7 @@ class _JobTemplateState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering JobTemplate resources.
+
         :param pulumi.Input['JobTemplateConfigArgs'] config: The configuration for this template.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -776,24 +778,17 @@ class JobTemplate(pulumi.CustomResource):
         JobTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/jobTemplates/{{job_template_id}}`
-
         * `{{project}}/{{location}}/{{job_template_id}}`
-
         * `{{location}}/{{job_template_id}}`
 
         When using the `pulumi import` command, JobTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:transcoder/jobTemplate:JobTemplate default projects/{{project}}/locations/{{location}}/jobTemplates/{{job_template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:transcoder/jobTemplate:JobTemplate default {{project}}/{{location}}/{{job_template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:transcoder/jobTemplate:JobTemplate default {{location}}/{{job_template_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1316,24 +1311,17 @@ class JobTemplate(pulumi.CustomResource):
         JobTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/jobTemplates/{{job_template_id}}`
-
         * `{{project}}/{{location}}/{{job_template_id}}`
-
         * `{{location}}/{{job_template_id}}`
 
         When using the `pulumi import` command, JobTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:transcoder/jobTemplate:JobTemplate default projects/{{project}}/locations/{{location}}/jobTemplates/{{job_template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:transcoder/jobTemplate:JobTemplate default {{project}}/{{location}}/{{job_template_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:transcoder/jobTemplate:JobTemplate default {{location}}/{{job_template_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param JobTemplateArgs args: The arguments to use to populate this resource's properties.

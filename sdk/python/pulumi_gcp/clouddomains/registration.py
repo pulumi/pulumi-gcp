@@ -33,6 +33,7 @@ class RegistrationArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Registration resource.
+
         :param pulumi.Input['RegistrationContactSettingsArgs'] contact_settings: Required. Settings for contact information linked to the Registration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] domain_name: Required. The domain name. Unicode domain names must be expressed in Punycode format.
@@ -222,6 +223,7 @@ class _RegistrationState:
                  yearly_price: Optional[pulumi.Input['RegistrationYearlyPriceArgs']] = None):
         """
         Input properties used for looking up and filtering Registration resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_notices: The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
         :param pulumi.Input['RegistrationContactSettingsArgs'] contact_settings: Required. Settings for contact information linked to the Registration.
                Structure is documented below.
@@ -546,6 +548,18 @@ class Registration(pulumi.CustomResource):
                  yearly_price: Optional[pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None,
                  __props__=None):
         """
+        Registers a new domain name and creates a corresponding Registration resource.
+
+        To get more information about Registration, see:
+
+        * [API documentation](https://cloud.google.com/domains/docs/reference/rest/v1/projects.locations.registrations)
+        * How-to Guides
+            * [Register a domain with Cloud Domains](https://cloud.google.com/domains/docs/buy-register-domain)
+
+        > **Warning:** The Terraform implementation of this resource will not actually delete a Registration during
+        `terraform destroy`. Instead it will "abandon" the resource and remove it from state.
+        For information on deleting a registered domain, see https://cloud.google.com/domains/docs/delete-domain
+
         ## Example Usage
 
         ### Clouddomains Registration Full
@@ -620,24 +634,17 @@ class Registration(pulumi.CustomResource):
         Registration can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}`
-
         * `{{project}}/{{location}}/{{domain_name}}`
-
         * `{{location}}/{{domain_name}}`
 
         When using the `pulumi import` command, Registration can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddomains/registration:Registration default {{project}}/{{location}}/{{domain_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -667,6 +674,18 @@ class Registration(pulumi.CustomResource):
                  args: RegistrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Registers a new domain name and creates a corresponding Registration resource.
+
+        To get more information about Registration, see:
+
+        * [API documentation](https://cloud.google.com/domains/docs/reference/rest/v1/projects.locations.registrations)
+        * How-to Guides
+            * [Register a domain with Cloud Domains](https://cloud.google.com/domains/docs/buy-register-domain)
+
+        > **Warning:** The Terraform implementation of this resource will not actually delete a Registration during
+        `terraform destroy`. Instead it will "abandon" the resource and remove it from state.
+        For information on deleting a registered domain, see https://cloud.google.com/domains/docs/delete-domain
+
         ## Example Usage
 
         ### Clouddomains Registration Full
@@ -741,24 +760,17 @@ class Registration(pulumi.CustomResource):
         Registration can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}`
-
         * `{{project}}/{{location}}/{{domain_name}}`
-
         * `{{location}}/{{domain_name}}`
 
         When using the `pulumi import` command, Registration can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddomains/registration:Registration default {{project}}/{{location}}/{{domain_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegistrationArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class UserStoreArgs:
                  user_store_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserStore resource.
+
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[_builtins.str] default_license_config: The resource name of the default license config assigned to users created in
@@ -157,6 +158,7 @@ class _UserStoreState:
                  user_store_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserStore resources.
+
         :param pulumi.Input[_builtins.str] default_license_config: The resource name of the default license config assigned to users created in
                this user store. Format:
                `projects/{project}/locations/{location}/licenseConfigs/{license_config}`.
@@ -353,24 +355,17 @@ class UserStore(pulumi.CustomResource):
         UserStore can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/userStores/{{user_store_id}}`
-
         * `{{project}}/{{location}}/{{user_store_id}}`
-
         * `{{location}}/{{user_store_id}}`
 
         When using the `pulumi import` command, UserStore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/userStore:UserStore default projects/{{project}}/locations/{{location}}/userStores/{{user_store_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/userStore:UserStore default {{project}}/{{location}}/{{user_store_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/userStore:UserStore default {{location}}/{{user_store_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -447,24 +442,17 @@ class UserStore(pulumi.CustomResource):
         UserStore can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/userStores/{{user_store_id}}`
-
         * `{{project}}/{{location}}/{{user_store_id}}`
-
         * `{{location}}/{{user_store_id}}`
 
         When using the `pulumi import` command, UserStore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/userStore:UserStore default projects/{{project}}/locations/{{location}}/userStores/{{user_store_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/userStore:UserStore default {{project}}/{{location}}/{{user_store_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/userStore:UserStore default {{location}}/{{user_store_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserStoreArgs args: The arguments to use to populate this resource's properties.

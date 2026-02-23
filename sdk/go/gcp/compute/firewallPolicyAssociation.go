@@ -70,16 +70,12 @@ import (
 // FirewallPolicyAssociation can be imported using any of these accepted formats:
 //
 // * `locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
-//
 // * `{{firewall_policy}}/{{name}}`
 //
 // When using the `pulumi import` command, FirewallPolicyAssociation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default {{firewall_policy}}/{{name}}
 // ```
 type FirewallPolicyAssociation struct {

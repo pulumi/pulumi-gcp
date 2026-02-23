@@ -31,6 +31,7 @@ class HttpsHealthCheckArgs:
                  unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HttpsHealthCheck resource.
+
         :param pulumi.Input[_builtins.int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
                seconds.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
@@ -235,6 +236,7 @@ class _HttpsHealthCheckState:
                  unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HttpsHealthCheck resources.
+
         :param pulumi.Input[_builtins.int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
                seconds.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -505,24 +507,17 @@ class HttpsHealthCheck(pulumi.CustomResource):
         HttpsHealthCheck can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/httpsHealthChecks/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, HttpsHealthCheck can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default projects/{{project}}/global/httpsHealthChecks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -596,24 +591,17 @@ class HttpsHealthCheck(pulumi.CustomResource):
         HttpsHealthCheck can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/httpsHealthChecks/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, HttpsHealthCheck can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default projects/{{project}}/global/httpsHealthChecks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HttpsHealthCheckArgs args: The arguments to use to populate this resource's properties.

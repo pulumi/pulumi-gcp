@@ -96,9 +96,17 @@ namespace Pulumi.Gcp.Dataproc
         [Input("jobId", required: true)]
         public string JobId { get; set; } = null!;
 
+        /// <summary>
+        /// The project in which the job belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// The region in which the job belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
@@ -116,9 +124,17 @@ namespace Pulumi.Gcp.Dataproc
         [Input("jobId", required: true)]
         public Input<string> JobId { get; set; } = null!;
 
+        /// <summary>
+        /// The project in which the job belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The region in which the job belongs. If it
+        /// is not provided, Terraform will use the provider default.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

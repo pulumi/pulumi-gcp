@@ -75,11 +75,10 @@ import javax.annotation.Nullable;
  * IAM binding imports use space-delimited identifiers; first the resource in question and then the role.  These bindings can be imported using the `folder` and role, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer &#34;folder-name roles/viewer&#34;
+ * $ terraform import google_folder_iam_binding.viewer &#34;folder-name roles/viewer&#34;
  * ```
  * 
- * -&gt; **Custom Roles**: If you&#39;re importing a IAM binding with a custom role, make sure to use the
- * 
+ * &gt; **Custom Roles**: If you&#39;re importing a IAM binding with a custom role, make sure to use the
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */

@@ -51,8 +51,9 @@ import (
 //				return err
 //			}
 //			_, err = biglake.NewIcebergCatalog(ctx, "my_iceberg_catalog", &biglake.IcebergCatalogArgs{
-//				Name:        pulumi.String("my_iceberg_catalog"),
-//				CatalogType: pulumi.String("CATALOG_TYPE_GCS_BUCKET"),
+//				Name:           bucketForMyIcebergCatalog.Name,
+//				CatalogType:    pulumi.String("CATALOG_TYPE_GCS_BUCKET"),
+//				CredentialMode: pulumi.String("CREDENTIAL_MODE_VENDED_CREDENTIALS"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				bucketForMyIcebergCatalog,
 //			}))
@@ -70,22 +71,14 @@ import (
 // IcebergCatalog can be imported using any of these accepted formats:
 //
 // * `iceberg/v1/restcatalog/extensions/projects/{{project}}/catalogs/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, IcebergCatalog can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default iceberg/v1/restcatalog/extensions/projects/{{project}}/catalogs/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{name}}
 // ```
 type IcebergCatalog struct {
@@ -103,8 +96,10 @@ type IcebergCatalog struct {
 	CredentialMode pulumi.StringOutput `pulumi:"credentialMode"`
 	// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
 	DefaultLocation pulumi.StringOutput `pulumi:"defaultLocation"`
-	// The name of the IcebergCatalog. Format:
-	// projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+	// The name of the IcebergCatalog.
+	// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+	// exact same value of the GCS bucket's name. For example, for a bucket:
+	// gs://bucket-name, the catalog name will be exactly "bucket-name".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -163,8 +158,10 @@ type icebergCatalogState struct {
 	CredentialMode *string `pulumi:"credentialMode"`
 	// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
 	DefaultLocation *string `pulumi:"defaultLocation"`
-	// The name of the IcebergCatalog. Format:
-	// projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+	// The name of the IcebergCatalog.
+	// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+	// exact same value of the GCS bucket's name. For example, for a bucket:
+	// gs://bucket-name, the catalog name will be exactly "bucket-name".
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -191,8 +188,10 @@ type IcebergCatalogState struct {
 	CredentialMode pulumi.StringPtrInput
 	// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
 	DefaultLocation pulumi.StringPtrInput
-	// The name of the IcebergCatalog. Format:
-	// projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+	// The name of the IcebergCatalog.
+	// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+	// exact same value of the GCS bucket's name. For example, for a bucket:
+	// gs://bucket-name, the catalog name will be exactly "bucket-name".
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -217,8 +216,10 @@ type icebergCatalogArgs struct {
 	// The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
 	// Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
 	CredentialMode *string `pulumi:"credentialMode"`
-	// The name of the IcebergCatalog. Format:
-	// projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+	// The name of the IcebergCatalog.
+	// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+	// exact same value of the GCS bucket's name. For example, for a bucket:
+	// gs://bucket-name, the catalog name will be exactly "bucket-name".
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -233,8 +234,10 @@ type IcebergCatalogArgs struct {
 	// The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
 	// Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
 	CredentialMode pulumi.StringPtrInput
-	// The name of the IcebergCatalog. Format:
-	// projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+	// The name of the IcebergCatalog.
+	// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+	// exact same value of the GCS bucket's name. For example, for a bucket:
+	// gs://bucket-name, the catalog name will be exactly "bucket-name".
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -355,8 +358,10 @@ func (o IcebergCatalogOutput) DefaultLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *IcebergCatalog) pulumi.StringOutput { return v.DefaultLocation }).(pulumi.StringOutput)
 }
 
-// The name of the IcebergCatalog. Format:
-// projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+// The name of the IcebergCatalog.
+// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+// exact same value of the GCS bucket's name. For example, for a bucket:
+// gs://bucket-name, the catalog name will be exactly "bucket-name".
 func (o IcebergCatalogOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IcebergCatalog) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

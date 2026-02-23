@@ -21,6 +21,7 @@ import com.pulumi.gcp.container.inputs.ClusterAddonsConfigNetworkPolicyConfigArg
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigParallelstoreCsiDriverConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigPodSnapshotConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigRayOperatorConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterAddonsConfigSliceControllerConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigStatefulHaConfigArgs;
 import java.util.List;
 import java.util.Objects;
@@ -379,6 +380,21 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+     * 
+     */
+    @Import(name="sliceControllerConfig")
+    private @Nullable Output<ClusterAddonsConfigSliceControllerConfigArgs> sliceControllerConfig;
+
+    /**
+     * @return The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+     * 
+     */
+    public Optional<Output<ClusterAddonsConfigSliceControllerConfigArgs>> sliceControllerConfig() {
+        return Optional.ofNullable(this.sliceControllerConfig);
+    }
+
+    /**
      * .
      * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
      * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
@@ -416,6 +432,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         this.parallelstoreCsiDriverConfig = $.parallelstoreCsiDriverConfig;
         this.podSnapshotConfig = $.podSnapshotConfig;
         this.rayOperatorConfigs = $.rayOperatorConfigs;
+        this.sliceControllerConfig = $.sliceControllerConfig;
         this.statefulHaConfig = $.statefulHaConfig;
     }
 
@@ -898,6 +915,27 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          */
         public Builder rayOperatorConfigs(ClusterAddonsConfigRayOperatorConfigArgs... rayOperatorConfigs) {
             return rayOperatorConfigs(List.of(rayOperatorConfigs));
+        }
+
+        /**
+         * @param sliceControllerConfig The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sliceControllerConfig(@Nullable Output<ClusterAddonsConfigSliceControllerConfigArgs> sliceControllerConfig) {
+            $.sliceControllerConfig = sliceControllerConfig;
+            return this;
+        }
+
+        /**
+         * @param sliceControllerConfig The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sliceControllerConfig(ClusterAddonsConfigSliceControllerConfigArgs sliceControllerConfig) {
+            return sliceControllerConfig(Output.of(sliceControllerConfig));
         }
 
         /**

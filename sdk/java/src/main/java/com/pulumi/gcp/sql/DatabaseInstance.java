@@ -548,29 +548,20 @@ import javax.annotation.Nullable;
  * Database instances can be imported using one of any of these accepted formats:
  * 
  * * `projects/{{project}}/instances/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, Database instances can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default projects/{{project}}/instances/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{name}}
  * ```
  * 
+ * &gt; **NOTE:** Some fields (such as `replicaConfiguration`) won&#39;t show a diff if they are unset in
  * config and set on the server.
- * 
  * When importing, double-check that your config has all the fields set that you expect- just seeing
- * 
  * no diff isn&#39;t sufficient to know that your config could reproduce the imported resource.
  * 
  */
@@ -591,14 +582,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.availableMaintenanceVersions;
     }
     /**
-     * The name of the BackupDR backup to restore from.
+     * The backupdrBackup needed to restore the database to a backup run. This field will
+     * cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+     * **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+     * block during resource creation/update will trigger the restore action after the resource is created/updated.
      * 
      */
     @Export(name="backupdrBackup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupdrBackup;
 
     /**
-     * @return The name of the BackupDR backup to restore from.
+     * @return The backupdrBackup needed to restore the database to a backup run. This field will
+     * cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+     * **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+     * block during resource creation/update will trigger the restore action after the resource is created/updated.
      * 
      */
     public Output<Optional<String>> backupdrBackup() {
@@ -859,14 +856,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.nodeCount;
     }
     /**
-     * Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+     * The pointInTimeRestoreContext needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
+     * cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
+     * **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+     * block during resource creation/update will trigger the restore action after the resource is created/updated.
      * 
      */
     @Export(name="pointInTimeRestoreContext", refs={DatabaseInstancePointInTimeRestoreContext.class}, tree="[0]")
     private Output</* @Nullable */ DatabaseInstancePointInTimeRestoreContext> pointInTimeRestoreContext;
 
     /**
-     * @return Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+     * @return The pointInTimeRestoreContext needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
+     * cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
+     * **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+     * block during resource creation/update will trigger the restore action after the resource is created/updated.
      * 
      */
     public Output<Optional<DatabaseInstancePointInTimeRestoreContext>> pointInTimeRestoreContext() {

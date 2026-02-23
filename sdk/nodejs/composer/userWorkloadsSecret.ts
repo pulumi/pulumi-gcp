@@ -46,22 +46,14 @@ import * as utilities from "../utilities";
  * Secret can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsSecrets/{{name}}`
- *
  * * `{{project}}/{{region}}/{{environment}}/{{name}}`
- *
  * * `{{environment}}/{{name}}`
  *
  * When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsSecrets/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{project}}/{{region}}/{{environment}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
  * ```
  */
@@ -94,7 +86,14 @@ export class UserWorkloadsSecret extends pulumi.CustomResource {
     }
 
     /**
-     * A map of the secret data.
+     * The "data" field of Kubernetes Secret, organized in key-value pairs,
+     * which can contain sensitive values such as a password, a token, or a key.
+     * Content of this field will not be displayed in CLI output,
+     * but it will be stored in terraform state file. To protect sensitive data,
+     * follow the best practices outlined in the HashiCorp documentation:
+     * https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+     * The values for all keys have to be base64-encoded strings.
+     * For details see: https://kubernetes.io/docs/concepts/configuration/secret/
      */
     declare public readonly data: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -156,7 +155,14 @@ export class UserWorkloadsSecret extends pulumi.CustomResource {
  */
 export interface UserWorkloadsSecretState {
     /**
-     * A map of the secret data.
+     * The "data" field of Kubernetes Secret, organized in key-value pairs,
+     * which can contain sensitive values such as a password, a token, or a key.
+     * Content of this field will not be displayed in CLI output,
+     * but it will be stored in terraform state file. To protect sensitive data,
+     * follow the best practices outlined in the HashiCorp documentation:
+     * https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+     * The values for all keys have to be base64-encoded strings.
+     * For details see: https://kubernetes.io/docs/concepts/configuration/secret/
      */
     data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -183,7 +189,14 @@ export interface UserWorkloadsSecretState {
  */
 export interface UserWorkloadsSecretArgs {
     /**
-     * A map of the secret data.
+     * The "data" field of Kubernetes Secret, organized in key-value pairs,
+     * which can contain sensitive values such as a password, a token, or a key.
+     * Content of this field will not be displayed in CLI output,
+     * but it will be stored in terraform state file. To protect sensitive data,
+     * follow the best practices outlined in the HashiCorp documentation:
+     * https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+     * The values for all keys have to be base64-encoded strings.
+     * For details see: https://kubernetes.io/docs/concepts/configuration/secret/
      */
     data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

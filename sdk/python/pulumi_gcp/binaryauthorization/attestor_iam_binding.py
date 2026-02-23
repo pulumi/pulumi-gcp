@@ -28,6 +28,7 @@ class AttestorIamBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AttestorIamBinding resource.
+
         :param pulumi.Input[_builtins.str] attestor: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -138,6 +139,7 @@ class _AttestorIamBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AttestorIamBinding resources.
+
         :param pulumi.Input[_builtins.str] attestor: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
@@ -391,9 +393,7 @@ class AttestorIamBinding(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/attestors/{{name}}
-
         * {{project}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -401,26 +401,23 @@ class AttestorIamBinding(pulumi.CustomResource):
         Binary Authorization attestor IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding editor "projects/{{project}}/attestors/{{attestor}} roles/viewer user:jane@example.com"
+        $ terraform import google_binary_authorization_attestor_iam_member.editor "projects/{{project}}/attestors/{{attestor}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding editor "projects/{{project}}/attestors/{{attestor}} roles/viewer"
+        $ terraform import google_binary_authorization_attestor_iam_binding.editor "projects/{{project}}/attestors/{{attestor}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding editor projects/{{project}}/attestors/{{attestor}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -573,9 +570,7 @@ class AttestorIamBinding(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/attestors/{{name}}
-
         * {{project}}/{{name}}
-
         * {{name}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -583,26 +578,23 @@ class AttestorIamBinding(pulumi.CustomResource):
         Binary Authorization attestor IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding editor "projects/{{project}}/attestors/{{attestor}} roles/viewer user:jane@example.com"
+        $ terraform import google_binary_authorization_attestor_iam_member.editor "projects/{{project}}/attestors/{{attestor}} roles/viewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding editor "projects/{{project}}/attestors/{{attestor}} roles/viewer"
+        $ terraform import google_binary_authorization_attestor_iam_binding.editor "projects/{{project}}/attestors/{{attestor}} roles/viewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding editor projects/{{project}}/attestors/{{attestor}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param AttestorIamBindingArgs args: The arguments to use to populate this resource's properties.

@@ -42,6 +42,7 @@ class MetastoreServiceArgs:
                  tier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MetastoreService resource.
+
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
@@ -414,6 +415,7 @@ class _MetastoreServiceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetastoreService resources.
+
         :param pulumi.Input[_builtins.str] artifact_gcs_uri: A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the metastore service was created.
         :param pulumi.Input[_builtins.str] database_type: The database type that the Metastore service stores its data.
@@ -1222,24 +1224,17 @@ class MetastoreService(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
-
         * `{{project}}/{{location}}/{{service_id}}`
-
         * `{{location}}/{{service_id}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{project}}/{{location}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{location}}/{{service_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1586,24 +1581,17 @@ class MetastoreService(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
-
         * `{{project}}/{{location}}/{{service_id}}`
-
         * `{{location}}/{{service_id}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{project}}/{{location}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{location}}/{{service_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MetastoreServiceArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class TagKeyArgs:
                  purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TagKey resource.
+
         :param pulumi.Input[_builtins.str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         :param pulumi.Input[_builtins.str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
                The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
@@ -141,6 +142,7 @@ class _TagKeyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TagKey resources.
+
         :param pulumi.Input[_builtins.str] allowed_values_regex: Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
         :param pulumi.Input[_builtins.str] create_time: Output only. Creation time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -347,18 +349,15 @@ class TagKey(pulumi.CustomResource):
         TagKey can be imported using any of these accepted formats:
 
         * `tagKeys/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, TagKey can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tags/tagKey:TagKey default tagKeys/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tags/tagKey:TagKey default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -407,18 +406,15 @@ class TagKey(pulumi.CustomResource):
         TagKey can be imported using any of these accepted formats:
 
         * `tagKeys/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, TagKey can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tags/tagKey:TagKey default tagKeys/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tags/tagKey:TagKey default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TagKeyArgs args: The arguments to use to populate this resource's properties.

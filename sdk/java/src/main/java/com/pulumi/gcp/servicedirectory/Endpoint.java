@@ -151,22 +151,14 @@ import javax.annotation.Nullable;
  * Endpoint can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}`
- * 
  * * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
- * 
  * * `{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
  * 
  * When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
  * ```
  * 

@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A Google Cloud Firebase Apple application configuration
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about iosApp, see:
+ *
+ * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/)
+ */
 export function getAppleAppConfig(args: GetAppleAppConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetAppleAppConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getAppleAppConfig:getAppleAppConfig", {
@@ -45,6 +57,18 @@ export interface GetAppleAppConfigResult {
     readonly id: string;
     readonly project?: string;
 }
+/**
+ * A Google Cloud Firebase Apple application configuration
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about iosApp, see:
+ *
+ * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/)
+ */
 export function getAppleAppConfigOutput(args: GetAppleAppConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppleAppConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:firebase/getAppleAppConfig:getAppleAppConfig", {

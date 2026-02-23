@@ -158,22 +158,14 @@ import * as utilities from "../utilities";
  * Backend can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/backends/{{backend_id}}`
- *
  * * `{{project}}/{{location}}/{{backend_id}}`
- *
  * * `{{location}}/{{backend_id}}`
  *
  * When using the `pulumi import` command, Backend can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default projects/{{project}}/locations/{{location}}/backends/{{backend_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{project}}/{{location}}/{{backend_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{location}}/{{backend_id}}
  * ```
  */
@@ -242,6 +234,9 @@ export class AppHostingBackend extends pulumi.CustomResource {
      * Human-readable name. 63 character limit.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -438,6 +433,9 @@ export interface AppHostingBackendState {
      * Human-readable name. 63 character limit.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

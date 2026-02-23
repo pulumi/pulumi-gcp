@@ -51,10 +51,18 @@ class InstanceTemplateArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a InstanceTemplate resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
-        :param pulumi.Input[_builtins.str] machine_type: The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+        :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
+               
+               To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               
+               More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+               create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+               
+               - - -
         :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
@@ -192,7 +200,14 @@ class InstanceTemplateArgs:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+        The machine type to create.
+
+        To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+
+        More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+        create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+
+        - - -
         """
         return pulumi.get(self, "machine_type")
 
@@ -591,6 +606,7 @@ class _InstanceTemplateState:
                  tags_fingerprint: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceTemplate resources.
+
         :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
@@ -612,7 +628,14 @@ class _InstanceTemplateState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[_builtins.str] machine_type: The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+        :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
+               
+               To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               
+               More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+               create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[_builtins.str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -898,7 +921,14 @@ class _InstanceTemplateState:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+        The machine type to create.
+
+        To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+
+        More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+        create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+
+        - - -
         """
         return pulumi.get(self, "machine_type")
 
@@ -1490,24 +1520,17 @@ class InstanceTemplate(pulumi.CustomResource):
         Instance templates can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/instanceTemplates/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1530,7 +1553,14 @@ class InstanceTemplate(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[_builtins.str] machine_type: The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+        :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
+               
+               To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               
+               More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+               create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[_builtins.str] metadata_startup_script: An alternative to using the
@@ -1826,24 +1856,17 @@ class InstanceTemplate(pulumi.CustomResource):
         Instance templates can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/instanceTemplates/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceTemplateArgs args: The arguments to use to populate this resource's properties.
@@ -2013,7 +2036,14 @@ class InstanceTemplate(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[_builtins.str] machine_type: The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+        :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
+               
+               To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               
+               More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+               create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[_builtins.str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -2220,7 +2250,14 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+        The machine type to create.
+
+        To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+
+        More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+        create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+
+        - - -
         """
         return pulumi.get(self, "machine_type")
 

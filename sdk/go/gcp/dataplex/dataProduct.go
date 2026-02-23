@@ -12,6 +12,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A data product is a curated collection of data assets, packaged to address
+// specific use cases.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about DataProduct, see:
+//
+// * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts)
+// * How-to Guides
+//   - [Introduction to Data Products](https://cloud.google.com/dataplex/docs/data-products-overview)
+//
 // ## Example Usage
 //
 // ### Dataplex Data Product Basic
@@ -42,7 +54,7 @@ import (
 //						GroupId:     pulumi.String("analyst"),
 //						DisplayName: pulumi.String("Data Analyst"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_74000@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_88722@example.com"),
 //						},
 //					},
 //				},
@@ -88,7 +100,7 @@ import (
 //						DisplayName: pulumi.String("Data Analyst - Updated"),
 //						Description: pulumi.String("In-place update verified"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_75125@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_39249@example.com"),
 //						},
 //					},
 //					&dataplex.DataProductAccessGroupArgs{
@@ -96,7 +108,7 @@ import (
 //						GroupId:     pulumi.String("scientist"),
 //						DisplayName: pulumi.String("Data Scientist"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-scientists-_88722@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-scientists-_74391@example.com"),
 //						},
 //					},
 //				},
@@ -115,22 +127,14 @@ import (
 // DataProduct can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}`
-//
 // * `{{project}}/{{location}}/{{data_product_id}}`
-//
 // * `{{location}}/{{data_product_id}}`
 //
 // When using the `pulumi import` command, DataProduct can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataplex/dataProduct:DataProduct default projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{project}}/{{location}}/{{data_product_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{location}}/{{data_product_id}}
 // ```
 type DataProduct struct {

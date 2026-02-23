@@ -39,6 +39,7 @@ class BareMetalAdminClusterArgs:
                  storage: Optional[pulumi.Input['BareMetalAdminClusterStorageArgs']] = None):
         """
         The set of arguments for constructing a BareMetalAdminCluster resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the Bare Metal Admin Cluster.
                This field has the same restrictions as Kubernetes annotations.
@@ -357,6 +358,7 @@ class _BareMetalAdminClusterState:
                  validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckArgs']]]] = None):
         """
         Input properties used for looking up and filtering BareMetalAdminCluster resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations on the Bare Metal Admin Cluster.
                This field has the same restrictions as Kubernetes annotations.
                The total size of all keys and values combined is limited to 256k.
@@ -376,6 +378,7 @@ class _BareMetalAdminClusterState:
         :param pulumi.Input[_builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] delete_time: The time the cluster was deleted, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: A human readable description of this Bare Metal Admin Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: The IP address name of Bare Metal Admin Cluster's API server.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -588,6 +591,9 @@ class _BareMetalAdminClusterState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1130,24 +1136,17 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         BareMetalAdminCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, BareMetalAdminCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1423,24 +1422,17 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         BareMetalAdminCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, BareMetalAdminCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BareMetalAdminClusterArgs args: The arguments to use to populate this resource's properties.
@@ -1578,6 +1570,7 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] delete_time: The time the cluster was deleted, in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: A human readable description of this Bare Metal Admin Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: The IP address name of Bare Metal Admin Cluster's API server.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -1738,6 +1731,9 @@ class BareMetalAdminCluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

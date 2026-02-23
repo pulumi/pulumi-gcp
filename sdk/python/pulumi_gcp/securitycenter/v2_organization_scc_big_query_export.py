@@ -28,6 +28,7 @@ class V2OrganizationSccBigQueryExportArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2OrganizationSccBigQueryExport resource.
+
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] organization: The organization whose Cloud Security Command Center the Big Query Export
                Config lives in.
@@ -196,6 +197,7 @@ class _V2OrganizationSccBigQueryExportState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2OrganizationSccBigQueryExport resources.
+
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.
         :param pulumi.Input[_builtins.str] create_time: The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -481,18 +483,15 @@ class V2OrganizationSccBigQueryExport(pulumi.CustomResource):
         OrganizationSccBigQueryExport can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}`
-
         * `{{organization}}/{{location}}/{{big_query_export_id}}`
 
         When using the `pulumi import` command, OrganizationSccBigQueryExport can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/v2OrganizationSccBigQueryExport:V2OrganizationSccBigQueryExport default organizations/{{organization}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/v2OrganizationSccBigQueryExport:V2OrganizationSccBigQueryExport default {{organization}}/{{location}}/{{big_query_export_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -580,18 +579,15 @@ class V2OrganizationSccBigQueryExport(pulumi.CustomResource):
         OrganizationSccBigQueryExport can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}`
-
         * `{{organization}}/{{location}}/{{big_query_export_id}}`
 
         When using the `pulumi import` command, OrganizationSccBigQueryExport can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/v2OrganizationSccBigQueryExport:V2OrganizationSccBigQueryExport default organizations/{{organization}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/v2OrganizationSccBigQueryExport:V2OrganizationSccBigQueryExport default {{organization}}/{{location}}/{{big_query_export_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V2OrganizationSccBigQueryExportArgs args: The arguments to use to populate this resource's properties.

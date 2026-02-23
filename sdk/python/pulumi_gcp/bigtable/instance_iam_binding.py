@@ -28,6 +28,7 @@ class InstanceIamBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceIamBinding resource.
+
         :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
                For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
@@ -43,6 +44,8 @@ class InstanceIamBindingArgs:
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
         :param pulumi.Input['InstanceIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        :param pulumi.Input[_builtins.str] project: The project in which the instance belongs. If it
+               is not provided, Terraform will use the provider default.
         """
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "members", members)
@@ -114,6 +117,10 @@ class InstanceIamBindingArgs:
     @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The project in which the instance belongs. If it
+        is not provided, Terraform will use the provider default.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -132,6 +139,7 @@ class _InstanceIamBindingState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceIamBinding resources.
+
         :param pulumi.Input['InstanceIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the instances's IAM policy.
         :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance to manage IAM policies for.
@@ -145,6 +153,8 @@ class _InstanceIamBindingState:
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        :param pulumi.Input[_builtins.str] project: The project in which the instance belongs. If it
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -222,6 +232,10 @@ class _InstanceIamBindingState:
     @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The project in which the instance belongs. If it
+        is not provided, Terraform will use the provider default.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -348,29 +362,9 @@ class InstanceIamBinding(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
-
-        * `"projects/{project}/instances/{instance}"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "projects/{project}/instances/{instance}"
-
-          to = google_bigtable_instance_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:bigtable/instanceIamBinding:InstanceIamBinding default projects/{project}/instances/{instance}
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -386,6 +380,8 @@ class InstanceIamBinding(pulumi.CustomResource):
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        :param pulumi.Input[_builtins.str] project: The project in which the instance belongs. If it
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -489,29 +485,9 @@ class InstanceIamBinding(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
-
-        * `"projects/{project}/instances/{instance}"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "projects/{project}/instances/{instance}"
-
-          to = google_bigtable_instance_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:bigtable/instanceIamBinding:InstanceIamBinding default projects/{project}/instances/{instance}
-        ```
 
         :param str resource_name: The name of the resource.
         :param InstanceIamBindingArgs args: The arguments to use to populate this resource's properties.
@@ -590,6 +566,8 @@ class InstanceIamBinding(pulumi.CustomResource):
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        :param pulumi.Input[_builtins.str] project: The project in which the instance belongs. If it
+               is not provided, Terraform will use the provider default.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -650,6 +628,10 @@ class InstanceIamBinding(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
+        """
+        The project in which the instance belongs. If it
+        is not provided, Terraform will use the provider default.
+        """
         return pulumi.get(self, "project")
 
     @_builtins.property

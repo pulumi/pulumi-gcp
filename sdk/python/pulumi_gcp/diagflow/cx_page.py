@@ -33,6 +33,7 @@ class CxPageArgs:
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]] = None):
         """
         The set of arguments for constructing a CxPage resource.
+
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the page, unique within the agent.
         :param pulumi.Input['CxPageAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
@@ -259,6 +260,7 @@ class _CxPageState:
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]] = None):
         """
         Input properties used for looking up and filtering CxPage resources.
+
         :param pulumi.Input['CxPageAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
@@ -1205,18 +1207,15 @@ class CxPage(pulumi.CustomResource):
         Page can be imported using any of these accepted formats:
 
         * `{{parent}}/pages/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, Page can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1967,18 +1966,15 @@ class CxPage(pulumi.CustomResource):
         Page can be imported using any of these accepted formats:
 
         * `{{parent}}/pages/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, Page can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CxPageArgs args: The arguments to use to populate this resource's properties.

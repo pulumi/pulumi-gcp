@@ -37,6 +37,7 @@ class AzureClusterArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AzureCluster resource.
+
         :param pulumi.Input['AzureClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[_builtins.str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
         :param pulumi.Input['AzureClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
@@ -277,6 +278,7 @@ class _AzureClusterState:
                  workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering AzureCluster resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -288,6 +290,7 @@ class _AzureClusterState:
         :param pulumi.Input['AzureClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[_builtins.str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[_builtins.str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['AzureClusterFleetArgs'] fleet: Fleet configuration.
@@ -452,6 +455,9 @@ class _AzureClusterState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -754,26 +760,18 @@ class AzureCluster(pulumi.CustomResource):
         ## Import
 
         Cluster can be imported using any of these accepted formats:
-
         * `projects/{{project}}/locations/{{location}}/azureClusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/azureCluster:AzureCluster default projects/{{project}}/locations/{{location}}/azureClusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/azureCluster:AzureCluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/azureCluster:AzureCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -907,26 +905,18 @@ class AzureCluster(pulumi.CustomResource):
         ## Import
 
         Cluster can be imported using any of these accepted formats:
-
         * `projects/{{project}}/locations/{{location}}/azureClusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/azureCluster:AzureCluster default projects/{{project}}/locations/{{location}}/azureClusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/azureCluster:AzureCluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/azureCluster:AzureCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AzureClusterArgs args: The arguments to use to populate this resource's properties.
@@ -1054,6 +1044,7 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['AzureClusterControlPlaneArgs', 'AzureClusterControlPlaneArgsDict']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[_builtins.str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[_builtins.str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Union['AzureClusterFleetArgs', 'AzureClusterFleetArgsDict']] fleet: Fleet configuration.
@@ -1168,6 +1159,9 @@ class AzureCluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

@@ -26,6 +26,7 @@ class FirewallRuleArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallRule resource.
+
         :param pulumi.Input[_builtins.str] action: The action to take if this rule matches.
                Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.str] source_range: IP address or range, defined using CIDR notation, of requests that this rule applies to.
@@ -124,6 +125,7 @@ class _FirewallRuleState:
                  source_range: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallRule resources.
+
         :param pulumi.Input[_builtins.str] action: The action to take if this rule matches.
                Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.str] description: An optional string description of this rule.
@@ -265,24 +267,17 @@ class FirewallRule(pulumi.CustomResource):
         FirewallRule can be imported using any of these accepted formats:
 
         * `apps/{{project}}/firewall/ingressRules/{{priority}}`
-
         * `{{project}}/{{priority}}`
-
         * `{{priority}}`
 
         When using the `pulumi import` command, FirewallRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/firewallRule:FirewallRule default apps/{{project}}/firewall/ingressRules/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{project}}/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{priority}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -343,24 +338,17 @@ class FirewallRule(pulumi.CustomResource):
         FirewallRule can be imported using any of these accepted formats:
 
         * `apps/{{project}}/firewall/ingressRules/{{priority}}`
-
         * `{{project}}/{{priority}}`
-
         * `{{priority}}`
 
         When using the `pulumi import` command, FirewallRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/firewallRule:FirewallRule default apps/{{project}}/firewall/ingressRules/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{project}}/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{priority}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallRuleArgs args: The arguments to use to populate this resource's properties.

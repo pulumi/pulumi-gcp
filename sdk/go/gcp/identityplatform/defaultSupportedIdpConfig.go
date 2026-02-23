@@ -54,22 +54,14 @@ import (
 // DefaultSupportedIdpConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/defaultSupportedIdpConfigs/{{idp_id}}`
-//
 // * `{{project}}/{{idp_id}}`
-//
 // * `{{idp_id}}`
 //
 // When using the `pulumi import` command, DefaultSupportedIdpConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default projects/{{project}}/defaultSupportedIdpConfigs/{{idp_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default {{project}}/{{idp_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default {{idp_id}}
 // ```
 type DefaultSupportedIdpConfig struct {

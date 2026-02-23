@@ -1007,6 +1007,360 @@ func (o GroupMembershipRoleExpiryDetailPtrOutput) ExpireTime() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type PolicyPolicyQuery struct {
+	// The group that the query applies to.
+	Group *string `pulumi:"group"`
+	// The OrgUnit the query applies to.
+	OrgUnit string `pulumi:"orgUnit"`
+	// The CEL query that defines which entities the Policy applies to.
+	Query *string `pulumi:"query"`
+	// (Output)
+	// Decimal sort order of this PolicyQuery.
+	SortOrder *int `pulumi:"sortOrder"`
+}
+
+// PolicyPolicyQueryInput is an input type that accepts PolicyPolicyQueryArgs and PolicyPolicyQueryOutput values.
+// You can construct a concrete instance of `PolicyPolicyQueryInput` via:
+//
+//	PolicyPolicyQueryArgs{...}
+type PolicyPolicyQueryInput interface {
+	pulumi.Input
+
+	ToPolicyPolicyQueryOutput() PolicyPolicyQueryOutput
+	ToPolicyPolicyQueryOutputWithContext(context.Context) PolicyPolicyQueryOutput
+}
+
+type PolicyPolicyQueryArgs struct {
+	// The group that the query applies to.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// The OrgUnit the query applies to.
+	OrgUnit pulumi.StringInput `pulumi:"orgUnit"`
+	// The CEL query that defines which entities the Policy applies to.
+	Query pulumi.StringPtrInput `pulumi:"query"`
+	// (Output)
+	// Decimal sort order of this PolicyQuery.
+	SortOrder pulumi.IntPtrInput `pulumi:"sortOrder"`
+}
+
+func (PolicyPolicyQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPolicyQuery)(nil)).Elem()
+}
+
+func (i PolicyPolicyQueryArgs) ToPolicyPolicyQueryOutput() PolicyPolicyQueryOutput {
+	return i.ToPolicyPolicyQueryOutputWithContext(context.Background())
+}
+
+func (i PolicyPolicyQueryArgs) ToPolicyPolicyQueryOutputWithContext(ctx context.Context) PolicyPolicyQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPolicyQueryOutput)
+}
+
+func (i PolicyPolicyQueryArgs) ToPolicyPolicyQueryPtrOutput() PolicyPolicyQueryPtrOutput {
+	return i.ToPolicyPolicyQueryPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyPolicyQueryArgs) ToPolicyPolicyQueryPtrOutputWithContext(ctx context.Context) PolicyPolicyQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPolicyQueryOutput).ToPolicyPolicyQueryPtrOutputWithContext(ctx)
+}
+
+// PolicyPolicyQueryPtrInput is an input type that accepts PolicyPolicyQueryArgs, PolicyPolicyQueryPtr and PolicyPolicyQueryPtrOutput values.
+// You can construct a concrete instance of `PolicyPolicyQueryPtrInput` via:
+//
+//	        PolicyPolicyQueryArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyPolicyQueryPtrInput interface {
+	pulumi.Input
+
+	ToPolicyPolicyQueryPtrOutput() PolicyPolicyQueryPtrOutput
+	ToPolicyPolicyQueryPtrOutputWithContext(context.Context) PolicyPolicyQueryPtrOutput
+}
+
+type policyPolicyQueryPtrType PolicyPolicyQueryArgs
+
+func PolicyPolicyQueryPtr(v *PolicyPolicyQueryArgs) PolicyPolicyQueryPtrInput {
+	return (*policyPolicyQueryPtrType)(v)
+}
+
+func (*policyPolicyQueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyPolicyQuery)(nil)).Elem()
+}
+
+func (i *policyPolicyQueryPtrType) ToPolicyPolicyQueryPtrOutput() PolicyPolicyQueryPtrOutput {
+	return i.ToPolicyPolicyQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *policyPolicyQueryPtrType) ToPolicyPolicyQueryPtrOutputWithContext(ctx context.Context) PolicyPolicyQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPolicyQueryPtrOutput)
+}
+
+type PolicyPolicyQueryOutput struct{ *pulumi.OutputState }
+
+func (PolicyPolicyQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPolicyQuery)(nil)).Elem()
+}
+
+func (o PolicyPolicyQueryOutput) ToPolicyPolicyQueryOutput() PolicyPolicyQueryOutput {
+	return o
+}
+
+func (o PolicyPolicyQueryOutput) ToPolicyPolicyQueryOutputWithContext(ctx context.Context) PolicyPolicyQueryOutput {
+	return o
+}
+
+func (o PolicyPolicyQueryOutput) ToPolicyPolicyQueryPtrOutput() PolicyPolicyQueryPtrOutput {
+	return o.ToPolicyPolicyQueryPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyPolicyQueryOutput) ToPolicyPolicyQueryPtrOutputWithContext(ctx context.Context) PolicyPolicyQueryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyPolicyQuery) *PolicyPolicyQuery {
+		return &v
+	}).(PolicyPolicyQueryPtrOutput)
+}
+
+// The group that the query applies to.
+func (o PolicyPolicyQueryOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyPolicyQuery) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// The OrgUnit the query applies to.
+func (o PolicyPolicyQueryOutput) OrgUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyPolicyQuery) string { return v.OrgUnit }).(pulumi.StringOutput)
+}
+
+// The CEL query that defines which entities the Policy applies to.
+func (o PolicyPolicyQueryOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyPolicyQuery) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Decimal sort order of this PolicyQuery.
+func (o PolicyPolicyQueryOutput) SortOrder() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyPolicyQuery) *int { return v.SortOrder }).(pulumi.IntPtrOutput)
+}
+
+type PolicyPolicyQueryPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyPolicyQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyPolicyQuery)(nil)).Elem()
+}
+
+func (o PolicyPolicyQueryPtrOutput) ToPolicyPolicyQueryPtrOutput() PolicyPolicyQueryPtrOutput {
+	return o
+}
+
+func (o PolicyPolicyQueryPtrOutput) ToPolicyPolicyQueryPtrOutputWithContext(ctx context.Context) PolicyPolicyQueryPtrOutput {
+	return o
+}
+
+func (o PolicyPolicyQueryPtrOutput) Elem() PolicyPolicyQueryOutput {
+	return o.ApplyT(func(v *PolicyPolicyQuery) PolicyPolicyQuery {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyPolicyQuery
+		return ret
+	}).(PolicyPolicyQueryOutput)
+}
+
+// The group that the query applies to.
+func (o PolicyPolicyQueryPtrOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyPolicyQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OrgUnit the query applies to.
+func (o PolicyPolicyQueryPtrOutput) OrgUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyPolicyQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OrgUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CEL query that defines which entities the Policy applies to.
+func (o PolicyPolicyQueryPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyPolicyQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Decimal sort order of this PolicyQuery.
+func (o PolicyPolicyQueryPtrOutput) SortOrder() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PolicyPolicyQuery) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SortOrder
+	}).(pulumi.IntPtrOutput)
+}
+
+type PolicySetting struct {
+	// The type of the Setting.
+	Type string `pulumi:"type"`
+	// The value of the Setting as JSON string.
+	ValueJson string `pulumi:"valueJson"`
+}
+
+// PolicySettingInput is an input type that accepts PolicySettingArgs and PolicySettingOutput values.
+// You can construct a concrete instance of `PolicySettingInput` via:
+//
+//	PolicySettingArgs{...}
+type PolicySettingInput interface {
+	pulumi.Input
+
+	ToPolicySettingOutput() PolicySettingOutput
+	ToPolicySettingOutputWithContext(context.Context) PolicySettingOutput
+}
+
+type PolicySettingArgs struct {
+	// The type of the Setting.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The value of the Setting as JSON string.
+	ValueJson pulumi.StringInput `pulumi:"valueJson"`
+}
+
+func (PolicySettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySetting)(nil)).Elem()
+}
+
+func (i PolicySettingArgs) ToPolicySettingOutput() PolicySettingOutput {
+	return i.ToPolicySettingOutputWithContext(context.Background())
+}
+
+func (i PolicySettingArgs) ToPolicySettingOutputWithContext(ctx context.Context) PolicySettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingOutput)
+}
+
+func (i PolicySettingArgs) ToPolicySettingPtrOutput() PolicySettingPtrOutput {
+	return i.ToPolicySettingPtrOutputWithContext(context.Background())
+}
+
+func (i PolicySettingArgs) ToPolicySettingPtrOutputWithContext(ctx context.Context) PolicySettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingOutput).ToPolicySettingPtrOutputWithContext(ctx)
+}
+
+// PolicySettingPtrInput is an input type that accepts PolicySettingArgs, PolicySettingPtr and PolicySettingPtrOutput values.
+// You can construct a concrete instance of `PolicySettingPtrInput` via:
+//
+//	        PolicySettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicySettingPtrInput interface {
+	pulumi.Input
+
+	ToPolicySettingPtrOutput() PolicySettingPtrOutput
+	ToPolicySettingPtrOutputWithContext(context.Context) PolicySettingPtrOutput
+}
+
+type policySettingPtrType PolicySettingArgs
+
+func PolicySettingPtr(v *PolicySettingArgs) PolicySettingPtrInput {
+	return (*policySettingPtrType)(v)
+}
+
+func (*policySettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicySetting)(nil)).Elem()
+}
+
+func (i *policySettingPtrType) ToPolicySettingPtrOutput() PolicySettingPtrOutput {
+	return i.ToPolicySettingPtrOutputWithContext(context.Background())
+}
+
+func (i *policySettingPtrType) ToPolicySettingPtrOutputWithContext(ctx context.Context) PolicySettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingPtrOutput)
+}
+
+type PolicySettingOutput struct{ *pulumi.OutputState }
+
+func (PolicySettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySetting)(nil)).Elem()
+}
+
+func (o PolicySettingOutput) ToPolicySettingOutput() PolicySettingOutput {
+	return o
+}
+
+func (o PolicySettingOutput) ToPolicySettingOutputWithContext(ctx context.Context) PolicySettingOutput {
+	return o
+}
+
+func (o PolicySettingOutput) ToPolicySettingPtrOutput() PolicySettingPtrOutput {
+	return o.ToPolicySettingPtrOutputWithContext(context.Background())
+}
+
+func (o PolicySettingOutput) ToPolicySettingPtrOutputWithContext(ctx context.Context) PolicySettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicySetting) *PolicySetting {
+		return &v
+	}).(PolicySettingPtrOutput)
+}
+
+// The type of the Setting.
+func (o PolicySettingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicySetting) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the Setting as JSON string.
+func (o PolicySettingOutput) ValueJson() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicySetting) string { return v.ValueJson }).(pulumi.StringOutput)
+}
+
+type PolicySettingPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicySettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicySetting)(nil)).Elem()
+}
+
+func (o PolicySettingPtrOutput) ToPolicySettingPtrOutput() PolicySettingPtrOutput {
+	return o
+}
+
+func (o PolicySettingPtrOutput) ToPolicySettingPtrOutputWithContext(ctx context.Context) PolicySettingPtrOutput {
+	return o
+}
+
+func (o PolicySettingPtrOutput) Elem() PolicySettingOutput {
+	return o.ApplyT(func(v *PolicySetting) PolicySetting {
+		if v != nil {
+			return *v
+		}
+		var ret PolicySetting
+		return ret
+	}).(PolicySettingOutput)
+}
+
+// The type of the Setting.
+func (o PolicySettingPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicySetting) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the Setting as JSON string.
+func (o PolicySettingPtrOutput) ValueJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicySetting) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ValueJson
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetGroupLookupGroupKey struct {
 	// (Required) The ID of the entity.
 	// For Google-managed entities, the id is the email address of an existing group or user.
@@ -2924,6 +3278,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipRoleArrayInput)(nil)).Elem(), GroupMembershipRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipRoleExpiryDetailInput)(nil)).Elem(), GroupMembershipRoleExpiryDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipRoleExpiryDetailPtrInput)(nil)).Elem(), GroupMembershipRoleExpiryDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPolicyQueryInput)(nil)).Elem(), PolicyPolicyQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPolicyQueryPtrInput)(nil)).Elem(), PolicyPolicyQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicySettingInput)(nil)).Elem(), PolicySettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicySettingPtrInput)(nil)).Elem(), PolicySettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupLookupGroupKeyInput)(nil)).Elem(), GetGroupLookupGroupKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipInput)(nil)).Elem(), GetGroupMembershipsMembershipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipArrayInput)(nil)).Elem(), GetGroupMembershipsMembershipArray{})
@@ -2965,6 +3323,10 @@ func init() {
 	pulumi.RegisterOutputType(GroupMembershipRoleArrayOutput{})
 	pulumi.RegisterOutputType(GroupMembershipRoleExpiryDetailOutput{})
 	pulumi.RegisterOutputType(GroupMembershipRoleExpiryDetailPtrOutput{})
+	pulumi.RegisterOutputType(PolicyPolicyQueryOutput{})
+	pulumi.RegisterOutputType(PolicyPolicyQueryPtrOutput{})
+	pulumi.RegisterOutputType(PolicySettingOutput{})
+	pulumi.RegisterOutputType(PolicySettingPtrOutput{})
 	pulumi.RegisterOutputType(GetGroupLookupGroupKeyOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipArrayOutput{})

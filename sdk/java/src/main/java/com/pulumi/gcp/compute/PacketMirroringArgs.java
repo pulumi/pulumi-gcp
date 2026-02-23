@@ -60,6 +60,25 @@ public final class PacketMirroringArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+     * policy will not be enforced on the network. The default is TRUE.
+     * Possible values are: `TRUE`, `FALSE`.
+     * 
+     */
+    @Import(name="enable")
+    private @Nullable Output<String> enable;
+
+    /**
+     * @return Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+     * policy will not be enforced on the network. The default is TRUE.
+     * Possible values are: `TRUE`, `FALSE`.
+     * 
+     */
+    public Optional<Output<String>> enable() {
+        return Optional.ofNullable(this.enable);
+    }
+
+    /**
      * A filter for mirrored traffic.  If unset, all traffic is mirrored.
      * Structure is documented below.
      * 
@@ -187,6 +206,7 @@ public final class PacketMirroringArgs extends com.pulumi.resources.ResourceArgs
     private PacketMirroringArgs(PacketMirroringArgs $) {
         this.collectorIlb = $.collectorIlb;
         this.description = $.description;
+        this.enable = $.enable;
         this.filter = $.filter;
         this.mirroredResources = $.mirroredResources;
         this.name = $.name;
@@ -262,6 +282,31 @@ public final class PacketMirroringArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param enable Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+         * policy will not be enforced on the network. The default is TRUE.
+         * Possible values are: `TRUE`, `FALSE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enable(@Nullable Output<String> enable) {
+            $.enable = enable;
+            return this;
+        }
+
+        /**
+         * @param enable Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+         * policy will not be enforced on the network. The default is TRUE.
+         * Possible values are: `TRUE`, `FALSE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enable(String enable) {
+            return enable(Output.of(enable));
         }
 
         /**

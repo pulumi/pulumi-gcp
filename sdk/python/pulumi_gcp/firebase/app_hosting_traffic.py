@@ -28,6 +28,7 @@ class AppHostingTrafficArgs:
                  target: Optional[pulumi.Input['AppHostingTrafficTargetArgs']] = None):
         """
         The set of arguments for constructing a AppHostingTraffic resource.
+
         :param pulumi.Input[_builtins.str] backend: Id of the backend that this Traffic config applies to
         :param pulumi.Input[_builtins.str] location: The location the Backend that this Traffic config applies to
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -131,6 +132,7 @@ class _AppHostingTrafficState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppHostingTraffic resources.
+
         :param pulumi.Input[_builtins.str] backend: Id of the backend that this Traffic config applies to
         :param pulumi.Input[_builtins.str] create_time: Time at which the backend was created.
         :param pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentArgs']]] currents: Current state of traffic allocation for the backend.
@@ -476,24 +478,17 @@ class AppHostingTraffic(pulumi.CustomResource):
         Traffic can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/traffic`
-
         * `{{project}}/{{location}}/{{backend}}`
-
         * `{{location}}/{{backend}}`
 
         When using the `pulumi import` command, Traffic can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default projects/{{project}}/locations/{{location}}/backends/{{backend}}/traffic
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default {{project}}/{{location}}/{{backend}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default {{location}}/{{backend}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -644,24 +639,17 @@ class AppHostingTraffic(pulumi.CustomResource):
         Traffic can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/traffic`
-
         * `{{project}}/{{location}}/{{backend}}`
-
         * `{{location}}/{{backend}}`
 
         When using the `pulumi import` command, Traffic can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default projects/{{project}}/locations/{{location}}/backends/{{backend}}/traffic
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default {{project}}/{{location}}/{{backend}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default {{location}}/{{backend}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppHostingTrafficArgs args: The arguments to use to populate this resource's properties.

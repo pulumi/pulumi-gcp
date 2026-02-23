@@ -16,16 +16,303 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Three different resources help you manage your IAM policy for Cloud Workstations Workstation. Each of these resources serves a different use case:
+ * 
+ * * `gcp.workstations.WorkstationIamPolicy`: Authoritative. Sets the IAM policy for the workstation and replaces any existing policy already attached.
+ * * `gcp.workstations.WorkstationIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workstation are preserved.
+ * * `gcp.workstations.WorkstationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workstation are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.workstations.WorkstationIamPolicy`: Retrieves the IAM policy for the workstation
+ * 
+ * &gt; **Note:** `gcp.workstations.WorkstationIamPolicy` **cannot** be used in conjunction with `gcp.workstations.WorkstationIamBinding` and `gcp.workstations.WorkstationIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.workstations.WorkstationIamBinding` resources **can be** used in conjunction with `gcp.workstations.WorkstationIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * ## gcp.workstations.WorkstationIamPolicy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.workstations.WorkstationIamPolicy;
+ * import com.pulumi.gcp.workstations.WorkstationIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/viewer")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new WorkstationIamPolicy("policy", WorkstationIamPolicyArgs.builder()
+ *             .project(default_.project())
+ *             .location(default_.location())
+ *             .workstationClusterId(default_.workstationClusterId())
+ *             .workstationConfigId(default_.workstationConfigId())
+ *             .workstationId(default_.workstationId())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.workstations.WorkstationIamBinding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.workstations.WorkstationIamBinding;
+ * import com.pulumi.gcp.workstations.WorkstationIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new WorkstationIamBinding("binding", WorkstationIamBindingArgs.builder()
+ *             .project(default_.project())
+ *             .location(default_.location())
+ *             .workstationClusterId(default_.workstationClusterId())
+ *             .workstationConfigId(default_.workstationConfigId())
+ *             .workstationId(default_.workstationId())
+ *             .role("roles/viewer")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.workstations.WorkstationIamMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.workstations.WorkstationIamMember;
+ * import com.pulumi.gcp.workstations.WorkstationIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new WorkstationIamMember("member", WorkstationIamMemberArgs.builder()
+ *             .project(default_.project())
+ *             .location(default_.location())
+ *             .workstationClusterId(default_.workstationClusterId())
+ *             .workstationConfigId(default_.workstationConfigId())
+ *             .workstationId(default_.workstationId())
+ *             .role("roles/viewer")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for Cloud Workstations Workstation
+ * 
+ * Three different resources help you manage your IAM policy for Cloud Workstations Workstation. Each of these resources serves a different use case:
+ * 
+ * * `gcp.workstations.WorkstationIamPolicy`: Authoritative. Sets the IAM policy for the workstation and replaces any existing policy already attached.
+ * * `gcp.workstations.WorkstationIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workstation are preserved.
+ * * `gcp.workstations.WorkstationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workstation are preserved.
+ * 
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ * 
+ * * `gcp.workstations.WorkstationIamPolicy`: Retrieves the IAM policy for the workstation
+ * 
+ * &gt; **Note:** `gcp.workstations.WorkstationIamPolicy` **cannot** be used in conjunction with `gcp.workstations.WorkstationIamBinding` and `gcp.workstations.WorkstationIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.workstations.WorkstationIamBinding` resources **can be** used in conjunction with `gcp.workstations.WorkstationIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * ## gcp.workstations.WorkstationIamPolicy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.workstations.WorkstationIamPolicy;
+ * import com.pulumi.gcp.workstations.WorkstationIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/viewer")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new WorkstationIamPolicy("policy", WorkstationIamPolicyArgs.builder()
+ *             .project(default_.project())
+ *             .location(default_.location())
+ *             .workstationClusterId(default_.workstationClusterId())
+ *             .workstationConfigId(default_.workstationConfigId())
+ *             .workstationId(default_.workstationId())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.workstations.WorkstationIamBinding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.workstations.WorkstationIamBinding;
+ * import com.pulumi.gcp.workstations.WorkstationIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new WorkstationIamBinding("binding", WorkstationIamBindingArgs.builder()
+ *             .project(default_.project())
+ *             .location(default_.location())
+ *             .workstationClusterId(default_.workstationClusterId())
+ *             .workstationConfigId(default_.workstationConfigId())
+ *             .workstationId(default_.workstationId())
+ *             .role("roles/viewer")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## gcp.workstations.WorkstationIamMember
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.workstations.WorkstationIamMember;
+ * import com.pulumi.gcp.workstations.WorkstationIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new WorkstationIamMember("member", WorkstationIamMemberArgs.builder()
+ *             .project(default_.project())
+ *             .location(default_.location())
+ *             .workstationClusterId(default_.workstationClusterId())
+ *             .workstationConfigId(default_.workstationConfigId())
+ *             .workstationId(default_.workstationId())
+ *             .role("roles/viewer")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
  * * projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
- * 
  * * {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
- * 
  * * {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
- * 
  * * {{workstation_id}}
  * 
  * Any variables not passed in the import command will be taken from the provider configuration.
@@ -33,25 +320,21 @@ import javax.annotation.Nullable;
  * Cloud Workstations workstation IAM resources can be imported using the resource identifiers, role, and member.
  * 
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
- * 
  * ```sh
- * $ pulumi import gcp:workstations/workstationIamMember:WorkstationIamMember editor &#34;projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}} roles/viewer user:jane{@literal @}example.com&#34;
+ * $ terraform import google_workstations_workstation_iam_member.editor &#34;projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}} roles/viewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
- * 
  * ```sh
- * $ pulumi import gcp:workstations/workstationIamMember:WorkstationIamMember editor &#34;projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}} roles/viewer&#34;
+ * $ terraform import google_workstations_workstation_iam_binding.editor &#34;projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}} roles/viewer&#34;
  * ```
  * 
  * IAM policy imports use the identifier of the resource in question, e.g.
- * 
  * ```sh
  * $ pulumi import gcp:workstations/workstationIamMember:WorkstationIamMember editor projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
  * ```
  * 
- * -&gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
- * 
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */

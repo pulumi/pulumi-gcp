@@ -44,6 +44,7 @@ class BucketObjectArgs:
                  temporary_hold: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BucketObject resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the containing bucket.
         :param pulumi.Input[_builtins.str] cache_control: [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
                directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
@@ -55,6 +56,10 @@ class BucketObjectArgs:
         :param pulumi.Input['BucketObjectContextsArgs'] contexts: Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
         :param pulumi.Input['BucketObjectCustomerEncryptionArgs'] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        :param pulumi.Input[_builtins.str] detect_md5hash: Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+               
+               > **Warning:** For dynamically populated files or objects, `detect_md5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `source_md5hash` instead.
         :param pulumi.Input[_builtins.bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         :param pulumi.Input[_builtins.bool] force_empty_content_type: When set to true, it ensure the object's Content-Type is empty.
         :param pulumi.Input[_builtins.str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
@@ -228,6 +233,9 @@ class BucketObjectArgs:
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -237,6 +245,11 @@ class BucketObjectArgs:
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+
+        > **Warning:** For dynamically populated files or objects, `detect_md5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `source_md5hash` instead.
+        """
         return pulumi.get(self, "detect_md5hash")
 
     @detect_md5hash.setter
@@ -404,6 +417,7 @@ class _BucketObjectState:
                  temporary_hold: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering BucketObject resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the containing bucket.
         :param pulumi.Input[_builtins.str] cache_control: [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
                directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
@@ -416,6 +430,10 @@ class _BucketObjectState:
         :param pulumi.Input[_builtins.str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
         :param pulumi.Input['BucketObjectCustomerEncryptionArgs'] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        :param pulumi.Input[_builtins.str] detect_md5hash: Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+               
+               > **Warning:** For dynamically populated files or objects, `detect_md5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `source_md5hash` instead.
         :param pulumi.Input[_builtins.bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         :param pulumi.Input[_builtins.bool] force_empty_content_type: When set to true, it ensure the object's Content-Type is empty.
         :param pulumi.Input[_builtins.int] generation: (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
@@ -623,6 +641,9 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -632,6 +653,11 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+
+        > **Warning:** For dynamically populated files or objects, `detect_md5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `source_md5hash` instead.
+        """
         return pulumi.get(self, "detect_md5hash")
 
     @detect_md5hash.setter
@@ -933,6 +959,7 @@ class BucketObject(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the containing bucket.
@@ -946,6 +973,10 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']] contexts: Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
         :param pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        :param pulumi.Input[_builtins.str] detect_md5hash: Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+               
+               > **Warning:** For dynamically populated files or objects, `detect_md5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `source_md5hash` instead.
         :param pulumi.Input[_builtins.bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         :param pulumi.Input[_builtins.bool] force_empty_content_type: When set to true, it ensure the object's Content-Type is empty.
         :param pulumi.Input[_builtins.str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
@@ -1035,6 +1066,7 @@ class BucketObject(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param BucketObjectArgs args: The arguments to use to populate this resource's properties.
@@ -1170,6 +1202,10 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
         :param pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        :param pulumi.Input[_builtins.str] detect_md5hash: Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+               
+               > **Warning:** For dynamically populated files or objects, `detect_md5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `source_md5hash` instead.
         :param pulumi.Input[_builtins.bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         :param pulumi.Input[_builtins.bool] force_empty_content_type: When set to true, it ensure the object's Content-Type is empty.
         :param pulumi.Input[_builtins.int] generation: (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
@@ -1314,11 +1350,19 @@ class BucketObject(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+
+        > **Warning:** For dynamically populated files or objects, `detect_md5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `source_md5hash` instead.
+        """
         return pulumi.get(self, "detect_md5hash")
 
     @_builtins.property

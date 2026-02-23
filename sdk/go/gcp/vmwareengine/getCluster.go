@@ -62,8 +62,9 @@ type LookupClusterArgs struct {
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
-	AutoscalingSettings []GetClusterAutoscalingSetting `pulumi:"autoscalingSettings"`
-	CreateTime          string                         `pulumi:"createTime"`
+	AutoscalingSettings   []GetClusterAutoscalingSetting   `pulumi:"autoscalingSettings"`
+	CreateTime            string                           `pulumi:"createTime"`
+	DatastoreMountConfigs []GetClusterDatastoreMountConfig `pulumi:"datastoreMountConfigs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id              string                     `pulumi:"id"`
 	Management      bool                       `pulumi:"management"`
@@ -117,6 +118,10 @@ func (o LookupClusterResultOutput) AutoscalingSettings() GetClusterAutoscalingSe
 
 func (o LookupClusterResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) DatastoreMountConfigs() GetClusterDatastoreMountConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterDatastoreMountConfig { return v.DatastoreMountConfigs }).(GetClusterDatastoreMountConfigArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

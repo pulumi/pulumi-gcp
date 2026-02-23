@@ -34,6 +34,7 @@ class TargetHttpsProxyArgs:
                  tls_early_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TargetHttpsProxy resource.
+
         :param pulumi.Input[_builtins.str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
@@ -351,6 +352,7 @@ class _TargetHttpsProxyState:
                  url_map: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TargetHttpsProxy resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
                Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
                For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
@@ -995,24 +997,17 @@ class TargetHttpsProxy(pulumi.CustomResource):
         TargetHttpsProxy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/targetHttpsProxies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, TargetHttpsProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1345,24 +1340,17 @@ class TargetHttpsProxy(pulumi.CustomResource):
         TargetHttpsProxy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/targetHttpsProxies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, TargetHttpsProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TargetHttpsProxyArgs args: The arguments to use to populate this resource's properties.

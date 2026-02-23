@@ -29,6 +29,7 @@ class RegionalParameterArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionalParameter resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the regional parameter. eg us-central1
         :param pulumi.Input[_builtins.str] parameter_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] format: The format type of the regional parameter.
@@ -165,6 +166,7 @@ class _RegionalParameterState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalParameter resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time at which the regional Parameter was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] format: The format type of the regional parameter.
@@ -460,24 +462,17 @@ class RegionalParameter(pulumi.CustomResource):
         RegionalParameter can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
-
         * `{{project}}/{{location}}/{{parameter_id}}`
-
         * `{{location}}/{{parameter_id}}`
 
         When using the `pulumi import` command, RegionalParameter can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default {{project}}/{{location}}/{{parameter_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default {{location}}/{{parameter_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -573,24 +568,17 @@ class RegionalParameter(pulumi.CustomResource):
         RegionalParameter can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
-
         * `{{project}}/{{location}}/{{parameter_id}}`
-
         * `{{location}}/{{parameter_id}}`
 
         When using the `pulumi import` command, RegionalParameter can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default {{project}}/{{location}}/{{parameter_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default {{location}}/{{parameter_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionalParameterArgs args: The arguments to use to populate this resource's properties.

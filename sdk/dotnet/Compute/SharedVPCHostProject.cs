@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// Google Compute Engine Shared VPC host project feature can be imported using `project`, e.g.
+    /// Google Compute Engine Shared VPC host project feature can be imported using `Project`, e.g.
     /// 
     /// * `{{project_id}}`
     /// 

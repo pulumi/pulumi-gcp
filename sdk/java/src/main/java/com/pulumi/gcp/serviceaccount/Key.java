@@ -18,6 +18,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Creates and manages service account keys, which allow the use of a service account with Google Cloud.
+ * 
+ * &gt; **Warning**: This resource persists a sensitive credential in plaintext in the remote state used by Terraform.
+ * Please take appropriate measures to protect your remote state.
+ * 
+ * * [API documentation](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
+ * 
  * ## Example Usage
  * 
  * ### Creating A New Key

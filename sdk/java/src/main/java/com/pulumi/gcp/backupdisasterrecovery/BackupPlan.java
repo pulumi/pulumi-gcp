@@ -273,22 +273,14 @@ import javax.annotation.Nullable;
  * BackupPlan can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/backupPlans/{{backup_plan_id}}`
- * 
  * * `{{project}}/{{location}}/{{backup_plan_id}}`
- * 
  * * `{{location}}/{{backup_plan_id}}`
  * 
  * When using the `pulumi import` command, BackupPlan can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/backupPlan:BackupPlan default projects/{{project}}/locations/{{location}}/backupPlans/{{backup_plan_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/backupPlan:BackupPlan default {{project}}/{{location}}/{{backup_plan_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:backupdisasterrecovery/backupPlan:BackupPlan default {{location}}/{{backup_plan_id}}
  * ```
  * 

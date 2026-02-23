@@ -67,6 +67,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// you create the resource.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The unique identifier number for the resource. This identifier is defined by the server.
@@ -299,6 +302,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         ///  and default labels configured on the provider.
         /// </summary>
         public readonly ImmutableDictionary<string, string> PulumiLabels;
+        /// <summary>
+        /// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+        /// </summary>
         public readonly bool RecreateClosedPsc;
         /// <summary>
         /// The region you want to get the forwarding rules from.

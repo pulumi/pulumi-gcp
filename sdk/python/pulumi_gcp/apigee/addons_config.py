@@ -25,6 +25,7 @@ class AddonsConfigArgs:
                  addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']] = None):
         """
         The set of arguments for constructing a AddonsConfig resource.
+
         :param pulumi.Input[_builtins.str] org: Name of the Apigee organization.
         :param pulumi.Input['AddonsConfigAddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
@@ -66,6 +67,7 @@ class _AddonsConfigState:
                  org: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddonsConfig resources.
+
         :param pulumi.Input['AddonsConfigAddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] org: Name of the Apigee organization.
@@ -204,18 +206,15 @@ class AddonsConfig(pulumi.CustomResource):
         AddonsConfig can be imported using any of these accepted formats:
 
         * `organizations/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, AddonsConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default organizations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -323,18 +322,15 @@ class AddonsConfig(pulumi.CustomResource):
         AddonsConfig can be imported using any of these accepted formats:
 
         * `organizations/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, AddonsConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default organizations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AddonsConfigArgs args: The arguments to use to populate this resource's properties.

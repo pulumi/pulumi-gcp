@@ -31,11 +31,13 @@ class CloudExadataInfrastructureArgs:
                  properties: Optional[pulumi.Input['CloudExadataInfrastructurePropertiesArgs']] = None):
         """
         The set of arguments for constructing a CloudExadataInfrastructure resource.
+
         :param pulumi.Input[_builtins.str] cloud_exadata_infrastructure_id: The ID of the Exadata Infrastructure to create. This value is restricted
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: GCP location where Oracle Exadata is hosted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels or tags associated with the resource.
@@ -91,6 +93,9 @@ class CloudExadataInfrastructureArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -180,11 +185,13 @@ class _CloudExadataInfrastructureState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CloudExadataInfrastructure resources.
+
         :param pulumi.Input[_builtins.str] cloud_exadata_infrastructure_id: The ID of the Exadata Infrastructure to create. This value is restricted
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
         :param pulumi.Input[_builtins.str] create_time: The date and time that the Exadata Infrastructure was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] entitlement_id: Entitlement ID of the private offer against which this infrastructure
@@ -260,6 +267,9 @@ class _CloudExadataInfrastructureState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -486,24 +496,17 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
         CloudExadataInfrastructure can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}`
-
         * `{{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}`
-
         * `{{location}}/{{cloud_exadata_infrastructure_id}}`
 
         When using the `pulumi import` command, CloudExadataInfrastructure can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{location}}/{{cloud_exadata_infrastructure_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -511,6 +514,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: GCP location where Oracle Exadata is hosted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels or tags associated with the resource.
@@ -605,24 +609,17 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
         CloudExadataInfrastructure can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}`
-
         * `{{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}`
-
         * `{{location}}/{{cloud_exadata_infrastructure_id}}`
 
         When using the `pulumi import` command, CloudExadataInfrastructure can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default projects/{{project}}/locations/{{location}}/cloudExadataInfrastructures/{{cloud_exadata_infrastructure_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{project}}/{{location}}/{{cloud_exadata_infrastructure_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure default {{location}}/{{cloud_exadata_infrastructure_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CloudExadataInfrastructureArgs args: The arguments to use to populate this resource's properties.
@@ -710,6 +707,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                characters in length. The value must start with a letter and end with
                a letter or a number.
         :param pulumi.Input[_builtins.str] create_time: The date and time that the Exadata Infrastructure was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
         :param pulumi.Input[_builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] entitlement_id: Entitlement ID of the private offer against which this infrastructure
@@ -769,6 +767,9 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property

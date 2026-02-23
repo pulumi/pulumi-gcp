@@ -63,22 +63,14 @@ import javax.annotation.Nullable;
  * Catalog can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/catalogs/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, Catalog can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:biglake/catalog:Catalog default projects/{{project}}/locations/{{location}}/catalogs/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:biglake/catalog:Catalog default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:biglake/catalog:Catalog default {{location}}/{{name}}
  * ```
  * 

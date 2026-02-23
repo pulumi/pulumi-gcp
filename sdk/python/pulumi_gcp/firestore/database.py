@@ -29,12 +29,16 @@ class DatabaseArgs:
                  database_edition: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_protection_state: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 firestore_data_access_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 mongodb_compatible_data_access_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  point_in_time_recovery_enablement: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 realtime_updates_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Database resource.
+
         :param pulumi.Input[_builtins.str] location_id: The location of the database. Available locations are listed at
                https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[_builtins.str] type: The type of the database.
@@ -49,8 +53,25 @@ class DatabaseArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
-        :param pulumi.Input[_builtins.str] database_edition: The database edition.
+        :param pulumi.Input[_builtins.str] database_edition: The database edition. When set to 'ENTERPRISE', then type must be set to
+               'FIRESTORE_NATIVE'.
                Possible values are: `STANDARD`, `ENTERPRISE`.
+        :param pulumi.Input[_builtins.str] delete_protection_state: State of delete protection for the database.
+               When delete protection is enabled, this database cannot be deleted.
+               The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+               **Note:** Additionally, to delete this database using `terraform destroy`, `deletion_policy` must be set to `DELETE`.
+               Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Deletion behavior for this database.
+               If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+               If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+               The default value is `ABANDON`.
+               See also `delete_protection`.
+        :param pulumi.Input[_builtins.str] firestore_data_access_mode: The Firestore API data access mode to use for this database. Can only be
+               specified for 'ENTERPRISE' edition databases.
+               Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        :param pulumi.Input[_builtins.str] mongodb_compatible_data_access_mode: The MongoDB compatible API data access mode to use for this database. Can
+               only be specified for 'ENTERPRISE' edition databases.
+               Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
         :param pulumi.Input[_builtins.str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -66,6 +87,9 @@ class DatabaseArgs:
                Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] realtime_updates_mode: The Realtime Updates mode to use for this database. Can only be specified
+               for 'ENTERPRISE' edition databases.
+               Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. A map of resource manager tags. Resource manager tag keys
                and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -87,12 +111,18 @@ class DatabaseArgs:
             pulumi.set(__self__, "delete_protection_state", delete_protection_state)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if firestore_data_access_mode is not None:
+            pulumi.set(__self__, "firestore_data_access_mode", firestore_data_access_mode)
+        if mongodb_compatible_data_access_mode is not None:
+            pulumi.set(__self__, "mongodb_compatible_data_access_mode", mongodb_compatible_data_access_mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if point_in_time_recovery_enablement is not None:
             pulumi.set(__self__, "point_in_time_recovery_enablement", point_in_time_recovery_enablement)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if realtime_updates_mode is not None:
+            pulumi.set(__self__, "realtime_updates_mode", realtime_updates_mode)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -169,7 +199,8 @@ class DatabaseArgs:
     @pulumi.getter(name="databaseEdition")
     def database_edition(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The database edition.
+        The database edition. When set to 'ENTERPRISE', then type must be set to
+        'FIRESTORE_NATIVE'.
         Possible values are: `STANDARD`, `ENTERPRISE`.
         """
         return pulumi.get(self, "database_edition")
@@ -181,6 +212,13 @@ class DatabaseArgs:
     @_builtins.property
     @pulumi.getter(name="deleteProtectionState")
     def delete_protection_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        State of delete protection for the database.
+        When delete protection is enabled, this database cannot be deleted.
+        The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+        **Note:** Additionally, to delete this database using `terraform destroy`, `deletion_policy` must be set to `DELETE`.
+        Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        """
         return pulumi.get(self, "delete_protection_state")
 
     @delete_protection_state.setter
@@ -190,11 +228,46 @@ class DatabaseArgs:
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deletion behavior for this database.
+        If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+        If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+        The default value is `ABANDON`.
+        See also `delete_protection`.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
     def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="firestoreDataAccessMode")
+    def firestore_data_access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Firestore API data access mode to use for this database. Can only be
+        specified for 'ENTERPRISE' edition databases.
+        Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        """
+        return pulumi.get(self, "firestore_data_access_mode")
+
+    @firestore_data_access_mode.setter
+    def firestore_data_access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "firestore_data_access_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mongodbCompatibleDataAccessMode")
+    def mongodb_compatible_data_access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The MongoDB compatible API data access mode to use for this database. Can
+        only be specified for 'ENTERPRISE' edition databases.
+        Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        """
+        return pulumi.get(self, "mongodb_compatible_data_access_mode")
+
+    @mongodb_compatible_data_access_mode.setter
+    def mongodb_compatible_data_access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mongodb_compatible_data_access_mode", value)
 
     @_builtins.property
     @pulumi.getter
@@ -245,6 +318,20 @@ class DatabaseArgs:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="realtimeUpdatesMode")
+    def realtime_updates_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Realtime Updates mode to use for this database. Can only be specified
+        for 'ENTERPRISE' edition databases.
+        Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+        """
+        return pulumi.get(self, "realtime_updates_mode")
+
+    @realtime_updates_mode.setter
+    def realtime_updates_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "realtime_updates_mode", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -274,11 +361,14 @@ class _DatabaseState:
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  earliest_version_time: Optional[pulumi.Input[_builtins.str]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 firestore_data_access_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  location_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mongodb_compatible_data_access_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  point_in_time_recovery_enablement: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 realtime_updates_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -286,6 +376,7 @@ class _DatabaseState:
                  version_retention_period: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
+
         :param pulumi.Input[_builtins.str] app_engine_integration_mode: The App Engine integration mode to use for this database.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input['DatabaseCmekConfigArgs'] cmek_config: The CMEK (Customer Managed Encryption Key) configuration for a Firestore
@@ -295,20 +386,37 @@ class _DatabaseState:
         :param pulumi.Input[_builtins.str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp at which this database was created.
-        :param pulumi.Input[_builtins.str] database_edition: The database edition.
+        :param pulumi.Input[_builtins.str] database_edition: The database edition. When set to 'ENTERPRISE', then type must be set to
+               'FIRESTORE_NATIVE'.
                Possible values are: `STANDARD`, `ENTERPRISE`.
+        :param pulumi.Input[_builtins.str] delete_protection_state: State of delete protection for the database.
+               When delete protection is enabled, this database cannot be deleted.
+               The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+               **Note:** Additionally, to delete this database using `terraform destroy`, `deletion_policy` must be set to `DELETE`.
+               Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Deletion behavior for this database.
+               If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+               If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+               The default value is `ABANDON`.
+               See also `delete_protection`.
         :param pulumi.Input[_builtins.str] earliest_version_time: Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
                This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] etag: Output only. This checksum is computed by the server based on the value of other fields,
                and may be sent on update and delete requests to ensure the client has an
                up-to-date value before proceeding.
+        :param pulumi.Input[_builtins.str] firestore_data_access_mode: The Firestore API data access mode to use for this database. Can only be
+               specified for 'ENTERPRISE' edition databases.
+               Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
         :param pulumi.Input[_builtins.str] key_prefix: Output only. The keyPrefix for this database.
                This keyPrefix is used, in combination with the project id ("~") to construct the application id
                that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
                This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
         :param pulumi.Input[_builtins.str] location_id: The location of the database. Available locations are listed at
                https://cloud.google.com/firestore/docs/locations.
+        :param pulumi.Input[_builtins.str] mongodb_compatible_data_access_mode: The MongoDB compatible API data access mode to use for this database. Can
+               only be specified for 'ENTERPRISE' edition databases.
+               Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
         :param pulumi.Input[_builtins.str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -324,6 +432,9 @@ class _DatabaseState:
                Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] realtime_updates_mode: The Realtime Updates mode to use for this database. Can only be specified
+               for 'ENTERPRISE' edition databases.
+               Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. A map of resource manager tags. Resource manager tag keys
                and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -359,16 +470,22 @@ class _DatabaseState:
             pulumi.set(__self__, "earliest_version_time", earliest_version_time)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if firestore_data_access_mode is not None:
+            pulumi.set(__self__, "firestore_data_access_mode", firestore_data_access_mode)
         if key_prefix is not None:
             pulumi.set(__self__, "key_prefix", key_prefix)
         if location_id is not None:
             pulumi.set(__self__, "location_id", location_id)
+        if mongodb_compatible_data_access_mode is not None:
+            pulumi.set(__self__, "mongodb_compatible_data_access_mode", mongodb_compatible_data_access_mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if point_in_time_recovery_enablement is not None:
             pulumi.set(__self__, "point_in_time_recovery_enablement", point_in_time_recovery_enablement)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if realtime_updates_mode is not None:
+            pulumi.set(__self__, "realtime_updates_mode", realtime_updates_mode)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if type is not None:
@@ -437,7 +554,8 @@ class _DatabaseState:
     @pulumi.getter(name="databaseEdition")
     def database_edition(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The database edition.
+        The database edition. When set to 'ENTERPRISE', then type must be set to
+        'FIRESTORE_NATIVE'.
         Possible values are: `STANDARD`, `ENTERPRISE`.
         """
         return pulumi.get(self, "database_edition")
@@ -449,6 +567,13 @@ class _DatabaseState:
     @_builtins.property
     @pulumi.getter(name="deleteProtectionState")
     def delete_protection_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        State of delete protection for the database.
+        When delete protection is enabled, this database cannot be deleted.
+        The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+        **Note:** Additionally, to delete this database using `terraform destroy`, `deletion_policy` must be set to `DELETE`.
+        Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        """
         return pulumi.get(self, "delete_protection_state")
 
     @delete_protection_state.setter
@@ -458,6 +583,13 @@ class _DatabaseState:
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deletion behavior for this database.
+        If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+        If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+        The default value is `ABANDON`.
+        See also `delete_protection`.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
@@ -493,6 +625,20 @@ class _DatabaseState:
         pulumi.set(self, "etag", value)
 
     @_builtins.property
+    @pulumi.getter(name="firestoreDataAccessMode")
+    def firestore_data_access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Firestore API data access mode to use for this database. Can only be
+        specified for 'ENTERPRISE' edition databases.
+        Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        """
+        return pulumi.get(self, "firestore_data_access_mode")
+
+    @firestore_data_access_mode.setter
+    def firestore_data_access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "firestore_data_access_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="keyPrefix")
     def key_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -519,6 +665,20 @@ class _DatabaseState:
     @location_id.setter
     def location_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "location_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mongodbCompatibleDataAccessMode")
+    def mongodb_compatible_data_access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The MongoDB compatible API data access mode to use for this database. Can
+        only be specified for 'ENTERPRISE' edition databases.
+        Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        """
+        return pulumi.get(self, "mongodb_compatible_data_access_mode")
+
+    @mongodb_compatible_data_access_mode.setter
+    def mongodb_compatible_data_access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mongodb_compatible_data_access_mode", value)
 
     @_builtins.property
     @pulumi.getter
@@ -567,6 +727,20 @@ class _DatabaseState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="realtimeUpdatesMode")
+    def realtime_updates_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Realtime Updates mode to use for this database. Can only be specified
+        for 'ENTERPRISE' edition databases.
+        Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+        """
+        return pulumi.get(self, "realtime_updates_mode")
+
+    @realtime_updates_mode.setter
+    def realtime_updates_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "realtime_updates_mode", value)
 
     @_builtins.property
     @pulumi.getter
@@ -652,10 +826,13 @@ class Database(pulumi.CustomResource):
                  database_edition: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_protection_state: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 firestore_data_access_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  location_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mongodb_compatible_data_access_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  point_in_time_recovery_enablement: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 realtime_updates_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -831,30 +1008,39 @@ class Database(pulumi.CustomResource):
             database_edition="ENTERPRISE",
             deletion_policy="DELETE")
         ```
+        ### Firestore Database Data Access
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        firestore_access_database = gcp.firestore.Database("firestore_access_database",
+            project="my-project-name",
+            name="data-access-database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            firestore_data_access_mode="DATA_ACCESS_MODE_ENABLED",
+            mongodb_compatible_data_access_mode="DATA_ACCESS_MODE_DISABLED",
+            realtime_updates_mode="REALTIME_UPDATES_MODE_DISABLED")
+        ```
 
         ## Import
 
         Database can be imported using any of these accepted formats:
 
         * `projects/{{project}}/databases/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firestore/database:Database default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firestore/database:Database default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -866,10 +1052,27 @@ class Database(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
-        :param pulumi.Input[_builtins.str] database_edition: The database edition.
+        :param pulumi.Input[_builtins.str] database_edition: The database edition. When set to 'ENTERPRISE', then type must be set to
+               'FIRESTORE_NATIVE'.
                Possible values are: `STANDARD`, `ENTERPRISE`.
+        :param pulumi.Input[_builtins.str] delete_protection_state: State of delete protection for the database.
+               When delete protection is enabled, this database cannot be deleted.
+               The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+               **Note:** Additionally, to delete this database using `terraform destroy`, `deletion_policy` must be set to `DELETE`.
+               Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Deletion behavior for this database.
+               If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+               If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+               The default value is `ABANDON`.
+               See also `delete_protection`.
+        :param pulumi.Input[_builtins.str] firestore_data_access_mode: The Firestore API data access mode to use for this database. Can only be
+               specified for 'ENTERPRISE' edition databases.
+               Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
         :param pulumi.Input[_builtins.str] location_id: The location of the database. Available locations are listed at
                https://cloud.google.com/firestore/docs/locations.
+        :param pulumi.Input[_builtins.str] mongodb_compatible_data_access_mode: The MongoDB compatible API data access mode to use for this database. Can
+               only be specified for 'ENTERPRISE' edition databases.
+               Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
         :param pulumi.Input[_builtins.str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -885,6 +1088,9 @@ class Database(pulumi.CustomResource):
                Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] realtime_updates_mode: The Realtime Updates mode to use for this database. Can only be specified
+               for 'ENTERPRISE' edition databases.
+               Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. A map of resource manager tags. Resource manager tag keys
                and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -1074,30 +1280,39 @@ class Database(pulumi.CustomResource):
             database_edition="ENTERPRISE",
             deletion_policy="DELETE")
         ```
+        ### Firestore Database Data Access
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        firestore_access_database = gcp.firestore.Database("firestore_access_database",
+            project="my-project-name",
+            name="data-access-database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            firestore_data_access_mode="DATA_ACCESS_MODE_ENABLED",
+            mongodb_compatible_data_access_mode="DATA_ACCESS_MODE_DISABLED",
+            realtime_updates_mode="REALTIME_UPDATES_MODE_DISABLED")
+        ```
 
         ## Import
 
         Database can be imported using any of these accepted formats:
 
         * `projects/{{project}}/databases/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firestore/database:Database default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firestore/database:Database default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.
@@ -1120,10 +1335,13 @@ class Database(pulumi.CustomResource):
                  database_edition: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_protection_state: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 firestore_data_access_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  location_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mongodb_compatible_data_access_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  point_in_time_recovery_enablement: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 realtime_updates_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -1141,12 +1359,15 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["database_edition"] = database_edition
             __props__.__dict__["delete_protection_state"] = delete_protection_state
             __props__.__dict__["deletion_policy"] = deletion_policy
+            __props__.__dict__["firestore_data_access_mode"] = firestore_data_access_mode
             if location_id is None and not opts.urn:
                 raise TypeError("Missing required property 'location_id'")
             __props__.__dict__["location_id"] = location_id
+            __props__.__dict__["mongodb_compatible_data_access_mode"] = mongodb_compatible_data_access_mode
             __props__.__dict__["name"] = name
             __props__.__dict__["point_in_time_recovery_enablement"] = point_in_time_recovery_enablement
             __props__.__dict__["project"] = project
+            __props__.__dict__["realtime_updates_mode"] = realtime_updates_mode
             __props__.__dict__["tags"] = tags
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
@@ -1177,11 +1398,14 @@ class Database(pulumi.CustomResource):
             deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
             earliest_version_time: Optional[pulumi.Input[_builtins.str]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
+            firestore_data_access_mode: Optional[pulumi.Input[_builtins.str]] = None,
             key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
             location_id: Optional[pulumi.Input[_builtins.str]] = None,
+            mongodb_compatible_data_access_mode: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             point_in_time_recovery_enablement: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
+            realtime_updates_mode: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1203,20 +1427,37 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp at which this database was created.
-        :param pulumi.Input[_builtins.str] database_edition: The database edition.
+        :param pulumi.Input[_builtins.str] database_edition: The database edition. When set to 'ENTERPRISE', then type must be set to
+               'FIRESTORE_NATIVE'.
                Possible values are: `STANDARD`, `ENTERPRISE`.
+        :param pulumi.Input[_builtins.str] delete_protection_state: State of delete protection for the database.
+               When delete protection is enabled, this database cannot be deleted.
+               The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+               **Note:** Additionally, to delete this database using `terraform destroy`, `deletion_policy` must be set to `DELETE`.
+               Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Deletion behavior for this database.
+               If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+               If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+               The default value is `ABANDON`.
+               See also `delete_protection`.
         :param pulumi.Input[_builtins.str] earliest_version_time: Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
                This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] etag: Output only. This checksum is computed by the server based on the value of other fields,
                and may be sent on update and delete requests to ensure the client has an
                up-to-date value before proceeding.
+        :param pulumi.Input[_builtins.str] firestore_data_access_mode: The Firestore API data access mode to use for this database. Can only be
+               specified for 'ENTERPRISE' edition databases.
+               Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
         :param pulumi.Input[_builtins.str] key_prefix: Output only. The keyPrefix for this database.
                This keyPrefix is used, in combination with the project id ("~") to construct the application id
                that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
                This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
         :param pulumi.Input[_builtins.str] location_id: The location of the database. Available locations are listed at
                https://cloud.google.com/firestore/docs/locations.
+        :param pulumi.Input[_builtins.str] mongodb_compatible_data_access_mode: The MongoDB compatible API data access mode to use for this database. Can
+               only be specified for 'ENTERPRISE' edition databases.
+               Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
         :param pulumi.Input[_builtins.str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -1232,6 +1473,9 @@ class Database(pulumi.CustomResource):
                Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] realtime_updates_mode: The Realtime Updates mode to use for this database. Can only be specified
+               for 'ENTERPRISE' edition databases.
+               Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. A map of resource manager tags. Resource manager tag keys
                and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -1262,11 +1506,14 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["earliest_version_time"] = earliest_version_time
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["firestore_data_access_mode"] = firestore_data_access_mode
         __props__.__dict__["key_prefix"] = key_prefix
         __props__.__dict__["location_id"] = location_id
+        __props__.__dict__["mongodb_compatible_data_access_mode"] = mongodb_compatible_data_access_mode
         __props__.__dict__["name"] = name
         __props__.__dict__["point_in_time_recovery_enablement"] = point_in_time_recovery_enablement
         __props__.__dict__["project"] = project
+        __props__.__dict__["realtime_updates_mode"] = realtime_updates_mode
         __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
         __props__.__dict__["uid"] = uid
@@ -1315,7 +1562,8 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="databaseEdition")
     def database_edition(self) -> pulumi.Output[_builtins.str]:
         """
-        The database edition.
+        The database edition. When set to 'ENTERPRISE', then type must be set to
+        'FIRESTORE_NATIVE'.
         Possible values are: `STANDARD`, `ENTERPRISE`.
         """
         return pulumi.get(self, "database_edition")
@@ -1323,11 +1571,25 @@ class Database(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deleteProtectionState")
     def delete_protection_state(self) -> pulumi.Output[_builtins.str]:
+        """
+        State of delete protection for the database.
+        When delete protection is enabled, this database cannot be deleted.
+        The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+        **Note:** Additionally, to delete this database using `terraform destroy`, `deletion_policy` must be set to `DELETE`.
+        Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        """
         return pulumi.get(self, "delete_protection_state")
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Deletion behavior for this database.
+        If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+        If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+        The default value is `ABANDON`.
+        See also `delete_protection`.
+        """
         return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
@@ -1351,6 +1613,16 @@ class Database(pulumi.CustomResource):
         return pulumi.get(self, "etag")
 
     @_builtins.property
+    @pulumi.getter(name="firestoreDataAccessMode")
+    def firestore_data_access_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The Firestore API data access mode to use for this database. Can only be
+        specified for 'ENTERPRISE' edition databases.
+        Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        """
+        return pulumi.get(self, "firestore_data_access_mode")
+
+    @_builtins.property
     @pulumi.getter(name="keyPrefix")
     def key_prefix(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1369,6 +1641,16 @@ class Database(pulumi.CustomResource):
         https://cloud.google.com/firestore/docs/locations.
         """
         return pulumi.get(self, "location_id")
+
+    @_builtins.property
+    @pulumi.getter(name="mongodbCompatibleDataAccessMode")
+    def mongodb_compatible_data_access_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The MongoDB compatible API data access mode to use for this database. Can
+        only be specified for 'ENTERPRISE' edition databases.
+        Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+        """
+        return pulumi.get(self, "mongodb_compatible_data_access_mode")
 
     @_builtins.property
     @pulumi.getter
@@ -1405,6 +1687,16 @@ class Database(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="realtimeUpdatesMode")
+    def realtime_updates_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The Realtime Updates mode to use for this database. Can only be specified
+        for 'ENTERPRISE' edition databases.
+        Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+        """
+        return pulumi.get(self, "realtime_updates_mode")
 
     @_builtins.property
     @pulumi.getter

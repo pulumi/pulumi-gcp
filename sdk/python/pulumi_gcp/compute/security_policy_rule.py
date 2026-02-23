@@ -34,6 +34,7 @@ class SecurityPolicyRuleInitArgs:
                  redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']] = None):
         """
         The set of arguments for constructing a SecurityPolicyRule resource.
+
         :param pulumi.Input[_builtins.str] action: The Action to perform when the rule is matched. The following are the valid actions:
                * allow: allow access to target.
                * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
@@ -245,6 +246,7 @@ class _SecurityPolicyRuleState:
                  security_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityPolicyRule resources.
+
         :param pulumi.Input[_builtins.str] action: The Action to perform when the rule is matched. The following are the valid actions:
                * allow: allow access to target.
                * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
@@ -573,24 +575,17 @@ class SecurityPolicyRule(pulumi.CustomResource):
         SecurityPolicyRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/securityPolicies/{{security_policy}}/priority/{{priority}}`
-
         * `{{project}}/{{security_policy}}/{{priority}}`
-
         * `{{security_policy}}/{{priority}}`
 
         When using the `pulumi import` command, SecurityPolicyRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/securityPolicyRule:SecurityPolicyRule default projects/{{project}}/global/securityPolicies/{{security_policy}}/priority/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/securityPolicyRule:SecurityPolicyRule default {{project}}/{{security_policy}}/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/securityPolicyRule:SecurityPolicyRule default {{security_policy}}/{{priority}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -739,24 +734,17 @@ class SecurityPolicyRule(pulumi.CustomResource):
         SecurityPolicyRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/securityPolicies/{{security_policy}}/priority/{{priority}}`
-
         * `{{project}}/{{security_policy}}/{{priority}}`
-
         * `{{security_policy}}/{{priority}}`
 
         When using the `pulumi import` command, SecurityPolicyRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/securityPolicyRule:SecurityPolicyRule default projects/{{project}}/global/securityPolicies/{{security_policy}}/priority/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/securityPolicyRule:SecurityPolicyRule default {{project}}/{{security_policy}}/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/securityPolicyRule:SecurityPolicyRule default {{security_policy}}/{{priority}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityPolicyRuleInitArgs args: The arguments to use to populate this resource's properties.

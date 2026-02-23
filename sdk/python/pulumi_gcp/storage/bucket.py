@@ -47,6 +47,7 @@ class BucketArgs:
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
         The set of arguments for constructing a Bucket resource.
+
         :param pulumi.Input[_builtins.str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
                
                - - -
@@ -69,7 +70,7 @@ class BucketArgs:
         :param pulumi.Input[_builtins.bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[_builtins.str] rpo: The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
-        :param pulumi.Input['BucketSoftDeletePolicyArgs'] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        :param pulumi.Input['BucketSoftDeletePolicyArgs'] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
         :param pulumi.Input[_builtins.str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[_builtins.bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input['BucketVersioningArgs'] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
@@ -358,7 +359,7 @@ class BucketArgs:
     @pulumi.getter(name="softDeletePolicy")
     def soft_delete_policy(self) -> Optional[pulumi.Input['BucketSoftDeletePolicyArgs']]:
         """
-        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
         """
         return pulumi.get(self, "soft_delete_policy")
 
@@ -451,10 +452,12 @@ class _BucketState:
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
         Input properties used for looking up and filtering Bucket resources.
+
         :param pulumi.Input['BucketAutoclassArgs'] autoclass: The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[_builtins.bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_destroy: When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
@@ -476,7 +479,7 @@ class _BucketState:
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[_builtins.str] rpo: The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input['BucketSoftDeletePolicyArgs'] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        :param pulumi.Input['BucketSoftDeletePolicyArgs'] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
         :param pulumi.Input[_builtins.str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[_builtins.str] time_created: The creation time of the bucket in RFC 3339 format.
         :param pulumi.Input[_builtins.bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
@@ -599,6 +602,9 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
@@ -828,7 +834,7 @@ class _BucketState:
     @pulumi.getter(name="softDeletePolicy")
     def soft_delete_policy(self) -> Optional[pulumi.Input['BucketSoftDeletePolicyArgs']]:
         """
-        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
         """
         return pulumi.get(self, "soft_delete_policy")
 
@@ -1134,32 +1140,25 @@ class Bucket(pulumi.CustomResource):
         ## Import
 
         Storage buckets can be imported using the `name` or  `project/name`. If the project is not
-
         passed to the import command it will be inferred from the provider block or environment variables.
-
         If it cannot be inferred it will be queried from the Compute API (this will fail if the API is
-
         not enabled).
 
         * `{{project_id}}/{{bucket}}`
-
         * `{{bucket}}`
 
         When using the `pulumi import` command, Storage buckets can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
         ```
 
+        > **Note:** Terraform will import this resource with `force_destroy` set to
         `false` in state. If you've set it to `true` in config, run `pulumi up` to
-
         update the value set in state. If you delete this resource before updating the
-
         value, objects in the bucket will not be destroyed.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1185,7 +1184,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[_builtins.str] rpo: The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
-        :param pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        :param pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
         :param pulumi.Input[_builtins.str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[_builtins.bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
@@ -1379,32 +1378,25 @@ class Bucket(pulumi.CustomResource):
         ## Import
 
         Storage buckets can be imported using the `name` or  `project/name`. If the project is not
-
         passed to the import command it will be inferred from the provider block or environment variables.
-
         If it cannot be inferred it will be queried from the Compute API (this will fail if the API is
-
         not enabled).
 
         * `{{project_id}}/{{bucket}}`
-
         * `{{bucket}}`
 
         When using the `pulumi import` command, Storage buckets can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
-        ```
-
-        ```sh
         $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
         ```
 
+        > **Note:** Terraform will import this resource with `force_destroy` set to
         `false` in state. If you've set it to `true` in config, run `pulumi up` to
-
         update the value set in state. If you delete this resource before updating the
-
         value, objects in the bucket will not be destroyed.
+
 
         :param str resource_name: The name of the resource.
         :param BucketArgs args: The arguments to use to populate this resource's properties.
@@ -1541,6 +1533,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[_builtins.bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_destroy: When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
@@ -1562,7 +1555,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[_builtins.str] rpo: The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        :param pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
         :param pulumi.Input[_builtins.str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[_builtins.str] time_created: The creation time of the bucket in RFC 3339 format.
         :param pulumi.Input[_builtins.bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
@@ -1643,6 +1636,9 @@ class Bucket(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
@@ -1796,7 +1792,7 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter(name="softDeletePolicy")
     def soft_delete_policy(self) -> pulumi.Output['outputs.BucketSoftDeletePolicy']:
         """
-        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
         """
         return pulumi.get(self, "soft_delete_policy")
 

@@ -30,6 +30,7 @@ class SecurityGatewayArgs:
                  service_discovery: Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']] = None):
         """
         The set of arguments for constructing a SecurityGateway resource.
+
         :param pulumi.Input[_builtins.str] security_gateway_id: Optional. User-settable SecurityGateway resource ID.
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
@@ -183,6 +184,7 @@ class _SecurityGatewayState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityGateway resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. Timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] delegating_service_account: Service account used for operations that involve resources in consumer projects.
         :param pulumi.Input[_builtins.str] display_name: Optional. An arbitrary user-provided name for the SecurityGateway.
@@ -506,24 +508,17 @@ class SecurityGateway(pulumi.CustomResource):
         SecurityGateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/securityGateways/{{security_gateway_id}}`
-
         * `{{project}}/{{location}}/{{security_gateway_id}}`
-
         * `{{location}}/{{security_gateway_id}}`
 
         When using the `pulumi import` command, SecurityGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:beyondcorp/securityGateway:SecurityGateway default projects/{{project}}/locations/{{location}}/securityGateways/{{security_gateway_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/securityGateway:SecurityGateway default {{project}}/{{location}}/{{security_gateway_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/securityGateway:SecurityGateway default {{location}}/{{security_gateway_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -618,24 +613,17 @@ class SecurityGateway(pulumi.CustomResource):
         SecurityGateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/securityGateways/{{security_gateway_id}}`
-
         * `{{project}}/{{location}}/{{security_gateway_id}}`
-
         * `{{location}}/{{security_gateway_id}}`
 
         When using the `pulumi import` command, SecurityGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:beyondcorp/securityGateway:SecurityGateway default projects/{{project}}/locations/{{location}}/securityGateways/{{security_gateway_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/securityGateway:SecurityGateway default {{project}}/{{location}}/{{security_gateway_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:beyondcorp/securityGateway:SecurityGateway default {{location}}/{{security_gateway_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityGatewayArgs args: The arguments to use to populate this resource's properties.

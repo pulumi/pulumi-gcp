@@ -30,6 +30,10 @@ public final class GetCryptoKeysKey {
      * 
      */
     private String destroyScheduledDuration;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     private Map<String,String> effectiveLabels;
     private String id;
     /**
@@ -126,6 +130,10 @@ public final class GetCryptoKeysKey {
     public String destroyScheduledDuration() {
         return this.destroyScheduledDuration;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
     }

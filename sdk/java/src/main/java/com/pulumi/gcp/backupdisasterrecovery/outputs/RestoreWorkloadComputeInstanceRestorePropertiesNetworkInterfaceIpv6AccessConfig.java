@@ -29,7 +29,10 @@ public final class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfa
      */
     private @Nullable Integer externalIpv6PrefixLength;
     /**
-     * @return Required. The resource name of the backup instance.
+     * @return (Optional, Deprecated)
+     * The resource name of the backup instance.
+     * 
+     * &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      * 
      */
     private @Nullable String name;
@@ -77,7 +80,10 @@ public final class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfa
         return Optional.ofNullable(this.externalIpv6PrefixLength);
     }
     /**
-     * @return Required. The resource name of the backup instance.
+     * @return (Optional, Deprecated)
+     * The resource name of the backup instance.
+     * 
+     * &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      * 
      */
     public Optional<String> name() {

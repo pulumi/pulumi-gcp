@@ -54,6 +54,7 @@ class DiskArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Disk resource.
+
         :param pulumi.Input[_builtins.str] access_mode: The access mode of the disk.
                For example:
                * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
@@ -775,6 +776,7 @@ class _DiskState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Disk resources.
+
         :param pulumi.Input[_builtins.str] access_mode: The access mode of the disk.
                For example:
                * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
@@ -1810,30 +1812,19 @@ class Disk(pulumi.CustomResource):
         Disk can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2069,30 +2060,19 @@ class Disk(pulumi.CustomResource):
         Disk can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/disk:Disk default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiskArgs args: The arguments to use to populate this resource's properties.

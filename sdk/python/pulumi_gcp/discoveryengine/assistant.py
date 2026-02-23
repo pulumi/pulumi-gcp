@@ -33,6 +33,7 @@ class AssistantArgs:
                  web_grounding_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Assistant resource.
+
         :param pulumi.Input[_builtins.str] assistant_id: The unique id of the assistant.
         :param pulumi.Input[_builtins.str] collection_id: The unique id of the collection.
         :param pulumi.Input[_builtins.str] display_name: The assistant display name.
@@ -211,6 +212,7 @@ class _AssistantState:
                  web_grounding_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Assistant resources.
+
         :param pulumi.Input[_builtins.str] assistant_id: The unique id of the assistant.
         :param pulumi.Input[_builtins.str] collection_id: The unique id of the collection.
         :param pulumi.Input['AssistantCustomerPolicyArgs'] customer_policy: Customer policy for the assistant.
@@ -474,24 +476,17 @@ class Assistant(pulumi.CustomResource):
         Assistant can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/assistants/{{assistant_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}`
 
         When using the `pulumi import` command, Assistant can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/assistant:Assistant default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/assistants/{{assistant_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/assistant:Assistant default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/assistant:Assistant default {{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -577,24 +572,17 @@ class Assistant(pulumi.CustomResource):
         Assistant can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/assistants/{{assistant_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}`
 
         When using the `pulumi import` command, Assistant can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/assistant:Assistant default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/assistants/{{assistant_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/assistant:Assistant default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/assistant:Assistant default {{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AssistantArgs args: The arguments to use to populate this resource's properties.

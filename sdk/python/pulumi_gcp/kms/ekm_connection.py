@@ -30,6 +30,7 @@ class EkmConnectionArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EkmConnection resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the EkmConnection.
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[Sequence[pulumi.Input['EkmConnectionServiceResolverArgs']]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
@@ -159,6 +160,7 @@ class _EkmConnectionState:
                  service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input['EkmConnectionServiceResolverArgs']]]] = None):
         """
         Input properties used for looking up and filtering EkmConnection resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which the EkmConnection was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] crypto_space_path: Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
@@ -346,24 +348,17 @@ class EkmConnection(pulumi.CustomResource):
         EkmConnection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/ekmConnections/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, EkmConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/ekmConnection:EkmConnection default projects/{{project}}/locations/{{location}}/ekmConnections/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/ekmConnection:EkmConnection default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/ekmConnection:EkmConnection default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -424,24 +419,17 @@ class EkmConnection(pulumi.CustomResource):
         EkmConnection can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/ekmConnections/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, EkmConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/ekmConnection:EkmConnection default projects/{{project}}/locations/{{location}}/ekmConnections/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/ekmConnection:EkmConnection default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/ekmConnection:EkmConnection default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EkmConnectionArgs args: The arguments to use to populate this resource's properties.

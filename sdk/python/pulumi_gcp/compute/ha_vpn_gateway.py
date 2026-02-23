@@ -26,12 +26,14 @@ class HaVpnGatewayArgs:
                  gateway_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['HaVpnGatewayParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  stack_type: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None):
         """
         The set of arguments for constructing a HaVpnGateway resource.
+
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] gateway_ip_version: The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
@@ -49,6 +51,9 @@ class HaVpnGatewayArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input['HaVpnGatewayParamsArgs'] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region this gateway should sit in.
@@ -68,6 +73,8 @@ class HaVpnGatewayArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -151,6 +158,20 @@ class HaVpnGatewayArgs:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['HaVpnGatewayParamsArgs']]:
+        """
+        (Optional, Beta)
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['HaVpnGatewayParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -213,6 +234,7 @@ class _HaVpnGatewayState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['HaVpnGatewayParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -221,6 +243,7 @@ class _HaVpnGatewayState:
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None):
         """
         Input properties used for looking up and filtering HaVpnGateway resources.
+
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] gateway_ip_version: The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
@@ -244,6 +267,9 @@ class _HaVpnGatewayState:
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
+        :param pulumi.Input['HaVpnGatewayParamsArgs'] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -271,6 +297,8 @@ class _HaVpnGatewayState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -386,6 +414,20 @@ class _HaVpnGatewayState:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['HaVpnGatewayParamsArgs']]:
+        """
+        (Optional, Beta)
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['HaVpnGatewayParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -474,6 +516,7 @@ class HaVpnGateway(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['HaVpnGatewayParamsArgs', 'HaVpnGatewayParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  stack_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -589,30 +632,19 @@ class HaVpnGateway(pulumi.CustomResource):
         HaVpnGateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -633,6 +665,9 @@ class HaVpnGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
+        :param pulumi.Input[Union['HaVpnGatewayParamsArgs', 'HaVpnGatewayParamsArgsDict']] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region this gateway should sit in.
@@ -759,30 +794,19 @@ class HaVpnGateway(pulumi.CustomResource):
         HaVpnGateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HaVpnGatewayArgs args: The arguments to use to populate this resource's properties.
@@ -804,6 +828,7 @@ class HaVpnGateway(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['HaVpnGatewayParamsArgs', 'HaVpnGatewayParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  stack_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -824,6 +849,7 @@ class HaVpnGateway(pulumi.CustomResource):
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["stack_type"] = stack_type
@@ -851,6 +877,7 @@ class HaVpnGateway(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             network: Optional[pulumi.Input[_builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['HaVpnGatewayParamsArgs', 'HaVpnGatewayParamsArgsDict']]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -887,6 +914,9 @@ class HaVpnGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this VPN gateway is accepting traffic for.
+        :param pulumi.Input[Union['HaVpnGatewayParamsArgs', 'HaVpnGatewayParamsArgsDict']] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -911,6 +941,7 @@ class HaVpnGateway(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
@@ -990,6 +1021,16 @@ class HaVpnGateway(pulumi.CustomResource):
         The network this VPN gateway is accepting traffic for.
         """
         return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.HaVpnGatewayParams']]:
+        """
+        (Optional, Beta)
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter

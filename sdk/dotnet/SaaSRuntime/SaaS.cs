@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SaaSRuntime
 {
     /// <summary>
+    /// A Saas resource is the top-level representation of a SaaS service managed by a producer. It contains a list of locations where the service is available, which is used by the Rollout system to generate a rollout plan.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Saas Runtime Saas Basic
@@ -47,22 +52,14 @@ namespace Pulumi.Gcp.SaaSRuntime
     /// Saas can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/saas/{{saas_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{saas_id}}`
-    /// 
     /// * `{{location}}/{{saas_id}}`
     /// 
     /// When using the `pulumi import` command, Saas can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:saasruntime/saaS:SaaS default projects/{{project}}/locations/{{location}}/saas/{{saas_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:saasruntime/saaS:SaaS default {{project}}/{{location}}/{{saas_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:saasruntime/saaS:SaaS default {{location}}/{{saas_id}}
     /// ```
     /// </summary>
@@ -86,6 +83,9 @@ namespace Pulumi.Gcp.SaaSRuntime
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -321,6 +321,10 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());

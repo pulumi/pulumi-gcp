@@ -187,22 +187,14 @@ namespace Pulumi.Gcp.OracleDatabase
     /// AutonomousDatabase can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{autonomous_database_id}}`
-    /// 
     /// * `{{location}}/{{autonomous_database_id}}`
     /// 
     /// When using the `pulumi import` command, AutonomousDatabase can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default projects/{{project}}/locations/{{location}}/autonomousDatabases/{{autonomous_database_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{project}}/{{location}}/{{autonomous_database_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{location}}/{{autonomous_database_id}}
     /// ```
     /// </summary>
@@ -244,6 +236,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Output("database")]
         public Output<string> Database { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -433,6 +428,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("database")]
         public Input<string>? Database { get; set; }
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -552,6 +550,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("database")]
         public Input<string>? Database { get; set; }
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 

@@ -228,22 +228,14 @@ import * as utilities from "../utilities";
  * VmwareAdminCluster can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/vmwareAdminClusters/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, VmwareAdminCluster can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default projects/{{project}}/locations/{{location}}/vmwareAdminClusters/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{location}}/{{name}}
  * ```
  */
@@ -327,6 +319,9 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
      * A human readable description of this VMware admin cluster.
      */
     declare public readonly description: pulumi.Output<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * If set, the advanced cluster feature is enabled.
@@ -581,6 +576,9 @@ export interface VmwareAdminClusterState {
      * A human readable description of this VMware admin cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If set, the advanced cluster feature is enabled.

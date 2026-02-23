@@ -31,6 +31,7 @@ class SubnetArgs:
                  vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Subnet resource.
+
         :param pulumi.Input[_builtins.str] location: The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
         :param pulumi.Input[_builtins.str] network: The ID of the network to which this router belongs.
                Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
@@ -211,6 +212,7 @@ class _SubnetState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Subnet resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the subnet was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
@@ -557,36 +559,21 @@ class Subnet(pulumi.CustomResource):
         Subnet can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
-
         * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
-
         * `{{location}}/{{zone}}/{{subnet_id}}`
-
         * `{{location}}/{{subnet_id}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{project}}/{{location}}/{{zone}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{zone}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -676,36 +663,21 @@ class Subnet(pulumi.CustomResource):
         Subnet can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
-
         * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
-
         * `{{location}}/{{zone}}/{{subnet_id}}`
-
         * `{{location}}/{{subnet_id}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{project}}/{{location}}/{{zone}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{zone}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SubnetArgs args: The arguments to use to populate this resource's properties.

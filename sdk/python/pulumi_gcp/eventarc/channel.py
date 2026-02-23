@@ -27,6 +27,7 @@ class ChannelArgs:
                  third_party_provider: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Channel resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the channel.
@@ -144,6 +145,7 @@ class _ChannelState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Channel resources.
+
         :param pulumi.Input[_builtins.str] activation_token: The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         :param pulumi.Input[_builtins.str] create_time: The creation time.
         :param pulumi.Input[_builtins.str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -407,24 +409,17 @@ class Channel(pulumi.CustomResource):
         Channel can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/channels/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/channel:Channel default projects/{{project}}/locations/{{location}}/channels/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/channel:Channel default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/channel:Channel default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -473,24 +468,17 @@ class Channel(pulumi.CustomResource):
         Channel can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/channels/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/channel:Channel default projects/{{project}}/locations/{{location}}/channels/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/channel:Channel default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/channel:Channel default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ChannelArgs args: The arguments to use to populate this resource's properties.

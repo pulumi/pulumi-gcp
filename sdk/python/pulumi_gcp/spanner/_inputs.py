@@ -53,30 +53,24 @@ __all__ = [
     'InstanceIAMMemberConditionArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class BackupScheduleEncryptionConfigArgsDict(TypedDict):
-        encryption_type: pulumi.Input[_builtins.str]
-        """
-        The encryption type of backups created by the backup schedule.
-        Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
-        If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
-        If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
-        Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
-        """
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource name of the Cloud KMS key to use for encryption.
-        Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
-        """
-        kms_key_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
-        in the same locations as the Spanner Database.
-        """
-elif False:
-    BackupScheduleEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BackupScheduleEncryptionConfigArgsDict(TypedDict):
+    encryption_type: pulumi.Input[_builtins.str]
+    """
+    The encryption type of backups created by the backup schedule.
+    Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
+    If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName or kmsKeyNames.
+    Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
+    """
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource name of the Cloud KMS key to use for encryption.
+    Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
+    """
+    kms_key_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+    in the same locations as the Spanner Database.
+    """
 
 @pulumi.input_type
 class BackupScheduleEncryptionConfigArgs:
@@ -87,8 +81,7 @@ class BackupScheduleEncryptionConfigArgs:
         """
         :param pulumi.Input[_builtins.str] encryption_type: The encryption type of backups created by the backup schedule.
                Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
-               If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
-               If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+               If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName or kmsKeyNames.
                Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
         :param pulumi.Input[_builtins.str] kms_key_name: The resource name of the Cloud KMS key to use for encryption.
                Format: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'
@@ -107,8 +100,7 @@ class BackupScheduleEncryptionConfigArgs:
         """
         The encryption type of backups created by the backup schedule.
         Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
-        If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
-        If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+        If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName or kmsKeyNames.
         Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
         """
         return pulumi.get(self, "encryption_type")
@@ -144,11 +136,8 @@ class BackupScheduleEncryptionConfigArgs:
         pulumi.set(self, "kms_key_names", value)
 
 
-if not MYPY:
-    class BackupScheduleFullBackupSpecArgsDict(TypedDict):
-        pass
-elif False:
-    BackupScheduleFullBackupSpecArgsDict: TypeAlias = Mapping[str, Any]
+class BackupScheduleFullBackupSpecArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class BackupScheduleFullBackupSpecArgs:
@@ -156,11 +145,8 @@ class BackupScheduleFullBackupSpecArgs:
         pass
 
 
-if not MYPY:
-    class BackupScheduleIncrementalBackupSpecArgsDict(TypedDict):
-        pass
-elif False:
-    BackupScheduleIncrementalBackupSpecArgsDict: TypeAlias = Mapping[str, Any]
+class BackupScheduleIncrementalBackupSpecArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class BackupScheduleIncrementalBackupSpecArgs:
@@ -168,15 +154,12 @@ class BackupScheduleIncrementalBackupSpecArgs:
         pass
 
 
-if not MYPY:
-    class BackupScheduleSpecArgsDict(TypedDict):
-        cron_spec: NotRequired[pulumi.Input['BackupScheduleSpecCronSpecArgsDict']]
-        """
-        Cron style schedule specification..
-        Structure is documented below.
-        """
-elif False:
-    BackupScheduleSpecArgsDict: TypeAlias = Mapping[str, Any]
+class BackupScheduleSpecArgsDict(TypedDict):
+    cron_spec: NotRequired[pulumi.Input['BackupScheduleSpecCronSpecArgsDict']]
+    """
+    Cron style schedule specification..
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class BackupScheduleSpecArgs:
@@ -203,24 +186,21 @@ class BackupScheduleSpecArgs:
         pulumi.set(self, "cron_spec", value)
 
 
-if not MYPY:
-    class BackupScheduleSpecCronSpecArgsDict(TypedDict):
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Textual representation of the crontab. User can customize the
-        backup frequency and the backup version time using the cron
-        expression. The version time must be in UTC timzeone.
-        The backup will contain an externally consistent copy of the
-        database at the version time. Allowed frequencies are 12 hour, 1 day,
-        1 week and 1 month. Examples of valid cron specifications:
-        0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
-        0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
-        0 2 * * *    : once a day at 2 past midnight in UTC.
-        0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
-        0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
-        """
-elif False:
-    BackupScheduleSpecCronSpecArgsDict: TypeAlias = Mapping[str, Any]
+class BackupScheduleSpecCronSpecArgsDict(TypedDict):
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Textual representation of the crontab. User can customize the
+    backup frequency and the backup version time using the cron
+    expression. The version time must be in UTC timzeone.
+    The backup will contain an externally consistent copy of the
+    database at the version time. Allowed frequencies are 12 hour, 1 day,
+    1 week and 1 month. Examples of valid cron specifications:
+    0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+    0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+    0 2 * * *    : once a day at 2 past midnight in UTC.
+    0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+    0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+    """
 
 @pulumi.input_type
 class BackupScheduleSpecCronSpecArgs:
@@ -265,20 +245,17 @@ class BackupScheduleSpecCronSpecArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class DatabaseEncryptionConfigArgsDict(TypedDict):
-        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully qualified name of the KMS key to use to encrypt this database. This key must exist
-        in the same location as the Spanner Database.
-        """
-        kms_key_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
-        in the same locations as the Spanner Database.
-        """
-elif False:
-    DatabaseEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseEncryptionConfigArgsDict(TypedDict):
+    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+    in the same location as the Spanner Database.
+    """
+    kms_key_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+    in the same locations as the Spanner Database.
+    """
 
 @pulumi.input_type
 class DatabaseEncryptionConfigArgs:
@@ -323,19 +300,23 @@ class DatabaseEncryptionConfigArgs:
         pulumi.set(self, "kms_key_names", value)
 
 
-if not MYPY:
-    class DatabaseIAMBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DatabaseIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseIAMBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class DatabaseIAMBindingConditionArgs:
@@ -346,6 +327,11 @@ class DatabaseIAMBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -379,6 +365,13 @@ class DatabaseIAMBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -386,19 +379,23 @@ class DatabaseIAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class DatabaseIAMMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DatabaseIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseIAMMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class DatabaseIAMMemberConditionArgs:
@@ -409,6 +406,11 @@ class DatabaseIAMMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -442,6 +444,13 @@ class DatabaseIAMMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -449,31 +458,28 @@ class DatabaseIAMMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class InstanceAutoscalingConfigArgsDict(TypedDict):
-        asymmetric_autoscaling_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgsDict']]]]
-        """
-        Asymmetric autoscaling options for specific replicas.
-        Structure is documented below.
-        """
-        autoscaling_limits: NotRequired[pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArgsDict']]
-        """
-        Defines scale in controls to reduce the risk of response latency
-        and outages due to abrupt scale-in events. Users can define the minimum and
-        maximum compute capacity allocated to the instance, and the autoscaler will
-        only scale within that range. Users can either use nodes or processing
-        units to specify the limits, but should use the same unit to set both the
-        min_limit and max_limit.
-        Structure is documented below.
-        """
-        autoscaling_targets: NotRequired[pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArgsDict']]
-        """
-        Defines scale in controls to reduce the risk of response latency
-        and outages due to abrupt scale-in events
-        Structure is documented below.
-        """
-elif False:
-    InstanceAutoscalingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAutoscalingConfigArgsDict(TypedDict):
+    asymmetric_autoscaling_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgsDict']]]]
+    """
+    Asymmetric autoscaling options for specific replicas.
+    Structure is documented below.
+    """
+    autoscaling_limits: NotRequired[pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArgsDict']]
+    """
+    Defines scale in controls to reduce the risk of response latency
+    and outages due to abrupt scale-in events. Users can define the minimum and
+    maximum compute capacity allocated to the instance, and the autoscaler will
+    only scale within that range. Users can either use nodes or processing
+    units to specify the limits, but should use the same unit to set both the
+    min_limit and max_limit.
+    Structure is documented below.
+    """
+    autoscaling_targets: NotRequired[pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArgsDict']]
+    """
+    Defines scale in controls to reduce the risk of response latency
+    and outages due to abrupt scale-in events
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceAutoscalingConfigArgs:
@@ -548,20 +554,17 @@ class InstanceAutoscalingConfigArgs:
         pulumi.set(self, "autoscaling_targets", value)
 
 
-if not MYPY:
-    class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgsDict(TypedDict):
-        overrides: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict']
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-        replica_selection: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgsDict']
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-elif False:
-    InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgsDict(TypedDict):
+    overrides: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict']
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
+    replica_selection: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgsDict']
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs:
@@ -604,15 +607,12 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs:
         pulumi.set(self, "replica_selection", value)
 
 
-if not MYPY:
-    class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict(TypedDict):
-        autoscaling_limits: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict']
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-elif False:
-    InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict(TypedDict):
+    autoscaling_limits: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict']
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs:
@@ -638,18 +638,15 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs:
         pulumi.set(self, "autoscaling_limits", value)
 
 
-if not MYPY:
-    class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict(TypedDict):
-        max_nodes: pulumi.Input[_builtins.int]
-        """
-        The maximum number of nodes for this specific replica.
-        """
-        min_nodes: pulumi.Input[_builtins.int]
-        """
-        The minimum number of nodes for this specific replica.
-        """
-elif False:
-    InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict(TypedDict):
+    max_nodes: pulumi.Input[_builtins.int]
+    """
+    The maximum number of nodes for this specific replica.
+    """
+    min_nodes: pulumi.Input[_builtins.int]
+    """
+    The minimum number of nodes for this specific replica.
+    """
 
 @pulumi.input_type
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs:
@@ -688,14 +685,11 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLi
         pulumi.set(self, "min_nodes", value)
 
 
-if not MYPY:
-    class InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgsDict(TypedDict):
-        location: pulumi.Input[_builtins.str]
-        """
-        The location of the replica to apply asymmetric autoscaling options.
-        """
-elif False:
-    InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgsDict(TypedDict):
+    location: pulumi.Input[_builtins.str]
+    """
+    The location of the replica to apply asymmetric autoscaling options.
+    """
 
 @pulumi.input_type
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs:
@@ -719,29 +713,26 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs:
         pulumi.set(self, "location", value)
 
 
-if not MYPY:
-    class InstanceAutoscalingConfigAutoscalingLimitsArgsDict(TypedDict):
-        max_nodes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of nodes for this specific replica.
-        """
-        max_processing_units: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies maximum number of processing units allocated to the instance.
-        If set, this number should be multiples of 1000 and be greater than or equal to
-        min_processing_units.
-        """
-        min_nodes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum number of nodes for this specific replica.
-        """
-        min_processing_units: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies minimum number of processing units allocated to the instance.
-        If set, this number should be multiples of 1000.
-        """
-elif False:
-    InstanceAutoscalingConfigAutoscalingLimitsArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAutoscalingConfigAutoscalingLimitsArgsDict(TypedDict):
+    max_nodes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of nodes for this specific replica.
+    """
+    max_processing_units: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies maximum number of processing units allocated to the instance.
+    If set, this number should be multiples of 1000 and be greater than or equal to
+    min_processing_units.
+    """
+    min_nodes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum number of nodes for this specific replica.
+    """
+    min_processing_units: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies minimum number of processing units allocated to the instance.
+    If set, this number should be multiples of 1000.
+    """
 
 @pulumi.input_type
 class InstanceAutoscalingConfigAutoscalingLimitsArgs:
@@ -820,29 +811,26 @@ class InstanceAutoscalingConfigAutoscalingLimitsArgs:
         pulumi.set(self, "min_processing_units", value)
 
 
-if not MYPY:
-    class InstanceAutoscalingConfigAutoscalingTargetsArgsDict(TypedDict):
-        high_priority_cpu_utilization_percent: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the target high priority cpu utilization percentage that the autoscaler
-        should be trying to achieve for the instance.
-        This number is on a scale from 0 (no utilization) to 100 (full utilization)..
-        """
-        storage_utilization_percent: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the target storage utilization percentage that the autoscaler
-        should be trying to achieve for the instance.
-        This number is on a scale from 0 (no utilization) to 100 (full utilization).
-        """
-        total_cpu_utilization_percent: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
-        This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
-        If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
-        The value should be higher than high_priority_cpu_utilization_percent if present.
-        """
-elif False:
-    InstanceAutoscalingConfigAutoscalingTargetsArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAutoscalingConfigAutoscalingTargetsArgsDict(TypedDict):
+    high_priority_cpu_utilization_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the target high priority cpu utilization percentage that the autoscaler
+    should be trying to achieve for the instance.
+    This number is on a scale from 0 (no utilization) to 100 (full utilization)..
+    """
+    storage_utilization_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the target storage utilization percentage that the autoscaler
+    should be trying to achieve for the instance.
+    This number is on a scale from 0 (no utilization) to 100 (full utilization).
+    """
+    total_cpu_utilization_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+    This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+    If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+    The value should be higher than high_priority_cpu_utilization_percent if present.
+    """
 
 @pulumi.input_type
 class InstanceAutoscalingConfigAutoscalingTargetsArgs:
@@ -913,26 +901,23 @@ class InstanceAutoscalingConfigAutoscalingTargetsArgs:
         pulumi.set(self, "total_cpu_utilization_percent", value)
 
 
-if not MYPY:
-    class InstanceConfigReplicaArgsDict(TypedDict):
-        default_leader_location: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this location is designated as the default leader location where
-        leader replicas are placed.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The location of the serving resources, e.g. "us-central1".
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the type of replica.  See the [replica types
-        documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
-        for more details.
-        Possible values are: `READ_WRITE`, `READ_ONLY`, `WITNESS`.
-        """
-elif False:
-    InstanceConfigReplicaArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigReplicaArgsDict(TypedDict):
+    default_leader_location: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this location is designated as the default leader location where
+    leader replicas are placed.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The location of the serving resources, e.g. "us-central1".
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates the type of replica.  See the [replica types
+    documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
+    for more details.
+    Possible values are: `READ_WRITE`, `READ_ONLY`, `WITNESS`.
+    """
 
 @pulumi.input_type
 class InstanceConfigReplicaArgs:
@@ -997,13 +982,10 @@ class InstanceConfigReplicaArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class InstanceIAMBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    InstanceIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceIAMBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class InstanceIAMBindingConditionArgs:
@@ -1044,13 +1026,10 @@ class InstanceIAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class InstanceIAMMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    InstanceIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceIAMMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class InstanceIAMMemberConditionArgs:

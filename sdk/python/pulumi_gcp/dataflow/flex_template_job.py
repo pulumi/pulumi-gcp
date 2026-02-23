@@ -46,6 +46,7 @@ class FlexTemplateJobArgs:
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FlexTemplateJob resource.
+
         :param pulumi.Input[_builtins.str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
                
@@ -79,6 +80,9 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[_builtins.str] region: Immutable. The region in which the created job should run.
         :param pulumi.Input[_builtins.str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         :param pulumi.Input[_builtins.str] service_account_email: Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
+        :param pulumi.Input[_builtins.bool] skip_wait_on_job_termination: If set to `true`, terraform will
+               treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+               and will remove the resource from terraform state and move on.  See above note.
         :param pulumi.Input[_builtins.str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[_builtins.str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[_builtins.str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -390,6 +394,11 @@ class FlexTemplateJobArgs:
     @_builtins.property
     @pulumi.getter(name="skipWaitOnJobTermination")
     def skip_wait_on_job_termination(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to `true`, terraform will
+        treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+        and will remove the resource from terraform state and move on.  See above note.
+        """
         return pulumi.get(self, "skip_wait_on_job_termination")
 
     @skip_wait_on_job_termination.setter
@@ -480,6 +489,7 @@ class _FlexTemplateJobState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlexTemplateJob resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_pipeline_options: List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
         :param pulumi.Input[_builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
@@ -487,6 +497,7 @@ class _FlexTemplateJobState:
                Template.
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[_builtins.str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[_builtins.str] job_id: The unique ID of this job.
@@ -515,6 +526,9 @@ class _FlexTemplateJobState:
         :param pulumi.Input[_builtins.str] region: Immutable. The region in which the created job should run.
         :param pulumi.Input[_builtins.str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         :param pulumi.Input[_builtins.str] service_account_email: Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
+        :param pulumi.Input[_builtins.bool] skip_wait_on_job_termination: If set to `true`, terraform will
+               treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+               and will remove the resource from terraform state and move on.  See above note.
         :param pulumi.Input[_builtins.str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[_builtins.str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[_builtins.str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
@@ -637,6 +651,9 @@ class _FlexTemplateJobState:
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
@@ -872,6 +889,11 @@ class _FlexTemplateJobState:
     @_builtins.property
     @pulumi.getter(name="skipWaitOnJobTermination")
     def skip_wait_on_job_termination(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to `true`, terraform will
+        treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+        and will remove the resource from terraform state and move on.  See above note.
+        """
         return pulumi.get(self, "skip_wait_on_job_termination")
 
     @skip_wait_on_job_termination.setter
@@ -984,6 +1006,14 @@ class FlexTemplateJob(pulumi.CustomResource):
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
+        job on Dataflow, which is an implementation of Apache Beam running on Google
+        Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
+        and [Dataflow](https://cloud.google.com/dataflow/).
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ```python
@@ -1055,6 +1085,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1091,6 +1122,9 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: Immutable. The region in which the created job should run.
         :param pulumi.Input[_builtins.str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         :param pulumi.Input[_builtins.str] service_account_email: Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
+        :param pulumi.Input[_builtins.bool] skip_wait_on_job_termination: If set to `true`, terraform will
+               treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+               and will remove the resource from terraform state and move on.  See above note.
         :param pulumi.Input[_builtins.str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[_builtins.str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[_builtins.str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -1103,6 +1137,14 @@ class FlexTemplateJob(pulumi.CustomResource):
                  args: FlexTemplateJobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
+        job on Dataflow, which is an implementation of Apache Beam running on Google
+        Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
+        and [Dataflow](https://cloud.google.com/dataflow/).
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ```python
@@ -1174,6 +1216,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param FlexTemplateJobArgs args: The arguments to use to populate this resource's properties.
@@ -1312,6 +1355,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                Template.
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[_builtins.str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[_builtins.str] job_id: The unique ID of this job.
@@ -1340,6 +1384,9 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: Immutable. The region in which the created job should run.
         :param pulumi.Input[_builtins.str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         :param pulumi.Input[_builtins.str] service_account_email: Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
+        :param pulumi.Input[_builtins.bool] skip_wait_on_job_termination: If set to `true`, terraform will
+               treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+               and will remove the resource from terraform state and move on.  See above note.
         :param pulumi.Input[_builtins.str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[_builtins.str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[_builtins.str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
@@ -1421,6 +1468,9 @@ class FlexTemplateJob(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
@@ -1580,6 +1630,11 @@ class FlexTemplateJob(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="skipWaitOnJobTermination")
     def skip_wait_on_job_termination(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If set to `true`, terraform will
+        treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
+        and will remove the resource from terraform state and move on.  See above note.
+        """
         return pulumi.get(self, "skip_wait_on_job_termination")
 
     @_builtins.property

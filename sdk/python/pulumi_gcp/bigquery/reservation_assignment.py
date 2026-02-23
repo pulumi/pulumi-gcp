@@ -26,6 +26,7 @@ class ReservationAssignmentArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReservationAssignment resource.
+
         :param pulumi.Input[_builtins.str] assignee: The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
         :param pulumi.Input[_builtins.str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         :param pulumi.Input[_builtins.str] reservation: The reservation for the resource
@@ -115,6 +116,7 @@ class _ReservationAssignmentState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReservationAssignment resources.
+
         :param pulumi.Input[_builtins.str] assignee: The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
         :param pulumi.Input[_builtins.str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         :param pulumi.Input[_builtins.str] location: The location for the resource
@@ -273,24 +275,17 @@ class ReservationAssignment(pulumi.CustomResource):
         ReservationAssignment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
-
         * `{{project}}/{{location}}/{{reservation}}/{{name}}`
-
         * `{{location}}/{{reservation}}/{{name}}`
 
         When using the `pulumi import` command, ReservationAssignment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{project}}/{{location}}/{{reservation}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{location}}/{{reservation}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -341,24 +336,17 @@ class ReservationAssignment(pulumi.CustomResource):
         ReservationAssignment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
-
         * `{{project}}/{{location}}/{{reservation}}/{{name}}`
-
         * `{{location}}/{{reservation}}/{{name}}`
 
         When using the `pulumi import` command, ReservationAssignment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{project}}/{{location}}/{{reservation}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{location}}/{{reservation}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReservationAssignmentArgs args: The arguments to use to populate this resource's properties.

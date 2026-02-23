@@ -37,6 +37,7 @@ class RegionalSecretArgs:
                  version_destroy_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionalSecret resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the regional secret. eg us-central1
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Custom metadata about the regional secret.
@@ -54,6 +55,9 @@ class RegionalSecretArgs:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['RegionalSecretCustomerManagedEncryptionArgs'] customer_managed_encryption: The customer-managed encryption configuration of the regional secret.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+               When the field is set to true in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the federation will fail.
         :param pulumi.Input[_builtins.str] expire_time: Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
                output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
                nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
@@ -187,6 +191,11 @@ class RegionalSecretArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+        When the field is set to true in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the federation will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -358,6 +367,7 @@ class _RegionalSecretState:
                  version_destroy_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalSecret resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Custom metadata about the regional secret.
                Annotations are distinct from various forms of labels. Annotations exist to allow
                client tools to store their own state information without requiring a database.
@@ -374,6 +384,10 @@ class _RegionalSecretState:
         :param pulumi.Input[_builtins.str] create_time: The time at which the regional secret was created.
         :param pulumi.Input['RegionalSecretCustomerManagedEncryptionArgs'] customer_managed_encryption: The customer-managed encryption configuration of the regional secret.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+               When the field is set to true in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the federation will fail.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] expire_time: Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
                output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
@@ -514,6 +528,11 @@ class _RegionalSecretState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+        When the field is set to true in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the federation will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -523,6 +542,9 @@ class _RegionalSecretState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -889,24 +911,17 @@ class RegionalSecret(pulumi.CustomResource):
         RegionalSecret can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}`
-
         * `{{project}}/{{location}}/{{secret_id}}`
-
         * `{{location}}/{{secret_id}}`
 
         When using the `pulumi import` command, RegionalSecret can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{project}}/{{location}}/{{secret_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{location}}/{{secret_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -925,6 +940,9 @@ class RegionalSecret(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Union['RegionalSecretCustomerManagedEncryptionArgs', 'RegionalSecretCustomerManagedEncryptionArgsDict']] customer_managed_encryption: The customer-managed encryption configuration of the regional secret.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+               When the field is set to true in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the federation will fail.
         :param pulumi.Input[_builtins.str] expire_time: Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
                output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
                nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
@@ -1111,24 +1129,17 @@ class RegionalSecret(pulumi.CustomResource):
         RegionalSecret can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}`
-
         * `{{project}}/{{location}}/{{secret_id}}`
-
         * `{{location}}/{{secret_id}}`
 
         When using the `pulumi import` command, RegionalSecret can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{project}}/{{location}}/{{secret_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{location}}/{{secret_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionalSecretArgs args: The arguments to use to populate this resource's properties.
@@ -1245,6 +1256,10 @@ class RegionalSecret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The time at which the regional secret was created.
         :param pulumi.Input[Union['RegionalSecretCustomerManagedEncryptionArgs', 'RegionalSecretCustomerManagedEncryptionArgsDict']] customer_managed_encryption: The customer-managed encryption configuration of the regional secret.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+               When the field is set to true in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the federation will fail.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] expire_time: Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
                output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
@@ -1359,11 +1374,19 @@ class RegionalSecret(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+        When the field is set to true in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the federation will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

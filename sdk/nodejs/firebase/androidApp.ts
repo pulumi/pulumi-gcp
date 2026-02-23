@@ -5,6 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A Google Cloud Firebase Android application instance
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about AndroidApp, see:
+ *
+ * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/docs/android/setup)
+ *
  * ## Example Usage
  *
  * ### Firebase Android App Basic
@@ -55,34 +66,18 @@ import * as utilities from "../utilities";
  * AndroidApp can be imported using any of these accepted formats:
  *
  * * `{{project}} projects/{{project}}/androidApps/{{app_id}}`
- *
  * * `projects/{{project}}/androidApps/{{app_id}}`
- *
  * * `{{project}}/{{project}}/{{app_id}}`
- *
  * * `androidApps/{{app_id}}`
- *
  * * `{{app_id}}`
  *
  * When using the `pulumi import` command, AndroidApp can be imported using one of the formats above. For example:
  *
  * ```sh
- * $ pulumi import gcp:firebase/androidApp:AndroidApp default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
- * ```
- *
- * ```sh
+ * $ terraform import google_firebase_android_app.default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
  * $ pulumi import gcp:firebase/androidApp:AndroidApp default projects/{{project}}/androidApps/{{app_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}}/{{project}}/{{app_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/androidApp:AndroidApp default androidApps/{{app_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/androidApp:AndroidApp default {{app_id}}
  * ```
  */
@@ -125,6 +120,11 @@ export class AndroidApp extends pulumi.CustomResource {
      * This identifier should be treated as an opaque token, as the data format is not specified.
      */
     declare public /*out*/ readonly appId: pulumi.Output<string>;
+    /**
+     * (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+     * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+     * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+     */
     declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The user-assigned display name of the AndroidApp.
@@ -221,6 +221,11 @@ export interface AndroidAppState {
      * This identifier should be treated as an opaque token, as the data format is not specified.
      */
     appId?: pulumi.Input<string>;
+    /**
+     * (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+     * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+     * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the AndroidApp.
@@ -266,6 +271,11 @@ export interface AndroidAppArgs {
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
     apiKeyId?: pulumi.Input<string>;
+    /**
+     * (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
+     * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
+     * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the AndroidApp.

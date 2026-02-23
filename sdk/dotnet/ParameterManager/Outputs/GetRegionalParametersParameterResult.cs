@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.ParameterManager.Outputs
         /// The time at which the regional parameter was created.
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The format type of the regional parameter.

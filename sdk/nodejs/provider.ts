@@ -169,6 +169,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly parallelstoreCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly parameterManagerCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly parameterManagerRegionalCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly pollInterval: pulumi.Output<string | undefined>;
     declare public readonly privatecaCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly privilegedAccessManagerCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly project: pulumi.Output<string | undefined>;
@@ -213,6 +214,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly tpuV2CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly transcoderCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly universeDomain: pulumi.Output<string | undefined>;
+    declare public readonly vectorSearchCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly vertexAiCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly vmwareengineCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly vpcAccessCustomEndpoint: pulumi.Output<string | undefined>;
@@ -380,6 +382,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["parallelstoreCustomEndpoint"] = args?.parallelstoreCustomEndpoint;
             resourceInputs["parameterManagerCustomEndpoint"] = args?.parameterManagerCustomEndpoint;
             resourceInputs["parameterManagerRegionalCustomEndpoint"] = args?.parameterManagerRegionalCustomEndpoint;
+            resourceInputs["pollInterval"] = args?.pollInterval;
             resourceInputs["privatecaCustomEndpoint"] = args?.privatecaCustomEndpoint;
             resourceInputs["privilegedAccessManagerCustomEndpoint"] = args?.privilegedAccessManagerCustomEndpoint;
             resourceInputs["project"] = (args?.project) ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
@@ -426,6 +429,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["transcoderCustomEndpoint"] = args?.transcoderCustomEndpoint;
             resourceInputs["universeDomain"] = args?.universeDomain;
             resourceInputs["userProjectOverride"] = pulumi.output(args?.userProjectOverride).apply(JSON.stringify);
+            resourceInputs["vectorSearchCustomEndpoint"] = args?.vectorSearchCustomEndpoint;
             resourceInputs["vertexAiCustomEndpoint"] = args?.vertexAiCustomEndpoint;
             resourceInputs["vmwareengineCustomEndpoint"] = args?.vmwareengineCustomEndpoint;
             resourceInputs["vpcAccessCustomEndpoint"] = args?.vpcAccessCustomEndpoint;
@@ -602,6 +606,7 @@ export interface ProviderArgs {
     parallelstoreCustomEndpoint?: pulumi.Input<string>;
     parameterManagerCustomEndpoint?: pulumi.Input<string>;
     parameterManagerRegionalCustomEndpoint?: pulumi.Input<string>;
+    pollInterval?: pulumi.Input<string>;
     privatecaCustomEndpoint?: pulumi.Input<string>;
     privilegedAccessManagerCustomEndpoint?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
@@ -648,6 +653,7 @@ export interface ProviderArgs {
     transcoderCustomEndpoint?: pulumi.Input<string>;
     universeDomain?: pulumi.Input<string>;
     userProjectOverride?: pulumi.Input<boolean>;
+    vectorSearchCustomEndpoint?: pulumi.Input<string>;
     vertexAiCustomEndpoint?: pulumi.Input<string>;
     vmwareengineCustomEndpoint?: pulumi.Input<string>;
     vpcAccessCustomEndpoint?: pulumi.Input<string>;

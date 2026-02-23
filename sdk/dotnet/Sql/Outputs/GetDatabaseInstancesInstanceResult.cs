@@ -33,6 +33,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// To filter out the Cloud SQL instances which are of the specified database version.
         /// </summary>
         public readonly string DatabaseVersion;
+        /// <summary>
+        /// Used to block Terraform from deleting a SQL Instance. Defaults to true.
+        /// </summary>
         public readonly bool DeletionProtection;
         /// <summary>
         /// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
@@ -47,6 +50,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The description of final backup if instance enable create final backup during instance deletion.
         /// </summary>
         public readonly string FinalBackupDescription;
+        /// <summary>
+        /// The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
+        /// </summary>
         public readonly string FirstIpAddress;
         /// <summary>
         /// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
@@ -61,6 +67,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The name of the instance that will act as the master in the replication setup. Note, this requires the master to have BinaryLogEnabled set, as well as existing backups.
         /// </summary>
         public readonly string MasterInstanceName;
+        /// <summary>
+        /// The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first created. This is done because after a name is used, it cannot be reused for up to one week.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
@@ -70,6 +79,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstancePointInTimeRestoreContextResult> PointInTimeRestoreContexts;
+        /// <summary>
+        /// IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
+        /// </summary>
         public readonly string PrivateIpAddress;
         /// <summary>
         /// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
@@ -79,6 +91,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The link to service attachment of PSC instance.
         /// </summary>
         public readonly string PscServiceAttachmentLink;
+        /// <summary>
+        /// IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
+        /// </summary>
         public readonly string PublicIpAddress;
         /// <summary>
         /// To filter out the Cloud SQL instances which are located in the specified region.

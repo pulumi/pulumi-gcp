@@ -307,22 +307,14 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// BareMetalNodePool can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}`
-    /// 
     /// * `{{location}}/{{bare_metal_cluster}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, BareMetalNodePool can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default {{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default {{location}}/{{bare_metal_cluster}}/{{name}}
     /// ```
     /// </summary>
@@ -369,6 +361,9 @@ namespace Pulumi.Gcp.GkeOnPrem
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -602,6 +597,10 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());

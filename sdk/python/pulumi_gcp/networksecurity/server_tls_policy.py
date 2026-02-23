@@ -31,6 +31,7 @@ class ServerTlsPolicyArgs:
                  server_certificate: Optional[pulumi.Input['ServerTlsPolicyServerCertificateArgs']] = None):
         """
         The set of arguments for constructing a ServerTlsPolicy resource.
+
         :param pulumi.Input[_builtins.bool] allow_open: This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies.
                Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
                Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
@@ -189,6 +190,7 @@ class _ServerTlsPolicyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerTlsPolicy resources.
+
         :param pulumi.Input[_builtins.bool] allow_open: This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies.
                Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
                Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
@@ -524,24 +526,17 @@ class ServerTlsPolicy(pulumi.CustomResource):
         ServerTlsPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -686,24 +681,17 @@ class ServerTlsPolicy(pulumi.CustomResource):
         ServerTlsPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServerTlsPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -71,22 +71,14 @@ import * as utilities from "../utilities";
  * Instance can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/instances/{{name}}`
- *
  * * `{{project}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:spanner/instance:Instance default {{name}}
  * ```
  */
@@ -118,6 +110,15 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either num_nodes, processingUnits or autoscalingConfig must be
+     * present in terraform except when instanceType = FREE_INSTANCE.
+     * When autoscaling is enabled, numNodes and processingUnits are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     */
     declare public readonly autoscalingConfig: pulumi.Output<outputs.spanner.InstanceAutoscalingConfig | undefined>;
     /**
      * The name of the instance's configuration (similar but not
@@ -176,7 +177,15 @@ export class Instance extends pulumi.CustomResource {
      * If not provided, a random string starting with `tf-` will be selected.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
+     * autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     */
     declare public readonly numNodes: pulumi.Output<number>;
+    /**
+     * The number of processing units allocated to this instance. Exactly one of either num_nodes,
+     * processingUnits or autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     */
     declare public readonly processingUnits: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
@@ -256,6 +265,15 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either num_nodes, processingUnits or autoscalingConfig must be
+     * present in terraform except when instanceType = FREE_INSTANCE.
+     * When autoscaling is enabled, numNodes and processingUnits are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     */
     autoscalingConfig?: pulumi.Input<inputs.spanner.InstanceAutoscalingConfig>;
     /**
      * The name of the instance's configuration (similar but not
@@ -314,7 +332,15 @@ export interface InstanceState {
      * If not provided, a random string starting with `tf-` will be selected.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
+     * autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     */
     numNodes?: pulumi.Input<number>;
+    /**
+     * The number of processing units allocated to this instance. Exactly one of either num_nodes,
+     * processingUnits or autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     */
     processingUnits?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
@@ -336,6 +362,15 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either num_nodes, processingUnits or autoscalingConfig must be
+     * present in terraform except when instanceType = FREE_INSTANCE.
+     * When autoscaling is enabled, numNodes and processingUnits are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     */
     autoscalingConfig?: pulumi.Input<inputs.spanner.InstanceAutoscalingConfig>;
     /**
      * The name of the instance's configuration (similar but not
@@ -390,7 +425,15 @@ export interface InstanceArgs {
      * If not provided, a random string starting with `tf-` will be selected.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
+     * autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     */
     numNodes?: pulumi.Input<number>;
+    /**
+     * The number of processing units allocated to this instance. Exactly one of either num_nodes,
+     * processingUnits or autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
+     */
     processingUnits?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.

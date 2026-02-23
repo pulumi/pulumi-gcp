@@ -30,6 +30,7 @@ class RepositoryArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Repository resource.
+
         :param pulumi.Input[_builtins.str] instance: The name of the instance in which the repository is hosted.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
@@ -170,6 +171,7 @@ class _RepositoryState:
                  uris: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryUriArgs']]]] = None):
         """
         Input properties used for looking up and filtering Repository resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the repository was created in UTC.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the repository. Setting `ABANDON` allows the resource
                to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
@@ -443,30 +445,19 @@ class Repository(pulumi.CustomResource):
         Repository can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
-
         * `{{project}}/{{location}}/{{repository_id}}`
-
         * `{{location}}/{{repository_id}}`
-
         * `{{repository_id}}`
 
         When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securesourcemanager/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/repository:Repository default {{project}}/{{location}}/{{repository_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/repository:Repository default {{location}}/{{repository_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/repository:Repository default {{repository_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -549,30 +540,19 @@ class Repository(pulumi.CustomResource):
         Repository can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
-
         * `{{project}}/{{location}}/{{repository_id}}`
-
         * `{{location}}/{{repository_id}}`
-
         * `{{repository_id}}`
 
         When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securesourcemanager/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/repository:Repository default {{project}}/{{location}}/{{repository_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/repository:Repository default {{location}}/{{repository_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securesourcemanager/repository:Repository default {{repository_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RepositoryArgs args: The arguments to use to populate this resource's properties.

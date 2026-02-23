@@ -21,12 +21,12 @@ public final class ServiceTemplateContainerStartupProbeHttpGet {
      */
     private @Nullable List<ServiceTemplateContainerStartupProbeHttpGetHttpHeader> httpHeaders;
     /**
-     * @return Path to access on the HTTP server. Defaults to &#39;/&#39;.
+     * @return Path to access on the HTTP server. If set, it should not be empty string.
      * 
      */
     private @Nullable String path;
     /**
-     * @return Port number to access on the container. Must be in the range 1 to 65535.
+     * @return Port number to access on the container. Number must be in the range 1 to 65535.
      * If not specified, defaults to the same value as container.ports[0].containerPort.
      * 
      */
@@ -42,14 +42,14 @@ public final class ServiceTemplateContainerStartupProbeHttpGet {
         return this.httpHeaders == null ? List.of() : this.httpHeaders;
     }
     /**
-     * @return Path to access on the HTTP server. Defaults to &#39;/&#39;.
+     * @return Path to access on the HTTP server. If set, it should not be empty string.
      * 
      */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return Port number to access on the container. Must be in the range 1 to 65535.
+     * @return Port number to access on the container. Number must be in the range 1 to 65535.
      * If not specified, defaults to the same value as container.ports[0].containerPort.
      * 
      */

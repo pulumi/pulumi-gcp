@@ -20,6 +20,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages Custom Domains for Firebase Hosting. Custom Domains link your
+ * domain names with Firebase Hosting sites, allowing Hosting to serve content
+ * on those domain names.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about CustomDomain, see:
+ * 
+ * * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites.customDomains)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/docs/hosting)
+ * 
  * ## Example Usage
  * 
  * ### Firebasehosting Customdomain Basic
@@ -188,28 +201,16 @@ import javax.annotation.Nullable;
  * CustomDomain can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}`
- * 
  * * `sites/{{site_id}}/customDomains/{{custom_domain}}`
- * 
  * * `{{project}}/{{site_id}}/{{custom_domain}}`
- * 
  * * `{{site_id}}/{{custom_domain}}`
  * 
  * When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default sites/{{site_id}}/customDomains/{{custom_domain}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{project}}/{{site_id}}/{{custom_domain}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
  * ```
  * 
@@ -600,9 +601,21 @@ public class HostingCustomDomain extends com.pulumi.resources.CustomResource {
     public Output<String> updateTime() {
         return this.updateTime;
     }
+    /**
+     * If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+     * If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+     * the `CustomDomain` will be returned and stored in the Terraform state.
+     * 
+     */
     @Export(name="waitDnsVerification", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitDnsVerification;
 
+    /**
+     * @return If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+     * If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+     * the `CustomDomain` will be returned and stored in the Terraform state.
+     * 
+     */
     public Output<Optional<Boolean>> waitDnsVerification() {
         return Codegen.optional(this.waitDnsVerification);
     }

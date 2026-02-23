@@ -26,6 +26,7 @@ class AzureClientArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AzureClient resource.
+
         :param pulumi.Input[_builtins.str] application_id: The Azure Active Directory Application ID.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory Tenant ID.
@@ -122,6 +123,7 @@ class _AzureClientState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AzureClient resources.
+
         :param pulumi.Input[_builtins.str] application_id: The Azure Active Directory Application ID.
         :param pulumi.Input[_builtins.str] certificate: Output only. The PEM encoded x509 certificate.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this resource was created.
@@ -289,26 +291,18 @@ class AzureClient(pulumi.CustomResource):
         ## Import
 
         Client can be imported using any of these accepted formats:
-
         * `projects/{{project}}/locations/{{location}}/azureClients/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/azureClient:AzureClient default projects/{{project}}/locations/{{location}}/azureClients/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/azureClient:AzureClient default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/azureClient:AzureClient default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -352,26 +346,18 @@ class AzureClient(pulumi.CustomResource):
         ## Import
 
         Client can be imported using any of these accepted formats:
-
         * `projects/{{project}}/locations/{{location}}/azureClients/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/azureClient:AzureClient default projects/{{project}}/locations/{{location}}/azureClients/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/azureClient:AzureClient default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/azureClient:AzureClient default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AzureClientArgs args: The arguments to use to populate this resource's properties.

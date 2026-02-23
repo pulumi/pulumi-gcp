@@ -33,6 +33,7 @@ class SecurityScanConfigArgs:
                  user_agent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityScanConfig resource.
+
         :param pulumi.Input[_builtins.str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] starting_urls: The starting URLs from which the scanner finds site pages.
         :param pulumi.Input['SecurityScanConfigAuthenticationArgs'] authentication: The authentication configuration.
@@ -222,6 +223,7 @@ class _SecurityScanConfigState:
                  user_agent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityScanConfig resources.
+
         :param pulumi.Input['SecurityScanConfigAuthenticationArgs'] authentication: The authentication configuration.
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
@@ -432,6 +434,17 @@ class SecurityScanConfig(pulumi.CustomResource):
                  user_agent: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A ScanConfig resource contains the configurations to launch a scan.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about ScanConfig, see:
+
+        * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
+        * How-to Guides
+            * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+
         ## Example Usage
 
         ### Scan Config Basic
@@ -452,24 +465,17 @@ class SecurityScanConfig(pulumi.CustomResource):
         ScanConfig can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ScanConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_security_scanner_scan_config.default "{{project}} {{name}}"
         $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -502,6 +508,17 @@ class SecurityScanConfig(pulumi.CustomResource):
                  args: SecurityScanConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A ScanConfig resource contains the configurations to launch a scan.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about ScanConfig, see:
+
+        * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
+        * How-to Guides
+            * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+
         ## Example Usage
 
         ### Scan Config Basic
@@ -522,24 +539,17 @@ class SecurityScanConfig(pulumi.CustomResource):
         ScanConfig can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ScanConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_security_scanner_scan_config.default "{{project}} {{name}}"
         $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityScanConfigArgs args: The arguments to use to populate this resource's properties.

@@ -14,6 +14,8 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ReleaseBlueprint struct {
+	// (Output)
+	// Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
 	Engine *string `pulumi:"engine"`
 	// URI to a blueprint used by the Unit (required unless unitKind or release is
 	// set).
@@ -35,6 +37,8 @@ type ReleaseBlueprintInput interface {
 }
 
 type ReleaseBlueprintArgs struct {
+	// (Output)
+	// Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// URI to a blueprint used by the Unit (required unless unitKind or release is
 	// set).
@@ -121,6 +125,8 @@ func (o ReleaseBlueprintOutput) ToReleaseBlueprintPtrOutputWithContext(ctx conte
 	}).(ReleaseBlueprintPtrOutput)
 }
 
+// (Output)
+// Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
 func (o ReleaseBlueprintOutput) Engine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseBlueprint) *string { return v.Engine }).(pulumi.StringPtrOutput)
 }
@@ -161,6 +167,8 @@ func (o ReleaseBlueprintPtrOutput) Elem() ReleaseBlueprintOutput {
 	}).(ReleaseBlueprintOutput)
 }
 
+// (Output)
+// Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
 func (o ReleaseBlueprintPtrOutput) Engine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseBlueprint) *string {
 		if v == nil {

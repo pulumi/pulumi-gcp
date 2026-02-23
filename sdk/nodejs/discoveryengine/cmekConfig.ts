@@ -42,22 +42,14 @@ import * as utilities from "../utilities";
  * CmekConfig can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/cmekConfigs/{{cmek_config_id}}`
- *
  * * `{{project}}/{{location}}/{{cmek_config_id}}`
- *
  * * `{{location}}/{{cmek_config_id}}`
  *
  * When using the `pulumi import` command, CmekConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:discoveryengine/cmekConfig:CmekConfig default projects/{{project}}/locations/{{location}}/cmekConfigs/{{cmek_config_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:discoveryengine/cmekConfig:CmekConfig default {{project}}/{{location}}/{{cmek_config_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:discoveryengine/cmekConfig:CmekConfig default {{location}}/{{cmek_config_id}}
  * ```
  */

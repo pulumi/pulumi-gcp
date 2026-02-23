@@ -36,6 +36,7 @@ class SnapshotArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
+
         :param pulumi.Input[_builtins.str] chain_name: Creates the new snapshot in the snapshot chain labeled with the
                specified name. The chain name must be 1-63 characters long and
                comply with RFC1035. This is an uncommon option only for advanced
@@ -319,6 +320,7 @@ class _SnapshotState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
+
         :param pulumi.Input[_builtins.str] chain_name: Creates the new snapshot in the snapshot chain labeled with the
                specified name. The chain name must be 1-63 characters long and
                comply with RFC1035. This is an uncommon option only for advanced
@@ -870,24 +872,17 @@ class Snapshot(pulumi.CustomResource):
         Snapshot can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/snapshots/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/snapshot:Snapshot default projects/{{project}}/global/snapshots/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/snapshot:Snapshot default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/snapshot:Snapshot default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1066,24 +1061,17 @@ class Snapshot(pulumi.CustomResource):
         Snapshot can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/snapshots/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/snapshot:Snapshot default projects/{{project}}/global/snapshots/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/snapshot:Snapshot default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/snapshot:Snapshot default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnapshotArgs args: The arguments to use to populate this resource's properties.

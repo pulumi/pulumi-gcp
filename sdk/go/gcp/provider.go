@@ -160,6 +160,7 @@ type Provider struct {
 	ParallelstoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"parallelstoreCustomEndpoint"`
 	ParameterManagerCustomEndpoint         pulumi.StringPtrOutput `pulumi:"parameterManagerCustomEndpoint"`
 	ParameterManagerRegionalCustomEndpoint pulumi.StringPtrOutput `pulumi:"parameterManagerRegionalCustomEndpoint"`
+	PollInterval                           pulumi.StringPtrOutput `pulumi:"pollInterval"`
 	PrivatecaCustomEndpoint                pulumi.StringPtrOutput `pulumi:"privatecaCustomEndpoint"`
 	PrivilegedAccessManagerCustomEndpoint  pulumi.StringPtrOutput `pulumi:"privilegedAccessManagerCustomEndpoint"`
 	Project                                pulumi.StringPtrOutput `pulumi:"project"`
@@ -204,6 +205,7 @@ type Provider struct {
 	TpuV2CustomEndpoint                    pulumi.StringPtrOutput `pulumi:"tpuV2CustomEndpoint"`
 	TranscoderCustomEndpoint               pulumi.StringPtrOutput `pulumi:"transcoderCustomEndpoint"`
 	UniverseDomain                         pulumi.StringPtrOutput `pulumi:"universeDomain"`
+	VectorSearchCustomEndpoint             pulumi.StringPtrOutput `pulumi:"vectorSearchCustomEndpoint"`
 	VertexAiCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"vertexAiCustomEndpoint"`
 	VmwareengineCustomEndpoint             pulumi.StringPtrOutput `pulumi:"vmwareengineCustomEndpoint"`
 	VpcAccessCustomEndpoint                pulumi.StringPtrOutput `pulumi:"vpcAccessCustomEndpoint"`
@@ -400,6 +402,7 @@ type providerArgs struct {
 	ParallelstoreCustomEndpoint            *string                      `pulumi:"parallelstoreCustomEndpoint"`
 	ParameterManagerCustomEndpoint         *string                      `pulumi:"parameterManagerCustomEndpoint"`
 	ParameterManagerRegionalCustomEndpoint *string                      `pulumi:"parameterManagerRegionalCustomEndpoint"`
+	PollInterval                           *string                      `pulumi:"pollInterval"`
 	PrivatecaCustomEndpoint                *string                      `pulumi:"privatecaCustomEndpoint"`
 	PrivilegedAccessManagerCustomEndpoint  *string                      `pulumi:"privilegedAccessManagerCustomEndpoint"`
 	Project                                *string                      `pulumi:"project"`
@@ -446,6 +449,7 @@ type providerArgs struct {
 	TranscoderCustomEndpoint               *string                      `pulumi:"transcoderCustomEndpoint"`
 	UniverseDomain                         *string                      `pulumi:"universeDomain"`
 	UserProjectOverride                    *bool                        `pulumi:"userProjectOverride"`
+	VectorSearchCustomEndpoint             *string                      `pulumi:"vectorSearchCustomEndpoint"`
 	VertexAiCustomEndpoint                 *string                      `pulumi:"vertexAiCustomEndpoint"`
 	VmwareengineCustomEndpoint             *string                      `pulumi:"vmwareengineCustomEndpoint"`
 	VpcAccessCustomEndpoint                *string                      `pulumi:"vpcAccessCustomEndpoint"`
@@ -605,6 +609,7 @@ type ProviderArgs struct {
 	ParallelstoreCustomEndpoint            pulumi.StringPtrInput
 	ParameterManagerCustomEndpoint         pulumi.StringPtrInput
 	ParameterManagerRegionalCustomEndpoint pulumi.StringPtrInput
+	PollInterval                           pulumi.StringPtrInput
 	PrivatecaCustomEndpoint                pulumi.StringPtrInput
 	PrivilegedAccessManagerCustomEndpoint  pulumi.StringPtrInput
 	Project                                pulumi.StringPtrInput
@@ -651,6 +656,7 @@ type ProviderArgs struct {
 	TranscoderCustomEndpoint               pulumi.StringPtrInput
 	UniverseDomain                         pulumi.StringPtrInput
 	UserProjectOverride                    pulumi.BoolPtrInput
+	VectorSearchCustomEndpoint             pulumi.StringPtrInput
 	VertexAiCustomEndpoint                 pulumi.StringPtrInput
 	VmwareengineCustomEndpoint             pulumi.StringPtrInput
 	VpcAccessCustomEndpoint                pulumi.StringPtrInput
@@ -1288,6 +1294,10 @@ func (o ProviderOutput) ParameterManagerRegionalCustomEndpoint() pulumi.StringPt
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ParameterManagerRegionalCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) PollInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.PollInterval }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) PrivatecaCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.PrivatecaCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -1462,6 +1472,10 @@ func (o ProviderOutput) TranscoderCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) UniverseDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UniverseDomain }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) VectorSearchCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.VectorSearchCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) VertexAiCustomEndpoint() pulumi.StringPtrOutput {

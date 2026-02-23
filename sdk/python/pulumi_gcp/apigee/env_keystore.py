@@ -23,6 +23,7 @@ class EnvKeystoreArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvKeystore resource.
+
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
         :param pulumi.Input[_builtins.str] name: The name of the newly created keystore.
@@ -65,6 +66,7 @@ class _EnvKeystoreState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvKeystore resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] aliases: Aliases in this keystore.
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
@@ -138,18 +140,15 @@ class EnvKeystore(pulumi.CustomResource):
         EnvKeystore can be imported using any of these accepted formats:
 
         * `{{env_id}}/keystores/{{name}}`
-
         * `{{env_id}}/{{name}}`
 
         When using the `pulumi import` command, EnvKeystore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/envKeystore:EnvKeystore default {{env_id}}/keystores/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/envKeystore:EnvKeystore default {{env_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -177,18 +176,15 @@ class EnvKeystore(pulumi.CustomResource):
         EnvKeystore can be imported using any of these accepted formats:
 
         * `{{env_id}}/keystores/{{name}}`
-
         * `{{env_id}}/{{name}}`
 
         When using the `pulumi import` command, EnvKeystore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/envKeystore:EnvKeystore default {{env_id}}/keystores/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/envKeystore:EnvKeystore default {{env_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvKeystoreArgs args: The arguments to use to populate this resource's properties.

@@ -37,6 +37,7 @@ class OrganizationArgs:
                  runtime_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Organization resource.
+
         :param pulumi.Input[_builtins.str] project_id: The project ID associated with the Apigee organization.
         :param pulumi.Input[_builtins.str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input[_builtins.str] api_consumer_data_encryption_key_name: Cloud KMS key name used for encrypting API consumer data.
@@ -312,6 +313,7 @@ class _OrganizationState:
                  subscription_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Organization resources.
+
         :param pulumi.Input[_builtins.str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input[_builtins.str] api_consumer_data_encryption_key_name: Cloud KMS key name used for encrypting API consumer data.
         :param pulumi.Input[_builtins.str] api_consumer_data_location: This field is needed only for customers using non-default data residency regions.
@@ -791,18 +793,15 @@ class Organization(pulumi.CustomResource):
         Organization can be imported using any of these accepted formats:
 
         * `organizations/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Organization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/organization:Organization default organizations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/organization:Organization default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -988,18 +987,15 @@ class Organization(pulumi.CustomResource):
         Organization can be imported using any of these accepted formats:
 
         * `organizations/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Organization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/organization:Organization default organizations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/organization:Organization default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationArgs args: The arguments to use to populate this resource's properties.

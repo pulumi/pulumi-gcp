@@ -26,6 +26,7 @@ class AppCheckDeviceCheckConfigArgs:
                  token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppCheckDeviceCheckConfig resource.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of an
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
         :param pulumi.Input[_builtins.str] key_id: The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
@@ -123,6 +124,7 @@ class _AppCheckDeviceCheckConfigState:
                  token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppCheckDeviceCheckConfig resources.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of an
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
         :param pulumi.Input[_builtins.str] key_id: The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
@@ -298,24 +300,17 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
         DeviceCheckConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/apps/{{app_id}}/deviceCheckConfig`
-
         * `{{project}}/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, DeviceCheckConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default projects/{{project}}/apps/{{app_id}}/deviceCheckConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default {{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default {{app_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -379,24 +374,17 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
         DeviceCheckConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/apps/{{app_id}}/deviceCheckConfig`
-
         * `{{project}}/{{app_id}}`
-
         * `{{app_id}}`
 
         When using the `pulumi import` command, DeviceCheckConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default projects/{{project}}/apps/{{app_id}}/deviceCheckConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default {{project}}/{{app_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default {{app_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppCheckDeviceCheckConfigArgs args: The arguments to use to populate this resource's properties.

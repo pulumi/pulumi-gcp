@@ -28,6 +28,7 @@ class ResponsePolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResponsePolicy resource.
+
         :param pulumi.Input[_builtins.str] response_policy_name: The user assigned name for this Response Policy, such as `myresponsepolicy`.
         :param pulumi.Input[_builtins.str] description: The description of the response policy, such as `My new response policy`.
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
@@ -121,6 +122,7 @@ class _ResponsePolicyState:
                  response_policy_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResponsePolicy resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the response policy, such as `My new response policy`.
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
@@ -295,24 +297,17 @@ class ResponsePolicy(pulumi.CustomResource):
         ResponsePolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/responsePolicies/{{response_policy_name}}`
-
         * `{{project}}/{{response_policy_name}}`
-
         * `{{response_policy_name}}`
 
         When using the `pulumi import` command, ResponsePolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default projects/{{project}}/responsePolicies/{{response_policy_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{project}}/{{response_policy_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{response_policy_name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -409,24 +404,17 @@ class ResponsePolicy(pulumi.CustomResource):
         ResponsePolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/responsePolicies/{{response_policy_name}}`
-
         * `{{project}}/{{response_policy_name}}`
-
         * `{{response_policy_name}}`
 
         When using the `pulumi import` command, ResponsePolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default projects/{{project}}/responsePolicies/{{response_policy_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{project}}/{{response_policy_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{response_policy_name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResponsePolicyArgs args: The arguments to use to populate this resource's properties.

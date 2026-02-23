@@ -24,6 +24,7 @@ class BrandArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Brand resource.
+
         :param pulumi.Input[_builtins.str] application_title: Application name displayed on OAuth consent screen.
         :param pulumi.Input[_builtins.str] support_email: Support email displayed on the OAuth consent screen. Can be either a
                user or group email. When a user email is specified, the caller must
@@ -90,6 +91,7 @@ class _BrandState:
                  support_email: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Brand resources.
+
         :param pulumi.Input[_builtins.str] application_title: Application name displayed on OAuth consent screen.
         :param pulumi.Input[_builtins.str] name: Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
                NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
@@ -195,6 +197,23 @@ class Brand(pulumi.CustomResource):
                  support_email: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** This resource is deprecated on Jan 22, 2025. After Jan 19, 2026 the `iap.Brand` Terraform resource will no longer function as intended due to the deprecation of the IAP OAuth Admin APIs. New projects will not be able to use these APIs. March 19, 2026 The IAP OAuth Admin APIs will be permanently shut down. Access to this feature will no longer be available.
+
+        OAuth brand data. Only "Organization Internal" brands can be created
+        programmatically via API. To convert it into an external brands
+        please use the GCP Console.
+
+        > **Note:** Brands can only be created once for a Google Cloud
+        project and the underlying Google API doesn't not support DELETE or PATCH methods.
+        Destroying a Terraform-managed Brand will remove it from state
+        but *will not delete it from Google Cloud.*
+
+        To get more information about Brand, see:
+
+        * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands)
+        * How-to Guides
+            * [Setting up IAP Brand](https://cloud.google.com/iap/docs/tutorial-gce#set_up_iap)
+
         ## Example Usage
 
         ### Iap Brand
@@ -222,24 +241,17 @@ class Brand(pulumi.CustomResource):
         Brand can be imported using any of these accepted formats:
 
         * `projects/{{project_id}}/brands/{{brand_id}}`
-
         * `projects/{{project_number}}/brands/{{brand_id}}`
-
         * `{{project_number}}/{{brand_id}}`
 
         When using the `pulumi import` command, Brand can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iap/brand:Brand default projects/{{project_id}}/brands/{{brand_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/brand:Brand default projects/{{project_number}}/brands/{{brand_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/brand:Brand default {{project_number}}/{{brand_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -259,6 +271,23 @@ class Brand(pulumi.CustomResource):
                  args: BrandArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** This resource is deprecated on Jan 22, 2025. After Jan 19, 2026 the `iap.Brand` Terraform resource will no longer function as intended due to the deprecation of the IAP OAuth Admin APIs. New projects will not be able to use these APIs. March 19, 2026 The IAP OAuth Admin APIs will be permanently shut down. Access to this feature will no longer be available.
+
+        OAuth brand data. Only "Organization Internal" brands can be created
+        programmatically via API. To convert it into an external brands
+        please use the GCP Console.
+
+        > **Note:** Brands can only be created once for a Google Cloud
+        project and the underlying Google API doesn't not support DELETE or PATCH methods.
+        Destroying a Terraform-managed Brand will remove it from state
+        but *will not delete it from Google Cloud.*
+
+        To get more information about Brand, see:
+
+        * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands)
+        * How-to Guides
+            * [Setting up IAP Brand](https://cloud.google.com/iap/docs/tutorial-gce#set_up_iap)
+
         ## Example Usage
 
         ### Iap Brand
@@ -286,24 +315,17 @@ class Brand(pulumi.CustomResource):
         Brand can be imported using any of these accepted formats:
 
         * `projects/{{project_id}}/brands/{{brand_id}}`
-
         * `projects/{{project_number}}/brands/{{brand_id}}`
-
         * `{{project_number}}/{{brand_id}}`
 
         When using the `pulumi import` command, Brand can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iap/brand:Brand default projects/{{project_id}}/brands/{{brand_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/brand:Brand default projects/{{project_number}}/brands/{{brand_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/brand:Brand default {{project_number}}/{{brand_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BrandArgs args: The arguments to use to populate this resource's properties.

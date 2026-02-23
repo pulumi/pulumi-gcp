@@ -27,6 +27,7 @@ class NetworkEndpointListArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkEndpointList resource.
+
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group these endpoints are part of.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
@@ -106,6 +107,7 @@ class _NetworkEndpointListState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkEndpointList resources.
+
         :param pulumi.Input[_builtins.str] network_endpoint_group: The network endpoint group these endpoints are part of.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
@@ -277,30 +279,19 @@ class NetworkEndpointList(pulumi.CustomResource):
         NetworkEndpoints can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}`
-
         * `{{project}}/{{zone}}/{{network_endpoint_group}}`
-
         * `{{zone}}/{{network_endpoint_group}}`
-
         * `{{network_endpoint_group}}`
 
         When using the `pulumi import` command, NetworkEndpoints can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{project}}/{{zone}}/{{network_endpoint_group}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{zone}}/{{network_endpoint_group}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{network_endpoint_group}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -408,30 +399,19 @@ class NetworkEndpointList(pulumi.CustomResource):
         NetworkEndpoints can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}`
-
         * `{{project}}/{{zone}}/{{network_endpoint_group}}`
-
         * `{{zone}}/{{network_endpoint_group}}`
-
         * `{{network_endpoint_group}}`
 
         When using the `pulumi import` command, NetworkEndpoints can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{project}}/{{zone}}/{{network_endpoint_group}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{zone}}/{{network_endpoint_group}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{network_endpoint_group}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkEndpointListArgs args: The arguments to use to populate this resource's properties.

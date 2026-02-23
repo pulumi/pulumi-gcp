@@ -32,6 +32,7 @@ class CxWebhookArgs:
                  timeout: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CxWebhook resource.
+
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
@@ -191,6 +192,7 @@ class _CxWebhookState:
                  timeout: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxWebhook resources.
+
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
@@ -673,18 +675,15 @@ class CxWebhook(pulumi.CustomResource):
         Webhook can be imported using any of these accepted formats:
 
         * `{{parent}}/webhooks/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, Webhook can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxWebhook:CxWebhook default {{parent}}/webhooks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxWebhook:CxWebhook default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -997,18 +996,15 @@ class CxWebhook(pulumi.CustomResource):
         Webhook can be imported using any of these accepted formats:
 
         * `{{parent}}/webhooks/{{name}}`
-
         * `{{parent}}/{{name}}`
 
         When using the `pulumi import` command, Webhook can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxWebhook:CxWebhook default {{parent}}/webhooks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:diagflow/cxWebhook:CxWebhook default {{parent}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CxWebhookArgs args: The arguments to use to populate this resource's properties.

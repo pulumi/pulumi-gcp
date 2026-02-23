@@ -105,6 +105,7 @@ class ClusterArgs:
                  workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input['ClusterAddonsConfigArgs'] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
@@ -141,6 +142,10 @@ class ClusterArgs:
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from
+               destroying the cluster.  Deleting this cluster via `terraform destroy` or
+               `pulumi up` will only succeed if this field is `false` in the Terraform
+               state.
         :param pulumi.Input[_builtins.str] description: Description of the cluster.
         :param pulumi.Input[_builtins.bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
         :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
@@ -704,6 +709,12 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from
+        destroying the cluster.  Deleting this cluster via `terraform destroy` or
+        `pulumi up` will only succeed if this field is `false` in the Terraform
+        state.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -1724,6 +1735,7 @@ class _ClusterState:
                  workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input['ClusterAddonsConfigArgs'] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
@@ -1760,6 +1772,10 @@ class _ClusterState:
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from
+               destroying the cluster.  Deleting this cluster via `terraform destroy` or
+               `pulumi up` will only succeed if this field is `false` in the Terraform
+               state.
         :param pulumi.Input[_builtins.str] description: Description of the cluster.
         :param pulumi.Input[_builtins.bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
         :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
@@ -2349,6 +2365,12 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from
+        destroying the cluster.  Deleting this cluster via `terraform destroy` or
+        `pulumi up` will only succeed if this field is `false` in the Terraform
+        state.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -3556,6 +3578,7 @@ class Cluster(pulumi.CustomResource):
             enable_autopilot=True)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']] addons_config: The configuration for addons supported by GKE.
@@ -3594,6 +3617,10 @@ class Cluster(pulumi.CustomResource):
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from
+               destroying the cluster.  Deleting this cluster via `terraform destroy` or
+               `pulumi up` will only succeed if this field is `false` in the Terraform
+               state.
         :param pulumi.Input[_builtins.str] description: Description of the cluster.
         :param pulumi.Input[_builtins.bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
         :param pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
@@ -3879,6 +3906,7 @@ class Cluster(pulumi.CustomResource):
             location="us-central1-a",
             enable_autopilot=True)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.
@@ -4223,6 +4251,10 @@ class Cluster(pulumi.CustomResource):
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from
+               destroying the cluster.  Deleting this cluster via `terraform destroy` or
+               `pulumi up` will only succeed if this field is `false` in the Terraform
+               state.
         :param pulumi.Input[_builtins.str] description: Description of the cluster.
         :param pulumi.Input[_builtins.bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
         :param pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
@@ -4663,6 +4695,12 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from
+        destroying the cluster.  Deleting this cluster via `terraform destroy` or
+        `pulumi up` will only succeed if this field is `false` in the Terraform
+        state.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property

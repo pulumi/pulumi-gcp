@@ -870,6 +870,11 @@ func (o SecurityGatewayApplicationEndpointMatcherArrayOutput) Index(i pulumi.Int
 }
 
 type SecurityGatewayApplicationIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -889,6 +894,11 @@ type SecurityGatewayApplicationIamBindingConditionInput interface {
 }
 
 type SecurityGatewayApplicationIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -973,6 +983,11 @@ func (o SecurityGatewayApplicationIamBindingConditionOutput) ToSecurityGatewayAp
 	}).(SecurityGatewayApplicationIamBindingConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o SecurityGatewayApplicationIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGatewayApplicationIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1011,6 +1026,11 @@ func (o SecurityGatewayApplicationIamBindingConditionPtrOutput) Elem() SecurityG
 	}).(SecurityGatewayApplicationIamBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o SecurityGatewayApplicationIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGatewayApplicationIamBindingCondition) *string {
 		if v == nil {
@@ -1041,6 +1061,11 @@ func (o SecurityGatewayApplicationIamBindingConditionPtrOutput) Title() pulumi.S
 }
 
 type SecurityGatewayApplicationIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -1060,6 +1085,11 @@ type SecurityGatewayApplicationIamMemberConditionInput interface {
 }
 
 type SecurityGatewayApplicationIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -1144,6 +1174,11 @@ func (o SecurityGatewayApplicationIamMemberConditionOutput) ToSecurityGatewayApp
 	}).(SecurityGatewayApplicationIamMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o SecurityGatewayApplicationIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGatewayApplicationIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1182,6 +1217,11 @@ func (o SecurityGatewayApplicationIamMemberConditionPtrOutput) Elem() SecurityGa
 	}).(SecurityGatewayApplicationIamMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o SecurityGatewayApplicationIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGatewayApplicationIamMemberCondition) *string {
 		if v == nil {
@@ -3017,6 +3057,11 @@ func (o SecurityGatewayHubInternetGatewayPtrOutput) AssignedIps() pulumi.StringA
 }
 
 type SecurityGatewayIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -3036,6 +3081,11 @@ type SecurityGatewayIamBindingConditionInput interface {
 }
 
 type SecurityGatewayIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -3120,6 +3170,11 @@ func (o SecurityGatewayIamBindingConditionOutput) ToSecurityGatewayIamBindingCon
 	}).(SecurityGatewayIamBindingConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o SecurityGatewayIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGatewayIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -3158,6 +3213,11 @@ func (o SecurityGatewayIamBindingConditionPtrOutput) Elem() SecurityGatewayIamBi
 	}).(SecurityGatewayIamBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o SecurityGatewayIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGatewayIamBindingCondition) *string {
 		if v == nil {
@@ -3188,6 +3248,11 @@ func (o SecurityGatewayIamBindingConditionPtrOutput) Title() pulumi.StringPtrOut
 }
 
 type SecurityGatewayIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -3207,6 +3272,11 @@ type SecurityGatewayIamMemberConditionInput interface {
 }
 
 type SecurityGatewayIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -3291,6 +3361,11 @@ func (o SecurityGatewayIamMemberConditionOutput) ToSecurityGatewayIamMemberCondi
 	}).(SecurityGatewayIamMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o SecurityGatewayIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGatewayIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -3329,6 +3404,11 @@ func (o SecurityGatewayIamMemberConditionPtrOutput) Elem() SecurityGatewayIamMem
 	}).(SecurityGatewayIamMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o SecurityGatewayIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGatewayIamMemberCondition) *string {
 		if v == nil {

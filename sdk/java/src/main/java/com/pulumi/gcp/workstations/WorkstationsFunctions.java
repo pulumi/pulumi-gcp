@@ -19,6 +19,10 @@ import java.util.concurrent.CompletableFuture;
 
 public final class WorkstationsFunctions {
     /**
+     * Retrieves the current IAM policy data for workstationconfig
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -60,6 +64,10 @@ public final class WorkstationsFunctions {
         return getWorkstationConfigIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for workstationconfig
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -101,6 +109,10 @@ public final class WorkstationsFunctions {
         return getWorkstationConfigIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for workstationconfig
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -142,6 +154,10 @@ public final class WorkstationsFunctions {
         return Deployment.getInstance().invoke("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", TypeShape.of(GetWorkstationConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for workstationconfig
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -183,6 +199,10 @@ public final class WorkstationsFunctions {
         return Deployment.getInstance().invoke("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", TypeShape.of(GetWorkstationConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for workstationconfig
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -224,6 +244,10 @@ public final class WorkstationsFunctions {
         return Deployment.getInstance().invokeAsync("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", TypeShape.of(GetWorkstationConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for workstation
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -266,6 +290,10 @@ public final class WorkstationsFunctions {
         return getWorkstationIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for workstation
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -308,6 +336,10 @@ public final class WorkstationsFunctions {
         return getWorkstationIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for workstation
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -350,6 +382,10 @@ public final class WorkstationsFunctions {
         return Deployment.getInstance().invoke("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", TypeShape.of(GetWorkstationIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for workstation
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -392,6 +428,10 @@ public final class WorkstationsFunctions {
         return Deployment.getInstance().invoke("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", TypeShape.of(GetWorkstationIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for workstation
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>

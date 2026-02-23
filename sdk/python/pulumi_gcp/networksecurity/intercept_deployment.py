@@ -28,6 +28,7 @@ class InterceptDeploymentArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InterceptDeployment resource.
+
         :param pulumi.Input[_builtins.str] forwarding_rule: The regional forwarding rule that fronts the interceptors, for example:
                `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
                See https://google.aip.dev/124.
@@ -169,6 +170,7 @@ class _InterceptDeploymentState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterceptDeployment resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
                See https://google.aip.dev/148#timestamps.
         :param pulumi.Input[_builtins.str] description: User-provided description of the deployment.
@@ -509,24 +511,17 @@ class InterceptDeployment(pulumi.CustomResource):
         InterceptDeployment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/interceptDeployments/{{intercept_deployment_id}}`
-
         * `{{project}}/{{location}}/{{intercept_deployment_id}}`
-
         * `{{location}}/{{intercept_deployment_id}}`
 
         When using the `pulumi import` command, InterceptDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default projects/{{project}}/locations/{{location}}/interceptDeployments/{{intercept_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default {{project}}/{{location}}/{{intercept_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default {{location}}/{{intercept_deployment_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -616,24 +611,17 @@ class InterceptDeployment(pulumi.CustomResource):
         InterceptDeployment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/interceptDeployments/{{intercept_deployment_id}}`
-
         * `{{project}}/{{location}}/{{intercept_deployment_id}}`
-
         * `{{location}}/{{intercept_deployment_id}}`
 
         When using the `pulumi import` command, InterceptDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default projects/{{project}}/locations/{{location}}/interceptDeployments/{{intercept_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default {{project}}/{{location}}/{{intercept_deployment_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default {{location}}/{{intercept_deployment_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InterceptDeploymentArgs args: The arguments to use to populate this resource's properties.

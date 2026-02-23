@@ -79,28 +79,27 @@ import (
 // Secret can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsSecrets/{{name}}`
-//
 // * `{{project}}/{{region}}/{{environment}}/{{name}}`
-//
 // * `{{environment}}/{{name}}`
 //
 // When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsSecrets/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{project}}/{{region}}/{{environment}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
 // ```
 type UserWorkloadsSecret struct {
 	pulumi.CustomResourceState
 
-	// A map of the secret data.
+	// The "data" field of Kubernetes Secret, organized in key-value pairs,
+	// which can contain sensitive values such as a password, a token, or a key.
+	// Content of this field will not be displayed in CLI output,
+	// but it will be stored in terraform state file. To protect sensitive data,
+	// follow the best practices outlined in the HashiCorp documentation:
+	// https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+	// The values for all keys have to be base64-encoded strings.
+	// For details see: https://kubernetes.io/docs/concepts/configuration/secret/
 	Data pulumi.StringMapOutput `pulumi:"data"`
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment pulumi.StringOutput `pulumi:"environment"`
@@ -153,7 +152,14 @@ func GetUserWorkloadsSecret(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserWorkloadsSecret resources.
 type userWorkloadsSecretState struct {
-	// A map of the secret data.
+	// The "data" field of Kubernetes Secret, organized in key-value pairs,
+	// which can contain sensitive values such as a password, a token, or a key.
+	// Content of this field will not be displayed in CLI output,
+	// but it will be stored in terraform state file. To protect sensitive data,
+	// follow the best practices outlined in the HashiCorp documentation:
+	// https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+	// The values for all keys have to be base64-encoded strings.
+	// For details see: https://kubernetes.io/docs/concepts/configuration/secret/
 	Data map[string]string `pulumi:"data"`
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment *string `pulumi:"environment"`
@@ -167,7 +173,14 @@ type userWorkloadsSecretState struct {
 }
 
 type UserWorkloadsSecretState struct {
-	// A map of the secret data.
+	// The "data" field of Kubernetes Secret, organized in key-value pairs,
+	// which can contain sensitive values such as a password, a token, or a key.
+	// Content of this field will not be displayed in CLI output,
+	// but it will be stored in terraform state file. To protect sensitive data,
+	// follow the best practices outlined in the HashiCorp documentation:
+	// https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+	// The values for all keys have to be base64-encoded strings.
+	// For details see: https://kubernetes.io/docs/concepts/configuration/secret/
 	Data pulumi.StringMapInput
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment pulumi.StringPtrInput
@@ -185,7 +198,14 @@ func (UserWorkloadsSecretState) ElementType() reflect.Type {
 }
 
 type userWorkloadsSecretArgs struct {
-	// A map of the secret data.
+	// The "data" field of Kubernetes Secret, organized in key-value pairs,
+	// which can contain sensitive values such as a password, a token, or a key.
+	// Content of this field will not be displayed in CLI output,
+	// but it will be stored in terraform state file. To protect sensitive data,
+	// follow the best practices outlined in the HashiCorp documentation:
+	// https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+	// The values for all keys have to be base64-encoded strings.
+	// For details see: https://kubernetes.io/docs/concepts/configuration/secret/
 	Data map[string]string `pulumi:"data"`
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment string `pulumi:"environment"`
@@ -200,7 +220,14 @@ type userWorkloadsSecretArgs struct {
 
 // The set of arguments for constructing a UserWorkloadsSecret resource.
 type UserWorkloadsSecretArgs struct {
-	// A map of the secret data.
+	// The "data" field of Kubernetes Secret, organized in key-value pairs,
+	// which can contain sensitive values such as a password, a token, or a key.
+	// Content of this field will not be displayed in CLI output,
+	// but it will be stored in terraform state file. To protect sensitive data,
+	// follow the best practices outlined in the HashiCorp documentation:
+	// https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+	// The values for all keys have to be base64-encoded strings.
+	// For details see: https://kubernetes.io/docs/concepts/configuration/secret/
 	Data pulumi.StringMapInput
 	// Environment where the Kubernetes Secret will be stored and used.
 	Environment pulumi.StringInput
@@ -300,7 +327,14 @@ func (o UserWorkloadsSecretOutput) ToUserWorkloadsSecretOutputWithContext(ctx co
 	return o
 }
 
-// A map of the secret data.
+// The "data" field of Kubernetes Secret, organized in key-value pairs,
+// which can contain sensitive values such as a password, a token, or a key.
+// Content of this field will not be displayed in CLI output,
+// but it will be stored in terraform state file. To protect sensitive data,
+// follow the best practices outlined in the HashiCorp documentation:
+// https://developer.hashicorp.com/terraform/language/state/sensitive-data.
+// The values for all keys have to be base64-encoded strings.
+// For details see: https://kubernetes.io/docs/concepts/configuration/secret/
 func (o UserWorkloadsSecretOutput) Data() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *UserWorkloadsSecret) pulumi.StringMapOutput { return v.Data }).(pulumi.StringMapOutput)
 }

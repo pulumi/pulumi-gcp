@@ -31,6 +31,7 @@ class EngineModelArgs:
                  regions: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EngineModel resource.
+
         :param pulumi.Input['EngineModelDefaultVersionArgs'] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
@@ -181,6 +182,7 @@ class _EngineModelState:
                  regions: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EngineModel resources.
+
         :param pulumi.Input['EngineModelDefaultVersionArgs'] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
@@ -364,6 +366,19 @@ class EngineModel(pulumi.CustomResource):
                  regions: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** This resource is deprecated at the API level and will be removed in a future version of Terraform.
+
+        Represents a machine learning solution.
+
+        A model can have multiple versions, each of which is a deployed, trained model
+        ready to receive prediction requests. The model itself is just a container.
+
+        To get more information about Model, see:
+
+        * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+
         ## Example Usage
 
         ### Ml Model Basic
@@ -399,24 +414,17 @@ class EngineModel(pulumi.CustomResource):
         Model can be imported using any of these accepted formats:
 
         * `projects/{{project}}/models/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Model can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -442,6 +450,19 @@ class EngineModel(pulumi.CustomResource):
                  args: Optional[EngineModelArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** This resource is deprecated at the API level and will be removed in a future version of Terraform.
+
+        Represents a machine learning solution.
+
+        A model can have multiple versions, each of which is a deployed, trained model
+        ready to receive prediction requests. The model itself is just a container.
+
+        To get more information about Model, see:
+
+        * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+
         ## Example Usage
 
         ### Ml Model Basic
@@ -477,24 +498,17 @@ class EngineModel(pulumi.CustomResource):
         Model can be imported using any of these accepted formats:
 
         * `projects/{{project}}/models/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Model can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EngineModelArgs args: The arguments to use to populate this resource's properties.

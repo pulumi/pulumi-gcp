@@ -430,28 +430,16 @@ namespace Pulumi.Gcp.Compute
     /// RegionHealthCheck can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/regions/{{region}}/healthChecks/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{name}}`
-    /// 
     /// * `{{region}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, RegionHealthCheck can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/regionHealthCheck:RegionHealthCheck default projects/{{project}}/regions/{{region}}/healthChecks/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/regionHealthCheck:RegionHealthCheck default {{project}}/{{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/regionHealthCheck:RegionHealthCheck default {{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/regionHealthCheck:RegionHealthCheck default {{name}}
     /// ```
     /// </summary>

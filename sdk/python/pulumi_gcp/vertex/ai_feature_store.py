@@ -31,6 +31,7 @@ class AiFeatureStoreArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiFeatureStore resource.
+
         :param pulumi.Input['AiFeatureStoreEncryptionSpecArgs'] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
@@ -186,6 +187,7 @@ class _AiFeatureStoreState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStore resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['AiFeatureStoreEncryptionSpecArgs'] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
@@ -496,30 +498,19 @@ class AiFeatureStore(pulumi.CustomResource):
         Featurestore can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/featurestores/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Featurestore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default projects/{{project}}/locations/{{region}}/featurestores/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -626,30 +617,19 @@ class AiFeatureStore(pulumi.CustomResource):
         Featurestore can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/featurestores/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Featurestore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default projects/{{project}}/locations/{{region}}/featurestores/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiFeatureStoreArgs args: The arguments to use to populate this resource's properties.

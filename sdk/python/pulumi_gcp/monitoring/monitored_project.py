@@ -23,6 +23,7 @@ class MonitoredProjectArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MonitoredProject resource.
+
         :param pulumi.Input[_builtins.str] metrics_scope: Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
         :param pulumi.Input[_builtins.str] name: Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
         """
@@ -63,6 +64,7 @@ class _MonitoredProjectState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MonitoredProject resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when this `MonitoredProject` was created.
         :param pulumi.Input[_builtins.str] metrics_scope: Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
         :param pulumi.Input[_builtins.str] name: Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
@@ -152,18 +154,15 @@ class MonitoredProject(pulumi.CustomResource):
         MonitoredProject can be imported using any of these accepted formats:
 
         * `v1/locations/global/metricsScopes/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, MonitoredProject can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -208,18 +207,15 @@ class MonitoredProject(pulumi.CustomResource):
         MonitoredProject can be imported using any of these accepted formats:
 
         * `v1/locations/global/metricsScopes/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, MonitoredProject can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MonitoredProjectArgs args: The arguments to use to populate this resource's properties.

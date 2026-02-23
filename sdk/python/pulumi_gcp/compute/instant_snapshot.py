@@ -27,6 +27,7 @@ class InstantSnapshotArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstantSnapshot resource.
+
         :param pulumi.Input[_builtins.str] source_disk: A reference to the disk used to create this instant snapshot.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this InstantSnapshot.
@@ -155,6 +156,7 @@ class _InstantSnapshotState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstantSnapshot resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the snapshot, specified in GB.
@@ -426,30 +428,19 @@ class InstantSnapshot(pulumi.CustomResource):
         InstantSnapshot can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/instantSnapshots/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InstantSnapshot can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default projects/{{project}}/zones/{{zone}}/instantSnapshots/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -513,30 +504,19 @@ class InstantSnapshot(pulumi.CustomResource):
         InstantSnapshot can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/instantSnapshots/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InstantSnapshot can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default projects/{{project}}/zones/{{zone}}/instantSnapshots/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstantSnapshotArgs args: The arguments to use to populate this resource's properties.

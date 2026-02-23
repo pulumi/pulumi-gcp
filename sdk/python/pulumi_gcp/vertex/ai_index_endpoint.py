@@ -32,6 +32,7 @@ class AiIndexEndpointArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiIndexEndpoint resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input['AiIndexEndpointEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
@@ -206,6 +207,7 @@ class _AiIndexEndpointState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiIndexEndpoint resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -560,30 +562,19 @@ class AiIndexEndpoint(pulumi.CustomResource):
         IndexEndpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, IndexEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -688,30 +679,19 @@ class AiIndexEndpoint(pulumi.CustomResource):
         IndexEndpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, IndexEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiIndexEndpointArgs args: The arguments to use to populate this resource's properties.

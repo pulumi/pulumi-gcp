@@ -31,6 +31,7 @@ class ReferenceListArgs:
                  scope_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ReferenceListScopeInfoArgs']]]] = None):
         """
         The set of arguments for constructing a ReferenceList resource.
+
         :param pulumi.Input[_builtins.str] description: Required. A user-provided description of the reference list.
         :param pulumi.Input[Sequence[pulumi.Input['ReferenceListEntryArgs']]] entries: Required. The entries of the reference list.
                When listed, they are returned in the order that was specified at creation
@@ -196,6 +197,7 @@ class _ReferenceListState:
                  syntax_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReferenceList resources.
+
         :param pulumi.Input[_builtins.str] description: Required. A user-provided description of the reference list.
         :param pulumi.Input[_builtins.str] display_name: Output only. The unique display name of the reference list.
         :param pulumi.Input[Sequence[pulumi.Input['ReferenceListEntryArgs']]] entries: Required. The entries of the reference list.
@@ -493,24 +495,17 @@ class ReferenceList(pulumi.CustomResource):
         ReferenceList can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/referenceLists/{{reference_list_id}}`
-
         * `{{project}}/{{location}}/{{instance}}/{{reference_list_id}}`
-
         * `{{location}}/{{instance}}/{{reference_list_id}}`
 
         When using the `pulumi import` command, ReferenceList can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:chronicle/referenceList:ReferenceList default projects/{{project}}/locations/{{location}}/instances/{{instance}}/referenceLists/{{reference_list_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/referenceList:ReferenceList default {{project}}/{{location}}/{{instance}}/{{reference_list_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/referenceList:ReferenceList default {{location}}/{{instance}}/{{reference_list_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -590,24 +585,17 @@ class ReferenceList(pulumi.CustomResource):
         ReferenceList can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/referenceLists/{{reference_list_id}}`
-
         * `{{project}}/{{location}}/{{instance}}/{{reference_list_id}}`
-
         * `{{location}}/{{instance}}/{{reference_list_id}}`
 
         When using the `pulumi import` command, ReferenceList can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:chronicle/referenceList:ReferenceList default projects/{{project}}/locations/{{location}}/instances/{{instance}}/referenceLists/{{reference_list_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/referenceList:ReferenceList default {{project}}/{{location}}/{{instance}}/{{reference_list_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/referenceList:ReferenceList default {{location}}/{{instance}}/{{reference_list_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReferenceListArgs args: The arguments to use to populate this resource's properties.

@@ -30,22 +30,14 @@ import * as utilities from "../utilities";
  * ReleaseChannelSetting can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}`
- *
  * * `{{project}}/{{location}}/{{release_channel_setting_id}}`
- *
  * * `{{location}}/{{release_channel_setting_id}}`
  *
  * When using the `pulumi import` command, ReleaseChannelSetting can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{project}}/{{location}}/{{release_channel_setting_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{location}}/{{release_channel_setting_id}}
  * ```
  */

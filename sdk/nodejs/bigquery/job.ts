@@ -408,40 +408,20 @@ import * as utilities from "../utilities";
  * Job can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/jobs/{{job_id}}/location/{{location}}`
- *
  * * `projects/{{project}}/jobs/{{job_id}}`
- *
  * * `{{project}}/{{job_id}}/{{location}}`
- *
  * * `{{job_id}}/{{location}}`
- *
  * * `{{project}}/{{job_id}}`
- *
  * * `{{job_id}}`
  *
  * When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}/{{location}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigquery/job:Job default {{job_id}}/{{location}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:bigquery/job:Job default {{job_id}}
  * ```
  */

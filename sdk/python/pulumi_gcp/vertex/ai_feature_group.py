@@ -29,6 +29,7 @@ class AiFeatureGroupArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiFeatureGroup resource.
+
         :param pulumi.Input['AiFeatureGroupBigQueryArgs'] big_query: Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of the FeatureGroup.
@@ -146,6 +147,7 @@ class _AiFeatureGroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureGroup resources.
+
         :param pulumi.Input['AiFeatureGroupBigQueryArgs'] big_query: Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the FeatureGroup was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -401,30 +403,19 @@ class AiFeatureGroup(pulumi.CustomResource):
         FeatureGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/featureGroups/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, FeatureGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default projects/{{project}}/locations/{{region}}/featureGroups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -509,30 +500,19 @@ class AiFeatureGroup(pulumi.CustomResource):
         FeatureGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/featureGroups/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, FeatureGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default projects/{{project}}/locations/{{region}}/featureGroups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiFeatureGroupArgs args: The arguments to use to populate this resource's properties.

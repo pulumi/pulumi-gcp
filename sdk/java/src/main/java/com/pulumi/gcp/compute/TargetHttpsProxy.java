@@ -520,22 +520,14 @@ import javax.annotation.Nullable;
  * TargetHttpsProxy can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/global/targetHttpsProxies/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, TargetHttpsProxy can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default {{name}}
  * ```
  * 

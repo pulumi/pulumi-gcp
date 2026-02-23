@@ -221,11 +221,8 @@ namespace Pulumi.Gcp.Gemini
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
     /// * projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index}}/repositoryGroups/{{repository_group_id}}
-    /// 
     /// * {{project}}/{{location}}/{{code_repository_index}}/{{repository_group_id}}
-    /// 
     /// * {{location}}/{{code_repository_index}}/{{repository_group_id}}
-    /// 
     /// * {{repository_group_id}}
     /// 
     /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -233,25 +230,21 @@ namespace Pulumi.Gcp.Gemini
     /// Gemini for Google Cloud repositorygroup IAM resources can be imported using the resource identifiers, role, and member.
     /// 
     /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import gcp:gemini/repositoryGroupIamPolicy:RepositoryGroupIamPolicy editor "projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index}}/repositoryGroups/{{repository_group_id}} roles/cloudaicompanion.repositoryGroupsUser user:jane@example.com"
+    /// $ terraform import google_gemini_repository_group_iam_member.editor "projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index}}/repositoryGroups/{{repository_group_id}} roles/cloudaicompanion.repositoryGroupsUser user:jane@example.com"
     /// ```
     /// 
     /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import gcp:gemini/repositoryGroupIamPolicy:RepositoryGroupIamPolicy editor "projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index}}/repositoryGroups/{{repository_group_id}} roles/cloudaicompanion.repositoryGroupsUser"
+    /// $ terraform import google_gemini_repository_group_iam_binding.editor "projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index}}/repositoryGroups/{{repository_group_id}} roles/cloudaicompanion.repositoryGroupsUser"
     /// ```
     /// 
     /// IAM policy imports use the identifier of the resource in question, e.g.
-    /// 
     /// ```sh
     /// $ pulumi import gcp:gemini/repositoryGroupIamPolicy:RepositoryGroupIamPolicy editor projects/{{project}}/locations/{{location}}/codeRepositoryIndexes/{{code_repository_index}}/repositoryGroups/{{repository_group_id}}
     /// ```
     /// 
-    /// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
+    /// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
     ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:gemini/repositoryGroupIamPolicy:RepositoryGroupIamPolicy")]

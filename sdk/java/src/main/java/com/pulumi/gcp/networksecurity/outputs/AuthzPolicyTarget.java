@@ -4,39 +4,43 @@
 package com.pulumi.gcp.networksecurity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class AuthzPolicyTarget {
     /**
-     * @return All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+     * @return Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+     * Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
      * For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
-    private String loadBalancingScheme;
+    private @Nullable String loadBalancingScheme;
     /**
-     * @return A list of references to the Forwarding Rules on which this policy will be applied.
+     * @return A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+     * policy will be applied.
      * 
      */
     private @Nullable List<String> resources;
 
     private AuthzPolicyTarget() {}
     /**
-     * @return All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+     * @return Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+     * Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
      * For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
-    public String loadBalancingScheme() {
-        return this.loadBalancingScheme;
+    public Optional<String> loadBalancingScheme() {
+        return Optional.ofNullable(this.loadBalancingScheme);
     }
     /**
-     * @return A list of references to the Forwarding Rules on which this policy will be applied.
+     * @return A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+     * policy will be applied.
      * 
      */
     public List<String> resources() {
@@ -52,7 +56,7 @@ public final class AuthzPolicyTarget {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String loadBalancingScheme;
+        private @Nullable String loadBalancingScheme;
         private @Nullable List<String> resources;
         public Builder() {}
         public Builder(AuthzPolicyTarget defaults) {
@@ -62,10 +66,8 @@ public final class AuthzPolicyTarget {
         }
 
         @CustomType.Setter
-        public Builder loadBalancingScheme(String loadBalancingScheme) {
-            if (loadBalancingScheme == null) {
-              throw new MissingRequiredPropertyException("AuthzPolicyTarget", "loadBalancingScheme");
-            }
+        public Builder loadBalancingScheme(@Nullable String loadBalancingScheme) {
+
             this.loadBalancingScheme = loadBalancingScheme;
             return this;
         }

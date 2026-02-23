@@ -15,21 +15,24 @@ var _ = internal.GetEnvOrDefault
 
 type AiLogicConfigGenerativeLanguageConfig struct {
 	// The value of the API key. The API key must have
-	// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+	// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
 	// Note that this API is sometimes called the *Generative Language API* in
 	// the Google Cloud console.
-	//
 	// Do **not** add this Gemini API key into your app's codebase
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ApiKey *string `pulumi:"apiKey"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
 	// The value of the API key. The API key must have
-	// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+	// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
 	// Note that this API is sometimes called the *Generative Language API* in
 	// the Google Cloud console.
-	//
 	// Do **not** add this Gemini API key into your app's codebase
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `apiKey` or `apiKeyWo` can only be set.
 	ApiKeyWo *string `pulumi:"apiKeyWo"`
-	// Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	// Triggers update of `apiKeyWo` write-only. Increment this value when an update to `apiKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	ApiKeyWoVersion *string `pulumi:"apiKeyWoVersion"`
 }
 
@@ -46,21 +49,24 @@ type AiLogicConfigGenerativeLanguageConfigInput interface {
 
 type AiLogicConfigGenerativeLanguageConfigArgs struct {
 	// The value of the API key. The API key must have
-	// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+	// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
 	// Note that this API is sometimes called the *Generative Language API* in
 	// the Google Cloud console.
-	//
 	// Do **not** add this Gemini API key into your app's codebase
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
 	// The value of the API key. The API key must have
-	// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+	// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
 	// Note that this API is sometimes called the *Generative Language API* in
 	// the Google Cloud console.
-	//
 	// Do **not** add this Gemini API key into your app's codebase
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `apiKey` or `apiKeyWo` can only be set.
 	ApiKeyWo pulumi.StringPtrInput `pulumi:"apiKeyWo"`
-	// Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	// Triggers update of `apiKeyWo` write-only. Increment this value when an update to `apiKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	ApiKeyWoVersion pulumi.StringPtrInput `pulumi:"apiKeyWoVersion"`
 }
 
@@ -142,27 +148,30 @@ func (o AiLogicConfigGenerativeLanguageConfigOutput) ToAiLogicConfigGenerativeLa
 }
 
 // The value of the API key. The API key must have
-// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
 // Note that this API is sometimes called the *Generative Language API* in
 // the Google Cloud console.
-//
 // Do **not** add this Gemini API key into your app's codebase
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o AiLogicConfigGenerativeLanguageConfigOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiLogicConfigGenerativeLanguageConfig) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
 // The value of the API key. The API key must have
-// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
 // Note that this API is sometimes called the *Generative Language API* in
 // the Google Cloud console.
-//
 // Do **not** add this Gemini API key into your app's codebase
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `apiKey` or `apiKeyWo` can only be set.
 func (o AiLogicConfigGenerativeLanguageConfigOutput) ApiKeyWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiLogicConfigGenerativeLanguageConfig) *string { return v.ApiKeyWo }).(pulumi.StringPtrOutput)
 }
 
-// Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+// Triggers update of `apiKeyWo` write-only. Increment this value when an update to `apiKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 func (o AiLogicConfigGenerativeLanguageConfigOutput) ApiKeyWoVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiLogicConfigGenerativeLanguageConfig) *string { return v.ApiKeyWoVersion }).(pulumi.StringPtrOutput)
 }
@@ -192,11 +201,11 @@ func (o AiLogicConfigGenerativeLanguageConfigPtrOutput) Elem() AiLogicConfigGene
 }
 
 // The value of the API key. The API key must have
-// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
 // Note that this API is sometimes called the *Generative Language API* in
 // the Google Cloud console.
-//
 // Do **not** add this Gemini API key into your app's codebase
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o AiLogicConfigGenerativeLanguageConfigPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiLogicConfigGenerativeLanguageConfig) *string {
 		if v == nil {
@@ -207,12 +216,15 @@ func (o AiLogicConfigGenerativeLanguageConfigPtrOutput) ApiKey() pulumi.StringPt
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
 // The value of the API key. The API key must have
-// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
 // Note that this API is sometimes called the *Generative Language API* in
 // the Google Cloud console.
-//
 // Do **not** add this Gemini API key into your app's codebase
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `apiKey` or `apiKeyWo` can only be set.
 func (o AiLogicConfigGenerativeLanguageConfigPtrOutput) ApiKeyWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiLogicConfigGenerativeLanguageConfig) *string {
 		if v == nil {
@@ -222,7 +234,7 @@ func (o AiLogicConfigGenerativeLanguageConfigPtrOutput) ApiKeyWo() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+// Triggers update of `apiKeyWo` write-only. Increment this value when an update to `apiKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 func (o AiLogicConfigGenerativeLanguageConfigPtrOutput) ApiKeyWoVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiLogicConfigGenerativeLanguageConfig) *string {
 		if v == nil {

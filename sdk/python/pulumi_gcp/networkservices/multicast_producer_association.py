@@ -30,6 +30,7 @@ class MulticastProducerAssociationArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MulticastProducerAssociation resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] multicast_domain_activation: The resource name of the multicast domain activation that is in the
                same zone as this multicast producer association.
@@ -175,6 +176,7 @@ class _MulticastProducerAssociationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MulticastProducerAssociation resources.
+
         :param pulumi.Input[_builtins.str] create_time: [Output only] The timestamp when the multicast producer association was
                created.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast producer association.
@@ -503,24 +505,17 @@ class MulticastProducerAssociation(pulumi.CustomResource):
         MulticastProducerAssociation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicastProducerAssociations/{{multicast_producer_association_id}}`
-
         * `{{project}}/{{location}}/{{multicast_producer_association_id}}`
-
         * `{{location}}/{{multicast_producer_association_id}}`
 
         When using the `pulumi import` command, MulticastProducerAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default projects/{{project}}/locations/{{location}}/multicastProducerAssociations/{{multicast_producer_association_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default {{project}}/{{location}}/{{multicast_producer_association_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default {{location}}/{{multicast_producer_association_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -594,24 +589,17 @@ class MulticastProducerAssociation(pulumi.CustomResource):
         MulticastProducerAssociation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicastProducerAssociations/{{multicast_producer_association_id}}`
-
         * `{{project}}/{{location}}/{{multicast_producer_association_id}}`
-
         * `{{location}}/{{multicast_producer_association_id}}`
 
         When using the `pulumi import` command, MulticastProducerAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default projects/{{project}}/locations/{{location}}/multicastProducerAssociations/{{multicast_producer_association_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default {{project}}/{{location}}/{{multicast_producer_association_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default {{location}}/{{multicast_producer_association_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MulticastProducerAssociationArgs args: The arguments to use to populate this resource's properties.

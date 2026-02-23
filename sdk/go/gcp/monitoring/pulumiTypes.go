@@ -2210,8 +2210,14 @@ type AlertPolicyConditionConditionPrometheusQueryLanguage struct {
 	// in the future.
 	// This field is optional. If this field is not empty, then it must be a
 	// valid Prometheus label name.
-	AlertRule               *string `pulumi:"alertRule"`
-	DisableMetricValidation *bool   `pulumi:"disableMetricValidation"`
+	AlertRule *string `pulumi:"alertRule"`
+	// Whether to disable metric existence validation for this condition.
+	// This allows alerting policies to be defined on metrics that do not yet
+	// exist, improving advanced customer workflows such as configuring
+	// alerting policies using Terraform.
+	// Users with the `monitoring.alertPolicyViewer` role are able to see the
+	// name of the non-existent metric in the alerting policy condition.
+	DisableMetricValidation *bool `pulumi:"disableMetricValidation"`
 	// Alerts are considered firing once their PromQL expression evaluated
 	// to be "true" for this long. Alerts whose PromQL expression was not
 	// evaluated to be "true" for long enough are considered pending. The
@@ -2266,8 +2272,14 @@ type AlertPolicyConditionConditionPrometheusQueryLanguageArgs struct {
 	// in the future.
 	// This field is optional. If this field is not empty, then it must be a
 	// valid Prometheus label name.
-	AlertRule               pulumi.StringPtrInput `pulumi:"alertRule"`
-	DisableMetricValidation pulumi.BoolPtrInput   `pulumi:"disableMetricValidation"`
+	AlertRule pulumi.StringPtrInput `pulumi:"alertRule"`
+	// Whether to disable metric existence validation for this condition.
+	// This allows alerting policies to be defined on metrics that do not yet
+	// exist, improving advanced customer workflows such as configuring
+	// alerting policies using Terraform.
+	// Users with the `monitoring.alertPolicyViewer` role are able to see the
+	// name of the non-existent metric in the alerting policy condition.
+	DisableMetricValidation pulumi.BoolPtrInput `pulumi:"disableMetricValidation"`
 	// Alerts are considered firing once their PromQL expression evaluated
 	// to be "true" for this long. Alerts whose PromQL expression was not
 	// evaluated to be "true" for long enough are considered pending. The
@@ -2391,6 +2403,12 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) AlertRule() 
 	return o.ApplyT(func(v AlertPolicyConditionConditionPrometheusQueryLanguage) *string { return v.AlertRule }).(pulumi.StringPtrOutput)
 }
 
+// Whether to disable metric existence validation for this condition.
+// This allows alerting policies to be defined on metrics that do not yet
+// exist, improving advanced customer workflows such as configuring
+// alerting policies using Terraform.
+// Users with the `monitoring.alertPolicyViewer` role are able to see the
+// name of the non-existent metric in the alerting policy condition.
 func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) DisableMetricValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionPrometheusQueryLanguage) *bool { return v.DisableMetricValidation }).(pulumi.BoolPtrOutput)
 }
@@ -2483,6 +2501,12 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) AlertRule
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to disable metric existence validation for this condition.
+// This allows alerting policies to be defined on metrics that do not yet
+// exist, improving advanced customer workflows such as configuring
+// alerting policies using Terraform.
+// Users with the `monitoring.alertPolicyViewer` role are able to see the
+// name of the non-existent metric in the alerting policy condition.
 func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) DisableMetricValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionPrometheusQueryLanguage) *bool {
 		if v == nil {
@@ -6705,12 +6729,39 @@ type NotificationChannelSensitiveLabels struct {
 	// An authorization token for a notification channel. Channel types that support this field include: slack
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	AuthToken *string `pulumi:"authToken"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// An authorization token for a notification channel. Channel types that support this field include: slack
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `authToken` or `authTokenWo` can only be set.
+	AuthTokenWo *string `pulumi:"authTokenWo"`
+	// Triggers update of `authTokenWo` write-only. Increment this value when an update to `authTokenWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	AuthTokenWoVersion *string `pulumi:"authTokenWoVersion"`
 	// An password for a notification channel. Channel types that support this field include: webhookBasicauth
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// An password for a notification channel. Channel types that support this field include: webhookBasicauth
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ServiceKey *string `pulumi:"serviceKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `serviceKey` or `serviceKeyWo` can only be set.
+	ServiceKeyWo *string `pulumi:"serviceKeyWo"`
+	// Triggers update of `serviceKeyWo` write-only. Increment this value when an update to `serviceKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	ServiceKeyWoVersion *string `pulumi:"serviceKeyWoVersion"`
 }
 
 // NotificationChannelSensitiveLabelsInput is an input type that accepts NotificationChannelSensitiveLabelsArgs and NotificationChannelSensitiveLabelsOutput values.
@@ -6728,12 +6779,39 @@ type NotificationChannelSensitiveLabelsArgs struct {
 	// An authorization token for a notification channel. Channel types that support this field include: slack
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	AuthToken pulumi.StringPtrInput `pulumi:"authToken"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// An authorization token for a notification channel. Channel types that support this field include: slack
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `authToken` or `authTokenWo` can only be set.
+	AuthTokenWo pulumi.StringPtrInput `pulumi:"authTokenWo"`
+	// Triggers update of `authTokenWo` write-only. Increment this value when an update to `authTokenWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	AuthTokenWoVersion pulumi.StringPtrInput `pulumi:"authTokenWoVersion"`
 	// An password for a notification channel. Channel types that support this field include: webhookBasicauth
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// An password for a notification channel. Channel types that support this field include: webhookBasicauth
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
+	PasswordWo pulumi.StringPtrInput `pulumi:"passwordWo"`
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion pulumi.StringPtrInput `pulumi:"passwordWoVersion"`
 	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ServiceKey pulumi.StringPtrInput `pulumi:"serviceKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `serviceKey` or `serviceKeyWo` can only be set.
+	ServiceKeyWo pulumi.StringPtrInput `pulumi:"serviceKeyWo"`
+	// Triggers update of `serviceKeyWo` write-only. Increment this value when an update to `serviceKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	ServiceKeyWoVersion pulumi.StringPtrInput `pulumi:"serviceKeyWoVersion"`
 }
 
 func (NotificationChannelSensitiveLabelsArgs) ElementType() reflect.Type {
@@ -6819,16 +6897,61 @@ func (o NotificationChannelSensitiveLabelsOutput) AuthToken() pulumi.StringPtrOu
 	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.AuthToken }).(pulumi.StringPtrOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// An authorization token for a notification channel. Channel types that support this field include: slack
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `authToken` or `authTokenWo` can only be set.
+func (o NotificationChannelSensitiveLabelsOutput) AuthTokenWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.AuthTokenWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `authTokenWo` write-only. Increment this value when an update to `authTokenWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o NotificationChannelSensitiveLabelsOutput) AuthTokenWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.AuthTokenWoVersion }).(pulumi.StringPtrOutput)
+}
+
 // An password for a notification channel. Channel types that support this field include: webhookBasicauth
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// An password for a notification channel. Channel types that support this field include: webhookBasicauth
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `password` or `passwordWo` can only be set.
+func (o NotificationChannelSensitiveLabelsOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.PasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o NotificationChannelSensitiveLabelsOutput) PasswordWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.PasswordWoVersion }).(pulumi.StringPtrOutput)
+}
+
 // An servicekey token for a notification channel. Channel types that support this field include: pagerduty
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsOutput) ServiceKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.ServiceKey }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `serviceKey` or `serviceKeyWo` can only be set.
+func (o NotificationChannelSensitiveLabelsOutput) ServiceKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.ServiceKeyWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `serviceKeyWo` write-only. Increment this value when an update to `serviceKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o NotificationChannelSensitiveLabelsOutput) ServiceKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.ServiceKeyWoVersion }).(pulumi.StringPtrOutput)
 }
 
 type NotificationChannelSensitiveLabelsPtrOutput struct{ *pulumi.OutputState }
@@ -6866,6 +6989,31 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) AuthToken() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// An authorization token for a notification channel. Channel types that support this field include: slack
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `authToken` or `authTokenWo` can only be set.
+func (o NotificationChannelSensitiveLabelsPtrOutput) AuthTokenWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthTokenWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `authTokenWo` write-only. Increment this value when an update to `authTokenWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o NotificationChannelSensitiveLabelsPtrOutput) AuthTokenWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthTokenWoVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // An password for a notification channel. Channel types that support this field include: webhookBasicauth
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsPtrOutput) Password() pulumi.StringPtrOutput {
@@ -6877,6 +7025,31 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) Password() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// An password for a notification channel. Channel types that support this field include: webhookBasicauth
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `password` or `passwordWo` can only be set.
+func (o NotificationChannelSensitiveLabelsPtrOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o NotificationChannelSensitiveLabelsPtrOutput) PasswordWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordWoVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // An servicekey token for a notification channel. Channel types that support this field include: pagerduty
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsPtrOutput) ServiceKey() pulumi.StringPtrOutput {
@@ -6885,6 +7058,31 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) ServiceKey() pulumi.StringP
 			return nil
 		}
 		return v.ServiceKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `serviceKey` or `serviceKeyWo` can only be set.
+func (o NotificationChannelSensitiveLabelsPtrOutput) ServiceKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceKeyWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `serviceKeyWo` write-only. Increment this value when an update to `serviceKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o NotificationChannelSensitiveLabelsPtrOutput) ServiceKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceKeyWoVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11715,9 +11913,14 @@ func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput) Index(i
 
 type UptimeCheckConfigHttpCheckAuthInfo struct {
 	// The password to authenticate.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
 	// The password to authenticate.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
 	PasswordWo *string `pulumi:"passwordWo"`
 	// The password write-only version.
 	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
@@ -11738,9 +11941,14 @@ type UptimeCheckConfigHttpCheckAuthInfoInput interface {
 
 type UptimeCheckConfigHttpCheckAuthInfoArgs struct {
 	// The password to authenticate.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
 	// The password to authenticate.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
 	PasswordWo pulumi.StringPtrInput `pulumi:"passwordWo"`
 	// The password write-only version.
 	PasswordWoVersion pulumi.StringPtrInput `pulumi:"passwordWoVersion"`
@@ -11826,12 +12034,17 @@ func (o UptimeCheckConfigHttpCheckAuthInfoOutput) ToUptimeCheckConfigHttpCheckAu
 }
 
 // The password to authenticate.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o UptimeCheckConfigHttpCheckAuthInfoOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
 // The password to authenticate.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `password` or `passwordWo` can only be set.
 func (o UptimeCheckConfigHttpCheckAuthInfoOutput) PasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) *string { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
@@ -11871,6 +12084,7 @@ func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Elem() UptimeCheckConfigHtt
 }
 
 // The password to authenticate.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) *string {
 		if v == nil {
@@ -11881,7 +12095,11 @@ func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Password() pulumi.StringPtr
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
 // The password to authenticate.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `password` or `passwordWo` can only be set.
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) PasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) *string {
 		if v == nil {
@@ -13505,10 +13723,22 @@ func (o GetMeshIstioServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GetMes
 type GetNotificationChannelSensitiveLabel struct {
 	// An authorization token for a notification channel. Channel types that support this field include: slack
 	AuthToken string `pulumi:"authToken"`
+	// An authorization token for a notification channel. Channel types that support this field include: slack
+	AuthTokenWo string `pulumi:"authTokenWo"`
+	// Triggers update of 'auth_token_wo' write-only. Increment this value when an update to 'auth_token_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	AuthTokenWoVersion string `pulumi:"authTokenWoVersion"`
 	// An password for a notification channel. Channel types that support this field include: webhook_basicauth
 	Password string `pulumi:"password"`
+	// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+	PasswordWo string `pulumi:"passwordWo"`
+	// Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion string `pulumi:"passwordWoVersion"`
 	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
 	ServiceKey string `pulumi:"serviceKey"`
+	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+	ServiceKeyWo string `pulumi:"serviceKeyWo"`
+	// Triggers update of 'service_key_wo' write-only. Increment this value when an update to 'service_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	ServiceKeyWoVersion string `pulumi:"serviceKeyWoVersion"`
 }
 
 // GetNotificationChannelSensitiveLabelInput is an input type that accepts GetNotificationChannelSensitiveLabelArgs and GetNotificationChannelSensitiveLabelOutput values.
@@ -13525,10 +13755,22 @@ type GetNotificationChannelSensitiveLabelInput interface {
 type GetNotificationChannelSensitiveLabelArgs struct {
 	// An authorization token for a notification channel. Channel types that support this field include: slack
 	AuthToken pulumi.StringInput `pulumi:"authToken"`
+	// An authorization token for a notification channel. Channel types that support this field include: slack
+	AuthTokenWo pulumi.StringInput `pulumi:"authTokenWo"`
+	// Triggers update of 'auth_token_wo' write-only. Increment this value when an update to 'auth_token_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	AuthTokenWoVersion pulumi.StringInput `pulumi:"authTokenWoVersion"`
 	// An password for a notification channel. Channel types that support this field include: webhook_basicauth
 	Password pulumi.StringInput `pulumi:"password"`
+	// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+	PasswordWo pulumi.StringInput `pulumi:"passwordWo"`
+	// Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion pulumi.StringInput `pulumi:"passwordWoVersion"`
 	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
 	ServiceKey pulumi.StringInput `pulumi:"serviceKey"`
+	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+	ServiceKeyWo pulumi.StringInput `pulumi:"serviceKeyWo"`
+	// Triggers update of 'service_key_wo' write-only. Increment this value when an update to 'service_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	ServiceKeyWoVersion pulumi.StringInput `pulumi:"serviceKeyWoVersion"`
 }
 
 func (GetNotificationChannelSensitiveLabelArgs) ElementType() reflect.Type {
@@ -13587,14 +13829,44 @@ func (o GetNotificationChannelSensitiveLabelOutput) AuthToken() pulumi.StringOut
 	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.AuthToken }).(pulumi.StringOutput)
 }
 
+// An authorization token for a notification channel. Channel types that support this field include: slack
+func (o GetNotificationChannelSensitiveLabelOutput) AuthTokenWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.AuthTokenWo }).(pulumi.StringOutput)
+}
+
+// Triggers update of 'auth_token_wo' write-only. Increment this value when an update to 'auth_token_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o GetNotificationChannelSensitiveLabelOutput) AuthTokenWoVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.AuthTokenWoVersion }).(pulumi.StringOutput)
+}
+
 // An password for a notification channel. Channel types that support this field include: webhook_basicauth
 func (o GetNotificationChannelSensitiveLabelOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.Password }).(pulumi.StringOutput)
 }
 
+// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+func (o GetNotificationChannelSensitiveLabelOutput) PasswordWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.PasswordWo }).(pulumi.StringOutput)
+}
+
+// Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o GetNotificationChannelSensitiveLabelOutput) PasswordWoVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.PasswordWoVersion }).(pulumi.StringOutput)
+}
+
 // An servicekey token for a notification channel. Channel types that support this field include: pagerduty
 func (o GetNotificationChannelSensitiveLabelOutput) ServiceKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.ServiceKey }).(pulumi.StringOutput)
+}
+
+// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+func (o GetNotificationChannelSensitiveLabelOutput) ServiceKeyWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.ServiceKeyWo }).(pulumi.StringOutput)
+}
+
+// Triggers update of 'service_key_wo' write-only. Increment this value when an update to 'service_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o GetNotificationChannelSensitiveLabelOutput) ServiceKeyWoVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.ServiceKeyWoVersion }).(pulumi.StringOutput)
 }
 
 type GetNotificationChannelSensitiveLabelArrayOutput struct{ *pulumi.OutputState }

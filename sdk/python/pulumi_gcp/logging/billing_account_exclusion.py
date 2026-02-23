@@ -26,6 +26,7 @@ class BillingAccountExclusionArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BillingAccountExclusion resource.
+
         :param pulumi.Input[_builtins.str] billing_account: The billing account to create the exclusion for.
         :param pulumi.Input[_builtins.str] filter: The filter to apply when excluding logs. Only log entries that match the filter are excluded.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
@@ -118,6 +119,7 @@ class _BillingAccountExclusionState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BillingAccountExclusion resources.
+
         :param pulumi.Input[_builtins.str] billing_account: The billing account to create the exclusion for.
         :param pulumi.Input[_builtins.str] description: A human-readable description.
         :param pulumi.Input[_builtins.bool] disabled: Whether this exclusion rule should be disabled or not. This defaults to
@@ -215,6 +217,14 @@ class BillingAccountExclusion(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages a billing account logging exclusion. For more information see:
+
+        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.exclusions)
+        * How-to Guides
+            * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
+
+        > You can specify exclusions for log sinks created by terraform by using the exclusions field of `logging.BillingAccountSink`
+
         ## Example Usage
 
         ```python
@@ -239,6 +249,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion default billingAccounts/{{billing_account}}/exclusions/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -258,6 +269,14 @@ class BillingAccountExclusion(pulumi.CustomResource):
                  args: BillingAccountExclusionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a billing account logging exclusion. For more information see:
+
+        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.exclusions)
+        * How-to Guides
+            * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
+
+        > You can specify exclusions for log sinks created by terraform by using the exclusions field of `logging.BillingAccountSink`
+
         ## Example Usage
 
         ```python
@@ -282,6 +301,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion default billingAccounts/{{billing_account}}/exclusions/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BillingAccountExclusionArgs args: The arguments to use to populate this resource's properties.

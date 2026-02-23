@@ -288,7 +288,6 @@ import * as utilities from "../utilities";
  *     skipWait: true,
  * });
  * ```
- *
  * ## Import
  *
  * Index can be imported using any of these accepted formats:
@@ -343,6 +342,13 @@ export class Index extends pulumi.CustomResource {
      * The Firestore database id. Defaults to `"(default)"`.
      */
     declare public readonly database: pulumi.Output<string | undefined>;
+    /**
+     * Deletion behavior for this index.
+     * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+     * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `DELETE`.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The density configuration for this index.
      * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
@@ -403,6 +409,7 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["apiScope"] = state?.apiScope;
             resourceInputs["collection"] = state?.collection;
             resourceInputs["database"] = state?.database;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["density"] = state?.density;
             resourceInputs["fields"] = state?.fields;
             resourceInputs["multikey"] = state?.multikey;
@@ -422,6 +429,7 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["apiScope"] = args?.apiScope;
             resourceInputs["collection"] = args?.collection;
             resourceInputs["database"] = args?.database;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["density"] = args?.density;
             resourceInputs["fields"] = args?.fields;
             resourceInputs["multikey"] = args?.multikey;
@@ -454,6 +462,13 @@ export interface IndexState {
      * The Firestore database id. Defaults to `"(default)"`.
      */
     database?: pulumi.Input<string>;
+    /**
+     * Deletion behavior for this index.
+     * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+     * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `DELETE`.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The density configuration for this index.
      * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
@@ -517,6 +532,13 @@ export interface IndexArgs {
      * The Firestore database id. Defaults to `"(default)"`.
      */
     database?: pulumi.Input<string>;
+    /**
+     * Deletion behavior for this index.
+     * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
+     * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `DELETE`.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The density configuration for this index.
      * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.

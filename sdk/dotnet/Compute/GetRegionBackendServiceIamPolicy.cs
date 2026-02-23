@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Compute
     public static class GetRegionBackendServiceIamPolicy
     {
         /// <summary>
+        /// Retrieves the current IAM policy data for regionbackendservice
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +41,11 @@ namespace Pulumi.Gcp.Compute
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionBackendServiceIamPolicyResult>("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", args ?? new GetRegionBackendServiceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for regionbackendservice
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +70,11 @@ namespace Pulumi.Gcp.Compute
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionBackendServiceIamPolicyResult>("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", args ?? new GetRegionBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for regionbackendservice
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

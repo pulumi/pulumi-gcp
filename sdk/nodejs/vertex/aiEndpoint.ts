@@ -82,10 +82,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {name: "psc-network-_3686"});
+ * const _default = new gcp.compute.Network("default", {name: "psc-network-_44339"});
  * const project = gcp.organizations.getProject({});
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
- *     name: "endpoint-name_54136",
+ *     name: "endpoint-name_34599",
  *     displayName: "sample-endpoint",
  *     description: "A sample vertex endpoint",
  *     location: "us-central1",
@@ -110,7 +110,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
- *     name: "endpoint-name_11171",
+ *     name: "endpoint-name_79513",
  *     displayName: "sample-endpoint",
  *     description: "A sample vertex endpoint",
  *     location: "us-central1",
@@ -128,22 +128,14 @@ import * as utilities from "../utilities";
  * Endpoint can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
- *
  * * `{{project}}/{{location}}/{{name}}`
- *
  * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{project}}/{{location}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{location}}/{{name}}
  * ```
  */

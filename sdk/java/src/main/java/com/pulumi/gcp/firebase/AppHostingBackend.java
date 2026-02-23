@@ -265,22 +265,14 @@ import javax.annotation.Nullable;
  * Backend can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/backends/{{backend_id}}`
- * 
  * * `{{project}}/{{location}}/{{backend_id}}`
- * 
  * * `{{location}}/{{backend_id}}`
  * 
  * When using the `pulumi import` command, Backend can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default projects/{{project}}/locations/{{location}}/backends/{{backend_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{project}}/{{location}}/{{backend_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{location}}/{{backend_id}}
  * ```
  * 
@@ -403,9 +395,17 @@ public class AppHostingBackend extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }

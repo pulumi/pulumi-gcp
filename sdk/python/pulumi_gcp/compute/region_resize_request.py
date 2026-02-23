@@ -30,6 +30,7 @@ class RegionResizeRequestArgs:
                  requested_run_duration: Optional[pulumi.Input['RegionResizeRequestRequestedRunDurationArgs']] = None):
         """
         The set of arguments for constructing a RegionResizeRequest resource.
+
         :param pulumi.Input[_builtins.str] instance_group_manager: The reference of the regional instance group manager this ResizeRequest is a part of.
         :param pulumi.Input[_builtins.int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         :param pulumi.Input[_builtins.str] description: An optional description of this resize-request.
@@ -155,6 +156,7 @@ class _RegionResizeRequestState:
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusArgs']]]] = None):
         """
         Input properties used for looking up and filtering RegionResizeRequest resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: The creation timestamp for this resize request in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resize-request.
         :param pulumi.Input[_builtins.str] instance_group_manager: The reference of the regional instance group manager this ResizeRequest is a part of.
@@ -329,6 +331,21 @@ class RegionResizeRequest(pulumi.CustomResource):
                  resize_by: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Represents a Regional Managed Instance Group Resize Request
+
+        Resize Requests are the Managed Instance Group implementation of Dynamic Workload Scheduler Flex Start.
+
+        With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about RegionResizeRequest, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagerResizeRequests)
+        * How-to Guides
+            * [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
+
         ## Example Usage
 
         ### Compute Rmig Resize Request
@@ -412,30 +429,19 @@ class RegionResizeRequest(pulumi.CustomResource):
         RegionResizeRequest can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}`
-
         * `{{project}}/{{region}}/{{instance_group_manager}}/{{name}}`
-
         * `{{region}}/{{instance_group_manager}}/{{name}}`
-
         * `{{instance_group_manager}}/{{name}}`
 
         When using the `pulumi import` command, RegionResizeRequest can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{project}}/{{region}}/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{region}}/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{instance_group_manager}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -456,6 +462,21 @@ class RegionResizeRequest(pulumi.CustomResource):
                  args: RegionResizeRequestArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Represents a Regional Managed Instance Group Resize Request
+
+        Resize Requests are the Managed Instance Group implementation of Dynamic Workload Scheduler Flex Start.
+
+        With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about RegionResizeRequest, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagerResizeRequests)
+        * How-to Guides
+            * [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
+
         ## Example Usage
 
         ### Compute Rmig Resize Request
@@ -539,30 +560,19 @@ class RegionResizeRequest(pulumi.CustomResource):
         RegionResizeRequest can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}`
-
         * `{{project}}/{{region}}/{{instance_group_manager}}/{{name}}`
-
         * `{{region}}/{{instance_group_manager}}/{{name}}`
-
         * `{{instance_group_manager}}/{{name}}`
 
         When using the `pulumi import` command, RegionResizeRequest can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{project}}/{{region}}/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{region}}/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{instance_group_manager}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionResizeRequestArgs args: The arguments to use to populate this resource's properties.

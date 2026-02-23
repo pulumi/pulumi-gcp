@@ -23,6 +23,7 @@ class AiCacheConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiCacheConfig resource.
+
         :param pulumi.Input[_builtins.bool] disable_cache: If set to true, disables GenAI caching. Otherwise caching is enabled.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -65,6 +66,7 @@ class _AiCacheConfigState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiCacheConfig resources.
+
         :param pulumi.Input[_builtins.bool] disable_cache: If set to true, disables GenAI caching. Otherwise caching is enabled.
         :param pulumi.Input[_builtins.str] name: Identifier. name of the cache config. Format: - `projects/{project}/cacheConfig`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -151,18 +153,15 @@ class AiCacheConfig(pulumi.CustomResource):
         CacheConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/cacheConfig`
-
         * `{{project}}`
 
         When using the `pulumi import` command, CacheConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiCacheConfig:AiCacheConfig default projects/{{project}}/cacheConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiCacheConfig:AiCacheConfig default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -203,18 +202,15 @@ class AiCacheConfig(pulumi.CustomResource):
         CacheConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/cacheConfig`
-
         * `{{project}}`
 
         When using the `pulumi import` command, CacheConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiCacheConfig:AiCacheConfig default projects/{{project}}/cacheConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiCacheConfig:AiCacheConfig default {{project}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiCacheConfigArgs args: The arguments to use to populate this resource's properties.

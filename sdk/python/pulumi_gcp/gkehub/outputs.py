@@ -1304,7 +1304,9 @@ class FeatureMembershipConfigmanagement(dict):
                Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
                Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
                to migrate from Hierarchy Controller to HNC.
-        :param _builtins.str management: Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        :param _builtins.str management: Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+               and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+               This field was introduced in Terraform version 5.41.0.
         :param 'FeatureMembershipConfigmanagementPolicyControllerArgs' policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
                Configuring Policy Controller through the configmanagement feature is no longer recommended.
                Use the policycontroller feature instead.
@@ -1345,7 +1347,9 @@ class FeatureMembershipConfigmanagement(dict):
     @pulumi.getter
     def management(self) -> Optional[_builtins.str]:
         """
-        Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
+        and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
+        This field was introduced in Terraform version 5.41.0.
         """
         return pulumi.get(self, "management")
 
@@ -1406,7 +1410,9 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
                  stop_syncing: Optional[_builtins.bool] = None):
         """
         :param Sequence['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs'] deployment_overrides: The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
-        :param _builtins.bool enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        :param _builtins.bool enabled: Whether Config Sync is enabled in the cluster. This field was introduced in Terraform version
+               5.41.0, and
+               needs to be set to `true` explicitly to install Config Sync.
         :param 'FeatureMembershipConfigmanagementConfigSyncGitArgs' git: (Optional) Structure is documented below.
         :param _builtins.str metrics_gcp_service_account_email: Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
         :param 'FeatureMembershipConfigmanagementConfigSyncOciArgs' oci: (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
@@ -1445,7 +1451,9 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
         """
-        Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        Whether Config Sync is enabled in the cluster. This field was introduced in Terraform version
+        5.41.0, and
+        needs to be set to `true` explicitly to install Config Sync.
         """
         return pulumi.get(self, "enabled")
 
@@ -3522,11 +3530,19 @@ class FleetState(dict):
 class MembershipAuthority(dict):
     def __init__(__self__, *,
                  issuer: _builtins.str):
+        """
+        :param _builtins.str issuer: A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+               with length <2000 characters. For example: `https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster`. If the cluster is provisioned with Terraform, this is `"https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}"`.
+        """
         pulumi.set(__self__, "issuer", issuer)
 
     @_builtins.property
     @pulumi.getter
     def issuer(self) -> _builtins.str:
+        """
+        A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+        with length <2000 characters. For example: `https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster`. If the cluster is provisioned with Terraform, this is `"https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}"`.
+        """
         return pulumi.get(self, "issuer")
 
 
@@ -3610,11 +3626,25 @@ class MembershipEndpointGkeCluster(dict):
 
     def __init__(__self__, *,
                  resource_link: _builtins.str):
+        """
+        :param _builtins.str resource_link: Self-link of the GCP resource for the GKE cluster.
+               For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+               It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+               this can be `"//container.googleapis.com/${google_container_cluster.my-cluster.id}"` or
+               `google_container_cluster.my-cluster.id`.
+        """
         pulumi.set(__self__, "resource_link", resource_link)
 
     @_builtins.property
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> _builtins.str:
+        """
+        Self-link of the GCP resource for the GKE cluster.
+        For example: `//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster`.
+        It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+        this can be `"//container.googleapis.com/${google_container_cluster.my-cluster.id}"` or
+        `google_container_cluster.my-cluster.id`.
+        """
         return pulumi.get(self, "resource_link")
 
 
@@ -5171,11 +5201,19 @@ class GetFeatureStateStateResult(dict):
 class GetMembershipAuthorityResult(dict):
     def __init__(__self__, *,
                  issuer: _builtins.str):
+        """
+        :param _builtins.str issuer: A JSON Web Token (JWT) issuer URI. 'issuer' must start with 'https://' and // be a valid
+               with length <2000 characters. For example: 'https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster'. If the cluster is provisioned with Terraform, this is '"https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}"'.
+        """
         pulumi.set(__self__, "issuer", issuer)
 
     @_builtins.property
     @pulumi.getter
     def issuer(self) -> _builtins.str:
+        """
+        A JSON Web Token (JWT) issuer URI. 'issuer' must start with 'https://' and // be a valid
+        with length <2000 characters. For example: 'https://container.googleapis.com/v1/projects/my-project/locations/us-west1/clusters/my-cluster'. If the cluster is provisioned with Terraform, this is '"https://container.googleapis.com/v1/${google_container_cluster.my-cluster.id}"'.
+        """
         return pulumi.get(self, "issuer")
 
 
@@ -5219,11 +5257,25 @@ class GetMembershipEndpointResult(dict):
 class GetMembershipEndpointGkeClusterResult(dict):
     def __init__(__self__, *,
                  resource_link: _builtins.str):
+        """
+        :param _builtins.str resource_link: Self-link of the GCP resource for the GKE cluster.
+               For example: '//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster'.
+               It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+               this can be '"//container.googleapis.com/${google_container_cluster.my-cluster.id}"' or
+               'google_container_cluster.my-cluster.id'.
+        """
         pulumi.set(__self__, "resource_link", resource_link)
 
     @_builtins.property
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> _builtins.str:
+        """
+        Self-link of the GCP resource for the GKE cluster.
+        For example: '//container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster'.
+        It can be at the most 1000 characters in length. If the cluster is provisioned with Terraform,
+        this can be '"//container.googleapis.com/${google_container_cluster.my-cluster.id}"' or
+        'google_container_cluster.my-cluster.id'.
+        """
         return pulumi.get(self, "resource_link")
 
 

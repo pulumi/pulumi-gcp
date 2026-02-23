@@ -28,6 +28,7 @@ class InterconnectGroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InterconnectGroup resource.
+
         :param pulumi.Input['InterconnectGroupIntentArgs'] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
@@ -142,6 +143,7 @@ class _InterconnectGroupState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterconnectGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredArgs']]] configureds: The status of the group as configured. This has the same
                structure as the operational field reported by the OperationalStatus
                method, but does not take into account the operational status of each
@@ -343,24 +345,17 @@ class InterconnectGroup(pulumi.CustomResource):
         InterconnectGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/interconnectGroups/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InterconnectGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default projects/{{project}}/global/interconnectGroups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -418,24 +413,17 @@ class InterconnectGroup(pulumi.CustomResource):
         InterconnectGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/interconnectGroups/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InterconnectGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default projects/{{project}}/global/interconnectGroups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InterconnectGroupArgs args: The arguments to use to populate this resource's properties.

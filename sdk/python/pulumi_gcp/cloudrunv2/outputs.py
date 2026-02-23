@@ -65,6 +65,9 @@ __all__ = [
     'ServiceTemplateContainerLivenessProbeHttpGetHttpHeader',
     'ServiceTemplateContainerLivenessProbeTcpSocket',
     'ServiceTemplateContainerPorts',
+    'ServiceTemplateContainerReadinessProbe',
+    'ServiceTemplateContainerReadinessProbeGrpc',
+    'ServiceTemplateContainerReadinessProbeHttpGet',
     'ServiceTemplateContainerResources',
     'ServiceTemplateContainerSourceCode',
     'ServiceTemplateContainerSourceCodeCloudStorageSource',
@@ -169,6 +172,9 @@ __all__ = [
     'GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderResult',
     'GetServiceTemplateContainerLivenessProbeTcpSocketResult',
     'GetServiceTemplateContainerPortResult',
+    'GetServiceTemplateContainerReadinessProbeResult',
+    'GetServiceTemplateContainerReadinessProbeGrpcResult',
+    'GetServiceTemplateContainerReadinessProbeHttpGetResult',
     'GetServiceTemplateContainerResourceResult',
     'GetServiceTemplateContainerSourceCodeResult',
     'GetServiceTemplateContainerSourceCodeCloudStorageSourceResult',
@@ -3047,6 +3053,8 @@ class ServiceTemplateContainer(dict):
             suggest = "depends_ons"
         elif key == "livenessProbe":
             suggest = "liveness_probe"
+        elif key == "readinessProbe":
+            suggest = "readiness_probe"
         elif key == "sourceCode":
             suggest = "source_code"
         elif key == "startupProbe":
@@ -3078,6 +3086,7 @@ class ServiceTemplateContainer(dict):
                  liveness_probe: Optional['outputs.ServiceTemplateContainerLivenessProbe'] = None,
                  name: Optional[_builtins.str] = None,
                  ports: Optional['outputs.ServiceTemplateContainerPorts'] = None,
+                 readiness_probe: Optional['outputs.ServiceTemplateContainerReadinessProbe'] = None,
                  resources: Optional['outputs.ServiceTemplateContainerResources'] = None,
                  source_code: Optional['outputs.ServiceTemplateContainerSourceCode'] = None,
                  startup_probe: Optional['outputs.ServiceTemplateContainerStartupProbe'] = None,
@@ -3099,6 +3108,8 @@ class ServiceTemplateContainer(dict):
         :param _builtins.str name: Name of the container specified as a DNS_LABEL.
         :param 'ServiceTemplateContainerPortsArgs' ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+               Structure is documented below.
+        :param 'ServiceTemplateContainerReadinessProbeArgs' readiness_probe: Periodic probe of container readiness.
                Structure is documented below.
         :param 'ServiceTemplateContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
@@ -3130,6 +3141,8 @@ class ServiceTemplateContainer(dict):
             pulumi.set(__self__, "name", name)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
+        if readiness_probe is not None:
+            pulumi.set(__self__, "readiness_probe", readiness_probe)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
         if source_code is not None:
@@ -3226,6 +3239,15 @@ class ServiceTemplateContainer(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "ports")
+
+    @_builtins.property
+    @pulumi.getter(name="readinessProbe")
+    def readiness_probe(self) -> Optional['outputs.ServiceTemplateContainerReadinessProbe']:
+        """
+        Periodic probe of container readiness.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "readiness_probe")
 
     @_builtins.property
     @pulumi.getter
@@ -3643,8 +3665,8 @@ class ServiceTemplateContainerLivenessProbeHttpGet(dict):
         """
         :param Sequence['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
-        :param _builtins.str path: Path to access on the HTTP server. Defaults to '/'.
-        :param _builtins.int port: Port number to access on the container. Must be in the range 1 to 65535.
+        :param _builtins.str path: Path to access on the HTTP server. If set, it should not be empty string.
+        :param _builtins.int port: Port number to access on the container. Number must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         if http_headers is not None:
@@ -3667,7 +3689,7 @@ class ServiceTemplateContainerLivenessProbeHttpGet(dict):
     @pulumi.getter
     def path(self) -> Optional[_builtins.str]:
         """
-        Path to access on the HTTP server. Defaults to '/'.
+        Path to access on the HTTP server. If set, it should not be empty string.
         """
         return pulumi.get(self, "path")
 
@@ -3675,7 +3697,7 @@ class ServiceTemplateContainerLivenessProbeHttpGet(dict):
     @pulumi.getter
     def port(self) -> Optional[_builtins.int]:
         """
-        Port number to access on the container. Must be in the range 1 to 65535.
+        Port number to access on the container. Number must be in the range 1 to 65535.
         If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
@@ -3777,6 +3799,196 @@ class ServiceTemplateContainerPorts(dict):
         If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ServiceTemplateContainerReadinessProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpGet":
+            suggest = "http_get"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateContainerReadinessProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateContainerReadinessProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateContainerReadinessProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failure_threshold: Optional[_builtins.int] = None,
+                 grpc: Optional['outputs.ServiceTemplateContainerReadinessProbeGrpc'] = None,
+                 http_get: Optional['outputs.ServiceTemplateContainerReadinessProbeHttpGet'] = None,
+                 period_seconds: Optional[_builtins.int] = None,
+                 success_threshold: Optional[_builtins.int] = None,
+                 timeout_seconds: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int failure_threshold: Minimum consecutive failures for the probe to be considered failed after
+               having succeeded. Defaults to 3.
+        :param 'ServiceTemplateContainerReadinessProbeGrpcArgs' grpc: GRPC specifies an action involving a GRPC port.
+               Structure is documented below.
+        :param 'ServiceTemplateContainerReadinessProbeHttpGetArgs' http_get: HttpGet specifies the http request to perform.
+               Structure is documented below.
+        :param _builtins.int period_seconds: How often (in seconds) to perform the probe.
+               Default to 10 seconds.
+        :param _builtins.int success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed.
+               Defaults to 2.
+        :param _builtins.int timeout_seconds: Number of seconds after which the probe times out.
+               Defaults to 1 second. Must be smaller than period_seconds.
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[_builtins.int]:
+        """
+        Minimum consecutive failures for the probe to be considered failed after
+        having succeeded. Defaults to 3.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def grpc(self) -> Optional['outputs.ServiceTemplateContainerReadinessProbeGrpc']:
+        """
+        GRPC specifies an action involving a GRPC port.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc")
+
+    @_builtins.property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional['outputs.ServiceTemplateContainerReadinessProbeHttpGet']:
+        """
+        HttpGet specifies the http request to perform.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[_builtins.int]:
+        """
+        How often (in seconds) to perform the probe.
+        Default to 10 seconds.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[_builtins.int]:
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed.
+        Defaults to 2.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[_builtins.int]:
+        """
+        Number of seconds after which the probe times out.
+        Defaults to 1 second. Must be smaller than period_seconds.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class ServiceTemplateContainerReadinessProbeGrpc(dict):
+    def __init__(__self__, *,
+                 port: Optional[_builtins.int] = None,
+                 service: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        :param _builtins.str service: The name of the service to place in the gRPC HealthCheckRequest
+               (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+               If this is not specified, the default behavior is defined by gRPC.
+               
+               <a name="nested_template_containers_build_info"></a>The `build_info` block contains:
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> Optional[_builtins.str]:
+        """
+        The name of the service to place in the gRPC HealthCheckRequest
+        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        If this is not specified, the default behavior is defined by gRPC.
+
+        <a name="nested_template_containers_build_info"></a>The `build_info` block contains:
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class ServiceTemplateContainerReadinessProbeHttpGet(dict):
+    def __init__(__self__, *,
+                 path: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str path: Path to access on the HTTP server. If set, it should not be empty string.
+        :param _builtins.int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        Path to access on the HTTP server. If set, it should not be empty string.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -4113,8 +4325,8 @@ class ServiceTemplateContainerStartupProbeHttpGet(dict):
         """
         :param Sequence['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
-        :param _builtins.str path: Path to access on the HTTP server. Defaults to '/'.
-        :param _builtins.int port: Port number to access on the container. Must be in the range 1 to 65535.
+        :param _builtins.str path: Path to access on the HTTP server. If set, it should not be empty string.
+        :param _builtins.int port: Port number to access on the container. Number must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         if http_headers is not None:
@@ -4137,7 +4349,7 @@ class ServiceTemplateContainerStartupProbeHttpGet(dict):
     @pulumi.getter
     def path(self) -> Optional[_builtins.str]:
         """
-        Path to access on the HTTP server. Defaults to '/'.
+        Path to access on the HTTP server. If set, it should not be empty string.
         """
         return pulumi.get(self, "path")
 
@@ -4145,7 +4357,7 @@ class ServiceTemplateContainerStartupProbeHttpGet(dict):
     @pulumi.getter
     def port(self) -> Optional[_builtins.int]:
         """
-        Port number to access on the container. Must be in the range 1 to 65535.
+        Port number to access on the container. Number must be in the range 1 to 65535.
         If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
@@ -9333,6 +9545,7 @@ class GetServiceTemplateContainerResult(dict):
                  liveness_probes: Sequence['outputs.GetServiceTemplateContainerLivenessProbeResult'],
                  name: _builtins.str,
                  ports: Sequence['outputs.GetServiceTemplateContainerPortResult'],
+                 readiness_probes: Sequence['outputs.GetServiceTemplateContainerReadinessProbeResult'],
                  resources: Sequence['outputs.GetServiceTemplateContainerResourceResult'],
                  source_codes: Sequence['outputs.GetServiceTemplateContainerSourceCodeResult'],
                  startup_probes: Sequence['outputs.GetServiceTemplateContainerStartupProbeResult'],
@@ -9351,6 +9564,7 @@ class GetServiceTemplateContainerResult(dict):
         :param Sequence['GetServiceTemplateContainerPortArgs'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
                
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+        :param Sequence['GetServiceTemplateContainerReadinessProbeArgs'] readiness_probes: Periodic probe of container readiness.
         :param Sequence['GetServiceTemplateContainerResourceArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         :param Sequence['GetServiceTemplateContainerSourceCodeArgs'] source_codes: Location of the source.
         :param Sequence['GetServiceTemplateContainerStartupProbeArgs'] startup_probes: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -9367,6 +9581,7 @@ class GetServiceTemplateContainerResult(dict):
         pulumi.set(__self__, "liveness_probes", liveness_probes)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "readiness_probes", readiness_probes)
         pulumi.set(__self__, "resources", resources)
         pulumi.set(__self__, "source_codes", source_codes)
         pulumi.set(__self__, "startup_probes", startup_probes)
@@ -9454,6 +9669,14 @@ class GetServiceTemplateContainerResult(dict):
         If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
         """
         return pulumi.get(self, "ports")
+
+    @_builtins.property
+    @pulumi.getter(name="readinessProbes")
+    def readiness_probes(self) -> Sequence['outputs.GetServiceTemplateContainerReadinessProbeResult']:
+        """
+        Periodic probe of container readiness.
+        """
+        return pulumi.get(self, "readiness_probes")
 
     @_builtins.property
     @pulumi.getter
@@ -9851,6 +10074,153 @@ class GetServiceTemplateContainerPortResult(dict):
         The name of the Cloud Run v2 Service.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetServiceTemplateContainerReadinessProbeResult(dict):
+    def __init__(__self__, *,
+                 failure_threshold: _builtins.int,
+                 grpcs: Sequence['outputs.GetServiceTemplateContainerReadinessProbeGrpcResult'],
+                 http_gets: Sequence['outputs.GetServiceTemplateContainerReadinessProbeHttpGetResult'],
+                 period_seconds: _builtins.int,
+                 success_threshold: _builtins.int,
+                 timeout_seconds: _builtins.int):
+        """
+        :param _builtins.int failure_threshold: Minimum consecutive failures for the probe to be considered failed after
+               having succeeded. Defaults to 3.
+        :param Sequence['GetServiceTemplateContainerReadinessProbeGrpcArgs'] grpcs: GRPC specifies an action involving a GRPC port.
+        :param Sequence['GetServiceTemplateContainerReadinessProbeHttpGetArgs'] http_gets: HttpGet specifies the http request to perform.
+        :param _builtins.int period_seconds: How often (in seconds) to perform the probe.
+               Default to 10 seconds.
+        :param _builtins.int success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed.
+               Defaults to 2.
+        :param _builtins.int timeout_seconds: Number of seconds after which the probe times out.
+               Defaults to 1 second. Must be smaller than period_seconds.
+        """
+        pulumi.set(__self__, "failure_threshold", failure_threshold)
+        pulumi.set(__self__, "grpcs", grpcs)
+        pulumi.set(__self__, "http_gets", http_gets)
+        pulumi.set(__self__, "period_seconds", period_seconds)
+        pulumi.set(__self__, "success_threshold", success_threshold)
+        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> _builtins.int:
+        """
+        Minimum consecutive failures for the probe to be considered failed after
+        having succeeded. Defaults to 3.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def grpcs(self) -> Sequence['outputs.GetServiceTemplateContainerReadinessProbeGrpcResult']:
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
+        return pulumi.get(self, "grpcs")
+
+    @_builtins.property
+    @pulumi.getter(name="httpGets")
+    def http_gets(self) -> Sequence['outputs.GetServiceTemplateContainerReadinessProbeHttpGetResult']:
+        """
+        HttpGet specifies the http request to perform.
+        """
+        return pulumi.get(self, "http_gets")
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> _builtins.int:
+        """
+        How often (in seconds) to perform the probe.
+        Default to 10 seconds.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> _builtins.int:
+        """
+        Minimum consecutive successes for the probe to be considered successful after having failed.
+        Defaults to 2.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> _builtins.int:
+        """
+        Number of seconds after which the probe times out.
+        Defaults to 1 second. Must be smaller than period_seconds.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class GetServiceTemplateContainerReadinessProbeGrpcResult(dict):
+    def __init__(__self__, *,
+                 port: _builtins.int,
+                 service: _builtins.str):
+        """
+        :param _builtins.int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        :param _builtins.str service: The name of the service to place in the gRPC HealthCheckRequest
+               (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+               If this is not specified, the default behavior is defined by gRPC.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> _builtins.str:
+        """
+        The name of the service to place in the gRPC HealthCheckRequest
+        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class GetServiceTemplateContainerReadinessProbeHttpGetResult(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 port: _builtins.int):
+        """
+        :param _builtins.str path: Path to access on the HTTP server. If set, it should not be empty string.
+        :param _builtins.int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        Path to access on the HTTP server. If set, it should not be empty string.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

@@ -33,6 +33,7 @@ class JobArgs:
                  reservation: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
+
         :param pulumi.Input[_builtins.str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input['JobCopyArgs'] copy: Copies a table.
                Structure is documented below.
@@ -225,6 +226,7 @@ class _JobState:
                  user_email: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
+
         :param pulumi.Input['JobCopyArgs'] copy: Copies a table.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: (Output)
@@ -874,42 +876,23 @@ class Job(pulumi.CustomResource):
         Job can be imported using any of these accepted formats:
 
         * `projects/{{project}}/jobs/{{job_id}}/location/{{location}}`
-
         * `projects/{{project}}/jobs/{{job_id}}`
-
         * `{{project}}/{{job_id}}/{{location}}`
-
         * `{{job_id}}/{{location}}`
-
         * `{{project}}/{{job_id}}`
-
         * `{{job_id}}`
 
         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{job_id}}/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{job_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1314,42 +1297,23 @@ class Job(pulumi.CustomResource):
         Job can be imported using any of these accepted formats:
 
         * `projects/{{project}}/jobs/{{job_id}}/location/{{location}}`
-
         * `projects/{{project}}/jobs/{{job_id}}`
-
         * `{{project}}/{{job_id}}/{{location}}`
-
         * `{{job_id}}/{{location}}`
-
         * `{{project}}/{{job_id}}`
-
         * `{{job_id}}`
 
         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{job_id}}/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/job:Job default {{job_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.

@@ -17,7 +17,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceNetworkInterface {
     /**
-     * @return Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet. If omitted, ssh provisioners will not
+     * work unless Terraform can send traffic to the instance&#39;s network (e.g. via
+     * tunnel or because it is running on another cloud instance on that network).
+     * This block can be specified once per `networkInterface`. Structure documented below.
      * 
      */
     private @Nullable List<InstanceNetworkInterfaceAccessConfig> accessConfigs;
@@ -91,6 +96,11 @@ public final class InstanceNetworkInterface {
      */
     private @Nullable String nicType;
     /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    private @Nullable String parentNicName;
+    /**
      * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
      * 
      */
@@ -124,10 +134,20 @@ public final class InstanceNetworkInterface {
      * 
      */
     private @Nullable String subnetworkProject;
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    private @Nullable Integer vlan;
 
     private InstanceNetworkInterface() {}
     /**
-     * @return Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet. If omitted, ssh provisioners will not
+     * work unless Terraform can send traffic to the instance&#39;s network (e.g. via
+     * tunnel or because it is running on another cloud instance on that network).
+     * This block can be specified once per `networkInterface`. Structure documented below.
      * 
      */
     public List<InstanceNetworkInterfaceAccessConfig> accessConfigs() {
@@ -227,6 +247,13 @@ public final class InstanceNetworkInterface {
         return Optional.ofNullable(this.nicType);
     }
     /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    public Optional<String> parentNicName() {
+        return Optional.ofNullable(this.parentNicName);
+    }
+    /**
      * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
      * 
      */
@@ -270,6 +297,13 @@ public final class InstanceNetworkInterface {
     public Optional<String> subnetworkProject() {
         return Optional.ofNullable(this.subnetworkProject);
     }
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    public Optional<Integer> vlan() {
+        return Optional.ofNullable(this.vlan);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -293,11 +327,13 @@ public final class InstanceNetworkInterface {
         private @Nullable String networkAttachment;
         private @Nullable String networkIp;
         private @Nullable String nicType;
+        private @Nullable String parentNicName;
         private @Nullable Integer queueCount;
         private @Nullable String securityPolicy;
         private @Nullable String stackType;
         private @Nullable String subnetwork;
         private @Nullable String subnetworkProject;
+        private @Nullable Integer vlan;
         public Builder() {}
         public Builder(InstanceNetworkInterface defaults) {
     	      Objects.requireNonNull(defaults);
@@ -314,11 +350,13 @@ public final class InstanceNetworkInterface {
     	      this.networkAttachment = defaults.networkAttachment;
     	      this.networkIp = defaults.networkIp;
     	      this.nicType = defaults.nicType;
+    	      this.parentNicName = defaults.parentNicName;
     	      this.queueCount = defaults.queueCount;
     	      this.securityPolicy = defaults.securityPolicy;
     	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
     	      this.subnetworkProject = defaults.subnetworkProject;
+    	      this.vlan = defaults.vlan;
         }
 
         @CustomType.Setter
@@ -409,6 +447,12 @@ public final class InstanceNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder parentNicName(@Nullable String parentNicName) {
+
+            this.parentNicName = parentNicName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder queueCount(@Nullable Integer queueCount) {
 
             this.queueCount = queueCount;
@@ -438,6 +482,12 @@ public final class InstanceNetworkInterface {
             this.subnetworkProject = subnetworkProject;
             return this;
         }
+        @CustomType.Setter
+        public Builder vlan(@Nullable Integer vlan) {
+
+            this.vlan = vlan;
+            return this;
+        }
         public InstanceNetworkInterface build() {
             final var _resultValue = new InstanceNetworkInterface();
             _resultValue.accessConfigs = accessConfigs;
@@ -453,11 +503,13 @@ public final class InstanceNetworkInterface {
             _resultValue.networkAttachment = networkAttachment;
             _resultValue.networkIp = networkIp;
             _resultValue.nicType = nicType;
+            _resultValue.parentNicName = parentNicName;
             _resultValue.queueCount = queueCount;
             _resultValue.securityPolicy = securityPolicy;
             _resultValue.stackType = stackType;
             _resultValue.subnetwork = subnetwork;
             _resultValue.subnetworkProject = subnetworkProject;
+            _resultValue.vlan = vlan;
             return _resultValue;
         }
     }

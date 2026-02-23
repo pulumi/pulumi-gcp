@@ -29,6 +29,7 @@ class MirroringEndpointGroupAssociationInitArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MirroringEndpointGroupAssociation resource.
+
         :param pulumi.Input[_builtins.str] location: The cloud location of the association, currently restricted to `global`.
         :param pulumi.Input[_builtins.str] mirroring_endpoint_group: The endpoint group that this association is connected to, for example:
                `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
@@ -157,6 +158,7 @@ class _MirroringEndpointGroupAssociationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MirroringEndpointGroupAssociation resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
                See https://google.aip.dev/148#timestamps.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -510,24 +512,17 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
         MirroringEndpointGroupAssociation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/mirroringEndpointGroupAssociations/{{mirroring_endpoint_group_association_id}}`
-
         * `{{project}}/{{location}}/{{mirroring_endpoint_group_association_id}}`
-
         * `{{location}}/{{mirroring_endpoint_group_association_id}}`
 
         When using the `pulumi import` command, MirroringEndpointGroupAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default projects/{{project}}/locations/{{location}}/mirroringEndpointGroupAssociations/{{mirroring_endpoint_group_association_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default {{project}}/{{location}}/{{mirroring_endpoint_group_association_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default {{location}}/{{mirroring_endpoint_group_association_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -605,24 +600,17 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
         MirroringEndpointGroupAssociation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/mirroringEndpointGroupAssociations/{{mirroring_endpoint_group_association_id}}`
-
         * `{{project}}/{{location}}/{{mirroring_endpoint_group_association_id}}`
-
         * `{{location}}/{{mirroring_endpoint_group_association_id}}`
 
         When using the `pulumi import` command, MirroringEndpointGroupAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default projects/{{project}}/locations/{{location}}/mirroringEndpointGroupAssociations/{{mirroring_endpoint_group_association_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default {{project}}/{{location}}/{{mirroring_endpoint_group_association_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default {{location}}/{{mirroring_endpoint_group_association_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MirroringEndpointGroupAssociationInitArgs args: The arguments to use to populate this resource's properties.

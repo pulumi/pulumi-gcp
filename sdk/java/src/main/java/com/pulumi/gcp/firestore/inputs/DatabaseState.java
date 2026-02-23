@@ -88,7 +88,8 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The database edition.
+     * The database edition. When set to &#39;ENTERPRISE&#39;, then type must be set to
+     * &#39;FIRESTORE_NATIVE&#39;.
      * Possible values are: `STANDARD`, `ENTERPRISE`.
      * 
      */
@@ -96,7 +97,8 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> databaseEdition;
 
     /**
-     * @return The database edition.
+     * @return The database edition. When set to &#39;ENTERPRISE&#39;, then type must be set to
+     * &#39;FIRESTORE_NATIVE&#39;.
      * Possible values are: `STANDARD`, `ENTERPRISE`.
      * 
      */
@@ -104,16 +106,48 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.databaseEdition);
     }
 
+    /**
+     * State of delete protection for the database.
+     * When delete protection is enabled, this database cannot be deleted.
+     * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+     * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * 
+     */
     @Import(name="deleteProtectionState")
     private @Nullable Output<String> deleteProtectionState;
 
+    /**
+     * @return State of delete protection for the database.
+     * When delete protection is enabled, this database cannot be deleted.
+     * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+     * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * 
+     */
     public Optional<Output<String>> deleteProtectionState() {
         return Optional.ofNullable(this.deleteProtectionState);
     }
 
+    /**
+     * Deletion behavior for this database.
+     * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+     * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `ABANDON`.
+     * See also `deleteProtection`.
+     * 
+     */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
+    /**
+     * @return Deletion behavior for this database.
+     * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+     * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+     * The default value is `ABANDON`.
+     * See also `deleteProtection`.
+     * 
+     */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
     }
@@ -157,6 +191,25 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Firestore API data access mode to use for this database. Can only be
+     * specified for &#39;ENTERPRISE&#39; edition databases.
+     * Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+     * 
+     */
+    @Import(name="firestoreDataAccessMode")
+    private @Nullable Output<String> firestoreDataAccessMode;
+
+    /**
+     * @return The Firestore API data access mode to use for this database. Can only be
+     * specified for &#39;ENTERPRISE&#39; edition databases.
+     * Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> firestoreDataAccessMode() {
+        return Optional.ofNullable(this.firestoreDataAccessMode);
+    }
+
+    /**
      * Output only. The keyPrefix for this database.
      * This keyPrefix is used, in combination with the project id (&#34;~&#34;) to construct the application id
      * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
@@ -192,6 +245,25 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> locationId() {
         return Optional.ofNullable(this.locationId);
+    }
+
+    /**
+     * The MongoDB compatible API data access mode to use for this database. Can
+     * only be specified for &#39;ENTERPRISE&#39; edition databases.
+     * Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+     * 
+     */
+    @Import(name="mongodbCompatibleDataAccessMode")
+    private @Nullable Output<String> mongodbCompatibleDataAccessMode;
+
+    /**
+     * @return The MongoDB compatible API data access mode to use for this database. Can
+     * only be specified for &#39;ENTERPRISE&#39; edition databases.
+     * Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> mongodbCompatibleDataAccessMode() {
+        return Optional.ofNullable(this.mongodbCompatibleDataAccessMode);
     }
 
     /**
@@ -261,6 +333,25 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * The Realtime Updates mode to use for this database. Can only be specified
+     * for &#39;ENTERPRISE&#39; edition databases.
+     * Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+     * 
+     */
+    @Import(name="realtimeUpdatesMode")
+    private @Nullable Output<String> realtimeUpdatesMode;
+
+    /**
+     * @return The Realtime Updates mode to use for this database. Can only be specified
+     * for &#39;ENTERPRISE&#39; edition databases.
+     * Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> realtimeUpdatesMode() {
+        return Optional.ofNullable(this.realtimeUpdatesMode);
     }
 
     /**
@@ -372,11 +463,14 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.earliestVersionTime = $.earliestVersionTime;
         this.etag = $.etag;
+        this.firestoreDataAccessMode = $.firestoreDataAccessMode;
         this.keyPrefix = $.keyPrefix;
         this.locationId = $.locationId;
+        this.mongodbCompatibleDataAccessMode = $.mongodbCompatibleDataAccessMode;
         this.name = $.name;
         this.pointInTimeRecoveryEnablement = $.pointInTimeRecoveryEnablement;
         this.project = $.project;
+        this.realtimeUpdatesMode = $.realtimeUpdatesMode;
         this.tags = $.tags;
         this.type = $.type;
         this.uid = $.uid;
@@ -497,7 +591,8 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseEdition The database edition.
+         * @param databaseEdition The database edition. When set to &#39;ENTERPRISE&#39;, then type must be set to
+         * &#39;FIRESTORE_NATIVE&#39;.
          * Possible values are: `STANDARD`, `ENTERPRISE`.
          * 
          * @return builder
@@ -509,7 +604,8 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseEdition The database edition.
+         * @param databaseEdition The database edition. When set to &#39;ENTERPRISE&#39;, then type must be set to
+         * &#39;FIRESTORE_NATIVE&#39;.
          * Possible values are: `STANDARD`, `ENTERPRISE`.
          * 
          * @return builder
@@ -519,20 +615,60 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
             return databaseEdition(Output.of(databaseEdition));
         }
 
+        /**
+         * @param deleteProtectionState State of delete protection for the database.
+         * When delete protection is enabled, this database cannot be deleted.
+         * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+         * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+         * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteProtectionState(@Nullable Output<String> deleteProtectionState) {
             $.deleteProtectionState = deleteProtectionState;
             return this;
         }
 
+        /**
+         * @param deleteProtectionState State of delete protection for the database.
+         * When delete protection is enabled, this database cannot be deleted.
+         * The default value is `DELETE_PROTECTION_STATE_UNSPECIFIED`, which is currently equivalent to `DELETE_PROTECTION_DISABLED`.
+         * **Note:** Additionally, to delete this database using `terraform destroy`, `deletionPolicy` must be set to `DELETE`.
+         * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteProtectionState(String deleteProtectionState) {
             return deleteProtectionState(Output.of(deleteProtectionState));
         }
 
+        /**
+         * @param deletionPolicy Deletion behavior for this database.
+         * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+         * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+         * The default value is `ABANDON`.
+         * See also `deleteProtection`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
             $.deletionPolicy = deletionPolicy;
             return this;
         }
 
+        /**
+         * @param deletionPolicy Deletion behavior for this database.
+         * If the deletion policy is `ABANDON`, the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.
+         * If the deletion policy is `DELETE`, the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.
+         * The default value is `ABANDON`.
+         * See also `deleteProtection`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
         }
@@ -588,6 +724,31 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param firestoreDataAccessMode The Firestore API data access mode to use for this database. Can only be
+         * specified for &#39;ENTERPRISE&#39; edition databases.
+         * Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firestoreDataAccessMode(@Nullable Output<String> firestoreDataAccessMode) {
+            $.firestoreDataAccessMode = firestoreDataAccessMode;
+            return this;
+        }
+
+        /**
+         * @param firestoreDataAccessMode The Firestore API data access mode to use for this database. Can only be
+         * specified for &#39;ENTERPRISE&#39; edition databases.
+         * Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firestoreDataAccessMode(String firestoreDataAccessMode) {
+            return firestoreDataAccessMode(Output.of(firestoreDataAccessMode));
+        }
+
+        /**
          * @param keyPrefix Output only. The keyPrefix for this database.
          * This keyPrefix is used, in combination with the project id (&#34;~&#34;) to construct the application id
          * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
@@ -635,6 +796,31 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder locationId(String locationId) {
             return locationId(Output.of(locationId));
+        }
+
+        /**
+         * @param mongodbCompatibleDataAccessMode The MongoDB compatible API data access mode to use for this database. Can
+         * only be specified for &#39;ENTERPRISE&#39; edition databases.
+         * Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mongodbCompatibleDataAccessMode(@Nullable Output<String> mongodbCompatibleDataAccessMode) {
+            $.mongodbCompatibleDataAccessMode = mongodbCompatibleDataAccessMode;
+            return this;
+        }
+
+        /**
+         * @param mongodbCompatibleDataAccessMode The MongoDB compatible API data access mode to use for this database. Can
+         * only be specified for &#39;ENTERPRISE&#39; edition databases.
+         * Possible values are: `DATA_ACCESS_MODE_ENABLED`, `DATA_ACCESS_MODE_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mongodbCompatibleDataAccessMode(String mongodbCompatibleDataAccessMode) {
+            return mongodbCompatibleDataAccessMode(Output.of(mongodbCompatibleDataAccessMode));
         }
 
         /**
@@ -722,6 +908,31 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param realtimeUpdatesMode The Realtime Updates mode to use for this database. Can only be specified
+         * for &#39;ENTERPRISE&#39; edition databases.
+         * Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder realtimeUpdatesMode(@Nullable Output<String> realtimeUpdatesMode) {
+            $.realtimeUpdatesMode = realtimeUpdatesMode;
+            return this;
+        }
+
+        /**
+         * @param realtimeUpdatesMode The Realtime Updates mode to use for this database. Can only be specified
+         * for &#39;ENTERPRISE&#39; edition databases.
+         * Possible values are: `REALTIME_UPDATES_MODE_ENABLED`, `REALTIME_UPDATES_MODE_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder realtimeUpdatesMode(String realtimeUpdatesMode) {
+            return realtimeUpdatesMode(Output.of(realtimeUpdatesMode));
         }
 
         /**

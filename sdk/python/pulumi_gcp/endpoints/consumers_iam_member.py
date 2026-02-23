@@ -28,6 +28,7 @@ class ConsumersIamMemberArgs:
                  condition: Optional[pulumi.Input['ConsumersIamMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a ConsumersIamMember resource.
+
         :param pulumi.Input[_builtins.str] consumer_project: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -135,6 +136,7 @@ class _ConsumersIamMemberState:
                  service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConsumersIamMember resources.
+
         :param pulumi.Input[_builtins.str] consumer_project: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
@@ -284,9 +286,7 @@ class ConsumersIamMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * services/{{service_name}}/consumers/{{consumer_project}}
-
         * {{service_name}}/{{consumer_project}}
-
         * {{consumer_project}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -294,26 +294,23 @@ class ConsumersIamMember(pulumi.CustomResource):
         Cloud Endpoints serviceconsumers IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:endpoints/consumersIamMember:ConsumersIamMember editor "services/{{service_name}}/consumers/{{consumer_project}} roles/servicemanagement.serviceController user:jane@example.com"
+        $ terraform import google_endpoints_service_consumers_iam_member.editor "services/{{service_name}}/consumers/{{consumer_project}} roles/servicemanagement.serviceController user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:endpoints/consumersIamMember:ConsumersIamMember editor "services/{{service_name}}/consumers/{{consumer_project}} roles/servicemanagement.serviceController"
+        $ terraform import google_endpoints_service_consumers_iam_binding.editor "services/{{service_name}}/consumers/{{consumer_project}} roles/servicemanagement.serviceController"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:endpoints/consumersIamMember:ConsumersIamMember editor services/{{service_name}}/consumers/{{consumer_project}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -363,9 +360,7 @@ class ConsumersIamMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * services/{{service_name}}/consumers/{{consumer_project}}
-
         * {{service_name}}/{{consumer_project}}
-
         * {{consumer_project}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -373,26 +368,23 @@ class ConsumersIamMember(pulumi.CustomResource):
         Cloud Endpoints serviceconsumers IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:endpoints/consumersIamMember:ConsumersIamMember editor "services/{{service_name}}/consumers/{{consumer_project}} roles/servicemanagement.serviceController user:jane@example.com"
+        $ terraform import google_endpoints_service_consumers_iam_member.editor "services/{{service_name}}/consumers/{{consumer_project}} roles/servicemanagement.serviceController user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:endpoints/consumersIamMember:ConsumersIamMember editor "services/{{service_name}}/consumers/{{consumer_project}} roles/servicemanagement.serviceController"
+        $ terraform import google_endpoints_service_consumers_iam_binding.editor "services/{{service_name}}/consumers/{{consumer_project}} roles/servicemanagement.serviceController"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:endpoints/consumersIamMember:ConsumersIamMember editor services/{{service_name}}/consumers/{{consumer_project}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param ConsumersIamMemberArgs args: The arguments to use to populate this resource's properties.

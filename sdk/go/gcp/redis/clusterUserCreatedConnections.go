@@ -12,6 +12,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages user created connections for Redis cluster
+//
+// To get more information about ClusterUserCreatedConnections, see:
+//
+// * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
+//
+// > **Note:** Please ensure your connections meet the requirements outlined at
+// https://cloud.google.com/memorystore/docs/cluster/about-multiple-vpc-networking.
+// If you remove a connections item from the resource, the corresponding forwarding rule will no longer be functioning.
+// If the corresponding forwarding rule is represented in your terraform configuration it is recommended to delete that
+// `compute.ForwardingRule` resource at the same time.
+//
 // ## Example Usage
 //
 // ### Redis Cluster User Created Connections
@@ -409,28 +421,16 @@ import (
 // ClusterUserCreatedConnections can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{region}}/clusters/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, ClusterUserCreatedConnections can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default projects/{{project}}/locations/{{region}}/clusters/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{name}}
 // ```
 type ClusterUserCreatedConnections struct {

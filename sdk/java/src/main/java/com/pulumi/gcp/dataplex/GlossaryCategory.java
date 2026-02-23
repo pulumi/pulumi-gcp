@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var categoryTestId = new Glossary("categoryTestId", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_91980")
+ *             .glossaryId("tf-test-glossary_80332")
  *             .location("us-central1")
  *             .build());
  * 
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             }))
  *             .glossaryId(categoryTestId.glossaryId())
  *             .location("us-central1")
- *             .categoryId("tf-test-category-basic_37118")
+ *             .categoryId("tf-test-category-basic_13293")
  *             .build());
  * 
  *     }
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var categoryTestIdFull = new Glossary("categoryTestIdFull", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_80332")
+ *             .glossaryId("tf-test-glossary_40289")
  *             .location("us-central1")
  *             .build());
  * 
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *             }))
  *             .glossaryId(categoryTestIdFull.glossaryId())
  *             .location("us-central1")
- *             .categoryId("tf-test-category-full_13293")
+ *             .categoryId("tf-test-category-full_33395")
  *             .labels(Map.of("tag", "test-tf"))
  *             .displayName("terraform category")
  *             .description("category created by Terraform")
@@ -122,22 +122,14 @@ import javax.annotation.Nullable;
  * GlossaryCategory can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/categories/{{category_id}}`
- * 
  * * `{{project}}/{{location}}/{{glossary_id}}/{{category_id}}`
- * 
  * * `{{location}}/{{glossary_id}}/{{category_id}}`
  * 
  * When using the `pulumi import` command, GlossaryCategory can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/categories/{{category_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{project}}/{{location}}/{{glossary_id}}/{{category_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{location}}/{{glossary_id}}/{{category_id}}
  * ```
  * 

@@ -27,6 +27,7 @@ class IAMBindingArgs:
                  condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a IAMBinding resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -117,6 +118,7 @@ class _IAMBindingState:
                  service_account_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IAMBinding resources.
+
         :param pulumi.Input['IAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the service account IAM policy.
@@ -433,17 +435,19 @@ class IAMBinding(pulumi.CustomResource):
 
         ## Import
 
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         ### Importing with conditions:
 
         Here are examples of importing IAM memberships and bindings that include conditions:
 
         ```sh
-        $ pulumi import gcp:serviceaccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
+        $ terraform import google_service_account_iam_binding.admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
+
+        $ terraform import google_service_account_iam_member.admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
         ```
 
-        ```sh
-        $ pulumi import gcp:serviceaccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -675,17 +679,19 @@ class IAMBinding(pulumi.CustomResource):
 
         ## Import
 
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         ### Importing with conditions:
 
         Here are examples of importing IAM memberships and bindings that include conditions:
 
         ```sh
-        $ pulumi import gcp:serviceaccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
+        $ terraform import google_service_account_iam_binding.admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
+
+        $ terraform import google_service_account_iam_member.admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
         ```
 
-        ```sh
-        $ pulumi import gcp:serviceaccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
-        ```
 
         :param str resource_name: The name of the resource.
         :param IAMBindingArgs args: The arguments to use to populate this resource's properties.

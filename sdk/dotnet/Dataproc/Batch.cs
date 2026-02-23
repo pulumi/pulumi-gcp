@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchSpark = new Gcp.Dataproc.Batch("example_batch_spark", new()
     ///     {
-    ///         BatchId = "tf-test-batch_55438",
+    ///         BatchId = "tf-test-batch_49082",
     ///         Location = "us-central1",
     ///         Labels = 
     ///         {
@@ -233,7 +233,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchSparsql = new Gcp.Dataproc.Batch("example_batch_sparsql", new()
     ///     {
-    ///         BatchId = "tf-test-batch_32706",
+    ///         BatchId = "tf-test-batch_60365",
     ///         Location = "us-central1",
     ///         RuntimeConfig = new Gcp.Dataproc.Inputs.BatchRuntimeConfigArgs
     ///         {
@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchPyspark = new Gcp.Dataproc.Batch("example_batch_pyspark", new()
     ///     {
-    ///         BatchId = "tf-test-batch_49082",
+    ///         BatchId = "tf-test-batch_80215",
     ///         Location = "us-central1",
     ///         RuntimeConfig = new Gcp.Dataproc.Inputs.BatchRuntimeConfigArgs
     ///         {
@@ -337,7 +337,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchSparkr = new Gcp.Dataproc.Batch("example_batch_sparkr", new()
     ///     {
-    ///         BatchId = "tf-test-batch_60365",
+    ///         BatchId = "tf-test-batch_59033",
     ///         Location = "us-central1",
     ///         Labels = 
     ///         {
@@ -387,7 +387,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchAutotuning = new Gcp.Dataproc.Batch("example_batch_autotuning", new()
     ///     {
-    ///         BatchId = "tf-test-batch_80215",
+    ///         BatchId = "tf-test-batch_32081",
     ///         Location = "us-central1",
     ///         Labels = 
     ///         {
@@ -441,22 +441,14 @@ namespace Pulumi.Gcp.Dataproc
     /// Batch can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/batches/{{batch_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{batch_id}}`
-    /// 
     /// * `{{location}}/{{batch_id}}`
     /// 
     /// When using the `pulumi import` command, Batch can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataproc/batch:Batch default projects/{{project}}/locations/{{location}}/batches/{{batch_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataproc/batch:Batch default {{project}}/{{location}}/{{batch_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataproc/batch:Batch default {{location}}/{{batch_id}}
     /// ```
     /// </summary>

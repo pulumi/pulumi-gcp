@@ -34,6 +34,7 @@ class AppProfileArgs:
                  standard_isolation: Optional[pulumi.Input['AppProfileStandardIsolationArgs']] = None):
         """
         The set of arguments for constructing a AppProfile resource.
+
         :param pulumi.Input[_builtins.str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         :param pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs'] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
@@ -230,6 +231,7 @@ class _AppProfileState:
                  standard_isolation: Optional[pulumi.Input['AppProfileStandardIsolationArgs']] = None):
         """
         Input properties used for looking up and filtering AppProfile resources.
+
         :param pulumi.Input[_builtins.str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         :param pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs'] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
@@ -588,24 +590,17 @@ class AppProfile(pulumi.CustomResource):
         AppProfile can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}`
-
         * `{{project}}/{{instance}}/{{app_profile_id}}`
-
         * `{{instance}}/{{app_profile_id}}`
 
         When using the `pulumi import` command, AppProfile can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/appProfile:AppProfile default projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/appProfile:AppProfile default {{project}}/{{instance}}/{{app_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -773,24 +768,17 @@ class AppProfile(pulumi.CustomResource):
         AppProfile can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}`
-
         * `{{project}}/{{instance}}/{{app_profile_id}}`
-
         * `{{instance}}/{{app_profile_id}}`
 
         When using the `pulumi import` command, AppProfile can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/appProfile:AppProfile default projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/appProfile:AppProfile default {{project}}/{{instance}}/{{app_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppProfileArgs args: The arguments to use to populate this resource's properties.

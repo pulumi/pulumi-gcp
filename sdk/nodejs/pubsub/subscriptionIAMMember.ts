@@ -89,29 +89,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ### Importing IAM policies
- *
- * IAM policy imports use the identifier of the Pubsub Subscription resource. For example:
- *
- * * `"projects/{{project_id}}/subscriptions/{{subscription}}"`
- *
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- *
- * tf
- *
- * import {
- *
- *   id = "projects/{{project_id}}/subscriptions/{{subscription}}"
- *
- *   to = google_pubsub_subscription_iam_policy.default
- *
- * }
- *
- * The `pulumi import` command can also be used:
- *
- * ```sh
- * $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember default projects/{{project_id}}/subscriptions/{{subscription}}
- * ```
+ * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class SubscriptionIAMMember extends pulumi.CustomResource {
     /**

@@ -189,24 +189,15 @@ import (
 // ## Import
 //
 // Cluster can be imported using any of these accepted formats:
-//
 // * `projects/{{project}}/locations/{{location}}/azureClusters/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:container/azureCluster:AzureCluster default projects/{{project}}/locations/{{location}}/azureClusters/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:container/azureCluster:AzureCluster default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:container/azureCluster:AzureCluster default {{location}}/{{name}}
 // ```
 type AzureCluster struct {
@@ -230,7 +221,8 @@ type AzureCluster struct {
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-	Description          pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
@@ -331,7 +323,8 @@ type azureClusterState struct {
 	// Output only. The time at which this cluster was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-	Description          *string           `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint *string `pulumi:"endpoint"`
@@ -382,7 +375,8 @@ type AzureClusterState struct {
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringPtrInput
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-	Description          pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringPtrInput
@@ -619,6 +613,7 @@ func (o AzureClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o AzureClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

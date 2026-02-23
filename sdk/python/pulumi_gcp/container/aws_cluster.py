@@ -35,6 +35,7 @@ class AwsClusterArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AwsCluster resource.
+
         :param pulumi.Input['AwsClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[_builtins.str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         :param pulumi.Input['AwsClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
@@ -244,6 +245,7 @@ class _AwsClusterState:
                  workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering AwsCluster resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -254,6 +256,7 @@ class _AwsClusterState:
         :param pulumi.Input['AwsClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[_builtins.str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[_builtins.str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['AwsClusterFleetArgs'] fleet: Fleet configuration.
@@ -401,6 +404,9 @@ class _AwsClusterState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -818,26 +824,18 @@ class AwsCluster(pulumi.CustomResource):
         ## Import
 
         Cluster can be imported using any of these accepted formats:
-
         * `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/awsCluster:AwsCluster default projects/{{project}}/locations/{{location}}/awsClusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/awsCluster:AwsCluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/awsCluster:AwsCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1098,26 +1096,18 @@ class AwsCluster(pulumi.CustomResource):
         ## Import
 
         Cluster can be imported using any of these accepted formats:
-
         * `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/awsCluster:AwsCluster default projects/{{project}}/locations/{{location}}/awsClusters/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/awsCluster:AwsCluster default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:container/awsCluster:AwsCluster default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AwsClusterArgs args: The arguments to use to populate this resource's properties.
@@ -1236,6 +1226,7 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[_builtins.str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[_builtins.str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']] fleet: Fleet configuration.
@@ -1339,6 +1330,9 @@ class AwsCluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

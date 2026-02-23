@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.ces.ToolsetArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetState;
+import com.pulumi.gcp.ces.outputs.ToolsetMcpToolset;
 import com.pulumi.gcp.ces.outputs.ToolsetOpenApiToolset;
 import java.lang.String;
 import java.util.Optional;
@@ -472,28 +473,422 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Ces Toolset Mcp Service Account Auth Config
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Toolset;
+ * import com.pulumi.gcp.ces.ToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var cesAppForToolset = new App("cesAppForToolset", AppArgs.builder()
+ *             .appId("app-id")
+ *             .location("us")
+ *             .description("App used as parent for CES Toolset example")
+ *             .displayName("my-app")
+ *             .languageSettings(AppLanguageSettingsArgs.builder()
+ *                 .defaultLanguageCode("en-US")
+ *                 .supportedLanguageCodes(                
+ *                     "es-ES",
+ *                     "fr-FR")
+ *                 .enableMultilingualSupport(true)
+ *                 .fallbackAction("escalate")
+ *                 .build())
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesToolsetMcpServiceAccountAuthConfig = new Toolset("cesToolsetMcpServiceAccountAuthConfig", ToolsetArgs.builder()
+ *             .toolsetId("toolset1")
+ *             .location("us")
+ *             .app(cesAppForToolset.appId())
+ *             .displayName("Basic toolset display name")
+ *             .mcpToolset(ToolsetMcpToolsetArgs.builder()
+ *                 .serverAddress("https://api.example.com/mcp/")
+ *                 .tlsConfig(ToolsetMcpToolsetTlsConfigArgs.builder()
+ *                     .caCerts(ToolsetMcpToolsetTlsConfigCaCertArgs.builder()
+ *                         .displayName("example")
+ *                         .cert("ZXhhbXBsZQ==")
+ *                         .build())
+ *                     .build())
+ *                 .serviceDirectoryConfig(ToolsetMcpToolsetServiceDirectoryConfigArgs.builder()
+ *                     .service("projects/example/locations/us/namespaces/namespace/services/service")
+ *                     .build())
+ *                 .apiAuthentication(ToolsetMcpToolsetApiAuthenticationArgs.builder()
+ *                     .serviceAccountAuthConfig(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs.builder()
+ *                         .serviceAccount("my}{@literal @}{@code service-account.com")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Ces Toolset Mcp Oauth Config
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Toolset;
+ * import com.pulumi.gcp.ces.ToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationOauthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cesAppForToolset = new App("cesAppForToolset", AppArgs.builder()
+ *             .appId("app-id")
+ *             .location("us")
+ *             .description("App used as parent for CES Toolset example")
+ *             .displayName("my-app")
+ *             .languageSettings(AppLanguageSettingsArgs.builder()
+ *                 .defaultLanguageCode("en-US")
+ *                 .supportedLanguageCodes(                
+ *                     "es-ES",
+ *                     "fr-FR")
+ *                 .enableMultilingualSupport(true)
+ *                 .fallbackAction("escalate")
+ *                 .build())
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesToolsetMcpOauthConfig = new Toolset("cesToolsetMcpOauthConfig", ToolsetArgs.builder()
+ *             .toolsetId("toolset1")
+ *             .location("us")
+ *             .app(cesAppForToolset.appId())
+ *             .displayName("Basic toolset display name")
+ *             .mcpToolset(ToolsetMcpToolsetArgs.builder()
+ *                 .serverAddress("https://api.example.com/mcp/")
+ *                 .tlsConfig(ToolsetMcpToolsetTlsConfigArgs.builder()
+ *                     .caCerts(ToolsetMcpToolsetTlsConfigCaCertArgs.builder()
+ *                         .displayName("example")
+ *                         .cert("ZXhhbXBsZQ==")
+ *                         .build())
+ *                     .build())
+ *                 .serviceDirectoryConfig(ToolsetMcpToolsetServiceDirectoryConfigArgs.builder()
+ *                     .service("projects/example/locations/us/namespaces/namespace/services/service")
+ *                     .build())
+ *                 .apiAuthentication(ToolsetMcpToolsetApiAuthenticationArgs.builder()
+ *                     .oauthConfig(ToolsetMcpToolsetApiAuthenticationOauthConfigArgs.builder()
+ *                         .oauthGrantType("CLIENT_CREDENTIAL")
+ *                         .clientId("example_client_id")
+ *                         .clientSecretVersion("projects/fake-project/secrets/fake-secret/versions/version1")
+ *                         .tokenEndpoint("123")
+ *                         .scopes("scope1")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Ces Toolset Mcp Service Agent Id Token Auth Config
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Toolset;
+ * import com.pulumi.gcp.ces.ToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cesAppForToolset = new App("cesAppForToolset", AppArgs.builder()
+ *             .appId("app-id")
+ *             .location("us")
+ *             .description("App used as parent for CES Toolset example")
+ *             .displayName("my-app")
+ *             .languageSettings(AppLanguageSettingsArgs.builder()
+ *                 .defaultLanguageCode("en-US")
+ *                 .supportedLanguageCodes(                
+ *                     "es-ES",
+ *                     "fr-FR")
+ *                 .enableMultilingualSupport(true)
+ *                 .fallbackAction("escalate")
+ *                 .build())
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesToolsetMcpServiceAgentIdTokenAuthConfig = new Toolset("cesToolsetMcpServiceAgentIdTokenAuthConfig", ToolsetArgs.builder()
+ *             .toolsetId("toolset1")
+ *             .location("us")
+ *             .app(cesAppForToolset.appId())
+ *             .displayName("Basic toolset display name")
+ *             .mcpToolset(ToolsetMcpToolsetArgs.builder()
+ *                 .serverAddress("https://api.example.com/mcp/")
+ *                 .tlsConfig(ToolsetMcpToolsetTlsConfigArgs.builder()
+ *                     .caCerts(ToolsetMcpToolsetTlsConfigCaCertArgs.builder()
+ *                         .displayName("example")
+ *                         .cert("ZXhhbXBsZQ==")
+ *                         .build())
+ *                     .build())
+ *                 .serviceDirectoryConfig(ToolsetMcpToolsetServiceDirectoryConfigArgs.builder()
+ *                     .service("projects/example/locations/us/namespaces/namespace/services/service")
+ *                     .build())
+ *                 .apiAuthentication(ToolsetMcpToolsetApiAuthenticationArgs.builder()
+ *                     .serviceAgentIdTokenAuthConfig(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs.builder()
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Ces Toolset Mcp Api Key Config
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Toolset;
+ * import com.pulumi.gcp.ces.ToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cesAppForToolset = new App("cesAppForToolset", AppArgs.builder()
+ *             .appId("app-id")
+ *             .location("us")
+ *             .description("App used as parent for CES Toolset example")
+ *             .displayName("my-app")
+ *             .languageSettings(AppLanguageSettingsArgs.builder()
+ *                 .defaultLanguageCode("en-US")
+ *                 .supportedLanguageCodes(                
+ *                     "es-ES",
+ *                     "fr-FR")
+ *                 .enableMultilingualSupport(true)
+ *                 .fallbackAction("escalate")
+ *                 .build())
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesToolsetMcpApiKeyConfig = new Toolset("cesToolsetMcpApiKeyConfig", ToolsetArgs.builder()
+ *             .toolsetId("toolset1")
+ *             .location("us")
+ *             .app(cesAppForToolset.appId())
+ *             .displayName("Basic toolset display name")
+ *             .description("Test description")
+ *             .executionType("SYNCHRONOUS")
+ *             .mcpToolset(ToolsetMcpToolsetArgs.builder()
+ *                 .serverAddress("https://api.example.com/mcp/")
+ *                 .tlsConfig(ToolsetMcpToolsetTlsConfigArgs.builder()
+ *                     .caCerts(ToolsetMcpToolsetTlsConfigCaCertArgs.builder()
+ *                         .displayName("example")
+ *                         .cert("ZXhhbXBsZQ==")
+ *                         .build())
+ *                     .build())
+ *                 .serviceDirectoryConfig(ToolsetMcpToolsetServiceDirectoryConfigArgs.builder()
+ *                     .service("projects/example/locations/us/namespaces/namespace/services/service")
+ *                     .build())
+ *                 .apiAuthentication(ToolsetMcpToolsetApiAuthenticationArgs.builder()
+ *                     .apiKeyConfig(ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs.builder()
+ *                         .keyName("ExampleKey")
+ *                         .apiKeySecretVersion("projects/fake-project/secrets/fake-secret/versions/version-1")
+ *                         .requestLocation("HEADER")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Ces Toolset Mcp Bearer Token Config
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Toolset;
+ * import com.pulumi.gcp.ces.ToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cesAppForToolset = new App("cesAppForToolset", AppArgs.builder()
+ *             .appId("app-id")
+ *             .location("us")
+ *             .description("App used as parent for CES Toolset example")
+ *             .displayName("my-app")
+ *             .languageSettings(AppLanguageSettingsArgs.builder()
+ *                 .defaultLanguageCode("en-US")
+ *                 .supportedLanguageCodes(                
+ *                     "es-ES",
+ *                     "fr-FR")
+ *                 .enableMultilingualSupport(true)
+ *                 .fallbackAction("escalate")
+ *                 .build())
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesToolsetMcpBearerTokenConfig = new Toolset("cesToolsetMcpBearerTokenConfig", ToolsetArgs.builder()
+ *             .toolsetId("toolset1")
+ *             .location("us")
+ *             .app(cesAppForToolset.appId())
+ *             .displayName("Basic toolset display name")
+ *             .mcpToolset(ToolsetMcpToolsetArgs.builder()
+ *                 .serverAddress("https://api.example.com/mcp/")
+ *                 .tlsConfig(ToolsetMcpToolsetTlsConfigArgs.builder()
+ *                     .caCerts(ToolsetMcpToolsetTlsConfigCaCertArgs.builder()
+ *                         .displayName("example")
+ *                         .cert("ZXhhbXBsZQ==")
+ *                         .build())
+ *                     .build())
+ *                 .serviceDirectoryConfig(ToolsetMcpToolsetServiceDirectoryConfigArgs.builder()
+ *                     .service("projects/example/locations/us/namespaces/namespace/services/service")
+ *                     .build())
+ *                 .apiAuthentication(ToolsetMcpToolsetApiAuthenticationArgs.builder()
+ *                     .bearerTokenConfig(ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs.builder()
+ *                         .token("$context.variables.my_ces_toolset_auth_token")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
  * Toolset can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}`
- * 
  * * `{{project}}/{{location}}/{{app}}/{{toolset_id}}`
- * 
  * * `{{location}}/{{app}}/{{toolset_id}}`
  * 
  * When using the `pulumi import` command, Toolset can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:ces/toolset:Toolset default projects/{{project}}/locations/{{location}}/apps/{{app}}/toolsets/{{toolset_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:ces/toolset:Toolset default {{project}}/{{location}}/{{app}}/{{toolset_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:ces/toolset:Toolset default {{location}}/{{app}}/{{toolset_id}}
  * ```
  * 
@@ -605,6 +1000,24 @@ public class Toolset extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * A toolset that contains a list of tools that are offered by the MCP
+     * server.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="mcpToolset", refs={ToolsetMcpToolset.class}, tree="[0]")
+    private Output</* @Nullable */ ToolsetMcpToolset> mcpToolset;
+
+    /**
+     * @return A toolset that contains a list of tools that are offered by the MCP
+     * server.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ToolsetMcpToolset>> mcpToolset() {
+        return Codegen.optional(this.mcpToolset);
     }
     /**
      * Identifier. The unique identifier of the toolset.

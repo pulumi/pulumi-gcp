@@ -27,6 +27,7 @@ class V2FolderSccBigQueryExportArgs:
                  location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2FolderSccBigQueryExport resource.
+
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.  It must consist of only lowercase letters,
                numbers, and hyphens, must start with a letter, must end with either a letter or a number,
                and must be 63 characters or less.
@@ -180,6 +181,7 @@ class _V2FolderSccBigQueryExportState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2FolderSccBigQueryExport resources.
+
         :param pulumi.Input[_builtins.str] big_query_export_id: This must be unique within the organization.  It must consist of only lowercase letters,
                numbers, and hyphens, must start with a letter, must end with either a letter or a number,
                and must be 63 characters or less.
@@ -471,18 +473,15 @@ class V2FolderSccBigQueryExport(pulumi.CustomResource):
         FolderSccBigQueryExport can be imported using any of these accepted formats:
 
         * `folders/{{folder}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}`
-
         * `{{folder}}/{{location}}/{{big_query_export_id}}`
 
         When using the `pulumi import` command, FolderSccBigQueryExport can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport default folders/{{folder}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport default {{folder}}/{{location}}/{{big_query_export_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -572,18 +571,15 @@ class V2FolderSccBigQueryExport(pulumi.CustomResource):
         FolderSccBigQueryExport can be imported using any of these accepted formats:
 
         * `folders/{{folder}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}`
-
         * `{{folder}}/{{location}}/{{big_query_export_id}}`
 
         When using the `pulumi import` command, FolderSccBigQueryExport can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport default folders/{{folder}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport default {{folder}}/{{location}}/{{big_query_export_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V2FolderSccBigQueryExportArgs args: The arguments to use to populate this resource's properties.

@@ -153,28 +153,16 @@ namespace Pulumi.Gcp.Compute
     /// NetworkAttachment can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{name}}`
-    /// 
     /// * `{{region}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, NetworkAttachment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default {{project}}/{{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default {{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default {{name}}
     /// ```
     /// </summary>

@@ -25,6 +25,7 @@ class AccessLevelsArgs:
                  access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]] = None):
         """
         The set of arguments for constructing a AccessLevels resource.
+
         :param pulumi.Input[_builtins.str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
@@ -68,6 +69,7 @@ class _AccessLevelsState:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessLevels resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The AccessPolicy this AccessLevel lives in.
@@ -115,6 +117,22 @@ class AccessLevels(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is done atomically.
+        This is a bulk edit of all Access Levels and may override existing Access Levels created by `accesscontextmanager.AccessLevel`,
+        thus causing a permadiff if used alongside `accesscontextmanager.AccessLevel` on the same parent.
+
+        To get more information about AccessLevels, see:
+
+        * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
+        * How-to Guides
+            * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+
+        > **Warning:** This resource is authoritative over the access levels under an access policy. Due to a limitation in Terraform,
+        it will overwrite all preexisting access levels during a create opration without displaying the old values on
+        the left side of plan. To prevent this, we recommend importing the resource before applying it if overwriting
+        preexisting rules, as the plan will correctly display the complete changes to your access policy if the
+        resource is present in state.
+
         ## Example Usage
 
         ### Access Context Manager Access Levels Basic
@@ -175,18 +193,15 @@ class AccessLevels(pulumi.CustomResource):
         AccessLevels can be imported using any of these accepted formats:
 
         * `{{parent}}/accessLevels`
-
         * `{{parent}}`
 
         When using the `pulumi import` command, AccessLevels can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}/accessLevels
-        ```
-
-        ```sh
         $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -202,6 +217,22 @@ class AccessLevels(pulumi.CustomResource):
                  args: AccessLevelsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is done atomically.
+        This is a bulk edit of all Access Levels and may override existing Access Levels created by `accesscontextmanager.AccessLevel`,
+        thus causing a permadiff if used alongside `accesscontextmanager.AccessLevel` on the same parent.
+
+        To get more information about AccessLevels, see:
+
+        * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
+        * How-to Guides
+            * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+
+        > **Warning:** This resource is authoritative over the access levels under an access policy. Due to a limitation in Terraform,
+        it will overwrite all preexisting access levels during a create opration without displaying the old values on
+        the left side of plan. To prevent this, we recommend importing the resource before applying it if overwriting
+        preexisting rules, as the plan will correctly display the complete changes to your access policy if the
+        resource is present in state.
+
         ## Example Usage
 
         ### Access Context Manager Access Levels Basic
@@ -262,18 +293,15 @@ class AccessLevels(pulumi.CustomResource):
         AccessLevels can be imported using any of these accepted formats:
 
         * `{{parent}}/accessLevels`
-
         * `{{parent}}`
 
         When using the `pulumi import` command, AccessLevels can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}/accessLevels
-        ```
-
-        ```sh
         $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessLevelsArgs args: The arguments to use to populate this resource's properties.

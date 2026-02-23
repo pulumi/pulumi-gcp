@@ -39,6 +39,7 @@ class DataConnectorArgs:
                  sync_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataConnector resource.
+
         :param pulumi.Input[_builtins.str] collection_display_name: The display name of the Collection.
                Should be human readable, used to display collections in the Console
                Dashboard. UTF-8 encoded string with limit of 1024 characters.
@@ -367,6 +368,7 @@ class _DataConnectorState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataConnector resources.
+
         :param pulumi.Input[_builtins.str] action_state: State of the action connector. This reflects whether the action connector
                is initializing, active or has encountered errors. The possible value can be:
                'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
@@ -1001,24 +1003,17 @@ class DataConnector(pulumi.CustomResource):
         DataConnector can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/dataConnector`
-
         * `{{project}}/{{location}}/{{collection_id}}`
-
         * `{{location}}/{{collection_id}}`
 
         When using the `pulumi import` command, DataConnector can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/dataConnector:DataConnector default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/dataConnector
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/dataConnector:DataConnector default {{project}}/{{location}}/{{collection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/dataConnector:DataConnector default {{location}}/{{collection_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1146,24 +1141,17 @@ class DataConnector(pulumi.CustomResource):
         DataConnector can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/dataConnector`
-
         * `{{project}}/{{location}}/{{collection_id}}`
-
         * `{{location}}/{{collection_id}}`
 
         When using the `pulumi import` command, DataConnector can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/dataConnector:DataConnector default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/dataConnector
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/dataConnector:DataConnector default {{project}}/{{location}}/{{collection_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/dataConnector:DataConnector default {{location}}/{{collection_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataConnectorArgs args: The arguments to use to populate this resource's properties.

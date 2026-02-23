@@ -8841,6 +8841,1117 @@ func (o DbSystemPropertiesTimeZonePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ExadbVmClusterProperties struct {
+	// The number of additional ECPUs per node for an Exadata VM cluster on
+	// exascale infrastructure.
+	AdditionalEcpuCountPerNode *int `pulumi:"additionalEcpuCountPerNode"`
+	// The cluster name for Exascale vm cluster. The cluster name must begin with
+	// an alphabetic character and may contain hyphens(-) but can not contain
+	// underscores(_). It should be not more than 11 characters and is not case
+	// sensitive.
+	// OCI Cluster name.
+	ClusterName *string `pulumi:"clusterName"`
+	// Data collection options for diagnostics.
+	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/DataCollectionOptions
+	// Structure is documented below.
+	DataCollectionOptions *ExadbVmClusterPropertiesDataCollectionOptions `pulumi:"dataCollectionOptions"`
+	// The number of ECPUs enabled per node for an exadata vm cluster on
+	// exascale infrastructure.
+	EnabledEcpuCountPerNode int `pulumi:"enabledEcpuCountPerNode"`
+	// The name of ExascaleDbStorageVault associated with the ExadbVmCluster.
+	// It can refer to an existing ExascaleDbStorageVault. Or a new one can be
+	// created during the ExadbVmCluster creation (requires
+	// storageVaultProperties to be set).
+	// Format:
+	// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+	ExascaleDbStorageVault string `pulumi:"exascaleDbStorageVault"`
+	// (Output)
+	// The Oracle Grid Infrastructure (GI) software version.
+	GiVersion *string `pulumi:"giVersion"`
+	// Grid Infrastructure Version.
+	GridImageId string `pulumi:"gridImageId"`
+	// (Output)
+	// The hostname of the ExadbVmCluster.
+	Hostname *string `pulumi:"hostname"`
+	// Prefix for VM cluster host names.
+	HostnamePrefix string `pulumi:"hostnamePrefix"`
+	// The license type of the ExadbVmCluster.
+	// Possible values:
+	// LICENSE_INCLUDED
+	// BRING_YOUR_OWN_LICENSE
+	LicenseModel *string `pulumi:"licenseModel"`
+	// (Output)
+	// State of the cluster.
+	// Possible values:
+	// PROVISIONING
+	// AVAILABLE
+	// UPDATING
+	// TERMINATING
+	// TERMINATED
+	// FAILED
+	// MAINTENANCE_IN_PROGRESS
+	LifecycleState *string `pulumi:"lifecycleState"`
+	// (Output)
+	// Memory per VM (GB) (Read-only): Shows the amount of memory allocated to
+	// each VM. Memory is calculated based on 2.75 GB per Total ECPUs.
+	MemorySizeGb *int `pulumi:"memorySizeGb"`
+	// The number of nodes/VMs in the ExadbVmCluster.
+	NodeCount int `pulumi:"nodeCount"`
+	// (Output)
+	// Deep link to the OCI console to view this resource.
+	OciUri *string `pulumi:"ociUri"`
+	// SCAN listener port - TCP
+	ScanListenerPortTcp *int `pulumi:"scanListenerPortTcp"`
+	// The shape attribute of the VM cluster. The type of Exascale storage used
+	// for Exadata VM cluster. The default is SMART_STORAGE which supports Oracle
+	// Database 23ai and later
+	// Possible values:
+	// SMART_STORAGE
+	// BLOCK_STORAGE
+	ShapeAttribute string `pulumi:"shapeAttribute"`
+	// The SSH public keys for the ExadbVmCluster.
+	SshPublicKeys []string `pulumi:"sshPublicKeys"`
+	// Represents a time zone from the
+	// [IANA Time Zone Database](https://www.iana.org/time-zones).
+	// Structure is documented below.
+	TimeZone *ExadbVmClusterPropertiesTimeZone `pulumi:"timeZone"`
+	// The storage allocation for the exadbvmcluster, in gigabytes (GB).
+	// Structure is documented below.
+	VmFileSystemStorage ExadbVmClusterPropertiesVmFileSystemStorage `pulumi:"vmFileSystemStorage"`
+}
+
+// ExadbVmClusterPropertiesInput is an input type that accepts ExadbVmClusterPropertiesArgs and ExadbVmClusterPropertiesOutput values.
+// You can construct a concrete instance of `ExadbVmClusterPropertiesInput` via:
+//
+//	ExadbVmClusterPropertiesArgs{...}
+type ExadbVmClusterPropertiesInput interface {
+	pulumi.Input
+
+	ToExadbVmClusterPropertiesOutput() ExadbVmClusterPropertiesOutput
+	ToExadbVmClusterPropertiesOutputWithContext(context.Context) ExadbVmClusterPropertiesOutput
+}
+
+type ExadbVmClusterPropertiesArgs struct {
+	// The number of additional ECPUs per node for an Exadata VM cluster on
+	// exascale infrastructure.
+	AdditionalEcpuCountPerNode pulumi.IntPtrInput `pulumi:"additionalEcpuCountPerNode"`
+	// The cluster name for Exascale vm cluster. The cluster name must begin with
+	// an alphabetic character and may contain hyphens(-) but can not contain
+	// underscores(_). It should be not more than 11 characters and is not case
+	// sensitive.
+	// OCI Cluster name.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// Data collection options for diagnostics.
+	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/DataCollectionOptions
+	// Structure is documented below.
+	DataCollectionOptions ExadbVmClusterPropertiesDataCollectionOptionsPtrInput `pulumi:"dataCollectionOptions"`
+	// The number of ECPUs enabled per node for an exadata vm cluster on
+	// exascale infrastructure.
+	EnabledEcpuCountPerNode pulumi.IntInput `pulumi:"enabledEcpuCountPerNode"`
+	// The name of ExascaleDbStorageVault associated with the ExadbVmCluster.
+	// It can refer to an existing ExascaleDbStorageVault. Or a new one can be
+	// created during the ExadbVmCluster creation (requires
+	// storageVaultProperties to be set).
+	// Format:
+	// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+	ExascaleDbStorageVault pulumi.StringInput `pulumi:"exascaleDbStorageVault"`
+	// (Output)
+	// The Oracle Grid Infrastructure (GI) software version.
+	GiVersion pulumi.StringPtrInput `pulumi:"giVersion"`
+	// Grid Infrastructure Version.
+	GridImageId pulumi.StringInput `pulumi:"gridImageId"`
+	// (Output)
+	// The hostname of the ExadbVmCluster.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Prefix for VM cluster host names.
+	HostnamePrefix pulumi.StringInput `pulumi:"hostnamePrefix"`
+	// The license type of the ExadbVmCluster.
+	// Possible values:
+	// LICENSE_INCLUDED
+	// BRING_YOUR_OWN_LICENSE
+	LicenseModel pulumi.StringPtrInput `pulumi:"licenseModel"`
+	// (Output)
+	// State of the cluster.
+	// Possible values:
+	// PROVISIONING
+	// AVAILABLE
+	// UPDATING
+	// TERMINATING
+	// TERMINATED
+	// FAILED
+	// MAINTENANCE_IN_PROGRESS
+	LifecycleState pulumi.StringPtrInput `pulumi:"lifecycleState"`
+	// (Output)
+	// Memory per VM (GB) (Read-only): Shows the amount of memory allocated to
+	// each VM. Memory is calculated based on 2.75 GB per Total ECPUs.
+	MemorySizeGb pulumi.IntPtrInput `pulumi:"memorySizeGb"`
+	// The number of nodes/VMs in the ExadbVmCluster.
+	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
+	// (Output)
+	// Deep link to the OCI console to view this resource.
+	OciUri pulumi.StringPtrInput `pulumi:"ociUri"`
+	// SCAN listener port - TCP
+	ScanListenerPortTcp pulumi.IntPtrInput `pulumi:"scanListenerPortTcp"`
+	// The shape attribute of the VM cluster. The type of Exascale storage used
+	// for Exadata VM cluster. The default is SMART_STORAGE which supports Oracle
+	// Database 23ai and later
+	// Possible values:
+	// SMART_STORAGE
+	// BLOCK_STORAGE
+	ShapeAttribute pulumi.StringInput `pulumi:"shapeAttribute"`
+	// The SSH public keys for the ExadbVmCluster.
+	SshPublicKeys pulumi.StringArrayInput `pulumi:"sshPublicKeys"`
+	// Represents a time zone from the
+	// [IANA Time Zone Database](https://www.iana.org/time-zones).
+	// Structure is documented below.
+	TimeZone ExadbVmClusterPropertiesTimeZonePtrInput `pulumi:"timeZone"`
+	// The storage allocation for the exadbvmcluster, in gigabytes (GB).
+	// Structure is documented below.
+	VmFileSystemStorage ExadbVmClusterPropertiesVmFileSystemStorageInput `pulumi:"vmFileSystemStorage"`
+}
+
+func (ExadbVmClusterPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExadbVmClusterProperties)(nil)).Elem()
+}
+
+func (i ExadbVmClusterPropertiesArgs) ToExadbVmClusterPropertiesOutput() ExadbVmClusterPropertiesOutput {
+	return i.ToExadbVmClusterPropertiesOutputWithContext(context.Background())
+}
+
+func (i ExadbVmClusterPropertiesArgs) ToExadbVmClusterPropertiesOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterPropertiesOutput)
+}
+
+func (i ExadbVmClusterPropertiesArgs) ToExadbVmClusterPropertiesPtrOutput() ExadbVmClusterPropertiesPtrOutput {
+	return i.ToExadbVmClusterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ExadbVmClusterPropertiesArgs) ToExadbVmClusterPropertiesPtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterPropertiesOutput).ToExadbVmClusterPropertiesPtrOutputWithContext(ctx)
+}
+
+// ExadbVmClusterPropertiesPtrInput is an input type that accepts ExadbVmClusterPropertiesArgs, ExadbVmClusterPropertiesPtr and ExadbVmClusterPropertiesPtrOutput values.
+// You can construct a concrete instance of `ExadbVmClusterPropertiesPtrInput` via:
+//
+//	        ExadbVmClusterPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExadbVmClusterPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToExadbVmClusterPropertiesPtrOutput() ExadbVmClusterPropertiesPtrOutput
+	ToExadbVmClusterPropertiesPtrOutputWithContext(context.Context) ExadbVmClusterPropertiesPtrOutput
+}
+
+type exadbVmClusterPropertiesPtrType ExadbVmClusterPropertiesArgs
+
+func ExadbVmClusterPropertiesPtr(v *ExadbVmClusterPropertiesArgs) ExadbVmClusterPropertiesPtrInput {
+	return (*exadbVmClusterPropertiesPtrType)(v)
+}
+
+func (*exadbVmClusterPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExadbVmClusterProperties)(nil)).Elem()
+}
+
+func (i *exadbVmClusterPropertiesPtrType) ToExadbVmClusterPropertiesPtrOutput() ExadbVmClusterPropertiesPtrOutput {
+	return i.ToExadbVmClusterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *exadbVmClusterPropertiesPtrType) ToExadbVmClusterPropertiesPtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterPropertiesPtrOutput)
+}
+
+type ExadbVmClusterPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ExadbVmClusterPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExadbVmClusterProperties)(nil)).Elem()
+}
+
+func (o ExadbVmClusterPropertiesOutput) ToExadbVmClusterPropertiesOutput() ExadbVmClusterPropertiesOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesOutput) ToExadbVmClusterPropertiesOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesOutput) ToExadbVmClusterPropertiesPtrOutput() ExadbVmClusterPropertiesPtrOutput {
+	return o.ToExadbVmClusterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ExadbVmClusterPropertiesOutput) ToExadbVmClusterPropertiesPtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExadbVmClusterProperties) *ExadbVmClusterProperties {
+		return &v
+	}).(ExadbVmClusterPropertiesPtrOutput)
+}
+
+// The number of additional ECPUs per node for an Exadata VM cluster on
+// exascale infrastructure.
+func (o ExadbVmClusterPropertiesOutput) AdditionalEcpuCountPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) *int { return v.AdditionalEcpuCountPerNode }).(pulumi.IntPtrOutput)
+}
+
+// The cluster name for Exascale vm cluster. The cluster name must begin with
+// an alphabetic character and may contain hyphens(-) but can not contain
+// underscores(_). It should be not more than 11 characters and is not case
+// sensitive.
+// OCI Cluster name.
+func (o ExadbVmClusterPropertiesOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// Data collection options for diagnostics.
+// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/DataCollectionOptions
+// Structure is documented below.
+func (o ExadbVmClusterPropertiesOutput) DataCollectionOptions() ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) *ExadbVmClusterPropertiesDataCollectionOptions {
+		return v.DataCollectionOptions
+	}).(ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput)
+}
+
+// The number of ECPUs enabled per node for an exadata vm cluster on
+// exascale infrastructure.
+func (o ExadbVmClusterPropertiesOutput) EnabledEcpuCountPerNode() pulumi.IntOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) int { return v.EnabledEcpuCountPerNode }).(pulumi.IntOutput)
+}
+
+// The name of ExascaleDbStorageVault associated with the ExadbVmCluster.
+// It can refer to an existing ExascaleDbStorageVault. Or a new one can be
+// created during the ExadbVmCluster creation (requires
+// storageVaultProperties to be set).
+// Format:
+// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+func (o ExadbVmClusterPropertiesOutput) ExascaleDbStorageVault() pulumi.StringOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) string { return v.ExascaleDbStorageVault }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The Oracle Grid Infrastructure (GI) software version.
+func (o ExadbVmClusterPropertiesOutput) GiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) *string { return v.GiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Grid Infrastructure Version.
+func (o ExadbVmClusterPropertiesOutput) GridImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) string { return v.GridImageId }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The hostname of the ExadbVmCluster.
+func (o ExadbVmClusterPropertiesOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Prefix for VM cluster host names.
+func (o ExadbVmClusterPropertiesOutput) HostnamePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) string { return v.HostnamePrefix }).(pulumi.StringOutput)
+}
+
+// The license type of the ExadbVmCluster.
+// Possible values:
+// LICENSE_INCLUDED
+// BRING_YOUR_OWN_LICENSE
+func (o ExadbVmClusterPropertiesOutput) LicenseModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) *string { return v.LicenseModel }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// State of the cluster.
+// Possible values:
+// PROVISIONING
+// AVAILABLE
+// UPDATING
+// TERMINATING
+// TERMINATED
+// FAILED
+// MAINTENANCE_IN_PROGRESS
+func (o ExadbVmClusterPropertiesOutput) LifecycleState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) *string { return v.LifecycleState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Memory per VM (GB) (Read-only): Shows the amount of memory allocated to
+// each VM. Memory is calculated based on 2.75 GB per Total ECPUs.
+func (o ExadbVmClusterPropertiesOutput) MemorySizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) *int { return v.MemorySizeGb }).(pulumi.IntPtrOutput)
+}
+
+// The number of nodes/VMs in the ExadbVmCluster.
+func (o ExadbVmClusterPropertiesOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// (Output)
+// Deep link to the OCI console to view this resource.
+func (o ExadbVmClusterPropertiesOutput) OciUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) *string { return v.OciUri }).(pulumi.StringPtrOutput)
+}
+
+// SCAN listener port - TCP
+func (o ExadbVmClusterPropertiesOutput) ScanListenerPortTcp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) *int { return v.ScanListenerPortTcp }).(pulumi.IntPtrOutput)
+}
+
+// The shape attribute of the VM cluster. The type of Exascale storage used
+// for Exadata VM cluster. The default is SMART_STORAGE which supports Oracle
+// Database 23ai and later
+// Possible values:
+// SMART_STORAGE
+// BLOCK_STORAGE
+func (o ExadbVmClusterPropertiesOutput) ShapeAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) string { return v.ShapeAttribute }).(pulumi.StringOutput)
+}
+
+// The SSH public keys for the ExadbVmCluster.
+func (o ExadbVmClusterPropertiesOutput) SshPublicKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) []string { return v.SshPublicKeys }).(pulumi.StringArrayOutput)
+}
+
+// Represents a time zone from the
+// [IANA Time Zone Database](https://www.iana.org/time-zones).
+// Structure is documented below.
+func (o ExadbVmClusterPropertiesOutput) TimeZone() ExadbVmClusterPropertiesTimeZonePtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) *ExadbVmClusterPropertiesTimeZone { return v.TimeZone }).(ExadbVmClusterPropertiesTimeZonePtrOutput)
+}
+
+// The storage allocation for the exadbvmcluster, in gigabytes (GB).
+// Structure is documented below.
+func (o ExadbVmClusterPropertiesOutput) VmFileSystemStorage() ExadbVmClusterPropertiesVmFileSystemStorageOutput {
+	return o.ApplyT(func(v ExadbVmClusterProperties) ExadbVmClusterPropertiesVmFileSystemStorage {
+		return v.VmFileSystemStorage
+	}).(ExadbVmClusterPropertiesVmFileSystemStorageOutput)
+}
+
+type ExadbVmClusterPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ExadbVmClusterPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExadbVmClusterProperties)(nil)).Elem()
+}
+
+func (o ExadbVmClusterPropertiesPtrOutput) ToExadbVmClusterPropertiesPtrOutput() ExadbVmClusterPropertiesPtrOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesPtrOutput) ToExadbVmClusterPropertiesPtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesPtrOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesPtrOutput) Elem() ExadbVmClusterPropertiesOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) ExadbVmClusterProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ExadbVmClusterProperties
+		return ret
+	}).(ExadbVmClusterPropertiesOutput)
+}
+
+// The number of additional ECPUs per node for an Exadata VM cluster on
+// exascale infrastructure.
+func (o ExadbVmClusterPropertiesPtrOutput) AdditionalEcpuCountPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalEcpuCountPerNode
+	}).(pulumi.IntPtrOutput)
+}
+
+// The cluster name for Exascale vm cluster. The cluster name must begin with
+// an alphabetic character and may contain hyphens(-) but can not contain
+// underscores(_). It should be not more than 11 characters and is not case
+// sensitive.
+// OCI Cluster name.
+func (o ExadbVmClusterPropertiesPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Data collection options for diagnostics.
+// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/DataCollectionOptions
+// Structure is documented below.
+func (o ExadbVmClusterPropertiesPtrOutput) DataCollectionOptions() ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *ExadbVmClusterPropertiesDataCollectionOptions {
+		if v == nil {
+			return nil
+		}
+		return v.DataCollectionOptions
+	}).(ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput)
+}
+
+// The number of ECPUs enabled per node for an exadata vm cluster on
+// exascale infrastructure.
+func (o ExadbVmClusterPropertiesPtrOutput) EnabledEcpuCountPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.EnabledEcpuCountPerNode
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of ExascaleDbStorageVault associated with the ExadbVmCluster.
+// It can refer to an existing ExascaleDbStorageVault. Or a new one can be
+// created during the ExadbVmCluster creation (requires
+// storageVaultProperties to be set).
+// Format:
+// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+func (o ExadbVmClusterPropertiesPtrOutput) ExascaleDbStorageVault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExascaleDbStorageVault
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Oracle Grid Infrastructure (GI) software version.
+func (o ExadbVmClusterPropertiesPtrOutput) GiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GiVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Grid Infrastructure Version.
+func (o ExadbVmClusterPropertiesPtrOutput) GridImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GridImageId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The hostname of the ExadbVmCluster.
+func (o ExadbVmClusterPropertiesPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prefix for VM cluster host names.
+func (o ExadbVmClusterPropertiesPtrOutput) HostnamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostnamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The license type of the ExadbVmCluster.
+// Possible values:
+// LICENSE_INCLUDED
+// BRING_YOUR_OWN_LICENSE
+func (o ExadbVmClusterPropertiesPtrOutput) LicenseModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// State of the cluster.
+// Possible values:
+// PROVISIONING
+// AVAILABLE
+// UPDATING
+// TERMINATING
+// TERMINATED
+// FAILED
+// MAINTENANCE_IN_PROGRESS
+func (o ExadbVmClusterPropertiesPtrOutput) LifecycleState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LifecycleState
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Memory per VM (GB) (Read-only): Shows the amount of memory allocated to
+// each VM. Memory is calculated based on 2.75 GB per Total ECPUs.
+func (o ExadbVmClusterPropertiesPtrOutput) MemorySizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemorySizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of nodes/VMs in the ExadbVmCluster.
+func (o ExadbVmClusterPropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Deep link to the OCI console to view this resource.
+func (o ExadbVmClusterPropertiesPtrOutput) OciUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OciUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// SCAN listener port - TCP
+func (o ExadbVmClusterPropertiesPtrOutput) ScanListenerPortTcp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ScanListenerPortTcp
+	}).(pulumi.IntPtrOutput)
+}
+
+// The shape attribute of the VM cluster. The type of Exascale storage used
+// for Exadata VM cluster. The default is SMART_STORAGE which supports Oracle
+// Database 23ai and later
+// Possible values:
+// SMART_STORAGE
+// BLOCK_STORAGE
+func (o ExadbVmClusterPropertiesPtrOutput) ShapeAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ShapeAttribute
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SSH public keys for the ExadbVmCluster.
+func (o ExadbVmClusterPropertiesPtrOutput) SshPublicKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SshPublicKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// Represents a time zone from the
+// [IANA Time Zone Database](https://www.iana.org/time-zones).
+// Structure is documented below.
+func (o ExadbVmClusterPropertiesPtrOutput) TimeZone() ExadbVmClusterPropertiesTimeZonePtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *ExadbVmClusterPropertiesTimeZone {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(ExadbVmClusterPropertiesTimeZonePtrOutput)
+}
+
+// The storage allocation for the exadbvmcluster, in gigabytes (GB).
+// Structure is documented below.
+func (o ExadbVmClusterPropertiesPtrOutput) VmFileSystemStorage() ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterProperties) *ExadbVmClusterPropertiesVmFileSystemStorage {
+		if v == nil {
+			return nil
+		}
+		return &v.VmFileSystemStorage
+	}).(ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput)
+}
+
+type ExadbVmClusterPropertiesDataCollectionOptions struct {
+	// Indicates whether to enable data collection for diagnostics.
+	IsDiagnosticsEventsEnabled *bool `pulumi:"isDiagnosticsEventsEnabled"`
+	// Indicates whether to enable health monitoring.
+	IsHealthMonitoringEnabled *bool `pulumi:"isHealthMonitoringEnabled"`
+	// Indicates whether to enable incident logs and trace collection.
+	IsIncidentLogsEnabled *bool `pulumi:"isIncidentLogsEnabled"`
+}
+
+// ExadbVmClusterPropertiesDataCollectionOptionsInput is an input type that accepts ExadbVmClusterPropertiesDataCollectionOptionsArgs and ExadbVmClusterPropertiesDataCollectionOptionsOutput values.
+// You can construct a concrete instance of `ExadbVmClusterPropertiesDataCollectionOptionsInput` via:
+//
+//	ExadbVmClusterPropertiesDataCollectionOptionsArgs{...}
+type ExadbVmClusterPropertiesDataCollectionOptionsInput interface {
+	pulumi.Input
+
+	ToExadbVmClusterPropertiesDataCollectionOptionsOutput() ExadbVmClusterPropertiesDataCollectionOptionsOutput
+	ToExadbVmClusterPropertiesDataCollectionOptionsOutputWithContext(context.Context) ExadbVmClusterPropertiesDataCollectionOptionsOutput
+}
+
+type ExadbVmClusterPropertiesDataCollectionOptionsArgs struct {
+	// Indicates whether to enable data collection for diagnostics.
+	IsDiagnosticsEventsEnabled pulumi.BoolPtrInput `pulumi:"isDiagnosticsEventsEnabled"`
+	// Indicates whether to enable health monitoring.
+	IsHealthMonitoringEnabled pulumi.BoolPtrInput `pulumi:"isHealthMonitoringEnabled"`
+	// Indicates whether to enable incident logs and trace collection.
+	IsIncidentLogsEnabled pulumi.BoolPtrInput `pulumi:"isIncidentLogsEnabled"`
+}
+
+func (ExadbVmClusterPropertiesDataCollectionOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExadbVmClusterPropertiesDataCollectionOptions)(nil)).Elem()
+}
+
+func (i ExadbVmClusterPropertiesDataCollectionOptionsArgs) ToExadbVmClusterPropertiesDataCollectionOptionsOutput() ExadbVmClusterPropertiesDataCollectionOptionsOutput {
+	return i.ToExadbVmClusterPropertiesDataCollectionOptionsOutputWithContext(context.Background())
+}
+
+func (i ExadbVmClusterPropertiesDataCollectionOptionsArgs) ToExadbVmClusterPropertiesDataCollectionOptionsOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesDataCollectionOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterPropertiesDataCollectionOptionsOutput)
+}
+
+func (i ExadbVmClusterPropertiesDataCollectionOptionsArgs) ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutput() ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput {
+	return i.ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ExadbVmClusterPropertiesDataCollectionOptionsArgs) ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterPropertiesDataCollectionOptionsOutput).ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutputWithContext(ctx)
+}
+
+// ExadbVmClusterPropertiesDataCollectionOptionsPtrInput is an input type that accepts ExadbVmClusterPropertiesDataCollectionOptionsArgs, ExadbVmClusterPropertiesDataCollectionOptionsPtr and ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput values.
+// You can construct a concrete instance of `ExadbVmClusterPropertiesDataCollectionOptionsPtrInput` via:
+//
+//	        ExadbVmClusterPropertiesDataCollectionOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExadbVmClusterPropertiesDataCollectionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutput() ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput
+	ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutputWithContext(context.Context) ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput
+}
+
+type exadbVmClusterPropertiesDataCollectionOptionsPtrType ExadbVmClusterPropertiesDataCollectionOptionsArgs
+
+func ExadbVmClusterPropertiesDataCollectionOptionsPtr(v *ExadbVmClusterPropertiesDataCollectionOptionsArgs) ExadbVmClusterPropertiesDataCollectionOptionsPtrInput {
+	return (*exadbVmClusterPropertiesDataCollectionOptionsPtrType)(v)
+}
+
+func (*exadbVmClusterPropertiesDataCollectionOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExadbVmClusterPropertiesDataCollectionOptions)(nil)).Elem()
+}
+
+func (i *exadbVmClusterPropertiesDataCollectionOptionsPtrType) ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutput() ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput {
+	return i.ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *exadbVmClusterPropertiesDataCollectionOptionsPtrType) ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput)
+}
+
+type ExadbVmClusterPropertiesDataCollectionOptionsOutput struct{ *pulumi.OutputState }
+
+func (ExadbVmClusterPropertiesDataCollectionOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExadbVmClusterPropertiesDataCollectionOptions)(nil)).Elem()
+}
+
+func (o ExadbVmClusterPropertiesDataCollectionOptionsOutput) ToExadbVmClusterPropertiesDataCollectionOptionsOutput() ExadbVmClusterPropertiesDataCollectionOptionsOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesDataCollectionOptionsOutput) ToExadbVmClusterPropertiesDataCollectionOptionsOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesDataCollectionOptionsOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesDataCollectionOptionsOutput) ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutput() ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput {
+	return o.ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ExadbVmClusterPropertiesDataCollectionOptionsOutput) ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExadbVmClusterPropertiesDataCollectionOptions) *ExadbVmClusterPropertiesDataCollectionOptions {
+		return &v
+	}).(ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput)
+}
+
+// Indicates whether to enable data collection for diagnostics.
+func (o ExadbVmClusterPropertiesDataCollectionOptionsOutput) IsDiagnosticsEventsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterPropertiesDataCollectionOptions) *bool { return v.IsDiagnosticsEventsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to enable health monitoring.
+func (o ExadbVmClusterPropertiesDataCollectionOptionsOutput) IsHealthMonitoringEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterPropertiesDataCollectionOptions) *bool { return v.IsHealthMonitoringEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to enable incident logs and trace collection.
+func (o ExadbVmClusterPropertiesDataCollectionOptionsOutput) IsIncidentLogsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterPropertiesDataCollectionOptions) *bool { return v.IsIncidentLogsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExadbVmClusterPropertiesDataCollectionOptions)(nil)).Elem()
+}
+
+func (o ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput) ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutput() ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput) ToExadbVmClusterPropertiesDataCollectionOptionsPtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput) Elem() ExadbVmClusterPropertiesDataCollectionOptionsOutput {
+	return o.ApplyT(func(v *ExadbVmClusterPropertiesDataCollectionOptions) ExadbVmClusterPropertiesDataCollectionOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ExadbVmClusterPropertiesDataCollectionOptions
+		return ret
+	}).(ExadbVmClusterPropertiesDataCollectionOptionsOutput)
+}
+
+// Indicates whether to enable data collection for diagnostics.
+func (o ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput) IsDiagnosticsEventsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterPropertiesDataCollectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsDiagnosticsEventsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to enable health monitoring.
+func (o ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput) IsHealthMonitoringEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterPropertiesDataCollectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsHealthMonitoringEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to enable incident logs and trace collection.
+func (o ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput) IsIncidentLogsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterPropertiesDataCollectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsIncidentLogsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ExadbVmClusterPropertiesTimeZone struct {
+	// IANA Time Zone Database time zone. For example "America/New_York".
+	Id *string `pulumi:"id"`
+	// IANA Time Zone Database version number. For example "2019a".
+	Version *string `pulumi:"version"`
+}
+
+// ExadbVmClusterPropertiesTimeZoneInput is an input type that accepts ExadbVmClusterPropertiesTimeZoneArgs and ExadbVmClusterPropertiesTimeZoneOutput values.
+// You can construct a concrete instance of `ExadbVmClusterPropertiesTimeZoneInput` via:
+//
+//	ExadbVmClusterPropertiesTimeZoneArgs{...}
+type ExadbVmClusterPropertiesTimeZoneInput interface {
+	pulumi.Input
+
+	ToExadbVmClusterPropertiesTimeZoneOutput() ExadbVmClusterPropertiesTimeZoneOutput
+	ToExadbVmClusterPropertiesTimeZoneOutputWithContext(context.Context) ExadbVmClusterPropertiesTimeZoneOutput
+}
+
+type ExadbVmClusterPropertiesTimeZoneArgs struct {
+	// IANA Time Zone Database time zone. For example "America/New_York".
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// IANA Time Zone Database version number. For example "2019a".
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ExadbVmClusterPropertiesTimeZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExadbVmClusterPropertiesTimeZone)(nil)).Elem()
+}
+
+func (i ExadbVmClusterPropertiesTimeZoneArgs) ToExadbVmClusterPropertiesTimeZoneOutput() ExadbVmClusterPropertiesTimeZoneOutput {
+	return i.ToExadbVmClusterPropertiesTimeZoneOutputWithContext(context.Background())
+}
+
+func (i ExadbVmClusterPropertiesTimeZoneArgs) ToExadbVmClusterPropertiesTimeZoneOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesTimeZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterPropertiesTimeZoneOutput)
+}
+
+func (i ExadbVmClusterPropertiesTimeZoneArgs) ToExadbVmClusterPropertiesTimeZonePtrOutput() ExadbVmClusterPropertiesTimeZonePtrOutput {
+	return i.ToExadbVmClusterPropertiesTimeZonePtrOutputWithContext(context.Background())
+}
+
+func (i ExadbVmClusterPropertiesTimeZoneArgs) ToExadbVmClusterPropertiesTimeZonePtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesTimeZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterPropertiesTimeZoneOutput).ToExadbVmClusterPropertiesTimeZonePtrOutputWithContext(ctx)
+}
+
+// ExadbVmClusterPropertiesTimeZonePtrInput is an input type that accepts ExadbVmClusterPropertiesTimeZoneArgs, ExadbVmClusterPropertiesTimeZonePtr and ExadbVmClusterPropertiesTimeZonePtrOutput values.
+// You can construct a concrete instance of `ExadbVmClusterPropertiesTimeZonePtrInput` via:
+//
+//	        ExadbVmClusterPropertiesTimeZoneArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExadbVmClusterPropertiesTimeZonePtrInput interface {
+	pulumi.Input
+
+	ToExadbVmClusterPropertiesTimeZonePtrOutput() ExadbVmClusterPropertiesTimeZonePtrOutput
+	ToExadbVmClusterPropertiesTimeZonePtrOutputWithContext(context.Context) ExadbVmClusterPropertiesTimeZonePtrOutput
+}
+
+type exadbVmClusterPropertiesTimeZonePtrType ExadbVmClusterPropertiesTimeZoneArgs
+
+func ExadbVmClusterPropertiesTimeZonePtr(v *ExadbVmClusterPropertiesTimeZoneArgs) ExadbVmClusterPropertiesTimeZonePtrInput {
+	return (*exadbVmClusterPropertiesTimeZonePtrType)(v)
+}
+
+func (*exadbVmClusterPropertiesTimeZonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExadbVmClusterPropertiesTimeZone)(nil)).Elem()
+}
+
+func (i *exadbVmClusterPropertiesTimeZonePtrType) ToExadbVmClusterPropertiesTimeZonePtrOutput() ExadbVmClusterPropertiesTimeZonePtrOutput {
+	return i.ToExadbVmClusterPropertiesTimeZonePtrOutputWithContext(context.Background())
+}
+
+func (i *exadbVmClusterPropertiesTimeZonePtrType) ToExadbVmClusterPropertiesTimeZonePtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesTimeZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterPropertiesTimeZonePtrOutput)
+}
+
+type ExadbVmClusterPropertiesTimeZoneOutput struct{ *pulumi.OutputState }
+
+func (ExadbVmClusterPropertiesTimeZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExadbVmClusterPropertiesTimeZone)(nil)).Elem()
+}
+
+func (o ExadbVmClusterPropertiesTimeZoneOutput) ToExadbVmClusterPropertiesTimeZoneOutput() ExadbVmClusterPropertiesTimeZoneOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesTimeZoneOutput) ToExadbVmClusterPropertiesTimeZoneOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesTimeZoneOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesTimeZoneOutput) ToExadbVmClusterPropertiesTimeZonePtrOutput() ExadbVmClusterPropertiesTimeZonePtrOutput {
+	return o.ToExadbVmClusterPropertiesTimeZonePtrOutputWithContext(context.Background())
+}
+
+func (o ExadbVmClusterPropertiesTimeZoneOutput) ToExadbVmClusterPropertiesTimeZonePtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesTimeZonePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExadbVmClusterPropertiesTimeZone) *ExadbVmClusterPropertiesTimeZone {
+		return &v
+	}).(ExadbVmClusterPropertiesTimeZonePtrOutput)
+}
+
+// IANA Time Zone Database time zone. For example "America/New_York".
+func (o ExadbVmClusterPropertiesTimeZoneOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterPropertiesTimeZone) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// IANA Time Zone Database version number. For example "2019a".
+func (o ExadbVmClusterPropertiesTimeZoneOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterPropertiesTimeZone) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ExadbVmClusterPropertiesTimeZonePtrOutput struct{ *pulumi.OutputState }
+
+func (ExadbVmClusterPropertiesTimeZonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExadbVmClusterPropertiesTimeZone)(nil)).Elem()
+}
+
+func (o ExadbVmClusterPropertiesTimeZonePtrOutput) ToExadbVmClusterPropertiesTimeZonePtrOutput() ExadbVmClusterPropertiesTimeZonePtrOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesTimeZonePtrOutput) ToExadbVmClusterPropertiesTimeZonePtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesTimeZonePtrOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesTimeZonePtrOutput) Elem() ExadbVmClusterPropertiesTimeZoneOutput {
+	return o.ApplyT(func(v *ExadbVmClusterPropertiesTimeZone) ExadbVmClusterPropertiesTimeZone {
+		if v != nil {
+			return *v
+		}
+		var ret ExadbVmClusterPropertiesTimeZone
+		return ret
+	}).(ExadbVmClusterPropertiesTimeZoneOutput)
+}
+
+// IANA Time Zone Database time zone. For example "America/New_York".
+func (o ExadbVmClusterPropertiesTimeZonePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterPropertiesTimeZone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// IANA Time Zone Database version number. For example "2019a".
+func (o ExadbVmClusterPropertiesTimeZonePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterPropertiesTimeZone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExadbVmClusterPropertiesVmFileSystemStorage struct {
+	// The storage allocation for the exadbvmcluster per node, in gigabytes (GB).
+	// This field is used to calculate the total storage allocation for the
+	// exadbvmcluster.
+	SizeInGbsPerNode int `pulumi:"sizeInGbsPerNode"`
+}
+
+// ExadbVmClusterPropertiesVmFileSystemStorageInput is an input type that accepts ExadbVmClusterPropertiesVmFileSystemStorageArgs and ExadbVmClusterPropertiesVmFileSystemStorageOutput values.
+// You can construct a concrete instance of `ExadbVmClusterPropertiesVmFileSystemStorageInput` via:
+//
+//	ExadbVmClusterPropertiesVmFileSystemStorageArgs{...}
+type ExadbVmClusterPropertiesVmFileSystemStorageInput interface {
+	pulumi.Input
+
+	ToExadbVmClusterPropertiesVmFileSystemStorageOutput() ExadbVmClusterPropertiesVmFileSystemStorageOutput
+	ToExadbVmClusterPropertiesVmFileSystemStorageOutputWithContext(context.Context) ExadbVmClusterPropertiesVmFileSystemStorageOutput
+}
+
+type ExadbVmClusterPropertiesVmFileSystemStorageArgs struct {
+	// The storage allocation for the exadbvmcluster per node, in gigabytes (GB).
+	// This field is used to calculate the total storage allocation for the
+	// exadbvmcluster.
+	SizeInGbsPerNode pulumi.IntInput `pulumi:"sizeInGbsPerNode"`
+}
+
+func (ExadbVmClusterPropertiesVmFileSystemStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExadbVmClusterPropertiesVmFileSystemStorage)(nil)).Elem()
+}
+
+func (i ExadbVmClusterPropertiesVmFileSystemStorageArgs) ToExadbVmClusterPropertiesVmFileSystemStorageOutput() ExadbVmClusterPropertiesVmFileSystemStorageOutput {
+	return i.ToExadbVmClusterPropertiesVmFileSystemStorageOutputWithContext(context.Background())
+}
+
+func (i ExadbVmClusterPropertiesVmFileSystemStorageArgs) ToExadbVmClusterPropertiesVmFileSystemStorageOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesVmFileSystemStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterPropertiesVmFileSystemStorageOutput)
+}
+
+func (i ExadbVmClusterPropertiesVmFileSystemStorageArgs) ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutput() ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput {
+	return i.ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutputWithContext(context.Background())
+}
+
+func (i ExadbVmClusterPropertiesVmFileSystemStorageArgs) ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterPropertiesVmFileSystemStorageOutput).ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutputWithContext(ctx)
+}
+
+// ExadbVmClusterPropertiesVmFileSystemStoragePtrInput is an input type that accepts ExadbVmClusterPropertiesVmFileSystemStorageArgs, ExadbVmClusterPropertiesVmFileSystemStoragePtr and ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput values.
+// You can construct a concrete instance of `ExadbVmClusterPropertiesVmFileSystemStoragePtrInput` via:
+//
+//	        ExadbVmClusterPropertiesVmFileSystemStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExadbVmClusterPropertiesVmFileSystemStoragePtrInput interface {
+	pulumi.Input
+
+	ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutput() ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput
+	ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutputWithContext(context.Context) ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput
+}
+
+type exadbVmClusterPropertiesVmFileSystemStoragePtrType ExadbVmClusterPropertiesVmFileSystemStorageArgs
+
+func ExadbVmClusterPropertiesVmFileSystemStoragePtr(v *ExadbVmClusterPropertiesVmFileSystemStorageArgs) ExadbVmClusterPropertiesVmFileSystemStoragePtrInput {
+	return (*exadbVmClusterPropertiesVmFileSystemStoragePtrType)(v)
+}
+
+func (*exadbVmClusterPropertiesVmFileSystemStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExadbVmClusterPropertiesVmFileSystemStorage)(nil)).Elem()
+}
+
+func (i *exadbVmClusterPropertiesVmFileSystemStoragePtrType) ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutput() ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput {
+	return i.ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *exadbVmClusterPropertiesVmFileSystemStoragePtrType) ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput)
+}
+
+type ExadbVmClusterPropertiesVmFileSystemStorageOutput struct{ *pulumi.OutputState }
+
+func (ExadbVmClusterPropertiesVmFileSystemStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExadbVmClusterPropertiesVmFileSystemStorage)(nil)).Elem()
+}
+
+func (o ExadbVmClusterPropertiesVmFileSystemStorageOutput) ToExadbVmClusterPropertiesVmFileSystemStorageOutput() ExadbVmClusterPropertiesVmFileSystemStorageOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesVmFileSystemStorageOutput) ToExadbVmClusterPropertiesVmFileSystemStorageOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesVmFileSystemStorageOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesVmFileSystemStorageOutput) ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutput() ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput {
+	return o.ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutputWithContext(context.Background())
+}
+
+func (o ExadbVmClusterPropertiesVmFileSystemStorageOutput) ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExadbVmClusterPropertiesVmFileSystemStorage) *ExadbVmClusterPropertiesVmFileSystemStorage {
+		return &v
+	}).(ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput)
+}
+
+// The storage allocation for the exadbvmcluster per node, in gigabytes (GB).
+// This field is used to calculate the total storage allocation for the
+// exadbvmcluster.
+func (o ExadbVmClusterPropertiesVmFileSystemStorageOutput) SizeInGbsPerNode() pulumi.IntOutput {
+	return o.ApplyT(func(v ExadbVmClusterPropertiesVmFileSystemStorage) int { return v.SizeInGbsPerNode }).(pulumi.IntOutput)
+}
+
+type ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExadbVmClusterPropertiesVmFileSystemStorage)(nil)).Elem()
+}
+
+func (o ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput) ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutput() ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput) ToExadbVmClusterPropertiesVmFileSystemStoragePtrOutputWithContext(ctx context.Context) ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput {
+	return o
+}
+
+func (o ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput) Elem() ExadbVmClusterPropertiesVmFileSystemStorageOutput {
+	return o.ApplyT(func(v *ExadbVmClusterPropertiesVmFileSystemStorage) ExadbVmClusterPropertiesVmFileSystemStorage {
+		if v != nil {
+			return *v
+		}
+		var ret ExadbVmClusterPropertiesVmFileSystemStorage
+		return ret
+	}).(ExadbVmClusterPropertiesVmFileSystemStorageOutput)
+}
+
+// The storage allocation for the exadbvmcluster per node, in gigabytes (GB).
+// This field is used to calculate the total storage allocation for the
+// exadbvmcluster.
+func (o ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput) SizeInGbsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ExadbVmClusterPropertiesVmFileSystemStorage) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SizeInGbsPerNode
+	}).(pulumi.IntPtrOutput)
+}
+
 type ExascaleDbStorageVaultProperties struct {
 	// The size of additional flash cache in percentage of high capacity
 	// database storage.
@@ -12227,13 +13338,15 @@ type GetAutonomousDatabasesAutonomousDatabase struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database           string `pulumi:"database"`
-	DeletionProtection bool   `pulumi:"deletionProtection"`
+	Database string `pulumi:"database"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
 	DisasterRecoverySupportedLocations []string `pulumi:"disasterRecoverySupportedLocations"`
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
-	DisplayName     string            `pulumi:"displayName"`
+	DisplayName string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The ID of the subscription entitlement associated with the Autonomous
 	// Database.
@@ -12303,13 +13416,15 @@ type GetAutonomousDatabasesAutonomousDatabaseArgs struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database           pulumi.StringInput `pulumi:"database"`
-	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
+	Database pulumi.StringInput `pulumi:"database"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
 	DisasterRecoverySupportedLocations pulumi.StringArrayInput `pulumi:"disasterRecoverySupportedLocations"`
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
-	DisplayName     pulumi.StringInput    `pulumi:"displayName"`
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// The ID of the subscription entitlement associated with the Autonomous
 	// Database.
@@ -12434,6 +13549,7 @@ func (o GetAutonomousDatabasesAutonomousDatabaseOutput) Database() pulumi.String
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) string { return v.Database }).(pulumi.StringOutput)
 }
 
+// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
 func (o GetAutonomousDatabasesAutonomousDatabaseOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
@@ -12449,6 +13565,7 @@ func (o GetAutonomousDatabasesAutonomousDatabaseOutput) DisplayName() pulumi.Str
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetAutonomousDatabasesAutonomousDatabaseOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -16021,10 +17138,12 @@ type GetCloudExadataInfrastructuresCloudExadataInfrastructure struct {
 	// a letter or a number.
 	CloudExadataInfrastructureId string `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
-	CreateTime         string `pulumi:"createTime"`
-	DeletionProtection bool   `pulumi:"deletionProtection"`
+	CreateTime string `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
-	DisplayName     string            `pulumi:"displayName"`
+	DisplayName string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Entitlement ID of the private offer against which this infrastructure
 	// resource is provisioned.
@@ -16071,10 +17190,12 @@ type GetCloudExadataInfrastructuresCloudExadataInfrastructureArgs struct {
 	// a letter or a number.
 	CloudExadataInfrastructureId pulumi.StringInput `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
-	CreateTime         pulumi.StringInput `pulumi:"createTime"`
-	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
-	DisplayName     pulumi.StringInput    `pulumi:"displayName"`
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// Entitlement ID of the private offer against which this infrastructure
 	// resource is provisioned.
@@ -16169,6 +17290,7 @@ func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) CreateTi
 	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructure) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
 func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructure) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
@@ -16178,6 +17300,7 @@ func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) DisplayN
 	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructure) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructure) map[string]string {
 		return v.EffectiveLabels
@@ -17738,10 +18861,12 @@ type GetCloudVmClustersCloudVmCluster struct {
 	// a letter or a number.
 	CloudVmClusterId string `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
-	CreateTime         string `pulumi:"createTime"`
-	DeletionProtection bool   `pulumi:"deletionProtection"`
+	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
-	DisplayName     string            `pulumi:"displayName"`
+	DisplayName string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The name of the Exadata Infrastructure resource on which VM cluster
 	// resource is created, in the following format:
@@ -17811,10 +18936,12 @@ type GetCloudVmClustersCloudVmClusterArgs struct {
 	// a letter or a number.
 	CloudVmClusterId pulumi.StringInput `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
-	CreateTime         pulumi.StringInput `pulumi:"createTime"`
-	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
-	DisplayName     pulumi.StringInput    `pulumi:"displayName"`
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// The name of the Exadata Infrastructure resource on which VM cluster
 	// resource is created, in the following format:
@@ -17939,6 +19066,7 @@ func (o GetCloudVmClustersCloudVmClusterOutput) CreateTime() pulumi.StringOutput
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
 func (o GetCloudVmClustersCloudVmClusterOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
@@ -17948,6 +19076,7 @@ func (o GetCloudVmClustersCloudVmClusterOutput) DisplayName() pulumi.StringOutpu
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetCloudVmClustersCloudVmClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -19331,6 +20460,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbSystemOptionsPtrInput)(nil)).Elem(), DbSystemPropertiesDbSystemOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesTimeZoneInput)(nil)).Elem(), DbSystemPropertiesTimeZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesTimeZonePtrInput)(nil)).Elem(), DbSystemPropertiesTimeZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterPropertiesInput)(nil)).Elem(), ExadbVmClusterPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterPropertiesPtrInput)(nil)).Elem(), ExadbVmClusterPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterPropertiesDataCollectionOptionsInput)(nil)).Elem(), ExadbVmClusterPropertiesDataCollectionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterPropertiesDataCollectionOptionsPtrInput)(nil)).Elem(), ExadbVmClusterPropertiesDataCollectionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterPropertiesTimeZoneInput)(nil)).Elem(), ExadbVmClusterPropertiesTimeZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterPropertiesTimeZonePtrInput)(nil)).Elem(), ExadbVmClusterPropertiesTimeZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterPropertiesVmFileSystemStorageInput)(nil)).Elem(), ExadbVmClusterPropertiesVmFileSystemStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterPropertiesVmFileSystemStoragePtrInput)(nil)).Elem(), ExadbVmClusterPropertiesVmFileSystemStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExascaleDbStorageVaultPropertiesInput)(nil)).Elem(), ExascaleDbStorageVaultPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExascaleDbStorageVaultPropertiesPtrInput)(nil)).Elem(), ExascaleDbStorageVaultPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsInput)(nil)).Elem(), ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsArgs{})
@@ -19479,6 +20616,14 @@ func init() {
 	pulumi.RegisterOutputType(DbSystemPropertiesDbSystemOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DbSystemPropertiesTimeZoneOutput{})
 	pulumi.RegisterOutputType(DbSystemPropertiesTimeZonePtrOutput{})
+	pulumi.RegisterOutputType(ExadbVmClusterPropertiesOutput{})
+	pulumi.RegisterOutputType(ExadbVmClusterPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ExadbVmClusterPropertiesDataCollectionOptionsOutput{})
+	pulumi.RegisterOutputType(ExadbVmClusterPropertiesDataCollectionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ExadbVmClusterPropertiesTimeZoneOutput{})
+	pulumi.RegisterOutputType(ExadbVmClusterPropertiesTimeZonePtrOutput{})
+	pulumi.RegisterOutputType(ExadbVmClusterPropertiesVmFileSystemStorageOutput{})
+	pulumi.RegisterOutputType(ExadbVmClusterPropertiesVmFileSystemStoragePtrOutput{})
 	pulumi.RegisterOutputType(ExascaleDbStorageVaultPropertiesOutput{})
 	pulumi.RegisterOutputType(ExascaleDbStorageVaultPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsOutput{})

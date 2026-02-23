@@ -29,6 +29,7 @@ class SecretVersionArgs:
                  secret_data_wo_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a SecretVersion resource.
+
         :param pulumi.Input[_builtins.str] secret: Secret Manager secret resource
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
                to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
@@ -192,6 +193,7 @@ class _SecretVersionState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecretVersion resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time at which the Secret was created.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
                to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
@@ -417,6 +419,23 @@ class SecretVersion(pulumi.CustomResource):
                  secret_data_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        A secret version resource.
+
+        To get more information about SecretVersion, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions)
+        * How-to Guides
+            * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
+
+        > **Warning:** The behavior of the `secret_data` field is force new.
+        While updating this field, Terraform deletes the existing resource and then creates a new one, which may cause potential outages. To mitigate
+        this, use the `create_before_destroy` field within the lifecycle block.
+
+        For more details, refer to the Terraform lifecycle documentation.
+
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `secret_data_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Secret Version Basic
@@ -551,6 +570,7 @@ class SecretVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -582,6 +602,23 @@ class SecretVersion(pulumi.CustomResource):
                  args: SecretVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A secret version resource.
+
+        To get more information about SecretVersion, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions)
+        * How-to Guides
+            * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
+
+        > **Warning:** The behavior of the `secret_data` field is force new.
+        While updating this field, Terraform deletes the existing resource and then creates a new one, which may cause potential outages. To mitigate
+        this, use the `create_before_destroy` field within the lifecycle block.
+
+        For more details, refer to the Terraform lifecycle documentation.
+
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `secret_data_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Secret Version Basic
@@ -716,6 +753,7 @@ class SecretVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecretVersionArgs args: The arguments to use to populate this resource's properties.

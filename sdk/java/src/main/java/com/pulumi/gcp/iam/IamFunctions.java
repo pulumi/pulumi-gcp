@@ -656,6 +656,12 @@ public final class IamFunctions {
         return Deployment.getInstance().invokeAsync("gcp:iam/getWorkforcePoolIamPolicy:getWorkforcePoolIamPolicy", TypeShape.of(GetWorkforcePoolIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get a IAM workload identity pool from Google Cloud by its id.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
      * ## Example Usage
      * 
      * <pre>
@@ -694,6 +700,12 @@ public final class IamFunctions {
         return getWorkloadIdentityPool(args, InvokeOptions.Empty);
     }
     /**
+     * Get a IAM workload identity pool from Google Cloud by its id.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
      * ## Example Usage
      * 
      * <pre>
@@ -732,6 +744,12 @@ public final class IamFunctions {
         return getWorkloadIdentityPoolPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Get a IAM workload identity pool from Google Cloud by its id.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
      * ## Example Usage
      * 
      * <pre>
@@ -770,6 +788,12 @@ public final class IamFunctions {
         return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", TypeShape.of(GetWorkloadIdentityPoolResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get a IAM workload identity pool from Google Cloud by its id.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
      * ## Example Usage
      * 
      * <pre>
@@ -808,6 +832,12 @@ public final class IamFunctions {
         return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", TypeShape.of(GetWorkloadIdentityPoolResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get a IAM workload identity pool from Google Cloud by its id.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
      * ## Example Usage
      * 
      * <pre>
@@ -846,6 +876,10 @@ public final class IamFunctions {
         return Deployment.getInstance().invokeAsync("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", TypeShape.of(GetWorkloadIdentityPoolResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for workloadidentitypool
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -885,6 +919,10 @@ public final class IamFunctions {
         return getWorkloadIdentityPoolIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for workloadidentitypool
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -924,6 +962,10 @@ public final class IamFunctions {
         return getWorkloadIdentityPoolIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for workloadidentitypool
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -963,6 +1005,10 @@ public final class IamFunctions {
         return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy", TypeShape.of(GetWorkloadIdentityPoolIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for workloadidentitypool
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1002,6 +1048,10 @@ public final class IamFunctions {
         return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy", TypeShape.of(GetWorkloadIdentityPoolIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for workloadidentitypool
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1041,6 +1091,11 @@ public final class IamFunctions {
         return Deployment.getInstance().invokeAsync("gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy", TypeShape.of(GetWorkloadIdentityPoolIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get a IAM workload identity provider from Google Cloud by its id.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1080,6 +1135,11 @@ public final class IamFunctions {
         return getWorkloadIdentityPoolProvider(args, InvokeOptions.Empty);
     }
     /**
+     * Get a IAM workload identity provider from Google Cloud by its id.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1119,6 +1179,11 @@ public final class IamFunctions {
         return getWorkloadIdentityPoolProviderPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Get a IAM workload identity provider from Google Cloud by its id.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1158,6 +1223,11 @@ public final class IamFunctions {
         return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", TypeShape.of(GetWorkloadIdentityPoolProviderResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get a IAM workload identity provider from Google Cloud by its id.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1197,6 +1267,11 @@ public final class IamFunctions {
         return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", TypeShape.of(GetWorkloadIdentityPoolProviderResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get a IAM workload identity provider from Google Cloud by its id.
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
      * ## Example Usage
      * 
      * <pre>

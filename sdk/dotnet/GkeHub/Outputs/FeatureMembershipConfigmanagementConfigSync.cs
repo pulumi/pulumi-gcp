@@ -18,7 +18,9 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverride> DeploymentOverrides;
         /// <summary>
-        /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        /// Whether Config Sync is enabled in the cluster. This field was introduced in Terraform version
+        /// 5.41.0, and
+        /// needs to be set to `True` explicitly to install Config Sync.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

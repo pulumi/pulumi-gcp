@@ -28,6 +28,7 @@ class DataConnectServiceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataConnectService resource.
+
         :param pulumi.Input[_builtins.str] location: The region in which the service resides, e.g. "us-central1" or "asia-east1".
         :param pulumi.Input[_builtins.str] service_id: Required. The ID to use for the service, which will become the final component of the
                service's resource name.
@@ -175,6 +176,7 @@ class _DataConnectServiceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataConnectService resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Stores small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -185,6 +187,7 @@ class _DataConnectServiceState:
                present.
                Possible values: DEFAULT, FORCE
         :param pulumi.Input[_builtins.str] display_name: Optional. Mutable human-readable name. 63 character limit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Output only. This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -303,6 +306,9 @@ class _DataConnectServiceState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -532,24 +538,17 @@ class DataConnectService(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
-
         * `{{project}}/{{location}}/{{service_id}}`
-
         * `{{location}}/{{service_id}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{project}}/{{location}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{location}}/{{service_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -637,24 +636,17 @@ class DataConnectService(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
-
         * `{{project}}/{{location}}/{{service_id}}`
-
         * `{{location}}/{{service_id}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{project}}/{{location}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{location}}/{{service_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataConnectServiceArgs args: The arguments to use to populate this resource's properties.
@@ -752,6 +744,7 @@ class DataConnectService(pulumi.CustomResource):
                present.
                Possible values: DEFAULT, FORCE
         :param pulumi.Input[_builtins.str] display_name: Optional. Mutable human-readable name. 63 character limit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Output only. This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -843,6 +836,9 @@ class DataConnectService(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

@@ -28,6 +28,7 @@ class TenantArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Tenant resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] saas: A reference to the Saas that defines the product (managed service) that
                the producer wants to manage with SaaS Runtime. Part of the
@@ -180,6 +181,7 @@ class _TenantState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tenant resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations is an unstructured key-value map stored with a resource that
                may be set by external tools to store and retrieve arbitrary metadata.
                They are not queryable and should be preserved when modifying objects.
@@ -191,6 +193,7 @@ class _TenantState:
                retrieving consumer-defined settings and policies such as maintenance
                policies (using Unified Maintenance Policy API).
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
                similar to Kubernetes resource labels.
@@ -293,6 +296,9 @@ class _TenantState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -450,6 +456,11 @@ class Tenant(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The Tenant resource represents the service producer's view of a service instance created for a consumer. It enables the association between the service producer's managed resources and the end consumer.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Saas Runtime Tenant Basic
@@ -476,24 +487,17 @@ class Tenant(pulumi.CustomResource):
         Tenant can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}`
-
         * `{{project}}/{{location}}/{{tenant_id}}`
-
         * `{{location}}/{{tenant_id}}`
 
         When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:saasruntime/tenant:Tenant default projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/tenant:Tenant default {{project}}/{{location}}/{{tenant_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/tenant:Tenant default {{location}}/{{tenant_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -526,6 +530,11 @@ class Tenant(pulumi.CustomResource):
                  args: TenantArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The Tenant resource represents the service producer's view of a service instance created for a consumer. It enables the association between the service producer's managed resources and the end consumer.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
         ## Example Usage
 
         ### Saas Runtime Tenant Basic
@@ -552,24 +561,17 @@ class Tenant(pulumi.CustomResource):
         Tenant can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}`
-
         * `{{project}}/{{location}}/{{tenant_id}}`
-
         * `{{location}}/{{tenant_id}}`
 
         When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:saasruntime/tenant:Tenant default projects/{{project}}/locations/{{location}}/tenants/{{tenant_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/tenant:Tenant default {{project}}/{{location}}/{{tenant_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/tenant:Tenant default {{location}}/{{tenant_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TenantArgs args: The arguments to use to populate this resource's properties.
@@ -666,6 +668,7 @@ class Tenant(pulumi.CustomResource):
                retrieving consumer-defined settings and policies such as maintenance
                policies (using Unified Maintenance Policy API).
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
                similar to Kubernetes resource labels.
@@ -747,6 +750,9 @@ class Tenant(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

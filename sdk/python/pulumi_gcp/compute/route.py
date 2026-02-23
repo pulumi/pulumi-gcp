@@ -37,6 +37,7 @@ class RouteArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Route resource.
+
         :param pulumi.Input[_builtins.str] dest_range: The destination range of outgoing packets that this route applies to.
                Only IPv4 is supported.
         :param pulumi.Input[_builtins.str] network: The network that this route applies to.
@@ -359,6 +360,7 @@ class _RouteState:
                  warnings: Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningArgs']]]] = None):
         """
         Input properties used for looking up and filtering Route resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['RouteAsPathArgs']]] as_paths: Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property
@@ -1023,24 +1025,17 @@ class Route(pulumi.CustomResource):
         Route can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/routes/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Route can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/route:Route default projects/{{project}}/global/routes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/route:Route default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/route:Route default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1261,24 +1256,17 @@ class Route(pulumi.CustomResource):
         Route can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/routes/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Route can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/route:Route default projects/{{project}}/global/routes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/route:Route default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/route:Route default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouteArgs args: The arguments to use to populate this resource's properties.

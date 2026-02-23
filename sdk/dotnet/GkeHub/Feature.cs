@@ -515,22 +515,14 @@ namespace Pulumi.Gcp.GkeHub
     /// Feature can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/features/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, Feature can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gkehub/feature:Feature default projects/{{project}}/locations/{{location}}/features/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkehub/feature:Feature default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkehub/feature:Feature default {{location}}/{{name}}
     /// ```
     /// </summary>

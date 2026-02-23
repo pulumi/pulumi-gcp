@@ -66,22 +66,14 @@ import javax.annotation.Nullable;
  * CertificateMap can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/global/certificateMaps/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, CertificateMap can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default projects/{{project}}/locations/global/certificateMaps/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{project}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{name}}
  * ```
  * 

@@ -43,6 +43,7 @@ class AppArgs:
                  variable_declarations: Optional[pulumi.Input[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]] = None):
         """
         The set of arguments for constructing a App resource.
+
         :param pulumi.Input[_builtins.str] app_id: The ID to use for the app, which will become the final component of
                the app's resource name. If not provided, a unique ID will be
                automatically assigned for the app.
@@ -415,6 +416,7 @@ class _AppState:
                  variable_declarations: Optional[pulumi.Input[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]] = None):
         """
         Input properties used for looking up and filtering App resources.
+
         :param pulumi.Input[_builtins.str] app_id: The ID to use for the app, which will become the final component of
                the app's resource name. If not provided, a unique ID will be
                automatically assigned for the app.
@@ -1039,7 +1041,7 @@ class App(pulumi.CustomResource):
             client_certificate_settings={
                 "tls_certificate": std.file(input="test-fixtures/cert.pem").result,
                 "private_key": fake_secret_version.name,
-                "passphrase": "fakepassphrase",
+                "passphrase": fake_secret_version.name,
             })
         ```
         ### Ces App Ambient Sound Gcs Uri
@@ -1195,24 +1197,17 @@ class App(pulumi.CustomResource):
         App can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apps/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, App can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ces/app:App default projects/{{project}}/locations/{{location}}/apps/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/app:App default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/app:App default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1435,7 +1430,7 @@ class App(pulumi.CustomResource):
             client_certificate_settings={
                 "tls_certificate": std.file(input="test-fixtures/cert.pem").result,
                 "private_key": fake_secret_version.name,
-                "passphrase": "fakepassphrase",
+                "passphrase": fake_secret_version.name,
             })
         ```
         ### Ces App Ambient Sound Gcs Uri
@@ -1591,24 +1586,17 @@ class App(pulumi.CustomResource):
         App can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apps/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, App can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ces/app:App default projects/{{project}}/locations/{{location}}/apps/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/app:App default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/app:App default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppArgs args: The arguments to use to populate this resource's properties.

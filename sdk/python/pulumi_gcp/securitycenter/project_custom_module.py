@@ -27,6 +27,7 @@ class ProjectCustomModuleArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectCustomModule resource.
+
         :param pulumi.Input['ProjectCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Security Health Analytics custom module. This
@@ -114,6 +115,7 @@ class _ProjectCustomModuleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectCustomModule resources.
+
         :param pulumi.Input[_builtins.str] ancestor_module: If empty, indicates that the custom module was created in the organization,folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
@@ -349,24 +351,17 @@ class ProjectCustomModule(pulumi.CustomResource):
         ProjectCustomModule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/securityHealthAnalyticsSettings/customModules/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ProjectCustomModule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default projects/{{project}}/securityHealthAnalyticsSettings/customModules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -465,24 +460,17 @@ class ProjectCustomModule(pulumi.CustomResource):
         ProjectCustomModule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/securityHealthAnalyticsSettings/customModules/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ProjectCustomModule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default projects/{{project}}/securityHealthAnalyticsSettings/customModules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectCustomModuleArgs args: The arguments to use to populate this resource's properties.

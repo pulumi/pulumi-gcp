@@ -27,6 +27,7 @@ class DomainMappingArgs:
                  ssl_settings: Optional[pulumi.Input['DomainMappingSslSettingsArgs']] = None):
         """
         The set of arguments for constructing a DomainMapping resource.
+
         :param pulumi.Input[_builtins.str] domain_name: Relative name of the domain serving the application. Example: example.com.
         :param pulumi.Input[_builtins.str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
                By default, overrides are rejected.
@@ -110,6 +111,7 @@ class _DomainMappingState:
                  ssl_settings: Optional[pulumi.Input['DomainMappingSslSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering DomainMapping resources.
+
         :param pulumi.Input[_builtins.str] domain_name: Relative name of the domain serving the application. Example: example.com.
         :param pulumi.Input[_builtins.str] name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         :param pulumi.Input[_builtins.str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
@@ -257,24 +259,17 @@ class DomainMapping(pulumi.CustomResource):
         DomainMapping can be imported using any of these accepted formats:
 
         * `apps/{{project}}/domainMappings/{{domain_name}}`
-
         * `{{project}}/{{domain_name}}`
-
         * `{{domain_name}}`
 
         When using the `pulumi import` command, DomainMapping can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/domainMapping:DomainMapping default apps/{{project}}/domainMappings/{{domain_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{project}}/{{domain_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{domain_name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -323,24 +318,17 @@ class DomainMapping(pulumi.CustomResource):
         DomainMapping can be imported using any of these accepted formats:
 
         * `apps/{{project}}/domainMappings/{{domain_name}}`
-
         * `{{project}}/{{domain_name}}`
-
         * `{{domain_name}}`
 
         When using the `pulumi import` command, DomainMapping can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/domainMapping:DomainMapping default apps/{{project}}/domainMappings/{{domain_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{project}}/{{domain_name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{domain_name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainMappingArgs args: The arguments to use to populate this resource's properties.

@@ -12,6 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A data asset resource that can be packaged and shared via a data product.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
+// To get more information about DataAsset, see:
+//
+// * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts.dataAssets)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/dataplex/docs)
+//
 // ## Example Usage
 //
 // ### Dataplex Data Asset Basic
@@ -34,7 +45,7 @@ import (
 //			example, err := dataplex.NewDataProduct(ctx, "example", &dataplex.DataProductArgs{
 //				Project:       pulumi.String("my-project-name"),
 //				Location:      pulumi.String("us-central1"),
-//				DataProductId: pulumi.String("tf-test-dp-_89605"),
+//				DataProductId: pulumi.String("tf-test-dp-_95154"),
 //				DisplayName:   pulumi.String("Parent Data Product"),
 //				OwnerEmails: pulumi.StringArray{
 //					pulumi.String("gterraformtestuser@gmail.com"),
@@ -45,7 +56,7 @@ import (
 //						GroupId:     pulumi.String("analyst"),
 //						DisplayName: pulumi.String("Data Analyst"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_56730@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_64336@example.com"),
 //						},
 //					},
 //				},
@@ -55,7 +66,7 @@ import (
 //			}
 //			exampleDataset, err := bigquery.NewDataset(ctx, "example", &bigquery.DatasetArgs{
 //				Project:   pulumi.String("my-project-name"),
-//				DatasetId: pulumi.String("tf_test_dataset__95154"),
+//				DatasetId: pulumi.String("tf_test_dataset__34962"),
 //				Location:  pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -100,7 +111,7 @@ import (
 //			example, err := dataplex.NewDataProduct(ctx, "example", &dataplex.DataProductArgs{
 //				Project:       pulumi.String("my-project-name"),
 //				Location:      pulumi.String("us-central1"),
-//				DataProductId: pulumi.String("tf-test-dp-_64336"),
+//				DataProductId: pulumi.String("tf-test-dp-_74000"),
 //				DisplayName:   pulumi.String("Full Example Parent DP"),
 //				OwnerEmails: pulumi.StringArray{
 //					pulumi.String("gterraformtestuser@gmail.com"),
@@ -129,7 +140,7 @@ import (
 //			}
 //			exampleDataset, err := bigquery.NewDataset(ctx, "example", &bigquery.DatasetArgs{
 //				Project:   pulumi.String("my-project-name"),
-//				DatasetId: pulumi.String("tf_test_dataset__34962"),
+//				DatasetId: pulumi.String("tf_test_dataset__75125"),
 //				Location:  pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -178,22 +189,14 @@ import (
 // DataAsset can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}/dataAssets/{{data_asset_id}}`
-//
 // * `{{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}`
-//
 // * `{{location}}/{{data_product_id}}/{{data_asset_id}}`
 //
 // When using the `pulumi import` command, DataAsset can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataplex/dataAsset:DataAsset default projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}/dataAssets/{{data_asset_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{project}}/{{location}}/{{data_product_id}}/{{data_asset_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/dataAsset:DataAsset default {{location}}/{{data_product_id}}/{{data_asset_id}}
 // ```
 type DataAsset struct {

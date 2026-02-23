@@ -5,6 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A Release is a particular collection of configurations that is set to be public at a particular time.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * To get more information about Release, see:
+ *
+ * * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.releases)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/docs/hosting)
+ *
  * ## Example Usage
  *
  * ### Firebasehosting Release In Site
@@ -86,28 +97,16 @@ import * as utilities from "../utilities";
  * Release can be imported using any of these accepted formats:
  *
  * * `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}`
- *
  * * `sites/{{site_id}}/releases/{{release_id}}`
- *
  * * `{{site_id}}/{{channel_id}}/{{release_id}}`
- *
  * * `{{site_id}}/{{release_id}}`
  *
  * When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/releases/{{release_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{channel_id}}/{{release_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{release_id}}
  * ```
  */

@@ -28,6 +28,7 @@ class InstancePartitionArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstancePartition resource.
+
         :param pulumi.Input[_builtins.str] config: The name of the instance partition's configuration (similar to a region) which
                defines the geographic placement and replication of data in this instance partition.
         :param pulumi.Input[_builtins.str] display_name: The descriptive name for this instance partition as it appears in UIs.
@@ -162,6 +163,7 @@ class _InstancePartitionState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstancePartition resources.
+
         :param pulumi.Input[_builtins.str] config: The name of the instance partition's configuration (similar to a region) which
                defines the geographic placement and replication of data in this instance partition.
         :param pulumi.Input[_builtins.str] display_name: The descriptive name for this instance partition as it appears in UIs.
@@ -358,24 +360,17 @@ class InstancePartition(pulumi.CustomResource):
         InstancePartition can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/instancePartitions/{{name}}`
-
         * `{{project}}/{{instance}}/{{name}}`
-
         * `{{instance}}/{{name}}`
 
         When using the `pulumi import` command, InstancePartition can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:spanner/instancePartition:InstancePartition default projects/{{project}}/instances/{{instance}}/instancePartitions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/instancePartition:InstancePartition default {{project}}/{{instance}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/instancePartition:InstancePartition default {{instance}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -438,24 +433,17 @@ class InstancePartition(pulumi.CustomResource):
         InstancePartition can be imported using any of these accepted formats:
 
         * `projects/{{project}}/instances/{{instance}}/instancePartitions/{{name}}`
-
         * `{{project}}/{{instance}}/{{name}}`
-
         * `{{instance}}/{{name}}`
 
         When using the `pulumi import` command, InstancePartition can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:spanner/instancePartition:InstancePartition default projects/{{project}}/instances/{{instance}}/instancePartitions/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/instancePartition:InstancePartition default {{project}}/{{instance}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:spanner/instancePartition:InstancePartition default {{instance}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstancePartitionArgs args: The arguments to use to populate this resource's properties.

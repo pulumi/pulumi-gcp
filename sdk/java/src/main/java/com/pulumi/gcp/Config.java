@@ -463,6 +463,9 @@ public final class Config {
     public Optional<String> parameterManagerRegionalCustomEndpoint() {
         return Codegen.stringProp("parameterManagerRegionalCustomEndpoint").config(config).get();
     }
+    public Optional<String> pollInterval() {
+        return Codegen.stringProp("pollInterval").config(config).get();
+    }
     public Optional<String> privatecaCustomEndpoint() {
         return Codegen.stringProp("privatecaCustomEndpoint").config(config).get();
     }
@@ -603,6 +606,9 @@ public final class Config {
     }
     public Optional<Boolean> userProjectOverride() {
         return Codegen.booleanProp("userProjectOverride").config(config).get();
+    }
+    public Optional<String> vectorSearchCustomEndpoint() {
+        return Codegen.stringProp("vectorSearchCustomEndpoint").config(config).get();
     }
     public Optional<String> vertexAiCustomEndpoint() {
         return Codegen.stringProp("vertexAiCustomEndpoint").config(config).get();

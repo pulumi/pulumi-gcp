@@ -15,11 +15,16 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     {
         /// <summary>
         /// The password to authenticate.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? Password;
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
         /// The password to authenticate.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `Password` or `PasswordWo` can only be set.
         /// </summary>
         public readonly string? PasswordWo;
         /// <summary>

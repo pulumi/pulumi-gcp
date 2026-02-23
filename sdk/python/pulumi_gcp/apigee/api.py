@@ -27,10 +27,12 @@ class ApiArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Api resource.
+
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
                
                - - -
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization name associated with the Apigee instance.
+        :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] name: The ID of the API proxy.
         """
         pulumi.set(__self__, "config_bundle", config_bundle)
@@ -69,6 +71,9 @@ class ApiArgs:
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        """
         return pulumi.get(self, "detect_md5hash")
 
     @detect_md5hash.setter
@@ -101,9 +106,11 @@ class _ApiState:
                  revisions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Api resources.
+
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
                
                - - -
+        :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] latest_revision_id: The id of the most recently created revision for this API proxy.
         :param pulumi.Input[_builtins.str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
         :param pulumi.Input[Sequence[pulumi.Input['ApiMetaDataArgs']]] meta_datas: Metadata describing the API proxy.
@@ -146,6 +153,9 @@ class _ApiState:
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        """
         return pulumi.get(self, "detect_md5hash")
 
     @detect_md5hash.setter
@@ -249,24 +259,22 @@ class Api(pulumi.CustomResource):
         An API proxy can be imported using any of these accepted formats:
 
         * `{{org_id}}/apis/{{name}}`
-
         * `{{org_id}}/{{name}}`
 
         When using the `pulumi import` command, API proxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/api:Api default {{org_id}}/apis/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/api:Api default {{org_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
                
                - - -
+        :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] name: The ID of the API proxy.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization name associated with the Apigee instance.
         """
@@ -288,18 +296,15 @@ class Api(pulumi.CustomResource):
         An API proxy can be imported using any of these accepted formats:
 
         * `{{org_id}}/apis/{{name}}`
-
         * `{{org_id}}/{{name}}`
 
         When using the `pulumi import` command, API proxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/api:Api default {{org_id}}/apis/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigee/api:Api default {{org_id}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiArgs args: The arguments to use to populate this resource's properties.
@@ -369,6 +374,7 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] config_bundle: Path to the config zip bundle.
                
                - - -
+        :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] latest_revision_id: The id of the most recently created revision for this API proxy.
         :param pulumi.Input[_builtins.str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiMetaDataArgs', 'ApiMetaDataArgsDict']]]] meta_datas: Metadata describing the API proxy.
@@ -404,6 +410,9 @@ class Api(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        """
         return pulumi.get(self, "detect_md5hash")
 
     @_builtins.property

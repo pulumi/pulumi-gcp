@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+        /// The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
         /// </summary>
         [Input("imageVersion")]
         public Input<string>? ImageVersion { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// * yarn: `yarn-site.xml`
         /// 
         /// 
-        /// For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+        /// For more information, see [Cluster properties](https://docs.cloud.google.com/dataproc/docs/concepts/cluster-properties).
         /// </summary>
         public InputMap<string> Properties
         {

@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig {
     /**
-     * @return Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+     * @return Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
      * 
      */
     private @Nullable Boolean enableIntegrityMonitoring;
     /**
-     * @return Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+     * @return Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
      * 
      */
     private @Nullable Boolean enableSecureBoot;
     /**
-     * @return Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+     * @return Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
      * 
      */
     private @Nullable Boolean enableVtpm;
 
     private WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig() {}
     /**
-     * @return Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+     * @return Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
      * 
      */
     public Optional<Boolean> enableIntegrityMonitoring() {
         return Optional.ofNullable(this.enableIntegrityMonitoring);
     }
     /**
-     * @return Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+     * @return Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
      * 
      */
     public Optional<Boolean> enableSecureBoot() {
         return Optional.ofNullable(this.enableSecureBoot);
     }
     /**
-     * @return Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+     * @return Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
      * 
      */
     public Optional<Boolean> enableVtpm() {

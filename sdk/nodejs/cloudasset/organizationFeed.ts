@@ -64,16 +64,12 @@ import * as utilities from "../utilities";
  * OrganizationFeed can be imported using any of these accepted formats:
  *
  * * `organizations/{{org_id}}/feeds/{{name}}`
- *
  * * `{{org_id}}/{{name}}`
  *
  * When using the `pulumi import` command, OrganizationFeed can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default organizations/{{org_id}}/feeds/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default {{org_id}}/{{name}}
  * ```
  */

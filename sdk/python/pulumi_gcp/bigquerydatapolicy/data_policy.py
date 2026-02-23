@@ -29,6 +29,7 @@ class DataPolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataPolicy resource.
+
         :param pulumi.Input[_builtins.str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[_builtins.str] data_policy_type: The enrollment level of the service.
                Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
@@ -136,6 +137,7 @@ class _DataPolicyState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataPolicy resources.
+
         :param pulumi.Input['DataPolicyDataMaskingPolicyArgs'] data_masking_policy: The data masking policy that specifies the data masking rule to use.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
@@ -340,24 +342,17 @@ class DataPolicy(pulumi.CustomResource):
         DataPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}`
-
         * `{{project}}/{{location}}/{{data_policy_id}}`
-
         * `{{location}}/{{data_policy_id}}`
 
         When using the `pulumi import` command, DataPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy default projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy default {{project}}/{{location}}/{{data_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy default {{location}}/{{data_policy_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -454,24 +449,17 @@ class DataPolicy(pulumi.CustomResource):
         DataPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}`
-
         * `{{project}}/{{location}}/{{data_policy_id}}`
-
         * `{{location}}/{{data_policy_id}}`
 
         When using the `pulumi import` command, DataPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy default projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy default {{project}}/{{location}}/{{data_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy default {{location}}/{{data_policy_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataPolicyArgs args: The arguments to use to populate this resource's properties.

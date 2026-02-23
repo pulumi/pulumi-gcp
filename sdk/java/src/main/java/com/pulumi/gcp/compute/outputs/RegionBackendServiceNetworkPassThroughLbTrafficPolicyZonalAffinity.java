@@ -13,16 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
     /**
-     * @return (Optional, Beta)
-     * This field indicates whether zonal affinity is enabled or not.
+     * @return This field indicates whether zonal affinity is enabled or not.
      * Default value is `ZONAL_AFFINITY_DISABLED`.
      * Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
      * 
      */
     private @Nullable String spillover;
     /**
-     * @return (Optional, Beta)
-     * The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+     * @return The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
      * to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
      * distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
      * of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
@@ -33,8 +31,7 @@ public final class RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAff
 
     private RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity() {}
     /**
-     * @return (Optional, Beta)
-     * This field indicates whether zonal affinity is enabled or not.
+     * @return This field indicates whether zonal affinity is enabled or not.
      * Default value is `ZONAL_AFFINITY_DISABLED`.
      * Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
      * 
@@ -43,8 +40,7 @@ public final class RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAff
         return Optional.ofNullable(this.spillover);
     }
     /**
-     * @return (Optional, Beta)
-     * The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+     * @return The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
      * to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
      * distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
      * of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this

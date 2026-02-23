@@ -419,7 +419,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("tf-test-bucket-name-_39249"),
+//				Name:                     pulumi.String("tf-test-bucket-name-_16511"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -471,7 +471,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("tf-test-bucket-name-_74391"),
+//				Name:                     pulumi.String("tf-test-bucket-name-_8493"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -479,9 +479,9 @@ import (
 //				return err
 //			}
 //			tfTestConnection, err := bigquery.NewConnection(ctx, "tf_test_connection", &bigquery.ConnectionArgs{
-//				ConnectionId:  pulumi.String("tf-test-connection-_16511"),
+//				ConnectionId:  pulumi.String("tf-test-connection-_9106"),
 //				Location:      pulumi.String("us-central1"),
-//				FriendlyName:  pulumi.String("tf-test-connection-_8493"),
+//				FriendlyName:  pulumi.String("tf-test-connection-_27169"),
 //				Description:   pulumi.String("a bigquery connection for tf test"),
 //				CloudResource: &bigquery.ConnectionCloudResourceArgs{},
 //			})
@@ -574,7 +574,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("tf-test-bucket-name-_9106"),
+//				Name:                     pulumi.String("tf-test-bucket-name-_75223"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -627,7 +627,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__27169"),
+//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__41819"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //			})
 //			if err != nil {
@@ -635,7 +635,7 @@ import (
 //			}
 //			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfDataplexTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_dataplex_test_table_id__75223"),
+//				TableId:            pulumi.String("tf_dataplex_test_table_id__75092"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Schema: pulumi.String(`    [
 //	    {
@@ -737,7 +737,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__41819"),
+//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__2605"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //			})
 //			if err != nil {
@@ -745,7 +745,7 @@ import (
 //			}
 //			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfDataplexTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_dataplex_test_table_id__75092"),
+//				TableId:            pulumi.String("tf_dataplex_test_table_id__34535"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Schema: pulumi.String(`    [
 //	    {
@@ -837,28 +837,16 @@ import (
 // Datascan can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
-//
 // * `{{project}}/{{location}}/{{data_scan_id}}`
-//
 // * `{{location}}/{{data_scan_id}}`
-//
 // * `{{data_scan_id}}`
 //
 // When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataplex/datascan:Datascan default projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/datascan:Datascan default {{project}}/{{location}}/{{data_scan_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/datascan:Datascan default {{location}}/{{data_scan_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/datascan:Datascan default {{data_scan_id}}
 // ```
 type Datascan struct {

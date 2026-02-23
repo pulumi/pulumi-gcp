@@ -116,16 +116,12 @@ import javax.annotation.Nullable;
  * Intent can be imported using any of these accepted formats:
  * 
  * * `{{parent}}/intents/{{name}}`
- * 
  * * `{{parent}}/{{name}}`
  * 
  * When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/intents/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/{{name}}
  * ```
  * 

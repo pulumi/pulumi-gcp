@@ -283,7 +283,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     declare public readonly targetPools: pulumi.Output<string[] | undefined>;
     /**
-     * The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+     * The target number of running instances for this managed
+     * instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+     * when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+     * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      */
     declare public readonly targetSize: pulumi.Output<number>;
     /**
@@ -539,7 +542,10 @@ export interface RegionInstanceGroupManagerState {
      */
     targetPools?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+     * The target number of running instances for this managed
+     * instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+     * when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+     * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      */
     targetSize?: pulumi.Input<number>;
     /**
@@ -681,7 +687,10 @@ export interface RegionInstanceGroupManagerArgs {
      */
     targetPools?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+     * The target number of running instances for this managed
+     * instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+     * when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+     * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      */
     targetSize?: pulumi.Input<number>;
     /**

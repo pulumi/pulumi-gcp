@@ -29,6 +29,7 @@ class CurationArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Curation resource.
+
         :param pulumi.Input[_builtins.str] curation_id: The ID to use for the curation resource, which will become the final
                component of the curations's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
@@ -162,6 +163,7 @@ class _CurationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Curation resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time at which the curation was created.
         :param pulumi.Input[_builtins.str] curation_id: The ID to use for the curation resource, which will become the final
                component of the curations's resource name. This field is optional.
@@ -459,24 +461,17 @@ class Curation(pulumi.CustomResource):
         Curation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/curations/{{curation_id}}`
-
         * `{{project}}/{{location}}/{{curation_id}}`
-
         * `{{location}}/{{curation_id}}`
 
         When using the `pulumi import` command, Curation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apihub/curation:Curation default projects/{{project}}/locations/{{location}}/curations/{{curation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apihub/curation:Curation default {{project}}/{{location}}/{{curation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apihub/curation:Curation default {{location}}/{{curation_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -536,24 +531,17 @@ class Curation(pulumi.CustomResource):
         Curation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/curations/{{curation_id}}`
-
         * `{{project}}/{{location}}/{{curation_id}}`
-
         * `{{location}}/{{curation_id}}`
 
         When using the `pulumi import` command, Curation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apihub/curation:Curation default projects/{{project}}/locations/{{location}}/curations/{{curation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apihub/curation:Curation default {{project}}/{{location}}/{{curation_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apihub/curation:Curation default {{location}}/{{curation_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CurationArgs args: The arguments to use to populate this resource's properties.

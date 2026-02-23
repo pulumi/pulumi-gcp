@@ -35,28 +35,34 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clusterConfig);
     }
 
+    /**
+     * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+     * 
+     */
     @Import(name="gracefulDecommissionTimeout")
     private @Nullable Output<String> gracefulDecommissionTimeout;
 
+    /**
+     * @return The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+     * 
+     */
     public Optional<Output<String>> gracefulDecommissionTimeout() {
         return Optional.ofNullable(this.gracefulDecommissionTimeout);
     }
 
     /**
-     * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-     * 
-     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+     * instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-     * 
-     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+     * instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -188,20 +194,31 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             return clusterConfig(Output.of(clusterConfig));
         }
 
+        /**
+         * @param gracefulDecommissionTimeout The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+         * 
+         * @return builder
+         * 
+         */
         public Builder gracefulDecommissionTimeout(@Nullable Output<String> gracefulDecommissionTimeout) {
             $.gracefulDecommissionTimeout = gracefulDecommissionTimeout;
             return this;
         }
 
+        /**
+         * @param gracefulDecommissionTimeout The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply
+         * 
+         * @return builder
+         * 
+         */
         public Builder gracefulDecommissionTimeout(String gracefulDecommissionTimeout) {
             return gracefulDecommissionTimeout(Output.of(gracefulDecommissionTimeout));
         }
 
         /**
-         * @param labels The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-         * 
-         *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+         * instances in the cluster.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -212,10 +229,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-         * 
-         *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+         * instances in the cluster.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

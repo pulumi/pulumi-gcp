@@ -32,6 +32,7 @@ class UnitArgs:
                  unit_kind: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Unit resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] unit_id: The ID value for the new unit.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations is an unstructured key-value map stored with a resource that
@@ -241,6 +242,7 @@ class _UnitState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Unit resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations is an unstructured key-value map stored with a resource that
                may be set by external tools to store and retrieve arbitrary metadata.
                They are not queryable and should be preserved when modifying objects.
@@ -256,6 +258,7 @@ class _UnitState:
         :param pulumi.Input[Sequence[pulumi.Input['UnitDependentArgs']]] dependents: List of Units that depend on this unit. Unit can only be deprovisioned if
                this list is empty. Maximum 1000.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['UnitInputVariableArgs']]] input_variables: Indicates the current input variables deployed by the unit
                Structure is documented below.
@@ -279,6 +282,11 @@ class _UnitState:
                scheme:
                "projects/{project}/locations/{location}/units/{unit}"
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ongoing_operations: List of concurrent UnitOperations that are operating on this Unit.
+        :param pulumi.Input[Sequence[pulumi.Input['UnitOutputVariableArgs']]] output_variables: Set of key/value pairs corresponding to output variables from execution of
+               actuation templates. The variables are declared in actuation configs (e.g
+               in helm chart or terraform) and the values are fetched and returned by the
+               actuation engine upon completion of execution.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pending_operations: List of pending (wait to be executed) UnitOperations for this unit.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -445,6 +453,9 @@ class _UnitState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -565,6 +576,13 @@ class _UnitState:
     @_builtins.property
     @pulumi.getter(name="outputVariables")
     def output_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UnitOutputVariableArgs']]]]:
+        """
+        Set of key/value pairs corresponding to output variables from execution of
+        actuation templates. The variables are declared in actuation configs (e.g
+        in helm chart or terraform) and the values are fetched and returned by the
+        actuation engine upon completion of execution.
+        Structure is documented below.
+        """
         return pulumi.get(self, "output_variables")
 
     @output_variables.setter
@@ -799,24 +817,17 @@ class Unit(pulumi.CustomResource):
         Unit can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/units/{{unit_id}}`
-
         * `{{project}}/{{location}}/{{unit_id}}`
-
         * `{{location}}/{{unit_id}}`
 
         When using the `pulumi import` command, Unit can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:saasruntime/unit:Unit default projects/{{project}}/locations/{{location}}/units/{{unit_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/unit:Unit default {{project}}/{{location}}/{{unit_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/unit:Unit default {{location}}/{{unit_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -889,24 +900,17 @@ class Unit(pulumi.CustomResource):
         Unit can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/units/{{unit_id}}`
-
         * `{{project}}/{{location}}/{{unit_id}}`
-
         * `{{location}}/{{unit_id}}`
 
         When using the `pulumi import` command, Unit can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:saasruntime/unit:Unit default projects/{{project}}/locations/{{location}}/units/{{unit_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/unit:Unit default {{project}}/{{location}}/{{unit_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:saasruntime/unit:Unit default {{location}}/{{unit_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UnitArgs args: The arguments to use to populate this resource's properties.
@@ -1035,6 +1039,7 @@ class Unit(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['UnitDependentArgs', 'UnitDependentArgsDict']]]] dependents: List of Units that depend on this unit. Unit can only be deprovisioned if
                this list is empty. Maximum 1000.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UnitInputVariableArgs', 'UnitInputVariableArgsDict']]]] input_variables: Indicates the current input variables deployed by the unit
                Structure is documented below.
@@ -1058,6 +1063,11 @@ class Unit(pulumi.CustomResource):
                scheme:
                "projects/{project}/locations/{location}/units/{unit}"
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ongoing_operations: List of concurrent UnitOperations that are operating on this Unit.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UnitOutputVariableArgs', 'UnitOutputVariableArgsDict']]]] output_variables: Set of key/value pairs corresponding to output variables from execution of
+               actuation templates. The variables are declared in actuation configs (e.g
+               in helm chart or terraform) and the values are fetched and returned by the
+               actuation engine upon completion of execution.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pending_operations: List of pending (wait to be executed) UnitOperations for this unit.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1181,6 +1191,9 @@ class Unit(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property
@@ -1265,6 +1278,13 @@ class Unit(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="outputVariables")
     def output_variables(self) -> pulumi.Output[Sequence['outputs.UnitOutputVariable']]:
+        """
+        Set of key/value pairs corresponding to output variables from execution of
+        actuation templates. The variables are declared in actuation configs (e.g
+        in helm chart or terraform) and the values are fetched and returned by the
+        actuation engine upon completion of execution.
+        Structure is documented below.
+        """
         return pulumi.get(self, "output_variables")
 
     @_builtins.property

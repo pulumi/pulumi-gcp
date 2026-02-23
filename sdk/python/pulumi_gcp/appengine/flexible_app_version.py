@@ -53,6 +53,7 @@ class FlexibleAppVersionArgs:
                  vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None):
         """
         The set of arguments for constructing a FlexibleAppVersion resource.
+
         :param pulumi.Input['FlexibleAppVersionLivenessCheckArgs'] liveness_check: Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionReadinessCheckArgs'] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
@@ -590,6 +591,7 @@ class _FlexibleAppVersionState:
                  vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None):
         """
         Input properties used for looking up and filtering FlexibleAppVersion resources.
+
         :param pulumi.Input['FlexibleAppVersionApiConfigArgs'] api_config: Serving configuration for Google Cloud Endpoints.
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionAutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
@@ -1262,24 +1264,17 @@ class FlexibleAppVersion(pulumi.CustomResource):
         FlexibleAppVersion can be imported using any of these accepted formats:
 
         * `apps/{{project}}/services/{{service}}/versions/{{version_id}}`
-
         * `{{project}}/{{service}}/{{version_id}}`
-
         * `{{service}}/{{version_id}}`
 
         When using the `pulumi import` command, FlexibleAppVersion can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{project}}/{{service}}/{{version_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{service}}/{{version_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1461,24 +1456,17 @@ class FlexibleAppVersion(pulumi.CustomResource):
         FlexibleAppVersion can be imported using any of these accepted formats:
 
         * `apps/{{project}}/services/{{service}}/versions/{{version_id}}`
-
         * `{{project}}/{{service}}/{{version_id}}`
-
         * `{{service}}/{{version_id}}`
 
         When using the `pulumi import` command, FlexibleAppVersion can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{project}}/{{service}}/{{version_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{service}}/{{version_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlexibleAppVersionArgs args: The arguments to use to populate this resource's properties.

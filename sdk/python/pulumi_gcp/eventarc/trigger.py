@@ -34,6 +34,7 @@ class TriggerArgs:
                  transport: Optional[pulumi.Input['TriggerTransportArgs']] = None):
         """
         The set of arguments for constructing a Trigger resource.
+
         :param pulumi.Input['TriggerDestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the resource
@@ -238,6 +239,7 @@ class _TriggerState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Trigger resources.
+
         :param pulumi.Input[_builtins.str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] conditions: Output only. The reason(s) why a trigger is in FAILED state.
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation time.
@@ -615,24 +617,17 @@ class Trigger(pulumi.CustomResource):
         Trigger can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/triggers/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -730,24 +725,17 @@ class Trigger(pulumi.CustomResource):
         Trigger can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/triggers/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TriggerArgs args: The arguments to use to populate this resource's properties.

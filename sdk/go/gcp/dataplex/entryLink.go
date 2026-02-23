@@ -38,14 +38,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			entry_group_basic, err := dataplex.NewEntryGroup(ctx, "entry-group-basic", &dataplex.EntryGroupArgs{
 //				Location:     pulumi.String("us-central1"),
-//				EntryGroupId: pulumi.String("tf-test-entry-group_2605"),
+//				EntryGroupId: pulumi.String("tf-test-entry-group_22375"),
 //				Project:      pulumi.String("1111111111111"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			entry_type_basic, err := dataplex.NewEntryType(ctx, "entry-type-basic", &dataplex.EntryTypeArgs{
-//				EntryTypeId: pulumi.String("tf-test-entry-type_22375"),
+//				EntryTypeId: pulumi.String("tf-test-entry-type_87786"),
 //				Location:    pulumi.String("us-central1"),
 //				Project:     pulumi.String("1111111111111"),
 //			})
@@ -55,7 +55,7 @@ import (
 //			source, err := dataplex.NewEntry(ctx, "source", &dataplex.EntryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: entry_group_basic.EntryGroupId,
-//				EntryId:      pulumi.String("tf-test-source-entry_34535"),
+//				EntryId:      pulumi.String("tf-test-source-entry_29439"),
 //				EntryType:    entry_type_basic.Name,
 //				Project:      pulumi.String("1111111111111"),
 //			})
@@ -65,7 +65,7 @@ import (
 //			target, err := dataplex.NewEntry(ctx, "target", &dataplex.EntryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: entry_group_basic.EntryGroupId,
-//				EntryId:      pulumi.String("tf-test-target-entry_29439"),
+//				EntryId:      pulumi.String("tf-test-target-entry_2067"),
 //				EntryType:    entry_type_basic.Name,
 //				Project:      pulumi.String("1111111111111"),
 //			})
@@ -76,7 +76,7 @@ import (
 //				Project:       pulumi.String("1111111111111"),
 //				Location:      pulumi.String("us-central1"),
 //				EntryGroupId:  entry_group_basic.EntryGroupId,
-//				EntryLinkId:   pulumi.String("tf-test-entry-link_87786"),
+//				EntryLinkId:   pulumi.String("tf-test-entry-link_40785"),
 //				EntryLinkType: pulumi.String("projects/655216118709/locations/global/entryLinkTypes/related"),
 //				EntryReferences: dataplex.EntryLinkEntryReferenceArray{
 //					&dataplex.EntryLinkEntryReferenceArgs{
@@ -113,14 +113,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			entry_group_full, err := dataplex.NewEntryGroup(ctx, "entry-group-full", &dataplex.EntryGroupArgs{
 //				Location:     pulumi.String("us-central1"),
-//				EntryGroupId: pulumi.String("tf-test-entry-group_2067"),
+//				EntryGroupId: pulumi.String("tf-test-entry-group_79169"),
 //				Project:      pulumi.String("1111111111111"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			entry_type_full, err := dataplex.NewEntryType(ctx, "entry-type-full", &dataplex.EntryTypeArgs{
-//				EntryTypeId: pulumi.String("tf-test-entry-type_79169"),
+//				EntryTypeId: pulumi.String("tf-test-entry-type_75413"),
 //				Location:    pulumi.String("us-central1"),
 //				Project:     pulumi.String("1111111111111"),
 //			})
@@ -130,7 +130,7 @@ import (
 //			source, err := dataplex.NewEntry(ctx, "source", &dataplex.EntryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: entry_group_full.EntryGroupId,
-//				EntryId:      pulumi.String("tf-test-source-entry_40785"),
+//				EntryId:      pulumi.String("tf-test-source-entry_56529"),
 //				EntryType:    entry_type_full.Name,
 //				Project:      pulumi.String("1111111111111"),
 //			})
@@ -138,7 +138,7 @@ import (
 //				return err
 //			}
 //			termTestIdFull, err := dataplex.NewGlossary(ctx, "term_test_id_full", &dataplex.GlossaryArgs{
-//				GlossaryId: pulumi.String("tf-test-glossary_56529"),
+//				GlossaryId: pulumi.String("tf-test-glossary_55138"),
 //				Location:   pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -152,7 +152,7 @@ import (
 //				}).(pulumi.StringOutput),
 //				GlossaryId: termTestIdFull.GlossaryId,
 //				Location:   pulumi.String("us-central1"),
-//				TermId:     pulumi.String("tf-test-term-full_75413"),
+//				TermId:     pulumi.String("tf-test-term-full_37559"),
 //				Labels: pulumi.StringMap{
 //					"tag": pulumi.String("test-tf"),
 //				},
@@ -166,7 +166,7 @@ import (
 //				Project:       pulumi.String("1111111111111"),
 //				Location:      pulumi.String("us-central1"),
 //				EntryGroupId:  entry_group_full.EntryGroupId,
-//				EntryLinkId:   pulumi.String("tf-test-entry-link_55138"),
+//				EntryLinkId:   pulumi.String("tf-test-entry-link_91980"),
 //				EntryLinkType: pulumi.String("projects/655216118709/locations/global/entryLinkTypes/definition"),
 //				EntryReferences: dataplex.EntryLinkEntryReferenceArray{
 //					&dataplex.EntryLinkEntryReferenceArgs{
@@ -200,22 +200,14 @@ import (
 // EntryLink can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entryLinks/{{entry_link_id}}`
-//
 // * `{{project}}/{{location}}/{{entry_group_id}}/{{entry_link_id}}`
-//
 // * `{{location}}/{{entry_group_id}}/{{entry_link_id}}`
 //
 // When using the `pulumi import` command, EntryLink can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataplex/entryLink:EntryLink default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entryLinks/{{entry_link_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/entryLink:EntryLink default {{project}}/{{location}}/{{entry_group_id}}/{{entry_link_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/entryLink:EntryLink default {{location}}/{{entry_group_id}}/{{entry_link_id}}
 // ```
 type EntryLink struct {

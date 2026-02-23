@@ -23,6 +23,7 @@ class StorageBucketArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StorageBucket resource.
+
         :param pulumi.Input[_builtins.str] bucket_id: Required. Immutable. The ID of the underlying Google Cloud Storage bucket
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -66,6 +67,7 @@ class _StorageBucketState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageBucket resources.
+
         :param pulumi.Input[_builtins.str] bucket_id: Required. Immutable. The ID of the underlying Google Cloud Storage bucket
         :param pulumi.Input[_builtins.str] name: Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -126,6 +128,18 @@ class StorageBucket(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        An association between a Firebase project and a Google Cloud Storage bucket.
+        This association enables integration of Cloud Storage buckets with Firebase such as Firebase SDKS, Authentication, and Security Rules.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Bucket, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/storage/)
+
         ## Example Usage
 
         ### Firebasestorage Bucket Basic
@@ -148,24 +162,17 @@ class StorageBucket(pulumi.CustomResource):
         Bucket can be imported using any of these accepted formats:
 
         * `projects/{{project}}/buckets/{{bucket_id}}`
-
         * `{{project}}/{{bucket_id}}`
-
         * `{{bucket_id}}`
 
         When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default projects/{{project}}/buckets/{{bucket_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{project}}/{{bucket_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{bucket_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -180,6 +187,18 @@ class StorageBucket(pulumi.CustomResource):
                  args: Optional[StorageBucketArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An association between a Firebase project and a Google Cloud Storage bucket.
+        This association enables integration of Cloud Storage buckets with Firebase such as Firebase SDKS, Authentication, and Security Rules.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Bucket, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/storage/)
+
         ## Example Usage
 
         ### Firebasestorage Bucket Basic
@@ -202,24 +221,17 @@ class StorageBucket(pulumi.CustomResource):
         Bucket can be imported using any of these accepted formats:
 
         * `projects/{{project}}/buckets/{{bucket_id}}`
-
         * `{{project}}/{{bucket_id}}`
-
         * `{{bucket_id}}`
 
         When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default projects/{{project}}/buckets/{{bucket_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{project}}/{{bucket_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{bucket_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StorageBucketArgs args: The arguments to use to populate this resource's properties.

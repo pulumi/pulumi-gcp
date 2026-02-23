@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetDataSourceArgs extends com.pulumi.resources.InvokeArgs {
@@ -63,15 +65,15 @@ public final class GetDataSourceArgs extends com.pulumi.resources.InvokeArgs {
      * The Google Cloud Project in which the Data Source belongs.
      * 
      */
-    @Import(name="project", required=true)
-    private Output<String> project;
+    @Import(name="project")
+    private @Nullable Output<String> project;
 
     /**
      * @return The Google Cloud Project in which the Data Source belongs.
      * 
      */
-    public Output<String> project() {
-        return this.project;
+    public Optional<Output<String>> project() {
+        return Optional.ofNullable(this.project);
     }
 
     private GetDataSourceArgs() {}
@@ -170,7 +172,7 @@ public final class GetDataSourceArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder project(Output<String> project) {
+        public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
@@ -194,9 +196,6 @@ public final class GetDataSourceArgs extends com.pulumi.resources.InvokeArgs {
             }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("GetDataSourceArgs", "location");
-            }
-            if ($.project == null) {
-                throw new MissingRequiredPropertyException("GetDataSourceArgs", "project");
             }
             return $;
         }

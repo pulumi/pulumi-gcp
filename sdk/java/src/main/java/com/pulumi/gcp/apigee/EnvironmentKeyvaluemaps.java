@@ -131,16 +131,12 @@ import javax.annotation.Nullable;
  * EnvironmentKeyvaluemaps can be imported using any of these accepted formats:
  * 
  * * `{{env_id}}/keyvaluemaps/{{name}}`
- * 
  * * `{{env_id}}/{{name}}`
  * 
  * When using the `pulumi import` command, EnvironmentKeyvaluemaps can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps default {{env_id}}/keyvaluemaps/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps default {{env_id}}/{{name}}
  * ```
  * 

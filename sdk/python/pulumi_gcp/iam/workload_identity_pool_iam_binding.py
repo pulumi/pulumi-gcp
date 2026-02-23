@@ -28,6 +28,7 @@ class WorkloadIdentityPoolIamBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkloadIdentityPoolIamBinding resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -144,6 +145,7 @@ class _WorkloadIdentityPoolIamBindingState:
                  workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkloadIdentityPoolIamBinding resources.
+
         :param pulumi.Input['WorkloadIdentityPoolIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the IAM policy.
@@ -280,14 +282,250 @@ class WorkloadIdentityPoolIamBinding(pulumi.CustomResource):
                  workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Cloud IAM WorkloadIdentityPool. Each of these resources serves a different use case:
+
+        * `iam.WorkloadIdentityPoolIamPolicy`: Authoritative. Sets the IAM policy for the workloadidentitypool and replaces any existing policy already attached.
+        * `iam.WorkloadIdentityPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workloadidentitypool are preserved.
+        * `iam.WorkloadIdentityPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workloadidentitypool are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `iam.WorkloadIdentityPoolIamPolicy`: Retrieves the IAM policy for the workloadidentitypool
+
+        > **Note:** `iam.WorkloadIdentityPoolIamPolicy` **cannot** be used in conjunction with `iam.WorkloadIdentityPoolIamBinding` and `iam.WorkloadIdentityPoolIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `iam.WorkloadIdentityPoolIamBinding` resources **can be** used in conjunction with `iam.WorkloadIdentityPoolIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## iam.WorkloadIdentityPoolIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iam.workloadIdentityPoolViewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.iam.WorkloadIdentityPoolIamPolicy("policy",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iam.workloadIdentityPoolViewer",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.iam.WorkloadIdentityPoolIamPolicy("policy",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            policy_data=admin.policy_data)
+        ```
+        ## iam.WorkloadIdentityPoolIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iam.WorkloadIdentityPoolIamBinding("binding",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iam.WorkloadIdentityPoolIamBinding("binding",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## iam.WorkloadIdentityPoolIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iam.WorkloadIdentityPoolIamMember("member",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iam.WorkloadIdentityPoolIamMember("member",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Cloud IAM WorkloadIdentityPool
+
+        Three different resources help you manage your IAM policy for Cloud IAM WorkloadIdentityPool. Each of these resources serves a different use case:
+
+        * `iam.WorkloadIdentityPoolIamPolicy`: Authoritative. Sets the IAM policy for the workloadidentitypool and replaces any existing policy already attached.
+        * `iam.WorkloadIdentityPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workloadidentitypool are preserved.
+        * `iam.WorkloadIdentityPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workloadidentitypool are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `iam.WorkloadIdentityPoolIamPolicy`: Retrieves the IAM policy for the workloadidentitypool
+
+        > **Note:** `iam.WorkloadIdentityPoolIamPolicy` **cannot** be used in conjunction with `iam.WorkloadIdentityPoolIamBinding` and `iam.WorkloadIdentityPoolIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `iam.WorkloadIdentityPoolIamBinding` resources **can be** used in conjunction with `iam.WorkloadIdentityPoolIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## iam.WorkloadIdentityPoolIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iam.workloadIdentityPoolViewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.iam.WorkloadIdentityPoolIamPolicy("policy",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iam.workloadIdentityPoolViewer",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.iam.WorkloadIdentityPoolIamPolicy("policy",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            policy_data=admin.policy_data)
+        ```
+        ## iam.WorkloadIdentityPoolIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iam.WorkloadIdentityPoolIamBinding("binding",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iam.WorkloadIdentityPoolIamBinding("binding",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## iam.WorkloadIdentityPoolIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iam.WorkloadIdentityPoolIamMember("member",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iam.WorkloadIdentityPoolIamMember("member",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
-
         * {{project}}/{{workload_identity_pool_id}}
-
         * {{workload_identity_pool_id}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -295,26 +533,23 @@ class WorkloadIdentityPoolIamBinding(pulumi.CustomResource):
         Cloud IAM workloadidentitypool IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer user:jane@example.com"
+        $ terraform import google_iam_workload_identity_pool_iam_member.editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer"
+        $ terraform import google_iam_workload_identity_pool_iam_binding.editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding editor projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -346,14 +581,250 @@ class WorkloadIdentityPoolIamBinding(pulumi.CustomResource):
                  args: WorkloadIdentityPoolIamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Cloud IAM WorkloadIdentityPool. Each of these resources serves a different use case:
+
+        * `iam.WorkloadIdentityPoolIamPolicy`: Authoritative. Sets the IAM policy for the workloadidentitypool and replaces any existing policy already attached.
+        * `iam.WorkloadIdentityPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workloadidentitypool are preserved.
+        * `iam.WorkloadIdentityPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workloadidentitypool are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `iam.WorkloadIdentityPoolIamPolicy`: Retrieves the IAM policy for the workloadidentitypool
+
+        > **Note:** `iam.WorkloadIdentityPoolIamPolicy` **cannot** be used in conjunction with `iam.WorkloadIdentityPoolIamBinding` and `iam.WorkloadIdentityPoolIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `iam.WorkloadIdentityPoolIamBinding` resources **can be** used in conjunction with `iam.WorkloadIdentityPoolIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## iam.WorkloadIdentityPoolIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iam.workloadIdentityPoolViewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.iam.WorkloadIdentityPoolIamPolicy("policy",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iam.workloadIdentityPoolViewer",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.iam.WorkloadIdentityPoolIamPolicy("policy",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            policy_data=admin.policy_data)
+        ```
+        ## iam.WorkloadIdentityPoolIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iam.WorkloadIdentityPoolIamBinding("binding",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iam.WorkloadIdentityPoolIamBinding("binding",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## iam.WorkloadIdentityPoolIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iam.WorkloadIdentityPoolIamMember("member",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iam.WorkloadIdentityPoolIamMember("member",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Cloud IAM WorkloadIdentityPool
+
+        Three different resources help you manage your IAM policy for Cloud IAM WorkloadIdentityPool. Each of these resources serves a different use case:
+
+        * `iam.WorkloadIdentityPoolIamPolicy`: Authoritative. Sets the IAM policy for the workloadidentitypool and replaces any existing policy already attached.
+        * `iam.WorkloadIdentityPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workloadidentitypool are preserved.
+        * `iam.WorkloadIdentityPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workloadidentitypool are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `iam.WorkloadIdentityPoolIamPolicy`: Retrieves the IAM policy for the workloadidentitypool
+
+        > **Note:** `iam.WorkloadIdentityPoolIamPolicy` **cannot** be used in conjunction with `iam.WorkloadIdentityPoolIamBinding` and `iam.WorkloadIdentityPoolIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `iam.WorkloadIdentityPoolIamBinding` resources **can be** used in conjunction with `iam.WorkloadIdentityPoolIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        ## iam.WorkloadIdentityPoolIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iam.workloadIdentityPoolViewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.iam.WorkloadIdentityPoolIamPolicy("policy",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iam.workloadIdentityPoolViewer",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.iam.WorkloadIdentityPoolIamPolicy("policy",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            policy_data=admin.policy_data)
+        ```
+        ## iam.WorkloadIdentityPoolIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iam.WorkloadIdentityPoolIamBinding("binding",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iam.WorkloadIdentityPoolIamBinding("binding",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+        ## iam.WorkloadIdentityPoolIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iam.WorkloadIdentityPoolIamMember("member",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iam.WorkloadIdentityPoolIamMember("member",
+            project=example["project"],
+            workload_identity_pool_id=example["workloadIdentityPoolId"],
+            role="roles/iam.workloadIdentityPoolViewer",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
         * projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
-
         * {{project}}/{{workload_identity_pool_id}}
-
         * {{workload_identity_pool_id}}
 
         Any variables not passed in the import command will be taken from the provider configuration.
@@ -361,26 +832,23 @@ class WorkloadIdentityPoolIamBinding(pulumi.CustomResource):
         Cloud IAM workloadidentitypool IAM resources can be imported using the resource identifiers, role, and member.
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-
         ```sh
-        $ pulumi import gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer user:jane@example.com"
+        $ terraform import google_iam_workload_identity_pool_iam_member.editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-
         ```sh
-        $ pulumi import gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer"
+        $ terraform import google_iam_workload_identity_pool_iam_binding.editor "projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}} roles/iam.workloadIdentityPoolViewer"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
-
         ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding editor projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
         ```
 
-        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
 
         :param str resource_name: The name of the resource.
         :param WorkloadIdentityPoolIamBindingArgs args: The arguments to use to populate this resource's properties.

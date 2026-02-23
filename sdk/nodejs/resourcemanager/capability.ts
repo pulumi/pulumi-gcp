@@ -44,16 +44,12 @@ import * as utilities from "../utilities";
  * Capability can be imported using any of these accepted formats:
  *
  * * `{{parent}}/capabilities/{{capability_name}}`
- *
  * * `{{parent}}/{{capability_name}}`
  *
  * When using the `pulumi import` command, Capability can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:resourcemanager/capability:Capability default {{parent}}/capabilities/{{capability_name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:resourcemanager/capability:Capability default {{parent}}/{{capability_name}}
  * ```
  */

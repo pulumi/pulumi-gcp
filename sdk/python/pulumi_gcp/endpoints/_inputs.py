@@ -31,15 +31,10 @@ __all__ = [
     'ServiceIamMemberConditionArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ConsumersIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ConsumersIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ConsumersIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ConsumersIamBindingConditionArgs:
@@ -80,13 +75,10 @@ class ConsumersIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ConsumersIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ConsumersIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ConsumersIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ConsumersIamMemberConditionArgs:
@@ -127,26 +119,23 @@ class ConsumersIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ServiceApiArgsDict(TypedDict):
-        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgsDict']]]]
-        """
-        A list of Method objects; structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The simple name of the endpoint as described in the config.
-        """
-        syntax: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
-        """
-elif False:
-    ServiceApiArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceApiArgsDict(TypedDict):
+    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgsDict']]]]
+    """
+    A list of Method objects; structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The simple name of the endpoint as described in the config.
+    """
+    syntax: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+    """
 
 @pulumi.input_type
 class ServiceApiArgs:
@@ -219,26 +208,23 @@ class ServiceApiArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class ServiceApiMethodArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The simple name of the endpoint as described in the config.
-        """
-        request_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type URL for the request to this API.
-        """
-        response_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type URL for the response from this API.
-        """
-        syntax: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
-        """
-elif False:
-    ServiceApiMethodArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceApiMethodArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The simple name of the endpoint as described in the config.
+    """
+    request_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type URL for the request to this API.
+    """
+    response_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type URL for the response from this API.
+    """
+    syntax: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+    """
 
 @pulumi.input_type
 class ServiceApiMethodArgs:
@@ -311,18 +297,15 @@ class ServiceApiMethodArgs:
         pulumi.set(self, "syntax", value)
 
 
-if not MYPY:
-    class ServiceEndpointArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The FQDN of the endpoint as described in the config.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The simple name of the endpoint as described in the config.
-        """
-elif False:
-    ServiceEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceEndpointArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The FQDN of the endpoint as described in the config.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The simple name of the endpoint as described in the config.
+    """
 
 @pulumi.input_type
 class ServiceEndpointArgs:
@@ -363,13 +346,10 @@ class ServiceEndpointArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class ServiceIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ServiceIamBindingConditionArgs:
@@ -410,13 +390,10 @@ class ServiceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ServiceIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ServiceIamMemberConditionArgs:

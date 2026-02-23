@@ -98,29 +98,22 @@ import (
 // ExascaleDbStorageVault can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/exascaleDbStorageVaults/{{exascale_db_storage_vault_id}}`
-//
 // * `{{project}}/{{location}}/{{exascale_db_storage_vault_id}}`
-//
 // * `{{location}}/{{exascale_db_storage_vault_id}}`
 //
 // When using the `pulumi import` command, ExascaleDbStorageVault can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default projects/{{project}}/locations/{{location}}/exascaleDbStorageVaults/{{exascale_db_storage_vault_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default {{project}}/{{location}}/{{exascale_db_storage_vault_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault default {{location}}/{{exascale_db_storage_vault_id}}
 // ```
 type ExascaleDbStorageVault struct {
 	pulumi.CustomResourceState
 
 	// The date and time when the ExascaleDbStorageVault was created.
-	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The display name for the ExascaleDbStorageVault. The name does not have to
 	// be unique within your project. The name must be 1-255 characters long and
@@ -210,8 +203,9 @@ func GetExascaleDbStorageVault(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ExascaleDbStorageVault resources.
 type exascaleDbStorageVaultState struct {
 	// The date and time when the ExascaleDbStorageVault was created.
-	CreateTime         *string `pulumi:"createTime"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CreateTime *string `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The display name for the ExascaleDbStorageVault. The name does not have to
 	// be unique within your project. The name must be 1-255 characters long and
 	// can only contain alphanumeric characters.
@@ -254,7 +248,8 @@ type exascaleDbStorageVaultState struct {
 
 type ExascaleDbStorageVaultState struct {
 	// The date and time when the ExascaleDbStorageVault was created.
-	CreateTime         pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The display name for the ExascaleDbStorageVault. The name does not have to
 	// be unique within your project. The name must be 1-255 characters long and
@@ -301,6 +296,7 @@ func (ExascaleDbStorageVaultState) ElementType() reflect.Type {
 }
 
 type exascaleDbStorageVaultArgs struct {
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The display name for the ExascaleDbStorageVault. The name does not have to
 	// be unique within your project. The name must be 1-255 characters long and
@@ -332,6 +328,7 @@ type exascaleDbStorageVaultArgs struct {
 
 // The set of arguments for constructing a ExascaleDbStorageVault resource.
 type ExascaleDbStorageVaultArgs struct {
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The display name for the ExascaleDbStorageVault. The name does not have to
 	// be unique within your project. The name must be 1-255 characters long and
@@ -453,6 +450,7 @@ func (o ExascaleDbStorageVaultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExascaleDbStorageVault) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 func (o ExascaleDbStorageVaultOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExascaleDbStorageVault) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

@@ -38,6 +38,7 @@ class ConversationProfileArgs:
                  tts_config: Optional[pulumi.Input['ConversationProfileTtsConfigArgs']] = None):
         """
         The set of arguments for constructing a ConversationProfile resource.
+
         :param pulumi.Input[_builtins.str] display_name: Required. Human readable name for this profile. Max length 1024 bytes.
         :param pulumi.Input[_builtins.str] location: desc
         :param pulumi.Input['ConversationProfileAutomatedAgentConfigArgs'] automated_agent_config: Configuration for an automated agent to use with this profile
@@ -309,6 +310,7 @@ class _ConversationProfileState:
                  tts_config: Optional[pulumi.Input['ConversationProfileTtsConfigArgs']] = None):
         """
         Input properties used for looking up and filtering ConversationProfile resources.
+
         :param pulumi.Input['ConversationProfileAutomatedAgentConfigArgs'] automated_agent_config: Configuration for an automated agent to use with this profile
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Required. Human readable name for this profile. Max length 1024 bytes.
@@ -660,6 +662,7 @@ class ConversationProfile(pulumi.CustomResource):
         $ pulumi import gcp:diagflow/conversationProfile:ConversationProfile default {{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict']] automated_agent_config: Configuration for an automated agent to use with this profile
@@ -757,6 +760,7 @@ class ConversationProfile(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:diagflow/conversationProfile:ConversationProfile default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConversationProfileArgs args: The arguments to use to populate this resource's properties.

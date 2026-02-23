@@ -249,22 +249,14 @@ import (
 // Backend can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/backends/{{backend_id}}`
-//
 // * `{{project}}/{{location}}/{{backend_id}}`
-//
 // * `{{location}}/{{backend_id}}`
 //
 // When using the `pulumi import` command, Backend can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default projects/{{project}}/locations/{{location}}/backends/{{backend_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{project}}/{{location}}/{{backend_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{location}}/{{backend_id}}
 // ```
 type AppHostingBackend struct {
@@ -292,7 +284,8 @@ type AppHostingBackend struct {
 	// Time at which the backend was deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// Human-readable name. 63 character limit.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -411,7 +404,8 @@ type appHostingBackendState struct {
 	// Time at which the backend was deleted.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// Human-readable name. 63 character limit.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -481,7 +475,8 @@ type AppHostingBackendState struct {
 	// Time at which the backend was deleted.
 	DeleteTime pulumi.StringPtrInput
 	// Human-readable name. 63 character limit.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -752,6 +747,7 @@ func (o AppHostingBackendOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppHostingBackend) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o AppHostingBackendOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppHostingBackend) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

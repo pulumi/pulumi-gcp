@@ -27,6 +27,7 @@ class HostingChannelArgs:
                  ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostingChannel resource.
+
         :param pulumi.Input[_builtins.str] channel_id: Required. Immutable. A unique ID within the site that identifies the channel.
         :param pulumi.Input[_builtins.str] site_id: Required. The ID of the site in which to create this channel.
         :param pulumi.Input[_builtins.str] expire_time: The time at which the channel will be automatically deleted. If null, the channel
@@ -146,6 +147,7 @@ class _HostingChannelState:
                  ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostingChannel resources.
+
         :param pulumi.Input[_builtins.str] channel_id: Required. Immutable. A unique ID within the site that identifies the channel.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] expire_time: The time at which the channel will be automatically deleted. If null, the channel
@@ -316,6 +318,19 @@ class HostingChannel(pulumi.CustomResource):
                  ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A `Channel` represents a stream of releases for a site. All sites have a default
+        `live` channel that serves content to the Firebase-provided subdomains and any
+        connected custom domains.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Channel, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.channels)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Channel Basic
@@ -355,18 +370,15 @@ class HostingChannel(pulumi.CustomResource):
         Channel can be imported using any of these accepted formats:
 
         * `sites/{{site_id}}/channels/{{channel_id}}`
-
         * `{{site_id}}/{{channel_id}}`
 
         When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default sites/{{site_id}}/channels/{{channel_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default {{site_id}}/{{channel_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -391,6 +403,19 @@ class HostingChannel(pulumi.CustomResource):
                  args: HostingChannelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A `Channel` represents a stream of releases for a site. All sites have a default
+        `live` channel that serves content to the Firebase-provided subdomains and any
+        connected custom domains.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Channel, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.channels)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Channel Basic
@@ -430,18 +455,15 @@ class HostingChannel(pulumi.CustomResource):
         Channel can be imported using any of these accepted formats:
 
         * `sites/{{site_id}}/channels/{{channel_id}}`
-
         * `{{site_id}}/{{channel_id}}`
 
         When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default sites/{{site_id}}/channels/{{channel_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default {{site_id}}/{{channel_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostingChannelArgs args: The arguments to use to populate this resource's properties.

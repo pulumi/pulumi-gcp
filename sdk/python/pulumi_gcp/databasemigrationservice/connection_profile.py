@@ -33,6 +33,7 @@ class ConnectionProfileArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
+
         :param pulumi.Input[_builtins.str] connection_profile_id: The ID of the connection profile.
         :param pulumi.Input['ConnectionProfileAlloydbArgs'] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
                Structure is documented below.
@@ -225,6 +226,7 @@ class _ConnectionProfileState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
+
         :param pulumi.Input['ConnectionProfileAlloydbArgs'] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfileCloudsqlArgs'] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
@@ -783,11 +785,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb={
-                "cluster_id": "tf-test-dbmsalloycluster_22811",
+                "cluster_id": "tf-test-dbmsalloycluster_91042",
                 "settings": {
                     "initial_user": {
-                        "user": "alloyuser_91042",
-                        "password": "alloypass_72490",
+                        "user": "alloyuser_72490",
+                        "password": "alloypass_89605",
                     },
                     "vpc_network": default.id,
                     "labels": {
@@ -917,24 +919,17 @@ class ConnectionProfile(pulumi.CustomResource):
         ConnectionProfile can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
-
         * `{{project}}/{{location}}/{{connection_profile_id}}`
-
         * `{{location}}/{{connection_profile_id}}`
 
         When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1225,11 +1220,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb={
-                "cluster_id": "tf-test-dbmsalloycluster_22811",
+                "cluster_id": "tf-test-dbmsalloycluster_91042",
                 "settings": {
                     "initial_user": {
-                        "user": "alloyuser_91042",
-                        "password": "alloypass_72490",
+                        "user": "alloyuser_72490",
+                        "password": "alloypass_89605",
                     },
                     "vpc_network": default.id,
                     "labels": {
@@ -1359,24 +1354,17 @@ class ConnectionProfile(pulumi.CustomResource):
         ConnectionProfile can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
-
         * `{{project}}/{{location}}/{{connection_profile_id}}`
-
         * `{{location}}/{{connection_profile_id}}`
 
         When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionProfileArgs args: The arguments to use to populate this resource's properties.

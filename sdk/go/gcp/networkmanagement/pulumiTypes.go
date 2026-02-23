@@ -1773,8 +1773,9 @@ type GetConnectivityTestsConnectivityTest struct {
 	Description string `pulumi:"description"`
 	// Destination specification of the Connectivity Test.
 	// Structure is documented below.
-	Destinations    []GetConnectivityTestsConnectivityTestDestination `pulumi:"destinations"`
-	EffectiveLabels map[string]string                                 `pulumi:"effectiveLabels"`
+	Destinations []GetConnectivityTestsConnectivityTestDestination `pulumi:"destinations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// Unique name for the connectivity test.
@@ -1813,8 +1814,9 @@ type GetConnectivityTestsConnectivityTestArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Destination specification of the Connectivity Test.
 	// Structure is documented below.
-	Destinations    GetConnectivityTestsConnectivityTestDestinationArrayInput `pulumi:"destinations"`
-	EffectiveLabels pulumi.StringMapInput                                     `pulumi:"effectiveLabels"`
+	Destinations GetConnectivityTestsConnectivityTestDestinationArrayInput `pulumi:"destinations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Unique name for the connectivity test.
@@ -1904,6 +1906,7 @@ func (o GetConnectivityTestsConnectivityTestOutput) Destinations() GetConnectivi
 	}).(GetConnectivityTestsConnectivityTestDestinationArrayOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
 func (o GetConnectivityTestsConnectivityTestOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

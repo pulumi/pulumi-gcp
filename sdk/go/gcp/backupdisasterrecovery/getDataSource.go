@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := backupdisasterrecovery.GetDataSource(ctx, &backupdisasterrecovery.GetDataSourceArgs{
 //				Location:      "us-central1",
-//				Project:       "project-test",
+//				Project:       pulumi.StringRef("project-test"),
 //				DataSourceId:  "ds-test",
 //				BackupVaultId: "bv-test",
 //			}, nil)
@@ -60,7 +60,7 @@ type GetDataSourceArgs struct {
 	// The location in which the Data Source belongs.
 	Location string `pulumi:"location"`
 	// The Google Cloud Project in which the Data Source belongs.
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getDataSource.
@@ -103,7 +103,7 @@ type GetDataSourceOutputArgs struct {
 	// The location in which the Data Source belongs.
 	Location pulumi.StringInput `pulumi:"location"`
 	// The Google Cloud Project in which the Data Source belongs.
-	Project pulumi.StringInput `pulumi:"project"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (GetDataSourceOutputArgs) ElementType() reflect.Type {

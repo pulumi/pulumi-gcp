@@ -53,6 +53,9 @@ __all__ = [
     'AuthzPolicyHttpRuleToOperationHeaderSetHeader',
     'AuthzPolicyHttpRuleToOperationHeaderSetHeaderValue',
     'AuthzPolicyHttpRuleToOperationHost',
+    'AuthzPolicyHttpRuleToOperationMcp',
+    'AuthzPolicyHttpRuleToOperationMcpMethod',
+    'AuthzPolicyHttpRuleToOperationMcpMethodParam',
     'AuthzPolicyHttpRuleToOperationPath',
     'AuthzPolicyTarget',
     'ClientTlsPolicyClientCertificate',
@@ -2166,6 +2169,7 @@ class AuthzPolicyHttpRuleToOperation(dict):
     def __init__(__self__, *,
                  header_set: Optional['outputs.AuthzPolicyHttpRuleToOperationHeaderSet'] = None,
                  hosts: Optional[Sequence['outputs.AuthzPolicyHttpRuleToOperationHost']] = None,
+                 mcp: Optional['outputs.AuthzPolicyHttpRuleToOperationMcp'] = None,
                  methods: Optional[Sequence[_builtins.str]] = None,
                  paths: Optional[Sequence['outputs.AuthzPolicyHttpRuleToOperationPath']] = None):
         """
@@ -2173,6 +2177,8 @@ class AuthzPolicyHttpRuleToOperation(dict):
                Structure is documented below.
         :param Sequence['AuthzPolicyHttpRuleToOperationHostArgs'] hosts: A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
                Limited to 10 matches.
+               Structure is documented below.
+        :param 'AuthzPolicyHttpRuleToOperationMcpArgs' mcp: Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
                Structure is documented below.
         :param Sequence[_builtins.str] methods: A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
         :param Sequence['AuthzPolicyHttpRuleToOperationPathArgs'] paths: A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
@@ -2184,6 +2190,8 @@ class AuthzPolicyHttpRuleToOperation(dict):
             pulumi.set(__self__, "header_set", header_set)
         if hosts is not None:
             pulumi.set(__self__, "hosts", hosts)
+        if mcp is not None:
+            pulumi.set(__self__, "mcp", mcp)
         if methods is not None:
             pulumi.set(__self__, "methods", methods)
         if paths is not None:
@@ -2207,6 +2215,15 @@ class AuthzPolicyHttpRuleToOperation(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "hosts")
+
+    @_builtins.property
+    @pulumi.getter
+    def mcp(self) -> Optional['outputs.AuthzPolicyHttpRuleToOperationMcp']:
+        """
+        Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mcp")
 
     @_builtins.property
     @pulumi.getter
@@ -2483,6 +2500,184 @@ class AuthzPolicyHttpRuleToOperationHost(dict):
 
 
 @pulumi.output_type
+class AuthzPolicyHttpRuleToOperationMcp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseProtocolMethodsOption":
+            suggest = "base_protocol_methods_option"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthzPolicyHttpRuleToOperationMcp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthzPolicyHttpRuleToOperationMcp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthzPolicyHttpRuleToOperationMcp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_protocol_methods_option: Optional[_builtins.str] = None,
+                 methods: Optional[Sequence['outputs.AuthzPolicyHttpRuleToOperationMcpMethod']] = None):
+        """
+        :param _builtins.str base_protocol_methods_option: If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
+               Default value is `SKIP_BASE_PROTOCOL_METHODS`.
+               Possible values are: `SKIP_BASE_PROTOCOL_METHODS`, `MATCH_BASE_PROTOCOL_METHODS`.
+        :param Sequence['AuthzPolicyHttpRuleToOperationMcpMethodArgs'] methods: Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
+               Structure is documented below.
+        """
+        if base_protocol_methods_option is not None:
+            pulumi.set(__self__, "base_protocol_methods_option", base_protocol_methods_option)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+
+    @_builtins.property
+    @pulumi.getter(name="baseProtocolMethodsOption")
+    def base_protocol_methods_option(self) -> Optional[_builtins.str]:
+        """
+        If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
+        Default value is `SKIP_BASE_PROTOCOL_METHODS`.
+        Possible values are: `SKIP_BASE_PROTOCOL_METHODS`, `MATCH_BASE_PROTOCOL_METHODS`.
+        """
+        return pulumi.get(self, "base_protocol_methods_option")
+
+    @_builtins.property
+    @pulumi.getter
+    def methods(self) -> Optional[Sequence['outputs.AuthzPolicyHttpRuleToOperationMcpMethod']]:
+        """
+        Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "methods")
+
+
+@pulumi.output_type
+class AuthzPolicyHttpRuleToOperationMcpMethod(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 params: Optional[Sequence['outputs.AuthzPolicyHttpRuleToOperationMcpMethodParam']] = None):
+        """
+        :param _builtins.str name: The MCP method to match against. Allowed values are as follows:
+               1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
+               2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
+               3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
+               Params cannot be specified for categories 1) and 2).
+        :param Sequence['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs'] params: MCP method parameters to match against.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The MCP method to match against. Allowed values are as follows:
+        1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
+        2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
+        3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
+        Params cannot be specified for categories 1) and 2).
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[Sequence['outputs.AuthzPolicyHttpRuleToOperationMcpMethodParam']]:
+        """
+        MCP method parameters to match against.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+
+@pulumi.output_type
+class AuthzPolicyHttpRuleToOperationMcpMethodParam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreCase":
+            suggest = "ignore_case"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthzPolicyHttpRuleToOperationMcpMethodParam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthzPolicyHttpRuleToOperationMcpMethodParam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthzPolicyHttpRuleToOperationMcpMethodParam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[_builtins.str] = None,
+                 exact: Optional[_builtins.str] = None,
+                 ignore_case: Optional[_builtins.bool] = None,
+                 prefix: Optional[_builtins.str] = None,
+                 suffix: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str contains: A substring match on the MCP method parameter name.
+        :param _builtins.str exact: An exact match on the MCP method parameter name.
+        :param _builtins.bool ignore_case: Specifies that the string match should be case insensitive.
+        :param _builtins.str prefix: A prefix match on the MCP method parameter name.
+        :param _builtins.str suffix: A suffix match on the MCP method parameter name.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if ignore_case is not None:
+            pulumi.set(__self__, "ignore_case", ignore_case)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[_builtins.str]:
+        """
+        A substring match on the MCP method parameter name.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter
+    def exact(self) -> Optional[_builtins.str]:
+        """
+        An exact match on the MCP method parameter name.
+        """
+        return pulumi.get(self, "exact")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreCase")
+    def ignore_case(self) -> Optional[_builtins.bool]:
+        """
+        Specifies that the string match should be case insensitive.
+        """
+        return pulumi.get(self, "ignore_case")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[_builtins.str]:
+        """
+        A prefix match on the MCP method parameter name.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter
+    def suffix(self) -> Optional[_builtins.str]:
+        """
+        A suffix match on the MCP method parameter name.
+        """
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
 class AuthzPolicyHttpRuleToOperationPath(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2602,23 +2797,27 @@ class AuthzPolicyTarget(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 load_balancing_scheme: _builtins.str,
+                 load_balancing_scheme: Optional[_builtins.str] = None,
                  resources: Optional[Sequence[_builtins.str]] = None):
         """
-        :param _builtins.str load_balancing_scheme: All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+        :param _builtins.str load_balancing_scheme: Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+               Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
                For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
                Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-        :param Sequence[_builtins.str] resources: A list of references to the Forwarding Rules on which this policy will be applied.
+        :param Sequence[_builtins.str] resources: A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+               policy will be applied.
         """
-        pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
+        if load_balancing_scheme is not None:
+            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> _builtins.str:
+    def load_balancing_scheme(self) -> Optional[_builtins.str]:
         """
-        All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+        Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+        Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
         For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
         Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
@@ -2628,7 +2827,8 @@ class AuthzPolicyTarget(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of references to the Forwarding Rules on which this policy will be applied.
+        A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+        policy will be applied.
         """
         return pulumi.get(self, "resources")
 

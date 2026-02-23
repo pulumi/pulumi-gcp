@@ -32,6 +32,7 @@ class PerInstanceConfigArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PerInstanceConfig resource.
+
         :param pulumi.Input[_builtins.str] instance_group_manager: The instance group manager this instance config is part of.
         :param pulumi.Input[_builtins.str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
@@ -213,6 +214,7 @@ class _PerInstanceConfigState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PerInstanceConfig resources.
+
         :param pulumi.Input[_builtins.str] instance_group_manager: The instance group manager this instance config is part of.
         :param pulumi.Input[_builtins.str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
@@ -478,30 +480,19 @@ class PerInstanceConfig(pulumi.CustomResource):
         PerInstanceConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/{{name}}`
-
         * `{{project}}/{{zone}}/{{instance_group_manager}}/{{name}}`
-
         * `{{zone}}/{{instance_group_manager}}/{{name}}`
-
         * `{{instance_group_manager}}/{{name}}`
 
         When using the `pulumi import` command, PerInstanceConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{project}}/{{zone}}/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{zone}}/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{instance_group_manager}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -617,30 +608,19 @@ class PerInstanceConfig(pulumi.CustomResource):
         PerInstanceConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/{{name}}`
-
         * `{{project}}/{{zone}}/{{instance_group_manager}}/{{name}}`
-
         * `{{zone}}/{{instance_group_manager}}/{{name}}`
-
         * `{{instance_group_manager}}/{{name}}`
 
         When using the `pulumi import` command, PerInstanceConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{project}}/{{zone}}/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{zone}}/{{instance_group_manager}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{instance_group_manager}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PerInstanceConfigArgs args: The arguments to use to populate this resource's properties.

@@ -33,16 +33,17 @@ class WorkflowTemplateArgs:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a WorkflowTemplate resource.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
+
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: Required. WorkflowTemplate scheduling information.
+        :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: (Required) WorkflowTemplate scheduling information.
         :param pulumi.Input[_builtins.str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
-        :param pulumi.Input['WorkflowTemplateEncryptionConfigArgs'] encryption_config: Optional. The encryption configuration for the workflow template.
+        :param pulumi.Input['WorkflowTemplateEncryptionConfigArgs'] encryption_config: Encryption settings for encrypting workflow template job arguments. Structure is documented below
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[_builtins.str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        :param pulumi.Input[_builtins.str] name: (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.int] version: Output only. The current version of this workflow template.
@@ -72,7 +73,7 @@ class WorkflowTemplateArgs:
     @pulumi.getter
     def jobs(self) -> pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]:
         """
-        Required. The Directed Acyclic Graph of Jobs to submit.
+        (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         """
         return pulumi.get(self, "jobs")
 
@@ -96,7 +97,7 @@ class WorkflowTemplateArgs:
     @pulumi.getter
     def placement(self) -> pulumi.Input['WorkflowTemplatePlacementArgs']:
         """
-        Required. WorkflowTemplate scheduling information.
+        (Required) WorkflowTemplate scheduling information.
         """
         return pulumi.get(self, "placement")
 
@@ -120,7 +121,7 @@ class WorkflowTemplateArgs:
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']]:
         """
-        Optional. The encryption configuration for the workflow template.
+        Encryption settings for encrypting workflow template job arguments. Structure is documented below
         """
         return pulumi.get(self, "encryption_config")
 
@@ -147,7 +148,7 @@ class WorkflowTemplateArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         """
         return pulumi.get(self, "name")
 
@@ -212,18 +213,20 @@ class _WorkflowTemplateState:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering WorkflowTemplate resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The time template was created.
         :param pulumi.Input[_builtins.str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
-        :param pulumi.Input['WorkflowTemplateEncryptionConfigArgs'] encryption_config: Optional. The encryption configuration for the workflow template.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        :param pulumi.Input['WorkflowTemplateEncryptionConfigArgs'] encryption_config: Encryption settings for encrypting workflow template job arguments. Structure is documented below
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[_builtins.str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        :param pulumi.Input[_builtins.str] name: (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: Required. WorkflowTemplate scheduling information.
+        :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: (Required) WorkflowTemplate scheduling information.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time template was last updated.
@@ -288,6 +291,9 @@ class _WorkflowTemplateState:
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
@@ -298,7 +304,7 @@ class _WorkflowTemplateState:
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']]:
         """
-        Optional. The encryption configuration for the workflow template.
+        Encryption settings for encrypting workflow template job arguments. Structure is documented below
         """
         return pulumi.get(self, "encryption_config")
 
@@ -310,7 +316,7 @@ class _WorkflowTemplateState:
     @pulumi.getter
     def jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]]:
         """
-        Required. The Directed Acyclic Graph of Jobs to submit.
+        (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         """
         return pulumi.get(self, "jobs")
 
@@ -349,7 +355,7 @@ class _WorkflowTemplateState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         """
         return pulumi.get(self, "name")
 
@@ -373,7 +379,7 @@ class _WorkflowTemplateState:
     @pulumi.getter
     def placement(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementArgs']]:
         """
-        Required. WorkflowTemplate scheduling information.
+        (Required) WorkflowTemplate scheduling information.
         """
         return pulumi.get(self, "placement")
 
@@ -513,43 +519,99 @@ class WorkflowTemplate(pulumi.CustomResource):
             ])
         ```
 
+        ### Encryption Config With Spark Jobs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Grant Dataproc service account KMS permissions at project level
+        dataproc_kms_encrypter_decrypter = gcp.projects.IAMMember("dataproc_kms_encrypter_decrypter",
+            project=project["name"],
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project['number']}@dataproc-accounts.iam.gserviceaccount.com")
+        example = gcp.dataproc.WorkflowTemplate("example",
+            name=workflow_template_name,
+            location=region,
+            encryption_config={
+                "kms_key": "<<-- uri to desired crypto key for customer management -->>",
+            },
+            placement={
+                "managed_cluster": {
+                    "cluster_name": cluster_name,
+                    "config": {
+                        "gce_cluster_config": {
+                            "zone": zone,
+                            "network": network,
+                        },
+                        "master_config": {
+                            "num_instances": 1,
+                            "machine_type": machine_type,
+                            "disk_config": {
+                                "boot_disk_type": "pd-standard",
+                                "boot_disk_size_gb": 100,
+                            },
+                        },
+                        "worker_config": {
+                            "num_instances": 2,
+                            "machine_type": machine_type,
+                            "disk_config": {
+                                "boot_disk_type": "pd-standard",
+                                "boot_disk_size_gb": 100,
+                            },
+                        },
+                    },
+                },
+            },
+            jobs=[
+                {
+                    "step_id": "example-job",
+                    "spark_job": {
+                        "main_class": "org.apache.spark.examples.SparkPi",
+                        "jar_file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
+                        "args": ["1000"],
+                    },
+                },
+                {
+                    "step_id": "example-pyspark-job",
+                    "pyspark_job": {
+                        "main_python_file_uri": "gs://dataproc-examples/pyspark/hello-world/hello-world.py",
+                    },
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[dataproc_kms_encrypter_decrypter]))
+        ```
+
         ## Import
 
         WorkflowTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, WorkflowTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
-        :param pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']] encryption_config: Optional. The encryption configuration for the workflow template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
+        :param pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']] encryption_config: Encryption settings for encrypting workflow template job arguments. Structure is documented below
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]] jobs: (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[_builtins.str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        :param pulumi.Input[_builtins.str] name: (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']] placement: Required. WorkflowTemplate scheduling information.
+        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']] placement: (Required) WorkflowTemplate scheduling information.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.int] version: Output only. The current version of this workflow template.
         """
@@ -624,29 +686,85 @@ class WorkflowTemplate(pulumi.CustomResource):
             ])
         ```
 
+        ### Encryption Config With Spark Jobs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Grant Dataproc service account KMS permissions at project level
+        dataproc_kms_encrypter_decrypter = gcp.projects.IAMMember("dataproc_kms_encrypter_decrypter",
+            project=project["name"],
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project['number']}@dataproc-accounts.iam.gserviceaccount.com")
+        example = gcp.dataproc.WorkflowTemplate("example",
+            name=workflow_template_name,
+            location=region,
+            encryption_config={
+                "kms_key": "<<-- uri to desired crypto key for customer management -->>",
+            },
+            placement={
+                "managed_cluster": {
+                    "cluster_name": cluster_name,
+                    "config": {
+                        "gce_cluster_config": {
+                            "zone": zone,
+                            "network": network,
+                        },
+                        "master_config": {
+                            "num_instances": 1,
+                            "machine_type": machine_type,
+                            "disk_config": {
+                                "boot_disk_type": "pd-standard",
+                                "boot_disk_size_gb": 100,
+                            },
+                        },
+                        "worker_config": {
+                            "num_instances": 2,
+                            "machine_type": machine_type,
+                            "disk_config": {
+                                "boot_disk_type": "pd-standard",
+                                "boot_disk_size_gb": 100,
+                            },
+                        },
+                    },
+                },
+            },
+            jobs=[
+                {
+                    "step_id": "example-job",
+                    "spark_job": {
+                        "main_class": "org.apache.spark.examples.SparkPi",
+                        "jar_file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
+                        "args": ["1000"],
+                    },
+                },
+                {
+                    "step_id": "example-pyspark-job",
+                    "pyspark_job": {
+                        "main_python_file_uri": "gs://dataproc-examples/pyspark/hello-world/hello-world.py",
+                    },
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[dataproc_kms_encrypter_decrypter]))
+        ```
+
         ## Import
 
         WorkflowTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, WorkflowTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkflowTemplateArgs args: The arguments to use to populate this resource's properties.
@@ -737,16 +855,17 @@ class WorkflowTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time template was created.
         :param pulumi.Input[_builtins.str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
-        :param pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']] encryption_config: Optional. The encryption configuration for the workflow template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        :param pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']] encryption_config: Encryption settings for encrypting workflow template job arguments. Structure is documented below
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]] jobs: (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[_builtins.str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        :param pulumi.Input[_builtins.str] name: (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']] placement: Required. WorkflowTemplate scheduling information.
+        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']] placement: (Required) WorkflowTemplate scheduling information.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time template was last updated.
@@ -791,13 +910,16 @@ class WorkflowTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> pulumi.Output[Optional['outputs.WorkflowTemplateEncryptionConfig']]:
         """
-        Optional. The encryption configuration for the workflow template.
+        Encryption settings for encrypting workflow template job arguments. Structure is documented below
         """
         return pulumi.get(self, "encryption_config")
 
@@ -805,7 +927,7 @@ class WorkflowTemplate(pulumi.CustomResource):
     @pulumi.getter
     def jobs(self) -> pulumi.Output[Sequence['outputs.WorkflowTemplateJob']]:
         """
-        Required. The Directed Acyclic Graph of Jobs to submit.
+        (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         """
         return pulumi.get(self, "jobs")
 
@@ -832,7 +954,7 @@ class WorkflowTemplate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         """
         return pulumi.get(self, "name")
 
@@ -848,7 +970,7 @@ class WorkflowTemplate(pulumi.CustomResource):
     @pulumi.getter
     def placement(self) -> pulumi.Output['outputs.WorkflowTemplatePlacement']:
         """
-        Required. WorkflowTemplate scheduling information.
+        (Required) WorkflowTemplate scheduling information.
         """
         return pulumi.get(self, "placement")
 

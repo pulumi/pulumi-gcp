@@ -77,28 +77,16 @@ import * as utilities from "../utilities";
  * StoragePool can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/zones/{{zone}}/storagePools/{{name}}`
- *
  * * `{{project}}/{{zone}}/{{name}}`
- *
  * * `{{zone}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, StoragePool can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/storagePool:StoragePool default projects/{{project}}/zones/{{zone}}/storagePools/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/storagePool:StoragePool default {{project}}/{{zone}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/storagePool:StoragePool default {{zone}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/storagePool:StoragePool default {{name}}
  * ```
  */
@@ -139,6 +127,12 @@ export class StoragePool extends pulumi.CustomResource {
      * Creation timestamp in RFC3339 text format.
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the StoragePool.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the StoragePool will fail.
+     * When the field is set to false, deleting the StoragePool is allowed.
+     */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * A description of this resource. Provide this property when you create the resource.
@@ -309,6 +303,12 @@ export interface StoragePoolState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the StoragePool.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the StoragePool will fail.
+     * When the field is set to false, deleting the StoragePool is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * A description of this resource. Provide this property when you create the resource.
@@ -406,6 +406,12 @@ export interface StoragePoolArgs {
      * Possible values are: `STANDARD`, `ADVANCED`.
      */
     capacityProvisioningType?: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the StoragePool.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the StoragePool will fail.
+     * When the field is set to false, deleting the StoragePool is allowed.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * A description of this resource. Provide this property when you create the resource.

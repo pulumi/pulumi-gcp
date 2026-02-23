@@ -38,6 +38,7 @@ class MigrationJobArgs:
                  vpc_peering_connectivity: Optional[pulumi.Input['MigrationJobVpcPeeringConnectivityArgs']] = None):
         """
         The set of arguments for constructing a MigrationJob resource.
+
         :param pulumi.Input[_builtins.str] destination: The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         :param pulumi.Input[_builtins.str] migration_job_id: The ID of the migration job.
         :param pulumi.Input[_builtins.str] source: The name of the source connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{sourceConnectionProfile}.
@@ -321,6 +322,7 @@ class _MigrationJobState:
                  vpc_peering_connectivity: Optional[pulumi.Input['MigrationJobVpcPeeringConnectivityArgs']] = None):
         """
         Input properties used for looking up and filtering MigrationJob resources.
+
         :param pulumi.Input[_builtins.str] create_time: Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
         :param pulumi.Input[_builtins.str] destination: The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         :param pulumi.Input[_builtins.str] display_name: The migration job display name.
@@ -993,24 +995,17 @@ class MigrationJob(pulumi.CustomResource):
         MigrationJob can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}`
-
         * `{{project}}/{{location}}/{{migration_job_id}}`
-
         * `{{location}}/{{migration_job_id}}`
 
         When using the `pulumi import` command, MigrationJob can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{project}}/{{location}}/{{migration_job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{location}}/{{migration_job_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1333,24 +1328,17 @@ class MigrationJob(pulumi.CustomResource):
         MigrationJob can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}`
-
         * `{{project}}/{{location}}/{{migration_job_id}}`
-
         * `{{location}}/{{migration_job_id}}`
 
         When using the `pulumi import` command, MigrationJob can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{project}}/{{location}}/{{migration_job_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{location}}/{{migration_job_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MigrationJobArgs args: The arguments to use to populate this resource's properties.

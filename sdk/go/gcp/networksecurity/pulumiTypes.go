@@ -5207,6 +5207,9 @@ type AuthzPolicyHttpRuleToOperation struct {
 	// Limited to 10 matches.
 	// Structure is documented below.
 	Hosts []AuthzPolicyHttpRuleToOperationHost `pulumi:"hosts"`
+	// Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+	// Structure is documented below.
+	Mcp *AuthzPolicyHttpRuleToOperationMcp `pulumi:"mcp"`
 	// A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
 	Methods []string `pulumi:"methods"`
 	// A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
@@ -5235,6 +5238,9 @@ type AuthzPolicyHttpRuleToOperationArgs struct {
 	// Limited to 10 matches.
 	// Structure is documented below.
 	Hosts AuthzPolicyHttpRuleToOperationHostArrayInput `pulumi:"hosts"`
+	// Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+	// Structure is documented below.
+	Mcp AuthzPolicyHttpRuleToOperationMcpPtrInput `pulumi:"mcp"`
 	// A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
 	Methods pulumi.StringArrayInput `pulumi:"methods"`
 	// A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
@@ -5306,6 +5312,12 @@ func (o AuthzPolicyHttpRuleToOperationOutput) HeaderSet() AuthzPolicyHttpRuleToO
 // Structure is documented below.
 func (o AuthzPolicyHttpRuleToOperationOutput) Hosts() AuthzPolicyHttpRuleToOperationHostArrayOutput {
 	return o.ApplyT(func(v AuthzPolicyHttpRuleToOperation) []AuthzPolicyHttpRuleToOperationHost { return v.Hosts }).(AuthzPolicyHttpRuleToOperationHostArrayOutput)
+}
+
+// Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
+// Structure is documented below.
+func (o AuthzPolicyHttpRuleToOperationOutput) Mcp() AuthzPolicyHttpRuleToOperationMcpPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToOperation) *AuthzPolicyHttpRuleToOperationMcp { return v.Mcp }).(AuthzPolicyHttpRuleToOperationMcpPtrOutput)
 }
 
 // A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
@@ -5997,6 +6009,430 @@ func (o AuthzPolicyHttpRuleToOperationHostArrayOutput) Index(i pulumi.IntInput) 
 	}).(AuthzPolicyHttpRuleToOperationHostOutput)
 }
 
+type AuthzPolicyHttpRuleToOperationMcp struct {
+	// If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
+	// Default value is `SKIP_BASE_PROTOCOL_METHODS`.
+	// Possible values are: `SKIP_BASE_PROTOCOL_METHODS`, `MATCH_BASE_PROTOCOL_METHODS`.
+	BaseProtocolMethodsOption *string `pulumi:"baseProtocolMethodsOption"`
+	// Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
+	// Structure is documented below.
+	Methods []AuthzPolicyHttpRuleToOperationMcpMethod `pulumi:"methods"`
+}
+
+// AuthzPolicyHttpRuleToOperationMcpInput is an input type that accepts AuthzPolicyHttpRuleToOperationMcpArgs and AuthzPolicyHttpRuleToOperationMcpOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToOperationMcpInput` via:
+//
+//	AuthzPolicyHttpRuleToOperationMcpArgs{...}
+type AuthzPolicyHttpRuleToOperationMcpInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToOperationMcpOutput() AuthzPolicyHttpRuleToOperationMcpOutput
+	ToAuthzPolicyHttpRuleToOperationMcpOutputWithContext(context.Context) AuthzPolicyHttpRuleToOperationMcpOutput
+}
+
+type AuthzPolicyHttpRuleToOperationMcpArgs struct {
+	// If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
+	// Default value is `SKIP_BASE_PROTOCOL_METHODS`.
+	// Possible values are: `SKIP_BASE_PROTOCOL_METHODS`, `MATCH_BASE_PROTOCOL_METHODS`.
+	BaseProtocolMethodsOption pulumi.StringPtrInput `pulumi:"baseProtocolMethodsOption"`
+	// Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
+	// Structure is documented below.
+	Methods AuthzPolicyHttpRuleToOperationMcpMethodArrayInput `pulumi:"methods"`
+}
+
+func (AuthzPolicyHttpRuleToOperationMcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcp)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToOperationMcpArgs) ToAuthzPolicyHttpRuleToOperationMcpOutput() AuthzPolicyHttpRuleToOperationMcpOutput {
+	return i.ToAuthzPolicyHttpRuleToOperationMcpOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToOperationMcpArgs) ToAuthzPolicyHttpRuleToOperationMcpOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToOperationMcpOutput)
+}
+
+func (i AuthzPolicyHttpRuleToOperationMcpArgs) ToAuthzPolicyHttpRuleToOperationMcpPtrOutput() AuthzPolicyHttpRuleToOperationMcpPtrOutput {
+	return i.ToAuthzPolicyHttpRuleToOperationMcpPtrOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToOperationMcpArgs) ToAuthzPolicyHttpRuleToOperationMcpPtrOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToOperationMcpOutput).ToAuthzPolicyHttpRuleToOperationMcpPtrOutputWithContext(ctx)
+}
+
+// AuthzPolicyHttpRuleToOperationMcpPtrInput is an input type that accepts AuthzPolicyHttpRuleToOperationMcpArgs, AuthzPolicyHttpRuleToOperationMcpPtr and AuthzPolicyHttpRuleToOperationMcpPtrOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToOperationMcpPtrInput` via:
+//
+//	        AuthzPolicyHttpRuleToOperationMcpArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthzPolicyHttpRuleToOperationMcpPtrInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToOperationMcpPtrOutput() AuthzPolicyHttpRuleToOperationMcpPtrOutput
+	ToAuthzPolicyHttpRuleToOperationMcpPtrOutputWithContext(context.Context) AuthzPolicyHttpRuleToOperationMcpPtrOutput
+}
+
+type authzPolicyHttpRuleToOperationMcpPtrType AuthzPolicyHttpRuleToOperationMcpArgs
+
+func AuthzPolicyHttpRuleToOperationMcpPtr(v *AuthzPolicyHttpRuleToOperationMcpArgs) AuthzPolicyHttpRuleToOperationMcpPtrInput {
+	return (*authzPolicyHttpRuleToOperationMcpPtrType)(v)
+}
+
+func (*authzPolicyHttpRuleToOperationMcpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyHttpRuleToOperationMcp)(nil)).Elem()
+}
+
+func (i *authzPolicyHttpRuleToOperationMcpPtrType) ToAuthzPolicyHttpRuleToOperationMcpPtrOutput() AuthzPolicyHttpRuleToOperationMcpPtrOutput {
+	return i.ToAuthzPolicyHttpRuleToOperationMcpPtrOutputWithContext(context.Background())
+}
+
+func (i *authzPolicyHttpRuleToOperationMcpPtrType) ToAuthzPolicyHttpRuleToOperationMcpPtrOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToOperationMcpPtrOutput)
+}
+
+type AuthzPolicyHttpRuleToOperationMcpOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToOperationMcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcp)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpOutput) ToAuthzPolicyHttpRuleToOperationMcpOutput() AuthzPolicyHttpRuleToOperationMcpOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpOutput) ToAuthzPolicyHttpRuleToOperationMcpOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpOutput) ToAuthzPolicyHttpRuleToOperationMcpPtrOutput() AuthzPolicyHttpRuleToOperationMcpPtrOutput {
+	return o.ToAuthzPolicyHttpRuleToOperationMcpPtrOutputWithContext(context.Background())
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpOutput) ToAuthzPolicyHttpRuleToOperationMcpPtrOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthzPolicyHttpRuleToOperationMcp) *AuthzPolicyHttpRuleToOperationMcp {
+		return &v
+	}).(AuthzPolicyHttpRuleToOperationMcpPtrOutput)
+}
+
+// If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
+// Default value is `SKIP_BASE_PROTOCOL_METHODS`.
+// Possible values are: `SKIP_BASE_PROTOCOL_METHODS`, `MATCH_BASE_PROTOCOL_METHODS`.
+func (o AuthzPolicyHttpRuleToOperationMcpOutput) BaseProtocolMethodsOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToOperationMcp) *string { return v.BaseProtocolMethodsOption }).(pulumi.StringPtrOutput)
+}
+
+// Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
+// Structure is documented below.
+func (o AuthzPolicyHttpRuleToOperationMcpOutput) Methods() AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToOperationMcp) []AuthzPolicyHttpRuleToOperationMcpMethod { return v.Methods }).(AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToOperationMcpPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToOperationMcpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyHttpRuleToOperationMcp)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpPtrOutput) ToAuthzPolicyHttpRuleToOperationMcpPtrOutput() AuthzPolicyHttpRuleToOperationMcpPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpPtrOutput) ToAuthzPolicyHttpRuleToOperationMcpPtrOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpPtrOutput) Elem() AuthzPolicyHttpRuleToOperationMcpOutput {
+	return o.ApplyT(func(v *AuthzPolicyHttpRuleToOperationMcp) AuthzPolicyHttpRuleToOperationMcp {
+		if v != nil {
+			return *v
+		}
+		var ret AuthzPolicyHttpRuleToOperationMcp
+		return ret
+	}).(AuthzPolicyHttpRuleToOperationMcpOutput)
+}
+
+// If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
+// Default value is `SKIP_BASE_PROTOCOL_METHODS`.
+// Possible values are: `SKIP_BASE_PROTOCOL_METHODS`, `MATCH_BASE_PROTOCOL_METHODS`.
+func (o AuthzPolicyHttpRuleToOperationMcpPtrOutput) BaseProtocolMethodsOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyHttpRuleToOperationMcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BaseProtocolMethodsOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
+// Structure is documented below.
+func (o AuthzPolicyHttpRuleToOperationMcpPtrOutput) Methods() AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput {
+	return o.ApplyT(func(v *AuthzPolicyHttpRuleToOperationMcp) []AuthzPolicyHttpRuleToOperationMcpMethod {
+		if v == nil {
+			return nil
+		}
+		return v.Methods
+	}).(AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToOperationMcpMethod struct {
+	// The MCP method to match against. Allowed values are as follows:
+	// 1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
+	// 2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
+	// 3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
+	//    Params cannot be specified for categories 1) and 2).
+	Name string `pulumi:"name"`
+	// MCP method parameters to match against.
+	// Structure is documented below.
+	Params []AuthzPolicyHttpRuleToOperationMcpMethodParam `pulumi:"params"`
+}
+
+// AuthzPolicyHttpRuleToOperationMcpMethodInput is an input type that accepts AuthzPolicyHttpRuleToOperationMcpMethodArgs and AuthzPolicyHttpRuleToOperationMcpMethodOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToOperationMcpMethodInput` via:
+//
+//	AuthzPolicyHttpRuleToOperationMcpMethodArgs{...}
+type AuthzPolicyHttpRuleToOperationMcpMethodInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToOperationMcpMethodOutput() AuthzPolicyHttpRuleToOperationMcpMethodOutput
+	ToAuthzPolicyHttpRuleToOperationMcpMethodOutputWithContext(context.Context) AuthzPolicyHttpRuleToOperationMcpMethodOutput
+}
+
+type AuthzPolicyHttpRuleToOperationMcpMethodArgs struct {
+	// The MCP method to match against. Allowed values are as follows:
+	// 1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
+	// 2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
+	// 3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
+	//    Params cannot be specified for categories 1) and 2).
+	Name pulumi.StringInput `pulumi:"name"`
+	// MCP method parameters to match against.
+	// Structure is documented below.
+	Params AuthzPolicyHttpRuleToOperationMcpMethodParamArrayInput `pulumi:"params"`
+}
+
+func (AuthzPolicyHttpRuleToOperationMcpMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcpMethod)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToOperationMcpMethodArgs) ToAuthzPolicyHttpRuleToOperationMcpMethodOutput() AuthzPolicyHttpRuleToOperationMcpMethodOutput {
+	return i.ToAuthzPolicyHttpRuleToOperationMcpMethodOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToOperationMcpMethodArgs) ToAuthzPolicyHttpRuleToOperationMcpMethodOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToOperationMcpMethodOutput)
+}
+
+// AuthzPolicyHttpRuleToOperationMcpMethodArrayInput is an input type that accepts AuthzPolicyHttpRuleToOperationMcpMethodArray and AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToOperationMcpMethodArrayInput` via:
+//
+//	AuthzPolicyHttpRuleToOperationMcpMethodArray{ AuthzPolicyHttpRuleToOperationMcpMethodArgs{...} }
+type AuthzPolicyHttpRuleToOperationMcpMethodArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToOperationMcpMethodArrayOutput() AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput
+	ToAuthzPolicyHttpRuleToOperationMcpMethodArrayOutputWithContext(context.Context) AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput
+}
+
+type AuthzPolicyHttpRuleToOperationMcpMethodArray []AuthzPolicyHttpRuleToOperationMcpMethodInput
+
+func (AuthzPolicyHttpRuleToOperationMcpMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyHttpRuleToOperationMcpMethod)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToOperationMcpMethodArray) ToAuthzPolicyHttpRuleToOperationMcpMethodArrayOutput() AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput {
+	return i.ToAuthzPolicyHttpRuleToOperationMcpMethodArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToOperationMcpMethodArray) ToAuthzPolicyHttpRuleToOperationMcpMethodArrayOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToOperationMcpMethodOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToOperationMcpMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcpMethod)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpMethodOutput) ToAuthzPolicyHttpRuleToOperationMcpMethodOutput() AuthzPolicyHttpRuleToOperationMcpMethodOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpMethodOutput) ToAuthzPolicyHttpRuleToOperationMcpMethodOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpMethodOutput {
+	return o
+}
+
+// The MCP method to match against. Allowed values are as follows:
+//  1. “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
+//  2. “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
+//  3. “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
+//     Params cannot be specified for categories 1) and 2).
+func (o AuthzPolicyHttpRuleToOperationMcpMethodOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToOperationMcpMethod) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// MCP method parameters to match against.
+// Structure is documented below.
+func (o AuthzPolicyHttpRuleToOperationMcpMethodOutput) Params() AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToOperationMcpMethod) []AuthzPolicyHttpRuleToOperationMcpMethodParam {
+		return v.Params
+	}).(AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyHttpRuleToOperationMcpMethod)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput) ToAuthzPolicyHttpRuleToOperationMcpMethodArrayOutput() AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput) ToAuthzPolicyHttpRuleToOperationMcpMethodArrayOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput) Index(i pulumi.IntInput) AuthzPolicyHttpRuleToOperationMcpMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyHttpRuleToOperationMcpMethod {
+		return vs[0].([]AuthzPolicyHttpRuleToOperationMcpMethod)[vs[1].(int)]
+	}).(AuthzPolicyHttpRuleToOperationMcpMethodOutput)
+}
+
+type AuthzPolicyHttpRuleToOperationMcpMethodParam struct {
+	// A substring match on the MCP method parameter name.
+	Contains *string `pulumi:"contains"`
+	// An exact match on the MCP method parameter name.
+	Exact *string `pulumi:"exact"`
+	// Specifies that the string match should be case insensitive.
+	IgnoreCase *bool `pulumi:"ignoreCase"`
+	// A prefix match on the MCP method parameter name.
+	Prefix *string `pulumi:"prefix"`
+	// A suffix match on the MCP method parameter name.
+	Suffix *string `pulumi:"suffix"`
+}
+
+// AuthzPolicyHttpRuleToOperationMcpMethodParamInput is an input type that accepts AuthzPolicyHttpRuleToOperationMcpMethodParamArgs and AuthzPolicyHttpRuleToOperationMcpMethodParamOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToOperationMcpMethodParamInput` via:
+//
+//	AuthzPolicyHttpRuleToOperationMcpMethodParamArgs{...}
+type AuthzPolicyHttpRuleToOperationMcpMethodParamInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToOperationMcpMethodParamOutput() AuthzPolicyHttpRuleToOperationMcpMethodParamOutput
+	ToAuthzPolicyHttpRuleToOperationMcpMethodParamOutputWithContext(context.Context) AuthzPolicyHttpRuleToOperationMcpMethodParamOutput
+}
+
+type AuthzPolicyHttpRuleToOperationMcpMethodParamArgs struct {
+	// A substring match on the MCP method parameter name.
+	Contains pulumi.StringPtrInput `pulumi:"contains"`
+	// An exact match on the MCP method parameter name.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// Specifies that the string match should be case insensitive.
+	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
+	// A prefix match on the MCP method parameter name.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// A suffix match on the MCP method parameter name.
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (AuthzPolicyHttpRuleToOperationMcpMethodParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcpMethodParam)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToOperationMcpMethodParamArgs) ToAuthzPolicyHttpRuleToOperationMcpMethodParamOutput() AuthzPolicyHttpRuleToOperationMcpMethodParamOutput {
+	return i.ToAuthzPolicyHttpRuleToOperationMcpMethodParamOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToOperationMcpMethodParamArgs) ToAuthzPolicyHttpRuleToOperationMcpMethodParamOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpMethodParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToOperationMcpMethodParamOutput)
+}
+
+// AuthzPolicyHttpRuleToOperationMcpMethodParamArrayInput is an input type that accepts AuthzPolicyHttpRuleToOperationMcpMethodParamArray and AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyHttpRuleToOperationMcpMethodParamArrayInput` via:
+//
+//	AuthzPolicyHttpRuleToOperationMcpMethodParamArray{ AuthzPolicyHttpRuleToOperationMcpMethodParamArgs{...} }
+type AuthzPolicyHttpRuleToOperationMcpMethodParamArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput() AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput
+	ToAuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutputWithContext(context.Context) AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput
+}
+
+type AuthzPolicyHttpRuleToOperationMcpMethodParamArray []AuthzPolicyHttpRuleToOperationMcpMethodParamInput
+
+func (AuthzPolicyHttpRuleToOperationMcpMethodParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyHttpRuleToOperationMcpMethodParam)(nil)).Elem()
+}
+
+func (i AuthzPolicyHttpRuleToOperationMcpMethodParamArray) ToAuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput() AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput {
+	return i.ToAuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyHttpRuleToOperationMcpMethodParamArray) ToAuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput)
+}
+
+type AuthzPolicyHttpRuleToOperationMcpMethodParamOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToOperationMcpMethodParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcpMethodParam)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpMethodParamOutput) ToAuthzPolicyHttpRuleToOperationMcpMethodParamOutput() AuthzPolicyHttpRuleToOperationMcpMethodParamOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpMethodParamOutput) ToAuthzPolicyHttpRuleToOperationMcpMethodParamOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpMethodParamOutput {
+	return o
+}
+
+// A substring match on the MCP method parameter name.
+func (o AuthzPolicyHttpRuleToOperationMcpMethodParamOutput) Contains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToOperationMcpMethodParam) *string { return v.Contains }).(pulumi.StringPtrOutput)
+}
+
+// An exact match on the MCP method parameter name.
+func (o AuthzPolicyHttpRuleToOperationMcpMethodParamOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToOperationMcpMethodParam) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// Specifies that the string match should be case insensitive.
+func (o AuthzPolicyHttpRuleToOperationMcpMethodParamOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToOperationMcpMethodParam) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
+}
+
+// A prefix match on the MCP method parameter name.
+func (o AuthzPolicyHttpRuleToOperationMcpMethodParamOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToOperationMcpMethodParam) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// A suffix match on the MCP method parameter name.
+func (o AuthzPolicyHttpRuleToOperationMcpMethodParamOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyHttpRuleToOperationMcpMethodParam) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyHttpRuleToOperationMcpMethodParam)(nil)).Elem()
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput) ToAuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput() AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput) ToAuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutputWithContext(ctx context.Context) AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput) Index(i pulumi.IntInput) AuthzPolicyHttpRuleToOperationMcpMethodParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyHttpRuleToOperationMcpMethodParam {
+		return vs[0].([]AuthzPolicyHttpRuleToOperationMcpMethodParam)[vs[1].(int)]
+	}).(AuthzPolicyHttpRuleToOperationMcpMethodParamOutput)
+}
+
 type AuthzPolicyHttpRuleToOperationPath struct {
 	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
 	// Examples:
@@ -6155,11 +6591,13 @@ func (o AuthzPolicyHttpRuleToOperationPathArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type AuthzPolicyTarget struct {
-	// All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+	// Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+	// Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
 	// For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-	LoadBalancingScheme string `pulumi:"loadBalancingScheme"`
-	// A list of references to the Forwarding Rules on which this policy will be applied.
+	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
+	// A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+	// policy will be applied.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -6175,11 +6613,13 @@ type AuthzPolicyTargetInput interface {
 }
 
 type AuthzPolicyTargetArgs struct {
-	// All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+	// Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+	// Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
 	// For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-	LoadBalancingScheme pulumi.StringInput `pulumi:"loadBalancingScheme"`
-	// A list of references to the Forwarding Rules on which this policy will be applied.
+	LoadBalancingScheme pulumi.StringPtrInput `pulumi:"loadBalancingScheme"`
+	// A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+	// policy will be applied.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -6260,14 +6700,16 @@ func (o AuthzPolicyTargetOutput) ToAuthzPolicyTargetPtrOutputWithContext(ctx con
 	}).(AuthzPolicyTargetPtrOutput)
 }
 
-// All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+// Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+// Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
 // For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
 // Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-func (o AuthzPolicyTargetOutput) LoadBalancingScheme() pulumi.StringOutput {
-	return o.ApplyT(func(v AuthzPolicyTarget) string { return v.LoadBalancingScheme }).(pulumi.StringOutput)
+func (o AuthzPolicyTargetOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyTarget) *string { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }
 
-// A list of references to the Forwarding Rules on which this policy will be applied.
+// A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+// policy will be applied.
 func (o AuthzPolicyTargetOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuthzPolicyTarget) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -6296,7 +6738,8 @@ func (o AuthzPolicyTargetPtrOutput) Elem() AuthzPolicyTargetOutput {
 	}).(AuthzPolicyTargetOutput)
 }
 
-// All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
+// Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
+// Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
 // For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
 // Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 func (o AuthzPolicyTargetPtrOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
@@ -6304,11 +6747,12 @@ func (o AuthzPolicyTargetPtrOutput) LoadBalancingScheme() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return &v.LoadBalancingScheme
+		return v.LoadBalancingScheme
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of references to the Forwarding Rules on which this policy will be applied.
+// A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
+// policy will be applied.
 func (o AuthzPolicyTargetPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AuthzPolicyTarget) []string {
 		if v == nil {
@@ -11765,6 +12209,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationHeaderSetHeaderValuePtrInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationHostInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationHostArrayInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcpInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationMcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcpPtrInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationMcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcpMethodInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationMcpMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcpMethodArrayInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationMcpMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcpMethodParamInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationMcpMethodParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationMcpMethodParamArrayInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationMcpMethodParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationPathInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyHttpRuleToOperationPathArrayInput)(nil)).Elem(), AuthzPolicyHttpRuleToOperationPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyTargetInput)(nil)).Elem(), AuthzPolicyTargetArgs{})
@@ -11921,6 +12371,12 @@ func init() {
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationHeaderSetHeaderValuePtrOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationHostOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationHostArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationMcpOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationMcpPtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationMcpMethodOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationMcpMethodArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationMcpMethodParamOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationMcpMethodParamArrayOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationPathOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyHttpRuleToOperationPathArrayOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyTargetOutput{})

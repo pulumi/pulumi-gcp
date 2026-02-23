@@ -122,22 +122,14 @@ import * as utilities from "../utilities";
  * AccountConnector can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/accountConnectors/{{account_connector_id}}`
- *
  * * `{{project}}/{{location}}/{{account_connector_id}}`
- *
  * * `{{location}}/{{account_connector_id}}`
  *
  * When using the `pulumi import` command, AccountConnector can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default projects/{{project}}/locations/{{location}}/accountConnectors/{{account_connector_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{project}}/{{location}}/{{account_connector_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{location}}/{{account_connector_id}}
  * ```
  */
@@ -186,6 +178,9 @@ export class AccountConnector extends pulumi.CustomResource {
      * Output only. The timestamp when the userConnection was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -306,6 +301,9 @@ export interface AccountConnectorState {
      * Output only. The timestamp when the userConnection was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

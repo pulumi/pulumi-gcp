@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A trace scope is a collection of resources whose traces are queried together
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
 // ## Example Usage
 //
 // ### Observability Trace Scope Basic
@@ -36,8 +41,8 @@ import (
 //				return err
 //			}
 //			project_2, err := organizations.NewProject(ctx, "project-2", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_34242"),
-//				Name:           pulumi.String("tf-test_9723"),
+//				ProjectId:      pulumi.String("tf-test_45397"),
+//				Name:           pulumi.String("tf-test_16451"),
 //				OrgId:          pulumi.String("123456789"),
 //				DeletionPolicy: pulumi.String("DELETE"),
 //			})
@@ -71,22 +76,14 @@ import (
 // TraceScope can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/traceScopes/{{trace_scope_id}}`
-//
 // * `{{project}}/{{location}}/{{trace_scope_id}}`
-//
 // * `{{location}}/{{trace_scope_id}}`
 //
 // When using the `pulumi import` command, TraceScope can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:observability/traceScope:TraceScope default projects/{{project}}/locations/{{location}}/traceScopes/{{trace_scope_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:observability/traceScope:TraceScope default {{project}}/{{location}}/{{trace_scope_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:observability/traceScope:TraceScope default {{location}}/{{trace_scope_id}}
 // ```
 type TraceScope struct {

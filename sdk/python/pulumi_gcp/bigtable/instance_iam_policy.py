@@ -24,9 +24,12 @@ class InstanceIamPolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceIamPolicy resource.
+
         :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
                For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+        :param pulumi.Input[_builtins.str] project: The project in which the instance belongs. If it
+               is not provided, Terraform will use the provider default.
         """
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "policy_data", policy_data)
@@ -59,6 +62,10 @@ class InstanceIamPolicyArgs:
     @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The project in which the instance belongs. If it
+        is not provided, Terraform will use the provider default.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -75,10 +82,13 @@ class _InstanceIamPolicyState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceIamPolicy resources.
+
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the instances's IAM policy.
         :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
                For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+        :param pulumi.Input[_builtins.str] project: The project in which the instance belongs. If it
+               is not provided, Terraform will use the provider default.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -127,6 +137,10 @@ class _InstanceIamPolicyState:
     @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The project in which the instance belongs. If it
+        is not provided, Terraform will use the provider default.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -237,35 +251,17 @@ class InstanceIamPolicy(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
-
-        * `"projects/{project}/instances/{instance}"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "projects/{project}/instances/{instance}"
-
-          to = google_bigtable_instance_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy default projects/{project}/instances/{instance}
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
                For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+        :param pulumi.Input[_builtins.str] project: The project in which the instance belongs. If it
+               is not provided, Terraform will use the provider default.
         """
         ...
     @overload
@@ -366,29 +362,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
-
-        * `"projects/{project}/instances/{instance}"`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = "projects/{project}/instances/{instance}"
-
-          to = google_bigtable_instance_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy default projects/{project}/instances/{instance}
-        ```
 
         :param str resource_name: The name of the resource.
         :param InstanceIamPolicyArgs args: The arguments to use to populate this resource's properties.
@@ -450,6 +426,8 @@ class InstanceIamPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
                For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+        :param pulumi.Input[_builtins.str] project: The project in which the instance belongs. If it
+               is not provided, Terraform will use the provider default.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -487,5 +465,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
+        """
+        The project in which the instance belongs. If it
+        is not provided, Terraform will use the provider default.
+        """
         return pulumi.get(self, "project")
 

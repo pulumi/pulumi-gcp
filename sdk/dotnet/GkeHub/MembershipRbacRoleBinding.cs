@@ -10,6 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub
 {
     /// <summary>
+    /// RBACRoleBinding represents a rbacrolebinding across the Fleet.
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about MembershipRBACRoleBinding, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.memberships)
+    /// * How-to Guides
+    ///     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Gkehub Membership Rbac Role Binding Basic
@@ -34,7 +45,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
     ///     {
-    ///         MembershipId = "tf-test-membership_15335",
+    ///         MembershipId = "tf-test-membership_16199",
     ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
     ///         {
     ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
@@ -54,7 +65,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var membershipRbacRoleBinding = new Gcp.GkeHub.MembershipRbacRoleBinding("membership_rbac_role_binding", new()
     ///     {
-    ///         MembershipRbacRoleBindingId = "tf-test-membership-rbac-role-binding_20665",
+    ///         MembershipRbacRoleBindingId = "tf-test-membership-rbac-role-binding_21563",
     ///         MembershipId = membership.MembershipId,
     ///         User = $"service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-anthossupport.iam.gserviceaccount.com",
     ///         Role = new Gcp.GkeHub.Inputs.MembershipRbacRoleBindingRoleArgs
@@ -78,22 +89,14 @@ namespace Pulumi.Gcp.GkeHub
     /// MembershipRBACRoleBinding can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
-    /// 
     /// * `{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
     /// 
     /// When using the `pulumi import` command, MembershipRBACRoleBinding can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default {{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default {{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}
     /// ```
     /// </summary>

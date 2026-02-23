@@ -31,6 +31,7 @@ class DataProductArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataProduct resource.
+
         :param pulumi.Input[_builtins.str] data_product_id: The ID of the data product.
         :param pulumi.Input[_builtins.str] display_name: User-friendly display name.
         :param pulumi.Input[_builtins.str] location: The location for the data product.
@@ -178,6 +179,7 @@ class _DataProductState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataProduct resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['DataProductAccessGroupArgs']]] access_groups: Custom user defined access groups at the data product level.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] asset_count: Number of associated data assets.
@@ -432,6 +434,18 @@ class DataProduct(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A data product is a curated collection of data assets, packaged to address
+        specific use cases.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about DataProduct, see:
+
+        * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts)
+        * How-to Guides
+            * [Introduction to Data Products](https://cloud.google.com/dataplex/docs/data-products-overview)
+
         ## Example Usage
 
         ### Dataplex Data Product Basic
@@ -451,7 +465,7 @@ class DataProduct(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_74000@example.com",
+                    "google_group": "tf-test-analysts-_88722@example.com",
                 },
             }])
         ```
@@ -478,7 +492,7 @@ class DataProduct(pulumi.CustomResource):
                     "display_name": "Data Analyst - Updated",
                     "description": "In-place update verified",
                     "principal": {
-                        "google_group": "tf-test-analysts-_75125@example.com",
+                        "google_group": "tf-test-analysts-_39249@example.com",
                     },
                 },
                 {
@@ -486,7 +500,7 @@ class DataProduct(pulumi.CustomResource):
                     "group_id": "scientist",
                     "display_name": "Data Scientist",
                     "principal": {
-                        "google_group": "tf-test-scientists-_88722@example.com",
+                        "google_group": "tf-test-scientists-_74391@example.com",
                     },
                 },
             ])
@@ -497,24 +511,17 @@ class DataProduct(pulumi.CustomResource):
         DataProduct can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}`
-
         * `{{project}}/{{location}}/{{data_product_id}}`
-
         * `{{location}}/{{data_product_id}}`
 
         When using the `pulumi import` command, DataProduct can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/dataProduct:DataProduct default projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{project}}/{{location}}/{{data_product_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{location}}/{{data_product_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -538,6 +545,18 @@ class DataProduct(pulumi.CustomResource):
                  args: DataProductArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A data product is a curated collection of data assets, packaged to address
+        specific use cases.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about DataProduct, see:
+
+        * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts)
+        * How-to Guides
+            * [Introduction to Data Products](https://cloud.google.com/dataplex/docs/data-products-overview)
+
         ## Example Usage
 
         ### Dataplex Data Product Basic
@@ -557,7 +576,7 @@ class DataProduct(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_74000@example.com",
+                    "google_group": "tf-test-analysts-_88722@example.com",
                 },
             }])
         ```
@@ -584,7 +603,7 @@ class DataProduct(pulumi.CustomResource):
                     "display_name": "Data Analyst - Updated",
                     "description": "In-place update verified",
                     "principal": {
-                        "google_group": "tf-test-analysts-_75125@example.com",
+                        "google_group": "tf-test-analysts-_39249@example.com",
                     },
                 },
                 {
@@ -592,7 +611,7 @@ class DataProduct(pulumi.CustomResource):
                     "group_id": "scientist",
                     "display_name": "Data Scientist",
                     "principal": {
-                        "google_group": "tf-test-scientists-_88722@example.com",
+                        "google_group": "tf-test-scientists-_74391@example.com",
                     },
                 },
             ])
@@ -603,24 +622,17 @@ class DataProduct(pulumi.CustomResource):
         DataProduct can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}`
-
         * `{{project}}/{{location}}/{{data_product_id}}`
-
         * `{{location}}/{{data_product_id}}`
 
         When using the `pulumi import` command, DataProduct can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/dataProduct:DataProduct default projects/{{project}}/locations/{{location}}/dataProducts/{{data_product_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{project}}/{{location}}/{{data_product_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{location}}/{{data_product_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataProductArgs args: The arguments to use to populate this resource's properties.

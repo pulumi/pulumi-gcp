@@ -89,22 +89,14 @@ import javax.annotation.Nullable;
  * Deployment can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/apps/{{app}}/deployments/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{app}}/{{name}}`
- * 
  * * `{{location}}/{{app}}/{{name}}`
  * 
  * When using the `pulumi import` command, Deployment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:ces/deployment:Deployment default projects/{{project}}/locations/{{location}}/apps/{{app}}/deployments/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:ces/deployment:Deployment default {{project}}/{{location}}/{{app}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:ces/deployment:Deployment default {{location}}/{{app}}/{{name}}
  * ```
  * 

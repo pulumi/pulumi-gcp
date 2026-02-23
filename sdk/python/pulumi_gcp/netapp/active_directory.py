@@ -42,12 +42,15 @@ class ActiveDirectoryArgs:
                  site: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ActiveDirectory resource.
+
         :param pulumi.Input[_builtins.str] dns: Comma separated list of DNS server IP addresses for the Active Directory domain.
         :param pulumi.Input[_builtins.str] domain: Fully qualified domain name for the Active Directory domain.
         :param pulumi.Input[_builtins.str] location: Name of the region for the policy to apply to.
         :param pulumi.Input[_builtins.str] net_bios_prefix: NetBIOS name prefix of the server to be created.
                A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
                `\\\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\\SHARE_NAME`
+        :param pulumi.Input[_builtins.str] password: Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] username: Username for the Active Directory account with permissions to create the compute account within the specified organizational unit.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] administrators: Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
         :param pulumi.Input[_builtins.bool] aes_encryption: Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
@@ -162,6 +165,10 @@ class ActiveDirectoryArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Input[_builtins.str]:
+        """
+        Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -399,6 +406,7 @@ class _ActiveDirectoryState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ActiveDirectory resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] administrators: Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
         :param pulumi.Input[_builtins.bool] aes_encryption: Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_operators: Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
@@ -424,6 +432,8 @@ class _ActiveDirectoryState:
                This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
         :param pulumi.Input[_builtins.str] organizational_unit: Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
                Defaults to `CN=Computers` if left empty.
+        :param pulumi.Input[_builtins.str] password: Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -714,6 +724,10 @@ class _ActiveDirectoryState:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -892,24 +906,17 @@ class ActiveDirectory(pulumi.CustomResource):
         ActiveDirectory can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, ActiveDirectory can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -936,6 +943,8 @@ class ActiveDirectory(pulumi.CustomResource):
                This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
         :param pulumi.Input[_builtins.str] organizational_unit: Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
                Defaults to `CN=Computers` if left empty.
+        :param pulumi.Input[_builtins.str] password: Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_operators: Domain accounts that require elevated privileges such as `SeSecurityPrivilege` to manage security logs. Comma-separated list.
@@ -1005,24 +1014,17 @@ class ActiveDirectory(pulumi.CustomResource):
         ActiveDirectory can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, ActiveDirectory can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ActiveDirectoryArgs args: The arguments to use to populate this resource's properties.
@@ -1177,6 +1179,8 @@ class ActiveDirectory(pulumi.CustomResource):
                This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
         :param pulumi.Input[_builtins.str] organizational_unit: Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
                Defaults to `CN=Computers` if left empty.
+        :param pulumi.Input[_builtins.str] password: Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1374,6 +1378,10 @@ class ActiveDirectory(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
+        """
+        Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
         return pulumi.get(self, "password")
 
     @_builtins.property

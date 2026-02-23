@@ -38,6 +38,7 @@ class DataTransferConfigArgs:
                  service_account_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataTransferConfig resource.
+
         :param pulumi.Input[_builtins.str] data_source_id: The data source id. Cannot be changed once the transfer config is created.
         :param pulumi.Input[_builtins.str] display_name: The user specified display name for the transfer config.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
@@ -344,6 +345,7 @@ class _DataTransferConfigState:
                  service_account_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataTransferConfig resources.
+
         :param pulumi.Input[_builtins.int] data_refresh_window_days: The number of days to look back to automatically refresh the data.
                For example, if dataRefreshWindowDays = 10, then every day BigQuery
                reingests data for [today-10, today-1], rather than ingesting data for
@@ -791,24 +793,17 @@ class DataTransferConfig(pulumi.CustomResource):
         Config can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_bigquery_data_transfer_config.default "{{project}} {{name}}"
         $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -978,24 +973,17 @@ class DataTransferConfig(pulumi.CustomResource):
         Config can be imported using any of these accepted formats:
 
         * `{{project}}/{{name}}`
-
         * `{{project}} {{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{project}}/{{name}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default "{{project}} {{name}}"
-        ```
-
-        ```sh
+        $ terraform import google_bigquery_data_transfer_config.default "{{project}} {{name}}"
         $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataTransferConfigArgs args: The arguments to use to populate this resource's properties.

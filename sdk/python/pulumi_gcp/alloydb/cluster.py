@@ -48,6 +48,7 @@ class ClusterArgs:
                  subscription_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[_builtins.str] location: The location where the alloydb cluster should reside.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
@@ -69,6 +70,10 @@ class ClusterArgs:
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
                Possible values: DEFAULT, FORCE
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the cluster.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the cluster will fail.
+               When the field is set to false, deleting the cluster is allowed.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -263,6 +268,12 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the cluster.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the cluster will fail.
+        When the field is set to false, deleting the cluster is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -521,6 +532,7 @@ class _ClusterState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -547,7 +559,12 @@ class _ClusterState:
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
                Possible values: DEFAULT, FORCE
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the cluster.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the cluster will fail.
+               When the field is set to false, deleting the cluster is allowed.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -813,6 +830,12 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the cluster.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the cluster will fail.
+        When the field is set to false, deleting the cluster is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -834,6 +857,9 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -1197,6 +1223,28 @@ class Cluster(pulumi.CustomResource):
                  subscription_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A managed alloydb cluster.
+
+        To get more information about Cluster, see:
+
+        * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+        * How-to Guides
+            * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+
+        > **Note:** Users can promote a secondary cluster to a primary cluster with the help of `cluster_type`.
+        To promote, users have to set the `cluster_type` property as `PRIMARY` and remove the `secondary_config` field from cluster configuration.
+        See Example.
+
+        Switchover is supported in terraform by refreshing the state of the terraform configurations.
+        The switchover operation still needs to be called outside of terraform.
+        After the switchover operation is completed successfully:
+          1. Refresh the state of the AlloyDB resources by running `pulumi up -refresh-only --auto-approve` .
+          2. Manually update the terraform configuration file(s) to match the actual state of the resources by modifying the `cluster_type` and `secondary_config` fields.
+          3. Verify the sync of terraform state by running `pulumi preview` and ensure that the infrastructure matches the configuration and no changes are required.
+
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `initial_user.password_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Alloydb Cluster Basic
@@ -1431,30 +1479,19 @@ class Cluster(pulumi.CustomResource):
         Cluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
-
         * `{{project}}/{{location}}/{{cluster_id}}`
-
         * `{{location}}/{{cluster_id}}`
-
         * `{{cluster_id}}`
 
         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/cluster:Cluster default {{project}}/{{location}}/{{cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/cluster:Cluster default {{location}}/{{cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/cluster:Cluster default {{cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1478,6 +1515,10 @@ class Cluster(pulumi.CustomResource):
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
                Possible values: DEFAULT, FORCE
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the cluster.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the cluster will fail.
+               When the field is set to false, deleting the cluster is allowed.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -1519,6 +1560,28 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A managed alloydb cluster.
+
+        To get more information about Cluster, see:
+
+        * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+        * How-to Guides
+            * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+
+        > **Note:** Users can promote a secondary cluster to a primary cluster with the help of `cluster_type`.
+        To promote, users have to set the `cluster_type` property as `PRIMARY` and remove the `secondary_config` field from cluster configuration.
+        See Example.
+
+        Switchover is supported in terraform by refreshing the state of the terraform configurations.
+        The switchover operation still needs to be called outside of terraform.
+        After the switchover operation is completed successfully:
+          1. Refresh the state of the AlloyDB resources by running `pulumi up -refresh-only --auto-approve` .
+          2. Manually update the terraform configuration file(s) to match the actual state of the resources by modifying the `cluster_type` and `secondary_config` fields.
+          3. Verify the sync of terraform state by running `pulumi preview` and ensure that the infrastructure matches the configuration and no changes are required.
+
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `initial_user.password_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Alloydb Cluster Basic
@@ -1753,30 +1816,19 @@ class Cluster(pulumi.CustomResource):
         Cluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
-
         * `{{project}}/{{location}}/{{cluster_id}}`
-
         * `{{location}}/{{cluster_id}}`
-
         * `{{cluster_id}}`
 
         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/cluster:Cluster default {{project}}/{{location}}/{{cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/cluster:Cluster default {{location}}/{{cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:alloydb/cluster:Cluster default {{cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.
@@ -1952,7 +2004,12 @@ class Cluster(pulumi.CustomResource):
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
                Possible values: DEFAULT, FORCE
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the cluster.
+               When the field is set to true or unset in Terraform state, a `pulumi up`
+               or `terraform destroy` that would delete the cluster will fail.
+               When the field is set to false, deleting the cluster is allowed.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -2145,6 +2202,12 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying the cluster.
+        When the field is set to true or unset in Terraform state, a `pulumi up`
+        or `terraform destroy` that would delete the cluster will fail.
+        When the field is set to false, deleting the cluster is allowed.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
@@ -2158,6 +2221,9 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

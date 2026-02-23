@@ -27,22 +27,17 @@ __all__ = [
     'InstanceNetworkConfigPrivateServiceConnectConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceAcceleratorArgsDict(TypedDict):
-        accelerator_type: pulumi.Input[_builtins.str]
-        """
-        The type of an accelator for a CDF instance.
-        Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
-        """
-        state: pulumi.Input[_builtins.str]
-        """
-        The type of an accelator for a CDF instance.
-        Possible values are: `ENABLED`, `DISABLED`.
-        """
-elif False:
-    InstanceAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAcceleratorArgsDict(TypedDict):
+    accelerator_type: pulumi.Input[_builtins.str]
+    """
+    The type of an accelator for a CDF instance.
+    Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
+    """
+    state: pulumi.Input[_builtins.str]
+    """
+    The type of an accelator for a CDF instance.
+    Possible values are: `ENABLED`, `DISABLED`.
+    """
 
 @pulumi.input_type
 class InstanceAcceleratorArgs:
@@ -85,14 +80,11 @@ class InstanceAcceleratorArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class InstanceCryptoKeyConfigArgsDict(TypedDict):
-        key_reference: pulumi.Input[_builtins.str]
-        """
-        The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
-        """
-elif False:
-    InstanceCryptoKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceCryptoKeyConfigArgsDict(TypedDict):
+    key_reference: pulumi.Input[_builtins.str]
+    """
+    The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
+    """
 
 @pulumi.input_type
 class InstanceCryptoKeyConfigArgs:
@@ -116,18 +108,15 @@ class InstanceCryptoKeyConfigArgs:
         pulumi.set(self, "key_reference", value)
 
 
-if not MYPY:
-    class InstanceEventPublishConfigArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Option to enable Event Publishing.
-        """
-        topic: pulumi.Input[_builtins.str]
-        """
-        The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
-        """
-elif False:
-    InstanceEventPublishConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceEventPublishConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Option to enable Event Publishing.
+    """
+    topic: pulumi.Input[_builtins.str]
+    """
+    The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
+    """
 
 @pulumi.input_type
 class InstanceEventPublishConfigArgs:
@@ -166,34 +155,31 @@ class InstanceEventPublishConfigArgs:
         pulumi.set(self, "topic", value)
 
 
-if not MYPY:
-    class InstanceNetworkConfigArgsDict(TypedDict):
-        connection_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
-        the corresponding tenant project from a predefined list of available connection modes.
-        If this field is unspecified for a private instance, VPC peering is used.
-        Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
-        """
-        ip_allocation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP range in CIDR notation to use for the managed Data Fusion instance
-        nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the network in the project with which the tenant project
-        will be peered for executing pipelines. In case of shared VPC where the network resides in another host
-        project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
-        """
-        private_service_connect_config: NotRequired[pulumi.Input['InstanceNetworkConfigPrivateServiceConnectConfigArgsDict']]
-        """
-        Optional. Configuration for Private Service Connect.
-        This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
-        Structure is documented below.
-        """
-elif False:
-    InstanceNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceNetworkConfigArgsDict(TypedDict):
+    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+    the corresponding tenant project from a predefined list of available connection modes.
+    If this field is unspecified for a private instance, VPC peering is used.
+    Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+    """
+    ip_allocation: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP range in CIDR notation to use for the managed Data Fusion instance
+    nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the network in the project with which the tenant project
+    will be peered for executing pipelines. In case of shared VPC where the network resides in another host
+    project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+    """
+    private_service_connect_config: NotRequired[pulumi.Input['InstanceNetworkConfigPrivateServiceConnectConfigArgsDict']]
+    """
+    Optional. Configuration for Private Service Connect.
+    This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceNetworkConfigArgs:
@@ -282,29 +268,26 @@ class InstanceNetworkConfigArgs:
         pulumi.set(self, "private_service_connect_config", value)
 
 
-if not MYPY:
-    class InstanceNetworkConfigPrivateServiceConnectConfigArgsDict(TypedDict):
-        effective_unreachable_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
-        The size of this block is /25. The format of this field is governed by RFC 4632.
-        """
-        network_attachment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The reference to the network attachment used to establish private connectivity.
-        It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
-        This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
-        """
-        unreachable_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
-        The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment.
-        This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses.
-        If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632.
-        """
-elif False:
-    InstanceNetworkConfigPrivateServiceConnectConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceNetworkConfigPrivateServiceConnectConfigArgsDict(TypedDict):
+    effective_unreachable_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
+    The size of this block is /25. The format of this field is governed by RFC 4632.
+    """
+    network_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The reference to the network attachment used to establish private connectivity.
+    It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+    This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+    """
+    unreachable_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
+    The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment.
+    This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses.
+    If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632.
+    """
 
 @pulumi.input_type
 class InstanceNetworkConfigPrivateServiceConnectConfigArgs:

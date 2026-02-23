@@ -57,13 +57,13 @@ import (
 //
 // ## Import
 //
-// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.  These bindings can be imported using the `org_id` and role, e.g.
+// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.  These bindings can be imported using the `orgId` and role, e.g.
 //
 // ```sh
-// $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
+// $ terraform import google_organization_iam_binding.my_org "your-org-id roles/viewer"
 // ```
 //
-// -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+// > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 //
 //	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type IAMBinding struct {

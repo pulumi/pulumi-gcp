@@ -43,17 +43,12 @@ __all__ = [
     'InstancePerformanceConfigIopsPerTbArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceDirectoryServicesArgsDict(TypedDict):
-        ldap: NotRequired[pulumi.Input['InstanceDirectoryServicesLdapArgsDict']]
-        """
-        Configuration for LDAP servers.
-        Structure is documented below.
-        """
-elif False:
-    InstanceDirectoryServicesArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDirectoryServicesArgsDict(TypedDict):
+    ldap: NotRequired[pulumi.Input['InstanceDirectoryServicesLdapArgsDict']]
+    """
+    Configuration for LDAP servers.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstanceDirectoryServicesArgs:
@@ -80,35 +75,32 @@ class InstanceDirectoryServicesArgs:
         pulumi.set(self, "ldap", value)
 
 
-if not MYPY:
-    class InstanceDirectoryServicesLdapArgsDict(TypedDict):
-        domain: pulumi.Input[_builtins.str]
-        """
-        The LDAP domain name in the format of `my-domain.com`.
-        """
-        servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The servers names are used for specifying the LDAP servers names.
-        The LDAP servers names can come with two formats:
-        1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
-        2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
-        All servers names must be in the same format: either all DNS names or all
-        IP addresses.
-        """
-        groups_ou: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The groups Organizational Unit (OU) is optional. This parameter is a hint
-        to allow faster lookup in the LDAP namespace. In case that this parameter
-        is not provided, Filestore instance will query the whole LDAP namespace.
-        """
-        users_ou: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The users Organizational Unit (OU) is optional. This parameter is a hint
-        to allow faster lookup in the LDAP namespace. In case that this parameter
-        is not provided, Filestore instance will query the whole LDAP namespace.
-        """
-elif False:
-    InstanceDirectoryServicesLdapArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDirectoryServicesLdapArgsDict(TypedDict):
+    domain: pulumi.Input[_builtins.str]
+    """
+    The LDAP domain name in the format of `my-domain.com`.
+    """
+    servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The servers names are used for specifying the LDAP servers names.
+    The LDAP servers names can come with two formats:
+    1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
+    2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
+    All servers names must be in the same format: either all DNS names or all
+    IP addresses.
+    """
+    groups_ou: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The groups Organizational Unit (OU) is optional. This parameter is a hint
+    to allow faster lookup in the LDAP namespace. In case that this parameter
+    is not provided, Filestore instance will query the whole LDAP namespace.
+    """
+    users_ou: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The users Organizational Unit (OU) is optional. This parameter is a hint
+    to allow faster lookup in the LDAP namespace. In case that this parameter
+    is not provided, Filestore instance will query the whole LDAP namespace.
+    """
 
 @pulumi.input_type
 class InstanceDirectoryServicesLdapArgs:
@@ -197,20 +189,17 @@ class InstanceDirectoryServicesLdapArgs:
         pulumi.set(self, "users_ou", value)
 
 
-if not MYPY:
-    class InstanceEffectiveReplicationArgsDict(TypedDict):
-        replicas: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgsDict']]]]
-        """
-        The replication role.
-        Structure is documented below.
-        """
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The replication role.
-        """
-elif False:
-    InstanceEffectiveReplicationArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceEffectiveReplicationArgsDict(TypedDict):
+    replicas: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgsDict']]]]
+    """
+    The replication role.
+    Structure is documented below.
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The replication role.
+    """
 
 @pulumi.input_type
 class InstanceEffectiveReplicationArgs:
@@ -255,31 +244,28 @@ class InstanceEffectiveReplicationArgs:
         pulumi.set(self, "role", value)
 
 
-if not MYPY:
-    class InstanceEffectiveReplicationReplicaArgsDict(TypedDict):
-        last_active_sync_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
-        """
-        peer_instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The peer instance.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The replica state
-        """
-        state_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        Output only. Additional information about the replication state, if available.
-        """
-elif False:
-    InstanceEffectiveReplicationReplicaArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceEffectiveReplicationReplicaArgsDict(TypedDict):
+    last_active_sync_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+    Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+    """
+    peer_instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The peer instance.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The replica state
+    """
+    state_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Output only. Additional information about the replication state, if available.
+    """
 
 @pulumi.input_type
 class InstanceEffectiveReplicationReplicaArgs:
@@ -362,30 +348,27 @@ class InstanceEffectiveReplicationReplicaArgs:
         pulumi.set(self, "state_reasons", value)
 
 
-if not MYPY:
-    class InstanceFileSharesArgsDict(TypedDict):
-        capacity_gb: pulumi.Input[_builtins.int]
-        """
-        File share capacity in GiB. This must be at least 1024 GiB
-        for the standard tier, or 2560 GiB for the premium tier.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the fileshare (16 characters or less)
-        """
-        nfs_export_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgsDict']]]]
-        """
-        Nfs Export Options. There is a limit of 10 export options per file share.
-        Structure is documented below.
-        """
-        source_backup: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource name of the backup, in the format
-        projects/{projectId}/locations/{locationId}/backups/{backupId},
-        that this file share has been restored from.
-        """
-elif False:
-    InstanceFileSharesArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceFileSharesArgsDict(TypedDict):
+    capacity_gb: pulumi.Input[_builtins.int]
+    """
+    File share capacity in GiB. This must be at least 1024 GiB
+    for the standard tier, or 2560 GiB for the premium tier.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the fileshare (16 characters or less)
+    """
+    nfs_export_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgsDict']]]]
+    """
+    Nfs Export Options. There is a limit of 10 export options per file share.
+    Structure is documented below.
+    """
+    source_backup: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource name of the backup, in the format
+    projects/{projectId}/locations/{locationId}/backups/{backupId},
+    that this file share has been restored from.
+    """
 
 @pulumi.input_type
 class InstanceFileSharesArgs:
@@ -464,47 +447,44 @@ class InstanceFileSharesArgs:
         pulumi.set(self, "source_backup", value)
 
 
-if not MYPY:
-    class InstanceFileSharesNfsExportOptionArgsDict(TypedDict):
-        access_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Either READ_ONLY, for allowing only read requests on the exported directory,
-        or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
-        Default value is `READ_WRITE`.
-        Possible values are: `READ_ONLY`, `READ_WRITE`.
-        """
-        anon_gid: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        An integer representing the anonymous group id with a default value of 65534.
-        Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
-        if this field is specified for other squashMode settings.
-        """
-        anon_uid: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        An integer representing the anonymous user id with a default value of 65534.
-        Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
-        if this field is specified for other squashMode settings.
-        """
-        ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
-        Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
-        The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The source VPC network for `ip_ranges`.
-        Required for instances using Private Service Connect, optional otherwise.
-        """
-        squash_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
-        for not allowing root access. The default is NO_ROOT_SQUASH.
-        Default value is `NO_ROOT_SQUASH`.
-        Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
-        """
-elif False:
-    InstanceFileSharesNfsExportOptionArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceFileSharesNfsExportOptionArgsDict(TypedDict):
+    access_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Either READ_ONLY, for allowing only read requests on the exported directory,
+    or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+    Default value is `READ_WRITE`.
+    Possible values are: `READ_ONLY`, `READ_WRITE`.
+    """
+    anon_gid: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    An integer representing the anonymous group id with a default value of 65534.
+    Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+    if this field is specified for other squashMode settings.
+    """
+    anon_uid: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    An integer representing the anonymous user id with a default value of 65534.
+    Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+    if this field is specified for other squashMode settings.
+    """
+    ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+    Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+    The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The source VPC network for `ip_ranges`.
+    Required for instances using Private Service Connect, optional otherwise.
+    """
+    squash_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+    for not allowing root access. The default is NO_ROOT_SQUASH.
+    Default value is `NO_ROOT_SQUASH`.
+    Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
+    """
 
 @pulumi.input_type
 class InstanceFileSharesNfsExportOptionArgs:
@@ -635,21 +615,18 @@ class InstanceFileSharesNfsExportOptionArgs:
         pulumi.set(self, "squash_mode", value)
 
 
-if not MYPY:
-    class InstanceInitialReplicationArgsDict(TypedDict):
-        replicas: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgsDict']]]]
-        """
-        The replication role.
-        Structure is documented below.
-        """
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The replication role.
-        Default value is `STANDBY`.
-        Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
-        """
-elif False:
-    InstanceInitialReplicationArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceInitialReplicationArgsDict(TypedDict):
+    replicas: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgsDict']]]]
+    """
+    The replication role.
+    Structure is documented below.
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The replication role.
+    Default value is `STANDBY`.
+    Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
+    """
 
 @pulumi.input_type
 class InstanceInitialReplicationArgs:
@@ -696,14 +673,11 @@ class InstanceInitialReplicationArgs:
         pulumi.set(self, "role", value)
 
 
-if not MYPY:
-    class InstanceInitialReplicationReplicaArgsDict(TypedDict):
-        peer_instance: pulumi.Input[_builtins.str]
-        """
-        The peer instance.
-        """
-elif False:
-    InstanceInitialReplicationReplicaArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceInitialReplicationReplicaArgsDict(TypedDict):
+    peer_instance: pulumi.Input[_builtins.str]
+    """
+    The peer instance.
+    """
 
 @pulumi.input_type
 class InstanceInitialReplicationReplicaArgs:
@@ -727,45 +701,42 @@ class InstanceInitialReplicationReplicaArgs:
         pulumi.set(self, "peer_instance", value)
 
 
-if not MYPY:
-    class InstanceNetworkArgsDict(TypedDict):
-        modes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        IP versions for which the instance has
-        IP addresses assigned.
-        Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
-        """
-        network: pulumi.Input[_builtins.str]
-        """
-        The name of the GCE VPC network to which the
-        instance is connected.
-        """
-        connect_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The network connect mode of the Filestore instance.
-        If not provided, the connect mode defaults to
-        DIRECT_PEERING.
-        Default value is `DIRECT_PEERING`.
-        Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
-        """
-        ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        A list of IPv4 or IPv6 addresses.
-        """
-        psc_config: NotRequired[pulumi.Input['InstanceNetworkPscConfigArgsDict']]
-        """
-        Private Service Connect configuration.
-        Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
-        Structure is documented below.
-        """
-        reserved_ip_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A /29 CIDR block that identifies the range of IP
-        addresses reserved for this instance.
-        """
-elif False:
-    InstanceNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceNetworkArgsDict(TypedDict):
+    modes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    IP versions for which the instance has
+    IP addresses assigned.
+    Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
+    """
+    network: pulumi.Input[_builtins.str]
+    """
+    The name of the GCE VPC network to which the
+    instance is connected.
+    """
+    connect_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The network connect mode of the Filestore instance.
+    If not provided, the connect mode defaults to
+    DIRECT_PEERING.
+    Default value is `DIRECT_PEERING`.
+    Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
+    """
+    ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    A list of IPv4 or IPv6 addresses.
+    """
+    psc_config: NotRequired[pulumi.Input['InstanceNetworkPscConfigArgsDict']]
+    """
+    Private Service Connect configuration.
+    Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+    Structure is documented below.
+    """
+    reserved_ip_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A /29 CIDR block that identifies the range of IP
+    addresses reserved for this instance.
+    """
 
 @pulumi.input_type
 class InstanceNetworkArgs:
@@ -890,17 +861,14 @@ class InstanceNetworkArgs:
         pulumi.set(self, "reserved_ip_range", value)
 
 
-if not MYPY:
-    class InstanceNetworkPscConfigArgsDict(TypedDict):
-        endpoint_project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Consumer service project in which the Private Service Connect endpoint
-        would be set up. This is optional, and only relevant in case the network
-        is a shared VPC. If this is not specified, the endpoint would be set up
-        in the VPC host project.
-        """
-elif False:
-    InstanceNetworkPscConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceNetworkPscConfigArgsDict(TypedDict):
+    endpoint_project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Consumer service project in which the Private Service Connect endpoint
+    would be set up. This is optional, and only relevant in case the network
+    is a shared VPC. If this is not specified, the endpoint would be set up
+    in the VPC host project.
+    """
 
 @pulumi.input_type
 class InstanceNetworkPscConfigArgs:
@@ -931,23 +899,20 @@ class InstanceNetworkPscConfigArgs:
         pulumi.set(self, "endpoint_project", value)
 
 
-if not MYPY:
-    class InstancePerformanceConfigArgsDict(TypedDict):
-        fixed_iops: NotRequired[pulumi.Input['InstancePerformanceConfigFixedIopsArgsDict']]
-        """
-        The instance will have a fixed provisioned IOPS value,
-        which will remain constant regardless of instance
-        capacity.
-        Structure is documented below.
-        """
-        iops_per_tb: NotRequired[pulumi.Input['InstancePerformanceConfigIopsPerTbArgsDict']]
-        """
-        The instance provisioned IOPS will change dynamically
-        based on the capacity of the instance.
-        Structure is documented below.
-        """
-elif False:
-    InstancePerformanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePerformanceConfigArgsDict(TypedDict):
+    fixed_iops: NotRequired[pulumi.Input['InstancePerformanceConfigFixedIopsArgsDict']]
+    """
+    The instance will have a fixed provisioned IOPS value,
+    which will remain constant regardless of instance
+    capacity.
+    Structure is documented below.
+    """
+    iops_per_tb: NotRequired[pulumi.Input['InstancePerformanceConfigIopsPerTbArgsDict']]
+    """
+    The instance provisioned IOPS will change dynamically
+    based on the capacity of the instance.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class InstancePerformanceConfigArgs:
@@ -998,15 +963,12 @@ class InstancePerformanceConfigArgs:
         pulumi.set(self, "iops_per_tb", value)
 
 
-if not MYPY:
-    class InstancePerformanceConfigFixedIopsArgsDict(TypedDict):
-        max_iops: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of IOPS to provision for the instance.
-        max_iops must be in multiple of 1000.
-        """
-elif False:
-    InstancePerformanceConfigFixedIopsArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePerformanceConfigFixedIopsArgsDict(TypedDict):
+    max_iops: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of IOPS to provision for the instance.
+    max_iops must be in multiple of 1000.
+    """
 
 @pulumi.input_type
 class InstancePerformanceConfigFixedIopsArgs:
@@ -1033,18 +995,15 @@ class InstancePerformanceConfigFixedIopsArgs:
         pulumi.set(self, "max_iops", value)
 
 
-if not MYPY:
-    class InstancePerformanceConfigIopsPerTbArgsDict(TypedDict):
-        max_iops_per_tb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The instance max IOPS will be calculated by multiplying
-        the capacity of the instance (TB) by max_iops_per_tb,
-        and rounding to the nearest 1000. The instance max IOPS
-        will be changed dynamically based on the instance
-        capacity.
-        """
-elif False:
-    InstancePerformanceConfigIopsPerTbArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePerformanceConfigIopsPerTbArgsDict(TypedDict):
+    max_iops_per_tb: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The instance max IOPS will be calculated by multiplying
+    the capacity of the instance (TB) by max_iops_per_tb,
+    and rounding to the nearest 1000. The instance max IOPS
+    will be changed dynamically based on the instance
+    capacity.
+    """
 
 @pulumi.input_type
 class InstancePerformanceConfigIopsPerTbArgs:

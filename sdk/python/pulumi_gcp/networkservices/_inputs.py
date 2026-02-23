@@ -15,6 +15,16 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AgentGatewayAgentGatewayCardArgs',
+    'AgentGatewayAgentGatewayCardArgsDict',
+    'AgentGatewayGoogleManagedArgs',
+    'AgentGatewayGoogleManagedArgsDict',
+    'AgentGatewayNetworkConfigArgs',
+    'AgentGatewayNetworkConfigArgsDict',
+    'AgentGatewayNetworkConfigEgressArgs',
+    'AgentGatewayNetworkConfigEgressArgsDict',
+    'AgentGatewaySelfManagedArgs',
+    'AgentGatewaySelfManagedArgsDict',
     'EdgeCacheKeysetPublicKeyArgs',
     'EdgeCacheKeysetPublicKeyArgsDict',
     'EdgeCacheKeysetValidationSharedKeyArgs',
@@ -173,6 +183,8 @@ __all__ = [
     'MulticastDomainGroupStateArgsDict',
     'MulticastDomainStateArgs',
     'MulticastDomainStateArgsDict',
+    'MulticastDomainUllMulticastDomainArgs',
+    'MulticastDomainUllMulticastDomainArgsDict',
     'MulticastGroupConsumerActivationLogConfigArgs',
     'MulticastGroupConsumerActivationLogConfigArgsDict',
     'MulticastGroupConsumerActivationStateArgs',
@@ -219,28 +231,222 @@ __all__ = [
     'WasmPluginVersionArgsDict',
 ]
 
-MYPY = False
+class AgentGatewayAgentGatewayCardArgsDict(TypedDict):
+    mtls_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    mTLS Endpoint associated with this AgentGateway.
+    """
+    root_certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    (Output)
+    Root Certificates for Agents to validate this AgentGateway.
+    """
+    service_extensions_service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Service Account used by Service Extensions to operate.
+    """
 
-if not MYPY:
-    class EdgeCacheKeysetPublicKeyArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
+@pulumi.input_type
+class AgentGatewayAgentGatewayCardArgs:
+    def __init__(__self__, *,
+                 mtls_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 root_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_extensions_service_account: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        The ID of the public key. The ID must be 1-63 characters long, and comply with RFC1035.
-        The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]*
-        which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+        :param pulumi.Input[_builtins.str] mtls_endpoint: (Output)
+               mTLS Endpoint associated with this AgentGateway.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] root_certificates: (Output)
+               Root Certificates for Agents to validate this AgentGateway.
+        :param pulumi.Input[_builtins.str] service_extensions_service_account: (Output)
+               Service Account used by Service Extensions to operate.
         """
-        managed: NotRequired[pulumi.Input[_builtins.bool]]
+        if mtls_endpoint is not None:
+            pulumi.set(__self__, "mtls_endpoint", mtls_endpoint)
+        if root_certificates is not None:
+            pulumi.set(__self__, "root_certificates", root_certificates)
+        if service_extensions_service_account is not None:
+            pulumi.set(__self__, "service_extensions_service_account", service_extensions_service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="mtlsEndpoint")
+    def mtls_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Set to true to have the CDN automatically manage this public key value.
+        (Output)
+        mTLS Endpoint associated with this AgentGateway.
         """
-        value: NotRequired[pulumi.Input[_builtins.str]]
+        return pulumi.get(self, "mtls_endpoint")
+
+    @mtls_endpoint.setter
+    def mtls_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mtls_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rootCertificates")
+    def root_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
-        Representations or encodings of the public key other than this will be rejected with an error.
-        **Note**: This property is sensitive and will not be displayed in the plan.
+        (Output)
+        Root Certificates for Agents to validate this AgentGateway.
         """
-elif False:
-    EdgeCacheKeysetPublicKeyArgsDict: TypeAlias = Mapping[str, Any]
+        return pulumi.get(self, "root_certificates")
+
+    @root_certificates.setter
+    def root_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "root_certificates", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceExtensionsServiceAccount")
+    def service_extensions_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Service Account used by Service Extensions to operate.
+        """
+        return pulumi.get(self, "service_extensions_service_account")
+
+    @service_extensions_service_account.setter
+    def service_extensions_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_extensions_service_account", value)
+
+
+class AgentGatewayGoogleManagedArgsDict(TypedDict):
+    governed_access_path: pulumi.Input[_builtins.str]
+    """
+    Operating Mode of Agent Gateway.
+    Possible values are: `AGENT_TO_ANYWHERE`, `CLIENT_TO_AGENT`.
+    """
+
+@pulumi.input_type
+class AgentGatewayGoogleManagedArgs:
+    def __init__(__self__, *,
+                 governed_access_path: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] governed_access_path: Operating Mode of Agent Gateway.
+               Possible values are: `AGENT_TO_ANYWHERE`, `CLIENT_TO_AGENT`.
+        """
+        pulumi.set(__self__, "governed_access_path", governed_access_path)
+
+    @_builtins.property
+    @pulumi.getter(name="governedAccessPath")
+    def governed_access_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        Operating Mode of Agent Gateway.
+        Possible values are: `AGENT_TO_ANYWHERE`, `CLIENT_TO_AGENT`.
+        """
+        return pulumi.get(self, "governed_access_path")
+
+    @governed_access_path.setter
+    def governed_access_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "governed_access_path", value)
+
+
+class AgentGatewayNetworkConfigArgsDict(TypedDict):
+    egress: pulumi.Input['AgentGatewayNetworkConfigEgressArgsDict']
+    """
+    Optional PSC-Interface network attachment for connectivity to your
+    private VPCs network.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AgentGatewayNetworkConfigArgs:
+    def __init__(__self__, *,
+                 egress: pulumi.Input['AgentGatewayNetworkConfigEgressArgs']):
+        """
+        :param pulumi.Input['AgentGatewayNetworkConfigEgressArgs'] egress: Optional PSC-Interface network attachment for connectivity to your
+               private VPCs network.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "egress", egress)
+
+    @_builtins.property
+    @pulumi.getter
+    def egress(self) -> pulumi.Input['AgentGatewayNetworkConfigEgressArgs']:
+        """
+        Optional PSC-Interface network attachment for connectivity to your
+        private VPCs network.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "egress")
+
+    @egress.setter
+    def egress(self, value: pulumi.Input['AgentGatewayNetworkConfigEgressArgs']):
+        pulumi.set(self, "egress", value)
+
+
+class AgentGatewayNetworkConfigEgressArgsDict(TypedDict):
+    network_attachment: pulumi.Input[_builtins.str]
+    """
+    The URI of the Network Attachment resource.
+    """
+
+@pulumi.input_type
+class AgentGatewayNetworkConfigEgressArgs:
+    def __init__(__self__, *,
+                 network_attachment: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] network_attachment: The URI of the Network Attachment resource.
+        """
+        pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URI of the Network Attachment resource.
+        """
+        return pulumi.get(self, "network_attachment")
+
+    @network_attachment.setter
+    def network_attachment(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "network_attachment", value)
+
+
+class AgentGatewaySelfManagedArgsDict(TypedDict):
+    resource_uri: pulumi.Input[_builtins.str]
+    """
+    A supported Google Cloud networking proxy in the Project and Location.
+    """
+
+@pulumi.input_type
+class AgentGatewaySelfManagedArgs:
+    def __init__(__self__, *,
+                 resource_uri: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] resource_uri: A supported Google Cloud networking proxy in the Project and Location.
+        """
+        pulumi.set(__self__, "resource_uri", resource_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceUri")
+    def resource_uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        A supported Google Cloud networking proxy in the Project and Location.
+        """
+        return pulumi.get(self, "resource_uri")
+
+    @resource_uri.setter
+    def resource_uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "resource_uri", value)
+
+
+class EdgeCacheKeysetPublicKeyArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    The ID of the public key. The ID must be 1-63 characters long, and comply with RFC1035.
+    The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]*
+    which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+    """
+    managed: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to true to have the CDN automatically manage this public key value.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
+    Representations or encodings of the public key other than this will be rejected with an error.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class EdgeCacheKeysetPublicKeyArgs:
@@ -304,19 +510,16 @@ class EdgeCacheKeysetPublicKeyArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class EdgeCacheKeysetValidationSharedKeyArgsDict(TypedDict):
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The name of the secret version in Secret Manager.
-        The resource name of the secret version must be in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the secrets themselves.
-        The secrets must be at least 16 bytes large.  The recommended secret size depends on the signature algorithm you are using.
-        * If you are using HMAC-SHA1, we suggest 20-byte secrets.
-        * If you are using HMAC-SHA256, we suggest 32-byte secrets.
-        See RFC 2104, Section 3 for more details on these recommendations.
-        """
-elif False:
-    EdgeCacheKeysetValidationSharedKeyArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheKeysetValidationSharedKeyArgsDict(TypedDict):
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The name of the secret version in Secret Manager.
+    The resource name of the secret version must be in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the secrets themselves.
+    The secrets must be at least 16 bytes large.  The recommended secret size depends on the signature algorithm you are using.
+    * If you are using HMAC-SHA1, we suggest 20-byte secrets.
+    * If you are using HMAC-SHA256, we suggest 32-byte secrets.
+    See RFC 2104, Section 3 for more details on these recommendations.
+    """
 
 @pulumi.input_type
 class EdgeCacheKeysetValidationSharedKeyArgs:
@@ -350,24 +553,21 @@ class EdgeCacheKeysetValidationSharedKeyArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class EdgeCacheOriginAwsV4AuthenticationArgsDict(TypedDict):
-        access_key_id: pulumi.Input[_builtins.str]
-        """
-        The access key ID your origin uses to identify the key.
-        """
-        origin_region: pulumi.Input[_builtins.str]
-        """
-        The name of the AWS region that your origin is in.
-        """
-        secret_access_key_version: pulumi.Input[_builtins.str]
-        """
-        The Secret Manager secret version of the secret access key used by your origin.
+class EdgeCacheOriginAwsV4AuthenticationArgsDict(TypedDict):
+    access_key_id: pulumi.Input[_builtins.str]
+    """
+    The access key ID your origin uses to identify the key.
+    """
+    origin_region: pulumi.Input[_builtins.str]
+    """
+    The name of the AWS region that your origin is in.
+    """
+    secret_access_key_version: pulumi.Input[_builtins.str]
+    """
+    The Secret Manager secret version of the secret access key used by your origin.
 
-        This is the resource name of the secret version in the format 'projects/*/secrets/*/versions/*' where the '*' values are replaced by the project, secret, and version you require.
-        """
-elif False:
-    EdgeCacheOriginAwsV4AuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+    This is the resource name of the secret version in the format 'projects/*/secrets/*/versions/*' where the '*' values are replaced by the project, secret, and version you require.
+    """
 
 @pulumi.input_type
 class EdgeCacheOriginAwsV4AuthenticationArgs:
@@ -425,17 +625,14 @@ class EdgeCacheOriginAwsV4AuthenticationArgs:
         pulumi.set(self, "secret_access_key_version", value)
 
 
-if not MYPY:
-    class EdgeCacheOriginFlexShieldingArgsDict(TypedDict):
-        flex_shielding_regions: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whenever possible, content will be fetched from origin and cached in or
-        near the specified origin. Best effort.
-        You must specify exactly one FlexShieldingRegion.
-        Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
-        """
-elif False:
-    EdgeCacheOriginFlexShieldingArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheOriginFlexShieldingArgsDict(TypedDict):
+    flex_shielding_regions: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whenever possible, content will be fetched from origin and cached in or
+    near the specified origin. Best effort.
+    You must specify exactly one FlexShieldingRegion.
+    Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+    """
 
 @pulumi.input_type
 class EdgeCacheOriginFlexShieldingArgs:
@@ -466,22 +663,19 @@ class EdgeCacheOriginFlexShieldingArgs:
         pulumi.set(self, "flex_shielding_regions", value)
 
 
-if not MYPY:
-    class EdgeCacheOriginOriginOverrideActionArgsDict(TypedDict):
-        header_action: NotRequired[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArgsDict']]
-        """
-        The header actions, including adding and removing
-        headers, for request handled by this origin.
-        Structure is documented below.
-        """
-        url_rewrite: NotRequired[pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArgsDict']]
-        """
-        The URL rewrite configuration for request that are
-        handled by this origin.
-        Structure is documented below.
-        """
-elif False:
-    EdgeCacheOriginOriginOverrideActionArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheOriginOriginOverrideActionArgsDict(TypedDict):
+    header_action: NotRequired[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArgsDict']]
+    """
+    The header actions, including adding and removing
+    headers, for request handled by this origin.
+    Structure is documented below.
+    """
+    url_rewrite: NotRequired[pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArgsDict']]
+    """
+    The URL rewrite configuration for request that are
+    handled by this origin.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EdgeCacheOriginOriginOverrideActionArgs:
@@ -530,16 +724,13 @@ class EdgeCacheOriginOriginOverrideActionArgs:
         pulumi.set(self, "url_rewrite", value)
 
 
-if not MYPY:
-    class EdgeCacheOriginOriginOverrideActionHeaderActionArgsDict(TypedDict):
-        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgsDict']]]]
-        """
-        Describes a header to add.
-        You may add a maximum of 25 request headers.
-        Structure is documented below.
-        """
-elif False:
-    EdgeCacheOriginOriginOverrideActionHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheOriginOriginOverrideActionHeaderActionArgsDict(TypedDict):
+    request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgsDict']]]]
+    """
+    Describes a header to add.
+    You may add a maximum of 25 request headers.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EdgeCacheOriginOriginOverrideActionHeaderActionArgs:
@@ -568,27 +759,24 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionArgs:
         pulumi.set(self, "request_headers_to_adds", value)
 
 
-if not MYPY:
-    class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgsDict(TypedDict):
-        header_name: pulumi.Input[_builtins.str]
-        """
-        The name of the header to add.
-        """
-        header_value: pulumi.Input[_builtins.str]
-        """
-        The value of the header to add.
-        """
-        replace: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to replace all existing headers with the same name.
-        By default, added header values are appended
-        to the response or request headers with the
-        same field names. The added values are
-        separated by commas.
-        To overwrite existing values, set `replace` to `true`.
-        """
-elif False:
-    EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+    header_name: pulumi.Input[_builtins.str]
+    """
+    The name of the header to add.
+    """
+    header_value: pulumi.Input[_builtins.str]
+    """
+    The value of the header to add.
+    """
+    replace: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to replace all existing headers with the same name.
+    By default, added header values are appended
+    to the response or request headers with the
+    same field names. The added values are
+    separated by commas.
+    To overwrite existing values, set `replace` to `true`.
+    """
 
 @pulumi.input_type
 class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs:
@@ -653,17 +841,14 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs:
         pulumi.set(self, "replace", value)
 
 
-if not MYPY:
-    class EdgeCacheOriginOriginOverrideActionUrlRewriteArgsDict(TypedDict):
-        host_rewrite: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prior to forwarding the request to the selected
-        origin, the request's host header is replaced with
-        contents of the hostRewrite.
-        This value must be between 1 and 255 characters.
-        """
-elif False:
-    EdgeCacheOriginOriginOverrideActionUrlRewriteArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheOriginOriginOverrideActionUrlRewriteArgsDict(TypedDict):
+    host_rewrite: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prior to forwarding the request to the selected
+    origin, the request's host header is replaced with
+    contents of the hostRewrite.
+    This value must be between 1 and 255 characters.
+    """
 
 @pulumi.input_type
 class EdgeCacheOriginOriginOverrideActionUrlRewriteArgs:
@@ -694,17 +879,14 @@ class EdgeCacheOriginOriginOverrideActionUrlRewriteArgs:
         pulumi.set(self, "host_rewrite", value)
 
 
-if not MYPY:
-    class EdgeCacheOriginOriginRedirectArgsDict(TypedDict):
-        redirect_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of redirect response codes that the CDN
-        follows. Values of
-        [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
-        are accepted.
-        """
-elif False:
-    EdgeCacheOriginOriginRedirectArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheOriginOriginRedirectArgsDict(TypedDict):
+    redirect_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of redirect response codes that the CDN
+    follows. Values of
+    [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
+    are accepted.
+    """
 
 @pulumi.input_type
 class EdgeCacheOriginOriginRedirectArgs:
@@ -735,39 +917,36 @@ class EdgeCacheOriginOriginRedirectArgs:
         pulumi.set(self, "redirect_conditions", value)
 
 
-if not MYPY:
-    class EdgeCacheOriginTimeoutArgsDict(TypedDict):
-        connect_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum duration to wait for a single origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
-        Defaults to 5 seconds. The timeout must be a value between 1s and 15s.
-        The connectTimeout capped by the deadline set by the request's maxAttemptsTimeout.  The last connection attempt may have a smaller connectTimeout in order to adhere to the overall maxAttemptsTimeout.
-        """
-        max_attempts_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum time across all connection attempts to the origin, including failover origins, before returning an error to the client. A HTTP 504 will be returned if the timeout is reached before a response is returned.
-        Defaults to 15 seconds. The timeout must be a value between 1s and 30s.
-        If a failoverOrigin is specified, the maxAttemptsTimeout of the first configured origin sets the deadline for all connection attempts across all failoverOrigins.
-        """
-        read_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum duration to wait between reads of a single HTTP connection/stream.
-        Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
-        The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
-        If the response headers have already been written to the connection, the response will be truncated and logged.
+class EdgeCacheOriginTimeoutArgsDict(TypedDict):
+    connect_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum duration to wait for a single origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
+    Defaults to 5 seconds. The timeout must be a value between 1s and 15s.
+    The connectTimeout capped by the deadline set by the request's maxAttemptsTimeout.  The last connection attempt may have a smaller connectTimeout in order to adhere to the overall maxAttemptsTimeout.
+    """
+    max_attempts_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum time across all connection attempts to the origin, including failover origins, before returning an error to the client. A HTTP 504 will be returned if the timeout is reached before a response is returned.
+    Defaults to 15 seconds. The timeout must be a value between 1s and 30s.
+    If a failoverOrigin is specified, the maxAttemptsTimeout of the first configured origin sets the deadline for all connection attempts across all failoverOrigins.
+    """
+    read_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum duration to wait between reads of a single HTTP connection/stream.
+    Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
+    The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
+    If the response headers have already been written to the connection, the response will be truncated and logged.
 
-        <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
-        """
-        response_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum duration to wait for the last byte of a response to arrive when reading from the HTTP connection/stream.
-        Defaults to 30 seconds. The timeout must be a value between 1s and 120s.
-        The responseTimeout starts after the connection has been established.
-        This also applies to HTTP Chunked Transfer Encoding responses, and/or when an open-ended Range request is made to the origin. Origins that take longer to write additional bytes to the response than the configured responseTimeout will result in an error being returned to the client.
-        If the response headers have already been written to the connection, the response will be truncated and logged.
-        """
-elif False:
-    EdgeCacheOriginTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
+    """
+    response_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum duration to wait for the last byte of a response to arrive when reading from the HTTP connection/stream.
+    Defaults to 30 seconds. The timeout must be a value between 1s and 120s.
+    The responseTimeout starts after the connection has been established.
+    This also applies to HTTP Chunked Transfer Encoding responses, and/or when an open-ended Range request is made to the origin. Origins that take longer to write additional bytes to the response than the configured responseTimeout will result in an error being returned to the client.
+    If the response headers have already been written to the connection, the response will be truncated and logged.
+    """
 
 @pulumi.input_type
 class EdgeCacheOriginTimeoutArgs:
@@ -866,19 +1045,16 @@ class EdgeCacheOriginTimeoutArgs:
         pulumi.set(self, "response_timeout", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceLogConfigArgsDict(TypedDict):
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable logging for traffic served by this service.
-        """
-        sample_rate: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Configures the sampling rate of requests, where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0, and the value of the field must be in [0, 1].
-        This field can only be specified if logging is enabled for this service.
-        """
-elif False:
-    EdgeCacheServiceLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceLogConfigArgsDict(TypedDict):
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable logging for traffic served by this service.
+    """
+    sample_rate: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Configures the sampling rate of requests, where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0, and the value of the field must be in [0, 1].
+    This field can only be specified if logging is enabled for this service.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceLogConfigArgs:
@@ -921,20 +1097,17 @@ class EdgeCacheServiceLogConfigArgs:
         pulumi.set(self, "sample_rate", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingArgsDict(TypedDict):
-        host_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingHostRuleArgsDict']]]
-        """
-        The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
-        Structure is documented below.
-        """
-        path_matchers: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArgsDict']]]
-        """
-        The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
-        Structure is documented below.
-        """
-elif False:
-    EdgeCacheServiceRoutingArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingArgsDict(TypedDict):
+    host_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingHostRuleArgsDict']]]
+    """
+    The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
+    Structure is documented below.
+    """
+    path_matchers: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArgsDict']]]
+    """
+    The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingArgs:
@@ -977,32 +1150,29 @@ class EdgeCacheServiceRoutingArgs:
         pulumi.set(self, "path_matchers", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingHostRuleArgsDict(TypedDict):
-        hosts: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The list of host patterns to match.
-        Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
-        When multiple hosts are specified, hosts are matched in the following priority:
-        1. Exact domain names: ``www.foo.com``.
-        2. Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
-        3. Prefix domain wildcards: ``foo.*`` or ``foo-*``.
-        4. Special wildcard ``*`` matching any domain.
-        Notes:
-        The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
-        Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
-        You may specify up to 10 hosts.
-        """
-        path_matcher: pulumi.Input[_builtins.str]
-        """
-        The name of the pathMatcher associated with this hostRule.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A human-readable description of the hostRule.
-        """
-elif False:
-    EdgeCacheServiceRoutingHostRuleArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingHostRuleArgsDict(TypedDict):
+    hosts: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of host patterns to match.
+    Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
+    When multiple hosts are specified, hosts are matched in the following priority:
+    1. Exact domain names: ``www.foo.com``.
+    2. Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
+    3. Prefix domain wildcards: ``foo.*`` or ``foo-*``.
+    4. Special wildcard ``*`` matching any domain.
+    Notes:
+    The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
+    Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
+    You may specify up to 10 hosts.
+    """
+    path_matcher: pulumi.Input[_builtins.str]
+    """
+    The name of the pathMatcher associated with this hostRule.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A human-readable description of the hostRule.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingHostRuleArgs:
@@ -1077,23 +1247,20 @@ class EdgeCacheServiceRoutingHostRuleArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name to which this PathMatcher is referred by the HostRule.
-        """
-        route_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleArgsDict']]]
-        """
-        The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A human-readable description of the resource.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name to which this PathMatcher is referred by the HostRule.
+    """
+    route_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleArgsDict']]]
+    """
+    The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A human-readable description of the resource.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherArgs:
@@ -1150,53 +1317,50 @@ class EdgeCacheServiceRoutingPathMatcherArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleArgsDict(TypedDict):
-        match_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgsDict']]]
-        """
-        The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates
-        within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
-        Structure is documented below.
-        """
-        priority: pulumi.Input[_builtins.str]
-        """
-        The priority of this route rule, where 1 is the highest priority.
-        You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 1 and 999 inclusive.
-        Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers
-        to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A human-readable description of the routeRule.
-        """
-        header_action: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgsDict']]
-        """
-        The header actions, including adding & removing headers, for requests that match this route.
-        Structure is documented below.
-        """
-        origin: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Origin resource that requests to this route should fetch from when a matching response is not in cache. Origins can be defined as short names ("my-origin") or fully-qualified resource URLs - e.g. "networkservices.googleapis.com/projects/my-project/global/edgecacheorigins/my-origin"
-        Only one of origin or urlRedirect can be set.
-        """
-        route_action: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgsDict']]
-        """
-        In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
-        Structure is documented below.
-        """
-        route_methods: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgsDict']]
-        """
-        Allow overriding the set of methods that are allowed for this route.
-        When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
-        Structure is documented below.
-        """
-        url_redirect: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgsDict']]
-        """
-        The URL redirect configuration for requests that match this route.
-        Structure is documented below.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleArgsDict(TypedDict):
+    match_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgsDict']]]
+    """
+    The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates
+    within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
+    Structure is documented below.
+    """
+    priority: pulumi.Input[_builtins.str]
+    """
+    The priority of this route rule, where 1 is the highest priority.
+    You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 1 and 999 inclusive.
+    Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers
+    to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A human-readable description of the routeRule.
+    """
+    header_action: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgsDict']]
+    """
+    The header actions, including adding & removing headers, for requests that match this route.
+    Structure is documented below.
+    """
+    origin: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Origin resource that requests to this route should fetch from when a matching response is not in cache. Origins can be defined as short names ("my-origin") or fully-qualified resource URLs - e.g. "networkservices.googleapis.com/projects/my-project/global/edgecacheorigins/my-origin"
+    Only one of origin or urlRedirect can be set.
+    """
+    route_action: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgsDict']]
+    """
+    In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
+    Structure is documented below.
+    """
+    route_methods: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgsDict']]
+    """
+    Allow overriding the set of methods that are allowed for this route.
+    When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+    Structure is documented below.
+    """
+    url_redirect: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgsDict']]
+    """
+    The URL redirect configuration for requests that match this route.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
@@ -1353,31 +1517,28 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
         pulumi.set(self, "url_redirect", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgsDict(TypedDict):
-        request_header_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgsDict']]]]
-        """
-        Describes a header to add.
-        Structure is documented below.
-        """
-        request_header_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgsDict']]]]
-        """
-        A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
-        Structure is documented below.
-        """
-        response_header_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgsDict']]]]
-        """
-        Headers to add to the response prior to sending it back to the client.
-        Response headers are only sent to the client, and do not have an effect on the cache serving the response.
-        Structure is documented below.
-        """
-        response_header_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgsDict']]]]
-        """
-        A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
-        Structure is documented below.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgsDict(TypedDict):
+    request_header_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgsDict']]]]
+    """
+    Describes a header to add.
+    Structure is documented below.
+    """
+    request_header_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgsDict']]]]
+    """
+    A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
+    Structure is documented below.
+    """
+    response_header_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgsDict']]]]
+    """
+    Headers to add to the response prior to sending it back to the client.
+    Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+    Structure is documented below.
+    """
+    response_header_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgsDict']]]]
+    """
+    A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs:
@@ -1460,22 +1621,19 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs:
         pulumi.set(self, "response_header_to_removes", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgsDict(TypedDict):
-        header_name: pulumi.Input[_builtins.str]
-        """
-        The name of the header to add.
-        """
-        header_value: pulumi.Input[_builtins.str]
-        """
-        The value of the header to add.
-        """
-        replace: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to replace all existing headers with the same name.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgsDict(TypedDict):
+    header_name: pulumi.Input[_builtins.str]
+    """
+    The name of the header to add.
+    """
+    header_value: pulumi.Input[_builtins.str]
+    """
+    The value of the header to add.
+    """
+    replace: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to replace all existing headers with the same name.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs:
@@ -1530,14 +1688,11 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddA
         pulumi.set(self, "replace", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgsDict(TypedDict):
-        header_name: pulumi.Input[_builtins.str]
-        """
-        The name of the header to remove.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgsDict(TypedDict):
+    header_name: pulumi.Input[_builtins.str]
+    """
+    The name of the header to remove.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs:
@@ -1561,22 +1716,19 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemo
         pulumi.set(self, "header_name", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgsDict(TypedDict):
-        header_name: pulumi.Input[_builtins.str]
-        """
-        The name of the header to add.
-        """
-        header_value: pulumi.Input[_builtins.str]
-        """
-        The value of the header to add.
-        """
-        replace: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to replace all existing headers with the same name.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgsDict(TypedDict):
+    header_name: pulumi.Input[_builtins.str]
+    """
+    The name of the header to add.
+    """
+    header_value: pulumi.Input[_builtins.str]
+    """
+    The value of the header to add.
+    """
+    replace: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to replace all existing headers with the same name.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs:
@@ -1631,15 +1783,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd
         pulumi.set(self, "replace", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgsDict(TypedDict):
-        header_name: pulumi.Input[_builtins.str]
-        """
-        Headers to remove from the response prior to sending it back to the client.
-        Response headers are only sent to the client, and do not have an effect on the cache serving the response.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgsDict(TypedDict):
+    header_name: pulumi.Input[_builtins.str]
+    """
+    Headers to remove from the response prior to sending it back to the client.
+    Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs:
@@ -1665,43 +1814,40 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRem
         pulumi.set(self, "header_name", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgsDict(TypedDict):
-        full_path_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL.
-        """
-        header_matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict']]]]
-        """
-        Specifies a list of header match criteria, all of which must match corresponding headers in the request.
-        Structure is documented below.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies that prefixMatch and fullPathMatch matches are case sensitive.
-        """
-        path_template_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        For satisfying the matchRule condition, the path of the request
-        must match the wildcard pattern specified in pathTemplateMatch
-        after removing any query parameters and anchor that may be part
-        of the original URL.
-        pathTemplateMatch must be between 1 and 255 characters
-        (inclusive).  The pattern specified by pathTemplateMatch may
-        have at most 5 wildcard operators and at most 5 variable
-        captures in total.
-        """
-        prefix_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
-        """
-        query_parameter_matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict']]]]
-        """
-        Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
-        Structure is documented below.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgsDict(TypedDict):
+    full_path_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL.
+    """
+    header_matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict']]]]
+    """
+    Specifies a list of header match criteria, all of which must match corresponding headers in the request.
+    Structure is documented below.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+    """
+    path_template_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    For satisfying the matchRule condition, the path of the request
+    must match the wildcard pattern specified in pathTemplateMatch
+    after removing any query parameters and anchor that may be part
+    of the original URL.
+    pathTemplateMatch must be between 1 and 255 characters
+    (inclusive).  The pattern specified by pathTemplateMatch may
+    have at most 5 wildcard operators and at most 5 variable
+    captures in total.
+    """
+    prefix_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
+    """
+    query_parameter_matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict']]]]
+    """
+    Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs:
@@ -1824,35 +1970,32 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs:
         pulumi.set(self, "query_parameter_matches", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict(TypedDict):
-        header_name: pulumi.Input[_builtins.str]
-        """
-        The header name to match on.
-        """
-        exact_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the header should exactly match contents of exactMatch.
-        """
-        invert_match: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to false (default), the headerMatch is considered a match if the match criteria above are met.
-        If set to true, the headerMatch is considered a match if the match criteria above are NOT met.
-        """
-        prefix_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the header must start with the contents of prefixMatch.
-        """
-        present_match: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value.
-        """
-        suffix_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the header must end with the contents of suffixMatch.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict(TypedDict):
+    header_name: pulumi.Input[_builtins.str]
+    """
+    The header name to match on.
+    """
+    exact_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the header should exactly match contents of exactMatch.
+    """
+    invert_match: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to false (default), the headerMatch is considered a match if the match criteria above are met.
+    If set to true, the headerMatch is considered a match if the match criteria above are NOT met.
+    """
+    prefix_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the header must start with the contents of prefixMatch.
+    """
+    present_match: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value.
+    """
+    suffix_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the header must end with the contents of suffixMatch.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
@@ -1958,22 +2101,19 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
         pulumi.set(self, "suffix_match", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
-        """
-        exact_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
-        """
-        present_match: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+    """
+    exact_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+    """
+    present_match: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs:
@@ -2029,31 +2169,28 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArg
         pulumi.set(self, "present_match", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgsDict(TypedDict):
-        cdn_policy: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgsDict']]
-        """
-        The policy to use for defining caching and signed request behaviour for requests that match this route.
-        Structure is documented below.
-        """
-        compression_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Setting the compression mode to automatic enables dynamic compression for every eligible response.
-        When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
-        Possible values are: `DISABLED`, `AUTOMATIC`.
-        """
-        cors_policy: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgsDict']]
-        """
-        CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
-        Structure is documented below.
-        """
-        url_rewrite: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgsDict']]
-        """
-        The URL rewrite configuration for requests that match this route.
-        Structure is documented below.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgsDict(TypedDict):
+    cdn_policy: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgsDict']]
+    """
+    The policy to use for defining caching and signed request behaviour for requests that match this route.
+    Structure is documented below.
+    """
+    compression_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Setting the compression mode to automatic enables dynamic compression for every eligible response.
+    When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
+    Possible values are: `DISABLED`, `AUTOMATIC`.
+    """
+    cors_policy: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgsDict']]
+    """
+    CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
+    Structure is documented below.
+    """
+    url_rewrite: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgsDict']]
+    """
+    The URL rewrite configuration for requests that match this route.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs:
@@ -2136,103 +2273,100 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs:
         pulumi.set(self, "url_rewrite", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgsDict(TypedDict):
-        add_signatures: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgsDict']]
-        """
-        Enable signature generation or propagation on this route.
-        This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
-        Structure is documented below.
-        """
-        cache_key_policy: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgsDict']]
-        """
-        Defines the request parameters that contribute to the cache key.
-        Structure is documented below.
-        """
-        cache_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
-        For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
-        Possible values are: `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `BYPASS_CACHE`.
-        """
-        client_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a separate client (e.g. browser client) TTL, separate from the TTL used by the edge caches. Leaving this empty will use the same cache TTL for both the CDN and the client-facing response.
-        - The TTL must be > 0 and <= 86400s (1 day)
-        - The clientTtl cannot be larger than the defaultTtl (if set)
-        - Fractions of a second are not allowed.
-        Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
-        When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-        A duration in seconds terminated by 's'. Example: "3s".
-        """
-        default_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age).
-        Defaults to 3600s (1 hour).
-        - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
-        - Setting a TTL of "0" means "always revalidate" (equivalent to must-revalidate)
-        - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
-        - Fractions of a second are not allowed.
-        - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
-        Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
-        When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-        A duration in seconds terminated by 's'. Example: "3s".
-        """
-        max_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the maximum allowed TTL for cached content served by this origin.
-        Defaults to 86400s (1 day).
-        Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTtl seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive.
-        - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
-        - Setting a TTL of "0" means "always revalidate"
-        - The value of maxTtl must be equal to or greater than defaultTtl.
-        - Fractions of a second are not allowed.
-        When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
-        A duration in seconds terminated by 's'. Example: "3s".
-        """
-        negative_caching: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency.
-        By default, the CDNPolicy will apply the following default TTLs to these status codes:
-        - HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
-        - HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s
-        - HTTP 405 (Method Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s
-        These defaults can be overridden in negativeCachingPolicy
-        """
-        negative_caching_policy: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
-        - Omitting the policy and leaving negativeCaching enabled will use the default TTLs for each status code, defined in negativeCaching.
-        - TTLs must be >= 0 (where 0 is "always revalidate") and <= 86400s (1 day)
-        Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
-        """
-        signed_request_keyset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The EdgeCacheKeyset containing the set of public keys used to validate signed requests at the edge.
-        """
-        signed_request_maximum_expiration_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Limit how far into the future the expiration time of a signed request may be.
-        When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
-        - The TTL must be > 0.
-        - Fractions of a second are not allowed.
-        By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
-        """
-        signed_request_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
-        You must also set a signedRequestKeyset to enable signed requests.
-        When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-        Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
-        """
-        signed_token_options: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgsDict']]
-        """
-        Additional options for signed tokens.
-        signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
-        Structure is documented below.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgsDict(TypedDict):
+    add_signatures: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgsDict']]
+    """
+    Enable signature generation or propagation on this route.
+    This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+    Structure is documented below.
+    """
+    cache_key_policy: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgsDict']]
+    """
+    Defines the request parameters that contribute to the cache key.
+    Structure is documented below.
+    """
+    cache_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
+    For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
+    Possible values are: `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `BYPASS_CACHE`.
+    """
+    client_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies a separate client (e.g. browser client) TTL, separate from the TTL used by the edge caches. Leaving this empty will use the same cache TTL for both the CDN and the client-facing response.
+    - The TTL must be > 0 and <= 86400s (1 day)
+    - The clientTtl cannot be larger than the defaultTtl (if set)
+    - Fractions of a second are not allowed.
+    Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
+    When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+    A duration in seconds terminated by 's'. Example: "3s".
+    """
+    default_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age).
+    Defaults to 3600s (1 hour).
+    - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
+    - Setting a TTL of "0" means "always revalidate" (equivalent to must-revalidate)
+    - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
+    - Fractions of a second are not allowed.
+    - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
+    Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
+    When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+    A duration in seconds terminated by 's'. Example: "3s".
+    """
+    max_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the maximum allowed TTL for cached content served by this origin.
+    Defaults to 86400s (1 day).
+    Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTtl seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive.
+    - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
+    - Setting a TTL of "0" means "always revalidate"
+    - The value of maxTtl must be equal to or greater than defaultTtl.
+    - Fractions of a second are not allowed.
+    When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
+    A duration in seconds terminated by 's'. Example: "3s".
+    """
+    negative_caching: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency.
+    By default, the CDNPolicy will apply the following default TTLs to these status codes:
+    - HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
+    - HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s
+    - HTTP 405 (Method Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s
+    These defaults can be overridden in negativeCachingPolicy
+    """
+    negative_caching_policy: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+    - Omitting the policy and leaving negativeCaching enabled will use the default TTLs for each status code, defined in negativeCaching.
+    - TTLs must be >= 0 (where 0 is "always revalidate") and <= 86400s (1 day)
+    Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
+    """
+    signed_request_keyset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The EdgeCacheKeyset containing the set of public keys used to validate signed requests at the edge.
+    """
+    signed_request_maximum_expiration_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Limit how far into the future the expiration time of a signed request may be.
+    When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+    - The TTL must be > 0.
+    - Fractions of a second are not allowed.
+    By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+    """
+    signed_request_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
+    You must also set a signedRequestKeyset to enable signed requests.
+    When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
+    Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
+    """
+    signed_token_options: NotRequired[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgsDict']]
+    """
+    Additional options for signed tokens.
+    signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
@@ -2523,44 +2657,41 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         pulumi.set(self, "signed_token_options", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgsDict(TypedDict):
-        actions: pulumi.Input[_builtins.str]
-        """
-        The actions to take to add signatures to responses.
-        Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
-        """
-        copied_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The parameters to copy from the verified token to the generated token.
-        Only the following parameters may be copied:
-        * `PathGlobs`
-        """
-        keyset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The keyset to use for signature generation.
-        The following are both valid paths to an EdgeCacheKeyset resource:
-        * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
-        * `yourKeyset`
-        This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
-        """
-        token_query_parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The query parameter in which to put the generated token.
-        If not specified, defaults to `edge-cache-token`.
-        If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-        This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
-        """
-        token_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The duration the token is valid starting from the moment the token is first generated.
-        Defaults to `86400s` (1 day).
-        The TTL must be >= 0 and <= 604,800 seconds (1 week).
-        This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgsDict(TypedDict):
+    actions: pulumi.Input[_builtins.str]
+    """
+    The actions to take to add signatures to responses.
+    Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+    """
+    copied_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The parameters to copy from the verified token to the generated token.
+    Only the following parameters may be copied:
+    * `PathGlobs`
+    """
+    keyset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The keyset to use for signature generation.
+    The following are both valid paths to an EdgeCacheKeyset resource:
+    * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+    * `yourKeyset`
+    This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
+    """
+    token_query_parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The query parameter in which to put the generated token.
+    If not specified, defaults to `edge-cache-token`.
+    If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+    This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+    """
+    token_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The duration the token is valid starting from the moment the token is first generated.
+    Defaults to `86400s` (1 day).
+    The TTL must be >= 0 and <= 604,800 seconds (1 week).
+    This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs:
@@ -2676,56 +2807,53 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
         pulumi.set(self, "token_ttl", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgsDict(TypedDict):
-        exclude_host: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, requests to different hosts will be cached separately.
-        Note: this should only be enabled if hosts share the same origin and content. Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
-        """
-        exclude_query_string: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, exclude query string parameters from the cache key
-        If false (the default), include the query string parameters in
-        the cache key according to includeQueryParameters and
-        excludeQueryParameters. If neither includeQueryParameters nor
-        excludeQueryParameters is set, the entire query string will be
-        included.
-        """
-        excluded_query_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Names of query string parameters to exclude from cache keys. All other parameters will be included.
-        Either specify includedQueryParameters or excludedQueryParameters, not both. '&' and '=' will be percent encoded and not treated as delimiters.
-        """
-        include_protocol: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, http and https requests will be cached separately.
-        """
-        included_cookie_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
-        Cookie names:
-        - must be valid RFC 6265 "cookie-name" tokens
-        - are case sensitive
-        - cannot start with "Edge-Cache-" (case insensitive)
-        Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
-        You may specify up to three cookie names.
-        """
-        included_header_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
-        - Header names must be valid HTTP RFC 7230 header field values.
-        - Header field names are case insensitive
-        - To include the HTTP method, use ":method"
-        Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
-        """
-        included_query_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Names of query string parameters to include in cache keys. All other parameters will be excluded.
-        Either specify includedQueryParameters or excludedQueryParameters, not both. '&' and '=' will be percent encoded and not treated as delimiters.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgsDict(TypedDict):
+    exclude_host: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, requests to different hosts will be cached separately.
+    Note: this should only be enabled if hosts share the same origin and content. Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
+    """
+    exclude_query_string: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, exclude query string parameters from the cache key
+    If false (the default), include the query string parameters in
+    the cache key according to includeQueryParameters and
+    excludeQueryParameters. If neither includeQueryParameters nor
+    excludeQueryParameters is set, the entire query string will be
+    included.
+    """
+    excluded_query_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Names of query string parameters to exclude from cache keys. All other parameters will be included.
+    Either specify includedQueryParameters or excludedQueryParameters, not both. '&' and '=' will be percent encoded and not treated as delimiters.
+    """
+    include_protocol: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, http and https requests will be cached separately.
+    """
+    included_cookie_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
+    Cookie names:
+    - must be valid RFC 6265 "cookie-name" tokens
+    - are case sensitive
+    - cannot start with "Edge-Cache-" (case insensitive)
+    Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+    You may specify up to three cookie names.
+    """
+    included_header_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
+    - Header names must be valid HTTP RFC 7230 header field values.
+    - Header field names are case insensitive
+    - To include the HTTP method, use ":method"
+    Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+    """
+    included_query_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Names of query string parameters to include in cache keys. All other parameters will be excluded.
+    Either specify includedQueryParameters or excludedQueryParameters, not both. '&' and '=' will be percent encoded and not treated as delimiters.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs:
@@ -2882,23 +3010,20 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
         pulumi.set(self, "included_query_parameters", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgsDict(TypedDict):
-        allowed_signature_algorithms: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The allowed signature algorithms to use.
-        Defaults to using only ED25519.
-        You may specify up to 3 signature algorithms to use.
-        Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
-        """
-        token_query_parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The query parameter in which to find the token.
-        The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-        Defaults to `edge-cache-token`.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgsDict(TypedDict):
+    allowed_signature_algorithms: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The allowed signature algorithms to use.
+    Defaults to using only ED25519.
+    You may specify up to 3 signature algorithms to use.
+    Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
+    """
+    token_query_parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The query parameter in which to find the token.
+    The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+    Defaults to `edge-cache-token`.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs:
@@ -2949,44 +3074,41 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedToken
         pulumi.set(self, "token_query_parameter", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgsDict(TypedDict):
-        max_age: pulumi.Input[_builtins.str]
-        """
-        Specifies how long results of a preflight request can be cached by a client in seconds. Note that many browser clients enforce a maximum TTL of 600s (10 minutes).
-        - Setting the value to -1 forces a pre-flight check for all requests (not recommended)
-        - A maximum TTL of 86400s can be set, but note that (as above) some clients may force pre-flight checks at a more regular interval.
-        - This translates to the Access-Control-Max-Age header.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        """
-        allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
-        This translates to the Access-Control-Allow-Credentials response header.
-        """
-        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the content for the Access-Control-Allow-Headers response header.
-        """
-        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the content for the Access-Control-Allow-Methods response header.
-        """
-        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the list of origins that will be allowed to do CORS requests.
-        This translates to the Access-Control-Allow-Origin response header.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-        """
-        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the content for the Access-Control-Allow-Headers response header.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgsDict(TypedDict):
+    max_age: pulumi.Input[_builtins.str]
+    """
+    Specifies how long results of a preflight request can be cached by a client in seconds. Note that many browser clients enforce a maximum TTL of 600s (10 minutes).
+    - Setting the value to -1 forces a pre-flight check for all requests (not recommended)
+    - A maximum TTL of 86400s can be set, but note that (as above) some clients may force pre-flight checks at a more regular interval.
+    - This translates to the Access-Control-Max-Age header.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+    """
+    allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+    This translates to the Access-Control-Allow-Credentials response header.
+    """
+    allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies the content for the Access-Control-Allow-Headers response header.
+    """
+    allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies the content for the Access-Control-Allow-Methods response header.
+    """
+    allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies the list of origins that will be allowed to do CORS requests.
+    This translates to the Access-Control-Allow-Origin response header.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+    """
+    expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies the content for the Access-Control-Allow-Headers response header.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs:
@@ -3118,32 +3240,29 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs:
         pulumi.set(self, "expose_headers", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgsDict(TypedDict):
-        host_rewrite: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prior to forwarding the request to the selected origin, the request's host header is replaced with contents of hostRewrite.
-        """
-        path_prefix_rewrite: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prior to forwarding the request to the selected origin, the matching portion of the request's path is replaced by pathPrefixRewrite.
-        """
-        path_template_rewrite: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prior to forwarding the request to the selected origin, if the
-        request matched a pathTemplateMatch, the matching portion of the
-        request's path is replaced re-written using the pattern specified
-        by pathTemplateRewrite.
-        pathTemplateRewrite must be between 1 and 255 characters
-        (inclusive), must start with a '/', and must only use variables
-        captured by the route's pathTemplate matchers.
-        pathTemplateRewrite may only be used when all of a route's
-        MatchRules specify pathTemplate.
-        Only one of pathPrefixRewrite and pathTemplateRewrite may be
-        specified.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgsDict(TypedDict):
+    host_rewrite: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prior to forwarding the request to the selected origin, the request's host header is replaced with contents of hostRewrite.
+    """
+    path_prefix_rewrite: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prior to forwarding the request to the selected origin, the matching portion of the request's path is replaced by pathPrefixRewrite.
+    """
+    path_template_rewrite: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prior to forwarding the request to the selected origin, if the
+    request matched a pathTemplateMatch, the matching portion of the
+    request's path is replaced re-written using the pattern specified
+    by pathTemplateRewrite.
+    pathTemplateRewrite must be between 1 and 255 characters
+    (inclusive), must start with a '/', and must only use variables
+    captured by the route's pathTemplate matchers.
+    pathTemplateRewrite may only be used when all of a route's
+    MatchRules specify pathTemplate.
+    Only one of pathPrefixRewrite and pathTemplateRewrite may be
+    specified.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs:
@@ -3220,15 +3339,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs:
         pulumi.set(self, "path_template_rewrite", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgsDict(TypedDict):
-        allowed_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The non-empty set of HTTP methods that are allowed for this route.
-        Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgsDict(TypedDict):
+    allowed_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The non-empty set of HTTP methods that are allowed for this route.
+    Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs:
@@ -3255,45 +3371,42 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs:
         pulumi.set(self, "allowed_methods", value)
 
 
-if not MYPY:
-    class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgsDict(TypedDict):
-        host_redirect: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The host that will be used in the redirect response instead of the one that was supplied in the request.
-        """
-        https_redirect: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request.
-        This can only be set if there is at least one (1) edgeSslCertificate set on the service.
-        """
-        path_redirect: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path that will be used in the redirect response instead of the one that was supplied in the request.
-        pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
-        The path value must be between 1 and 1024 characters.
-        """
-        prefix_redirect: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The prefix that replaces the prefixMatch specified in the routeRule, retaining the remaining portion of the URL before redirecting the request.
-        prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
-        """
-        redirect_response_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP Status code to use for this RedirectAction.
-        The supported values are:
-        - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
-        - `FOUND`, which corresponds to 302.
-        - `SEE_OTHER` which corresponds to 303.
-        - `TEMPORARY_REDIRECT`, which corresponds to 307. in this case, the request method will be retained.
-        - `PERMANENT_REDIRECT`, which corresponds to 308. in this case, the request method will be retained.
-        Possible values are: `MOVED_PERMANENTLY_DEFAULT`, `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`.
-        """
-        strip_query: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
-        """
-elif False:
-    EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgsDict(TypedDict):
+    host_redirect: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The host that will be used in the redirect response instead of the one that was supplied in the request.
+    """
+    https_redirect: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request.
+    This can only be set if there is at least one (1) edgeSslCertificate set on the service.
+    """
+    path_redirect: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path that will be used in the redirect response instead of the one that was supplied in the request.
+    pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+    The path value must be between 1 and 1024 characters.
+    """
+    prefix_redirect: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The prefix that replaces the prefixMatch specified in the routeRule, retaining the remaining portion of the URL before redirecting the request.
+    prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+    """
+    redirect_response_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP Status code to use for this RedirectAction.
+    The supported values are:
+    - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
+    - `FOUND`, which corresponds to 302.
+    - `SEE_OTHER` which corresponds to 303.
+    - `TEMPORARY_REDIRECT`, which corresponds to 307. in this case, the request method will be retained.
+    - `PERMANENT_REDIRECT`, which corresponds to 308. in this case, the request method will be retained.
+    Possible values are: `MOVED_PERMANENTLY_DEFAULT`, `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`.
+    """
+    strip_query: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
+    """
 
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs:
@@ -3420,15 +3533,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs:
         pulumi.set(self, "strip_query", value)
 
 
-if not MYPY:
-    class EndpointPolicyEndpointMatcherArgsDict(TypedDict):
-        metadata_label_matcher: pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherArgsDict']
-        """
-        The matcher is based on node metadata presented by xDS clients.
-        Structure is documented below.
-        """
-elif False:
-    EndpointPolicyEndpointMatcherArgsDict: TypeAlias = Mapping[str, Any]
+class EndpointPolicyEndpointMatcherArgsDict(TypedDict):
+    metadata_label_matcher: pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherArgsDict']
+    """
+    The matcher is based on node metadata presented by xDS clients.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EndpointPolicyEndpointMatcherArgs:
@@ -3454,20 +3564,17 @@ class EndpointPolicyEndpointMatcherArgs:
         pulumi.set(self, "metadata_label_matcher", value)
 
 
-if not MYPY:
-    class EndpointPolicyEndpointMatcherMetadataLabelMatcherArgsDict(TypedDict):
-        metadata_label_match_criteria: pulumi.Input[_builtins.str]
-        """
-        Specifies how matching should be done.
-        Possible values are: `MATCH_ANY`, `MATCH_ALL`.
-        """
-        metadata_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgsDict']]]]
-        """
-        The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
-        Structure is documented below.
-        """
-elif False:
-    EndpointPolicyEndpointMatcherMetadataLabelMatcherArgsDict: TypeAlias = Mapping[str, Any]
+class EndpointPolicyEndpointMatcherMetadataLabelMatcherArgsDict(TypedDict):
+    metadata_label_match_criteria: pulumi.Input[_builtins.str]
+    """
+    Specifies how matching should be done.
+    Possible values are: `MATCH_ANY`, `MATCH_ALL`.
+    """
+    metadata_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgsDict']]]]
+    """
+    The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs:
@@ -3511,18 +3618,15 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs:
         pulumi.set(self, "metadata_labels", value)
 
 
-if not MYPY:
-    class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgsDict(TypedDict):
-        label_name: pulumi.Input[_builtins.str]
-        """
-        Required. Label name presented as key in xDS Node Metadata.
-        """
-        label_value: pulumi.Input[_builtins.str]
-        """
-        Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
-        """
-elif False:
-    EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgsDict: TypeAlias = Mapping[str, Any]
+class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgsDict(TypedDict):
+    label_name: pulumi.Input[_builtins.str]
+    """
+    Required. Label name presented as key in xDS Node Metadata.
+    """
+    label_value: pulumi.Input[_builtins.str]
+    """
+    Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+    """
 
 @pulumi.input_type
 class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs:
@@ -3561,14 +3665,11 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs:
         pulumi.set(self, "label_value", value)
 
 
-if not MYPY:
-    class EndpointPolicyTrafficPortSelectorArgsDict(TypedDict):
-        ports: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
-        """
-elif False:
-    EndpointPolicyTrafficPortSelectorArgsDict: TypeAlias = Mapping[str, Any]
+class EndpointPolicyTrafficPortSelectorArgsDict(TypedDict):
+    ports: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+    """
 
 @pulumi.input_type
 class EndpointPolicyTrafficPortSelectorArgs:
@@ -3592,20 +3693,17 @@ class EndpointPolicyTrafficPortSelectorArgs:
         pulumi.set(self, "ports", value)
 
 
-if not MYPY:
-    class GrpcRouteRuleArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input['GrpcRouteRuleActionArgsDict']]
-        """
-        Required. A detailed rule defining how to route traffic.
-        Structure is documented below.
-        """
-        matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchArgsDict']]]]
-        """
-        Matches define conditions used for matching the rule against incoming gRPC requests.
-        Structure is documented below.
-        """
-elif False:
-    GrpcRouteRuleArgsDict: TypeAlias = Mapping[str, Any]
+class GrpcRouteRuleArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input['GrpcRouteRuleActionArgsDict']]
+    """
+    Required. A detailed rule defining how to route traffic.
+    Structure is documented below.
+    """
+    matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchArgsDict']]]]
+    """
+    Matches define conditions used for matching the rule against incoming gRPC requests.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GrpcRouteRuleArgs:
@@ -3650,29 +3748,26 @@ class GrpcRouteRuleArgs:
         pulumi.set(self, "matches", value)
 
 
-if not MYPY:
-    class GrpcRouteRuleActionArgsDict(TypedDict):
-        destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArgsDict']]]]
-        """
-        The destination to which traffic should be forwarded.
-        Structure is documented below.
-        """
-        fault_injection_policy: NotRequired[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyArgsDict']]
-        """
-        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
-        Structure is documented below.
-        """
-        retry_policy: NotRequired[pulumi.Input['GrpcRouteRuleActionRetryPolicyArgsDict']]
-        """
-        Specifies the retry policy associated with this route.
-        Structure is documented below.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the timeout for selected route.
-        """
-elif False:
-    GrpcRouteRuleActionArgsDict: TypeAlias = Mapping[str, Any]
+class GrpcRouteRuleActionArgsDict(TypedDict):
+    destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArgsDict']]]]
+    """
+    The destination to which traffic should be forwarded.
+    Structure is documented below.
+    """
+    fault_injection_policy: NotRequired[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyArgsDict']]
+    """
+    The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+    Structure is documented below.
+    """
+    retry_policy: NotRequired[pulumi.Input['GrpcRouteRuleActionRetryPolicyArgsDict']]
+    """
+    Specifies the retry policy associated with this route.
+    Structure is documented below.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the timeout for selected route.
+    """
 
 @pulumi.input_type
 class GrpcRouteRuleActionArgs:
@@ -3751,18 +3846,15 @@ class GrpcRouteRuleActionArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class GrpcRouteRuleActionDestinationArgsDict(TypedDict):
-        service_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URL of a BackendService to route traffic to.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-        """
-elif False:
-    GrpcRouteRuleActionDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class GrpcRouteRuleActionDestinationArgsDict(TypedDict):
+    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URL of a BackendService to route traffic to.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+    """
 
 @pulumi.input_type
 class GrpcRouteRuleActionDestinationArgs:
@@ -3803,20 +3895,17 @@ class GrpcRouteRuleActionDestinationArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class GrpcRouteRuleActionFaultInjectionPolicyArgsDict(TypedDict):
-        abort: NotRequired[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyAbortArgsDict']]
-        """
-        Specification of how client requests are aborted as part of fault injection before being sent to a destination.
-        Structure is documented below.
-        """
-        delay: NotRequired[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyDelayArgsDict']]
-        """
-        Specification of how client requests are delayed as part of fault injection before being sent to a destination.
-        Structure is documented below.
-        """
-elif False:
-    GrpcRouteRuleActionFaultInjectionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class GrpcRouteRuleActionFaultInjectionPolicyArgsDict(TypedDict):
+    abort: NotRequired[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyAbortArgsDict']]
+    """
+    Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+    Structure is documented below.
+    """
+    delay: NotRequired[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyDelayArgsDict']]
+    """
+    Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GrpcRouteRuleActionFaultInjectionPolicyArgs:
@@ -3861,18 +3950,15 @@ class GrpcRouteRuleActionFaultInjectionPolicyArgs:
         pulumi.set(self, "delay", value)
 
 
-if not MYPY:
-    class GrpcRouteRuleActionFaultInjectionPolicyAbortArgsDict(TypedDict):
-        http_status: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The HTTP status code used to abort the request.
-        """
-        percentage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The percentage of traffic which will be aborted.
-        """
-elif False:
-    GrpcRouteRuleActionFaultInjectionPolicyAbortArgsDict: TypeAlias = Mapping[str, Any]
+class GrpcRouteRuleActionFaultInjectionPolicyAbortArgsDict(TypedDict):
+    http_status: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The HTTP status code used to abort the request.
+    """
+    percentage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The percentage of traffic which will be aborted.
+    """
 
 @pulumi.input_type
 class GrpcRouteRuleActionFaultInjectionPolicyAbortArgs:
@@ -3913,18 +3999,15 @@ class GrpcRouteRuleActionFaultInjectionPolicyAbortArgs:
         pulumi.set(self, "percentage", value)
 
 
-if not MYPY:
-    class GrpcRouteRuleActionFaultInjectionPolicyDelayArgsDict(TypedDict):
-        fixed_delay: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specify a fixed delay before forwarding the request.
-        """
-        percentage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The percentage of traffic on which delay will be injected.
-        """
-elif False:
-    GrpcRouteRuleActionFaultInjectionPolicyDelayArgsDict: TypeAlias = Mapping[str, Any]
+class GrpcRouteRuleActionFaultInjectionPolicyDelayArgsDict(TypedDict):
+    fixed_delay: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specify a fixed delay before forwarding the request.
+    """
+    percentage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The percentage of traffic on which delay will be injected.
+    """
 
 @pulumi.input_type
 class GrpcRouteRuleActionFaultInjectionPolicyDelayArgs:
@@ -3965,19 +4048,16 @@ class GrpcRouteRuleActionFaultInjectionPolicyDelayArgs:
         pulumi.set(self, "percentage", value)
 
 
-if not MYPY:
-    class GrpcRouteRuleActionRetryPolicyArgsDict(TypedDict):
-        num_retries: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the allowed number of retries.
-        """
-        retry_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies one or more conditions when this retry policy applies.
-        Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
-        """
-elif False:
-    GrpcRouteRuleActionRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class GrpcRouteRuleActionRetryPolicyArgsDict(TypedDict):
+    num_retries: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the allowed number of retries.
+    """
+    retry_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies one or more conditions when this retry policy applies.
+    Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
+    """
 
 @pulumi.input_type
 class GrpcRouteRuleActionRetryPolicyArgs:
@@ -4020,20 +4100,17 @@ class GrpcRouteRuleActionRetryPolicyArgs:
         pulumi.set(self, "retry_conditions", value)
 
 
-if not MYPY:
-    class GrpcRouteRuleMatchArgsDict(TypedDict):
-        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchHeaderArgsDict']]]]
-        """
-        Specifies a list of HTTP request headers to match against.
-        Structure is documented below.
-        """
-        method: NotRequired[pulumi.Input['GrpcRouteRuleMatchMethodArgsDict']]
-        """
-        A gRPC method to match against. If this field is empty or omitted, will match all methods.
-        Structure is documented below.
-        """
-elif False:
-    GrpcRouteRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
+class GrpcRouteRuleMatchArgsDict(TypedDict):
+    headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchHeaderArgsDict']]]]
+    """
+    Specifies a list of HTTP request headers to match against.
+    Structure is documented below.
+    """
+    method: NotRequired[pulumi.Input['GrpcRouteRuleMatchMethodArgsDict']]
+    """
+    A gRPC method to match against. If this field is empty or omitted, will match all methods.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GrpcRouteRuleMatchArgs:
@@ -4078,24 +4155,21 @@ class GrpcRouteRuleMatchArgs:
         pulumi.set(self, "method", value)
 
 
-if not MYPY:
-    class GrpcRouteRuleMatchHeaderArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        Required. The key of the header.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Required. The value of the header.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of match.
-        Default value is `EXACT`.
-        Possible values are: `TYPE_UNSPECIFIED`, `EXACT`, `REGULAR_EXPRESSION`.
-        """
-elif False:
-    GrpcRouteRuleMatchHeaderArgsDict: TypeAlias = Mapping[str, Any]
+class GrpcRouteRuleMatchHeaderArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Required. The key of the header.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Required. The value of the header.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of match.
+    Default value is `EXACT`.
+    Possible values are: `TYPE_UNSPECIFIED`, `EXACT`, `REGULAR_EXPRESSION`.
+    """
 
 @pulumi.input_type
 class GrpcRouteRuleMatchHeaderArgs:
@@ -4154,22 +4228,19 @@ class GrpcRouteRuleMatchHeaderArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class GrpcRouteRuleMatchMethodArgsDict(TypedDict):
-        grpc_method: pulumi.Input[_builtins.str]
-        """
-        Required. Name of the method to match against.
-        """
-        grpc_service: pulumi.Input[_builtins.str]
-        """
-        Required. Name of the service to match against.
-        """
-        case_sensitive: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies that matches are case sensitive. The default value is true.
-        """
-elif False:
-    GrpcRouteRuleMatchMethodArgsDict: TypeAlias = Mapping[str, Any]
+class GrpcRouteRuleMatchMethodArgsDict(TypedDict):
+    grpc_method: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the method to match against.
+    """
+    grpc_service: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the service to match against.
+    """
+    case_sensitive: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies that matches are case sensitive. The default value is true.
+    """
 
 @pulumi.input_type
 class GrpcRouteRuleMatchMethodArgs:
@@ -4224,22 +4295,19 @@ class GrpcRouteRuleMatchMethodArgs:
         pulumi.set(self, "case_sensitive", value)
 
 
-if not MYPY:
-    class HttpRouteRuleArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input['HttpRouteRuleActionArgsDict']]
-        """
-        The detailed rule defining how to route matched traffic.
-        Structure is documented below.
-        """
-        matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchArgsDict']]]]
-        """
-        A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
-        If no matches field is specified, this rule will unconditionally match traffic.
-        If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
-        Structure is documented below.
-        """
-elif False:
-    HttpRouteRuleArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input['HttpRouteRuleActionArgsDict']]
+    """
+    The detailed rule defining how to route matched traffic.
+    Structure is documented below.
+    """
+    matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchArgsDict']]]]
+    """
+    A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
+    If no matches field is specified, this rule will unconditionally match traffic.
+    If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleArgs:
@@ -4288,59 +4356,56 @@ class HttpRouteRuleArgs:
         pulumi.set(self, "matches", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionArgsDict(TypedDict):
-        cors_policy: NotRequired[pulumi.Input['HttpRouteRuleActionCorsPolicyArgsDict']]
-        """
-        The specification for allowing client side cross-origin requests.
-        Structure is documented below.
-        """
-        destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArgsDict']]]]
-        """
-        The destination to which traffic should be forwarded.
-        Structure is documented below.
-        """
-        fault_injection_policy: NotRequired[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyArgsDict']]
-        """
-        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
-        Structure is documented below.
-        """
-        redirect: NotRequired[pulumi.Input['HttpRouteRuleActionRedirectArgsDict']]
-        """
-        If set, the request is directed as configured by this field.
-        Structure is documented below.
-        """
-        request_header_modifier: NotRequired[pulumi.Input['HttpRouteRuleActionRequestHeaderModifierArgsDict']]
-        """
-        The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
-        Structure is documented below.
-        """
-        request_mirror_policy: NotRequired[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyArgsDict']]
-        """
-        Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
-        Structure is documented below.
-        """
-        response_header_modifier: NotRequired[pulumi.Input['HttpRouteRuleActionResponseHeaderModifierArgsDict']]
-        """
-        The specification for modifying the headers of a response prior to sending the response back to the client.
-        Structure is documented below.
-        """
-        retry_policy: NotRequired[pulumi.Input['HttpRouteRuleActionRetryPolicyArgsDict']]
-        """
-        Specifies the retry policy associated with this route.
-        Structure is documented below.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the timeout for selected route.
-        """
-        url_rewrite: NotRequired[pulumi.Input['HttpRouteRuleActionUrlRewriteArgsDict']]
-        """
-        The specification for rewrite URL before forwarding requests to the destination.
-        Structure is documented below.
-        """
-elif False:
-    HttpRouteRuleActionArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionArgsDict(TypedDict):
+    cors_policy: NotRequired[pulumi.Input['HttpRouteRuleActionCorsPolicyArgsDict']]
+    """
+    The specification for allowing client side cross-origin requests.
+    Structure is documented below.
+    """
+    destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArgsDict']]]]
+    """
+    The destination to which traffic should be forwarded.
+    Structure is documented below.
+    """
+    fault_injection_policy: NotRequired[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyArgsDict']]
+    """
+    The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+    Structure is documented below.
+    """
+    redirect: NotRequired[pulumi.Input['HttpRouteRuleActionRedirectArgsDict']]
+    """
+    If set, the request is directed as configured by this field.
+    Structure is documented below.
+    """
+    request_header_modifier: NotRequired[pulumi.Input['HttpRouteRuleActionRequestHeaderModifierArgsDict']]
+    """
+    The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+    Structure is documented below.
+    """
+    request_mirror_policy: NotRequired[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyArgsDict']]
+    """
+    Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
+    Structure is documented below.
+    """
+    response_header_modifier: NotRequired[pulumi.Input['HttpRouteRuleActionResponseHeaderModifierArgsDict']]
+    """
+    The specification for modifying the headers of a response prior to sending the response back to the client.
+    Structure is documented below.
+    """
+    retry_policy: NotRequired[pulumi.Input['HttpRouteRuleActionRetryPolicyArgsDict']]
+    """
+    Specifies the retry policy associated with this route.
+    Structure is documented below.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the timeout for selected route.
+    """
+    url_rewrite: NotRequired[pulumi.Input['HttpRouteRuleActionUrlRewriteArgsDict']]
+    """
+    The specification for rewrite URL before forwarding requests to the destination.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionArgs:
@@ -4527,42 +4592,39 @@ class HttpRouteRuleActionArgs:
         pulumi.set(self, "url_rewrite", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionCorsPolicyArgsDict(TypedDict):
-        allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
-        """
-        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the content for Access-Control-Allow-Headers header.
-        """
-        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the content for Access-Control-Allow-Methods header.
-        """
-        allow_origin_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the regular expression patterns that match allowed origins.
-        """
-        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the list of origins that will be allowed to do CORS requests.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-        """
-        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the content for Access-Control-Expose-Headers header.
-        """
-        max_age: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies how long result of a preflight request can be cached in seconds.
-        """
-elif False:
-    HttpRouteRuleActionCorsPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionCorsPolicyArgsDict(TypedDict):
+    allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+    """
+    allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies the content for Access-Control-Allow-Headers header.
+    """
+    allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies the content for Access-Control-Allow-Methods header.
+    """
+    allow_origin_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies the regular expression patterns that match allowed origins.
+    """
+    allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies the list of origins that will be allowed to do CORS requests.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+    """
+    expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies the content for Access-Control-Expose-Headers header.
+    """
+    max_age: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies how long result of a preflight request can be cached in seconds.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionCorsPolicyArgs:
@@ -4699,21 +4761,18 @@ class HttpRouteRuleActionCorsPolicyArgs:
         pulumi.set(self, "max_age", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionDestinationArgsDict(TypedDict):
-        service_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URL of a BackendService to route traffic to.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-        If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
-        If weights are specified for any one service name, they need to be specified for all of them.
-        If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
-        """
-elif False:
-    HttpRouteRuleActionDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionDestinationArgsDict(TypedDict):
+    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URL of a BackendService to route traffic to.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+    If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+    If weights are specified for any one service name, they need to be specified for all of them.
+    If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionDestinationArgs:
@@ -4760,20 +4819,17 @@ class HttpRouteRuleActionDestinationArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionFaultInjectionPolicyArgsDict(TypedDict):
-        abort: NotRequired[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyAbortArgsDict']]
-        """
-        Specification of how client requests are aborted as part of fault injection before being sent to a destination.
-        Structure is documented below.
-        """
-        delay: NotRequired[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyDelayArgsDict']]
-        """
-        Specification of how client requests are delayed as part of fault injection before being sent to a destination.
-        Structure is documented below.
-        """
-elif False:
-    HttpRouteRuleActionFaultInjectionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionFaultInjectionPolicyArgsDict(TypedDict):
+    abort: NotRequired[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyAbortArgsDict']]
+    """
+    Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+    Structure is documented below.
+    """
+    delay: NotRequired[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyDelayArgsDict']]
+    """
+    Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionFaultInjectionPolicyArgs:
@@ -4818,18 +4874,15 @@ class HttpRouteRuleActionFaultInjectionPolicyArgs:
         pulumi.set(self, "delay", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionFaultInjectionPolicyAbortArgsDict(TypedDict):
-        http_status: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The HTTP status code used to abort the request.
-        """
-        percentage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The percentage of traffic which will be aborted.
-        """
-elif False:
-    HttpRouteRuleActionFaultInjectionPolicyAbortArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionFaultInjectionPolicyAbortArgsDict(TypedDict):
+    http_status: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The HTTP status code used to abort the request.
+    """
+    percentage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The percentage of traffic which will be aborted.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionFaultInjectionPolicyAbortArgs:
@@ -4870,18 +4923,15 @@ class HttpRouteRuleActionFaultInjectionPolicyAbortArgs:
         pulumi.set(self, "percentage", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionFaultInjectionPolicyDelayArgsDict(TypedDict):
-        fixed_delay: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specify a fixed delay before forwarding the request.
-        """
-        percentage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The percentage of traffic on which delay will be injected.
-        """
-elif False:
-    HttpRouteRuleActionFaultInjectionPolicyDelayArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionFaultInjectionPolicyDelayArgsDict(TypedDict):
+    fixed_delay: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specify a fixed delay before forwarding the request.
+    """
+    percentage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The percentage of traffic on which delay will be injected.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionFaultInjectionPolicyDelayArgs:
@@ -4922,38 +4972,35 @@ class HttpRouteRuleActionFaultInjectionPolicyDelayArgs:
         pulumi.set(self, "percentage", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionRedirectArgsDict(TypedDict):
-        host_redirect: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The host that will be used in the redirect response instead of the one that was supplied in the request.
-        """
-        https_redirect: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, the URL scheme in the redirected request is set to https.
-        """
-        path_redirect: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect can not be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
-        """
-        port_redirect: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port that will be used in the redirected request instead of the one that was supplied in the request.
-        """
-        prefix_rewrite: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates that during redirection, the matched prefix (or path) should be swapped with this value.
-        """
-        response_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP Status code to use for the redirect.
-        """
-        strip_query: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request.
-        """
-elif False:
-    HttpRouteRuleActionRedirectArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionRedirectArgsDict(TypedDict):
+    host_redirect: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The host that will be used in the redirect response instead of the one that was supplied in the request.
+    """
+    https_redirect: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the URL scheme in the redirected request is set to https.
+    """
+    path_redirect: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect can not be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+    """
+    port_redirect: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port that will be used in the redirected request instead of the one that was supplied in the request.
+    """
+    prefix_rewrite: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates that during redirection, the matched prefix (or path) should be swapped with this value.
+    """
+    response_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP Status code to use for the redirect.
+    """
+    strip_query: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionRedirectArgs:
@@ -5074,22 +5121,19 @@ class HttpRouteRuleActionRedirectArgs:
         pulumi.set(self, "strip_query", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionRequestHeaderModifierArgsDict(TypedDict):
-        add: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Add the headers with given map where key is the name of the header, value is the value of the header.
-        """
-        removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Remove headers (matching by header names) specified in the list.
-        """
-        set: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
-        """
-elif False:
-    HttpRouteRuleActionRequestHeaderModifierArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionRequestHeaderModifierArgsDict(TypedDict):
+    add: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Add the headers with given map where key is the name of the header, value is the value of the header.
+    """
+    removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Remove headers (matching by header names) specified in the list.
+    """
+    set: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionRequestHeaderModifierArgs:
@@ -5146,15 +5190,12 @@ class HttpRouteRuleActionRequestHeaderModifierArgs:
         pulumi.set(self, "set", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionRequestMirrorPolicyArgsDict(TypedDict):
-        destination: NotRequired[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyDestinationArgsDict']]
-        """
-        The destination the requests will be mirrored to.
-        Structure is documented below.
-        """
-elif False:
-    HttpRouteRuleActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionRequestMirrorPolicyArgsDict(TypedDict):
+    destination: NotRequired[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyDestinationArgsDict']]
+    """
+    The destination the requests will be mirrored to.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionRequestMirrorPolicyArgs:
@@ -5181,21 +5222,18 @@ class HttpRouteRuleActionRequestMirrorPolicyArgs:
         pulumi.set(self, "destination", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionRequestMirrorPolicyDestinationArgsDict(TypedDict):
-        service_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URL of a BackendService to route traffic to.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-        If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
-        If weights are specified for any one service name, they need to be specified for all of them.
-        If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
-        """
-elif False:
-    HttpRouteRuleActionRequestMirrorPolicyDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionRequestMirrorPolicyDestinationArgsDict(TypedDict):
+    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URL of a BackendService to route traffic to.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+    If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+    If weights are specified for any one service name, they need to be specified for all of them.
+    If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionRequestMirrorPolicyDestinationArgs:
@@ -5242,22 +5280,19 @@ class HttpRouteRuleActionRequestMirrorPolicyDestinationArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionResponseHeaderModifierArgsDict(TypedDict):
-        add: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Add the headers with given map where key is the name of the header, value is the value of the header.
-        """
-        removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Remove headers (matching by header names) specified in the list.
-        """
-        set: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
-        """
-elif False:
-    HttpRouteRuleActionResponseHeaderModifierArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionResponseHeaderModifierArgsDict(TypedDict):
+    add: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Add the headers with given map where key is the name of the header, value is the value of the header.
+    """
+    removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Remove headers (matching by header names) specified in the list.
+    """
+    set: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionResponseHeaderModifierArgs:
@@ -5314,22 +5349,19 @@ class HttpRouteRuleActionResponseHeaderModifierArgs:
         pulumi.set(self, "set", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionRetryPolicyArgsDict(TypedDict):
-        num_retries: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the allowed number of retries.
-        """
-        per_try_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a non-zero timeout per retry attempt. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-        """
-        retry_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies one or more conditions when this retry policy applies.
-        """
-elif False:
-    HttpRouteRuleActionRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionRetryPolicyArgsDict(TypedDict):
+    num_retries: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the allowed number of retries.
+    """
+    per_try_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies a non-zero timeout per retry attempt. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+    """
+    retry_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies one or more conditions when this retry policy applies.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionRetryPolicyArgs:
@@ -5386,18 +5418,15 @@ class HttpRouteRuleActionRetryPolicyArgs:
         pulumi.set(self, "retry_conditions", value)
 
 
-if not MYPY:
-    class HttpRouteRuleActionUrlRewriteArgsDict(TypedDict):
-        host_rewrite: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
-        """
-        path_prefix_rewrite: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
-        """
-elif False:
-    HttpRouteRuleActionUrlRewriteArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleActionUrlRewriteArgsDict(TypedDict):
+    host_rewrite: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
+    """
+    path_prefix_rewrite: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionUrlRewriteArgs:
@@ -5438,36 +5467,33 @@ class HttpRouteRuleActionUrlRewriteArgs:
         pulumi.set(self, "path_prefix_rewrite", value)
 
 
-if not MYPY:
-    class HttpRouteRuleMatchArgsDict(TypedDict):
-        full_path_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP request path value should exactly match this value.
-        """
-        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchHeaderArgsDict']]]]
-        """
-        Specifies a list of HTTP request headers to match against.
-        Structure is documented below.
-        """
-        ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies if prefixMatch and fullPathMatch matches are case sensitive. The default value is false.
-        """
-        prefix_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
-        """
-        query_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchQueryParameterArgsDict']]]]
-        """
-        Specifies a list of query parameters to match against.
-        Structure is documented below.
-        """
-        regex_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
-        """
-elif False:
-    HttpRouteRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleMatchArgsDict(TypedDict):
+    full_path_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP request path value should exactly match this value.
+    """
+    headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchHeaderArgsDict']]]]
+    """
+    Specifies a list of HTTP request headers to match against.
+    Structure is documented below.
+    """
+    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies if prefixMatch and fullPathMatch matches are case sensitive. The default value is false.
+    """
+    prefix_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
+    """
+    query_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchQueryParameterArgsDict']]]]
+    """
+    Specifies a list of query parameters to match against.
+    Structure is documented below.
+    """
+    regex_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+    """
 
 @pulumi.input_type
 class HttpRouteRuleMatchArgs:
@@ -5576,43 +5602,40 @@ class HttpRouteRuleMatchArgs:
         pulumi.set(self, "regex_match", value)
 
 
-if not MYPY:
-    class HttpRouteRuleMatchHeaderArgsDict(TypedDict):
-        exact_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the header should match exactly the content of exactMatch.
-        """
-        header: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the HTTP header to match against.
-        """
-        invert_match: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If specified, the match result will be inverted before checking. Default value is set to false.
-        """
-        prefix_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the header must start with the contents of prefixMatch.
-        """
-        present_match: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A header with headerName must exist. The match takes place whether or not the header has a value.
-        """
-        range_match: NotRequired[pulumi.Input['HttpRouteRuleMatchHeaderRangeMatchArgsDict']]
-        """
-        If specified, the rule will match if the request header value is within the range.
-        Structure is documented below.
-        """
-        regex_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the header must match the regular expression specified in regexMatch.
-        """
-        suffix_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the header must end with the contents of suffixMatch.
-        """
-elif False:
-    HttpRouteRuleMatchHeaderArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleMatchHeaderArgsDict(TypedDict):
+    exact_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the header should match exactly the content of exactMatch.
+    """
+    header: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the HTTP header to match against.
+    """
+    invert_match: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If specified, the match result will be inverted before checking. Default value is set to false.
+    """
+    prefix_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the header must start with the contents of prefixMatch.
+    """
+    present_match: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A header with headerName must exist. The match takes place whether or not the header has a value.
+    """
+    range_match: NotRequired[pulumi.Input['HttpRouteRuleMatchHeaderRangeMatchArgsDict']]
+    """
+    If specified, the rule will match if the request header value is within the range.
+    Structure is documented below.
+    """
+    regex_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the header must match the regular expression specified in regexMatch.
+    """
+    suffix_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the header must end with the contents of suffixMatch.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleMatchHeaderArgs:
@@ -5751,18 +5774,15 @@ class HttpRouteRuleMatchHeaderArgs:
         pulumi.set(self, "suffix_match", value)
 
 
-if not MYPY:
-    class HttpRouteRuleMatchHeaderRangeMatchArgsDict(TypedDict):
-        end: pulumi.Input[_builtins.int]
-        """
-        End of the range (exclusive).
-        """
-        start: pulumi.Input[_builtins.int]
-        """
-        Start of the range (inclusive).
-        """
-elif False:
-    HttpRouteRuleMatchHeaderRangeMatchArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleMatchHeaderRangeMatchArgsDict(TypedDict):
+    end: pulumi.Input[_builtins.int]
+    """
+    End of the range (exclusive).
+    """
+    start: pulumi.Input[_builtins.int]
+    """
+    Start of the range (inclusive).
+    """
 
 @pulumi.input_type
 class HttpRouteRuleMatchHeaderRangeMatchArgs:
@@ -5801,26 +5821,23 @@ class HttpRouteRuleMatchHeaderRangeMatchArgs:
         pulumi.set(self, "start", value)
 
 
-if not MYPY:
-    class HttpRouteRuleMatchQueryParameterArgsDict(TypedDict):
-        exact_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the query parameter must exactly match the contents of exactMatch.
-        """
-        present_match: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not.
-        """
-        query_parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the query parameter to match.
-        """
-        regex_match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
-        """
-elif False:
-    HttpRouteRuleMatchQueryParameterArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRouteRuleMatchQueryParameterArgsDict(TypedDict):
+    exact_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the query parameter must exactly match the contents of exactMatch.
+    """
+    present_match: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not.
+    """
+    query_parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the query parameter to match.
+    """
+    regex_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+    """
 
 @pulumi.input_type
 class HttpRouteRuleMatchQueryParameterArgs:
@@ -5893,29 +5910,26 @@ class HttpRouteRuleMatchQueryParameterArgs:
         pulumi.set(self, "regex_match", value)
 
 
-if not MYPY:
-    class LbEdgeExtensionExtensionChainArgsDict(TypedDict):
-        extensions: pulumi.Input[Sequence[pulumi.Input['LbEdgeExtensionExtensionChainExtensionArgsDict']]]
-        """
-        A set of extensions to execute for the matching request.
-        At least one extension is required. Up to 3 extensions can be defined for each extension chain for
-        LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
-        Structure is documented below.
-        """
-        match_condition: pulumi.Input['LbEdgeExtensionExtensionChainMatchConditionArgsDict']
-        """
-        Conditions under which this chain is invoked for a request.
-        Structure is documented below.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name for this extension chain. The name is logged as part of the HTTP request logs.
-        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
-        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-        and the last character must be a letter or a number.
-        """
-elif False:
-    LbEdgeExtensionExtensionChainArgsDict: TypeAlias = Mapping[str, Any]
+class LbEdgeExtensionExtensionChainArgsDict(TypedDict):
+    extensions: pulumi.Input[Sequence[pulumi.Input['LbEdgeExtensionExtensionChainExtensionArgsDict']]]
+    """
+    A set of extensions to execute for the matching request.
+    At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+    LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+    Structure is documented below.
+    """
+    match_condition: pulumi.Input['LbEdgeExtensionExtensionChainMatchConditionArgsDict']
+    """
+    Conditions under which this chain is invoked for a request.
+    Structure is documented below.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name for this extension chain. The name is logged as part of the HTTP request logs.
+    The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+    and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+    and the last character must be a letter or a number.
+    """
 
 @pulumi.input_type
 class LbEdgeExtensionExtensionChainArgs:
@@ -5983,42 +5997,39 @@ class LbEdgeExtensionExtensionChainArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class LbEdgeExtensionExtensionChainExtensionArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name for this extension. The name is logged as part of the HTTP request logs.
-        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
-        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-        and the last a letter or a number.
-        """
-        service: pulumi.Input[_builtins.str]
-        """
-        The reference to the service that runs the extension.
-        * To configure a callout extension, service must be a fully-qualified reference to a backend service.
-        * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
-        """
-        fail_open: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines how the proxy behaves if the call to the extension fails or times out.
-        When set to TRUE, request or response processing continues without error.
-        Any subsequent extensions in the extension chain are also executed.
-        When set to FALSE: * If response headers have not been delivered to the downstream client,
-        a generic 500 error is returned to the client. The error response can be tailored by
-        configuring a custom error response in the load balancer.
-        """
-        forward_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of the HTTP headers to forward to the extension (from the client or backend).
-        If omitted, all headers are sent. Each element is a string indicating the header name.
-        """
-        supported_events: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of events during request or response processing for which this extension is called.
-        This field is required for the LbEdgeExtension resource and only supports the value `REQUEST_HEADERS`.
-        """
-elif False:
-    LbEdgeExtensionExtensionChainExtensionArgsDict: TypeAlias = Mapping[str, Any]
+class LbEdgeExtensionExtensionChainExtensionArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name for this extension. The name is logged as part of the HTTP request logs.
+    The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+    and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+    and the last a letter or a number.
+    """
+    service: pulumi.Input[_builtins.str]
+    """
+    The reference to the service that runs the extension.
+    * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+    * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
+    """
+    fail_open: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Determines how the proxy behaves if the call to the extension fails or times out.
+    When set to TRUE, request or response processing continues without error.
+    Any subsequent extensions in the extension chain are also executed.
+    When set to FALSE: * If response headers have not been delivered to the downstream client,
+    a generic 500 error is returned to the client. The error response can be tailored by
+    configuring a custom error response in the load balancer.
+    """
+    forward_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of the HTTP headers to forward to the extension (from the client or backend).
+    If omitted, all headers are sent. Each element is a string indicating the header name.
+    """
+    supported_events: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of events during request or response processing for which this extension is called.
+    This field is required for the LbEdgeExtension resource and only supports the value `REQUEST_HEADERS`.
+    """
 
 @pulumi.input_type
 class LbEdgeExtensionExtensionChainExtensionArgs:
@@ -6129,14 +6140,11 @@ class LbEdgeExtensionExtensionChainExtensionArgs:
         pulumi.set(self, "supported_events", value)
 
 
-if not MYPY:
-    class LbEdgeExtensionExtensionChainMatchConditionArgsDict(TypedDict):
-        cel_expression: pulumi.Input[_builtins.str]
-        """
-        A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
-        """
-elif False:
-    LbEdgeExtensionExtensionChainMatchConditionArgsDict: TypeAlias = Mapping[str, Any]
+class LbEdgeExtensionExtensionChainMatchConditionArgsDict(TypedDict):
+    cel_expression: pulumi.Input[_builtins.str]
+    """
+    A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+    """
 
 @pulumi.input_type
 class LbEdgeExtensionExtensionChainMatchConditionArgs:
@@ -6160,30 +6168,27 @@ class LbEdgeExtensionExtensionChainMatchConditionArgs:
         pulumi.set(self, "cel_expression", value)
 
 
-if not MYPY:
-    class LbRouteExtensionExtensionChainArgsDict(TypedDict):
-        extensions: pulumi.Input[Sequence[pulumi.Input['LbRouteExtensionExtensionChainExtensionArgsDict']]]
-        """
-        A set of extensions to execute for the matching request.
-        At least one extension is required. Up to 3 extensions can be defined for each extension chain for
-        LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
-        Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
-        Structure is documented below.
-        """
-        match_condition: pulumi.Input['LbRouteExtensionExtensionChainMatchConditionArgsDict']
-        """
-        Conditions under which this chain is invoked for a request.
-        Structure is documented below.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name for this extension chain. The name is logged as part of the HTTP request logs.
-        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
-        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-        and the last character must be a letter or a number.
-        """
-elif False:
-    LbRouteExtensionExtensionChainArgsDict: TypeAlias = Mapping[str, Any]
+class LbRouteExtensionExtensionChainArgsDict(TypedDict):
+    extensions: pulumi.Input[Sequence[pulumi.Input['LbRouteExtensionExtensionChainExtensionArgsDict']]]
+    """
+    A set of extensions to execute for the matching request.
+    At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+    LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+    Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
+    Structure is documented below.
+    """
+    match_condition: pulumi.Input['LbRouteExtensionExtensionChainMatchConditionArgsDict']
+    """
+    Conditions under which this chain is invoked for a request.
+    Structure is documented below.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name for this extension chain. The name is logged as part of the HTTP request logs.
+    The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+    and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+    and the last character must be a letter or a number.
+    """
 
 @pulumi.input_type
 class LbRouteExtensionExtensionChainArgs:
@@ -6253,79 +6258,76 @@ class LbRouteExtensionExtensionChainArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class LbRouteExtensionExtensionChainExtensionArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name for this extension. The name is logged as part of the HTTP request logs.
-        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
-        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-        and the last a letter or a number.
-        """
-        service: pulumi.Input[_builtins.str]
-        """
-        The reference to the service that runs the extension.
-        * To configure a callout extension, service must be a fully-qualified reference to a backend service.
-        * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
-        """
-        authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The :authority header in the gRPC request sent from Envoy to the extension service.
-        """
-        fail_open: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines how the proxy behaves if the call to the extension fails or times out.
-        When set to TRUE, request or response processing continues without error.
-        Any subsequent extensions in the extension chain are also executed.
-        When set to FALSE: * If response headers have not been delivered to the downstream client,
-        a generic 500 error is returned to the client. The error response can be tailored by
-        configuring a custom error response in the load balancer.
-        """
-        forward_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of the HTTP headers to forward to the extension (from the client or backend).
-        If omitted, all headers are sent. Each element is a string indicating the header name.
-        """
-        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The metadata provided here is included as part of the `metadata_context` (of type `google.protobuf.Struct`)
-        in the `ProcessingRequest` message sent to the extension server.
-        The metadata is available under the namespace `com.google.lb_route_extension.<resource_name>.<chain_name>.<extension_name>`.
-        The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
-        This field must not be set for plugin extensions. Setting it results in a validation error.
-        """
-        observability_mode: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter.
-        This makes `ext_proc` calls asynchronous. Envoy doesn't check for the response from `ext_proc` calls.
-        For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
-        This field is helpful when you want to try out the extension in async log-only mode.
-        Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
-        Only `STREAMED` (default) body processing mode is supported.
-        """
-        request_body_send_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Configures the send mode for request body processing.
-        The field can only be set if `supported_events` includes `REQUEST_BODY`.
-        If `supported_events` includes `REQUEST_BODY`, but `request_body_send_mode` is unset, the default value `STREAMED` is used.
-        When this field is set to `FULL_DUPLEX_STREAMED`, `supported_events` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
-        This field can be set only when the `service` field of the extension points to a `BackendService`.
-        Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
-        Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
-        """
-        supported_events: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of events during request or response processing for which this extension is called.
-        This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
-        Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-        """
-elif False:
-    LbRouteExtensionExtensionChainExtensionArgsDict: TypeAlias = Mapping[str, Any]
+class LbRouteExtensionExtensionChainExtensionArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name for this extension. The name is logged as part of the HTTP request logs.
+    The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+    and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+    and the last a letter or a number.
+    """
+    service: pulumi.Input[_builtins.str]
+    """
+    The reference to the service that runs the extension.
+    * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+    * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
+    """
+    authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The :authority header in the gRPC request sent from Envoy to the extension service.
+    """
+    fail_open: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Determines how the proxy behaves if the call to the extension fails or times out.
+    When set to TRUE, request or response processing continues without error.
+    Any subsequent extensions in the extension chain are also executed.
+    When set to FALSE: * If response headers have not been delivered to the downstream client,
+    a generic 500 error is returned to the client. The error response can be tailored by
+    configuring a custom error response in the load balancer.
+    """
+    forward_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of the HTTP headers to forward to the extension (from the client or backend).
+    If omitted, all headers are sent. Each element is a string indicating the header name.
+    """
+    metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The metadata provided here is included as part of the `metadata_context` (of type `google.protobuf.Struct`)
+    in the `ProcessingRequest` message sent to the extension server.
+    The metadata is available under the namespace `com.google.lb_route_extension.<resource_name>.<chain_name>.<extension_name>`.
+    The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
+    This field must not be set for plugin extensions. Setting it results in a validation error.
+    """
+    observability_mode: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter.
+    This makes `ext_proc` calls asynchronous. Envoy doesn't check for the response from `ext_proc` calls.
+    For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+    This field is helpful when you want to try out the extension in async log-only mode.
+    Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+    Only `STREAMED` (default) body processing mode is supported.
+    """
+    request_body_send_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Configures the send mode for request body processing.
+    The field can only be set if `supported_events` includes `REQUEST_BODY`.
+    If `supported_events` includes `REQUEST_BODY`, but `request_body_send_mode` is unset, the default value `STREAMED` is used.
+    When this field is set to `FULL_DUPLEX_STREAMED`, `supported_events` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+    This field can be set only when the `service` field of the extension points to a `BackendService`.
+    Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+    Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+    """
+    supported_events: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of events during request or response processing for which this extension is called.
+    This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+    Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+    """
 
 @pulumi.input_type
 class LbRouteExtensionExtensionChainExtensionArgs:
@@ -6550,14 +6552,11 @@ class LbRouteExtensionExtensionChainExtensionArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class LbRouteExtensionExtensionChainMatchConditionArgsDict(TypedDict):
-        cel_expression: pulumi.Input[_builtins.str]
-        """
-        A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
-        """
-elif False:
-    LbRouteExtensionExtensionChainMatchConditionArgsDict: TypeAlias = Mapping[str, Any]
+class LbRouteExtensionExtensionChainMatchConditionArgsDict(TypedDict):
+    cel_expression: pulumi.Input[_builtins.str]
+    """
+    A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+    """
 
 @pulumi.input_type
 class LbRouteExtensionExtensionChainMatchConditionArgs:
@@ -6581,30 +6580,27 @@ class LbRouteExtensionExtensionChainMatchConditionArgs:
         pulumi.set(self, "cel_expression", value)
 
 
-if not MYPY:
-    class LbTrafficExtensionExtensionChainArgsDict(TypedDict):
-        extensions: pulumi.Input[Sequence[pulumi.Input['LbTrafficExtensionExtensionChainExtensionArgsDict']]]
-        """
-        A set of extensions to execute for the matching request.
-        At least one extension is required. Up to 3 extensions can be defined for each extension chain for
-        LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
-        Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
-        Structure is documented below.
-        """
-        match_condition: pulumi.Input['LbTrafficExtensionExtensionChainMatchConditionArgsDict']
-        """
-        Conditions under which this chain is invoked for a request.
-        Structure is documented below.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name for this extension chain. The name is logged as part of the HTTP request logs.
-        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
-        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-        and the last a letter or a number.
-        """
-elif False:
-    LbTrafficExtensionExtensionChainArgsDict: TypeAlias = Mapping[str, Any]
+class LbTrafficExtensionExtensionChainArgsDict(TypedDict):
+    extensions: pulumi.Input[Sequence[pulumi.Input['LbTrafficExtensionExtensionChainExtensionArgsDict']]]
+    """
+    A set of extensions to execute for the matching request.
+    At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+    LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+    Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
+    Structure is documented below.
+    """
+    match_condition: pulumi.Input['LbTrafficExtensionExtensionChainMatchConditionArgsDict']
+    """
+    Conditions under which this chain is invoked for a request.
+    Structure is documented below.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name for this extension chain. The name is logged as part of the HTTP request logs.
+    The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+    and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+    and the last a letter or a number.
+    """
 
 @pulumi.input_type
 class LbTrafficExtensionExtensionChainArgs:
@@ -6674,59 +6670,56 @@ class LbTrafficExtensionExtensionChainArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class LbTrafficExtensionExtensionChainExtensionArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name for this extension. The name is logged as part of the HTTP request logs.
-        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
-        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-        and the last a letter or a number.
-        """
-        service: pulumi.Input[_builtins.str]
-        """
-        The reference to the service that runs the extension.
-        * To configure a callout extension, service must be a fully-qualified reference to a backend service.
-        * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
-        """
-        authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The :authority header in the gRPC request sent from Envoy to the extension service.
-        """
-        fail_open: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines how the proxy behaves if the call to the extension fails or times out.
-        When set to TRUE, request or response processing continues without error.
-        Any subsequent extensions in the extension chain are also executed.
-        When set to FALSE: * If response headers have not been delivered to the downstream client,
-        a generic 500 error is returned to the client. The error response can be tailored by
-        configuring a custom error response in the load balancer.
-        """
-        forward_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of the HTTP headers to forward to the extension (from the client or backend).
-        If omitted, all headers are sent. Each element is a string indicating the header name.
-        """
-        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Metadata associated with the extension. This field is used to pass metadata to the extension service.
-        You can set up key value pairs for metadata as you like and need.
-        f.e. {"key": "value", "key2": "value2"}.
-        """
-        supported_events: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of events during request or response processing for which this extension is called.
-        This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
-        resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
-        `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-        """
-elif False:
-    LbTrafficExtensionExtensionChainExtensionArgsDict: TypeAlias = Mapping[str, Any]
+class LbTrafficExtensionExtensionChainExtensionArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name for this extension. The name is logged as part of the HTTP request logs.
+    The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+    and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+    and the last a letter or a number.
+    """
+    service: pulumi.Input[_builtins.str]
+    """
+    The reference to the service that runs the extension.
+    * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+    * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
+    """
+    authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The :authority header in the gRPC request sent from Envoy to the extension service.
+    """
+    fail_open: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Determines how the proxy behaves if the call to the extension fails or times out.
+    When set to TRUE, request or response processing continues without error.
+    Any subsequent extensions in the extension chain are also executed.
+    When set to FALSE: * If response headers have not been delivered to the downstream client,
+    a generic 500 error is returned to the client. The error response can be tailored by
+    configuring a custom error response in the load balancer.
+    """
+    forward_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of the HTTP headers to forward to the extension (from the client or backend).
+    If omitted, all headers are sent. Each element is a string indicating the header name.
+    """
+    metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Metadata associated with the extension. This field is used to pass metadata to the extension service.
+    You can set up key value pairs for metadata as you like and need.
+    f.e. {"key": "value", "key2": "value2"}.
+    """
+    supported_events: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of events during request or response processing for which this extension is called.
+    This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
+    resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
+    `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+    """
 
 @pulumi.input_type
 class LbTrafficExtensionExtensionChainExtensionArgs:
@@ -6895,14 +6888,11 @@ class LbTrafficExtensionExtensionChainExtensionArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class LbTrafficExtensionExtensionChainMatchConditionArgsDict(TypedDict):
-        cel_expression: pulumi.Input[_builtins.str]
-        """
-        A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
-        """
-elif False:
-    LbTrafficExtensionExtensionChainMatchConditionArgsDict: TypeAlias = Mapping[str, Any]
+class LbTrafficExtensionExtensionChainMatchConditionArgsDict(TypedDict):
+    cel_expression: pulumi.Input[_builtins.str]
+    """
+    A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+    """
 
 @pulumi.input_type
 class LbTrafficExtensionExtensionChainMatchConditionArgs:
@@ -6926,23 +6916,20 @@ class LbTrafficExtensionExtensionChainMatchConditionArgs:
         pulumi.set(self, "cel_expression", value)
 
 
-if not MYPY:
-    class MulticastConsumerAssociationStateArgsDict(TypedDict):
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the multicast resource.
-        Possible values:
-        CREATING
-        ACTIVE
-        DELETING
-        DELETE_FAILED
-        UPDATING
-        UPDATE_FAILED
-        INACTIVE
-        """
-elif False:
-    MulticastConsumerAssociationStateArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastConsumerAssociationStateArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the multicast resource.
+    Possible values:
+    CREATING
+    ACTIVE
+    DELETING
+    DELETE_FAILED
+    UPDATING
+    UPDATE_FAILED
+    INACTIVE
+    """
 
 @pulumi.input_type
 class MulticastConsumerAssociationStateArgs:
@@ -6985,23 +6972,20 @@ class MulticastConsumerAssociationStateArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MulticastDomainActivationStateArgsDict(TypedDict):
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the multicast resource.
-        Possible values:
-        CREATING
-        ACTIVE
-        DELETING
-        DELETE_FAILED
-        UPDATING
-        UPDATE_FAILED
-        INACTIVE
-        """
-elif False:
-    MulticastDomainActivationStateArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastDomainActivationStateArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the multicast resource.
+    Possible values:
+    CREATING
+    ACTIVE
+    DELETING
+    DELETE_FAILED
+    UPDATING
+    UPDATE_FAILED
+    INACTIVE
+    """
 
 @pulumi.input_type
 class MulticastDomainActivationStateArgs:
@@ -7044,35 +7028,32 @@ class MulticastDomainActivationStateArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MulticastDomainActivationTrafficSpecArgsDict(TypedDict):
-        aggr_egress_pps: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Aggregated egress Packet-Per-Second for all multicast groups in the domain
-        in this zone.
-        """
-        aggr_ingress_pps: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Aggregated ingress Packet-Per-Second for all multicast groups in the domain
-        in this zone. Default to (aggregated_egress_pps /
-        max_per_group_subscribers) * 2.
-        """
-        avg_packet_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Average packet size (Default to 512 bytes).
-        """
-        max_per_group_ingress_pps: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Maximum ingress Packet-Per-Second for a single multicast group in this
-        zone. Default to aggregated_ingress_pps / 2.
-        """
-        max_per_group_subscribers: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Maximum number of subscribers for a single multicast group in this zone.
-        Default to max(50, aggregated_egress_pps / aggregated_ingress_pps).
-        """
-elif False:
-    MulticastDomainActivationTrafficSpecArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastDomainActivationTrafficSpecArgsDict(TypedDict):
+    aggr_egress_pps: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Aggregated egress Packet-Per-Second for all multicast groups in the domain
+    in this zone.
+    """
+    aggr_ingress_pps: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Aggregated ingress Packet-Per-Second for all multicast groups in the domain
+    in this zone. Default to (aggregated_egress_pps /
+    max_per_group_subscribers) * 2.
+    """
+    avg_packet_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Average packet size (Default to 512 bytes).
+    """
+    max_per_group_ingress_pps: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Maximum ingress Packet-Per-Second for a single multicast group in this
+    zone. Default to aggregated_ingress_pps / 2.
+    """
+    max_per_group_subscribers: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Maximum number of subscribers for a single multicast group in this zone.
+    Default to max(50, aggregated_egress_pps / aggregated_ingress_pps).
+    """
 
 @pulumi.input_type
 class MulticastDomainActivationTrafficSpecArgs:
@@ -7171,24 +7152,21 @@ class MulticastDomainActivationTrafficSpecArgs:
         pulumi.set(self, "max_per_group_subscribers", value)
 
 
-if not MYPY:
-    class MulticastDomainConnectionConfigArgsDict(TypedDict):
-        connection_type: pulumi.Input[_builtins.str]
-        """
-        The VPC connection type.
-        Possible values:
-        NCC
-        SAME_VPC
-        """
-        ncc_hub: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource name of the
-        [NCC](https://cloud.google.com/network-connectivity-center) hub.
-        Use the following format:
-        `projects/{project}/locations/global/hubs/{hub}`.
-        """
-elif False:
-    MulticastDomainConnectionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastDomainConnectionConfigArgsDict(TypedDict):
+    connection_type: pulumi.Input[_builtins.str]
+    """
+    The VPC connection type.
+    Possible values:
+    NCC
+    SAME_VPC
+    """
+    ncc_hub: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource name of the
+    [NCC](https://cloud.google.com/network-connectivity-center) hub.
+    Use the following format:
+    `projects/{project}/locations/global/hubs/{hub}`.
+    """
 
 @pulumi.input_type
 class MulticastDomainConnectionConfigArgs:
@@ -7240,23 +7218,20 @@ class MulticastDomainConnectionConfigArgs:
         pulumi.set(self, "ncc_hub", value)
 
 
-if not MYPY:
-    class MulticastDomainGroupStateArgsDict(TypedDict):
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the multicast resource.
-        Possible values:
-        CREATING
-        ACTIVE
-        DELETING
-        DELETE_FAILED
-        UPDATING
-        UPDATE_FAILED
-        INACTIVE
-        """
-elif False:
-    MulticastDomainGroupStateArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastDomainGroupStateArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the multicast resource.
+    Possible values:
+    CREATING
+    ACTIVE
+    DELETING
+    DELETE_FAILED
+    UPDATING
+    UPDATE_FAILED
+    INACTIVE
+    """
 
 @pulumi.input_type
 class MulticastDomainGroupStateArgs:
@@ -7299,23 +7274,20 @@ class MulticastDomainGroupStateArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MulticastDomainStateArgsDict(TypedDict):
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the multicast resource.
-        Possible values:
-        CREATING
-        ACTIVE
-        DELETING
-        DELETE_FAILED
-        UPDATING
-        UPDATE_FAILED
-        INACTIVE
-        """
-elif False:
-    MulticastDomainStateArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastDomainStateArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the multicast resource.
+    Possible values:
+    CREATING
+    ACTIVE
+    DELETING
+    DELETE_FAILED
+    UPDATING
+    UPDATE_FAILED
+    INACTIVE
+    """
 
 @pulumi.input_type
 class MulticastDomainStateArgs:
@@ -7358,14 +7330,40 @@ class MulticastDomainStateArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MulticastGroupConsumerActivationLogConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+class MulticastDomainUllMulticastDomainArgsDict(TypedDict):
+    preconfigured_ull_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The preconfigured Ultra-Low-Latency domain name.
+    """
+
+@pulumi.input_type
+class MulticastDomainUllMulticastDomainArgs:
+    def __init__(__self__, *,
+                 preconfigured_ull_domain: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        Whether to enable logging or not.
+        :param pulumi.Input[_builtins.str] preconfigured_ull_domain: The preconfigured Ultra-Low-Latency domain name.
         """
-elif False:
-    MulticastGroupConsumerActivationLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+        if preconfigured_ull_domain is not None:
+            pulumi.set(__self__, "preconfigured_ull_domain", preconfigured_ull_domain)
+
+    @_builtins.property
+    @pulumi.getter(name="preconfiguredUllDomain")
+    def preconfigured_ull_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The preconfigured Ultra-Low-Latency domain name.
+        """
+        return pulumi.get(self, "preconfigured_ull_domain")
+
+    @preconfigured_ull_domain.setter
+    def preconfigured_ull_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "preconfigured_ull_domain", value)
+
+
+class MulticastGroupConsumerActivationLogConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable logging or not.
+    """
 
 @pulumi.input_type
 class MulticastGroupConsumerActivationLogConfigArgs:
@@ -7390,23 +7388,20 @@ class MulticastGroupConsumerActivationLogConfigArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class MulticastGroupConsumerActivationStateArgsDict(TypedDict):
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the multicast resource.
-        Possible values:
-        CREATING
-        ACTIVE
-        DELETING
-        DELETE_FAILED
-        UPDATING
-        UPDATE_FAILED
-        INACTIVE
-        """
-elif False:
-    MulticastGroupConsumerActivationStateArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastGroupConsumerActivationStateArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the multicast resource.
+    Possible values:
+    CREATING
+    ACTIVE
+    DELETING
+    DELETE_FAILED
+    UPDATING
+    UPDATE_FAILED
+    INACTIVE
+    """
 
 @pulumi.input_type
 class MulticastGroupConsumerActivationStateArgs:
@@ -7449,23 +7444,20 @@ class MulticastGroupConsumerActivationStateArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MulticastGroupProducerActivationStateArgsDict(TypedDict):
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the multicast resource.
-        Possible values:
-        CREATING
-        ACTIVE
-        DELETING
-        DELETE_FAILED
-        UPDATING
-        UPDATE_FAILED
-        INACTIVE
-        """
-elif False:
-    MulticastGroupProducerActivationStateArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastGroupProducerActivationStateArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the multicast resource.
+    Possible values:
+    CREATING
+    ACTIVE
+    DELETING
+    DELETE_FAILED
+    UPDATING
+    UPDATE_FAILED
+    INACTIVE
+    """
 
 @pulumi.input_type
 class MulticastGroupProducerActivationStateArgs:
@@ -7508,14 +7500,11 @@ class MulticastGroupProducerActivationStateArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MulticastGroupRangeActivationLogConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable logging or not.
-        """
-elif False:
-    MulticastGroupRangeActivationLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastGroupRangeActivationLogConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable logging or not.
+    """
 
 @pulumi.input_type
 class MulticastGroupRangeActivationLogConfigArgs:
@@ -7540,23 +7529,20 @@ class MulticastGroupRangeActivationLogConfigArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class MulticastGroupRangeActivationStateArgsDict(TypedDict):
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the multicast resource.
-        Possible values:
-        CREATING
-        ACTIVE
-        DELETING
-        DELETE_FAILED
-        UPDATING
-        UPDATE_FAILED
-        INACTIVE
-        """
-elif False:
-    MulticastGroupRangeActivationStateArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastGroupRangeActivationStateArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the multicast resource.
+    Possible values:
+    CREATING
+    ACTIVE
+    DELETING
+    DELETE_FAILED
+    UPDATING
+    UPDATE_FAILED
+    INACTIVE
+    """
 
 @pulumi.input_type
 class MulticastGroupRangeActivationStateArgs:
@@ -7599,14 +7585,11 @@ class MulticastGroupRangeActivationStateArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MulticastGroupRangeLogConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable logging or not.
-        """
-elif False:
-    MulticastGroupRangeLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastGroupRangeLogConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable logging or not.
+    """
 
 @pulumi.input_type
 class MulticastGroupRangeLogConfigArgs:
@@ -7631,23 +7614,20 @@ class MulticastGroupRangeLogConfigArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class MulticastGroupRangeStateArgsDict(TypedDict):
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the multicast resource.
-        Possible values:
-        CREATING
-        ACTIVE
-        DELETING
-        DELETE_FAILED
-        UPDATING
-        UPDATE_FAILED
-        INACTIVE
-        """
-elif False:
-    MulticastGroupRangeStateArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastGroupRangeStateArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the multicast resource.
+    Possible values:
+    CREATING
+    ACTIVE
+    DELETING
+    DELETE_FAILED
+    UPDATING
+    UPDATE_FAILED
+    INACTIVE
+    """
 
 @pulumi.input_type
 class MulticastGroupRangeStateArgs:
@@ -7690,23 +7670,20 @@ class MulticastGroupRangeStateArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class MulticastProducerAssociationStateArgsDict(TypedDict):
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The state of the multicast resource.
-        Possible values:
-        CREATING
-        ACTIVE
-        DELETING
-        DELETE_FAILED
-        UPDATING
-        UPDATE_FAILED
-        INACTIVE
-        """
-elif False:
-    MulticastProducerAssociationStateArgsDict: TypeAlias = Mapping[str, Any]
+class MulticastProducerAssociationStateArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The state of the multicast resource.
+    Possible values:
+    CREATING
+    ACTIVE
+    DELETING
+    DELETE_FAILED
+    UPDATING
+    UPDATE_FAILED
+    INACTIVE
+    """
 
 @pulumi.input_type
 class MulticastProducerAssociationStateArgs:
@@ -7749,14 +7726,11 @@ class MulticastProducerAssociationStateArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class ServiceLbPoliciesAutoCapacityDrainArgsDict(TypedDict):
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
-        """
-elif False:
-    ServiceLbPoliciesAutoCapacityDrainArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceLbPoliciesAutoCapacityDrainArgsDict(TypedDict):
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service.
+    """
 
 @pulumi.input_type
 class ServiceLbPoliciesAutoCapacityDrainArgs:
@@ -7781,14 +7755,11 @@ class ServiceLbPoliciesAutoCapacityDrainArgs:
         pulumi.set(self, "enable", value)
 
 
-if not MYPY:
-    class ServiceLbPoliciesFailoverConfigArgsDict(TypedDict):
-        failover_health_threshold: pulumi.Input[_builtins.int]
-        """
-        Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
-        """
-elif False:
-    ServiceLbPoliciesFailoverConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceLbPoliciesFailoverConfigArgsDict(TypedDict):
+    failover_health_threshold: pulumi.Input[_builtins.int]
+    """
+    Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others.
+    """
 
 @pulumi.input_type
 class ServiceLbPoliciesFailoverConfigArgs:
@@ -7812,21 +7783,18 @@ class ServiceLbPoliciesFailoverConfigArgs:
         pulumi.set(self, "failover_health_threshold", value)
 
 
-if not MYPY:
-    class ServiceLbPoliciesIsolationConfigArgsDict(TypedDict):
-        isolation_granularity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The isolation granularity of the load balancer.
-        Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
-        """
-        isolation_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The isolation mode of the load balancer.
-        Default value is `NEAREST`.
-        Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
-        """
-elif False:
-    ServiceLbPoliciesIsolationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceLbPoliciesIsolationConfigArgsDict(TypedDict):
+    isolation_granularity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The isolation granularity of the load balancer.
+    Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
+    """
+    isolation_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The isolation mode of the load balancer.
+    Default value is `NEAREST`.
+    Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
+    """
 
 @pulumi.input_type
 class ServiceLbPoliciesIsolationConfigArgs:
@@ -7873,21 +7841,18 @@ class ServiceLbPoliciesIsolationConfigArgs:
         pulumi.set(self, "isolation_mode", value)
 
 
-if not MYPY:
-    class TcpRouteRuleArgsDict(TypedDict):
-        action: pulumi.Input['TcpRouteRuleActionArgsDict']
-        """
-        A detailed rule defining how to route traffic.
-        Structure is documented below.
-        """
-        matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleMatchArgsDict']]]]
-        """
-        RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
-        If no routeMatch field is specified, this rule will unconditionally match traffic.
-        Structure is documented below.
-        """
-elif False:
-    TcpRouteRuleArgsDict: TypeAlias = Mapping[str, Any]
+class TcpRouteRuleArgsDict(TypedDict):
+    action: pulumi.Input['TcpRouteRuleActionArgsDict']
+    """
+    A detailed rule defining how to route traffic.
+    Structure is documented below.
+    """
+    matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleMatchArgsDict']]]]
+    """
+    RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
+    If no routeMatch field is specified, this rule will unconditionally match traffic.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class TcpRouteRuleArgs:
@@ -7933,24 +7898,21 @@ class TcpRouteRuleArgs:
         pulumi.set(self, "matches", value)
 
 
-if not MYPY:
-    class TcpRouteRuleActionArgsDict(TypedDict):
-        destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleActionDestinationArgsDict']]]]
-        """
-        The destination services to which traffic should be forwarded. At least one destination service is required.
-        Structure is documented below.
-        """
-        idle_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-        """
-        original_destination: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, Router will use the destination IP and port of the original connection as the destination of the request.
-        """
-elif False:
-    TcpRouteRuleActionArgsDict: TypeAlias = Mapping[str, Any]
+class TcpRouteRuleActionArgsDict(TypedDict):
+    destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleActionDestinationArgsDict']]]]
+    """
+    The destination services to which traffic should be forwarded. At least one destination service is required.
+    Structure is documented below.
+    """
+    idle_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+    """
+    original_destination: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, Router will use the destination IP and port of the original connection as the destination of the request.
+    """
 
 @pulumi.input_type
 class TcpRouteRuleActionArgs:
@@ -8011,21 +7973,18 @@ class TcpRouteRuleActionArgs:
         pulumi.set(self, "original_destination", value)
 
 
-if not MYPY:
-    class TcpRouteRuleActionDestinationArgsDict(TypedDict):
-        service_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URL of a BackendService to route traffic to.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-        If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
-        If weights are specified for any one service name, they need to be specified for all of them.
-        If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
-        """
-elif False:
-    TcpRouteRuleActionDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class TcpRouteRuleActionDestinationArgsDict(TypedDict):
+    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URL of a BackendService to route traffic to.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+    If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+    If weights are specified for any one service name, they need to be specified for all of them.
+    If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+    """
 
 @pulumi.input_type
 class TcpRouteRuleActionDestinationArgs:
@@ -8072,19 +8031,16 @@ class TcpRouteRuleActionDestinationArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class TcpRouteRuleMatchArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask.
-        By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
-        """
-        port: pulumi.Input[_builtins.str]
-        """
-        Specifies the destination port to match against.
-        """
-elif False:
-    TcpRouteRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
+class TcpRouteRuleMatchArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask.
+    By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
+    """
+    port: pulumi.Input[_builtins.str]
+    """
+    Specifies the destination port to match against.
+    """
 
 @pulumi.input_type
 class TcpRouteRuleMatchArgs:
@@ -8125,20 +8081,17 @@ class TcpRouteRuleMatchArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class TlsRouteRuleArgsDict(TypedDict):
-        action: pulumi.Input['TlsRouteRuleActionArgsDict']
-        """
-        Required. A detailed rule defining how to route traffic.
-        Structure is documented below.
-        """
-        matches: pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleMatchArgsDict']]]
-        """
-        Matches define the predicate used to match requests to a given action.
-        Structure is documented below.
-        """
-elif False:
-    TlsRouteRuleArgsDict: TypeAlias = Mapping[str, Any]
+class TlsRouteRuleArgsDict(TypedDict):
+    action: pulumi.Input['TlsRouteRuleActionArgsDict']
+    """
+    Required. A detailed rule defining how to route traffic.
+    Structure is documented below.
+    """
+    matches: pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleMatchArgsDict']]]
+    """
+    Matches define the predicate used to match requests to a given action.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class TlsRouteRuleArgs:
@@ -8181,15 +8134,12 @@ class TlsRouteRuleArgs:
         pulumi.set(self, "matches", value)
 
 
-if not MYPY:
-    class TlsRouteRuleActionArgsDict(TypedDict):
-        destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleActionDestinationArgsDict']]]]
-        """
-        The destination to which traffic should be forwarded.
-        Structure is documented below.
-        """
-elif False:
-    TlsRouteRuleActionArgsDict: TypeAlias = Mapping[str, Any]
+class TlsRouteRuleActionArgsDict(TypedDict):
+    destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleActionDestinationArgsDict']]]]
+    """
+    The destination to which traffic should be forwarded.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class TlsRouteRuleActionArgs:
@@ -8216,18 +8166,15 @@ class TlsRouteRuleActionArgs:
         pulumi.set(self, "destinations", value)
 
 
-if not MYPY:
-    class TlsRouteRuleActionDestinationArgsDict(TypedDict):
-        service_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URL of a BackendService to route traffic to.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-        """
-elif False:
-    TlsRouteRuleActionDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class TlsRouteRuleActionDestinationArgsDict(TypedDict):
+    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URL of a BackendService to route traffic to.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+    """
 
 @pulumi.input_type
 class TlsRouteRuleActionDestinationArgs:
@@ -8268,19 +8215,16 @@ class TlsRouteRuleActionDestinationArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class TlsRouteRuleMatchArgsDict(TypedDict):
-        alpns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sniHost and alpn is required. Up to 5 alpns across all matches can be set.
-        """
-        sni_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
-        Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
-        """
-elif False:
-    TlsRouteRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
+class TlsRouteRuleMatchArgsDict(TypedDict):
+    alpns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sniHost and alpn is required. Up to 5 alpns across all matches can be set.
+    """
+    sni_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
+    Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
+    """
 
 @pulumi.input_type
 class TlsRouteRuleMatchArgs:
@@ -8323,28 +8267,25 @@ class TlsRouteRuleMatchArgs:
         pulumi.set(self, "sni_hosts", value)
 
 
-if not MYPY:
-    class WasmPluginLogConfigArgsDict(TypedDict):
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Specifies whether to enable logging for activity by this plugin.
-        """
-        min_log_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Non-empty default. Specificies the lowest level of the plugin logs that are exported to Cloud Logging. This setting relates to the logs generated by using logging statements in your Wasm code.
-        This field is can be set only if logging is enabled for the plugin.
-        If the field is not provided when logging is enabled, it is set to INFO by default.
-        Possible values are: `LOG_LEVEL_UNSPECIFIED`, `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `CRITICAL`.
-        """
-        sample_rate: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Non-empty default. Configures the sampling rate of activity logs, where 1.0 means all logged activity is reported and 0.0 means no activity is reported.
-        A floating point value between 0.0 and 1.0 indicates that a percentage of log messages is stored.
-        The default value when logging is enabled is 1.0. The value of the field must be between 0 and 1 (inclusive).
-        This field can be specified only if logging is enabled for this plugin.
-        """
-elif False:
-    WasmPluginLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WasmPluginLogConfigArgsDict(TypedDict):
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Specifies whether to enable logging for activity by this plugin.
+    """
+    min_log_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Non-empty default. Specificies the lowest level of the plugin logs that are exported to Cloud Logging. This setting relates to the logs generated by using logging statements in your Wasm code.
+    This field is can be set only if logging is enabled for the plugin.
+    If the field is not provided when logging is enabled, it is set to INFO by default.
+    Possible values are: `LOG_LEVEL_UNSPECIFIED`, `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `CRITICAL`.
+    """
+    sample_rate: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Non-empty default. Configures the sampling rate of activity logs, where 1.0 means all logged activity is reported and 0.0 means no activity is reported.
+    A floating point value between 0.0 and 1.0 indicates that a percentage of log messages is stored.
+    The default value when logging is enabled is 1.0. The value of the field must be between 0 and 1 (inclusive).
+    This field can be specified only if logging is enabled for this plugin.
+    """
 
 @pulumi.input_type
 class WasmPluginLogConfigArgs:
@@ -8413,14 +8354,11 @@ class WasmPluginLogConfigArgs:
         pulumi.set(self, "sample_rate", value)
 
 
-if not MYPY:
-    class WasmPluginUsedByArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier. Name of the WasmPlugin resource.
-        """
-elif False:
-    WasmPluginUsedByArgsDict: TypeAlias = Mapping[str, Any]
+class WasmPluginUsedByArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identifier. Name of the WasmPlugin resource.
+    """
 
 @pulumi.input_type
 class WasmPluginUsedByArgs:
@@ -8445,62 +8383,59 @@ class WasmPluginUsedByArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class WasmPluginVersionArgsDict(TypedDict):
-        version_name: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The timestamp when the resource was created.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. A human-readable description of the resource.
-        """
-        image_digest: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The resolved digest for the image specified in the image field. The digest is resolved during the creation of WasmPluginVersion resource.
-        This field holds the digest value, regardless of whether a tag or digest was originally specified in the image field.
-        """
-        image_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. URI of the container image containing the plugin, stored in the Artifact Registry. When a new WasmPluginVersion resource is created, the digest of the container image is saved in the imageDigest field.
-        When downloading an image, the digest value is used instead of an image tag.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Optional. Set of labels associated with the WasmPlugin resource.
-        """
-        plugin_config_data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A base64-encoded string containing the configuration for the plugin. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
-        When a new WasmPluginVersion resource is created, the digest of the contents is saved in the pluginConfigDigest field.
-        Conflics with pluginConfigUri.
-        """
-        plugin_config_digest: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. This field holds the digest (usually checksum) value for the plugin configuration.
-        The value is calculated based on the contents of pluginConfigData or the container image defined by the pluginConfigUri field.
-        """
-        plugin_config_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URI of the plugin configuration stored in the Artifact Registry. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
-        The container image must contain only a single file with the name plugin.config.
-        When a new WasmPluginVersion resource is created, the digest of the container image is saved in the pluginConfigDigest field.
-        Conflics with pluginConfigData.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Output only. The timestamp when the resource was updated.
-        """
-elif False:
-    WasmPluginVersionArgsDict: TypeAlias = Mapping[str, Any]
+class WasmPluginVersionArgsDict(TypedDict):
+    version_name: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The timestamp when the resource was created.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. A human-readable description of the resource.
+    """
+    image_digest: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The resolved digest for the image specified in the image field. The digest is resolved during the creation of WasmPluginVersion resource.
+    This field holds the digest value, regardless of whether a tag or digest was originally specified in the image field.
+    """
+    image_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. URI of the container image containing the plugin, stored in the Artifact Registry. When a new WasmPluginVersion resource is created, the digest of the container image is saved in the imageDigest field.
+    When downloading an image, the digest value is used instead of an image tag.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Set of labels associated with the WasmPlugin resource.
+    """
+    plugin_config_data: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A base64-encoded string containing the configuration for the plugin. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+    When a new WasmPluginVersion resource is created, the digest of the contents is saved in the pluginConfigDigest field.
+    Conflics with pluginConfigUri.
+    """
+    plugin_config_digest: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. This field holds the digest (usually checksum) value for the plugin configuration.
+    The value is calculated based on the contents of pluginConfigData or the container image defined by the pluginConfigUri field.
+    """
+    plugin_config_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URI of the plugin configuration stored in the Artifact Registry. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+    The container image must contain only a single file with the name plugin.config.
+    When a new WasmPluginVersion resource is created, the digest of the container image is saved in the pluginConfigDigest field.
+    Conflics with pluginConfigData.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Output only. The timestamp when the resource was updated.
+    """
 
 @pulumi.input_type
 class WasmPluginVersionArgs:

@@ -313,6 +313,8 @@ parameterManagerCustomEndpoint: Optional[str]
 
 parameterManagerRegionalCustomEndpoint: Optional[str]
 
+pollInterval: Optional[str]
+
 privatecaCustomEndpoint: Optional[str]
 
 privilegedAccessManagerCustomEndpoint: Optional[str]
@@ -406,6 +408,8 @@ transcoderCustomEndpoint: Optional[str]
 universeDomain: Optional[str]
 
 userProjectOverride: Optional[bool]
+
+vectorSearchCustomEndpoint: Optional[str]
 
 vertexAiCustomEndpoint: Optional[str]
 

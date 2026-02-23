@@ -271,6 +271,8 @@ if typing.TYPE_CHECKING:
     tpu = __tpu
     import pulumi_gcp.transcoder as __transcoder
     transcoder = __transcoder
+    import pulumi_gcp.vectorsearch as __vectorsearch
+    vectorsearch = __vectorsearch
     import pulumi_gcp.vertex as __vertex
     vertex = __vertex
     import pulumi_gcp.vmwareengine as __vmwareengine
@@ -414,6 +416,7 @@ else:
     tags = _utilities.lazy_import('pulumi_gcp.tags')
     tpu = _utilities.lazy_import('pulumi_gcp.tpu')
     transcoder = _utilities.lazy_import('pulumi_gcp.transcoder')
+    vectorsearch = _utilities.lazy_import('pulumi_gcp.vectorsearch')
     vertex = _utilities.lazy_import('pulumi_gcp.vertex')
     vmwareengine = _utilities.lazy_import('pulumi_gcp.vmwareengine')
     vpcaccess = _utilities.lazy_import('pulumi_gcp.vpcaccess')
@@ -1422,6 +1425,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.biglake",
   "classes": {
    "gcp:biglake/icebergCatalogIamPolicy:IcebergCatalogIamPolicy": "IcebergCatalogIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/icebergNamespace",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/icebergNamespace:IcebergNamespace": "IcebergNamespace"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/icebergNamespaceIamBinding",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/icebergNamespaceIamBinding:IcebergNamespaceIamBinding": "IcebergNamespaceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/icebergNamespaceIamMember",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/icebergNamespaceIamMember:IcebergNamespaceIamMember": "IcebergNamespaceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/icebergNamespaceIamPolicy",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/icebergNamespaceIamPolicy:IcebergNamespaceIamPolicy": "IcebergNamespaceIamPolicy"
   }
  },
  {
@@ -2494,6 +2529,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudidentity",
   "classes": {
    "gcp:cloudidentity/groupMembership:GroupMembership": "GroupMembership"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudidentity/policy",
+  "fqn": "pulumi_gcp.cloudidentity",
+  "classes": {
+   "gcp:cloudidentity/policy:Policy": "Policy"
   }
  },
  {
@@ -3874,6 +3917,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/rolloutPlan",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/rolloutPlan:RolloutPlan": "RolloutPlan"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/route",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -4502,6 +4553,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataflow",
   "classes": {
    "gcp:dataflow/pipeline:Pipeline": "Pipeline"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataform/folder",
+  "fqn": "pulumi_gcp.dataform",
+  "classes": {
+   "gcp:dataform/folder:Folder": "Folder"
   }
  },
  {
@@ -8354,6 +8413,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkservices/agentGateway",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/agentGateway:AgentGateway": "AgentGateway"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkservices/authzExtension",
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
@@ -8670,6 +8737,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.oracledatabase",
   "classes": {
    "gcp:oracledatabase/dbSystem:DbSystem": "DbSystem"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "oracledatabase/exadbVmCluster",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/exadbVmCluster:ExadbVmCluster": "ExadbVmCluster"
   }
  },
  {
@@ -10374,6 +10449,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.transcoder",
   "classes": {
    "gcp:transcoder/jobTemplate:JobTemplate": "JobTemplate"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vectorsearch/collection",
+  "fqn": "pulumi_gcp.vectorsearch",
+  "classes": {
+   "gcp:vectorsearch/collection:Collection": "Collection"
   }
  },
  {

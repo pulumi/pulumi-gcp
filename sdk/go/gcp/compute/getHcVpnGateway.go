@@ -73,6 +73,7 @@ type GetHcVpnGatewayResult struct {
 	Labels           map[string]string             `pulumi:"labels"`
 	Name             string                        `pulumi:"name"`
 	Network          string                        `pulumi:"network"`
+	Params           []GetHcVpnGatewayParam        `pulumi:"params"`
 	Project          *string                       `pulumi:"project"`
 	PulumiLabels     map[string]string             `pulumi:"pulumiLabels"`
 	Region           *string                       `pulumi:"region"`
@@ -154,6 +155,10 @@ func (o GetHcVpnGatewayResultOutput) Name() pulumi.StringOutput {
 
 func (o GetHcVpnGatewayResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o GetHcVpnGatewayResultOutput) Params() GetHcVpnGatewayParamArrayOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) []GetHcVpnGatewayParam { return v.Params }).(GetHcVpnGatewayParamArrayOutput)
 }
 
 func (o GetHcVpnGatewayResultOutput) Project() pulumi.StringPtrOutput {

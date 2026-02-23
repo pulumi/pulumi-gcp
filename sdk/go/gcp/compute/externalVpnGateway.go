@@ -176,22 +176,14 @@ import (
 // ExternalVpnGateway can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/global/externalVpnGateways/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, ExternalVpnGateway can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default projects/{{project}}/global/externalVpnGateways/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{name}}
 // ```
 type ExternalVpnGateway struct {
@@ -219,6 +211,10 @@ type ExternalVpnGateway struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params ExternalVpnGatewayParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -289,6 +285,10 @@ type externalVpnGatewayState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *ExternalVpnGatewayParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -325,6 +325,10 @@ type ExternalVpnGatewayState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params ExternalVpnGatewayParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -360,6 +364,10 @@ type externalVpnGatewayArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *ExternalVpnGatewayParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -387,6 +395,10 @@ type ExternalVpnGatewayArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params ExternalVpnGatewayParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -520,6 +532,13 @@ func (o ExternalVpnGatewayOutput) Labels() pulumi.StringMapOutput {
 // character, which cannot be a dash.
 func (o ExternalVpnGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Optional, Beta)
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o ExternalVpnGatewayOutput) Params() ExternalVpnGatewayParamsPtrOutput {
+	return o.ApplyT(func(v *ExternalVpnGateway) ExternalVpnGatewayParamsPtrOutput { return v.Params }).(ExternalVpnGatewayParamsPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

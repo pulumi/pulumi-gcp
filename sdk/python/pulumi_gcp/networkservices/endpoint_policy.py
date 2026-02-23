@@ -33,6 +33,7 @@ class EndpointPolicyArgs:
                  traffic_port_selector: Optional[pulumi.Input['EndpointPolicyTrafficPortSelectorArgs']] = None):
         """
         The set of arguments for constructing a EndpointPolicy resource.
+
         :param pulumi.Input['EndpointPolicyEndpointMatcherArgs'] endpoint_matcher: Required. A matcher that selects endpoints to which the policies should be applied.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The type of endpoint policy. This is primarily used to validate the configuration.
@@ -215,6 +216,7 @@ class _EndpointPolicyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EndpointPolicy resources.
+
         :param pulumi.Input[_builtins.str] authorization_policy: This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
         :param pulumi.Input[_builtins.str] client_tls_policy: A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
         :param pulumi.Input[_builtins.str] create_time: Time the TcpRoute was created in UTC.
@@ -522,24 +524,17 @@ class EndpointPolicy(pulumi.CustomResource):
         EndpointPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/endpointPolicies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, EndpointPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default projects/{{project}}/locations/global/endpointPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -629,24 +624,17 @@ class EndpointPolicy(pulumi.CustomResource):
         EndpointPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/endpointPolicies/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, EndpointPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default projects/{{project}}/locations/global/endpointPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EndpointPolicyArgs args: The arguments to use to populate this resource's properties.

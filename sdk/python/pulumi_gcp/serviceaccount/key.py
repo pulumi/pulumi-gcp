@@ -27,6 +27,7 @@ class KeyArgs:
                  public_key_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Key resource.
+
         :param pulumi.Input[_builtins.str] service_account_id: The Service account id of the Key. This can be a string in the format
                `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. If the `{ACCOUNT}`-only syntax is used, either
                the **full** email address of the service account or its name can be specified as a value, in which case the project will
@@ -151,6 +152,7 @@ class _KeyState:
                  valid_before: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Key resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] keepers: Arbitrary map of values that, when changed, will trigger a new key to be generated.
         :param pulumi.Input[_builtins.str] key_algorithm: The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
                Valid values are listed at
@@ -353,6 +355,15 @@ class Key(pulumi.CustomResource):
                  service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Creates and manages service account keys, which allow the use of a service account with Google Cloud.
+
+        > **Warning**: This resource persists a sensitive credential in plaintext in the remote state used by Terraform.
+        Please take appropriate measures to protect your remote state.
+
+        * [API documentation](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
+
         ## Example Usage
 
         ### Creating A New Key
@@ -414,6 +425,7 @@ class Key(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -439,6 +451,15 @@ class Key(pulumi.CustomResource):
                  args: KeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Creates and manages service account keys, which allow the use of a service account with Google Cloud.
+
+        > **Warning**: This resource persists a sensitive credential in plaintext in the remote state used by Terraform.
+        Please take appropriate measures to protect your remote state.
+
+        * [API documentation](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
+
         ## Example Usage
 
         ### Creating A New Key
@@ -500,6 +521,7 @@ class Key(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param KeyArgs args: The arguments to use to populate this resource's properties.

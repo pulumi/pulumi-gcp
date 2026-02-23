@@ -23,6 +23,7 @@ class AutokeyConfigArgs:
                  key_project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutokeyConfig resource.
+
         :param pulumi.Input[_builtins.str] folder: The folder for which to retrieve config.
         :param pulumi.Input[_builtins.str] key_project: The target key project for a given folder where KMS Autokey will provision a
                CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -67,6 +68,7 @@ class _AutokeyConfigState:
                  key_project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutokeyConfig resources.
+
         :param pulumi.Input[_builtins.str] etag: The etag of the AutokeyConfig for optimistic concurrency control.
         :param pulumi.Input[_builtins.str] folder: The folder for which to retrieve config.
         :param pulumi.Input[_builtins.str] key_project: The target key project for a given folder where KMS Autokey will provision a
@@ -129,6 +131,19 @@ class AutokeyConfig(pulumi.CustomResource):
                  key_project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        `AutokeyConfig` is a singleton resource used to configure the auto-provisioning
+        flow of CryptoKeys for CMEK.
+
+        > **Note:** AutokeyConfigs cannot be deleted from Google Cloud Platform.
+        Destroying a Terraform-managed AutokeyConfig will remove it from state but
+        *will not delete the resource from the project.*
+
+        To get more information about AutokeyConfig, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/AutokeyConfig)
+        * How-to Guides
+            * [Cloud KMS with Autokey](https://cloud.google.com/kms/docs/kms-with-autokey)
+
         ## Example Usage
 
         ### Kms Autokey Config All
@@ -192,18 +207,15 @@ class AutokeyConfig(pulumi.CustomResource):
         AutokeyConfig can be imported using any of these accepted formats:
 
         * `folders/{{folder}}/autokeyConfig`
-
         * `{{folder}}`
 
         When using the `pulumi import` command, AutokeyConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/autokeyConfig:AutokeyConfig default folders/{{folder}}/autokeyConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/autokeyConfig:AutokeyConfig default {{folder}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -219,6 +231,19 @@ class AutokeyConfig(pulumi.CustomResource):
                  args: AutokeyConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        `AutokeyConfig` is a singleton resource used to configure the auto-provisioning
+        flow of CryptoKeys for CMEK.
+
+        > **Note:** AutokeyConfigs cannot be deleted from Google Cloud Platform.
+        Destroying a Terraform-managed AutokeyConfig will remove it from state but
+        *will not delete the resource from the project.*
+
+        To get more information about AutokeyConfig, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/AutokeyConfig)
+        * How-to Guides
+            * [Cloud KMS with Autokey](https://cloud.google.com/kms/docs/kms-with-autokey)
+
         ## Example Usage
 
         ### Kms Autokey Config All
@@ -282,18 +307,15 @@ class AutokeyConfig(pulumi.CustomResource):
         AutokeyConfig can be imported using any of these accepted formats:
 
         * `folders/{{folder}}/autokeyConfig`
-
         * `{{folder}}`
 
         When using the `pulumi import` command, AutokeyConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/autokeyConfig:AutokeyConfig default folders/{{folder}}/autokeyConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:kms/autokeyConfig:AutokeyConfig default {{folder}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AutokeyConfigArgs args: The arguments to use to populate this resource's properties.

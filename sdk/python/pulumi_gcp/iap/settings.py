@@ -26,6 +26,7 @@ class SettingsArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Settings resource.
+
         :param pulumi.Input['SettingsAccessSettingsArgs'] access_settings: Top level wrapper for all access related setting in IAP.
                Structure is documented below.
         :param pulumi.Input['SettingsApplicationSettingsArgs'] application_settings: Top level wrapper for all application related settings in IAP.
@@ -108,6 +109,7 @@ class _SettingsState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Settings resources.
+
         :param pulumi.Input['SettingsAccessSettingsArgs'] access_settings: Top level wrapper for all access related setting in IAP.
                Structure is documented below.
         :param pulumi.Input['SettingsApplicationSettingsArgs'] application_settings: Top level wrapper for all application related settings in IAP.
@@ -276,18 +278,15 @@ class Settings(pulumi.CustomResource):
         Settings can be imported using any of these accepted formats:
 
         * `{{name}}/iapSettings`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Settings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iap/settings:Settings default {{name}}/iapSettings
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/settings:Settings default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -398,18 +397,15 @@ class Settings(pulumi.CustomResource):
         Settings can be imported using any of these accepted formats:
 
         * `{{name}}/iapSettings`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Settings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iap/settings:Settings default {{name}}/iapSettings
-        ```
-
-        ```sh
         $ pulumi import gcp:iap/settings:Settings default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SettingsArgs args: The arguments to use to populate this resource's properties.

@@ -23,14 +23,21 @@ class ClusterArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
                  autoscaling_settings: Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']] = None,
+                 datastore_mount_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] parent: The resource name of the private cloud to create a new cluster in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         :param pulumi.Input['ClusterAutoscalingSettingsArgs'] autoscaling_settings: Configuration of the autoscaling applied to this cluster
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]] datastore_mount_configs: Optional. Configuration to mount a datastore.
+               Mount can be done along with cluster create or during cluster update
+               Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+               for unmount remove 'datastore_mount_config' config from the update of cluster resource
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the Cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster,
@@ -40,6 +47,8 @@ class ClusterArgs:
         pulumi.set(__self__, "parent", parent)
         if autoscaling_settings is not None:
             pulumi.set(__self__, "autoscaling_settings", autoscaling_settings)
+        if datastore_mount_configs is not None:
+            pulumi.set(__self__, "datastore_mount_configs", datastore_mount_configs)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_type_configs is not None:
@@ -73,6 +82,22 @@ class ClusterArgs:
         pulumi.set(self, "autoscaling_settings", value)
 
     @_builtins.property
+    @pulumi.getter(name="datastoreMountConfigs")
+    def datastore_mount_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]:
+        """
+        Optional. Configuration to mount a datastore.
+        Mount can be done along with cluster create or during cluster update
+        Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+        for unmount remove 'datastore_mount_config' config from the update of cluster resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "datastore_mount_configs")
+
+    @datastore_mount_configs.setter
+    def datastore_mount_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]):
+        pulumi.set(self, "datastore_mount_configs", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -104,6 +129,7 @@ class _ClusterState:
     def __init__(__self__, *,
                  autoscaling_settings: Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 datastore_mount_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]] = None,
                  management: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None,
@@ -113,11 +139,17 @@ class _ClusterState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input['ClusterAutoscalingSettingsArgs'] autoscaling_settings: Configuration of the autoscaling applied to this cluster
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]] datastore_mount_configs: Optional. Configuration to mount a datastore.
+               Mount can be done along with cluster create or during cluster update
+               Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+               for unmount remove 'datastore_mount_config' config from the update of cluster resource
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[_builtins.str] name: The ID of the Cluster.
@@ -137,6 +169,8 @@ class _ClusterState:
             pulumi.set(__self__, "autoscaling_settings", autoscaling_settings)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if datastore_mount_configs is not None:
+            pulumi.set(__self__, "datastore_mount_configs", datastore_mount_configs)
         if management is not None:
             pulumi.set(__self__, "management", management)
         if name is not None:
@@ -178,6 +212,22 @@ class _ClusterState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="datastoreMountConfigs")
+    def datastore_mount_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]:
+        """
+        Optional. Configuration to mount a datastore.
+        Mount can be done along with cluster create or during cluster update
+        Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+        for unmount remove 'datastore_mount_config' config from the update of cluster resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "datastore_mount_configs")
+
+    @datastore_mount_configs.setter
+    def datastore_mount_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]):
+        pulumi.set(self, "datastore_mount_configs", value)
 
     @_builtins.property
     @pulumi.getter
@@ -278,6 +328,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_settings: Optional[pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
+                 datastore_mount_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
@@ -383,6 +434,214 @@ class Cluster(pulumi.CustomResource):
                 "cool_down_period": "1800s",
             })
         ```
+        ### Vmware Engine Cluster Nfs Datastore Filestore
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        # Use this network for filestore instance
+        fs_network = gcp.compute.get_network(name="filestore_nw")
+        # Create a filestore instance with delete protection enabled
+        #### Use ip range of private cloud service subnet in the 'nfs_export_options'
+        test_instance = gcp.filestore.Instance("test_instance",
+            name="test-fs-filestore",
+            location="",
+            tier="ZONAL",
+            deletion_protection_enabled="yes",
+            file_shares={
+                "capacity_gb": 1024,
+                "name": "share101",
+                "nfs_export_options": [{
+                    "ip_ranges": ["10.0.0.0/24"],
+                }],
+            },
+            networks=[{
+                "network": fs_network.id,
+                "modes": ["MODE_IPV4"],
+                "connect_mode": "PRIVATE_SERVICE_ACCESS",
+            }])
+        cluster_nw = gcp.vmwareengine.Network("cluster-nw",
+            name="pc-nw",
+            type="STANDARD",
+            location="global",
+            description="PC network description.")
+        cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
+            location="",
+            name="sample-pc",
+            description="Sample test PC.",
+            network_config={
+                "management_cidr": "192.168.30.0/24",
+                "vmware_engine_network": cluster_nw.id,
+            },
+            management_cluster={
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
+                    "custom_core_count": 32,
+                }],
+            })
+        # Update service subnet
+        ####  Service subnet is used by nfs datastore mounts
+        #### ip_cidr_range configured on subnet must also be allowed in filestore instance's 'nfs_export_options'
+        cluster_pc_subnet = gcp.vmwareengine.Subnet("cluster-pc-subnet",
+            name="service-1",
+            parent=cluster_pc.id,
+            ip_cidr_range="10.0.0.0/24")
+        # Read network peering
+        #### This peering is created by filestore instance
+        sn_peering = gcp.compute.get_network_peering(name="servicenetworking-googleapis-com",
+            network=fs_network.id)
+        # Create vmware engine network peering
+        ### vmware network peering is required for filestore mount on cluster
+        psa_network_peering = gcp.vmwareengine.NetworkPeering("psa_network_peering",
+            name="tf-test-psa-network-peering",
+            description="test description",
+            vmware_engine_network=cluster_nw.id,
+            peer_network=std.trimprefix(input=sn_peering.peer_network,
+                prefix="https://www.googleapis.com/compute/v1").result,
+            peer_network_type="PRIVATE_SERVICES_ACCESS")
+        test_fs_datastore = gcp.vmwareengine.Datastore("test_fs_datastore",
+            name="ext-fs-datastore",
+            location="",
+            description="test description",
+            nfs_datastore={
+                "google_file_service": {
+                    "filestore_instance": test_instance.id,
+                },
+            })
+        vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
+            name="ext-cluster",
+            parent=cluster_pc.id,
+            node_type_configs=[{
+                "node_type_id": "standard-72",
+                "node_count": 3,
+            }],
+            datastore_mount_configs=[{
+                "datastore": test_fs_datastore.id,
+                "datastore_network": {
+                    "subnet": cluster_pc_subnet.id,
+                    "connection_count": 4,
+                    "mtu": 1500,
+                },
+                "nfs_version": "NFS_V3",
+                "access_mode": "READ_WRITE",
+                "ignore_colocation": False,
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[psa_network_peering]))
+        ```
+        ### Vmware Engine Cluster Nfs Datastore Netapp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        # Use this network for netapp volume
+        np_network = gcp.compute.get_network(name="netapp_nw")
+        cluster_nw = gcp.vmwareengine.Network("cluster-nw",
+            name="pc-nw",
+            type="STANDARD",
+            location="global",
+            description="PC network description.")
+        # Read network peering
+        #### This peering is created by netapp volume
+        sn_peering = gcp.compute.get_network_peering(name="sn-netapp-prod",
+            network=np_network.id)
+        # Create vmware engine network peering
+        #### vmware network peering is required for netapp mount on cluster
+        gcnv_network_peering = gcp.vmwareengine.NetworkPeering("gcnv_network_peering",
+            name="tf-test-gcnv-network-peering",
+            description="test description",
+            vmware_engine_network=cluster_nw.id,
+            peer_network=std.trimprefix(input=sn_peering.peer_network,
+                prefix="https://www.googleapis.com/compute/v1").result,
+            peer_network_type="GOOGLE_CLOUD_NETAPP_VOLUMES")
+        cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
+            location="",
+            name="sample-pc",
+            description="Sample test PC.",
+            network_config={
+                "management_cidr": "192.168.30.0/24",
+                "vmware_engine_network": cluster_nw.id,
+            },
+            management_cluster={
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
+                    "custom_core_count": 32,
+                }],
+            })
+        # Update service subnet
+        ####  Service subnet is used by nfs datastore mounts
+        #### ip_cidr_range configured on subnet must also be allowed in in netapp volumes's 'export_policy'
+        cluster_pc_subnet = gcp.vmwareengine.Subnet("cluster-pc-subnet",
+            name="service-1",
+            parent=cluster_pc.id,
+            ip_cidr_range="10.0.0.0/24")
+        default = gcp.netapp.StoragePool("default",
+            name="tf-test-test-pool",
+            location="us-west1",
+            service_level="PREMIUM",
+            capacity_gib="2048",
+            network=np_network.id)
+        # Create a netapp volume with delete protection enabled
+        ### Use ip range of private cloud service subnet in the 'export_policy'
+        test_volume = gcp.netapp.Volume("test_volume",
+            location="us-west1",
+            name="tf-test-test-volume",
+            capacity_gib="100",
+            share_name="tf-test-test-volume",
+            storage_pool=default.name,
+            protocols=["NFSV3"],
+            export_policy={
+                "rules": [{
+                    "access_type": "READ_WRITE",
+                    "allowed_clients": "10.0.0.0/24",
+                    "has_root_access": "true",
+                    "kerberos5_read_only": False,
+                    "kerberos5_read_write": False,
+                    "kerberos5i_read_only": False,
+                    "kerberos5i_read_write": False,
+                    "kerberos5p_read_only": False,
+                    "kerberos5p_read_write": False,
+                    "nfsv3": True,
+                    "nfsv4": False,
+                }],
+            },
+            restricted_actions=["DELETE"])
+        test_fs_datastore = gcp.vmwareengine.Datastore("test_fs_datastore",
+            name="ext-fs-datastore",
+            location="us-west1",
+            description="example google_file_service.netapp datastore.",
+            nfs_datastore={
+                "google_file_service": {
+                    "netapp_volume": test_volume.id,
+                },
+            })
+        vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
+            name="ext-cluster",
+            parent=cluster_pc.id,
+            node_type_configs=[{
+                "node_type_id": "standard-72",
+                "node_count": 3,
+            }],
+            datastore_mount_configs=[{
+                "datastore": test_fs_datastore.id,
+                "datastore_network": {
+                    "subnet": cluster_pc_subnet.id,
+                    "connection_count": 4,
+                    "mtu": 1500,
+                },
+                "nfs_version": "NFS_V3",
+                "access_mode": "READ_WRITE",
+                "ignore_colocation": True,
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[gcnv_network_peering]))
+        ```
 
         ## Import
 
@@ -396,9 +655,15 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import gcp:vmwareengine/cluster:Cluster default {{parent}}/clusters/{{name}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']] autoscaling_settings: Configuration of the autoscaling applied to this cluster
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]] datastore_mount_configs: Optional. Configuration to mount a datastore.
+               Mount can be done along with cluster create or during cluster update
+               Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+               for unmount remove 'datastore_mount_config' config from the update of cluster resource
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the Cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]] node_type_configs: The map of cluster node types in this cluster,
@@ -515,6 +780,214 @@ class Cluster(pulumi.CustomResource):
                 "cool_down_period": "1800s",
             })
         ```
+        ### Vmware Engine Cluster Nfs Datastore Filestore
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        # Use this network for filestore instance
+        fs_network = gcp.compute.get_network(name="filestore_nw")
+        # Create a filestore instance with delete protection enabled
+        #### Use ip range of private cloud service subnet in the 'nfs_export_options'
+        test_instance = gcp.filestore.Instance("test_instance",
+            name="test-fs-filestore",
+            location="",
+            tier="ZONAL",
+            deletion_protection_enabled="yes",
+            file_shares={
+                "capacity_gb": 1024,
+                "name": "share101",
+                "nfs_export_options": [{
+                    "ip_ranges": ["10.0.0.0/24"],
+                }],
+            },
+            networks=[{
+                "network": fs_network.id,
+                "modes": ["MODE_IPV4"],
+                "connect_mode": "PRIVATE_SERVICE_ACCESS",
+            }])
+        cluster_nw = gcp.vmwareengine.Network("cluster-nw",
+            name="pc-nw",
+            type="STANDARD",
+            location="global",
+            description="PC network description.")
+        cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
+            location="",
+            name="sample-pc",
+            description="Sample test PC.",
+            network_config={
+                "management_cidr": "192.168.30.0/24",
+                "vmware_engine_network": cluster_nw.id,
+            },
+            management_cluster={
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
+                    "custom_core_count": 32,
+                }],
+            })
+        # Update service subnet
+        ####  Service subnet is used by nfs datastore mounts
+        #### ip_cidr_range configured on subnet must also be allowed in filestore instance's 'nfs_export_options'
+        cluster_pc_subnet = gcp.vmwareengine.Subnet("cluster-pc-subnet",
+            name="service-1",
+            parent=cluster_pc.id,
+            ip_cidr_range="10.0.0.0/24")
+        # Read network peering
+        #### This peering is created by filestore instance
+        sn_peering = gcp.compute.get_network_peering(name="servicenetworking-googleapis-com",
+            network=fs_network.id)
+        # Create vmware engine network peering
+        ### vmware network peering is required for filestore mount on cluster
+        psa_network_peering = gcp.vmwareengine.NetworkPeering("psa_network_peering",
+            name="tf-test-psa-network-peering",
+            description="test description",
+            vmware_engine_network=cluster_nw.id,
+            peer_network=std.trimprefix(input=sn_peering.peer_network,
+                prefix="https://www.googleapis.com/compute/v1").result,
+            peer_network_type="PRIVATE_SERVICES_ACCESS")
+        test_fs_datastore = gcp.vmwareengine.Datastore("test_fs_datastore",
+            name="ext-fs-datastore",
+            location="",
+            description="test description",
+            nfs_datastore={
+                "google_file_service": {
+                    "filestore_instance": test_instance.id,
+                },
+            })
+        vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
+            name="ext-cluster",
+            parent=cluster_pc.id,
+            node_type_configs=[{
+                "node_type_id": "standard-72",
+                "node_count": 3,
+            }],
+            datastore_mount_configs=[{
+                "datastore": test_fs_datastore.id,
+                "datastore_network": {
+                    "subnet": cluster_pc_subnet.id,
+                    "connection_count": 4,
+                    "mtu": 1500,
+                },
+                "nfs_version": "NFS_V3",
+                "access_mode": "READ_WRITE",
+                "ignore_colocation": False,
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[psa_network_peering]))
+        ```
+        ### Vmware Engine Cluster Nfs Datastore Netapp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        # Use this network for netapp volume
+        np_network = gcp.compute.get_network(name="netapp_nw")
+        cluster_nw = gcp.vmwareengine.Network("cluster-nw",
+            name="pc-nw",
+            type="STANDARD",
+            location="global",
+            description="PC network description.")
+        # Read network peering
+        #### This peering is created by netapp volume
+        sn_peering = gcp.compute.get_network_peering(name="sn-netapp-prod",
+            network=np_network.id)
+        # Create vmware engine network peering
+        #### vmware network peering is required for netapp mount on cluster
+        gcnv_network_peering = gcp.vmwareengine.NetworkPeering("gcnv_network_peering",
+            name="tf-test-gcnv-network-peering",
+            description="test description",
+            vmware_engine_network=cluster_nw.id,
+            peer_network=std.trimprefix(input=sn_peering.peer_network,
+                prefix="https://www.googleapis.com/compute/v1").result,
+            peer_network_type="GOOGLE_CLOUD_NETAPP_VOLUMES")
+        cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
+            location="",
+            name="sample-pc",
+            description="Sample test PC.",
+            network_config={
+                "management_cidr": "192.168.30.0/24",
+                "vmware_engine_network": cluster_nw.id,
+            },
+            management_cluster={
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
+                    "custom_core_count": 32,
+                }],
+            })
+        # Update service subnet
+        ####  Service subnet is used by nfs datastore mounts
+        #### ip_cidr_range configured on subnet must also be allowed in in netapp volumes's 'export_policy'
+        cluster_pc_subnet = gcp.vmwareengine.Subnet("cluster-pc-subnet",
+            name="service-1",
+            parent=cluster_pc.id,
+            ip_cidr_range="10.0.0.0/24")
+        default = gcp.netapp.StoragePool("default",
+            name="tf-test-test-pool",
+            location="us-west1",
+            service_level="PREMIUM",
+            capacity_gib="2048",
+            network=np_network.id)
+        # Create a netapp volume with delete protection enabled
+        ### Use ip range of private cloud service subnet in the 'export_policy'
+        test_volume = gcp.netapp.Volume("test_volume",
+            location="us-west1",
+            name="tf-test-test-volume",
+            capacity_gib="100",
+            share_name="tf-test-test-volume",
+            storage_pool=default.name,
+            protocols=["NFSV3"],
+            export_policy={
+                "rules": [{
+                    "access_type": "READ_WRITE",
+                    "allowed_clients": "10.0.0.0/24",
+                    "has_root_access": "true",
+                    "kerberos5_read_only": False,
+                    "kerberos5_read_write": False,
+                    "kerberos5i_read_only": False,
+                    "kerberos5i_read_write": False,
+                    "kerberos5p_read_only": False,
+                    "kerberos5p_read_write": False,
+                    "nfsv3": True,
+                    "nfsv4": False,
+                }],
+            },
+            restricted_actions=["DELETE"])
+        test_fs_datastore = gcp.vmwareengine.Datastore("test_fs_datastore",
+            name="ext-fs-datastore",
+            location="us-west1",
+            description="example google_file_service.netapp datastore.",
+            nfs_datastore={
+                "google_file_service": {
+                    "netapp_volume": test_volume.id,
+                },
+            })
+        vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
+            name="ext-cluster",
+            parent=cluster_pc.id,
+            node_type_configs=[{
+                "node_type_id": "standard-72",
+                "node_count": 3,
+            }],
+            datastore_mount_configs=[{
+                "datastore": test_fs_datastore.id,
+                "datastore_network": {
+                    "subnet": cluster_pc_subnet.id,
+                    "connection_count": 4,
+                    "mtu": 1500,
+                },
+                "nfs_version": "NFS_V3",
+                "access_mode": "READ_WRITE",
+                "ignore_colocation": True,
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[gcnv_network_peering]))
+        ```
 
         ## Import
 
@@ -527,6 +1000,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import gcp:vmwareengine/cluster:Cluster default {{parent}}/clusters/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.
@@ -544,6 +1018,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_settings: Optional[pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
+                 datastore_mount_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
@@ -557,6 +1032,7 @@ class Cluster(pulumi.CustomResource):
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
             __props__.__dict__["autoscaling_settings"] = autoscaling_settings
+            __props__.__dict__["datastore_mount_configs"] = datastore_mount_configs
             __props__.__dict__["name"] = name
             __props__.__dict__["node_type_configs"] = node_type_configs
             if parent is None and not opts.urn:
@@ -579,6 +1055,7 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscaling_settings: Optional[pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            datastore_mount_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
             management: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
@@ -598,6 +1075,11 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Creation time of this resource.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]] datastore_mount_configs: Optional. Configuration to mount a datastore.
+               Mount can be done along with cluster create or during cluster update
+               Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+               for unmount remove 'datastore_mount_config' config from the update of cluster resource
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[_builtins.str] name: The ID of the Cluster.
@@ -619,6 +1101,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__.__dict__["autoscaling_settings"] = autoscaling_settings
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["datastore_mount_configs"] = datastore_mount_configs
         __props__.__dict__["management"] = management
         __props__.__dict__["name"] = name
         __props__.__dict__["node_type_configs"] = node_type_configs
@@ -646,6 +1129,18 @@ class Cluster(pulumi.CustomResource):
         up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="datastoreMountConfigs")
+    def datastore_mount_configs(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterDatastoreMountConfig']]]:
+        """
+        Optional. Configuration to mount a datastore.
+        Mount can be done along with cluster create or during cluster update
+        Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
+        for unmount remove 'datastore_mount_config' config from the update of cluster resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "datastore_mount_configs")
 
     @_builtins.property
     @pulumi.getter

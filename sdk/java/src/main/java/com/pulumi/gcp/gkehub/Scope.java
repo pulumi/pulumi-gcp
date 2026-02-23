@@ -75,22 +75,14 @@ import javax.annotation.Nullable;
  * Scope can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/global/scopes/{{scope_id}}`
- * 
  * * `{{project}}/{{scope_id}}`
- * 
  * * `{{scope_id}}`
  * 
  * When using the `pulumi import` command, Scope can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gkehub/scope:Scope default projects/{{project}}/locations/global/scopes/{{scope_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gkehub/scope:Scope default {{project}}/{{scope_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:gkehub/scope:Scope default {{scope_id}}
  * ```
  * 

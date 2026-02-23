@@ -180,14 +180,14 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
     }
 
     /**
-     * ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
      * 
      */
     @Import(name="networkAttachment")
     private @Nullable Output<String> networkAttachment;
 
     /**
-     * @return ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
      * 
      */
     public Optional<Output<String>> networkAttachment() {
@@ -224,6 +224,21 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
      */
     public Optional<Output<String>> nicType() {
         return Optional.ofNullable(this.nicType);
+    }
+
+    /**
+     * Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    @Import(name="parentNicName")
+    private @Nullable Output<String> parentNicName;
+
+    /**
+     * @return Name of the parent network interface of a dynamic network interface.
+     * 
+     */
+    public Optional<Output<String>> parentNicName() {
+        return Optional.ofNullable(this.parentNicName);
     }
 
     /**
@@ -292,6 +307,21 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         return Optional.ofNullable(this.subnetworkProject);
     }
 
+    /**
+     * VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    @Import(name="vlan")
+    private @Nullable Output<Integer> vlan;
+
+    /**
+     * @return VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+     * 
+     */
+    public Optional<Output<Integer>> vlan() {
+        return Optional.ofNullable(this.vlan);
+    }
+
     private InstanceTemplateNetworkInterfaceArgs() {}
 
     private InstanceTemplateNetworkInterfaceArgs(InstanceTemplateNetworkInterfaceArgs $) {
@@ -307,10 +337,12 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         this.networkAttachment = $.networkAttachment;
         this.networkIp = $.networkIp;
         this.nicType = $.nicType;
+        this.parentNicName = $.parentNicName;
         this.queueCount = $.queueCount;
         this.stackType = $.stackType;
         this.subnetwork = $.subnetwork;
         this.subnetworkProject = $.subnetworkProject;
+        this.vlan = $.vlan;
     }
 
     public static Builder builder() {
@@ -584,7 +616,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         }
 
         /**
-         * @param networkAttachment ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         * @param networkAttachment The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
          * 
          * @return builder
          * 
@@ -595,7 +627,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         }
 
         /**
-         * @param networkAttachment ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         * @param networkAttachment The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
          * 
          * @return builder
          * 
@@ -646,6 +678,27 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
          */
         public Builder nicType(String nicType) {
             return nicType(Output.of(nicType));
+        }
+
+        /**
+         * @param parentNicName Name of the parent network interface of a dynamic network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentNicName(@Nullable Output<String> parentNicName) {
+            $.parentNicName = parentNicName;
+            return this;
+        }
+
+        /**
+         * @param parentNicName Name of the parent network interface of a dynamic network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentNicName(String parentNicName) {
+            return parentNicName(Output.of(parentNicName));
         }
 
         /**
@@ -736,6 +789,27 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
          */
         public Builder subnetworkProject(String subnetworkProject) {
             return subnetworkProject(Output.of(subnetworkProject));
+        }
+
+        /**
+         * @param vlan VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vlan(@Nullable Output<Integer> vlan) {
+            $.vlan = vlan;
+            return this;
+        }
+
+        /**
+         * @param vlan VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vlan(Integer vlan) {
+            return vlan(Output.of(vlan));
         }
 
         public InstanceTemplateNetworkInterfaceArgs build() {

@@ -26,6 +26,7 @@ class AiRagEngineConfigArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiRagEngineConfig resource.
+
         :param pulumi.Input['AiRagEngineConfigRagManagedDbConfigArgs'] rag_managed_db_config: Required. The config of the RagManagedDb used by RagEngine.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -86,6 +87,7 @@ class _AiRagEngineConfigState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiRagEngineConfig resources.
+
         :param pulumi.Input[_builtins.str] name: The resource name of the Dataset. This value is set by Google.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -179,24 +181,17 @@ class AiRagEngineConfig(pulumi.CustomResource):
         RagEngineConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/ragEngineConfig`
-
         * `{{project}}/{{region}}`
-
         * `{{region}}`
 
         When using the `pulumi import` command, RagEngineConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default projects/{{project}}/locations/{{region}}/ragEngineConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default {{project}}/{{region}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default {{region}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -228,24 +223,17 @@ class AiRagEngineConfig(pulumi.CustomResource):
         RagEngineConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/ragEngineConfig`
-
         * `{{project}}/{{region}}`
-
         * `{{region}}`
 
         When using the `pulumi import` command, RagEngineConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default projects/{{project}}/locations/{{region}}/ragEngineConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default {{project}}/{{region}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default {{region}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiRagEngineConfigArgs args: The arguments to use to populate this resource's properties.

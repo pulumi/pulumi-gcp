@@ -303,31 +303,20 @@ import javax.annotation.Nullable;
  * 
  * Instance group managers can be imported using any of these accepted formats:
  * 
+ * ```sh
  * * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}`
- * 
  * * `{{project}}/{{zone}}/{{name}}`
- * 
  * * `{{project}}/{{name}}`
- * 
  * * `{{name}}`
+ * 
  * 
  * When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example:
  * 
- * ```sh
- * $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
  * ```
- * 
- * ```sh
- * $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{zone}}/{{name}}
- * ```
- * 
- * ```sh
- * $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{name}}
- * ```
- * 
- * ```sh
- * $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{name}}
- * ```
+ * $ terraform import google_compute_instance_group_manager.default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
+ * $ terraform import google_compute_instance_group_manager.default {{project}}/{{zone}}/{{name}}
+ * $ terraform import google_compute_instance_group_manager.default {{project}}/{{name}}
+ * $ terraform import google_compute_instance_group_manager.default {{name}}
  * 
  */
 @ResourceType(type="gcp:compute/instanceGroupManager:InstanceGroupManager")
@@ -693,14 +682,20 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.targetPools);
     }
     /**
-     * The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+     * The target number of running instances for this managed
+     * instance group. This value will fight with autoscaler settings when set, and generally shouldn&#39;t be set
+     * when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+     * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      * 
      */
     @Export(name="targetSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> targetSize;
 
     /**
-     * @return The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+     * @return The target number of running instances for this managed
+     * instance group. This value will fight with autoscaler settings when set, and generally shouldn&#39;t be set
+     * when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+     * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      * 
      */
     public Output<Integer> targetSize() {

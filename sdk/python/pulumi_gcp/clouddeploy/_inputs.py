@@ -155,32 +155,27 @@ __all__ = [
     'TargetRunArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AutomationRuleArgsDict(TypedDict):
-        advance_rollout_rule: NotRequired[pulumi.Input['AutomationRuleAdvanceRolloutRuleArgsDict']]
-        """
-        Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
-        Structure is documented below.
-        """
-        promote_release_rule: NotRequired[pulumi.Input['AutomationRulePromoteReleaseRuleArgsDict']]
-        """
-        Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
-        Structure is documented below.
-        """
-        repair_rollout_rule: NotRequired[pulumi.Input['AutomationRuleRepairRolloutRuleArgsDict']]
-        """
-        Optional. The RepairRolloutRule will automatically repair a failed rollout.
-        Structure is documented below.
-        """
-        timed_promote_release_rule: NotRequired[pulumi.Input['AutomationRuleTimedPromoteReleaseRuleArgsDict']]
-        """
-        Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
-        Structure is documented below.
-        """
-elif False:
-    AutomationRuleArgsDict: TypeAlias = Mapping[str, Any]
+class AutomationRuleArgsDict(TypedDict):
+    advance_rollout_rule: NotRequired[pulumi.Input['AutomationRuleAdvanceRolloutRuleArgsDict']]
+    """
+    Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+    Structure is documented below.
+    """
+    promote_release_rule: NotRequired[pulumi.Input['AutomationRulePromoteReleaseRuleArgsDict']]
+    """
+    Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+    Structure is documented below.
+    """
+    repair_rollout_rule: NotRequired[pulumi.Input['AutomationRuleRepairRolloutRuleArgsDict']]
+    """
+    Optional. The RepairRolloutRule will automatically repair a failed rollout.
+    Structure is documented below.
+    """
+    timed_promote_release_rule: NotRequired[pulumi.Input['AutomationRuleTimedPromoteReleaseRuleArgsDict']]
+    """
+    Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AutomationRuleArgs:
@@ -261,22 +256,19 @@ class AutomationRuleArgs:
         pulumi.set(self, "timed_promote_release_rule", value)
 
 
-if not MYPY:
-    class AutomationRuleAdvanceRolloutRuleArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
-        """
-        source_phases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-        """
-        wait: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. How long to wait after a rollout is finished.
-        """
-elif False:
-    AutomationRuleAdvanceRolloutRuleArgsDict: TypeAlias = Mapping[str, Any]
+class AutomationRuleAdvanceRolloutRuleArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+    """
+    source_phases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+    """
+    wait: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. How long to wait after a rollout is finished.
+    """
 
 @pulumi.input_type
 class AutomationRuleAdvanceRolloutRuleArgs:
@@ -332,26 +324,23 @@ class AutomationRuleAdvanceRolloutRuleArgs:
         pulumi.set(self, "wait", value)
 
 
-if not MYPY:
-    class AutomationRulePromoteReleaseRuleArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
-        """
-        destination_phase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The starting phase of the rollout created by this operation. Default to the first phase.
-        """
-        destination_target_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
-        """
-        wait: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. How long the release need to be paused until being promoted to the next target.
-        """
-elif False:
-    AutomationRulePromoteReleaseRuleArgsDict: TypeAlias = Mapping[str, Any]
+class AutomationRulePromoteReleaseRuleArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+    """
+    destination_phase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+    """
+    destination_target_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+    """
+    wait: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. How long the release need to be paused until being promoted to the next target.
+    """
 
 @pulumi.input_type
 class AutomationRulePromoteReleaseRuleArgs:
@@ -423,27 +412,24 @@ class AutomationRulePromoteReleaseRuleArgs:
         pulumi.set(self, "wait", value)
 
 
-if not MYPY:
-    class AutomationRuleRepairRolloutRuleArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
-        """
-        jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in sourcePhase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
-        """
-        phases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
-        """
-        repair_phases: NotRequired[pulumi.Input[Sequence[pulumi.Input['AutomationRuleRepairRolloutRuleRepairPhaseArgsDict']]]]
-        """
-        Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-        Structure is documented below.
-        """
-elif False:
-    AutomationRuleRepairRolloutRuleArgsDict: TypeAlias = Mapping[str, Any]
+class AutomationRuleRepairRolloutRuleArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+    """
+    jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in sourcePhase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+    """
+    phases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+    """
+    repair_phases: NotRequired[pulumi.Input[Sequence[pulumi.Input['AutomationRuleRepairRolloutRuleRepairPhaseArgsDict']]]]
+    """
+    Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AutomationRuleRepairRolloutRuleArgs:
@@ -517,20 +503,17 @@ class AutomationRuleRepairRolloutRuleArgs:
         pulumi.set(self, "repair_phases", value)
 
 
-if not MYPY:
-    class AutomationRuleRepairRolloutRuleRepairPhaseArgsDict(TypedDict):
-        retry: NotRequired[pulumi.Input['AutomationRuleRepairRolloutRuleRepairPhaseRetryArgsDict']]
-        """
-        Optional. Retries a failed job.
-        Structure is documented below.
-        """
-        rollback: NotRequired[pulumi.Input['AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgsDict']]
-        """
-        Optional. Rolls back a Rollout.
-        Structure is documented below.
-        """
-elif False:
-    AutomationRuleRepairRolloutRuleRepairPhaseArgsDict: TypeAlias = Mapping[str, Any]
+class AutomationRuleRepairRolloutRuleRepairPhaseArgsDict(TypedDict):
+    retry: NotRequired[pulumi.Input['AutomationRuleRepairRolloutRuleRepairPhaseRetryArgsDict']]
+    """
+    Optional. Retries a failed job.
+    Structure is documented below.
+    """
+    rollback: NotRequired[pulumi.Input['AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgsDict']]
+    """
+    Optional. Rolls back a Rollout.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AutomationRuleRepairRolloutRuleRepairPhaseArgs:
@@ -575,23 +558,20 @@ class AutomationRuleRepairRolloutRuleRepairPhaseArgs:
         pulumi.set(self, "rollback", value)
 
 
-if not MYPY:
-    class AutomationRuleRepairRolloutRuleRepairPhaseRetryArgsDict(TypedDict):
-        attempts: pulumi.Input[_builtins.str]
-        """
-        Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
-        """
-        backoff_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if wait is 0.
-        Possible values are: `BACKOFF_MODE_UNSPECIFIED`, `BACKOFF_MODE_LINEAR`, `BACKOFF_MODE_EXPONENTIAL`.
-        """
-        wait: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d. A duration in seconds with up to nine fractional digits, ending with 's'. Example: `3.5s`.
-        """
-elif False:
-    AutomationRuleRepairRolloutRuleRepairPhaseRetryArgsDict: TypeAlias = Mapping[str, Any]
+class AutomationRuleRepairRolloutRuleRepairPhaseRetryArgsDict(TypedDict):
+    attempts: pulumi.Input[_builtins.str]
+    """
+    Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+    """
+    backoff_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if wait is 0.
+    Possible values are: `BACKOFF_MODE_UNSPECIFIED`, `BACKOFF_MODE_LINEAR`, `BACKOFF_MODE_EXPONENTIAL`.
+    """
+    wait: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d. A duration in seconds with up to nine fractional digits, ending with 's'. Example: `3.5s`.
+    """
 
 @pulumi.input_type
 class AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs:
@@ -649,18 +629,15 @@ class AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs:
         pulumi.set(self, "wait", value)
 
 
-if not MYPY:
-    class AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgsDict(TypedDict):
-        destination_phase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
-        """
-        disable_rollback_if_rollout_pending: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. If pending rollout exists on the target, the rollback operation will be aborted.
-        """
-elif False:
-    AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgsDict: TypeAlias = Mapping[str, Any]
+class AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgsDict(TypedDict):
+    destination_phase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
+    """
+    disable_rollback_if_rollout_pending: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. If pending rollout exists on the target, the rollback operation will be aborted.
+    """
 
 @pulumi.input_type
 class AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs:
@@ -701,32 +678,29 @@ class AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs:
         pulumi.set(self, "disable_rollback_if_rollout_pending", value)
 
 
-if not MYPY:
-    class AutomationRuleTimedPromoteReleaseRuleArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
-        """
-        schedule: pulumi.Input[_builtins.str]
-        """
-        Required. Schedule in crontab format. e.g. `0 9 * * 1` for every Monday at 9am.
-        """
-        time_zone: pulumi.Input[_builtins.str]
-        """
-        Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
-        """
-        destination_phase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-        """
-        destination_target_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
-        - The last segment of a target name
-        - "@next", the next target in the promotion sequence"
-        """
-elif False:
-    AutomationRuleTimedPromoteReleaseRuleArgsDict: TypeAlias = Mapping[str, Any]
+class AutomationRuleTimedPromoteReleaseRuleArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+    """
+    schedule: pulumi.Input[_builtins.str]
+    """
+    Required. Schedule in crontab format. e.g. `0 9 * * 1` for every Monday at 9am.
+    """
+    time_zone: pulumi.Input[_builtins.str]
+    """
+    Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+    """
+    destination_phase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The starting phase of the rollout created by this rule. Default to the first phase.
+    """
+    destination_target_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
+    - The last segment of a target name
+    - "@next", the next target in the promotion sequence"
+    """
 
 @pulumi.input_type
 class AutomationRuleTimedPromoteReleaseRuleArgs:
@@ -816,15 +790,12 @@ class AutomationRuleTimedPromoteReleaseRuleArgs:
         pulumi.set(self, "destination_target_id", value)
 
 
-if not MYPY:
-    class AutomationSelectorArgsDict(TypedDict):
-        targets: pulumi.Input[Sequence[pulumi.Input['AutomationSelectorTargetArgsDict']]]
-        """
-        Contains attributes about a target.
-        Structure is documented below.
-        """
-elif False:
-    AutomationSelectorArgsDict: TypeAlias = Mapping[str, Any]
+class AutomationSelectorArgsDict(TypedDict):
+    targets: pulumi.Input[Sequence[pulumi.Input['AutomationSelectorTargetArgsDict']]]
+    """
+    Contains attributes about a target.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AutomationSelectorArgs:
@@ -850,18 +821,15 @@ class AutomationSelectorArgs:
         pulumi.set(self, "targets", value)
 
 
-if not MYPY:
-    class AutomationSelectorTargetArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Target labels.
-        """
-elif False:
-    AutomationSelectorTargetArgsDict: TypeAlias = Mapping[str, Any]
+class AutomationSelectorTargetArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Target labels.
+    """
 
 @pulumi.input_type
 class AutomationSelectorTargetArgs:
@@ -902,23 +870,20 @@ class AutomationSelectorTargetArgs:
         pulumi.set(self, "labels", value)
 
 
-if not MYPY:
-    class CustomTargetTypeCustomActionsArgsDict(TypedDict):
-        deploy_action: pulumi.Input[_builtins.str]
-        """
-        The Skaffold custom action responsible for deploy operations.
-        """
-        include_skaffold_modules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgsDict']]]]
-        """
-        List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
-        Structure is documented below.
-        """
-        render_action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
-        """
-elif False:
-    CustomTargetTypeCustomActionsArgsDict: TypeAlias = Mapping[str, Any]
+class CustomTargetTypeCustomActionsArgsDict(TypedDict):
+    deploy_action: pulumi.Input[_builtins.str]
+    """
+    The Skaffold custom action responsible for deploy operations.
+    """
+    include_skaffold_modules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgsDict']]]]
+    """
+    List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+    Structure is documented below.
+    """
+    render_action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+    """
 
 @pulumi.input_type
 class CustomTargetTypeCustomActionsArgs:
@@ -976,29 +941,26 @@ class CustomTargetTypeCustomActionsArgs:
         pulumi.set(self, "render_action", value)
 
 
-if not MYPY:
-    class CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgsDict(TypedDict):
-        configs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The Skaffold Config modules to use from the specified source.
-        """
-        git: NotRequired[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgsDict']]
-        """
-        Remote git repository containing the Skaffold Config modules.
-        Structure is documented below.
-        """
-        google_cloud_build_repo: NotRequired[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgsDict']]
-        """
-        Cloud Build 2nd gen repository containing the Skaffold Config modules.
-        Structure is documented below.
-        """
-        google_cloud_storage: NotRequired[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgsDict']]
-        """
-        Cloud Storage bucket containing Skaffold Config modules.
-        Structure is documented below.
-        """
-elif False:
-    CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgsDict: TypeAlias = Mapping[str, Any]
+class CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgsDict(TypedDict):
+    configs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The Skaffold Config modules to use from the specified source.
+    """
+    git: NotRequired[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgsDict']]
+    """
+    Remote git repository containing the Skaffold Config modules.
+    Structure is documented below.
+    """
+    google_cloud_build_repo: NotRequired[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgsDict']]
+    """
+    Cloud Build 2nd gen repository containing the Skaffold Config modules.
+    Structure is documented below.
+    """
+    google_cloud_storage: NotRequired[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgsDict']]
+    """
+    Cloud Storage bucket containing Skaffold Config modules.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs:
@@ -1077,22 +1039,19 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs:
         pulumi.set(self, "google_cloud_storage", value)
 
 
-if not MYPY:
-    class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgsDict(TypedDict):
-        repo: pulumi.Input[_builtins.str]
-        """
-        Git repository the package should be cloned from.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Relative path from the repository root to the Skaffold file.
-        """
-        ref: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Git ref the package should be cloned from.
-        """
-elif False:
-    CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgsDict: TypeAlias = Mapping[str, Any]
+class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgsDict(TypedDict):
+    repo: pulumi.Input[_builtins.str]
+    """
+    Git repository the package should be cloned from.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Relative path from the repository root to the Skaffold file.
+    """
+    ref: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Git ref the package should be cloned from.
+    """
 
 @pulumi.input_type
 class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs:
@@ -1148,22 +1107,19 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs:
         pulumi.set(self, "ref", value)
 
 
-if not MYPY:
-    class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgsDict(TypedDict):
-        repository: pulumi.Input[_builtins.str]
-        """
-        Cloud Build 2nd gen repository in the format of 'projects/<project>/locations/<location>/connections/<connection>/repositories/<repository>'.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Relative path from the repository root to the Skaffold file.
-        """
-        ref: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Branch or tag to use when cloning the repository.
-        """
-elif False:
-    CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgsDict: TypeAlias = Mapping[str, Any]
+class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgsDict(TypedDict):
+    repository: pulumi.Input[_builtins.str]
+    """
+    Cloud Build 2nd gen repository in the format of 'projects/<project>/locations/<location>/connections/<connection>/repositories/<repository>'.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Relative path from the repository root to the Skaffold file.
+    """
+    ref: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Branch or tag to use when cloning the repository.
+    """
 
 @pulumi.input_type
 class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs:
@@ -1219,18 +1175,15 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs
         pulumi.set(self, "ref", value)
 
 
-if not MYPY:
-    class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgsDict(TypedDict):
-        source: pulumi.Input[_builtins.str]
-        """
-        Cloud Storage source paths to copy recursively. For example, providing `gs://my-bucket/dir/configs/*` will result in Skaffold copying all files within the `dir/configs` directory in the bucket `my-bucket`.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Relative path from the source to the Skaffold file.
-        """
-elif False:
-    CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgsDict: TypeAlias = Mapping[str, Any]
+class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgsDict(TypedDict):
+    source: pulumi.Input[_builtins.str]
+    """
+    Cloud Storage source paths to copy recursively. For example, providing `gs://my-bucket/dir/configs/*` will result in Skaffold copying all files within the `dir/configs` directory in the bucket `my-bucket`.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Relative path from the source to the Skaffold file.
+    """
 
 @pulumi.input_type
 class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs:
@@ -1270,13 +1223,10 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs:
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class CustomTargetTypeIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    CustomTargetTypeIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class CustomTargetTypeIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class CustomTargetTypeIamBindingConditionArgs:
@@ -1317,13 +1267,10 @@ class CustomTargetTypeIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class CustomTargetTypeIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    CustomTargetTypeIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class CustomTargetTypeIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class CustomTargetTypeIamMemberConditionArgs:
@@ -1364,22 +1311,19 @@ class CustomTargetTypeIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class DeliveryPipelineConditionArgsDict(TypedDict):
-        pipeline_ready_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionPipelineReadyConditionArgsDict']]]]
-        """
-        Details around the Pipeline's overall status.
-        """
-        targets_present_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsPresentConditionArgsDict']]]]
-        """
-        Details around targets enumerated in the pipeline.
-        """
-        targets_type_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsTypeConditionArgsDict']]]]
-        """
-        Details on the whether the targets enumerated in the pipeline are of the same type.
-        """
-elif False:
-    DeliveryPipelineConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineConditionArgsDict(TypedDict):
+    pipeline_ready_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionPipelineReadyConditionArgsDict']]]]
+    """
+    Details around the Pipeline's overall status.
+    """
+    targets_present_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsPresentConditionArgsDict']]]]
+    """
+    Details around targets enumerated in the pipeline.
+    """
+    targets_type_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsTypeConditionArgsDict']]]]
+    """
+    Details on the whether the targets enumerated in the pipeline are of the same type.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineConditionArgs:
@@ -1436,18 +1380,15 @@ class DeliveryPipelineConditionArgs:
         pulumi.set(self, "targets_type_conditions", value)
 
 
-if not MYPY:
-    class DeliveryPipelineConditionPipelineReadyConditionArgsDict(TypedDict):
-        status: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output only. Most recent time at which the pipeline was updated.
-        """
-elif False:
-    DeliveryPipelineConditionPipelineReadyConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineConditionPipelineReadyConditionArgsDict(TypedDict):
+    status: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output only. Most recent time at which the pipeline was updated.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineConditionPipelineReadyConditionArgs:
@@ -1488,22 +1429,19 @@ class DeliveryPipelineConditionPipelineReadyConditionArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class DeliveryPipelineConditionTargetsPresentConditionArgsDict(TypedDict):
-        missing_targets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
-        """
-        status: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        True if there aren't any missing Targets.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Output only. Most recent time at which the pipeline was updated.
-        """
-elif False:
-    DeliveryPipelineConditionTargetsPresentConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineConditionTargetsPresentConditionArgsDict(TypedDict):
+    missing_targets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+    """
+    status: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    True if there aren't any missing Targets.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Output only. Most recent time at which the pipeline was updated.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineConditionTargetsPresentConditionArgs:
@@ -1560,18 +1498,15 @@ class DeliveryPipelineConditionTargetsPresentConditionArgs:
         pulumi.set(self, "update_time", value)
 
 
-if not MYPY:
-    class DeliveryPipelineConditionTargetsTypeConditionArgsDict(TypedDict):
-        error_details: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human readable error message.
-        """
-        status: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
-        """
-elif False:
-    DeliveryPipelineConditionTargetsTypeConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineConditionTargetsTypeConditionArgsDict(TypedDict):
+    error_details: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human readable error message.
+    """
+    status: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineConditionTargetsTypeConditionArgs:
@@ -1612,13 +1547,10 @@ class DeliveryPipelineConditionTargetsTypeConditionArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class DeliveryPipelineIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DeliveryPipelineIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class DeliveryPipelineIamBindingConditionArgs:
@@ -1659,13 +1591,10 @@ class DeliveryPipelineIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class DeliveryPipelineIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DeliveryPipelineIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class DeliveryPipelineIamMemberConditionArgs:
@@ -1706,14 +1635,11 @@ class DeliveryPipelineIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineArgsDict(TypedDict):
-        stages: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArgsDict']]]]
-        """
-        Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineArgsDict(TypedDict):
+    stages: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArgsDict']]]]
+    """
+    Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineArgs:
@@ -1738,26 +1664,23 @@ class DeliveryPipelineSerialPipelineArgs:
         pulumi.set(self, "stages", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageArgsDict(TypedDict):
-        deploy_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArgsDict']]]]
-        """
-        Optional. The deploy parameters to use for the target in this stage.
-        """
-        profiles: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Skaffold profiles to use when rendering the manifest for this stage's `Target`.
-        """
-        strategy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgsDict']]
-        """
-        Optional. The strategy to use for a `Rollout` to this stage.
-        """
-        target_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageArgsDict(TypedDict):
+    deploy_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArgsDict']]]]
+    """
+    Optional. The deploy parameters to use for the target in this stage.
+    """
+    profiles: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Skaffold profiles to use when rendering the manifest for this stage's `Target`.
+    """
+    strategy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgsDict']]
+    """
+    Optional. The strategy to use for a `Rollout` to this stage.
+    """
+    target_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageArgs:
@@ -1830,18 +1753,15 @@ class DeliveryPipelineSerialPipelineStageArgs:
         pulumi.set(self, "target_id", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageDeployParameterArgsDict(TypedDict):
-        values: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        Required. Values are deploy parameters in key-value pairs.
-        """
-        match_target_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageDeployParameterArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageDeployParameterArgsDict(TypedDict):
+    values: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    Required. Values are deploy parameters in key-value pairs.
+    """
+    match_target_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageDeployParameterArgs:
@@ -1881,18 +1801,15 @@ class DeliveryPipelineSerialPipelineStageDeployParameterArgs:
         pulumi.set(self, "match_target_labels", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyArgsDict(TypedDict):
-        canary: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArgsDict']]
-        """
-        Canary deployment strategy provides progressive percentage based deployments to a Target.
-        """
-        standard: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgsDict']]
-        """
-        Standard deployment strategy executes a single deploy and allows verifying the deployment.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyArgsDict(TypedDict):
+    canary: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArgsDict']]
+    """
+    Canary deployment strategy provides progressive percentage based deployments to a Target.
+    """
+    standard: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgsDict']]
+    """
+    Standard deployment strategy executes a single deploy and allows verifying the deployment.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyArgs:
@@ -1933,22 +1850,19 @@ class DeliveryPipelineSerialPipelineStageStrategyArgs:
         pulumi.set(self, "standard", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryArgsDict(TypedDict):
-        canary_deployment: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgsDict']]
-        """
-        Configures the progressive based deployment for a Target.
-        """
-        custom_canary_deployment: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgsDict']]
-        """
-        Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
-        """
-        runtime_config: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgsDict']]
-        """
-        Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryArgsDict(TypedDict):
+    canary_deployment: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgsDict']]
+    """
+    Configures the progressive based deployment for a Target.
+    """
+    custom_canary_deployment: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgsDict']]
+    """
+    Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+    """
+    runtime_config: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgsDict']]
+    """
+    Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryArgs:
@@ -2005,26 +1919,23 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryArgs:
         pulumi.set(self, "runtime_config", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgsDict(TypedDict):
-        percentages: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
-        """
-        Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
-        """
-        postdeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgsDict']]
-        """
-        Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
-        """
-        predeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgsDict']]
-        """
-        Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
-        """
-        verify: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to run verify tests after each percentage deployment.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgsDict(TypedDict):
+    percentages: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+    """
+    postdeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgsDict']]
+    """
+    Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+    """
+    predeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgsDict']]
+    """
+    Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+    """
+    verify: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to run verify tests after each percentage deployment.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs:
@@ -2096,14 +2007,11 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs:
         pulumi.set(self, "verify", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgsDict(TypedDict):
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgsDict(TypedDict):
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs:
@@ -2128,14 +2036,11 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeplo
         pulumi.set(self, "actions", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgsDict(TypedDict):
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgsDict(TypedDict):
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs:
@@ -2160,14 +2065,11 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy
         pulumi.set(self, "actions", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgsDict(TypedDict):
-        phase_configs: pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgsDict']]]
-        """
-        Required. Configuration for each phase in the canary deployment in the order executed.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgsDict(TypedDict):
+    phase_configs: pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgsDict']]]
+    """
+    Required. Configuration for each phase in the canary deployment in the order executed.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs:
@@ -2191,34 +2093,31 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArg
         pulumi.set(self, "phase_configs", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgsDict(TypedDict):
-        percentage: pulumi.Input[_builtins.int]
-        """
-        Required. Percentage deployment for the phase.
-        """
-        phase_id: pulumi.Input[_builtins.str]
-        """
-        Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-        """
-        postdeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgsDict']]
-        """
-        Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
-        """
-        predeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgsDict']]
-        """
-        Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
-        """
-        profiles: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
-        """
-        verify: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to run verify tests after the deployment.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgsDict(TypedDict):
+    percentage: pulumi.Input[_builtins.int]
+    """
+    Required. Percentage deployment for the phase.
+    """
+    phase_id: pulumi.Input[_builtins.str]
+    """
+    Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+    """
+    postdeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgsDict']]
+    """
+    Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+    """
+    predeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgsDict']]
+    """
+    Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+    """
+    profiles: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+    """
+    verify: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to run verify tests after the deployment.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs:
@@ -2321,14 +2220,11 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
         pulumi.set(self, "verify", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgsDict(TypedDict):
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgsDict(TypedDict):
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs:
@@ -2353,14 +2249,11 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
         pulumi.set(self, "actions", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgsDict(TypedDict):
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgsDict(TypedDict):
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs:
@@ -2385,18 +2278,15 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
         pulumi.set(self, "actions", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgsDict(TypedDict):
-        cloud_run: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgsDict']]
-        """
-        Cloud Run runtime configuration.
-        """
-        kubernetes: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgsDict']]
-        """
-        Kubernetes runtime configuration.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgsDict(TypedDict):
+    cloud_run: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgsDict']]
+    """
+    Cloud Run runtime configuration.
+    """
+    kubernetes: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgsDict']]
+    """
+    Kubernetes runtime configuration.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs:
@@ -2437,26 +2327,23 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs:
         pulumi.set(self, "kubernetes", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgsDict(TypedDict):
-        automatic_traffic_control: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
-        """
-        canary_revision_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
-        """
-        prior_revision_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
-        """
-        stable_revision_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgsDict(TypedDict):
+    automatic_traffic_control: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+    """
+    canary_revision_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+    """
+    prior_revision_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+    """
+    stable_revision_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs:
@@ -2529,18 +2416,15 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs
         pulumi.set(self, "stable_revision_tags", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgsDict(TypedDict):
-        gateway_service_mesh: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgsDict']]
-        """
-        Kubernetes Gateway API service mesh configuration.
-        """
-        service_networking: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgsDict']]
-        """
-        Kubernetes Service networking configuration.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgsDict(TypedDict):
+    gateway_service_mesh: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgsDict']]
+    """
+    Kubernetes Gateway API service mesh configuration.
+    """
+    service_networking: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgsDict']]
+    """
+    Kubernetes Service networking configuration.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs:
@@ -2581,38 +2465,35 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesAr
         pulumi.set(self, "service_networking", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgsDict(TypedDict):
-        deployment: pulumi.Input[_builtins.str]
-        """
-        Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
-        """
-        http_route: pulumi.Input[_builtins.str]
-        """
-        Required. Name of the Gateway API HTTPRoute.
-        """
-        service: pulumi.Input[_builtins.str]
-        """
-        Required. Name of the Kubernetes Service.
-        """
-        pod_selector_label: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
-        """
-        route_destinations: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgsDict']]
-        """
-        Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
-        """
-        route_update_wait_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
-        """
-        stable_cutback_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgsDict(TypedDict):
+    deployment: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+    """
+    http_route: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the Gateway API HTTPRoute.
+    """
+    service: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the Kubernetes Service.
+    """
+    pod_selector_label: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+    """
+    route_destinations: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgsDict']]
+    """
+    Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+    """
+    route_update_wait_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+    """
+    stable_cutback_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs:
@@ -2730,18 +2611,15 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
         pulumi.set(self, "stable_cutback_duration", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgsDict(TypedDict):
-        destination_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and "@self" to include the Target cluster.
-        """
-        propagate_service: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations are specified.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgsDict(TypedDict):
+    destination_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and "@self" to include the Target cluster.
+    """
+    propagate_service: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations are specified.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs:
@@ -2781,26 +2659,23 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
         pulumi.set(self, "propagate_service", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgsDict(TypedDict):
-        deployment: pulumi.Input[_builtins.str]
-        """
-        Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
-        """
-        service: pulumi.Input[_builtins.str]
-        """
-        Required. Name of the Kubernetes Service.
-        """
-        disable_pod_overprovisioning: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
-        """
-        pod_selector_label: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgsDict(TypedDict):
+    deployment: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+    """
+    service: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the Kubernetes Service.
+    """
+    disable_pod_overprovisioning: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+    """
+    pod_selector_label: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs:
@@ -2871,22 +2746,19 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
         pulumi.set(self, "pod_selector_label", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyStandardArgsDict(TypedDict):
-        postdeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgsDict']]
-        """
-        Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
-        """
-        predeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgsDict']]
-        """
-        Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
-        """
-        verify: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to verify a deployment.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyStandardArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyStandardArgsDict(TypedDict):
+    postdeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgsDict']]
+    """
+    Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+    """
+    predeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgsDict']]
+    """
+    Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+    """
+    verify: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to verify a deployment.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyStandardArgs:
@@ -2943,14 +2815,11 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardArgs:
         pulumi.set(self, "verify", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgsDict(TypedDict):
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgsDict(TypedDict):
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs:
@@ -2975,14 +2844,11 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs:
         pulumi.set(self, "actions", value)
 
 
-if not MYPY:
-    class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgsDict(TypedDict):
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
-        """
-elif False:
-    DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgsDict(TypedDict):
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs:
@@ -3007,15 +2873,12 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs:
         pulumi.set(self, "actions", value)
 
 
-if not MYPY:
-    class DeployPolicyRuleArgsDict(TypedDict):
-        rollout_restriction: NotRequired[pulumi.Input['DeployPolicyRuleRolloutRestrictionArgsDict']]
-        """
-        Rollout restrictions.
-        Structure is documented below.
-        """
-elif False:
-    DeployPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicyRuleArgsDict(TypedDict):
+    rollout_restriction: NotRequired[pulumi.Input['DeployPolicyRuleRolloutRestrictionArgsDict']]
+    """
+    Rollout restrictions.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DeployPolicyRuleArgs:
@@ -3042,29 +2905,26 @@ class DeployPolicyRuleArgs:
         pulumi.set(self, "rollout_restriction", value)
 
 
-if not MYPY:
-    class DeployPolicyRuleRolloutRestrictionArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
-        """
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
-        Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
-        """
-        invokers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        What invoked the action. If left empty, all invoker types will be restricted.
-        Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
-        """
-        time_windows: NotRequired[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsArgsDict']]
-        """
-        Time window within which actions are restricted.
-        Structure is documented below.
-        """
-elif False:
-    DeployPolicyRuleRolloutRestrictionArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicyRuleRolloutRestrictionArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+    """
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+    Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
+    """
+    invokers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    What invoked the action. If left empty, all invoker types will be restricted.
+    Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
+    """
+    time_windows: NotRequired[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsArgsDict']]
+    """
+    Time window within which actions are restricted.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DeployPolicyRuleRolloutRestrictionArgs:
@@ -3142,24 +3002,21 @@ class DeployPolicyRuleRolloutRestrictionArgs:
         pulumi.set(self, "time_windows", value)
 
 
-if not MYPY:
-    class DeployPolicyRuleRolloutRestrictionTimeWindowsArgsDict(TypedDict):
-        time_zone: pulumi.Input[_builtins.str]
-        """
-        The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
-        """
-        one_time_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgsDict']]]]
-        """
-        One-time windows within which actions are restricted.
-        Structure is documented below.
-        """
-        weekly_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgsDict']]]]
-        """
-        Recurring weekly windows within which actions are restricted.
-        Structure is documented below.
-        """
-elif False:
-    DeployPolicyRuleRolloutRestrictionTimeWindowsArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicyRuleRolloutRestrictionTimeWindowsArgsDict(TypedDict):
+    time_zone: pulumi.Input[_builtins.str]
+    """
+    The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+    """
+    one_time_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgsDict']]]]
+    """
+    One-time windows within which actions are restricted.
+    Structure is documented below.
+    """
+    weekly_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgsDict']]]]
+    """
+    Recurring weekly windows within which actions are restricted.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs:
@@ -3219,30 +3076,27 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs:
         pulumi.set(self, "weekly_windows", value)
 
 
-if not MYPY:
-    class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgsDict(TypedDict):
-        end_date: pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgsDict']
-        """
-        End date.
-        Structure is documented below.
-        """
-        end_time: pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgsDict']
-        """
-        End time (exclusive). You may use 24:00 for the end of the day.
-        Structure is documented below.
-        """
-        start_date: pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgsDict']
-        """
-        Start date.
-        Structure is documented below.
-        """
-        start_time: pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgsDict']
-        """
-        Start time (inclusive). Use 00:00 for the beginning of the day.
-        Structure is documented below.
-        """
-elif False:
-    DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgsDict(TypedDict):
+    end_date: pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgsDict']
+    """
+    End date.
+    Structure is documented below.
+    """
+    end_time: pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgsDict']
+    """
+    End time (exclusive). You may use 24:00 for the end of the day.
+    Structure is documented below.
+    """
+    start_date: pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgsDict']
+    """
+    Start date.
+    Structure is documented below.
+    """
+    start_time: pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgsDict']
+    """
+    Start time (inclusive). Use 00:00 for the beginning of the day.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs:
@@ -3319,22 +3173,19 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999.
-        """
-elif False:
-    DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999.
+    """
 
 @pulumi.input_type
 class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs:
@@ -3391,26 +3242,23 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs:
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs:
@@ -3483,22 +3331,19 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs:
@@ -3555,26 +3400,23 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs:
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs:
@@ -3647,25 +3489,22 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgsDict(TypedDict):
-        days_of_weeks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Days of week. If left empty, all days of the week will be included.
-        Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        end_time: NotRequired[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgsDict']]
-        """
-        End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
-        Structure is documented below.
-        """
-        start_time: NotRequired[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgsDict']]
-        """
-        Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
-        Structure is documented below.
-        """
-elif False:
-    DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgsDict(TypedDict):
+    days_of_weeks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Days of week. If left empty, all days of the week will be included.
+    Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    end_time: NotRequired[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgsDict']]
+    """
+    End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+    Structure is documented below.
+    """
+    start_time: NotRequired[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgsDict']]
+    """
+    Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs:
@@ -3728,26 +3567,23 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs:
@@ -3820,26 +3656,23 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs:
@@ -3912,20 +3745,17 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class DeployPolicySelectorArgsDict(TypedDict):
-        delivery_pipeline: NotRequired[pulumi.Input['DeployPolicySelectorDeliveryPipelineArgsDict']]
-        """
-        Contains attributes about a delivery pipeline.
-        Structure is documented below.
-        """
-        target: NotRequired[pulumi.Input['DeployPolicySelectorTargetArgsDict']]
-        """
-        Contains attributes about a target.
-        Structure is documented below.
-        """
-elif False:
-    DeployPolicySelectorArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicySelectorArgsDict(TypedDict):
+    delivery_pipeline: NotRequired[pulumi.Input['DeployPolicySelectorDeliveryPipelineArgsDict']]
+    """
+    Contains attributes about a delivery pipeline.
+    Structure is documented below.
+    """
+    target: NotRequired[pulumi.Input['DeployPolicySelectorTargetArgsDict']]
+    """
+    Contains attributes about a target.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DeployPolicySelectorArgs:
@@ -3970,20 +3800,17 @@ class DeployPolicySelectorArgs:
         pulumi.set(self, "target", value)
 
 
-if not MYPY:
-    class DeployPolicySelectorDeliveryPipelineArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the DeliveryPipeline. The value of this field could be one of the following:
-        - The last segment of a pipeline name
-        - "*", all delivery pipelines in a location
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        DeliveryPipeline labels.
-        """
-elif False:
-    DeployPolicySelectorDeliveryPipelineArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicySelectorDeliveryPipelineArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the DeliveryPipeline. The value of this field could be one of the following:
+    - The last segment of a pipeline name
+    - "*", all delivery pipelines in a location
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    DeliveryPipeline labels.
+    """
 
 @pulumi.input_type
 class DeployPolicySelectorDeliveryPipelineArgs:
@@ -4028,18 +3855,15 @@ class DeployPolicySelectorDeliveryPipelineArgs:
         pulumi.set(self, "labels", value)
 
 
-if not MYPY:
-    class DeployPolicySelectorTargetArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Target labels.
-        """
-elif False:
-    DeployPolicySelectorTargetArgsDict: TypeAlias = Mapping[str, Any]
+class DeployPolicySelectorTargetArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Target labels.
+    """
 
 @pulumi.input_type
 class DeployPolicySelectorTargetArgs:
@@ -4080,14 +3904,11 @@ class DeployPolicySelectorTargetArgs:
         pulumi.set(self, "labels", value)
 
 
-if not MYPY:
-    class TargetAnthosClusterArgsDict(TypedDict):
-        membership: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
-        """
-elif False:
-    TargetAnthosClusterArgsDict: TypeAlias = Mapping[str, Any]
+class TargetAnthosClusterArgsDict(TypedDict):
+    membership: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+    """
 
 @pulumi.input_type
 class TargetAnthosClusterArgs:
@@ -4112,22 +3933,19 @@ class TargetAnthosClusterArgs:
         pulumi.set(self, "membership", value)
 
 
-if not MYPY:
-    class TargetAssociatedEntityArgsDict(TypedDict):
-        entity_id: pulumi.Input[_builtins.str]
-        """
-        The name for the key in the map for which this object is mapped to in the API
-        """
-        anthos_clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityAnthosClusterArgsDict']]]]
-        """
-        Optional. Information specifying Anthos clusters as associated entities.
-        """
-        gke_clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityGkeClusterArgsDict']]]]
-        """
-        Optional. Information specifying GKE clusters as associated entities.
-        """
-elif False:
-    TargetAssociatedEntityArgsDict: TypeAlias = Mapping[str, Any]
+class TargetAssociatedEntityArgsDict(TypedDict):
+    entity_id: pulumi.Input[_builtins.str]
+    """
+    The name for the key in the map for which this object is mapped to in the API
+    """
+    anthos_clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityAnthosClusterArgsDict']]]]
+    """
+    Optional. Information specifying Anthos clusters as associated entities.
+    """
+    gke_clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityGkeClusterArgsDict']]]]
+    """
+    Optional. Information specifying GKE clusters as associated entities.
+    """
 
 @pulumi.input_type
 class TargetAssociatedEntityArgs:
@@ -4183,14 +4001,11 @@ class TargetAssociatedEntityArgs:
         pulumi.set(self, "gke_clusters", value)
 
 
-if not MYPY:
-    class TargetAssociatedEntityAnthosClusterArgsDict(TypedDict):
-        membership: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
-        """
-elif False:
-    TargetAssociatedEntityAnthosClusterArgsDict: TypeAlias = Mapping[str, Any]
+class TargetAssociatedEntityAnthosClusterArgsDict(TypedDict):
+    membership: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+    """
 
 @pulumi.input_type
 class TargetAssociatedEntityAnthosClusterArgs:
@@ -4215,22 +4030,19 @@ class TargetAssociatedEntityAnthosClusterArgs:
         pulumi.set(self, "membership", value)
 
 
-if not MYPY:
-    class TargetAssociatedEntityGkeClusterArgsDict(TypedDict):
-        cluster: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
-        """
-        internal_ip: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
-        """
-        proxy_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
-        """
-elif False:
-    TargetAssociatedEntityGkeClusterArgsDict: TypeAlias = Mapping[str, Any]
+class TargetAssociatedEntityGkeClusterArgsDict(TypedDict):
+    cluster: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
+    """
+    internal_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+    """
+    proxy_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+    """
 
 @pulumi.input_type
 class TargetAssociatedEntityGkeClusterArgs:
@@ -4287,14 +4099,11 @@ class TargetAssociatedEntityGkeClusterArgs:
         pulumi.set(self, "proxy_url", value)
 
 
-if not MYPY:
-    class TargetCustomTargetArgsDict(TypedDict):
-        custom_target_type: pulumi.Input[_builtins.str]
-        """
-        Required. The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
-        """
-elif False:
-    TargetCustomTargetArgsDict: TypeAlias = Mapping[str, Any]
+class TargetCustomTargetArgsDict(TypedDict):
+    custom_target_type: pulumi.Input[_builtins.str]
+    """
+    Required. The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+    """
 
 @pulumi.input_type
 class TargetCustomTargetArgs:
@@ -4318,34 +4127,31 @@ class TargetCustomTargetArgs:
         pulumi.set(self, "custom_target_type", value)
 
 
-if not MYPY:
-    class TargetExecutionConfigArgsDict(TypedDict):
-        usages: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. Usages when this configuration should be applied.
-        """
-        artifact_storage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
-        """
-        execution_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
-        """
-        service_account: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
-        """
-        verbose: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. If true, additional logging will be enabled when running builds in this execution environment.
-        """
-        worker_pool: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
-        """
-elif False:
-    TargetExecutionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class TargetExecutionConfigArgsDict(TypedDict):
+    usages: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. Usages when this configuration should be applied.
+    """
+    artifact_storage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+    """
+    execution_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+    """
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
+    """
+    verbose: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. If true, additional logging will be enabled when running builds in this execution environment.
+    """
+    worker_pool: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
+    """
 
 @pulumi.input_type
 class TargetExecutionConfigArgs:
@@ -4449,26 +4255,23 @@ class TargetExecutionConfigArgs:
         pulumi.set(self, "worker_pool", value)
 
 
-if not MYPY:
-    class TargetGkeArgsDict(TypedDict):
-        cluster: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
-        """
-        dns_endpoint: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
-        """
-        internal_ip: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
-        """
-        proxy_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
-        """
-elif False:
-    TargetGkeArgsDict: TypeAlias = Mapping[str, Any]
+class TargetGkeArgsDict(TypedDict):
+    cluster: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+    """
+    dns_endpoint: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and `internal_ip` cannot be set to true.
+    """
+    internal_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+    """
+    proxy_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+    """
 
 @pulumi.input_type
 class TargetGkeArgs:
@@ -4541,13 +4344,10 @@ class TargetGkeArgs:
         pulumi.set(self, "proxy_url", value)
 
 
-if not MYPY:
-    class TargetIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    TargetIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class TargetIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class TargetIamBindingConditionArgs:
@@ -4588,13 +4388,10 @@ class TargetIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class TargetIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    TargetIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class TargetIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class TargetIamMemberConditionArgs:
@@ -4635,14 +4432,11 @@ class TargetIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class TargetMultiTargetArgsDict(TypedDict):
-        target_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Required. The target_ids of this multiTarget.
-        """
-elif False:
-    TargetMultiTargetArgsDict: TypeAlias = Mapping[str, Any]
+class TargetMultiTargetArgsDict(TypedDict):
+    target_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. The target_ids of this multiTarget.
+    """
 
 @pulumi.input_type
 class TargetMultiTargetArgs:
@@ -4666,14 +4460,11 @@ class TargetMultiTargetArgs:
         pulumi.set(self, "target_ids", value)
 
 
-if not MYPY:
-    class TargetRunArgsDict(TypedDict):
-        location: pulumi.Input[_builtins.str]
-        """
-        Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
-        """
-elif False:
-    TargetRunArgsDict: TypeAlias = Mapping[str, Any]
+class TargetRunArgsDict(TypedDict):
+    location: pulumi.Input[_builtins.str]
+    """
+    Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+    """
 
 @pulumi.input_type
 class TargetRunArgs:

@@ -26,6 +26,7 @@ class AclConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AclConfig resource.
+
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input['AclConfigIdpConfigArgs'] idp_config: Identity provider config.
@@ -88,6 +89,7 @@ class _AclConfigState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclConfig resources.
+
         :param pulumi.Input['AclConfigIdpConfigArgs'] idp_config: Identity provider config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
@@ -199,24 +201,17 @@ class AclConfig(pulumi.CustomResource):
         AclConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/aclConfig`
-
         * `{{project}}/{{location}}`
-
         * `{{location}}`
 
         When using the `pulumi import` command, AclConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/aclConfig:AclConfig default projects/{{project}}/locations/{{location}}/aclConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/aclConfig:AclConfig default {{project}}/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/aclConfig:AclConfig default {{location}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -263,24 +258,17 @@ class AclConfig(pulumi.CustomResource):
         AclConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/aclConfig`
-
         * `{{project}}/{{location}}`
-
         * `{{location}}`
 
         When using the `pulumi import` command, AclConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/aclConfig:AclConfig default projects/{{project}}/locations/{{location}}/aclConfig
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/aclConfig:AclConfig default {{project}}/{{location}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/aclConfig:AclConfig default {{location}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclConfigArgs args: The arguments to use to populate this resource's properties.

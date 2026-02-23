@@ -32,6 +32,7 @@ class ClusterArgs:
                  tls_config: Optional[pulumi.Input['ClusterTlsConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input['ClusterCapacityConfigArgs'] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster_id: The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
@@ -202,6 +203,7 @@ class _ClusterState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input['ClusterBrokerCapacityConfigArgs'] broker_capacity_config: Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
                Structure is documented below.
         :param pulumi.Input['ClusterCapacityConfigArgs'] capacity_config: A capacity configuration of a Kafka cluster.
@@ -567,24 +569,17 @@ class Cluster(pulumi.CustomResource):
         Cluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
-
         * `{{project}}/{{location}}/{{cluster_id}}`
-
         * `{{location}}/{{cluster_id}}`
 
         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:managedkafka/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/cluster:Cluster default {{project}}/{{location}}/{{cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/cluster:Cluster default {{location}}/{{cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -715,24 +710,17 @@ class Cluster(pulumi.CustomResource):
         Cluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
-
         * `{{project}}/{{location}}/{{cluster_id}}`
-
         * `{{location}}/{{cluster_id}}`
 
         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:managedkafka/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/cluster:Cluster default {{project}}/{{location}}/{{cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/cluster:Cluster default {{location}}/{{cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

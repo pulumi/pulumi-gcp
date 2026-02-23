@@ -162,22 +162,14 @@ namespace Pulumi.Gcp.SecretManager
     /// Secret can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/secrets/{{secret_id}}`
-    /// 
     /// * `{{project}}/{{secret_id}}`
-    /// 
     /// * `{{secret_id}}`
     /// 
     /// When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
     /// ```
     /// </summary>
@@ -208,9 +200,17 @@ namespace Pulumi.Gcp.SecretManager
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+        /// When the field is set to true in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the secret will fail.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -406,6 +406,11 @@ namespace Pulumi.Gcp.SecretManager
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+        /// When the field is set to true in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the secret will fail.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -568,11 +573,20 @@ namespace Pulumi.Gcp.SecretManager
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+        /// When the field is set to true in Terraform state, a `pulumi up`
+        /// or `terraform destroy` that would delete the secret will fail.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());

@@ -108,28 +108,16 @@ import (
 // RegionCommitment can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/commitments/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, RegionCommitment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/regionCommitment:RegionCommitment default projects/{{project}}/regions/{{region}}/commitments/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionCommitment:RegionCommitment default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionCommitment:RegionCommitment default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionCommitment:RegionCommitment default {{name}}
 // ```
 type RegionCommitment struct {

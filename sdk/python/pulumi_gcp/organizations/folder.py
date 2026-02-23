@@ -25,10 +25,12 @@ class FolderArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Folder resource.
+
         :param pulumi.Input[_builtins.str] display_name: The folder’s display name.
                A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
         :param pulumi.Input[_builtins.str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -67,6 +69,9 @@ class FolderArgs:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -101,9 +106,11 @@ class _FolderState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] configured_capabilities: Optional capabilities configured for this folder.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the Folder was created. Assigned by the server.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
         :param pulumi.Input[_builtins.str] display_name: The folder’s display name.
                A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
         :param pulumi.Input[_builtins.str] folder_id: The folder id from the name "folders/{folder_id}"
@@ -163,6 +170,9 @@ class _FolderState:
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -289,21 +299,19 @@ class Folder(pulumi.CustomResource):
         Folders can be imported using the folder's id, e.g.
 
         * `folders/{{folder_id}}`
-
         * `{{folder_id}}`
 
         When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
         :param pulumi.Input[_builtins.str] display_name: The folder’s display name.
                A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
         :param pulumi.Input[_builtins.str] parent: The resource name of the parent Folder or Organization.
@@ -338,18 +346,15 @@ class Folder(pulumi.CustomResource):
         Folders can be imported using the folder's id, e.g.
 
         * `folders/{{folder_id}}`
-
         * `{{folder_id}}`
 
         When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FolderArgs args: The arguments to use to populate this resource's properties.
@@ -423,6 +428,7 @@ class Folder(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] configured_capabilities: Optional capabilities configured for this folder.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the Folder was created. Assigned by the server.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
         :param pulumi.Input[_builtins.str] display_name: The folder’s display name.
                A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
         :param pulumi.Input[_builtins.str] folder_id: The folder id from the name "folders/{folder_id}"
@@ -469,6 +475,9 @@ class Folder(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether Terraform will be prevented from destroying or recreating the Folder. When the field is set to `true` or unset in Terraform state, a `pulumi up` or `terraform destroy` that would delete the folder will fail. When the field is set to `false`, deleting the folder is allowed. Default value is `true`.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property

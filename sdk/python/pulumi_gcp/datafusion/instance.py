@@ -44,6 +44,7 @@ class InstanceArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] type: Represents the type of Data Fusion instance. Each type is configured with
                the default settings for processing and memory.
                - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -451,6 +452,7 @@ class _InstanceState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]] accelerators: List of accelerators enabled for this CDF instance.
                If accelerators are enabled it is possible a permadiff will be created with the Options field.
                Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
@@ -1233,30 +1235,19 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datafusion/instance:Instance default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datafusion/instance:Instance default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datafusion/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1498,30 +1489,19 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datafusion/instance:Instance default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datafusion/instance:Instance default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:datafusion/instance:Instance default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

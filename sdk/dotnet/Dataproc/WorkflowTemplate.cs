@@ -101,27 +101,118 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
+    /// ### Encryption Config With Spark Jobs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Grant Dataproc service account KMS permissions at project level
+    ///     var dataprocKmsEncrypterDecrypter = new Gcp.Projects.IAMMember("dataproc_kms_encrypter_decrypter", new()
+    ///     {
+    ///         Project = project.Name,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:service-{project.Number}@dataproc-accounts.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Dataproc.WorkflowTemplate("example", new()
+    ///     {
+    ///         Name = workflowTemplateName,
+    ///         Location = region,
+    ///         EncryptionConfig = new Gcp.Dataproc.Inputs.WorkflowTemplateEncryptionConfigArgs
+    ///         {
+    ///             KmsKey = "&lt;&lt;-- uri to desired crypto key for customer management --&gt;&gt;",
+    ///         },
+    ///         Placement = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementArgs
+    ///         {
+    ///             ManagedCluster = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterArgs
+    ///             {
+    ///                 ClusterName = clusterName,
+    ///                 Config = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigArgs
+    ///                 {
+    ///                     GceClusterConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs
+    ///                     {
+    ///                         Zone = zone,
+    ///                         Network = network,
+    ///                     },
+    ///                     MasterConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
+    ///                     {
+    ///                         NumInstances = 1,
+    ///                         MachineType = machineType,
+    ///                         DiskConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs
+    ///                         {
+    ///                             BootDiskType = "pd-standard",
+    ///                             BootDiskSizeGb = 100,
+    ///                         },
+    ///                     },
+    ///                     WorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
+    ///                     {
+    ///                         NumInstances = 2,
+    ///                         MachineType = machineType,
+    ///                         DiskConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs
+    ///                         {
+    ///                             BootDiskType = "pd-standard",
+    ///                             BootDiskSizeGb = 100,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Jobs = new[]
+    ///         {
+    ///             new Gcp.Dataproc.Inputs.WorkflowTemplateJobArgs
+    ///             {
+    ///                 StepId = "example-job",
+    ///                 SparkJob = new Gcp.Dataproc.Inputs.WorkflowTemplateJobSparkJobArgs
+    ///                 {
+    ///                     MainClass = "org.apache.spark.examples.SparkPi",
+    ///                     JarFileUris = new[]
+    ///                     {
+    ///                         "file:///usr/lib/spark/examples/jars/spark-examples.jar",
+    ///                     },
+    ///                     Args = new[]
+    ///                     {
+    ///                         "1000",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Dataproc.Inputs.WorkflowTemplateJobArgs
+    ///             {
+    ///                 StepId = "example-pyspark-job",
+    ///                 PysparkJob = new Gcp.Dataproc.Inputs.WorkflowTemplateJobPysparkJobArgs
+    ///                 {
+    ///                     MainPythonFileUri = "gs://dataproc-examples/pyspark/hello-world/hello-world.py",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             dataprocKmsEncrypterDecrypter,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// WorkflowTemplate can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, WorkflowTemplate can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
     /// ```
     /// </summary>
@@ -140,17 +231,20 @@ namespace Pulumi.Gcp.Dataproc
         [Output("dagTimeout")]
         public Output<string?> DagTimeout { get; private set; } = null!;
 
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The encryption configuration for the workflow template.
+        /// Encryption settings for encrypting workflow template job arguments. Structure is documented below
         /// </summary>
         [Output("encryptionConfig")]
         public Output<Outputs.WorkflowTemplateEncryptionConfig?> EncryptionConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The Directed Acyclic Graph of Jobs to submit.
+        /// (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         /// </summary>
         [Output("jobs")]
         public Output<ImmutableArray<Outputs.WorkflowTemplateJob>> Jobs { get; private set; } = null!;
@@ -171,7 +265,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        /// (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -183,7 +277,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<ImmutableArray<Outputs.WorkflowTemplateParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// Required. WorkflowTemplate scheduling information.
+        /// (Required) WorkflowTemplate scheduling information.
         /// </summary>
         [Output("placement")]
         public Output<Outputs.WorkflowTemplatePlacement> Placement { get; private set; } = null!;
@@ -270,7 +364,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? DagTimeout { get; set; }
 
         /// <summary>
-        /// Optional. The encryption configuration for the workflow template.
+        /// Encryption settings for encrypting workflow template job arguments. Structure is documented below
         /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.WorkflowTemplateEncryptionConfigArgs>? EncryptionConfig { get; set; }
@@ -279,7 +373,7 @@ namespace Pulumi.Gcp.Dataproc
         private InputList<Inputs.WorkflowTemplateJobArgs>? _jobs;
 
         /// <summary>
-        /// Required. The Directed Acyclic Graph of Jobs to submit.
+        /// (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         /// </summary>
         public InputList<Inputs.WorkflowTemplateJobArgs> Jobs
         {
@@ -309,7 +403,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        /// (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -327,7 +421,7 @@ namespace Pulumi.Gcp.Dataproc
         }
 
         /// <summary>
-        /// Required. WorkflowTemplate scheduling information.
+        /// (Required) WorkflowTemplate scheduling information.
         /// </summary>
         [Input("placement", required: true)]
         public Input<Inputs.WorkflowTemplatePlacementArgs> Placement { get; set; } = null!;
@@ -366,6 +460,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveLabels
         {
             get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
@@ -377,7 +475,7 @@ namespace Pulumi.Gcp.Dataproc
         }
 
         /// <summary>
-        /// Optional. The encryption configuration for the workflow template.
+        /// Encryption settings for encrypting workflow template job arguments. Structure is documented below
         /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.WorkflowTemplateEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
@@ -386,7 +484,7 @@ namespace Pulumi.Gcp.Dataproc
         private InputList<Inputs.WorkflowTemplateJobGetArgs>? _jobs;
 
         /// <summary>
-        /// Required. The Directed Acyclic Graph of Jobs to submit.
+        /// (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         /// </summary>
         public InputList<Inputs.WorkflowTemplateJobGetArgs> Jobs
         {
@@ -416,7 +514,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        /// (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -434,7 +532,7 @@ namespace Pulumi.Gcp.Dataproc
         }
 
         /// <summary>
-        /// Required. WorkflowTemplate scheduling information.
+        /// (Required) WorkflowTemplate scheduling information.
         /// </summary>
         [Input("placement")]
         public Input<Inputs.WorkflowTemplatePlacementGetArgs>? Placement { get; set; }

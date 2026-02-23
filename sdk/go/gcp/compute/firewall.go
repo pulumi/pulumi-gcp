@@ -131,22 +131,14 @@ import (
 // Firewall can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/global/firewalls/{{name}}`
-//
 // * `{{project}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, Firewall can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/firewall:Firewall default projects/{{project}}/global/firewalls/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/firewall:Firewall default {{project}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/firewall:Firewall default {{name}}
 // ```
 type Firewall struct {

@@ -52,22 +52,30 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.dagTimeout);
     }
 
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     @Import(name="effectiveLabels")
     private @Nullable Output<Map<String,String>> effectiveLabels;
 
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
     }
 
     /**
-     * Optional. The encryption configuration for the workflow template.
+     * Encryption settings for encrypting workflow template job arguments. Structure is documented below
      * 
      */
     @Import(name="encryptionConfig")
     private @Nullable Output<WorkflowTemplateEncryptionConfigArgs> encryptionConfig;
 
     /**
-     * @return Optional. The encryption configuration for the workflow template.
+     * @return Encryption settings for encrypting workflow template job arguments. Structure is documented below
      * 
      */
     public Optional<Output<WorkflowTemplateEncryptionConfigArgs>> encryptionConfig() {
@@ -75,14 +83,14 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Required. The Directed Acyclic Graph of Jobs to submit.
+     * (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
      * 
      */
     @Import(name="jobs")
     private @Nullable Output<List<WorkflowTemplateJobArgs>> jobs;
 
     /**
-     * @return Required. The Directed Acyclic Graph of Jobs to submit.
+     * @return (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
      * 
      */
     public Optional<Output<List<WorkflowTemplateJobArgs>>> jobs() {
@@ -126,14 +134,14 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+     * (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+     * @return (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -156,14 +164,14 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Required. WorkflowTemplate scheduling information.
+     * (Required) WorkflowTemplate scheduling information.
      * 
      */
     @Import(name="placement")
     private @Nullable Output<WorkflowTemplatePlacementArgs> placement;
 
     /**
-     * @return Required. WorkflowTemplate scheduling information.
+     * @return (Required) WorkflowTemplate scheduling information.
      * 
      */
     public Optional<Output<WorkflowTemplatePlacementArgs>> placement() {
@@ -317,17 +325,29 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
             return dagTimeout(Output.of(dagTimeout));
         }
 
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
             $.effectiveLabels = effectiveLabels;
             return this;
         }
 
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
-         * @param encryptionConfig Optional. The encryption configuration for the workflow template.
+         * @param encryptionConfig Encryption settings for encrypting workflow template job arguments. Structure is documented below
          * 
          * @return builder
          * 
@@ -338,7 +358,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param encryptionConfig Optional. The encryption configuration for the workflow template.
+         * @param encryptionConfig Encryption settings for encrypting workflow template job arguments. Structure is documented below
          * 
          * @return builder
          * 
@@ -348,7 +368,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param jobs Required. The Directed Acyclic Graph of Jobs to submit.
+         * @param jobs (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
          * 
          * @return builder
          * 
@@ -359,7 +379,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param jobs Required. The Directed Acyclic Graph of Jobs to submit.
+         * @param jobs (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
          * 
          * @return builder
          * 
@@ -369,7 +389,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param jobs Required. The Directed Acyclic Graph of Jobs to submit.
+         * @param jobs (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
          * 
          * @return builder
          * 
@@ -427,7 +447,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+         * @param name (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
          * 
          * @return builder
          * 
@@ -438,7 +458,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+         * @param name (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
          * 
          * @return builder
          * 
@@ -479,7 +499,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param placement Required. WorkflowTemplate scheduling information.
+         * @param placement (Required) WorkflowTemplate scheduling information.
          * 
          * @return builder
          * 
@@ -490,7 +510,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param placement Required. WorkflowTemplate scheduling information.
+         * @param placement (Required) WorkflowTemplate scheduling information.
          * 
          * @return builder
          * 

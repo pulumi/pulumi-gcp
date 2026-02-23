@@ -26,6 +26,7 @@ class UserCredsArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserCreds resource.
+
         :param pulumi.Input[_builtins.str] database: The Firestore database ID.
         :param pulumi.Input[_builtins.str] name: The ID to use for the user creds, which will become the final component
                of the user cred's resource name.
@@ -96,6 +97,7 @@ class _UserCredsState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserCreds resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which these user creds were created.
         :param pulumi.Input[_builtins.str] database: The Firestore database ID.
         :param pulumi.Input[_builtins.str] name: The ID to use for the user creds, which will become the final component
@@ -308,24 +310,17 @@ class UserCreds(pulumi.CustomResource):
         UserCreds can be imported using any of these accepted formats:
 
         * `projects/{{project}}/databases/{{database}}/userCreds/{{name}}`
-
         * `{{project}}/{{database}}/{{name}}`
-
         * `{{database}}/{{name}}`
 
         When using the `pulumi import` command, UserCreds can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/userCreds:UserCreds default projects/{{project}}/databases/{{database}}/userCreds/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firestore/userCreds:UserCreds default {{project}}/{{database}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firestore/userCreds:UserCreds default {{database}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -409,24 +404,17 @@ class UserCreds(pulumi.CustomResource):
         UserCreds can be imported using any of these accepted formats:
 
         * `projects/{{project}}/databases/{{database}}/userCreds/{{name}}`
-
         * `{{project}}/{{database}}/{{name}}`
-
         * `{{database}}/{{name}}`
 
         When using the `pulumi import` command, UserCreds can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/userCreds:UserCreds default projects/{{project}}/databases/{{database}}/userCreds/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firestore/userCreds:UserCreds default {{project}}/{{database}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firestore/userCreds:UserCreds default {{database}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserCredsArgs args: The arguments to use to populate this resource's properties.

@@ -111,21 +111,16 @@ __all__ = [
     'WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccessBoundaryPolicyRuleArgsDict(TypedDict):
-        access_boundary_rule: NotRequired[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict']]
-        """
-        An access boundary rule in an IAM policy.
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the rule.
-        """
-elif False:
-    AccessBoundaryPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class AccessBoundaryPolicyRuleArgsDict(TypedDict):
+    access_boundary_rule: NotRequired[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict']]
+    """
+    An access boundary rule in an IAM policy.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the rule.
+    """
 
 @pulumi.input_type
 class AccessBoundaryPolicyRuleArgs:
@@ -168,23 +163,20 @@ class AccessBoundaryPolicyRuleArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict(TypedDict):
-        availability_condition: NotRequired[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict']]
-        """
-        The availability condition further constrains the access allowed by the access boundary rule.
-        Structure is documented below.
-        """
-        available_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of permissions that may be allowed for use on the specified resource.
-        """
-        available_resource: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full resource name of a Google Cloud resource entity.
-        """
-elif False:
-    AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict: TypeAlias = Mapping[str, Any]
+class AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict(TypedDict):
+    availability_condition: NotRequired[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict']]
+    """
+    The availability condition further constrains the access allowed by the access boundary rule.
+    Structure is documented below.
+    """
+    available_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of permissions that may be allowed for use on the specified resource.
+    """
+    available_resource: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full resource name of a Google Cloud resource entity.
+    """
 
 @pulumi.input_type
 class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
@@ -243,29 +235,26 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
         pulumi.set(self, "available_resource", value)
 
 
-if not MYPY:
-    class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the expression. This is a longer text which describes the expression,
-        e.g. when hovered over it in a UI.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String indicating the location of the expression for error reporting,
-        e.g. a file name and a position in the file.
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Title for the expression, i.e. a short string describing its purpose.
-        This can be used e.g. in UIs which allow to enter the expression.
-        """
-elif False:
-    AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict: TypeAlias = Mapping[str, Any]
+class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the expression. This is a longer text which describes the expression,
+    e.g. when hovered over it in a UI.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String indicating the location of the expression for error reporting,
+    e.g. a file name and a position in the file.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Title for the expression, i.e. a short string describing its purpose.
+    This can be used e.g. in UIs which allow to enter the expression.
+    """
 
 @pulumi.input_type
 class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
@@ -343,19 +332,16 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class DenyPolicyRuleArgsDict(TypedDict):
-        deny_rule: NotRequired[pulumi.Input['DenyPolicyRuleDenyRuleArgsDict']]
-        """
-        A deny rule in an IAM deny policy.
-        Structure is documented below.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the rule.
-        """
-elif False:
-    DenyPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class DenyPolicyRuleArgsDict(TypedDict):
+    deny_rule: NotRequired[pulumi.Input['DenyPolicyRuleDenyRuleArgsDict']]
+    """
+    A deny rule in an IAM deny policy.
+    Structure is documented below.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the rule.
+    """
 
 @pulumi.input_type
 class DenyPolicyRuleArgs:
@@ -398,35 +384,32 @@ class DenyPolicyRuleArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class DenyPolicyRuleDenyRuleArgsDict(TypedDict):
-        denial_condition: NotRequired[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgsDict']]
-        """
-        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
-        Structure is documented below.
-        """
-        denied_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
-        where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
-        """
-        denied_principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The identities that are prevented from using one or more permissions on Google Cloud resources.
-        """
-        exception_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
-        If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
-        The excluded permissions can be specified using the same syntax as deniedPermissions.
-        """
-        exception_principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
-        For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
-        """
-elif False:
-    DenyPolicyRuleDenyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class DenyPolicyRuleDenyRuleArgsDict(TypedDict):
+    denial_condition: NotRequired[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgsDict']]
+    """
+    User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+    Structure is documented below.
+    """
+    denied_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
+    where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
+    """
+    denied_principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The identities that are prevented from using one or more permissions on Google Cloud resources.
+    """
+    exception_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
+    If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
+    The excluded permissions can be specified using the same syntax as deniedPermissions.
+    """
+    exception_principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
+    For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
+    """
 
 @pulumi.input_type
 class DenyPolicyRuleDenyRuleArgs:
@@ -525,29 +508,26 @@ class DenyPolicyRuleDenyRuleArgs:
         pulumi.set(self, "exception_principals", value)
 
 
-if not MYPY:
-    class DenyPolicyRuleDenyRuleDenialConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the expression. This is a longer text which describes the expression,
-        e.g. when hovered over it in a UI.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String indicating the location of the expression for error reporting,
-        e.g. a file name and a position in the file.
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Title for the expression, i.e. a short string describing its purpose.
-        This can be used e.g. in UIs which allow to enter the expression.
-        """
-elif False:
-    DenyPolicyRuleDenyRuleDenialConditionArgsDict: TypeAlias = Mapping[str, Any]
+class DenyPolicyRuleDenyRuleDenialConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the expression. This is a longer text which describes the expression,
+    e.g. when hovered over it in a UI.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String indicating the location of the expression for error reporting,
+    e.g. a file name and a position in the file.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Title for the expression, i.e. a short string describing its purpose.
+    This can be used e.g. in UIs which allow to enter the expression.
+    """
 
 @pulumi.input_type
 class DenyPolicyRuleDenyRuleDenialConditionArgs:
@@ -625,26 +605,23 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class FoldersPolicyBindingConditionArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
-        expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-        """
-elif False:
-    FoldersPolicyBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class FoldersPolicyBindingConditionArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+    """
+    expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+    """
 
 @pulumi.input_type
 class FoldersPolicyBindingConditionArgs:
@@ -717,17 +694,14 @@ class FoldersPolicyBindingConditionArgs:
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class FoldersPolicyBindingTargetArgsDict(TypedDict):
-        principal_set: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
-        Examples for each one of the following supported principal set types:
-        * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
-        It must be parent by the policy binding's parent (the folder).
-        """
-elif False:
-    FoldersPolicyBindingTargetArgsDict: TypeAlias = Mapping[str, Any]
+class FoldersPolicyBindingTargetArgsDict(TypedDict):
+    principal_set: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+    Examples for each one of the following supported principal set types:
+    * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+    It must be parent by the policy binding's parent (the folder).
+    """
 
 @pulumi.input_type
 class FoldersPolicyBindingTargetArgs:
@@ -758,26 +732,23 @@ class FoldersPolicyBindingTargetArgs:
         pulumi.set(self, "principal_set", value)
 
 
-if not MYPY:
-    class OrganizationsPolicyBindingConditionArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
-        expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-        """
-elif False:
-    OrganizationsPolicyBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationsPolicyBindingConditionArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+    """
+    expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+    """
 
 @pulumi.input_type
 class OrganizationsPolicyBindingConditionArgs:
@@ -850,19 +821,16 @@ class OrganizationsPolicyBindingConditionArgs:
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class OrganizationsPolicyBindingTargetArgsDict(TypedDict):
-        principal_set: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
-        Examples for each one of the following supported principal set types:
-        * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
-        * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
-        * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
-        It must be parent by the policy binding's parent (the organization).
-        """
-elif False:
-    OrganizationsPolicyBindingTargetArgsDict: TypeAlias = Mapping[str, Any]
+class OrganizationsPolicyBindingTargetArgsDict(TypedDict):
+    principal_set: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+    Examples for each one of the following supported principal set types:
+    * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+    * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
+    * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
+    It must be parent by the policy binding's parent (the organization).
+    """
 
 @pulumi.input_type
 class OrganizationsPolicyBindingTargetArgs:
@@ -897,22 +865,19 @@ class OrganizationsPolicyBindingTargetArgs:
         pulumi.set(self, "principal_set", value)
 
 
-if not MYPY:
-    class PrincipalAccessBoundaryPolicyDetailsArgsDict(TypedDict):
-        rules: pulumi.Input[Sequence[pulumi.Input['PrincipalAccessBoundaryPolicyDetailsRuleArgsDict']]]
-        """
-        A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
-        Structure is documented below.
-        """
-        enforcement_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version number that indicates which Google Cloud services
-        are included in the enforcement (e.g. \\"latest\\", \\"1\\", ...). If empty, the
-        PAB policy version will be set to the current latest version, and this version
-        won't get updated when new versions are released.
-        """
-elif False:
-    PrincipalAccessBoundaryPolicyDetailsArgsDict: TypeAlias = Mapping[str, Any]
+class PrincipalAccessBoundaryPolicyDetailsArgsDict(TypedDict):
+    rules: pulumi.Input[Sequence[pulumi.Input['PrincipalAccessBoundaryPolicyDetailsRuleArgsDict']]]
+    """
+    A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
+    Structure is documented below.
+    """
+    enforcement_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version number that indicates which Google Cloud services
+    are included in the enforcement (e.g. \\"latest\\", \\"1\\", ...). If empty, the
+    PAB policy version will be set to the current latest version, and this version
+    won't get updated when new versions are released.
+    """
 
 @pulumi.input_type
 class PrincipalAccessBoundaryPolicyDetailsArgs:
@@ -960,30 +925,27 @@ class PrincipalAccessBoundaryPolicyDetailsArgs:
         pulumi.set(self, "enforcement_version", value)
 
 
-if not MYPY:
-    class PrincipalAccessBoundaryPolicyDetailsRuleArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        The access relationship of principals to the resources in this rule.
-        Possible values: ALLOW
-        """
-        resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of Cloud Resource Manager resources. The resource
-        and all the descendants are included. The number of resources in a policy
-        is limited to 500 across all rules.
-        The following resource types are supported:
-        * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
-        * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
-        * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
-        or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
-        """
-elif False:
-    PrincipalAccessBoundaryPolicyDetailsRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PrincipalAccessBoundaryPolicyDetailsRuleArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    The access relationship of principals to the resources in this rule.
+    Possible values: ALLOW
+    """
+    resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of Cloud Resource Manager resources. The resource
+    and all the descendants are included. The number of resources in a policy
+    is limited to 500 across all rules.
+    The following resource types are supported:
+    * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
+    * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
+    * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
+    or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
+    """
 
 @pulumi.input_type
 class PrincipalAccessBoundaryPolicyDetailsRuleArgs:
@@ -1054,26 +1016,23 @@ class PrincipalAccessBoundaryPolicyDetailsRuleArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ProjectsPolicyBindingConditionArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
-        expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-        """
-        title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-        """
-elif False:
-    ProjectsPolicyBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ProjectsPolicyBindingConditionArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+    """
+    expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+    """
 
 @pulumi.input_type
 class ProjectsPolicyBindingConditionArgs:
@@ -1146,20 +1105,17 @@ class ProjectsPolicyBindingConditionArgs:
         pulumi.set(self, "title", value)
 
 
-if not MYPY:
-    class ProjectsPolicyBindingTargetArgsDict(TypedDict):
-        principal_set: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
-        Examples for each one of the following supported principal set types:
-        * Project:
-        * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
-        * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
-        * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
-        It must be parent by the policy binding's parent (the project).
-        """
-elif False:
-    ProjectsPolicyBindingTargetArgsDict: TypeAlias = Mapping[str, Any]
+class ProjectsPolicyBindingTargetArgsDict(TypedDict):
+    principal_set: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+    Examples for each one of the following supported principal set types:
+    * Project:
+    * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+    * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+    * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
+    It must be parent by the policy binding's parent (the project).
+    """
 
 @pulumi.input_type
 class ProjectsPolicyBindingTargetArgs:
@@ -1196,21 +1152,18 @@ class ProjectsPolicyBindingTargetArgs:
         pulumi.set(self, "principal_set", value)
 
 
-if not MYPY:
-    class WorkforcePoolAccessRestrictionsArgsDict(TypedDict):
-        allowed_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgsDict']]]]
-        """
-        Services allowed for web sign-in with the workforce pool.
-        If not set by default there are no restrictions.
-        Structure is documented below.
-        """
-        disable_programmatic_signin: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
-        See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
-        """
-elif False:
-    WorkforcePoolAccessRestrictionsArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolAccessRestrictionsArgsDict(TypedDict):
+    allowed_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgsDict']]]]
+    """
+    Services allowed for web sign-in with the workforce pool.
+    If not set by default there are no restrictions.
+    Structure is documented below.
+    """
+    disable_programmatic_signin: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
+    See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
+    """
 
 @pulumi.input_type
 class WorkforcePoolAccessRestrictionsArgs:
@@ -1257,15 +1210,12 @@ class WorkforcePoolAccessRestrictionsArgs:
         pulumi.set(self, "disable_programmatic_signin", value)
 
 
-if not MYPY:
-    class WorkforcePoolAccessRestrictionsAllowedServiceArgsDict(TypedDict):
-        domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Domain name of the service.
-        Example: console.cloud.google
-        """
-elif False:
-    WorkforcePoolAccessRestrictionsAllowedServiceArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolAccessRestrictionsAllowedServiceArgsDict(TypedDict):
+    domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Domain name of the service.
+    Example: console.cloud.google
+    """
 
 @pulumi.input_type
 class WorkforcePoolAccessRestrictionsAllowedServiceArgs:
@@ -1292,13 +1242,10 @@ class WorkforcePoolAccessRestrictionsAllowedServiceArgs:
         pulumi.set(self, "domain", value)
 
 
-if not MYPY:
-    class WorkforcePoolIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkforcePoolIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class WorkforcePoolIamBindingConditionArgs:
@@ -1339,13 +1286,10 @@ class WorkforcePoolIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class WorkforcePoolIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        title: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkforcePoolIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class WorkforcePoolIamMemberConditionArgs:
@@ -1386,38 +1330,35 @@ class WorkforcePoolIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict(TypedDict):
-        attributes_type: pulumi.Input[_builtins.str]
-        """
-        Represents the IdP and type of claims that should be fetched.
-        * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
-        using configuration provided in ExtendedAttributesOAuth2Client and 'id'
-        property of the 'microsoft.graph.group' object is used for claim mapping. See
-        https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
-        for more details on 'microsoft.graph.group' properties. The
-        group IDs obtained from Azure AD are present in 'assertion.groups' for
-        OIDC providers and 'assertion.attributes.groups' for SAML providers for
-        attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
-        """
-        client_id: pulumi.Input[_builtins.str]
-        """
-        The OAuth 2.0 client ID for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
-        """
-        client_secret: pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgsDict']
-        """
-        The OAuth 2.0 client secret for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
-        """
-        issuer_uri: pulumi.Input[_builtins.str]
-        """
-        The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
-        """
-        query_parameters: NotRequired[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict']]
-        """
-        Represents the parameters to control which claims are fetched from an IdP.
-        """
-elif False:
-    WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict(TypedDict):
+    attributes_type: pulumi.Input[_builtins.str]
+    """
+    Represents the IdP and type of claims that should be fetched.
+    * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
+    using configuration provided in ExtendedAttributesOAuth2Client and 'id'
+    property of the 'microsoft.graph.group' object is used for claim mapping. See
+    https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+    for more details on 'microsoft.graph.group' properties. The
+    group IDs obtained from Azure AD are present in 'assertion.groups' for
+    OIDC providers and 'assertion.attributes.groups' for SAML providers for
+    attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
+    """
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The OAuth 2.0 client ID for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+    """
+    client_secret: pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgsDict']
+    """
+    The OAuth 2.0 client secret for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+    """
+    issuer_uri: pulumi.Input[_builtins.str]
+    """
+    The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+    """
+    query_parameters: NotRequired[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict']]
+    """
+    Represents the parameters to control which claims are fetched from an IdP.
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderExtendedAttributesOauth2ClientArgs:
@@ -1518,15 +1459,12 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientArgs:
         pulumi.set(self, "query_parameters", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgsDict(TypedDict):
-        value: NotRequired[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDict']]
-        """
-        The value of the client secret.
-        Structure is documented below.
-        """
-elif False:
-    WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgsDict(TypedDict):
+    value: NotRequired[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDict']]
+    """
+    The value of the client secret.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs:
@@ -1553,19 +1491,16 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDict(TypedDict):
-        plain_text: pulumi.Input[_builtins.str]
-        """
-        The plain text of the client secret value.
-        """
-        thumbprint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A thumbprint to represent the current client secret value.
-        """
-elif False:
-    WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDict(TypedDict):
+    plain_text: pulumi.Input[_builtins.str]
+    """
+    The plain text of the client secret value.
+    """
+    thumbprint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A thumbprint to represent the current client secret value.
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs:
@@ -1607,16 +1542,13 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs:
         pulumi.set(self, "thumbprint", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict(TypedDict):
-        filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
-        filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-        groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
-        """
-elif False:
-    WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict(TypedDict):
+    filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
+    filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+    groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs:
@@ -1645,42 +1577,39 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs:
         pulumi.set(self, "filter", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict(TypedDict):
-        attributes_type: pulumi.Input[_builtins.str]
-        """
-        Represents the IdP and type of claims that should be fetched.
-        * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
-        in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
-        See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
-        'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'.
-        * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
-        using configuration provided in ExtraAttributesOAuth2Client and 'id'
-        property of the 'microsoft.graph.group' object is used for claim mapping. See
-        https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
-        for more details on 'microsoft.graph.group' properties. The
-        group IDs obtained from Azure AD are present in 'assertion.groups' for
-        OIDC providers and 'assertion.attributes.groups' for SAML providers for
-        attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID"]
-        """
-        client_id: pulumi.Input[_builtins.str]
-        """
-        The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
-        """
-        client_secret: pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgsDict']
-        """
-        The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
-        """
-        issuer_uri: pulumi.Input[_builtins.str]
-        """
-        The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
-        """
-        query_parameters: NotRequired[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict']]
-        """
-        Represents the parameters to control which claims are fetched from an IdP.
-        """
-elif False:
-    WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict(TypedDict):
+    attributes_type: pulumi.Input[_builtins.str]
+    """
+    Represents the IdP and type of claims that should be fetched.
+    * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
+    in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
+    See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
+    'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'.
+    * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
+    using configuration provided in ExtraAttributesOAuth2Client and 'id'
+    property of the 'microsoft.graph.group' object is used for claim mapping. See
+    https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+    for more details on 'microsoft.graph.group' properties. The
+    group IDs obtained from Azure AD are present in 'assertion.groups' for
+    OIDC providers and 'assertion.attributes.groups' for SAML providers for
+    attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID"]
+    """
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+    """
+    client_secret: pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgsDict']
+    """
+    The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+    """
+    issuer_uri: pulumi.Input[_builtins.str]
+    """
+    The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+    """
+    query_parameters: NotRequired[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict']]
+    """
+    Represents the parameters to control which claims are fetched from an IdP.
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderExtraAttributesOauth2ClientArgs:
@@ -1789,15 +1718,12 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientArgs:
         pulumi.set(self, "query_parameters", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgsDict(TypedDict):
-        value: NotRequired[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict']]
-        """
-        The value of the client secret.
-        Structure is documented below.
-        """
-elif False:
-    WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgsDict(TypedDict):
+    value: NotRequired[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict']]
+    """
+    The value of the client secret.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs:
@@ -1824,19 +1750,16 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict(TypedDict):
-        plain_text: pulumi.Input[_builtins.str]
-        """
-        The plain text of the client secret value.
-        """
-        thumbprint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A thumbprint to represent the current client secret value.
-        """
-elif False:
-    WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict(TypedDict):
+    plain_text: pulumi.Input[_builtins.str]
+    """
+    The plain text of the client secret value.
+    """
+    thumbprint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A thumbprint to represent the current client secret value.
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs:
@@ -1878,16 +1801,13 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs:
         pulumi.set(self, "thumbprint", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict(TypedDict):
-        filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
-        filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-        groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
-        """
-elif False:
-    WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict(TypedDict):
+    filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
+    filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+    groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
@@ -1916,43 +1836,40 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
         pulumi.set(self, "filter", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderKeyKeyDataArgsDict(TypedDict):
-        key_spec: pulumi.Input[_builtins.str]
-        """
-        The specifications for the key.
-        Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-        """
-        format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The format of the key.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The key data. The format of the key is represented by the format field.
-        """
-        not_after_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
-        Only present if the key data represents a X.509 certificate.
-        Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
-        Offsets other than "Z" are also accepted.
-        Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
-        """
-        not_before_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
-        Only present if the key data represents a X.509 certificate.
-        Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
-        Offsets other than "Z" are also accepted.
-        Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
-        """
-elif False:
-    WorkforcePoolProviderKeyKeyDataArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderKeyKeyDataArgsDict(TypedDict):
+    key_spec: pulumi.Input[_builtins.str]
+    """
+    The specifications for the key.
+    Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
+    """
+    format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The format of the key.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The key data. The format of the key is represented by the format field.
+    """
+    not_after_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
+    Only present if the key data represents a X.509 certificate.
+    Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+    Offsets other than "Z" are also accepted.
+    Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+    """
+    not_before_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
+    Only present if the key data represents a X.509 certificate.
+    Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
+    Offsets other than "Z" are also accepted.
+    Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderKeyKeyDataArgs:
@@ -2066,54 +1983,51 @@ class WorkforcePoolProviderKeyKeyDataArgs:
         pulumi.set(self, "not_before_time", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderOidcArgsDict(TypedDict):
-        client_id: pulumi.Input[_builtins.str]
-        """
-        The client ID. Must match the audience claim of the JWT issued by the identity provider.
-        """
-        issuer_uri: pulumi.Input[_builtins.str]
-        """
-        The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
-        """
-        client_secret: NotRequired[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgsDict']]
-        """
-        The optional client secret. Required to enable Authorization Code flow for web sign-in.
-        Structure is documented below.
-        """
-        jwks_json: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OIDC JWKs in JSON String format. For details on definition of a
-        JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
-        use the `jwks_uri` from the discovery document fetched from the
-        .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
-        keys are supported. The JWK must use following format and include only
-        the following fields:
-        ```
-        {
-        "keys": [
-        {
-        "kty": "RSA/EC",
-        "alg": "<algorithm>",
-        "use": "sig",
-        "kid": "<key-id>",
-        "n": "",
-        "e": "",
-        "x": "",
-        "y": "",
-        "crv": ""
-        }
-        ]
-        }
-        ```
-        """
-        web_sso_config: NotRequired[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgsDict']]
-        """
-        Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
-        Structure is documented below.
-        """
-elif False:
-    WorkforcePoolProviderOidcArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderOidcArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The client ID. Must match the audience claim of the JWT issued by the identity provider.
+    """
+    issuer_uri: pulumi.Input[_builtins.str]
+    """
+    The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+    """
+    client_secret: NotRequired[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgsDict']]
+    """
+    The optional client secret. Required to enable Authorization Code flow for web sign-in.
+    Structure is documented below.
+    """
+    jwks_json: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OIDC JWKs in JSON String format. For details on definition of a
+    JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+    use the `jwks_uri` from the discovery document fetched from the
+    .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+    keys are supported. The JWK must use following format and include only
+    the following fields:
+    ```
+    {
+    "keys": [
+    {
+    "kty": "RSA/EC",
+    "alg": "<algorithm>",
+    "use": "sig",
+    "kid": "<key-id>",
+    "n": "",
+    "e": "",
+    "x": "",
+    "y": "",
+    "crv": ""
+    }
+    ]
+    }
+    ```
+    """
+    web_sso_config: NotRequired[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgsDict']]
+    """
+    Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderOidcArgs:
@@ -2248,15 +2162,12 @@ class WorkforcePoolProviderOidcArgs:
         pulumi.set(self, "web_sso_config", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderOidcClientSecretArgsDict(TypedDict):
-        value: NotRequired[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgsDict']]
-        """
-        The value of the client secret.
-        Structure is documented below.
-        """
-elif False:
-    WorkforcePoolProviderOidcClientSecretArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderOidcClientSecretArgsDict(TypedDict):
+    value: NotRequired[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgsDict']]
+    """
+    The value of the client secret.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderOidcClientSecretArgs:
@@ -2283,19 +2194,16 @@ class WorkforcePoolProviderOidcClientSecretArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderOidcClientSecretValueArgsDict(TypedDict):
-        plain_text: pulumi.Input[_builtins.str]
-        """
-        The plain text of the client secret value.
-        """
-        thumbprint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A thumbprint to represent the current client secret value.
-        """
-elif False:
-    WorkforcePoolProviderOidcClientSecretValueArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderOidcClientSecretValueArgsDict(TypedDict):
+    plain_text: pulumi.Input[_builtins.str]
+    """
+    The plain text of the client secret value.
+    """
+    thumbprint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A thumbprint to represent the current client secret value.
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderOidcClientSecretValueArgs:
@@ -2337,32 +2245,29 @@ class WorkforcePoolProviderOidcClientSecretValueArgs:
         pulumi.set(self, "thumbprint", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderOidcWebSsoConfigArgsDict(TypedDict):
-        assertion_claims_behavior: pulumi.Input[_builtins.str]
-        """
-        The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
-        * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
-        * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-        Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
-        """
-        response_type: pulumi.Input[_builtins.str]
-        """
-        The Response Type to request for in the OIDC Authorization Request for web sign-in.
-        The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
-        * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
-        * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-        Possible values are: `CODE`, `ID_TOKEN`.
-        """
-        additional_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
-        Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+class WorkforcePoolProviderOidcWebSsoConfigArgsDict(TypedDict):
+    assertion_claims_behavior: pulumi.Input[_builtins.str]
+    """
+    The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+    * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
+    * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
+    Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
+    """
+    response_type: pulumi.Input[_builtins.str]
+    """
+    The Response Type to request for in the OIDC Authorization Request for web sign-in.
+    The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
+    * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
+    * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+    Possible values are: `CODE`, `ID_TOKEN`.
+    """
+    additional_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+    Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
 
-        <a name="nested_extra_attributes_oauth2_client"></a>The `extra_attributes_oauth2_client` block supports:
-        """
-elif False:
-    WorkforcePoolProviderOidcWebSsoConfigArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_extra_attributes_oauth2_client"></a>The `extra_attributes_oauth2_client` block supports:
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderOidcWebSsoConfigArgs:
@@ -2437,26 +2342,23 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
         pulumi.set(self, "additional_scopes", value)
 
 
-if not MYPY:
-    class WorkforcePoolProviderSamlArgsDict(TypedDict):
-        idp_metadata_xml: pulumi.Input[_builtins.str]
-        """
-        SAML Identity provider configuration metadata xml doc.
-        The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
-        The max size of the acceptable xml document will be bounded to 128k characters.
-        The metadata xml document should satisfy the following constraints:
-        1) Must contain an Identity Provider Entity ID.
-        2) Must contain at least one non-expired signing key certificate.
-        3) For each signing key:
-        a) Valid from should be no more than 7 days from now.
-        b) Valid to should be no more than 10 years in the future.
-        4) Up to 3 IdP signing keys are allowed in the metadata xml.
-        When updating the provider's metadata xml, at least one non-expired signing key
-        must overlap with the existing metadata. This requirement is skipped if there are
-        no non-expired signing keys present in the existing metadata.
-        """
-elif False:
-    WorkforcePoolProviderSamlArgsDict: TypeAlias = Mapping[str, Any]
+class WorkforcePoolProviderSamlArgsDict(TypedDict):
+    idp_metadata_xml: pulumi.Input[_builtins.str]
+    """
+    SAML Identity provider configuration metadata xml doc.
+    The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+    The max size of the acceptable xml document will be bounded to 128k characters.
+    The metadata xml document should satisfy the following constraints:
+    1) Must contain an Identity Provider Entity ID.
+    2) Must contain at least one non-expired signing key certificate.
+    3) For each signing key:
+    a) Valid from should be no more than 7 days from now.
+    b) Valid to should be no more than 10 years in the future.
+    4) Up to 3 IdP signing keys are allowed in the metadata xml.
+    When updating the provider's metadata xml, at least one non-expired signing key
+    must overlap with the existing metadata. This requirement is skipped if there are
+    no non-expired signing keys present in the existing metadata.
+    """
 
 @pulumi.input_type
 class WorkforcePoolProviderSamlArgs:
@@ -2504,19 +2406,23 @@ class WorkforcePoolProviderSamlArgs:
         pulumi.set(self, "idp_metadata_xml", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolIamBindingConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkloadIdentityPoolIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolIamBindingConditionArgs:
@@ -2527,6 +2433,11 @@ class WorkloadIdentityPoolIamBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -2560,6 +2471,13 @@ class WorkloadIdentityPoolIamBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2567,19 +2485,23 @@ class WorkloadIdentityPoolIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolIamMemberConditionArgsDict(TypedDict):
-        expression: pulumi.Input[_builtins.str]
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        title: pulumi.Input[_builtins.str]
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkloadIdentityPoolIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolIamMemberConditionArgs:
@@ -2590,6 +2512,11 @@ class WorkloadIdentityPoolIamMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -2623,6 +2550,13 @@ class WorkloadIdentityPoolIamMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2630,45 +2564,42 @@ class WorkloadIdentityPoolIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict(TypedDict):
-        ca_pools: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        A required mapping of a cloud region to the CA pool resource located in that region used
-        for certificate issuance, adhering to these constraints:
-        * **Key format:** A supported cloud region name equivalent to the location identifier in
-        the corresponding map entry's value.
-        * **Value format:** A valid CA pool resource path format like:
-        `projects/{project}/locations/{location}/caPools/{ca_pool}`
-        * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
-        same region. Also the CA pool region (in value) must match the workload's region (key).
-        """
-        key_algorithm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key algorithm to use when generating the key pair. This key pair will be used to create
-        the certificate. If unspecified, this will default to `ECDSA_P256`.
-        * `RSA_2048`: Specifies RSA with a 2048-bit modulus.
-        * `RSA_3072`: Specifies RSA with a 3072-bit modulus.
-        * `RSA_4096`: Specifies RSA with a 4096-bit modulus.
-        * `ECDSA_P256`: Specifies ECDSA with curve P256.
-        * `ECDSA_P384`: Specifies ECDSA with curve P384.
-        Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
-        """
-        lifetime: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
-        `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
-        and is preceded by the number of seconds. If unspecified, this will be defaulted to
-        `86400s` (24 hours).
-        """
-        rotation_window_percentage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Rotation window percentage indicating when certificate rotation should be initiated based
-        on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
-        to `50`.
-        """
-elif False:
-    WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict(TypedDict):
+    ca_pools: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    A required mapping of a cloud region to the CA pool resource located in that region used
+    for certificate issuance, adhering to these constraints:
+    * **Key format:** A supported cloud region name equivalent to the location identifier in
+    the corresponding map entry's value.
+    * **Value format:** A valid CA pool resource path format like:
+    `projects/{project}/locations/{location}/caPools/{ca_pool}`
+    * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
+    same region. Also the CA pool region (in value) must match the workload's region (key).
+    """
+    key_algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key algorithm to use when generating the key pair. This key pair will be used to create
+    the certificate. If unspecified, this will default to `ECDSA_P256`.
+    * `RSA_2048`: Specifies RSA with a 2048-bit modulus.
+    * `RSA_3072`: Specifies RSA with a 3072-bit modulus.
+    * `RSA_4096`: Specifies RSA with a 4096-bit modulus.
+    * `ECDSA_P256`: Specifies ECDSA with curve P256.
+    * `ECDSA_P384`: Specifies ECDSA with curve P384.
+    Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
+    """
+    lifetime: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
+    `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
+    and is preceded by the number of seconds. If unspecified, this will be defaulted to
+    `86400s` (24 hours).
+    """
+    rotation_window_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Rotation window percentage indicating when certificate rotation should be initiated based
+    on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
+    to `50`.
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
@@ -2778,21 +2709,18 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
         pulumi.set(self, "rotation_window_percentage", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolInlineTrustConfigArgsDict(TypedDict):
-        additional_trust_bundles: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict']]]]
-        """
-        Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
-        objects, which contain the trusted root certificates for that domain. There can be a
-        maximum of `10` trust domain entries in this map.
-        Note that a trust domain automatically trusts itself and don't need to be specified here.
-        If however, this `WorkloadIdentityPool`'s trust domain contains any trust anchors in the
-        `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
-        automatically derived from your `InlineCertificateIssuanceConfig`'s `ca_pools`.
-        Structure is documented below.
-        """
-elif False:
-    WorkloadIdentityPoolInlineTrustConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolInlineTrustConfigArgsDict(TypedDict):
+    additional_trust_bundles: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict']]]]
+    """
+    Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
+    objects, which contain the trusted root certificates for that domain. There can be a
+    maximum of `10` trust domain entries in this map.
+    Note that a trust domain automatically trusts itself and don't need to be specified here.
+    If however, this `WorkloadIdentityPool`'s trust domain contains any trust anchors in the
+    `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
+    automatically derived from your `InlineCertificateIssuanceConfig`'s `ca_pools`.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolInlineTrustConfigArgs:
@@ -2831,21 +2759,18 @@ class WorkloadIdentityPoolInlineTrustConfigArgs:
         pulumi.set(self, "additional_trust_bundles", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict(TypedDict):
-        trust_anchors: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgsDict']]]
-        """
-        List of Trust Anchors to be used while performing validation against a given
-        `TrustStore`. The incoming end entity's certificate must be chained up to one of the
-        trust anchors here.
-        Structure is documented below.
-        """
-        trust_domain: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-elif False:
-    WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict(TypedDict):
+    trust_anchors: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgsDict']]]
+    """
+    List of Trust Anchors to be used while performing validation against a given
+    `TrustStore`. The incoming end entity's certificate must be chained up to one of the
+    trust anchors here.
+    Structure is documented below.
+    """
+    trust_domain: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs:
@@ -2890,15 +2815,12 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs:
         pulumi.set(self, "trust_domain", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgsDict(TypedDict):
-        pem_certificate: pulumi.Input[_builtins.str]
-        """
-        PEM certificate of the PKI used for validation. Must only contain one ca
-        certificate(either root or intermediate cert).
-        """
-elif False:
-    WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgsDict(TypedDict):
+    pem_certificate: pulumi.Input[_builtins.str]
+    """
+    PEM certificate of the PKI used for validation. Must only contain one ca
+    certificate(either root or intermediate cert).
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs:
@@ -2924,15 +2846,12 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs:
         pulumi.set(self, "pem_certificate", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolManagedIdentityAttestationRuleArgsDict(TypedDict):
-        google_cloud_resource: pulumi.Input[_builtins.str]
-        """
-        A single workload operating on Google Cloud. For example:
-        `//compute.googleapis.com/projects/123/uid/zones/us-central1-a/instances/12345678`.
-        """
-elif False:
-    WorkloadIdentityPoolManagedIdentityAttestationRuleArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolManagedIdentityAttestationRuleArgsDict(TypedDict):
+    google_cloud_resource: pulumi.Input[_builtins.str]
+    """
+    A single workload operating on Google Cloud. For example:
+    `//compute.googleapis.com/projects/123/uid/zones/us-central1-a/instances/12345678`.
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolManagedIdentityAttestationRuleArgs:
@@ -2958,16 +2877,13 @@ class WorkloadIdentityPoolManagedIdentityAttestationRuleArgs:
         pulumi.set(self, "google_cloud_resource", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolNamespaceOwnerServiceArgsDict(TypedDict):
-        principal_subject: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The service agent principal subject, e.g.
-        `serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com`.
-        """
-elif False:
-    WorkloadIdentityPoolNamespaceOwnerServiceArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolNamespaceOwnerServiceArgsDict(TypedDict):
+    principal_subject: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The service agent principal subject, e.g.
+    `serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com`.
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolNamespaceOwnerServiceArgs:
@@ -2996,14 +2912,11 @@ class WorkloadIdentityPoolNamespaceOwnerServiceArgs:
         pulumi.set(self, "principal_subject", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolProviderAwsArgsDict(TypedDict):
-        account_id: pulumi.Input[_builtins.str]
-        """
-        The AWS account ID.
-        """
-elif False:
-    WorkloadIdentityPoolProviderAwsArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolProviderAwsArgsDict(TypedDict):
+    account_id: pulumi.Input[_builtins.str]
+    """
+    The AWS account ID.
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolProviderAwsArgs:
@@ -3027,54 +2940,51 @@ class WorkloadIdentityPoolProviderAwsArgs:
         pulumi.set(self, "account_id", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolProviderOidcArgsDict(TypedDict):
-        issuer_uri: pulumi.Input[_builtins.str]
-        """
-        The OIDC issuer URL.
-        """
-        allowed_audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
-        requests are rejected if the token audience does not match one of the configured
-        values. Each audience may be at most 256 characters. A maximum of 10 audiences may
-        be configured.
-        If this list is empty, the OIDC token audience must be equal to the full canonical
-        resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
-        For example:
-        ```
-        //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
-        https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
-        ```
-        """
-        jwks_json: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OIDC JWKs in JSON String format. For details on definition of a
-        JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
-        use the `jwks_uri` from the discovery document fetched from the
-        .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
-        keys are supported. The JWK must use following format and include only
-        the following fields:
-        ```
-        {
-        "keys": [
-        {
-        "kty": "RSA/EC",
-        "alg": "<algorithm>",
-        "use": "sig",
-        "kid": "<key-id>",
-        "n": "",
-        "e": "",
-        "x": "",
-        "y": "",
-        "crv": ""
-        }
-        ]
-        }
-        ```
-        """
-elif False:
-    WorkloadIdentityPoolProviderOidcArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolProviderOidcArgsDict(TypedDict):
+    issuer_uri: pulumi.Input[_builtins.str]
+    """
+    The OIDC issuer URL.
+    """
+    allowed_audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
+    requests are rejected if the token audience does not match one of the configured
+    values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+    be configured.
+    If this list is empty, the OIDC token audience must be equal to the full canonical
+    resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+    For example:
+    ```
+    //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+    https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+    ```
+    """
+    jwks_json: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OIDC JWKs in JSON String format. For details on definition of a
+    JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+    use the `jwks_uri` from the discovery document fetched from the
+    .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+    keys are supported. The JWK must use following format and include only
+    the following fields:
+    ```
+    {
+    "keys": [
+    {
+    "kty": "RSA/EC",
+    "alg": "<algorithm>",
+    "use": "sig",
+    "kid": "<key-id>",
+    "n": "",
+    "e": "",
+    "x": "",
+    "y": "",
+    "crv": ""
+    }
+    ]
+    }
+    ```
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolProviderOidcArgs:
@@ -3194,16 +3104,13 @@ class WorkloadIdentityPoolProviderOidcArgs:
         pulumi.set(self, "jwks_json", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolProviderSamlArgsDict(TypedDict):
-        idp_metadata_xml: pulumi.Input[_builtins.str]
-        """
-        SAML Identity provider configuration metadata xml doc.
+class WorkloadIdentityPoolProviderSamlArgsDict(TypedDict):
+    idp_metadata_xml: pulumi.Input[_builtins.str]
+    """
+    SAML Identity provider configuration metadata xml doc.
 
-        <a name="nested_x509"></a>The `x509` block supports:
-        """
-elif False:
-    WorkloadIdentityPoolProviderSamlArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_x509"></a>The `x509` block supports:
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolProviderSamlArgs:
@@ -3231,18 +3138,15 @@ class WorkloadIdentityPoolProviderSamlArgs:
         pulumi.set(self, "idp_metadata_xml", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolProviderX509ArgsDict(TypedDict):
-        trust_store: pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreArgsDict']
-        """
-        A Trust store, use this trust store as a wrapper to config the trust
-        anchor and optional intermediate cas to help build the trust chain for
-        the incoming end entity certificate. Follow the x509 guidelines to
-        define those PEM encoded certs. Only 1 trust store is currently
-        supported.
-        """
-elif False:
-    WorkloadIdentityPoolProviderX509ArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolProviderX509ArgsDict(TypedDict):
+    trust_store: pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreArgsDict']
+    """
+    A Trust store, use this trust store as a wrapper to config the trust
+    anchor and optional intermediate cas to help build the trust chain for
+    the incoming end entity certificate. Follow the x509 guidelines to
+    define those PEM encoded certs. Only 1 trust store is currently
+    supported.
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolProviderX509Args:
@@ -3274,24 +3178,21 @@ class WorkloadIdentityPoolProviderX509Args:
         pulumi.set(self, "trust_store", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolProviderX509TrustStoreArgsDict(TypedDict):
-        trust_anchors: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict']]]
-        """
-        List of Trust Anchors to be used while performing validation
-        against a given TrustStore. The incoming end entity's certificate
-        must be chained up to one of the trust anchors here.
-        Structure is documented below.
-        """
-        intermediate_cas: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict']]]]
-        """
-        Set of intermediate CA certificates used for building the trust chain to
-        trust anchor.
-        IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
-        Structure is documented below.
-        """
-elif False:
-    WorkloadIdentityPoolProviderX509TrustStoreArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolProviderX509TrustStoreArgsDict(TypedDict):
+    trust_anchors: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict']]]
+    """
+    List of Trust Anchors to be used while performing validation
+    against a given TrustStore. The incoming end entity's certificate
+    must be chained up to one of the trust anchors here.
+    Structure is documented below.
+    """
+    intermediate_cas: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict']]]]
+    """
+    Set of intermediate CA certificates used for building the trust chain to
+    trust anchor.
+    IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolProviderX509TrustStoreArgs:
@@ -3343,15 +3244,12 @@ class WorkloadIdentityPoolProviderX509TrustStoreArgs:
         pulumi.set(self, "intermediate_cas", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict(TypedDict):
-        pem_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM certificate of the PKI used for validation. Must only contain one
-        ca certificate(either root or intermediate cert).
-        """
-elif False:
-    WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict(TypedDict):
+    pem_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM certificate of the PKI used for validation. Must only contain one
+    ca certificate(either root or intermediate cert).
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs:
@@ -3378,15 +3276,12 @@ class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs:
         pulumi.set(self, "pem_certificate", value)
 
 
-if not MYPY:
-    class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict(TypedDict):
-        pem_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM certificate of the PKI used for validation. Must only contain one
-        ca certificate(either root or intermediate cert).
-        """
-elif False:
-    WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict: TypeAlias = Mapping[str, Any]
+class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict(TypedDict):
+    pem_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM certificate of the PKI used for validation. Must only contain one
+    ca certificate(either root or intermediate cert).
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs:

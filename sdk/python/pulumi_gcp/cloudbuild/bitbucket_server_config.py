@@ -33,6 +33,7 @@ class BitbucketServerConfigArgs:
                  ssl_ca: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BitbucketServerConfig resource.
+
         :param pulumi.Input[_builtins.str] api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
                Changing this field will result in deleting/ recreating the resource.
         :param pulumi.Input[_builtins.str] config_id: The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
@@ -213,6 +214,7 @@ class _BitbucketServerConfigState:
                  webhook_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BitbucketServerConfig resources.
+
         :param pulumi.Input[_builtins.str] api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
                Changing this field will result in deleting/ recreating the resource.
         :param pulumi.Input[_builtins.str] config_id: The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
@@ -535,24 +537,17 @@ class BitbucketServerConfig(pulumi.CustomResource):
         BitbucketServerConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}`
-
         * `{{project}}/{{location}}/{{config_id}}`
-
         * `{{location}}/{{config_id}}`
 
         When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default {{project}}/{{location}}/{{config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default {{location}}/{{config_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -687,24 +682,17 @@ class BitbucketServerConfig(pulumi.CustomResource):
         BitbucketServerConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}`
-
         * `{{project}}/{{location}}/{{config_id}}`
-
         * `{{location}}/{{config_id}}`
 
         When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default {{project}}/{{location}}/{{config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default {{location}}/{{config_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BitbucketServerConfigArgs args: The arguments to use to populate this resource's properties.

@@ -17,9 +17,19 @@ public final class AuthorizedViewArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final AuthorizedViewArgs Empty = new AuthorizedViewArgs();
 
+    /**
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+     * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+     * 
+     */
     @Import(name="deletionProtection")
     private @Nullable Output<String> deletionProtection;
 
+    /**
+     * @return A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+     * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+     * 
+     */
     public Optional<Output<String>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -134,11 +144,25 @@ public final class AuthorizedViewArgs extends com.pulumi.resources.ResourceArgs 
             $ = new AuthorizedViewArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deletionProtection A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+         * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(@Nullable Output<String> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
+        /**
+         * @param deletionProtection A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+         * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(String deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }

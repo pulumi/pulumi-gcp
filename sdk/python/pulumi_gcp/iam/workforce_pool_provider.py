@@ -36,6 +36,7 @@ class WorkforcePoolProviderArgs:
                  scim_usage: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkforcePoolProvider resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the resource.
         :param pulumi.Input[_builtins.str] provider_id: The ID for the provider, which becomes the final component of the resource name.
                This value must be 4-32 characters, and may contain the characters [a-z0-9-].
@@ -403,6 +404,7 @@ class _WorkforcePoolProviderState:
                  workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkforcePoolProvider resources.
+
         :param pulumi.Input[_builtins.str] attribute_condition: A [Common Expression Language](https://github.com/google/cel-spec) expression, in
                plain text, to restrict what otherwise valid authentication credentials issued by the
                provider should not be accepted.
@@ -1147,18 +1149,15 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         WorkforcePoolProvider can be imported using any of these accepted formats:
 
         * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
-
         * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
 
         When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default {{location}}/{{workforce_pool_id}}/{{provider_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1590,18 +1589,15 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         WorkforcePoolProvider can be imported using any of these accepted formats:
 
         * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
-
         * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
 
         When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default {{location}}/{{workforce_pool_id}}/{{provider_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkforcePoolProviderArgs args: The arguments to use to populate this resource's properties.

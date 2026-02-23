@@ -65,6 +65,16 @@ export const getAccessPolicyIamPolicy: typeof import("./getAccessPolicyIamPolicy
 export const getAccessPolicyIamPolicyOutput: typeof import("./getAccessPolicyIamPolicy").getAccessPolicyIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAccessPolicyIamPolicy","getAccessPolicyIamPolicyOutput"], () => require("./getAccessPolicyIamPolicy"));
 
+export { GetSupportedServiceArgs, GetSupportedServiceResult, GetSupportedServiceOutputArgs } from "./getSupportedService";
+export const getSupportedService: typeof import("./getSupportedService").getSupportedService = null as any;
+export const getSupportedServiceOutput: typeof import("./getSupportedService").getSupportedServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getSupportedService","getSupportedServiceOutput"], () => require("./getSupportedService"));
+
+export { GetSupportedServicesResult } from "./getSupportedServices";
+export const getSupportedServices: typeof import("./getSupportedServices").getSupportedServices = null as any;
+export const getSupportedServicesOutput: typeof import("./getSupportedServices").getSupportedServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getSupportedServices","getSupportedServicesOutput"], () => require("./getSupportedServices"));
+
 export { IngressPolicyArgs, IngressPolicyState } from "./ingressPolicy";
 export type IngressPolicy = import("./ingressPolicy").IngressPolicy;
 export const IngressPolicy: typeof import("./ingressPolicy").IngressPolicy = null as any;

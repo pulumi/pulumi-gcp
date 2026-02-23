@@ -30,6 +30,7 @@ class ConnectClusterArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectCluster resource.
+
         :param pulumi.Input['ConnectClusterCapacityConfigArgs'] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connect_cluster_id: The ID to use for the Connect Cluster, which will become the final component of the connect cluster's name. This value is structured like: `my-connect-cluster-id`.
@@ -161,6 +162,7 @@ class _ConnectClusterState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectCluster resources.
+
         :param pulumi.Input['ConnectClusterCapacityConfigArgs'] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connect_cluster_id: The ID to use for the Connect Cluster, which will become the final component of the connect cluster's name. This value is structured like: `my-connect-cluster-id`.
@@ -444,24 +446,17 @@ class ConnectCluster(pulumi.CustomResource):
         ConnectCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster_id}}`
-
         * `{{project}}/{{location}}/{{connect_cluster_id}}`
-
         * `{{location}}/{{connect_cluster_id}}`
 
         When using the `pulumi import` command, ConnectCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{project}}/{{location}}/{{connect_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{location}}/{{connect_cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -543,24 +538,17 @@ class ConnectCluster(pulumi.CustomResource):
         ConnectCluster can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster_id}}`
-
         * `{{project}}/{{location}}/{{connect_cluster_id}}`
-
         * `{{location}}/{{connect_cluster_id}}`
 
         When using the `pulumi import` command, ConnectCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default projects/{{project}}/locations/{{location}}/connectClusters/{{connect_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{project}}/{{location}}/{{connect_cluster_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:managedkafka/connectCluster:ConnectCluster default {{location}}/{{connect_cluster_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectClusterArgs args: The arguments to use to populate this resource's properties.

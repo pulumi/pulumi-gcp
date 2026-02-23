@@ -27,6 +27,7 @@ class EngineSplitTrafficArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EngineSplitTraffic resource.
+
         :param pulumi.Input[_builtins.str] service: The name of the service these settings apply to.
         :param pulumi.Input['EngineSplitTrafficSplitArgs'] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
                Structure is documented below.
@@ -101,6 +102,7 @@ class _EngineSplitTrafficState:
                  split: Optional[pulumi.Input['EngineSplitTrafficSplitArgs']] = None):
         """
         Input properties used for looking up and filtering EngineSplitTraffic resources.
+
         :param pulumi.Input[_builtins.bool] migrate_traffic: If set to true traffic will be migrated to this version.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -262,24 +264,17 @@ class EngineSplitTraffic(pulumi.CustomResource):
         ServiceSplitTraffic can be imported using any of these accepted formats:
 
         * `apps/{{project}}/services/{{service}}`
-
         * `{{project}}/{{service}}`
-
         * `{{service}}`
 
         When using the `pulumi import` command, ServiceSplitTraffic can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default apps/{{project}}/services/{{service}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{project}}/{{service}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{service}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -379,24 +374,17 @@ class EngineSplitTraffic(pulumi.CustomResource):
         ServiceSplitTraffic can be imported using any of these accepted formats:
 
         * `apps/{{project}}/services/{{service}}`
-
         * `{{project}}/{{service}}`
-
         * `{{service}}`
 
         When using the `pulumi import` command, ServiceSplitTraffic can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default apps/{{project}}/services/{{service}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{project}}/{{service}}
-        ```
-
-        ```sh
         $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{service}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EngineSplitTrafficArgs args: The arguments to use to populate this resource's properties.

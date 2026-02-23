@@ -25,6 +25,7 @@ class ClusterIAMPolicyArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterIAMPolicy resource.
+
         :param pulumi.Input[_builtins.str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
                
                For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
@@ -108,6 +109,7 @@ class _ClusterIAMPolicyState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClusterIAMPolicy resources.
+
         :param pulumi.Input[_builtins.str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
                
                For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
@@ -304,29 +306,9 @@ class ClusterIAMPolicy(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example:
-
-        * `projects/{project}/regions/{region}/clusters/{cluster}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = projects/{project}/regions/{region}/clusters/{cluster}
-
-          to = google_dataproc_cluster_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy default projects/{project}/regions/{region}/clusters/{cluster}
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -442,29 +424,9 @@ class ClusterIAMPolicy(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies
+        > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
-        IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example:
-
-        * `projects/{project}/regions/{region}/clusters/{cluster}`
-
-        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-
-        tf
-
-        import {
-
-          id = projects/{project}/regions/{region}/clusters/{cluster}
-
-          to = google_dataproc_cluster_iam_policy.default
-
-        }
-
-        The `pulumi import` command can also be used:
-
-        ```sh
-        $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy default projects/{project}/regions/{region}/clusters/{cluster}
-        ```
 
         :param str resource_name: The name of the resource.
         :param ClusterIAMPolicyArgs args: The arguments to use to populate this resource's properties.

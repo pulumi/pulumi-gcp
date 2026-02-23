@@ -6,6 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .agent_gateway import *
 from .authz_extension import *
 from .edge_cache_keyset import *
 from .edge_cache_origin import *

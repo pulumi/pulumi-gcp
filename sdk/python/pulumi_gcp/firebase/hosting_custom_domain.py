@@ -29,6 +29,7 @@ class HostingCustomDomainArgs:
                  wait_dns_verification: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a HostingCustomDomain resource.
+
         :param pulumi.Input[_builtins.str] custom_domain: The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
         :param pulumi.Input[_builtins.str] site_id: The ID of the site in which to create this custom domain association.
         :param pulumi.Input[_builtins.str] cert_preference: A field that lets you specify which SSL certificate type Hosting creates
@@ -41,6 +42,9 @@ class HostingCustomDomainArgs:
                specified, Hosting will respond to requests against this CustomDomain
                with an HTTP 301 code, and route traffic to the specified `redirect_target`
                instead.
+        :param pulumi.Input[_builtins.bool] wait_dns_verification: If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+               If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+               the `CustomDomain` will be returned and stored in the Terraform state.
         """
         pulumi.set(__self__, "custom_domain", custom_domain)
         pulumi.set(__self__, "site_id", site_id)
@@ -123,6 +127,11 @@ class HostingCustomDomainArgs:
     @_builtins.property
     @pulumi.getter(name="waitDnsVerification")
     def wait_dns_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+        If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+        the `CustomDomain` will be returned and stored in the Terraform state.
+        """
         return pulumi.get(self, "wait_dns_verification")
 
     @wait_dns_verification.setter
@@ -153,6 +162,7 @@ class _HostingCustomDomainState:
                  wait_dns_verification: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering HostingCustomDomain resources.
+
         :param pulumi.Input[_builtins.str] cert_preference: A field that lets you specify which SSL certificate type Hosting creates
                for your domain name. Spark plan `CustomDomain`s only have access to the
                `GROUPED` cert type, while Blaze plan can select any option.
@@ -243,6 +253,9 @@ class _HostingCustomDomainState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] site_id: The ID of the site in which to create this custom domain association.
         :param pulumi.Input[_builtins.str] update_time: The last time the `CustomDomain` was updated.
+        :param pulumi.Input[_builtins.bool] wait_dns_verification: If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+               If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+               the `CustomDomain` will be returned and stored in the Terraform state.
         """
         if cert_preference is not None:
             pulumi.set(__self__, "cert_preference", cert_preference)
@@ -561,6 +574,11 @@ class _HostingCustomDomainState:
     @_builtins.property
     @pulumi.getter(name="waitDnsVerification")
     def wait_dns_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+        If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+        the `CustomDomain` will be returned and stored in the Terraform state.
+        """
         return pulumi.get(self, "wait_dns_verification")
 
     @wait_dns_verification.setter
@@ -582,6 +600,19 @@ class HostingCustomDomain(pulumi.CustomResource):
                  wait_dns_verification: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Manages Custom Domains for Firebase Hosting. Custom Domains link your
+        domain names with Firebase Hosting sites, allowing Hosting to serve content
+        on those domain names.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about CustomDomain, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites.customDomains)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Customdomain Basic
@@ -659,30 +690,19 @@ class HostingCustomDomain(pulumi.CustomResource):
         CustomDomain can be imported using any of these accepted formats:
 
         * `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}`
-
         * `sites/{{site_id}}/customDomains/{{custom_domain}}`
-
         * `{{project}}/{{site_id}}/{{custom_domain}}`
-
         * `{{site_id}}/{{custom_domain}}`
 
         When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default sites/{{site_id}}/customDomains/{{custom_domain}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{project}}/{{site_id}}/{{custom_domain}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -698,6 +718,9 @@ class HostingCustomDomain(pulumi.CustomResource):
                with an HTTP 301 code, and route traffic to the specified `redirect_target`
                instead.
         :param pulumi.Input[_builtins.str] site_id: The ID of the site in which to create this custom domain association.
+        :param pulumi.Input[_builtins.bool] wait_dns_verification: If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+               If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+               the `CustomDomain` will be returned and stored in the Terraform state.
         """
         ...
     @overload
@@ -706,6 +729,19 @@ class HostingCustomDomain(pulumi.CustomResource):
                  args: HostingCustomDomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages Custom Domains for Firebase Hosting. Custom Domains link your
+        domain names with Firebase Hosting sites, allowing Hosting to serve content
+        on those domain names.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about CustomDomain, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites.customDomains)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Customdomain Basic
@@ -783,30 +819,19 @@ class HostingCustomDomain(pulumi.CustomResource):
         CustomDomain can be imported using any of these accepted formats:
 
         * `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}`
-
         * `sites/{{site_id}}/customDomains/{{custom_domain}}`
-
         * `{{project}}/{{site_id}}/{{custom_domain}}`
-
         * `{{site_id}}/{{custom_domain}}`
 
         When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default sites/{{site_id}}/customDomains/{{custom_domain}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{project}}/{{site_id}}/{{custom_domain}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostingCustomDomainArgs args: The arguments to use to populate this resource's properties.
@@ -985,6 +1010,9 @@ class HostingCustomDomain(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] site_id: The ID of the site in which to create this custom domain association.
         :param pulumi.Input[_builtins.str] update_time: The last time the `CustomDomain` was updated.
+        :param pulumi.Input[_builtins.bool] wait_dns_verification: If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+               If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+               the `CustomDomain` will be returned and stored in the Terraform state.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1222,5 +1250,10 @@ class HostingCustomDomain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="waitDnsVerification")
     def wait_dns_verification(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
+        If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
+        the `CustomDomain` will be returned and stored in the Terraform state.
+        """
         return pulumi.get(self, "wait_dns_verification")
 

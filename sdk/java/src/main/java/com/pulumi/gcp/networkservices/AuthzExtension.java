@@ -131,34 +131,58 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Services Authz Extension Iap
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networkservices.AuthzExtension;
+ * import com.pulumi.gcp.networkservices.AuthzExtensionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new AuthzExtension("default", AuthzExtensionArgs.builder()
+ *             .name("my-authz-ext")
+ *             .location("us-west1")
+ *             .authority("ext11.com")
+ *             .service("iap.googleapis.com")
+ *             .timeout("0.1s")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
  * AuthzExtension can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/authzExtensions/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, AuthzExtension can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default projects/{{project}}/locations/{{location}}/authzExtensions/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default {{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networkservices/authzExtension:AuthzExtension default {{name}}
  * ```
  * 
@@ -276,22 +300,24 @@ public class AuthzExtension extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
-     * For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+     * Required when the service points to a backend service. All backend services and forwarding rules referenced by
+     * this extension must share the same load balancing scheme. For more information, refer to
+     * [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
     @Export(name="loadBalancingScheme", refs={String.class}, tree="[0]")
-    private Output<String> loadBalancingScheme;
+    private Output</* @Nullable */ String> loadBalancingScheme;
 
     /**
-     * @return All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
-     * For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+     * @return Required when the service points to a backend service. All backend services and forwarding rules referenced by
+     * this extension must share the same load balancing scheme. For more information, refer to
+     * [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
-    public Output<String> loadBalancingScheme() {
-        return this.loadBalancingScheme;
+    public Output<Optional<String>> loadBalancingScheme() {
+        return Codegen.optional(this.loadBalancingScheme);
     }
     /**
      * The location of the resource.
@@ -370,18 +396,24 @@ public class AuthzExtension extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * The reference to the service that runs the extension.
-     * To configure a callout extension, service must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
-     * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
+     * The service that runs the extension.
+     * The following values and formats are accepted:
+     * * `iap.googleapis.com` when the policyProfile is set to REQUEST_AUTHZ
+     * * `modelarmor.{{region}}.rep.googleapis.com` when the policyProfile is set to CONTENT_AUTHZ
+     * * A fully qualified domain name that can be resolved by the dataplane
+     * * Backend service resource URI of the form `https://www.googleapis.com/compute/v1/projects/{{project}}/regions/{{region}}/backendServices/{{name}}` or `https://www.googleapis.com/compute/v1/projects/{{project}}/global/backendServices/{{name}}}}`
      * 
      */
     @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**
-     * @return The reference to the service that runs the extension.
-     * To configure a callout extension, service must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
-     * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
+     * @return The service that runs the extension.
+     * The following values and formats are accepted:
+     * * `iap.googleapis.com` when the policyProfile is set to REQUEST_AUTHZ
+     * * `modelarmor.{{region}}.rep.googleapis.com` when the policyProfile is set to CONTENT_AUTHZ
+     * * A fully qualified domain name that can be resolved by the dataplane
+     * * Backend service resource URI of the form `https://www.googleapis.com/compute/v1/projects/{{project}}/regions/{{region}}/backendServices/{{name}}` or `https://www.googleapis.com/compute/v1/projects/{{project}}/global/backendServices/{{name}}}}`
      * 
      */
     public Output<String> service() {
@@ -416,8 +448,9 @@ public class AuthzExtension extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * Specifies the communication protocol used by the callout extension
-     * to communicate with its backend service.
+     * The format of communication supported by the callout extension. Applicable only when the policyProfile is REQUEST_AUTHZ.
+     * This field is supported only for regional AuthzExtension resources. If not specified, the default value
+     * EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
      * Supported values:
      * - WIRE_FORMAT_UNSPECIFIED:
      *   No wire format is explicitly specified. The backend automatically
@@ -438,8 +471,9 @@ public class AuthzExtension extends com.pulumi.resources.CustomResource {
     private Output<String> wireFormat;
 
     /**
-     * @return Specifies the communication protocol used by the callout extension
-     * to communicate with its backend service.
+     * @return The format of communication supported by the callout extension. Applicable only when the policyProfile is REQUEST_AUTHZ.
+     * This field is supported only for regional AuthzExtension resources. If not specified, the default value
+     * EXT_PROC_GRPC is used. Global AuthzExtension resources use the EXT_PROC_GRPC wire format.
      * Supported values:
      * - WIRE_FORMAT_UNSPECIFIED:
      *   No wire format is explicitly specified. The backend automatically

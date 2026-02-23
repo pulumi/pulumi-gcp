@@ -258,8 +258,8 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "tf-test_40472",
-    ///         Name = "tf-test_44339",
+    ///         ProjectId = "tf-test_55500",
+    ///         Name = "tf-test_12223",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
@@ -583,28 +583,16 @@ namespace Pulumi.Gcp.Vertex
     /// FeatureOnlineStoreFeatureview can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}`
-    /// 
     /// * `{{region}}/{{feature_online_store}}/{{name}}`
-    /// 
     /// * `{{feature_online_store}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{project}}/{{region}}/{{feature_online_store}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{region}}/{{feature_online_store}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
     /// ```
     /// </summary>

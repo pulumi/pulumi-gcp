@@ -16,6 +16,16 @@ public final class GetClusterInitialUser {
      */
     private String password;
     /**
+     * @return The initial password for the user.
+     * 
+     */
+    private String passwordWo;
+    /**
+     * @return Triggers update of &#39;password_wo&#39; write-only. Increment this value when an update to &#39;password_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private String passwordWoVersion;
+    /**
      * @return The database username.
      * 
      */
@@ -28,6 +38,20 @@ public final class GetClusterInitialUser {
      */
     public String password() {
         return this.password;
+    }
+    /**
+     * @return The initial password for the user.
+     * 
+     */
+    public String passwordWo() {
+        return this.passwordWo;
+    }
+    /**
+     * @return Triggers update of &#39;password_wo&#39; write-only. Increment this value when an update to &#39;password_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public String passwordWoVersion() {
+        return this.passwordWoVersion;
     }
     /**
      * @return The database username.
@@ -47,11 +71,15 @@ public final class GetClusterInitialUser {
     @CustomType.Builder
     public static final class Builder {
         private String password;
+        private String passwordWo;
+        private String passwordWoVersion;
         private String user;
         public Builder() {}
         public Builder(GetClusterInitialUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
+    	      this.passwordWo = defaults.passwordWo;
+    	      this.passwordWoVersion = defaults.passwordWoVersion;
     	      this.user = defaults.user;
         }
 
@@ -61,6 +89,22 @@ public final class GetClusterInitialUser {
               throw new MissingRequiredPropertyException("GetClusterInitialUser", "password");
             }
             this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordWo(String passwordWo) {
+            if (passwordWo == null) {
+              throw new MissingRequiredPropertyException("GetClusterInitialUser", "passwordWo");
+            }
+            this.passwordWo = passwordWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordWoVersion(String passwordWoVersion) {
+            if (passwordWoVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterInitialUser", "passwordWoVersion");
+            }
+            this.passwordWoVersion = passwordWoVersion;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +118,8 @@ public final class GetClusterInitialUser {
         public GetClusterInitialUser build() {
             final var _resultValue = new GetClusterInitialUser();
             _resultValue.password = password;
+            _resultValue.passwordWo = passwordWo;
+            _resultValue.passwordWoVersion = passwordWoVersion;
             _resultValue.user = user;
             return _resultValue;
         }

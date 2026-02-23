@@ -27,6 +27,7 @@ class EntryGroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EntryGroup resource.
+
         :param pulumi.Input[_builtins.str] description: Description of the EntryGroup.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input[_builtins.str] entry_group_id: The entry group id of the entry group.
@@ -146,6 +147,7 @@ class _EntryGroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EntryGroup resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the EntryGroup was created.
         :param pulumi.Input[_builtins.str] description: Description of the EntryGroup.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
@@ -407,24 +409,17 @@ class EntryGroup(pulumi.CustomResource):
         EntryGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}`
-
         * `{{project}}/{{location}}/{{entry_group_id}}`
-
         * `{{location}}/{{entry_group_id}}`
 
         When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{project}}/{{location}}/{{entry_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{location}}/{{entry_group_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -483,24 +478,17 @@ class EntryGroup(pulumi.CustomResource):
         EntryGroup can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}`
-
         * `{{project}}/{{location}}/{{entry_group_id}}`
-
         * `{{location}}/{{entry_group_id}}`
 
         When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{project}}/{{location}}/{{entry_group_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{location}}/{{entry_group_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EntryGroupArgs args: The arguments to use to populate this resource's properties.

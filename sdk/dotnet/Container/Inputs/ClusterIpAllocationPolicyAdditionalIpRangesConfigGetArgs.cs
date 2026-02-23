@@ -25,6 +25,15 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
+        /// Status of the subnetwork. Additional subnet with DRAINING status will not be selected during new node pool creation
+        /// Accepted values are:
+        /// * `ACTIVE`: ACTIVE status indicates that the subnet is available for new node pool creation.
+        /// * `DRAINING`: DRAINING status indicates that the subnet is not used for new node pool creation.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
         /// Name of the subnetwork. This can be the full path of the subnetwork or just the name.
         /// </summary>
         [Input("subnetwork", required: true)]

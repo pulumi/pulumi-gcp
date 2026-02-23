@@ -31,6 +31,7 @@ class DeploymentArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Deployment resource.
+
         :param pulumi.Input['DeploymentTargetArgs'] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
                Structure is documented below.
@@ -217,6 +218,7 @@ class _DeploymentState:
                  target: Optional[pulumi.Input['DeploymentTargetArgs']] = None):
         """
         Input properties used for looking up and filtering Deployment resources.
+
         :param pulumi.Input[_builtins.str] create_policy: Set the policy to use for creating new resources. Only used on
                create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
                `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
@@ -491,24 +493,17 @@ class Deployment(pulumi.CustomResource):
         Deployment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/deployments/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Deployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:deploymentmanager/deployment:Deployment default projects/{{project}}/deployments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -592,24 +587,17 @@ class Deployment(pulumi.CustomResource):
         Deployment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/deployments/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Deployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:deploymentmanager/deployment:Deployment default projects/{{project}}/deployments/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeploymentArgs args: The arguments to use to populate this resource's properties.

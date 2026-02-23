@@ -31,6 +31,10 @@ public final class GetConnectivityTestsConnectivityTest {
      * 
      */
     private List<GetConnectivityTestsConnectivityTestDestination> destinations;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     private Map<String,String> effectiveLabels;
     /**
      * @return Resource labels to represent user-provided metadata.
@@ -98,6 +102,10 @@ public final class GetConnectivityTestsConnectivityTest {
     public List<GetConnectivityTestsConnectivityTestDestination> destinations() {
         return this.destinations;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
     }

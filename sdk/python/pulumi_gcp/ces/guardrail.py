@@ -36,6 +36,7 @@ class GuardrailArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Guardrail resource.
+
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] display_name: Display name of the guardrail.
         :param pulumi.Input[_builtins.str] guardrail_id: The ID to use for the guardrail, which will become the final component of
@@ -280,6 +281,7 @@ class _GuardrailState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Guardrail resources.
+
         :param pulumi.Input['GuardrailActionArgs'] action: Action that is taken when a certain precondition is met.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -855,24 +857,17 @@ class Guardrail(pulumi.CustomResource):
         Guardrail can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apps/{{app}}/guardrails/{{name}}`
-
         * `{{project}}/{{location}}/{{app}}/{{name}}`
-
         * `{{location}}/{{app}}/{{name}}`
 
         When using the `pulumi import` command, Guardrail can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ces/guardrail:Guardrail default projects/{{project}}/locations/{{location}}/apps/{{app}}/guardrails/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/guardrail:Guardrail default {{project}}/{{location}}/{{app}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/guardrail:Guardrail default {{location}}/{{app}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1171,24 +1166,17 @@ class Guardrail(pulumi.CustomResource):
         Guardrail can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apps/{{app}}/guardrails/{{name}}`
-
         * `{{project}}/{{location}}/{{app}}/{{name}}`
-
         * `{{location}}/{{app}}/{{name}}`
 
         When using the `pulumi import` command, Guardrail can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ces/guardrail:Guardrail default projects/{{project}}/locations/{{location}}/apps/{{app}}/guardrails/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/guardrail:Guardrail default {{project}}/{{location}}/{{app}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/guardrail:Guardrail default {{location}}/{{app}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GuardrailArgs args: The arguments to use to populate this resource's properties.

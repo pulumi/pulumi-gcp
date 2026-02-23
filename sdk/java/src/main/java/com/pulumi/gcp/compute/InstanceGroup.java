@@ -113,22 +113,14 @@ import javax.annotation.Nullable;
  * Instance groups can be imported using the `zone` and `name` with an optional `project`, e.g.
  * 
  * * `projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}`
- * 
  * * `{{project_id}}/{{zone}}/{{instance_group_id}}`
- * 
  * * `{{zone}}/{{instance_group_id}}`
  * 
  * When using the `pulumi import` command, instance groups can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{zone}}/{{instance_group_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{project_id}}/{{zone}}/{{instance_group_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:compute/instanceGroup:InstanceGroup default projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}
  * ```
  * 

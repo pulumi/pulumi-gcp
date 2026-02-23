@@ -393,7 +393,6 @@ namespace Pulumi.Gcp.Iap
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
     /// * projects/{{project}}/iap_web/compute
-    /// 
     /// * {{project}}
     /// 
     /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -401,25 +400,21 @@ namespace Pulumi.Gcp.Iap
     /// Identity-Aware Proxy webtypecompute IAM resources can be imported using the resource identifiers, role, and member.
     /// 
     /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy editor "projects/{{project}}/iap_web/compute roles/iap.httpsResourceAccessor user:jane@example.com"
+    /// $ terraform import google_iap_web_type_compute_iam_member.editor "projects/{{project}}/iap_web/compute roles/iap.httpsResourceAccessor user:jane@example.com"
     /// ```
     /// 
     /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy editor "projects/{{project}}/iap_web/compute roles/iap.httpsResourceAccessor"
+    /// $ terraform import google_iap_web_type_compute_iam_binding.editor "projects/{{project}}/iap_web/compute roles/iap.httpsResourceAccessor"
     /// ```
     /// 
     /// IAM policy imports use the identifier of the resource in question, e.g.
-    /// 
     /// ```sh
     /// $ pulumi import gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy editor projects/{{project}}/iap_web/compute
     /// ```
     /// 
-    /// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
+    /// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
     ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy")]

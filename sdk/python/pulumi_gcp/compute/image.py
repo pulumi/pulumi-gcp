@@ -41,6 +41,7 @@ class ImageArgs:
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Image resource.
+
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
@@ -429,6 +430,7 @@ class _ImageState:
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Image resources.
+
         :param pulumi.Input[_builtins.int] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in
                bytes).
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
@@ -1013,24 +1015,17 @@ class Image(pulumi.CustomResource):
         Image can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/images/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Image can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/image:Image default projects/{{project}}/global/images/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/image:Image default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/image:Image default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1206,24 +1201,17 @@ class Image(pulumi.CustomResource):
         Image can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/images/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Image can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/image:Image default projects/{{project}}/global/images/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/image:Image default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/image:Image default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.

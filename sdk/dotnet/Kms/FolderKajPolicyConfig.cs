@@ -10,6 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Kms
 {
     /// <summary>
+    /// `FolderKajPolicyConfigs` is a folder-level singleton resource
+    /// used to configure the default KAJ policy of newly created key.
+    /// 
+    /// &gt; **Note:** FolderKajPolicyConfigs cannot be deleted from Google Cloud Platform.
+    /// Destroying a Terraform-managed FolderKajPolicyConfigs will remove it from state but
+    /// *will not delete the resource from Google Cloud Platform.*
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about FolderKajPolicyConfig, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/KeyAccessJustificationsPolicyConfig)
+    /// * How-to Guides
+    ///     * [Set default Key Access Justifications policy](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Kms Folder Kaj Policy Config Basic
@@ -106,16 +122,12 @@ namespace Pulumi.Gcp.Kms
     /// FolderKajPolicyConfig can be imported using any of these accepted formats:
     /// 
     /// * `folders/{{folder}}/kajPolicyConfig`
-    /// 
     /// * `{{folder}}`
     /// 
     /// When using the `pulumi import` command, FolderKajPolicyConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig default folders/{{folder}}/kajPolicyConfig
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig default {{folder}}
     /// ```
     /// </summary>

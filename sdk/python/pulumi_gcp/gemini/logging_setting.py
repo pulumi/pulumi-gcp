@@ -27,6 +27,7 @@ class LoggingSettingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoggingSetting resource.
+
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] logging_setting_id: Id of the Logging Setting.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
@@ -140,6 +141,7 @@ class _LoggingSettingState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoggingSetting resources.
+
         :param pulumi.Input[_builtins.str] create_time: Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
@@ -357,24 +359,17 @@ class LoggingSetting(pulumi.CustomResource):
         LoggingSetting can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/loggingSettings/{{logging_setting_id}}`
-
         * `{{project}}/{{location}}/{{logging_setting_id}}`
-
         * `{{location}}/{{logging_setting_id}}`
 
         When using the `pulumi import` command, LoggingSetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/loggingSetting:LoggingSetting default projects/{{project}}/locations/{{location}}/loggingSettings/{{logging_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/loggingSetting:LoggingSetting default {{project}}/{{location}}/{{logging_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/loggingSetting:LoggingSetting default {{location}}/{{logging_setting_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -420,24 +415,17 @@ class LoggingSetting(pulumi.CustomResource):
         LoggingSetting can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/loggingSettings/{{logging_setting_id}}`
-
         * `{{project}}/{{location}}/{{logging_setting_id}}`
-
         * `{{location}}/{{logging_setting_id}}`
 
         When using the `pulumi import` command, LoggingSetting can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gemini/loggingSetting:LoggingSetting default projects/{{project}}/locations/{{location}}/loggingSettings/{{logging_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/loggingSetting:LoggingSetting default {{project}}/{{location}}/{{logging_setting_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:gemini/loggingSetting:LoggingSetting default {{location}}/{{logging_setting_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoggingSettingArgs args: The arguments to use to populate this resource's properties.

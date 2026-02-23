@@ -11,12 +11,30 @@ namespace Pulumi.Gcp.Firebase
 {
     public static class GetAppleApp
     {
+        /// <summary>
+        /// A Google Cloud Firebase Apple application instance
+        /// 
+        /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// </summary>
         public static Task<GetAppleAppResult> InvokeAsync(GetAppleAppArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppleAppResult>("gcp:firebase/getAppleApp:getAppleApp", args ?? new GetAppleAppArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// A Google Cloud Firebase Apple application instance
+        /// 
+        /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// </summary>
         public static Output<GetAppleAppResult> Invoke(GetAppleAppInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppleAppResult>("gcp:firebase/getAppleApp:getAppleApp", args ?? new GetAppleAppInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// A Google Cloud Firebase Apple application instance
+        /// 
+        /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// </summary>
         public static Output<GetAppleAppResult> Invoke(GetAppleAppInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppleAppResult>("gcp:firebase/getAppleApp:getAppleApp", args ?? new GetAppleAppInvokeArgs(), options.WithDefaults());
     }

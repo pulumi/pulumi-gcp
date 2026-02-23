@@ -20493,6 +20493,9 @@ func (o AiReasoningEngineSpecPackageSpecPtrOutput) RequirementsGcsUri() pulumi.S
 }
 
 type AiReasoningEngineSpecSourceCodeSpec struct {
+	// Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+	// Structure is documented below.
+	DeveloperConnectSource *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource `pulumi:"developerConnectSource"`
 	// Source code is provided directly in the request.
 	// Structure is documented below.
 	InlineSource *AiReasoningEngineSpecSourceCodeSpecInlineSource `pulumi:"inlineSource"`
@@ -20513,6 +20516,9 @@ type AiReasoningEngineSpecSourceCodeSpecInput interface {
 }
 
 type AiReasoningEngineSpecSourceCodeSpecArgs struct {
+	// Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+	// Structure is documented below.
+	DeveloperConnectSource AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrInput `pulumi:"developerConnectSource"`
 	// Source code is provided directly in the request.
 	// Structure is documented below.
 	InlineSource AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrInput `pulumi:"inlineSource"`
@@ -20598,6 +20604,14 @@ func (o AiReasoningEngineSpecSourceCodeSpecOutput) ToAiReasoningEngineSpecSource
 	}).(AiReasoningEngineSpecSourceCodeSpecPtrOutput)
 }
 
+// Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecOutput) DeveloperConnectSource() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpec) *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource {
+		return v.DeveloperConnectSource
+	}).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput)
+}
+
 // Source code is provided directly in the request.
 // Structure is documented below.
 func (o AiReasoningEngineSpecSourceCodeSpecOutput) InlineSource() AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput {
@@ -20638,6 +20652,17 @@ func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) Elem() AiReasoningEngineSp
 	}).(AiReasoningEngineSpecSourceCodeSpecOutput)
 }
 
+// Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) DeveloperConnectSource() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpec) *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource {
+		if v == nil {
+			return nil
+		}
+		return v.DeveloperConnectSource
+	}).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput)
+}
+
 // Source code is provided directly in the request.
 // Structure is documented below.
 func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) InlineSource() AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput {
@@ -20658,6 +20683,326 @@ func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) PythonSpec() AiReasoningEn
 		}
 		return v.PythonSpec
 	}).(AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource struct {
+	// The Developer Connect configuration that defines the specific repository, revision, and directory to use as the source code root.
+	// Structure is documented below.
+	Config AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig `pulumi:"config"`
+}
+
+// AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs and AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceInput` via:
+//
+//	AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs{...}
+type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput
+	ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput
+}
+
+type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs struct {
+	// The Developer Connect configuration that defines the specific repository, revision, and directory to use as the source code root.
+	// Structure is documented below.
+	Config AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigInput `pulumi:"config"`
+}
+
+func (AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput)
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput).ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs, AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtr and AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrInput` via:
+//
+//	        AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput
+	ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput
+}
+
+type aiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrType AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs
+
+func AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtr(v *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrInput {
+	return (*aiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrType)(v)
+}
+
+func (*aiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrType) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrType) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput {
+	return o.ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource) *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource {
+		return &v
+	}).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput)
+}
+
+// The Developer Connect configuration that defines the specific repository, revision, and directory to use as the source code root.
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput) Config() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig {
+		return v.Config
+	}).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput) Elem() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource
+		return ret
+	}).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput)
+}
+
+// The Developer Connect configuration that defines the specific repository, revision, and directory to use as the source code root.
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput) Config() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource) *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.Config
+	}).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig struct {
+	// Directory, relative to the source root, in which to run the build.
+	Dir string `pulumi:"dir"`
+	// The Developer Connect Git repository link, formatted as projects/*/locations/*/connections/*/gitRepositoryLink/*.
+	GitRepositoryLink string `pulumi:"gitRepositoryLink"`
+	// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+	Revision string `pulumi:"revision"`
+}
+
+// AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs and AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigInput` via:
+//
+//	AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs{...}
+type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput
+	ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput
+}
+
+type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs struct {
+	// Directory, relative to the source root, in which to run the build.
+	Dir pulumi.StringInput `pulumi:"dir"`
+	// The Developer Connect Git repository link, formatted as projects/*/locations/*/connections/*/gitRepositoryLink/*.
+	GitRepositoryLink pulumi.StringInput `pulumi:"gitRepositoryLink"`
+	// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+	Revision pulumi.StringInput `pulumi:"revision"`
+}
+
+func (AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput)
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput).ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs, AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtr and AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrInput` via:
+//
+//	        AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput
+	ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput
+}
+
+type aiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrType AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs
+
+func AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtr(v *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrInput {
+	return (*aiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrType) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrType) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput {
+	return o.ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig) *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig {
+		return &v
+	}).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput)
+}
+
+// Directory, relative to the source root, in which to run the build.
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput) Dir() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig) string { return v.Dir }).(pulumi.StringOutput)
+}
+
+// The Developer Connect Git repository link, formatted as projects/*/locations/*/connections/*/gitRepositoryLink/*.
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput) GitRepositoryLink() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig) string {
+		return v.GitRepositoryLink
+	}).(pulumi.StringOutput)
+}
+
+// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput) ToAiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput) Elem() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig) AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig
+		return ret
+	}).(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput)
+}
+
+// Directory, relative to the source root, in which to run the build.
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput) Dir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Dir
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Developer Connect Git repository link, formatted as projects/*/locations/*/connections/*/gitRepositoryLink/*.
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput) GitRepositoryLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GitRepositoryLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+func (o AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Revision
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiReasoningEngineSpecSourceCodeSpecInlineSource struct {
@@ -22344,6 +22689,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecPackageSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecPackageSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecInlineSourceInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecPythonSpecInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{})
@@ -22597,6 +22946,10 @@ func init() {
 	pulumi.RegisterOutputType(AiReasoningEngineSpecPackageSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput{})

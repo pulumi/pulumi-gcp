@@ -51,22 +51,14 @@ import * as utilities from "../utilities";
  * RecaptchaEnterpriseConfig can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/apps/{{app_id}}/recaptchaEnterpriseConfig`
- *
  * * `{{project}}/{{app_id}}`
- *
  * * `{{app_id}}`
  *
  * When using the `pulumi import` command, RecaptchaEnterpriseConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig default projects/{{project}}/apps/{{app_id}}/recaptchaEnterpriseConfig
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig default {{project}}/{{app_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig default {{app_id}}
  * ```
  */

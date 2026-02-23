@@ -12,6 +12,243 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a project-level logging sink. For more information see:
+//
+// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks)
+// * How-to Guides
+//   - [Exporting Logs](https://cloud.google.com/logging/docs/export)
+//
+// > You can specify exclusions for log sinks created by terraform by using the exclusions field of `logging.FolderSink`
+//
+// > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.
+//
+// > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
+//
+// > **Note:** The `_Default` and `_Required` logging sinks are automatically created for a given project and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These sinks cannot be removed so deleting this resource will remove the sink config from your terraform state but will leave the logging sink unchanged. The sinks that are currently automatically created are "_Default" and "_Required".
+//
+// ## Example Usage
+//
+// ### Basic Sink
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.NewProjectSink(ctx, "my-sink", &logging.ProjectSinkArgs{
+//				Name:                 pulumi.String("my-pubsub-instance-sink"),
+//				Destination:          pulumi.String("pubsub.googleapis.com/projects/my-project/topics/instance-activity"),
+//				Filter:               pulumi.String("resource.type = gce_instance AND severity >= WARNING"),
+//				UniqueWriterIdentity: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Cloud Storage Bucket Destination
+//
+// A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
+// cloud storage bucket. Because we are using `uniqueWriterIdentity`, we must grant it access to the bucket.
+//
+// Note that this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the
+// credentials used with Terraform.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Our logged compute instance
+//			my_logged_instance, err := compute.NewInstance(ctx, "my-logged-instance", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
+//						},
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Name:        pulumi.String("my-instance"),
+//				MachineType: pulumi.String("e2-medium"),
+//				Zone:        pulumi.String("us-central1-a"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String("debian-cloud/debian-11"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// A gcs bucket to store logs in
+//			gcs_bucket, err := storage.NewBucket(ctx, "gcs-bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("my-unique-logging-bucket"),
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Our sink; this logs all activity related to our "my-logged-instance" instance
+//			instance_sink, err := logging.NewProjectSink(ctx, "instance-sink", &logging.ProjectSinkArgs{
+//				Name:        pulumi.String("my-instance-sink"),
+//				Description: pulumi.String("some explanation on what this is"),
+//				Destination: gcs_bucket.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("storage.googleapis.com/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				Filter: my_logged_instance.InstanceId.ApplyT(func(instanceId string) (string, error) {
+//					return fmt.Sprintf("resource.type = gce_instance AND resource.labels.instance_id = \"%v\"", instanceId), nil
+//				}).(pulumi.StringOutput),
+//				UniqueWriterIdentity: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Because our sink uses a unique_writer, we must grant that writer access to the bucket.
+//			_, err = projects.NewIAMBinding(ctx, "gcs-bucket-writer", &projects.IAMBindingArgs{
+//				Project: pulumi.String("your-project-id"),
+//				Role:    pulumi.String("roles/storage.objectCreator"),
+//				Members: pulumi.StringArray{
+//					instance_sink.WriterIdentity,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### User-Managed Service Account
+//
+// The following example creates a sink that are configured with user-managed service accounts, by specifying
+// the `customWriterIdentity` field.
+//
+// Note that you can only create a sink that uses a user-managed service account when the sink destination
+// is a log bucket.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			custom_sa, err := serviceaccount.NewAccount(ctx, "custom-sa", &serviceaccount.AccountArgs{
+//				Project:     pulumi.String("other-project-id"),
+//				AccountId:   pulumi.String("gce-log-bucket-sink"),
+//				DisplayName: pulumi.String("gce-log-bucket-sink"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a sink that uses user-managed service account
+//			_, err = logging.NewProjectSink(ctx, "my-sink", &logging.ProjectSinkArgs{
+//				Name:                 pulumi.String("other-project-log-bucket-sink"),
+//				Destination:          pulumi.String("logging.googleapis.com/projects/other-project-id/locations/global/buckets/gce-logs"),
+//				Filter:               pulumi.String("resource.type = gce_instance AND severity >= WARNING"),
+//				UniqueWriterIdentity: pulumi.Bool(true),
+//				CustomWriterIdentity: custom_sa.Email,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// grant writer access to the user-managed service account
+//			_, err = projects.NewIAMMember(ctx, "custom-sa-logbucket-binding", &projects.IAMMemberArgs{
+//				Project: pulumi.String("destination-project-id"),
+//				Role:    pulumi.String("roles/logging.bucketWriter"),
+//				Member: custom_sa.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The above example will create a log sink that route logs to destination GCP project using
+// an user-managed service account.
+//
+// ### Sink Exclusions
+//
+// The following example uses `exclusions` to filter logs that will not be exported. In this example logs are exported to a [log bucket](https://cloud.google.com/logging/docs/buckets) and there are 2 exclusions configured
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.NewProjectSink(ctx, "log-bucket", &logging.ProjectSinkArgs{
+//				Name:        pulumi.String("my-logging-sink"),
+//				Destination: pulumi.String("logging.googleapis.com/projects/my-project/locations/global/buckets/_Default"),
+//				Exclusions: logging.ProjectSinkExclusionArray{
+//					&logging.ProjectSinkExclusionArgs{
+//						Name:        pulumi.String("nsexcllusion1"),
+//						Description: pulumi.String("Exclude logs from namespace-1 in k8s"),
+//						Filter:      pulumi.String("resource.type = k8s_container resource.labels.namespace_name=\"namespace-1\" "),
+//					},
+//					&logging.ProjectSinkExclusionArgs{
+//						Name:        pulumi.String("nsexcllusion2"),
+//						Description: pulumi.String("Exclude logs from namespace-2 in k8s"),
+//						Filter:      pulumi.String("resource.type = k8s_container resource.labels.namespace_name=\"namespace-2\" "),
+//					},
+//				},
+//				UniqueWriterIdentity: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Project-level logging sinks can be imported using their URI, e.g.

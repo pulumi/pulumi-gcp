@@ -81,22 +81,14 @@ import * as utilities from "../utilities";
  * MirroringDeployment can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}`
- *
  * * `{{project}}/{{location}}/{{mirroring_deployment_id}}`
- *
  * * `{{location}}/{{mirroring_deployment_id}}`
  *
  * When using the `pulumi import` command, MirroringDeployment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default projects/{{project}}/locations/{{location}}/mirroringDeployments/{{mirroring_deployment_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{project}}/{{location}}/{{mirroring_deployment_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:networksecurity/mirroringDeployment:MirroringDeployment default {{location}}/{{mirroring_deployment_id}}
  * ```
  */

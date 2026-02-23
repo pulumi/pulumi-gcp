@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.developerconnect.inputs.InsightsConfigArtifactConfigArgs;
 import com.pulumi.gcp.developerconnect.inputs.InsightsConfigErrorArgs;
 import com.pulumi.gcp.developerconnect.inputs.InsightsConfigRuntimeConfigArgs;
+import com.pulumi.gcp.developerconnect.inputs.InsightsConfigTargetProjectsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -93,9 +94,17 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Import(name="effectiveAnnotations")
     private @Nullable Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Optional<Output<Map<String,String>>> effectiveAnnotations() {
         return Optional.ofNullable(this.effectiveAnnotations);
     }
@@ -306,6 +315,23 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The projects to track with the InsightsConfig.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="targetProjects")
+    private @Nullable Output<InsightsConfigTargetProjectsArgs> targetProjects;
+
+    /**
+     * @return The projects to track with the InsightsConfig.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InsightsConfigTargetProjectsArgs>> targetProjects() {
+        return Optional.ofNullable(this.targetProjects);
+    }
+
+    /**
      * [Output only] Update timestamp
      * 
      */
@@ -339,6 +365,7 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
         this.reconciling = $.reconciling;
         this.runtimeConfigs = $.runtimeConfigs;
         this.state = $.state;
+        this.targetProjects = $.targetProjects;
         this.updateTime = $.updateTime;
     }
 
@@ -467,11 +494,23 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
             $.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
 
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
             return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
@@ -770,6 +809,29 @@ public final class InsightsConfigState extends com.pulumi.resources.ResourceArgs
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param targetProjects The projects to track with the InsightsConfig.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetProjects(@Nullable Output<InsightsConfigTargetProjectsArgs> targetProjects) {
+            $.targetProjects = targetProjects;
+            return this;
+        }
+
+        /**
+         * @param targetProjects The projects to track with the InsightsConfig.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetProjects(InsightsConfigTargetProjectsArgs targetProjects) {
+            return targetProjects(Output.of(targetProjects));
         }
 
         /**

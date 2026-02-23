@@ -26,6 +26,7 @@ class AppHostingDefaultDomainArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppHostingDefaultDomain resource.
+
         :param pulumi.Input[_builtins.str] backend: The ID of the Backend that this Domain is associated with
         :param pulumi.Input[_builtins.str] domain_id: Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
         :param pulumi.Input[_builtins.str] location: The location of the Backend that this Domain is associated with
@@ -118,6 +119,7 @@ class _AppHostingDefaultDomainState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppHostingDefaultDomain resources.
+
         :param pulumi.Input[_builtins.str] backend: The ID of the Backend that this Domain is associated with
         :param pulumi.Input[_builtins.str] create_time: Time at which the domain was created.
         :param pulumi.Input[_builtins.bool] disabled: Whether the domain is disabled. Defaults to false.
@@ -374,24 +376,17 @@ class AppHostingDefaultDomain(pulumi.CustomResource):
         DefaultDomain can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/domains/{{domain_id}}`
-
         * `{{project}}/{{location}}/{{backend}}/{{domain_id}}`
-
         * `{{location}}/{{backend}}/{{domain_id}}`
 
         When using the `pulumi import` command, DefaultDomain can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default projects/{{project}}/locations/{{location}}/backends/{{backend}}/domains/{{domain_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default {{project}}/{{location}}/{{backend}}/{{domain_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default {{location}}/{{backend}}/{{domain_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -493,24 +488,17 @@ class AppHostingDefaultDomain(pulumi.CustomResource):
         DefaultDomain can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/domains/{{domain_id}}`
-
         * `{{project}}/{{location}}/{{backend}}/{{domain_id}}`
-
         * `{{location}}/{{backend}}/{{domain_id}}`
 
         When using the `pulumi import` command, DefaultDomain can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default projects/{{project}}/locations/{{location}}/backends/{{backend}}/domains/{{domain_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default {{project}}/{{location}}/{{backend}}/{{domain_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default {{location}}/{{backend}}/{{domain_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppHostingDefaultDomainArgs args: The arguments to use to populate this resource's properties.

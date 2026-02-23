@@ -35,6 +35,7 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs:
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a NetworkFirewallPolicyPacketMirroringRule resource.
+
         :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
         :param pulumi.Input[_builtins.str] direction: The direction in which this rule applies.
                Possible values are: `INGRESS`, `EGRESS`.
@@ -259,6 +260,7 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering NetworkFirewallPolicyPacketMirroringRule resources.
+
         :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description for this resource.
@@ -533,6 +535,15 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Represents a packet mirroring rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (mirror or do_not_mirror).
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about NetworkFirewallPolicyPacketMirroringRule, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkFirewallPolicies/addPacketMirroringRule)
+
         ## Example Usage
 
         ### Compute Network Firewall Policy Packet Mirroring Rule
@@ -607,24 +618,17 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
         NetworkFirewallPolicyPacketMirroringRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/packetMirroringRules/{{priority}}`
-
         * `{{project}}/{{firewall_policy}}/{{priority}}`
-
         * `{{firewall_policy}}/{{priority}}`
 
         When using the `pulumi import` command, NetworkFirewallPolicyPacketMirroringRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/packetMirroringRules/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default {{project}}/{{firewall_policy}}/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default {{firewall_policy}}/{{priority}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -661,6 +665,15 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
                  args: NetworkFirewallPolicyPacketMirroringRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Represents a packet mirroring rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (mirror or do_not_mirror).
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about NetworkFirewallPolicyPacketMirroringRule, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkFirewallPolicies/addPacketMirroringRule)
+
         ## Example Usage
 
         ### Compute Network Firewall Policy Packet Mirroring Rule
@@ -735,24 +748,17 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
         NetworkFirewallPolicyPacketMirroringRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/packetMirroringRules/{{priority}}`
-
         * `{{project}}/{{firewall_policy}}/{{priority}}`
-
         * `{{firewall_policy}}/{{priority}}`
 
         When using the `pulumi import` command, NetworkFirewallPolicyPacketMirroringRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/packetMirroringRules/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default {{project}}/{{firewall_policy}}/{{priority}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default {{firewall_policy}}/{{priority}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkFirewallPolicyPacketMirroringRuleArgs args: The arguments to use to populate this resource's properties.

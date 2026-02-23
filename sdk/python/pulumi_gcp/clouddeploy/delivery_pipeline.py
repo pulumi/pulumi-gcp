@@ -31,6 +31,7 @@ class DeliveryPipelineArgs:
                  suspended: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DeliveryPipeline resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
                
@@ -194,6 +195,7 @@ class _DeliveryPipelineState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeliveryPipeline resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -201,6 +203,7 @@ class _DeliveryPipelineState:
         :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionArgs']]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[_builtins.str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
@@ -307,6 +310,9 @@ class _DeliveryPipelineState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -682,26 +688,18 @@ class DeliveryPipeline(pulumi.CustomResource):
         ## Import
 
         DeliveryPipeline can be imported using any of these accepted formats:
-
         * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, DeliveryPipeline can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -944,26 +942,18 @@ class DeliveryPipeline(pulumi.CustomResource):
         ## Import
 
         DeliveryPipeline can be imported using any of these accepted formats:
-
         * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, DeliveryPipeline can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeliveryPipelineArgs args: The arguments to use to populate this resource's properties.
@@ -1057,6 +1047,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeliveryPipelineConditionArgs', 'DeliveryPipelineConditionArgsDict']]]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[_builtins.str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
@@ -1136,6 +1127,9 @@ class DeliveryPipeline(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

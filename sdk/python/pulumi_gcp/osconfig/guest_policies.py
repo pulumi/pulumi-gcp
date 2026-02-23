@@ -31,6 +31,7 @@ class GuestPoliciesArgs:
                  recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None):
         """
         The set of arguments for constructing a GuestPolicies resource.
+
         :param pulumi.Input['GuestPoliciesAssignmentArgs'] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
                or groups of VM instances by different parameters such as labels, names, OS, or zones.
                If left empty, all VM instances underneath this policy are targeted.
@@ -204,6 +205,7 @@ class _GuestPoliciesState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GuestPolicies resources.
+
         :param pulumi.Input['GuestPoliciesAssignmentArgs'] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
                or groups of VM instances by different parameters such as labels, names, OS, or zones.
                If left empty, all VM instances underneath this policy are targeted.
@@ -428,6 +430,19 @@ class GuestPolicies(pulumi.CustomResource):
                  recipes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict']]]]] = None,
                  __props__=None):
         """
+        An OS Config resource representing a guest configuration policy. These policies represent
+        the desired state for VM instance guest environments including packages to install or remove,
+        package repository configurations, and software to install.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about GuestPolicies, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
+
         ## Example Usage
 
         ### Os Config Guest Policies Basic
@@ -567,24 +582,17 @@ class GuestPolicies(pulumi.CustomResource):
         GuestPolicies can be imported using any of these accepted formats:
 
         * `projects/{{project}}/guestPolicies/{{guest_policy_id}}`
-
         * `{{project}}/{{guest_policy_id}}`
-
         * `{{guest_policy_id}}`
 
         When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{project}}/{{guest_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{guest_policy_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -622,6 +630,19 @@ class GuestPolicies(pulumi.CustomResource):
                  args: GuestPoliciesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An OS Config resource representing a guest configuration policy. These policies represent
+        the desired state for VM instance guest environments including packages to install or remove,
+        package repository configurations, and software to install.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about GuestPolicies, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
+
         ## Example Usage
 
         ### Os Config Guest Policies Basic
@@ -761,24 +782,17 @@ class GuestPolicies(pulumi.CustomResource):
         GuestPolicies can be imported using any of these accepted formats:
 
         * `projects/{{project}}/guestPolicies/{{guest_policy_id}}`
-
         * `{{project}}/{{guest_policy_id}}`
-
         * `{{guest_policy_id}}`
 
         When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{project}}/{{guest_policy_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{guest_policy_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GuestPoliciesArgs args: The arguments to use to populate this resource's properties.

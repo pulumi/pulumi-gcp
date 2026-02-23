@@ -32,6 +32,7 @@ class ToolArgs:
                  python_function: Optional[pulumi.Input['ToolPythonFunctionArgs']] = None):
         """
         The set of arguments for constructing a Tool resource.
+
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] tool_id: The ID to use for the tool, which will become the final component of
@@ -223,6 +224,7 @@ class _ToolState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tool resources.
+
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input['ToolClientFunctionArgs'] client_function: Represents a client-side function that the agent can invoke. When the
                tool is chosen by the agent, control is handed off to the client.
@@ -820,24 +822,17 @@ class Tool(pulumi.CustomResource):
         Tool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apps/{{app}}/tools/{{name}}`
-
         * `{{project}}/{{location}}/{{app}}/{{name}}`
-
         * `{{location}}/{{app}}/{{name}}`
 
         When using the `pulumi import` command, Tool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ces/tool:Tool default projects/{{project}}/locations/{{location}}/apps/{{app}}/tools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/tool:Tool default {{project}}/{{location}}/{{app}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/tool:Tool default {{location}}/{{app}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1147,24 +1142,17 @@ class Tool(pulumi.CustomResource):
         Tool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/apps/{{app}}/tools/{{name}}`
-
         * `{{project}}/{{location}}/{{app}}/{{name}}`
-
         * `{{location}}/{{app}}/{{name}}`
 
         When using the `pulumi import` command, Tool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:ces/tool:Tool default projects/{{project}}/locations/{{location}}/apps/{{app}}/tools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/tool:Tool default {{project}}/{{location}}/{{app}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:ces/tool:Tool default {{location}}/{{app}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ToolArgs args: The arguments to use to populate this resource's properties.

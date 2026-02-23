@@ -57,7 +57,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			testEntryTypeFull, err := dataplex.NewAspectType(ctx, "test_entry_type_full", &dataplex.AspectTypeArgs{
-//				AspectTypeId: pulumi.String("tf-test-aspect-type_37559"),
+//				AspectTypeId: pulumi.String("tf-test-aspect-type_37118"),
 //				Location:     pulumi.String("us-central1"),
 //				Project:      pulumi.String("my-project-name"),
 //				MetadataTemplate: pulumi.String(`{
@@ -126,22 +126,14 @@ import (
 // EntryType can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/entryTypes/{{entry_type_id}}`
-//
 // * `{{project}}/{{location}}/{{entry_type_id}}`
-//
 // * `{{location}}/{{entry_type_id}}`
 //
 // When using the `pulumi import` command, EntryType can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataplex/entryType:EntryType default projects/{{project}}/locations/{{location}}/entryTypes/{{entry_type_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/entryType:EntryType default {{project}}/{{location}}/{{entry_type_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:dataplex/entryType:EntryType default {{location}}/{{entry_type_id}}
 // ```
 type EntryType struct {

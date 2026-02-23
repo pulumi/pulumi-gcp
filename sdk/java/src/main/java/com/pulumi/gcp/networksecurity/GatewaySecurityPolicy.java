@@ -208,22 +208,14 @@ import javax.annotation.Nullable;
  * GatewaySecurityPolicy can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}`
- * 
  * * `{{project}}/{{location}}/{{name}}`
- * 
  * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default {{project}}/{{location}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default {{location}}/{{name}}
  * ```
  * 

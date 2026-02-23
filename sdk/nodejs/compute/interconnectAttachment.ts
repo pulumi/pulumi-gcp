@@ -120,28 +120,16 @@ import * as utilities from "../utilities";
  * InterconnectAttachment can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
- *
  * * `{{project}}/{{region}}/{{name}}`
- *
  * * `{{region}}/{{name}}`
- *
  * * `{{name}}`
  *
  * When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
  * ```
  */
@@ -349,6 +337,11 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pairingKey: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.InterconnectAttachmentParams | undefined>;
+    /**
      * [Output only for type PARTNER. Not present for DEDICATED]. Optional
      * BGP ASN for the router that should be supplied by a layer 3 Partner if
      * they configured BGP on behalf of the customer.
@@ -363,10 +356,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
-     *
-     *
-     *
-     * <a name="nestedL2Forwarding"></a>The `l2Forwarding` block supports:
      */
     declare public readonly project: pulumi.Output<string>;
     /**
@@ -461,6 +450,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["mtu"] = state?.mtu;
             resourceInputs["name"] = state?.name;
             resourceInputs["pairingKey"] = state?.pairingKey;
+            resourceInputs["params"] = state?.params;
             resourceInputs["partnerAsn"] = state?.partnerAsn;
             resourceInputs["privateInterconnectInfos"] = state?.privateInterconnectInfos;
             resourceInputs["project"] = state?.project;
@@ -491,6 +481,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["mtu"] = args?.mtu;
             resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
             resourceInputs["router"] = args?.router;
@@ -701,6 +692,11 @@ export interface InterconnectAttachmentState {
      */
     pairingKey?: pulumi.Input<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.InterconnectAttachmentParams>;
+    /**
      * [Output only for type PARTNER. Not present for DEDICATED]. Optional
      * BGP ASN for the router that should be supplied by a layer 3 Partner if
      * they configured BGP on behalf of the customer.
@@ -715,10 +711,6 @@ export interface InterconnectAttachmentState {
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
-     *
-     *
-     *
-     * <a name="nestedL2Forwarding"></a>The `l2Forwarding` block supports:
      */
     project?: pulumi.Input<string>;
     /**
@@ -904,12 +896,13 @@ export interface InterconnectAttachmentArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.InterconnectAttachmentParams>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
-     *
-     *
-     *
-     * <a name="nestedL2Forwarding"></a>The `l2Forwarding` block supports:
      */
     project?: pulumi.Input<string>;
     /**

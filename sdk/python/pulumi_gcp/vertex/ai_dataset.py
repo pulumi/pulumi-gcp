@@ -29,6 +29,7 @@ class AiDatasetArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiDataset resource.
+
         :param pulumi.Input[_builtins.str] display_name: The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
         :param pulumi.Input[_builtins.str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
         :param pulumi.Input['AiDatasetEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
@@ -146,6 +147,7 @@ class _AiDatasetState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiDataset resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] display_name: The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -369,6 +371,7 @@ class AiDataset(pulumi.CustomResource):
 
         This resource does not support import.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
@@ -418,6 +421,7 @@ class AiDataset(pulumi.CustomResource):
         ## Import
 
         This resource does not support import.
+
 
         :param str resource_name: The name of the resource.
         :param AiDatasetArgs args: The arguments to use to populate this resource's properties.

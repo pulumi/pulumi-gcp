@@ -45,6 +45,11 @@ export type GroupMembership = import("./groupMembership").GroupMembership;
 export const GroupMembership: typeof import("./groupMembership").GroupMembership = null as any;
 utilities.lazyLoad(exports, ["GroupMembership"], () => require("./groupMembership"));
 
+export { PolicyArgs, PolicyState } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -54,6 +59,8 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "gcp:cloudidentity/groupMembership:GroupMembership":
                 return new GroupMembership(name, <any>undefined, { urn })
+            case "gcp:cloudidentity/policy:Policy":
+                return new Policy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -61,3 +68,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "cloudidentity/group", _module)
 pulumi.runtime.registerResourceModule("gcp", "cloudidentity/groupMembership", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudidentity/policy", _module)

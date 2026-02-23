@@ -59,28 +59,16 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// DnsThreatDetector can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/dnsThreatDetectors/{{name}}`
-    /// 
     /// * `{{project}}/{{location}}/{{name}}`
-    /// 
     /// * `{{location}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, DnsThreatDetector can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default projects/{{project}}/locations/{{location}}/dnsThreatDetectors/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default {{project}}/{{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default {{location}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default {{name}}
     /// ```
     /// </summary>

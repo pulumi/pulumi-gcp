@@ -10,6 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataform
 {
     /// <summary>
+    /// A resource represents a Dataform Git repository
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about Repository, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/dataform/docs/)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Dataform Repository
@@ -98,28 +109,16 @@ namespace Pulumi.Gcp.Dataform
     /// Repository can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{region}}/repositories/{{name}}`
-    /// 
     /// * `{{project}}/{{region}}/{{name}}`
-    /// 
     /// * `{{region}}/{{name}}`
-    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataform/repository:Repository default projects/{{project}}/locations/{{region}}/repositories/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataform/repository:Repository default {{project}}/{{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataform/repository:Repository default {{region}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:dataform/repository:Repository default {{name}}
     /// ```
     /// </summary>

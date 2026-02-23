@@ -127,6 +127,68 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## This resource supports User Project Overrides.
+ *
+ * - 
+ *
+ * # IAM policy for Spanner Databases
+ *
+ * Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
+ *
+ * * `gcp.spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
+ *
+ * > **Warning:** It's entirely possibly to lock yourself out of your database using `gcp.spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+ *
+ * * `gcp.spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
+ * * `gcp.spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
+ *
+ * > **Note:** `gcp.spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.DatabaseIAMBinding` and `gcp.spanner.DatabaseIAMMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## gcp.spanner.DatabaseIAMPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const database = new gcp.spanner.DatabaseIAMPolicy("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "My Role",
+ *             description: "Grant permissions on my_role",
+ *             expression: "(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))",
+ *         },
+ *     }],
+ * });
+ * const database = new gcp.spanner.DatabaseIAMPolicy("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
  * ## gcp.spanner.DatabaseIAMBinding
  *
  * ```typescript
@@ -195,29 +257,13 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ### Importing IAM policies
+ * > **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  *
- * IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+ * For all import syntaxes, the "resource in question" can take any of the following forms:
  *
- * * `{{project}}/{{instance}}/{{database}}`
- *
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- *
- * tf
- *
- * import {
- *
- *   id = {{project}}/{{instance}}/{{database}}
- *
- *   to = google_spanner_database_iam_policy.default
- *
- * }
- *
- * The `pulumi import` command can also be used:
- *
- * ```sh
- * $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy default {{project}}/{{instance}}/{{database}}
- * ```
+ * * {{project}}/{{instance}}/{{database}}
+ * * {{instance}}/{{database}} (project is taken from provider project)
  */
 export class DatabaseIAMPolicy extends pulumi.CustomResource {
     /**

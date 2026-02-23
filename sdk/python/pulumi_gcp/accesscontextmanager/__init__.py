@@ -18,6 +18,8 @@ from .egress_policy import *
 from .gcp_user_access_binding import *
 from .get_access_policy import *
 from .get_access_policy_iam_policy import *
+from .get_supported_service import *
+from .get_supported_services import *
 from .ingress_policy import *
 from .service_perimeter import *
 from .service_perimeter_dry_run_egress_policy import *

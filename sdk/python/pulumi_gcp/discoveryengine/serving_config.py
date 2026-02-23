@@ -31,6 +31,7 @@ class ServingConfigArgs:
                  synonyms_control_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServingConfig resource.
+
         :param pulumi.Input[_builtins.str] engine_id: The ID of the engine associated with the serving config.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
@@ -202,6 +203,7 @@ class _ServingConfigState:
                  synonyms_control_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ServingConfig resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boost_control_ids: The resource IDs of the boost controls to be applied.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID. Currently only accepts "default_collection".
         :param pulumi.Input[_builtins.str] engine_id: The ID of the engine associated with the serving config.
@@ -406,24 +408,17 @@ class ServingConfig(pulumi.CustomResource):
         ServingConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/servingConfigs/{{serving_config_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}`
 
         When using the `pulumi import` command, ServingConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/servingConfigs/{{serving_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default {{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -459,24 +454,17 @@ class ServingConfig(pulumi.CustomResource):
         ServingConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/servingConfigs/{{serving_config_id}}`
-
         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}`
-
         * `{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}`
 
         When using the `pulumi import` command, ServingConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/servingConfigs/{{serving_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default {{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServingConfigArgs args: The arguments to use to populate this resource's properties.

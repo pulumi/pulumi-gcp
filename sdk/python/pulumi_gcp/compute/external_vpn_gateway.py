@@ -25,10 +25,12 @@ class ExternalVpnGatewayArgs:
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['ExternalVpnGatewayParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  redundancy_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExternalVpnGateway resource.
+
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
@@ -42,6 +44,9 @@ class ExternalVpnGatewayArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input['ExternalVpnGatewayParamsArgs'] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] redundancy_type: Indicates the redundancy type of this external VPN gateway
@@ -55,6 +60,8 @@ class ExternalVpnGatewayArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if redundancy_type is not None:
@@ -119,6 +126,20 @@ class ExternalVpnGatewayArgs:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['ExternalVpnGatewayParamsArgs']]:
+        """
+        (Optional, Beta)
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['ExternalVpnGatewayParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -153,12 +174,14 @@ class _ExternalVpnGatewayState:
                  label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['ExternalVpnGatewayParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalVpnGateway resources.
+
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]] interfaces: A list of interfaces on this external VPN gateway.
@@ -175,6 +198,9 @@ class _ExternalVpnGatewayState:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input['ExternalVpnGatewayParamsArgs'] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -195,6 +221,8 @@ class _ExternalVpnGatewayState:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -288,6 +316,20 @@ class _ExternalVpnGatewayState:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['ExternalVpnGatewayParamsArgs']]:
+        """
+        (Optional, Beta)
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['ExternalVpnGatewayParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -348,6 +390,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -451,24 +494,17 @@ class ExternalVpnGateway(pulumi.CustomResource):
         ExternalVpnGateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/externalVpnGateways/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ExternalVpnGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default projects/{{project}}/global/externalVpnGateways/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -485,6 +521,9 @@ class ExternalVpnGateway(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict']] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] redundancy_type: Indicates the redundancy type of this external VPN gateway
@@ -596,24 +635,17 @@ class ExternalVpnGateway(pulumi.CustomResource):
         ExternalVpnGateway can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/externalVpnGateways/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ExternalVpnGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default projects/{{project}}/global/externalVpnGateways/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExternalVpnGatewayArgs args: The arguments to use to populate this resource's properties.
@@ -634,6 +666,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalVpnGatewayInterfaceArgs', 'ExternalVpnGatewayInterfaceArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -649,6 +682,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
             __props__.__dict__["interfaces"] = interfaces
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["redundancy_type"] = redundancy_type
             __props__.__dict__["effective_labels"] = None
@@ -673,6 +707,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
             label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict']]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -700,6 +735,9 @@ class ExternalVpnGateway(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[Union['ExternalVpnGatewayParamsArgs', 'ExternalVpnGatewayParamsArgsDict']] params: (Optional, Beta)
+               Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -718,6 +756,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
+        __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["redundancy_type"] = redundancy_type
@@ -781,6 +820,16 @@ class ExternalVpnGateway(pulumi.CustomResource):
         character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.ExternalVpnGatewayParams']]:
+        """
+        (Optional, Beta)
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter

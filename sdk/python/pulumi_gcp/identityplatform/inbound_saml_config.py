@@ -29,6 +29,7 @@ class InboundSamlConfigArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InboundSamlConfig resource.
+
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
         :param pulumi.Input['InboundSamlConfigIdpConfigArgs'] idp_config: SAML IdP configuration when the project acts as the relying party
                Structure is documented below.
@@ -142,6 +143,7 @@ class _InboundSamlConfigState:
                  sp_config: Optional[pulumi.Input['InboundSamlConfigSpConfigArgs']] = None):
         """
         Input properties used for looking up and filtering InboundSamlConfig resources.
+
         :param pulumi.Input[_builtins.str] display_name: Human friendly display name.
         :param pulumi.Input[_builtins.bool] enabled: If this config allows users to sign in with the provider.
         :param pulumi.Input['InboundSamlConfigIdpConfigArgs'] idp_config: SAML IdP configuration when the project acts as the relying party
@@ -298,24 +300,17 @@ class InboundSamlConfig(pulumi.CustomResource):
         InboundSamlConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/inboundSamlConfigs/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InboundSamlConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -376,24 +371,17 @@ class InboundSamlConfig(pulumi.CustomResource):
         InboundSamlConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/inboundSamlConfigs/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, InboundSamlConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InboundSamlConfigArgs args: The arguments to use to populate this resource's properties.

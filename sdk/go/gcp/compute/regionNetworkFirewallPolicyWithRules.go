@@ -23,8 +23,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -220,28 +218,16 @@ import (
 // RegionNetworkFirewallPolicyWithRules can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}`
-//
 // * `{{project}}/{{region}}/{{name}}`
-//
 // * `{{region}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, RegionNetworkFirewallPolicyWithRules can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default {{project}}/{{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default {{region}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules default {{name}}
 // ```
 type RegionNetworkFirewallPolicyWithRules struct {
@@ -265,7 +251,7 @@ type RegionNetworkFirewallPolicyWithRules struct {
 	// Policy type is used to determine which resources (networks) the policy can be associated with.
 	// A policy can be associated with a network only if the network has the matching policyType in its network profile.
 	// Different policy types may support some of the Firewall Rules features.
-	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
 	PolicyType pulumi.StringOutput `pulumi:"policyType"`
 	// A list of firewall policy pre-defined rules.
 	// Structure is documented below.
@@ -337,7 +323,7 @@ type regionNetworkFirewallPolicyWithRulesState struct {
 	// Policy type is used to determine which resources (networks) the policy can be associated with.
 	// A policy can be associated with a network only if the network has the matching policyType in its network profile.
 	// Different policy types may support some of the Firewall Rules features.
-	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
 	PolicyType *string `pulumi:"policyType"`
 	// A list of firewall policy pre-defined rules.
 	// Structure is documented below.
@@ -377,7 +363,7 @@ type RegionNetworkFirewallPolicyWithRulesState struct {
 	// Policy type is used to determine which resources (networks) the policy can be associated with.
 	// A policy can be associated with a network only if the network has the matching policyType in its network profile.
 	// Different policy types may support some of the Firewall Rules features.
-	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
 	PolicyType pulumi.StringPtrInput
 	// A list of firewall policy pre-defined rules.
 	// Structure is documented below.
@@ -415,7 +401,7 @@ type regionNetworkFirewallPolicyWithRulesArgs struct {
 	// Policy type is used to determine which resources (networks) the policy can be associated with.
 	// A policy can be associated with a network only if the network has the matching policyType in its network profile.
 	// Different policy types may support some of the Firewall Rules features.
-	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
 	PolicyType *string `pulumi:"policyType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -441,7 +427,7 @@ type RegionNetworkFirewallPolicyWithRulesArgs struct {
 	// Policy type is used to determine which resources (networks) the policy can be associated with.
 	// A policy can be associated with a network only if the network has the matching policyType in its network profile.
 	// Different policy types may support some of the Firewall Rules features.
-	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+	// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
 	PolicyType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -573,7 +559,7 @@ func (o RegionNetworkFirewallPolicyWithRulesOutput) NetworkFirewallPolicyId() pu
 // Policy type is used to determine which resources (networks) the policy can be associated with.
 // A policy can be associated with a network only if the network has the matching policyType in its network profile.
 // Different policy types may support some of the Firewall Rules features.
-// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
 func (o RegionNetworkFirewallPolicyWithRulesOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkFirewallPolicyWithRules) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
 }

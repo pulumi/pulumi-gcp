@@ -67,22 +67,14 @@ import javax.annotation.Nullable;
  * DataAccessLabel can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/dataAccessLabels/{{data_access_label_id}}`
- * 
  * * `{{project}}/{{location}}/{{instance}}/{{data_access_label_id}}`
- * 
  * * `{{location}}/{{instance}}/{{data_access_label_id}}`
  * 
  * When using the `pulumi import` command, DataAccessLabel can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:chronicle/dataAccessLabel:DataAccessLabel default projects/{{project}}/locations/{{location}}/instances/{{instance}}/dataAccessLabels/{{data_access_label_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:chronicle/dataAccessLabel:DataAccessLabel default {{project}}/{{location}}/{{instance}}/{{data_access_label_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:chronicle/dataAccessLabel:DataAccessLabel default {{location}}/{{instance}}/{{data_access_label_id}}
  * ```
  * 

@@ -199,9 +199,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.displayName);
     }
 
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Import(name="effectiveAnnotations")
     private @Nullable Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Optional<Output<Map<String,String>>> effectiveAnnotations() {
         return Optional.ofNullable(this.effectiveAnnotations);
     }
@@ -251,9 +259,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.instanceId);
     }
 
+    /**
+     * The type of the instance.
+     * If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the `dependsOn` meta-data attribute.
+     * If the instance type is SECONDARY, point to the clusterType of the associated secondary cluster instead of mentioning SECONDARY.
+     * Example: {instance_type = google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY}
+     * If the instance type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it instead.
+     * Use deletionPolicy = &#34;FORCE&#34; in the associated secondary cluster and delete the cluster forcefully to delete the secondary cluster as well its associated secondary instance.
+     * Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
+     * Possible values are: `PRIMARY`, `READ_POOL`, `SECONDARY`.
+     * 
+     */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
+    /**
+     * @return The type of the instance.
+     * If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the `dependsOn` meta-data attribute.
+     * If the instance type is SECONDARY, point to the clusterType of the associated secondary cluster instead of mentioning SECONDARY.
+     * Example: {instance_type = google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY}
+     * If the instance type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it instead.
+     * Use deletionPolicy = &#34;FORCE&#34; in the associated secondary cluster and delete the cluster forcefully to delete the secondary cluster as well its associated secondary instance.
+     * Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
+     * Possible values are: `PRIMARY`, `READ_POOL`, `SECONDARY`.
+     * 
+     */
     public Optional<Output<String>> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
@@ -806,11 +836,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return displayName(Output.of(displayName));
         }
 
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
             $.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
 
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
             return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
@@ -878,11 +920,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return instanceId(Output.of(instanceId));
         }
 
+        /**
+         * @param instanceType The type of the instance.
+         * If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the `dependsOn` meta-data attribute.
+         * If the instance type is SECONDARY, point to the clusterType of the associated secondary cluster instead of mentioning SECONDARY.
+         * Example: {instance_type = google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY}
+         * If the instance type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it instead.
+         * Use deletionPolicy = &#34;FORCE&#34; in the associated secondary cluster and delete the cluster forcefully to delete the secondary cluster as well its associated secondary instance.
+         * Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
+         * Possible values are: `PRIMARY`, `READ_POOL`, `SECONDARY`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceType(@Nullable Output<String> instanceType) {
             $.instanceType = instanceType;
             return this;
         }
 
+        /**
+         * @param instanceType The type of the instance.
+         * If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the `dependsOn` meta-data attribute.
+         * If the instance type is SECONDARY, point to the clusterType of the associated secondary cluster instead of mentioning SECONDARY.
+         * Example: {instance_type = google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY}
+         * If the instance type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it instead.
+         * Use deletionPolicy = &#34;FORCE&#34; in the associated secondary cluster and delete the cluster forcefully to delete the secondary cluster as well its associated secondary instance.
+         * Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
+         * Possible values are: `PRIMARY`, `READ_POOL`, `SECONDARY`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceType(String instanceType) {
             return instanceType(Output.of(instanceType));
         }

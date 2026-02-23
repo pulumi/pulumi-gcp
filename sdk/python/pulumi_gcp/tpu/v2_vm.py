@@ -40,6 +40,7 @@ class V2VmArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2Vm resource.
+
         :param pulumi.Input[_builtins.str] runtime_version: Runtime version for the TPU.
         :param pulumi.Input['V2VmAcceleratorConfigArgs'] accelerator_config: The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
                as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
@@ -367,6 +368,7 @@ class _V2VmState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2Vm resources.
+
         :param pulumi.Input['V2VmAcceleratorConfigArgs'] accelerator_config: The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
                as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
                Structure is documented below.
@@ -846,6 +848,17 @@ class V2Vm(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A Cloud TPU VM instance.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Vm, see:
+
+        * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.nodes)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/tpu/docs/)
+
         ## Example Usage
 
         ### Tpu V2 Vm Basic
@@ -936,30 +949,19 @@ class V2Vm(pulumi.CustomResource):
         Vm can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1007,6 +1009,17 @@ class V2Vm(pulumi.CustomResource):
                  args: V2VmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Cloud TPU VM instance.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Vm, see:
+
+        * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.nodes)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/tpu/docs/)
+
         ## Example Usage
 
         ### Tpu V2 Vm Basic
@@ -1097,30 +1110,19 @@ class V2Vm(pulumi.CustomResource):
         Vm can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
-
         * `{{project}}/{{zone}}/{{name}}`
-
         * `{{zone}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{project}}/{{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{zone}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V2VmArgs args: The arguments to use to populate this resource's properties.

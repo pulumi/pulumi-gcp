@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetHcVpnGatewayParam;
 import com.pulumi.gcp.compute.outputs.GetHcVpnGatewayVpnInterface;
 import java.lang.String;
 import java.util.List;
@@ -27,6 +28,7 @@ public final class GetHcVpnGatewayResult {
     private Map<String,String> labels;
     private String name;
     private String network;
+    private List<GetHcVpnGatewayParam> params;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private @Nullable String region;
@@ -62,6 +64,9 @@ public final class GetHcVpnGatewayResult {
     }
     public String network() {
         return this.network;
+    }
+    public List<GetHcVpnGatewayParam> params() {
+        return this.params;
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
@@ -99,6 +104,7 @@ public final class GetHcVpnGatewayResult {
         private Map<String,String> labels;
         private String name;
         private String network;
+        private List<GetHcVpnGatewayParam> params;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private @Nullable String region;
@@ -116,6 +122,7 @@ public final class GetHcVpnGatewayResult {
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.params = defaults.params;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
@@ -189,6 +196,17 @@ public final class GetHcVpnGatewayResult {
             return this;
         }
         @CustomType.Setter
+        public Builder params(List<GetHcVpnGatewayParam> params) {
+            if (params == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "params");
+            }
+            this.params = params;
+            return this;
+        }
+        public Builder params(GetHcVpnGatewayParam... params) {
+            return params(List.of(params));
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -245,6 +263,7 @@ public final class GetHcVpnGatewayResult {
             _resultValue.labels = labels;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.params = params;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.region = region;

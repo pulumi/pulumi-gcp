@@ -28,6 +28,7 @@ class RegionHealthAggregationPolicyArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionHealthAggregationPolicy resource.
+
         :param pulumi.Input[_builtins.str] region: URL of the region where the health aggregation policy resides.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you
                create the resource.
@@ -218,6 +219,7 @@ class _RegionHealthAggregationPolicyState:
                  self_link_with_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionHealthAggregationPolicy resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you
                create the resource.
@@ -466,6 +468,17 @@ class RegionHealthAggregationPolicy(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The Health Aggregation Policy specifies how to aggregate the service's constituent source health status to determine an aggregated health status result for the service.  For example, you can specify a criteria such as “Consider the Health Source as `Healthy` if there are at least 5 healthy backend endpoints”. Or, you can specify a criteria like “Consider the Health Source as `Healthy` if minimum 60% of endpoints in the Backend are healthy”. The Health Aggregation Policy is applied to each Health Source (e.g. Backend Service) individually.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about RegionHealthAggregationPolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/healthAggregationPolicies)
+        * How-to Guides
+            * [Health checks overview](https://cloud.google.com/load-balancing/docs/health-check-concepts)
+
         ## Example Usage
 
         ### Compute Region Health Aggregation Policy Basic
@@ -486,30 +499,19 @@ class RegionHealthAggregationPolicy(pulumi.CustomResource):
         RegionHealthAggregationPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/healthAggregationPolicies/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionHealthAggregationPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy default projects/{{project}}/regions/{{region}}/healthAggregationPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -562,6 +564,17 @@ class RegionHealthAggregationPolicy(pulumi.CustomResource):
                  args: RegionHealthAggregationPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The Health Aggregation Policy specifies how to aggregate the service's constituent source health status to determine an aggregated health status result for the service.  For example, you can specify a criteria such as “Consider the Health Source as `Healthy` if there are at least 5 healthy backend endpoints”. Or, you can specify a criteria like “Consider the Health Source as `Healthy` if minimum 60% of endpoints in the Backend are healthy”. The Health Aggregation Policy is applied to each Health Source (e.g. Backend Service) individually.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about RegionHealthAggregationPolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/healthAggregationPolicies)
+        * How-to Guides
+            * [Health checks overview](https://cloud.google.com/load-balancing/docs/health-check-concepts)
+
         ## Example Usage
 
         ### Compute Region Health Aggregation Policy Basic
@@ -582,30 +595,19 @@ class RegionHealthAggregationPolicy(pulumi.CustomResource):
         RegionHealthAggregationPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/healthAggregationPolicies/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionHealthAggregationPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy default projects/{{project}}/regions/{{region}}/healthAggregationPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionHealthAggregationPolicyArgs args: The arguments to use to populate this resource's properties.

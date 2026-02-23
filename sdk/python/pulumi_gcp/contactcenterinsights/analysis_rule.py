@@ -30,6 +30,7 @@ class AnalysisRuleArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AnalysisRule resource.
+
         :param pulumi.Input[_builtins.str] location: Location of the resource.
         :param pulumi.Input[_builtins.bool] active: If true, apply this rule to conversations. Otherwise, this rule is
                inactive and saved as a draft.
@@ -172,6 +173,7 @@ class _AnalysisRuleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AnalysisRule resources.
+
         :param pulumi.Input[_builtins.bool] active: If true, apply this rule to conversations. Otherwise, this rule is
                inactive and saved as a draft.
         :param pulumi.Input[_builtins.float] analysis_percentage: Percentage of conversations that we should apply this analysis setting
@@ -458,24 +460,17 @@ class AnalysisRule(pulumi.CustomResource):
         AnalysisRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/analysisRules/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, AnalysisRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:contactcenterinsights/analysisRule:AnalysisRule default projects/{{project}}/locations/{{location}}/analysisRules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:contactcenterinsights/analysisRule:AnalysisRule default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:contactcenterinsights/analysisRule:AnalysisRule default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -602,24 +597,17 @@ class AnalysisRule(pulumi.CustomResource):
         AnalysisRule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/analysisRules/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, AnalysisRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:contactcenterinsights/analysisRule:AnalysisRule default projects/{{project}}/locations/{{location}}/analysisRules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:contactcenterinsights/analysisRule:AnalysisRule default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:contactcenterinsights/analysisRule:AnalysisRule default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AnalysisRuleArgs args: The arguments to use to populate this resource's properties.

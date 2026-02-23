@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineSpecSourceCodeSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("developerConnectSource")]
+        public Input<Inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceGetArgs>? DeveloperConnectSource { get; set; }
+
+        /// <summary>
         /// Source code is provided directly in the request.
         /// Structure is documented below.
         /// </summary>

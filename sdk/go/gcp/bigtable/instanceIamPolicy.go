@@ -224,29 +224,9 @@ import (
 //
 // ## Import
 //
-// ### Importing IAM policies
+// > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
-// IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
-//
-// * `"projects/{project}/instances/{instance}"`
-//
-// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-//
-// tf
-//
-// import {
-//
-//	id = "projects/{project}/instances/{instance}"
-//
-//	to = google_bigtable_instance_iam_policy.default
-//
-// }
-//
-// The `pulumi import` command can also be used:
-//
-// ```sh
-// $ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy default projects/{project}/instances/{instance}
-// ```
+//	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type InstanceIamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -257,7 +237,9 @@ type InstanceIamPolicy struct {
 	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
 	Instance   pulumi.StringOutput `pulumi:"instance"`
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
-	Project    pulumi.StringOutput `pulumi:"project"`
+	// The project in which the instance belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewInstanceIamPolicy registers a new resource with the given unique name, arguments, and options.
@@ -303,7 +285,9 @@ type instanceIamPolicyState struct {
 	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
 	Instance   *string `pulumi:"instance"`
 	PolicyData *string `pulumi:"policyData"`
-	Project    *string `pulumi:"project"`
+	// The project in which the instance belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Project *string `pulumi:"project"`
 }
 
 type InstanceIamPolicyState struct {
@@ -314,7 +298,9 @@ type InstanceIamPolicyState struct {
 	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
 	Instance   pulumi.StringPtrInput
 	PolicyData pulumi.StringPtrInput
-	Project    pulumi.StringPtrInput
+	// The project in which the instance belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Project pulumi.StringPtrInput
 }
 
 func (InstanceIamPolicyState) ElementType() reflect.Type {
@@ -325,9 +311,11 @@ type instanceIamPolicyArgs struct {
 	// The name or relative resource id of the instance to manage IAM policies for.
 	//
 	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
-	Instance   string  `pulumi:"instance"`
-	PolicyData string  `pulumi:"policyData"`
-	Project    *string `pulumi:"project"`
+	Instance   string `pulumi:"instance"`
+	PolicyData string `pulumi:"policyData"`
+	// The project in which the instance belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a InstanceIamPolicy resource.
@@ -337,7 +325,9 @@ type InstanceIamPolicyArgs struct {
 	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
 	Instance   pulumi.StringInput
 	PolicyData pulumi.StringInput
-	Project    pulumi.StringPtrInput
+	// The project in which the instance belongs. If it
+	// is not provided, Terraform will use the provider default.
+	Project pulumi.StringPtrInput
 }
 
 func (InstanceIamPolicyArgs) ElementType() reflect.Type {
@@ -443,6 +433,8 @@ func (o InstanceIamPolicyOutput) PolicyData() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
+// The project in which the instance belongs. If it
+// is not provided, Terraform will use the provider default.
 func (o InstanceIamPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

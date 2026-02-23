@@ -1035,6 +1035,11 @@ export type ResourcePolicyAttachment = import("./resourcePolicyAttachment").Reso
 export const ResourcePolicyAttachment: typeof import("./resourcePolicyAttachment").ResourcePolicyAttachment = null as any;
 utilities.lazyLoad(exports, ["ResourcePolicyAttachment"], () => require("./resourcePolicyAttachment"));
 
+export { RolloutPlanArgs, RolloutPlanState } from "./rolloutPlan";
+export type RolloutPlan = import("./rolloutPlan").RolloutPlan;
+export const RolloutPlan: typeof import("./rolloutPlan").RolloutPlan = null as any;
+utilities.lazyLoad(exports, ["RolloutPlan"], () => require("./rolloutPlan"));
+
 export { RouteArgs, RouteState } from "./route";
 export type Route = import("./route").Route;
 export const Route: typeof import("./route").Route = null as any;
@@ -1508,6 +1513,8 @@ const _module = {
                 return new ResourcePolicy(name, <any>undefined, { urn })
             case "gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment":
                 return new ResourcePolicyAttachment(name, <any>undefined, { urn })
+            case "gcp:compute/rolloutPlan:RolloutPlan":
+                return new RolloutPlan(name, <any>undefined, { urn })
             case "gcp:compute/route:Route":
                 return new Route(name, <any>undefined, { urn })
             case "gcp:compute/router:Router":
@@ -1725,6 +1732,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/reservation", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/resizeRequest", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/resourcePolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/resourcePolicyAttachment", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/rolloutPlan", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/route", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/router", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerInterface", _module)

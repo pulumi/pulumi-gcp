@@ -27,6 +27,7 @@ class NetworkEndpointArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkEndpoint resource.
+
         :param pulumi.Input[_builtins.str] ip_address: IPv4 address of network endpoint. The IP address must belong
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
@@ -143,6 +144,7 @@ class _NetworkEndpointState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkEndpoint resources.
+
         :param pulumi.Input[_builtins.str] instance: The name for a specific VM instance that the IP address belongs to.
                This is required for network endpoints of type GCE_VM_IP_PORT.
                The instance must be in the same zone of network endpoint group.
@@ -328,30 +330,19 @@ class NetworkEndpoint(pulumi.CustomResource):
         NetworkEndpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
-
         * `{{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
-
         * `{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
-
         * `{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
 
         When using the `pulumi import` command, NetworkEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -440,30 +431,19 @@ class NetworkEndpoint(pulumi.CustomResource):
         NetworkEndpoint can be imported using any of these accepted formats:
 
         * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
-
         * `{{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
-
         * `{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
-
         * `{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
 
         When using the `pulumi import` command, NetworkEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkEndpointArgs args: The arguments to use to populate this resource's properties.

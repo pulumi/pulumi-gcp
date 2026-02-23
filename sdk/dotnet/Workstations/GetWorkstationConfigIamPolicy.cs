@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Workstations
     public static class GetWorkstationConfigIamPolicy
     {
         /// <summary>
+        /// Retrieves the current IAM policy data for workstationconfig
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -37,6 +42,11 @@ namespace Pulumi.Gcp.Workstations
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkstationConfigIamPolicyResult>("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", args ?? new GetWorkstationConfigIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for workstationconfig
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -62,6 +72,11 @@ namespace Pulumi.Gcp.Workstations
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkstationConfigIamPolicyResult>("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", args ?? new GetWorkstationConfigIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for workstationconfig
+        /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+        /// See Provider Versions for more details on beta resources.
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

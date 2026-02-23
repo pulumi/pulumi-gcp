@@ -63,14 +63,20 @@ public final class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfa
     }
 
     /**
-     * Required. The resource name of the backup instance.
+     * (Optional, Deprecated)
+     * The resource name of the backup instance.
+     * 
+     * &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Required. The resource name of the backup instance.
+     * @return (Optional, Deprecated)
+     * The resource name of the backup instance.
+     * 
+     * &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      * 
      */
     public Optional<Output<String>> name() {
@@ -232,7 +238,10 @@ public final class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfa
         }
 
         /**
-         * @param name Required. The resource name of the backup instance.
+         * @param name (Optional, Deprecated)
+         * The resource name of the backup instance.
+         * 
+         * &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
          * 
          * @return builder
          * 
@@ -243,7 +252,10 @@ public final class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfa
         }
 
         /**
-         * @param name Required. The resource name of the backup instance.
+         * @param name (Optional, Deprecated)
+         * The resource name of the backup instance.
+         * 
+         * &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
          * 
          * @return builder
          * 

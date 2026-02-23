@@ -32,6 +32,7 @@ class RegionSecurityPolicyArgs:
                  user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None):
         """
         The set of arguments for constructing a RegionSecurityPolicy resource.
+
         :param pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs'] advanced_options_config: Advanced Options Config of this security policy.
                Structure is documented below.
         :param pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs'] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
@@ -216,6 +217,7 @@ class _RegionSecurityPolicyState:
                  user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None):
         """
         Input properties used for looking up and filtering RegionSecurityPolicy resources.
+
         :param pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs'] advanced_options_config: Advanced Options Config of this security policy.
                Structure is documented below.
         :param pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs'] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
@@ -562,30 +564,19 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         RegionSecurityPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionSecurityPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -721,30 +712,19 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         RegionSecurityPolicy can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, RegionSecurityPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegionSecurityPolicyArgs args: The arguments to use to populate this resource's properties.

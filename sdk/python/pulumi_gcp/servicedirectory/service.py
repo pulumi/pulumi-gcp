@@ -24,6 +24,7 @@ class ServiceArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Service resource.
+
         :param pulumi.Input[_builtins.str] namespace: The resource name of the namespace this service will belong to.
         :param pulumi.Input[_builtins.str] service_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
@@ -87,6 +88,7 @@ class _ServiceState:
                  service_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata for the service. This data can be consumed
                by service clients. The entire metadata dictionary may contain
                up to 2000 characters, spread across all key-value pairs.
@@ -204,24 +206,17 @@ class Service(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}`
-
         * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}`
-
         * `{{location}}/{{namespace_id}}/{{service_id}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:servicedirectory/service:Service default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:servicedirectory/service:Service default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:servicedirectory/service:Service default {{location}}/{{namespace_id}}/{{service_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -273,24 +268,17 @@ class Service(pulumi.CustomResource):
         Service can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}`
-
         * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}`
-
         * `{{location}}/{{namespace_id}}/{{service_id}}`
 
         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:servicedirectory/service:Service default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:servicedirectory/service:Service default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:servicedirectory/service:Service default {{location}}/{{namespace_id}}/{{service_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

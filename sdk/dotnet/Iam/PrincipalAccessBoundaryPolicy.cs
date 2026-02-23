@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam
 {
     /// <summary>
+    /// An IAM Principal Access Boundary Policy resource. This resource has no effect on accesses until is bound to a target through policy bindings.
+    /// You can see further documentation on policy bindings in:
+    ///   - [Organizations](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_organizations_policy_binding)
+    ///   - [Folders](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_folders_policy_binding)
+    ///   - [Projects](https://www.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_projects_policy_binding)
+    /// 
+    /// To get more information about PrincipalAccessBoundaryPolicy, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
+    /// * How-to Guides
+    ///     * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Iam Principal Access Boundary Policy
@@ -90,16 +102,12 @@ namespace Pulumi.Gcp.Iam
     /// PrincipalAccessBoundaryPolicy can be imported using any of these accepted formats:
     /// 
     /// * `organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}`
-    /// 
     /// * `{{organization}}/{{location}}/{{principal_access_boundary_policy_id}}`
     /// 
     /// When using the `pulumi import` command, PrincipalAccessBoundaryPolicy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default organizations/{{organization}}/locations/{{location}}/principalAccessBoundaryPolicies/{{principal_access_boundary_policy_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy default {{organization}}/{{location}}/{{principal_access_boundary_policy_id}}
     /// ```
     /// </summary>
@@ -135,6 +143,9 @@ namespace Pulumi.Gcp.Iam
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
@@ -321,6 +332,10 @@ namespace Pulumi.Gcp.Iam
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        /// </summary>
         public InputMap<string> EffectiveAnnotations
         {
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());

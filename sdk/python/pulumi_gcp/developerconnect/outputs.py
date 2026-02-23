@@ -45,6 +45,7 @@ __all__ = [
     'InsightsConfigRuntimeConfig',
     'InsightsConfigRuntimeConfigAppHubWorkload',
     'InsightsConfigRuntimeConfigGkeWorkload',
+    'InsightsConfigTargetProjects',
 ]
 
 @pulumi.output_type
@@ -1905,5 +1906,41 @@ class InsightsConfigRuntimeConfigGkeWorkload(dict):
         `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.
         """
         return pulumi.get(self, "deployment")
+
+
+@pulumi.output_type
+class InsightsConfigTargetProjects(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectIds":
+            suggest = "project_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InsightsConfigTargetProjects. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InsightsConfigTargetProjects.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InsightsConfigTargetProjects.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] project_ids: The project IDs. Format {project}.
+        """
+        if project_ids is not None:
+            pulumi.set(__self__, "project_ids", project_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="projectIds")
+    def project_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The project IDs. Format {project}.
+        """
+        return pulumi.get(self, "project_ids")
 
 

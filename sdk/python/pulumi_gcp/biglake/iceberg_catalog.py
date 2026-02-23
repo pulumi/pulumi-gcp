@@ -27,12 +27,15 @@ class IcebergCatalogArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IcebergCatalog resource.
+
         :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
                Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
-        :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog. Format:
-               projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+        :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
+               For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+               exact same value of the GCS bucket's name. For example, for a bucket:
+               gs://bucket-name, the catalog name will be exactly "bucket-name".
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -74,8 +77,10 @@ class IcebergCatalogArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the IcebergCatalog. Format:
-        projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+        The name of the IcebergCatalog.
+        For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+        exact same value of the GCS bucket's name. For example, for a bucket:
+        gs://bucket-name, the catalog name will be exactly "bucket-name".
         """
         return pulumi.get(self, "name")
 
@@ -112,6 +117,7 @@ class _IcebergCatalogState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IcebergCatalog resources.
+
         :param pulumi.Input[_builtins.str] biglake_service_account: Output only. The service account used for credential vending. It might be empty if credential vending was never enabled for the catalog.
         :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
                Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
@@ -119,8 +125,10 @@ class _IcebergCatalogState:
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
         :param pulumi.Input[_builtins.str] default_location: Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
-        :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog. Format:
-               projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+        :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
+               For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+               exact same value of the GCS bucket's name. For example, for a bucket:
+               gs://bucket-name, the catalog name will be exactly "bucket-name".
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['IcebergCatalogReplicaArgs']]] replicas: Output only. The replicas for the catalog metadata.
@@ -215,8 +223,10 @@ class _IcebergCatalogState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the IcebergCatalog. Format:
-        projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+        The name of the IcebergCatalog.
+        For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+        exact same value of the GCS bucket's name. For example, for a bucket:
+        gs://bucket-name, the catalog name will be exactly "bucket-name".
         """
         return pulumi.get(self, "name")
 
@@ -313,8 +323,9 @@ class IcebergCatalog(pulumi.CustomResource):
             force_destroy=True,
             uniform_bucket_level_access=True)
         my_iceberg_catalog = gcp.biglake.IcebergCatalog("my_iceberg_catalog",
-            name="my_iceberg_catalog",
+            name=bucket_for_my_iceberg_catalog.name,
             catalog_type="CATALOG_TYPE_GCS_BUCKET",
+            credential_mode="CREDENTIAL_MODE_VENDED_CREDENTIALS",
             opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
         ```
 
@@ -323,24 +334,17 @@ class IcebergCatalog(pulumi.CustomResource):
         IcebergCatalog can be imported using any of these accepted formats:
 
         * `iceberg/v1/restcatalog/extensions/projects/{{project}}/catalogs/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, IcebergCatalog can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default iceberg/v1/restcatalog/extensions/projects/{{project}}/catalogs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -348,8 +352,10 @@ class IcebergCatalog(pulumi.CustomResource):
                Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
-        :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog. Format:
-               projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+        :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
+               For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+               exact same value of the GCS bucket's name. For example, for a bucket:
+               gs://bucket-name, the catalog name will be exactly "bucket-name".
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -386,8 +392,9 @@ class IcebergCatalog(pulumi.CustomResource):
             force_destroy=True,
             uniform_bucket_level_access=True)
         my_iceberg_catalog = gcp.biglake.IcebergCatalog("my_iceberg_catalog",
-            name="my_iceberg_catalog",
+            name=bucket_for_my_iceberg_catalog.name,
             catalog_type="CATALOG_TYPE_GCS_BUCKET",
+            credential_mode="CREDENTIAL_MODE_VENDED_CREDENTIALS",
             opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
         ```
 
@@ -396,24 +403,17 @@ class IcebergCatalog(pulumi.CustomResource):
         IcebergCatalog can be imported using any of these accepted formats:
 
         * `iceberg/v1/restcatalog/extensions/projects/{{project}}/catalogs/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, IcebergCatalog can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default iceberg/v1/restcatalog/extensions/projects/{{project}}/catalogs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IcebergCatalogArgs args: The arguments to use to populate this resource's properties.
@@ -489,8 +489,10 @@ class IcebergCatalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
         :param pulumi.Input[_builtins.str] default_location: Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
-        :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog. Format:
-               projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+        :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
+               For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+               exact same value of the GCS bucket's name. For example, for a bucket:
+               gs://bucket-name, the catalog name will be exactly "bucket-name".
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IcebergCatalogReplicaArgs', 'IcebergCatalogReplicaArgsDict']]]] replicas: Output only. The replicas for the catalog metadata.
@@ -560,8 +562,10 @@ class IcebergCatalog(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the IcebergCatalog. Format:
-        projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
+        The name of the IcebergCatalog.
+        For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
+        exact same value of the GCS bucket's name. For example, for a bucket:
+        gs://bucket-name, the catalog name will be exactly "bucket-name".
         """
         return pulumi.get(self, "name")
 

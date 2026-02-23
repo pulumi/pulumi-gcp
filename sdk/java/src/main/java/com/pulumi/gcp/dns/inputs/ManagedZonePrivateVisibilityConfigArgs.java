@@ -34,9 +34,27 @@ public final class ManagedZonePrivateVisibilityConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.gkeClusters);
     }
 
+    /**
+     * The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+     * may experience issues with this resource while updating. If you&#39;ve defined a `networks` block and
+     * add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+     * and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+     * blocks in an update and then apply another update adding all of them back simultaneously.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="networks")
     private @Nullable Output<List<ManagedZonePrivateVisibilityConfigNetworkArgs>> networks;
 
+    /**
+     * @return The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+     * may experience issues with this resource while updating. If you&#39;ve defined a `networks` block and
+     * add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+     * and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+     * blocks in an update and then apply another update adding all of them back simultaneously.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<ManagedZonePrivateVisibilityConfigNetworkArgs>>> networks() {
         return Optional.ofNullable(this.networks);
     }
@@ -100,15 +118,48 @@ public final class ManagedZonePrivateVisibilityConfigArgs extends com.pulumi.res
             return gkeClusters(List.of(gkeClusters));
         }
 
+        /**
+         * @param networks The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+         * may experience issues with this resource while updating. If you&#39;ve defined a `networks` block and
+         * add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+         * and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+         * blocks in an update and then apply another update adding all of them back simultaneously.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(@Nullable Output<List<ManagedZonePrivateVisibilityConfigNetworkArgs>> networks) {
             $.networks = networks;
             return this;
         }
 
+        /**
+         * @param networks The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+         * may experience issues with this resource while updating. If you&#39;ve defined a `networks` block and
+         * add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+         * and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+         * blocks in an update and then apply another update adding all of them back simultaneously.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(List<ManagedZonePrivateVisibilityConfigNetworkArgs> networks) {
             return networks(Output.of(networks));
         }
 
+        /**
+         * @param networks The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+         * may experience issues with this resource while updating. If you&#39;ve defined a `networks` block and
+         * add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+         * and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+         * blocks in an update and then apply another update adding all of them back simultaneously.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(ManagedZonePrivateVisibilityConfigNetworkArgs... networks) {
             return networks(List.of(networks));
         }

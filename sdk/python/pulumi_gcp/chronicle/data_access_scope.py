@@ -31,6 +31,7 @@ class DataAccessScopeArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataAccessScope resource.
+
         :param pulumi.Input[_builtins.str] data_access_scope_id: Required. The user provided scope id which will become the last part of the name
                of the scope resource.
                Needs to be compliant with https://google.aip.dev/122
@@ -212,6 +213,7 @@ class _DataAccessScopeState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataAccessScope resources.
+
         :param pulumi.Input[_builtins.bool] allow_all: Optional. Whether or not the scope allows all labels, allow_all and
                allowed_data_access_labels are mutually exclusive and one of them must be
                present. denied_data_access_labels can still be used along with allow_all.
@@ -611,24 +613,17 @@ class DataAccessScope(pulumi.CustomResource):
         DataAccessScope can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/dataAccessScopes/{{data_access_scope_id}}`
-
         * `{{project}}/{{location}}/{{instance}}/{{data_access_scope_id}}`
-
         * `{{location}}/{{instance}}/{{data_access_scope_id}}`
 
         When using the `pulumi import` command, DataAccessScope can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default projects/{{project}}/locations/{{location}}/instances/{{instance}}/dataAccessScopes/{{data_access_scope_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default {{project}}/{{location}}/{{instance}}/{{data_access_scope_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default {{location}}/{{instance}}/{{data_access_scope_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -793,24 +788,17 @@ class DataAccessScope(pulumi.CustomResource):
         DataAccessScope can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/dataAccessScopes/{{data_access_scope_id}}`
-
         * `{{project}}/{{location}}/{{instance}}/{{data_access_scope_id}}`
-
         * `{{location}}/{{instance}}/{{data_access_scope_id}}`
 
         When using the `pulumi import` command, DataAccessScope can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default projects/{{project}}/locations/{{location}}/instances/{{instance}}/dataAccessScopes/{{data_access_scope_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default {{project}}/{{location}}/{{instance}}/{{data_access_scope_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default {{location}}/{{instance}}/{{data_access_scope_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataAccessScopeArgs args: The arguments to use to populate this resource's properties.

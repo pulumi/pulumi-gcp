@@ -28,6 +28,7 @@ class AiMetadataStoreArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiMetadataStore resource.
+
         :param pulumi.Input[_builtins.str] description: Description of the MetadataStore.
         :param pulumi.Input['AiMetadataStoreEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
@@ -123,6 +124,7 @@ class _AiMetadataStoreState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiMetadataStore resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] description: Description of the MetadataStore.
         :param pulumi.Input['AiMetadataStoreEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
@@ -265,6 +267,17 @@ class AiMetadataStore(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Instance of a metadata store. Contains a set of metadata that can be queried.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about MetadataStore, see:
+
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.metadataStores)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+
         ## Example Usage
 
         ### Vertex Ai Metadata Store
@@ -284,30 +297,19 @@ class AiMetadataStore(pulumi.CustomResource):
         MetadataStore can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/metadataStores/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, MetadataStore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default projects/{{project}}/locations/{{region}}/metadataStores/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -326,6 +328,17 @@ class AiMetadataStore(pulumi.CustomResource):
                  args: Optional[AiMetadataStoreArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Instance of a metadata store. Contains a set of metadata that can be queried.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about MetadataStore, see:
+
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.metadataStores)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+
         ## Example Usage
 
         ### Vertex Ai Metadata Store
@@ -345,30 +358,19 @@ class AiMetadataStore(pulumi.CustomResource):
         MetadataStore can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{region}}/metadataStores/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, MetadataStore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default projects/{{project}}/locations/{{region}}/metadataStores/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiMetadataStoreArgs args: The arguments to use to populate this resource's properties.

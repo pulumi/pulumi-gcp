@@ -28,6 +28,7 @@ class BackupScheduleArgs:
                  weekly_recurrence: Optional[pulumi.Input['BackupScheduleWeeklyRecurrenceArgs']] = None):
         """
         The set of arguments for constructing a BackupSchedule resource.
+
         :param pulumi.Input[_builtins.str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                You can set this to a value up to 14 weeks.
@@ -124,6 +125,7 @@ class _BackupScheduleState:
                  weekly_recurrence: Optional[pulumi.Input['BackupScheduleWeeklyRecurrenceArgs']] = None):
         """
         Input properties used for looking up and filtering BackupSchedule resources.
+
         :param pulumi.Input['BackupScheduleDailyRecurrenceArgs'] daily_recurrence: For a schedule that runs daily.
         :param pulumi.Input[_builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[_builtins.str] name: The unique backup schedule identifier across all locations and databases for the given project. Format:
@@ -303,24 +305,17 @@ class BackupSchedule(pulumi.CustomResource):
         BackupSchedule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}`
-
         * `{{project}}/{{database}}/{{name}}`
-
         * `{{database}}/{{name}}`
 
         When using the `pulumi import` command, BackupSchedule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default {{project}}/{{database}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default {{database}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -404,24 +399,17 @@ class BackupSchedule(pulumi.CustomResource):
         BackupSchedule can be imported using any of these accepted formats:
 
         * `projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}`
-
         * `{{project}}/{{database}}/{{name}}`
-
         * `{{database}}/{{name}}`
 
         When using the `pulumi import` command, BackupSchedule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default {{project}}/{{database}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default {{database}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupScheduleArgs args: The arguments to use to populate this resource's properties.

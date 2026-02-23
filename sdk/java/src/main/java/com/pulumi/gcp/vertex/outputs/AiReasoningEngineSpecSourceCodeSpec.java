@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpecInlineSource;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpecPythonSpec;
 import java.util.Objects;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AiReasoningEngineSpecSourceCodeSpec {
+    /**
+     * @return Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource developerConnectSource;
     /**
      * @return Source code is provided directly in the request.
      * Structure is documented below.
@@ -26,6 +33,14 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
     private @Nullable AiReasoningEngineSpecSourceCodeSpecPythonSpec pythonSpec;
 
     private AiReasoningEngineSpecSourceCodeSpec() {}
+    /**
+     * @return Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource> developerConnectSource() {
+        return Optional.ofNullable(this.developerConnectSource);
+    }
     /**
      * @return Source code is provided directly in the request.
      * Structure is documented below.
@@ -52,15 +67,23 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource developerConnectSource;
         private @Nullable AiReasoningEngineSpecSourceCodeSpecInlineSource inlineSource;
         private @Nullable AiReasoningEngineSpecSourceCodeSpecPythonSpec pythonSpec;
         public Builder() {}
         public Builder(AiReasoningEngineSpecSourceCodeSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.developerConnectSource = defaults.developerConnectSource;
     	      this.inlineSource = defaults.inlineSource;
     	      this.pythonSpec = defaults.pythonSpec;
         }
 
+        @CustomType.Setter
+        public Builder developerConnectSource(@Nullable AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource developerConnectSource) {
+
+            this.developerConnectSource = developerConnectSource;
+            return this;
+        }
         @CustomType.Setter
         public Builder inlineSource(@Nullable AiReasoningEngineSpecSourceCodeSpecInlineSource inlineSource) {
 
@@ -75,6 +98,7 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
         }
         public AiReasoningEngineSpecSourceCodeSpec build() {
             final var _resultValue = new AiReasoningEngineSpecSourceCodeSpec();
+            _resultValue.developerConnectSource = developerConnectSource;
             _resultValue.inlineSource = inlineSource;
             _resultValue.pythonSpec = pythonSpec;
             return _resultValue;

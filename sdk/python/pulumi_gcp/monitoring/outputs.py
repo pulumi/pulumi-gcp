@@ -1070,6 +1070,12 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
                in the future.
                This field is optional. If this field is not empty, then it must be a
                valid Prometheus label name.
+        :param _builtins.bool disable_metric_validation: Whether to disable metric existence validation for this condition.
+               This allows alerting policies to be defined on metrics that do not yet
+               exist, improving advanced customer workflows such as configuring
+               alerting policies using Terraform.
+               Users with the `monitoring.alertPolicyViewer` role are able to see the
+               name of the non-existent metric in the alerting policy condition.
         :param _builtins.str duration: Alerts are considered firing once their PromQL expression evaluated
                to be "true" for this long. Alerts whose PromQL expression was not
                evaluated to be "true" for long enough are considered pending. The
@@ -1137,6 +1143,14 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
     @_builtins.property
     @pulumi.getter(name="disableMetricValidation")
     def disable_metric_validation(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable metric existence validation for this condition.
+        This allows alerting policies to be defined on metrics that do not yet
+        exist, improving advanced customer workflows such as configuring
+        alerting policies using Terraform.
+        Users with the `monitoring.alertPolicyViewer` role are able to see the
+        name of the non-existent metric in the alerting policy condition.
+        """
         return pulumi.get(self, "disable_metric_validation")
 
     @_builtins.property
@@ -2874,8 +2888,20 @@ class NotificationChannelSensitiveLabels(dict):
         suggest = None
         if key == "authToken":
             suggest = "auth_token"
+        elif key == "authTokenWo":
+            suggest = "auth_token_wo"
+        elif key == "authTokenWoVersion":
+            suggest = "auth_token_wo_version"
+        elif key == "passwordWo":
+            suggest = "password_wo"
+        elif key == "passwordWoVersion":
+            suggest = "password_wo_version"
         elif key == "serviceKey":
             suggest = "service_key"
+        elif key == "serviceKeyWo":
+            suggest = "service_key_wo"
+        elif key == "serviceKeyWoVersion":
+            suggest = "service_key_wo_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NotificationChannelSensitiveLabels. Access the value via the '{suggest}' property getter instead.")
@@ -2890,22 +2916,61 @@ class NotificationChannelSensitiveLabels(dict):
 
     def __init__(__self__, *,
                  auth_token: Optional[_builtins.str] = None,
+                 auth_token_wo: Optional[_builtins.str] = None,
+                 auth_token_wo_version: Optional[_builtins.str] = None,
                  password: Optional[_builtins.str] = None,
-                 service_key: Optional[_builtins.str] = None):
+                 password_wo: Optional[_builtins.str] = None,
+                 password_wo_version: Optional[_builtins.str] = None,
+                 service_key: Optional[_builtins.str] = None,
+                 service_key_wo: Optional[_builtins.str] = None,
+                 service_key_wo_version: Optional[_builtins.str] = None):
         """
         :param _builtins.str auth_token: An authorization token for a notification channel. Channel types that support this field include: slack
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str auth_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               An authorization token for a notification channel. Channel types that support this field include: slack
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `auth_token` or `auth_token_wo` can only be set.
+        :param _builtins.str auth_token_wo_version: Triggers update of `auth_token_wo` write-only. Increment this value when an update to `auth_token_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param _builtins.str password: An password for a notification channel. Channel types that support this field include: webhook_basicauth
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               An password for a notification channel. Channel types that support this field include: webhook_basicauth
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `password` or `password_wo` can only be set.
+        :param _builtins.str password_wo_version: Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param _builtins.str service_key: An servicekey token for a notification channel. Channel types that support this field include: pagerduty
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str service_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `service_key` or `service_key_wo` can only be set.
+        :param _builtins.str service_key_wo_version: Triggers update of `service_key_wo` write-only. Increment this value when an update to `service_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         if auth_token is not None:
             pulumi.set(__self__, "auth_token", auth_token)
+        if auth_token_wo is not None:
+            pulumi.set(__self__, "auth_token_wo", auth_token_wo)
+        if auth_token_wo_version is not None:
+            pulumi.set(__self__, "auth_token_wo_version", auth_token_wo_version)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if service_key is not None:
             pulumi.set(__self__, "service_key", service_key)
+        if service_key_wo is not None:
+            pulumi.set(__self__, "service_key_wo", service_key_wo)
+        if service_key_wo_version is not None:
+            pulumi.set(__self__, "service_key_wo_version", service_key_wo_version)
 
     @_builtins.property
     @pulumi.getter(name="authToken")
@@ -2917,6 +2982,27 @@ class NotificationChannelSensitiveLabels(dict):
         return pulumi.get(self, "auth_token")
 
     @_builtins.property
+    @pulumi.getter(name="authTokenWo")
+    def auth_token_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        An authorization token for a notification channel. Channel types that support this field include: slack
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `auth_token` or `auth_token_wo` can only be set.
+        """
+        return pulumi.get(self, "auth_token_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="authTokenWoVersion")
+    def auth_token_wo_version(self) -> Optional[_builtins.str]:
+        """
+        Triggers update of `auth_token_wo` write-only. Increment this value when an update to `auth_token_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "auth_token_wo_version")
+
+    @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
         """
@@ -2926,6 +3012,27 @@ class NotificationChannelSensitiveLabels(dict):
         return pulumi.get(self, "password")
 
     @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        An password for a notification channel. Channel types that support this field include: webhook_basicauth
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `password` or `password_wo` can only be set.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[_builtins.str]:
+        """
+        Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @_builtins.property
     @pulumi.getter(name="serviceKey")
     def service_key(self) -> Optional[_builtins.str]:
         """
@@ -2933,6 +3040,27 @@ class NotificationChannelSensitiveLabels(dict):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "service_key")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceKeyWo")
+    def service_key_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `service_key` or `service_key_wo` can only be set.
+        """
+        return pulumi.get(self, "service_key_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceKeyWoVersion")
+    def service_key_wo_version(self) -> Optional[_builtins.str]:
+        """
+        Triggers update of `service_key_wo` write-only. Increment this value when an update to `service_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "service_key_wo_version")
 
 
 @pulumi.output_type
@@ -4608,8 +4736,13 @@ class UptimeCheckConfigHttpCheckAuthInfo(dict):
         """
         :param _builtins.str username: The username to authenticate.
         :param _builtins.str password: The password to authenticate.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param _builtins.str password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
                The password to authenticate.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `password` or `password_wo` can only be set.
         :param _builtins.str password_wo_version: The password write-only version.
         """
         pulumi.set(__self__, "username", username)
@@ -4633,6 +4766,7 @@ class UptimeCheckConfigHttpCheckAuthInfo(dict):
     def password(self) -> Optional[_builtins.str]:
         """
         The password to authenticate.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "password")
 
@@ -4641,7 +4775,11 @@ class UptimeCheckConfigHttpCheckAuthInfo(dict):
     def password_wo(self) -> Optional[_builtins.str]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
         The password to authenticate.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `password` or `password_wo` can only be set.
         """
         return pulumi.get(self, "password_wo")
 
@@ -5028,16 +5166,34 @@ class GetMeshIstioServiceTelemetryResult(dict):
 class GetNotificationChannelSensitiveLabelResult(dict):
     def __init__(__self__, *,
                  auth_token: _builtins.str,
+                 auth_token_wo: _builtins.str,
+                 auth_token_wo_version: _builtins.str,
                  password: _builtins.str,
-                 service_key: _builtins.str):
+                 password_wo: _builtins.str,
+                 password_wo_version: _builtins.str,
+                 service_key: _builtins.str,
+                 service_key_wo: _builtins.str,
+                 service_key_wo_version: _builtins.str):
         """
         :param _builtins.str auth_token: An authorization token for a notification channel. Channel types that support this field include: slack
+        :param _builtins.str auth_token_wo: An authorization token for a notification channel. Channel types that support this field include: slack
+        :param _builtins.str auth_token_wo_version: Triggers update of 'auth_token_wo' write-only. Increment this value when an update to 'auth_token_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param _builtins.str password: An password for a notification channel. Channel types that support this field include: webhook_basicauth
+        :param _builtins.str password_wo: An password for a notification channel. Channel types that support this field include: webhook_basicauth
+        :param _builtins.str password_wo_version: Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param _builtins.str service_key: An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+        :param _builtins.str service_key_wo: An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+        :param _builtins.str service_key_wo_version: Triggers update of 'service_key_wo' write-only. Increment this value when an update to 'service_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         pulumi.set(__self__, "auth_token", auth_token)
+        pulumi.set(__self__, "auth_token_wo", auth_token_wo)
+        pulumi.set(__self__, "auth_token_wo_version", auth_token_wo_version)
         pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "password_wo", password_wo)
+        pulumi.set(__self__, "password_wo_version", password_wo_version)
         pulumi.set(__self__, "service_key", service_key)
+        pulumi.set(__self__, "service_key_wo", service_key_wo)
+        pulumi.set(__self__, "service_key_wo_version", service_key_wo_version)
 
     @_builtins.property
     @pulumi.getter(name="authToken")
@@ -5048,6 +5204,22 @@ class GetNotificationChannelSensitiveLabelResult(dict):
         return pulumi.get(self, "auth_token")
 
     @_builtins.property
+    @pulumi.getter(name="authTokenWo")
+    def auth_token_wo(self) -> _builtins.str:
+        """
+        An authorization token for a notification channel. Channel types that support this field include: slack
+        """
+        return pulumi.get(self, "auth_token_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="authTokenWoVersion")
+    def auth_token_wo_version(self) -> _builtins.str:
+        """
+        Triggers update of 'auth_token_wo' write-only. Increment this value when an update to 'auth_token_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "auth_token_wo_version")
+
+    @_builtins.property
     @pulumi.getter
     def password(self) -> _builtins.str:
         """
@@ -5056,12 +5228,44 @@ class GetNotificationChannelSensitiveLabelResult(dict):
         return pulumi.get(self, "password")
 
     @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> _builtins.str:
+        """
+        An password for a notification channel. Channel types that support this field include: webhook_basicauth
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> _builtins.str:
+        """
+        Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @_builtins.property
     @pulumi.getter(name="serviceKey")
     def service_key(self) -> _builtins.str:
         """
         An servicekey token for a notification channel. Channel types that support this field include: pagerduty
         """
         return pulumi.get(self, "service_key")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceKeyWo")
+    def service_key_wo(self) -> _builtins.str:
+        """
+        An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+        """
+        return pulumi.get(self, "service_key_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceKeyWoVersion")
+    def service_key_wo_version(self) -> _builtins.str:
+        """
+        Triggers update of 'service_key_wo' write-only. Increment this value when an update to 'service_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "service_key_wo_version")
 
 
 @pulumi.output_type

@@ -31,6 +31,7 @@ class ProjectFeedArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectFeed resource.
+
         :param pulumi.Input[_builtins.str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
         :param pulumi.Input['ProjectFeedFeedOutputConfigArgs'] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
@@ -202,6 +203,7 @@ class _ProjectFeedState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectFeed resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of
                assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
                exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
@@ -443,24 +445,17 @@ class ProjectFeed(pulumi.CustomResource):
         ProjectFeed can be imported using any of these accepted formats:
 
         * `projects/{{project}}/feeds/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ProjectFeed can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default projects/{{project}}/feeds/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -549,24 +544,17 @@ class ProjectFeed(pulumi.CustomResource):
         ProjectFeed can be imported using any of these accepted formats:
 
         * `projects/{{project}}/feeds/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, ProjectFeed can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default projects/{{project}}/feeds/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectFeedArgs args: The arguments to use to populate this resource's properties.

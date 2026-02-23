@@ -45,6 +45,10 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
      * 
      */
     private String database;
+    /**
+     * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+     * 
+     */
     private Boolean deletionProtection;
     /**
      * @return List of supported GCP region to clone the Autonomous Database for disaster recovery.
@@ -57,6 +61,10 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
      * 
      */
     private String displayName;
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     private Map<String,String> effectiveLabels;
     /**
      * @return The ID of the subscription entitlement associated with the Autonomous
@@ -176,6 +184,10 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
     public String database() {
         return this.database;
     }
+    /**
+     * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+     * 
+     */
     public Boolean deletionProtection() {
         return this.deletionProtection;
     }
@@ -194,6 +206,10 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
     public String displayName() {
         return this.displayName;
     }
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
     }

@@ -803,27 +803,22 @@ __all__ = [
     'PreventionStoredInfoTypeRegexArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigArgsDict(TypedDict):
-        image_transformations: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgsDict']]
-        """
-        Treat the dataset as an image and redact.
-        Structure is documented below.
-        """
-        info_type_transformations: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgsDict']]
-        """
-        Treat the dataset as free-form text and apply the same free text transformation everywhere
-        Structure is documented below.
-        """
-        record_transformations: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgsDict']]
-        """
-        Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigArgsDict(TypedDict):
+    image_transformations: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgsDict']]
+    """
+    Treat the dataset as an image and redact.
+    Structure is documented below.
+    """
+    info_type_transformations: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgsDict']]
+    """
+    Treat the dataset as free-form text and apply the same free text transformation everywhere
+    Structure is documented below.
+    """
+    record_transformations: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgsDict']]
+    """
+    Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigArgs:
@@ -886,15 +881,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigArgs:
         pulumi.set(self, "record_transformations", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgsDict(TypedDict):
-        transforms: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgsDict']]]
-        """
-        For determination of how redaction of images should occur.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgsDict(TypedDict):
+    transforms: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgsDict']]]
+    """
+    For determination of how redaction of images should occur.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs:
@@ -920,28 +912,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs:
         pulumi.set(self, "transforms", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgsDict(TypedDict):
-        all_info_types: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgsDict']]
-        """
-        Apply transformation to all findings not specified in other ImageTransformation's selectedInfoTypes.
-        """
-        all_text: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgsDict']]
-        """
-        Apply transformation to all text that doesn't match an infoType.
-        """
-        redaction_color: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgsDict']]
-        """
-        The color to use when redacting content from an image. If not specified, the default is black.
-        Structure is documented below.
-        """
-        selected_info_types: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgsDict']]
-        """
-        Apply transformation to the selected infoTypes.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgsDict(TypedDict):
+    all_info_types: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgsDict']]
+    """
+    Apply transformation to all findings not specified in other ImageTransformation's selectedInfoTypes.
+    """
+    all_text: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgsDict']]
+    """
+    Apply transformation to all text that doesn't match an infoType.
+    """
+    redaction_color: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgsDict']]
+    """
+    The color to use when redacting content from an image. If not specified, the default is black.
+    Structure is documented below.
+    """
+    selected_info_types: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgsDict']]
+    """
+    Apply transformation to the selected infoTypes.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs:
@@ -1018,11 +1007,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformA
         pulumi.set(self, "selected_info_types", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs:
@@ -1030,11 +1016,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformA
         pass
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs:
@@ -1042,22 +1025,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformA
         pass
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgsDict(TypedDict):
-        blue: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The amount of blue in the color as a value in the interval [0, 1].
-        """
-        green: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The amount of green in the color as a value in the interval [0, 1].
-        """
-        red: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The amount of red in the color as a value in the interval [0, 1].
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgsDict(TypedDict):
+    blue: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The amount of blue in the color as a value in the interval [0, 1].
+    """
+    green: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The amount of green in the color as a value in the interval [0, 1].
+    """
+    red: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The amount of red in the color as a value in the interval [0, 1].
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs:
@@ -1114,16 +1094,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformR
         pulumi.set(self, "red", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgsDict(TypedDict):
-        info_types: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgsDict']]]
-        """
-        InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
-        all findings that correspond to infoTypes that were requested in InspectConfig.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgsDict(TypedDict):
+    info_types: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgsDict']]]
+    """
+    InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+    all findings that correspond to infoTypes that were requested in InspectConfig.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs:
@@ -1151,23 +1128,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
         pulumi.set(self, "info_types", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version name for this InfoType.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs:
@@ -1225,15 +1199,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScoreArgs:
@@ -1259,15 +1230,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgsDict(TypedDict):
-        transformations: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgsDict']]]
-        """
-        Transformation for each infoType. Cannot specify more than one for a given infoType.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgsDict(TypedDict):
+    transformations: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgsDict']]]
+    """
+    Transformation for each infoType. Cannot specify more than one for a given infoType.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs:
@@ -1293,22 +1261,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs:
         pulumi.set(self, "transformations", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgsDict(TypedDict):
-        primitive_transformation: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgsDict']
-        """
-        Apply the transformation to the entire field.
-        The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
-        Structure is documented below.
-        """
-        info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgsDict']]]]
-        """
-        InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
-        all findings that correspond to infoTypes that were requested in InspectConfig.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgsDict(TypedDict):
+    primitive_transformation: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgsDict']
+    """
+    Apply the transformation to the entire field.
+    The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+    Structure is documented below.
+    """
+    info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgsDict']]]]
+    """
+    InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+    all findings that correspond to infoTypes that were requested in InspectConfig.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs:
@@ -1356,23 +1321,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "info_types", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version name for this InfoType.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs:
@@ -1430,15 +1392,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgs:
@@ -1464,79 +1423,76 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgsDict(TypedDict):
-        bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict']]
-        """
-        Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
-        This can be used on data of type: number, long, string, timestamp.
-        If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
-        Structure is documented below.
-        """
-        character_mask_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict']]
-        """
-        Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
-        Structure is documented below.
-        """
-        crypto_deterministic_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict']]
-        """
-        Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
-        Structure is documented below.
-        """
-        crypto_hash_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict']]
-        """
-        Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
-        Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
-        Currently, only string and integer values can be hashed.
-        See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
-        Structure is documented below.
-        """
-        crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict']]
-        """
-        Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
-        Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
-        Structure is documented below.
-        """
-        date_shift_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict']]
-        """
-        Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
-        Structure is documented below.
-        """
-        fixed_size_bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict']]
-        """
-        Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
-        The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
-        This can be used on data of type: double, long.
-        If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
-        Structure is documented below.
-        """
-        redact_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict']]
-        """
-        Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
-        """
-        replace_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgsDict']]
-        """
-        Replace each input value with a given value.
-        Structure is documented below.
-        """
-        replace_dictionary_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict']]
-        """
-        Replace with a value randomly drawn (with replacement) from a dictionary.
-        Structure is documented below.
-        """
-        replace_with_info_type_config: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Replace each matching finding with the name of the info type.
-        """
-        time_part_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgsDict']]
-        """
-        For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgsDict(TypedDict):
+    bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict']]
+    """
+    Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
+    This can be used on data of type: number, long, string, timestamp.
+    If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
+    See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+    Structure is documented below.
+    """
+    character_mask_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict']]
+    """
+    Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+    Structure is documented below.
+    """
+    crypto_deterministic_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict']]
+    """
+    Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
+    Structure is documented below.
+    """
+    crypto_hash_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict']]
+    """
+    Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
+    Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
+    Currently, only string and integer values can be hashed.
+    See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+    Structure is documented below.
+    """
+    crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict']]
+    """
+    Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
+    Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+    Structure is documented below.
+    """
+    date_shift_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict']]
+    """
+    Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+    Structure is documented below.
+    """
+    fixed_size_bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict']]
+    """
+    Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
+    The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
+    This can be used on data of type: double, long.
+    If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
+    See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+    Structure is documented below.
+    """
+    redact_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict']]
+    """
+    Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+    """
+    replace_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgsDict']]
+    """
+    Replace each input value with a given value.
+    Structure is documented below.
+    """
+    replace_dictionary_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict']]
+    """
+    Replace with a value randomly drawn (with replacement) from a dictionary.
+    Structure is documented below.
+    """
+    replace_with_info_type_config: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Replace each matching finding with the name of the info type.
+    """
+    time_part_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgsDict']]
+    """
+    For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs:
@@ -1779,16 +1735,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "time_part_config", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict(TypedDict):
-        buckets: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgsDict']]]]
-        """
-        Set of buckets. Ranges must be non-overlapping.
-        Bucket is represented as a range, along with replacement values.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict(TypedDict):
+    buckets: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgsDict']]]]
+    """
+    Set of buckets. Ranges must be non-overlapping.
+    Bucket is represented as a range, along with replacement values.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgs:
@@ -1817,28 +1770,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "buckets", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgsDict(TypedDict):
-        replacement_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict']
-        """
-        Replacement value for this bucket.
-        The `replacement_value` block must only contain one argument.
-        Structure is documented below.
-        """
-        max: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict']]
-        """
-        Upper bound of the range, exclusive; type must match min.
-        The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
-        Structure is documented below.
-        """
-        min: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict']]
-        """
-        Lower bound of the range, inclusive. Type should be the same as max if used.
-        The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgsDict(TypedDict):
+    replacement_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict']
+    """
+    Replacement value for this bucket.
+    The `replacement_value` block must only contain one argument.
+    Structure is documented below.
+    """
+    max: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict']]
+    """
+    Upper bound of the range, exclusive; type must match min.
+    The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+    Structure is documented below.
+    """
+    min: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict']]
+    """
+    Lower bound of the range, inclusive. Type should be the same as max if used.
+    The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgs:
@@ -1906,41 +1856,38 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "min", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict(TypedDict):
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict(TypedDict):
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs:
@@ -2067,22 +2014,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs:
@@ -2139,26 +2083,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs:
@@ -2231,41 +2172,38 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict(TypedDict):
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict(TypedDict):
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgs:
@@ -2392,22 +2330,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs:
@@ -2464,26 +2399,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs:
@@ -2556,41 +2488,38 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict(TypedDict):
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict(TypedDict):
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgs:
@@ -2717,22 +2646,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs:
@@ -2789,26 +2715,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs:
@@ -2881,31 +2804,28 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict(TypedDict):
-        characters_to_ignores: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict']]]]
-        """
-        Characters to skip when doing de-identification of a value. These will be left alone and skipped.
-        Structure is documented below.
-        """
-        masking_character: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-        such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-        strings, and 0 for digits.
-        """
-        number_to_mask: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
-        If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
-        """
-        reverse_order: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
-        input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict(TypedDict):
+    characters_to_ignores: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict']]]]
+    """
+    Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+    Structure is documented below.
+    """
+    masking_character: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+    such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+    strings, and 0 for digits.
+    """
+    number_to_mask: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+    If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
+    """
+    reverse_order: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+    input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs:
@@ -2988,19 +2908,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "reverse_order", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict(TypedDict):
-        characters_to_skip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
-        """
-        common_characters_to_ignore: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
-        Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict(TypedDict):
+    characters_to_skip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
+    """
+    common_characters_to_ignore: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
+    Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs:
@@ -3043,37 +2960,34 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "common_characters_to_ignore", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict(TypedDict):
-        context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict']]
-        """
-        A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
-        If the context is not set, plaintext would be used as is for encryption. If the context is set but:
-        1. there is no record present when transforming a given value or
-        2. the field is not present when transforming a given value,
-        plaintext would be used as is for encryption.
-        Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-        Structure is documented below.
-        """
-        crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict']]
-        """
-        The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
-        Structure is documented below.
-        """
-        surrogate_info_type: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict']]
-        """
-        The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
-        For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
-        This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
-        Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
-        In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-        *   reverse a surrogate that does not correspond to an actual identifier
-        *   be unable to parse the surrogate and result in an error
-        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict(TypedDict):
+    context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict']]
+    """
+    A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+    If the context is not set, plaintext would be used as is for encryption. If the context is set but:
+    1. there is no record present when transforming a given value or
+    2. the field is not present when transforming a given value,
+    plaintext would be used as is for encryption.
+    Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+    Structure is documented below.
+    """
+    crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict']]
+    """
+    The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
+    Structure is documented below.
+    """
+    surrogate_info_type: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict']]
+    """
+    The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+    For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
+    This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
+    Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
+    In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
+    *   reverse a surrogate that does not correspond to an actual identifier
+    *   be unable to parse the surrogate and result in an error
+    Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs:
@@ -3160,14 +3074,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "surrogate_info_type", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs:
@@ -3192,28 +3103,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict(TypedDict):
-        kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict']]
-        """
-        KMS wrapped key.
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
-        For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
-        Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-        Structure is documented below.
-        """
-        transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict']]
-        """
-        Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-        unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict']]
-        """
-        Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict(TypedDict):
+    kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict']]
+    """
+    KMS wrapped key.
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+    For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
+    Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+    Structure is documented below.
+    """
+    transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict']]
+    """
+    Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
+    unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict']]
+    """
+    Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs:
@@ -3282,19 +3190,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "unwrapped", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
-        crypto_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the KMS CryptoKey to use for unwrapping.
-        """
-        wrapped_key: pulumi.Input[_builtins.str]
-        """
-        The wrapped data crypto key.
-        A base64-encoded string.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the KMS CryptoKey to use for unwrapping.
+    """
+    wrapped_key: pulumi.Input[_builtins.str]
+    """
+    The wrapped data crypto key.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs:
@@ -3335,14 +3240,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "wrapped_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs:
@@ -3366,16 +3268,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A 128/192/256 bit key.
-        A base64-encoded string.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A 128/192/256 bit key.
+    A base64-encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs:
@@ -3403,23 +3302,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional version name for this InfoType.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs:
@@ -3478,15 +3374,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs:
@@ -3512,15 +3405,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict(TypedDict):
-        crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict']]
-        """
-        The key used by the encryption function.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict(TypedDict):
+    crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict']]
+    """
+    The key used by the encryption function.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgs:
@@ -3547,28 +3437,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "crypto_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict(TypedDict):
-        kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict']]
-        """
-        KMS wrapped key.
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
-        For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
-        Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-        Structure is documented below.
-        """
-        transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict']]
-        """
-        Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-        unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict']]
-        """
-        Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict(TypedDict):
+    kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict']]
+    """
+    KMS wrapped key.
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+    For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
+    Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+    Structure is documented below.
+    """
+    transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict']]
+    """
+    Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
+    unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict']]
+    """
+    Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs:
@@ -3637,19 +3524,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "unwrapped", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
-        crypto_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the KMS CryptoKey to use for unwrapping.
-        """
-        wrapped_key: pulumi.Input[_builtins.str]
-        """
-        The wrapped data crypto key.
-        A base64-encoded string.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the KMS CryptoKey to use for unwrapping.
+    """
+    wrapped_key: pulumi.Input[_builtins.str]
+    """
+    The wrapped data crypto key.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs:
@@ -3690,14 +3574,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "wrapped_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs:
@@ -3721,16 +3602,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A 128/192/256 bit key.
-        A base64-encoded string.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A 128/192/256 bit key.
+    A base64-encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs:
@@ -3758,50 +3636,47 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict(TypedDict):
-        common_alphabet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
-        Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
-        """
-        context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict']]
-        """
-        The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
-        If the context is set but:
-        1.  there is no record present when transforming a given value or
-        2.  the field is not present when transforming a given value,
-        a default tweak will be used.
-        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-        The tweak is constructed as a sequence of bytes in big endian byte order such that:
-        *   a 64 bit integer is encoded followed by a single byte of value 1
-        *   a string is encoded in UTF-8 format followed by a single byte of value 2
-        Structure is documented below.
-        """
-        crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict']]
-        """
-        The key used by the encryption algorithm.
-        Structure is documented below.
-        """
-        custom_alphabet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-        ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
-        """
-        radix: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
-        """
-        surrogate_info_type: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict']]
-        """
-        The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
-        For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
-        This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
-        In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict(TypedDict):
+    common_alphabet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+    Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
+    """
+    context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict']]
+    """
+    The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+    If the context is set but:
+    1.  there is no record present when transforming a given value or
+    2.  the field is not present when transforming a given value,
+    a default tweak will be used.
+    Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+    The tweak is constructed as a sequence of bytes in big endian byte order such that:
+    *   a 64 bit integer is encoded followed by a single byte of value 1
+    *   a string is encoded in UTF-8 format followed by a single byte of value 2
+    Structure is documented below.
+    """
+    crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict']]
+    """
+    The key used by the encryption algorithm.
+    Structure is documented below.
+    """
+    custom_alphabet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
+    ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+    """
+    radix: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
+    """
+    surrogate_info_type: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict']]
+    """
+    The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
+    For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
+    This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
+    In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs:
@@ -3938,14 +3813,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "surrogate_info_type", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs:
@@ -3970,28 +3842,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict(TypedDict):
-        kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict']]
-        """
-        KMS wrapped key.
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
-        For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
-        Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-        Structure is documented below.
-        """
-        transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict']]
-        """
-        Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-        unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict']]
-        """
-        Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict(TypedDict):
+    kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict']]
+    """
+    KMS wrapped key.
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+    For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
+    Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+    Structure is documented below.
+    """
+    transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict']]
+    """
+    Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
+    unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict']]
+    """
+    Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs:
@@ -4060,19 +3929,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "unwrapped", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
-        crypto_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the KMS CryptoKey to use for unwrapping.
-        """
-        wrapped_key: pulumi.Input[_builtins.str]
-        """
-        The wrapped data crypto key.
-        A base64-encoded string.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the KMS CryptoKey to use for unwrapping.
+    """
+    wrapped_key: pulumi.Input[_builtins.str]
+    """
+    The wrapped data crypto key.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs:
@@ -4113,14 +3979,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "wrapped_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs:
@@ -4144,16 +4007,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A 128/192/256 bit key.
-        A base64-encoded string.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A 128/192/256 bit key.
+    A base64-encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs:
@@ -4181,23 +4041,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional version name for this InfoType.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs:
@@ -4256,15 +4113,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs:
@@ -4290,30 +4144,27 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict(TypedDict):
-        lower_bound_days: pulumi.Input[_builtins.int]
-        """
-        For example, -5 means shift date to at most 5 days back in the past.
-        """
-        upper_bound_days: pulumi.Input[_builtins.int]
-        """
-        Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
-        For example, 3 means shift date to at most 3 days into the future.
-        """
-        context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgsDict']]
-        """
-        Points to the field that contains the context, for example, an entity id.
-        If set, must also set cryptoKey. If set, shift will be consistent for the given context.
-        Structure is documented below.
-        """
-        crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict']]
-        """
-        Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict(TypedDict):
+    lower_bound_days: pulumi.Input[_builtins.int]
+    """
+    For example, -5 means shift date to at most 5 days back in the past.
+    """
+    upper_bound_days: pulumi.Input[_builtins.int]
+    """
+    Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
+    For example, 3 means shift date to at most 3 days into the future.
+    """
+    context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgsDict']]
+    """
+    Points to the field that contains the context, for example, an entity id.
+    If set, must also set cryptoKey. If set, shift will be consistent for the given context.
+    Structure is documented below.
+    """
+    crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict']]
+    """
+    Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs:
@@ -4392,14 +4243,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "crypto_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgs:
@@ -4423,28 +4271,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict(TypedDict):
-        kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict']]
-        """
-        KMS wrapped key.
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
-        For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
-        Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-        Structure is documented below.
-        """
-        transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict']]
-        """
-        Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-        unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict']]
-        """
-        Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict(TypedDict):
+    kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict']]
+    """
+    KMS wrapped key.
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+    For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
+    Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+    Structure is documented below.
+    """
+    transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict']]
+    """
+    Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
+    unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict']]
+    """
+    Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs:
@@ -4513,19 +4358,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "unwrapped", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
-        crypto_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the KMS CryptoKey to use for unwrapping.
-        """
-        wrapped_key: pulumi.Input[_builtins.str]
-        """
-        The wrapped data crypto key.
-        A base64-encoded string.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the KMS CryptoKey to use for unwrapping.
+    """
+    wrapped_key: pulumi.Input[_builtins.str]
+    """
+    The wrapped data crypto key.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs:
@@ -4566,14 +4408,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "wrapped_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs:
@@ -4597,16 +4436,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A 128/192/256 bit key.
-        A base64-encoded string.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A 128/192/256 bit key.
+    A base64-encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs:
@@ -4634,30 +4470,27 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict(TypedDict):
-        bucket_size: pulumi.Input[_builtins.float]
-        """
-        Size of each bucket (except for minimum and maximum buckets).
-        So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
-        Precision up to 2 decimals works.
-        """
-        lower_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict']
-        """
-        Lower bound value of buckets.
-        All values less than lower_bound are grouped together into a single bucket; for example if lower_bound = 10, then all values less than 10 are replaced with the value "-10".
-        The `lower_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
-        Structure is documented below.
-        """
-        upper_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict']
-        """
-        Upper bound value of buckets.
-        All values greater than upper_bound are grouped together into a single bucket; for example if upper_bound = 89, then all values greater than 89 are replaced with the value "89+".
-        The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict(TypedDict):
+    bucket_size: pulumi.Input[_builtins.float]
+    """
+    Size of each bucket (except for minimum and maximum buckets).
+    So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
+    Precision up to 2 decimals works.
+    """
+    lower_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict']
+    """
+    Lower bound value of buckets.
+    All values less than lower_bound are grouped together into a single bucket; for example if lower_bound = 10, then all values less than 10 are replaced with the value "-10".
+    The `lower_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
+    Structure is documented below.
+    """
+    upper_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict']
+    """
+    Upper bound value of buckets.
+    All values greater than upper_bound are grouped together into a single bucket; for example if upper_bound = 89, then all values greater than 89 are replaced with the value "89+".
+    The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs:
@@ -4727,18 +4560,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "upper_bound", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict(TypedDict):
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict(TypedDict):
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgs:
@@ -4779,18 +4609,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "integer_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict(TypedDict):
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict(TypedDict):
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgs:
@@ -4831,11 +4658,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "integer_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgs:
@@ -4843,16 +4667,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pass
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgsDict(TypedDict):
-        new_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict']
-        """
-        Replace each input value with a given value.
-        The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgsDict(TypedDict):
+    new_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict']
+    """
+    Replace each input value with a given value.
+    The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs:
@@ -4880,46 +4701,43 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "new_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict(TypedDict):
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean value.
-        """
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict(TypedDict):
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean value.
+    """
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+    Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs:
@@ -5064,22 +4882,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs:
@@ -5136,26 +4951,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs:
@@ -5228,15 +5040,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict(TypedDict):
-        word_list: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict']
-        """
-        A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict(TypedDict):
+    word_list: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict']
+    """
+    A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs:
@@ -5262,14 +5071,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "word_list", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict(TypedDict):
-        words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict(TypedDict):
+    words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs:
@@ -5293,15 +5099,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "words", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgsDict(TypedDict):
-        part_to_extract: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The part of the time to keep.
-        Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgsDict(TypedDict):
+    part_to_extract: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The part of the time to keep.
+    Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgs:
@@ -5328,20 +5131,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         pulumi.set(self, "part_to_extract", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgsDict(TypedDict):
-        field_transformations: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgsDict']]]]
-        """
-        Transform the record by applying various field transformations.
-        Structure is documented below.
-        """
-        record_suppressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgsDict']]]]
-        """
-        Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgsDict(TypedDict):
+    field_transformations: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgsDict']]]]
+    """
+    Transform the record by applying various field transformations.
+    Structure is documented below.
+    """
+    record_suppressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgsDict']]]]
+    """
+    Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs:
@@ -5386,37 +5186,34 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs:
         pulumi.set(self, "record_suppressions", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgsDict(TypedDict):
-        fields: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgsDict']]]
-        """
-        Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
-        FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
-        Structure is documented below.
-        """
-        condition: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgsDict']]
-        """
-        Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
-        Example Use Cases:
-        - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
-        - Redact a field if the date of birth field is greater than 85.
-        Structure is documented below.
-        """
-        info_type_transformations: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgsDict']]
-        """
-        Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
-        Only one of `primitive_transformation` or `info_type_transformations` must be specified.
-        Structure is documented below.
-        """
-        primitive_transformation: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgsDict']]
-        """
-        Apply the transformation to the entire field.
-        The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
-        Only one of `primitive_transformation` or `info_type_transformations` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgsDict(TypedDict):
+    fields: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgsDict']]]
+    """
+    Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
+    FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
+    Structure is documented below.
+    """
+    condition: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgsDict']]
+    """
+    Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
+    Example Use Cases:
+    - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
+    - Redact a field if the date of birth field is greater than 85.
+    Structure is documented below.
+    """
+    info_type_transformations: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgsDict']]
+    """
+    Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
+    Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+    Structure is documented below.
+    """
+    primitive_transformation: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgsDict']]
+    """
+    Apply the transformation to the entire field.
+    The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+    Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs:
@@ -5510,15 +5307,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "primitive_transformation", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgsDict(TypedDict):
-        expressions: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgsDict']]
-        """
-        An expression, consisting of an operator and conditions.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgsDict(TypedDict):
+    expressions: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgsDict']]
+    """
+    An expression, consisting of an operator and conditions.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs:
@@ -5545,21 +5339,18 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "expressions", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgsDict(TypedDict):
-        conditions: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgsDict']]
-        """
-        Conditions to apply to the expression.
-        Structure is documented below.
-        """
-        logical_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The operator to apply to the result of conditions. Default and currently only supported value is AND.
-        Default value is `AND`.
-        Possible values are: `AND`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgsDict(TypedDict):
+    conditions: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgsDict']]
+    """
+    Conditions to apply to the expression.
+    Structure is documented below.
+    """
+    logical_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The operator to apply to the result of conditions. Default and currently only supported value is AND.
+    Default value is `AND`.
+    Possible values are: `AND`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs:
@@ -5606,15 +5397,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "logical_operator", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgsDict(TypedDict):
-        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgsDict']]]]
-        """
-        A collection of conditions.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgsDict(TypedDict):
+    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgsDict']]]]
+    """
+    A collection of conditions.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs:
@@ -5641,25 +5429,22 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "conditions", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgsDict(TypedDict):
-        field: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgsDict']
-        """
-        Field within the record this condition is evaluated against.
-        Structure is documented below.
-        """
-        operator: pulumi.Input[_builtins.str]
-        """
-        Operator used to compare the field or infoType to the value.
-        Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
-        """
-        value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgsDict']]
-        """
-        Value to compare against. [Mandatory, except for EXISTS tests.]
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgsDict(TypedDict):
+    field: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgsDict']
+    """
+    Field within the record this condition is evaluated against.
+    Structure is documented below.
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator used to compare the field or infoType to the value.
+    Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
+    """
+    value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgsDict']]
+    """
+    Value to compare against. [Mandatory, except for EXISTS tests.]
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs:
@@ -5720,14 +5505,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs:
@@ -5752,45 +5534,42 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgsDict(TypedDict):
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean value.
-        """
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgsDict(TypedDict):
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean value.
+    """
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs:
@@ -5933,22 +5712,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs:
@@ -6005,26 +5781,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs:
@@ -6097,14 +5870,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs:
@@ -6129,15 +5899,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgsDict(TypedDict):
-        transformations: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationArgsDict']]]
-        """
-        Transformation for each infoType. Cannot specify more than one for a given infoType.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgsDict(TypedDict):
+    transformations: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationArgsDict']]]
+    """
+    Transformation for each infoType. Cannot specify more than one for a given infoType.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgs:
@@ -6163,22 +5930,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "transformations", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationArgsDict(TypedDict):
-        primitive_transformation: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationArgsDict']
-        """
-        Apply the transformation to the entire field.
-        The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
-        Structure is documented below.
-        """
-        info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeArgsDict']]]]
-        """
-        InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
-        all findings that correspond to infoTypes that were requested in InspectConfig.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationArgsDict(TypedDict):
+    primitive_transformation: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationArgsDict']
+    """
+    Apply the transformation to the entire field.
+    The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+    Structure is documented below.
+    """
+    info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeArgsDict']]]]
+    """
+    InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+    all findings that correspond to infoTypes that were requested in InspectConfig.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationArgs:
@@ -6226,23 +5990,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "info_types", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version name for this InfoType.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeArgs:
@@ -6300,15 +6061,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgs:
@@ -6334,79 +6092,76 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationArgsDict(TypedDict):
-        bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict']]
-        """
-        Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
-        This can be used on data of type: number, long, string, timestamp.
-        If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
-        Structure is documented below.
-        """
-        character_mask_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict']]
-        """
-        Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
-        Structure is documented below.
-        """
-        crypto_deterministic_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict']]
-        """
-        Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
-        Structure is documented below.
-        """
-        crypto_hash_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict']]
-        """
-        Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
-        Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
-        Currently, only string and integer values can be hashed.
-        See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
-        Structure is documented below.
-        """
-        crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict']]
-        """
-        Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
-        Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
-        Structure is documented below.
-        """
-        date_shift_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict']]
-        """
-        Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
-        Structure is documented below.
-        """
-        fixed_size_bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict']]
-        """
-        Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
-        The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
-        This can be used on data of type: double, long.
-        If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
-        Structure is documented below.
-        """
-        redact_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict']]
-        """
-        Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
-        """
-        replace_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgsDict']]
-        """
-        Replace each input value with a given value.
-        Structure is documented below.
-        """
-        replace_dictionary_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict']]
-        """
-        Replace with a value randomly drawn (with replacement) from a dictionary.
-        Structure is documented below.
-        """
-        replace_with_info_type_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfigArgsDict']]
-        """
-        Replace each matching finding with the name of the info type.
-        """
-        time_part_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgsDict']]
-        """
-        For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationArgsDict(TypedDict):
+    bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict']]
+    """
+    Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
+    This can be used on data of type: number, long, string, timestamp.
+    If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
+    See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+    Structure is documented below.
+    """
+    character_mask_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict']]
+    """
+    Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+    Structure is documented below.
+    """
+    crypto_deterministic_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict']]
+    """
+    Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
+    Structure is documented below.
+    """
+    crypto_hash_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict']]
+    """
+    Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
+    Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
+    Currently, only string and integer values can be hashed.
+    See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+    Structure is documented below.
+    """
+    crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict']]
+    """
+    Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
+    Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+    Structure is documented below.
+    """
+    date_shift_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict']]
+    """
+    Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+    Structure is documented below.
+    """
+    fixed_size_bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict']]
+    """
+    Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
+    The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
+    This can be used on data of type: double, long.
+    If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
+    See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+    Structure is documented below.
+    """
+    redact_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict']]
+    """
+    Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+    """
+    replace_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgsDict']]
+    """
+    Replace each input value with a given value.
+    Structure is documented below.
+    """
+    replace_dictionary_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict']]
+    """
+    Replace with a value randomly drawn (with replacement) from a dictionary.
+    Structure is documented below.
+    """
+    replace_with_info_type_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfigArgsDict']]
+    """
+    Replace each matching finding with the name of the info type.
+    """
+    time_part_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgsDict']]
+    """
+    For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationArgs:
@@ -6649,16 +6404,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "time_part_config", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict(TypedDict):
-        buckets: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgsDict']]]
-        """
-        Set of buckets. Ranges must be non-overlapping.
-        Bucket is represented as a range, along with replacement values.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict(TypedDict):
+    buckets: pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgsDict']]]
+    """
+    Set of buckets. Ranges must be non-overlapping.
+    Bucket is represented as a range, along with replacement values.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgs:
@@ -6686,28 +6438,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "buckets", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgsDict(TypedDict):
-        replacement_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict']
-        """
-        Replacement value for this bucket.
-        The `replacement_value` block must only contain one argument.
-        Structure is documented below.
-        """
-        max: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict']]
-        """
-        Upper bound of the range, exclusive; type must match min.
-        The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
-        Structure is documented below.
-        """
-        min: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict']]
-        """
-        Lower bound of the range, inclusive. Type should be the same as max if used.
-        The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgsDict(TypedDict):
+    replacement_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict']
+    """
+    Replacement value for this bucket.
+    The `replacement_value` block must only contain one argument.
+    Structure is documented below.
+    """
+    max: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict']]
+    """
+    Upper bound of the range, exclusive; type must match min.
+    The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+    Structure is documented below.
+    """
+    min: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict']]
+    """
+    Lower bound of the range, inclusive. Type should be the same as max if used.
+    The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgs:
@@ -6775,41 +6524,38 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "min", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict(TypedDict):
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict(TypedDict):
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs:
@@ -6936,22 +6682,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs:
@@ -7008,26 +6751,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs:
@@ -7100,41 +6840,38 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict(TypedDict):
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict(TypedDict):
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgs:
@@ -7261,22 +6998,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs:
@@ -7333,26 +7067,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs:
@@ -7425,41 +7156,38 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict(TypedDict):
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict(TypedDict):
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgs:
@@ -7586,22 +7314,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs:
@@ -7658,26 +7383,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs:
@@ -7750,31 +7472,28 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict(TypedDict):
-        characters_to_ignores: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict']]]]
-        """
-        Characters to skip when doing de-identification of a value. These will be left alone and skipped.
-        Structure is documented below.
-        """
-        masking_character: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-        such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-        strings, and 0 for digits.
-        """
-        number_to_mask: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
-        If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
-        """
-        reverse_order: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
-        input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict(TypedDict):
+    characters_to_ignores: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict']]]]
+    """
+    Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+    Structure is documented below.
+    """
+    masking_character: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+    such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+    strings, and 0 for digits.
+    """
+    number_to_mask: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+    If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
+    """
+    reverse_order: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+    input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs:
@@ -7857,19 +7576,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "reverse_order", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict(TypedDict):
-        characters_to_skip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
-        """
-        common_characters_to_ignore: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
-        Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict(TypedDict):
+    characters_to_skip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
+    """
+    common_characters_to_ignore: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
+    Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs:
@@ -7912,37 +7628,34 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "common_characters_to_ignore", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict(TypedDict):
-        crypto_key: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict']
-        """
-        The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
-        Structure is documented below.
-        """
-        surrogate_info_type: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict']
-        """
-        The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
-        For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
-        This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
-        Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
-        In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-        *   reverse a surrogate that does not correspond to an actual identifier
-        *   be unable to parse the surrogate and result in an error
-        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-        Structure is documented below.
-        """
-        context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict']]
-        """
-        A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
-        If the context is not set, plaintext would be used as is for encryption. If the context is set but:
-        1. there is no record present when transforming a given value or
-        2. the field is not present when transforming a given value,
-        plaintext would be used as is for encryption.
-        Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict(TypedDict):
+    crypto_key: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict']
+    """
+    The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
+    Structure is documented below.
+    """
+    surrogate_info_type: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict']
+    """
+    The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+    For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
+    This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
+    Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
+    In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
+    *   reverse a surrogate that does not correspond to an actual identifier
+    *   be unable to parse the surrogate and result in an error
+    Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+    Structure is documented below.
+    """
+    context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict']]
+    """
+    A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+    If the context is not set, plaintext would be used as is for encryption. If the context is set but:
+    1. there is no record present when transforming a given value or
+    2. the field is not present when transforming a given value,
+    plaintext would be used as is for encryption.
+    Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs:
@@ -8027,14 +7740,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "context", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs:
@@ -8058,28 +7768,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict(TypedDict):
-        kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict']]
-        """
-        KMS wrapped key.
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
-        For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
-        Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-        Structure is documented below.
-        """
-        transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict']]
-        """
-        Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-        unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict']]
-        """
-        Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict(TypedDict):
+    kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict']]
+    """
+    KMS wrapped key.
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+    For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
+    Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+    Structure is documented below.
+    """
+    transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict']]
+    """
+    Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
+    unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict']]
+    """
+    Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs:
@@ -8148,19 +7855,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "unwrapped", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
-        crypto_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the KMS CryptoKey to use for unwrapping.
-        """
-        wrapped_key: pulumi.Input[_builtins.str]
-        """
-        The wrapped data crypto key.
-        A base64-encoded string.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the KMS CryptoKey to use for unwrapping.
+    """
+    wrapped_key: pulumi.Input[_builtins.str]
+    """
+    The wrapped data crypto key.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs:
@@ -8201,14 +7905,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "wrapped_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs:
@@ -8232,16 +7933,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A 128/192/256 bit key.
-        A base64-encoded string.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A 128/192/256 bit key.
+    A base64-encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs:
@@ -8269,23 +7967,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional version name for this InfoType.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs:
@@ -8343,15 +8038,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs:
@@ -8377,15 +8069,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict(TypedDict):
-        crypto_key: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict']
-        """
-        The key used by the encryption function.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict(TypedDict):
+    crypto_key: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict']
+    """
+    The key used by the encryption function.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgs:
@@ -8411,28 +8100,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "crypto_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict(TypedDict):
-        kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict']]
-        """
-        KMS wrapped key.
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
-        For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
-        Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-        Structure is documented below.
-        """
-        transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict']]
-        """
-        Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-        unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict']]
-        """
-        Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict(TypedDict):
+    kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict']]
+    """
+    KMS wrapped key.
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+    For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
+    Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+    Structure is documented below.
+    """
+    transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict']]
+    """
+    Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
+    unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict']]
+    """
+    Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs:
@@ -8501,19 +8187,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "unwrapped", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
-        crypto_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the KMS CryptoKey to use for unwrapping.
-        """
-        wrapped_key: pulumi.Input[_builtins.str]
-        """
-        The wrapped data crypto key.
-        A base64-encoded string.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the KMS CryptoKey to use for unwrapping.
+    """
+    wrapped_key: pulumi.Input[_builtins.str]
+    """
+    The wrapped data crypto key.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs:
@@ -8554,14 +8237,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "wrapped_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs:
@@ -8585,16 +8265,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A 128/192/256 bit key.
-        A base64-encoded string.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A 128/192/256 bit key.
+    A base64-encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs:
@@ -8622,50 +8299,47 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict(TypedDict):
-        crypto_key: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict']
-        """
-        The key used by the encryption algorithm.
-        Structure is documented below.
-        """
-        common_alphabet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
-        Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
-        """
-        context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict']]
-        """
-        The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
-        If the context is set but:
-        1.  there is no record present when transforming a given value or
-        2.  the field is not present when transforming a given value,
-        a default tweak will be used.
-        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-        The tweak is constructed as a sequence of bytes in big endian byte order such that:
-        *   a 64 bit integer is encoded followed by a single byte of value 1
-        *   a string is encoded in UTF-8 format followed by a single byte of value 2
-        Structure is documented below.
-        """
-        custom_alphabet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-        ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
-        """
-        radix: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
-        """
-        surrogate_info_type: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict']]
-        """
-        The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
-        For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
-        This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
-        In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict(TypedDict):
+    crypto_key: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict']
+    """
+    The key used by the encryption algorithm.
+    Structure is documented below.
+    """
+    common_alphabet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+    Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
+    """
+    context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict']]
+    """
+    The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+    If the context is set but:
+    1.  there is no record present when transforming a given value or
+    2.  the field is not present when transforming a given value,
+    a default tweak will be used.
+    Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+    The tweak is constructed as a sequence of bytes in big endian byte order such that:
+    *   a 64 bit integer is encoded followed by a single byte of value 1
+    *   a string is encoded in UTF-8 format followed by a single byte of value 2
+    Structure is documented below.
+    """
+    custom_alphabet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
+    ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+    """
+    radix: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
+    """
+    surrogate_info_type: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict']]
+    """
+    The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
+    For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
+    This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
+    In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs:
@@ -8801,14 +8475,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "surrogate_info_type", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs:
@@ -8832,28 +8503,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict(TypedDict):
-        kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict']]
-        """
-        KMS wrapped key.
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
-        For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
-        Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-        Structure is documented below.
-        """
-        transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict']]
-        """
-        Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-        unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict']]
-        """
-        Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict(TypedDict):
+    kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict']]
+    """
+    KMS wrapped key.
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+    For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
+    Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+    Structure is documented below.
+    """
+    transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict']]
+    """
+    Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
+    unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict']]
+    """
+    Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs:
@@ -8922,19 +8590,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "unwrapped", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
-        crypto_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the KMS CryptoKey to use for unwrapping.
-        """
-        wrapped_key: pulumi.Input[_builtins.str]
-        """
-        The wrapped data crypto key.
-        A base64-encoded string.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the KMS CryptoKey to use for unwrapping.
+    """
+    wrapped_key: pulumi.Input[_builtins.str]
+    """
+    The wrapped data crypto key.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs:
@@ -8975,14 +8640,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "wrapped_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs:
@@ -9006,16 +8668,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A 128/192/256 bit key.
-        A base64-encoded string.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A 128/192/256 bit key.
+    A base64-encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs:
@@ -9043,23 +8702,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional version name for this InfoType.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs:
@@ -9117,15 +8773,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs:
@@ -9151,30 +8804,27 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict(TypedDict):
-        lower_bound_days: pulumi.Input[_builtins.int]
-        """
-        For example, -5 means shift date to at most 5 days back in the past.
-        """
-        upper_bound_days: pulumi.Input[_builtins.int]
-        """
-        Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
-        For example, 3 means shift date to at most 3 days into the future.
-        """
-        context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgsDict']]
-        """
-        Points to the field that contains the context, for example, an entity id.
-        If set, must also set cryptoKey. If set, shift will be consistent for the given context.
-        Structure is documented below.
-        """
-        crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict']]
-        """
-        Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict(TypedDict):
+    lower_bound_days: pulumi.Input[_builtins.int]
+    """
+    For example, -5 means shift date to at most 5 days back in the past.
+    """
+    upper_bound_days: pulumi.Input[_builtins.int]
+    """
+    Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
+    For example, 3 means shift date to at most 3 days into the future.
+    """
+    context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgsDict']]
+    """
+    Points to the field that contains the context, for example, an entity id.
+    If set, must also set cryptoKey. If set, shift will be consistent for the given context.
+    Structure is documented below.
+    """
+    crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict']]
+    """
+    Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs:
@@ -9253,14 +8903,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "crypto_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgs:
@@ -9284,28 +8931,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict(TypedDict):
-        kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict']]
-        """
-        KMS wrapped key.
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
-        For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
-        Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-        Structure is documented below.
-        """
-        transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict']]
-        """
-        Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-        unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict']]
-        """
-        Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict(TypedDict):
+    kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict']]
+    """
+    KMS wrapped key.
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+    For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
+    Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+    Structure is documented below.
+    """
+    transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict']]
+    """
+    Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
+    unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict']]
+    """
+    Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs:
@@ -9374,19 +9018,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "unwrapped", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
-        crypto_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the KMS CryptoKey to use for unwrapping.
-        """
-        wrapped_key: pulumi.Input[_builtins.str]
-        """
-        The wrapped data crypto key.
-        A base64-encoded string.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the KMS CryptoKey to use for unwrapping.
+    """
+    wrapped_key: pulumi.Input[_builtins.str]
+    """
+    The wrapped data crypto key.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs:
@@ -9427,14 +9068,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "wrapped_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs:
@@ -9458,16 +9096,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A 128/192/256 bit key.
-        A base64-encoded string.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A 128/192/256 bit key.
+    A base64-encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs:
@@ -9495,30 +9130,27 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict(TypedDict):
-        bucket_size: pulumi.Input[_builtins.float]
-        """
-        Size of each bucket (except for minimum and maximum buckets).
-        So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
-        Precision up to 2 decimals works.
-        """
-        lower_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict']
-        """
-        Lower bound value of buckets.
-        All values less than lower_bound are grouped together into a single bucket; for example if lower_bound = 10, then all values less than 10 are replaced with the value "-10".
-        The `lower_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
-        Structure is documented below.
-        """
-        upper_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict']
-        """
-        Upper bound value of buckets.
-        All values greater than upper_bound are grouped together into a single bucket; for example if upper_bound = 89, then all values greater than 89 are replaced with the value "89+".
-        The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict(TypedDict):
+    bucket_size: pulumi.Input[_builtins.float]
+    """
+    Size of each bucket (except for minimum and maximum buckets).
+    So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
+    Precision up to 2 decimals works.
+    """
+    lower_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict']
+    """
+    Lower bound value of buckets.
+    All values less than lower_bound are grouped together into a single bucket; for example if lower_bound = 10, then all values less than 10 are replaced with the value "-10".
+    The `lower_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
+    Structure is documented below.
+    """
+    upper_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict']
+    """
+    Upper bound value of buckets.
+    All values greater than upper_bound are grouped together into a single bucket; for example if upper_bound = 89, then all values greater than 89 are replaced with the value "89+".
+    The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs:
@@ -9588,18 +9220,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "upper_bound", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict(TypedDict):
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict(TypedDict):
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgs:
@@ -9640,18 +9269,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "integer_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict(TypedDict):
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict(TypedDict):
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgs:
@@ -9692,11 +9318,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "integer_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgs:
@@ -9704,16 +9327,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pass
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgsDict(TypedDict):
-        new_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict']
-        """
-        Replace each input value with a given value.
-        The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgsDict(TypedDict):
+    new_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict']
+    """
+    Replace each input value with a given value.
+    The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs:
@@ -9741,46 +9361,43 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "new_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict(TypedDict):
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean value.
-        """
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict(TypedDict):
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean value.
+    """
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+    Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs:
@@ -9925,22 +9542,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs:
@@ -9997,26 +9611,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs:
@@ -10089,15 +9700,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict(TypedDict):
-        word_list: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict']
-        """
-        A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict(TypedDict):
+    word_list: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict']
+    """
+    A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs:
@@ -10123,14 +9731,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "word_list", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict(TypedDict):
-        words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict(TypedDict):
+    words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs:
@@ -10154,11 +9759,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "words", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfigArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfigArgs:
@@ -10166,15 +9768,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pass
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgsDict(TypedDict):
-        part_to_extract: pulumi.Input[_builtins.str]
-        """
-        The part of the time to keep.
-        Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgsDict(TypedDict):
+    part_to_extract: pulumi.Input[_builtins.str]
+    """
+    The part of the time to keep.
+    Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgs:
@@ -10200,75 +9799,72 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "part_to_extract", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgsDict(TypedDict):
-        bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgsDict']]
-        """
-        Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
-        This can be used on data of type: number, long, string, timestamp.
-        If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
-        Structure is documented below.
-        """
-        character_mask_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgsDict']]
-        """
-        Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
-        Structure is documented below.
-        """
-        crypto_deterministic_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict']]
-        """
-        Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
-        Structure is documented below.
-        """
-        crypto_hash_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgsDict']]
-        """
-        Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
-        Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
-        Currently, only string and integer values can be hashed.
-        See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
-        Structure is documented below.
-        """
-        crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict']]
-        """
-        Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
-        Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
-        Structure is documented below.
-        """
-        date_shift_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgsDict']]
-        """
-        Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
-        Structure is documented below.
-        """
-        fixed_size_bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict']]
-        """
-        Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
-        The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
-        This can be used on data of type: double, long.
-        If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
-        Structure is documented below.
-        """
-        redact_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgsDict']]
-        """
-        Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
-        """
-        replace_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgsDict']]
-        """
-        Replace each input value with a given value.
-        Structure is documented below.
-        """
-        replace_dictionary_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict']]
-        """
-        Replace with a value randomly drawn (with replacement) from a dictionary.
-        Structure is documented below.
-        """
-        time_part_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgsDict']]
-        """
-        For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgsDict(TypedDict):
+    bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgsDict']]
+    """
+    Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
+    This can be used on data of type: number, long, string, timestamp.
+    If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
+    See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+    Structure is documented below.
+    """
+    character_mask_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgsDict']]
+    """
+    Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+    Structure is documented below.
+    """
+    crypto_deterministic_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict']]
+    """
+    Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
+    Structure is documented below.
+    """
+    crypto_hash_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgsDict']]
+    """
+    Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
+    Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
+    Currently, only string and integer values can be hashed.
+    See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+    Structure is documented below.
+    """
+    crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict']]
+    """
+    Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
+    Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+    Structure is documented below.
+    """
+    date_shift_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgsDict']]
+    """
+    Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+    Structure is documented below.
+    """
+    fixed_size_bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict']]
+    """
+    Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
+    The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
+    This can be used on data of type: double, long.
+    If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
+    See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+    Structure is documented below.
+    """
+    redact_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgsDict']]
+    """
+    Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+    """
+    replace_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgsDict']]
+    """
+    Replace each input value with a given value.
+    Structure is documented below.
+    """
+    replace_dictionary_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict']]
+    """
+    Replace with a value randomly drawn (with replacement) from a dictionary.
+    Structure is documented below.
+    """
+    time_part_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgsDict']]
+    """
+    For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs:
@@ -10495,16 +10091,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "time_part_config", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgsDict(TypedDict):
-        buckets: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketArgsDict']]]]
-        """
-        Set of buckets. Ranges must be non-overlapping.
-        Bucket is represented as a range, along with replacement values.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgsDict(TypedDict):
+    buckets: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketArgsDict']]]]
+    """
+    Set of buckets. Ranges must be non-overlapping.
+    Bucket is represented as a range, along with replacement values.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgs:
@@ -10533,28 +10126,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "buckets", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketArgsDict(TypedDict):
-        replacement_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict']
-        """
-        Replacement value for this bucket.
-        The `replacement_value` block must only contain one argument.
-        Structure is documented below.
-        """
-        max: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict']]
-        """
-        Upper bound of the range, exclusive; type must match min.
-        The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
-        Structure is documented below.
-        """
-        min: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict']]
-        """
-        Lower bound of the range, inclusive. Type should be the same as max if used.
-        The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketArgsDict(TypedDict):
+    replacement_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict']
+    """
+    Replacement value for this bucket.
+    The `replacement_value` block must only contain one argument.
+    Structure is documented below.
+    """
+    max: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict']]
+    """
+    Upper bound of the range, exclusive; type must match min.
+    The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+    Structure is documented below.
+    """
+    min: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict']]
+    """
+    Lower bound of the range, inclusive. Type should be the same as max if used.
+    The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketArgs:
@@ -10622,45 +10212,42 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "min", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict(TypedDict):
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean value.
-        """
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict(TypedDict):
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean value.
+    """
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs:
@@ -10803,22 +10390,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs:
@@ -10875,26 +10459,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs:
@@ -10967,45 +10548,42 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict(TypedDict):
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean value.
-        """
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict(TypedDict):
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean value.
+    """
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinArgs:
@@ -11148,22 +10726,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs:
@@ -11220,26 +10795,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs:
@@ -11312,45 +10884,42 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict(TypedDict):
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean value.
-        """
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict(TypedDict):
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean value.
+    """
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgs:
@@ -11493,22 +11062,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs:
@@ -11565,26 +11131,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs:
@@ -11657,31 +11220,28 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgsDict(TypedDict):
-        characters_to_ignores: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict']]]]
-        """
-        Characters to skip when doing de-identification of a value. These will be left alone and skipped.
-        Structure is documented below.
-        """
-        masking_character: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-        such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-        strings, and 0 for digits.
-        """
-        number_to_mask: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
-        If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
-        """
-        reverse_order: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
-        input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgsDict(TypedDict):
+    characters_to_ignores: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict']]]]
+    """
+    Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+    Structure is documented below.
+    """
+    masking_character: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
+    such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
+    strings, and 0 for digits.
+    """
+    number_to_mask: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+    If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
+    """
+    reverse_order: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+    input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs:
@@ -11764,19 +11324,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "reverse_order", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict(TypedDict):
-        characters_to_skip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
-        """
-        common_characters_to_ignore: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
-        Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict(TypedDict):
+    characters_to_skip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
+    """
+    common_characters_to_ignore: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
+    Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs:
@@ -11819,37 +11376,34 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "common_characters_to_ignore", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict(TypedDict):
-        context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict']]
-        """
-        A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
-        If the context is not set, plaintext would be used as is for encryption. If the context is set but:
-        1. there is no record present when transforming a given value or
-        2. the field is not present when transforming a given value,
-        plaintext would be used as is for encryption.
-        Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-        Structure is documented below.
-        """
-        crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict']]
-        """
-        The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
-        Structure is documented below.
-        """
-        surrogate_info_type: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict']]
-        """
-        The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
-        For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
-        This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
-        Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
-        In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-        *   reverse a surrogate that does not correspond to an actual identifier
-        *   be unable to parse the surrogate and result in an error
-        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict(TypedDict):
+    context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict']]
+    """
+    A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+    If the context is not set, plaintext would be used as is for encryption. If the context is set but:
+    1. there is no record present when transforming a given value or
+    2. the field is not present when transforming a given value,
+    plaintext would be used as is for encryption.
+    Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+    Structure is documented below.
+    """
+    crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict']]
+    """
+    The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
+    Structure is documented below.
+    """
+    surrogate_info_type: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict']]
+    """
+    The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+    For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
+    This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
+    Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
+    In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
+    *   reverse a surrogate that does not correspond to an actual identifier
+    *   be unable to parse the surrogate and result in an error
+    Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArgs:
@@ -11936,14 +11490,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "surrogate_info_type", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs:
@@ -11968,28 +11519,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict(TypedDict):
-        kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict']]
-        """
-        KMS wrapped key.
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
-        For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
-        Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-        Structure is documented below.
-        """
-        transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict']]
-        """
-        Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-        unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict']]
-        """
-        Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict(TypedDict):
+    kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict']]
+    """
+    KMS wrapped key.
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+    For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
+    Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+    Structure is documented below.
+    """
+    transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict']]
+    """
+    Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
+    unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict']]
+    """
+    Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs:
@@ -12058,19 +11606,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "unwrapped", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
-        crypto_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the KMS CryptoKey to use for unwrapping.
-        """
-        wrapped_key: pulumi.Input[_builtins.str]
-        """
-        The wrapped data crypto key.
-        A base64-encoded string.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the KMS CryptoKey to use for unwrapping.
+    """
+    wrapped_key: pulumi.Input[_builtins.str]
+    """
+    The wrapped data crypto key.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs:
@@ -12111,14 +11656,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "wrapped_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs:
@@ -12142,16 +11684,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A 128/192/256 bit key.
-        A base64-encoded string.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A 128/192/256 bit key.
+    A base64-encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs:
@@ -12179,23 +11718,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional version name for this InfoType.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs:
@@ -12254,15 +11790,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs:
@@ -12288,15 +11821,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgsDict(TypedDict):
-        crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict']]
-        """
-        The key used by the encryption function.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgsDict(TypedDict):
+    crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict']]
+    """
+    The key used by the encryption function.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgs:
@@ -12323,28 +11853,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "crypto_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict(TypedDict):
-        kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict']]
-        """
-        KMS wrapped key.
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
-        For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
-        Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-        Structure is documented below.
-        """
-        transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict']]
-        """
-        Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-        unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict']]
-        """
-        Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict(TypedDict):
+    kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict']]
+    """
+    KMS wrapped key.
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+    For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
+    Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+    Structure is documented below.
+    """
+    transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict']]
+    """
+    Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
+    unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict']]
+    """
+    Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs:
@@ -12413,19 +11940,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "unwrapped", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
-        crypto_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the KMS CryptoKey to use for unwrapping.
-        """
-        wrapped_key: pulumi.Input[_builtins.str]
-        """
-        The wrapped data crypto key.
-        A base64-encoded string.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the KMS CryptoKey to use for unwrapping.
+    """
+    wrapped_key: pulumi.Input[_builtins.str]
+    """
+    The wrapped data crypto key.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs:
@@ -12466,14 +11990,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "wrapped_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs:
@@ -12497,16 +12018,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A 128/192/256 bit key.
-        A base64-encoded string.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A 128/192/256 bit key.
+    A base64-encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs:
@@ -12534,50 +12052,47 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict(TypedDict):
-        common_alphabet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
-        Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
-        """
-        context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict']]
-        """
-        The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
-        If the context is set but:
-        1.  there is no record present when transforming a given value or
-        2.  the field is not present when transforming a given value,
-        a default tweak will be used.
-        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-        The tweak is constructed as a sequence of bytes in big endian byte order such that:
-        *   a 64 bit integer is encoded followed by a single byte of value 1
-        *   a string is encoded in UTF-8 format followed by a single byte of value 2
-        Structure is documented below.
-        """
-        crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict']]
-        """
-        The key used by the encryption algorithm.
-        Structure is documented below.
-        """
-        custom_alphabet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-        ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
-        """
-        radix: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
-        """
-        surrogate_info_type: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict']]
-        """
-        The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
-        For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
-        This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
-        In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict(TypedDict):
+    common_alphabet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+    Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
+    """
+    context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict']]
+    """
+    The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+    If the context is set but:
+    1.  there is no record present when transforming a given value or
+    2.  the field is not present when transforming a given value,
+    a default tweak will be used.
+    Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+    The tweak is constructed as a sequence of bytes in big endian byte order such that:
+    *   a 64 bit integer is encoded followed by a single byte of value 1
+    *   a string is encoded in UTF-8 format followed by a single byte of value 2
+    Structure is documented below.
+    """
+    crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict']]
+    """
+    The key used by the encryption algorithm.
+    Structure is documented below.
+    """
+    custom_alphabet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
+    ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+    """
+    radix: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
+    """
+    surrogate_info_type: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict']]
+    """
+    The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
+    For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
+    This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
+    In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs:
@@ -12714,14 +12229,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "surrogate_info_type", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs:
@@ -12746,28 +12258,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict(TypedDict):
-        kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict']]
-        """
-        KMS wrapped key.
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
-        For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
-        Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-        Structure is documented below.
-        """
-        transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict']]
-        """
-        Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-        unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict']]
-        """
-        Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict(TypedDict):
+    kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict']]
+    """
+    KMS wrapped key.
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+    For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
+    Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+    Structure is documented below.
+    """
+    transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict']]
+    """
+    Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
+    unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict']]
+    """
+    Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs:
@@ -12836,19 +12345,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "unwrapped", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
-        crypto_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the KMS CryptoKey to use for unwrapping.
-        """
-        wrapped_key: pulumi.Input[_builtins.str]
-        """
-        The wrapped data crypto key.
-        A base64-encoded string.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the KMS CryptoKey to use for unwrapping.
+    """
+    wrapped_key: pulumi.Input[_builtins.str]
+    """
+    The wrapped data crypto key.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs:
@@ -12889,14 +12395,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "wrapped_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs:
@@ -12920,16 +12423,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A 128/192/256 bit key.
-        A base64-encoded string.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A 128/192/256 bit key.
+    A base64-encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs:
@@ -12957,23 +12457,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional version name for this InfoType.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs:
@@ -13032,15 +12529,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs:
@@ -13066,30 +12560,27 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgsDict(TypedDict):
-        lower_bound_days: pulumi.Input[_builtins.int]
-        """
-        For example, -5 means shift date to at most 5 days back in the past.
-        """
-        upper_bound_days: pulumi.Input[_builtins.int]
-        """
-        Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
-        For example, 3 means shift date to at most 3 days into the future.
-        """
-        context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContextArgsDict']]
-        """
-        Points to the field that contains the context, for example, an entity id.
-        If set, must also set cryptoKey. If set, shift will be consistent for the given context.
-        Structure is documented below.
-        """
-        crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict']]
-        """
-        Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgsDict(TypedDict):
+    lower_bound_days: pulumi.Input[_builtins.int]
+    """
+    For example, -5 means shift date to at most 5 days back in the past.
+    """
+    upper_bound_days: pulumi.Input[_builtins.int]
+    """
+    Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
+    For example, 3 means shift date to at most 3 days into the future.
+    """
+    context: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContextArgsDict']]
+    """
+    Points to the field that contains the context, for example, an entity id.
+    If set, must also set cryptoKey. If set, shift will be consistent for the given context.
+    Structure is documented below.
+    """
+    crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict']]
+    """
+    Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgs:
@@ -13168,14 +12659,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "crypto_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContextArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContextArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContextArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContextArgs:
@@ -13200,28 +12688,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict(TypedDict):
-        kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict']]
-        """
-        KMS wrapped key.
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
-        For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
-        Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-        Structure is documented below.
-        """
-        transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict']]
-        """
-        Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-        unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict']]
-        """
-        Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict(TypedDict):
+    kms_wrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict']]
+    """
+    KMS wrapped key.
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+    For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key). Only one of this, `transient` or `unwrapped` must be specified.
+    Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+    Structure is documented below.
+    """
+    transient: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict']]
+    """
+    Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
+    unwrapped: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict']]
+    """
+    Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs:
@@ -13290,19 +12775,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "unwrapped", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
-        crypto_key_name: pulumi.Input[_builtins.str]
-        """
-        The resource name of the KMS CryptoKey to use for unwrapping.
-        """
-        wrapped_key: pulumi.Input[_builtins.str]
-        """
-        The wrapped data crypto key.
-        A base64-encoded string.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    The resource name of the KMS CryptoKey to use for unwrapping.
+    """
+    wrapped_key: pulumi.Input[_builtins.str]
+    """
+    The wrapped data crypto key.
+    A base64-encoded string.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs:
@@ -13343,14 +12825,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "wrapped_key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs:
@@ -13374,16 +12853,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        A 128/192/256 bit key.
-        A base64-encoded string.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    A 128/192/256 bit key.
+    A base64-encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs:
@@ -13411,30 +12887,27 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict(TypedDict):
-        bucket_size: pulumi.Input[_builtins.float]
-        """
-        Size of each bucket (except for minimum and maximum buckets).
-        So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
-        Precision up to 2 decimals works.
-        """
-        lower_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict']
-        """
-        Lower bound value of buckets.
-        All values less than lower_bound are grouped together into a single bucket; for example if lower_bound = 10, then all values less than 10 are replaced with the value "-10".
-        The `lower_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
-        Structure is documented below.
-        """
-        upper_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict']
-        """
-        Upper bound value of buckets.
-        All values greater than upper_bound are grouped together into a single bucket; for example if upper_bound = 89, then all values greater than 89 are replaced with the value "89+".
-        The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict(TypedDict):
+    bucket_size: pulumi.Input[_builtins.float]
+    """
+    Size of each bucket (except for minimum and maximum buckets).
+    So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
+    Precision up to 2 decimals works.
+    """
+    lower_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict']
+    """
+    Lower bound value of buckets.
+    All values less than lower_bound are grouped together into a single bucket; for example if lower_bound = 10, then all values less than 10 are replaced with the value "-10".
+    The `lower_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
+    Structure is documented below.
+    """
+    upper_bound: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict']
+    """
+    Upper bound value of buckets.
+    All values greater than upper_bound are grouped together into a single bucket; for example if upper_bound = 89, then all values greater than 89 are replaced with the value "89+".
+    The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs:
@@ -13504,45 +12977,42 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "upper_bound", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict(TypedDict):
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean value.
-        """
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgsDict(TypedDict):
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean value.
+    """
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundArgs:
@@ -13685,22 +13155,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgs:
@@ -13757,26 +13224,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValueArgs:
@@ -13849,45 +13313,42 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict(TypedDict):
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean value.
-        """
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgsDict(TypedDict):
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean value.
+    """
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundArgs:
@@ -14030,22 +13491,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgs:
@@ -14102,26 +13560,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValueArgs:
@@ -14194,11 +13649,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs:
@@ -14206,16 +13658,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pass
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgsDict(TypedDict):
-        new_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict']
-        """
-        Replace each input value with a given value.
-        The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgsDict(TypedDict):
+    new_value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict']
+    """
+    Replace each input value with a given value.
+    The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs:
@@ -14243,46 +13692,43 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "new_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict(TypedDict):
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean value.
-        """
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgsDict(TypedDict):
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean value.
+    """
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+    Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs:
@@ -14427,22 +13873,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs:
@@ -14499,26 +13942,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs:
@@ -14591,15 +14031,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict(TypedDict):
-        word_list: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict']]
-        """
-        A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict(TypedDict):
+    word_list: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict']]
+    """
+    A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArgs:
@@ -14626,14 +14063,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "word_list", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict(TypedDict):
-        words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict(TypedDict):
+    words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs:
@@ -14657,15 +14091,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "words", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgsDict(TypedDict):
-        part_to_extract: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The part of the time to keep.
-        Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgsDict(TypedDict):
+    part_to_extract: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The part of the time to keep.
+    Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgs:
@@ -14692,15 +14123,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         pulumi.set(self, "part_to_extract", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgsDict(TypedDict):
-        condition: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgsDict']]
-        """
-        A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgsDict(TypedDict):
+    condition: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgsDict']]
+    """
+    A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs:
@@ -14727,15 +14155,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         pulumi.set(self, "condition", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgsDict(TypedDict):
-        expressions: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgsDict']]
-        """
-        An expression, consisting of an operator and conditions.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgsDict(TypedDict):
+    expressions: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgsDict']]
+    """
+    An expression, consisting of an operator and conditions.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs:
@@ -14762,21 +14187,18 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         pulumi.set(self, "expressions", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgsDict(TypedDict):
-        conditions: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgsDict']]
-        """
-        Conditions to apply to the expression.
-        Structure is documented below.
-        """
-        logical_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The operator to apply to the result of conditions. Default and currently only supported value is AND.
-        Default value is `AND`.
-        Possible values are: `AND`.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgsDict(TypedDict):
+    conditions: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgsDict']]
+    """
+    Conditions to apply to the expression.
+    Structure is documented below.
+    """
+    logical_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The operator to apply to the result of conditions. Default and currently only supported value is AND.
+    Default value is `AND`.
+    Possible values are: `AND`.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs:
@@ -14823,15 +14245,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         pulumi.set(self, "logical_operator", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgsDict(TypedDict):
-        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgsDict']]]]
-        """
-        A collection of conditions.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgsDict(TypedDict):
+    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgsDict']]]]
+    """
+    A collection of conditions.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs:
@@ -14858,25 +14277,22 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         pulumi.set(self, "conditions", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgsDict(TypedDict):
-        field: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgsDict']
-        """
-        Field within the record this condition is evaluated against.
-        Structure is documented below.
-        """
-        operator: pulumi.Input[_builtins.str]
-        """
-        Operator used to compare the field or infoType to the value.
-        Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
-        """
-        value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgsDict']]
-        """
-        Value to compare against. [Mandatory, except for EXISTS tests.]
-        Structure is documented below.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgsDict(TypedDict):
+    field: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgsDict']
+    """
+    Field within the record this condition is evaluated against.
+    Structure is documented below.
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator used to compare the field or infoType to the value.
+    Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
+    """
+    value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgsDict']]
+    """
+    Value to compare against. [Mandatory, except for EXISTS tests.]
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs:
@@ -14937,14 +14353,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs:
@@ -14969,45 +14382,42 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgsDict(TypedDict):
-        boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean value.
-        """
-        date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgsDict']]
-        """
-        Represents a whole or partial calendar date.
-        Structure is documented below.
-        """
-        day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents a day of the week.
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        """
-        float_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A float value.
-        """
-        integer_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An integer value (int64 format)
-        """
-        string_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string value.
-        """
-        time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgsDict']]
-        """
-        Represents a time of day.
-        Structure is documented below.
-        """
-        timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgsDict(TypedDict):
+    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean value.
+    """
+    date_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgsDict']]
+    """
+    Represents a whole or partial calendar date.
+    Structure is documented below.
+    """
+    day_of_week_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents a day of the week.
+    Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+    """
+    float_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A float value.
+    """
+    integer_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An integer value (int64 format)
+    """
+    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string value.
+    """
+    time_value: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgsDict']]
+    """
+    Represents a time of day.
+    Structure is documented below.
+    """
+    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs:
@@ -15150,22 +14560,19 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         pulumi.set(self, "timestamp_value", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        """
-        month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-        """
-        year: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs:
@@ -15222,26 +14629,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         pulumi.set(self, "year", value)
 
 
-if not MYPY:
-    class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgsDict(TypedDict):
-        hours: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        """
-        minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minutes of hour of day. Must be from 0 to 59.
-        """
-        nanos: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        """
-        seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-        """
-elif False:
-    PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
 
 @pulumi.input_type
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs:
@@ -15314,29 +14718,26 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         pulumi.set(self, "seconds", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigActionArgsDict(TypedDict):
-        export_data: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionExportDataArgsDict']]
-        """
-        Export data profiles into a provided location
-        Structure is documented below.
-        """
-        pub_sub_notification: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationArgsDict']]
-        """
-        Publish a message into the Pub/Sub topic.
-        Structure is documented below.
-        """
-        publish_to_dataplex_catalog: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionPublishToDataplexCatalogArgsDict']]
-        """
-        Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
-        """
-        tag_resources: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesArgsDict']]
-        """
-        Tag the profiled resources with the specified tag values.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigActionArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigActionArgsDict(TypedDict):
+    export_data: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionExportDataArgsDict']]
+    """
+    Export data profiles into a provided location
+    Structure is documented below.
+    """
+    pub_sub_notification: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationArgsDict']]
+    """
+    Publish a message into the Pub/Sub topic.
+    Structure is documented below.
+    """
+    publish_to_dataplex_catalog: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionPublishToDataplexCatalogArgsDict']]
+    """
+    Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
+    """
+    tag_resources: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesArgsDict']]
+    """
+    Tag the profiled resources with the specified tag values.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigActionArgs:
@@ -15415,15 +14816,12 @@ class PreventionDiscoveryConfigActionArgs:
         pulumi.set(self, "tag_resources", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigActionExportDataArgsDict(TypedDict):
-        profile_table: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionExportDataProfileTableArgsDict']]
-        """
-        Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigActionExportDataArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigActionExportDataArgsDict(TypedDict):
+    profile_table: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionExportDataProfileTableArgsDict']]
+    """
+    Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigActionExportDataArgs:
@@ -15450,22 +14848,19 @@ class PreventionDiscoveryConfigActionExportDataArgs:
         pulumi.set(self, "profile_table", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigActionExportDataProfileTableArgsDict(TypedDict):
-        dataset_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Dataset Id of the table
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Google Cloud Platform project ID of the project containing the table. If omitted, the project ID is inferred from the API call.
-        """
-        table_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the table
-        """
-elif False:
-    PreventionDiscoveryConfigActionExportDataProfileTableArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigActionExportDataProfileTableArgsDict(TypedDict):
+    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Dataset Id of the table
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Google Cloud Platform project ID of the project containing the table. If omitted, the project ID is inferred from the API call.
+    """
+    table_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the table
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigActionExportDataProfileTableArgs:
@@ -15522,29 +14917,26 @@ class PreventionDiscoveryConfigActionExportDataProfileTableArgs:
         pulumi.set(self, "table_id", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigActionPubSubNotificationArgsDict(TypedDict):
-        detail_of_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How much data to include in the pub/sub message.
-        Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
-        """
-        event: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
-        Possible values are: `NEW_PROFILE`, `CHANGED_PROFILE`, `SCORE_INCREASED`, `ERROR_CHANGED`.
-        """
-        pubsub_condition: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgsDict']]
-        """
-        Conditions for triggering pubsub
-        Structure is documented below.
-        """
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
-        """
-elif False:
-    PreventionDiscoveryConfigActionPubSubNotificationArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigActionPubSubNotificationArgsDict(TypedDict):
+    detail_of_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How much data to include in the pub/sub message.
+    Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
+    """
+    event: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
+    Possible values are: `NEW_PROFILE`, `CHANGED_PROFILE`, `SCORE_INCREASED`, `ERROR_CHANGED`.
+    """
+    pubsub_condition: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgsDict']]
+    """
+    Conditions for triggering pubsub
+    Structure is documented below.
+    """
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigActionPubSubNotificationArgs:
@@ -15623,15 +15015,12 @@ class PreventionDiscoveryConfigActionPubSubNotificationArgs:
         pulumi.set(self, "topic", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgsDict(TypedDict):
-        expressions: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsArgsDict']]
-        """
-        An expression
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgsDict(TypedDict):
+    expressions: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsArgsDict']]
+    """
+    An expression
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgs:
@@ -15658,20 +15047,17 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgs:
         pulumi.set(self, "expressions", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsArgsDict(TypedDict):
-        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgsDict']]]]
-        """
-        Conditions to apply to the expression
-        Structure is documented below.
-        """
-        logical_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The operator to apply to the collection of conditions
-        Possible values are: `OR`, `AND`.
-        """
-elif False:
-    PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsArgsDict(TypedDict):
+    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgsDict']]]]
+    """
+    Conditions to apply to the expression
+    Structure is documented below.
+    """
+    logical_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The operator to apply to the collection of conditions
+    Possible values are: `OR`, `AND`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsArgs:
@@ -15716,20 +15102,17 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
         pulumi.set(self, "logical_operator", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgsDict(TypedDict):
-        minimum_risk_score: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum data risk score that triggers the condition.
-        Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
-        """
-        minimum_sensitivity_score: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The minimum sensitivity level that triggers the condition.
-        Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
-        """
-elif False:
-    PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgsDict(TypedDict):
+    minimum_risk_score: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum data risk score that triggers the condition.
+    Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
+    """
+    minimum_sensitivity_score: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum sensitivity level that triggers the condition.
+    Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgs:
@@ -15774,11 +15157,8 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
         pulumi.set(self, "minimum_sensitivity_score", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigActionPublishToDataplexCatalogArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDiscoveryConfigActionPublishToDataplexCatalogArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigActionPublishToDataplexCatalogArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs:
@@ -15786,24 +15166,21 @@ class PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs:
         pass
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigActionTagResourcesArgsDict(TypedDict):
-        lower_data_risk_to_low: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether applying a tag to a resource should lower the risk of the profile for that resource. For example, in conjunction with an [IAM deny policy](https://cloud.google.com/iam/docs/deny-overview), you can deny all principals a permission if a tag value is present, mitigating the risk of the resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the constituent column data profiles.
-        """
-        profile_generations_to_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The profile generations for which the tag should be attached to resources. If you attach a tag to only new profiles, then if the sensitivity score of a profile subsequently changes, its tag doesn't change. By default, this field includes only new profiles. To include both new and updated profiles for tagging, this field should explicitly include both `PROFILE_GENERATION_NEW` and `PROFILE_GENERATION_UPDATE`.
-        Each value may be one of: `PROFILE_GENERATION_NEW`, `PROFILE_GENERATION_UPDATE`.
-        """
-        tag_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionArgsDict']]]]
-        """
-        The tags to associate with different conditions.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigActionTagResourcesArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigActionTagResourcesArgsDict(TypedDict):
+    lower_data_risk_to_low: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether applying a tag to a resource should lower the risk of the profile for that resource. For example, in conjunction with an [IAM deny policy](https://cloud.google.com/iam/docs/deny-overview), you can deny all principals a permission if a tag value is present, mitigating the risk of the resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the constituent column data profiles.
+    """
+    profile_generations_to_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The profile generations for which the tag should be attached to resources. If you attach a tag to only new profiles, then if the sensitivity score of a profile subsequently changes, its tag doesn't change. By default, this field includes only new profiles. To include both new and updated profiles for tagging, this field should explicitly include both `PROFILE_GENERATION_NEW` and `PROFILE_GENERATION_UPDATE`.
+    Each value may be one of: `PROFILE_GENERATION_NEW`, `PROFILE_GENERATION_UPDATE`.
+    """
+    tag_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionArgsDict']]]]
+    """
+    The tags to associate with different conditions.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigActionTagResourcesArgs:
@@ -15864,20 +15241,17 @@ class PreventionDiscoveryConfigActionTagResourcesArgs:
         pulumi.set(self, "tag_conditions", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigActionTagResourcesTagConditionArgsDict(TypedDict):
-        sensitivity_score: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgsDict']]
-        """
-        Conditions attaching the tag to a resource on its profile having this sensitivity score.
-        Structure is documented below.
-        """
-        tag: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgsDict']]
-        """
-        The tag value to attach to resources.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigActionTagResourcesTagConditionArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigActionTagResourcesTagConditionArgsDict(TypedDict):
+    sensitivity_score: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgsDict']]
+    """
+    Conditions attaching the tag to a resource on its profile having this sensitivity score.
+    Structure is documented below.
+    """
+    tag: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgsDict']]
+    """
+    The tag value to attach to resources.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigActionTagResourcesTagConditionArgs:
@@ -15922,15 +15296,12 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionArgs:
         pulumi.set(self, "tag", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
-        """
-elif False:
-    PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`, `SENSITIVITY_UNKNOWN`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgs:
@@ -15956,14 +15327,11 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArg
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgsDict(TypedDict):
-        namespaced_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespaced name for the tag value to attach to resources. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod".
-        """
-elif False:
-    PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgsDict(TypedDict):
+    namespaced_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespaced name for the tag value to attach to resources. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod".
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgs:
@@ -15988,18 +15356,15 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgs:
         pulumi.set(self, "namespaced_value", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigErrorArgsDict(TypedDict):
-        details: NotRequired[pulumi.Input['PreventionDiscoveryConfigErrorDetailsArgsDict']]
-        """
-        A list of messages that carry the error details.
-        """
-        timestamp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
-        """
-elif False:
-    PreventionDiscoveryConfigErrorArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigErrorArgsDict(TypedDict):
+    details: NotRequired[pulumi.Input['PreventionDiscoveryConfigErrorDetailsArgsDict']]
+    """
+    A list of messages that carry the error details.
+    """
+    timestamp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigErrorArgs:
@@ -16040,22 +15405,19 @@ class PreventionDiscoveryConfigErrorArgs:
         pulumi.set(self, "timestamp", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigErrorDetailsArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]
-        """
-        A list of messages that carry the error details.
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-elif False:
-    PreventionDiscoveryConfigErrorDetailsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigErrorDetailsArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The status code, which should be an enum value of google.rpc.Code.
+    """
+    details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]
+    """
+    A list of messages that carry the error details.
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigErrorDetailsArgs:
@@ -16112,19 +15474,16 @@ class PreventionDiscoveryConfigErrorDetailsArgs:
         pulumi.set(self, "message", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigOrgConfigArgsDict(TypedDict):
-        location: NotRequired[pulumi.Input['PreventionDiscoveryConfigOrgConfigLocationArgsDict']]
-        """
-        The data to scan folder org or project
-        Structure is documented below.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the cloud DLP API must be enabled.
-        """
-elif False:
-    PreventionDiscoveryConfigOrgConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigOrgConfigArgsDict(TypedDict):
+    location: NotRequired[pulumi.Input['PreventionDiscoveryConfigOrgConfigLocationArgsDict']]
+    """
+    The data to scan folder org or project
+    Structure is documented below.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the cloud DLP API must be enabled.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigOrgConfigArgs:
@@ -16167,18 +15526,15 @@ class PreventionDiscoveryConfigOrgConfigArgs:
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigOrgConfigLocationArgsDict(TypedDict):
-        folder_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID for the folder within an organization to scan
-        """
-        organization_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of an organization to scan
-        """
-elif False:
-    PreventionDiscoveryConfigOrgConfigLocationArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigOrgConfigLocationArgsDict(TypedDict):
+    folder_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID for the folder within an organization to scan
+    """
+    organization_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of an organization to scan
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigOrgConfigLocationArgs:
@@ -16219,15 +15575,12 @@ class PreventionDiscoveryConfigOrgConfigLocationArgs:
         pulumi.set(self, "organization_id", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigOtherCloudStartingLocationArgsDict(TypedDict):
-        aws_location: NotRequired[pulumi.Input['PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocationArgsDict']]
-        """
-        A nested object resource.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigOtherCloudStartingLocationArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigOtherCloudStartingLocationArgsDict(TypedDict):
+    aws_location: NotRequired[pulumi.Input['PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocationArgsDict']]
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigOtherCloudStartingLocationArgs:
@@ -16254,18 +15607,15 @@ class PreventionDiscoveryConfigOtherCloudStartingLocationArgs:
         pulumi.set(self, "aws_location", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocationArgsDict(TypedDict):
-        account_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The AWS account ID that this discovery config applies to. Within an organization, you can find the AWS account ID inside an AWS account ARN. Example: arn:<partition>:organizations::<management-account-id>:account/<organization-id>/<account-id>
-        """
-        all_asset_inventory_assets: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        All AWS assets stored in Asset Inventory that didn't match other AWS discovery configs.
-        """
-elif False:
-    PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocationArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocationArgsDict(TypedDict):
+    account_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The AWS account ID that this discovery config applies to. Within an organization, you can find the AWS account ID inside an AWS account ARN. Example: arn:<partition>:organizations::<management-account-id>:account/<organization-id>/<account-id>
+    """
+    all_asset_inventory_assets: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    All AWS assets stored in Asset Inventory that didn't match other AWS discovery configs.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocationArgs:
@@ -16306,34 +15656,31 @@ class PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocationArgs:
         pulumi.set(self, "all_asset_inventory_assets", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetArgsDict(TypedDict):
-        big_query_target: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetArgsDict']]
-        """
-        BigQuery target for Discovery. The first target to match a table will be the one applied.
-        Structure is documented below.
-        """
-        cloud_sql_target: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetArgsDict']]
-        """
-        Cloud SQL target for Discovery. The first target to match a table will be the one applied.
-        Structure is documented below.
-        """
-        cloud_storage_target: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetArgsDict']]
-        """
-        Cloud Storage target for Discovery. The first target to match a bucket will be the one applied.
-        Structure is documented below.
-        """
-        other_cloud_target: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetArgsDict']]
-        """
-        Other clouds target for discovery. The first target to match a resource will be the one applied.
-        Structure is documented below.
-        """
-        secrets_target: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetSecretsTargetArgsDict']]
-        """
-        Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetArgsDict(TypedDict):
+    big_query_target: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetArgsDict']]
+    """
+    BigQuery target for Discovery. The first target to match a table will be the one applied.
+    Structure is documented below.
+    """
+    cloud_sql_target: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetArgsDict']]
+    """
+    Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+    Structure is documented below.
+    """
+    cloud_storage_target: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetArgsDict']]
+    """
+    Cloud Storage target for Discovery. The first target to match a bucket will be the one applied.
+    Structure is documented below.
+    """
+    other_cloud_target: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetArgsDict']]
+    """
+    Other clouds target for discovery. The first target to match a resource will be the one applied.
+    Structure is documented below.
+    """
+    secrets_target: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetSecretsTargetArgsDict']]
+    """
+    Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetArgs:
@@ -16430,29 +15777,26 @@ class PreventionDiscoveryConfigTargetArgs:
         pulumi.set(self, "secrets_target", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetArgsDict(TypedDict):
-        cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict']]
-        """
-        How often and when to update profiles. New tables that match both the fiter and conditions are scanned as quickly as possible depending on system capacity.
-        Structure is documented below.
-        """
-        conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgsDict']]
-        """
-        In addition to matching the filter, these conditions must be true before a profile is generated
-        Structure is documented below.
-        """
-        disabled: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetDisabledArgsDict']]
-        """
-        Tables that match this filter will not have profiles created.
-        """
-        filter: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterArgsDict']]
-        """
-        Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetArgsDict(TypedDict):
+    cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict']]
+    """
+    How often and when to update profiles. New tables that match both the fiter and conditions are scanned as quickly as possible depending on system capacity.
+    Structure is documented below.
+    """
+    conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgsDict']]
+    """
+    In addition to matching the filter, these conditions must be true before a profile is generated
+    Structure is documented below.
+    """
+    disabled: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetDisabledArgsDict']]
+    """
+    Tables that match this filter will not have profiles created.
+    """
+    filter: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterArgsDict']]
+    """
+    Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetArgs:
@@ -16531,25 +15875,22 @@ class PreventionDiscoveryConfigTargetBigQueryTargetArgs:
         pulumi.set(self, "filter", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict(TypedDict):
-        inspect_template_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgsDict']]
-        """
-        Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
-        Structure is documented below.
-        """
-        schema_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgsDict']]
-        """
-        Governs when to update data profiles when a schema is modified
-        Structure is documented below.
-        """
-        table_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgsDict']]
-        """
-        Governs when to update profile when a table is modified.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict(TypedDict):
+    inspect_template_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgsDict']]
+    """
+    Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+    Structure is documented below.
+    """
+    schema_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgsDict']]
+    """
+    Governs when to update data profiles when a schema is modified
+    Structure is documented below.
+    """
+    table_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgsDict']]
+    """
+    Governs when to update profile when a table is modified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs:
@@ -16612,15 +15953,12 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs:
         pulumi.set(self, "table_modified_cadence", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgsDict(TypedDict):
-        frequency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How frequently data profiles can be updated when the template is modified. Defaults to never.
-        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgsDict(TypedDict):
+    frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How frequently data profiles can be updated when the template is modified. Defaults to never.
+    Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs:
@@ -16647,20 +15985,17 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifie
         pulumi.set(self, "frequency", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgsDict(TypedDict):
-        frequency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
-        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-        """
-        types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The types of schema modifications to consider. Defaults to NEW_COLUMNS.
-        Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgsDict(TypedDict):
+    frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
+    Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+    """
+    types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+    Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs:
@@ -16705,20 +16040,17 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceA
         pulumi.set(self, "types", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgsDict(TypedDict):
-        frequency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How frequently data profiles can be updated when tables are modified. Defaults to never.
-        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-        """
-        types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP
-        Each value may be one of: `TABLE_MODIFIED_TIMESTAMP`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgsDict(TypedDict):
+    frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How frequently data profiles can be updated when tables are modified. Defaults to never.
+    Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+    """
+    types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP
+    Each value may be one of: `TABLE_MODIFIED_TIMESTAMP`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs:
@@ -16763,29 +16095,26 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceAr
         pulumi.set(self, "types", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgsDict(TypedDict):
-        created_after: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
-        """
-        or_conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditionsArgsDict']]
-        """
-        At least one of the conditions must be true for a table to be scanned.
-        Structure is documented below.
-        """
-        type_collection: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Restrict discovery to categories of table types. Currently view, materialized view, snapshot and non-biglake external tables are supported.
-        Possible values are: `BIG_QUERY_COLLECTION_ALL_TYPES`, `BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES`.
-        """
-        types: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgsDict']]
-        """
-        Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
-        Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgsDict(TypedDict):
+    created_after: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+    """
+    or_conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditionsArgsDict']]
+    """
+    At least one of the conditions must be true for a table to be scanned.
+    Structure is documented below.
+    """
+    type_collection: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Restrict discovery to categories of table types. Currently view, materialized view, snapshot and non-biglake external tables are supported.
+    Possible values are: `BIG_QUERY_COLLECTION_ALL_TYPES`, `BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES`.
+    """
+    types: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgsDict']]
+    """
+    Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+    Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs:
@@ -16864,18 +16193,15 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs:
         pulumi.set(self, "types", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditionsArgsDict(TypedDict):
-        min_age: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Duration format. The minimum age a table must have before Cloud DLP can profile it. Value greater than 1.
-        """
-        min_row_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of rows that should be present before Cloud DLP profiles as a table.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditionsArgsDict(TypedDict):
+    min_age: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Duration format. The minimum age a table must have before Cloud DLP can profile it. Value greater than 1.
+    """
+    min_row_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of rows that should be present before Cloud DLP profiles as a table.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditionsArgs:
@@ -16916,15 +16242,12 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditionsArgs:
         pulumi.set(self, "min_row_count", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgsDict(TypedDict):
-        types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of BiqQuery table types
-        Each value may be one of: `BIG_QUERY_TABLE_TYPE_TABLE`, `BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgsDict(TypedDict):
+    types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of BiqQuery table types
+    Each value may be one of: `BIG_QUERY_TABLE_TYPE_TABLE`, `BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgs:
@@ -16951,11 +16274,8 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgs:
         pulumi.set(self, "types", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetDisabledArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetDisabledArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetDisabledArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetDisabledArgs:
@@ -16963,24 +16283,21 @@ class PreventionDiscoveryConfigTargetBigQueryTargetDisabledArgs:
         pass
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetFilterArgsDict(TypedDict):
-        other_tables: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgsDict']]
-        """
-        Catch-all. This should always be the last filter in the list because anything above it will apply first.
-        """
-        table_reference: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgsDict']]
-        """
-        The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
-        Structure is documented below.
-        """
-        tables: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgsDict']]
-        """
-        A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetFilterArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetFilterArgsDict(TypedDict):
+    other_tables: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgsDict']]
+    """
+    Catch-all. This should always be the last filter in the list because anything above it will apply first.
+    """
+    table_reference: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgsDict']]
+    """
+    The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
+    Structure is documented below.
+    """
+    tables: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgsDict']]
+    """
+    A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterArgs:
@@ -17041,11 +16358,8 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterArgs:
         pulumi.set(self, "tables", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgs:
@@ -17053,18 +16367,15 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgs:
         pass
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        Dataset ID of the table.
-        """
-        table_id: pulumi.Input[_builtins.str]
-        """
-        Name of the table.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    Dataset ID of the table.
+    """
+    table_id: pulumi.Input[_builtins.str]
+    """
+    Name of the table.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs:
@@ -17103,15 +16414,12 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs:
         pulumi.set(self, "table_id", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgsDict(TypedDict):
-        include_regexes: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgsDict']]
-        """
-        A collection of regular expressions to match a BQ table against.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgsDict(TypedDict):
+    include_regexes: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgsDict']]
+    """
+    A collection of regular expressions to match a BQ table against.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgs:
@@ -17138,15 +16446,12 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgs:
         pulumi.set(self, "include_regexes", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgsDict(TypedDict):
-        patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgsDict']]]]
-        """
-        The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgsDict(TypedDict):
+    patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgsDict']]]]
+    """
+    The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgs:
@@ -17173,22 +16478,19 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArg
         pulumi.set(self, "patterns", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgsDict(TypedDict):
-        dataset_id_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        if unset, this property matches all datasets
-        """
-        project_id_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
-        """
-        table_id_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        if unset, this property matches all tables
-        """
-elif False:
-    PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgsDict(TypedDict):
+    dataset_id_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    if unset, this property matches all datasets
+    """
+    project_id_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+    """
+    table_id_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    if unset, this property matches all tables
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs:
@@ -17245,29 +16547,26 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPat
         pulumi.set(self, "table_id_regex", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudSqlTargetArgsDict(TypedDict):
-        filter: pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgsDict']
-        """
-        Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
-        Structure is documented below.
-        """
-        conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgsDict']]
-        """
-        In addition to matching the filter, these conditions must be true before a profile is generated.
-        Structure is documented below.
-        """
-        disabled: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgsDict']]
-        """
-        Disable profiling for database resources that match this filter.
-        """
-        generation_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgsDict']]
-        """
-        How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudSqlTargetArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudSqlTargetArgsDict(TypedDict):
+    filter: pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgsDict']
+    """
+    Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
+    Structure is documented below.
+    """
+    conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgsDict']]
+    """
+    In addition to matching the filter, these conditions must be true before a profile is generated.
+    Structure is documented below.
+    """
+    disabled: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgsDict']]
+    """
+    Disable profiling for database resources that match this filter.
+    """
+    generation_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgsDict']]
+    """
+    How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetArgs:
@@ -17345,20 +16644,17 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetArgs:
         pulumi.set(self, "generation_cadence", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgsDict(TypedDict):
-        database_engines: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Database engines that should be profiled. Optional. Defaults to ALL_SUPPORTED_DATABASE_ENGINES if unspecified.
-        Each value may be one of: `ALL_SUPPORTED_DATABASE_ENGINES`, `MYSQL`, `POSTGRES`.
-        """
-        types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
-        Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgsDict(TypedDict):
+    database_engines: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Database engines that should be profiled. Optional. Defaults to ALL_SUPPORTED_DATABASE_ENGINES if unspecified.
+    Each value may be one of: `ALL_SUPPORTED_DATABASE_ENGINES`, `MYSQL`, `POSTGRES`.
+    """
+    types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+    Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgs:
@@ -17403,11 +16699,8 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgs:
         pulumi.set(self, "types", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgs:
@@ -17415,24 +16708,21 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgs:
         pass
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgsDict(TypedDict):
-        collection: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgsDict']]
-        """
-        A collection of resources for this filter to apply to.
-        Structure is documented below.
-        """
-        database_resource_reference: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgsDict']]
-        """
-        The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
-        Structure is documented below.
-        """
-        others: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgsDict']]
-        """
-        Match discovery resources not covered by any other filter.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgsDict(TypedDict):
+    collection: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgsDict']]
+    """
+    A collection of resources for this filter to apply to.
+    Structure is documented below.
+    """
+    database_resource_reference: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgsDict']]
+    """
+    The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+    Structure is documented below.
+    """
+    others: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgsDict']]
+    """
+    Match discovery resources not covered by any other filter.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs:
@@ -17493,15 +16783,12 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs:
         pulumi.set(self, "others", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgsDict(TypedDict):
-        include_regexes: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgsDict']]
-        """
-        A collection of regular expressions to match a resource against.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgsDict(TypedDict):
+    include_regexes: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgsDict']]
+    """
+    A collection of regular expressions to match a resource against.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs:
@@ -17528,15 +16815,12 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs:
         pulumi.set(self, "include_regexes", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgsDict(TypedDict):
-        patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgsDict']]]]
-        """
-        The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgsDict(TypedDict):
+    patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgsDict']]]]
+    """
+    The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs:
@@ -17563,26 +16847,23 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexe
         pulumi.set(self, "patterns", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgsDict(TypedDict):
-        database_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Regex to test the database name against. If empty, all databases match.
-        """
-        database_resource_name_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Regex to test the database resource's name against. An example of a database resource name is a table's name. Other database resource names like view names could be included in the future. If empty, all database resources match.'
-        """
-        instance_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Regex to test the instance name against. If empty, all instances match.
-        """
-        project_id_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgsDict(TypedDict):
+    database_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Regex to test the database name against. If empty, all databases match.
+    """
+    database_resource_name_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Regex to test the database resource's name against. An example of a database resource name is a table's name. Other database resource names like view names could be included in the future. If empty, all database resources match.'
+    """
+    instance_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Regex to test the instance name against. If empty, all instances match.
+    """
+    project_id_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs:
@@ -17655,26 +16936,23 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexe
         pulumi.set(self, "project_id_regex", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        Required. Name of a database within the instance.
-        """
-        database_resource: pulumi.Input[_builtins.str]
-        """
-        Required. Name of a database resource, for example, a table within the database.
-        """
-        instance: pulumi.Input[_builtins.str]
-        """
-        Required. The instance where this resource is located. For example: Cloud SQL instance ID.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        Required. If within a project-level config, then this must match the config's project ID.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    Required. Name of a database within the instance.
+    """
+    database_resource: pulumi.Input[_builtins.str]
+    """
+    Required. Name of a database resource, for example, a table within the database.
+    """
+    instance: pulumi.Input[_builtins.str]
+    """
+    Required. The instance where this resource is located. For example: Cloud SQL instance ID.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    Required. If within a project-level config, then this must match the config's project ID.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgs:
@@ -17743,11 +17021,8 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferen
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs:
@@ -17755,25 +17030,22 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs:
         pass
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgsDict(TypedDict):
-        inspect_template_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict']]
-        """
-        Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
-        Structure is documented below.
-        """
-        refresh_frequency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never.
-        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-        """
-        schema_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgsDict']]
-        """
-        Governs when to update data profiles when a schema is modified
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgsDict(TypedDict):
+    inspect_template_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict']]
+    """
+    Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+    Structure is documented below.
+    """
+    refresh_frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never.
+    Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+    """
+    schema_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgsDict']]
+    """
+    Governs when to update data profiles when a schema is modified
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs:
@@ -17836,15 +17108,12 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs:
         pulumi.set(self, "schema_modified_cadence", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict(TypedDict):
-        frequency: pulumi.Input[_builtins.str]
-        """
-        How frequently data profiles can be updated when the template is modified. Defaults to never.
-        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict(TypedDict):
+    frequency: pulumi.Input[_builtins.str]
+    """
+    How frequently data profiles can be updated when the template is modified. Defaults to never.
+    Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs:
@@ -17870,20 +17139,17 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTempl
         pulumi.set(self, "frequency", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgsDict(TypedDict):
-        frequency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
-        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-        """
-        types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The types of schema modifications to consider. Defaults to NEW_COLUMNS.
-        Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgsDict(TypedDict):
+    frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
+    Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+    """
+    types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+    Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs:
@@ -17928,29 +17194,26 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifi
         pulumi.set(self, "types", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetArgsDict(TypedDict):
-        filter: pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgsDict']
-        """
-        The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
-        Structure is documented below.
-        """
-        conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgsDict']]
-        """
-        In addition to matching the filter, these conditions must be true before a profile is generated.
-        Structure is documented below.
-        """
-        disabled: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgsDict']]
-        """
-        Disable profiling for buckets that match this filter.
-        """
-        generation_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgsDict']]
-        """
-        How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetArgsDict(TypedDict):
+    filter: pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgsDict']
+    """
+    The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+    Structure is documented below.
+    """
+    conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgsDict']]
+    """
+    In addition to matching the filter, these conditions must be true before a profile is generated.
+    Structure is documented below.
+    """
+    disabled: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgsDict']]
+    """
+    Disable profiling for buckets that match this filter.
+    """
+    generation_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgsDict']]
+    """
+    How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetArgs:
@@ -18028,23 +17291,20 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetArgs:
         pulumi.set(self, "generation_cadence", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgsDict(TypedDict):
-        cloud_storage_conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgsDict']]
-        """
-        Cloud Storage conditions.
-        Structure is documented below.
-        """
-        created_after: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
-        """
-        min_age: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgsDict(TypedDict):
+    cloud_storage_conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgsDict']]
+    """
+    Cloud Storage conditions.
+    Structure is documented below.
+    """
+    created_after: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
+    """
+    min_age: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgs:
@@ -18103,20 +17363,17 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgs:
         pulumi.set(self, "min_age", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgsDict(TypedDict):
-        included_bucket_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Only objects with the specified attributes will be scanned. Defaults to [ALL_SUPPORTED_BUCKETS] if unset.
-        Each value may be one of: `ALL_SUPPORTED_BUCKETS`, `AUTOCLASS_DISABLED`, `AUTOCLASS_ENABLED`.
-        """
-        included_object_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Only objects with the specified attributes will be scanned. If an object has one of the specified attributes but is inside an excluded bucket, it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A profile will be created even if no objects match the included_object_attributes.
-        Each value may be one of: `ALL_SUPPORTED_OBJECTS`, `STANDARD`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `REGIONAL`, `MULTI_REGIONAL`, `DURABLE_REDUCED_AVAILABILITY`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgsDict(TypedDict):
+    included_bucket_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Only objects with the specified attributes will be scanned. Defaults to [ALL_SUPPORTED_BUCKETS] if unset.
+    Each value may be one of: `ALL_SUPPORTED_BUCKETS`, `AUTOCLASS_DISABLED`, `AUTOCLASS_ENABLED`.
+    """
+    included_object_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Only objects with the specified attributes will be scanned. If an object has one of the specified attributes but is inside an excluded bucket, it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A profile will be created even if no objects match the included_object_attributes.
+    Each value may be one of: `ALL_SUPPORTED_OBJECTS`, `STANDARD`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `REGIONAL`, `MULTI_REGIONAL`, `DURABLE_REDUCED_AVAILABILITY`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgs:
@@ -18161,11 +17418,8 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageCon
         pulumi.set(self, "included_object_attributes", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgs:
@@ -18173,24 +17427,21 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgs:
         pass
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgsDict(TypedDict):
-        cloud_storage_resource_reference: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgsDict']]
-        """
-        The bucket to scan. Targets including this can only include one target (the target with this bucket). This enables profiling the contents of a single bucket, while the other options allow for easy profiling of many buckets within a project or an organization.
-        Structure is documented below.
-        """
-        collection: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgsDict']]
-        """
-        A collection of resources for this filter to apply to.
-        Structure is documented below.
-        """
-        others: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgsDict']]
-        """
-        Match discovery resources not covered by any other filter.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgsDict(TypedDict):
+    cloud_storage_resource_reference: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgsDict']]
+    """
+    The bucket to scan. Targets including this can only include one target (the target with this bucket). This enables profiling the contents of a single bucket, while the other options allow for easy profiling of many buckets within a project or an organization.
+    Structure is documented below.
+    """
+    collection: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgsDict']]
+    """
+    A collection of resources for this filter to apply to.
+    Structure is documented below.
+    """
+    others: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgsDict']]
+    """
+    Match discovery resources not covered by any other filter.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs:
@@ -18251,18 +17502,15 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs:
         pulumi.set(self, "others", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgsDict(TypedDict):
-        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bucket to scan.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If within a project-level config, then this must match the config's project id.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgsDict(TypedDict):
+    bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bucket to scan.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If within a project-level config, then this must match the config's project id.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgs:
@@ -18303,15 +17551,12 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourc
         pulumi.set(self, "project_id", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgsDict(TypedDict):
-        include_regexes: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgsDict']]
-        """
-        A collection of regular expressions to match a resource against.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgsDict(TypedDict):
+    include_regexes: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgsDict']]
+    """
+    A collection of regular expressions to match a resource against.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs:
@@ -18338,15 +17583,12 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs:
         pulumi.set(self, "include_regexes", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgsDict(TypedDict):
-        patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgsDict']]]]
-        """
-        The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgsDict(TypedDict):
+    patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgsDict']]]]
+    """
+    The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgs:
@@ -18373,15 +17615,12 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
         pulumi.set(self, "patterns", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgsDict(TypedDict):
-        cloud_storage_regex: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgsDict']]
-        """
-        Regex for Cloud Storage.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgsDict(TypedDict):
+    cloud_storage_regex: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgsDict']]
+    """
+    Regex for Cloud Storage.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgs:
@@ -18408,18 +17647,15 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
         pulumi.set(self, "cloud_storage_regex", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgsDict(TypedDict):
-        bucket_name_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Regex to test the bucket name against. If empty, all buckets match. Example: "marketing2021" or "(marketing)\\d{4}" will both match the bucket gs://marketing2021
-        """
-        project_id_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        For organizations, if unset, will match all projects.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgsDict(TypedDict):
+    bucket_name_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Regex to test the bucket name against. If empty, all buckets match. Example: "marketing2021" or "(marketing)\\d{4}" will both match the bucket gs://marketing2021
+    """
+    project_id_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    For organizations, if unset, will match all projects.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgs:
@@ -18460,11 +17696,8 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
         pulumi.set(self, "project_id_regex", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgs:
@@ -18472,20 +17705,17 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgs:
         pass
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgsDict(TypedDict):
-        inspect_template_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict']]
-        """
-        Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
-        Structure is documented below.
-        """
-        refresh_frequency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never.
-        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgsDict(TypedDict):
+    inspect_template_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict']]
+    """
+    Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+    Structure is documented below.
+    """
+    refresh_frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never.
+    Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgs:
@@ -18530,15 +17760,12 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgs:
         pulumi.set(self, "refresh_frequency", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict(TypedDict):
-        frequency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How frequently data profiles can be updated when the template is modified. Defaults to never.
-        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict(TypedDict):
+    frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How frequently data profiles can be updated when the template is modified. Defaults to never.
+    Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgs:
@@ -18565,34 +17792,31 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectT
         pulumi.set(self, "frequency", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetArgsDict(TypedDict):
-        filter: pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterArgsDict']
-        """
-        Required. The resources that the discovery cadence applies to. The first target with a matching filter will be the one to apply to a resource.
-        Structure is documented below.
-        """
-        conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgsDict']]
-        """
-        In addition to matching the filter, these conditions must be true before a profile is generated.
-        Structure is documented below.
-        """
-        data_source_type: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceTypeArgsDict']]
-        """
-        Required. The type of data profiles generated by this discovery target. Supported values are: aws/s3/bucket
-        Structure is documented below.
-        """
-        disabled: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetDisabledArgsDict']]
-        """
-        Disable profiling for resources that match this filter.
-        """
-        generation_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceArgsDict']]
-        """
-        How often and when to update profiles. New resources that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetArgsDict(TypedDict):
+    filter: pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterArgsDict']
+    """
+    Required. The resources that the discovery cadence applies to. The first target with a matching filter will be the one to apply to a resource.
+    Structure is documented below.
+    """
+    conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgsDict']]
+    """
+    In addition to matching the filter, these conditions must be true before a profile is generated.
+    Structure is documented below.
+    """
+    data_source_type: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceTypeArgsDict']]
+    """
+    Required. The type of data profiles generated by this discovery target. Supported values are: aws/s3/bucket
+    Structure is documented below.
+    """
+    disabled: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetDisabledArgsDict']]
+    """
+    Disable profiling for resources that match this filter.
+    """
+    generation_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceArgsDict']]
+    """
+    How often and when to update profiles. New resources that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetArgs:
@@ -18688,22 +17912,19 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetArgs:
         pulumi.set(self, "generation_cadence", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgsDict(TypedDict):
-        amazon_s3_bucket_conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditionsArgsDict']]
-        """
-        Amazon S3 bucket conditions.
-        Structure is documented below.
+class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgsDict(TypedDict):
+    amazon_s3_bucket_conditions: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditionsArgsDict']]
+    """
+    Amazon S3 bucket conditions.
+    Structure is documented below.
 
 
-        <a name="nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
-        """
-        min_age: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
+    """
+    min_age: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgs:
@@ -18752,18 +17973,15 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgs:
         pulumi.set(self, "min_age", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditionsArgsDict(TypedDict):
-        bucket_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Bucket types that should be profiled. Optional. Defaults to TYPE_ALL_SUPPORTED if unspecified. Possible values: ["TYPE_ALL_SUPPORTED", "TYPE_GENERAL_PURPOSE"]
-        """
-        object_storage_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Object classes that should be profiled. Optional. Defaults to ALL_SUPPORTED_CLASSES if unspecified. Possible values: ["ALL_SUPPORTED_CLASSES", "STANDARD", "STANDARD_INFREQUENT_ACCESS", "GLACIER_INSTANT_RETRIEVAL", "INTELLIGENT_TIERING"]
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditionsArgsDict(TypedDict):
+    bucket_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Bucket types that should be profiled. Optional. Defaults to TYPE_ALL_SUPPORTED if unspecified. Possible values: ["TYPE_ALL_SUPPORTED", "TYPE_GENERAL_PURPOSE"]
+    """
+    object_storage_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Object classes that should be profiled. Optional. Defaults to ALL_SUPPORTED_CLASSES if unspecified. Possible values: ["ALL_SUPPORTED_CLASSES", "STANDARD", "STANDARD_INFREQUENT_ACCESS", "GLACIER_INSTANT_RETRIEVAL", "INTELLIGENT_TIERING"]
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditionsArgs:
@@ -18804,14 +18022,11 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketCon
         pulumi.set(self, "object_storage_classes", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceTypeArgsDict(TypedDict):
-        data_source: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional)
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceTypeArgsDict(TypedDict):
+    data_source: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional)
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceTypeArgs:
@@ -18836,11 +18051,8 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceTypeArgs:
         pulumi.set(self, "data_source", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetDisabledArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetDisabledArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetDisabledArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetDisabledArgs:
@@ -18848,24 +18060,21 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetDisabledArgs:
         pass
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetFilterArgsDict(TypedDict):
-        collection: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionArgsDict']]
-        """
-        A collection of resources for this filter to apply to.
-        Structure is documented below.
-        """
-        others: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterOthersArgsDict']]
-        """
-        Match discovery resources not covered by any other filter.
-        """
-        single_resource: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgsDict']]
-        """
-        The resource to scan. Configs using this filter can only have one target (the target with this single resource reference).
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetFilterArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetFilterArgsDict(TypedDict):
+    collection: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionArgsDict']]
+    """
+    A collection of resources for this filter to apply to.
+    Structure is documented below.
+    """
+    others: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterOthersArgsDict']]
+    """
+    Match discovery resources not covered by any other filter.
+    """
+    single_resource: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgsDict']]
+    """
+    The resource to scan. Configs using this filter can only have one target (the target with this single resource reference).
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterArgs:
@@ -18926,15 +18135,12 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterArgs:
         pulumi.set(self, "single_resource", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionArgsDict(TypedDict):
-        include_regexes: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesArgsDict']]
-        """
-        A collection of regular expressions to match a resource against.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionArgsDict(TypedDict):
+    include_regexes: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesArgsDict']]
+    """
+    A collection of regular expressions to match a resource against.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionArgs:
@@ -18961,15 +18167,12 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionArgs:
         pulumi.set(self, "include_regexes", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesArgsDict(TypedDict):
-        patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternArgsDict']]]]
-        """
-        The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
-        Structure is documented below.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesArgsDict(TypedDict):
+    patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternArgsDict']]]]
+    """
+    The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesArgs:
@@ -18996,18 +18199,15 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
         pulumi.set(self, "patterns", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternArgsDict(TypedDict):
-        amazon_s3_bucket_regex: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexArgsDict']]
-        """
-        Regex for Cloud Storage.
-        Structure is documented below.
+class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternArgsDict(TypedDict):
+    amazon_s3_bucket_regex: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexArgsDict']]
+    """
+    Regex for Cloud Storage.
+    Structure is documented below.
 
 
-        <a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternArgs:
@@ -19040,18 +18240,15 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
         pulumi.set(self, "amazon_s3_bucket_regex", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexArgsDict(TypedDict):
-        aws_account_regex: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegexArgsDict']]
-        """
-        The AWS account regex
-        """
-        bucket_name_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Regex to test the bucket name against. If empty, all buckets match.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexArgsDict(TypedDict):
+    aws_account_regex: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegexArgsDict']]
+    """
+    The AWS account regex
+    """
+    bucket_name_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Regex to test the bucket name against. If empty, all buckets match.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexArgs:
@@ -19092,14 +18289,11 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
         pulumi.set(self, "bucket_name_regex", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegexArgsDict(TypedDict):
-        account_id_regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Regex to test the AWS account ID against. If empty, all accounts match. Example: arn:aws:organizations::123:account/o-b2c3d4/345
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegexArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegexArgsDict(TypedDict):
+    account_id_regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Regex to test the AWS account ID against. If empty, all accounts match. Example: arn:aws:organizations::123:account/o-b2c3d4/345
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegexArgs:
@@ -19124,11 +18318,8 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
         pulumi.set(self, "account_id_regex", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetFilterOthersArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetFilterOthersArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetFilterOthersArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterOthersArgs:
@@ -19136,18 +18327,15 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterOthersArgs:
         pass
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgsDict(TypedDict):
-        amazon_s3_bucket: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketArgsDict']]
-        """
-        Amazon S3 bucket.
-        Structure is documented below.
+class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgsDict(TypedDict):
+    amazon_s3_bucket: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketArgsDict']]
+    """
+    Amazon S3 bucket.
+    Structure is documented below.
 
 
-        <a name="nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgs:
@@ -19180,18 +18368,15 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgs:
         pulumi.set(self, "amazon_s3_bucket", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketArgsDict(TypedDict):
-        aws_account: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccountArgsDict']]
-        """
-        The AWS account.
-        """
-        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bucket name.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketArgsDict(TypedDict):
+    aws_account: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccountArgsDict']]
+    """
+    The AWS account.
+    """
+    bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bucket name.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketArgs:
@@ -19232,14 +18417,11 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS
         pulumi.set(self, "bucket_name", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccountArgsDict(TypedDict):
-        account_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AWS account ID.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccountArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccountArgsDict(TypedDict):
+    account_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AWS account ID.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccountArgs:
@@ -19264,20 +18446,17 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS
         pulumi.set(self, "account_id", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceArgsDict(TypedDict):
-        inspect_template_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict']]
-        """
-        Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
-        Structure is documented below.
-        """
-        refresh_frequency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never.
-        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceArgsDict(TypedDict):
+    inspect_template_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict']]
+    """
+    Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+    Structure is documented below.
+    """
+    refresh_frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never.
+    Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceArgs:
@@ -19322,15 +18501,12 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceArgs:
         pulumi.set(self, "refresh_frequency", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict(TypedDict):
-        frequency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How frequently data profiles can be updated when the template is modified. Defaults to never.
-        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-        """
-elif False:
-    PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict(TypedDict):
+    frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How frequently data profiles can be updated when the template is modified. Defaults to never.
+    Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+    """
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadenceArgs:
@@ -19357,11 +18533,8 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTem
         pulumi.set(self, "frequency", value)
 
 
-if not MYPY:
-    class PreventionDiscoveryConfigTargetSecretsTargetArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionDiscoveryConfigTargetSecretsTargetArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionDiscoveryConfigTargetSecretsTargetArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetSecretsTargetArgs:
@@ -19369,53 +18542,50 @@ class PreventionDiscoveryConfigTargetSecretsTargetArgs:
         pass
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigArgsDict(TypedDict):
-        content_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of options defining data content to scan. If empty, text, images, and other content will be included.
-        Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
-        """
-        custom_info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgsDict']]]]
-        """
-        Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
-        Structure is documented below.
-        """
-        exclude_info_types: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, excludes type information of the findings.
-        """
-        include_quote: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, a contextual quote from the data that triggered a finding is included in the response.
-        """
-        info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeArgsDict']]]]
-        """
-        Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-        or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
-        When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
-        By default this may be all types, but may change over time as detectors are updated.
-        Structure is documented below.
-        """
-        limits: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsArgsDict']]
-        """
-        Configuration to control the number of findings returned.
-        Structure is documented below.
-        """
-        min_likelihood: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
-        Default value is `POSSIBLE`.
-        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-        """
-        rule_sets: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetArgsDict']]]]
-        """
-        Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
-        other rules are executed in the order they are specified for each info type.
-        Structure is documented below.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigArgsDict(TypedDict):
+    content_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of options defining data content to scan. If empty, text, images, and other content will be included.
+    Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
+    """
+    custom_info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgsDict']]]]
+    """
+    Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+    Structure is documented below.
+    """
+    exclude_info_types: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, excludes type information of the findings.
+    """
+    include_quote: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, a contextual quote from the data that triggered a finding is included in the response.
+    """
+    info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeArgsDict']]]]
+    """
+    Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+    or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+    When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+    By default this may be all types, but may change over time as detectors are updated.
+    Structure is documented below.
+    """
+    limits: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsArgsDict']]
+    """
+    Configuration to control the number of findings returned.
+    Structure is documented below.
+    """
+    min_likelihood: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+    Default value is `POSSIBLE`.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    rule_sets: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetArgsDict']]]]
+    """
+    Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+    other rules are executed in the order they are specified for each info type.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigArgs:
@@ -19574,54 +18744,51 @@ class PreventionInspectTemplateInspectConfigArgs:
         pulumi.set(self, "rule_sets", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigCustomInfoTypeArgsDict(TypedDict):
-        info_type: pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgsDict']
-        """
-        CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
-        infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
-        one detected by the system. If built-in info type is not specified in `info_types` list then the name is
-        treated as a custom info type.
-        Structure is documented below.
-        """
-        dictionary: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgsDict']]
-        """
-        Dictionary which defines the rule.
-        Structure is documented below.
-        """
-        exclusion_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-        Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
-        """
-        likelihood: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
-        specified by the rule.
-        Default value is `VERY_LIKELY`.
-        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-        """
-        regex: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgsDict']]
-        """
-        Regular expression which defines the rule.
-        Structure is documented below.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        stored_type: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgsDict']]
-        """
-        A reference to a StoredInfoType to use with scanning.
-        Structure is documented below.
-        """
-        surrogate_type: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgsDict']]
-        """
-        Message for detecting output from deidentification transformations that support reversing.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigCustomInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigCustomInfoTypeArgsDict(TypedDict):
+    info_type: pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgsDict']
+    """
+    CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+    infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
+    one detected by the system. If built-in info type is not specified in `info_types` list then the name is
+    treated as a custom info type.
+    Structure is documented below.
+    """
+    dictionary: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgsDict']]
+    """
+    Dictionary which defines the rule.
+    Structure is documented below.
+    """
+    exclusion_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+    Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
+    """
+    likelihood: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+    specified by the rule.
+    Default value is `VERY_LIKELY`.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    regex: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgsDict']]
+    """
+    Regular expression which defines the rule.
+    Structure is documented below.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    stored_type: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgsDict']]
+    """
+    A reference to a StoredInfoType to use with scanning.
+    Structure is documented below.
+    """
+    surrogate_type: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgsDict']]
+    """
+    Message for detecting output from deidentification transformations that support reversing.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs:
@@ -19781,20 +18948,17 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs:
         pulumi.set(self, "surrogate_type", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgsDict(TypedDict):
-        cloud_storage_path: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict']]
-        """
-        Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
-        Structure is documented below.
-        """
-        word_list: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgsDict']]
-        """
-        List of words or phrases to search for.
-        Structure is documented below.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgsDict(TypedDict):
+    cloud_storage_path: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict']]
+    """
+    Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+    Structure is documented below.
+    """
+    word_list: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgsDict']]
+    """
+    List of words or phrases to search for.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs:
@@ -19839,14 +19003,11 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs:
         pulumi.set(self, "word_list", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict(TypedDict):
-        path: pulumi.Input[_builtins.str]
-        """
-        A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs:
@@ -19870,15 +19031,12 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStorage
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgsDict(TypedDict):
-        words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Words or phrases defining the dictionary. The dictionary must contain at least one
-        phrase and every phrase must contain at least 2 characters that are letters or digits.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgsDict(TypedDict):
+    words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Words or phrases defining the dictionary. The dictionary must contain at least one
+    phrase and every phrase must contain at least 2 characters that are letters or digits.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs:
@@ -19904,24 +19062,21 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs
         pulumi.set(self, "words", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version name for this InfoType.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+    listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs:
@@ -19981,15 +19136,12 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs:
@@ -20015,19 +19167,16 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivitySco
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgsDict(TypedDict):
-        pattern: pulumi.Input[_builtins.str]
-        """
-        Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        """
-        group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Pattern defining the regular expression.
+    Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
+    group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs:
@@ -20069,15 +19218,12 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs:
         pulumi.set(self, "group_indexes", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs:
@@ -20103,15 +19249,12 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs:
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-        or `projects/project-id/storedInfoTypes/432452342`.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+    or `projects/project-id/storedInfoTypes/432452342`.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs:
@@ -20137,11 +19280,8 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs:
@@ -20149,24 +19289,21 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs:
         pass
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version name for this InfoType.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+    at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigInfoTypeArgs:
@@ -20226,15 +19363,12 @@ class PreventionInspectTemplateInspectConfigInfoTypeArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs:
@@ -20260,23 +19394,20 @@ class PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs:
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigLimitsArgsDict(TypedDict):
-        max_findings_per_item: pulumi.Input[_builtins.int]
-        """
-        Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
-        """
-        max_findings_per_request: pulumi.Input[_builtins.int]
-        """
-        Max number of findings that will be returned per request/job. The maximum returned is 2000.
-        """
-        max_findings_per_info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict']]]]
-        """
-        Configuration of findings limit given for specified infoTypes.
-        Structure is documented below.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigLimitsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigLimitsArgsDict(TypedDict):
+    max_findings_per_item: pulumi.Input[_builtins.int]
+    """
+    Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+    """
+    max_findings_per_request: pulumi.Input[_builtins.int]
+    """
+    Max number of findings that will be returned per request/job. The maximum returned is 2000.
+    """
+    max_findings_per_info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict']]]]
+    """
+    Configuration of findings limit given for specified infoTypes.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigLimitsArgs:
@@ -20333,21 +19464,18 @@ class PreventionInspectTemplateInspectConfigLimitsArgs:
         pulumi.set(self, "max_findings_per_info_types", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict(TypedDict):
-        max_findings: pulumi.Input[_builtins.int]
-        """
-        Max findings limit for the given infoType.
-        """
-        info_type: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict']]
-        """
-        Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
-        not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
-        specified in another InfoTypeLimit.
-        Structure is documented below.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict(TypedDict):
+    max_findings: pulumi.Input[_builtins.int]
+    """
+    Max findings limit for the given infoType.
+    """
+    info_type: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict']]
+    """
+    Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+    not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+    specified in another InfoTypeLimit.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs:
@@ -20393,24 +19521,21 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs:
         pulumi.set(self, "info_type", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version name for this InfoType.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+    listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs:
@@ -20470,15 +19595,12 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs:
@@ -20504,20 +19626,17 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetArgsDict(TypedDict):
-        info_types: pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgsDict']]]
-        """
-        List of infoTypes this rule set is applied to.
-        Structure is documented below.
-        """
-        rules: pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleArgsDict']]]
-        """
-        Set of rules to be applied to infoTypes. The rules are applied in order.
-        Structure is documented below.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetArgsDict(TypedDict):
+    info_types: pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgsDict']]]
+    """
+    List of infoTypes this rule set is applied to.
+    Structure is documented below.
+    """
+    rules: pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleArgsDict']]]
+    """
+    Set of rules to be applied to infoTypes. The rules are applied in order.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetArgs:
@@ -20560,24 +19679,21 @@ class PreventionInspectTemplateInspectConfigRuleSetArgs:
         pulumi.set(self, "rules", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version name for this InfoType.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+    at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs:
@@ -20637,15 +19753,12 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgs:
@@ -20671,20 +19784,17 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgs:
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleArgsDict(TypedDict):
-        exclusion_rule: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgsDict']]
-        """
-        The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
-        Structure is documented below.
-        """
-        hotword_rule: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgsDict']]
-        """
-        Hotword-based detection rule.
-        Structure is documented below.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleArgsDict(TypedDict):
+    exclusion_rule: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgsDict']]
+    """
+    The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+    Structure is documented below.
+    """
+    hotword_rule: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgsDict']]
+    """
+    Hotword-based detection rule.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleArgs:
@@ -20729,36 +19839,33 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleArgs:
         pulumi.set(self, "hotword_rule", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgsDict(TypedDict):
-        matching_type: pulumi.Input[_builtins.str]
-        """
-        How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-        Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
-        """
-        dictionary: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict']]
-        """
-        Dictionary which defines the rule.
-        Structure is documented below.
-        """
-        exclude_by_hotword: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict']]
-        """
-        Drop if the hotword rule is contained in the proximate context.
-        For tabular data, the context includes the column name.
-        Structure is documented below.
-        """
-        exclude_info_types: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict']]
-        """
-        Set of infoTypes for which findings would affect this rule.
-        Structure is documented below.
-        """
-        regex: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgsDict']]
-        """
-        Regular expression which defines the rule.
-        Structure is documented below.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgsDict(TypedDict):
+    matching_type: pulumi.Input[_builtins.str]
+    """
+    How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+    Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+    """
+    dictionary: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict']]
+    """
+    Dictionary which defines the rule.
+    Structure is documented below.
+    """
+    exclude_by_hotword: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict']]
+    """
+    Drop if the hotword rule is contained in the proximate context.
+    For tabular data, the context includes the column name.
+    Structure is documented below.
+    """
+    exclude_info_types: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict']]
+    """
+    Set of infoTypes for which findings would affect this rule.
+    Structure is documented below.
+    """
+    regex: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgsDict']]
+    """
+    Regular expression which defines the rule.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs:
@@ -20858,20 +19965,17 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs:
         pulumi.set(self, "regex", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict(TypedDict):
-        cloud_storage_path: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict']]
-        """
-        Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
-        Structure is documented below.
-        """
-        word_list: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict']]
-        """
-        List of words or phrases to search for.
-        Structure is documented below.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict(TypedDict):
+    cloud_storage_path: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict']]
+    """
+    Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+    Structure is documented below.
+    """
+    word_list: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict']]
+    """
+    List of words or phrases to search for.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs:
@@ -20916,14 +20020,11 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryAr
         pulumi.set(self, "word_list", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict(TypedDict):
-        path: pulumi.Input[_builtins.str]
-        """
-        A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs:
@@ -20947,15 +20048,12 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCl
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict(TypedDict):
-        words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Words or phrases defining the dictionary. The dictionary must contain at least one
-        phrase and every phrase must contain at least 2 characters that are letters or digits.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict(TypedDict):
+    words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Words or phrases defining the dictionary. The dictionary must contain at least one
+    phrase and every phrase must contain at least 2 characters that are letters or digits.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs:
@@ -20981,24 +20079,21 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWo
         pulumi.set(self, "words", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict(TypedDict):
-        hotword_regex: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict']
-        """
-        Regular expression pattern defining what qualifies as a hotword.
-        Structure is documented below.
-        """
-        proximity: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict']
-        """
-        Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
-        exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
-        used to match substrings of the finding itself. For example, the certainty of a phone number regex
-        `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
-        office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
-        Structure is documented below.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict(TypedDict):
+    hotword_regex: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict']
+    """
+    Regular expression pattern defining what qualifies as a hotword.
+    Structure is documented below.
+    """
+    proximity: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict']
+    """
+    Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+    exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+    used to match substrings of the finding itself. For example, the certainty of a phone number regex
+    `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+    office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs:
@@ -21049,20 +20144,17 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
         pulumi.set(self, "proximity", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict(TypedDict):
-        pattern: pulumi.Input[_builtins.str]
-        """
-        Pattern defining the regular expression. Its syntax
-        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        """
-        group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The index of the submatch to extract as findings. When not specified,
-        the entire match is returned. No more than 3 may be included.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Pattern defining the regular expression. Its syntax
+    (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
+    group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The index of the submatch to extract as findings. When not specified,
+    the entire match is returned. No more than 3 may be included.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs:
@@ -21106,18 +20198,15 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
         pulumi.set(self, "group_indexes", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict(TypedDict):
-        window_after: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of characters after the finding to consider.
-        """
-        window_before: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of characters before the finding to consider.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict(TypedDict):
+    window_after: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of characters after the finding to consider.
+    """
+    window_before: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of characters before the finding to consider.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs:
@@ -21158,15 +20247,12 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
         pulumi.set(self, "window_before", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict(TypedDict):
-        info_types: pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict']]]
-        """
-        If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
-        Structure is documented below.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict(TypedDict):
+    info_types: pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict']]]
+    """
+    If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs:
@@ -21192,24 +20278,21 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
         pulumi.set(self, "info_types", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version name for this InfoType.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+    at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version name for this InfoType.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs:
@@ -21269,15 +20352,12 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs:
@@ -21303,19 +20383,16 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgsDict(TypedDict):
-        pattern: pulumi.Input[_builtins.str]
-        """
-        Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        """
-        group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Pattern defining the regular expression.
+    Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
+    group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs:
@@ -21357,29 +20434,26 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs:
         pulumi.set(self, "group_indexes", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgsDict(TypedDict):
-        hotword_regex: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict']
-        """
-        Regular expression pattern defining what qualifies as a hotword.
-        Structure is documented below.
-        """
-        likelihood_adjustment: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict']
-        """
-        Likelihood adjustment to apply to all matching findings.
-        Structure is documented below.
-        """
-        proximity: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgsDict']
-        """
-        Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
-        exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
-        used to match substrings of the finding itself. For example, the certainty of a phone number regex
-        `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
-        office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
-        Structure is documented below.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgsDict(TypedDict):
+    hotword_regex: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict']
+    """
+    Regular expression pattern defining what qualifies as a hotword.
+    Structure is documented below.
+    """
+    likelihood_adjustment: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict']
+    """
+    Likelihood adjustment to apply to all matching findings.
+    Structure is documented below.
+    """
+    proximity: pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgsDict']
+    """
+    Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+    exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+    used to match substrings of the finding itself. For example, the certainty of a phone number regex
+    `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+    office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs:
@@ -21447,20 +20521,17 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs:
         pulumi.set(self, "proximity", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict(TypedDict):
-        pattern: pulumi.Input[_builtins.str]
-        """
-        Pattern defining the regular expression. Its syntax
-        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        """
-        group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The index of the submatch to extract as findings. When not specified,
-        the entire match is returned. No more than 3 may be included.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Pattern defining the regular expression. Its syntax
+    (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
+    group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The index of the submatch to extract as findings. When not specified,
+    the entire match is returned. No more than 3 may be included.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs:
@@ -21504,24 +20575,21 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexAr
         pulumi.set(self, "group_indexes", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict(TypedDict):
-        fixed_likelihood: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
-        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-        """
-        relative_likelihood: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Increase or decrease the likelihood by the specified number of levels. For example,
-        if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
-        then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
-        Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
-        adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
-        will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict(TypedDict):
+    fixed_likelihood: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    relative_likelihood: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Increase or decrease the likelihood by the specified number of levels. For example,
+    if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
+    then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
+    Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
+    adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
+    will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs:
@@ -21574,18 +20642,15 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdju
         pulumi.set(self, "relative_likelihood", value)
 
 
-if not MYPY:
-    class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgsDict(TypedDict):
-        window_after: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of characters after the finding to consider.
-        """
-        window_before: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of characters before the finding to consider.
-        """
-elif False:
-    PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgsDict(TypedDict):
+    window_after: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of characters after the finding to consider.
+    """
+    window_before: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of characters before the finding to consider.
+    """
 
 @pulumi.input_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs:
@@ -21626,29 +20691,26 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs:
         pulumi.set(self, "window_before", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobArgsDict(TypedDict):
-        storage_config: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigArgsDict']
-        """
-        Information on where to inspect
-        Structure is documented below.
-        """
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobActionArgsDict']]]]
-        """
-        Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
-        Structure is documented below.
-        """
-        inspect_config: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigArgsDict']]
-        """
-        The core content of the template.
-        Structure is documented below.
-        """
-        inspect_template_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the template to run when this job is triggered.
-        """
-elif False:
-    PreventionJobTriggerInspectJobArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobArgsDict(TypedDict):
+    storage_config: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigArgsDict']
+    """
+    Information on where to inspect
+    Structure is documented below.
+    """
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobActionArgsDict']]]]
+    """
+    Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
+    Structure is documented below.
+    """
+    inspect_config: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigArgsDict']]
+    """
+    The core content of the template.
+    Structure is documented below.
+    """
+    inspect_template_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the template to run when this job is triggered.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobArgs:
@@ -21726,48 +20788,45 @@ class PreventionJobTriggerInspectJobArgs:
         pulumi.set(self, "inspect_template_name", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionArgsDict(TypedDict):
-        deidentify: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyArgsDict']]
-        """
-        Create a de-identified copy of the requested table or files.
-        Structure is documented below.
-        """
-        job_notification_emails: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionJobNotificationEmailsArgsDict']]
-        """
-        Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
-        """
-        pub_sub: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionPubSubArgsDict']]
-        """
-        Publish a message into a given Pub/Sub topic when the job completes.
-        Structure is documented below.
-        """
-        publish_findings_to_cloud_data_catalog: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict']]
-        """
-        (Optional, Deprecated)
-        Publish findings of a DlpJob to Data Catalog.
+class PreventionJobTriggerInspectJobActionArgsDict(TypedDict):
+    deidentify: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyArgsDict']]
+    """
+    Create a de-identified copy of the requested table or files.
+    Structure is documented below.
+    """
+    job_notification_emails: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionJobNotificationEmailsArgsDict']]
+    """
+    Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+    """
+    pub_sub: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionPubSubArgsDict']]
+    """
+    Publish a message into a given Pub/Sub topic when the job completes.
+    Structure is documented below.
+    """
+    publish_findings_to_cloud_data_catalog: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict']]
+    """
+    (Optional, Deprecated)
+    Publish findings of a DlpJob to Data Catalog.
 
-        > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
-        """
-        publish_findings_to_dataplex_catalog: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict']]
-        """
-        Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
-        """
-        publish_summary_to_cscc: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgsDict']]
-        """
-        Publish the result summary of a DlpJob to the Cloud Security Command Center.
-        """
-        publish_to_stackdriver: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionPublishToStackdriverArgsDict']]
-        """
-        Enable Stackdriver metric dlp.googleapis.com/findingCount.
-        """
-        save_findings: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgsDict']]
-        """
-        If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobActionArgsDict: TypeAlias = Mapping[str, Any]
+    > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
+    """
+    publish_findings_to_dataplex_catalog: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict']]
+    """
+    Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
+    """
+    publish_summary_to_cscc: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgsDict']]
+    """
+    Publish the result summary of a DlpJob to the Cloud Security Command Center.
+    """
+    publish_to_stackdriver: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionPublishToStackdriverArgsDict']]
+    """
+    Enable Stackdriver metric dlp.googleapis.com/findingCount.
+    """
+    save_findings: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgsDict']]
+    """
+    If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionArgs:
@@ -21920,35 +20979,32 @@ class PreventionJobTriggerInspectJobActionArgs:
         pulumi.set(self, "save_findings", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionDeidentifyArgsDict(TypedDict):
-        cloud_storage_output: pulumi.Input[_builtins.str]
-        """
-        User settable Cloud Storage bucket and folders to store de-identified files.
-        This field must be set for cloud storage deidentification.
-        The output Cloud Storage bucket must be different from the input bucket.
-        De-identified files will overwrite files in the output path.
-        Form of: gs://bucket/folder/ or gs://bucket
-        """
-        file_types_to_transforms: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed.
-        If empty, all supported files will be transformed. Supported types may be automatically added over time.
-        If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
-        Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
-        """
-        transformation_config: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgsDict']]
-        """
-        User specified deidentify templates and configs for structured, unstructured, and image files.
-        Structure is documented below.
-        """
-        transformation_details_storage_config: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgsDict']]
-        """
-        Config for storing transformation details.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobActionDeidentifyArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionDeidentifyArgsDict(TypedDict):
+    cloud_storage_output: pulumi.Input[_builtins.str]
+    """
+    User settable Cloud Storage bucket and folders to store de-identified files.
+    This field must be set for cloud storage deidentification.
+    The output Cloud Storage bucket must be different from the input bucket.
+    De-identified files will overwrite files in the output path.
+    Form of: gs://bucket/folder/ or gs://bucket
+    """
+    file_types_to_transforms: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed.
+    If empty, all supported files will be transformed. Supported types may be automatically added over time.
+    If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
+    Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
+    """
+    transformation_config: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgsDict']]
+    """
+    User specified deidentify templates and configs for structured, unstructured, and image files.
+    Structure is documented below.
+    """
+    transformation_details_storage_config: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgsDict']]
+    """
+    Config for storing transformation details.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionDeidentifyArgs:
@@ -22038,22 +21094,19 @@ class PreventionJobTriggerInspectJobActionDeidentifyArgs:
         pulumi.set(self, "transformation_details_storage_config", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgsDict(TypedDict):
-        deidentify_template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If this template is specified, it will serve as the default de-identify template.
-        """
-        image_redact_template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If this template is specified, it will serve as the de-identify template for images.
-        """
-        structured_deidentify_template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
-        """
-elif False:
-    PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgsDict(TypedDict):
+    deidentify_template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If this template is specified, it will serve as the default de-identify template.
+    """
+    image_redact_template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If this template is specified, it will serve as the de-identify template for images.
+    """
+    structured_deidentify_template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs:
@@ -22110,15 +21163,12 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs:
         pulumi.set(self, "structured_deidentify_template", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgsDict(TypedDict):
-        table: pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgsDict']
-        """
-        The BigQuery table in which to store the output.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgsDict(TypedDict):
+    table: pulumi.Input['PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgsDict']
+    """
+    The BigQuery table in which to store the output.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs:
@@ -22144,24 +21194,21 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
         pulumi.set(self, "table", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the dataset containing this table.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the project containing this table.
-        """
-        table_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the table. The ID must contain only letters (a-z,
-        A-Z), numbers (0-9), or underscores (_). The maximum length
-        is 1,024 characters.
-        """
-elif False:
-    PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the dataset containing this table.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the project containing this table.
+    """
+    table_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the table. The ID must contain only letters (a-z,
+    A-Z), numbers (0-9), or underscores (_). The maximum length
+    is 1,024 characters.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs:
@@ -22220,11 +21267,8 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
         pulumi.set(self, "table_id", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionJobNotificationEmailsArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionJobTriggerInspectJobActionJobNotificationEmailsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionJobNotificationEmailsArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs:
@@ -22232,14 +21276,11 @@ class PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs:
         pass
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionPubSubArgsDict(TypedDict):
-        topic: pulumi.Input[_builtins.str]
-        """
-        Cloud Pub/Sub topic to send notifications to.
-        """
-elif False:
-    PreventionJobTriggerInspectJobActionPubSubArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionPubSubArgsDict(TypedDict):
+    topic: pulumi.Input[_builtins.str]
+    """
+    Cloud Pub/Sub topic to send notifications to.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionPubSubArgs:
@@ -22263,11 +21304,8 @@ class PreventionJobTriggerInspectJobActionPubSubArgs:
         pulumi.set(self, "topic", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs:
@@ -22275,11 +21313,8 @@ class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs:
         pass
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs:
@@ -22287,11 +21322,8 @@ class PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs:
         pass
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs:
@@ -22299,11 +21331,8 @@ class PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs:
         pass
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionPublishToStackdriverArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionJobTriggerInspectJobActionPublishToStackdriverArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionPublishToStackdriverArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionPublishToStackdriverArgs:
@@ -22311,15 +21340,12 @@ class PreventionJobTriggerInspectJobActionPublishToStackdriverArgs:
         pass
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionSaveFindingsArgsDict(TypedDict):
-        output_config: pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgsDict']
-        """
-        Information on where to store output
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobActionSaveFindingsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionSaveFindingsArgsDict(TypedDict):
+    output_config: pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgsDict']
+    """
+    Information on where to store output
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionSaveFindingsArgs:
@@ -22345,35 +21371,32 @@ class PreventionJobTriggerInspectJobActionSaveFindingsArgs:
         pulumi.set(self, "output_config", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgsDict(TypedDict):
-        output_schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Schema used for writing the findings for Inspect jobs. This field is only used for
-        Inspect and must be unspecified for Risk jobs. Columns are derived from the Finding
-        object. If appending to an existing table, any columns from the predefined schema
-        that are missing will be added. No columns in the existing table will be deleted.
-        If unspecified, then all available columns will be used for a new table or an (existing)
-        table with no schema, and no changes will be made to an existing table that has a schema.
-        Only for use with external storage.
-        Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
-        """
-        storage_path: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgsDict']]
-        """
-        Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
-        as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
-        the naming convention <job_id>-<shard_number>, for example: my-job-id-2.
-        Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
-        Cloud Storage, the output schema field should not be set. If set, it will be ignored.
-        Structure is documented below.
-        """
-        table: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgsDict']]
-        """
-        Information on the location of the target BigQuery Table.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgsDict(TypedDict):
+    output_schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Schema used for writing the findings for Inspect jobs. This field is only used for
+    Inspect and must be unspecified for Risk jobs. Columns are derived from the Finding
+    object. If appending to an existing table, any columns from the predefined schema
+    that are missing will be added. No columns in the existing table will be deleted.
+    If unspecified, then all available columns will be used for a new table or an (existing)
+    table with no schema, and no changes will be made to an existing table that has a schema.
+    Only for use with external storage.
+    Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
+    """
+    storage_path: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgsDict']]
+    """
+    Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
+    as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
+    the naming convention <job_id>-<shard_number>, for example: my-job-id-2.
+    Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
+    Cloud Storage, the output schema field should not be set. If set, it will be ignored.
+    Structure is documented below.
+    """
+    table: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgsDict']]
+    """
+    Information on the location of the target BigQuery Table.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs:
@@ -22456,15 +21479,12 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs:
         pulumi.set(self, "table", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgsDict(TypedDict):
-        path: pulumi.Input[_builtins.str]
-        """
-        A URL representing a file or path (no wildcards) in Cloud Storage.
-        Example: `gs://[BUCKET_NAME]/dictionary.txt`
-        """
-elif False:
-    PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    A URL representing a file or path (no wildcards) in Cloud Storage.
+    Example: `gs://[BUCKET_NAME]/dictionary.txt`
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgs:
@@ -22490,24 +21510,21 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArg
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the dataset containing this table.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the project containing this table.
-        """
-        table_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the table. The ID must contain only letters (a-z,
-        A-Z), numbers (0-9), or underscores (_). The maximum length
-        is 1,024 characters.
-        """
-elif False:
-    PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the dataset containing this table.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the project containing this table.
+    """
+    table_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the table. The ID must contain only letters (a-z,
+    A-Z), numbers (0-9), or underscores (_). The maximum length
+    is 1,024 characters.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs:
@@ -22566,48 +21583,45 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs:
         pulumi.set(self, "table_id", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigArgsDict(TypedDict):
-        custom_info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgsDict']]]]
-        """
-        Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
-        Structure is documented below.
-        """
-        exclude_info_types: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, excludes type information of the findings.
-        """
-        include_quote: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When true, a contextual quote from the data that triggered a finding is included in the response.
-        """
-        info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeArgsDict']]]]
-        """
-        Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-        or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
-        When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
-        By default this may be all types, but may change over time as detectors are updated.
-        Structure is documented below.
-        """
-        limits: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsArgsDict']]
-        """
-        Configuration to control the number of findings returned.
-        Structure is documented below.
-        """
-        min_likelihood: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
-        Default value is `POSSIBLE`.
-        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-        """
-        rule_sets: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetArgsDict']]]]
-        """
-        Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
-        other rules are executed in the order they are specified for each info type.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigArgsDict(TypedDict):
+    custom_info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgsDict']]]]
+    """
+    Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+    Structure is documented below.
+    """
+    exclude_info_types: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, excludes type information of the findings.
+    """
+    include_quote: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true, a contextual quote from the data that triggered a finding is included in the response.
+    """
+    info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeArgsDict']]]]
+    """
+    Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+    or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+    When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+    By default this may be all types, but may change over time as detectors are updated.
+    Structure is documented below.
+    """
+    limits: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsArgsDict']]
+    """
+    Configuration to control the number of findings returned.
+    Structure is documented below.
+    """
+    min_likelihood: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+    Default value is `POSSIBLE`.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    rule_sets: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetArgsDict']]]]
+    """
+    Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+    other rules are executed in the order they are specified for each info type.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigArgs:
@@ -22748,54 +21762,51 @@ class PreventionJobTriggerInspectJobInspectConfigArgs:
         pulumi.set(self, "rule_sets", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgsDict(TypedDict):
-        info_type: pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgsDict']
-        """
-        CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
-        infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
-        one detected by the system. If built-in info type is not specified in `info_types` list then the name is
-        treated as a custom info type.
-        Structure is documented below.
-        """
-        dictionary: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgsDict']]
-        """
-        Dictionary which defines the rule.
-        Structure is documented below.
-        """
-        exclusion_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-        Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
-        """
-        likelihood: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
-        specified by the rule.
-        Default value is `VERY_LIKELY`.
-        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-        """
-        regex: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgsDict']]
-        """
-        Regular expression which defines the rule.
-        Structure is documented below.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        stored_type: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgsDict']]
-        """
-        A reference to a StoredInfoType to use with scanning.
-        Structure is documented below.
-        """
-        surrogate_type: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgsDict']]
-        """
-        Message for detecting output from deidentification transformations that support reversing.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgsDict(TypedDict):
+    info_type: pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgsDict']
+    """
+    CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+    infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
+    one detected by the system. If built-in info type is not specified in `info_types` list then the name is
+    treated as a custom info type.
+    Structure is documented below.
+    """
+    dictionary: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgsDict']]
+    """
+    Dictionary which defines the rule.
+    Structure is documented below.
+    """
+    exclusion_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+    Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
+    """
+    likelihood: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+    specified by the rule.
+    Default value is `VERY_LIKELY`.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    regex: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgsDict']]
+    """
+    Regular expression which defines the rule.
+    Structure is documented below.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    stored_type: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgsDict']]
+    """
+    A reference to a StoredInfoType to use with scanning.
+    Structure is documented below.
+    """
+    surrogate_type: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgsDict']]
+    """
+    Message for detecting output from deidentification transformations that support reversing.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs:
@@ -22955,20 +21966,17 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs:
         pulumi.set(self, "surrogate_type", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgsDict(TypedDict):
-        cloud_storage_path: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict']]
-        """
-        Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
-        Structure is documented below.
-        """
-        word_list: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArgsDict']]
-        """
-        List of words or phrases to search for.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgsDict(TypedDict):
+    cloud_storage_path: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict']]
+    """
+    Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+    Structure is documented below.
+    """
+    word_list: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArgsDict']]
+    """
+    List of words or phrases to search for.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgs:
@@ -23013,14 +22021,11 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgs:
         pulumi.set(self, "word_list", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict(TypedDict):
-        path: pulumi.Input[_builtins.str]
-        """
-        A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs:
@@ -23044,15 +22049,12 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudSt
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArgsDict(TypedDict):
-        words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Words or phrases defining the dictionary. The dictionary must contain at least one
-        phrase and every phrase must contain at least 2 characters that are letters or digits.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArgsDict(TypedDict):
+    words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Words or phrases defining the dictionary. The dictionary must contain at least one
+    phrase and every phrase must contain at least 2 characters that are letters or digits.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArgs:
@@ -23078,24 +22080,21 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordLis
         pulumi.set(self, "words", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version of the information type to use. By default, the version is set to stable.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+    listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version of the information type to use. By default, the version is set to stable.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs:
@@ -23155,15 +22154,12 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs:
@@ -23189,19 +22185,16 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivi
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgsDict(TypedDict):
-        pattern: pulumi.Input[_builtins.str]
-        """
-        Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        """
-        group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Pattern defining the regular expression.
+    Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
+    group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs:
@@ -23243,15 +22236,12 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs:
         pulumi.set(self, "group_indexes", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreArgs:
@@ -23277,20 +22267,17 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreA
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-        or `projects/project-id/storedInfoTypes/432452342`.
-        """
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The creation timestamp of an inspectTemplate. Set by the server.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+    or `projects/project-id/storedInfoTypes/432452342`.
+    """
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The creation timestamp of an inspectTemplate. Set by the server.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgs:
@@ -23334,11 +22321,8 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgs:
         pulumi.set(self, "create_time", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgs:
@@ -23346,24 +22330,21 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgs
         pass
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version of the information type to use. By default, the version is set to stable.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+    at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version of the information type to use. By default, the version is set to stable.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs:
@@ -23423,15 +22404,12 @@ class PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgs:
@@ -23457,23 +22435,20 @@ class PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgs:
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigLimitsArgsDict(TypedDict):
-        max_findings_per_info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict']]]]
-        """
-        Configuration of findings limit given for specified infoTypes.
-        Structure is documented below.
-        """
-        max_findings_per_item: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
-        """
-        max_findings_per_request: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max number of findings that will be returned per request/job. The maximum returned is 2000.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigLimitsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigLimitsArgsDict(TypedDict):
+    max_findings_per_info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict']]]]
+    """
+    Configuration of findings limit given for specified infoTypes.
+    Structure is documented below.
+    """
+    max_findings_per_item: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+    """
+    max_findings_per_request: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max number of findings that will be returned per request/job. The maximum returned is 2000.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigLimitsArgs:
@@ -23532,21 +22507,18 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsArgs:
         pulumi.set(self, "max_findings_per_request", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict(TypedDict):
-        info_type: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict']]
-        """
-        Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
-        not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
-        specified in another InfoTypeLimit.
-        Structure is documented below.
-        """
-        max_findings: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max findings limit for the given infoType.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict(TypedDict):
+    info_type: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict']]
+    """
+    Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+    not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+    specified in another InfoTypeLimit.
+    Structure is documented below.
+    """
+    max_findings: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max findings limit for the given infoType.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArgs:
@@ -23593,24 +22565,21 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArg
         pulumi.set(self, "max_findings", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version of the information type to use. By default, the version is set to stable.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+    listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version of the information type to use. By default, the version is set to stable.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs:
@@ -23670,15 +22639,12 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs:
@@ -23704,20 +22670,17 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetArgsDict(TypedDict):
-        rules: pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgsDict']]]
-        """
-        Set of rules to be applied to infoTypes. The rules are applied in order.
-        Structure is documented below.
-        """
-        info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgsDict']]]]
-        """
-        List of infoTypes this rule set is applied to.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetArgsDict(TypedDict):
+    rules: pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgsDict']]]
+    """
+    Set of rules to be applied to infoTypes. The rules are applied in order.
+    Structure is documented below.
+    """
+    info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgsDict']]]]
+    """
+    List of infoTypes this rule set is applied to.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetArgs:
@@ -23761,24 +22724,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetArgs:
         pulumi.set(self, "info_types", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version of the information type to use. By default, the version is set to stable.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+    at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version of the information type to use. By default, the version is set to stable.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs:
@@ -23838,15 +22798,12 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgs:
@@ -23872,20 +22829,17 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScore
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgsDict(TypedDict):
-        exclusion_rule: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgsDict']]
-        """
-        The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
-        Structure is documented below.
-        """
-        hotword_rule: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgsDict']]
-        """
-        Hotword-based detection rule.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgsDict(TypedDict):
+    exclusion_rule: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgsDict']]
+    """
+    The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+    Structure is documented below.
+    """
+    hotword_rule: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgsDict']]
+    """
+    Hotword-based detection rule.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs:
@@ -23930,35 +22884,32 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs:
         pulumi.set(self, "hotword_rule", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgsDict(TypedDict):
-        matching_type: pulumi.Input[_builtins.str]
-        """
-        How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-        Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
-        """
-        dictionary: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict']]
-        """
-        Dictionary which defines the rule.
-        Structure is documented below.
-        """
-        exclude_by_hotword: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict']]
-        """
-        Drop if the hotword rule is contained in the proximate context.
-        Structure is documented below.
-        """
-        exclude_info_types: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict']]
-        """
-        Set of infoTypes for which findings would affect this rule.
-        Structure is documented below.
-        """
-        regex: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgsDict']]
-        """
-        Regular expression which defines the rule.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgsDict(TypedDict):
+    matching_type: pulumi.Input[_builtins.str]
+    """
+    How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+    Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+    """
+    dictionary: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict']]
+    """
+    Dictionary which defines the rule.
+    Structure is documented below.
+    """
+    exclude_by_hotword: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict']]
+    """
+    Drop if the hotword rule is contained in the proximate context.
+    Structure is documented below.
+    """
+    exclude_info_types: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict']]
+    """
+    Set of infoTypes for which findings would affect this rule.
+    Structure is documented below.
+    """
+    regex: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgsDict']]
+    """
+    Regular expression which defines the rule.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs:
@@ -24056,20 +23007,17 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs:
         pulumi.set(self, "regex", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict(TypedDict):
-        cloud_storage_path: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict']]
-        """
-        Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
-        Structure is documented below.
-        """
-        word_list: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict']]
-        """
-        List of words or phrases to search for.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict(TypedDict):
+    cloud_storage_path: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict']]
+    """
+    Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+    Structure is documented below.
+    """
+    word_list: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict']]
+    """
+    List of words or phrases to search for.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgs:
@@ -24114,14 +23062,11 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
         pulumi.set(self, "word_list", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict(TypedDict):
-        path: pulumi.Input[_builtins.str]
-        """
-        A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs:
@@ -24145,15 +23090,12 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict(TypedDict):
-        words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Words or phrases defining the dictionary. The dictionary must contain at least one
-        phrase and every phrase must contain at least 2 characters that are letters or digits.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict(TypedDict):
+    words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Words or phrases defining the dictionary. The dictionary must contain at least one
+    phrase and every phrase must contain at least 2 characters that are letters or digits.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs:
@@ -24179,24 +23121,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
         pulumi.set(self, "words", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict(TypedDict):
-        hotword_regex: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict']]
-        """
-        Regular expression pattern defining what qualifies as a hotword.
-        Structure is documented below.
-        """
-        proximity: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict']]
-        """
-        Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
-        exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
-        used to match substrings of the finding itself. For example, the certainty of a phone number regex
-        `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
-        office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict(TypedDict):
+    hotword_regex: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict']]
+    """
+    Regular expression pattern defining what qualifies as a hotword.
+    Structure is documented below.
+    """
+    proximity: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict']]
+    """
+    Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+    exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+    used to match substrings of the finding itself. For example, the certainty of a phone number regex
+    `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+    office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs:
@@ -24249,20 +23188,17 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
         pulumi.set(self, "proximity", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict(TypedDict):
-        group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The index of the submatch to extract as findings. When not specified,
-        the entire match is returned. No more than 3 may be included.
-        """
-        pattern: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Pattern defining the regular expression. Its syntax
-        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict(TypedDict):
+    group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The index of the submatch to extract as findings. When not specified,
+    the entire match is returned. No more than 3 may be included.
+    """
+    pattern: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Pattern defining the regular expression. Its syntax
+    (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs:
@@ -24307,18 +23243,15 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
         pulumi.set(self, "pattern", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict(TypedDict):
-        window_after: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of characters after the finding to consider. Either this or window_before must be specified
-        """
-        window_before: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of characters before the finding to consider. Either this or window_after must be specified
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict(TypedDict):
+    window_after: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of characters after the finding to consider. Either this or window_before must be specified
+    """
+    window_before: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of characters before the finding to consider. Either this or window_after must be specified
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs:
@@ -24359,15 +23292,12 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
         pulumi.set(self, "window_before", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict(TypedDict):
-        info_types: pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict']]]
-        """
-        If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict(TypedDict):
+    info_types: pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict']]]
+    """
+    If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs:
@@ -24393,24 +23323,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
         pulumi.set(self, "info_types", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        """
-        sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict']]
-        """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version of the information type to use. By default, the version is set to stable.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+    at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict']]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version of the information type to use. By default, the version is set to stable.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs:
@@ -24470,15 +23397,12 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict(TypedDict):
-        score: pulumi.Input[_builtins.str]
-        """
-        The sensitivity score applied to the resource.
-        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs:
@@ -24504,19 +23428,16 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
         pulumi.set(self, "score", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgsDict(TypedDict):
-        pattern: pulumi.Input[_builtins.str]
-        """
-        Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        """
-        group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Pattern defining the regular expression.
+    Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
+    group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgs:
@@ -24558,29 +23479,26 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexAr
         pulumi.set(self, "group_indexes", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgsDict(TypedDict):
-        hotword_regex: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict']]
-        """
-        Regular expression pattern defining what qualifies as a hotword.
-        Structure is documented below.
-        """
-        likelihood_adjustment: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict']]
-        """
-        Likelihood adjustment to apply to all matching findings.
-        Structure is documented below.
-        """
-        proximity: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgsDict']]
-        """
-        Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
-        exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
-        used to match substrings of the finding itself. For example, the certainty of a phone number regex
-        `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
-        office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgsDict(TypedDict):
+    hotword_regex: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict']]
+    """
+    Regular expression pattern defining what qualifies as a hotword.
+    Structure is documented below.
+    """
+    likelihood_adjustment: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict']]
+    """
+    Likelihood adjustment to apply to all matching findings.
+    Structure is documented below.
+    """
+    proximity: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgsDict']]
+    """
+    Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+    exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+    used to match substrings of the finding itself. For example, the certainty of a phone number regex
+    `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+    office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgs:
@@ -24651,20 +23569,17 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgs:
         pulumi.set(self, "proximity", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict(TypedDict):
-        group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The index of the submatch to extract as findings. When not specified,
-        the entire match is returned. No more than 3 may be included.
-        """
-        pattern: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Pattern defining the regular expression. Its syntax
-        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict(TypedDict):
+    group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The index of the submatch to extract as findings. When not specified,
+    the entire match is returned. No more than 3 may be included.
+    """
+    pattern: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Pattern defining the regular expression. Its syntax
+    (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs:
@@ -24709,24 +23624,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRe
         pulumi.set(self, "pattern", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict(TypedDict):
-        fixed_likelihood: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
-        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-        """
-        relative_likelihood: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Increase or decrease the likelihood by the specified number of levels. For example,
-        if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
-        then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
-        Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
-        adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
-        will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict(TypedDict):
+    fixed_likelihood: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    relative_likelihood: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Increase or decrease the likelihood by the specified number of levels. For example,
+    if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
+    then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
+    Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
+    adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
+    will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs:
@@ -24779,18 +23691,15 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoo
         pulumi.set(self, "relative_likelihood", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgsDict(TypedDict):
-        window_after: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of characters after the finding to consider. Either this or window_before must be specified
-        """
-        window_before: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of characters before the finding to consider. Either this or window_after must be specified
-        """
-elif False:
-    PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgsDict(TypedDict):
+    window_after: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of characters after the finding to consider. Either this or window_before must be specified
+    """
+    window_before: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of characters before the finding to consider. Either this or window_after must be specified
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgs:
@@ -24831,35 +23740,32 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity
         pulumi.set(self, "window_before", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigArgsDict(TypedDict):
-        big_query_options: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgsDict']]
-        """
-        Options defining BigQuery table and row identifiers.
-        Structure is documented below.
-        """
-        cloud_storage_options: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgsDict']]
-        """
-        Options defining a file or a set of files within a Google Cloud Storage bucket.
-        Structure is documented below.
-        """
-        datastore_options: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgsDict']]
-        """
-        Options defining a data set within Google Cloud Datastore.
-        Structure is documented below.
-        """
-        hybrid_options: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgsDict']]
-        """
-        Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
-        Structure is documented below.
-        """
-        timespan_config: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgsDict']]
-        """
-        Configuration of the timespan of the items to include in scanning
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigArgsDict(TypedDict):
+    big_query_options: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgsDict']]
+    """
+    Options defining BigQuery table and row identifiers.
+    Structure is documented below.
+    """
+    cloud_storage_options: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgsDict']]
+    """
+    Options defining a file or a set of files within a Google Cloud Storage bucket.
+    Structure is documented below.
+    """
+    datastore_options: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgsDict']]
+    """
+    Options defining a data set within Google Cloud Datastore.
+    Structure is documented below.
+    """
+    hybrid_options: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgsDict']]
+    """
+    Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+    Structure is documented below.
+    """
+    timespan_config: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgsDict']]
+    """
+    Configuration of the timespan of the items to include in scanning
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigArgs:
@@ -24958,52 +23864,49 @@ class PreventionJobTriggerInspectJobStorageConfigArgs:
         pulumi.set(self, "timespan_config", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgsDict(TypedDict):
-        table_reference: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgsDict']
-        """
-        Set of files to scan.
-        Structure is documented below.
-        """
-        excluded_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgsDict']]]]
-        """
-        References to fields excluded from scanning.
-        This allows you to skip inspection of entire columns which you know have no findings.
-        Structure is documented below.
-        """
-        identifying_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgsDict']]]]
-        """
-        Specifies the BigQuery fields that will be returned with findings.
-        If not specified, no identifying fields will be returned for findings.
-        Structure is documented below.
-        """
-        included_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgsDict']]]]
-        """
-        Limit scanning only to these fields.
-        Structure is documented below.
-        """
-        rows_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
-        If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
-        specified. Cannot be used in conjunction with TimespanConfig.
-        """
-        rows_limit_percent: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
-        Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
-        rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
-        """
-        sample_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
-        rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
-        If TimespanConfig is set, set this to an empty string to avoid using the default value.
-        Default value is `TOP`.
-        Possible values are: `TOP`, `RANDOM_START`.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgsDict(TypedDict):
+    table_reference: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgsDict']
+    """
+    Set of files to scan.
+    Structure is documented below.
+    """
+    excluded_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgsDict']]]]
+    """
+    References to fields excluded from scanning.
+    This allows you to skip inspection of entire columns which you know have no findings.
+    Structure is documented below.
+    """
+    identifying_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgsDict']]]]
+    """
+    Specifies the BigQuery fields that will be returned with findings.
+    If not specified, no identifying fields will be returned for findings.
+    Structure is documented below.
+    """
+    included_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgsDict']]]]
+    """
+    Limit scanning only to these fields.
+    Structure is documented below.
+    """
+    rows_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+    If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+    specified. Cannot be used in conjunction with TimespanConfig.
+    """
+    rows_limit_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+    Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+    rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+    """
+    sample_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+    rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+    If TimespanConfig is set, set this to an empty string to avoid using the default value.
+    Default value is `TOP`.
+    Possible values are: `TOP`, `RANDOM_START`.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs:
@@ -25151,14 +24054,11 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs:
         pulumi.set(self, "sample_method", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name describing the field excluded from scanning.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name describing the field excluded from scanning.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs:
@@ -25182,14 +24082,11 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArg
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs:
@@ -25213,14 +24110,11 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name describing the field to which scanning is limited.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name describing the field to which scanning is limited.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs:
@@ -25244,22 +24138,19 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArg
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        The dataset ID of the table.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The Google Cloud Platform project ID of the project containing the table.
-        """
-        table_id: pulumi.Input[_builtins.str]
-        """
-        The name of the table.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    The dataset ID of the table.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The Google Cloud Platform project ID of the project containing the table.
+    """
+    table_id: pulumi.Input[_builtins.str]
+    """
+    The name of the table.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs:
@@ -25313,43 +24204,40 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceAr
         pulumi.set(self, "table_id", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgsDict(TypedDict):
-        file_set: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgsDict']
-        """
-        Set of files to scan.
-        Structure is documented below.
-        """
-        bytes_limit_per_file: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max number of bytes to scan from a file. If a scanned file's size is bigger than this value
-        then the rest of the bytes are omitted.
-        """
-        bytes_limit_per_file_percent: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down.
-        Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
-        """
-        file_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of file type groups to include in the scan. If empty, all files are scanned and available data
-        format processors are applied. In addition, the binary content of the selected files is always scanned as well.
-        Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-        Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`, `POWERPOINT`, `EXCEL`.
-        """
-        files_limit_percent: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
-        Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
-        """
-        sample_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-        If not specified, scanning would start from the top.
-        Possible values are: `TOP`, `RANDOM_START`.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgsDict(TypedDict):
+    file_set: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgsDict']
+    """
+    Set of files to scan.
+    Structure is documented below.
+    """
+    bytes_limit_per_file: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max number of bytes to scan from a file. If a scanned file's size is bigger than this value
+    then the rest of the bytes are omitted.
+    """
+    bytes_limit_per_file_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down.
+    Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
+    """
+    file_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of file type groups to include in the scan. If empty, all files are scanned and available data
+    format processors are applied. In addition, the binary content of the selected files is always scanned as well.
+    Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
+    Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`, `POWERPOINT`, `EXCEL`.
+    """
+    files_limit_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
+    Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
+    """
+    sample_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
+    If not specified, scanning would start from the top.
+    Possible values are: `TOP`, `RANDOM_START`.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs:
@@ -25471,23 +24359,20 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs:
         pulumi.set(self, "sample_method", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgsDict(TypedDict):
-        regex_file_set: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgsDict']]
-        """
-        The regex-filtered set of files to scan.
-        Structure is documented below.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cloud Storage url of the file(s) to scan, in the format `gs://<bucket>/<path>`. Trailing wildcard
-        in the path is allowed.
-        If the url ends in a trailing slash, the bucket or directory represented by the url will be scanned
-        non-recursively (content in sub-directories will not be scanned). This means that `gs://mybucket/` is
-        equivalent to `gs://mybucket/*`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory/*`.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgsDict(TypedDict):
+    regex_file_set: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgsDict']]
+    """
+    The regex-filtered set of files to scan.
+    Structure is documented below.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cloud Storage url of the file(s) to scan, in the format `gs://<bucket>/<path>`. Trailing wildcard
+    in the path is allowed.
+    If the url ends in a trailing slash, the bucket or directory represented by the url will be scanned
+    non-recursively (content in sub-directories will not be scanned). This means that `gs://mybucket/` is
+    equivalent to `gs://mybucket/*`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory/*`.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs:
@@ -25538,26 +24423,23 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgsDict(TypedDict):
-        bucket_name: pulumi.Input[_builtins.str]
-        """
-        The name of a Cloud Storage bucket.
-        """
-        exclude_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of regular expressions matching file paths to exclude. All files in the bucket that match at
-        least one of these regular expressions will be excluded from the scan.
-        """
-        include_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of regular expressions matching file paths to include. All files in the bucket
-        that match at least one of these regular expressions will be included in the set of files,
-        except for those that also match an item in excludeRegex. Leaving this field empty will
-        match all files by default (this is equivalent to including .* in the list)
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgsDict(TypedDict):
+    bucket_name: pulumi.Input[_builtins.str]
+    """
+    The name of a Cloud Storage bucket.
+    """
+    exclude_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of regular expressions matching file paths to exclude. All files in the bucket that match at
+    least one of these regular expressions will be excluded from the scan.
+    """
+    include_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of regular expressions matching file paths to include. All files in the bucket
+    that match at least one of these regular expressions will be included in the set of files,
+    except for those that also match an item in excludeRegex. Leaving this field empty will
+    match all files by default (this is equivalent to including .* in the list)
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgs:
@@ -25621,21 +24503,18 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
         pulumi.set(self, "include_regexes", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgsDict(TypedDict):
-        kind: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgsDict']
-        """
-        A representation of a Datastore kind.
-        Structure is documented below.
-        """
-        partition_id: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgsDict']
-        """
-        Datastore partition ID. A partition ID identifies a grouping of entities. The grouping
-        is always by project and namespace, however the namespace ID may be empty.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgsDict(TypedDict):
+    kind: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgsDict']
+    """
+    A representation of a Datastore kind.
+    Structure is documented below.
+    """
+    partition_id: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgsDict']
+    """
+    Datastore partition ID. A partition ID identifies a grouping of entities. The grouping
+    is always by project and namespace, however the namespace ID may be empty.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs:
@@ -25680,14 +24559,11 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs:
         pulumi.set(self, "partition_id", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the Datastore kind.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the Datastore kind.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs:
@@ -25711,18 +24587,15 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgsDict(TypedDict):
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the project to which the entities belong.
-        """
-        namespace_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If not empty, the ID of the namespace to which the entities belong.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgsDict(TypedDict):
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the project to which the entities belong.
+    """
+    namespace_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If not empty, the ID of the namespace to which the entities belong.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs:
@@ -25762,36 +24635,33 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs
         pulumi.set(self, "namespace_id", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A short description of where the data is coming from. Will be stored once in the job. 256 max length.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        To organize findings, these labels will be added to each finding.
-        Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
-        Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
-        No more than 10 labels can be associated with a given finding.
-        Examples:
-        * `"environment" : "production"`
-        * `"pipeline" : "etl"`
-        """
-        required_finding_label_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        These are labels that each inspection request must include within their 'finding_labels' map. Request
-        may contain others, but any missing one of these will be rejected.
-        Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
-        No more than 10 keys can be required.
-        """
-        table_options: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgsDict']]
-        """
-        If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    To organize findings, these labels will be added to each finding.
+    Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+    Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
+    No more than 10 labels can be associated with a given finding.
+    Examples:
+    * `"environment" : "production"`
+    * `"pipeline" : "etl"`
+    """
+    required_finding_label_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    These are labels that each inspection request must include within their 'finding_labels' map. Request
+    may contain others, but any missing one of these will be rejected.
+    Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+    No more than 10 keys can be required.
+    """
+    table_options: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgsDict']]
+    """
+    If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs:
@@ -25884,17 +24754,14 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs:
         pulumi.set(self, "table_options", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgsDict(TypedDict):
-        identifying_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgsDict']]]]
-        """
-        The columns that are the primary keys for table objects included in ContentItem. A copy of this
-        cell's value will stored alongside alongside each finding so that the finding can be traced to
-        the specific row it came from. No more than 3 may be provided.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgsDict(TypedDict):
+    identifying_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgsDict']]]]
+    """
+    The columns that are the primary keys for table objects included in ContentItem. A copy of this
+    cell's value will stored alongside alongside each finding so that the finding can be traced to
+    the specific row it came from. No more than 3 may be provided.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs:
@@ -25925,14 +24792,11 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs:
         pulumi.set(self, "identifying_fields", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs:
@@ -25956,30 +24820,27 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdenti
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgsDict(TypedDict):
-        enable_auto_population_of_timespan_config: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When the job is started by a JobTrigger we will automatically figure out a valid startTime to avoid
-        scanning files that have not been modified since the last time the JobTrigger executed. This will
-        be based on the time of the execution of the last run of the JobTrigger or the timespan endTime
-        used in the last run of the JobTrigger.
-        """
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
-        """
-        timestamp_field: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgsDict']]
-        """
-        Specification of the field containing the timestamp of scanned items.
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgsDict(TypedDict):
+    enable_auto_population_of_timespan_config: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When the job is started by a JobTrigger we will automatically figure out a valid startTime to avoid
+    scanning files that have not been modified since the last time the JobTrigger executed. This will
+    be based on the time of the execution of the last run of the JobTrigger or the timespan endTime
+    used in the last run of the JobTrigger.
+    """
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
+    """
+    timestamp_field: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgsDict']]
+    """
+    Specification of the field containing the timestamp of scanned items.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs:
@@ -26060,19 +24921,16 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs:
         pulumi.set(self, "timestamp_field", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
-        For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
-        modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
-        field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
-        For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
-        timestamp property does not exist or its value is empty or invalid.
-        """
-elif False:
-    PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+    For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+    modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+    field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+    For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+    timestamp property does not exist or its value is empty or invalid.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs:
@@ -26106,19 +24964,16 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArg
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerTriggerArgsDict(TypedDict):
-        manual: NotRequired[pulumi.Input['PreventionJobTriggerTriggerManualArgsDict']]
-        """
-        For use with hybrid jobs. Jobs must be manually created and finished.
-        """
-        schedule: NotRequired[pulumi.Input['PreventionJobTriggerTriggerScheduleArgsDict']]
-        """
-        Schedule for triggered jobs
-        Structure is documented below.
-        """
-elif False:
-    PreventionJobTriggerTriggerArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerTriggerArgsDict(TypedDict):
+    manual: NotRequired[pulumi.Input['PreventionJobTriggerTriggerManualArgsDict']]
+    """
+    For use with hybrid jobs. Jobs must be manually created and finished.
+    """
+    schedule: NotRequired[pulumi.Input['PreventionJobTriggerTriggerScheduleArgsDict']]
+    """
+    Schedule for triggered jobs
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerTriggerArgs:
@@ -26161,11 +25016,8 @@ class PreventionJobTriggerTriggerArgs:
         pulumi.set(self, "schedule", value)
 
 
-if not MYPY:
-    class PreventionJobTriggerTriggerManualArgsDict(TypedDict):
-        pass
-elif False:
-    PreventionJobTriggerTriggerManualArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerTriggerManualArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class PreventionJobTriggerTriggerManualArgs:
@@ -26173,17 +25025,14 @@ class PreventionJobTriggerTriggerManualArgs:
         pass
 
 
-if not MYPY:
-    class PreventionJobTriggerTriggerScheduleArgsDict(TypedDict):
-        recurrence_period_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        With this option a job is started a regular periodic basis. For example: every day (86400 seconds).
-        A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
-        This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        """
-elif False:
-    PreventionJobTriggerTriggerScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionJobTriggerTriggerScheduleArgsDict(TypedDict):
+    recurrence_period_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    With this option a job is started a regular periodic basis. For example: every day (86400 seconds).
+    A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
+    This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+    """
 
 @pulumi.input_type
 class PreventionJobTriggerTriggerScheduleArgs:
@@ -26214,20 +25063,17 @@ class PreventionJobTriggerTriggerScheduleArgs:
         pulumi.set(self, "recurrence_period_duration", value)
 
 
-if not MYPY:
-    class PreventionStoredInfoTypeDictionaryArgsDict(TypedDict):
-        cloud_storage_path: NotRequired[pulumi.Input['PreventionStoredInfoTypeDictionaryCloudStoragePathArgsDict']]
-        """
-        Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
-        Structure is documented below.
-        """
-        word_list: NotRequired[pulumi.Input['PreventionStoredInfoTypeDictionaryWordListArgsDict']]
-        """
-        List of words or phrases to search for.
-        Structure is documented below.
-        """
-elif False:
-    PreventionStoredInfoTypeDictionaryArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionStoredInfoTypeDictionaryArgsDict(TypedDict):
+    cloud_storage_path: NotRequired[pulumi.Input['PreventionStoredInfoTypeDictionaryCloudStoragePathArgsDict']]
+    """
+    Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+    Structure is documented below.
+    """
+    word_list: NotRequired[pulumi.Input['PreventionStoredInfoTypeDictionaryWordListArgsDict']]
+    """
+    List of words or phrases to search for.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionStoredInfoTypeDictionaryArgs:
@@ -26272,14 +25118,11 @@ class PreventionStoredInfoTypeDictionaryArgs:
         pulumi.set(self, "word_list", value)
 
 
-if not MYPY:
-    class PreventionStoredInfoTypeDictionaryCloudStoragePathArgsDict(TypedDict):
-        path: pulumi.Input[_builtins.str]
-        """
-        A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-        """
-elif False:
-    PreventionStoredInfoTypeDictionaryCloudStoragePathArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionStoredInfoTypeDictionaryCloudStoragePathArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+    """
 
 @pulumi.input_type
 class PreventionStoredInfoTypeDictionaryCloudStoragePathArgs:
@@ -26303,15 +25146,12 @@ class PreventionStoredInfoTypeDictionaryCloudStoragePathArgs:
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class PreventionStoredInfoTypeDictionaryWordListArgsDict(TypedDict):
-        words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Words or phrases defining the dictionary. The dictionary must contain at least one
-        phrase and every phrase must contain at least 2 characters that are letters or digits.
-        """
-elif False:
-    PreventionStoredInfoTypeDictionaryWordListArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionStoredInfoTypeDictionaryWordListArgsDict(TypedDict):
+    words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Words or phrases defining the dictionary. The dictionary must contain at least one
+    phrase and every phrase must contain at least 2 characters that are letters or digits.
+    """
 
 @pulumi.input_type
 class PreventionStoredInfoTypeDictionaryWordListArgs:
@@ -26337,26 +25177,23 @@ class PreventionStoredInfoTypeDictionaryWordListArgs:
         pulumi.set(self, "words", value)
 
 
-if not MYPY:
-    class PreventionStoredInfoTypeLargeCustomDictionaryArgsDict(TypedDict):
-        output_path: pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgsDict']
-        """
-        Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API.
-        If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
-        Structure is documented below.
-        """
-        big_query_field: NotRequired[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgsDict']]
-        """
-        Field in a BigQuery table where each cell represents a dictionary phrase.
-        Structure is documented below.
-        """
-        cloud_storage_file_set: NotRequired[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgsDict']]
-        """
-        Set of files containing newline-delimited lists of dictionary phrases.
-        Structure is documented below.
-        """
-elif False:
-    PreventionStoredInfoTypeLargeCustomDictionaryArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionStoredInfoTypeLargeCustomDictionaryArgsDict(TypedDict):
+    output_path: pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgsDict']
+    """
+    Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API.
+    If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
+    Structure is documented below.
+    """
+    big_query_field: NotRequired[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgsDict']]
+    """
+    Field in a BigQuery table where each cell represents a dictionary phrase.
+    Structure is documented below.
+    """
+    cloud_storage_file_set: NotRequired[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgsDict']]
+    """
+    Set of files containing newline-delimited lists of dictionary phrases.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionStoredInfoTypeLargeCustomDictionaryArgs:
@@ -26420,20 +25257,17 @@ class PreventionStoredInfoTypeLargeCustomDictionaryArgs:
         pulumi.set(self, "cloud_storage_file_set", value)
 
 
-if not MYPY:
-    class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgsDict(TypedDict):
-        field: pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgsDict']
-        """
-        Designated field in the BigQuery table.
-        Structure is documented below.
-        """
-        table: pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgsDict']
-        """
-        Field in a BigQuery table where each cell represents a dictionary phrase.
-        Structure is documented below.
-        """
-elif False:
-    PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgsDict(TypedDict):
+    field: pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgsDict']
+    """
+    Designated field in the BigQuery table.
+    Structure is documented below.
+    """
+    table: pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgsDict']
+    """
+    Field in a BigQuery table where each cell represents a dictionary phrase.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs:
@@ -26476,14 +25310,11 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs:
         pulumi.set(self, "table", value)
 
 
-if not MYPY:
-    class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name describing the field.
-        """
-elif False:
-    PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name describing the field.
+    """
 
 @pulumi.input_type
 class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs:
@@ -26507,22 +25338,19 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgsDict(TypedDict):
-        dataset_id: pulumi.Input[_builtins.str]
-        """
-        The dataset ID of the table.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The Google Cloud Platform project ID of the project containing the table.
-        """
-        table_id: pulumi.Input[_builtins.str]
-        """
-        The name of the table.
-        """
-elif False:
-    PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    The dataset ID of the table.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The Google Cloud Platform project ID of the project containing the table.
+    """
+    table_id: pulumi.Input[_builtins.str]
+    """
+    The name of the table.
+    """
 
 @pulumi.input_type
 class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs:
@@ -26576,14 +25404,11 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs:
         pulumi.set(self, "table_id", value)
 
 
-if not MYPY:
-    class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgsDict(TypedDict):
-        url: pulumi.Input[_builtins.str]
-        """
-        The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the path is allowed.
-        """
-elif False:
-    PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgsDict(TypedDict):
+    url: pulumi.Input[_builtins.str]
+    """
+    The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the path is allowed.
+    """
 
 @pulumi.input_type
 class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs:
@@ -26607,14 +25432,11 @@ class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgsDict(TypedDict):
-        path: pulumi.Input[_builtins.str]
-        """
-        A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-        """
-elif False:
-    PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+    """
 
 @pulumi.input_type
 class PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs:
@@ -26638,19 +25460,16 @@ class PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs:
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class PreventionStoredInfoTypeRegexArgsDict(TypedDict):
-        pattern: pulumi.Input[_builtins.str]
-        """
-        Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        """
-        group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
-        """
-elif False:
-    PreventionStoredInfoTypeRegexArgsDict: TypeAlias = Mapping[str, Any]
+class PreventionStoredInfoTypeRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Pattern defining the regular expression.
+    Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
+    group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+    """
 
 @pulumi.input_type
 class PreventionStoredInfoTypeRegexArgs:

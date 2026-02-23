@@ -593,21 +593,16 @@ __all__ = [
     'IntentFollowupIntentInfoArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ConversationProfileAutomatedAgentConfigArgsDict(TypedDict):
-        agent: pulumi.Input[_builtins.str]
-        """
-        ID of the Dialogflow agent environment to use.
-        Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
-        """
-        session_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Configure lifetime of the Dialogflow session.
-        """
-elif False:
-    ConversationProfileAutomatedAgentConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileAutomatedAgentConfigArgsDict(TypedDict):
+    agent: pulumi.Input[_builtins.str]
+    """
+    ID of the Dialogflow agent environment to use.
+    Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
+    """
+    session_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Configure lifetime of the Dialogflow session.
+    """
 
 @pulumi.input_type
 class ConversationProfileAutomatedAgentConfigArgs:
@@ -649,31 +644,28 @@ class ConversationProfileAutomatedAgentConfigArgs:
         pulumi.set(self, "session_ttl", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigArgsDict(TypedDict):
-        end_user_suggestion_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgsDict']]
-        """
-        Configuration for agent assistance of end user participant.
-        Structure is documented below.
-        """
-        human_agent_suggestion_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgsDict']]
-        """
-        Configuration for agent assistance of human agent participant.
-        Structure is documented below.
-        """
-        message_analysis_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgsDict']]
-        """
-        desc
-        Structure is documented below.
-        """
-        notification_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigNotificationConfigArgsDict']]
-        """
-        Pub/Sub topic on which to publish new agent assistant events.
-        Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
-        Structure is documented below.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigArgsDict(TypedDict):
+    end_user_suggestion_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgsDict']]
+    """
+    Configuration for agent assistance of end user participant.
+    Structure is documented below.
+    """
+    human_agent_suggestion_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgsDict']]
+    """
+    Configuration for agent assistance of human agent participant.
+    Structure is documented below.
+    """
+    message_analysis_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgsDict']]
+    """
+    desc
+    Structure is documented below.
+    """
+    notification_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigNotificationConfigArgsDict']]
+    """
+    Pub/Sub topic on which to publish new agent assistant events.
+    Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigArgs:
@@ -756,28 +748,25 @@ class ConversationProfileHumanAgentAssistantConfigArgs:
         pulumi.set(self, "notification_config", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgsDict(TypedDict):
-        disable_high_latency_features_sync_delivery: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
-        """
-        feature_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgsDict']]]]
-        """
-        Configuration of different suggestion features. One feature can have only one config.
-        Structure is documented below.
-        """
-        generators: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of various generator resource names used in the conversation profile.
-        """
-        group_suggestion_responses: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
-        If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgsDict(TypedDict):
+    disable_high_latency_features_sync_delivery: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+    """
+    feature_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgsDict']]]]
+    """
+    Configuration of different suggestion features. One feature can have only one config.
+    Structure is documented below.
+    """
+    generators: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of various generator resource names used in the conversation profile.
+    """
+    group_suggestion_responses: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+    If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs:
@@ -854,61 +843,58 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs:
         pulumi.set(self, "group_suggestion_responses", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgsDict(TypedDict):
-        conversation_model_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgsDict']]
-        """
-        Configs of custom conversation model.
-        Structure is documented below.
-        """
-        conversation_process_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgsDict']]
-        """
-        Config to process conversation.
-        Structure is documented below.
-        """
-        disable_agent_query_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
-        This feature is only supported for types: KNOWLEDGE_SEARCH.
-        """
-        enable_conversation_augmented_query: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable including conversation context during query answer generation.
-        This feature is only supported for types: KNOWLEDGE_SEARCH.
-        """
-        enable_event_based_suggestion: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Automatically iterates all participants and tries to compile suggestions.
-        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
-        """
-        enable_query_suggestion_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable query suggestion only.
-        This feature is only supported for types: KNOWLEDGE_ASSIST
-        """
-        enable_query_suggestion_when_no_answer: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
-        This feature is only supported for types: KNOWLEDGE_ASSIST.
-        """
-        query_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgsDict']]
-        """
-        Configs of query.
-        Structure is documented below.
-        """
-        suggestion_feature: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgsDict']]
-        """
-        The suggestion feature.
-        Structure is documented below.
-        """
-        suggestion_trigger_settings: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict']]
-        """
-        Settings of suggestion trigger.
-        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
-        Structure is documented below.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgsDict(TypedDict):
+    conversation_model_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgsDict']]
+    """
+    Configs of custom conversation model.
+    Structure is documented below.
+    """
+    conversation_process_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgsDict']]
+    """
+    Config to process conversation.
+    Structure is documented below.
+    """
+    disable_agent_query_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+    This feature is only supported for types: KNOWLEDGE_SEARCH.
+    """
+    enable_conversation_augmented_query: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable including conversation context during query answer generation.
+    This feature is only supported for types: KNOWLEDGE_SEARCH.
+    """
+    enable_event_based_suggestion: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Automatically iterates all participants and tries to compile suggestions.
+    This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+    """
+    enable_query_suggestion_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable query suggestion only.
+    This feature is only supported for types: KNOWLEDGE_ASSIST
+    """
+    enable_query_suggestion_when_no_answer: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+    This feature is only supported for types: KNOWLEDGE_ASSIST.
+    """
+    query_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgsDict']]
+    """
+    Configs of query.
+    Structure is documented below.
+    """
+    suggestion_feature: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgsDict']]
+    """
+    The suggestion feature.
+    Structure is documented below.
+    """
+    suggestion_trigger_settings: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict']]
+    """
+    Settings of suggestion trigger.
+    This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs:
@@ -1099,18 +1085,15 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
         pulumi.set(self, "suggestion_trigger_settings", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgsDict(TypedDict):
-        baseline_model_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
-        """
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgsDict(TypedDict):
+    baseline_model_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+    """
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs:
@@ -1151,14 +1134,11 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
         pulumi.set(self, "model", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgsDict(TypedDict):
-        recent_sentences_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgsDict(TypedDict):
+    recent_sentences_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs:
@@ -1183,47 +1163,44 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
         pulumi.set(self, "recent_sentences_count", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgsDict(TypedDict):
-        confidence_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Confidence threshold of query result.
-        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
-        """
-        context_filter_settings: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict']]
-        """
-        Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
-        Structure is documented below.
-        """
-        dialogflow_query_source: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict']]
-        """
-        Query from Dialogflow agent.
-        This feature is supported for types: DIALOGFLOW_ASSIST.
-        Structure is documented below.
-        """
-        document_query_source: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgsDict']]
-        """
-        Query from knowledge base document.
-        This feature is supported for types: SMART_REPLY, SMART_COMPOSE.
-        Structure is documented below.
-        """
-        knowledge_base_query_source: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgsDict']]
-        """
-        Query from knowledgebase.
-        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
-        Structure is documented below.
-        """
-        max_results: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of results to return.
-        """
-        sections: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict']]
-        """
-        he customized sections chosen to return when requesting a summary of a conversation.
-        Structure is documented below.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgsDict(TypedDict):
+    confidence_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Confidence threshold of query result.
+    This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+    """
+    context_filter_settings: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict']]
+    """
+    Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+    Structure is documented below.
+    """
+    dialogflow_query_source: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict']]
+    """
+    Query from Dialogflow agent.
+    This feature is supported for types: DIALOGFLOW_ASSIST.
+    Structure is documented below.
+    """
+    document_query_source: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgsDict']]
+    """
+    Query from knowledge base document.
+    This feature is supported for types: SMART_REPLY, SMART_COMPOSE.
+    Structure is documented below.
+    """
+    knowledge_base_query_source: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgsDict']]
+    """
+    Query from knowledgebase.
+    This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+    Structure is documented below.
+    """
+    max_results: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of results to return.
+    """
+    sections: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict']]
+    """
+    he customized sections chosen to return when requesting a summary of a conversation.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs:
@@ -1362,22 +1339,19 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
         pulumi.set(self, "sections", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict(TypedDict):
-        drop_handoff_messages: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
-        """
-        drop_ivr_messages: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, all messages from ivr stage are dropped.
-        """
-        drop_virtual_agent_messages: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, all messages from virtual agent are dropped.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict(TypedDict):
+    drop_handoff_messages: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+    """
+    drop_ivr_messages: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, all messages from ivr stage are dropped.
+    """
+    drop_virtual_agent_messages: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, all messages from virtual agent are dropped.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs:
@@ -1434,19 +1408,16 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
         pulumi.set(self, "drop_virtual_agent_messages", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict(TypedDict):
-        agent: pulumi.Input[_builtins.str]
-        """
-        he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
-        """
-        human_agent_side_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict']]
-        """
-        The Dialogflow assist configuration for human agent.
-        Structure is documented below.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict(TypedDict):
+    agent: pulumi.Input[_builtins.str]
+    """
+    he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+    """
+    human_agent_side_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict']]
+    """
+    The Dialogflow assist configuration for human agent.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs:
@@ -1488,14 +1459,11 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
         pulumi.set(self, "human_agent_side_config", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict(TypedDict):
-        agent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict(TypedDict):
+    agent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs:
@@ -1520,14 +1488,11 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
         pulumi.set(self, "agent", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgsDict(TypedDict):
-        documents: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Knowledge documents to query from. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<KnowledgeBase ID>/documents/<Document ID>.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgsDict(TypedDict):
+    documents: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Knowledge documents to query from. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<KnowledgeBase ID>/documents/<Document ID>.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs:
@@ -1551,14 +1516,11 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
         pulumi.set(self, "documents", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgsDict(TypedDict):
-        knowledge_bases: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Knowledge bases to query. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base ID>.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgsDict(TypedDict):
+    knowledge_bases: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Knowledge bases to query. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base ID>.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs:
@@ -1582,16 +1544,13 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
         pulumi.set(self, "knowledge_bases", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict(TypedDict):
-        section_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The selected sections chosen to return when requesting a summary of a conversation
-        If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
-        Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict(TypedDict):
+    section_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The selected sections chosen to return when requesting a summary of a conversation
+    If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+    Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs:
@@ -1620,14 +1579,11 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
         pulumi.set(self, "section_types", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of Human Agent Assistant API feature to request.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of Human Agent Assistant API feature to request.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs:
@@ -1652,18 +1608,15 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict(TypedDict):
-        no_small_talk: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Do not trigger if last utterance is small talk.
-        """
-        only_end_user: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Only trigger suggestion if participant role of last utterance is END_USER.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict(TypedDict):
+    no_small_talk: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Do not trigger if last utterance is small talk.
+    """
+    only_end_user: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Only trigger suggestion if participant role of last utterance is END_USER.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs:
@@ -1704,28 +1657,25 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
         pulumi.set(self, "only_end_user", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgsDict(TypedDict):
-        disable_high_latency_features_sync_delivery: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
-        """
-        feature_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgsDict']]]]
-        """
-        Configuration of different suggestion features. One feature can have only one config.
-        Structure is documented below.
-        """
-        generators: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of various generator resource names used in the conversation profile.
-        """
-        group_suggestion_responses: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
-        If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgsDict(TypedDict):
+    disable_high_latency_features_sync_delivery: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+    """
+    feature_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgsDict']]]]
+    """
+    Configuration of different suggestion features. One feature can have only one config.
+    Structure is documented below.
+    """
+    generators: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of various generator resource names used in the conversation profile.
+    """
+    group_suggestion_responses: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+    If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs:
@@ -1802,61 +1752,58 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs
         pulumi.set(self, "group_suggestion_responses", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgsDict(TypedDict):
-        conversation_model_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgsDict']]
-        """
-        Configs of custom conversation model.
-        Structure is documented below.
-        """
-        conversation_process_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgsDict']]
-        """
-        Config to process conversation.
-        Structure is documented below.
-        """
-        disable_agent_query_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
-        This feature is only supported for types: KNOWLEDGE_SEARCH.
-        """
-        enable_conversation_augmented_query: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable including conversation context during query answer generation.
-        This feature is only supported for types: KNOWLEDGE_SEARCH.
-        """
-        enable_event_based_suggestion: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Automatically iterates all participants and tries to compile suggestions.
-        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
-        """
-        enable_query_suggestion_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable query suggestion only.
-        This feature is only supported for types: KNOWLEDGE_ASSIST
-        """
-        enable_query_suggestion_when_no_answer: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
-        This feature is only supported for types: KNOWLEDGE_ASSIST.
-        """
-        query_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgsDict']]
-        """
-        Configs of query.
-        Structure is documented below.
-        """
-        suggestion_feature: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgsDict']]
-        """
-        The suggestion feature.
-        Structure is documented below.
-        """
-        suggestion_trigger_settings: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict']]
-        """
-        Settings of suggestion trigger.
-        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
-        Structure is documented below.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgsDict(TypedDict):
+    conversation_model_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgsDict']]
+    """
+    Configs of custom conversation model.
+    Structure is documented below.
+    """
+    conversation_process_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgsDict']]
+    """
+    Config to process conversation.
+    Structure is documented below.
+    """
+    disable_agent_query_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+    This feature is only supported for types: KNOWLEDGE_SEARCH.
+    """
+    enable_conversation_augmented_query: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable including conversation context during query answer generation.
+    This feature is only supported for types: KNOWLEDGE_SEARCH.
+    """
+    enable_event_based_suggestion: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Automatically iterates all participants and tries to compile suggestions.
+    This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+    """
+    enable_query_suggestion_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable query suggestion only.
+    This feature is only supported for types: KNOWLEDGE_ASSIST
+    """
+    enable_query_suggestion_when_no_answer: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+    This feature is only supported for types: KNOWLEDGE_ASSIST.
+    """
+    query_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgsDict']]
+    """
+    Configs of query.
+    Structure is documented below.
+    """
+    suggestion_feature: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgsDict']]
+    """
+    The suggestion feature.
+    Structure is documented below.
+    """
+    suggestion_trigger_settings: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict']]
+    """
+    Settings of suggestion trigger.
+    This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs:
@@ -2047,18 +1994,15 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
         pulumi.set(self, "suggestion_trigger_settings", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgsDict(TypedDict):
-        baseline_model_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
-        """
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgsDict(TypedDict):
+    baseline_model_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+    """
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs:
@@ -2099,14 +2043,11 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
         pulumi.set(self, "model", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgsDict(TypedDict):
-        recent_sentences_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgsDict(TypedDict):
+    recent_sentences_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs:
@@ -2131,35 +2072,32 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
         pulumi.set(self, "recent_sentences_count", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgsDict(TypedDict):
-        confidence_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Confidence threshold of query result.
-        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
-        """
-        context_filter_settings: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict']]
-        """
-        Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
-        Structure is documented below.
-        """
-        dialogflow_query_source: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict']]
-        """
-        Query from Dialogflow agent.
-        This feature is supported for types: DIALOGFLOW_ASSIST.
-        Structure is documented below.
-        """
-        max_results: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of results to return.
-        """
-        sections: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict']]
-        """
-        he customized sections chosen to return when requesting a summary of a conversation.
-        Structure is documented below.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgsDict(TypedDict):
+    confidence_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Confidence threshold of query result.
+    This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+    """
+    context_filter_settings: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict']]
+    """
+    Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+    Structure is documented below.
+    """
+    dialogflow_query_source: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict']]
+    """
+    Query from Dialogflow agent.
+    This feature is supported for types: DIALOGFLOW_ASSIST.
+    Structure is documented below.
+    """
+    max_results: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of results to return.
+    """
+    sections: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict']]
+    """
+    he customized sections chosen to return when requesting a summary of a conversation.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs:
@@ -2258,22 +2196,19 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
         pulumi.set(self, "sections", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict(TypedDict):
-        drop_handoff_messages: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
-        """
-        drop_ivr_messages: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, all messages from ivr stage are dropped.
-        """
-        drop_virtual_agent_messages: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, all messages from virtual agent are dropped.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict(TypedDict):
+    drop_handoff_messages: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+    """
+    drop_ivr_messages: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, all messages from ivr stage are dropped.
+    """
+    drop_virtual_agent_messages: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, all messages from virtual agent are dropped.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs:
@@ -2330,19 +2265,16 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
         pulumi.set(self, "drop_virtual_agent_messages", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict(TypedDict):
-        agent: pulumi.Input[_builtins.str]
-        """
-        he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
-        """
-        human_agent_side_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict']]
-        """
-        The Dialogflow assist configuration for human agent.
-        Structure is documented below.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict(TypedDict):
+    agent: pulumi.Input[_builtins.str]
+    """
+    he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+    """
+    human_agent_side_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict']]
+    """
+    The Dialogflow assist configuration for human agent.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs:
@@ -2384,14 +2316,11 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
         pulumi.set(self, "human_agent_side_config", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict(TypedDict):
-        agent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict(TypedDict):
+    agent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs:
@@ -2416,16 +2345,13 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
         pulumi.set(self, "agent", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict(TypedDict):
-        section_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The selected sections chosen to return when requesting a summary of a conversation
-        If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
-        Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict(TypedDict):
+    section_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The selected sections chosen to return when requesting a summary of a conversation
+    If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+    Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs:
@@ -2454,14 +2380,11 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
         pulumi.set(self, "section_types", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of Human Agent Assistant API feature to request.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of Human Agent Assistant API feature to request.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs:
@@ -2486,18 +2409,15 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict(TypedDict):
-        no_small_talk: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Do not trigger if last utterance is small talk.
-        """
-        only_end_user: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Only trigger suggestion if participant role of last utterance is END_USER.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict(TypedDict):
+    no_small_talk: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Do not trigger if last utterance is small talk.
+    """
+    only_end_user: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Only trigger suggestion if participant role of last utterance is END_USER.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs:
@@ -2538,18 +2458,15 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
         pulumi.set(self, "only_end_user", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgsDict(TypedDict):
-        enable_entity_extraction: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable entity extraction in conversation messages on agent assist stage.
-        """
-        enable_sentiment_analysis: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable sentiment analysis in conversation messages on agent assist stage. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgsDict(TypedDict):
+    enable_entity_extraction: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable entity extraction in conversation messages on agent assist stage.
+    """
+    enable_sentiment_analysis: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable sentiment analysis in conversation messages on agent assist stage. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs:
@@ -2590,19 +2507,16 @@ class ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs:
         pulumi.set(self, "enable_sentiment_analysis", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentAssistantConfigNotificationConfigArgsDict(TypedDict):
-        message_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Format of the message
-        Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
-        """
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Pub/Sub topic to publish conversation events
-        """
-elif False:
-    ConversationProfileHumanAgentAssistantConfigNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentAssistantConfigNotificationConfigArgsDict(TypedDict):
+    message_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Format of the message
+    Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+    """
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Pub/Sub topic to publish conversation events
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs:
@@ -2645,15 +2559,12 @@ class ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs:
         pulumi.set(self, "topic", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentHandoffConfigArgsDict(TypedDict):
-        live_person_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgsDict']]
-        """
-        Config for using LivePerson.
-        Structure is documented below.
-        """
-elif False:
-    ConversationProfileHumanAgentHandoffConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentHandoffConfigArgsDict(TypedDict):
+    live_person_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgsDict']]
+    """
+    Config for using LivePerson.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentHandoffConfigArgs:
@@ -2680,14 +2591,11 @@ class ConversationProfileHumanAgentHandoffConfigArgs:
         pulumi.set(self, "live_person_config", value)
 
 
-if not MYPY:
-    class ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgsDict(TypedDict):
-        account_number: pulumi.Input[_builtins.str]
-        """
-        Account number of the LivePerson account to connect.
-        """
-elif False:
-    ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgsDict(TypedDict):
+    account_number: pulumi.Input[_builtins.str]
+    """
+    Account number of the LivePerson account to connect.
+    """
 
 @pulumi.input_type
 class ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs:
@@ -2711,14 +2619,11 @@ class ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs:
         pulumi.set(self, "account_number", value)
 
 
-if not MYPY:
-    class ConversationProfileLoggingConfigArgsDict(TypedDict):
-        enable_stackdriver_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to log conversation events
-        """
-elif False:
-    ConversationProfileLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileLoggingConfigArgsDict(TypedDict):
+    enable_stackdriver_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to log conversation events
+    """
 
 @pulumi.input_type
 class ConversationProfileLoggingConfigArgs:
@@ -2743,19 +2648,16 @@ class ConversationProfileLoggingConfigArgs:
         pulumi.set(self, "enable_stackdriver_logging", value)
 
 
-if not MYPY:
-    class ConversationProfileNewMessageEventNotificationConfigArgsDict(TypedDict):
-        message_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Format of the message
-        Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
-        """
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Pub/Sub topic to publish conversation events
-        """
-elif False:
-    ConversationProfileNewMessageEventNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileNewMessageEventNotificationConfigArgsDict(TypedDict):
+    message_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Format of the message
+    Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+    """
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Pub/Sub topic to publish conversation events
+    """
 
 @pulumi.input_type
 class ConversationProfileNewMessageEventNotificationConfigArgs:
@@ -2798,22 +2700,19 @@ class ConversationProfileNewMessageEventNotificationConfigArgs:
         pulumi.set(self, "topic", value)
 
 
-if not MYPY:
-    class ConversationProfileNewRecognitionResultNotificationConfigArgsDict(TypedDict):
-        message_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Format of message.
-        Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
-        """
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos.
-        For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant service-<Conversation Project Number>@gcp-sa-dialogflow.iam.gserviceaccount.com the Dialogflow Service Agent role in the topic project.
-        For chat integration to receive notification, make sure API caller has been granted the Dialogflow Service Agent role for the topic.
-        Format: projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>.
-        """
-elif False:
-    ConversationProfileNewRecognitionResultNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileNewRecognitionResultNotificationConfigArgsDict(TypedDict):
+    message_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Format of message.
+    Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+    """
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos.
+    For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant service-<Conversation Project Number>@gcp-sa-dialogflow.iam.gserviceaccount.com the Dialogflow Service Agent role in the topic project.
+    For chat integration to receive notification, make sure API caller has been granted the Dialogflow Service Agent role for the topic.
+    Format: projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>.
+    """
 
 @pulumi.input_type
 class ConversationProfileNewRecognitionResultNotificationConfigArgs:
@@ -2862,19 +2761,16 @@ class ConversationProfileNewRecognitionResultNotificationConfigArgs:
         pulumi.set(self, "topic", value)
 
 
-if not MYPY:
-    class ConversationProfileNotificationConfigArgsDict(TypedDict):
-        message_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Format of the message
-        Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
-        """
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Pub/Sub topic to publish conversation events
-        """
-elif False:
-    ConversationProfileNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileNotificationConfigArgsDict(TypedDict):
+    message_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Format of the message
+    Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+    """
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Pub/Sub topic to publish conversation events
+    """
 
 @pulumi.input_type
 class ConversationProfileNotificationConfigArgs:
@@ -2917,41 +2813,38 @@ class ConversationProfileNotificationConfigArgs:
         pulumi.set(self, "topic", value)
 
 
-if not MYPY:
-    class ConversationProfileSttConfigArgsDict(TypedDict):
-        audio_encoding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Audio encoding of the audio content to process.
-        Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
-        """
-        enable_word_info: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
-        """
-        language_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The language of the supplied audio.
-        """
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Which Speech model to select.
-        Leave this field unspecified to use Agent Speech settings for model selection.
-        """
-        sample_rate_hertz: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sample rate (in Hertz) of the audio content sent in the query.
-        """
-        speech_model_variant: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The speech model used in speech to text.
-        Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
-        """
-        use_timeout_based_endpointing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
-        """
-elif False:
-    ConversationProfileSttConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileSttConfigArgsDict(TypedDict):
+    audio_encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Audio encoding of the audio content to process.
+    Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+    """
+    enable_word_info: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
+    """
+    language_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The language of the supplied audio.
+    """
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Which Speech model to select.
+    Leave this field unspecified to use Agent Speech settings for model selection.
+    """
+    sample_rate_hertz: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sample rate (in Hertz) of the audio content sent in the query.
+    """
+    speech_model_variant: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The speech model used in speech to text.
+    Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
+    """
+    use_timeout_based_endpointing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+    """
 
 @pulumi.input_type
 class ConversationProfileSttConfigArgs:
@@ -3078,31 +2971,28 @@ class ConversationProfileSttConfigArgs:
         pulumi.set(self, "use_timeout_based_endpointing", value)
 
 
-if not MYPY:
-    class ConversationProfileTtsConfigArgsDict(TypedDict):
-        effects_profile_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
-        """
-        pitch: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
-        """
-        speaking_rate: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Speaking rate/speed, in the range [0.25, 4.0].
-        """
-        voice: NotRequired[pulumi.Input['ConversationProfileTtsConfigVoiceArgsDict']]
-        """
-        The desired voice of the synthesized audio.
-        Structure is documented below.
-        """
-        volume_gain_db: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Volume gain (in dB) of the normal native volume supported by the specific voice.
-        """
-elif False:
-    ConversationProfileTtsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileTtsConfigArgsDict(TypedDict):
+    effects_profile_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+    """
+    pitch: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+    """
+    speaking_rate: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Speaking rate/speed, in the range [0.25, 4.0].
+    """
+    voice: NotRequired[pulumi.Input['ConversationProfileTtsConfigVoiceArgsDict']]
+    """
+    The desired voice of the synthesized audio.
+    Structure is documented below.
+    """
+    volume_gain_db: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Volume gain (in dB) of the normal native volume supported by the specific voice.
+    """
 
 @pulumi.input_type
 class ConversationProfileTtsConfigArgs:
@@ -3193,19 +3083,16 @@ class ConversationProfileTtsConfigArgs:
         pulumi.set(self, "volume_gain_db", value)
 
 
-if not MYPY:
-    class ConversationProfileTtsConfigVoiceArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the voice.
-        """
-        ssml_gender: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The preferred gender of the voice.
-        Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
-        """
-elif False:
-    ConversationProfileTtsConfigVoiceArgsDict: TypeAlias = Mapping[str, Any]
+class ConversationProfileTtsConfigVoiceArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the voice.
+    """
+    ssml_gender: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The preferred gender of the voice.
+    Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+    """
 
 @pulumi.input_type
 class ConversationProfileTtsConfigVoiceArgs:
@@ -3248,41 +3135,38 @@ class ConversationProfileTtsConfigVoiceArgs:
         pulumi.set(self, "ssml_gender", value)
 
 
-if not MYPY:
-    class CxAgentAdvancedSettingsArgsDict(TypedDict):
-        audio_export_gcs_destination: NotRequired[pulumi.Input['CxAgentAdvancedSettingsAudioExportGcsDestinationArgsDict']]
-        """
-        If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
-        * Agent level
-        * Flow level
-        Structure is documented below.
-        """
-        dtmf_settings: NotRequired[pulumi.Input['CxAgentAdvancedSettingsDtmfSettingsArgsDict']]
-        """
-        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
-        * Agent level
-        * Flow level
-        * Page level
-        * Parameter level
-        Structure is documented below.
-        """
-        logging_settings: NotRequired[pulumi.Input['CxAgentAdvancedSettingsLoggingSettingsArgsDict']]
-        """
-        Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
-        * Agent level
-        Structure is documented below.
-        """
-        speech_settings: NotRequired[pulumi.Input['CxAgentAdvancedSettingsSpeechSettingsArgsDict']]
-        """
-        Settings for speech to text detection. Exposed at the following levels:
-        * Agent level
-        * Flow level
-        * Page level
-        * Parameter level
-        Structure is documented below.
-        """
-elif False:
-    CxAgentAdvancedSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentAdvancedSettingsArgsDict(TypedDict):
+    audio_export_gcs_destination: NotRequired[pulumi.Input['CxAgentAdvancedSettingsAudioExportGcsDestinationArgsDict']]
+    """
+    If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+    * Agent level
+    * Flow level
+    Structure is documented below.
+    """
+    dtmf_settings: NotRequired[pulumi.Input['CxAgentAdvancedSettingsDtmfSettingsArgsDict']]
+    """
+    Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+    * Agent level
+    * Flow level
+    * Page level
+    * Parameter level
+    Structure is documented below.
+    """
+    logging_settings: NotRequired[pulumi.Input['CxAgentAdvancedSettingsLoggingSettingsArgsDict']]
+    """
+    Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+    * Agent level
+    Structure is documented below.
+    """
+    speech_settings: NotRequired[pulumi.Input['CxAgentAdvancedSettingsSpeechSettingsArgsDict']]
+    """
+    Settings for speech to text detection. Exposed at the following levels:
+    * Agent level
+    * Flow level
+    * Page level
+    * Parameter level
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxAgentAdvancedSettingsArgs:
@@ -3385,15 +3269,12 @@ class CxAgentAdvancedSettingsArgs:
         pulumi.set(self, "speech_settings", value)
 
 
-if not MYPY:
-    class CxAgentAdvancedSettingsAudioExportGcsDestinationArgsDict(TypedDict):
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
-        Format: gs://bucket/object-name-or-prefix
-        """
-elif False:
-    CxAgentAdvancedSettingsAudioExportGcsDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentAdvancedSettingsAudioExportGcsDestinationArgsDict(TypedDict):
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+    Format: gs://bucket/object-name-or-prefix
+    """
 
 @pulumi.input_type
 class CxAgentAdvancedSettingsAudioExportGcsDestinationArgs:
@@ -3420,22 +3301,19 @@ class CxAgentAdvancedSettingsAudioExportGcsDestinationArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class CxAgentAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
-        """
-        finish_digit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The digit that terminates a DTMF digit sequence.
-        """
-        max_digits: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max length of DTMF digits.
-        """
-elif False:
-    CxAgentAdvancedSettingsDtmfSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+    """
+    finish_digit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The digit that terminates a DTMF digit sequence.
+    """
+    max_digits: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max length of DTMF digits.
+    """
 
 @pulumi.input_type
 class CxAgentAdvancedSettingsDtmfSettingsArgs:
@@ -3492,22 +3370,19 @@ class CxAgentAdvancedSettingsDtmfSettingsArgs:
         pulumi.set(self, "max_digits", value)
 
 
-if not MYPY:
-    class CxAgentAdvancedSettingsLoggingSettingsArgsDict(TypedDict):
-        enable_consent_based_redaction: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
-        """
-        enable_interaction_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables DF Interaction logging.
-        """
-        enable_stackdriver_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables Google Cloud Logging.
-        """
-elif False:
-    CxAgentAdvancedSettingsLoggingSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentAdvancedSettingsLoggingSettingsArgsDict(TypedDict):
+    enable_consent_based_redaction: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+    """
+    enable_interaction_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables DF Interaction logging.
+    """
+    enable_stackdriver_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables Google Cloud Logging.
+    """
 
 @pulumi.input_type
 class CxAgentAdvancedSettingsLoggingSettingsArgs:
@@ -3564,28 +3439,25 @@ class CxAgentAdvancedSettingsLoggingSettingsArgs:
         pulumi.set(self, "enable_stackdriver_logging", value)
 
 
-if not MYPY:
-    class CxAgentAdvancedSettingsSpeechSettingsArgsDict(TypedDict):
-        endpointer_sensitivity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
-        """
-        models: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
-        An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
-        """
-        no_speech_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timeout before detecting no speech.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-        """
-        use_timeout_based_endpointing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
-        """
-elif False:
-    CxAgentAdvancedSettingsSpeechSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentAdvancedSettingsSpeechSettingsArgsDict(TypedDict):
+    endpointer_sensitivity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+    """
+    models: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+    An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+    """
+    no_speech_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout before detecting no speech.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+    """
+    use_timeout_based_endpointing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+    """
 
 @pulumi.input_type
 class CxAgentAdvancedSettingsSpeechSettingsArgs:
@@ -3662,15 +3534,12 @@ class CxAgentAdvancedSettingsSpeechSettingsArgs:
         pulumi.set(self, "use_timeout_based_endpointing", value)
 
 
-if not MYPY:
-    class CxAgentAnswerFeedbackSettingsArgsDict(TypedDict):
-        enable_answer_feedback: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If enabled, end users will be able to provide [answer feedback](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/submitAnswerFeedback#body.AnswerFeedback)
-        to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
-        """
-elif False:
-    CxAgentAnswerFeedbackSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentAnswerFeedbackSettingsArgsDict(TypedDict):
+    enable_answer_feedback: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If enabled, end users will be able to provide [answer feedback](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/submitAnswerFeedback#body.AnswerFeedback)
+    to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
+    """
 
 @pulumi.input_type
 class CxAgentAnswerFeedbackSettingsArgs:
@@ -3697,22 +3566,19 @@ class CxAgentAnswerFeedbackSettingsArgs:
         pulumi.set(self, "enable_answer_feedback", value)
 
 
-if not MYPY:
-    class CxAgentClientCertificateSettingsArgsDict(TypedDict):
-        private_key: pulumi.Input[_builtins.str]
-        """
-        The name of the SecretManager secret version resource storing the private key encoded in PEM format. Format: **projects/{project}/secrets/{secret}/versions/{version}**
-        """
-        ssl_certificate: pulumi.Input[_builtins.str]
-        """
-        The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
-        """
-        passphrase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the SecretManager secret version resource storing the passphrase. 'passphrase' should be left unset if the private key is not encrypted. Format: **projects/{project}/secrets/{secret}/versions/{version}**
-        """
-elif False:
-    CxAgentClientCertificateSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentClientCertificateSettingsArgsDict(TypedDict):
+    private_key: pulumi.Input[_builtins.str]
+    """
+    The name of the SecretManager secret version resource storing the private key encoded in PEM format. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+    """
+    ssl_certificate: pulumi.Input[_builtins.str]
+    """
+    The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+    """
+    passphrase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the SecretManager secret version resource storing the passphrase. 'passphrase' should be left unset if the private key is not encrypted. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+    """
 
 @pulumi.input_type
 class CxAgentClientCertificateSettingsArgs:
@@ -3767,15 +3633,12 @@ class CxAgentClientCertificateSettingsArgs:
         pulumi.set(self, "passphrase", value)
 
 
-if not MYPY:
-    class CxAgentGenAppBuilderSettingsArgsDict(TypedDict):
-        engine: pulumi.Input[_builtins.str]
-        """
-        The full name of the Gen App Builder engine related to this agent if there is one.
-        Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
-        """
-elif False:
-    CxAgentGenAppBuilderSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentGenAppBuilderSettingsArgsDict(TypedDict):
+    engine: pulumi.Input[_builtins.str]
+    """
+    The full name of the Gen App Builder engine related to this agent if there is one.
+    Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
+    """
 
 @pulumi.input_type
 class CxAgentGenAppBuilderSettingsArgs:
@@ -3801,15 +3664,12 @@ class CxAgentGenAppBuilderSettingsArgs:
         pulumi.set(self, "engine", value)
 
 
-if not MYPY:
-    class CxAgentGitIntegrationSettingsArgsDict(TypedDict):
-        github_settings: NotRequired[pulumi.Input['CxAgentGitIntegrationSettingsGithubSettingsArgsDict']]
-        """
-        Settings of integration with GitHub.
-        Structure is documented below.
-        """
-elif False:
-    CxAgentGitIntegrationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentGitIntegrationSettingsArgsDict(TypedDict):
+    github_settings: NotRequired[pulumi.Input['CxAgentGitIntegrationSettingsGithubSettingsArgsDict']]
+    """
+    Settings of integration with GitHub.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxAgentGitIntegrationSettingsArgs:
@@ -3836,31 +3696,28 @@ class CxAgentGitIntegrationSettingsArgs:
         pulumi.set(self, "github_settings", value)
 
 
-if not MYPY:
-    class CxAgentGitIntegrationSettingsGithubSettingsArgsDict(TypedDict):
-        access_token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The access token used to authenticate the access to the GitHub repository.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        branches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of branches configured to be used from Dialogflow.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique repository display name for the GitHub repository.
-        """
-        repository_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The GitHub repository URI related to the agent.
-        """
-        tracking_branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The branch of the GitHub repository tracked for this agent.
-        """
-elif False:
-    CxAgentGitIntegrationSettingsGithubSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentGitIntegrationSettingsGithubSettingsArgsDict(TypedDict):
+    access_token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The access token used to authenticate the access to the GitHub repository.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    branches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of branches configured to be used from Dialogflow.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique repository display name for the GitHub repository.
+    """
+    repository_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The GitHub repository URI related to the agent.
+    """
+    tracking_branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The branch of the GitHub repository tracked for this agent.
+    """
 
 @pulumi.input_type
 class CxAgentGitIntegrationSettingsGithubSettingsArgs:
@@ -3951,17 +3808,14 @@ class CxAgentGitIntegrationSettingsGithubSettingsArgs:
         pulumi.set(self, "tracking_branch", value)
 
 
-if not MYPY:
-    class CxAgentPersonalizationSettingsArgsDict(TypedDict):
-        default_end_user_metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
-        The data will be merged with the [QueryParameters.end_user_metadata](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/QueryParameters#FIELDS.end_user_metadata)
-        in [DetectIntentRequest.query_params](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#body.request_body.FIELDS.query_params) during query processing.
-        This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct).
-        """
-elif False:
-    CxAgentPersonalizationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentPersonalizationSettingsArgsDict(TypedDict):
+    default_end_user_metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
+    The data will be merged with the [QueryParameters.end_user_metadata](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/QueryParameters#FIELDS.end_user_metadata)
+    in [DetectIntentRequest.query_params](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#body.request_body.FIELDS.query_params) during query processing.
+    This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct).
+    """
 
 @pulumi.input_type
 class CxAgentPersonalizationSettingsArgs:
@@ -3992,14 +3846,11 @@ class CxAgentPersonalizationSettingsArgs:
         pulumi.set(self, "default_end_user_metadata", value)
 
 
-if not MYPY:
-    class CxAgentSpeechToTextSettingsArgsDict(TypedDict):
-        enable_speech_adaptation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to use speech adaptation for speech recognition.
-        """
-elif False:
-    CxAgentSpeechToTextSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentSpeechToTextSettingsArgsDict(TypedDict):
+    enable_speech_adaptation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to use speech adaptation for speech recognition.
+    """
 
 @pulumi.input_type
 class CxAgentSpeechToTextSettingsArgs:
@@ -4024,17 +3875,14 @@ class CxAgentSpeechToTextSettingsArgs:
         pulumi.set(self, "enable_speech_adaptation", value)
 
 
-if not MYPY:
-    class CxAgentTextToSpeechSettingsArgsDict(TypedDict):
-        synthesize_speech_configs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
-        These settings affect:
-        * The phone gateway synthesize configuration set via Agent.text_to_speech_settings.
-        * How speech is synthesized when invoking session APIs. `Agent.text_to_speech_settings` only applies if `OutputAudioConfig.synthesize_speech_config` is not specified.
-        """
-elif False:
-    CxAgentTextToSpeechSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxAgentTextToSpeechSettingsArgsDict(TypedDict):
+    synthesize_speech_configs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
+    These settings affect:
+    * The phone gateway synthesize configuration set via Agent.text_to_speech_settings.
+    * How speech is synthesized when invoking session APIs. `Agent.text_to_speech_settings` only applies if `OutputAudioConfig.synthesize_speech_config` is not specified.
+    """
 
 @pulumi.input_type
 class CxAgentTextToSpeechSettingsArgs:
@@ -4065,21 +3913,18 @@ class CxAgentTextToSpeechSettingsArgs:
         pulumi.set(self, "synthesize_speech_configs", value)
 
 
-if not MYPY:
-    class CxEntityTypeEntityArgsDict(TypedDict):
-        synonyms: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
-        For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The primary value associated with this entity entry. For example, if the entity type is vegetable, the value could be scallions.
-        For KIND_MAP entity types: A canonical value to be used in place of synonyms.
-        For KIND_LIST entity types: A string that can contain references to other entity types (with or without aliases).
-        """
-elif False:
-    CxEntityTypeEntityArgsDict: TypeAlias = Mapping[str, Any]
+class CxEntityTypeEntityArgsDict(TypedDict):
+    synonyms: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
+    For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The primary value associated with this entity entry. For example, if the entity type is vegetable, the value could be scallions.
+    For KIND_MAP entity types: A canonical value to be used in place of synonyms.
+    For KIND_LIST entity types: A string that can contain references to other entity types (with or without aliases).
+    """
 
 @pulumi.input_type
 class CxEntityTypeEntityArgs:
@@ -4126,14 +3971,11 @@ class CxEntityTypeEntityArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CxEntityTypeExcludedPhraseArgsDict(TypedDict):
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The word or phrase to be excluded.
-        """
-elif False:
-    CxEntityTypeExcludedPhraseArgsDict: TypeAlias = Mapping[str, Any]
+class CxEntityTypeExcludedPhraseArgsDict(TypedDict):
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The word or phrase to be excluded.
+    """
 
 @pulumi.input_type
 class CxEntityTypeExcludedPhraseArgs:
@@ -4158,14 +4000,11 @@ class CxEntityTypeExcludedPhraseArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CxEnvironmentVersionConfigArgsDict(TypedDict):
-        version: pulumi.Input[_builtins.str]
-        """
-        Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-        """
-elif False:
-    CxEnvironmentVersionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxEnvironmentVersionConfigArgsDict(TypedDict):
+    version: pulumi.Input[_builtins.str]
+    """
+    Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+    """
 
 @pulumi.input_type
 class CxEnvironmentVersionConfigArgs:
@@ -4189,41 +4028,38 @@ class CxEnvironmentVersionConfigArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class CxFlowAdvancedSettingsArgsDict(TypedDict):
-        audio_export_gcs_destination: NotRequired[pulumi.Input['CxFlowAdvancedSettingsAudioExportGcsDestinationArgsDict']]
-        """
-        If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
-        * Agent level
-        * Flow level
-        Structure is documented below.
-        """
-        dtmf_settings: NotRequired[pulumi.Input['CxFlowAdvancedSettingsDtmfSettingsArgsDict']]
-        """
-        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
-        * Agent level
-        * Flow level
-        * Page level
-        * Parameter level
-        Structure is documented below.
-        """
-        logging_settings: NotRequired[pulumi.Input['CxFlowAdvancedSettingsLoggingSettingsArgsDict']]
-        """
-        Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
-        * Agent level
-        Structure is documented below.
-        """
-        speech_settings: NotRequired[pulumi.Input['CxFlowAdvancedSettingsSpeechSettingsArgsDict']]
-        """
-        Settings for speech to text detection. Exposed at the following levels:
-        * Agent level
-        * Flow level
-        * Page level
-        * Parameter level
-        Structure is documented below.
-        """
-elif False:
-    CxFlowAdvancedSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowAdvancedSettingsArgsDict(TypedDict):
+    audio_export_gcs_destination: NotRequired[pulumi.Input['CxFlowAdvancedSettingsAudioExportGcsDestinationArgsDict']]
+    """
+    If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+    * Agent level
+    * Flow level
+    Structure is documented below.
+    """
+    dtmf_settings: NotRequired[pulumi.Input['CxFlowAdvancedSettingsDtmfSettingsArgsDict']]
+    """
+    Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+    * Agent level
+    * Flow level
+    * Page level
+    * Parameter level
+    Structure is documented below.
+    """
+    logging_settings: NotRequired[pulumi.Input['CxFlowAdvancedSettingsLoggingSettingsArgsDict']]
+    """
+    Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+    * Agent level
+    Structure is documented below.
+    """
+    speech_settings: NotRequired[pulumi.Input['CxFlowAdvancedSettingsSpeechSettingsArgsDict']]
+    """
+    Settings for speech to text detection. Exposed at the following levels:
+    * Agent level
+    * Flow level
+    * Page level
+    * Parameter level
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxFlowAdvancedSettingsArgs:
@@ -4326,15 +4162,12 @@ class CxFlowAdvancedSettingsArgs:
         pulumi.set(self, "speech_settings", value)
 
 
-if not MYPY:
-    class CxFlowAdvancedSettingsAudioExportGcsDestinationArgsDict(TypedDict):
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
-        Format: gs://bucket/object-name-or-prefix
-        """
-elif False:
-    CxFlowAdvancedSettingsAudioExportGcsDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowAdvancedSettingsAudioExportGcsDestinationArgsDict(TypedDict):
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+    Format: gs://bucket/object-name-or-prefix
+    """
 
 @pulumi.input_type
 class CxFlowAdvancedSettingsAudioExportGcsDestinationArgs:
@@ -4361,22 +4194,19 @@ class CxFlowAdvancedSettingsAudioExportGcsDestinationArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class CxFlowAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
-        """
-        finish_digit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The digit that terminates a DTMF digit sequence.
-        """
-        max_digits: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max length of DTMF digits.
-        """
-elif False:
-    CxFlowAdvancedSettingsDtmfSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+    """
+    finish_digit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The digit that terminates a DTMF digit sequence.
+    """
+    max_digits: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max length of DTMF digits.
+    """
 
 @pulumi.input_type
 class CxFlowAdvancedSettingsDtmfSettingsArgs:
@@ -4433,22 +4263,19 @@ class CxFlowAdvancedSettingsDtmfSettingsArgs:
         pulumi.set(self, "max_digits", value)
 
 
-if not MYPY:
-    class CxFlowAdvancedSettingsLoggingSettingsArgsDict(TypedDict):
-        enable_consent_based_redaction: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
-        """
-        enable_interaction_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables DF Interaction logging.
-        """
-        enable_stackdriver_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables Google Cloud Logging.
-        """
-elif False:
-    CxFlowAdvancedSettingsLoggingSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowAdvancedSettingsLoggingSettingsArgsDict(TypedDict):
+    enable_consent_based_redaction: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+    """
+    enable_interaction_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables DF Interaction logging.
+    """
+    enable_stackdriver_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables Google Cloud Logging.
+    """
 
 @pulumi.input_type
 class CxFlowAdvancedSettingsLoggingSettingsArgs:
@@ -4505,28 +4332,25 @@ class CxFlowAdvancedSettingsLoggingSettingsArgs:
         pulumi.set(self, "enable_stackdriver_logging", value)
 
 
-if not MYPY:
-    class CxFlowAdvancedSettingsSpeechSettingsArgsDict(TypedDict):
-        endpointer_sensitivity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
-        """
-        models: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
-        An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
-        """
-        no_speech_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timeout before detecting no speech.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
-        """
-        use_timeout_based_endpointing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
-        """
-elif False:
-    CxFlowAdvancedSettingsSpeechSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowAdvancedSettingsSpeechSettingsArgsDict(TypedDict):
+    endpointer_sensitivity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+    """
+    models: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+    An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+    """
+    no_speech_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout before detecting no speech.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+    """
+    use_timeout_based_endpointing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+    """
 
 @pulumi.input_type
 class CxFlowAdvancedSettingsSpeechSettingsArgs:
@@ -4603,34 +4427,31 @@ class CxFlowAdvancedSettingsSpeechSettingsArgs:
         pulumi.set(self, "use_timeout_based_endpointing", value)
 
 
-if not MYPY:
-    class CxFlowEventHandlerArgsDict(TypedDict):
-        event: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the event to handle.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique identifier of this event handler.
-        """
-        target_flow: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target flow to transition to.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
-        """
-        target_page: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target page to transition to.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        """
-        trigger_fulfillment: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentArgsDict']]
-        """
-        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
-        Structure is documented below.
-        """
-elif False:
-    CxFlowEventHandlerArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowEventHandlerArgsDict(TypedDict):
+    event: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the event to handle.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique identifier of this event handler.
+    """
+    target_flow: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target flow to transition to.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+    """
+    target_page: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target page to transition to.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+    """
+    trigger_fulfillment: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentArgsDict']]
+    """
+    The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxFlowEventHandlerArgs:
@@ -4727,41 +4548,38 @@ class CxFlowEventHandlerArgs:
         pulumi.set(self, "trigger_fulfillment", value)
 
 
-if not MYPY:
-    class CxFlowEventHandlerTriggerFulfillmentArgsDict(TypedDict):
-        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgsDict']]]]
-        """
-        Conditional cases for this fulfillment.
-        Structure is documented below.
-        """
-        enable_generative_fallback: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
-        """
-        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArgsDict']]]]
-        """
-        The list of rich message responses to present to the user.
-        Structure is documented below.
-        """
-        return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        """
-        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgsDict']]]]
-        """
-        Set parameter values before executing the webhook.
-        Structure is documented below.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
-        """
-        webhook: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
-        """
-elif False:
-    CxFlowEventHandlerTriggerFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowEventHandlerTriggerFulfillmentArgsDict(TypedDict):
+    conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgsDict']]]]
+    """
+    Conditional cases for this fulfillment.
+    Structure is documented below.
+    """
+    enable_generative_fallback: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+    """
+    messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArgsDict']]]]
+    """
+    The list of rich message responses to present to the user.
+    Structure is documented below.
+    """
+    return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+    """
+    set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgsDict']]]]
+    """
+    Set parameter values before executing the webhook.
+    Structure is documented below.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+    """
+    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+    """
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentArgs:
@@ -4888,15 +4706,12 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
-if not MYPY:
-    class CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
-        cases: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
-        """
-elif False:
-    CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
+    cases: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+    See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+    """
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs:
@@ -4923,63 +4738,60 @@ class CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs:
         pulumi.set(self, "cases", value)
 
 
-if not MYPY:
-    class CxFlowEventHandlerTriggerFulfillmentMessageArgsDict(TypedDict):
-        channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        """
-        conversation_success: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict']]
-        """
-        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
-        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
-        * In a webhook response when you determine that you handled the customer issue.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        live_agent_handoff: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
-        """
-        Indicates that the conversation should be handed off to a live agent.
-        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
-        * In a webhook response when you determine that the customer issue can only be handled by a human.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        output_audio_text: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict']]
-        """
-        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        payload: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns a response containing a custom, platform-specific payload.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        play_audio: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict']]
-        """
-        Specifies an audio clip to be played by the client as part of the response.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        telephony_transfer_call: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
-        """
-        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        text: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArgsDict']]
-        """
-        The text response message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-elif False:
-    CxFlowEventHandlerTriggerFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowEventHandlerTriggerFulfillmentMessageArgsDict(TypedDict):
+    channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+    """
+    conversation_success: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict']]
+    """
+    Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+    Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+    * In a webhook response when you determine that you handled the customer issue.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    live_agent_handoff: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
+    """
+    Indicates that the conversation should be handed off to a live agent.
+    Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+    * In a webhook response when you determine that the customer issue can only be handled by a human.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    output_audio_text: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict']]
+    """
+    A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    payload: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns a response containing a custom, platform-specific payload.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    play_audio: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict']]
+    """
+    Specifies an audio clip to be played by the client as part of the response.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    telephony_transfer_call: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
+    """
+    Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    text: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArgsDict']]
+    """
+    The text response message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
@@ -5158,14 +4970,11 @@ class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
@@ -5190,14 +4999,11 @@ class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
@@ -5222,25 +5028,22 @@ class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        ssml: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SSML text to be synthesized. For more information, see SSML.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The raw text to be synthesized.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-elif False:
-    CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    ssml: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSML text to be synthesized. For more information, see SSML.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The raw text to be synthesized.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
@@ -5303,21 +5106,18 @@ class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
-        audio_uri: pulumi.Input[_builtins.str]
-        """
-        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-        """
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
+    audio_uri: pulumi.Input[_builtins.str]
+    """
+    URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+    """
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 
-        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
-        """
-elif False:
-    CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
+    """
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
@@ -5363,14 +5163,11 @@ class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
         pulumi.set(self, "allow_playback_interruption", value)
 
 
-if not MYPY:
-    class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
-        phone_number: pulumi.Input[_builtins.str]
-        """
-        Transfer the call to a phone number in E.164 format.
-        """
-elif False:
-    CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    Transfer the call to a phone number in E.164 format.
+    """
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
@@ -5394,20 +5191,17 @@ class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
         pulumi.set(self, "phone_number", value)
 
 
-if not MYPY:
-    class CxFlowEventHandlerTriggerFulfillmentMessageTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-        required: true
-        """
-elif False:
-    CxFlowEventHandlerTriggerFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowEventHandlerTriggerFulfillmentMessageTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+    required: true
+    """
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageTextArgs:
@@ -5452,18 +5246,15 @@ class CxFlowEventHandlerTriggerFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
-if not MYPY:
-    class CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
-        parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Display name of the parameter.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The new JSON-encoded value of the parameter. A null value clears the parameter.
-        """
-elif False:
-    CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
+    parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Display name of the parameter.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The new JSON-encoded value of the parameter. A null value clears the parameter.
+    """
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs:
@@ -5504,36 +5295,33 @@ class CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsArgsDict(TypedDict):
-        data_store_connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgsDict']]]]
-        """
-        Optional. List of related data store connections.
-        Structure is documented below.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Knowledge Connector is enabled or not.
-        """
-        target_flow: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
-        This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
-        """
-        target_page: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
-        The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
-        This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
-        """
-        trigger_fulfillment: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgsDict']]
-        """
-        The fulfillment to be triggered.
-        When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
-        Structure is documented below.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsArgsDict(TypedDict):
+    data_store_connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgsDict']]]]
+    """
+    Optional. List of related data store connections.
+    Structure is documented below.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Knowledge Connector is enabled or not.
+    """
+    target_flow: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+    This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+    """
+    target_page: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+    The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+    This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+    """
+    trigger_fulfillment: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgsDict']]
+    """
+    The fulfillment to be triggered.
+    When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsArgs:
@@ -5634,29 +5422,26 @@ class CxFlowKnowledgeConnectorSettingsArgs:
         pulumi.set(self, "trigger_fulfillment", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgsDict(TypedDict):
-        data_store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
-        """
-        data_store_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the connected data store.
-        * PUBLIC_WEB: A data store that contains public web content.
-        * UNSTRUCTURED: A data store that contains unstructured private data.
-        * STRUCTURED: A data store that contains structured data (for example FAQ).
-        Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
-        """
-        document_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
-        * DOCUMENTS: Documents are processed as documents.
-        * CHUNKS: Documents are converted to chunks.
-        Possible values are: `DOCUMENTS`, `CHUNKS`.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgsDict(TypedDict):
+    data_store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+    """
+    data_store_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the connected data store.
+    * PUBLIC_WEB: A data store that contains public web content.
+    * UNSTRUCTURED: A data store that contains unstructured private data.
+    * STRUCTURED: A data store that contains structured data (for example FAQ).
+    Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+    """
+    document_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+    * DOCUMENTS: Documents are processed as documents.
+    * CHUNKS: Documents are converted to chunks.
+    Possible values are: `DOCUMENTS`, `CHUNKS`.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs:
@@ -5727,48 +5512,45 @@ class CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs:
         pulumi.set(self, "document_processing_mode", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgsDict(TypedDict):
-        advanced_settings: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgsDict']]
-        """
-        Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
-        DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
-        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
-        Structure is documented below.
-        """
-        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgsDict']]]]
-        """
-        Conditional cases for this fulfillment.
-        Structure is documented below.
-        """
-        enable_generative_fallback: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
-        """
-        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgsDict']]]]
-        """
-        The list of rich message responses to present to the user.
-        Structure is documented below.
-        """
-        return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        """
-        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgsDict']]]]
-        """
-        Set parameter values before executing the webhook.
-        Structure is documented below.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
-        """
-        webhook: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgsDict(TypedDict):
+    advanced_settings: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgsDict']]
+    """
+    Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+    DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+    Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+    Structure is documented below.
+    """
+    conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgsDict']]]]
+    """
+    Conditional cases for this fulfillment.
+    Structure is documented below.
+    """
+    enable_generative_fallback: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+    """
+    messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgsDict']]]]
+    """
+    The list of rich message responses to present to the user.
+    Structure is documented below.
+    """
+    return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+    """
+    set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgsDict']]]]
+    """
+    Set parameter values before executing the webhook.
+    Structure is documented below.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+    """
+    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs:
@@ -5917,34 +5699,31 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgsDict(TypedDict):
-        dtmf_settings: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgsDict']]
-        """
-        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
-        * Agent level
-        * Flow level
-        * Page level
-        * Parameter level
-        Structure is documented below.
-        """
-        logging_settings: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgsDict']]
-        """
-        Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
-        * Agent level
-        Structure is documented below.
-        """
-        speech_settings: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgsDict']]
-        """
-        Settings for speech to text detection. Exposed at the following levels:
-        * Agent level
-        * Flow level
-        * Page level
-        * Parameter level
-        Structure is documented below.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgsDict(TypedDict):
+    dtmf_settings: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgsDict']]
+    """
+    Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+    * Agent level
+    * Flow level
+    * Page level
+    * Parameter level
+    Structure is documented below.
+    """
+    logging_settings: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgsDict']]
+    """
+    Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+    * Agent level
+    Structure is documented below.
+    """
+    speech_settings: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgsDict']]
+    """
+    Settings for speech to text detection. Exposed at the following levels:
+    * Agent level
+    * Flow level
+    * Page level
+    * Parameter level
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs:
@@ -6025,32 +5804,29 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs:
         pulumi.set(self, "speech_settings", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
-        """
-        endpointing_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Endpoint timeout setting for matching dtmf input to regex.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
-        """
-        finish_digit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The digit that terminates a DTMF digit sequence.
-        """
-        interdigit_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Interdigit timeout setting for matching dtmf input to regex.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
-        """
-        max_digits: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max length of DTMF digits.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+    """
+    endpointing_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Endpoint timeout setting for matching dtmf input to regex.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+    """
+    finish_digit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The digit that terminates a DTMF digit sequence.
+    """
+    interdigit_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Interdigit timeout setting for matching dtmf input to regex.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+    """
+    max_digits: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max length of DTMF digits.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs:
@@ -6143,22 +5919,19 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSett
         pulumi.set(self, "max_digits", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgsDict(TypedDict):
-        enable_consent_based_redaction: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
-        """
-        enable_interaction_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables DF Interaction logging.
-        """
-        enable_stackdriver_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables Google Cloud Logging.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgsDict(TypedDict):
+    enable_consent_based_redaction: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+    """
+    enable_interaction_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables DF Interaction logging.
+    """
+    enable_stackdriver_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables Google Cloud Logging.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs:
@@ -6215,28 +5988,25 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingS
         pulumi.set(self, "enable_stackdriver_logging", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgsDict(TypedDict):
-        endpointer_sensitivity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
-        """
-        models: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
-        An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
-        """
-        no_speech_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timeout before detecting no speech.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
-        """
-        use_timeout_based_endpointing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgsDict(TypedDict):
+    endpointer_sensitivity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+    """
+    models: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+    An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+    """
+    no_speech_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout before detecting no speech.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+    """
+    use_timeout_based_endpointing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs:
@@ -6313,15 +6083,12 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSe
         pulumi.set(self, "use_timeout_based_endpointing", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
-        cases: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
+    cases: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+    See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs:
@@ -6348,84 +6115,81 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs:
         pulumi.set(self, "cases", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgsDict(TypedDict):
-        channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        """
-        conversation_success: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgsDict']]
-        """
-        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
-        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
-        * In a webhook response when you determine that you handled the customer issue.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        end_interactions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgsDict']]]]
-        """
-        (Output)
-        This type has no fields.
-        Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        knowledge_info_card: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgsDict']]
-        """
-        This type has no fields.
-        Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
-        Otherwise, the info card response is skipped.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        live_agent_handoff: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
-        """
-        Indicates that the conversation should be handed off to a live agent.
-        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
-        * In a webhook response when you determine that the customer issue can only be handled by a human.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        mixed_audios: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgsDict']]]]
-        """
-        (Output)
-        Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        output_audio_text: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgsDict']]
-        """
-        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        payload: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns a response containing a custom, platform-specific payload.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        play_audio: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgsDict']]
-        """
-        Specifies an audio clip to be played by the client as part of the response.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        telephony_transfer_call: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
-        """
-        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        text: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgsDict']]
-        """
-        The text response message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgsDict(TypedDict):
+    channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+    """
+    conversation_success: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgsDict']]
+    """
+    Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+    Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+    * In a webhook response when you determine that you handled the customer issue.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    end_interactions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgsDict']]]]
+    """
+    (Output)
+    This type has no fields.
+    Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    knowledge_info_card: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgsDict']]
+    """
+    This type has no fields.
+    Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+    Otherwise, the info card response is skipped.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    live_agent_handoff: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
+    """
+    Indicates that the conversation should be handed off to a live agent.
+    Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+    * In a webhook response when you determine that the customer issue can only be handled by a human.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    mixed_audios: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgsDict']]]]
+    """
+    (Output)
+    Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    output_audio_text: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgsDict']]
+    """
+    A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    payload: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns a response containing a custom, platform-specific payload.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    play_audio: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgsDict']]
+    """
+    Specifies an audio clip to be played by the client as part of the response.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    telephony_transfer_call: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
+    """
+    Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    text: NotRequired[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgsDict']]
+    """
+    The text response message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs:
@@ -6670,14 +6434,11 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs:
@@ -6702,11 +6463,8 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSucce
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgsDict(TypedDict):
-        pass
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs:
@@ -6714,11 +6472,8 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArg
         pass
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgsDict(TypedDict):
-        pass
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs:
@@ -6726,14 +6481,11 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard
         pass
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs:
@@ -6758,14 +6510,11 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffA
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgsDict(TypedDict):
-        segments: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgsDict']]]]
-        """
-        Segments this audio response is composed of.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgsDict(TypedDict):
+    segments: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgsDict']]]]
+    """
+    Segments this audio response is composed of.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs:
@@ -6790,26 +6539,23 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs:
         pulumi.set(self, "segments", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
-        """
-        audio: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
-        A base64-encoded string.
-        This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
-        """
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
-        This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+    """
+    audio: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+    A base64-encoded string.
+    This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+    """
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+    This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs:
@@ -6874,25 +6620,22 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        ssml: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SSML text to be synthesized. For more information, see SSML.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The raw text to be synthesized.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    ssml: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSML text to be synthesized. For more information, see SSML.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The raw text to be synthesized.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs:
@@ -6955,21 +6698,18 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextAr
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
-        audio_uri: pulumi.Input[_builtins.str]
-        """
-        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-        """
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
+    audio_uri: pulumi.Input[_builtins.str]
+    """
+    URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+    """
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 
-        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs:
@@ -7015,14 +6755,11 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs:
         pulumi.set(self, "allow_playback_interruption", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
-        phone_number: pulumi.Input[_builtins.str]
-        """
-        Transfer the call to a phone number in E.164 format.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    Transfer the call to a phone number in E.164 format.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs:
@@ -7046,20 +6783,17 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransfer
         pulumi.set(self, "phone_number", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-        required: true
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+    required: true
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs:
@@ -7104,18 +6838,15 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
-if not MYPY:
-    class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
-        parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Display name of the parameter.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The new JSON-encoded value of the parameter. A null value clears the parameter.
-        """
-elif False:
-    CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
+    parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Display name of the parameter.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The new JSON-encoded value of the parameter. A null value clears the parameter.
+    """
 
 @pulumi.input_type
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs:
@@ -7156,29 +6887,26 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CxFlowNluSettingsArgsDict(TypedDict):
-        classification_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
-        If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
-        """
-        model_training_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates NLU model training mode.
-        * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
-        * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-        Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
-        """
-        model_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the type of NLU model.
-        * MODEL_TYPE_STANDARD: Use standard NLU model.
-        * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-        Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
-        """
-elif False:
-    CxFlowNluSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowNluSettingsArgsDict(TypedDict):
+    classification_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
+    If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+    """
+    model_training_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates NLU model training mode.
+    * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+    * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+    Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
+    """
+    model_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates the type of NLU model.
+    * MODEL_TYPE_STANDARD: Use standard NLU model.
+    * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+    Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
+    """
 
 @pulumi.input_type
 class CxFlowNluSettingsArgs:
@@ -7249,40 +6977,37 @@ class CxFlowNluSettingsArgs:
         pulumi.set(self, "model_type", value)
 
 
-if not MYPY:
-    class CxFlowTransitionRouteArgsDict(TypedDict):
-        condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The condition to evaluate against form parameters or session parameters.
-        At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
-        """
-        intent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of an Intent.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique identifier of this transition route.
-        """
-        target_flow: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target flow to transition to.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
-        """
-        target_page: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target page to transition to.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        """
-        trigger_fulfillment: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentArgsDict']]
-        """
-        The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
-        Structure is documented below.
-        """
-elif False:
-    CxFlowTransitionRouteArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowTransitionRouteArgsDict(TypedDict):
+    condition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The condition to evaluate against form parameters or session parameters.
+    At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+    """
+    intent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of an Intent.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique identifier of this transition route.
+    """
+    target_flow: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target flow to transition to.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+    """
+    target_page: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target page to transition to.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+    """
+    trigger_fulfillment: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentArgsDict']]
+    """
+    The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxFlowTransitionRouteArgs:
@@ -7399,37 +7124,34 @@ class CxFlowTransitionRouteArgs:
         pulumi.set(self, "trigger_fulfillment", value)
 
 
-if not MYPY:
-    class CxFlowTransitionRouteTriggerFulfillmentArgsDict(TypedDict):
-        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgsDict']]]]
-        """
-        Conditional cases for this fulfillment.
-        Structure is documented below.
-        """
-        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArgsDict']]]]
-        """
-        The list of rich message responses to present to the user.
-        Structure is documented below.
-        """
-        return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        """
-        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgsDict']]]]
-        """
-        Set parameter values before executing the webhook.
-        Structure is documented below.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
-        """
-        webhook: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
-        """
-elif False:
-    CxFlowTransitionRouteTriggerFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowTransitionRouteTriggerFulfillmentArgsDict(TypedDict):
+    conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgsDict']]]]
+    """
+    Conditional cases for this fulfillment.
+    Structure is documented below.
+    """
+    messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArgsDict']]]]
+    """
+    The list of rich message responses to present to the user.
+    Structure is documented below.
+    """
+    return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+    """
+    set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgsDict']]]]
+    """
+    Set parameter values before executing the webhook.
+    Structure is documented below.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+    """
+    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+    """
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentArgs:
@@ -7540,15 +7262,12 @@ class CxFlowTransitionRouteTriggerFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
-if not MYPY:
-    class CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
-        cases: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
-        """
-elif False:
-    CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
+    cases: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+    See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+    """
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs:
@@ -7575,63 +7294,60 @@ class CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs:
         pulumi.set(self, "cases", value)
 
 
-if not MYPY:
-    class CxFlowTransitionRouteTriggerFulfillmentMessageArgsDict(TypedDict):
-        channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        """
-        conversation_success: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict']]
-        """
-        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
-        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
-        * In a webhook response when you determine that you handled the customer issue.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        live_agent_handoff: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
-        """
-        Indicates that the conversation should be handed off to a live agent.
-        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
-        * In a webhook response when you determine that the customer issue can only be handled by a human.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        output_audio_text: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict']]
-        """
-        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        payload: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns a response containing a custom, platform-specific payload.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        play_audio: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict']]
-        """
-        Specifies an audio clip to be played by the client as part of the response.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        telephony_transfer_call: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
-        """
-        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        text: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArgsDict']]
-        """
-        The text response message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-elif False:
-    CxFlowTransitionRouteTriggerFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowTransitionRouteTriggerFulfillmentMessageArgsDict(TypedDict):
+    channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+    """
+    conversation_success: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict']]
+    """
+    Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+    Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+    * In a webhook response when you determine that you handled the customer issue.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    live_agent_handoff: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
+    """
+    Indicates that the conversation should be handed off to a live agent.
+    Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+    * In a webhook response when you determine that the customer issue can only be handled by a human.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    output_audio_text: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict']]
+    """
+    A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    payload: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns a response containing a custom, platform-specific payload.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    play_audio: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict']]
+    """
+    Specifies an audio clip to be played by the client as part of the response.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    telephony_transfer_call: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
+    """
+    Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    text: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArgsDict']]
+    """
+    The text response message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
@@ -7810,14 +7526,11 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
@@ -7842,14 +7555,11 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
@@ -7874,25 +7584,22 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        ssml: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SSML text to be synthesized. For more information, see SSML.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The raw text to be synthesized.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-elif False:
-    CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    ssml: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSML text to be synthesized. For more information, see SSML.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The raw text to be synthesized.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
@@ -7955,21 +7662,18 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
-        audio_uri: pulumi.Input[_builtins.str]
-        """
-        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-        """
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
+    audio_uri: pulumi.Input[_builtins.str]
+    """
+    URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+    """
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 
-        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
-        """
-elif False:
-    CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
+    """
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
@@ -8015,14 +7719,11 @@ class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
         pulumi.set(self, "allow_playback_interruption", value)
 
 
-if not MYPY:
-    class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
-        phone_number: pulumi.Input[_builtins.str]
-        """
-        Transfer the call to a phone number in E.164 format.
-        """
-elif False:
-    CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    Transfer the call to a phone number in E.164 format.
+    """
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
@@ -8046,20 +7747,17 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
         pulumi.set(self, "phone_number", value)
 
 
-if not MYPY:
-    class CxFlowTransitionRouteTriggerFulfillmentMessageTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-        required: true
-        """
-elif False:
-    CxFlowTransitionRouteTriggerFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowTransitionRouteTriggerFulfillmentMessageTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+    required: true
+    """
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs:
@@ -8104,18 +7802,15 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
-if not MYPY:
-    class CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
-        parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Display name of the parameter.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The new JSON-encoded value of the parameter. A null value clears the parameter.
-        """
-elif False:
-    CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+class CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
+    parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Display name of the parameter.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The new JSON-encoded value of the parameter. A null value clears the parameter.
+    """
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs:
@@ -8156,19 +7851,16 @@ class CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CxGenerativeSettingsFallbackSettingsArgsDict(TypedDict):
-        prompt_templates: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsFallbackSettingsPromptTemplateArgsDict']]]]
-        """
-        Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
-        Structure is documented below.
-        """
-        selected_prompt: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Display name of the selected prompt.
-        """
-elif False:
-    CxGenerativeSettingsFallbackSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxGenerativeSettingsFallbackSettingsArgsDict(TypedDict):
+    prompt_templates: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsFallbackSettingsPromptTemplateArgsDict']]]]
+    """
+    Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
+    Structure is documented below.
+    """
+    selected_prompt: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Display name of the selected prompt.
+    """
 
 @pulumi.input_type
 class CxGenerativeSettingsFallbackSettingsArgs:
@@ -8211,22 +7903,19 @@ class CxGenerativeSettingsFallbackSettingsArgs:
         pulumi.set(self, "selected_prompt", value)
 
 
-if not MYPY:
-    class CxGenerativeSettingsFallbackSettingsPromptTemplateArgsDict(TypedDict):
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prompt name.
-        """
-        frozen: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If the flag is true, the prompt is frozen and cannot be modified by users.
-        """
-        prompt_text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example: "Here is a conversation $conversation, a response is: "
-        """
-elif False:
-    CxGenerativeSettingsFallbackSettingsPromptTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class CxGenerativeSettingsFallbackSettingsPromptTemplateArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prompt name.
+    """
+    frozen: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If the flag is true, the prompt is frozen and cannot be modified by users.
+    """
+    prompt_text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example: "Here is a conversation $conversation, a response is: "
+    """
 
 @pulumi.input_type
 class CxGenerativeSettingsFallbackSettingsPromptTemplateArgs:
@@ -8283,20 +7972,17 @@ class CxGenerativeSettingsFallbackSettingsPromptTemplateArgs:
         pulumi.set(self, "prompt_text", value)
 
 
-if not MYPY:
-    class CxGenerativeSettingsGenerativeSafetySettingsArgsDict(TypedDict):
-        banned_phrases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgsDict']]]]
-        """
-        Banned phrases for generated text.
-        Structure is documented below.
-        """
-        default_banned_phrase_match_strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Default phrase match strategy for banned phrases.
-        See [PhraseMatchStrategy](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/GenerativeSettings#phrasematchstrategy) for valid values.
-        """
-elif False:
-    CxGenerativeSettingsGenerativeSafetySettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxGenerativeSettingsGenerativeSafetySettingsArgsDict(TypedDict):
+    banned_phrases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgsDict']]]]
+    """
+    Banned phrases for generated text.
+    Structure is documented below.
+    """
+    default_banned_phrase_match_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Default phrase match strategy for banned phrases.
+    See [PhraseMatchStrategy](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/GenerativeSettings#phrasematchstrategy) for valid values.
+    """
 
 @pulumi.input_type
 class CxGenerativeSettingsGenerativeSafetySettingsArgs:
@@ -8341,18 +8027,15 @@ class CxGenerativeSettingsGenerativeSafetySettingsArgs:
         pulumi.set(self, "default_banned_phrase_match_strategy", value)
 
 
-if not MYPY:
-    class CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgsDict(TypedDict):
-        language_code: pulumi.Input[_builtins.str]
-        """
-        Language code of the phrase.
-        """
-        text: pulumi.Input[_builtins.str]
-        """
-        Text input which can be used for prompt or banned phrases.
-        """
-elif False:
-    CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgsDict: TypeAlias = Mapping[str, Any]
+class CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgsDict(TypedDict):
+    language_code: pulumi.Input[_builtins.str]
+    """
+    Language code of the phrase.
+    """
+    text: pulumi.Input[_builtins.str]
+    """
+    Text input which can be used for prompt or banned phrases.
+    """
 
 @pulumi.input_type
 class CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs:
@@ -8391,34 +8074,31 @@ class CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict(TypedDict):
-        agent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the virtual agent. Used for LLM prompt. Can be left empty.
-        """
-        agent_identity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identity of the agent, e.g. "virtual agent", "AI assistant".
-        """
-        agent_scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
-        """
-        business: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
-        """
-        business_description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".``
-        """
-        disable_data_store_fallback: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
-        """
-elif False:
-    CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict(TypedDict):
+    agent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the virtual agent. Used for LLM prompt. Can be left empty.
+    """
+    agent_identity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identity of the agent, e.g. "virtual agent", "AI assistant".
+    """
+    agent_scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
+    """
+    business: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+    """
+    business_description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".``
+    """
+    disable_data_store_fallback: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
+    """
 
 @pulumi.input_type
 class CxGenerativeSettingsKnowledgeConnectorSettingsArgs:
@@ -8523,18 +8203,15 @@ class CxGenerativeSettingsKnowledgeConnectorSettingsArgs:
         pulumi.set(self, "disable_data_store_fallback", value)
 
 
-if not MYPY:
-    class CxGenerativeSettingsLlmModelSettingsArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The selected LLM model.
-        """
-        prompt_text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The custom prompt to use.
-        """
-elif False:
-    CxGenerativeSettingsLlmModelSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxGenerativeSettingsLlmModelSettingsArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The selected LLM model.
+    """
+    prompt_text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The custom prompt to use.
+    """
 
 @pulumi.input_type
 class CxGenerativeSettingsLlmModelSettingsArgs:
@@ -8575,18 +8252,15 @@ class CxGenerativeSettingsLlmModelSettingsArgs:
         pulumi.set(self, "prompt_text", value)
 
 
-if not MYPY:
-    class CxGeneratorLlmModelSettingsArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The selected LLM model.
-        """
-        prompt_text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The custom prompt to use.
-        """
-elif False:
-    CxGeneratorLlmModelSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxGeneratorLlmModelSettingsArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The selected LLM model.
+    """
+    prompt_text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The custom prompt to use.
+    """
 
 @pulumi.input_type
 class CxGeneratorLlmModelSettingsArgs:
@@ -8627,30 +8301,27 @@ class CxGeneratorLlmModelSettingsArgs:
         pulumi.set(self, "prompt_text", value)
 
 
-if not MYPY:
-    class CxGeneratorModelParameterArgsDict(TypedDict):
-        max_decode_steps: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of tokens to generate.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The temperature used for sampling. Temperature sampling occurs after both topP and topK have been applied.
-        Valid range: [0.0, 1.0] Low temperature = less random. High temperature = more random.
-        """
-        top_k: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If set, the sampling process in each step is limited to the topK tokens with highest probabilities.
-        Valid range: [1, 40] or 1000+. Small topK = less random. Large topK = more random.
-        """
-        top_p: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        If set, only the tokens comprising the top topP probability mass are considered.
-        If both topP and topK are set, topP will be used for further refining candidates selected with topK.
-        Valid range: (0.0, 1.0]. Small topP = less random. Large topP = more random.
-        """
-elif False:
-    CxGeneratorModelParameterArgsDict: TypeAlias = Mapping[str, Any]
+class CxGeneratorModelParameterArgsDict(TypedDict):
+    max_decode_steps: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of tokens to generate.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The temperature used for sampling. Temperature sampling occurs after both topP and topK have been applied.
+    Valid range: [0.0, 1.0] Low temperature = less random. High temperature = more random.
+    """
+    top_k: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    If set, the sampling process in each step is limited to the topK tokens with highest probabilities.
+    Valid range: [1, 40] or 1000+. Small topK = less random. Large topK = more random.
+    """
+    top_p: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    If set, only the tokens comprising the top topP probability mass are considered.
+    If both topP and topK are set, topP will be used for further refining candidates selected with topK.
+    Valid range: (0.0, 1.0]. Small topP = less random. Large topP = more random.
+    """
 
 @pulumi.input_type
 class CxGeneratorModelParameterArgs:
@@ -8731,18 +8402,15 @@ class CxGeneratorModelParameterArgs:
         pulumi.set(self, "top_p", value)
 
 
-if not MYPY:
-    class CxGeneratorPlaceholderArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique ID used to map custom placeholder to parameters in fulfillment.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom placeholder value in the prompt text.
-        """
-elif False:
-    CxGeneratorPlaceholderArgsDict: TypeAlias = Mapping[str, Any]
+class CxGeneratorPlaceholderArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique ID used to map custom placeholder to parameters in fulfillment.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom placeholder value in the prompt text.
+    """
 
 @pulumi.input_type
 class CxGeneratorPlaceholderArgs:
@@ -8783,14 +8451,11 @@ class CxGeneratorPlaceholderArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class CxGeneratorPromptTextArgsDict(TypedDict):
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Text input which can be used for prompt or banned phrases.
-        """
-elif False:
-    CxGeneratorPromptTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxGeneratorPromptTextArgsDict(TypedDict):
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Text input which can be used for prompt or banned phrases.
+    """
 
 @pulumi.input_type
 class CxGeneratorPromptTextArgs:
@@ -8815,28 +8480,25 @@ class CxGeneratorPromptTextArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxIntentParameterArgsDict(TypedDict):
-        entity_type: pulumi.Input[_builtins.str]
-        """
-        The entity type of the parameter.
-        Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
-        """
-        id: pulumi.Input[_builtins.str]
-        """
-        The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
-        """
-        is_list: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the parameter represents a list of values.
-        """
-        redact: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging.
-        Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
-        """
-elif False:
-    CxIntentParameterArgsDict: TypeAlias = Mapping[str, Any]
+class CxIntentParameterArgsDict(TypedDict):
+    entity_type: pulumi.Input[_builtins.str]
+    """
+    The entity type of the parameter.
+    Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+    """
+    id: pulumi.Input[_builtins.str]
+    """
+    The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+    """
+    is_list: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the parameter represents a list of values.
+    """
+    redact: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging.
+    Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+    """
 
 @pulumi.input_type
 class CxIntentParameterArgs:
@@ -8911,30 +8573,27 @@ class CxIntentParameterArgs:
         pulumi.set(self, "redact", value)
 
 
-if not MYPY:
-    class CxIntentTrainingPhraseArgsDict(TypedDict):
-        parts: pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhrasePartArgsDict']]]
-        """
-        The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
-        Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
-        Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
-        If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set.
-        If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways:
-        Part.text is set to a part of the phrase that has no parameters.
-        Part.text is set to a part of the phrase that you want to annotate, and the parameterId field is set.
-        Structure is documented below.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique identifier of the training phrase.
-        """
-        repeat_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Indicates how many times this example was added to the intent.
-        """
-elif False:
-    CxIntentTrainingPhraseArgsDict: TypeAlias = Mapping[str, Any]
+class CxIntentTrainingPhraseArgsDict(TypedDict):
+    parts: pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhrasePartArgsDict']]]
+    """
+    The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
+    Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
+    Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
+    If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set.
+    If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways:
+    Part.text is set to a part of the phrase that has no parameters.
+    Part.text is set to a part of the phrase that you want to annotate, and the parameterId field is set.
+    Structure is documented below.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique identifier of the training phrase.
+    """
+    repeat_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Indicates how many times this example was added to the intent.
+    """
 
 @pulumi.input_type
 class CxIntentTrainingPhraseArgs:
@@ -9006,18 +8665,15 @@ class CxIntentTrainingPhraseArgs:
         pulumi.set(self, "repeat_count", value)
 
 
-if not MYPY:
-    class CxIntentTrainingPhrasePartArgsDict(TypedDict):
-        text: pulumi.Input[_builtins.str]
-        """
-        The text for this part.
-        """
-        parameter_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
-        """
-elif False:
-    CxIntentTrainingPhrasePartArgsDict: TypeAlias = Mapping[str, Any]
+class CxIntentTrainingPhrasePartArgsDict(TypedDict):
+    text: pulumi.Input[_builtins.str]
+    """
+    The text for this part.
+    """
+    parameter_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
+    """
 
 @pulumi.input_type
 class CxIntentTrainingPhrasePartArgs:
@@ -9057,19 +8713,16 @@ class CxIntentTrainingPhrasePartArgs:
         pulumi.set(self, "parameter_id", value)
 
 
-if not MYPY:
-    class CxPageAdvancedSettingsArgsDict(TypedDict):
-        dtmf_settings: NotRequired[pulumi.Input['CxPageAdvancedSettingsDtmfSettingsArgsDict']]
-        """
-        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
-        * Agent level
-        * Flow level
-        * Page level
-        * Parameter level
-        Structure is documented below.
-        """
-elif False:
-    CxPageAdvancedSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageAdvancedSettingsArgsDict(TypedDict):
+    dtmf_settings: NotRequired[pulumi.Input['CxPageAdvancedSettingsDtmfSettingsArgsDict']]
+    """
+    Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+    * Agent level
+    * Flow level
+    * Page level
+    * Parameter level
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageAdvancedSettingsArgs:
@@ -9104,22 +8757,19 @@ class CxPageAdvancedSettingsArgs:
         pulumi.set(self, "dtmf_settings", value)
 
 
-if not MYPY:
-    class CxPageAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
-        """
-        finish_digit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The digit that terminates a DTMF digit sequence.
-        """
-        max_digits: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max length of DTMF digits.
-        """
-elif False:
-    CxPageAdvancedSettingsDtmfSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+    """
+    finish_digit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The digit that terminates a DTMF digit sequence.
+    """
+    max_digits: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max length of DTMF digits.
+    """
 
 @pulumi.input_type
 class CxPageAdvancedSettingsDtmfSettingsArgs:
@@ -9176,37 +8826,34 @@ class CxPageAdvancedSettingsDtmfSettingsArgs:
         pulumi.set(self, "max_digits", value)
 
 
-if not MYPY:
-    class CxPageEntryFulfillmentArgsDict(TypedDict):
-        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArgsDict']]]]
-        """
-        Conditional cases for this fulfillment.
-        Structure is documented below.
-        """
-        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArgsDict']]]]
-        """
-        The list of rich message responses to present to the user.
-        Structure is documented below.
-        """
-        return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        """
-        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArgsDict']]]]
-        """
-        Set parameter values before executing the webhook.
-        Structure is documented below.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
-        """
-        webhook: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
-        """
-elif False:
-    CxPageEntryFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEntryFulfillmentArgsDict(TypedDict):
+    conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArgsDict']]]]
+    """
+    Conditional cases for this fulfillment.
+    Structure is documented below.
+    """
+    messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArgsDict']]]]
+    """
+    The list of rich message responses to present to the user.
+    Structure is documented below.
+    """
+    return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+    """
+    set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArgsDict']]]]
+    """
+    Set parameter values before executing the webhook.
+    Structure is documented below.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+    """
+    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+    """
 
 @pulumi.input_type
 class CxPageEntryFulfillmentArgs:
@@ -9317,15 +8964,12 @@ class CxPageEntryFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
-if not MYPY:
-    class CxPageEntryFulfillmentConditionalCaseArgsDict(TypedDict):
-        cases: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
-        """
-elif False:
-    CxPageEntryFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEntryFulfillmentConditionalCaseArgsDict(TypedDict):
+    cases: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+    See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+    """
 
 @pulumi.input_type
 class CxPageEntryFulfillmentConditionalCaseArgs:
@@ -9352,63 +8996,60 @@ class CxPageEntryFulfillmentConditionalCaseArgs:
         pulumi.set(self, "cases", value)
 
 
-if not MYPY:
-    class CxPageEntryFulfillmentMessageArgsDict(TypedDict):
-        channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        """
-        conversation_success: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArgsDict']]
-        """
-        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
-        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
-        * In a webhook response when you determine that you handled the customer issue.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        live_agent_handoff: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArgsDict']]
-        """
-        Indicates that the conversation should be handed off to a live agent.
-        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
-        * In a webhook response when you determine that the customer issue can only be handled by a human.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        output_audio_text: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArgsDict']]
-        """
-        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        payload: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns a response containing a custom, platform-specific payload.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        play_audio: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArgsDict']]
-        """
-        Specifies an audio clip to be played by the client as part of the response.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        telephony_transfer_call: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArgsDict']]
-        """
-        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        text: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageTextArgsDict']]
-        """
-        The text response message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-elif False:
-    CxPageEntryFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEntryFulfillmentMessageArgsDict(TypedDict):
+    channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+    """
+    conversation_success: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArgsDict']]
+    """
+    Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+    Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+    * In a webhook response when you determine that you handled the customer issue.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    live_agent_handoff: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArgsDict']]
+    """
+    Indicates that the conversation should be handed off to a live agent.
+    Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+    * In a webhook response when you determine that the customer issue can only be handled by a human.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    output_audio_text: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArgsDict']]
+    """
+    A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    payload: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns a response containing a custom, platform-specific payload.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    play_audio: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArgsDict']]
+    """
+    Specifies an audio clip to be played by the client as part of the response.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    telephony_transfer_call: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArgsDict']]
+    """
+    Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    text: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageTextArgsDict']]
+    """
+    The text response message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageEntryFulfillmentMessageArgs:
@@ -9587,14 +9228,11 @@ class CxPageEntryFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPageEntryFulfillmentMessageConversationSuccessArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxPageEntryFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEntryFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxPageEntryFulfillmentMessageConversationSuccessArgs:
@@ -9619,14 +9257,11 @@ class CxPageEntryFulfillmentMessageConversationSuccessArgs:
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxPageEntryFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxPageEntryFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEntryFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxPageEntryFulfillmentMessageLiveAgentHandoffArgs:
@@ -9651,25 +9286,22 @@ class CxPageEntryFulfillmentMessageLiveAgentHandoffArgs:
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxPageEntryFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        ssml: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SSML text to be synthesized. For more information, see SSML.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The raw text to be synthesized.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-elif False:
-    CxPageEntryFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEntryFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    ssml: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSML text to be synthesized. For more information, see SSML.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The raw text to be synthesized.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
 
 @pulumi.input_type
 class CxPageEntryFulfillmentMessageOutputAudioTextArgs:
@@ -9732,21 +9364,18 @@ class CxPageEntryFulfillmentMessageOutputAudioTextArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPageEntryFulfillmentMessagePlayAudioArgsDict(TypedDict):
-        audio_uri: pulumi.Input[_builtins.str]
-        """
-        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-        """
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+class CxPageEntryFulfillmentMessagePlayAudioArgsDict(TypedDict):
+    audio_uri: pulumi.Input[_builtins.str]
+    """
+    URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+    """
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 
-        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
-        """
-elif False:
-    CxPageEntryFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
+    """
 
 @pulumi.input_type
 class CxPageEntryFulfillmentMessagePlayAudioArgs:
@@ -9792,14 +9421,11 @@ class CxPageEntryFulfillmentMessagePlayAudioArgs:
         pulumi.set(self, "allow_playback_interruption", value)
 
 
-if not MYPY:
-    class CxPageEntryFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
-        phone_number: pulumi.Input[_builtins.str]
-        """
-        Transfer the call to a phone number in E.164 format.
-        """
-elif False:
-    CxPageEntryFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEntryFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    Transfer the call to a phone number in E.164 format.
+    """
 
 @pulumi.input_type
 class CxPageEntryFulfillmentMessageTelephonyTransferCallArgs:
@@ -9823,20 +9449,17 @@ class CxPageEntryFulfillmentMessageTelephonyTransferCallArgs:
         pulumi.set(self, "phone_number", value)
 
 
-if not MYPY:
-    class CxPageEntryFulfillmentMessageTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-        required: true
-        """
-elif False:
-    CxPageEntryFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEntryFulfillmentMessageTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+    required: true
+    """
 
 @pulumi.input_type
 class CxPageEntryFulfillmentMessageTextArgs:
@@ -9881,18 +9504,15 @@ class CxPageEntryFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
-if not MYPY:
-    class CxPageEntryFulfillmentSetParameterActionArgsDict(TypedDict):
-        parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Display name of the parameter.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The new JSON-encoded value of the parameter. A null value clears the parameter.
-        """
-elif False:
-    CxPageEntryFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEntryFulfillmentSetParameterActionArgsDict(TypedDict):
+    parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Display name of the parameter.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The new JSON-encoded value of the parameter. A null value clears the parameter.
+    """
 
 @pulumi.input_type
 class CxPageEntryFulfillmentSetParameterActionArgs:
@@ -9933,34 +9553,31 @@ class CxPageEntryFulfillmentSetParameterActionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CxPageEventHandlerArgsDict(TypedDict):
-        event: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the event to handle.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique identifier of this event handler.
-        """
-        target_flow: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target flow to transition to.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
-        """
-        target_page: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target page to transition to.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        """
-        trigger_fulfillment: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentArgsDict']]
-        """
-        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
-        Structure is documented below.
-        """
-elif False:
-    CxPageEventHandlerArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEventHandlerArgsDict(TypedDict):
+    event: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the event to handle.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique identifier of this event handler.
+    """
+    target_flow: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target flow to transition to.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+    """
+    target_page: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target page to transition to.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+    """
+    trigger_fulfillment: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentArgsDict']]
+    """
+    The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageEventHandlerArgs:
@@ -10057,37 +9674,34 @@ class CxPageEventHandlerArgs:
         pulumi.set(self, "trigger_fulfillment", value)
 
 
-if not MYPY:
-    class CxPageEventHandlerTriggerFulfillmentArgsDict(TypedDict):
-        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArgsDict']]]]
-        """
-        Conditional cases for this fulfillment.
-        Structure is documented below.
-        """
-        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArgsDict']]]]
-        """
-        The list of rich message responses to present to the user.
-        Structure is documented below.
-        """
-        return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        """
-        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArgsDict']]]]
-        """
-        Set parameter values before executing the webhook.
-        Structure is documented below.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
-        """
-        webhook: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
-        """
-elif False:
-    CxPageEventHandlerTriggerFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEventHandlerTriggerFulfillmentArgsDict(TypedDict):
+    conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArgsDict']]]]
+    """
+    Conditional cases for this fulfillment.
+    Structure is documented below.
+    """
+    messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArgsDict']]]]
+    """
+    The list of rich message responses to present to the user.
+    Structure is documented below.
+    """
+    return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+    """
+    set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArgsDict']]]]
+    """
+    Set parameter values before executing the webhook.
+    Structure is documented below.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+    """
+    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+    """
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentArgs:
@@ -10198,15 +9812,12 @@ class CxPageEventHandlerTriggerFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
-if not MYPY:
-    class CxPageEventHandlerTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
-        cases: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
-        """
-elif False:
-    CxPageEventHandlerTriggerFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEventHandlerTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
+    cases: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+    See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+    """
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs:
@@ -10233,63 +9844,60 @@ class CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs:
         pulumi.set(self, "cases", value)
 
 
-if not MYPY:
-    class CxPageEventHandlerTriggerFulfillmentMessageArgsDict(TypedDict):
-        channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        """
-        conversation_success: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict']]
-        """
-        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
-        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
-        * In a webhook response when you determine that you handled the customer issue.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        live_agent_handoff: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
-        """
-        Indicates that the conversation should be handed off to a live agent.
-        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
-        * In a webhook response when you determine that the customer issue can only be handled by a human.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        output_audio_text: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict']]
-        """
-        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        payload: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns a response containing a custom, platform-specific payload.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        play_audio: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict']]
-        """
-        Specifies an audio clip to be played by the client as part of the response.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        telephony_transfer_call: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
-        """
-        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        text: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArgsDict']]
-        """
-        The text response message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-elif False:
-    CxPageEventHandlerTriggerFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEventHandlerTriggerFulfillmentMessageArgsDict(TypedDict):
+    channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+    """
+    conversation_success: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict']]
+    """
+    Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+    Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+    * In a webhook response when you determine that you handled the customer issue.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    live_agent_handoff: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
+    """
+    Indicates that the conversation should be handed off to a live agent.
+    Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+    * In a webhook response when you determine that the customer issue can only be handled by a human.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    output_audio_text: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict']]
+    """
+    A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    payload: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns a response containing a custom, platform-specific payload.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    play_audio: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict']]
+    """
+    Specifies an audio clip to be played by the client as part of the response.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    telephony_transfer_call: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
+    """
+    Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    text: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArgsDict']]
+    """
+    The text response message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageArgs:
@@ -10468,14 +10076,11 @@ class CxPageEventHandlerTriggerFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
@@ -10500,14 +10105,11 @@ class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
@@ -10532,25 +10134,22 @@ class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        ssml: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SSML text to be synthesized. For more information, see SSML.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The raw text to be synthesized.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-elif False:
-    CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    ssml: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSML text to be synthesized. For more information, see SSML.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The raw text to be synthesized.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
@@ -10613,21 +10212,18 @@ class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
-        audio_uri: pulumi.Input[_builtins.str]
-        """
-        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-        """
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+class CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
+    audio_uri: pulumi.Input[_builtins.str]
+    """
+    URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+    """
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 
-        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
-        """
-elif False:
-    CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
+    """
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
@@ -10673,14 +10269,11 @@ class CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
         pulumi.set(self, "allow_playback_interruption", value)
 
 
-if not MYPY:
-    class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
-        phone_number: pulumi.Input[_builtins.str]
-        """
-        Transfer the call to a phone number in E.164 format.
-        """
-elif False:
-    CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    Transfer the call to a phone number in E.164 format.
+    """
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
@@ -10704,20 +10297,17 @@ class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
         pulumi.set(self, "phone_number", value)
 
 
-if not MYPY:
-    class CxPageEventHandlerTriggerFulfillmentMessageTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-        required: true
-        """
-elif False:
-    CxPageEventHandlerTriggerFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEventHandlerTriggerFulfillmentMessageTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+    required: true
+    """
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageTextArgs:
@@ -10762,18 +10352,15 @@ class CxPageEventHandlerTriggerFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
-if not MYPY:
-    class CxPageEventHandlerTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
-        parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Display name of the parameter.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The new JSON-encoded value of the parameter. A null value clears the parameter.
-        """
-elif False:
-    CxPageEventHandlerTriggerFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageEventHandlerTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
+    parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Display name of the parameter.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The new JSON-encoded value of the parameter. A null value clears the parameter.
+    """
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs:
@@ -10814,15 +10401,12 @@ class CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CxPageFormArgsDict(TypedDict):
-        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArgsDict']]]]
-        """
-        Parameters to collect from the user.
-        Structure is documented below.
-        """
-elif False:
-    CxPageFormArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormArgsDict(TypedDict):
+    parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArgsDict']]]]
+    """
+    Parameters to collect from the user.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageFormArgs:
@@ -10849,48 +10433,45 @@ class CxPageFormArgs:
         pulumi.set(self, "parameters", value)
 
 
-if not MYPY:
-    class CxPageFormParameterArgsDict(TypedDict):
-        advanced_settings: NotRequired[pulumi.Input['CxPageFormParameterAdvancedSettingsArgsDict']]
-        """
-        Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
-        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
-        Structure is documented below.
-        """
-        default_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default value of an optional parameter. If the parameter is required, the default value will be ignored.
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The human-readable name of the parameter, unique within the form.
-        """
-        entity_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The entity type of the parameter.
-        Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
-        """
-        fill_behavior: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorArgsDict']]
-        """
-        Defines fill behavior for the parameter.
-        Structure is documented below.
-        """
-        is_list: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the parameter represents a list of values.
-        """
-        redact: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the parameter content should be redacted in log.
-        If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
-        """
-        required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them.
-        Required parameters must be filled before form filling concludes.
-        """
-elif False:
-    CxPageFormParameterArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterArgsDict(TypedDict):
+    advanced_settings: NotRequired[pulumi.Input['CxPageFormParameterAdvancedSettingsArgsDict']]
+    """
+    Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+    Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+    Structure is documented below.
+    """
+    default_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The human-readable name of the parameter, unique within the form.
+    """
+    entity_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The entity type of the parameter.
+    Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+    """
+    fill_behavior: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorArgsDict']]
+    """
+    Defines fill behavior for the parameter.
+    Structure is documented below.
+    """
+    is_list: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the parameter represents a list of values.
+    """
+    redact: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the parameter content should be redacted in log.
+    If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+    """
+    required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them.
+    Required parameters must be filled before form filling concludes.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterArgs:
@@ -11039,19 +10620,16 @@ class CxPageFormParameterArgs:
         pulumi.set(self, "required", value)
 
 
-if not MYPY:
-    class CxPageFormParameterAdvancedSettingsArgsDict(TypedDict):
-        dtmf_settings: NotRequired[pulumi.Input['CxPageFormParameterAdvancedSettingsDtmfSettingsArgsDict']]
-        """
-        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
-        * Agent level
-        * Flow level
-        * Page level
-        * Parameter level
-        Structure is documented below.
-        """
-elif False:
-    CxPageFormParameterAdvancedSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterAdvancedSettingsArgsDict(TypedDict):
+    dtmf_settings: NotRequired[pulumi.Input['CxPageFormParameterAdvancedSettingsDtmfSettingsArgsDict']]
+    """
+    Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+    * Agent level
+    * Flow level
+    * Page level
+    * Parameter level
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterAdvancedSettingsArgs:
@@ -11086,22 +10664,19 @@ class CxPageFormParameterAdvancedSettingsArgs:
         pulumi.set(self, "dtmf_settings", value)
 
 
-if not MYPY:
-    class CxPageFormParameterAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
-        """
-        finish_digit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The digit that terminates a DTMF digit sequence.
-        """
-        max_digits: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max length of DTMF digits.
-        """
-elif False:
-    CxPageFormParameterAdvancedSettingsDtmfSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+    """
+    finish_digit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The digit that terminates a DTMF digit sequence.
+    """
+    max_digits: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max length of DTMF digits.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterAdvancedSettingsDtmfSettingsArgs:
@@ -11158,30 +10733,27 @@ class CxPageFormParameterAdvancedSettingsDtmfSettingsArgs:
         pulumi.set(self, "max_digits", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorArgsDict(TypedDict):
-        initial_prompt_fulfillment: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgsDict']]
-        """
-        The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
-        Structure is documented below.
-        """
-        reprompt_event_handlers: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArgsDict']]]]
-        """
-        The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
-        * sys.no-match-<N>, where N can be from 1 to 6
-        * sys.no-match-default
-        * sys.no-input-<N>, where N can be from 1 to 6
-        * sys.no-input-default
-        * sys.invalid-parameter
-        [initialPromptFulfillment][initialPromptFulfillment] provides the first prompt for the parameter.
-        If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the sys.no-match-1/sys.no-input-1 handler (if defined) will be called to provide a prompt. The sys.no-match-2/sys.no-input-2 handler (if defined) will respond to the next no-match/no-input event, and so on.
-        A sys.no-match-default or sys.no-input-default handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed.
-        A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
-        If the event handler for the corresponding event can't be found on the parameter, initialPromptFulfillment will be re-prompted.
-        Structure is documented below.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorArgsDict(TypedDict):
+    initial_prompt_fulfillment: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgsDict']]
+    """
+    The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+    Structure is documented below.
+    """
+    reprompt_event_handlers: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArgsDict']]]]
+    """
+    The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+    * sys.no-match-<N>, where N can be from 1 to 6
+    * sys.no-match-default
+    * sys.no-input-<N>, where N can be from 1 to 6
+    * sys.no-input-default
+    * sys.invalid-parameter
+    [initialPromptFulfillment][initialPromptFulfillment] provides the first prompt for the parameter.
+    If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the sys.no-match-1/sys.no-input-1 handler (if defined) will be called to provide a prompt. The sys.no-match-2/sys.no-input-2 handler (if defined) will respond to the next no-match/no-input event, and so on.
+    A sys.no-match-default or sys.no-input-default handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed.
+    A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
+    If the event handler for the corresponding event can't be found on the parameter, initialPromptFulfillment will be re-prompted.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorArgs:
@@ -11246,37 +10818,34 @@ class CxPageFormParameterFillBehaviorArgs:
         pulumi.set(self, "reprompt_event_handlers", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgsDict(TypedDict):
-        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgsDict']]]]
-        """
-        Conditional cases for this fulfillment.
-        Structure is documented below.
-        """
-        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgsDict']]]]
-        """
-        The list of rich message responses to present to the user.
-        Structure is documented below.
-        """
-        return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        """
-        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgsDict']]]]
-        """
-        Set parameter values before executing the webhook.
-        Structure is documented below.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
-        """
-        webhook: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgsDict(TypedDict):
+    conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgsDict']]]]
+    """
+    Conditional cases for this fulfillment.
+    Structure is documented below.
+    """
+    messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgsDict']]]]
+    """
+    The list of rich message responses to present to the user.
+    Structure is documented below.
+    """
+    return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+    """
+    set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgsDict']]]]
+    """
+    Set parameter values before executing the webhook.
+    Structure is documented below.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+    """
+    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
@@ -11387,15 +10956,12 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgsDict(TypedDict):
-        cases: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgsDict(TypedDict):
+    cases: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+    See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs:
@@ -11422,63 +10988,60 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs
         pulumi.set(self, "cases", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgsDict(TypedDict):
-        channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        """
-        conversation_success: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgsDict']]
-        """
-        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
-        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
-        * In a webhook response when you determine that you handled the customer issue.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        live_agent_handoff: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgsDict']]
-        """
-        Indicates that the conversation should be handed off to a live agent.
-        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
-        * In a webhook response when you determine that the customer issue can only be handled by a human.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        output_audio_text: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgsDict']]
-        """
-        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        payload: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns a response containing a custom, platform-specific payload.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        play_audio: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgsDict']]
-        """
-        Specifies an audio clip to be played by the client as part of the response.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        telephony_transfer_call: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgsDict']]
-        """
-        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        text: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgsDict']]
-        """
-        The text response message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgsDict(TypedDict):
+    channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+    """
+    conversation_success: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgsDict']]
+    """
+    Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+    Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+    * In a webhook response when you determine that you handled the customer issue.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    live_agent_handoff: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgsDict']]
+    """
+    Indicates that the conversation should be handed off to a live agent.
+    Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+    * In a webhook response when you determine that the customer issue can only be handled by a human.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    output_audio_text: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgsDict']]
+    """
+    A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    payload: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns a response containing a custom, platform-specific payload.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    play_audio: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgsDict']]
+    """
+    Specifies an audio clip to be played by the client as part of the response.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    telephony_transfer_call: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgsDict']]
+    """
+    Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    text: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgsDict']]
+    """
+    The text response message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
@@ -11657,14 +11220,11 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs:
@@ -11689,14 +11249,11 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversation
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs:
@@ -11721,25 +11278,22 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHan
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        ssml: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SSML text to be synthesized. For more information, see SSML.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The raw text to be synthesized.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    ssml: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSML text to be synthesized. For more information, see SSML.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The raw text to be synthesized.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs:
@@ -11802,21 +11356,18 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioT
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgsDict(TypedDict):
-        audio_uri: pulumi.Input[_builtins.str]
-        """
-        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-        """
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgsDict(TypedDict):
+    audio_uri: pulumi.Input[_builtins.str]
+    """
+    URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+    """
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 
-        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
-        """
-elif False:
-    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs:
@@ -11862,14 +11413,11 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArg
         pulumi.set(self, "allow_playback_interruption", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
-        phone_number: pulumi.Input[_builtins.str]
-        """
-        Transfer the call to a phone number in E.164 format.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    Transfer the call to a phone number in E.164 format.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs:
@@ -11893,20 +11441,17 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTra
         pulumi.set(self, "phone_number", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-        required: true
-        """
-elif False:
-    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+    required: true
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs:
@@ -11951,18 +11496,15 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgsDict(TypedDict):
-        parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Display name of the parameter.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The new JSON-encoded value of the parameter. A null value clears the parameter.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgsDict(TypedDict):
+    parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Display name of the parameter.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The new JSON-encoded value of the parameter. A null value clears the parameter.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs:
@@ -12003,34 +11545,31 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionA
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorRepromptEventHandlerArgsDict(TypedDict):
-        event: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the event to handle.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique identifier of this event handler.
-        """
-        target_flow: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target flow to transition to.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
-        """
-        target_page: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target page to transition to.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        """
-        trigger_fulfillment: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgsDict']]
-        """
-        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
-        Structure is documented below.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorRepromptEventHandlerArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorRepromptEventHandlerArgsDict(TypedDict):
+    event: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the event to handle.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique identifier of this event handler.
+    """
+    target_flow: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target flow to transition to.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+    """
+    target_page: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target page to transition to.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+    """
+    trigger_fulfillment: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgsDict']]
+    """
+    The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerArgs:
@@ -12127,37 +11666,34 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerArgs:
         pulumi.set(self, "trigger_fulfillment", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgsDict(TypedDict):
-        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgsDict']]]]
-        """
-        Conditional cases for this fulfillment.
-        Structure is documented below.
-        """
-        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgsDict']]]]
-        """
-        The list of rich message responses to present to the user.
-        Structure is documented below.
-        """
-        return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        """
-        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgsDict']]]]
-        """
-        Set parameter values before executing the webhook.
-        Structure is documented below.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
-        """
-        webhook: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgsDict(TypedDict):
+    conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgsDict']]]]
+    """
+    Conditional cases for this fulfillment.
+    Structure is documented below.
+    """
+    messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgsDict']]]]
+    """
+    The list of rich message responses to present to the user.
+    Structure is documented below.
+    """
+    return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+    """
+    set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgsDict']]]]
+    """
+    Set parameter values before executing the webhook.
+    Structure is documented below.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+    """
+    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs:
@@ -12268,15 +11804,12 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
-        cases: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
+    cases: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+    See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs:
@@ -12303,63 +11836,60 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCondi
         pulumi.set(self, "cases", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgsDict(TypedDict):
-        channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        """
-        conversation_success: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict']]
-        """
-        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
-        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
-        * In a webhook response when you determine that you handled the customer issue.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        live_agent_handoff: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
-        """
-        Indicates that the conversation should be handed off to a live agent.
-        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
-        * In a webhook response when you determine that the customer issue can only be handled by a human.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        output_audio_text: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict']]
-        """
-        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        payload: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns a response containing a custom, platform-specific payload.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        play_audio: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict']]
-        """
-        Specifies an audio clip to be played by the client as part of the response.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        telephony_transfer_call: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
-        """
-        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        text: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgsDict']]
-        """
-        The text response message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgsDict(TypedDict):
+    channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+    """
+    conversation_success: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict']]
+    """
+    Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+    Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+    * In a webhook response when you determine that you handled the customer issue.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    live_agent_handoff: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
+    """
+    Indicates that the conversation should be handed off to a live agent.
+    Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+    * In a webhook response when you determine that the customer issue can only be handled by a human.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    output_audio_text: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict']]
+    """
+    A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    payload: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns a response containing a custom, platform-specific payload.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    play_audio: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict']]
+    """
+    Specifies an audio clip to be played by the client as part of the response.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    telephony_transfer_call: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
+    """
+    Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    text: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgsDict']]
+    """
+    The text response message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs:
@@ -12538,14 +12068,11 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
@@ -12570,14 +12097,11 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
@@ -12602,25 +12126,22 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        ssml: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SSML text to be synthesized. For more information, see SSML.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The raw text to be synthesized.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    ssml: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSML text to be synthesized. For more information, see SSML.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The raw text to be synthesized.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
@@ -12683,21 +12204,18 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
-        audio_uri: pulumi.Input[_builtins.str]
-        """
-        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-        """
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
+    audio_uri: pulumi.Input[_builtins.str]
+    """
+    URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+    """
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 
-        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
-        """
-elif False:
-    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
@@ -12743,14 +12261,11 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         pulumi.set(self, "allow_playback_interruption", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
-        phone_number: pulumi.Input[_builtins.str]
-        """
-        Transfer the call to a phone number in E.164 format.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    Transfer the call to a phone number in E.164 format.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
@@ -12774,20 +12289,17 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         pulumi.set(self, "phone_number", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-        required: true
-        """
-elif False:
-    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+    required: true
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs:
@@ -12832,18 +12344,15 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         pulumi.set(self, "texts", value)
 
 
-if not MYPY:
-    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
-        parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Display name of the parameter.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The new JSON-encoded value of the parameter. A null value clears the parameter.
-        """
-elif False:
-    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
+    parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Display name of the parameter.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The new JSON-encoded value of the parameter. A null value clears the parameter.
+    """
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs:
@@ -12884,36 +12393,33 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetPa
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsArgsDict(TypedDict):
-        data_store_connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsDataStoreConnectionArgsDict']]]]
-        """
-        Optional. List of related data store connections.
-        Structure is documented below.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Knowledge Connector is enabled or not.
-        """
-        target_flow: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
-        This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
-        """
-        target_page: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
-        The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
-        This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
-        """
-        trigger_fulfillment: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgsDict']]
-        """
-        The fulfillment to be triggered.
-        When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
-        Structure is documented below.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsArgsDict(TypedDict):
+    data_store_connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsDataStoreConnectionArgsDict']]]]
+    """
+    Optional. List of related data store connections.
+    Structure is documented below.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Knowledge Connector is enabled or not.
+    """
+    target_flow: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+    This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+    """
+    target_page: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+    The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+    This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+    """
+    trigger_fulfillment: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgsDict']]
+    """
+    The fulfillment to be triggered.
+    When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsArgs:
@@ -13014,29 +12520,26 @@ class CxPageKnowledgeConnectorSettingsArgs:
         pulumi.set(self, "trigger_fulfillment", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsDataStoreConnectionArgsDict(TypedDict):
-        data_store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
-        """
-        data_store_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the connected data store.
-        * PUBLIC_WEB: A data store that contains public web content.
-        * UNSTRUCTURED: A data store that contains unstructured private data.
-        * STRUCTURED: A data store that contains structured data (for example FAQ).
-        Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
-        """
-        document_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
-        * DOCUMENTS: Documents are processed as documents.
-        * CHUNKS: Documents are converted to chunks.
-        Possible values are: `DOCUMENTS`, `CHUNKS`.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsDataStoreConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsDataStoreConnectionArgsDict(TypedDict):
+    data_store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+    """
+    data_store_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the connected data store.
+    * PUBLIC_WEB: A data store that contains public web content.
+    * UNSTRUCTURED: A data store that contains unstructured private data.
+    * STRUCTURED: A data store that contains structured data (for example FAQ).
+    Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+    """
+    document_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+    * DOCUMENTS: Documents are processed as documents.
+    * CHUNKS: Documents are converted to chunks.
+    Possible values are: `DOCUMENTS`, `CHUNKS`.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs:
@@ -13107,48 +12610,45 @@ class CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs:
         pulumi.set(self, "document_processing_mode", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgsDict(TypedDict):
-        advanced_settings: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgsDict']]
-        """
-        Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
-        DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
-        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
-        Structure is documented below.
-        """
-        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgsDict']]]]
-        """
-        Conditional cases for this fulfillment.
-        Structure is documented below.
-        """
-        enable_generative_fallback: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
-        """
-        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgsDict']]]]
-        """
-        The list of rich message responses to present to the user.
-        Structure is documented below.
-        """
-        return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        """
-        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgsDict']]]]
-        """
-        Set parameter values before executing the webhook.
-        Structure is documented below.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
-        """
-        webhook: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgsDict(TypedDict):
+    advanced_settings: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgsDict']]
+    """
+    Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+    DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+    Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+    Structure is documented below.
+    """
+    conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgsDict']]]]
+    """
+    Conditional cases for this fulfillment.
+    Structure is documented below.
+    """
+    enable_generative_fallback: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+    """
+    messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgsDict']]]]
+    """
+    The list of rich message responses to present to the user.
+    Structure is documented below.
+    """
+    return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+    """
+    set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgsDict']]]]
+    """
+    Set parameter values before executing the webhook.
+    Structure is documented below.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+    """
+    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs:
@@ -13297,34 +12797,31 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgsDict(TypedDict):
-        dtmf_settings: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgsDict']]
-        """
-        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
-        * Agent level
-        * Flow level
-        * Page level
-        * Parameter level
-        Structure is documented below.
-        """
-        logging_settings: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgsDict']]
-        """
-        Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
-        * Agent level
-        Structure is documented below.
-        """
-        speech_settings: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgsDict']]
-        """
-        Settings for speech to text detection. Exposed at the following levels:
-        * Agent level
-        * Flow level
-        * Page level
-        * Parameter level
-        Structure is documented below.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgsDict(TypedDict):
+    dtmf_settings: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgsDict']]
+    """
+    Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+    * Agent level
+    * Flow level
+    * Page level
+    * Parameter level
+    Structure is documented below.
+    """
+    logging_settings: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgsDict']]
+    """
+    Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+    * Agent level
+    Structure is documented below.
+    """
+    speech_settings: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgsDict']]
+    """
+    Settings for speech to text detection. Exposed at the following levels:
+    * Agent level
+    * Flow level
+    * Page level
+    * Parameter level
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs:
@@ -13405,32 +12902,29 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs:
         pulumi.set(self, "speech_settings", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
-        """
-        endpointing_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Endpoint timeout setting for matching dtmf input to regex.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
-        """
-        finish_digit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The digit that terminates a DTMF digit sequence.
-        """
-        interdigit_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Interdigit timeout setting for matching dtmf input to regex.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
-        """
-        max_digits: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max length of DTMF digits.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+    """
+    endpointing_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Endpoint timeout setting for matching dtmf input to regex.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+    """
+    finish_digit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The digit that terminates a DTMF digit sequence.
+    """
+    interdigit_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Interdigit timeout setting for matching dtmf input to regex.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+    """
+    max_digits: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max length of DTMF digits.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs:
@@ -13523,22 +13017,19 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSett
         pulumi.set(self, "max_digits", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgsDict(TypedDict):
-        enable_consent_based_redaction: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
-        """
-        enable_interaction_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables DF Interaction logging.
-        """
-        enable_stackdriver_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables Google Cloud Logging.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgsDict(TypedDict):
+    enable_consent_based_redaction: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+    """
+    enable_interaction_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables DF Interaction logging.
+    """
+    enable_stackdriver_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables Google Cloud Logging.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs:
@@ -13595,28 +13086,25 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingS
         pulumi.set(self, "enable_stackdriver_logging", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgsDict(TypedDict):
-        endpointer_sensitivity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
-        """
-        models: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
-        An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
-        """
-        no_speech_timeout: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timeout before detecting no speech.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
-        """
-        use_timeout_based_endpointing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgsDict(TypedDict):
+    endpointer_sensitivity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+    """
+    models: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+    An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+    """
+    no_speech_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout before detecting no speech.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+    """
+    use_timeout_based_endpointing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs:
@@ -13693,15 +13181,12 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSe
         pulumi.set(self, "use_timeout_based_endpointing", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
-        cases: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
+    cases: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+    See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs:
@@ -13728,84 +13213,81 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs:
         pulumi.set(self, "cases", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgsDict(TypedDict):
-        channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        """
-        conversation_success: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgsDict']]
-        """
-        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
-        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
-        * In a webhook response when you determine that you handled the customer issue.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        end_interactions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgsDict']]]]
-        """
-        (Output)
-        This type has no fields.
-        Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        knowledge_info_card: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgsDict']]
-        """
-        This type has no fields.
-        Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
-        Otherwise, the info card response is skipped.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        live_agent_handoff: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
-        """
-        Indicates that the conversation should be handed off to a live agent.
-        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
-        * In a webhook response when you determine that the customer issue can only be handled by a human.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        mixed_audios: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgsDict']]]]
-        """
-        (Output)
-        Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        output_audio_text: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgsDict']]
-        """
-        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        payload: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns a response containing a custom, platform-specific payload.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        play_audio: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgsDict']]
-        """
-        Specifies an audio clip to be played by the client as part of the response.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        telephony_transfer_call: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
-        """
-        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        text: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgsDict']]
-        """
-        The text response message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgsDict(TypedDict):
+    channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+    """
+    conversation_success: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgsDict']]
+    """
+    Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+    Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+    * In a webhook response when you determine that you handled the customer issue.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    end_interactions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgsDict']]]]
+    """
+    (Output)
+    This type has no fields.
+    Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    knowledge_info_card: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgsDict']]
+    """
+    This type has no fields.
+    Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+    Otherwise, the info card response is skipped.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    live_agent_handoff: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
+    """
+    Indicates that the conversation should be handed off to a live agent.
+    Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+    * In a webhook response when you determine that the customer issue can only be handled by a human.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    mixed_audios: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgsDict']]]]
+    """
+    (Output)
+    Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    output_audio_text: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgsDict']]
+    """
+    A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    payload: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns a response containing a custom, platform-specific payload.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    play_audio: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgsDict']]
+    """
+    Specifies an audio clip to be played by the client as part of the response.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    telephony_transfer_call: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
+    """
+    Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    text: NotRequired[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgsDict']]
+    """
+    The text response message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs:
@@ -14050,14 +13532,11 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs:
@@ -14082,11 +13561,8 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSucce
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgsDict(TypedDict):
-        pass
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs:
@@ -14094,11 +13570,8 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArg
         pass
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgsDict(TypedDict):
-        pass
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs:
@@ -14106,14 +13579,11 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard
         pass
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs:
@@ -14138,14 +13608,11 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffA
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgsDict(TypedDict):
-        segments: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgsDict']]]]
-        """
-        Segments this audio response is composed of.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgsDict(TypedDict):
+    segments: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgsDict']]]]
+    """
+    Segments this audio response is composed of.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs:
@@ -14170,26 +13637,23 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs:
         pulumi.set(self, "segments", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
-        """
-        audio: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
-        A base64-encoded string.
-        This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
-        """
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
-        This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+    """
+    audio: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+    A base64-encoded string.
+    This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+    """
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+    This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs:
@@ -14254,25 +13718,22 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        ssml: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SSML text to be synthesized. For more information, see SSML.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The raw text to be synthesized.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    ssml: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSML text to be synthesized. For more information, see SSML.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The raw text to be synthesized.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs:
@@ -14335,21 +13796,18 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextAr
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
-        audio_uri: pulumi.Input[_builtins.str]
-        """
-        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-        """
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
+    audio_uri: pulumi.Input[_builtins.str]
+    """
+    URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+    """
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 
-        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs:
@@ -14395,14 +13853,11 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs:
         pulumi.set(self, "allow_playback_interruption", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
-        phone_number: pulumi.Input[_builtins.str]
-        """
-        Transfer the call to a phone number in E.164 format.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    Transfer the call to a phone number in E.164 format.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs:
@@ -14426,20 +13881,17 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransfer
         pulumi.set(self, "phone_number", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-        required: true
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+    required: true
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs:
@@ -14484,18 +13936,15 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
-if not MYPY:
-    class CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
-        parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Display name of the parameter.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The new JSON-encoded value of the parameter. A null value clears the parameter.
-        """
-elif False:
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
+    parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Display name of the parameter.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The new JSON-encoded value of the parameter. A null value clears the parameter.
+    """
 
 @pulumi.input_type
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs:
@@ -14536,40 +13985,37 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CxPageTransitionRouteArgsDict(TypedDict):
-        condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The condition to evaluate against form parameters or session parameters.
-        At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
-        """
-        intent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of an Intent.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique identifier of this transition route.
-        """
-        target_flow: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target flow to transition to.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
-        """
-        target_page: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target page to transition to.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        """
-        trigger_fulfillment: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArgsDict']]
-        """
-        The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
-        Structure is documented below.
-        """
-elif False:
-    CxPageTransitionRouteArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageTransitionRouteArgsDict(TypedDict):
+    condition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The condition to evaluate against form parameters or session parameters.
+    At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+    """
+    intent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of an Intent.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique identifier of this transition route.
+    """
+    target_flow: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target flow to transition to.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+    """
+    target_page: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target page to transition to.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+    """
+    trigger_fulfillment: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArgsDict']]
+    """
+    The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageTransitionRouteArgs:
@@ -14686,37 +14132,34 @@ class CxPageTransitionRouteArgs:
         pulumi.set(self, "trigger_fulfillment", value)
 
 
-if not MYPY:
-    class CxPageTransitionRouteTriggerFulfillmentArgsDict(TypedDict):
-        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgsDict']]]]
-        """
-        Conditional cases for this fulfillment.
-        Structure is documented below.
-        """
-        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArgsDict']]]]
-        """
-        The list of rich message responses to present to the user.
-        Structure is documented below.
-        """
-        return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        """
-        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgsDict']]]]
-        """
-        Set parameter values before executing the webhook.
-        Structure is documented below.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
-        """
-        webhook: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
-        """
-elif False:
-    CxPageTransitionRouteTriggerFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageTransitionRouteTriggerFulfillmentArgsDict(TypedDict):
+    conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgsDict']]]]
+    """
+    Conditional cases for this fulfillment.
+    Structure is documented below.
+    """
+    messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArgsDict']]]]
+    """
+    The list of rich message responses to present to the user.
+    Structure is documented below.
+    """
+    return_partial_responses: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+    """
+    set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgsDict']]]]
+    """
+    Set parameter values before executing the webhook.
+    Structure is documented below.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+    """
+    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+    """
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentArgs:
@@ -14827,15 +14270,12 @@ class CxPageTransitionRouteTriggerFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
-if not MYPY:
-    class CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
-        cases: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
-        """
-elif False:
-    CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
+    cases: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+    See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+    """
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs:
@@ -14862,63 +14302,60 @@ class CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs:
         pulumi.set(self, "cases", value)
 
 
-if not MYPY:
-    class CxPageTransitionRouteTriggerFulfillmentMessageArgsDict(TypedDict):
-        channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        """
-        conversation_success: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict']]
-        """
-        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
-        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
-        * In a webhook response when you determine that you handled the customer issue.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        live_agent_handoff: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
-        """
-        Indicates that the conversation should be handed off to a live agent.
-        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
-        You may set this, for example:
-        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
-        * In a webhook response when you determine that the customer issue can only be handled by a human.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        output_audio_text: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict']]
-        """
-        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        payload: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Returns a response containing a custom, platform-specific payload.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        """
-        play_audio: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict']]
-        """
-        Specifies an audio clip to be played by the client as part of the response.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        telephony_transfer_call: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
-        """
-        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-        text: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArgsDict']]
-        """
-        The text response message.
-        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        Structure is documented below.
-        """
-elif False:
-    CxPageTransitionRouteTriggerFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageTransitionRouteTriggerFulfillmentMessageArgsDict(TypedDict):
+    channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+    """
+    conversation_success: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict']]
+    """
+    Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+    Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+    * In a webhook response when you determine that you handled the customer issue.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    live_agent_handoff: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
+    """
+    Indicates that the conversation should be handed off to a live agent.
+    Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+    * In a webhook response when you determine that the customer issue can only be handled by a human.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    output_audio_text: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict']]
+    """
+    A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    payload: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Returns a response containing a custom, platform-specific payload.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    """
+    play_audio: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict']]
+    """
+    Specifies an audio clip to be played by the client as part of the response.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    telephony_transfer_call: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
+    """
+    Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
+    text: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArgsDict']]
+    """
+    The text response message.
+    This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
@@ -15097,14 +14534,11 @@ class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
@@ -15129,14 +14563,11 @@ class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
-        metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom metadata. Dialogflow doesn't impose any structure on this.
-        """
-elif False:
-    CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+    metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
@@ -15161,25 +14592,22 @@ class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        ssml: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SSML text to be synthesized. For more information, see SSML.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The raw text to be synthesized.
-        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-        """
-elif False:
-    CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    ssml: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSML text to be synthesized. For more information, see SSML.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The raw text to be synthesized.
+    This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+    """
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
@@ -15242,21 +14670,18 @@ class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
-        audio_uri: pulumi.Input[_builtins.str]
-        """
-        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-        """
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
+    audio_uri: pulumi.Input[_builtins.str]
+    """
+    URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+    """
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 
-        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
-        """
-elif False:
-    CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_mixed_audio"></a>The `mixed_audio` block contains:
+    """
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
@@ -15302,14 +14727,11 @@ class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
         pulumi.set(self, "allow_playback_interruption", value)
 
 
-if not MYPY:
-    class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
-        phone_number: pulumi.Input[_builtins.str]
-        """
-        Transfer the call to a phone number in E.164 format.
-        """
-elif False:
-    CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    Transfer the call to a phone number in E.164 format.
+    """
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
@@ -15333,20 +14755,17 @@ class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
         pulumi.set(self, "phone_number", value)
 
 
-if not MYPY:
-    class CxPageTransitionRouteTriggerFulfillmentMessageTextArgsDict(TypedDict):
-        allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        (Output)
-        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-        required: true
-        """
-elif False:
-    CxPageTransitionRouteTriggerFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageTransitionRouteTriggerFulfillmentMessageTextArgsDict(TypedDict):
+    allow_playback_interruption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (Output)
+    Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    """
+    texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+    required: true
+    """
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageTextArgs:
@@ -15391,18 +14810,15 @@ class CxPageTransitionRouteTriggerFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
-if not MYPY:
-    class CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
-        parameter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Display name of the parameter.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The new JSON-encoded value of the parameter. A null value clears the parameter.
-        """
-elif False:
-    CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+class CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
+    parameter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Display name of the parameter.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The new JSON-encoded value of the parameter. A null value clears the parameter.
+    """
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs:
@@ -15443,19 +14859,16 @@ class CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CxPlaybookInstructionArgsDict(TypedDict):
-        guidelines: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        General guidelines for the playbook. These are unstructured instructions that are not directly part of the goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
-        """
-        steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPlaybookInstructionStepArgsDict']]]]
-        """
-        Ordered list of step by step execution instructions to accomplish target goal.
-        Structure is documented below.
-        """
-elif False:
-    CxPlaybookInstructionArgsDict: TypeAlias = Mapping[str, Any]
+class CxPlaybookInstructionArgsDict(TypedDict):
+    guidelines: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    General guidelines for the playbook. These are unstructured instructions that are not directly part of the goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
+    """
+    steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPlaybookInstructionStepArgsDict']]]]
+    """
+    Ordered list of step by step execution instructions to accomplish target goal.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxPlaybookInstructionArgs:
@@ -15498,19 +14911,16 @@ class CxPlaybookInstructionArgs:
         pulumi.set(self, "steps", value)
 
 
-if not MYPY:
-    class CxPlaybookInstructionStepArgsDict(TypedDict):
-        steps: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Sub-processing needed to execute the current step.
-        This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Step](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.playbooks#step).
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Step instruction in text format.
-        """
-elif False:
-    CxPlaybookInstructionStepArgsDict: TypeAlias = Mapping[str, Any]
+class CxPlaybookInstructionStepArgsDict(TypedDict):
+    steps: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Sub-processing needed to execute the current step.
+    This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Step](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.playbooks#step).
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Step instruction in text format.
+    """
 
 @pulumi.input_type
 class CxPlaybookInstructionStepArgs:
@@ -15553,18 +14963,15 @@ class CxPlaybookInstructionStepArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxPlaybookLlmModelSettingsArgsDict(TypedDict):
-        model: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The selected LLM model.
-        """
-        prompt_text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The custom prompt to use.
-        """
-elif False:
-    CxPlaybookLlmModelSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxPlaybookLlmModelSettingsArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The selected LLM model.
+    """
+    prompt_text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The custom prompt to use.
+    """
 
 @pulumi.input_type
 class CxPlaybookLlmModelSettingsArgs:
@@ -15605,30 +15012,27 @@ class CxPlaybookLlmModelSettingsArgs:
         pulumi.set(self, "prompt_text", value)
 
 
-if not MYPY:
-    class CxSecuritySettingsAudioExportSettingsArgsDict(TypedDict):
-        audio_export_pattern: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Filename pattern for exported audio.
-        """
-        audio_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        File format for exported audio file. Currently only in telephony recordings.
-        * MULAW: G.711 mu-law PCM with 8kHz sample rate.
-        * MP3: MP3 file format.
-        * OGG: OGG Vorbis.
-        Possible values are: `MULAW`, `MP3`, `OGG`.
-        """
-        enable_audio_redaction: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable audio redaction if it is true.
-        """
-        gcs_bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
-        """
-elif False:
-    CxSecuritySettingsAudioExportSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxSecuritySettingsAudioExportSettingsArgsDict(TypedDict):
+    audio_export_pattern: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Filename pattern for exported audio.
+    """
+    audio_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    File format for exported audio file. Currently only in telephony recordings.
+    * MULAW: G.711 mu-law PCM with 8kHz sample rate.
+    * MP3: MP3 file format.
+    * OGG: OGG Vorbis.
+    Possible values are: `MULAW`, `MP3`, `OGG`.
+    """
+    enable_audio_redaction: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable audio redaction if it is true.
+    """
+    gcs_bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+    """
 
 @pulumi.input_type
 class CxSecuritySettingsAudioExportSettingsArgs:
@@ -15709,14 +15113,11 @@ class CxSecuritySettingsAudioExportSettingsArgs:
         pulumi.set(self, "gcs_bucket", value)
 
 
-if not MYPY:
-    class CxSecuritySettingsInsightsExportSettingsArgsDict(TypedDict):
-        enable_insights_export: pulumi.Input[_builtins.bool]
-        """
-        If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
-        """
-elif False:
-    CxSecuritySettingsInsightsExportSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class CxSecuritySettingsInsightsExportSettingsArgsDict(TypedDict):
+    enable_insights_export: pulumi.Input[_builtins.bool]
+    """
+    If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+    """
 
 @pulumi.input_type
 class CxSecuritySettingsInsightsExportSettingsArgs:
@@ -15740,35 +15141,32 @@ class CxSecuritySettingsInsightsExportSettingsArgs:
         pulumi.set(self, "enable_insights_export", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultArgsDict(TypedDict):
-        conversation_turns: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArgsDict']]]]
-        """
-        The conversation turns uttered during the test case replay in chronological order.
-        Structure is documented below.
-        """
-        environment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Environment where the test was run. If not set, it indicates the draft environment.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of the page.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        """
-        test_result: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether the test case passed in the agent environment.
-        * PASSED: The test passed.
-        * FAILED: The test did not pass.
-        Possible values are: `PASSED`, `FAILED`.
-        """
-        test_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time that the test was run. A timestamp in RFC3339 text format.
-        """
-elif False:
-    CxTestCaseLastTestResultArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultArgsDict(TypedDict):
+    conversation_turns: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArgsDict']]]]
+    """
+    The conversation turns uttered during the test case replay in chronological order.
+    Structure is documented below.
+    """
+    environment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Environment where the test was run. If not set, it indicates the draft environment.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the page.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+    """
+    test_result: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether the test case passed in the agent environment.
+    * PASSED: The test passed.
+    * FAILED: The test did not pass.
+    Possible values are: `PASSED`, `FAILED`.
+    """
+    test_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time that the test was run. A timestamp in RFC3339 text format.
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultArgs:
@@ -15867,20 +15265,17 @@ class CxTestCaseLastTestResultArgs:
         pulumi.set(self, "test_time", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultConversationTurnArgsDict(TypedDict):
-        user_input: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArgsDict']]
-        """
-        The user input.
-        Structure is documented below.
-        """
-        virtual_agent_output: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgsDict']]
-        """
-        The virtual agent output.
-        Structure is documented below.
-        """
-elif False:
-    CxTestCaseLastTestResultConversationTurnArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultConversationTurnArgsDict(TypedDict):
+    user_input: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArgsDict']]
+    """
+    The user input.
+    Structure is documented below.
+    """
+    virtual_agent_output: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgsDict']]
+    """
+    The virtual agent output.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnArgs:
@@ -15925,27 +15320,24 @@ class CxTestCaseLastTestResultConversationTurnArgs:
         pulumi.set(self, "virtual_agent_output", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultConversationTurnUserInputArgsDict(TypedDict):
-        enable_sentiment_analysis: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether sentiment analysis is enabled.
-        """
-        injected_parameters: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Parameters that need to be injected into the conversation during intent detection.
-        """
-        input: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArgsDict']]
-        """
-        User input. Supports text input, event input, dtmf input in the test case.
-        Structure is documented below.
-        """
-        is_webhook_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
-        """
-elif False:
-    CxTestCaseLastTestResultConversationTurnUserInputArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultConversationTurnUserInputArgsDict(TypedDict):
+    enable_sentiment_analysis: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether sentiment analysis is enabled.
+    """
+    injected_parameters: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Parameters that need to be injected into the conversation during intent detection.
+    """
+    input: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArgsDict']]
+    """
+    User input. Supports text input, event input, dtmf input in the test case.
+    Structure is documented below.
+    """
+    is_webhook_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnUserInputArgs:
@@ -16020,30 +15412,27 @@ class CxTestCaseLastTestResultConversationTurnUserInputArgs:
         pulumi.set(self, "is_webhook_enabled", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultConversationTurnUserInputInputArgsDict(TypedDict):
-        dtmf: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgsDict']]
-        """
-        The DTMF event to be handled.
-        Structure is documented below.
-        """
-        event: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArgsDict']]
-        """
-        The event to be triggered.
-        Structure is documented below.
-        """
-        language_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
-        Note that queries in the same session do not necessarily need to specify the same language.
-        """
-        text: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArgsDict']]
-        """
-        The natural language text to be processed.
-        Structure is documented below.
-        """
-elif False:
-    CxTestCaseLastTestResultConversationTurnUserInputInputArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultConversationTurnUserInputInputArgsDict(TypedDict):
+    dtmf: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgsDict']]
+    """
+    The DTMF event to be handled.
+    Structure is documented below.
+    """
+    event: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArgsDict']]
+    """
+    The event to be triggered.
+    Structure is documented below.
+    """
+    language_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+    Note that queries in the same session do not necessarily need to specify the same language.
+    """
+    text: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArgsDict']]
+    """
+    The natural language text to be processed.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnUserInputInputArgs:
@@ -16124,18 +15513,15 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgsDict(TypedDict):
-        digits: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The dtmf digits.
-        """
-        finish_digit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The finish digit (if any).
-        """
-elif False:
-    CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgsDict(TypedDict):
+    digits: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The dtmf digits.
+    """
+    finish_digit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The finish digit (if any).
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs:
@@ -16176,14 +15562,11 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs:
         pulumi.set(self, "finish_digit", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultConversationTurnUserInputInputEventArgsDict(TypedDict):
-        event: pulumi.Input[_builtins.str]
-        """
-        Name of the event.
-        """
-elif False:
-    CxTestCaseLastTestResultConversationTurnUserInputInputEventArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultConversationTurnUserInputInputEventArgsDict(TypedDict):
+    event: pulumi.Input[_builtins.str]
+    """
+    Name of the event.
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs:
@@ -16207,14 +15590,11 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs:
         pulumi.set(self, "event", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultConversationTurnUserInputInputTextArgsDict(TypedDict):
-        text: pulumi.Input[_builtins.str]
-        """
-        The natural language text to be processed. Text length must not exceed 256 characters.
-        """
-elif False:
-    CxTestCaseLastTestResultConversationTurnUserInputInputTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultConversationTurnUserInputInputTextArgsDict(TypedDict):
+    text: pulumi.Input[_builtins.str]
+    """
+    The natural language text to be processed. Text length must not exceed 256 characters.
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs:
@@ -16238,39 +15618,36 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgsDict(TypedDict):
-        current_page: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgsDict']]
-        """
-        The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
-        Structure is documented below.
-        """
-        differences: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgsDict']]]]
-        """
-        The list of differences between the original run and the replay for this output, if any.
-        Structure is documented below.
-        """
-        session_parameters: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The session parameters available to the bot at this point.
-        """
-        status: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgsDict']]
-        """
-        Response error from the agent in the test result. If set, other output is empty.
-        Structure is documented below.
-        """
-        text_responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgsDict']]]]
-        """
-        The text responses from the agent for the turn.
-        Structure is documented below.
-        """
-        triggered_intent: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgsDict']]
-        """
-        The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
-        Structure is documented below.
-        """
-elif False:
-    CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgsDict(TypedDict):
+    current_page: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgsDict']]
+    """
+    The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+    Structure is documented below.
+    """
+    differences: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgsDict']]]]
+    """
+    The list of differences between the original run and the replay for this output, if any.
+    Structure is documented below.
+    """
+    session_parameters: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The session parameters available to the bot at this point.
+    """
+    status: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgsDict']]
+    """
+    Response error from the agent in the test result. If set, other output is empty.
+    Structure is documented below.
+    """
+    text_responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgsDict']]]]
+    """
+    The text responses from the agent for the turn.
+    Structure is documented below.
+    """
+    triggered_intent: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgsDict']]
+    """
+    The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
@@ -16385,20 +15762,17 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
         pulumi.set(self, "triggered_intent", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgsDict(TypedDict):
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The human-readable name of the page, unique within the flow.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of the page.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        """
-elif False:
-    CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The human-readable name of the page, unique within the flow.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the page.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs:
@@ -16443,24 +15817,21 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A human readable description of the diff, showing the actual output vs expected output.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of diff.
-        * INTENT: The intent.
-        * PAGE: The page.
-        * PARAMETERS: The parameters.
-        * UTTERANCE: The message utterance.
-        * FLOW: The flow.
-        Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
-        """
-elif False:
-    CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A human readable description of the diff, showing the actual output vs expected output.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of diff.
+    * INTENT: The intent.
+    * PAGE: The page.
+    * PARAMETERS: The parameters.
+    * UTTERANCE: The message utterance.
+    * FLOW: The flow.
+    Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs:
@@ -16513,22 +15884,19 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        details: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A JSON encoded list of messages that carry the error details.
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A developer-facing error message.
-        """
-elif False:
-    CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The status code, which should be an enum value of google.rpc.Code.
+    """
+    details: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A JSON encoded list of messages that carry the error details.
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A developer-facing error message.
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs:
@@ -16585,14 +15953,11 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs:
         pulumi.set(self, "message", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgsDict(TypedDict):
-        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A collection of text responses.
-        """
-elif False:
-    CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgsDict(TypedDict):
+    texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A collection of text responses.
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs:
@@ -16617,20 +15982,17 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs
         pulumi.set(self, "texts", value)
 
 
-if not MYPY:
-    class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgsDict(TypedDict):
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The human-readable name of the intent, unique within the agent.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of the intent.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
-        """
-elif False:
-    CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The human-readable name of the intent, unique within the agent.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the intent.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+    """
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs:
@@ -16675,20 +16037,17 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentA
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class CxTestCaseTestCaseConversationTurnArgsDict(TypedDict):
-        user_input: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArgsDict']]
-        """
-        The user input.
-        Structure is documented below.
-        """
-        virtual_agent_output: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgsDict']]
-        """
-        The virtual agent output.
-        Structure is documented below.
-        """
-elif False:
-    CxTestCaseTestCaseConversationTurnArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseTestCaseConversationTurnArgsDict(TypedDict):
+    user_input: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArgsDict']]
+    """
+    The user input.
+    Structure is documented below.
+    """
+    virtual_agent_output: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgsDict']]
+    """
+    The virtual agent output.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnArgs:
@@ -16733,27 +16092,24 @@ class CxTestCaseTestCaseConversationTurnArgs:
         pulumi.set(self, "virtual_agent_output", value)
 
 
-if not MYPY:
-    class CxTestCaseTestCaseConversationTurnUserInputArgsDict(TypedDict):
-        enable_sentiment_analysis: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether sentiment analysis is enabled.
-        """
-        injected_parameters: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Parameters that need to be injected into the conversation during intent detection.
-        """
-        input: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArgsDict']]
-        """
-        User input. Supports text input, event input, dtmf input in the test case.
-        Structure is documented below.
-        """
-        is_webhook_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
-        """
-elif False:
-    CxTestCaseTestCaseConversationTurnUserInputArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseTestCaseConversationTurnUserInputArgsDict(TypedDict):
+    enable_sentiment_analysis: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether sentiment analysis is enabled.
+    """
+    injected_parameters: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Parameters that need to be injected into the conversation during intent detection.
+    """
+    input: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArgsDict']]
+    """
+    User input. Supports text input, event input, dtmf input in the test case.
+    Structure is documented below.
+    """
+    is_webhook_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+    """
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnUserInputArgs:
@@ -16828,30 +16184,27 @@ class CxTestCaseTestCaseConversationTurnUserInputArgs:
         pulumi.set(self, "is_webhook_enabled", value)
 
 
-if not MYPY:
-    class CxTestCaseTestCaseConversationTurnUserInputInputArgsDict(TypedDict):
-        dtmf: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgsDict']]
-        """
-        The DTMF event to be handled.
-        Structure is documented below.
-        """
-        event: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArgsDict']]
-        """
-        The event to be triggered.
-        Structure is documented below.
-        """
-        language_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
-        Note that queries in the same session do not necessarily need to specify the same language.
-        """
-        text: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArgsDict']]
-        """
-        The natural language text to be processed.
-        Structure is documented below.
-        """
-elif False:
-    CxTestCaseTestCaseConversationTurnUserInputInputArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseTestCaseConversationTurnUserInputInputArgsDict(TypedDict):
+    dtmf: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgsDict']]
+    """
+    The DTMF event to be handled.
+    Structure is documented below.
+    """
+    event: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArgsDict']]
+    """
+    The event to be triggered.
+    Structure is documented below.
+    """
+    language_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+    Note that queries in the same session do not necessarily need to specify the same language.
+    """
+    text: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArgsDict']]
+    """
+    The natural language text to be processed.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnUserInputInputArgs:
@@ -16932,18 +16285,15 @@ class CxTestCaseTestCaseConversationTurnUserInputInputArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgsDict(TypedDict):
-        digits: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The dtmf digits.
-        """
-        finish_digit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The finish digit (if any).
-        """
-elif False:
-    CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgsDict(TypedDict):
+    digits: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The dtmf digits.
+    """
+    finish_digit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The finish digit (if any).
+    """
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs:
@@ -16984,14 +16334,11 @@ class CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs:
         pulumi.set(self, "finish_digit", value)
 
 
-if not MYPY:
-    class CxTestCaseTestCaseConversationTurnUserInputInputEventArgsDict(TypedDict):
-        event: pulumi.Input[_builtins.str]
-        """
-        Name of the event.
-        """
-elif False:
-    CxTestCaseTestCaseConversationTurnUserInputInputEventArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseTestCaseConversationTurnUserInputInputEventArgsDict(TypedDict):
+    event: pulumi.Input[_builtins.str]
+    """
+    Name of the event.
+    """
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnUserInputInputEventArgs:
@@ -17015,14 +16362,11 @@ class CxTestCaseTestCaseConversationTurnUserInputInputEventArgs:
         pulumi.set(self, "event", value)
 
 
-if not MYPY:
-    class CxTestCaseTestCaseConversationTurnUserInputInputTextArgsDict(TypedDict):
-        text: pulumi.Input[_builtins.str]
-        """
-        The natural language text to be processed. Text length must not exceed 256 characters.
-        """
-elif False:
-    CxTestCaseTestCaseConversationTurnUserInputInputTextArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseTestCaseConversationTurnUserInputInputTextArgsDict(TypedDict):
+    text: pulumi.Input[_builtins.str]
+    """
+    The natural language text to be processed. Text length must not exceed 256 characters.
+    """
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnUserInputInputTextArgs:
@@ -17046,29 +16390,26 @@ class CxTestCaseTestCaseConversationTurnUserInputInputTextArgs:
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgsDict(TypedDict):
-        current_page: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgsDict']]
-        """
-        The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
-        Structure is documented below.
-        """
-        session_parameters: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The session parameters available to the bot at this point.
-        """
-        text_responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgsDict']]]]
-        """
-        The text responses from the agent for the turn.
-        Structure is documented below.
-        """
-        triggered_intent: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgsDict']]
-        """
-        The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
-        Structure is documented below.
-        """
-elif False:
-    CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgsDict(TypedDict):
+    current_page: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgsDict']]
+    """
+    The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+    Structure is documented below.
+    """
+    session_parameters: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The session parameters available to the bot at this point.
+    """
+    text_responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgsDict']]]]
+    """
+    The text responses from the agent for the turn.
+    Structure is documented below.
+    """
+    triggered_intent: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgsDict']]
+    """
+    The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs:
@@ -17147,20 +16488,17 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs:
         pulumi.set(self, "triggered_intent", value)
 
 
-if not MYPY:
-    class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgsDict(TypedDict):
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The human-readable name of the page, unique within the flow.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of the page.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        """
-elif False:
-    CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The human-readable name of the page, unique within the flow.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the page.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+    """
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs:
@@ -17205,14 +16543,11 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgsDict(TypedDict):
-        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A collection of text responses.
-        """
-elif False:
-    CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgsDict(TypedDict):
+    texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A collection of text responses.
+    """
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs:
@@ -17237,20 +16572,17 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs:
         pulumi.set(self, "texts", value)
 
 
-if not MYPY:
-    class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgsDict(TypedDict):
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The human-readable name of the intent, unique within the agent.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of the intent.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
-        """
-elif False:
-    CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The human-readable name of the intent, unique within the agent.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the intent.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+    """
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs:
@@ -17295,26 +16627,23 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class CxTestCaseTestConfigArgsDict(TypedDict):
-        flow: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Flow name to start the test case with.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
-        Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
-        """
-        page: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The page to start the test case with.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
-        """
-        tracking_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Session parameters to be compared when calculating differences.
-        """
-elif False:
-    CxTestCaseTestConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxTestCaseTestConfigArgsDict(TypedDict):
+    flow: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Flow name to start the test case with.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+    Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+    """
+    page: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The page to start the test case with.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+    Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+    """
+    tracking_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Session parameters to be compared when calculating differences.
+    """
 
 @pulumi.input_type
 class CxTestCaseTestConfigArgs:
@@ -17379,30 +16708,27 @@ class CxTestCaseTestConfigArgs:
         pulumi.set(self, "tracking_parameters", value)
 
 
-if not MYPY:
-    class CxToolConnectorSpecArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input['CxToolConnectorSpecActionArgsDict']]]
-        """
-        Actions for the tool to use.
-        Structure is documented below.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The full resource name of the referenced Integration Connectors Connection.
-        Format: projects/*/locations/*/connections/*
-        """
-        end_user_auth_config: NotRequired[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigArgsDict']]
-        """
-        Integration Connectors end-user authentication configuration.
-        If configured, the end-user authentication fields will be passed in the Integration Connectors API request
-        and override the admin, default authentication configured for the Connection.
-        Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
-        the ConnectorTool creation will fail.
-        See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
-        Structure is documented below.
-        """
-elif False:
-    CxToolConnectorSpecArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolConnectorSpecArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input['CxToolConnectorSpecActionArgsDict']]]
+    """
+    Actions for the tool to use.
+    Structure is documented below.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The full resource name of the referenced Integration Connectors Connection.
+    Format: projects/*/locations/*/connections/*
+    """
+    end_user_auth_config: NotRequired[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigArgsDict']]
+    """
+    Integration Connectors end-user authentication configuration.
+    If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+    and override the admin, default authentication configured for the Connection.
+    Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+    the ConnectorTool creation will fail.
+    See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxToolConnectorSpecArgs:
@@ -17473,29 +16799,26 @@ class CxToolConnectorSpecArgs:
         pulumi.set(self, "end_user_auth_config", value)
 
 
-if not MYPY:
-    class CxToolConnectorSpecActionArgsDict(TypedDict):
-        connection_action_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
-        """
-        entity_operation: NotRequired[pulumi.Input['CxToolConnectorSpecActionEntityOperationArgsDict']]
-        """
-        Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
-        Structure is documented below.
-        """
-        input_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Entity fields to use as inputs for the operation.
-        If no fields are specified, all fields of the Entity will be used.
-        """
-        output_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Entity fields to return from the operation.
-        If no fields are specified, all fields of the Entity will be returned.
-        """
-elif False:
-    CxToolConnectorSpecActionArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolConnectorSpecActionArgsDict(TypedDict):
+    connection_action_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+    """
+    entity_operation: NotRequired[pulumi.Input['CxToolConnectorSpecActionEntityOperationArgsDict']]
+    """
+    Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+    Structure is documented below.
+    """
+    input_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Entity fields to use as inputs for the operation.
+    If no fields are specified, all fields of the Entity will be used.
+    """
+    output_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Entity fields to return from the operation.
+    If no fields are specified, all fields of the Entity will be returned.
+    """
 
 @pulumi.input_type
 class CxToolConnectorSpecActionArgs:
@@ -17574,19 +16897,16 @@ class CxToolConnectorSpecActionArgs:
         pulumi.set(self, "output_fields", value)
 
 
-if not MYPY:
-    class CxToolConnectorSpecActionEntityOperationArgsDict(TypedDict):
-        entity_id: pulumi.Input[_builtins.str]
-        """
-        ID of the entity.
-        """
-        operation: pulumi.Input[_builtins.str]
-        """
-        The operation to perform on the entity.
-        Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
-        """
-elif False:
-    CxToolConnectorSpecActionEntityOperationArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolConnectorSpecActionEntityOperationArgsDict(TypedDict):
+    entity_id: pulumi.Input[_builtins.str]
+    """
+    ID of the entity.
+    """
+    operation: pulumi.Input[_builtins.str]
+    """
+    The operation to perform on the entity.
+    Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+    """
 
 @pulumi.input_type
 class CxToolConnectorSpecActionEntityOperationArgs:
@@ -17627,23 +16947,20 @@ class CxToolConnectorSpecActionEntityOperationArgs:
         pulumi.set(self, "operation", value)
 
 
-if not MYPY:
-    class CxToolConnectorSpecEndUserAuthConfigArgsDict(TypedDict):
-        oauth2_auth_code_config: NotRequired[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict']]
-        """
-        Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
-        Structure is documented below.
-        """
-        oauth2_jwt_bearer_config: NotRequired[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict']]
-        """
-        JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
-        Structure is documented below.
+class CxToolConnectorSpecEndUserAuthConfigArgsDict(TypedDict):
+    oauth2_auth_code_config: NotRequired[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict']]
+    """
+    Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+    Structure is documented below.
+    """
+    oauth2_jwt_bearer_config: NotRequired[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict']]
+    """
+    JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+    Structure is documented below.
 
 
-        <a name="nested_connector_spec_end_user_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
-        """
-elif False:
-    CxToolConnectorSpecEndUserAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_connector_spec_end_user_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+    """
 
 @pulumi.input_type
 class CxToolConnectorSpecEndUserAuthConfigArgs:
@@ -17694,14 +17011,11 @@ class CxToolConnectorSpecEndUserAuthConfigArgs:
         pulumi.set(self, "oauth2_jwt_bearer_config", value)
 
 
-if not MYPY:
-    class CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict(TypedDict):
-        oauth_token: pulumi.Input[_builtins.str]
-        """
-        Oauth token value or parameter name to pass it through.
-        """
-elif False:
-    CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict(TypedDict):
+    oauth_token: pulumi.Input[_builtins.str]
+    """
+    Oauth token value or parameter name to pass it through.
+    """
 
 @pulumi.input_type
 class CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs:
@@ -17725,22 +17039,19 @@ class CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs:
         pulumi.set(self, "oauth_token", value)
 
 
-if not MYPY:
-    class CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict(TypedDict):
-        client_key: pulumi.Input[_builtins.str]
-        """
-        Client key value or parameter name to pass it through.
-        """
-        issuer: pulumi.Input[_builtins.str]
-        """
-        Issuer value or parameter name to pass it through.
-        """
-        subject: pulumi.Input[_builtins.str]
-        """
-        Subject value or parameter name to pass it through.
-        """
-elif False:
-    CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict(TypedDict):
+    client_key: pulumi.Input[_builtins.str]
+    """
+    Client key value or parameter name to pass it through.
+    """
+    issuer: pulumi.Input[_builtins.str]
+    """
+    Issuer value or parameter name to pass it through.
+    """
+    subject: pulumi.Input[_builtins.str]
+    """
+    Subject value or parameter name to pass it through.
+    """
 
 @pulumi.input_type
 class CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs:
@@ -17794,19 +17105,16 @@ class CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs:
         pulumi.set(self, "subject", value)
 
 
-if not MYPY:
-    class CxToolDataStoreSpecArgsDict(TypedDict):
-        data_store_connections: pulumi.Input[Sequence[pulumi.Input['CxToolDataStoreSpecDataStoreConnectionArgsDict']]]
-        """
-        List of data stores to search.
-        Structure is documented below.
-        """
-        fallback_prompt: pulumi.Input['CxToolDataStoreSpecFallbackPromptArgsDict']
-        """
-        Fallback prompt configurations to use.
-        """
-elif False:
-    CxToolDataStoreSpecArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolDataStoreSpecArgsDict(TypedDict):
+    data_store_connections: pulumi.Input[Sequence[pulumi.Input['CxToolDataStoreSpecDataStoreConnectionArgsDict']]]
+    """
+    List of data stores to search.
+    Structure is documented below.
+    """
+    fallback_prompt: pulumi.Input['CxToolDataStoreSpecFallbackPromptArgsDict']
+    """
+    Fallback prompt configurations to use.
+    """
 
 @pulumi.input_type
 class CxToolDataStoreSpecArgs:
@@ -17847,24 +17155,21 @@ class CxToolDataStoreSpecArgs:
         pulumi.set(self, "fallback_prompt", value)
 
 
-if not MYPY:
-    class CxToolDataStoreSpecDataStoreConnectionArgsDict(TypedDict):
-        data_store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
-        """
-        data_store_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the connected data store.
-        See [DataStoreType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#datastoretype) for valid values.
-        """
-        document_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
-        See [DocumentProcessingMode](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#documentprocessingmode) for valid values.
-        """
-elif False:
-    CxToolDataStoreSpecDataStoreConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolDataStoreSpecDataStoreConnectionArgsDict(TypedDict):
+    data_store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+    """
+    data_store_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the connected data store.
+    See [DataStoreType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#datastoretype) for valid values.
+    """
+    document_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+    See [DocumentProcessingMode](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#documentprocessingmode) for valid values.
+    """
 
 @pulumi.input_type
 class CxToolDataStoreSpecDataStoreConnectionArgs:
@@ -17925,11 +17230,8 @@ class CxToolDataStoreSpecDataStoreConnectionArgs:
         pulumi.set(self, "document_processing_mode", value)
 
 
-if not MYPY:
-    class CxToolDataStoreSpecFallbackPromptArgsDict(TypedDict):
-        pass
-elif False:
-    CxToolDataStoreSpecFallbackPromptArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolDataStoreSpecFallbackPromptArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class CxToolDataStoreSpecFallbackPromptArgs:
@@ -17937,20 +17239,17 @@ class CxToolDataStoreSpecFallbackPromptArgs:
         pass
 
 
-if not MYPY:
-    class CxToolFunctionSpecArgsDict(TypedDict):
-        input_schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
-        This input is a JSON object that contains the function's parameters as properties of the object
-        """
-        output_schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
-        This output is a JSON object that contains the function's parameters as properties of the object
-        """
-elif False:
-    CxToolFunctionSpecArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolFunctionSpecArgsDict(TypedDict):
+    input_schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+    This input is a JSON object that contains the function's parameters as properties of the object
+    """
+    output_schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+    This output is a JSON object that contains the function's parameters as properties of the object
+    """
 
 @pulumi.input_type
 class CxToolFunctionSpecArgs:
@@ -17995,30 +17294,27 @@ class CxToolFunctionSpecArgs:
         pulumi.set(self, "output_schema", value)
 
 
-if not MYPY:
-    class CxToolOpenApiSpecArgsDict(TypedDict):
-        text_schema: pulumi.Input[_builtins.str]
-        """
-        The OpenAPI schema specified as a text.
-        This field is part of a union field `schema`: only one of `textSchema` may be set.
-        """
-        authentication: NotRequired[pulumi.Input['CxToolOpenApiSpecAuthenticationArgsDict']]
-        """
-        Optional. Authentication information required by the API.
-        Structure is documented below.
-        """
-        service_directory_config: NotRequired[pulumi.Input['CxToolOpenApiSpecServiceDirectoryConfigArgsDict']]
-        """
-        Optional. Service Directory configuration.
-        Structure is documented below.
-        """
-        tls_config: NotRequired[pulumi.Input['CxToolOpenApiSpecTlsConfigArgsDict']]
-        """
-        Optional. TLS configuration for the HTTPS verification.
-        Structure is documented below.
-        """
-elif False:
-    CxToolOpenApiSpecArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolOpenApiSpecArgsDict(TypedDict):
+    text_schema: pulumi.Input[_builtins.str]
+    """
+    The OpenAPI schema specified as a text.
+    This field is part of a union field `schema`: only one of `textSchema` may be set.
+    """
+    authentication: NotRequired[pulumi.Input['CxToolOpenApiSpecAuthenticationArgsDict']]
+    """
+    Optional. Authentication information required by the API.
+    Structure is documented below.
+    """
+    service_directory_config: NotRequired[pulumi.Input['CxToolOpenApiSpecServiceDirectoryConfigArgsDict']]
+    """
+    Optional. Service Directory configuration.
+    Structure is documented below.
+    """
+    tls_config: NotRequired[pulumi.Input['CxToolOpenApiSpecTlsConfigArgsDict']]
+    """
+    Optional. TLS configuration for the HTTPS verification.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxToolOpenApiSpecArgs:
@@ -18098,34 +17394,31 @@ class CxToolOpenApiSpecArgs:
         pulumi.set(self, "tls_config", value)
 
 
-if not MYPY:
-    class CxToolOpenApiSpecAuthenticationArgsDict(TypedDict):
-        api_key_config: NotRequired[pulumi.Input['CxToolOpenApiSpecAuthenticationApiKeyConfigArgsDict']]
-        """
-        Config for API key auth.
-        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
-        Structure is documented below.
-        """
-        bearer_token_config: NotRequired[pulumi.Input['CxToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict']]
-        """
-        Config for bearer token auth.
-        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
-        Structure is documented below.
-        """
-        oauth_config: NotRequired[pulumi.Input['CxToolOpenApiSpecAuthenticationOauthConfigArgsDict']]
-        """
-        Config for OAuth.
-        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
-        Structure is documented below.
-        """
-        service_agent_auth_config: NotRequired[pulumi.Input['CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict']]
-        """
-        Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
-        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
-        Structure is documented below.
-        """
-elif False:
-    CxToolOpenApiSpecAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolOpenApiSpecAuthenticationArgsDict(TypedDict):
+    api_key_config: NotRequired[pulumi.Input['CxToolOpenApiSpecAuthenticationApiKeyConfigArgsDict']]
+    """
+    Config for API key auth.
+    This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+    Structure is documented below.
+    """
+    bearer_token_config: NotRequired[pulumi.Input['CxToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict']]
+    """
+    Config for bearer token auth.
+    This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+    Structure is documented below.
+    """
+    oauth_config: NotRequired[pulumi.Input['CxToolOpenApiSpecAuthenticationOauthConfigArgsDict']]
+    """
+    Config for OAuth.
+    This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+    Structure is documented below.
+    """
+    service_agent_auth_config: NotRequired[pulumi.Input['CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict']]
+    """
+    Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+    This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxToolOpenApiSpecAuthenticationArgs:
@@ -18214,31 +17507,28 @@ class CxToolOpenApiSpecAuthenticationArgs:
         pulumi.set(self, "service_agent_auth_config", value)
 
 
-if not MYPY:
-    class CxToolOpenApiSpecAuthenticationApiKeyConfigArgsDict(TypedDict):
-        key_name: pulumi.Input[_builtins.str]
-        """
-        The parameter name or the header name of the API key.
-        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
-        """
-        request_location: pulumi.Input[_builtins.str]
-        """
-        Key location in the request.
-        See [RequestLocation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#requestlocation) for valid values.
-        """
-        api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The API key. If the `secretVersionForApiKey`` field is set, this field will be ignored.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        secret_version_for_api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The name of the SecretManager secret version resource storing the API key.
-        If this field is set, the apiKey field will be ignored.
-        Format: projects/{project}/secrets/{secret}/versions/{version}
-        """
-elif False:
-    CxToolOpenApiSpecAuthenticationApiKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolOpenApiSpecAuthenticationApiKeyConfigArgsDict(TypedDict):
+    key_name: pulumi.Input[_builtins.str]
+    """
+    The parameter name or the header name of the API key.
+    E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+    """
+    request_location: pulumi.Input[_builtins.str]
+    """
+    Key location in the request.
+    See [RequestLocation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#requestlocation) for valid values.
+    """
+    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The API key. If the `secretVersionForApiKey`` field is set, this field will be ignored.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    secret_version_for_api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The name of the SecretManager secret version resource storing the API key.
+    If this field is set, the apiKey field will be ignored.
+    Format: projects/{project}/secrets/{secret}/versions/{version}
+    """
 
 @pulumi.input_type
 class CxToolOpenApiSpecAuthenticationApiKeyConfigArgs:
@@ -18319,21 +17609,18 @@ class CxToolOpenApiSpecAuthenticationApiKeyConfigArgs:
         pulumi.set(self, "secret_version_for_api_key", value)
 
 
-if not MYPY:
-    class CxToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict(TypedDict):
-        secret_version_for_token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
-        Format: projects/{project}/secrets/{secret}/versions/{version}
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The text token appended to the text Bearer to the request Authorization header.
-        [Session parameters reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref) can be used to pass the token dynamically, e.g. `$session.params.parameter-id`.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    CxToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict(TypedDict):
+    secret_version_for_token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
+    Format: projects/{project}/secrets/{secret}/versions/{version}
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The text token appended to the text Bearer to the request Authorization header.
+    [Session parameters reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref) can be used to pass the token dynamically, e.g. `$session.params.parameter-id`.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs:
@@ -18380,38 +17667,35 @@ class CxToolOpenApiSpecAuthenticationBearerTokenConfigArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class CxToolOpenApiSpecAuthenticationOauthConfigArgsDict(TypedDict):
-        client_id: pulumi.Input[_builtins.str]
-        """
-        The client ID from the OAuth provider.
-        """
-        oauth_grant_type: pulumi.Input[_builtins.str]
-        """
-        OAuth grant types.
-        See [OauthGrantType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#oauthgranttype) for valid values
-        """
-        token_endpoint: pulumi.Input[_builtins.str]
-        """
-        The token endpoint in the OAuth provider to exchange for an access token.
-        """
-        client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. The OAuth scopes to grant.
-        """
-        secret_version_for_client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The name of the SecretManager secret version resource storing the client secret.
-        If this field is set, the clientSecret field will be ignored.
-        Format: projects/{project}/secrets/{secret}/versions/{version}
-        """
-elif False:
-    CxToolOpenApiSpecAuthenticationOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolOpenApiSpecAuthenticationOauthConfigArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The client ID from the OAuth provider.
+    """
+    oauth_grant_type: pulumi.Input[_builtins.str]
+    """
+    OAuth grant types.
+    See [OauthGrantType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#oauthgranttype) for valid values
+    """
+    token_endpoint: pulumi.Input[_builtins.str]
+    """
+    The token endpoint in the OAuth provider to exchange for an access token.
+    """
+    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. The OAuth scopes to grant.
+    """
+    secret_version_for_client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The name of the SecretManager secret version resource storing the client secret.
+    If this field is set, the clientSecret field will be ignored.
+    Format: projects/{project}/secrets/{secret}/versions/{version}
+    """
 
 @pulumi.input_type
 class CxToolOpenApiSpecAuthenticationOauthConfigArgs:
@@ -18521,16 +17805,13 @@ class CxToolOpenApiSpecAuthenticationOauthConfigArgs:
         pulumi.set(self, "secret_version_for_client_secret", value)
 
 
-if not MYPY:
-    class CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict(TypedDict):
-        service_agent_auth: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Indicate the auth token type generated from the Diglogflow service agent.
-        The generated token is sent in the Authorization header.
-        See [ServiceAgentAuth](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#serviceagentauth) for valid values.
-        """
-elif False:
-    CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict(TypedDict):
+    service_agent_auth: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Indicate the auth token type generated from the Diglogflow service agent.
+    The generated token is sent in the Authorization header.
+    See [ServiceAgentAuth](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#serviceagentauth) for valid values.
+    """
 
 @pulumi.input_type
 class CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs:
@@ -18559,15 +17840,12 @@ class CxToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs:
         pulumi.set(self, "service_agent_auth", value)
 
 
-if not MYPY:
-    class CxToolOpenApiSpecServiceDirectoryConfigArgsDict(TypedDict):
-        service: pulumi.Input[_builtins.str]
-        """
-        The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
-        Format: projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>. LocationID of the service directory must be the same as the location of the agent.
-        """
-elif False:
-    CxToolOpenApiSpecServiceDirectoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolOpenApiSpecServiceDirectoryConfigArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+    Format: projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>. LocationID of the service directory must be the same as the location of the agent.
+    """
 
 @pulumi.input_type
 class CxToolOpenApiSpecServiceDirectoryConfigArgs:
@@ -18593,15 +17871,12 @@ class CxToolOpenApiSpecServiceDirectoryConfigArgs:
         pulumi.set(self, "service", value)
 
 
-if not MYPY:
-    class CxToolOpenApiSpecTlsConfigArgsDict(TypedDict):
-        ca_certs: pulumi.Input[Sequence[pulumi.Input['CxToolOpenApiSpecTlsConfigCaCertArgsDict']]]
-        """
-        Specifies a list of allowed custom CA certificates for HTTPS verification.
-        Structure is documented below.
-        """
-elif False:
-    CxToolOpenApiSpecTlsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolOpenApiSpecTlsConfigArgsDict(TypedDict):
+    ca_certs: pulumi.Input[Sequence[pulumi.Input['CxToolOpenApiSpecTlsConfigCaCertArgsDict']]]
+    """
+    Specifies a list of allowed custom CA certificates for HTTPS verification.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxToolOpenApiSpecTlsConfigArgs:
@@ -18627,28 +17902,25 @@ class CxToolOpenApiSpecTlsConfigArgs:
         pulumi.set(self, "ca_certs", value)
 
 
-if not MYPY:
-    class CxToolOpenApiSpecTlsConfigCaCertArgsDict(TypedDict):
-        cert: pulumi.Input[_builtins.str]
-        """
-        The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
-        If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
-        N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
-        For instance a certificate can be self-signed using the following command:
-        ```
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
-        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
-        ```
-        A base64-encoded string.
-        """
-        display_name: pulumi.Input[_builtins.str]
-        """
-        The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
-        """
-elif False:
-    CxToolOpenApiSpecTlsConfigCaCertArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolOpenApiSpecTlsConfigCaCertArgsDict(TypedDict):
+    cert: pulumi.Input[_builtins.str]
+    """
+    The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+    If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+    N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+    For instance a certificate can be self-signed using the following command:
+    ```
+    openssl x509 -req -days 200 -in example.com.csr \\
+    -signkey example.com.key \\
+    -out example.com.crt \\
+    -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+    ```
+    A base64-encoded string.
+    """
+    display_name: pulumi.Input[_builtins.str]
+    """
+    The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+    """
 
 @pulumi.input_type
 class CxToolOpenApiSpecTlsConfigCaCertArgs:
@@ -18707,54 +17979,51 @@ class CxToolOpenApiSpecTlsConfigCaCertArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class CxToolVersionToolArgsDict(TypedDict):
-        description: pulumi.Input[_builtins.str]
-        """
-        High level description of the Tool and its usage.
-        """
-        display_name: pulumi.Input[_builtins.str]
-        """
-        The human-readable name of the tool, unique within the agent.
-        """
-        connector_spec: NotRequired[pulumi.Input['CxToolVersionToolConnectorSpecArgsDict']]
-        """
-        (Optional, Beta)
-        Integration connectors tool specification.
-        This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
-        Structure is documented below.
-        """
-        data_store_spec: NotRequired[pulumi.Input['CxToolVersionToolDataStoreSpecArgsDict']]
-        """
-        Data store search tool specification.
-        This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
-        Structure is documented below.
-        """
-        function_spec: NotRequired[pulumi.Input['CxToolVersionToolFunctionSpecArgsDict']]
-        """
-        Client side executed function specification.
-        This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
-        Structure is documented below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The unique identifier of the Tool.
-        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
-        """
-        open_api_spec: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecArgsDict']]
-        """
-        OpenAPI specification of the Tool.
-        This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
-        Structure is documented below.
-        """
-        tool_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The tool type.
-        """
-elif False:
-    CxToolVersionToolArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolArgsDict(TypedDict):
+    description: pulumi.Input[_builtins.str]
+    """
+    High level description of the Tool and its usage.
+    """
+    display_name: pulumi.Input[_builtins.str]
+    """
+    The human-readable name of the tool, unique within the agent.
+    """
+    connector_spec: NotRequired[pulumi.Input['CxToolVersionToolConnectorSpecArgsDict']]
+    """
+    (Optional, Beta)
+    Integration connectors tool specification.
+    This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+    Structure is documented below.
+    """
+    data_store_spec: NotRequired[pulumi.Input['CxToolVersionToolDataStoreSpecArgsDict']]
+    """
+    Data store search tool specification.
+    This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+    Structure is documented below.
+    """
+    function_spec: NotRequired[pulumi.Input['CxToolVersionToolFunctionSpecArgsDict']]
+    """
+    Client side executed function specification.
+    This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The unique identifier of the Tool.
+    Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
+    """
+    open_api_spec: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecArgsDict']]
+    """
+    OpenAPI specification of the Tool.
+    This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+    Structure is documented below.
+    """
+    tool_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The tool type.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolArgs:
@@ -18913,30 +18182,27 @@ class CxToolVersionToolArgs:
         pulumi.set(self, "tool_type", value)
 
 
-if not MYPY:
-    class CxToolVersionToolConnectorSpecArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input['CxToolVersionToolConnectorSpecActionArgsDict']]]
-        """
-        Actions for the tool to use.
-        Structure is documented below.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The full resource name of the referenced Integration Connectors Connection.
-        Format: projects/*/locations/*/connections/*
-        """
-        end_user_auth_config: NotRequired[pulumi.Input['CxToolVersionToolConnectorSpecEndUserAuthConfigArgsDict']]
-        """
-        Integration Connectors end-user authentication configuration.
-        If configured, the end-user authentication fields will be passed in the Integration Connectors API request
-        and override the admin, default authentication configured for the Connection.
-        Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
-        the ConnectorTool creation will fail.
-        See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
-        Structure is documented below.
-        """
-elif False:
-    CxToolVersionToolConnectorSpecArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolConnectorSpecArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input['CxToolVersionToolConnectorSpecActionArgsDict']]]
+    """
+    Actions for the tool to use.
+    Structure is documented below.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The full resource name of the referenced Integration Connectors Connection.
+    Format: projects/*/locations/*/connections/*
+    """
+    end_user_auth_config: NotRequired[pulumi.Input['CxToolVersionToolConnectorSpecEndUserAuthConfigArgsDict']]
+    """
+    Integration Connectors end-user authentication configuration.
+    If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+    and override the admin, default authentication configured for the Connection.
+    Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+    the ConnectorTool creation will fail.
+    See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolConnectorSpecArgs:
@@ -19007,29 +18273,26 @@ class CxToolVersionToolConnectorSpecArgs:
         pulumi.set(self, "end_user_auth_config", value)
 
 
-if not MYPY:
-    class CxToolVersionToolConnectorSpecActionArgsDict(TypedDict):
-        connection_action_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
-        """
-        entity_operation: NotRequired[pulumi.Input['CxToolVersionToolConnectorSpecActionEntityOperationArgsDict']]
-        """
-        Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
-        Structure is documented below.
-        """
-        input_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Entity fields to use as inputs for the operation.
-        If no fields are specified, all fields of the Entity will be used.
-        """
-        output_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Entity fields to return from the operation.
-        If no fields are specified, all fields of the Entity will be returned.
-        """
-elif False:
-    CxToolVersionToolConnectorSpecActionArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolConnectorSpecActionArgsDict(TypedDict):
+    connection_action_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+    """
+    entity_operation: NotRequired[pulumi.Input['CxToolVersionToolConnectorSpecActionEntityOperationArgsDict']]
+    """
+    Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+    Structure is documented below.
+    """
+    input_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Entity fields to use as inputs for the operation.
+    If no fields are specified, all fields of the Entity will be used.
+    """
+    output_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Entity fields to return from the operation.
+    If no fields are specified, all fields of the Entity will be returned.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolConnectorSpecActionArgs:
@@ -19108,19 +18371,16 @@ class CxToolVersionToolConnectorSpecActionArgs:
         pulumi.set(self, "output_fields", value)
 
 
-if not MYPY:
-    class CxToolVersionToolConnectorSpecActionEntityOperationArgsDict(TypedDict):
-        entity_id: pulumi.Input[_builtins.str]
-        """
-        ID of the entity.
-        """
-        operation: pulumi.Input[_builtins.str]
-        """
-        The operation to perform on the entity.
-        Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
-        """
-elif False:
-    CxToolVersionToolConnectorSpecActionEntityOperationArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolConnectorSpecActionEntityOperationArgsDict(TypedDict):
+    entity_id: pulumi.Input[_builtins.str]
+    """
+    ID of the entity.
+    """
+    operation: pulumi.Input[_builtins.str]
+    """
+    The operation to perform on the entity.
+    Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolConnectorSpecActionEntityOperationArgs:
@@ -19161,23 +18421,20 @@ class CxToolVersionToolConnectorSpecActionEntityOperationArgs:
         pulumi.set(self, "operation", value)
 
 
-if not MYPY:
-    class CxToolVersionToolConnectorSpecEndUserAuthConfigArgsDict(TypedDict):
-        oauth2_auth_code_config: NotRequired[pulumi.Input['CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict']]
-        """
-        Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
-        Structure is documented below.
-        """
-        oauth2_jwt_bearer_config: NotRequired[pulumi.Input['CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict']]
-        """
-        JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
-        Structure is documented below.
+class CxToolVersionToolConnectorSpecEndUserAuthConfigArgsDict(TypedDict):
+    oauth2_auth_code_config: NotRequired[pulumi.Input['CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict']]
+    """
+    Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+    Structure is documented below.
+    """
+    oauth2_jwt_bearer_config: NotRequired[pulumi.Input['CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict']]
+    """
+    JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+    Structure is documented below.
 
 
-        <a name="nested_tool_connector_spec_end_user_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
-        """
-elif False:
-    CxToolVersionToolConnectorSpecEndUserAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+    <a name="nested_tool_connector_spec_end_user_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+    """
 
 @pulumi.input_type
 class CxToolVersionToolConnectorSpecEndUserAuthConfigArgs:
@@ -19228,14 +18485,11 @@ class CxToolVersionToolConnectorSpecEndUserAuthConfigArgs:
         pulumi.set(self, "oauth2_jwt_bearer_config", value)
 
 
-if not MYPY:
-    class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict(TypedDict):
-        oauth_token: pulumi.Input[_builtins.str]
-        """
-        Oauth token value or parameter name to pass it through.
-        """
-elif False:
-    CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict(TypedDict):
+    oauth_token: pulumi.Input[_builtins.str]
+    """
+    Oauth token value or parameter name to pass it through.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs:
@@ -19259,22 +18513,19 @@ class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs:
         pulumi.set(self, "oauth_token", value)
 
 
-if not MYPY:
-    class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict(TypedDict):
-        client_key: pulumi.Input[_builtins.str]
-        """
-        Client key value or parameter name to pass it through.
-        """
-        issuer: pulumi.Input[_builtins.str]
-        """
-        Issuer value or parameter name to pass it through.
-        """
-        subject: pulumi.Input[_builtins.str]
-        """
-        Subject value or parameter name to pass it through.
-        """
-elif False:
-    CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict(TypedDict):
+    client_key: pulumi.Input[_builtins.str]
+    """
+    Client key value or parameter name to pass it through.
+    """
+    issuer: pulumi.Input[_builtins.str]
+    """
+    Issuer value or parameter name to pass it through.
+    """
+    subject: pulumi.Input[_builtins.str]
+    """
+    Subject value or parameter name to pass it through.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs:
@@ -19328,19 +18579,16 @@ class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs:
         pulumi.set(self, "subject", value)
 
 
-if not MYPY:
-    class CxToolVersionToolDataStoreSpecArgsDict(TypedDict):
-        data_store_connections: pulumi.Input[Sequence[pulumi.Input['CxToolVersionToolDataStoreSpecDataStoreConnectionArgsDict']]]
-        """
-        List of data stores to search.
-        Structure is documented below.
-        """
-        fallback_prompt: pulumi.Input['CxToolVersionToolDataStoreSpecFallbackPromptArgsDict']
-        """
-        Fallback prompt configurations to use.
-        """
-elif False:
-    CxToolVersionToolDataStoreSpecArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolDataStoreSpecArgsDict(TypedDict):
+    data_store_connections: pulumi.Input[Sequence[pulumi.Input['CxToolVersionToolDataStoreSpecDataStoreConnectionArgsDict']]]
+    """
+    List of data stores to search.
+    Structure is documented below.
+    """
+    fallback_prompt: pulumi.Input['CxToolVersionToolDataStoreSpecFallbackPromptArgsDict']
+    """
+    Fallback prompt configurations to use.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolDataStoreSpecArgs:
@@ -19381,24 +18629,21 @@ class CxToolVersionToolDataStoreSpecArgs:
         pulumi.set(self, "fallback_prompt", value)
 
 
-if not MYPY:
-    class CxToolVersionToolDataStoreSpecDataStoreConnectionArgsDict(TypedDict):
-        data_store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
-        """
-        data_store_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the connected data store.
-        See [DataStoreType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#datastoretype) for valid values.
-        """
-        document_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
-        See [DocumentProcessingMode](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#documentprocessingmode) for valid values.
-        """
-elif False:
-    CxToolVersionToolDataStoreSpecDataStoreConnectionArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolDataStoreSpecDataStoreConnectionArgsDict(TypedDict):
+    data_store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+    """
+    data_store_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the connected data store.
+    See [DataStoreType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#datastoretype) for valid values.
+    """
+    document_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+    See [DocumentProcessingMode](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#documentprocessingmode) for valid values.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolDataStoreSpecDataStoreConnectionArgs:
@@ -19459,11 +18704,8 @@ class CxToolVersionToolDataStoreSpecDataStoreConnectionArgs:
         pulumi.set(self, "document_processing_mode", value)
 
 
-if not MYPY:
-    class CxToolVersionToolDataStoreSpecFallbackPromptArgsDict(TypedDict):
-        pass
-elif False:
-    CxToolVersionToolDataStoreSpecFallbackPromptArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolDataStoreSpecFallbackPromptArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class CxToolVersionToolDataStoreSpecFallbackPromptArgs:
@@ -19471,20 +18713,17 @@ class CxToolVersionToolDataStoreSpecFallbackPromptArgs:
         pass
 
 
-if not MYPY:
-    class CxToolVersionToolFunctionSpecArgsDict(TypedDict):
-        input_schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
-        This input is a JSON object that contains the function's parameters as properties of the object
-        """
-        output_schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
-        This output is a JSON object that contains the function's parameters as properties of the object
-        """
-elif False:
-    CxToolVersionToolFunctionSpecArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolFunctionSpecArgsDict(TypedDict):
+    input_schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+    This input is a JSON object that contains the function's parameters as properties of the object
+    """
+    output_schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+    This output is a JSON object that contains the function's parameters as properties of the object
+    """
 
 @pulumi.input_type
 class CxToolVersionToolFunctionSpecArgs:
@@ -19529,30 +18768,27 @@ class CxToolVersionToolFunctionSpecArgs:
         pulumi.set(self, "output_schema", value)
 
 
-if not MYPY:
-    class CxToolVersionToolOpenApiSpecArgsDict(TypedDict):
-        text_schema: pulumi.Input[_builtins.str]
-        """
-        The OpenAPI schema specified as a text.
-        This field is part of a union field `schema`: only one of `textSchema` may be set.
-        """
-        authentication: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecAuthenticationArgsDict']]
-        """
-        Optional. Authentication information required by the API.
-        Structure is documented below.
-        """
-        service_directory_config: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecServiceDirectoryConfigArgsDict']]
-        """
-        Optional. Service Directory configuration.
-        Structure is documented below.
-        """
-        tls_config: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecTlsConfigArgsDict']]
-        """
-        Optional. TLS configuration for the HTTPS verification.
-        Structure is documented below.
-        """
-elif False:
-    CxToolVersionToolOpenApiSpecArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolOpenApiSpecArgsDict(TypedDict):
+    text_schema: pulumi.Input[_builtins.str]
+    """
+    The OpenAPI schema specified as a text.
+    This field is part of a union field `schema`: only one of `textSchema` may be set.
+    """
+    authentication: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecAuthenticationArgsDict']]
+    """
+    Optional. Authentication information required by the API.
+    Structure is documented below.
+    """
+    service_directory_config: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecServiceDirectoryConfigArgsDict']]
+    """
+    Optional. Service Directory configuration.
+    Structure is documented below.
+    """
+    tls_config: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecTlsConfigArgsDict']]
+    """
+    Optional. TLS configuration for the HTTPS verification.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolOpenApiSpecArgs:
@@ -19632,34 +18868,31 @@ class CxToolVersionToolOpenApiSpecArgs:
         pulumi.set(self, "tls_config", value)
 
 
-if not MYPY:
-    class CxToolVersionToolOpenApiSpecAuthenticationArgsDict(TypedDict):
-        api_key_config: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfigArgsDict']]
-        """
-        Config for API key auth.
-        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
-        Structure is documented below.
-        """
-        bearer_token_config: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict']]
-        """
-        Config for bearer token auth.
-        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
-        Structure is documented below.
-        """
-        oauth_config: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecAuthenticationOauthConfigArgsDict']]
-        """
-        Config for OAuth.
-        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
-        Structure is documented below.
-        """
-        service_agent_auth_config: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict']]
-        """
-        Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
-        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
-        Structure is documented below.
-        """
-elif False:
-    CxToolVersionToolOpenApiSpecAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolOpenApiSpecAuthenticationArgsDict(TypedDict):
+    api_key_config: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfigArgsDict']]
+    """
+    Config for API key auth.
+    This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+    Structure is documented below.
+    """
+    bearer_token_config: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict']]
+    """
+    Config for bearer token auth.
+    This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+    Structure is documented below.
+    """
+    oauth_config: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecAuthenticationOauthConfigArgsDict']]
+    """
+    Config for OAuth.
+    This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+    Structure is documented below.
+    """
+    service_agent_auth_config: NotRequired[pulumi.Input['CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict']]
+    """
+    Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+    This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolOpenApiSpecAuthenticationArgs:
@@ -19748,31 +18981,28 @@ class CxToolVersionToolOpenApiSpecAuthenticationArgs:
         pulumi.set(self, "service_agent_auth_config", value)
 
 
-if not MYPY:
-    class CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfigArgsDict(TypedDict):
-        key_name: pulumi.Input[_builtins.str]
-        """
-        The parameter name or the header name of the API key.
-        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
-        """
-        request_location: pulumi.Input[_builtins.str]
-        """
-        Key location in the request.
-        See [RequestLocation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#requestlocation) for valid values.
-        """
-        api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The API key. If the `secretVersionForApiKey`` field is set, this field will be ignored.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        secret_version_for_api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The name of the SecretManager secret version resource storing the API key.
-        If this field is set, the apiKey field will be ignored.
-        Format: projects/{project}/secrets/{secret}/versions/{version}
-        """
-elif False:
-    CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfigArgsDict(TypedDict):
+    key_name: pulumi.Input[_builtins.str]
+    """
+    The parameter name or the header name of the API key.
+    E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+    """
+    request_location: pulumi.Input[_builtins.str]
+    """
+    Key location in the request.
+    See [RequestLocation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#requestlocation) for valid values.
+    """
+    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The API key. If the `secretVersionForApiKey`` field is set, this field will be ignored.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    secret_version_for_api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The name of the SecretManager secret version resource storing the API key.
+    If this field is set, the apiKey field will be ignored.
+    Format: projects/{project}/secrets/{secret}/versions/{version}
+    """
 
 @pulumi.input_type
 class CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfigArgs:
@@ -19853,21 +19083,18 @@ class CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfigArgs:
         pulumi.set(self, "secret_version_for_api_key", value)
 
 
-if not MYPY:
-    class CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict(TypedDict):
-        secret_version_for_token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
-        Format: projects/{project}/secrets/{secret}/versions/{version}
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The text token appended to the text Bearer to the request Authorization header.
-        [Session parameters reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref) can be used to pass the token dynamically, e.g. `$session.params.parameter-id`.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-elif False:
-    CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict(TypedDict):
+    secret_version_for_token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
+    Format: projects/{project}/secrets/{secret}/versions/{version}
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The text token appended to the text Bearer to the request Authorization header.
+    [Session parameters reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref) can be used to pass the token dynamically, e.g. `$session.params.parameter-id`.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfigArgs:
@@ -19914,38 +19141,35 @@ class CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfigArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class CxToolVersionToolOpenApiSpecAuthenticationOauthConfigArgsDict(TypedDict):
-        client_id: pulumi.Input[_builtins.str]
-        """
-        The client ID from the OAuth provider.
-        """
-        oauth_grant_type: pulumi.Input[_builtins.str]
-        """
-        OAuth grant types.
-        See [OauthGrantType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#oauthgranttype) for valid values
-        """
-        token_endpoint: pulumi.Input[_builtins.str]
-        """
-        The token endpoint in the OAuth provider to exchange for an access token.
-        """
-        client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Optional. The OAuth scopes to grant.
-        """
-        secret_version_for_client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The name of the SecretManager secret version resource storing the client secret.
-        If this field is set, the clientSecret field will be ignored.
-        Format: projects/{project}/secrets/{secret}/versions/{version}
-        """
-elif False:
-    CxToolVersionToolOpenApiSpecAuthenticationOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolOpenApiSpecAuthenticationOauthConfigArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The client ID from the OAuth provider.
+    """
+    oauth_grant_type: pulumi.Input[_builtins.str]
+    """
+    OAuth grant types.
+    See [OauthGrantType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#oauthgranttype) for valid values
+    """
+    token_endpoint: pulumi.Input[_builtins.str]
+    """
+    The token endpoint in the OAuth provider to exchange for an access token.
+    """
+    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. The OAuth scopes to grant.
+    """
+    secret_version_for_client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The name of the SecretManager secret version resource storing the client secret.
+    If this field is set, the clientSecret field will be ignored.
+    Format: projects/{project}/secrets/{secret}/versions/{version}
+    """
 
 @pulumi.input_type
 class CxToolVersionToolOpenApiSpecAuthenticationOauthConfigArgs:
@@ -20055,16 +19279,13 @@ class CxToolVersionToolOpenApiSpecAuthenticationOauthConfigArgs:
         pulumi.set(self, "secret_version_for_client_secret", value)
 
 
-if not MYPY:
-    class CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict(TypedDict):
-        service_agent_auth: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Indicate the auth token type generated from the Diglogflow service agent.
-        The generated token is sent in the Authorization header.
-        See [ServiceAgentAuth](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#serviceagentauth) for valid values.
-        """
-elif False:
-    CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict(TypedDict):
+    service_agent_auth: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Indicate the auth token type generated from the Diglogflow service agent.
+    The generated token is sent in the Authorization header.
+    See [ServiceAgentAuth](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#serviceagentauth) for valid values.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs:
@@ -20093,15 +19314,12 @@ class CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs:
         pulumi.set(self, "service_agent_auth", value)
 
 
-if not MYPY:
-    class CxToolVersionToolOpenApiSpecServiceDirectoryConfigArgsDict(TypedDict):
-        service: pulumi.Input[_builtins.str]
-        """
-        The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
-        Format: projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>. LocationID of the service directory must be the same as the location of the agent.
-        """
-elif False:
-    CxToolVersionToolOpenApiSpecServiceDirectoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolOpenApiSpecServiceDirectoryConfigArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+    Format: projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>. LocationID of the service directory must be the same as the location of the agent.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolOpenApiSpecServiceDirectoryConfigArgs:
@@ -20127,15 +19345,12 @@ class CxToolVersionToolOpenApiSpecServiceDirectoryConfigArgs:
         pulumi.set(self, "service", value)
 
 
-if not MYPY:
-    class CxToolVersionToolOpenApiSpecTlsConfigArgsDict(TypedDict):
-        ca_certs: pulumi.Input[Sequence[pulumi.Input['CxToolVersionToolOpenApiSpecTlsConfigCaCertArgsDict']]]
-        """
-        Specifies a list of allowed custom CA certificates for HTTPS verification.
-        Structure is documented below.
-        """
-elif False:
-    CxToolVersionToolOpenApiSpecTlsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolOpenApiSpecTlsConfigArgsDict(TypedDict):
+    ca_certs: pulumi.Input[Sequence[pulumi.Input['CxToolVersionToolOpenApiSpecTlsConfigCaCertArgsDict']]]
+    """
+    Specifies a list of allowed custom CA certificates for HTTPS verification.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolOpenApiSpecTlsConfigArgs:
@@ -20161,28 +19376,25 @@ class CxToolVersionToolOpenApiSpecTlsConfigArgs:
         pulumi.set(self, "ca_certs", value)
 
 
-if not MYPY:
-    class CxToolVersionToolOpenApiSpecTlsConfigCaCertArgsDict(TypedDict):
-        cert: pulumi.Input[_builtins.str]
-        """
-        The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
-        If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
-        N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
-        For instance a certificate can be self-signed using the following command:
-        ```
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
-        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
-        ```
-        A base64-encoded string.
-        """
-        display_name: pulumi.Input[_builtins.str]
-        """
-        The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
-        """
-elif False:
-    CxToolVersionToolOpenApiSpecTlsConfigCaCertArgsDict: TypeAlias = Mapping[str, Any]
+class CxToolVersionToolOpenApiSpecTlsConfigCaCertArgsDict(TypedDict):
+    cert: pulumi.Input[_builtins.str]
+    """
+    The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+    If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+    N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+    For instance a certificate can be self-signed using the following command:
+    ```
+    openssl x509 -req -days 200 -in example.com.csr \\
+    -signkey example.com.key \\
+    -out example.com.crt \\
+    -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+    ```
+    A base64-encoded string.
+    """
+    display_name: pulumi.Input[_builtins.str]
+    """
+    The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+    """
 
 @pulumi.input_type
 class CxToolVersionToolOpenApiSpecTlsConfigCaCertArgs:
@@ -20241,29 +19453,26 @@ class CxToolVersionToolOpenApiSpecTlsConfigCaCertArgs:
         pulumi.set(self, "display_name", value)
 
 
-if not MYPY:
-    class CxVersionNluSettingArgsDict(TypedDict):
-        classification_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered.
-        The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
-        """
-        model_training_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates NLU model training mode.
-        * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
-        * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-        Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
-        """
-        model_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the type of NLU model.
-        * MODEL_TYPE_STANDARD: Use standard NLU model.
-        * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-        Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
-        """
-elif False:
-    CxVersionNluSettingArgsDict: TypeAlias = Mapping[str, Any]
+class CxVersionNluSettingArgsDict(TypedDict):
+    classification_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered.
+    The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+    """
+    model_training_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates NLU model training mode.
+    * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+    * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+    Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
+    """
+    model_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates the type of NLU model.
+    * MODEL_TYPE_STANDARD: Use standard NLU model.
+    * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+    Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
+    """
 
 @pulumi.input_type
 class CxVersionNluSettingArgs:
@@ -20334,87 +19543,84 @@ class CxVersionNluSettingArgs:
         pulumi.set(self, "model_type", value)
 
 
-if not MYPY:
-    class CxWebhookGenericWebServiceArgsDict(TypedDict):
-        uri: pulumi.Input[_builtins.str]
-        """
-        The webhook URI for receiving POST requests. It must use https protocol.
-        """
-        allowed_ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies a list of allowed custom CA certificates (in DER format) for
-        HTTPS verification. This overrides the default SSL trust store. If this
-        is empty or unspecified, Dialogflow will use Google's default trust store
-        to verify certificates.
-        N.B. Make sure the HTTPS server certificates are signed with "subject alt
-        name". For instance a certificate can be self-signed using the following
-        command,
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
-        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
-        """
-        http_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTP method for the flexible webhook calls. Standard webhook always uses
-        POST.
-        Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
-        """
-        oauth_config: NotRequired[pulumi.Input['CxWebhookGenericWebServiceOauthConfigArgsDict']]
-        """
-        Represents configuration of OAuth client credential flow for 3rd party
-        API authentication.
-        Structure is documented below.
-        """
-        parameter_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Maps the values extracted from specific fields of the flexible webhook
-        response into session parameters.
-        - Key: session parameter name
-        - Value: field path in the webhook response
-        """
-        request_body: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines a custom JSON object as request body to send to flexible webhook.
-        """
-        request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The HTTP request headers to send together with webhook requests.
-        """
-        secret_version_for_username_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SecretManager secret version resource storing the username:password
-        pair for HTTP Basic authentication.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        """
-        secret_versions_for_request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgsDict']]]]
-        """
-        The HTTP request headers to send together with webhook requests. Header
-        values are stored in SecretManager secret versions.
-        When the same header name is specified in both `request_headers` and
-        `secret_versions_for_request_headers`, the value in
-        `secret_versions_for_request_headers` will be used.
-        Structure is documented below.
-        """
-        service_account_auth_config: NotRequired[pulumi.Input['CxWebhookGenericWebServiceServiceAccountAuthConfigArgsDict']]
-        """
-        Configuration for authentication using a service account.
-        Structure is documented below.
-        """
-        service_agent_auth: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicate the auth token type generated from the [Diglogflow service
-        agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
-        The generated token is sent in the Authorization header.
-        Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
-        """
-        webhook_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of the webhook.
-        Possible values are: `STANDARD`, `FLEXIBLE`.
-        """
-elif False:
-    CxWebhookGenericWebServiceArgsDict: TypeAlias = Mapping[str, Any]
+class CxWebhookGenericWebServiceArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    The webhook URI for receiving POST requests. It must use https protocol.
+    """
+    allowed_ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies a list of allowed custom CA certificates (in DER format) for
+    HTTPS verification. This overrides the default SSL trust store. If this
+    is empty or unspecified, Dialogflow will use Google's default trust store
+    to verify certificates.
+    N.B. Make sure the HTTPS server certificates are signed with "subject alt
+    name". For instance a certificate can be self-signed using the following
+    command,
+    openssl x509 -req -days 200 -in example.com.csr \\
+    -signkey example.com.key \\
+    -out example.com.crt \\
+    -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+    """
+    http_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP method for the flexible webhook calls. Standard webhook always uses
+    POST.
+    Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+    """
+    oauth_config: NotRequired[pulumi.Input['CxWebhookGenericWebServiceOauthConfigArgsDict']]
+    """
+    Represents configuration of OAuth client credential flow for 3rd party
+    API authentication.
+    Structure is documented below.
+    """
+    parameter_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Maps the values extracted from specific fields of the flexible webhook
+    response into session parameters.
+    - Key: session parameter name
+    - Value: field path in the webhook response
+    """
+    request_body: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines a custom JSON object as request body to send to flexible webhook.
+    """
+    request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The HTTP request headers to send together with webhook requests.
+    """
+    secret_version_for_username_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SecretManager secret version resource storing the username:password
+    pair for HTTP Basic authentication.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    """
+    secret_versions_for_request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgsDict']]]]
+    """
+    The HTTP request headers to send together with webhook requests. Header
+    values are stored in SecretManager secret versions.
+    When the same header name is specified in both `request_headers` and
+    `secret_versions_for_request_headers`, the value in
+    `secret_versions_for_request_headers` will be used.
+    Structure is documented below.
+    """
+    service_account_auth_config: NotRequired[pulumi.Input['CxWebhookGenericWebServiceServiceAccountAuthConfigArgsDict']]
+    """
+    Configuration for authentication using a service account.
+    Structure is documented below.
+    """
+    service_agent_auth: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicate the auth token type generated from the [Diglogflow service
+    agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+    The generated token is sent in the Authorization header.
+    Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+    """
+    webhook_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of the webhook.
+    Possible values are: `STANDARD`, `FLEXIBLE`.
+    """
 
 @pulumi.input_type
 class CxWebhookGenericWebServiceArgs:
@@ -20672,36 +19878,33 @@ class CxWebhookGenericWebServiceArgs:
         pulumi.set(self, "webhook_type", value)
 
 
-if not MYPY:
-    class CxWebhookGenericWebServiceOauthConfigArgsDict(TypedDict):
-        client_id: pulumi.Input[_builtins.str]
-        """
-        The client ID provided by the 3rd party platform.
-        """
-        token_endpoint: pulumi.Input[_builtins.str]
-        """
-        The token endpoint provided by the 3rd party platform to exchange an
-        access token.
-        """
-        client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The client secret provided by the 3rd party platform.  If the
-        `secret_version_for_client_secret` field is set, this field will be
-        ignored.
-        """
-        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The OAuth scopes to grant.
-        """
-        secret_version_for_client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the SecretManager secret version resource storing the
-        client secret. If this field is set, the `client_secret` field will be
-        ignored.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        """
-elif False:
-    CxWebhookGenericWebServiceOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxWebhookGenericWebServiceOauthConfigArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The client ID provided by the 3rd party platform.
+    """
+    token_endpoint: pulumi.Input[_builtins.str]
+    """
+    The token endpoint provided by the 3rd party platform to exchange an
+    access token.
+    """
+    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The client secret provided by the 3rd party platform.  If the
+    `secret_version_for_client_secret` field is set, this field will be
+    ignored.
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The OAuth scopes to grant.
+    """
+    secret_version_for_client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the SecretManager secret version resource storing the
+    client secret. If this field is set, the `client_secret` field will be
+    ignored.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    """
 
 @pulumi.input_type
 class CxWebhookGenericWebServiceOauthConfigArgs:
@@ -20800,19 +20003,16 @@ class CxWebhookGenericWebServiceOauthConfigArgs:
         pulumi.set(self, "secret_version_for_client_secret", value)
 
 
-if not MYPY:
-    class CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The SecretManager secret version resource storing the header value.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        """
-elif False:
-    CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgsDict: TypeAlias = Mapping[str, Any]
+class CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The SecretManager secret version resource storing the header value.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    """
 
 @pulumi.input_type
 class CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs:
@@ -20853,19 +20053,16 @@ class CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs:
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class CxWebhookGenericWebServiceServiceAccountAuthConfigArgsDict(TypedDict):
-        service_account: pulumi.Input[_builtins.str]
-        """
-        The email address of the service account used to authenticate the webhook call.
-        Dialogflow uses this service account to exchange an access token and the access
-        token is then sent in the **Authorization** header of the webhook request.
-        The service account must have the **roles/iam.serviceAccountTokenCreator** role
-        granted to the
-        [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).
-        """
-elif False:
-    CxWebhookGenericWebServiceServiceAccountAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxWebhookGenericWebServiceServiceAccountAuthConfigArgsDict(TypedDict):
+    service_account: pulumi.Input[_builtins.str]
+    """
+    The email address of the service account used to authenticate the webhook call.
+    Dialogflow uses this service account to exchange an access token and the access
+    token is then sent in the **Authorization** header of the webhook request.
+    The service account must have the **roles/iam.serviceAccountTokenCreator** role
+    granted to the
+    [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).
+    """
 
 @pulumi.input_type
 class CxWebhookGenericWebServiceServiceAccountAuthConfigArgs:
@@ -20899,19 +20096,16 @@ class CxWebhookGenericWebServiceServiceAccountAuthConfigArgs:
         pulumi.set(self, "service_account", value)
 
 
-if not MYPY:
-    class CxWebhookServiceDirectoryArgsDict(TypedDict):
-        service: pulumi.Input[_builtins.str]
-        """
-        The name of Service Directory service.
-        """
-        generic_web_service: NotRequired[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgsDict']]
-        """
-        Represents configuration for a generic web service.
-        Structure is documented below.
-        """
-elif False:
-    CxWebhookServiceDirectoryArgsDict: TypeAlias = Mapping[str, Any]
+class CxWebhookServiceDirectoryArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    The name of Service Directory service.
+    """
+    generic_web_service: NotRequired[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgsDict']]
+    """
+    Represents configuration for a generic web service.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class CxWebhookServiceDirectoryArgs:
@@ -20953,87 +20147,84 @@ class CxWebhookServiceDirectoryArgs:
         pulumi.set(self, "generic_web_service", value)
 
 
-if not MYPY:
-    class CxWebhookServiceDirectoryGenericWebServiceArgsDict(TypedDict):
-        uri: pulumi.Input[_builtins.str]
-        """
-        The webhook URI for receiving POST requests. It must use https protocol.
-        """
-        allowed_ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies a list of allowed custom CA certificates (in DER format) for
-        HTTPS verification. This overrides the default SSL trust store. If this
-        is empty or unspecified, Dialogflow will use Google's default trust store
-        to verify certificates.
-        N.B. Make sure the HTTPS server certificates are signed with "subject alt
-        name". For instance a certificate can be self-signed using the following
-        command,
-        openssl x509 -req -days 200 -in example.com.csr \\
-        -signkey example.com.key \\
-        -out example.com.crt \\
-        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
-        """
-        http_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTP method for the flexible webhook calls. Standard webhook always uses
-        POST.
-        Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
-        """
-        oauth_config: NotRequired[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgsDict']]
-        """
-        Represents configuration of OAuth client credential flow for 3rd party
-        API authentication.
-        Structure is documented below.
-        """
-        parameter_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Maps the values extracted from specific fields of the flexible webhook
-        response into session parameters.
-        - Key: session parameter name
-        - Value: field path in the webhook response
-        """
-        request_body: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines a custom JSON object as request body to send to flexible webhook.
-        """
-        request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The HTTP request headers to send together with webhook requests.
-        """
-        secret_version_for_username_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SecretManager secret version resource storing the username:password
-        pair for HTTP Basic authentication.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        """
-        secret_versions_for_request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgsDict']]]]
-        """
-        The HTTP request headers to send together with webhook requests. Header
-        values are stored in SecretManager secret versions.
-        When the same header name is specified in both `request_headers` and
-        `secret_versions_for_request_headers`, the value in
-        `secret_versions_for_request_headers` will be used.
-        Structure is documented below.
-        """
-        service_account_auth_config: NotRequired[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgsDict']]
-        """
-        Configuration for authentication using a service account.
-        Structure is documented below.
-        """
-        service_agent_auth: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicate the auth token type generated from the [Diglogflow service
-        agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
-        The generated token is sent in the Authorization header.
-        Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
-        """
-        webhook_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of the webhook.
-        Possible values are: `STANDARD`, `FLEXIBLE`.
-        """
-elif False:
-    CxWebhookServiceDirectoryGenericWebServiceArgsDict: TypeAlias = Mapping[str, Any]
+class CxWebhookServiceDirectoryGenericWebServiceArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    The webhook URI for receiving POST requests. It must use https protocol.
+    """
+    allowed_ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies a list of allowed custom CA certificates (in DER format) for
+    HTTPS verification. This overrides the default SSL trust store. If this
+    is empty or unspecified, Dialogflow will use Google's default trust store
+    to verify certificates.
+    N.B. Make sure the HTTPS server certificates are signed with "subject alt
+    name". For instance a certificate can be self-signed using the following
+    command,
+    openssl x509 -req -days 200 -in example.com.csr \\
+    -signkey example.com.key \\
+    -out example.com.crt \\
+    -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+    """
+    http_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP method for the flexible webhook calls. Standard webhook always uses
+    POST.
+    Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+    """
+    oauth_config: NotRequired[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgsDict']]
+    """
+    Represents configuration of OAuth client credential flow for 3rd party
+    API authentication.
+    Structure is documented below.
+    """
+    parameter_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Maps the values extracted from specific fields of the flexible webhook
+    response into session parameters.
+    - Key: session parameter name
+    - Value: field path in the webhook response
+    """
+    request_body: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines a custom JSON object as request body to send to flexible webhook.
+    """
+    request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The HTTP request headers to send together with webhook requests.
+    """
+    secret_version_for_username_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SecretManager secret version resource storing the username:password
+    pair for HTTP Basic authentication.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    """
+    secret_versions_for_request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgsDict']]]]
+    """
+    The HTTP request headers to send together with webhook requests. Header
+    values are stored in SecretManager secret versions.
+    When the same header name is specified in both `request_headers` and
+    `secret_versions_for_request_headers`, the value in
+    `secret_versions_for_request_headers` will be used.
+    Structure is documented below.
+    """
+    service_account_auth_config: NotRequired[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgsDict']]
+    """
+    Configuration for authentication using a service account.
+    Structure is documented below.
+    """
+    service_agent_auth: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicate the auth token type generated from the [Diglogflow service
+    agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+    The generated token is sent in the Authorization header.
+    Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+    """
+    webhook_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of the webhook.
+    Possible values are: `STANDARD`, `FLEXIBLE`.
+    """
 
 @pulumi.input_type
 class CxWebhookServiceDirectoryGenericWebServiceArgs:
@@ -21291,36 +20482,33 @@ class CxWebhookServiceDirectoryGenericWebServiceArgs:
         pulumi.set(self, "webhook_type", value)
 
 
-if not MYPY:
-    class CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgsDict(TypedDict):
-        client_id: pulumi.Input[_builtins.str]
-        """
-        The client ID provided by the 3rd party platform.
-        """
-        token_endpoint: pulumi.Input[_builtins.str]
-        """
-        The token endpoint provided by the 3rd party platform to exchange an
-        access token.
-        """
-        client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The client secret provided by the 3rd party platform.  If the
-        `secret_version_for_client_secret` field is set, this field will be
-        ignored.
-        """
-        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The OAuth scopes to grant.
-        """
-        secret_version_for_client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the SecretManager secret version resource storing the
-        client secret. If this field is set, the `client_secret` field will be
-        ignored.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        """
-elif False:
-    CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The client ID provided by the 3rd party platform.
+    """
+    token_endpoint: pulumi.Input[_builtins.str]
+    """
+    The token endpoint provided by the 3rd party platform to exchange an
+    access token.
+    """
+    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The client secret provided by the 3rd party platform.  If the
+    `secret_version_for_client_secret` field is set, this field will be
+    ignored.
+    """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The OAuth scopes to grant.
+    """
+    secret_version_for_client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the SecretManager secret version resource storing the
+    client secret. If this field is set, the `client_secret` field will be
+    ignored.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    """
 
 @pulumi.input_type
 class CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs:
@@ -21419,19 +20607,16 @@ class CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs:
         pulumi.set(self, "secret_version_for_client_secret", value)
 
 
-if not MYPY:
-    class CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The identifier for this object. Format specified above.
-        """
-        secret_version: pulumi.Input[_builtins.str]
-        """
-        The SecretManager secret version resource storing the header value.
-        Format: `projects/{project}/secrets/{secret}/versions/{version}`
-        """
-elif False:
-    CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgsDict: TypeAlias = Mapping[str, Any]
+class CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    secret_version: pulumi.Input[_builtins.str]
+    """
+    The SecretManager secret version resource storing the header value.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    """
 
 @pulumi.input_type
 class CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs:
@@ -21472,19 +20657,16 @@ class CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderAr
         pulumi.set(self, "secret_version", value)
 
 
-if not MYPY:
-    class CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgsDict(TypedDict):
-        service_account: pulumi.Input[_builtins.str]
-        """
-        The email address of the service account used to authenticate the webhook call.
-        Dialogflow uses this service account to exchange an access token and the access
-        token is then sent in the **Authorization** header of the webhook request.
-        The service account must have the **roles/iam.serviceAccountTokenCreator** role
-        granted to the
-        [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).
-        """
-elif False:
-    CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgsDict(TypedDict):
+    service_account: pulumi.Input[_builtins.str]
+    """
+    The email address of the service account used to authenticate the webhook call.
+    Dialogflow uses this service account to exchange an access token and the access
+    token is then sent in the **Authorization** header of the webhook request.
+    The service account must have the **roles/iam.serviceAccountTokenCreator** role
+    granted to the
+    [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).
+    """
 
 @pulumi.input_type
 class CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs:
@@ -21518,17 +20700,14 @@ class CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs:
         pulumi.set(self, "service_account", value)
 
 
-if not MYPY:
-    class EncryptionSpecEncryptionSpecArgsDict(TypedDict):
-        kms_key: pulumi.Input[_builtins.str]
-        """
-        The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
-        If empty, the resource is secured by the default Google encryption key.
-        Only the key in the same location as this resource is allowed to be used for encryption.
-        Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
-        """
-elif False:
-    EncryptionSpecEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
+class EncryptionSpecEncryptionSpecArgsDict(TypedDict):
+    kms_key: pulumi.Input[_builtins.str]
+    """
+    The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
+    If empty, the resource is secured by the default Google encryption key.
+    Only the key in the same location as this resource is allowed to be used for encryption.
+    Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
+    """
 
 @pulumi.input_type
 class EncryptionSpecEncryptionSpecArgs:
@@ -21558,26 +20737,23 @@ class EncryptionSpecEncryptionSpecArgs:
         pulumi.set(self, "kms_key", value)
 
 
-if not MYPY:
-    class EntityTypeEntityArgsDict(TypedDict):
-        synonyms: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
-        could be green onions.
-        For KIND_LIST entity types:
-        * This collection must contain exactly one synonym equal to value.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The primary value associated with this entity entry. For example, if the entity type is vegetable, the value
-        could be scallions.
-        For KIND_MAP entity types:
-        * A reference value to be used in place of synonyms.
-        For KIND_LIST entity types:
-        * A string that can contain references to other entity types (with or without aliases).
-        """
-elif False:
-    EntityTypeEntityArgsDict: TypeAlias = Mapping[str, Any]
+class EntityTypeEntityArgsDict(TypedDict):
+    synonyms: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
+    could be green onions.
+    For KIND_LIST entity types:
+    * This collection must contain exactly one synonym equal to value.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The primary value associated with this entity entry. For example, if the entity type is vegetable, the value
+    could be scallions.
+    For KIND_MAP entity types:
+    * A reference value to be used in place of synonyms.
+    For KIND_LIST entity types:
+    * A string that can contain references to other entity types (with or without aliases).
+    """
 
 @pulumi.input_type
 class EntityTypeEntityArgs:
@@ -21632,16 +20808,13 @@ class EntityTypeEntityArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class FulfillmentFeatureArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of the feature that enabled for fulfillment.
-        * SMALLTALK: Fulfillment is enabled for SmallTalk.
-        Possible values are: `SMALLTALK`.
-        """
-elif False:
-    FulfillmentFeatureArgsDict: TypeAlias = Mapping[str, Any]
+class FulfillmentFeatureArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the feature that enabled for fulfillment.
+    * SMALLTALK: Fulfillment is enabled for SmallTalk.
+    Possible values are: `SMALLTALK`.
+    """
 
 @pulumi.input_type
 class FulfillmentFeatureArgs:
@@ -21669,26 +20842,23 @@ class FulfillmentFeatureArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class FulfillmentGenericWebServiceArgsDict(TypedDict):
-        uri: pulumi.Input[_builtins.str]
-        """
-        The fulfillment URI for receiving POST requests. It must use https protocol.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password for HTTP Basic authentication.
-        """
-        request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The HTTP request headers to send together with fulfillment requests.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user name for HTTP Basic authentication.
-        """
-elif False:
-    FulfillmentGenericWebServiceArgsDict: TypeAlias = Mapping[str, Any]
+class FulfillmentGenericWebServiceArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    The fulfillment URI for receiving POST requests. It must use https protocol.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password for HTTP Basic authentication.
+    """
+    request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The HTTP request headers to send together with fulfillment requests.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The user name for HTTP Basic authentication.
+    """
 
 @pulumi.input_type
 class FulfillmentGenericWebServiceArgs:
@@ -21760,26 +20930,23 @@ class FulfillmentGenericWebServiceArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class GeneratorInferenceParameterArgsDict(TypedDict):
-        max_output_tokens: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional. Maximum number of the output tokens for the generator.
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Optional. Controls the randomness of LLM predictions. Low temperature = less random. High temperature = more random. If unset (or 0), uses a default value of 0.
-        """
-        top_k: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional. Top-k changes how the model selects tokens for output. A top-k of 1 means the selected token is the most probable among all tokens in the model's vocabulary (also called greedy decoding), while a top-k of 3 means that the next token is selected from among the 3 most probable tokens (using temperature). For each token selection step, the top K tokens with the highest probabilities are sampled. Then tokens are further filtered based on topP with the final token selected using temperature sampling. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [1, 40], default to 40.
-        """
-        top_p: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Optional. Top-p changes how the model selects tokens for output. Tokens are selected from most K (see topK parameter) probable to least until the sum of their probabilities equals the top-p value. For example, if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the model will select either A or B as the next token (using temperature) and doesn't consider C. The default top-p value is 0.95. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [0.0, 1.0], default to 0.95.
-        """
-elif False:
-    GeneratorInferenceParameterArgsDict: TypeAlias = Mapping[str, Any]
+class GeneratorInferenceParameterArgsDict(TypedDict):
+    max_output_tokens: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optional. Maximum number of the output tokens for the generator.
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Optional. Controls the randomness of LLM predictions. Low temperature = less random. High temperature = more random. If unset (or 0), uses a default value of 0.
+    """
+    top_k: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Optional. Top-k changes how the model selects tokens for output. A top-k of 1 means the selected token is the most probable among all tokens in the model's vocabulary (also called greedy decoding), while a top-k of 3 means that the next token is selected from among the 3 most probable tokens (using temperature). For each token selection step, the top K tokens with the highest probabilities are sampled. Then tokens are further filtered based on topP with the final token selected using temperature sampling. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [1, 40], default to 40.
+    """
+    top_p: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Optional. Top-p changes how the model selects tokens for output. Tokens are selected from most K (see topK parameter) probable to least until the sum of their probabilities equals the top-p value. For example, if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the model will select either A or B as the next token (using temperature) and doesn't consider C. The default top-p value is 0.95. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [0.0, 1.0], default to 0.95.
+    """
 
 @pulumi.input_type
 class GeneratorInferenceParameterArgs:
@@ -21852,28 +21019,25 @@ class GeneratorInferenceParameterArgs:
         pulumi.set(self, "top_p", value)
 
 
-if not MYPY:
-    class GeneratorSummarizationContextArgsDict(TypedDict):
-        few_shot_examples: NotRequired[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleArgsDict']]]]
-        """
-        Optional. List of few shot examples.
-        Structure is documented below.
-        """
-        output_language_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
-        """
-        summarization_sections: NotRequired[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextSummarizationSectionArgsDict']]]]
-        """
-        Optional. List of sections. Note it contains both predefined section sand customer defined sections.
-        Structure is documented below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
-        """
-elif False:
-    GeneratorSummarizationContextArgsDict: TypeAlias = Mapping[str, Any]
+class GeneratorSummarizationContextArgsDict(TypedDict):
+    few_shot_examples: NotRequired[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleArgsDict']]]]
+    """
+    Optional. List of few shot examples.
+    Structure is documented below.
+    """
+    output_language_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
+    """
+    summarization_sections: NotRequired[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextSummarizationSectionArgsDict']]]]
+    """
+    Optional. List of sections. Note it contains both predefined section sand customer defined sections.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+    """
 
 @pulumi.input_type
 class GeneratorSummarizationContextArgs:
@@ -21950,29 +21114,26 @@ class GeneratorSummarizationContextArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class GeneratorSummarizationContextFewShotExampleArgsDict(TypedDict):
-        output: pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputArgsDict']
-        """
-        Required. Example output of the model.
-        Structure is documented below.
-        """
-        conversation_context: NotRequired[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextArgsDict']]
-        """
-        Optional. Conversation transcripts.
-        Structure is documented below.
-        """
-        extra_info: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g. instruction contains "@price", and ingested data has <"price", "10">
-        """
-        summarization_section_list: NotRequired[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgsDict']]
-        """
-        Summarization sections.
-        Structure is documented below.
-        """
-elif False:
-    GeneratorSummarizationContextFewShotExampleArgsDict: TypeAlias = Mapping[str, Any]
+class GeneratorSummarizationContextFewShotExampleArgsDict(TypedDict):
+    output: pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputArgsDict']
+    """
+    Required. Example output of the model.
+    Structure is documented below.
+    """
+    conversation_context: NotRequired[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextArgsDict']]
+    """
+    Optional. Conversation transcripts.
+    Structure is documented below.
+    """
+    extra_info: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g. instruction contains "@price", and ingested data has <"price", "10">
+    """
+    summarization_section_list: NotRequired[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgsDict']]
+    """
+    Summarization sections.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GeneratorSummarizationContextFewShotExampleArgs:
@@ -22050,15 +21211,12 @@ class GeneratorSummarizationContextFewShotExampleArgs:
         pulumi.set(self, "summarization_section_list", value)
 
 
-if not MYPY:
-    class GeneratorSummarizationContextFewShotExampleConversationContextArgsDict(TypedDict):
-        message_entries: NotRequired[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgsDict']]]]
-        """
-        Optional. List of message transcripts in the conversation.
-        Structure is documented below.
-        """
-elif False:
-    GeneratorSummarizationContextFewShotExampleConversationContextArgsDict: TypeAlias = Mapping[str, Any]
+class GeneratorSummarizationContextFewShotExampleConversationContextArgsDict(TypedDict):
+    message_entries: NotRequired[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgsDict']]]]
+    """
+    Optional. List of message transcripts in the conversation.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GeneratorSummarizationContextFewShotExampleConversationContextArgs:
@@ -22085,27 +21243,24 @@ class GeneratorSummarizationContextFewShotExampleConversationContextArgs:
         pulumi.set(self, "message_entries", value)
 
 
-if not MYPY:
-    class GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgsDict(TypedDict):
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Create time of the message entry.
-        """
-        language_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The language of the text.
-        """
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Participant role of the message.
-        Possible values are: `HUMAN_AGENT`, `AUTOMATED_AGENT`, `END_USER`.
-        """
-        text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Transcript content of the message.
-        """
-elif False:
-    GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgsDict: TypeAlias = Mapping[str, Any]
+class GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgsDict(TypedDict):
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Create time of the message entry.
+    """
+    language_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The language of the text.
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Participant role of the message.
+    Possible values are: `HUMAN_AGENT`, `AUTOMATED_AGENT`, `END_USER`.
+    """
+    text: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Transcript content of the message.
+    """
 
 @pulumi.input_type
 class GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs:
@@ -22180,15 +21335,12 @@ class GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry
         pulumi.set(self, "text", value)
 
 
-if not MYPY:
-    class GeneratorSummarizationContextFewShotExampleOutputArgsDict(TypedDict):
-        summary_suggestion: NotRequired[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgsDict']]
-        """
-        Optional. Suggested summary.
-        Structure is documented below.
-        """
-elif False:
-    GeneratorSummarizationContextFewShotExampleOutputArgsDict: TypeAlias = Mapping[str, Any]
+class GeneratorSummarizationContextFewShotExampleOutputArgsDict(TypedDict):
+    summary_suggestion: NotRequired[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgsDict']]
+    """
+    Optional. Suggested summary.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GeneratorSummarizationContextFewShotExampleOutputArgs:
@@ -22215,15 +21367,12 @@ class GeneratorSummarizationContextFewShotExampleOutputArgs:
         pulumi.set(self, "summary_suggestion", value)
 
 
-if not MYPY:
-    class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgsDict(TypedDict):
-        summary_sections: pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgsDict']]]
-        """
-        Required. All the parts of generated summary.
-        Structure is documented below.
-        """
-elif False:
-    GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgsDict: TypeAlias = Mapping[str, Any]
+class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgsDict(TypedDict):
+    summary_sections: pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgsDict']]]
+    """
+    Required. All the parts of generated summary.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs:
@@ -22249,18 +21398,15 @@ class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs:
         pulumi.set(self, "summary_sections", value)
 
 
-if not MYPY:
-    class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgsDict(TypedDict):
-        section: pulumi.Input[_builtins.str]
-        """
-        Required. Name of the section.
-        """
-        summary: pulumi.Input[_builtins.str]
-        """
-        Required. Summary text for the section.
-        """
-elif False:
-    GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgsDict: TypeAlias = Mapping[str, Any]
+class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgsDict(TypedDict):
+    section: pulumi.Input[_builtins.str]
+    """
+    Required. Name of the section.
+    """
+    summary: pulumi.Input[_builtins.str]
+    """
+    Required. Summary text for the section.
+    """
 
 @pulumi.input_type
 class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs:
@@ -22299,15 +21445,12 @@ class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummaryS
         pulumi.set(self, "summary", value)
 
 
-if not MYPY:
-    class GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgsDict(TypedDict):
-        summarization_sections: NotRequired[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgsDict']]]]
-        """
-        Optional. Summarization sections.
-        Structure is documented below.
-        """
-elif False:
-    GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgsDict: TypeAlias = Mapping[str, Any]
+class GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgsDict(TypedDict):
+    summarization_sections: NotRequired[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgsDict']]]]
+    """
+    Optional. Summarization sections.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs:
@@ -22334,23 +21477,20 @@ class GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs:
         pulumi.set(self, "summarization_sections", value)
 
 
-if not MYPY:
-    class GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgsDict(TypedDict):
-        definition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Definition of the section, for example, "what the customer needs help with or has question about."
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Name of the section, for example, "situation".
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Type of the summarization section.
-        Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
-        """
-elif False:
-    GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgsDict: TypeAlias = Mapping[str, Any]
+class GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgsDict(TypedDict):
+    definition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Name of the section, for example, "situation".
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Type of the summarization section.
+    Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+    """
 
 @pulumi.input_type
 class GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs:
@@ -22409,23 +21549,20 @@ class GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummari
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class GeneratorSummarizationContextSummarizationSectionArgsDict(TypedDict):
-        definition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Definition of the section, for example, "what the customer needs help with or has question about."
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Name of the section, for example, "situation".
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. Type of the summarization section.
-        Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
-        """
-elif False:
-    GeneratorSummarizationContextSummarizationSectionArgsDict: TypeAlias = Mapping[str, Any]
+class GeneratorSummarizationContextSummarizationSectionArgsDict(TypedDict):
+    definition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Name of the section, for example, "situation".
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Type of the summarization section.
+    Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+    """
 
 @pulumi.input_type
 class GeneratorSummarizationContextSummarizationSectionArgs:
@@ -22484,20 +21621,17 @@ class GeneratorSummarizationContextSummarizationSectionArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class IntentFollowupIntentInfoArgsDict(TypedDict):
-        followup_intent_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of the followup intent.
-        Format: projects/<Project ID>/agent/intents/<Intent ID>.
-        """
-        parent_followup_intent_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier of the parent intent in the chain of followup intents.
-        Format: projects/<Project ID>/agent/intents/<Intent ID>.
-        """
-elif False:
-    IntentFollowupIntentInfoArgsDict: TypeAlias = Mapping[str, Any]
+class IntentFollowupIntentInfoArgsDict(TypedDict):
+    followup_intent_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the followup intent.
+    Format: projects/<Project ID>/agent/intents/<Intent ID>.
+    """
+    parent_followup_intent_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the parent intent in the chain of followup intents.
+    Format: projects/<Project ID>/agent/intents/<Intent ID>.
+    """
 
 @pulumi.input_type
 class IntentFollowupIntentInfoArgs:

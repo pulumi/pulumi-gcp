@@ -47,6 +47,10 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private String databaseVersion;
+    /**
+     * @return Used to block Terraform from deleting a SQL Instance. Defaults to true.
+     * 
+     */
     private Boolean deletionProtection;
     /**
      * @return The instance-level dns name of the instance for PSC instances or public IP CAS instances.
@@ -64,6 +68,10 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private String finalBackupDescription;
+    /**
+     * @return The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
+     * 
+     */
     private String firstIpAddress;
     /**
      * @return The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
@@ -81,6 +89,10 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private String masterInstanceName;
+    /**
+     * @return The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first created. This is done because after a name is used, it cannot be reused for up to one week.
+     * 
+     */
     private String name;
     /**
      * @return For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
@@ -92,6 +104,10 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private List<GetDatabaseInstancesInstancePointInTimeRestoreContext> pointInTimeRestoreContexts;
+    /**
+     * @return IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
+     * 
+     */
     private String privateIpAddress;
     /**
      * @return The ID of the project in which the resources belong. If it is not provided, the provider project is used.
@@ -103,6 +119,10 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private String pscServiceAttachmentLink;
+    /**
+     * @return IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
+     * 
+     */
     private String publicIpAddress;
     /**
      * @return To filter out the Cloud SQL instances which are located in the specified region.
@@ -194,6 +214,10 @@ public final class GetDatabaseInstancesInstance {
     public String databaseVersion() {
         return this.databaseVersion;
     }
+    /**
+     * @return Used to block Terraform from deleting a SQL Instance. Defaults to true.
+     * 
+     */
     public Boolean deletionProtection() {
         return this.deletionProtection;
     }
@@ -221,6 +245,10 @@ public final class GetDatabaseInstancesInstance {
     public String finalBackupDescription() {
         return this.finalBackupDescription;
     }
+    /**
+     * @return The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
+     * 
+     */
     public String firstIpAddress() {
         return this.firstIpAddress;
     }
@@ -248,6 +276,10 @@ public final class GetDatabaseInstancesInstance {
     public String masterInstanceName() {
         return this.masterInstanceName;
     }
+    /**
+     * @return The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first created. This is done because after a name is used, it cannot be reused for up to one week.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -265,6 +297,10 @@ public final class GetDatabaseInstancesInstance {
     public List<GetDatabaseInstancesInstancePointInTimeRestoreContext> pointInTimeRestoreContexts() {
         return this.pointInTimeRestoreContexts;
     }
+    /**
+     * @return IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
+     * 
+     */
     public String privateIpAddress() {
         return this.privateIpAddress;
     }
@@ -282,6 +318,10 @@ public final class GetDatabaseInstancesInstance {
     public String pscServiceAttachmentLink() {
         return this.pscServiceAttachmentLink;
     }
+    /**
+     * @return IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to access an IP of a specific type without performing filtering in a Terraform config.
+     * 
+     */
     public String publicIpAddress() {
         return this.publicIpAddress;
     }

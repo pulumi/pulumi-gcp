@@ -276,6 +276,118 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## This resource supports User Project Overrides.
+ * 
+ * - 
+ * 
+ * # IAM policy for Spanner Databases
+ * 
+ * Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
+ * 
+ * * `gcp.spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
+ * 
+ * &gt; **Warning:** It&#39;s entirely possibly to lock yourself out of your database using `gcp.spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+ * 
+ * * `gcp.spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
+ * * `gcp.spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
+ * 
+ * &gt; **Note:** `gcp.spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.DatabaseIAMBinding` and `gcp.spanner.DatabaseIAMMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## gcp.spanner.DatabaseIAMPolicy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.spanner.DatabaseIAMPolicy;
+ * import com.pulumi.gcp.spanner.DatabaseIAMPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/editor")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.spanner.DatabaseIAMPolicy;
+ * import com.pulumi.gcp.spanner.DatabaseIAMPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/editor")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("My Role")
+ *                     .description("Grant permissions on my_role")
+ *                     .expression("(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()
+ *             .instance("your-instance-name")
+ *             .database("your-database-name")
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## gcp.spanner.DatabaseIAMBinding
  * 
  * <pre>
@@ -434,29 +546,13 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies
+ * &gt; **Custom Roles:** If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
- * IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+ * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
- * * `{{project}}/{{instance}}/{{database}}`
- * 
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- * 
- * tf
- * 
- * import {
- * 
- *   id = {{project}}/{{instance}}/{{database}}
- * 
- *   to = google_spanner_database_iam_policy.default
- * 
- * }
- * 
- * The `pulumi import` command can also be used:
- * 
- * ```sh
- * $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy default {{project}}/{{instance}}/{{database}}
- * ```
+ * * {{project}}/{{instance}}/{{database}}
+ * * {{instance}}/{{database}} (project is taken from provider project)
  * 
  */
 @ResourceType(type="gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy")

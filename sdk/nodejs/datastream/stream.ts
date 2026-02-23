@@ -864,8 +864,8 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cross_project_dataset = new gcp.organizations.Project("cross-project-dataset", {
- *     projectId: "tf-test_59033",
- *     name: "tf-test_32081",
+ *     projectId: "tf-test_10393",
+ *     name: "tf-test_33052",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
@@ -1316,22 +1316,14 @@ import * as utilities from "../utilities";
  * Stream can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
- *
  * * `{{project}}/{{location}}/{{stream_id}}`
- *
  * * `{{location}}/{{stream_id}}`
  *
  * When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:datastream/stream:Stream default {{project}}/{{location}}/{{stream_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:datastream/stream:Stream default {{location}}/{{stream_id}}
  * ```
  */

@@ -41,6 +41,7 @@ class InterconnectArgs:
                  requested_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Interconnect resource.
+
         :param pulumi.Input[_builtins.str] interconnect_type: Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
                Can take one of the following values:
                - PARTNER: A partner-managed interconnection shared between customers though a partner.
@@ -434,6 +435,7 @@ class _InterconnectState:
                  wire_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Interconnect resources.
+
         :param pulumi.Input[_builtins.bool] aai_enabled: (Optional, Beta)
                Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
         :param pulumi.Input[_builtins.bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is
@@ -1164,24 +1166,17 @@ class Interconnect(pulumi.CustomResource):
         Interconnect can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/interconnects/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Interconnect can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnect:Interconnect default projects/{{project}}/global/interconnects/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnect:Interconnect default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnect:Interconnect default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1285,24 +1280,17 @@ class Interconnect(pulumi.CustomResource):
         Interconnect can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/interconnects/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, Interconnect can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnect:Interconnect default projects/{{project}}/global/interconnects/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnect:Interconnect default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/interconnect:Interconnect default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InterconnectArgs args: The arguments to use to populate this resource's properties.

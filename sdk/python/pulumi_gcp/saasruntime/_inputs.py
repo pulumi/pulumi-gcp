@@ -69,23 +69,22 @@ __all__ = [
     'UnitOutputVariableArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ReleaseBlueprintArgsDict(TypedDict):
-        engine: NotRequired[pulumi.Input[_builtins.str]]
-        package: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URI to a blueprint used by the Unit (required unless unitKind or release is
-        set).
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Version metadata if present on the blueprint.
-        """
-elif False:
-    ReleaseBlueprintArgsDict: TypeAlias = Mapping[str, Any]
+class ReleaseBlueprintArgsDict(TypedDict):
+    engine: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
+    """
+    package: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URI to a blueprint used by the Unit (required unless unitKind or release is
+    set).
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Version metadata if present on the blueprint.
+    """
 
 @pulumi.input_type
 class ReleaseBlueprintArgs:
@@ -94,6 +93,8 @@ class ReleaseBlueprintArgs:
                  package: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] engine: (Output)
+               Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
         :param pulumi.Input[_builtins.str] package: URI to a blueprint used by the Unit (required unless unitKind or release is
                set).
         :param pulumi.Input[_builtins.str] version: (Output)
@@ -109,6 +110,10 @@ class ReleaseBlueprintArgs:
     @_builtins.property
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
+        """
         return pulumi.get(self, "engine")
 
     @engine.setter
@@ -142,23 +147,20 @@ class ReleaseBlueprintArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class ReleaseInputVariableArgsDict(TypedDict):
-        variable: pulumi.Input[_builtins.str]
-        """
-        Name of the variable from actuation configs.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of a supported variable type. Supported types are STRING, INT, BOOL.
-        Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String encoded value for the variable.
-        """
-elif False:
-    ReleaseInputVariableArgsDict: TypeAlias = Mapping[str, Any]
+class ReleaseInputVariableArgsDict(TypedDict):
+    variable: pulumi.Input[_builtins.str]
+    """
+    Name of the variable from actuation configs.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of a supported variable type. Supported types are STRING, INT, BOOL.
+    Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String encoded value for the variable.
+    """
 
 @pulumi.input_type
 class ReleaseInputVariableArgs:
@@ -216,23 +218,20 @@ class ReleaseInputVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ReleaseInputVariableDefaultArgsDict(TypedDict):
-        variable: pulumi.Input[_builtins.str]
-        """
-        Name of the variable from actuation configs.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of a supported variable type. Supported types are STRING, INT, BOOL.
-        Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String encoded value for the variable.
-        """
-elif False:
-    ReleaseInputVariableDefaultArgsDict: TypeAlias = Mapping[str, Any]
+class ReleaseInputVariableDefaultArgsDict(TypedDict):
+    variable: pulumi.Input[_builtins.str]
+    """
+    Name of the variable from actuation configs.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of a supported variable type. Supported types are STRING, INT, BOOL.
+    Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String encoded value for the variable.
+    """
 
 @pulumi.input_type
 class ReleaseInputVariableDefaultArgs:
@@ -290,23 +289,20 @@ class ReleaseInputVariableDefaultArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ReleaseOutputVariableArgsDict(TypedDict):
-        variable: pulumi.Input[_builtins.str]
-        """
-        Name of the variable from actuation configs.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of a supported variable type. Supported types are STRING, INT, BOOL.
-        Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String encoded value for the variable.
-        """
-elif False:
-    ReleaseOutputVariableArgsDict: TypeAlias = Mapping[str, Any]
+class ReleaseOutputVariableArgsDict(TypedDict):
+    variable: pulumi.Input[_builtins.str]
+    """
+    Name of the variable from actuation configs.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of a supported variable type. Supported types are STRING, INT, BOOL.
+    Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String encoded value for the variable.
+    """
 
 @pulumi.input_type
 class ReleaseOutputVariableArgs:
@@ -364,17 +360,14 @@ class ReleaseOutputVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ReleaseReleaseRequirementsArgsDict(TypedDict):
-        upgradeable_from_releases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of releases from which a unit can be upgraded to this one
-        (optional). If left empty no constraints will be applied. When provided,
-        unit upgrade requests to this release will check and enforce this
-        constraint.
-        """
-elif False:
-    ReleaseReleaseRequirementsArgsDict: TypeAlias = Mapping[str, Any]
+class ReleaseReleaseRequirementsArgsDict(TypedDict):
+    upgradeable_from_releases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of releases from which a unit can be upgraded to this one
+    (optional). If left empty no constraints will be applied. When provided,
+    unit upgrade requests to this release will check and enforce this
+    constraint.
+    """
 
 @pulumi.input_type
 class ReleaseReleaseRequirementsArgs:
@@ -405,20 +398,17 @@ class ReleaseReleaseRequirementsArgs:
         pulumi.set(self, "upgradeable_from_releases", value)
 
 
-if not MYPY:
-    class RolloutKindErrorBudgetArgsDict(TypedDict):
-        allowed_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of failed units allowed in a location without pausing
-        the rollout.
-        """
-        allowed_percentage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum percentage of units allowed to fail (0, 100] within a location
-        without pausing the rollout.
-        """
-elif False:
-    RolloutKindErrorBudgetArgsDict: TypeAlias = Mapping[str, Any]
+class RolloutKindErrorBudgetArgsDict(TypedDict):
+    allowed_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of failed units allowed in a location without pausing
+    the rollout.
+    """
+    allowed_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum percentage of units allowed to fail (0, 100] within a location
+    without pausing the rollout.
+    """
 
 @pulumi.input_type
 class RolloutKindErrorBudgetArgs:
@@ -463,14 +453,11 @@ class RolloutKindErrorBudgetArgs:
         pulumi.set(self, "allowed_percentage", value)
 
 
-if not MYPY:
-    class SaaSLocationArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of location.
-        """
-elif False:
-    SaaSLocationArgsDict: TypeAlias = Mapping[str, Any]
+class SaaSLocationArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of location.
+    """
 
 @pulumi.input_type
 class SaaSLocationArgs:
@@ -495,38 +482,35 @@ class SaaSLocationArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class UnitConditionArgsDict(TypedDict):
-        last_transition_time: pulumi.Input[_builtins.str]
-        """
-        Last time the condition transited from one status to another.
-        """
-        message: pulumi.Input[_builtins.str]
-        """
-        Human readable message indicating details about the last transition.
-        """
-        reason: pulumi.Input[_builtins.str]
-        """
-        Brief reason for the condition's last transition.
-        """
-        status: pulumi.Input[_builtins.str]
-        """
-        Status of the condition.
-        Possible values:
-        STATUS_UNKNOWN
-        STATUS_TRUE
-        STATUS_FALSE
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Name of a supported variable type. Supported types are string, int, bool.
-        Possible values:
-        STRING
-        INT
-        BOOL
-        """
-elif False:
-    UnitConditionArgsDict: TypeAlias = Mapping[str, Any]
+class UnitConditionArgsDict(TypedDict):
+    last_transition_time: pulumi.Input[_builtins.str]
+    """
+    Last time the condition transited from one status to another.
+    """
+    message: pulumi.Input[_builtins.str]
+    """
+    Human readable message indicating details about the last transition.
+    """
+    reason: pulumi.Input[_builtins.str]
+    """
+    Brief reason for the condition's last transition.
+    """
+    status: pulumi.Input[_builtins.str]
+    """
+    Status of the condition.
+    Possible values:
+    STATUS_UNKNOWN
+    STATUS_TRUE
+    STATUS_FALSE
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Name of a supported variable type. Supported types are string, int, bool.
+    Possible values:
+    STRING
+    INT
+    BOOL
+    """
 
 @pulumi.input_type
 class UnitConditionArgs:
@@ -626,20 +610,17 @@ class UnitConditionArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class UnitDependencyArgsDict(TypedDict):
-        alias: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Alias for the name of the dependency.
-        """
-        unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A reference to the Unit object.
-        """
-elif False:
-    UnitDependencyArgsDict: TypeAlias = Mapping[str, Any]
+class UnitDependencyArgsDict(TypedDict):
+    alias: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Alias for the name of the dependency.
+    """
+    unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A reference to the Unit object.
+    """
 
 @pulumi.input_type
 class UnitDependencyArgs:
@@ -684,20 +665,17 @@ class UnitDependencyArgs:
         pulumi.set(self, "unit", value)
 
 
-if not MYPY:
-    class UnitDependentArgsDict(TypedDict):
-        alias: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Alias for the name of the dependency.
-        """
-        unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        A reference to the Unit object.
-        """
-elif False:
-    UnitDependentArgsDict: TypeAlias = Mapping[str, Any]
+class UnitDependentArgsDict(TypedDict):
+    alias: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Alias for the name of the dependency.
+    """
+    unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    A reference to the Unit object.
+    """
 
 @pulumi.input_type
 class UnitDependentArgs:
@@ -742,26 +720,23 @@ class UnitDependentArgs:
         pulumi.set(self, "unit", value)
 
 
-if not MYPY:
-    class UnitInputVariableArgsDict(TypedDict):
-        variable: pulumi.Input[_builtins.str]
-        """
-        Name of the variable from actuation configs.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of a supported variable type. Supported types are string, int, bool.
-        Possible values:
-        STRING
-        INT
-        BOOL
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String encoded value for the variable.
-        """
-elif False:
-    UnitInputVariableArgsDict: TypeAlias = Mapping[str, Any]
+class UnitInputVariableArgsDict(TypedDict):
+    variable: pulumi.Input[_builtins.str]
+    """
+    Name of the variable from actuation configs.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of a supported variable type. Supported types are string, int, bool.
+    Possible values:
+    STRING
+    INT
+    BOOL
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String encoded value for the variable.
+    """
 
 @pulumi.input_type
 class UnitInputVariableArgs:
@@ -825,18 +800,15 @@ class UnitInputVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class UnitKindDependencyArgsDict(TypedDict):
-        alias: pulumi.Input[_builtins.str]
-        """
-        An alias for the dependency. Used for input variable mapping.
-        """
-        unit_kind: pulumi.Input[_builtins.str]
-        """
-        The unit kind of the dependency.
-        """
-elif False:
-    UnitKindDependencyArgsDict: TypeAlias = Mapping[str, Any]
+class UnitKindDependencyArgsDict(TypedDict):
+    alias: pulumi.Input[_builtins.str]
+    """
+    An alias for the dependency. Used for input variable mapping.
+    """
+    unit_kind: pulumi.Input[_builtins.str]
+    """
+    The unit kind of the dependency.
+    """
 
 @pulumi.input_type
 class UnitKindDependencyArgs:
@@ -875,24 +847,21 @@ class UnitKindDependencyArgs:
         pulumi.set(self, "unit_kind", value)
 
 
-if not MYPY:
-    class UnitKindInputVariableMappingArgsDict(TypedDict):
-        variable: pulumi.Input[_builtins.str]
-        """
-        name of the variable
-        """
-        from_: NotRequired[pulumi.Input['UnitKindInputVariableMappingFromArgsDict']]
-        """
-        Output variables whose values will be passed on to dependencies
-        Structure is documented below.
-        """
-        to: NotRequired[pulumi.Input['UnitKindInputVariableMappingToArgsDict']]
-        """
-        Input variables whose values will be passed on to dependencies
-        Structure is documented below.
-        """
-elif False:
-    UnitKindInputVariableMappingArgsDict: TypeAlias = Mapping[str, Any]
+class UnitKindInputVariableMappingArgsDict(TypedDict):
+    variable: pulumi.Input[_builtins.str]
+    """
+    name of the variable
+    """
+    from_: NotRequired[pulumi.Input['UnitKindInputVariableMappingFromArgsDict']]
+    """
+    Output variables whose values will be passed on to dependencies
+    Structure is documented below.
+    """
+    to: NotRequired[pulumi.Input['UnitKindInputVariableMappingToArgsDict']]
+    """
+    Input variables whose values will be passed on to dependencies
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class UnitKindInputVariableMappingArgs:
@@ -952,18 +921,15 @@ class UnitKindInputVariableMappingArgs:
         pulumi.set(self, "to", value)
 
 
-if not MYPY:
-    class UnitKindInputVariableMappingFromArgsDict(TypedDict):
-        dependency: pulumi.Input[_builtins.str]
-        """
-        Alias of the dependency that the outputVariable will pass its value to
-        """
-        output_variable: pulumi.Input[_builtins.str]
-        """
-        Name of the outputVariable on the dependency
-        """
-elif False:
-    UnitKindInputVariableMappingFromArgsDict: TypeAlias = Mapping[str, Any]
+class UnitKindInputVariableMappingFromArgsDict(TypedDict):
+    dependency: pulumi.Input[_builtins.str]
+    """
+    Alias of the dependency that the outputVariable will pass its value to
+    """
+    output_variable: pulumi.Input[_builtins.str]
+    """
+    Name of the outputVariable on the dependency
+    """
 
 @pulumi.input_type
 class UnitKindInputVariableMappingFromArgs:
@@ -1002,22 +968,19 @@ class UnitKindInputVariableMappingFromArgs:
         pulumi.set(self, "output_variable", value)
 
 
-if not MYPY:
-    class UnitKindInputVariableMappingToArgsDict(TypedDict):
-        dependency: pulumi.Input[_builtins.str]
-        """
-        Alias of the dependency that the inputVariable will pass its value to
-        """
-        input_variable: pulumi.Input[_builtins.str]
-        """
-        Name of the inputVariable on the dependency
-        """
-        ignore_for_lookup: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Tells SaaS Runtime if this mapping should be used during lookup or not
-        """
-elif False:
-    UnitKindInputVariableMappingToArgsDict: TypeAlias = Mapping[str, Any]
+class UnitKindInputVariableMappingToArgsDict(TypedDict):
+    dependency: pulumi.Input[_builtins.str]
+    """
+    Alias of the dependency that the inputVariable will pass its value to
+    """
+    input_variable: pulumi.Input[_builtins.str]
+    """
+    Name of the inputVariable on the dependency
+    """
+    ignore_for_lookup: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Tells SaaS Runtime if this mapping should be used during lookup or not
+    """
 
 @pulumi.input_type
 class UnitKindInputVariableMappingToArgs:
@@ -1072,24 +1035,21 @@ class UnitKindInputVariableMappingToArgs:
         pulumi.set(self, "ignore_for_lookup", value)
 
 
-if not MYPY:
-    class UnitKindOutputVariableMappingArgsDict(TypedDict):
-        variable: pulumi.Input[_builtins.str]
-        """
-        name of the variable
-        """
-        from_: NotRequired[pulumi.Input['UnitKindOutputVariableMappingFromArgsDict']]
-        """
-        Output variables whose values will be passed on to dependencies
-        Structure is documented below.
-        """
-        to: NotRequired[pulumi.Input['UnitKindOutputVariableMappingToArgsDict']]
-        """
-        Input variables whose values will be passed on to dependencies
-        Structure is documented below.
-        """
-elif False:
-    UnitKindOutputVariableMappingArgsDict: TypeAlias = Mapping[str, Any]
+class UnitKindOutputVariableMappingArgsDict(TypedDict):
+    variable: pulumi.Input[_builtins.str]
+    """
+    name of the variable
+    """
+    from_: NotRequired[pulumi.Input['UnitKindOutputVariableMappingFromArgsDict']]
+    """
+    Output variables whose values will be passed on to dependencies
+    Structure is documented below.
+    """
+    to: NotRequired[pulumi.Input['UnitKindOutputVariableMappingToArgsDict']]
+    """
+    Input variables whose values will be passed on to dependencies
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class UnitKindOutputVariableMappingArgs:
@@ -1149,18 +1109,15 @@ class UnitKindOutputVariableMappingArgs:
         pulumi.set(self, "to", value)
 
 
-if not MYPY:
-    class UnitKindOutputVariableMappingFromArgsDict(TypedDict):
-        dependency: pulumi.Input[_builtins.str]
-        """
-        Alias of the dependency that the outputVariable will pass its value to
-        """
-        output_variable: pulumi.Input[_builtins.str]
-        """
-        Name of the outputVariable on the dependency
-        """
-elif False:
-    UnitKindOutputVariableMappingFromArgsDict: TypeAlias = Mapping[str, Any]
+class UnitKindOutputVariableMappingFromArgsDict(TypedDict):
+    dependency: pulumi.Input[_builtins.str]
+    """
+    Alias of the dependency that the outputVariable will pass its value to
+    """
+    output_variable: pulumi.Input[_builtins.str]
+    """
+    Name of the outputVariable on the dependency
+    """
 
 @pulumi.input_type
 class UnitKindOutputVariableMappingFromArgs:
@@ -1199,22 +1156,19 @@ class UnitKindOutputVariableMappingFromArgs:
         pulumi.set(self, "output_variable", value)
 
 
-if not MYPY:
-    class UnitKindOutputVariableMappingToArgsDict(TypedDict):
-        dependency: pulumi.Input[_builtins.str]
-        """
-        Alias of the dependency that the inputVariable will pass its value to
-        """
-        input_variable: pulumi.Input[_builtins.str]
-        """
-        Name of the inputVariable on the dependency
-        """
-        ignore_for_lookup: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Tells SaaS Runtime if this mapping should be used during lookup or not
-        """
-elif False:
-    UnitKindOutputVariableMappingToArgsDict: TypeAlias = Mapping[str, Any]
+class UnitKindOutputVariableMappingToArgsDict(TypedDict):
+    dependency: pulumi.Input[_builtins.str]
+    """
+    Alias of the dependency that the inputVariable will pass its value to
+    """
+    input_variable: pulumi.Input[_builtins.str]
+    """
+    Name of the inputVariable on the dependency
+    """
+    ignore_for_lookup: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Tells SaaS Runtime if this mapping should be used during lookup or not
+    """
 
 @pulumi.input_type
 class UnitKindOutputVariableMappingToArgs:
@@ -1269,16 +1223,13 @@ class UnitKindOutputVariableMappingToArgs:
         pulumi.set(self, "ignore_for_lookup", value)
 
 
-if not MYPY:
-    class UnitMaintenanceArgsDict(TypedDict):
-        pinned_until_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If present, it fixes the release on the unit until the given time; i.e.
-        changes to the release field will be rejected. Rollouts should and will
-        also respect this by not requesting an upgrade in the first place.
-        """
-elif False:
-    UnitMaintenanceArgsDict: TypeAlias = Mapping[str, Any]
+class UnitMaintenanceArgsDict(TypedDict):
+    pinned_until_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If present, it fixes the release on the unit until the given time; i.e.
+    changes to the release field will be rejected. Rollouts should and will
+    also respect this by not requesting an upgrade in the first place.
+    """
 
 @pulumi.input_type
 class UnitMaintenanceArgs:
@@ -1307,44 +1258,41 @@ class UnitMaintenanceArgs:
         pulumi.set(self, "pinned_until_time", value)
 
 
-if not MYPY:
-    class UnitOperationConditionArgsDict(TypedDict):
-        last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Last time the condition transited from one status to another.
-        """
-        message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Human readable message indicating details about the last transition.
-        """
-        reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Brief reason for the condition's last transition.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Status of the condition.
-        Possible values:
-        STATUS_UNKNOWN
-        STATUS_TRUE
-        STATUS_FALSE
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Type of the condition.
-        Possible values:
-        TYPE_SCHEDULED
-        TYPE_RUNNING
-        TYPE_SUCCEEDED
-        TYPE_CANCELLED
-        """
-elif False:
-    UnitOperationConditionArgsDict: TypeAlias = Mapping[str, Any]
+class UnitOperationConditionArgsDict(TypedDict):
+    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Last time the condition transited from one status to another.
+    """
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Human readable message indicating details about the last transition.
+    """
+    reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Brief reason for the condition's last transition.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Status of the condition.
+    Possible values:
+    STATUS_UNKNOWN
+    STATUS_TRUE
+    STATUS_FALSE
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    Type of the condition.
+    Possible values:
+    TYPE_SCHEDULED
+    TYPE_RUNNING
+    TYPE_SUCCEEDED
+    TYPE_CANCELLED
+    """
 
 @pulumi.input_type
 class UnitOperationConditionArgs:
@@ -1461,11 +1409,8 @@ class UnitOperationConditionArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class UnitOperationDeprovisionArgsDict(TypedDict):
-        pass
-elif False:
-    UnitOperationDeprovisionArgsDict: TypeAlias = Mapping[str, Any]
+class UnitOperationDeprovisionArgsDict(TypedDict):
+    pass
 
 @pulumi.input_type
 class UnitOperationDeprovisionArgs:
@@ -1473,19 +1418,16 @@ class UnitOperationDeprovisionArgs:
         pass
 
 
-if not MYPY:
-    class UnitOperationProvisionArgsDict(TypedDict):
-        input_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgsDict']]]]
-        """
-        Set of input variables. Maximum 100. (optional)
-        Structure is documented below.
-        """
-        release: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Reference to the Release object to use for the Unit. (optional).
-        """
-elif False:
-    UnitOperationProvisionArgsDict: TypeAlias = Mapping[str, Any]
+class UnitOperationProvisionArgsDict(TypedDict):
+    input_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgsDict']]]]
+    """
+    Set of input variables. Maximum 100. (optional)
+    Structure is documented below.
+    """
+    release: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Reference to the Release object to use for the Unit. (optional).
+    """
 
 @pulumi.input_type
 class UnitOperationProvisionArgs:
@@ -1528,26 +1470,23 @@ class UnitOperationProvisionArgs:
         pulumi.set(self, "release", value)
 
 
-if not MYPY:
-    class UnitOperationProvisionInputVariableArgsDict(TypedDict):
-        variable: pulumi.Input[_builtins.str]
-        """
-        Name of the variable from actuation configs.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of a supported variable type. Supported types are string, int, bool.
-        Possible values:
-        STRING
-        INT
-        BOOL
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String encoded value for the variable.
-        """
-elif False:
-    UnitOperationProvisionInputVariableArgsDict: TypeAlias = Mapping[str, Any]
+class UnitOperationProvisionInputVariableArgsDict(TypedDict):
+    variable: pulumi.Input[_builtins.str]
+    """
+    Name of the variable from actuation configs.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of a supported variable type. Supported types are string, int, bool.
+    Possible values:
+    STRING
+    INT
+    BOOL
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String encoded value for the variable.
+    """
 
 @pulumi.input_type
 class UnitOperationProvisionInputVariableArgs:
@@ -1611,19 +1550,16 @@ class UnitOperationProvisionInputVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class UnitOperationUpgradeArgsDict(TypedDict):
-        input_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgsDict']]]]
-        """
-        Set of input variables. Maximum 100. (optional)
-        Structure is documented below.
-        """
-        release: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Reference to the Release object to use for the Unit. (optional).
-        """
-elif False:
-    UnitOperationUpgradeArgsDict: TypeAlias = Mapping[str, Any]
+class UnitOperationUpgradeArgsDict(TypedDict):
+    input_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgsDict']]]]
+    """
+    Set of input variables. Maximum 100. (optional)
+    Structure is documented below.
+    """
+    release: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Reference to the Release object to use for the Unit. (optional).
+    """
 
 @pulumi.input_type
 class UnitOperationUpgradeArgs:
@@ -1666,26 +1602,23 @@ class UnitOperationUpgradeArgs:
         pulumi.set(self, "release", value)
 
 
-if not MYPY:
-    class UnitOperationUpgradeInputVariableArgsDict(TypedDict):
-        variable: pulumi.Input[_builtins.str]
-        """
-        Name of the variable from actuation configs.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of a supported variable type. Supported types are string, int, bool.
-        Possible values:
-        STRING
-        INT
-        BOOL
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String encoded value for the variable.
-        """
-elif False:
-    UnitOperationUpgradeInputVariableArgsDict: TypeAlias = Mapping[str, Any]
+class UnitOperationUpgradeInputVariableArgsDict(TypedDict):
+    variable: pulumi.Input[_builtins.str]
+    """
+    Name of the variable from actuation configs.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of a supported variable type. Supported types are string, int, bool.
+    Possible values:
+    STRING
+    INT
+    BOOL
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String encoded value for the variable.
+    """
 
 @pulumi.input_type
 class UnitOperationUpgradeInputVariableArgs:
@@ -1749,26 +1682,23 @@ class UnitOperationUpgradeInputVariableArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class UnitOutputVariableArgsDict(TypedDict):
-        variable: pulumi.Input[_builtins.str]
-        """
-        Name of the variable from actuation configs.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of a supported variable type. Supported types are string, int, bool.
-        Possible values:
-        STRING
-        INT
-        BOOL
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String encoded value for the variable.
-        """
-elif False:
-    UnitOutputVariableArgsDict: TypeAlias = Mapping[str, Any]
+class UnitOutputVariableArgsDict(TypedDict):
+    variable: pulumi.Input[_builtins.str]
+    """
+    Name of the variable from actuation configs.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of a supported variable type. Supported types are string, int, bool.
+    Possible values:
+    STRING
+    INT
+    BOOL
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String encoded value for the variable.
+    """
 
 @pulumi.input_type
 class UnitOutputVariableArgs:

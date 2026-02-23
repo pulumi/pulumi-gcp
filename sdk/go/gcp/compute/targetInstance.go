@@ -201,7 +201,7 @@ import (
 //			}
 //			policyddosprotection, err := compute.NewRegionSecurityPolicy(ctx, "policyddosprotection", &compute.RegionSecurityPolicyArgs{
 //				Region:      pulumi.String("southamerica-west1"),
-//				Name:        pulumi.String("tf-test-policyddos_85840"),
+//				Name:        pulumi.String("tf-test-policyddos_60302"),
 //				Description: pulumi.String("ddos protection security policy to set target instance"),
 //				Type:        pulumi.String("CLOUD_ARMOR_NETWORK"),
 //				DdosProtectionConfig: &compute.RegionSecurityPolicyDdosProtectionConfigArgs{
@@ -213,7 +213,7 @@ import (
 //			}
 //			edgeSecService, err := compute.NewNetworkEdgeSecurityService(ctx, "edge_sec_service", &compute.NetworkEdgeSecurityServiceArgs{
 //				Region:         pulumi.String("southamerica-west1"),
-//				Name:           pulumi.String("tf-test-edgesec_60302"),
+//				Name:           pulumi.String("tf-test-edgesec_22811"),
 //				SecurityPolicy: policyddosprotection.SelfLink,
 //			})
 //			if err != nil {
@@ -250,28 +250,16 @@ import (
 // TargetInstance can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
-//
 // * `{{project}}/{{zone}}/{{name}}`
-//
 // * `{{zone}}/{{name}}`
-//
 // * `{{name}}`
 //
 // When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/targetInstance:TargetInstance default {{project}}/{{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/targetInstance:TargetInstance default {{zone}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
 // ```
 type TargetInstance struct {

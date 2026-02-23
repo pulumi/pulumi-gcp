@@ -10,6 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQueryAnalyticsHub
 {
     /// <summary>
+    /// A Bigquery Analytics Hub Data Exchange subscription
+    /// 
+    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+    /// See Provider Versions for more details on beta resources.
+    /// 
+    /// To get more information about DataExchangeSubscription, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.subscriptions)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+    /// 
+    /// &gt; **Note:** When importing the resource with `pulumi import`, provide the destination/subscriber's project and location
+    /// in the format projects/{{subscriber_project}}/locations/{{subscriber_location}}/subscriptions/{{subscription_id}}
     /// ## Example Usage
     /// 
     /// ### Bigquery Analyticshub Dataexchange Subscription Basic
@@ -127,22 +140,14 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// DataExchangeSubscription can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}`
-    /// 
     /// * `{{project}}/{{location}}/{{subscription_id}}`
-    /// 
     /// * `{{location}}/{{subscription_id}}`
     /// 
     /// When using the `pulumi import` command, DataExchangeSubscription can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{project}}/{{location}}/{{subscription_id}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{location}}/{{subscription_id}}
     /// ```
     /// </summary>
@@ -247,6 +252,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Controls when the subscription is automatically refreshed by the provider.
+        /// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+        /// * `ON_STALE`: The subscription will only be refreshed when its reported `State` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+        /// * `NEVER`: The provider will not automatically refresh the subscription.
+        /// </summary>
         [Output("refreshPolicy")]
         public Output<string?> RefreshPolicy { get; private set; } = null!;
 
@@ -360,6 +371,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Controls when the subscription is automatically refreshed by the provider.
+        /// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+        /// * `ON_STALE`: The subscription will only be refreshed when its reported `State` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+        /// * `NEVER`: The provider will not automatically refresh the subscription.
+        /// </summary>
         [Input("refreshPolicy")]
         public Input<string>? RefreshPolicy { get; set; }
 
@@ -493,6 +510,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Controls when the subscription is automatically refreshed by the provider.
+        /// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+        /// * `ON_STALE`: The subscription will only be refreshed when its reported `State` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+        /// * `NEVER`: The provider will not automatically refresh the subscription.
+        /// </summary>
         [Input("refreshPolicy")]
         public Input<string>? RefreshPolicy { get; set; }
 

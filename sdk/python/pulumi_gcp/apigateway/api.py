@@ -26,6 +26,7 @@ class ApiArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Api resource.
+
         :param pulumi.Input[_builtins.str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
         :param pulumi.Input[_builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user-provided metadata.
@@ -127,6 +128,7 @@ class _ApiState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Api resources.
+
         :param pulumi.Input[_builtins.str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
         :param pulumi.Input[_builtins.str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] display_name: A user-visible name for the API.
@@ -290,6 +292,17 @@ class Api(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A consumable API that can be used by multiple Gateways.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Api, see:
+
+        * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+
         ## Example Usage
 
         ### Apigateway Api Basic
@@ -306,24 +319,17 @@ class Api(pulumi.CustomResource):
         Api can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/apis/{{api_id}}`
-
         * `{{project}}/{{api_id}}`
-
         * `{{api_id}}`
 
         When using the `pulumi import` command, Api can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/api:Api default {{api_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -345,6 +351,17 @@ class Api(pulumi.CustomResource):
                  args: ApiArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A consumable API that can be used by multiple Gateways.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about Api, see:
+
+        * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+
         ## Example Usage
 
         ### Apigateway Api Basic
@@ -361,24 +378,17 @@ class Api(pulumi.CustomResource):
         Api can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/apis/{{api_id}}`
-
         * `{{project}}/{{api_id}}`
-
         * `{{api_id}}`
 
         When using the `pulumi import` command, Api can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:apigateway/api:Api default {{api_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiArgs args: The arguments to use to populate this resource's properties.

@@ -39,6 +39,7 @@ class GdcSparkApplicationArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GdcSparkApplication resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the spark application.
         :param pulumi.Input[_builtins.str] serviceinstance: The id of the service instance to which this spark application belongs.
         :param pulumi.Input[_builtins.str] spark_application_id: The id of the application
@@ -330,6 +331,7 @@ class _GdcSparkApplicationState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GdcSparkApplication resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -337,6 +339,7 @@ class _GdcSparkApplicationState:
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dependency_images: List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
         :param pulumi.Input[_builtins.str] display_name: User-provided human-readable name to be used in user interfaces.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this application. Labels may be used for filtering and billing tracking.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -498,6 +501,9 @@ class _GdcSparkApplicationState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -966,24 +972,17 @@ class GdcSparkApplication(pulumi.CustomResource):
         SparkApplication can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}`
-
         * `{{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}`
-
         * `{{location}}/{{serviceinstance}}/{{spark_application_id}}`
 
         When using the `pulumi import` command, SparkApplication can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{location}}/{{serviceinstance}}/{{spark_application_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1177,24 +1176,17 @@ class GdcSparkApplication(pulumi.CustomResource):
         SparkApplication can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}`
-
         * `{{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}`
-
         * `{{location}}/{{serviceinstance}}/{{spark_application_id}}`
 
         When using the `pulumi import` command, SparkApplication can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default projects/{{project}}/locations/{{location}}/serviceInstances/{{serviceinstance}}/sparkApplications/{{spark_application_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{project}}/{{location}}/{{serviceinstance}}/{{spark_application_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:dataproc/gdcSparkApplication:GdcSparkApplication default {{location}}/{{serviceinstance}}/{{spark_application_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GdcSparkApplicationArgs args: The arguments to use to populate this resource's properties.
@@ -1324,6 +1316,7 @@ class GdcSparkApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dependency_images: List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
         :param pulumi.Input[_builtins.str] display_name: User-provided human-readable name to be used in user interfaces.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this application. Labels may be used for filtering and billing tracking.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1442,6 +1435,9 @@ class GdcSparkApplication(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

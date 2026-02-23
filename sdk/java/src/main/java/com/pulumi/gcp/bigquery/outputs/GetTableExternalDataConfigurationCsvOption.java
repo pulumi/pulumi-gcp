@@ -32,6 +32,10 @@ public final class GetTableExternalDataConfigurationCsvOption {
      * 
      */
     private String fieldDelimiter;
+    /**
+     * @return The value that is used to quote data sections in a CSV file. If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. The API-side default is &#34;, specified in Terraform escaped as \&#34;. Due to limitations with Terraform default values, this value is required to be explicitly set.
+     * 
+     */
     private String quote;
     /**
      * @return The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
@@ -73,6 +77,10 @@ public final class GetTableExternalDataConfigurationCsvOption {
     public String fieldDelimiter() {
         return this.fieldDelimiter;
     }
+    /**
+     * @return The value that is used to quote data sections in a CSV file. If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. The API-side default is &#34;, specified in Terraform escaped as \&#34;. Due to limitations with Terraform default values, this value is required to be explicitly set.
+     * 
+     */
     public String quote() {
         return this.quote;
     }

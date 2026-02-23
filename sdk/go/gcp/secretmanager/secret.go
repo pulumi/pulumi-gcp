@@ -137,8 +137,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -186,22 +184,14 @@ import (
 // Secret can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/secrets/{{secret_id}}`
-//
 // * `{{project}}/{{secret_id}}`
-//
 // * `{{secret_id}}`
 //
 // When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
 // ```
 type Secret struct {
@@ -222,8 +212,12 @@ type Secret struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The time at which the Secret was created.
-	CreateTime           pulumi.StringOutput    `pulumi:"createTime"`
-	DeletionProtection   pulumi.BoolPtrOutput   `pulumi:"deletionProtection"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the secret will fail.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -341,8 +335,12 @@ type secretState struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The time at which the Secret was created.
-	CreateTime           *string           `pulumi:"createTime"`
-	DeletionProtection   *bool             `pulumi:"deletionProtection"`
+	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the secret will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -423,8 +421,12 @@ type SecretState struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The time at which the Secret was created.
-	CreateTime           pulumi.StringPtrInput
-	DeletionProtection   pulumi.BoolPtrInput
+	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the secret will fail.
+	DeletionProtection pulumi.BoolPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -507,8 +509,11 @@ type secretArgs struct {
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-	Annotations        map[string]string `pulumi:"annotations"`
-	DeletionProtection *bool             `pulumi:"deletionProtection"`
+	Annotations map[string]string `pulumi:"annotations"`
+	// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the secret will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	// Only one of `expireTime` or `ttl` can be provided.
@@ -579,7 +584,10 @@ type SecretArgs struct {
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-	Annotations        pulumi.StringMapInput
+	Annotations pulumi.StringMapInput
+	// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+	// When the field is set to true in Terraform state, a `pulumi up`
+	// or `terraform destroy` that would delete the secret will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -745,10 +753,14 @@ func (o SecretOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+// When the field is set to true in Terraform state, a `pulumi up`
+// or `terraform destroy` that would delete the secret will fail.
 func (o SecretOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Secret) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o SecretOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

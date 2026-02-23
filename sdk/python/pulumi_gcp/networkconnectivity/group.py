@@ -29,6 +29,7 @@ class GroupArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] hub: The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
         :param pulumi.Input['GroupAutoAcceptArgs'] auto_accept: Optional. The auto-accept setting for this group.
                Structure is documented below.
@@ -149,6 +150,7 @@ class _GroupState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input['GroupAutoAcceptArgs'] auto_accept: Optional. The auto-accept setting for this group.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time the hub was created.
@@ -415,24 +417,17 @@ class Group(pulumi.CustomResource):
         Group can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/hubs/{{hub}}/groups/{{name}}`
-
         * `{{project}}/{{hub}}/{{name}}`
-
         * `{{hub}}/{{name}}`
 
         When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/group:Group default projects/{{project}}/locations/global/hubs/{{hub}}/groups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/group:Group default {{project}}/{{hub}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/group:Group default {{hub}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -497,24 +492,17 @@ class Group(pulumi.CustomResource):
         Group can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/hubs/{{hub}}/groups/{{name}}`
-
         * `{{project}}/{{hub}}/{{name}}`
-
         * `{{hub}}/{{name}}`
 
         When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/group:Group default projects/{{project}}/locations/global/hubs/{{hub}}/groups/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/group:Group default {{project}}/{{hub}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/group:Group default {{hub}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

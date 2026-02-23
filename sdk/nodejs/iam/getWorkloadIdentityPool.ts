@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Get a IAM workload identity pool from Google Cloud by its id.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
  * ## Example Usage
  *
  * ```typescript
@@ -64,6 +70,12 @@ export interface GetWorkloadIdentityPoolResult {
     readonly workloadIdentityPoolId: string;
 }
 /**
+ * Get a IAM workload identity pool from Google Cloud by its id.
+ *
+ * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ *
+ * > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
  * ## Example Usage
  *
  * ```typescript

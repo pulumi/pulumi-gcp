@@ -72,6 +72,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string NicType;
         /// <summary>
+        /// Name of the parent network interface of a dynamic network interface.
+        /// </summary>
+        public readonly string ParentNicName;
+        /// <summary>
         /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         /// </summary>
         public readonly int QueueCount;
@@ -90,6 +94,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// If it is not provided, the provider project is used.
         /// </summary>
         public readonly string SubnetworkProject;
+        /// <summary>
+        /// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+        /// </summary>
+        public readonly int Vlan;
 
         [OutputConstructor]
         private GetInstanceTemplateNetworkInterfaceResult(
@@ -117,13 +125,17 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string nicType,
 
+            string parentNicName,
+
             int queueCount,
 
             string stackType,
 
             string subnetwork,
 
-            string subnetworkProject)
+            string subnetworkProject,
+
+            int vlan)
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
@@ -137,10 +149,12 @@ namespace Pulumi.Gcp.Compute.Outputs
             NetworkAttachment = networkAttachment;
             NetworkIp = networkIp;
             NicType = nicType;
+            ParentNicName = parentNicName;
             QueueCount = queueCount;
             StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
+            Vlan = vlan;
         }
     }
 }

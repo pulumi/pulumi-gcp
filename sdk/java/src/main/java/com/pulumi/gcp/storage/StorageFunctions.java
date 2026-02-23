@@ -15,6 +15,8 @@ import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketObjectContentPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsArgs;
+import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketObjectPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketObjectsPlainArgs;
@@ -41,6 +43,7 @@ import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
 import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountPlainArgs;
 import com.pulumi.gcp.storage.outputs.GetBucketIamPolicyResult;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectContentResult;
+import com.pulumi.gcp.storage.outputs.GetBucketObjectContentsResult;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectResult;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectsResult;
 import com.pulumi.gcp.storage.outputs.GetBucketResult;
@@ -1038,6 +1041,266 @@ public final class StorageFunctions {
      */
     public static CompletableFuture<GetBucketObjectContentResult> getBucketObjectContentPlain(GetBucketObjectContentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getBucketObjectContent:getBucketObjectContent", TypeShape.of(GetBucketObjectContentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets existing object contents inside an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+     * 
+     * &gt; **Warning:** The object content will be saved in the state, and visible to everyone who has access to the state file.
+     * 
+     * &gt; **Warning:** This data source loads all object contents into memory. Limit the results with `matchGlob` or `prefix`.
+     * 
+     * ## Example Usage
+     * 
+     * Extract object base64 contents from objects:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = StorageFunctions.getBucketObjectContents(GetBucketObjectContentsArgs.builder()
+     *             .bucket("example-bucket")
+     *             .matchGlob("example-{foo,bar}.json")
+     *             .prefix("example")
+     *             .build());
+     * 
+     *         ctx.export("base64EncodedJsonContents", example.bucketObjects().stream().map(element -> element.contentBase64()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBucketObjectContentsResult> getBucketObjectContents(GetBucketObjectContentsArgs args) {
+        return getBucketObjectContents(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets existing object contents inside an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+     * 
+     * &gt; **Warning:** The object content will be saved in the state, and visible to everyone who has access to the state file.
+     * 
+     * &gt; **Warning:** This data source loads all object contents into memory. Limit the results with `matchGlob` or `prefix`.
+     * 
+     * ## Example Usage
+     * 
+     * Extract object base64 contents from objects:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = StorageFunctions.getBucketObjectContents(GetBucketObjectContentsArgs.builder()
+     *             .bucket("example-bucket")
+     *             .matchGlob("example-{foo,bar}.json")
+     *             .prefix("example")
+     *             .build());
+     * 
+     *         ctx.export("base64EncodedJsonContents", example.bucketObjects().stream().map(element -> element.contentBase64()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBucketObjectContentsResult> getBucketObjectContentsPlain(GetBucketObjectContentsPlainArgs args) {
+        return getBucketObjectContentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets existing object contents inside an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+     * 
+     * &gt; **Warning:** The object content will be saved in the state, and visible to everyone who has access to the state file.
+     * 
+     * &gt; **Warning:** This data source loads all object contents into memory. Limit the results with `matchGlob` or `prefix`.
+     * 
+     * ## Example Usage
+     * 
+     * Extract object base64 contents from objects:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = StorageFunctions.getBucketObjectContents(GetBucketObjectContentsArgs.builder()
+     *             .bucket("example-bucket")
+     *             .matchGlob("example-{foo,bar}.json")
+     *             .prefix("example")
+     *             .build());
+     * 
+     *         ctx.export("base64EncodedJsonContents", example.bucketObjects().stream().map(element -> element.contentBase64()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBucketObjectContentsResult> getBucketObjectContents(GetBucketObjectContentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getBucketObjectContents:getBucketObjectContents", TypeShape.of(GetBucketObjectContentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets existing object contents inside an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+     * 
+     * &gt; **Warning:** The object content will be saved in the state, and visible to everyone who has access to the state file.
+     * 
+     * &gt; **Warning:** This data source loads all object contents into memory. Limit the results with `matchGlob` or `prefix`.
+     * 
+     * ## Example Usage
+     * 
+     * Extract object base64 contents from objects:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = StorageFunctions.getBucketObjectContents(GetBucketObjectContentsArgs.builder()
+     *             .bucket("example-bucket")
+     *             .matchGlob("example-{foo,bar}.json")
+     *             .prefix("example")
+     *             .build());
+     * 
+     *         ctx.export("base64EncodedJsonContents", example.bucketObjects().stream().map(element -> element.contentBase64()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBucketObjectContentsResult> getBucketObjectContents(GetBucketObjectContentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getBucketObjectContents:getBucketObjectContents", TypeShape.of(GetBucketObjectContentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets existing object contents inside an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+     * 
+     * &gt; **Warning:** The object content will be saved in the state, and visible to everyone who has access to the state file.
+     * 
+     * &gt; **Warning:** This data source loads all object contents into memory. Limit the results with `matchGlob` or `prefix`.
+     * 
+     * ## Example Usage
+     * 
+     * Extract object base64 contents from objects:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = StorageFunctions.getBucketObjectContents(GetBucketObjectContentsArgs.builder()
+     *             .bucket("example-bucket")
+     *             .matchGlob("example-{foo,bar}.json")
+     *             .prefix("example")
+     *             .build());
+     * 
+     *         ctx.export("base64EncodedJsonContents", example.bucketObjects().stream().map(element -> element.contentBase64()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBucketObjectContentsResult> getBucketObjectContentsPlain(GetBucketObjectContentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getBucketObjectContents:getBucketObjectContents", TypeShape.of(GetBucketObjectContentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets existing objects inside an existing bucket in Google Cloud Storage service (GCS).

@@ -32,6 +32,7 @@ class InstanceArgs:
                  reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] capacity_gib: Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         :param pulumi.Input[_builtins.str] instance_id: The logical name of the Parallelstore instance in the user project with the following restrictions:
                * Must contain only lowercase letters, numbers, and hyphens.
@@ -318,6 +319,7 @@ class _InstanceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] access_points: Output only. List of access_points.
                Contains a list of IPv4 addresses used for client side configuration.
         :param pulumi.Input[_builtins.str] capacity_gib: Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
@@ -844,24 +846,17 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-
         * `{{project}}/{{location}}/{{instance_id}}`
-
         * `{{location}}/{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:parallelstore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parallelstore/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parallelstore/instance:Instance default {{location}}/{{instance_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1014,24 +1009,17 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-
         * `{{project}}/{{location}}/{{instance_id}}`
-
         * `{{location}}/{{instance_id}}`
 
         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:parallelstore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parallelstore/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parallelstore/instance:Instance default {{location}}/{{instance_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

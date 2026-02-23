@@ -21,6 +21,8 @@ __all__ = [
     'ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds',
     'ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds',
     'ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds',
+    'ClusterDatastoreMountConfig',
+    'ClusterDatastoreMountConfigDatastoreNetwork',
     'ClusterNodeTypeConfig',
     'DatastoreNfsDatastore',
     'DatastoreNfsDatastoreGoogleFileService',
@@ -48,6 +50,8 @@ __all__ = [
     'GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdResult',
     'GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdResult',
     'GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdResult',
+    'GetClusterDatastoreMountConfigResult',
+    'GetClusterDatastoreMountConfigDatastoreNetworkResult',
     'GetClusterNodeTypeConfigResult',
     'GetDatastoreNfsDatastoreResult',
     'GetDatastoreNfsDatastoreGoogleFileServiceResult',
@@ -434,6 +438,261 @@ class ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds(dict):
         The utilization triggering the scale-out operation in percent.
         """
         return pulumi.get(self, "scale_out")
+
+
+@pulumi.output_type
+class ClusterDatastoreMountConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datastoreNetwork":
+            suggest = "datastore_network"
+        elif key == "accessMode":
+            suggest = "access_mode"
+        elif key == "fileShare":
+            suggest = "file_share"
+        elif key == "ignoreColocation":
+            suggest = "ignore_colocation"
+        elif key == "nfsVersion":
+            suggest = "nfs_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterDatastoreMountConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterDatastoreMountConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterDatastoreMountConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datastore: _builtins.str,
+                 datastore_network: 'outputs.ClusterDatastoreMountConfigDatastoreNetwork',
+                 access_mode: Optional[_builtins.str] = None,
+                 file_share: Optional[_builtins.str] = None,
+                 ignore_colocation: Optional[_builtins.bool] = None,
+                 nfs_version: Optional[_builtins.str] = None,
+                 servers: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str datastore: The resource name of the datastore to unmount.
+               The datastore requested to be mounted should be in same region/zone as the
+               cluster.
+               Resource names are schemeless URIs that follow the conventions in
+               https://cloud.google.com/apis/design/resource_names.
+               For example:
+               `projects/my-project/locations/us-central1/datastores/my-datastore`
+        :param 'ClusterDatastoreMountConfigDatastoreNetworkArgs' datastore_network: The network configuration for the datastore.
+               Structure is documented below.
+        :param _builtins.str access_mode: Optional. NFS is accessed by hosts in either read or read_write mode
+               Default value used will be READ_WRITE
+               Possible values:
+               READ_ONLY
+               READ_WRITE
+        :param _builtins.str file_share: (Output)
+               File share name.
+        :param _builtins.bool ignore_colocation: Optional. If set to true, the colocation requirement will be ignored.
+               If set to false, the colocation requirement will be enforced.
+               Colocation requirement is the requirement that the cluster must be in the
+               same region/zone of datastore.
+        :param _builtins.str nfs_version: Optional. The NFS protocol supported by the NFS volume.
+               Default value used will be NFS_V3
+               Possible values:
+               NFS_V3
+        :param Sequence[_builtins.str] servers: (Output)
+               Server IP addresses of the NFS volume.
+               For NFS 3, you can only provide a single
+               server IP address or DNS names.
+        """
+        pulumi.set(__self__, "datastore", datastore)
+        pulumi.set(__self__, "datastore_network", datastore_network)
+        if access_mode is not None:
+            pulumi.set(__self__, "access_mode", access_mode)
+        if file_share is not None:
+            pulumi.set(__self__, "file_share", file_share)
+        if ignore_colocation is not None:
+            pulumi.set(__self__, "ignore_colocation", ignore_colocation)
+        if nfs_version is not None:
+            pulumi.set(__self__, "nfs_version", nfs_version)
+        if servers is not None:
+            pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter
+    def datastore(self) -> _builtins.str:
+        """
+        The resource name of the datastore to unmount.
+        The datastore requested to be mounted should be in same region/zone as the
+        cluster.
+        Resource names are schemeless URIs that follow the conventions in
+        https://cloud.google.com/apis/design/resource_names.
+        For example:
+        `projects/my-project/locations/us-central1/datastores/my-datastore`
+        """
+        return pulumi.get(self, "datastore")
+
+    @_builtins.property
+    @pulumi.getter(name="datastoreNetwork")
+    def datastore_network(self) -> 'outputs.ClusterDatastoreMountConfigDatastoreNetwork':
+        """
+        The network configuration for the datastore.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "datastore_network")
+
+    @_builtins.property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> Optional[_builtins.str]:
+        """
+        Optional. NFS is accessed by hosts in either read or read_write mode
+        Default value used will be READ_WRITE
+        Possible values:
+        READ_ONLY
+        READ_WRITE
+        """
+        return pulumi.get(self, "access_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="fileShare")
+    def file_share(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        File share name.
+        """
+        return pulumi.get(self, "file_share")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreColocation")
+    def ignore_colocation(self) -> Optional[_builtins.bool]:
+        """
+        Optional. If set to true, the colocation requirement will be ignored.
+        If set to false, the colocation requirement will be enforced.
+        Colocation requirement is the requirement that the cluster must be in the
+        same region/zone of datastore.
+        """
+        return pulumi.get(self, "ignore_colocation")
+
+    @_builtins.property
+    @pulumi.getter(name="nfsVersion")
+    def nfs_version(self) -> Optional[_builtins.str]:
+        """
+        Optional. The NFS protocol supported by the NFS volume.
+        Default value used will be NFS_V3
+        Possible values:
+        NFS_V3
+        """
+        return pulumi.get(self, "nfs_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        Server IP addresses of the NFS volume.
+        For NFS 3, you can only provide a single
+        server IP address or DNS names.
+        """
+        return pulumi.get(self, "servers")
+
+
+@pulumi.output_type
+class ClusterDatastoreMountConfigDatastoreNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionCount":
+            suggest = "connection_count"
+        elif key == "networkPeering":
+            suggest = "network_peering"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterDatastoreMountConfigDatastoreNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterDatastoreMountConfigDatastoreNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterDatastoreMountConfigDatastoreNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnet: _builtins.str,
+                 connection_count: Optional[_builtins.int] = None,
+                 mtu: Optional[_builtins.int] = None,
+                 network_peering: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str subnet: The resource name of the subnet
+               Resource names are schemeless URIs that follow the conventions in
+               https://cloud.google.com/apis/design/resource_names.
+               e.g. projects/my-project/locations/us-central1/subnets/my-subnet
+        :param _builtins.int connection_count: Optional. The number of connections of the NFS volume.
+               Supported from vsphere 8.0u1. Possible values are 1-4.
+               Default value is 4.
+        :param _builtins.int mtu: Optional. The Maximal Transmission Unit (MTU) of the datastore.
+               MTU value can range from 1330-9000. If not set, system sets
+               default MTU size to 1500.
+        :param _builtins.str network_peering: (Output)
+               The resource name of the network peering, used to access the
+               file share by clients on private cloud. Resource names are schemeless
+               URIs that follow the conventions in
+               https://cloud.google.com/apis/design/resource_names.
+               e.g.
+               projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+        """
+        pulumi.set(__self__, "subnet", subnet)
+        if connection_count is not None:
+            pulumi.set(__self__, "connection_count", connection_count)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
+        if network_peering is not None:
+            pulumi.set(__self__, "network_peering", network_peering)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> _builtins.str:
+        """
+        The resource name of the subnet
+        Resource names are schemeless URIs that follow the conventions in
+        https://cloud.google.com/apis/design/resource_names.
+        e.g. projects/my-project/locations/us-central1/subnets/my-subnet
+        """
+        return pulumi.get(self, "subnet")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionCount")
+    def connection_count(self) -> Optional[_builtins.int]:
+        """
+        Optional. The number of connections of the NFS volume.
+        Supported from vsphere 8.0u1. Possible values are 1-4.
+        Default value is 4.
+        """
+        return pulumi.get(self, "connection_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def mtu(self) -> Optional[_builtins.int]:
+        """
+        Optional. The Maximal Transmission Unit (MTU) of the datastore.
+        MTU value can range from 1330-9000. If not set, system sets
+        default MTU size to 1500.
+        """
+        return pulumi.get(self, "mtu")
+
+    @_builtins.property
+    @pulumi.getter(name="networkPeering")
+    def network_peering(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The resource name of the network peering, used to access the
+        file share by clients on private cloud. Resource names are schemeless
+        URIs that follow the conventions in
+        https://cloud.google.com/apis/design/resource_names.
+        e.g.
+        projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+        """
+        return pulumi.get(self, "network_peering")
 
 
 @pulumi.output_type
@@ -2095,6 +2354,201 @@ class GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdResult(dict):
         The utilization triggering the scale-out operation in percent.
         """
         return pulumi.get(self, "scale_out")
+
+
+@pulumi.output_type
+class GetClusterDatastoreMountConfigResult(dict):
+    def __init__(__self__, *,
+                 access_mode: _builtins.str,
+                 datastore: _builtins.str,
+                 datastore_networks: Sequence['outputs.GetClusterDatastoreMountConfigDatastoreNetworkResult'],
+                 file_share: _builtins.str,
+                 ignore_colocation: _builtins.bool,
+                 nfs_version: _builtins.str,
+                 servers: Sequence[_builtins.str]):
+        """
+        :param _builtins.str access_mode: Optional. NFS is accessed by hosts in either read or read_write mode
+               Default value used will be READ_WRITE
+               Possible values:
+               READ_ONLY
+               READ_WRITE
+        :param _builtins.str datastore: The resource name of the datastore to unmount.
+               The datastore requested to be mounted should be in same region/zone as the
+               cluster.
+               Resource names are schemeless URIs that follow the conventions in
+               https://cloud.google.com/apis/design/resource_names.
+               For example:
+               'projects/my-project/locations/us-central1/datastores/my-datastore'
+        :param Sequence['GetClusterDatastoreMountConfigDatastoreNetworkArgs'] datastore_networks: The network configuration for the datastore.
+        :param _builtins.str file_share: File share name.
+        :param _builtins.bool ignore_colocation: Optional. If set to true, the colocation requirement will be ignored.
+               If set to false, the colocation requirement will be enforced.
+               Colocation requirement is the requirement that the cluster must be in the
+               same region/zone of datastore.
+        :param _builtins.str nfs_version: Optional. The NFS protocol supported by the NFS volume.
+               Default value used will be NFS_V3
+               Possible values:
+               NFS_V3
+        :param Sequence[_builtins.str] servers: Server IP addresses of the NFS volume.
+               For NFS 3, you can only provide a single
+               server IP address or DNS names.
+        """
+        pulumi.set(__self__, "access_mode", access_mode)
+        pulumi.set(__self__, "datastore", datastore)
+        pulumi.set(__self__, "datastore_networks", datastore_networks)
+        pulumi.set(__self__, "file_share", file_share)
+        pulumi.set(__self__, "ignore_colocation", ignore_colocation)
+        pulumi.set(__self__, "nfs_version", nfs_version)
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> _builtins.str:
+        """
+        Optional. NFS is accessed by hosts in either read or read_write mode
+        Default value used will be READ_WRITE
+        Possible values:
+        READ_ONLY
+        READ_WRITE
+        """
+        return pulumi.get(self, "access_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def datastore(self) -> _builtins.str:
+        """
+        The resource name of the datastore to unmount.
+        The datastore requested to be mounted should be in same region/zone as the
+        cluster.
+        Resource names are schemeless URIs that follow the conventions in
+        https://cloud.google.com/apis/design/resource_names.
+        For example:
+        'projects/my-project/locations/us-central1/datastores/my-datastore'
+        """
+        return pulumi.get(self, "datastore")
+
+    @_builtins.property
+    @pulumi.getter(name="datastoreNetworks")
+    def datastore_networks(self) -> Sequence['outputs.GetClusterDatastoreMountConfigDatastoreNetworkResult']:
+        """
+        The network configuration for the datastore.
+        """
+        return pulumi.get(self, "datastore_networks")
+
+    @_builtins.property
+    @pulumi.getter(name="fileShare")
+    def file_share(self) -> _builtins.str:
+        """
+        File share name.
+        """
+        return pulumi.get(self, "file_share")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreColocation")
+    def ignore_colocation(self) -> _builtins.bool:
+        """
+        Optional. If set to true, the colocation requirement will be ignored.
+        If set to false, the colocation requirement will be enforced.
+        Colocation requirement is the requirement that the cluster must be in the
+        same region/zone of datastore.
+        """
+        return pulumi.get(self, "ignore_colocation")
+
+    @_builtins.property
+    @pulumi.getter(name="nfsVersion")
+    def nfs_version(self) -> _builtins.str:
+        """
+        Optional. The NFS protocol supported by the NFS volume.
+        Default value used will be NFS_V3
+        Possible values:
+        NFS_V3
+        """
+        return pulumi.get(self, "nfs_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Sequence[_builtins.str]:
+        """
+        Server IP addresses of the NFS volume.
+        For NFS 3, you can only provide a single
+        server IP address or DNS names.
+        """
+        return pulumi.get(self, "servers")
+
+
+@pulumi.output_type
+class GetClusterDatastoreMountConfigDatastoreNetworkResult(dict):
+    def __init__(__self__, *,
+                 connection_count: _builtins.int,
+                 mtu: _builtins.int,
+                 network_peering: _builtins.str,
+                 subnet: _builtins.str):
+        """
+        :param _builtins.int connection_count: Optional. The number of connections of the NFS volume.
+               Supported from vsphere 8.0u1. Possible values are 1-4.
+               Default value is 4.
+        :param _builtins.int mtu: Optional. The Maximal Transmission Unit (MTU) of the datastore.
+               MTU value can range from 1330-9000. If not set, system sets
+               default MTU size to 1500.
+        :param _builtins.str network_peering: The resource name of the network peering, used to access the
+               file share by clients on private cloud. Resource names are schemeless
+               URIs that follow the conventions in
+               https://cloud.google.com/apis/design/resource_names.
+               e.g.
+               projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+        :param _builtins.str subnet: The resource name of the subnet
+               Resource names are schemeless URIs that follow the conventions in
+               https://cloud.google.com/apis/design/resource_names.
+               e.g. projects/my-project/locations/us-central1/subnets/my-subnet
+        """
+        pulumi.set(__self__, "connection_count", connection_count)
+        pulumi.set(__self__, "mtu", mtu)
+        pulumi.set(__self__, "network_peering", network_peering)
+        pulumi.set(__self__, "subnet", subnet)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionCount")
+    def connection_count(self) -> _builtins.int:
+        """
+        Optional. The number of connections of the NFS volume.
+        Supported from vsphere 8.0u1. Possible values are 1-4.
+        Default value is 4.
+        """
+        return pulumi.get(self, "connection_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def mtu(self) -> _builtins.int:
+        """
+        Optional. The Maximal Transmission Unit (MTU) of the datastore.
+        MTU value can range from 1330-9000. If not set, system sets
+        default MTU size to 1500.
+        """
+        return pulumi.get(self, "mtu")
+
+    @_builtins.property
+    @pulumi.getter(name="networkPeering")
+    def network_peering(self) -> _builtins.str:
+        """
+        The resource name of the network peering, used to access the
+        file share by clients on private cloud. Resource names are schemeless
+        URIs that follow the conventions in
+        https://cloud.google.com/apis/design/resource_names.
+        e.g.
+        projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+        """
+        return pulumi.get(self, "network_peering")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> _builtins.str:
+        """
+        The resource name of the subnet
+        Resource names are schemeless URIs that follow the conventions in
+        https://cloud.google.com/apis/design/resource_names.
+        e.g. projects/my-project/locations/us-central1/subnets/my-subnet
+        """
+        return pulumi.get(self, "subnet")
 
 
 @pulumi.output_type

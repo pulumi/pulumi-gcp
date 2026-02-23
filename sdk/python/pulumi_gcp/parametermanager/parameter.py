@@ -28,6 +28,7 @@ class ParameterArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Parameter resource.
+
         :param pulumi.Input[_builtins.str] parameter_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] format: The format type of the parameter resource.
                Default value is `UNFORMATTED`.
@@ -149,6 +150,7 @@ class _ParameterState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Parameter resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time at which the Parameter was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] format: The format type of the parameter resource.
@@ -423,24 +425,17 @@ class Parameter(pulumi.CustomResource):
         Parameter can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
-
         * `{{project}}/{{parameter_id}}`
-
         * `{{parameter_id}}`
 
         When using the `pulumi import` command, Parameter can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:parametermanager/parameter:Parameter default projects/{{project}}/locations/global/parameters/{{parameter_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parametermanager/parameter:Parameter default {{project}}/{{parameter_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parametermanager/parameter:Parameter default {{parameter_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -530,24 +525,17 @@ class Parameter(pulumi.CustomResource):
         Parameter can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
-
         * `{{project}}/{{parameter_id}}`
-
         * `{{parameter_id}}`
 
         When using the `pulumi import` command, Parameter can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:parametermanager/parameter:Parameter default projects/{{project}}/locations/global/parameters/{{parameter_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parametermanager/parameter:Parameter default {{project}}/{{parameter_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:parametermanager/parameter:Parameter default {{parameter_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ParameterArgs args: The arguments to use to populate this resource's properties.

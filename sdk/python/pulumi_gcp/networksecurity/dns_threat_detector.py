@@ -27,6 +27,7 @@ class DnsThreatDetectorArgs:
                  threat_detector_provider: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DnsThreatDetector resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_networks: List of networks that are excluded from detection. Format: projects/{project}/global/networks/{name}.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of label tags associated with the DNS Threat Detector resource.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -145,6 +146,7 @@ class _DnsThreatDetectorState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsThreatDetector resources.
+
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
@@ -366,30 +368,19 @@ class DnsThreatDetector(pulumi.CustomResource):
         DnsThreatDetector can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dnsThreatDetectors/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, DnsThreatDetector can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default projects/{{project}}/locations/{{location}}/dnsThreatDetectors/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default {{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -446,30 +437,19 @@ class DnsThreatDetector(pulumi.CustomResource):
         DnsThreatDetector can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dnsThreatDetectors/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, DnsThreatDetector can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default projects/{{project}}/locations/{{location}}/dnsThreatDetectors/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default {{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networksecurity/dnsThreatDetector:DnsThreatDetector default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DnsThreatDetectorArgs args: The arguments to use to populate this resource's properties.

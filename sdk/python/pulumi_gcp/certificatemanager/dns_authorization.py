@@ -30,6 +30,7 @@ class DnsAuthorizationArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DnsAuthorization resource.
+
         :param pulumi.Input[_builtins.str] domain: A domain which is being authorized. A DnsAuthorization resource covers a
                single domain and its wildcard, e.g. authorization for "example.com" can
                be used to issue certificates for "example.com" and "*.example.com".
@@ -178,6 +179,7 @@ class _DnsAuthorizationState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsAuthorization resources.
+
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['DnsAuthorizationDnsResourceRecordArgs']]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added
                to DNS configuration for the authorization to be usable by
@@ -418,24 +420,17 @@ class DnsAuthorization(pulumi.CustomResource):
         DnsAuthorization can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -505,24 +500,17 @@ class DnsAuthorization(pulumi.CustomResource):
         DnsAuthorization can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DnsAuthorizationArgs args: The arguments to use to populate this resource's properties.

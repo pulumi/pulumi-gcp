@@ -31,6 +31,7 @@ class V2PolicyOrchestratorForOrganizationArgs:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2PolicyOrchestratorForOrganization resource.
+
         :param pulumi.Input[_builtins.str] action: Required. Action to be done by the orchestrator in
                `projects/{project_id}/zones/{zone_id}` locations defined by the
                `orchestration_scope`. Allowed values:
@@ -219,6 +220,7 @@ class _V2PolicyOrchestratorForOrganizationState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2PolicyOrchestratorForOrganization resources.
+
         :param pulumi.Input[_builtins.str] action: Required. Action to be done by the orchestrator in
                `projects/{project_id}/zones/{zone_id}` locations defined by the
                `orchestration_scope`. Allowed values:
@@ -606,18 +608,15 @@ class V2PolicyOrchestratorForOrganization(pulumi.CustomResource):
         PolicyOrchestratorForOrganization can be imported using any of these accepted formats:
 
         * `organizations/{{organization_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}`
-
         * `{{organization_id}}/{{policy_orchestrator_id}}`
 
         When using the `pulumi import` command, PolicyOrchestratorForOrganization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default organizations/{{organization_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default {{organization_id}}/{{policy_orchestrator_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -725,18 +724,15 @@ class V2PolicyOrchestratorForOrganization(pulumi.CustomResource):
         PolicyOrchestratorForOrganization can be imported using any of these accepted formats:
 
         * `organizations/{{organization_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}`
-
         * `{{organization_id}}/{{policy_orchestrator_id}}`
 
         When using the `pulumi import` command, PolicyOrchestratorForOrganization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default organizations/{{organization_id}}/locations/global/policyOrchestrators/{{policy_orchestrator_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default {{organization_id}}/{{policy_orchestrator_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V2PolicyOrchestratorForOrganizationArgs args: The arguments to use to populate this resource's properties.

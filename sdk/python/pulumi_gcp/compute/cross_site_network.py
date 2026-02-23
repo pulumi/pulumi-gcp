@@ -24,6 +24,7 @@ class CrossSiteNetworkArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CrossSiteNetwork resource.
+
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be
                1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -90,6 +91,7 @@ class _CrossSiteNetworkState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CrossSiteNetwork resources.
+
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be
                1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -186,24 +188,17 @@ class CrossSiteNetwork(pulumi.CustomResource):
         CrossSiteNetwork can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/crossSiteNetworks/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, CrossSiteNetwork can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default projects/{{project}}/global/crossSiteNetworks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -250,24 +245,17 @@ class CrossSiteNetwork(pulumi.CustomResource):
         CrossSiteNetwork can be imported using any of these accepted formats:
 
         * `projects/{{project}}/global/crossSiteNetworks/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, CrossSiteNetwork can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default projects/{{project}}/global/crossSiteNetworks/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CrossSiteNetworkArgs args: The arguments to use to populate this resource's properties.

@@ -380,31 +380,23 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * Storage buckets can be imported using the `name` or  `project/name`. If the project is not
- * 
  * passed to the import command it will be inferred from the provider block or environment variables.
- * 
  * If it cannot be inferred it will be queried from the Compute API (this will fail if the API is
- * 
  * not enabled).
  * 
  * * `{{project_id}}/{{bucket}}`
- * 
  * * `{{bucket}}`
  * 
  * When using the `pulumi import` command, Storage buckets can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
  * ```
  * 
+ * &gt; **Note:** Terraform will import this resource with `forceDestroy` set to
  * `false` in state. If you&#39;ve set it to `true` in config, run `pulumi up` to
- * 
  * update the value set in state. If you delete this resource before updating the
- * 
  * value, objects in the bucket will not be destroyed.
  * 
  */
@@ -466,9 +458,17 @@ public class Bucket extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> defaultEventBasedHold() {
         return Codegen.optional(this.defaultEventBasedHold);
     }
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
@@ -731,14 +731,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
-     * The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won&#39;t generate any terraform change. Structure is documented below.
      * 
      */
     @Export(name="softDeletePolicy", refs={BucketSoftDeletePolicy.class}, tree="[0]")
     private Output<BucketSoftDeletePolicy> softDeletePolicy;
 
     /**
-     * @return The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * @return The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won&#39;t generate any terraform change. Structure is documented below.
      * 
      */
     public Output<BucketSoftDeletePolicy> softDeletePolicy() {

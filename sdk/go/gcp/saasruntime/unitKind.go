@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A UnitKind serves as a template or type definition for a group of Units. Units that belong to the same UnitKind are managed together, follow the same release model, and are typically updated together through rollouts.
+//
+// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+// See Provider Versions for more details on beta resources.
+//
 // ## Example Usage
 //
 // ### Saas Runtime Unit Kind Basic
@@ -85,22 +90,14 @@ import (
 // UnitKind can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/unitKinds/{{unit_kind_id}}`
-//
 // * `{{project}}/{{location}}/{{unit_kind_id}}`
-//
 // * `{{location}}/{{unit_kind_id}}`
 //
 // When using the `pulumi import` command, UnitKind can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:saasruntime/unitKind:UnitKind default projects/{{project}}/locations/{{location}}/unitKinds/{{unit_kind_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:saasruntime/unitKind:UnitKind default {{project}}/{{location}}/{{unit_kind_id}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:saasruntime/unitKind:UnitKind default {{location}}/{{unit_kind_id}}
 // ```
 type UnitKind struct {
@@ -123,8 +120,9 @@ type UnitKind struct {
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
-	Dependencies         UnitKindDependencyArrayOutput `pulumi:"dependencies"`
-	EffectiveAnnotations pulumi.StringMapOutput        `pulumi:"effectiveAnnotations"`
+	Dependencies UnitKindDependencyArrayOutput `pulumi:"dependencies"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// An opaque value that uniquely identifies a version or
@@ -236,8 +234,9 @@ type unitKindState struct {
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
-	Dependencies         []UnitKindDependency `pulumi:"dependencies"`
-	EffectiveAnnotations map[string]string    `pulumi:"effectiveAnnotations"`
+	Dependencies []UnitKindDependency `pulumi:"dependencies"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// An opaque value that uniquely identifies a version or
@@ -306,7 +305,8 @@ type UnitKindState struct {
 	// List of other unit kinds that this release will depend on. Dependencies
 	// will be automatically provisioned if not found. Maximum 10.
 	// Structure is documented below.
-	Dependencies         UnitKindDependencyArrayInput
+	Dependencies UnitKindDependencyArrayInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -568,6 +568,7 @@ func (o UnitKindOutput) Dependencies() UnitKindDependencyArrayOutput {
 	return o.ApplyT(func(v *UnitKind) UnitKindDependencyArrayOutput { return v.Dependencies }).(UnitKindDependencyArrayOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o UnitKindOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *UnitKind) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

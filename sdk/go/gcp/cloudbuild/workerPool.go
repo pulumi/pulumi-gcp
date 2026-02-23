@@ -129,22 +129,14 @@ import (
 // WorkerPool can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
-//
 // * `{{project}}/{{location}}/{{name}}`
-//
 // * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{location}}/{{name}}
 // ```
 type WorkerPool struct {
@@ -160,7 +152,8 @@ type WorkerPool struct {
 	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -227,7 +220,8 @@ type workerPoolState struct {
 	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-	DisplayName          *string           `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -262,7 +256,8 @@ type WorkerPoolState struct {
 	// Output only. Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime pulumi.StringPtrInput
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-	DisplayName          pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -449,6 +444,7 @@ func (o WorkerPoolOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 func (o WorkerPoolOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }

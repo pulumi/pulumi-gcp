@@ -212,29 +212,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies
- * 
- * IAM policy imports use the identifier of the Pubsub Subscription resource. For example:
- * 
- * * `&#34;projects/{{project_id}}/subscriptions/{{subscription}}&#34;`
- * 
- * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
- * 
- * tf
- * 
- * import {
- * 
- *   id = &#34;projects/{{project_id}}/subscriptions/{{subscription}}&#34;
- * 
- *   to = google_pubsub_subscription_iam_policy.default
- * 
- * }
- * 
- * The `pulumi import` command can also be used:
- * 
- * ```sh
- * $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding default projects/{{project_id}}/subscriptions/{{subscription}}
- * ```
+ * &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding")

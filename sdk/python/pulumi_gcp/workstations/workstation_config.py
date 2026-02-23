@@ -43,6 +43,7 @@ class WorkstationConfigArgs:
                  running_timeout: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkstationConfig resource.
+
         :param pulumi.Input[_builtins.str] location: The location where the workstation cluster config should reside.
         :param pulumi.Input[_builtins.str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[_builtins.str] workstation_config_id: The ID to be assigned to the workstation cluster config.
@@ -413,6 +414,7 @@ class _WorkstationConfigState:
                  workstation_config_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkstationConfig resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigAllowedPortArgs']]] allowed_ports: A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Client-specified annotations. This is distinct from labels.
@@ -426,6 +428,7 @@ class _WorkstationConfigState:
         :param pulumi.Input[_builtins.bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
         :param pulumi.Input[_builtins.bool] disable_tcp_connections: Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         :param pulumi.Input['WorkstationConfigEncryptionKeyArgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
@@ -626,6 +629,9 @@ class _WorkstationConfigState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -917,6 +923,17 @@ class WorkstationConfig(pulumi.CustomResource):
                  workstation_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A set of configuration options describing how a workstation will be run. Workstation configurations are intended to be shared across multiple workstations.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about WorkstationConfig, see:
+
+        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs/create)
+        * How-to Guides
+            * [Workstations](https://cloud.google.com/workstations/docs/)
+
         ## Example Usage
 
         ### Workstation Config Basic
@@ -1365,24 +1382,17 @@ class WorkstationConfig(pulumi.CustomResource):
         WorkstationConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}`
-
         * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}`
-
         * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}`
 
         When using the `pulumi import` command, WorkstationConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1432,6 +1442,17 @@ class WorkstationConfig(pulumi.CustomResource):
                  args: WorkstationConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A set of configuration options describing how a workstation will be run. Workstation configurations are intended to be shared across multiple workstations.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about WorkstationConfig, see:
+
+        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs/create)
+        * How-to Guides
+            * [Workstations](https://cloud.google.com/workstations/docs/)
+
         ## Example Usage
 
         ### Workstation Config Basic
@@ -1880,24 +1901,17 @@ class WorkstationConfig(pulumi.CustomResource):
         WorkstationConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}`
-
         * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}`
-
         * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}`
 
         When using the `pulumi import` command, WorkstationConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-        ```
-
-        ```sh
         $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkstationConfigArgs args: The arguments to use to populate this resource's properties.
@@ -2039,6 +2053,7 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
         :param pulumi.Input[_builtins.bool] disable_tcp_connections: Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         :param pulumi.Input[Union['WorkstationConfigEncryptionKeyArgs', 'WorkstationConfigEncryptionKeyArgsDict']] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
@@ -2183,6 +2198,9 @@ class WorkstationConfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

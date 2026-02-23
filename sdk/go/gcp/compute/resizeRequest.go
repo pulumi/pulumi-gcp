@@ -125,28 +125,16 @@ import (
 // ResizeRequest can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}`
-//
 // * `{{project}}/{{zone}}/{{instance_group_manager}}/{{name}}`
-//
 // * `{{zone}}/{{instance_group_manager}}/{{name}}`
-//
 // * `{{instance_group_manager}}/{{name}}`
 //
 // When using the `pulumi import` command, ResizeRequest can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/resizeRequest:ResizeRequest default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/resizeRequest:ResizeRequest default {{project}}/{{zone}}/{{instance_group_manager}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/resizeRequest:ResizeRequest default {{zone}}/{{instance_group_manager}}/{{name}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:compute/resizeRequest:ResizeRequest default {{instance_group_manager}}/{{name}}
 // ```
 type ResizeRequest struct {

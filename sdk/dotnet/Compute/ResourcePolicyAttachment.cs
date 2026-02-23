@@ -87,28 +87,16 @@ namespace Pulumi.Gcp.Compute
     /// ResourcePolicyAttachment can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/zones/{{zone}}/instances/{{instance}}/{{name}}`
-    /// 
     /// * `{{project}}/{{zone}}/{{instance}}/{{name}}`
-    /// 
     /// * `{{zone}}/{{instance}}/{{name}}`
-    /// 
     /// * `{{instance}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, ResourcePolicyAttachment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment default projects/{{project}}/zones/{{zone}}/instances/{{instance}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment default {{project}}/{{zone}}/{{instance}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment default {{zone}}/{{instance}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment default {{instance}}/{{name}}
     /// ```
     /// </summary>

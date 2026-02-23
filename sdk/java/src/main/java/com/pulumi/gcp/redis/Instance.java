@@ -391,28 +391,16 @@ import javax.annotation.Nullable;
  * Instance can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
- * 
  * * `{{project}}/{{region}}/{{name}}`
- * 
  * * `{{region}}/{{name}}`
- * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:redis/instance:Instance default {{project}}/{{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:redis/instance:Instance default {{region}}/{{name}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:redis/instance:Instance default {{name}}
  * ```
  * 
@@ -561,9 +549,27 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> customerManagedKey() {
         return Codegen.optional(this.customerManagedKey);
     }
+    /**
+     * Whether Terraform will be prevented from destroying the instance.
+     * When a`terraform destroy` or `pulumi up` would delete the instance,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the instance will fail.
+     * When the field is set to false, deleting the instance is allowed.
+     * 
+     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance.
+     * When a`terraform destroy` or `pulumi up` would delete the instance,
+     * the command will fail if this field is not set to false in Terraform state.
+     * When the field is set to true or unset in Terraform state, a `pulumi up`
+     * or `terraform destroy` that would delete the instance will fail.
+     * When the field is set to false, deleting the instance is allowed.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }

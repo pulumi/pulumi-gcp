@@ -51,22 +51,14 @@ import * as utilities from "../utilities";
  * Enrollment can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/locations/{{location}}/enrollments/{{enrollment_id}}`
- *
  * * `{{project}}/{{location}}/{{enrollment_id}}`
- *
  * * `{{location}}/{{enrollment_id}}`
  *
  * When using the `pulumi import` command, Enrollment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:eventarc/enrollment:Enrollment default projects/{{project}}/locations/{{location}}/enrollments/{{enrollment_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:eventarc/enrollment:Enrollment default {{project}}/{{location}}/{{enrollment_id}}
- * ```
- *
- * ```sh
  * $ pulumi import gcp:eventarc/enrollment:Enrollment default {{location}}/{{enrollment_id}}
  * ```
  */
@@ -122,6 +114,9 @@ export class Enrollment extends pulumi.CustomResource {
      * Resource display name.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -279,6 +274,9 @@ export interface EnrollmentState {
      * Resource display name.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     */
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

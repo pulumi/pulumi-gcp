@@ -38,6 +38,7 @@ class RuntimeTemplateArgs:
                  software_config: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']] = None):
         """
         The set of arguments for constructing a RuntimeTemplate resource.
+
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Runtime Template.
         :param pulumi.Input[_builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs'] data_persistent_disk_spec: The configuration for the data disk of the runtime.
@@ -308,6 +309,7 @@ class _RuntimeTemplateState:
                  software_config: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']] = None):
         """
         Input properties used for looking up and filtering RuntimeTemplate resources.
+
         :param pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs'] data_persistent_disk_spec: The configuration for the data disk of the runtime.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of the Runtime Template.
@@ -728,24 +730,17 @@ class RuntimeTemplate(pulumi.CustomResource):
         RuntimeTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/notebookRuntimeTemplates/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, RuntimeTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default projects/{{project}}/locations/{{location}}/notebookRuntimeTemplates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -898,24 +893,17 @@ class RuntimeTemplate(pulumi.CustomResource):
         RuntimeTemplate can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/notebookRuntimeTemplates/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, RuntimeTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default projects/{{project}}/locations/{{location}}/notebookRuntimeTemplates/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuntimeTemplateArgs args: The arguments to use to populate this resource's properties.

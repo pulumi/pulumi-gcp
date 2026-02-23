@@ -31,6 +31,7 @@ class HttpRouteArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HttpRoute resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Set of hosts that should match against the HTTP host header to select a HttpRoute to process the request.
         :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
@@ -184,6 +185,7 @@ class _HttpRouteState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HttpRoute resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time the HttpRoute was created in UTC.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -664,24 +666,17 @@ class HttpRoute(pulumi.CustomResource):
         HttpRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default projects/{{project}}/locations/global/httpRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -958,24 +953,17 @@ class HttpRoute(pulumi.CustomResource):
         HttpRoute can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
-
         * `{{project}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default projects/{{project}}/locations/global/httpRoutes/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default {{project}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HttpRouteArgs args: The arguments to use to populate this resource's properties.

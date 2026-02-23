@@ -13,6 +13,7 @@ import com.pulumi.gcp.developerconnect.inputs.InsightsConfigState;
 import com.pulumi.gcp.developerconnect.outputs.InsightsConfigArtifactConfig;
 import com.pulumi.gcp.developerconnect.outputs.InsightsConfigError;
 import com.pulumi.gcp.developerconnect.outputs.InsightsConfigRuntimeConfig;
+import com.pulumi.gcp.developerconnect.outputs.InsightsConfigTargetProjects;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -67,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("dci-tf-_10393")
+ *             .projectId("dci-tf-_3684")
  *             .name("Service Project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
@@ -180,7 +181,7 @@ import javax.annotation.Nullable;
  * 
  *         var myApphubApplication = new Application("myApphubApplication", ApplicationArgs.builder()
  *             .location("us-central1")
- *             .applicationId("tf-test-example-application_33052")
+ *             .applicationId("tf-test-example-application_10719")
  *             .scope(ApplicationScopeArgs.builder()
  *                 .type("REGIONAL")
  *                 .build())
@@ -191,7 +192,7 @@ import javax.annotation.Nullable;
  * 
  *         var insightsConfig = new InsightsConfig("insightsConfig", InsightsConfigArgs.builder()
  *             .location("us-central1")
- *             .insightsConfigId("tf-test-ic_3684")
+ *             .insightsConfigId("tf-test-ic-apphub-_1443")
  *             .project(project.projectId())
  *             .annotations(Map.ofEntries(
  *             ))
@@ -222,28 +223,198 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * ### Developer Connect Insights Config Projects
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.developerconnect.InsightsConfig;
+ * import com.pulumi.gcp.developerconnect.InsightsConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.InsightsConfigTargetProjectsArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.InsightsConfigArtifactConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.InsightsConfigArtifactConfigGoogleArtifactRegistryArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var project = new Project("project", ProjectArgs.builder()
+ *             .projectId("dci-tf-_26032")
+ *             .name("Service Project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         // Grant Permissions
+ *         var apphubPermissions = new IAMMember("apphubPermissions", IAMMemberArgs.builder()
+ *             .project(project.projectId())
+ *             .role("roles/apphub.admin")
+ *             .member("serviceAccount:hashicorp-test-runner}{@literal @}{@code ci-test-project-188019.iam.gserviceaccount.com")
+ *             .build());
+ * 
+ *         var insightsAgent = new IAMMember("insightsAgent", IAMMemberArgs.builder()
+ *             .project(project.projectId())
+ *             .role("roles/developerconnect.insightsAgent")
+ *             .member("serviceAccount:66214305248-compute}{@literal @}{@code developer.gserviceaccount.com")
+ *             .build());
+ * 
+ *         // Enable APIs
+ *         var apphubApiService = new Service("apphubApiService", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("apphub.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var containeranalysisApi = new Service("containeranalysisApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("containeranalysis.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var containerscanningApi = new Service("containerscanningApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("containerscanning.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var containerApi = new Service("containerApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("container.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var artifactregistryApi = new Service("artifactregistryApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("artifactregistry.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var cloudbuildApi = new Service("cloudbuildApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("cloudbuild.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var cloudassetApi = new Service("cloudassetApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("cloudasset.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var computeApi = new Service("computeApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("compute.googleapis.com")
+ *             .disableDependentServices(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var devconnectApi = new Service("devconnectApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("developerconnect.googleapis.com")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         // Wait delay after enabling APIs and granting permissions
+ *         var waitForPropagation = new Sleep("waitForPropagation", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     apphubPermissions,
+ *                     insightsAgent,
+ *                     apphubApiService,
+ *                     containeranalysisApi,
+ *                     containerscanningApi,
+ *                     containerApi,
+ *                     artifactregistryApi,
+ *                     artifactregistryApi,
+ *                     cloudbuildApi,
+ *                     cloudassetApi,
+ *                     computeApi,
+ *                     devconnectApi)
+ *                 .build());
+ * 
+ *         var insightsConfigProjects = new InsightsConfig("insightsConfigProjects", InsightsConfigArgs.builder()
+ *             .location("us-central1")
+ *             .insightsConfigId("tf-test-ic-projects-_8647")
+ *             .project(project.projectId())
+ *             .annotations(Map.ofEntries(
+ *             ))
+ *             .labels(Map.ofEntries(
+ *             ))
+ *             .targetProjects(InsightsConfigTargetProjectsArgs.builder()
+ *                 .projectIds(project.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
+ *                 .build())
+ *             .artifactConfigs(InsightsConfigArtifactConfigArgs.builder()
+ *                 .googleArtifactAnalysis(InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs.builder()
+ *                     .projectId(project.projectId())
+ *                     .build())
+ *                 .googleArtifactRegistry(InsightsConfigArtifactConfigGoogleArtifactRegistryArgs.builder()
+ *                     .artifactRegistryPackage("my-package")
+ *                     .projectId(project.projectId())
+ *                     .build())
+ *                 .uri("us-docker.pkg.dev/my-project/my-repo/my-image")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(waitForPropagation)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * 
  * ## Import
  * 
  * InsightsConfig can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}`
- * 
  * * `{{project}}/{{location}}/{{insights_config_id}}`
- * 
  * * `{{location}}/{{insights_config_id}}`
  * 
  * When using the `pulumi import` command, InsightsConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default projects/{{project}}/locations/{{location}}/insightsConfigs/{{insights_config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{project}}/{{location}}/{{insights_config_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
  * ```
  * 
@@ -277,7 +448,7 @@ public class InsightsConfig extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="appHubApplication", refs={String.class}, tree="[0]")
-    private Output<String> appHubApplication;
+    private Output</* @Nullable */ String> appHubApplication;
 
     /**
      * @return The name of the App Hub Application.
@@ -285,8 +456,8 @@ public class InsightsConfig extends com.pulumi.resources.CustomResource {
      * projects/{project}/locations/{location}/applications/{application}
      * 
      */
-    public Output<String> appHubApplication() {
-        return this.appHubApplication;
+    public Output<Optional<String>> appHubApplication() {
+        return Codegen.optional(this.appHubApplication);
     }
     /**
      * The artifact configurations of the artifacts that are deployed.
@@ -318,9 +489,17 @@ public class InsightsConfig extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
 
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+     * 
+     */
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
@@ -517,6 +696,22 @@ public class InsightsConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * The projects to track with the InsightsConfig.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="targetProjects", refs={InsightsConfigTargetProjects.class}, tree="[0]")
+    private Output</* @Nullable */ InsightsConfigTargetProjects> targetProjects;
+
+    /**
+     * @return The projects to track with the InsightsConfig.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InsightsConfigTargetProjects>> targetProjects() {
+        return Codegen.optional(this.targetProjects);
     }
     /**
      * [Output only] Update timestamp

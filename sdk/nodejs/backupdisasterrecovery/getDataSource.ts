@@ -52,7 +52,7 @@ export interface GetDataSourceArgs {
     /**
      * The Google Cloud Project in which the Data Source belongs.
      */
-    project: string;
+    project?: string;
 }
 
 /**
@@ -126,5 +126,5 @@ export interface GetDataSourceOutputArgs {
     /**
      * The Google Cloud Project in which the Data Source belongs.
      */
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

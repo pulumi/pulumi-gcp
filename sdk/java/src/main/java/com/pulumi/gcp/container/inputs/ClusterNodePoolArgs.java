@@ -311,9 +311,17 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.upgradeSettings);
     }
 
+    /**
+     * The Kubernetes version for the nodes in this pool. Note that if this field and autoUpgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the gcp.container.getEngineVersions data source&#39;s versionPrefix field to approximate fuzzy versions in a Terraform-compatible way.
+     * 
+     */
     @Import(name="version")
     private @Nullable Output<String> version;
 
+    /**
+     * @return The Kubernetes version for the nodes in this pool. Note that if this field and autoUpgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the gcp.container.getEngineVersions data source&#39;s versionPrefix field to approximate fuzzy versions in a Terraform-compatible way.
+     * 
+     */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -790,11 +798,23 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
             return upgradeSettings(Output.of(upgradeSettings));
         }
 
+        /**
+         * @param version The Kubernetes version for the nodes in this pool. Note that if this field and autoUpgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the gcp.container.getEngineVersions data source&#39;s versionPrefix field to approximate fuzzy versions in a Terraform-compatible way.
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
 
+        /**
+         * @param version The Kubernetes version for the nodes in this pool. Note that if this field and autoUpgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the gcp.container.getEngineVersions data source&#39;s versionPrefix field to approximate fuzzy versions in a Terraform-compatible way.
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(String version) {
             return version(Output.of(version));
         }

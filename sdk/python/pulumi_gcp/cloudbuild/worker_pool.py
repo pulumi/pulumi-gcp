@@ -31,6 +31,7 @@ class WorkerPoolArgs:
                  worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
+
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
                
@@ -184,6 +185,7 @@ class _WorkerPoolState:
                  worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None):
         """
         Input properties used for looking up and filtering WorkerPool resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -191,6 +193,7 @@ class _WorkerPoolState:
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the request to create the `WorkerPool` was received.
         :param pulumi.Input[_builtins.str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[_builtins.str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: User-defined name of the `WorkerPool`.
                
@@ -287,6 +290,9 @@ class _WorkerPoolState:
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
@@ -481,24 +487,17 @@ class WorkerPool(pulumi.CustomResource):
         WorkerPool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -584,24 +583,17 @@ class WorkerPool(pulumi.CustomResource):
         WorkerPool can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkerPoolArgs args: The arguments to use to populate this resource's properties.
@@ -689,6 +681,7 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the request to create the `WorkerPool` was received.
         :param pulumi.Input[_builtins.str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[_builtins.str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: User-defined name of the `WorkerPool`.
                
@@ -760,6 +753,9 @@ class WorkerPool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+        """
         return pulumi.get(self, "effective_annotations")
 
     @_builtins.property

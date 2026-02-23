@@ -466,6 +466,9 @@ func GetParameterManagerCustomEndpoint(ctx *pulumi.Context) string {
 func GetParameterManagerRegionalCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:parameterManagerRegionalCustomEndpoint")
 }
+func GetPollInterval(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:pollInterval")
+}
 func GetPrivatecaCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:privatecaCustomEndpoint")
 }
@@ -630,6 +633,9 @@ func GetUniverseDomain(ctx *pulumi.Context) string {
 }
 func GetUserProjectOverride(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gcp:userProjectOverride")
+}
+func GetVectorSearchCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:vectorSearchCustomEndpoint")
 }
 func GetVertexAiCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:vertexAiCustomEndpoint")

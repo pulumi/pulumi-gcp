@@ -901,6 +901,340 @@ func (o ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) S
 	}).(pulumi.IntPtrOutput)
 }
 
+type ClusterDatastoreMountConfig struct {
+	// Optional. NFS is accessed by hosts in either read or readWrite mode
+	// Default value used will be READ_WRITE
+	// Possible values:
+	// READ_ONLY
+	// READ_WRITE
+	AccessMode *string `pulumi:"accessMode"`
+	// The resource name of the datastore to unmount.
+	// The datastore requested to be mounted should be in same region/zone as the
+	// cluster.
+	// Resource names are schemeless URIs that follow the conventions in
+	// https://cloud.google.com/apis/design/resource_names.
+	// For example:
+	// `projects/my-project/locations/us-central1/datastores/my-datastore`
+	Datastore string `pulumi:"datastore"`
+	// The network configuration for the datastore.
+	// Structure is documented below.
+	DatastoreNetwork ClusterDatastoreMountConfigDatastoreNetwork `pulumi:"datastoreNetwork"`
+	// (Output)
+	// File share name.
+	FileShare *string `pulumi:"fileShare"`
+	// Optional. If set to true, the colocation requirement will be ignored.
+	// If set to false, the colocation requirement will be enforced.
+	// Colocation requirement is the requirement that the cluster must be in the
+	// same region/zone of datastore.
+	IgnoreColocation *bool `pulumi:"ignoreColocation"`
+	// Optional. The NFS protocol supported by the NFS volume.
+	// Default value used will be NFS_V3
+	// Possible values:
+	// NFS_V3
+	NfsVersion *string `pulumi:"nfsVersion"`
+	// (Output)
+	// Server IP addresses of the NFS volume.
+	// For NFS 3, you can only provide a single
+	// server IP address or DNS names.
+	Servers []string `pulumi:"servers"`
+}
+
+// ClusterDatastoreMountConfigInput is an input type that accepts ClusterDatastoreMountConfigArgs and ClusterDatastoreMountConfigOutput values.
+// You can construct a concrete instance of `ClusterDatastoreMountConfigInput` via:
+//
+//	ClusterDatastoreMountConfigArgs{...}
+type ClusterDatastoreMountConfigInput interface {
+	pulumi.Input
+
+	ToClusterDatastoreMountConfigOutput() ClusterDatastoreMountConfigOutput
+	ToClusterDatastoreMountConfigOutputWithContext(context.Context) ClusterDatastoreMountConfigOutput
+}
+
+type ClusterDatastoreMountConfigArgs struct {
+	// Optional. NFS is accessed by hosts in either read or readWrite mode
+	// Default value used will be READ_WRITE
+	// Possible values:
+	// READ_ONLY
+	// READ_WRITE
+	AccessMode pulumi.StringPtrInput `pulumi:"accessMode"`
+	// The resource name of the datastore to unmount.
+	// The datastore requested to be mounted should be in same region/zone as the
+	// cluster.
+	// Resource names are schemeless URIs that follow the conventions in
+	// https://cloud.google.com/apis/design/resource_names.
+	// For example:
+	// `projects/my-project/locations/us-central1/datastores/my-datastore`
+	Datastore pulumi.StringInput `pulumi:"datastore"`
+	// The network configuration for the datastore.
+	// Structure is documented below.
+	DatastoreNetwork ClusterDatastoreMountConfigDatastoreNetworkInput `pulumi:"datastoreNetwork"`
+	// (Output)
+	// File share name.
+	FileShare pulumi.StringPtrInput `pulumi:"fileShare"`
+	// Optional. If set to true, the colocation requirement will be ignored.
+	// If set to false, the colocation requirement will be enforced.
+	// Colocation requirement is the requirement that the cluster must be in the
+	// same region/zone of datastore.
+	IgnoreColocation pulumi.BoolPtrInput `pulumi:"ignoreColocation"`
+	// Optional. The NFS protocol supported by the NFS volume.
+	// Default value used will be NFS_V3
+	// Possible values:
+	// NFS_V3
+	NfsVersion pulumi.StringPtrInput `pulumi:"nfsVersion"`
+	// (Output)
+	// Server IP addresses of the NFS volume.
+	// For NFS 3, you can only provide a single
+	// server IP address or DNS names.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+}
+
+func (ClusterDatastoreMountConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDatastoreMountConfig)(nil)).Elem()
+}
+
+func (i ClusterDatastoreMountConfigArgs) ToClusterDatastoreMountConfigOutput() ClusterDatastoreMountConfigOutput {
+	return i.ToClusterDatastoreMountConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterDatastoreMountConfigArgs) ToClusterDatastoreMountConfigOutputWithContext(ctx context.Context) ClusterDatastoreMountConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDatastoreMountConfigOutput)
+}
+
+// ClusterDatastoreMountConfigArrayInput is an input type that accepts ClusterDatastoreMountConfigArray and ClusterDatastoreMountConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterDatastoreMountConfigArrayInput` via:
+//
+//	ClusterDatastoreMountConfigArray{ ClusterDatastoreMountConfigArgs{...} }
+type ClusterDatastoreMountConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterDatastoreMountConfigArrayOutput() ClusterDatastoreMountConfigArrayOutput
+	ToClusterDatastoreMountConfigArrayOutputWithContext(context.Context) ClusterDatastoreMountConfigArrayOutput
+}
+
+type ClusterDatastoreMountConfigArray []ClusterDatastoreMountConfigInput
+
+func (ClusterDatastoreMountConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDatastoreMountConfig)(nil)).Elem()
+}
+
+func (i ClusterDatastoreMountConfigArray) ToClusterDatastoreMountConfigArrayOutput() ClusterDatastoreMountConfigArrayOutput {
+	return i.ToClusterDatastoreMountConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterDatastoreMountConfigArray) ToClusterDatastoreMountConfigArrayOutputWithContext(ctx context.Context) ClusterDatastoreMountConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDatastoreMountConfigArrayOutput)
+}
+
+type ClusterDatastoreMountConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterDatastoreMountConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDatastoreMountConfig)(nil)).Elem()
+}
+
+func (o ClusterDatastoreMountConfigOutput) ToClusterDatastoreMountConfigOutput() ClusterDatastoreMountConfigOutput {
+	return o
+}
+
+func (o ClusterDatastoreMountConfigOutput) ToClusterDatastoreMountConfigOutputWithContext(ctx context.Context) ClusterDatastoreMountConfigOutput {
+	return o
+}
+
+// Optional. NFS is accessed by hosts in either read or readWrite mode
+// Default value used will be READ_WRITE
+// Possible values:
+// READ_ONLY
+// READ_WRITE
+func (o ClusterDatastoreMountConfigOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDatastoreMountConfig) *string { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the datastore to unmount.
+// The datastore requested to be mounted should be in same region/zone as the
+// cluster.
+// Resource names are schemeless URIs that follow the conventions in
+// https://cloud.google.com/apis/design/resource_names.
+// For example:
+// `projects/my-project/locations/us-central1/datastores/my-datastore`
+func (o ClusterDatastoreMountConfigOutput) Datastore() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterDatastoreMountConfig) string { return v.Datastore }).(pulumi.StringOutput)
+}
+
+// The network configuration for the datastore.
+// Structure is documented below.
+func (o ClusterDatastoreMountConfigOutput) DatastoreNetwork() ClusterDatastoreMountConfigDatastoreNetworkOutput {
+	return o.ApplyT(func(v ClusterDatastoreMountConfig) ClusterDatastoreMountConfigDatastoreNetwork {
+		return v.DatastoreNetwork
+	}).(ClusterDatastoreMountConfigDatastoreNetworkOutput)
+}
+
+// (Output)
+// File share name.
+func (o ClusterDatastoreMountConfigOutput) FileShare() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDatastoreMountConfig) *string { return v.FileShare }).(pulumi.StringPtrOutput)
+}
+
+// Optional. If set to true, the colocation requirement will be ignored.
+// If set to false, the colocation requirement will be enforced.
+// Colocation requirement is the requirement that the cluster must be in the
+// same region/zone of datastore.
+func (o ClusterDatastoreMountConfigOutput) IgnoreColocation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterDatastoreMountConfig) *bool { return v.IgnoreColocation }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The NFS protocol supported by the NFS volume.
+// Default value used will be NFS_V3
+// Possible values:
+// NFS_V3
+func (o ClusterDatastoreMountConfigOutput) NfsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDatastoreMountConfig) *string { return v.NfsVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Server IP addresses of the NFS volume.
+// For NFS 3, you can only provide a single
+// server IP address or DNS names.
+func (o ClusterDatastoreMountConfigOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterDatastoreMountConfig) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+type ClusterDatastoreMountConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterDatastoreMountConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDatastoreMountConfig)(nil)).Elem()
+}
+
+func (o ClusterDatastoreMountConfigArrayOutput) ToClusterDatastoreMountConfigArrayOutput() ClusterDatastoreMountConfigArrayOutput {
+	return o
+}
+
+func (o ClusterDatastoreMountConfigArrayOutput) ToClusterDatastoreMountConfigArrayOutputWithContext(ctx context.Context) ClusterDatastoreMountConfigArrayOutput {
+	return o
+}
+
+func (o ClusterDatastoreMountConfigArrayOutput) Index(i pulumi.IntInput) ClusterDatastoreMountConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterDatastoreMountConfig {
+		return vs[0].([]ClusterDatastoreMountConfig)[vs[1].(int)]
+	}).(ClusterDatastoreMountConfigOutput)
+}
+
+type ClusterDatastoreMountConfigDatastoreNetwork struct {
+	// Optional. The number of connections of the NFS volume.
+	// Supported from vsphere 8.0u1. Possible values are 1-4.
+	// Default value is 4.
+	ConnectionCount *int `pulumi:"connectionCount"`
+	// Optional. The Maximal Transmission Unit (MTU) of the datastore.
+	// MTU value can range from 1330-9000. If not set, system sets
+	// default MTU size to 1500.
+	Mtu *int `pulumi:"mtu"`
+	// (Output)
+	// The resource name of the network peering, used to access the
+	// file share by clients on private cloud. Resource names are schemeless
+	// URIs that follow the conventions in
+	// https://cloud.google.com/apis/design/resource_names.
+	// e.g.
+	// projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+	NetworkPeering *string `pulumi:"networkPeering"`
+	// The resource name of the subnet
+	// Resource names are schemeless URIs that follow the conventions in
+	// https://cloud.google.com/apis/design/resource_names.
+	// e.g. projects/my-project/locations/us-central1/subnets/my-subnet
+	Subnet string `pulumi:"subnet"`
+}
+
+// ClusterDatastoreMountConfigDatastoreNetworkInput is an input type that accepts ClusterDatastoreMountConfigDatastoreNetworkArgs and ClusterDatastoreMountConfigDatastoreNetworkOutput values.
+// You can construct a concrete instance of `ClusterDatastoreMountConfigDatastoreNetworkInput` via:
+//
+//	ClusterDatastoreMountConfigDatastoreNetworkArgs{...}
+type ClusterDatastoreMountConfigDatastoreNetworkInput interface {
+	pulumi.Input
+
+	ToClusterDatastoreMountConfigDatastoreNetworkOutput() ClusterDatastoreMountConfigDatastoreNetworkOutput
+	ToClusterDatastoreMountConfigDatastoreNetworkOutputWithContext(context.Context) ClusterDatastoreMountConfigDatastoreNetworkOutput
+}
+
+type ClusterDatastoreMountConfigDatastoreNetworkArgs struct {
+	// Optional. The number of connections of the NFS volume.
+	// Supported from vsphere 8.0u1. Possible values are 1-4.
+	// Default value is 4.
+	ConnectionCount pulumi.IntPtrInput `pulumi:"connectionCount"`
+	// Optional. The Maximal Transmission Unit (MTU) of the datastore.
+	// MTU value can range from 1330-9000. If not set, system sets
+	// default MTU size to 1500.
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
+	// (Output)
+	// The resource name of the network peering, used to access the
+	// file share by clients on private cloud. Resource names are schemeless
+	// URIs that follow the conventions in
+	// https://cloud.google.com/apis/design/resource_names.
+	// e.g.
+	// projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+	NetworkPeering pulumi.StringPtrInput `pulumi:"networkPeering"`
+	// The resource name of the subnet
+	// Resource names are schemeless URIs that follow the conventions in
+	// https://cloud.google.com/apis/design/resource_names.
+	// e.g. projects/my-project/locations/us-central1/subnets/my-subnet
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+}
+
+func (ClusterDatastoreMountConfigDatastoreNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDatastoreMountConfigDatastoreNetwork)(nil)).Elem()
+}
+
+func (i ClusterDatastoreMountConfigDatastoreNetworkArgs) ToClusterDatastoreMountConfigDatastoreNetworkOutput() ClusterDatastoreMountConfigDatastoreNetworkOutput {
+	return i.ToClusterDatastoreMountConfigDatastoreNetworkOutputWithContext(context.Background())
+}
+
+func (i ClusterDatastoreMountConfigDatastoreNetworkArgs) ToClusterDatastoreMountConfigDatastoreNetworkOutputWithContext(ctx context.Context) ClusterDatastoreMountConfigDatastoreNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDatastoreMountConfigDatastoreNetworkOutput)
+}
+
+type ClusterDatastoreMountConfigDatastoreNetworkOutput struct{ *pulumi.OutputState }
+
+func (ClusterDatastoreMountConfigDatastoreNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDatastoreMountConfigDatastoreNetwork)(nil)).Elem()
+}
+
+func (o ClusterDatastoreMountConfigDatastoreNetworkOutput) ToClusterDatastoreMountConfigDatastoreNetworkOutput() ClusterDatastoreMountConfigDatastoreNetworkOutput {
+	return o
+}
+
+func (o ClusterDatastoreMountConfigDatastoreNetworkOutput) ToClusterDatastoreMountConfigDatastoreNetworkOutputWithContext(ctx context.Context) ClusterDatastoreMountConfigDatastoreNetworkOutput {
+	return o
+}
+
+// Optional. The number of connections of the NFS volume.
+// Supported from vsphere 8.0u1. Possible values are 1-4.
+// Default value is 4.
+func (o ClusterDatastoreMountConfigDatastoreNetworkOutput) ConnectionCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterDatastoreMountConfigDatastoreNetwork) *int { return v.ConnectionCount }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The Maximal Transmission Unit (MTU) of the datastore.
+// MTU value can range from 1330-9000. If not set, system sets
+// default MTU size to 1500.
+func (o ClusterDatastoreMountConfigDatastoreNetworkOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterDatastoreMountConfigDatastoreNetwork) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The resource name of the network peering, used to access the
+// file share by clients on private cloud. Resource names are schemeless
+// URIs that follow the conventions in
+// https://cloud.google.com/apis/design/resource_names.
+// e.g.
+// projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+func (o ClusterDatastoreMountConfigDatastoreNetworkOutput) NetworkPeering() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDatastoreMountConfigDatastoreNetwork) *string { return v.NetworkPeering }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the subnet
+// Resource names are schemeless URIs that follow the conventions in
+// https://cloud.google.com/apis/design/resource_names.
+// e.g. projects/my-project/locations/us-central1/subnets/my-subnet
+func (o ClusterDatastoreMountConfigDatastoreNetworkOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterDatastoreMountConfigDatastoreNetwork) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
 type ClusterNodeTypeConfig struct {
 	// Customized number of cores available to each node of the type.
 	// This number must always be one of `nodeType.availableCustomCoreCounts`.
@@ -5021,6 +5355,373 @@ func (o GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput
 	}).(GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput)
 }
 
+type GetClusterDatastoreMountConfig struct {
+	// Optional. NFS is accessed by hosts in either read or readWrite mode
+	// Default value used will be READ_WRITE
+	// Possible values:
+	// READ_ONLY
+	// READ_WRITE
+	AccessMode string `pulumi:"accessMode"`
+	// The resource name of the datastore to unmount.
+	// The datastore requested to be mounted should be in same region/zone as the
+	// cluster.
+	// Resource names are schemeless URIs that follow the conventions in
+	// https://cloud.google.com/apis/design/resource_names.
+	// For example:
+	// 'projects/my-project/locations/us-central1/datastores/my-datastore'
+	Datastore string `pulumi:"datastore"`
+	// The network configuration for the datastore.
+	DatastoreNetworks []GetClusterDatastoreMountConfigDatastoreNetwork `pulumi:"datastoreNetworks"`
+	// File share name.
+	FileShare string `pulumi:"fileShare"`
+	// Optional. If set to true, the colocation requirement will be ignored.
+	// If set to false, the colocation requirement will be enforced.
+	// Colocation requirement is the requirement that the cluster must be in the
+	// same region/zone of datastore.
+	IgnoreColocation bool `pulumi:"ignoreColocation"`
+	// Optional. The NFS protocol supported by the NFS volume.
+	// Default value used will be NFS_V3
+	// Possible values:
+	// NFS_V3
+	NfsVersion string `pulumi:"nfsVersion"`
+	// Server IP addresses of the NFS volume.
+	// For NFS 3, you can only provide a single
+	// server IP address or DNS names.
+	Servers []string `pulumi:"servers"`
+}
+
+// GetClusterDatastoreMountConfigInput is an input type that accepts GetClusterDatastoreMountConfigArgs and GetClusterDatastoreMountConfigOutput values.
+// You can construct a concrete instance of `GetClusterDatastoreMountConfigInput` via:
+//
+//	GetClusterDatastoreMountConfigArgs{...}
+type GetClusterDatastoreMountConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterDatastoreMountConfigOutput() GetClusterDatastoreMountConfigOutput
+	ToGetClusterDatastoreMountConfigOutputWithContext(context.Context) GetClusterDatastoreMountConfigOutput
+}
+
+type GetClusterDatastoreMountConfigArgs struct {
+	// Optional. NFS is accessed by hosts in either read or readWrite mode
+	// Default value used will be READ_WRITE
+	// Possible values:
+	// READ_ONLY
+	// READ_WRITE
+	AccessMode pulumi.StringInput `pulumi:"accessMode"`
+	// The resource name of the datastore to unmount.
+	// The datastore requested to be mounted should be in same region/zone as the
+	// cluster.
+	// Resource names are schemeless URIs that follow the conventions in
+	// https://cloud.google.com/apis/design/resource_names.
+	// For example:
+	// 'projects/my-project/locations/us-central1/datastores/my-datastore'
+	Datastore pulumi.StringInput `pulumi:"datastore"`
+	// The network configuration for the datastore.
+	DatastoreNetworks GetClusterDatastoreMountConfigDatastoreNetworkArrayInput `pulumi:"datastoreNetworks"`
+	// File share name.
+	FileShare pulumi.StringInput `pulumi:"fileShare"`
+	// Optional. If set to true, the colocation requirement will be ignored.
+	// If set to false, the colocation requirement will be enforced.
+	// Colocation requirement is the requirement that the cluster must be in the
+	// same region/zone of datastore.
+	IgnoreColocation pulumi.BoolInput `pulumi:"ignoreColocation"`
+	// Optional. The NFS protocol supported by the NFS volume.
+	// Default value used will be NFS_V3
+	// Possible values:
+	// NFS_V3
+	NfsVersion pulumi.StringInput `pulumi:"nfsVersion"`
+	// Server IP addresses of the NFS volume.
+	// For NFS 3, you can only provide a single
+	// server IP address or DNS names.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+}
+
+func (GetClusterDatastoreMountConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterDatastoreMountConfig)(nil)).Elem()
+}
+
+func (i GetClusterDatastoreMountConfigArgs) ToGetClusterDatastoreMountConfigOutput() GetClusterDatastoreMountConfigOutput {
+	return i.ToGetClusterDatastoreMountConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterDatastoreMountConfigArgs) ToGetClusterDatastoreMountConfigOutputWithContext(ctx context.Context) GetClusterDatastoreMountConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterDatastoreMountConfigOutput)
+}
+
+// GetClusterDatastoreMountConfigArrayInput is an input type that accepts GetClusterDatastoreMountConfigArray and GetClusterDatastoreMountConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterDatastoreMountConfigArrayInput` via:
+//
+//	GetClusterDatastoreMountConfigArray{ GetClusterDatastoreMountConfigArgs{...} }
+type GetClusterDatastoreMountConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterDatastoreMountConfigArrayOutput() GetClusterDatastoreMountConfigArrayOutput
+	ToGetClusterDatastoreMountConfigArrayOutputWithContext(context.Context) GetClusterDatastoreMountConfigArrayOutput
+}
+
+type GetClusterDatastoreMountConfigArray []GetClusterDatastoreMountConfigInput
+
+func (GetClusterDatastoreMountConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterDatastoreMountConfig)(nil)).Elem()
+}
+
+func (i GetClusterDatastoreMountConfigArray) ToGetClusterDatastoreMountConfigArrayOutput() GetClusterDatastoreMountConfigArrayOutput {
+	return i.ToGetClusterDatastoreMountConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterDatastoreMountConfigArray) ToGetClusterDatastoreMountConfigArrayOutputWithContext(ctx context.Context) GetClusterDatastoreMountConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterDatastoreMountConfigArrayOutput)
+}
+
+type GetClusterDatastoreMountConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterDatastoreMountConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterDatastoreMountConfig)(nil)).Elem()
+}
+
+func (o GetClusterDatastoreMountConfigOutput) ToGetClusterDatastoreMountConfigOutput() GetClusterDatastoreMountConfigOutput {
+	return o
+}
+
+func (o GetClusterDatastoreMountConfigOutput) ToGetClusterDatastoreMountConfigOutputWithContext(ctx context.Context) GetClusterDatastoreMountConfigOutput {
+	return o
+}
+
+// Optional. NFS is accessed by hosts in either read or readWrite mode
+// Default value used will be READ_WRITE
+// Possible values:
+// READ_ONLY
+// READ_WRITE
+func (o GetClusterDatastoreMountConfigOutput) AccessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterDatastoreMountConfig) string { return v.AccessMode }).(pulumi.StringOutput)
+}
+
+// The resource name of the datastore to unmount.
+// The datastore requested to be mounted should be in same region/zone as the
+// cluster.
+// Resource names are schemeless URIs that follow the conventions in
+// https://cloud.google.com/apis/design/resource_names.
+// For example:
+// 'projects/my-project/locations/us-central1/datastores/my-datastore'
+func (o GetClusterDatastoreMountConfigOutput) Datastore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterDatastoreMountConfig) string { return v.Datastore }).(pulumi.StringOutput)
+}
+
+// The network configuration for the datastore.
+func (o GetClusterDatastoreMountConfigOutput) DatastoreNetworks() GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput {
+	return o.ApplyT(func(v GetClusterDatastoreMountConfig) []GetClusterDatastoreMountConfigDatastoreNetwork {
+		return v.DatastoreNetworks
+	}).(GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput)
+}
+
+// File share name.
+func (o GetClusterDatastoreMountConfigOutput) FileShare() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterDatastoreMountConfig) string { return v.FileShare }).(pulumi.StringOutput)
+}
+
+// Optional. If set to true, the colocation requirement will be ignored.
+// If set to false, the colocation requirement will be enforced.
+// Colocation requirement is the requirement that the cluster must be in the
+// same region/zone of datastore.
+func (o GetClusterDatastoreMountConfigOutput) IgnoreColocation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterDatastoreMountConfig) bool { return v.IgnoreColocation }).(pulumi.BoolOutput)
+}
+
+// Optional. The NFS protocol supported by the NFS volume.
+// Default value used will be NFS_V3
+// Possible values:
+// NFS_V3
+func (o GetClusterDatastoreMountConfigOutput) NfsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterDatastoreMountConfig) string { return v.NfsVersion }).(pulumi.StringOutput)
+}
+
+// Server IP addresses of the NFS volume.
+// For NFS 3, you can only provide a single
+// server IP address or DNS names.
+func (o GetClusterDatastoreMountConfigOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterDatastoreMountConfig) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterDatastoreMountConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterDatastoreMountConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterDatastoreMountConfig)(nil)).Elem()
+}
+
+func (o GetClusterDatastoreMountConfigArrayOutput) ToGetClusterDatastoreMountConfigArrayOutput() GetClusterDatastoreMountConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterDatastoreMountConfigArrayOutput) ToGetClusterDatastoreMountConfigArrayOutputWithContext(ctx context.Context) GetClusterDatastoreMountConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterDatastoreMountConfigArrayOutput) Index(i pulumi.IntInput) GetClusterDatastoreMountConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterDatastoreMountConfig {
+		return vs[0].([]GetClusterDatastoreMountConfig)[vs[1].(int)]
+	}).(GetClusterDatastoreMountConfigOutput)
+}
+
+type GetClusterDatastoreMountConfigDatastoreNetwork struct {
+	// Optional. The number of connections of the NFS volume.
+	// Supported from vsphere 8.0u1. Possible values are 1-4.
+	// Default value is 4.
+	ConnectionCount int `pulumi:"connectionCount"`
+	// Optional. The Maximal Transmission Unit (MTU) of the datastore.
+	// MTU value can range from 1330-9000. If not set, system sets
+	// default MTU size to 1500.
+	Mtu int `pulumi:"mtu"`
+	// The resource name of the network peering, used to access the
+	// file share by clients on private cloud. Resource names are schemeless
+	// URIs that follow the conventions in
+	// https://cloud.google.com/apis/design/resource_names.
+	// e.g.
+	// projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+	NetworkPeering string `pulumi:"networkPeering"`
+	// The resource name of the subnet
+	// Resource names are schemeless URIs that follow the conventions in
+	// https://cloud.google.com/apis/design/resource_names.
+	// e.g. projects/my-project/locations/us-central1/subnets/my-subnet
+	Subnet string `pulumi:"subnet"`
+}
+
+// GetClusterDatastoreMountConfigDatastoreNetworkInput is an input type that accepts GetClusterDatastoreMountConfigDatastoreNetworkArgs and GetClusterDatastoreMountConfigDatastoreNetworkOutput values.
+// You can construct a concrete instance of `GetClusterDatastoreMountConfigDatastoreNetworkInput` via:
+//
+//	GetClusterDatastoreMountConfigDatastoreNetworkArgs{...}
+type GetClusterDatastoreMountConfigDatastoreNetworkInput interface {
+	pulumi.Input
+
+	ToGetClusterDatastoreMountConfigDatastoreNetworkOutput() GetClusterDatastoreMountConfigDatastoreNetworkOutput
+	ToGetClusterDatastoreMountConfigDatastoreNetworkOutputWithContext(context.Context) GetClusterDatastoreMountConfigDatastoreNetworkOutput
+}
+
+type GetClusterDatastoreMountConfigDatastoreNetworkArgs struct {
+	// Optional. The number of connections of the NFS volume.
+	// Supported from vsphere 8.0u1. Possible values are 1-4.
+	// Default value is 4.
+	ConnectionCount pulumi.IntInput `pulumi:"connectionCount"`
+	// Optional. The Maximal Transmission Unit (MTU) of the datastore.
+	// MTU value can range from 1330-9000. If not set, system sets
+	// default MTU size to 1500.
+	Mtu pulumi.IntInput `pulumi:"mtu"`
+	// The resource name of the network peering, used to access the
+	// file share by clients on private cloud. Resource names are schemeless
+	// URIs that follow the conventions in
+	// https://cloud.google.com/apis/design/resource_names.
+	// e.g.
+	// projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+	NetworkPeering pulumi.StringInput `pulumi:"networkPeering"`
+	// The resource name of the subnet
+	// Resource names are schemeless URIs that follow the conventions in
+	// https://cloud.google.com/apis/design/resource_names.
+	// e.g. projects/my-project/locations/us-central1/subnets/my-subnet
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+}
+
+func (GetClusterDatastoreMountConfigDatastoreNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterDatastoreMountConfigDatastoreNetwork)(nil)).Elem()
+}
+
+func (i GetClusterDatastoreMountConfigDatastoreNetworkArgs) ToGetClusterDatastoreMountConfigDatastoreNetworkOutput() GetClusterDatastoreMountConfigDatastoreNetworkOutput {
+	return i.ToGetClusterDatastoreMountConfigDatastoreNetworkOutputWithContext(context.Background())
+}
+
+func (i GetClusterDatastoreMountConfigDatastoreNetworkArgs) ToGetClusterDatastoreMountConfigDatastoreNetworkOutputWithContext(ctx context.Context) GetClusterDatastoreMountConfigDatastoreNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterDatastoreMountConfigDatastoreNetworkOutput)
+}
+
+// GetClusterDatastoreMountConfigDatastoreNetworkArrayInput is an input type that accepts GetClusterDatastoreMountConfigDatastoreNetworkArray and GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput values.
+// You can construct a concrete instance of `GetClusterDatastoreMountConfigDatastoreNetworkArrayInput` via:
+//
+//	GetClusterDatastoreMountConfigDatastoreNetworkArray{ GetClusterDatastoreMountConfigDatastoreNetworkArgs{...} }
+type GetClusterDatastoreMountConfigDatastoreNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterDatastoreMountConfigDatastoreNetworkArrayOutput() GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput
+	ToGetClusterDatastoreMountConfigDatastoreNetworkArrayOutputWithContext(context.Context) GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput
+}
+
+type GetClusterDatastoreMountConfigDatastoreNetworkArray []GetClusterDatastoreMountConfigDatastoreNetworkInput
+
+func (GetClusterDatastoreMountConfigDatastoreNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterDatastoreMountConfigDatastoreNetwork)(nil)).Elem()
+}
+
+func (i GetClusterDatastoreMountConfigDatastoreNetworkArray) ToGetClusterDatastoreMountConfigDatastoreNetworkArrayOutput() GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput {
+	return i.ToGetClusterDatastoreMountConfigDatastoreNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterDatastoreMountConfigDatastoreNetworkArray) ToGetClusterDatastoreMountConfigDatastoreNetworkArrayOutputWithContext(ctx context.Context) GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput)
+}
+
+type GetClusterDatastoreMountConfigDatastoreNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetClusterDatastoreMountConfigDatastoreNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterDatastoreMountConfigDatastoreNetwork)(nil)).Elem()
+}
+
+func (o GetClusterDatastoreMountConfigDatastoreNetworkOutput) ToGetClusterDatastoreMountConfigDatastoreNetworkOutput() GetClusterDatastoreMountConfigDatastoreNetworkOutput {
+	return o
+}
+
+func (o GetClusterDatastoreMountConfigDatastoreNetworkOutput) ToGetClusterDatastoreMountConfigDatastoreNetworkOutputWithContext(ctx context.Context) GetClusterDatastoreMountConfigDatastoreNetworkOutput {
+	return o
+}
+
+// Optional. The number of connections of the NFS volume.
+// Supported from vsphere 8.0u1. Possible values are 1-4.
+// Default value is 4.
+func (o GetClusterDatastoreMountConfigDatastoreNetworkOutput) ConnectionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterDatastoreMountConfigDatastoreNetwork) int { return v.ConnectionCount }).(pulumi.IntOutput)
+}
+
+// Optional. The Maximal Transmission Unit (MTU) of the datastore.
+// MTU value can range from 1330-9000. If not set, system sets
+// default MTU size to 1500.
+func (o GetClusterDatastoreMountConfigDatastoreNetworkOutput) Mtu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterDatastoreMountConfigDatastoreNetwork) int { return v.Mtu }).(pulumi.IntOutput)
+}
+
+// The resource name of the network peering, used to access the
+// file share by clients on private cloud. Resource names are schemeless
+// URIs that follow the conventions in
+// https://cloud.google.com/apis/design/resource_names.
+// e.g.
+// projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+func (o GetClusterDatastoreMountConfigDatastoreNetworkOutput) NetworkPeering() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterDatastoreMountConfigDatastoreNetwork) string { return v.NetworkPeering }).(pulumi.StringOutput)
+}
+
+// The resource name of the subnet
+// Resource names are schemeless URIs that follow the conventions in
+// https://cloud.google.com/apis/design/resource_names.
+// e.g. projects/my-project/locations/us-central1/subnets/my-subnet
+func (o GetClusterDatastoreMountConfigDatastoreNetworkOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterDatastoreMountConfigDatastoreNetwork) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+type GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterDatastoreMountConfigDatastoreNetwork)(nil)).Elem()
+}
+
+func (o GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput) ToGetClusterDatastoreMountConfigDatastoreNetworkArrayOutput() GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput {
+	return o
+}
+
+func (o GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput) ToGetClusterDatastoreMountConfigDatastoreNetworkArrayOutputWithContext(ctx context.Context) GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput {
+	return o
+}
+
+func (o GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput) Index(i pulumi.IntInput) GetClusterDatastoreMountConfigDatastoreNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterDatastoreMountConfigDatastoreNetwork {
+		return vs[0].([]GetClusterDatastoreMountConfigDatastoreNetwork)[vs[1].(int)]
+	}).(GetClusterDatastoreMountConfigDatastoreNetworkOutput)
+}
+
 type GetClusterNodeTypeConfig struct {
 	// Customized number of cores available to each node of the type.
 	// This number must always be one of 'nodeType.availableCustomCoreCounts'.
@@ -7716,6 +8417,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput)(nil)).Elem(), ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsInput)(nil)).Elem(), ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput)(nil)).Elem(), ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDatastoreMountConfigInput)(nil)).Elem(), ClusterDatastoreMountConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDatastoreMountConfigArrayInput)(nil)).Elem(), ClusterDatastoreMountConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDatastoreMountConfigDatastoreNetworkInput)(nil)).Elem(), ClusterDatastoreMountConfigDatastoreNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigInput)(nil)).Elem(), ClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigArrayInput)(nil)).Elem(), ClusterNodeTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreNfsDatastoreInput)(nil)).Elem(), DatastoreNfsDatastoreArgs{})
@@ -7770,6 +8474,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDatastoreMountConfigInput)(nil)).Elem(), GetClusterDatastoreMountConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDatastoreMountConfigArrayInput)(nil)).Elem(), GetClusterDatastoreMountConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDatastoreMountConfigDatastoreNetworkInput)(nil)).Elem(), GetClusterDatastoreMountConfigDatastoreNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDatastoreMountConfigDatastoreNetworkArrayInput)(nil)).Elem(), GetClusterDatastoreMountConfigDatastoreNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigInput)(nil)).Elem(), GetClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigArrayInput)(nil)).Elem(), GetClusterNodeTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoreNfsDatastoreInput)(nil)).Elem(), GetDatastoreNfsDatastoreArgs{})
@@ -7824,6 +8532,9 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterDatastoreMountConfigOutput{})
+	pulumi.RegisterOutputType(ClusterDatastoreMountConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterDatastoreMountConfigDatastoreNetworkOutput{})
 	pulumi.RegisterOutputType(ClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(DatastoreNfsDatastoreOutput{})
@@ -7878,6 +8589,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput{})
 	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterDatastoreMountConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterDatastoreMountConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterDatastoreMountConfigDatastoreNetworkOutput{})
+	pulumi.RegisterOutputType(GetClusterDatastoreMountConfigDatastoreNetworkArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatastoreNfsDatastoreOutput{})

@@ -20,6 +20,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * An OS Config resource representing a guest configuration policy. These policies represent
+ * the desired state for VM instance guest environments including packages to install or remove,
+ * package repository configurations, and software to install.
+ * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
+ * To get more information about GuestPolicies, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
+ * 
  * ## Example Usage
  * 
  * ### Os Config Guest Policies Basic
@@ -241,22 +254,14 @@ import javax.annotation.Nullable;
  * GuestPolicies can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/guestPolicies/{{guest_policy_id}}`
- * 
  * * `{{project}}/{{guest_policy_id}}`
- * 
  * * `{{guest_policy_id}}`
  * 
  * When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{project}}/{{guest_policy_id}}
- * ```
- * 
- * ```sh
  * $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{guest_policy_id}}
  * ```
  * 

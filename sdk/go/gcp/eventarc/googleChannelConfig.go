@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -89,22 +87,14 @@ import (
 // GoogleChannelConfig can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/googleChannelConfig`
-//
 // * `{{project}}/{{location}}`
-//
 // * `{{location}}`
 //
 // When using the `pulumi import` command, GoogleChannelConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default projects/{{project}}/locations/{{location}}/googleChannelConfig
-// ```
-//
-// ```sh
 // $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default {{project}}/{{location}}
-// ```
-//
-// ```sh
 // $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default {{location}}
 // ```
 type GoogleChannelConfig struct {

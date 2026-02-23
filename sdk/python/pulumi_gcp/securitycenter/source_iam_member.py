@@ -28,6 +28,7 @@ class SourceIamMemberArgs:
                  condition: Optional[pulumi.Input['SourceIamMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a SourceIamMember resource.
+
         :param pulumi.Input[_builtins.str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
         """
@@ -99,6 +100,7 @@ class _SourceIamMemberState:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SourceIamMember resources.
+
         :param pulumi.Input[_builtins.str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
         """
@@ -217,18 +219,15 @@ class SourceIamMember(pulumi.CustomResource):
         Source can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/sources/{{name}}`
-
         * `{{organization}}/{{name}}`
 
         When using the `pulumi import` command, Source can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/sourceIamMember:SourceIamMember default organizations/{{organization}}/sources/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/sourceIamMember:SourceIamMember default {{organization}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -272,18 +271,15 @@ class SourceIamMember(pulumi.CustomResource):
         Source can be imported using any of these accepted formats:
 
         * `organizations/{{organization}}/sources/{{name}}`
-
         * `{{organization}}/{{name}}`
 
         When using the `pulumi import` command, Source can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/sourceIamMember:SourceIamMember default organizations/{{organization}}/sources/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:securitycenter/sourceIamMember:SourceIamMember default {{organization}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SourceIamMemberArgs args: The arguments to use to populate this resource's properties.

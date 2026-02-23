@@ -168,6 +168,7 @@ class ProviderArgs:
                  parallelstore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  parameter_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  parameter_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 poll_interval: Optional[pulumi.Input[_builtins.str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  privileged_access_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -214,6 +215,7 @@ class ProviderArgs:
                  transcoder_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  universe_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  user_project_override: Optional[pulumi.Input[_builtins.bool]] = None,
+                 vector_search_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  vmwareengine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -520,6 +522,8 @@ class ProviderArgs:
             pulumi.set(__self__, "parameter_manager_custom_endpoint", parameter_manager_custom_endpoint)
         if parameter_manager_regional_custom_endpoint is not None:
             pulumi.set(__self__, "parameter_manager_regional_custom_endpoint", parameter_manager_regional_custom_endpoint)
+        if poll_interval is not None:
+            pulumi.set(__self__, "poll_interval", poll_interval)
         if privateca_custom_endpoint is not None:
             pulumi.set(__self__, "privateca_custom_endpoint", privateca_custom_endpoint)
         if privileged_access_manager_custom_endpoint is not None:
@@ -616,6 +620,8 @@ class ProviderArgs:
             pulumi.set(__self__, "universe_domain", universe_domain)
         if user_project_override is not None:
             pulumi.set(__self__, "user_project_override", user_project_override)
+        if vector_search_custom_endpoint is not None:
+            pulumi.set(__self__, "vector_search_custom_endpoint", vector_search_custom_endpoint)
         if vertex_ai_custom_endpoint is not None:
             pulumi.set(__self__, "vertex_ai_custom_endpoint", vertex_ai_custom_endpoint)
         if vmwareengine_custom_endpoint is not None:
@@ -1966,6 +1972,15 @@ class ProviderArgs:
         pulumi.set(self, "parameter_manager_regional_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="pollInterval")
+    def poll_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "poll_interval")
+
+    @poll_interval.setter
+    def poll_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "poll_interval", value)
+
+    @_builtins.property
     @pulumi.getter(name="privatecaCustomEndpoint")
     def privateca_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "privateca_custom_endpoint")
@@ -2380,6 +2395,15 @@ class ProviderArgs:
         pulumi.set(self, "user_project_override", value)
 
     @_builtins.property
+    @pulumi.getter(name="vectorSearchCustomEndpoint")
+    def vector_search_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "vector_search_custom_endpoint")
+
+    @vector_search_custom_endpoint.setter
+    def vector_search_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vector_search_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="vertexAiCustomEndpoint")
     def vertex_ai_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "vertex_ai_custom_endpoint")
@@ -2597,6 +2621,7 @@ class Provider(pulumi.ProviderResource):
                  parallelstore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  parameter_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  parameter_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 poll_interval: Optional[pulumi.Input[_builtins.str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  privileged_access_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2643,6 +2668,7 @@ class Provider(pulumi.ProviderResource):
                  transcoder_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  universe_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  user_project_override: Optional[pulumi.Input[_builtins.bool]] = None,
+                 vector_search_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  vmwareengine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2656,6 +2682,7 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2671,6 +2698,7 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
 
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.
@@ -2835,6 +2863,7 @@ class Provider(pulumi.ProviderResource):
                  parallelstore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  parameter_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  parameter_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 poll_interval: Optional[pulumi.Input[_builtins.str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  privileged_access_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2881,6 +2910,7 @@ class Provider(pulumi.ProviderResource):
                  transcoder_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  universe_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  user_project_override: Optional[pulumi.Input[_builtins.bool]] = None,
+                 vector_search_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  vmwareengine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3045,6 +3075,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["parallelstore_custom_endpoint"] = parallelstore_custom_endpoint
             __props__.__dict__["parameter_manager_custom_endpoint"] = parameter_manager_custom_endpoint
             __props__.__dict__["parameter_manager_regional_custom_endpoint"] = parameter_manager_regional_custom_endpoint
+            __props__.__dict__["poll_interval"] = poll_interval
             __props__.__dict__["privateca_custom_endpoint"] = privateca_custom_endpoint
             __props__.__dict__["privileged_access_manager_custom_endpoint"] = privileged_access_manager_custom_endpoint
             if project is None:
@@ -3095,6 +3126,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["transcoder_custom_endpoint"] = transcoder_custom_endpoint
             __props__.__dict__["universe_domain"] = universe_domain
             __props__.__dict__["user_project_override"] = pulumi.Output.from_input(user_project_override).apply(pulumi.runtime.to_json) if user_project_override is not None else None
+            __props__.__dict__["vector_search_custom_endpoint"] = vector_search_custom_endpoint
             __props__.__dict__["vertex_ai_custom_endpoint"] = vertex_ai_custom_endpoint
             __props__.__dict__["vmwareengine_custom_endpoint"] = vmwareengine_custom_endpoint
             __props__.__dict__["vpc_access_custom_endpoint"] = vpc_access_custom_endpoint
@@ -3823,6 +3855,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "parameter_manager_regional_custom_endpoint")
 
     @_builtins.property
+    @pulumi.getter(name="pollInterval")
+    def poll_interval(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "poll_interval")
+
+    @_builtins.property
     @pulumi.getter(name="privatecaCustomEndpoint")
     def privateca_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "privateca_custom_endpoint")
@@ -4041,6 +4078,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="universeDomain")
     def universe_domain(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "universe_domain")
+
+    @_builtins.property
+    @pulumi.getter(name="vectorSearchCustomEndpoint")
+    def vector_search_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "vector_search_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="vertexAiCustomEndpoint")

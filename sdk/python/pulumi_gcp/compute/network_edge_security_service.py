@@ -26,6 +26,7 @@ class NetworkEdgeSecurityServiceArgs:
                  security_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkEdgeSecurityService resource.
+
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -121,6 +122,7 @@ class _NetworkEdgeSecurityServiceState:
                  service_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkEdgeSecurityService resources.
+
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: Free-text description of the resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService.
@@ -291,6 +293,17 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
                  security_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Google Cloud Armor network edge security service resource.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about NetworkEdgeSecurityService, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkEdgeSecurityServices)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/armor/docs/advanced-network-ddos)
+
         ## Example Usage
 
         ### Compute Network Edge Security Service Basic
@@ -310,30 +323,19 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
         NetworkEdgeSecurityService can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, NetworkEdgeSecurityService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -351,6 +353,17 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
                  args: Optional[NetworkEdgeSecurityServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Google Cloud Armor network edge security service resource.
+
+        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+        See Provider Versions for more details on beta resources.
+
+        To get more information about NetworkEdgeSecurityService, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkEdgeSecurityServices)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/armor/docs/advanced-network-ddos)
+
         ## Example Usage
 
         ### Compute Network Edge Security Service Basic
@@ -370,30 +383,19 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
         NetworkEdgeSecurityService can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}`
-
         * `{{project}}/{{region}}/{{name}}`
-
         * `{{region}}/{{name}}`
-
         * `{{name}}`
 
         When using the `pulumi import` command, NetworkEdgeSecurityService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{project}}/{{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{region}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkEdgeSecurityServiceArgs args: The arguments to use to populate this resource's properties.

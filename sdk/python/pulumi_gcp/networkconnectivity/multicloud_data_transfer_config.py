@@ -29,6 +29,7 @@ class MulticloudDataTransferConfigArgs:
                  services: Optional[pulumi.Input[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceArgs']]]] = None):
         """
         The set of arguments for constructing a MulticloudDataTransferConfig resource.
+
         :param pulumi.Input[_builtins.str] location: The location of the multicloud data transfer config.
         :param pulumi.Input[_builtins.str] description: A description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels.
@@ -152,6 +153,7 @@ class _MulticloudDataTransferConfigState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MulticloudDataTransferConfig resources.
+
         :param pulumi.Input[_builtins.str] create_time: Time when the MulticloudDataTransferConfig resource was created.
         :param pulumi.Input[_builtins.str] description: A description of this resource.
         :param pulumi.Input[_builtins.int] destinations_active_count: The number of Destination resources in use with the
@@ -445,24 +447,17 @@ class MulticloudDataTransferConfig(pulumi.CustomResource):
         MulticloudDataTransferConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, MulticloudDataTransferConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -524,24 +519,17 @@ class MulticloudDataTransferConfig(pulumi.CustomResource):
         MulticloudDataTransferConfig can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{name}}`
-
         * `{{project}}/{{location}}/{{name}}`
-
         * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, MulticloudDataTransferConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default projects/{{project}}/locations/{{location}}/multicloudDataTransferConfigs/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default {{project}}/{{location}}/{{name}}
-        ```
-
-        ```sh
         $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default {{location}}/{{name}}
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MulticloudDataTransferConfigArgs args: The arguments to use to populate this resource's properties.

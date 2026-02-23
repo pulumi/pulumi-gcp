@@ -20,6 +20,11 @@ export const getIcebergCatalogIamPolicy: typeof import("./getIcebergCatalogIamPo
 export const getIcebergCatalogIamPolicyOutput: typeof import("./getIcebergCatalogIamPolicy").getIcebergCatalogIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getIcebergCatalogIamPolicy","getIcebergCatalogIamPolicyOutput"], () => require("./getIcebergCatalogIamPolicy"));
 
+export { GetIcebergNamespaceIamPolicyArgs, GetIcebergNamespaceIamPolicyResult, GetIcebergNamespaceIamPolicyOutputArgs } from "./getIcebergNamespaceIamPolicy";
+export const getIcebergNamespaceIamPolicy: typeof import("./getIcebergNamespaceIamPolicy").getIcebergNamespaceIamPolicy = null as any;
+export const getIcebergNamespaceIamPolicyOutput: typeof import("./getIcebergNamespaceIamPolicy").getIcebergNamespaceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getIcebergNamespaceIamPolicy","getIcebergNamespaceIamPolicyOutput"], () => require("./getIcebergNamespaceIamPolicy"));
+
 export { IcebergCatalogArgs, IcebergCatalogState } from "./icebergCatalog";
 export type IcebergCatalog = import("./icebergCatalog").IcebergCatalog;
 export const IcebergCatalog: typeof import("./icebergCatalog").IcebergCatalog = null as any;
@@ -39,6 +44,26 @@ export { IcebergCatalogIamPolicyArgs, IcebergCatalogIamPolicyState } from "./ice
 export type IcebergCatalogIamPolicy = import("./icebergCatalogIamPolicy").IcebergCatalogIamPolicy;
 export const IcebergCatalogIamPolicy: typeof import("./icebergCatalogIamPolicy").IcebergCatalogIamPolicy = null as any;
 utilities.lazyLoad(exports, ["IcebergCatalogIamPolicy"], () => require("./icebergCatalogIamPolicy"));
+
+export { IcebergNamespaceArgs, IcebergNamespaceState } from "./icebergNamespace";
+export type IcebergNamespace = import("./icebergNamespace").IcebergNamespace;
+export const IcebergNamespace: typeof import("./icebergNamespace").IcebergNamespace = null as any;
+utilities.lazyLoad(exports, ["IcebergNamespace"], () => require("./icebergNamespace"));
+
+export { IcebergNamespaceIamBindingArgs, IcebergNamespaceIamBindingState } from "./icebergNamespaceIamBinding";
+export type IcebergNamespaceIamBinding = import("./icebergNamespaceIamBinding").IcebergNamespaceIamBinding;
+export const IcebergNamespaceIamBinding: typeof import("./icebergNamespaceIamBinding").IcebergNamespaceIamBinding = null as any;
+utilities.lazyLoad(exports, ["IcebergNamespaceIamBinding"], () => require("./icebergNamespaceIamBinding"));
+
+export { IcebergNamespaceIamMemberArgs, IcebergNamespaceIamMemberState } from "./icebergNamespaceIamMember";
+export type IcebergNamespaceIamMember = import("./icebergNamespaceIamMember").IcebergNamespaceIamMember;
+export const IcebergNamespaceIamMember: typeof import("./icebergNamespaceIamMember").IcebergNamespaceIamMember = null as any;
+utilities.lazyLoad(exports, ["IcebergNamespaceIamMember"], () => require("./icebergNamespaceIamMember"));
+
+export { IcebergNamespaceIamPolicyArgs, IcebergNamespaceIamPolicyState } from "./icebergNamespaceIamPolicy";
+export type IcebergNamespaceIamPolicy = import("./icebergNamespaceIamPolicy").IcebergNamespaceIamPolicy;
+export const IcebergNamespaceIamPolicy: typeof import("./icebergNamespaceIamPolicy").IcebergNamespaceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["IcebergNamespaceIamPolicy"], () => require("./icebergNamespaceIamPolicy"));
 
 export { TableArgs, TableState } from "./table";
 export type Table = import("./table").Table;
@@ -62,6 +87,14 @@ const _module = {
                 return new IcebergCatalogIamMember(name, <any>undefined, { urn })
             case "gcp:biglake/icebergCatalogIamPolicy:IcebergCatalogIamPolicy":
                 return new IcebergCatalogIamPolicy(name, <any>undefined, { urn })
+            case "gcp:biglake/icebergNamespace:IcebergNamespace":
+                return new IcebergNamespace(name, <any>undefined, { urn })
+            case "gcp:biglake/icebergNamespaceIamBinding:IcebergNamespaceIamBinding":
+                return new IcebergNamespaceIamBinding(name, <any>undefined, { urn })
+            case "gcp:biglake/icebergNamespaceIamMember:IcebergNamespaceIamMember":
+                return new IcebergNamespaceIamMember(name, <any>undefined, { urn })
+            case "gcp:biglake/icebergNamespaceIamPolicy:IcebergNamespaceIamPolicy":
+                return new IcebergNamespaceIamPolicy(name, <any>undefined, { urn })
             case "gcp:biglake/table:Table":
                 return new Table(name, <any>undefined, { urn })
             default:
@@ -75,4 +108,8 @@ pulumi.runtime.registerResourceModule("gcp", "biglake/icebergCatalog", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/icebergCatalogIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/icebergCatalogIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/icebergCatalogIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/icebergNamespace", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/icebergNamespaceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/icebergNamespaceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/icebergNamespaceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/table", _module)
