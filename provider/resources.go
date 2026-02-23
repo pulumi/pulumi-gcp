@@ -2804,10 +2804,10 @@ func Provider() tfbridge.ProviderInfo {
 			"google_privileged_access_manager_entitlement": {
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
-			"google_backup_dr_backup_plan": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_backup_dr_backup_plan":  {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"google_backup_dr_data_source":  {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"google_backup_dr_data_sources": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
-			"google_backup_dr_backup":      {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_backup_dr_backup":       {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 
 			// Vmwareengine
 			"google_vmwareengine_datastore": {Docs: &tfbridge.DocInfo{
